@@ -348,8 +348,16 @@ function SubjectRow({
               <p className="text-xs text-muted-foreground">No units yet.</p>
             )}
             <ul className="space-y-1.5">
-              {unitsQuery.data?.map((u) => (
-                <UnitRow key={u.id} unit={{ id: u.id, number: u.number, title: u.title, status: u.status as Status }} onDelete={() => { if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id); }} />
+              {unitsQuery.data?.map((u, i) => (
+                <UnitRow
+                  key={u.id}
+                  unit={{ id: u.id, number: u.number, title: u.title, status: u.status as Status }}
+                  subjectId={sub.id}
+                  index={i}
+                  total={unitsQuery.data!.length}
+                  allUnitIds={unitsQuery.data!.map((x) => x.id)}
+                  onDelete={() => { if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id); }}
+                />
               ))}
             </ul>
           </div>
