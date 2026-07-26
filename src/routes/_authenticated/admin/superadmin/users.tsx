@@ -2,10 +2,11 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Search, Shield, ShieldCheck, GraduationCap, UserCog } from "lucide-react";
+import { Search, Shield, ShieldCheck, GraduationCap, UserCog, Ban, Undo2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { listUsers, grantRole, revokeRole, type AppRole } from "@/lib/superadmin.functions";
+import { setUserSuspended } from "@/lib/announcements.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Input } from "@/components/ui/input";
@@ -31,6 +32,7 @@ function UsersPage() {
   const fetchUsers = useServerFn(listUsers);
   const grant = useServerFn(grantRole);
   const revoke = useServerFn(revokeRole);
+  const suspendFn = useServerFn(setUserSuspended);
   const qc = useQueryClient();
 
   const { data: users, isLoading } = useQuery({
@@ -50,6 +52,14 @@ function UsersPage() {
     mutationFn: (vars: { userId: string; role: AppRole }) => revoke({ data: vars }),
     onSuccess: (_d, vars) => {
       toast.success(`${ROLE_META[vars.role].label} revoked`);
+      qc.invalidateQueries({ queryKey: ["superadmin", "users"] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+  const suspendMut = useMutation({
+    mutationFn: (vars: { userId: string; suspended: boolean; reason?: string }) => suspendFn({ data: vars }),
+    onSuccess: (_d, vars) => {
+      toast.success(vars.suspended ? "User suspended" : "User reinstated");
       qc.invalidateQueries({ queryKey: ["superadmin", "users"] });
     },
     onError: (e: Error) => toast.error(e.message),
