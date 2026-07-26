@@ -2,7 +2,9 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { ArrowLeft, Plus, Trash2, Layers, BookText, ListTree, Pencil, FileText, FileQuestion, ClipboardList, ChevronDown, ChevronRight } from "lucide-react";
+import { ArrowLeft, Plus, Trash2, Layers, BookText, ListTree, Pencil, FileText, FileQuestion, ClipboardList, ChevronDown, ChevronRight, ArrowUp, ArrowDown } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { reorderUnits } from "@/lib/announcements.functions";
 import { PageContainer } from "@/components/admin/ui/page-container";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -346,8 +348,16 @@ function SubjectRow({
               <p className="text-xs text-muted-foreground">No units yet.</p>
             )}
             <ul className="space-y-1.5">
-              {unitsQuery.data?.map((u) => (
-                <UnitRow key={u.id} unit={{ id: u.id, number: u.number, title: u.title, status: u.status as Status }} onDelete={() => { if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id); }} />
+              {unitsQuery.data?.map((u, i) => (
+                <UnitRow
+                  key={u.id}
+                  unit={{ id: u.id, number: u.number, title: u.title, status: u.status as Status }}
+                  subjectId={sub.id}
+                  index={i}
+                  total={unitsQuery.data!.length}
+                  allUnitIds={unitsQuery.data!.map((x) => x.id)}
+                  onDelete={() => { if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id); }}
+                />
               ))}
             </ul>
           </div>
@@ -695,9 +705,29 @@ function UnitDialog({
   );
 }
 
-function UnitRow({ unit, onDelete }: { unit: { id: string; number: number; title: string; status: Status }; onDelete: () => void }) {
+function UnitRow({
+  unit,
+  onDelete,
+  subjectId,
+  index,
+  total,
+  allUnitIds,
+}: {
+  unit: { id: string; number: number; title: string; status: Status };
+  onDelete: () => void;
+  subjectId: string;
+  index: number;
+  total: number;
+  allUnitIds: string[];
+}) {
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
+  const reorderFn = useServerFn(reorderUnits);
+  const reorderMut = useMutation({
+    mutationFn: (unitIds: string[]) => reorderFn({ data: { subjectId, unitIds } }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["admin", "units", subjectId] }),
+    onError: (e: Error) => toast.error(e.message),
+  });
 
   const notesQuery = useQuery({
     queryKey: ["admin", "unit-notes", unit.id],
@@ -746,6 +776,34 @@ function UnitRow({ unit, onDelete }: { unit: { id: string; number: number; title
         <span className="grid h-6 w-6 place-items-center rounded bg-primary/10 text-xs font-semibold text-primary">{unit.number}</span>
         <span className="flex-1 text-foreground">{unit.title}</span>
         <Badge variant={unit.status === "published" ? "default" : "secondary"} className="text-[10px]">{unit.status}</Badge>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 w-7 p-0"
+          disabled={index === 0 || reorderMut.isPending}
+          onClick={() => {
+            const next = [...allUnitIds];
+            [next[index - 1], next[index]] = [next[index], next[index - 1]];
+            reorderMut.mutate(next);
+          }}
+          aria-label="Move up"
+        >
+          <ArrowUp className="h-3.5 w-3.5" />
+        </Button>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 w-7 p-0"
+          disabled={index === total - 1 || reorderMut.isPending}
+          onClick={() => {
+            const next = [...allUnitIds];
+            [next[index + 1], next[index]] = [next[index], next[index + 1]];
+            reorderMut.mutate(next);
+          }}
+          aria-label="Move down"
+        >
+          <ArrowDown className="h-3.5 w-3.5" />
+        </Button>
         <Button size="sm" variant="ghost" onClick={onDelete}>
           <Trash2 className="h-3.5 w-3.5" />
         </Button>

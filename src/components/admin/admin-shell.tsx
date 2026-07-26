@@ -23,6 +23,7 @@ import {
   ScrollText,
   Flag,
   Palette,
+  Megaphone,
   Search as SearchIcon,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -78,6 +79,7 @@ const LEARNING: NavItem[] = [
 
 const SITE: NavItem[] = [
   { label: "Homepage", to: "/admin/homepage", icon: LayoutTemplate },
+  { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
   { label: "Inbox", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
   { label: "Media", to: "/admin/media", icon: ImageIcon },
   { label: "Tags", to: "/admin/tags", icon: Tag },

@@ -20,6 +20,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
+import { AnnouncementBanner } from "@/components/announcement-banner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
@@ -202,6 +203,9 @@ function DashboardPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-5 pb-20 pt-8 sm:px-6 sm:pt-12">
+      <div className="mb-6">
+        <AnnouncementBanner audience="students" />
+      </div>
       {/* ─── Focus bar ─── */}
       <section className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
         <div className="min-w-0">

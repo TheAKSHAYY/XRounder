@@ -20,6 +20,8 @@ export type AdminUserRow = {
   created_at: string;
   last_sign_in_at: string | null;
   roles: AppRole[];
+  suspended: boolean;
+  suspended_reason: string | null;
 };
 
 export const listUsers = createServerFn({ method: "GET" })
@@ -37,14 +39,15 @@ export const listUsers = createServerFn({ method: "GET" })
     if (authErr) throw new Error(authErr.message);
 
     const ids = authList.users.map((u) => u.id);
+    const sbAdmin = supabaseAdmin as any;
     const [profilesRes, rolesRes] = await Promise.all([
-      supabaseAdmin.from("profiles").select("user_id,full_name,avatar_url").in("user_id", ids),
-      supabaseAdmin.from("user_roles").select("user_id,role").in("user_id", ids),
+      sbAdmin.from("profiles").select("user_id,full_name,avatar_url,suspended,suspended_reason").in("user_id", ids),
+      sbAdmin.from("user_roles").select("user_id,role").in("user_id", ids),
     ]);
     if (profilesRes.error) throw new Error(profilesRes.error.message);
     if (rolesRes.error) throw new Error(rolesRes.error.message);
 
-    const profileMap = new Map((profilesRes.data ?? []).map((p) => [p.user_id, p]));
+    const profileMap = new Map(((profilesRes.data ?? []) as Array<{ user_id: string; full_name: string | null; avatar_url: string | null; suspended?: boolean; suspended_reason?: string | null }>).map((p) => [p.user_id, p]));
     const roleMap = new Map<string, AppRole[]>();
     for (const r of rolesRes.data ?? []) {
       const arr = roleMap.get(r.user_id) ?? [];
@@ -63,6 +66,8 @@ export const listUsers = createServerFn({ method: "GET" })
         created_at: u.created_at,
         last_sign_in_at: u.last_sign_in_at ?? null,
         roles: roleMap.get(u.id) ?? [],
+        suspended: !!prof?.suspended,
+        suspended_reason: prof?.suspended_reason ?? null,
       };
     });
     if (search) {
