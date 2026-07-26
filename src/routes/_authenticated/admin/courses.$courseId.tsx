@@ -722,6 +722,12 @@ function UnitRow({
 }) {
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
+  const reorderFn = useServerFn(reorderUnits);
+  const reorderMut = useMutation({
+    mutationFn: (unitIds: string[]) => reorderFn({ data: { subjectId, unitIds } }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["admin", "units", subjectId] }),
+    onError: (e: Error) => toast.error(e.message),
+  });
 
   const notesQuery = useQuery({
     queryKey: ["admin", "unit-notes", unit.id],
