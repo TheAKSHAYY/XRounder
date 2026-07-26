@@ -112,8 +112,17 @@ function UsersPage() {
                 {filtered.map((u) => (
                   <tr key={u.user_id} className="border-b border-border/60 last:border-0">
                     <td className="px-4 py-3">
-                      <div className="font-medium text-foreground">{u.full_name ?? "—"}</div>
-                      <div className="text-xs text-muted-foreground">{u.email ?? u.user_id.slice(0, 8)}</div>
+                      <div className="flex items-center gap-2">
+                        <div>
+                          <div className="font-medium text-foreground">{u.full_name ?? "—"}</div>
+                          <div className="text-xs text-muted-foreground">{u.email ?? u.user_id.slice(0, 8)}</div>
+                        </div>
+                        {u.suspended && (
+                          <Badge variant="outline" className="border-destructive/40 bg-destructive/10 text-destructive">
+                            <Ban className="mr-1 h-3 w-3" /> Suspended
+                          </Badge>
+                        )}
+                      </div>
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex flex-wrap gap-1.5">
@@ -152,6 +161,30 @@ function UsersPage() {
                             </Button>
                           );
                         })}
+                        {u.suspended ? (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            disabled={suspendMut.isPending}
+                            onClick={() => suspendMut.mutate({ userId: u.user_id, suspended: false })}
+                          >
+                            <Undo2 className="mr-1 h-3 w-3" /> Reinstate
+                          </Button>
+                        ) : (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-destructive/40 text-destructive hover:bg-destructive/10"
+                            disabled={suspendMut.isPending}
+                            onClick={() => {
+                              const reason = prompt(`Suspend ${u.email ?? u.user_id}? Enter reason (optional):`);
+                              if (reason === null) return;
+                              suspendMut.mutate({ userId: u.user_id, suspended: true, reason: reason || undefined });
+                            }}
+                          >
+                            <Ban className="mr-1 h-3 w-3" /> Suspend
+                          </Button>
+                        )}
                       </div>
                     </td>
                   </tr>
