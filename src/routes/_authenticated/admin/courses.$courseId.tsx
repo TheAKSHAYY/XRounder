@@ -705,7 +705,21 @@ function UnitDialog({
   );
 }
 
-function UnitRow({ unit, onDelete }: { unit: { id: string; number: number; title: string; status: Status }; onDelete: () => void }) {
+function UnitRow({
+  unit,
+  onDelete,
+  subjectId,
+  index,
+  total,
+  allUnitIds,
+}: {
+  unit: { id: string; number: number; title: string; status: Status };
+  onDelete: () => void;
+  subjectId: string;
+  index: number;
+  total: number;
+  allUnitIds: string[];
+}) {
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
 
@@ -756,6 +770,34 @@ function UnitRow({ unit, onDelete }: { unit: { id: string; number: number; title
         <span className="grid h-6 w-6 place-items-center rounded bg-primary/10 text-xs font-semibold text-primary">{unit.number}</span>
         <span className="flex-1 text-foreground">{unit.title}</span>
         <Badge variant={unit.status === "published" ? "default" : "secondary"} className="text-[10px]">{unit.status}</Badge>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 w-7 p-0"
+          disabled={index === 0 || reorderMut.isPending}
+          onClick={() => {
+            const next = [...allUnitIds];
+            [next[index - 1], next[index]] = [next[index], next[index - 1]];
+            reorderMut.mutate(next);
+          }}
+          aria-label="Move up"
+        >
+          <ArrowUp className="h-3.5 w-3.5" />
+        </Button>
+        <Button
+          size="sm"
+          variant="ghost"
+          className="h-7 w-7 p-0"
+          disabled={index === total - 1 || reorderMut.isPending}
+          onClick={() => {
+            const next = [...allUnitIds];
+            [next[index + 1], next[index]] = [next[index], next[index + 1]];
+            reorderMut.mutate(next);
+          }}
+          aria-label="Move down"
+        >
+          <ArrowDown className="h-3.5 w-3.5" />
+        </Button>
         <Button size="sm" variant="ghost" onClick={onDelete}>
           <Trash2 className="h-3.5 w-3.5" />
         </Button>
