@@ -47,6 +47,7 @@ import { Route as AuthenticatedAdminHomepageRouteImport } from './routes/_authen
 import { Route as AuthenticatedAdminExplorerRouteImport } from './routes/_authenticated/admin/explorer'
 import { Route as AuthenticatedAdminDeveloperRouteImport } from './routes/_authenticated/admin/developer'
 import { Route as AuthenticatedAdminContentRouteImport } from './routes/_authenticated/admin/content'
+import { Route as AuthenticatedAdminAnnouncementsRouteImport } from './routes/_authenticated/admin/announcements'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as AuthenticatedAdminSuperadminRouteRouteImport } from './routes/_authenticated/admin/superadmin/route'
 import { Route as CoursesCourseSlugSemesterNumberIndexRouteImport } from './routes/courses.$courseSlug.$semesterNumber.index'
@@ -264,6 +265,12 @@ const AuthenticatedAdminContentRoute =
     path: '/content',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
+const AuthenticatedAdminAnnouncementsRoute =
+  AuthenticatedAdminAnnouncementsRouteImport.update({
+    id: '/announcements',
+    path: '/announcements',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
@@ -394,6 +401,7 @@ export interface FileRoutesByFullPath {
   '/courses/': typeof CoursesIndexRoute
   '/admin/superadmin': typeof AuthenticatedAdminSuperadminRouteRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
   '/admin/content': typeof AuthenticatedAdminContentRouteWithChildren
   '/admin/developer': typeof AuthenticatedAdminDeveloperRoute
   '/admin/explorer': typeof AuthenticatedAdminExplorerRoute
@@ -448,6 +456,7 @@ export interface FileRoutesByTo {
   '/quizzes/$quizId': typeof QuizzesQuizIdRoute
   '/courses': typeof CoursesIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
   '/admin/content': typeof AuthenticatedAdminContentRouteWithChildren
   '/admin/developer': typeof AuthenticatedAdminDeveloperRoute
   '/admin/explorer': typeof AuthenticatedAdminExplorerRoute
@@ -505,6 +514,7 @@ export interface FileRoutesById {
   '/courses/': typeof CoursesIndexRoute
   '/_authenticated/admin/superadmin': typeof AuthenticatedAdminSuperadminRouteRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/_authenticated/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
   '/_authenticated/admin/content': typeof AuthenticatedAdminContentRouteWithChildren
   '/_authenticated/admin/developer': typeof AuthenticatedAdminDeveloperRoute
   '/_authenticated/admin/explorer': typeof AuthenticatedAdminExplorerRoute
@@ -563,6 +573,7 @@ export interface FileRouteTypes {
     | '/courses/'
     | '/admin/superadmin'
     | '/.mcp/invoke-tool/$tool'
+    | '/admin/announcements'
     | '/admin/content'
     | '/admin/developer'
     | '/admin/explorer'
@@ -617,6 +628,7 @@ export interface FileRouteTypes {
     | '/quizzes/$quizId'
     | '/courses'
     | '/.mcp/invoke-tool/$tool'
+    | '/admin/announcements'
     | '/admin/content'
     | '/admin/developer'
     | '/admin/explorer'
@@ -673,6 +685,7 @@ export interface FileRouteTypes {
     | '/courses/'
     | '/_authenticated/admin/superadmin'
     | '/.mcp/invoke-tool/$tool'
+    | '/_authenticated/admin/announcements'
     | '/_authenticated/admin/content'
     | '/_authenticated/admin/developer'
     | '/_authenticated/admin/explorer'
@@ -995,6 +1008,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminContentRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/announcements': {
+      id: '/_authenticated/admin/announcements'
+      path: '/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AuthenticatedAdminAnnouncementsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
       path: '/.mcp/invoke-tool/$tool'
@@ -1178,6 +1198,7 @@ const AuthenticatedAdminQuizzesRouteWithChildren =
 
 interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminSuperadminRouteRoute: typeof AuthenticatedAdminSuperadminRouteRouteWithChildren
+  AuthenticatedAdminAnnouncementsRoute: typeof AuthenticatedAdminAnnouncementsRoute
   AuthenticatedAdminContentRoute: typeof AuthenticatedAdminContentRouteWithChildren
   AuthenticatedAdminDeveloperRoute: typeof AuthenticatedAdminDeveloperRoute
   AuthenticatedAdminExplorerRoute: typeof AuthenticatedAdminExplorerRoute
@@ -1198,6 +1219,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
   {
     AuthenticatedAdminSuperadminRouteRoute:
       AuthenticatedAdminSuperadminRouteRouteWithChildren,
+    AuthenticatedAdminAnnouncementsRoute: AuthenticatedAdminAnnouncementsRoute,
     AuthenticatedAdminContentRoute: AuthenticatedAdminContentRouteWithChildren,
     AuthenticatedAdminDeveloperRoute: AuthenticatedAdminDeveloperRoute,
     AuthenticatedAdminExplorerRoute: AuthenticatedAdminExplorerRoute,
