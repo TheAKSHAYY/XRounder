@@ -556,18 +556,73 @@ function ProjectsEditor() {
     },
   });
 
+  const seedBcaGurukul = useMutation({
+    mutationFn: async () => {
+      const existing = (data ?? []).find(
+        (p) => (p.name || "").toLowerCase().includes("bca gurukul"),
+      );
+      const row = {
+        name: "BCA Gurukul",
+        description:
+          "Enterprise-grade Learning Management System for BCA students — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
+        category: "SaaS · EdTech",
+        tech_stack: [
+          "TanStack Start",
+          "React 19",
+          "TypeScript",
+          "Supabase",
+          "PostgreSQL",
+          "Tailwind v4",
+          "shadcn/ui",
+          "Cloudflare Workers",
+        ],
+        thumbnail_url: "/og-image.png",
+        live_url: typeof window !== "undefined" ? window.location.origin : null,
+        github_url: null,
+        featured: true,
+        status: "published",
+        sort_order: 0,
+      } as Partial<ProjectRow> & { name: string };
+      if (existing) {
+        const { error } = await supabase
+          .from("developer_projects")
+          .update(row)
+          .eq("id", existing.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.from("developer_projects").insert(row);
+        if (error) throw error;
+      }
+    },
+    onSuccess: () => {
+      toast.success("BCA Gurukul added as featured project");
+      invalidate();
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
   return (
     <div className="space-y-4 rounded-2xl border border-border bg-surface p-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="font-display text-base font-semibold">Projects</h3>
-        <ProjectDialog
-          onSubmit={(v) => upsert.mutate(v)}
-          trigger={
-            <Button size="sm">
-              <Plus className="mr-1 h-4 w-4" /> Add project
-            </Button>
-          }
-        />
+        <div className="flex flex-wrap items-center gap-2">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => seedBcaGurukul.mutate()}
+            disabled={seedBcaGurukul.isPending}
+          >
+            {seedBcaGurukul.isPending ? "Adding…" : "✨ Seed BCA Gurukul"}
+          </Button>
+          <ProjectDialog
+            onSubmit={(v) => upsert.mutate(v)}
+            trigger={
+              <Button size="sm">
+                <Plus className="mr-1 h-4 w-4" /> Add project
+              </Button>
+            }
+          />
+        </div>
       </div>
 
       <ul className="divide-y divide-border">

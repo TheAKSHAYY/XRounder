@@ -339,3 +339,8 @@
     background-color: oklch(0.78 0.16 60 / 0.3);
   }
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
