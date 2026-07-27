@@ -3,18 +3,24 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ArrowRight,
   Award,
+  Code2,
   Download,
   ExternalLink,
   Github,
   Globe,
   Home,
   Instagram,
+  Layers,
   Linkedin,
   Mail,
+  MapPin,
+  Rocket,
   Sparkles,
   Star,
+  Trophy,
   Twitter,
   Youtube,
+  Zap,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -27,18 +33,20 @@ import { ContactForm } from "@/components/developer/contact-form";
 export const Route = createFileRoute("/developer")({
   head: () => ({
     meta: [
-      { title: "About the Developer — BCA Gurukul" },
+      { title: "Developer · Portfolio — BCA Gurukul" },
       {
         name: "description",
         content:
-          "Meet the developer behind BCA Gurukul — projects, skills, achievements, and ways to connect.",
+          "Portfolio of the developer behind BCA Gurukul — featured projects, tech stack, achievements, GitHub activity, and a way to say hi.",
       },
-      { property: "og:title", content: "About the Developer — BCA Gurukul" },
+      { property: "og:title", content: "Developer · Portfolio — BCA Gurukul" },
       {
         property: "og:description",
         content:
-          "Projects, skills, achievements, and contact details for the developer behind BCA Gurukul.",
+          "Featured projects, tech stack, achievements and contact — the maker behind BCA Gurukul.",
       },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: DeveloperPage,
@@ -62,13 +70,7 @@ type Profile = {
   enabled: boolean;
 };
 
-type Social = {
-  id: string;
-  platform: string;
-  url: string;
-  label: string | null;
-};
-
+type Social = { id: string; platform: string; url: string; label: string | null };
 type Project = {
   id: string;
   name: string;
@@ -80,14 +82,7 @@ type Project = {
   category: string | null;
   featured: boolean;
 };
-
-type Skill = {
-  id: string;
-  name: string;
-  category: string;
-  icon: string | null;
-};
-
+type Skill = { id: string; name: string; category: string; icon: string | null };
 type Achievement = {
   id: string;
   title: string;
@@ -115,36 +110,28 @@ function DeveloperPage() {
     queryKey: ["dev-profile"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_profile")
-        .select("*")
-        .eq("id", 1)
-        .maybeSingle();
+        .from("developer_profile").select("*").eq("id", 1).maybeSingle();
       if (error) throw error;
       return data as Profile | null;
     },
   });
-
   const socialQ = useQuery({
     queryKey: ["dev-social"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("developer_social_links")
-        .select("id,platform,url,label")
-        .eq("enabled", true)
+        .select("id,platform,url,label").eq("enabled", true)
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Social[];
     },
   });
-
   const projectsQ = useQuery({
     queryKey: ["dev-projects"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("developer_projects")
-        .select(
-          "id,name,description,thumbnail_url,tech_stack,github_url,live_url,category,featured",
-        )
+        .select("id,name,description,thumbnail_url,tech_stack,github_url,live_url,category,featured")
         .eq("status", "published")
         .order("featured", { ascending: false })
         .order("sort_order", { ascending: true });
@@ -152,28 +139,21 @@ function DeveloperPage() {
       return (data ?? []) as Project[];
     },
   });
-
   const skillsQ = useQuery({
     queryKey: ["dev-skills"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_skills")
-        .select("id,name,category,icon")
-        .eq("enabled", true)
-        .order("category", { ascending: true })
-        .order("sort_order", { ascending: true });
+        .from("developer_skills").select("id,name,category,icon").eq("enabled", true)
+        .order("category", { ascending: true }).order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Skill[];
     },
   });
-
   const achievementsQ = useQuery({
     queryKey: ["dev-achievements"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_achievements")
-        .select("*")
-        .eq("enabled", true)
+        .from("developer_achievements").select("*").eq("enabled", true)
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Achievement[];
@@ -186,7 +166,7 @@ function DeveloperPage() {
   if (loading) {
     return (
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <Skeleton className="h-72 w-full rounded-3xl" />
+        <Skeleton className="h-[28rem] w-full rounded-3xl" />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <Skeleton key={i} className="h-40 rounded-2xl" />
@@ -215,15 +195,15 @@ function DeveloperPage() {
 
   const name = profile.full_name || "The Developer";
   const initials = name
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((p) => p[0])
-    .join("")
-    .toUpperCase();
+    .split(/\s+/).slice(0, 2).map((p) => p[0]).join("").toUpperCase();
+
   const socials = socialQ.data ?? [];
   const projects = projectsQ.data ?? [];
   const skills = skillsQ.data ?? [];
   const achievements = achievementsQ.data ?? [];
+
+  const featured = projects.find((p) => p.featured) ?? projects[0] ?? null;
+  const otherProjects = projects.filter((p) => p.id !== featured?.id);
 
   const skillGroups = skills.reduce<Record<string, Skill[]>>((acc, s) => {
     (acc[s.category] ||= []).push(s);
@@ -235,27 +215,46 @@ function DeveloperPage() {
     profile.github_username ||
     (githubSocial ? githubSocial.url.replace(/\/$/, "").split("/").pop() : null);
 
+  // Marquee chips from top skills
+  const marqueeChips = skills.slice(0, 14).map((s) => s.name);
+
   return (
     <div className="bg-background">
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border/60">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <div className="absolute left-1/2 top-[-10rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]" />
-          <div className="absolute left-[8%] top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
+        {/* Ambient background */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute left-1/2 top-[-14rem] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[140px]" />
+          <div className="absolute left-[6%] top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
+          <div className="absolute right-[6%] bottom-0 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+              backgroundSize: "22px 22px",
+            }}
+          />
         </div>
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              <Sparkles className="h-3.5 w-3.5" /> Meet the developer
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              Available for opportunities
             </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              {name}
+            <h1 className="mt-5 font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl">
+              Hi, I'm{" "}
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                {name.split(" ")[0]}
+              </span>
+              .
             </h1>
             {profile.professional_title && (
-              <p className="mt-2 font-display text-lg text-accent">
+              <p className="mt-4 font-display text-xl text-foreground/80">
                 {profile.professional_title}
               </p>
             )}
@@ -264,13 +263,16 @@ function DeveloperPage() {
                 {profile.short_intro}
               </p>
             )}
+
+            {/* Stats strip */}
+            <div className="mt-8 grid max-w-lg grid-cols-3 gap-3">
+              <StatPill icon={Rocket} value={projects.length} label="Projects" />
+              <StatPill icon={Code2} value={skills.length} label="Skills" />
+              <StatPill icon={Trophy} value={achievements.length} label="Wins" />
+            </div>
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button asChild variant="outline" size="lg">
-                <Link to="/">
-                  <Home className="mr-1.5 h-4 w-4" /> Back to Home
-                </Link>
-              </Button>
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="shadow-lg shadow-primary/20">
                 <a href="#projects">
                   {profile.hero_cta_primary_label || "View Projects"}
                   <ArrowRight className="ml-1.5 h-4 w-4" />
@@ -280,145 +282,193 @@ function DeveloperPage() {
                 <Button asChild variant="outline" size="lg">
                   <a href={profile.resume_url} target="_blank" rel="noreferrer">
                     <Download className="mr-1.5 h-4 w-4" />
-                    {profile.hero_cta_secondary_label || "Download Resume"}
+                    {profile.hero_cta_secondary_label || "Resume"}
                   </a>
                 </Button>
               )}
               <Button asChild variant="ghost" size="lg">
                 <a href="#contact">
-                  <Mail className="mr-1.5 h-4 w-4" /> Contact Me
+                  <Mail className="mr-1.5 h-4 w-4" /> Say hi
                 </a>
               </Button>
+              <Button asChild variant="ghost" size="lg">
+                <Link to="/">
+                  <Home className="mr-1.5 h-4 w-4" /> Home
+                </Link>
+              </Button>
             </div>
+
+            {/* Quick social row */}
+            {socials.length > 0 && (
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                {socials.slice(0, 6).map((s) => {
+                  const Icon = platformIcon(s.platform);
+                  return (
+                    <a
+                      key={s.id}
+                      href={s.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      title={s.label || s.platform}
+                      className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
+          {/* Portrait card */}
           <div className="relative mx-auto w-full max-w-sm animate-scale-in">
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-accent/30 via-primary/20 to-transparent blur-2xl" />
-            <div className="overflow-hidden rounded-3xl border border-border bg-surface p-2 shadow-xl">
-              <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted">
+            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/40 via-primary/25 to-transparent blur-2xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-surface p-2 shadow-2xl">
+              <div className="aspect-square w-full overflow-hidden rounded-[1.6rem] bg-muted">
                 {profile.photo_url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={profile.photo_url}
                     alt={name}
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <Avatar className="h-full w-full rounded-2xl">
-                    <AvatarFallback className="h-full w-full rounded-2xl bg-primary/10 font-display text-6xl text-primary">
+                  <Avatar className="h-full w-full rounded-[1.6rem]">
+                    <AvatarFallback className="h-full w-full rounded-[1.6rem] bg-primary/10 font-display text-7xl text-primary">
                       {initials}
                     </AvatarFallback>
                   </Avatar>
                 )}
               </div>
+              {/* Floating status card */}
+              <div className="absolute -bottom-4 -left-4 hidden rounded-2xl border border-border bg-surface p-3 shadow-lg sm:block">
+                <div className="flex items-center gap-2 text-xs">
+                  <Zap className="h-3.5 w-3.5 text-accent" />
+                  <span className="font-medium text-foreground">Currently building</span>
+                </div>
+                <div className="mt-0.5 text-xs text-muted-foreground">BCA Gurukul LMS</div>
+              </div>
+              {profile.education && (
+                <div className="absolute -top-3 -right-3 hidden rounded-full border border-border bg-surface px-3 py-1.5 text-xs shadow-lg sm:flex sm:items-center sm:gap-1.5">
+                  <MapPin className="h-3 w-3 text-primary" />
+                  <span className="text-muted-foreground">{profile.education.split(",")[0]}</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
+
+        {/* Marquee of tech chips */}
+        {marqueeChips.length > 0 && (
+          <div className="relative overflow-hidden border-t border-border/60 bg-surface-muted/40 py-4">
+            <div className="flex animate-[marquee_35s_linear_infinite] gap-3 whitespace-nowrap">
+              {[...marqueeChips, ...marqueeChips].map((c, i) => (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-foreground"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
-      {/* ABOUT */}
-      {(profile.bio ||
-        profile.education ||
-        profile.current_goal ||
-        profile.career_objective ||
-        profile.interests) && (
-        <section className="border-b border-border/60 py-20">
+      {/* FEATURED PROJECT SPOTLIGHT */}
+      {featured && (
+        <section id="projects" className="border-b border-border/60 py-20">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionHeading
-              eyebrow="About"
-              title="Behind the keyboard"
-            />
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {profile.bio && (
-                <Card title="Bio" body={profile.bio} className="lg:col-span-3" />
-              )}
-              {profile.education && (
-                <Card title="Education" body={profile.education} />
-              )}
-              {profile.current_goal && (
-                <Card title="Current Goal" body={profile.current_goal} />
-              )}
-              {profile.career_objective && (
-                <Card title="Career Objective" body={profile.career_objective} />
-              )}
-              {profile.interests && (
-                <Card title="Interests" body={profile.interests} className="lg:col-span-3" />
-              )}
-            </div>
+            <SectionHeading eyebrow="Featured" title="Flagship project" />
+            <article className="mt-12 overflow-hidden rounded-3xl border border-border bg-surface shadow-xl">
+              <div className="grid gap-0 lg:grid-cols-2">
+                <div className="relative aspect-video w-full overflow-hidden bg-muted lg:aspect-auto">
+                  {featured.thumbnail_url ? (
+                    <img
+                      src={featured.thumbnail_url}
+                      alt={featured.name}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="grid h-full min-h-[20rem] place-items-center bg-gradient-to-br from-primary/10 via-accent/10 to-transparent">
+                      <Layers className="h-16 w-16 text-primary/40" />
+                    </div>
+                  )}
+                  <Badge className="absolute left-4 top-4 gap-1 bg-accent text-accent-foreground hover:bg-accent">
+                    <Star className="h-3 w-3" /> Featured
+                  </Badge>
+                </div>
+                <div className="flex flex-col justify-center p-8 sm:p-10">
+                  {featured.category && (
+                    <div className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                      {featured.category}
+                    </div>
+                  )}
+                  <h3 className="mt-2 font-display text-3xl font-semibold text-foreground sm:text-4xl">
+                    {featured.name}
+                  </h3>
+                  {featured.description && (
+                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                      {featured.description}
+                    </p>
+                  )}
+                  {featured.tech_stack && featured.tech_stack.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-1.5">
+                      {featured.tech_stack.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md border border-border bg-muted/50 px-2.5 py-1 text-xs font-medium text-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    {featured.live_url && (
+                      <Button asChild size="lg">
+                        <a href={featured.live_url} target="_blank" rel="noreferrer">
+                          <ExternalLink className="mr-1.5 h-4 w-4" /> Visit live
+                        </a>
+                      </Button>
+                    )}
+                    {featured.github_url && (
+                      <Button asChild variant="outline" size="lg">
+                        <a href={featured.github_url} target="_blank" rel="noreferrer">
+                          <Github className="mr-1.5 h-4 w-4" /> Source
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
       )}
 
-      {/* SOCIAL */}
-      {socials.length > 0 && (
+      {/* PROJECT GRID */}
+      {otherProjects.length > 0 && (
         <section className="border-b border-border/60 bg-surface-muted/40 py-20">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionHeading eyebrow="Connect" title="Find me online" />
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {socials.map((s) => {
-                const Icon = platformIcon(s.platform);
-                return (
-                  <a
-                    key={s.id}
-                    href={s.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-center gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
-                  >
-                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="font-display text-base font-semibold capitalize text-foreground">
-                        {s.label || s.platform}
-                      </div>
-                      <div className="truncate text-xs text-muted-foreground">
-                        {s.url.replace(/^https?:\/\//, "")}
-                      </div>
-                    </div>
-                    <ExternalLink className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* PROJECTS */}
-      <section id="projects" className="border-b border-border/60 py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <SectionHeading eyebrow="Projects" title="Work I'm proud of" />
-          {projects.length === 0 ? (
-            <div className="mt-12 rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
-              <p className="text-sm text-muted-foreground">
-                No projects published yet.
-              </p>
-            </div>
-          ) : (
+            <SectionHeading eyebrow="Work" title="More things I've built" />
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((p) => (
+              {otherProjects.map((p) => (
                 <article
                   key={p.id}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
                 >
                   <div className="relative aspect-video w-full overflow-hidden bg-muted">
                     {p.thumbnail_url ? (
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={p.thumbnail_url}
                         alt={p.name}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="grid h-full place-items-center text-muted-foreground/40">
+                      <div className="grid h-full place-items-center bg-gradient-to-br from-primary/10 to-accent/10 text-primary/40">
                         <Sparkles className="h-10 w-10" />
                       </div>
-                    )}
-                    {p.featured && (
-                      <Badge className="absolute left-3 top-3 gap-1 bg-accent text-accent-foreground hover:bg-accent">
-                        <Star className="h-3 w-3" /> Featured
-                      </Badge>
                     )}
                   </div>
                   <div className="flex flex-1 flex-col p-5">
@@ -437,7 +487,7 @@ function DeveloperPage() {
                     )}
                     {p.tech_stack && p.tech_stack.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-1.5">
-                        {p.tech_stack.slice(0, 6).map((t) => (
+                        {p.tech_stack.slice(0, 5).map((t) => (
                           <span
                             key={t}
                             className="rounded-md border border-border bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-foreground"
@@ -467,9 +517,30 @@ function DeveloperPage() {
                 </article>
               ))}
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
+
+      {/* ABOUT */}
+      {(profile.bio || profile.education || profile.current_goal ||
+        profile.career_objective || profile.interests) && (
+        <section className="border-b border-border/60 py-20">
+          <div className="mx-auto max-w-6xl px-6">
+            <SectionHeading eyebrow="About" title="Behind the keyboard" />
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {profile.bio && <InfoCard title="Bio" body={profile.bio} className="lg:col-span-3" />}
+              {profile.education && <InfoCard title="Education" body={profile.education} />}
+              {profile.current_goal && <InfoCard title="Current Goal" body={profile.current_goal} />}
+              {profile.career_objective && (
+                <InfoCard title="Career Objective" body={profile.career_objective} />
+              )}
+              {profile.interests && (
+                <InfoCard title="Interests" body={profile.interests} className="lg:col-span-3" />
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SKILLS */}
       {skills.length > 0 && (
@@ -526,9 +597,7 @@ function DeveloperPage() {
                       {a.title}
                     </div>
                     {a.issuer && (
-                      <div className="text-xs text-muted-foreground">
-                        {a.issuer}
-                      </div>
+                      <div className="text-xs text-muted-foreground">{a.issuer}</div>
                     )}
                     {a.description && (
                       <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
@@ -543,13 +612,13 @@ function DeveloperPage() {
         </section>
       )}
 
-      {/* GITHUB SHOWCASE */}
+      {/* GITHUB */}
       {githubUsername && (
         <section className="border-b border-border/60 bg-surface-muted/40 py-20">
           <div className="mx-auto max-w-6xl px-6">
             <SectionHeading eyebrow="GitHub" title="Open-source on display" />
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
-              <div className="overflow-hidden rounded-2xl border border-border bg-surface p-2">
+              <div className="overflow-hidden rounded-2xl border border-border bg-surface p-4">
                 <img
                   src={`https://ghchart.rshah.org/2f4858/${githubUsername}`}
                   alt={`${githubUsername} GitHub contributions`}
@@ -564,20 +633,14 @@ function DeveloperPage() {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">GitHub</div>
-                    <div className="font-display text-lg font-semibold">
-                      @{githubUsername}
-                    </div>
+                    <div className="font-display text-lg font-semibold">@{githubUsername}</div>
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground">
                   Follow along with my projects, contributions, and experiments.
                 </p>
                 <Button asChild className="mt-5 w-full">
-                  <a
-                    href={`https://github.com/${githubUsername}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer">
                     <Github className="mr-1.5 h-4 w-4" /> View Profile
                   </a>
                 </Button>
@@ -594,11 +657,7 @@ function DeveloperPage() {
           <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
             Open to collaborations, feedback, and a friendly hello.
           </p>
-
-          <div className="mt-10">
-            <ContactForm />
-          </div>
-
+          <div className="mt-10"><ContactForm /></div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
             {profile.email && (
               <Button asChild variant="outline" size="sm">
@@ -632,6 +691,26 @@ function DeveloperPage() {
   );
 }
 
+function StatPill({
+  icon: Icon,
+  value,
+  label,
+}: {
+  icon: typeof Rocket;
+  value: number;
+  label: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-border/70 bg-surface/80 p-3 backdrop-blur-sm">
+      <div className="flex items-center gap-2 text-muted-foreground">
+        <Icon className="h-3.5 w-3.5" />
+        <span className="text-[10px] font-semibold uppercase tracking-wide">{label}</span>
+      </div>
+      <div className="mt-1 font-display text-2xl font-semibold text-foreground">{value}</div>
+    </div>
+  );
+}
+
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
@@ -645,24 +724,10 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
   );
 }
 
-function Card({
-  title,
-  body,
-  className,
-}: {
-  title: string;
-  body: string;
-  className?: string;
-}) {
+function InfoCard({ title, body, className }: { title: string; body: string; className?: string }) {
   return (
-    <div
-      className={
-        "rounded-2xl border border-border bg-surface p-6 " + (className || "")
-      }
-    >
-      <h3 className="font-display text-base font-semibold text-foreground">
-        {title}
-      </h3>
+    <div className={"rounded-2xl border border-border bg-surface p-6 " + (className || "")}>
+      <h3 className="font-display text-base font-semibold text-foreground">{title}</h3>
       <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
         {body}
       </p>
