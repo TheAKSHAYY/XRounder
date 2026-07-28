@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 
 const searchSchema = z.object({
   type: z.enum(["note", "pdf", "ppt", "video", "assignment", "link"]).optional(),
+  subjectId: z.string().uuid().optional(),
 });
 
 export const Route = createFileRoute("/_authenticated/admin/content/new")({
@@ -33,8 +34,10 @@ function NewContentPage() {
       />
       <ContentEditor
         initialType={search.type ?? "note"}
+        initialSubjectId={search.subjectId}
         onSaved={(id) => navigate({ to: "/admin/content/$id", params: { id } })}
       />
     </PageContainer>
   );
 }
+
