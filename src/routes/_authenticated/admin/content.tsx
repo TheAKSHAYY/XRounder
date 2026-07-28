@@ -187,6 +187,24 @@ function ContentPage() {
         <div className="ml-auto text-xs text-muted-foreground">{total} items</div>
       </div>
 
+      {activeSubject && (
+        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 py-1 pl-3 pr-1 text-xs text-primary">
+          <span className="font-medium">Subject: {activeSubject.title}</span>
+          {activeSubject.code && (
+            <span className="rounded bg-primary/10 px-1.5 font-mono text-[10px]">{activeSubject.code}</span>
+          )}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/content", search: {} })}
+            className="grid h-5 w-5 place-items-center rounded-full text-primary hover:bg-primary/10"
+            aria-label="Clear subject filter"
+          >
+            <X className="h-3 w-3" />
+          </button>
+        </div>
+      )}
+
+
       {selectedIds.length > 0 && (
         <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-primary/40 bg-primary/5 px-3 py-2 text-sm">
           <span className="font-medium">{selectedIds.length} selected</span>
