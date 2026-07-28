@@ -76,7 +76,9 @@ const STATUS_OPTIONS = [
 function ContentPage() {
   const qc = useQueryClient();
   const navigate = useNavigate();
+  const { subjectId: subjectIdParam } = Route.useSearch();
   const list = useServerFn(listContent);
+  const listSubjects = useServerFn(listSubjectsFlat);
   const bulk = useServerFn(bulkUpdateContent);
   const del = useServerFn(deleteContent);
   const dup = useServerFn(duplicateContent);
@@ -84,19 +86,38 @@ function ContentPage() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
+  const [subjectId, setSubjectId] = useState<string | undefined>(subjectIdParam);
   const [page, setPage] = useState(1);
   const pageSize = 20;
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [confirmDelete, setConfirmDelete] = useState(false);
 
+  // Sync URL param → local state when someone deep-links from Subjects page.
+  useEffect(() => { setSubjectId(subjectIdParam); setPage(1); }, [subjectIdParam]);
+
   const { data, isLoading } = useQuery({
-    queryKey: ["admin", "content", { type, status, search, page }],
-    queryFn: () => list({ data: { type, status, search, page, pageSize, sort: "created_at", dir: "desc" } }),
+    queryKey: ["admin", "content", { type, status, search, subjectId, page }],
+    queryFn: () => list({
+      data: { type, status, subjectId, search, page, pageSize, sort: "created_at", dir: "desc" },
+    }),
   });
+
+  const { data: subjectOptions } = useQuery({
+    queryKey: ["admin", "subjects-flat"],
+    queryFn: () => listSubjects(),
+    staleTime: 60_000,
+  });
+  const activeSubject = useMemo(() => {
+    if (!subjectId) return null;
+    const found = (subjectOptions as Array<{ id: string; title: string; code: string | null }> | undefined)
+      ?.find((s) => s.id === subjectId);
+    return found ?? null;
+  }, [subjectId, subjectOptions]);
 
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
 
   const invalidate = () => qc.invalidateQueries({ queryKey: ["admin", "content"] });
 
