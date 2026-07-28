@@ -12,7 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PasswordInput } from "@/components/auth/password-input";
 import { PasswordStrengthMeter, scorePassword } from "@/components/auth/password-strength";
-import { PhoneAuthForm } from "@/components/auth/phone-auth-form";
+
 import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { BrandMark } from "@/components/brand-mark";
@@ -166,30 +166,18 @@ function OrDivider() {
 
 function SignInForm() {
   const { redirect } = Route.useSearch();
-  const [method, setMethod] = useState<"email" | "phone">("email");
 
   return (
     <div className="space-y-5">
       <div>
         <h1 className="font-display text-3xl font-semibold text-foreground">Welcome back</h1>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          Sign in with Google, your email, or your mobile number.
+          Sign in with Google or your email.
         </p>
       </div>
       <GoogleSignInButton redirect={redirect} />
       <OrDivider />
-      <Tabs value={method} onValueChange={(v) => setMethod(v as "email" | "phone")}>
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="email">Email</TabsTrigger>
-          <TabsTrigger value="phone">Mobile OTP</TabsTrigger>
-        </TabsList>
-        <TabsContent value="email" className="mt-6">
-          <EmailSignInForm />
-        </TabsContent>
-        <TabsContent value="phone" className="mt-6">
-          <PhoneAuthForm redirect={redirect} />
-        </TabsContent>
-      </Tabs>
+      <EmailSignInForm />
     </div>
   );
 }

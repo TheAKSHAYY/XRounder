@@ -1,137 +1,47 @@
-# BCA Gurukul — Admin Redesign
 
-Incremental rebuild. Old admin pages keep working until each replacement lands. No destructive deletes this pass.
+This is a very large scope (9 areas). To keep quality high and reviewable, I'll split it into 5 sequential phases. Each phase is self-contained and you approve before I move to the next.
 
-## Phase plan
+## Phase 1 — Auth cleanup + content counts foundation (small, unblocks the rest)
+- Remove Phone/OTP login from `src/routes/auth.tsx` and delete `src/components/auth/phone-auth-form.tsx`. Keep email/password + Google.
+- Add a single `getSubjectStats(subjectId)` / `getUnitStats(unitId)` server function in `src/lib/content.functions.ts` returning `{ units, notes, pdfs, videos, mcqs, lastUpdated }`. Reused by both admin and student.
+- Add `content_items` count aggregation used by both panels (avoids N+1).
 
-**Phase 1 (this turn)** — new shell, IA, dashboard, command palette, quick add, primitives, `content_items` table + backfill + Content module.
+## Phase 2 — Admin Subject & Content Management redesign
+- New `/admin/courses/$courseId` subject panel: expandable Unit cards (accordion) instead of long list. Each card shows counts (Notes / PDFs / Videos / MCQs) + inline actions.
+- CRUD confirmed via `ConfirmDialog` for every destructive op; toasts (sonner) on success/error.
+- Search + status filter toolbar; pagination when >25 items.
+- Drag-and-drop unit reorder using `@dnd-kit` (already installed) — fallback ↑/↓ stays.
+- Loading skeletons via existing `TableSkeleton` / new `CardSkeleton`.
+- Audit every button in `admin/content.tsx`, `courses.$courseId.tsx`, `quizzes.tsx`, `papers.tsx` — wire up any dead handlers.
 
-**Phase 2** — migrate Papers screen and Question Bank screen onto the new primitives; move `/admin/notes` to redirect into `/admin/content?type=note`; retire old notes admin page once verified.
+## Phase 3 — Student Subject/Unit pages + mobile
+- Subject cards on `/courses/$courseSlug/$semesterNumber` show: name, semester, #Units, #Notes, #MCQs, progress %, last updated.
+- Unit rows on subject detail show: #Notes, #PDFs, #Videos, #MCQs, est. reading time (word count / 200 wpm from notes).
+- Responsive audit sweep using the `grid-cols-[minmax(0,1fr)_auto]` pattern (per project rules). No horizontal scroll; wrap long titles; scrollable tables become card lists at `sm:`.
 
-**Phase 3** — Settings hub (folds Homepage, Developer, Tags, Media, Branding, SEO, Flags, Users under one Settings route); polish, empty-state illustrations, keyboard shortcuts help.
+## Phase 4 — Quiz redesign (live feedback)
+- Rework `src/routes/quizzes.$quizId.tsx`:
+  - Header shows Q x/N, progress bar, live Correct/Wrong/Score counters.
+  - On answer select: green/red border + tick/cross icon + `animate-scale-in`; on wrong, highlight correct answer.
+  - Advance on next click (no auto-skip) so user sees feedback.
+- Results page enhancements: time taken, performance message tiers, Retry + Review buttons already exist — polish.
 
-Students / Analytics / Notifications are explicitly deferred.
-
----
-
-## New information architecture
-
-Sidebar (flat, seven items):
-
-```text
-Dashboard        /admin
-Courses          /admin/courses          (existing, keep)
-Subjects         /admin/subjects         (NEW — flat cross-course view)
-Content          /admin/content          (NEW — unified)
-Previous Papers  /admin/papers           (existing, restyled Phase 2)
-Question Bank    /admin/quizzes          (existing, restyled Phase 2)
-Settings         /admin/settings         (Phase 3 hub; links to existing pages this phase)
-```
-
-Explorer, Homepage, Developer, Media, Tags, Inbox, Super admin move under Settings in Phase 3. This phase they stay reachable via a "More" section in the sidebar so nothing breaks.
-
----
-
-## Content data model (new)
-
-New table `public.content_items`:
-
-- `type` — enum `content_type` (`note`, `pdf`, `ppt`, `video`, `assignment`, `link`)
-- `title`, `description`
-- `subject_id`, `unit_id` (both nullable; subject required, unit optional)
-- `file_path` (storage path), `file_url` (for `video`/`link`), `thumbnail_path`
-- `tags text[]`, `visibility` (`public`|`students`|`private`), `status` (`draft`|`published`|`archived`)
-- `publish_at timestamptz`, `view_count`, `download_count`
-- Standard `created_by`, `created_at`, `updated_at`, `deleted_at`
-
-Grants + RLS:
-- `GRANT SELECT ON public.content_items TO anon` (only rows `status='published'` AND `visibility='public'`)
-- `GRANT SELECT,INSERT,UPDATE,DELETE TO authenticated`; `GRANT ALL TO service_role`
-- Public read policy (published+public); owner/admin write policies via `is_admin`
-- Trigger `set_updated_at`; realtime enabled
-
-**Backfill:** copy existing `public.notes` into `content_items` with `type='note'`, preserving `title`, `summary→description`, `subject_id`, `unit_id`, `status`, `created_by`, `created_at`, `file_path` where present. Old `notes` table stays intact; nothing points at it after Phase 2.
-
-Papers and Quizzes are NOT migrated.
-
----
-
-## New primitives (`src/components/admin/ui/`)
-
-- `PageHeader` — title, description, actions slot, breadcrumbs
-- `StatCard` — label / value / delta / icon
-- `DataTable` — TanStack Table: search, sort, pagination, column visibility, row selection, bulk-action bar, empty + loading states
-- `EmptyState` — icon, title, description, CTA
-- `TableSkeleton`, `CardSkeleton`
-- `FilterBar`, `StatusBadge`, `ConfirmDialog`
-
-All theme-token based (`bg-surface`, `text-foreground`, `border-border`). Dark mode inherited.
-
----
-
-## New admin shell (`src/components/admin/admin-shell.tsx` rewrite)
-
-- Collapsible sidebar (icon rail on mobile, full on md+)
-- Sticky top bar: sidebar trigger, breadcrumbs, `⌘K` search trigger, quick-add button, student-view link, avatar
-- `⌘K` / `Ctrl+K` opens `CommandPalette` (built on shadcn `Command`) — jumps to any admin page + quick-creates (course, subject, content, paper, MCQ)
-- Quick-add uses the existing `CreateWizard` (extended with "New content")
-- Content tree stays in a collapsible "Explorer" section, hidden by default
-
----
-
-## New routes
-
-- `src/routes/_authenticated/admin/index.tsx` — replace with new Dashboard (stat grid, recent uploads, recent activity, quick actions). Reuses existing `getDashboardStats`, `getRecentUploads`, `getRecentActivity`.
-- `src/routes/_authenticated/admin/subjects.tsx` — NEW flat subjects table across all courses/semesters
-- `src/routes/_authenticated/admin/content.index.tsx` — NEW unified content list
-- `src/routes/_authenticated/admin/content.new.tsx` — NEW content editor (type picker → form → upload)
-- `src/routes/_authenticated/admin/content.$id.tsx` — NEW edit view
-- `src/routes/_authenticated/admin/settings.index.tsx` — Phase 3 hub stub linking to existing settings pages
-
-Old routes (`/admin/notes`, `/admin/papers`, `/admin/quizzes`, `/admin/media`, `/admin/tags`, `/admin/homepage`, `/admin/developer`, `/admin/inbox`, `/admin/explorer`, `/admin/superadmin/*`) remain untouched and reachable.
-
----
-
-## Server functions
-
-New `src/lib/content.functions.ts`:
-
-- `listContent({ type?, status?, subjectId?, search?, page, pageSize, sort })` — auth'd, admin-scoped
-- `getContent({ id })`
-- `createContent({ input })`
-- `updateContent({ id, patch })`
-- `bulkUpdateContent({ ids, patch })` (publish / archive / restore)
-- `deleteContent({ id })` (soft)
-- `duplicateContent({ id })`
-
-Storage: reuse existing `notes` bucket for `note`/`pdf`/`ppt`/`assignment`, `media` bucket for `video` thumbnails, `link`/`video` use `file_url` only.
-
----
-
-## What ships this turn
-
-1. Migration: `content_type` enum + `content_items` table + grants + RLS + trigger + realtime + backfill from `notes`.
-2. `src/components/admin/ui/*` primitives.
-3. `src/lib/content.functions.ts`.
-4. Rewritten `admin-shell.tsx` (new IA, command palette, quick add, top bar).
-5. New Dashboard, Subjects, Content list, Content new/edit routes.
-6. `CommandPalette` component.
-7. `CreateWizard` extended with "Content".
-8. Skeletons + empty states wired in.
-
-Nothing existing is deleted. Old sidebar links live under a collapsible "More" group so `/admin/homepage`, `/admin/developer`, `/admin/media`, `/admin/tags`, `/admin/inbox`, `/admin/explorer`, `/admin/superadmin` remain reachable.
-
----
+## Phase 5 — Polish + verification
+- Skeletons + empty states across remaining admin pages.
+- Console-error sweep via preview.
+- Playwright smoke pass: admin CRUD, student subject/unit, quiz flow, mobile viewport 375px.
 
 ## Technical notes
+- Reordering uses existing `admin_reorder_units` RPC.
+- Counts computed server-side and cached with react-query `staleTime: 30s`.
+- No schema changes required beyond what's already migrated.
+- Material Design 3 "feel" achieved via existing tokens + `SectionCard`/`PageContainer` primitives — not a new component library.
 
-- All new pages use `useQuery` + server fns with query keys under `["admin","content", ...]` so the existing `useAdminRealtimeRefresh` invalidates them automatically once `content_items` is added to its watch list.
-- `useAdminRealtimeRefresh` gets `content_items` appended to `ADMIN_REALTIME_TABLES`.
-- Command palette uses `cmdk` (shadcn `Command` primitive — already installed).
-- Tables use `@tanstack/react-table` (add if not present).
-- Design tokens only — no hex, no `text-white`. Fraunces for section headers, Inter for body per project memory.
+## Out of scope (call out now)
+- Full "rank" leaderboard for quizzes needs a new table + backfill — I'll show placeholder unless you want the leaderboard built (say the word and I add it as Phase 4b).
+- Real-time collaborative editing.
+- Video transcoding / streaming optimization.
 
-## Risks
+---
 
-- Bundle grows with react-table; acceptable, admin-only.
-- Backfill runs once inside the migration; safe because `content_items` starts empty. Re-running the migration would double-insert — the backfill uses `ON CONFLICT DO NOTHING` on `(title, subject_id, created_by)` to be idempotent.
+Reply with **"start phase 1"** (or specify a different starting phase). I'll implement one phase per turn so you can review as we go.
