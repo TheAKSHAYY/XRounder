@@ -1,16 +1,18 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { z } from "zod";
 import {
   FileText, Search, Plus, Trash2, Copy, Archive, CheckCircle2, XCircle,
-  MoreHorizontal, FileType, Video, Link as LinkIcon, ClipboardList, FileImage,
+  MoreHorizontal, FileType, Video, Link as LinkIcon, ClipboardList, FileImage, X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import {
   listContent,
+  listSubjectsFlat,
   bulkUpdateContent,
   deleteContent,
   duplicateContent,
@@ -34,10 +36,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { formatDistanceToNow } from "date-fns";
 
+const contentSearchSchema = z.object({
+  subjectId: z.string().uuid().optional(),
+});
+
 export const Route = createFileRoute("/_authenticated/admin/content")({
   head: () => ({ meta: [{ title: "Content · Admin · BCA Gurukul" }] }),
+  validateSearch: contentSearchSchema,
   component: ContentPage,
 });
+
 
 const TYPE_ICON: Record<ContentType, LucideIcon> = {
   note: FileText,
