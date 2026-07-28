@@ -1,16 +1,18 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { z } from "zod";
 import {
   FileText, Search, Plus, Trash2, Copy, Archive, CheckCircle2, XCircle,
-  MoreHorizontal, FileType, Video, Link as LinkIcon, ClipboardList, FileImage,
+  MoreHorizontal, FileType, Video, Link as LinkIcon, ClipboardList, FileImage, X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import {
   listContent,
+  listSubjectsFlat,
   bulkUpdateContent,
   deleteContent,
   duplicateContent,
@@ -34,10 +36,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { formatDistanceToNow } from "date-fns";
 
+const contentSearchSchema = z.object({
+  subjectId: z.string().uuid().optional(),
+});
+
 export const Route = createFileRoute("/_authenticated/admin/content")({
   head: () => ({ meta: [{ title: "Content · Admin · BCA Gurukul" }] }),
+  validateSearch: contentSearchSchema,
   component: ContentPage,
 });
+
 
 const TYPE_ICON: Record<ContentType, LucideIcon> = {
   note: FileText,
@@ -68,7 +76,9 @@ const STATUS_OPTIONS = [
 function ContentPage() {
   const qc = useQueryClient();
   const navigate = useNavigate();
+  const { subjectId: subjectIdParam } = Route.useSearch();
   const list = useServerFn(listContent);
+  const listSubjects = useServerFn(listSubjectsFlat);
   const bulk = useServerFn(bulkUpdateContent);
   const del = useServerFn(deleteContent);
   const dup = useServerFn(duplicateContent);
@@ -76,19 +86,38 @@ function ContentPage() {
   const [search, setSearch] = useState("");
   const [type, setType] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
+  const [subjectId, setSubjectId] = useState<string | undefined>(subjectIdParam);
   const [page, setPage] = useState(1);
   const pageSize = 20;
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [confirmDelete, setConfirmDelete] = useState(false);
 
+  // Sync URL param → local state when someone deep-links from Subjects page.
+  useEffect(() => { setSubjectId(subjectIdParam); setPage(1); }, [subjectIdParam]);
+
   const { data, isLoading } = useQuery({
-    queryKey: ["admin", "content", { type, status, search, page }],
-    queryFn: () => list({ data: { type, status, search, page, pageSize, sort: "created_at", dir: "desc" } }),
+    queryKey: ["admin", "content", { type, status, search, subjectId, page }],
+    queryFn: () => list({
+      data: { type, status, subjectId, search, page, pageSize, sort: "created_at", dir: "desc" },
+    }),
   });
+
+  const { data: subjectOptions } = useQuery({
+    queryKey: ["admin", "subjects-flat"],
+    queryFn: () => listSubjects(),
+    staleTime: 60_000,
+  });
+  const activeSubject = useMemo(() => {
+    if (!subjectId) return null;
+    const found = (subjectOptions as Array<{ id: string; title: string; code: string | null }> | undefined)
+      ?.find((s) => s.id === subjectId);
+    return found ?? null;
+  }, [subjectId, subjectOptions]);
 
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
 
   const invalidate = () => qc.invalidateQueries({ queryKey: ["admin", "content"] });
 
@@ -157,6 +186,24 @@ function ContentPage() {
         </Select>
         <div className="ml-auto text-xs text-muted-foreground">{total} items</div>
       </div>
+
+      {activeSubject && (
+        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 py-1 pl-3 pr-1 text-xs text-primary">
+          <span className="font-medium">Subject: {activeSubject.title}</span>
+          {activeSubject.code && (
+            <span className="rounded bg-primary/10 px-1.5 font-mono text-[10px]">{activeSubject.code}</span>
+          )}
+          <button
+            type="button"
+            onClick={() => navigate({ to: "/admin/content", search: {} })}
+            className="grid h-5 w-5 place-items-center rounded-full text-primary hover:bg-primary/10"
+            aria-label="Clear subject filter"
+          >
+            <X className="h-3 w-3" />
+          </button>
+        </div>
+      )}
+
 
       {selectedIds.length > 0 && (
         <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-primary/40 bg-primary/5 px-3 py-2 text-sm">
