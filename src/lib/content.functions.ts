@@ -282,3 +282,50 @@ export const getSubjectStats = createServerFn({ method: "POST" })
     };
   });
 
+// Subjects with aggregated content stats, grouped by course + semester.
+export const listSubjectsWithStats = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const sb = context.supabase;
+    const [subjectsRes, itemsRes, unitsRes] = await Promise.all([
+      sb.from("subjects")
+        .select("id,title,code,status,semester:semesters(id,number,course:courses(id,title,slug))")
+        .is("deleted_at", null)
+        .order("title"),
+      sb.from("content_items")
+        .select("subject_id,type,status")
+        .is("deleted_at", null),
+      sb.from("units")
+        .select("subject_id")
+        .is("deleted_at", null),
+    ]);
+    if (subjectsRes.error) throw new Error(subjectsRes.error.message);
+    if (itemsRes.error) throw new Error(itemsRes.error.message);
+    if (unitsRes.error) throw new Error(unitsRes.error.message);
+
+    const statsBySubject = new Map<string, StatsBucket & { drafts: number }>();
+    for (const it of itemsRes.data ?? []) {
+      if (!it.subject_id) continue;
+      const cur = statsBySubject.get(it.subject_id) ?? { ...emptyBucket(), drafts: 0 };
+      if (it.status === "published") bumpBucket(cur, it.type);
+      else if (it.status === "draft") cur.drafts++;
+      statsBySubject.set(it.subject_id, cur);
+    }
+    const unitCountBySubject = new Map<string, number>();
+    for (const u of unitsRes.data ?? []) {
+      if (!u.subject_id) continue;
+      unitCountBySubject.set(u.subject_id, (unitCountBySubject.get(u.subject_id) ?? 0) + 1);
+    }
+
+    return (subjectsRes.data ?? []).map((s) => ({
+      id: s.id,
+      title: s.title,
+      code: s.code,
+      status: s.status,
+      semester: s.semester,
+      unitCount: unitCountBySubject.get(s.id) ?? 0,
+      stats: statsBySubject.get(s.id) ?? { ...emptyBucket(), drafts: 0 },
+    }));
+  });
+
+
