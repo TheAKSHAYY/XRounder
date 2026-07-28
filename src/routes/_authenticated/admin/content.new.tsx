@@ -34,9 +34,10 @@ function NewContentPage() {
       />
       <ContentEditor
         initialType={search.type ?? "note"}
-        initialSubjectId={search.subjectId}
+        initial={search.subjectId ? { subject_id: search.subjectId } : undefined}
         onSaved={(id) => navigate({ to: "/admin/content/$id", params: { id } })}
       />
+
     </PageContainer>
   );
 }
