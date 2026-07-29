@@ -83,6 +83,7 @@ function ContentPage() {
   const bulk = useServerFn(bulkUpdateContent);
   const del = useServerFn(deleteContent);
   const dup = useServerFn(duplicateContent);
+  const migrateLegacy = useServerFn(migrateLegacyNotes);
 
   const [search, setSearch] = useState("");
   const [type, setType] = useState<string>("all");
