@@ -621,6 +621,29 @@ function UnitCard({
           </p>
         )}
 
+        {stats.content.total > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {stats.content.note > 0 && (
+              <MiniChip icon={FileText} count={stats.content.note} label="notes" />
+            )}
+            {stats.content.pdf > 0 && (
+              <MiniChip icon={FileType} count={stats.content.pdf} label="PDFs" />
+            )}
+            {stats.content.ppt > 0 && (
+              <MiniChip icon={Presentation} count={stats.content.ppt} label="slides" />
+            )}
+            {stats.content.video > 0 && (
+              <MiniChip icon={Video} count={stats.content.video} label="videos" />
+            )}
+            {stats.content.assignment > 0 && (
+              <MiniChip icon={ListChecks} count={stats.content.assignment} label="tasks" />
+            )}
+            {stats.content.link > 0 && (
+              <MiniChip icon={Link2} count={stats.content.link} label="links" />
+            )}
+          </div>
+        )}
+
         {showProgress && inProgress && (
           <div className="mt-3 max-w-xs">
             {loading ? (
