@@ -343,19 +343,35 @@ function SubjectDetail() {
 
         {/* ─── Quick Stats ─── */}
         {subjectQuery.data && overall.total > 0 && (
-          <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatTile
-              label="Units completed"
+              label="Units"
               value={user ? `${overall.completed} / ${overall.total}` : `${overall.total} total`}
             />
             <StatTile
-              label="Papers available"
+              label="Study materials"
+              value={String(subjectQuery.data.subjectContent.total)}
+            />
+            <StatTile
+              label="Past papers"
               value={String(subjectQuery.data.papers.length)}
             />
             <StatTile
               label="Last studied"
               value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
             />
+          </section>
+        )}
+
+        {/* ─── Content mix ─── */}
+        {subjectQuery.data && subjectQuery.data.subjectContent.total > 0 && (
+          <section className="mt-4 flex flex-wrap gap-2">
+            <ContentPill icon={FileText} label="Notes" count={subjectQuery.data.subjectContent.note} />
+            <ContentPill icon={FileType} label="PDFs" count={subjectQuery.data.subjectContent.pdf} />
+            <ContentPill icon={Presentation} label="Slides" count={subjectQuery.data.subjectContent.ppt} />
+            <ContentPill icon={Video} label="Videos" count={subjectQuery.data.subjectContent.video} />
+            <ContentPill icon={ListChecks} label="Assignments" count={subjectQuery.data.subjectContent.assignment} />
+            <ContentPill icon={Link2} label="Links" count={subjectQuery.data.subjectContent.link} />
           </section>
         )}
 
