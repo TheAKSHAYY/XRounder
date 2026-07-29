@@ -8,8 +8,14 @@ import {
   Check,
   Clock,
   FileStack,
+  FileText,
+  FileType,
+  Link2,
+  ListChecks,
   PlayCircle,
+  Presentation,
   Sparkles,
+  Video,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -40,11 +46,26 @@ type ProgressRow = {
 
 type UnitStatus = "not_started" | "in_progress" | "completed";
 
+type ContentBucket = {
+  note: number;
+  pdf: number;
+  ppt: number;
+  video: number;
+  assignment: number;
+  link: number;
+  total: number;
+};
+
+function emptyContentBucket(): ContentBucket {
+  return { note: 0, pdf: 0, ppt: 0, video: 0, assignment: 0, link: 0, total: 0 };
+}
+
 type UnitStats = {
   unit: UnitRow;
   status: UnitStatus;
   pct: number;
   lastActivity: string | null;
+  content: ContentBucket;
 };
 
 function formatRelative(iso: string | null) {
@@ -108,20 +129,51 @@ function SubjectDetail() {
         .order("number");
       if (ue) throw ue;
 
-      const { data: papers } = await supabase
-        .from("papers")
-        .select("id, title, year, exam_type, paper_number")
-        .eq("subject_id", subject.id)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("year", { ascending: false });
+      const unitIds = (units ?? []).map((u) => u.id);
+      const [papersRes, contentRes] = await Promise.all([
+        supabase
+          .from("papers")
+          .select("id, title, year, exam_type, paper_number")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("year", { ascending: false }),
+        unitIds.length
+          ? supabase
+              .from("content_items")
+              .select("type, unit_id")
+              .eq("subject_id", subject.id)
+              .eq("status", "published")
+              .is("deleted_at", null)
+          : Promise.resolve({ data: [] as Array<{ type: string; unit_id: string | null }>, error: null }),
+      ]);
+
+      const contentByUnit = new Map<string, ContentBucket>();
+      const subjectContent = emptyContentBucket();
+      for (const row of (contentRes.data ?? []) as Array<{ type: string; unit_id: string | null }>) {
+        const key = (row.type as keyof ContentBucket);
+        if (key in subjectContent && key !== "total") {
+          (subjectContent[key] as number)++;
+          subjectContent.total++;
+        }
+        if (row.unit_id) {
+          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+          if (key in b && key !== "total") {
+            (b[key] as number)++;
+            b.total++;
+          }
+          contentByUnit.set(row.unit_id, b);
+        }
+      }
 
       return {
         course,
         sem,
         subject,
         units: (units ?? []) as UnitRow[],
-        papers: papers ?? [],
+        papers: papersRes.data ?? [],
+        contentByUnit,
+        subjectContent,
       };
     },
   });
@@ -146,6 +198,8 @@ function SubjectDetail() {
 
   const progress = progressQuery.data ?? [];
 
+  const contentByUnit = subjectQuery.data?.contentByUnit ?? new Map<string, ContentBucket>();
+
   const unitStats: UnitStats[] = useMemo(() => {
     const byUnit = new Map<string, ProgressRow>();
     for (const p of progress) byUnit.set(p.unit_id, p);
@@ -156,9 +210,10 @@ function SubjectDetail() {
         status: (p?.status ?? "not_started") as UnitStatus,
         pct: Number(p?.progress_pct ?? 0),
         lastActivity: p?.last_activity_at ?? null,
+        content: contentByUnit.get(u.id) ?? emptyContentBucket(),
       };
     });
-  }, [units, progress]);
+  }, [units, progress, contentByUnit]);
 
   const overall = useMemo(() => {
     const total = unitStats.length;
@@ -288,19 +343,35 @@ function SubjectDetail() {
 
         {/* ─── Quick Stats ─── */}
         {subjectQuery.data && overall.total > 0 && (
-          <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <StatTile
-              label="Units completed"
+              label="Units"
               value={user ? `${overall.completed} / ${overall.total}` : `${overall.total} total`}
             />
             <StatTile
-              label="Papers available"
+              label="Study materials"
+              value={String(subjectQuery.data.subjectContent.total)}
+            />
+            <StatTile
+              label="Past papers"
               value={String(subjectQuery.data.papers.length)}
             />
             <StatTile
               label="Last studied"
               value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
             />
+          </section>
+        )}
+
+        {/* ─── Content mix ─── */}
+        {subjectQuery.data && subjectQuery.data.subjectContent.total > 0 && (
+          <section className="mt-4 flex flex-wrap gap-2">
+            <ContentPill icon={FileText} label="Notes" count={subjectQuery.data.subjectContent.note} />
+            <ContentPill icon={FileType} label="PDFs" count={subjectQuery.data.subjectContent.pdf} />
+            <ContentPill icon={Presentation} label="Slides" count={subjectQuery.data.subjectContent.ppt} />
+            <ContentPill icon={Video} label="Videos" count={subjectQuery.data.subjectContent.video} />
+            <ContentPill icon={ListChecks} label="Assignments" count={subjectQuery.data.subjectContent.assignment} />
+            <ContentPill icon={Link2} label="Links" count={subjectQuery.data.subjectContent.link} />
           </section>
         )}
 
@@ -445,6 +516,50 @@ function StatTile({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ContentPill({
+  icon: Icon,
+  label,
+  count,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  count: number;
+}) {
+  const empty = count === 0;
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium",
+        empty
+          ? "border-border bg-transparent text-muted-foreground/60"
+          : "border-primary/20 bg-primary/5 text-primary",
+      )}
+    >
+      <Icon className="h-3 w-3" aria-hidden />
+      <span className="tabular-nums">{count}</span>
+      <span>{label}</span>
+    </span>
+  );
+}
+
+function MiniChip({
+  icon: Icon,
+  count,
+  label,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  count: number;
+  label: string;
+}) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-md bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+      <Icon className="h-2.5 w-2.5" aria-hidden />
+      <span className="tabular-nums text-foreground">{count}</span>
+      <span>{label}</span>
+    </span>
+  );
+}
+
 function UnitCard({
   stats,
   isResume,
@@ -522,6 +637,29 @@ function UnitCard({
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">
             {unit.summary}
           </p>
+        )}
+
+        {stats.content.total > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {stats.content.note > 0 && (
+              <MiniChip icon={FileText} count={stats.content.note} label="notes" />
+            )}
+            {stats.content.pdf > 0 && (
+              <MiniChip icon={FileType} count={stats.content.pdf} label="PDFs" />
+            )}
+            {stats.content.ppt > 0 && (
+              <MiniChip icon={Presentation} count={stats.content.ppt} label="slides" />
+            )}
+            {stats.content.video > 0 && (
+              <MiniChip icon={Video} count={stats.content.video} label="videos" />
+            )}
+            {stats.content.assignment > 0 && (
+              <MiniChip icon={ListChecks} count={stats.content.assignment} label="tasks" />
+            )}
+            {stats.content.link > 0 && (
+              <MiniChip icon={Link2} count={stats.content.link} label="links" />
+            )}
+          </div>
         )}
 
         {showProgress && inProgress && (
