@@ -516,6 +516,32 @@ function StatTile({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ContentPill({
+  icon: Icon,
+  label,
+  count,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  count: number;
+}) {
+  const empty = count === 0;
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium",
+        empty
+          ? "border-border bg-transparent text-muted-foreground/60"
+          : "border-primary/20 bg-primary/5 text-primary",
+      )}
+    >
+      <Icon className="h-3 w-3" aria-hidden />
+      <span className="tabular-nums">{count}</span>
+      <span>{label}</span>
+    </span>
+  );
+}
+
 function UnitCard({
   stats,
   isResume,
