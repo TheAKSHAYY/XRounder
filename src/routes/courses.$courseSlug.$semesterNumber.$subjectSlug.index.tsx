@@ -542,6 +542,24 @@ function ContentPill({
   );
 }
 
+function MiniChip({
+  icon: Icon,
+  count,
+  label,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  count: number;
+  label: string;
+}) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-md bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+      <Icon className="h-2.5 w-2.5" aria-hidden />
+      <span className="tabular-nums text-foreground">{count}</span>
+      <span>{label}</span>
+    </span>
+  );
+}
+
 function UnitCard({
   stats,
   isResume,
