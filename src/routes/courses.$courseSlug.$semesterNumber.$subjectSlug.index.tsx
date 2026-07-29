@@ -198,6 +198,8 @@ function SubjectDetail() {
 
   const progress = progressQuery.data ?? [];
 
+  const contentByUnit = subjectQuery.data?.contentByUnit ?? new Map<string, ContentBucket>();
+
   const unitStats: UnitStats[] = useMemo(() => {
     const byUnit = new Map<string, ProgressRow>();
     for (const p of progress) byUnit.set(p.unit_id, p);
@@ -208,9 +210,10 @@ function SubjectDetail() {
         status: (p?.status ?? "not_started") as UnitStatus,
         pct: Number(p?.progress_pct ?? 0),
         lastActivity: p?.last_activity_at ?? null,
+        content: contentByUnit.get(u.id) ?? emptyContentBucket(),
       };
     });
-  }, [units, progress]);
+  }, [units, progress, contentByUnit]);
 
   const overall = useMemo(() => {
     const total = unitStats.length;
