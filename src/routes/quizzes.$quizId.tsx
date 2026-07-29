@@ -447,7 +447,7 @@ function QuestionView({ index, question, options, selected, onChange }: {
                   "group flex cursor-pointer items-center gap-4 rounded-xl border bg-surface px-4 py-4 transition",
                   "hover:border-primary/50",
                   "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
-                  checked ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border",
+                  checked ? "border-primary bg-primary/5 ring-1 ring-primary quiz-option-pop" : "border-border",
                 ].join(" ")}
               >
                 <span
