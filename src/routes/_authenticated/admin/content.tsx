@@ -164,7 +164,7 @@ function ContentPage() {
               variant="outline"
               onClick={async () => {
                 try {
-                  const res = await migrateLegacyNotes();
+                  const res = await migrateLegacy();
                   toast.success(`Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`);
                   invalidate();
                 } catch (e) {
