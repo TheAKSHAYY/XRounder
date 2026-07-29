@@ -546,7 +546,7 @@ function ResultsView({
         </h1>
         <div className="mt-6 flex flex-wrap items-end gap-6">
           <div>
-            <div className="font-display text-6xl font-semibold leading-none text-foreground tabular-nums">
+            <div className="quiz-score-in font-display text-6xl font-semibold leading-none text-foreground tabular-nums">
               {pct}
               <span className="text-3xl text-muted-foreground">%</span>
             </div>
