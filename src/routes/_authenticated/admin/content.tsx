@@ -19,6 +19,7 @@ import {
   type ContentItem,
   type ContentType,
 } from "@/lib/content.functions";
+import { migrateLegacyNotes } from "@/lib/admin.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { StatusBadge } from "@/components/admin/ui/status-badge";
@@ -82,6 +83,7 @@ function ContentPage() {
   const bulk = useServerFn(bulkUpdateContent);
   const del = useServerFn(deleteContent);
   const dup = useServerFn(duplicateContent);
+  const migrateLegacy = useServerFn(migrateLegacyNotes);
 
   const [search, setSearch] = useState("");
   const [type, setType] = useState<string>("all");
@@ -156,9 +158,26 @@ function ContentPage() {
         title="Content"
         description="All learning content in one place — notes, slides, videos, assignments, links."
         actions={
-          <Button asChild size="sm">
-            <Link to="/admin/content/new"><Plus className="mr-1.5 h-4 w-4" /> New content</Link>
-          </Button>
+          <>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                try {
+                  const res = await migrateLegacy();
+                  toast.success(`Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`);
+                  invalidate();
+                } catch (e) {
+                  toast.error((e as Error).message);
+                }
+              }}
+            >
+              Import legacy notes
+            </Button>
+            <Button asChild size="sm">
+              <Link to="/admin/content/new"><Plus className="mr-1.5 h-4 w-4" /> New content</Link>
+            </Button>
+          </>
         }
       />
 

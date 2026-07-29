@@ -359,7 +359,7 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
     queryFn: async () => {
       const { data, error } = await supabase
         .from("units")
-        .select("id,title,subjects(title,semesters(number))")
+        .select("id,title,subject_id,subjects(title,semesters(number))")
         .is("deleted_at", null)
         .order("title");
       if (error) throw error;
@@ -370,23 +370,37 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   async function submit(status: "draft" | "published") {
     if (!unitId || !title.trim()) return toast.error("Unit and title required");
     setBusy(true);
+    const unit = (units as Array<{ id: string; subject_id: string }> | undefined)?.find((u) => u.id === unitId);
+    const subject_id = unit?.subject_id ?? null;
     let file_path: string | null = null;
     let file_mime: string | null = null;
     let file_size_bytes: number | null = null;
+    const hasFile = !!file;
+    const bucket = hasFile ? "notes" : null;
+    const type: "note" | "pdf" = hasFile && file!.type === "application/pdf" ? "pdf" : "note";
     if (file) {
-      const path = `${unitId}/${Date.now()}-${file.name}`;
+      const path = `content/${type}/${Date.now()}-${file.name}`;
       const { error: upErr } = await supabase.storage.from("notes").upload(path, file, { upsert: false });
       if (upErr) { setBusy(false); return toast.error(upErr.message); }
       file_path = path; file_mime = file.type; file_size_bytes = file.size;
     }
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 80);
-    const { error } = await supabase.from("notes").insert({
-      unit_id: unitId, title, summary, slug, status,
-      file_path, file_bucket: file_path ? "notes" : null, file_mime, file_size_bytes,
+    const { error } = await supabase.from("content_items").insert({
+      type,
+      title,
+      description: summary || null,
+      subject_id,
+      unit_id: unitId,
+      file_bucket: bucket,
+      file_path,
+      file_mime,
+      file_size_bytes,
+      status,
+      visibility: "students",
+      tags: [],
     });
     setBusy(false);
     if (error) return toast.error(error.message);
-    toast.success("Note saved");
+    toast.success("Content saved");
     onDone();
   }
 

@@ -169,3 +169,48 @@ export const getContentTree = createServerFn({ method: "GET" })
     }));
     return tree;
   });
+
+// Migrate legacy `notes` rows into `content_items` so old uploads
+// appear in the new unified Content page and dashboards.
+export const migrateLegacyNotes = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const sb = context.supabase;
+    const { data: notes, error } = await sb
+      .from("notes")
+      .select("id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at")
+      .is("deleted_at", null);
+    if (error) throw new Error(error.message);
+    if (!notes || notes.length === 0) return { migrated: 0, skipped: 0 };
+
+    const unitIds = Array.from(new Set(notes.map((n) => n.unit_id).filter(Boolean))) as string[];
+    const { data: units } = await sb.from("units").select("id, subject_id").in("id", unitIds);
+    const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string]));
+
+    // Skip notes already migrated (match by unit_id + title)
+    const { data: existing } = await sb.from("content_items").select("unit_id, title").is("deleted_at", null);
+    const existingKey = new Set((existing ?? []).map((e) => `${e.unit_id}::${e.title}`));
+
+    const rows = notes
+      .filter((n) => !existingKey.has(`${n.unit_id}::${n.title}`))
+      .map((n) => ({
+        type: (n.file_mime === "application/pdf" ? "pdf" : "note") as "pdf" | "note",
+        title: n.title,
+        description: n.summary ?? null,
+        unit_id: n.unit_id,
+        subject_id: subjectByUnit.get(n.unit_id as string) ?? null,
+        file_bucket: n.file_bucket,
+        file_path: n.file_path,
+        file_mime: n.file_mime,
+        file_size_bytes: n.file_size_bytes,
+        status: n.status,
+        visibility: "students" as const,
+        tags: [],
+        created_by: context.userId,
+      }));
+    const skipped = notes.length - rows.length;
+    if (rows.length === 0) return { migrated: 0, skipped };
+    const { error: insErr } = await sb.from("content_items").insert(rows);
+    if (insErr) throw new Error(insErr.message);
+    return { migrated: rows.length, skipped };
+  });

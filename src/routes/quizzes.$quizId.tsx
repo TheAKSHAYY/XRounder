@@ -310,13 +310,15 @@ function QuizPage() {
         {/* Active attempt — one question at a time */}
         {user && activeAttempt && current && (
           <section className="mt-8">
-            <QuestionView
-              index={currentIdx + 1}
-              question={current}
-              options={optionsByQ[current.id] ?? []}
-              selected={answers[current.id] ?? []}
-              onChange={(sel) => setAnswers((prev) => ({ ...prev, [current.id]: sel }))}
-            />
+            <div key={current.id} className="quiz-slide-in">
+              <QuestionView
+                index={currentIdx + 1}
+                question={current}
+                options={optionsByQ[current.id] ?? []}
+                selected={answers[current.id] ?? []}
+                onChange={(sel) => setAnswers((prev) => ({ ...prev, [current.id]: sel }))}
+              />
+            </div>
 
             {/* Question navigator */}
             <div className="mt-8">
@@ -445,7 +447,7 @@ function QuestionView({ index, question, options, selected, onChange }: {
                   "group flex cursor-pointer items-center gap-4 rounded-xl border bg-surface px-4 py-4 transition",
                   "hover:border-primary/50",
                   "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
-                  checked ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border",
+                  checked ? "border-primary bg-primary/5 ring-1 ring-primary quiz-option-pop" : "border-border",
                 ].join(" ")}
               >
                 <span
@@ -544,7 +546,7 @@ function ResultsView({
         </h1>
         <div className="mt-6 flex flex-wrap items-end gap-6">
           <div>
-            <div className="font-display text-6xl font-semibold leading-none text-foreground tabular-nums">
+            <div className="quiz-score-in font-display text-6xl font-semibold leading-none text-foreground tabular-nums">
               {pct}
               <span className="text-3xl text-muted-foreground">%</span>
             </div>
