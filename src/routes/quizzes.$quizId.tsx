@@ -310,13 +310,15 @@ function QuizPage() {
         {/* Active attempt — one question at a time */}
         {user && activeAttempt && current && (
           <section className="mt-8">
-            <QuestionView
-              index={currentIdx + 1}
-              question={current}
-              options={optionsByQ[current.id] ?? []}
-              selected={answers[current.id] ?? []}
-              onChange={(sel) => setAnswers((prev) => ({ ...prev, [current.id]: sel }))}
-            />
+            <div key={current.id} className="quiz-slide-in">
+              <QuestionView
+                index={currentIdx + 1}
+                question={current}
+                options={optionsByQ[current.id] ?? []}
+                selected={answers[current.id] ?? []}
+                onChange={(sel) => setAnswers((prev) => ({ ...prev, [current.id]: sel }))}
+              />
+            </div>
 
             {/* Question navigator */}
             <div className="mt-8">
