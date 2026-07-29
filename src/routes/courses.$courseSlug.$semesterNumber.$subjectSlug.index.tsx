@@ -129,20 +129,51 @@ function SubjectDetail() {
         .order("number");
       if (ue) throw ue;
 
-      const { data: papers } = await supabase
-        .from("papers")
-        .select("id, title, year, exam_type, paper_number")
-        .eq("subject_id", subject.id)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("year", { ascending: false });
+      const unitIds = (units ?? []).map((u) => u.id);
+      const [papersRes, contentRes] = await Promise.all([
+        supabase
+          .from("papers")
+          .select("id, title, year, exam_type, paper_number")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("year", { ascending: false }),
+        unitIds.length
+          ? supabase
+              .from("content_items")
+              .select("type, unit_id")
+              .eq("subject_id", subject.id)
+              .eq("status", "published")
+              .is("deleted_at", null)
+          : Promise.resolve({ data: [] as Array<{ type: string; unit_id: string | null }>, error: null }),
+      ]);
+
+      const contentByUnit = new Map<string, ContentBucket>();
+      const subjectContent = emptyContentBucket();
+      for (const row of (contentRes.data ?? []) as Array<{ type: string; unit_id: string | null }>) {
+        const key = (row.type as keyof ContentBucket);
+        if (key in subjectContent && key !== "total") {
+          (subjectContent[key] as number)++;
+          subjectContent.total++;
+        }
+        if (row.unit_id) {
+          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+          if (key in b && key !== "total") {
+            (b[key] as number)++;
+            b.total++;
+          }
+          contentByUnit.set(row.unit_id, b);
+        }
+      }
 
       return {
         course,
         sem,
         subject,
         units: (units ?? []) as UnitRow[],
-        papers: papers ?? [],
+        papers: papersRes.data ?? [],
+        contentByUnit,
+        subjectContent,
       };
     },
   });
