@@ -8,8 +8,14 @@ import {
   Check,
   Clock,
   FileStack,
+  FileText,
+  FileType,
+  Link2,
+  ListChecks,
   PlayCircle,
+  Presentation,
   Sparkles,
+  Video,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
