@@ -46,11 +46,26 @@ type ProgressRow = {
 
 type UnitStatus = "not_started" | "in_progress" | "completed";
 
+type ContentBucket = {
+  note: number;
+  pdf: number;
+  ppt: number;
+  video: number;
+  assignment: number;
+  link: number;
+  total: number;
+};
+
+function emptyContentBucket(): ContentBucket {
+  return { note: 0, pdf: 0, ppt: 0, video: 0, assignment: 0, link: 0, total: 0 };
+}
+
 type UnitStats = {
   unit: UnitRow;
   status: UnitStatus;
   pct: number;
   lastActivity: string | null;
+  content: ContentBucket;
 };
 
 function formatRelative(iso: string | null) {
