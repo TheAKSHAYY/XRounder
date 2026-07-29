@@ -19,6 +19,7 @@ import {
   type ContentItem,
   type ContentType,
 } from "@/lib/content.functions";
+import { migrateLegacyNotes } from "@/lib/admin.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { StatusBadge } from "@/components/admin/ui/status-badge";
