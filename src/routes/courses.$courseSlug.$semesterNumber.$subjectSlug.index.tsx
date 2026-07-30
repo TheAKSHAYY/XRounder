@@ -153,13 +153,13 @@ function SubjectDetail() {
       for (const row of (contentRes.data ?? []) as Array<{ type: string; unit_id: string | null }>) {
         const key = (row.type as keyof ContentBucket);
         if (key in subjectContent && key !== "total") {
-          (subjectContent[key] as number)++;
+          (subjectContent as Record<string, number>)[key] += 1;
           subjectContent.total++;
         }
         if (row.unit_id) {
           const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
           if (key in b && key !== "total") {
-            (b[key] as number)++;
+            (b as Record<string, number>)[key] += 1;
             b.total++;
           }
           contentByUnit.set(row.unit_id, b);
