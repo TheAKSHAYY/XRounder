@@ -180,12 +180,14 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
       .from("notes")
       .select("id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at")
       .is("deleted_at", null);
-    if (error) throw new Error(error.message);
-    if (!notes || notes.length === 0) return { migrated: 0, skipped: 0 };
+    if (error) throw new Error(`Reading legacy notes failed: ${error.message}`);
+    if (!notes || notes.length === 0) return { migrated: 0, skipped: 0, errors: [] as string[] };
 
     const unitIds = Array.from(new Set(notes.map((n) => n.unit_id).filter(Boolean))) as string[];
-    const { data: units } = await sb.from("units").select("id, subject_id").in("id", unitIds);
-    const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string]));
+    const { data: units } = unitIds.length
+      ? await sb.from("units").select("id, subject_id").in("id", unitIds)
+      : { data: [] as Array<{ id: string; subject_id: string | null }> };
+    const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string | null]));
 
     // Skip notes already migrated (match by unit_id + title)
     const { data: existing } = await sb.from("content_items").select("unit_id, title").is("deleted_at", null);
@@ -209,8 +211,18 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
         created_by: context.userId,
       }));
     const skipped = notes.length - rows.length;
-    if (rows.length === 0) return { migrated: 0, skipped };
-    const { error: insErr } = await sb.from("content_items").insert(rows);
-    if (insErr) throw new Error(insErr.message);
-    return { migrated: rows.length, skipped };
+    if (rows.length === 0) return { migrated: 0, skipped, errors: [] as string[] };
+
+    // Insert one-by-one so a single bad row cannot fail the whole import,
+    // and so the failing title is reported back to the admin.
+    let migrated = 0;
+    const errors: string[] = [];
+    for (const row of rows) {
+      const { error: insErr } = await sb.from("content_items").insert(row);
+      if (insErr) errors.push(`${row.title}: ${insErr.message}`);
+      else migrated++;
+    }
+    if (migrated === 0 && errors.length > 0) throw new Error(errors.join(" | "));
+    return { migrated, skipped, errors };
   });
+

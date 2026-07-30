@@ -165,7 +165,11 @@ function ContentPage() {
               onClick={async () => {
                 try {
                   const res = await migrateLegacy();
-                  toast.success(`Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`);
+                  if (res.errors?.length) {
+                    toast.error(`Imported ${res.migrated}, failed ${res.errors.length}: ${res.errors[0]}`);
+                  } else {
+                    toast.success(`Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`);
+                  }
                   invalidate();
                 } catch (e) {
                   toast.error((e as Error).message);
