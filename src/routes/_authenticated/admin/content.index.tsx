@@ -41,7 +41,7 @@ const contentSearchSchema = z.object({
   subjectId: z.string().uuid().optional(),
 });
 
-export const Route = createFileRoute("/_authenticated/admin/content")({
+export const Route = createFileRoute("/_authenticated/admin/content/")({
   head: () => ({ meta: [{ title: "Content · Admin · BCA Gurukul" }] }),
   validateSearch: contentSearchSchema,
   component: ContentPage,
