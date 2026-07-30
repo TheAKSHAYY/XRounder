@@ -136,13 +136,31 @@ export const deleteContent = createServerFn({ method: "POST" })
     z.object({ ids: z.array(z.string().uuid()).min(1) }).parse(input),
   )
   .handler(async ({ data, context }) => {
+    // Soft delete first. Some deployments have an UPDATE policy whose WITH CHECK
+    // rejects rows with deleted_at set; in that case fall back to a hard delete
+    // (admins have a DELETE policy).
     const { error } = await context.supabase
       .from("content_items")
       .update({ deleted_at: new Date().toISOString() })
       .in("id", data.ids);
-    if (error) throw new Error(error.message);
+
+    if (error) {
+      const isRls =
+        error.code === "42501" ||
+        /row-level security/i.test(error.message ?? "");
+      if (!isRls) throw new Error(error.message);
+
+      const { error: delErr } = await context.supabase
+        .from("content_items")
+        .delete()
+        .in("id", data.ids);
+      if (delErr) throw new Error(delErr.message);
+      return { ok: true, hardDeleted: true };
+    }
+
     return { ok: true };
   });
+
 
 export const duplicateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
