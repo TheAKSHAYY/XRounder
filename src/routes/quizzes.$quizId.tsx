@@ -1,29 +1,45 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AnimatePresence, motion } from "motion/react";
+import confetti from "canvas-confetti";
 import { toast } from "sonner";
 import {
   ArrowLeft,
+  Check,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
   Clock,
   FlaskConical,
+  LayoutDashboard,
+  ListChecks,
   RotateCcw,
-  Sparkles,
+  SkipForward,
+  Target,
+  Timer,
+  Trophy,
+  X,
   XCircle,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/hooks/use-auth";
 import { PublicHeader } from "./courses.index";
 
-
 export const Route = createFileRoute("/quizzes/$quizId")({
-  head: () => ({ meta: [{ title: "Quiz · BCA Gurukul" }] }),
+  head: () => ({
+    meta: [
+      { title: "Quiz · BCA Gurukul" },
+      { name: "description", content: "Take an interactive quiz with instant feedback and a detailed performance summary." },
+      { property: "og:title", content: "Quiz · BCA Gurukul" },
+      { property: "og:description", content: "Take an interactive quiz with instant feedback and a detailed performance summary." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: QuizPage,
 });
 
@@ -44,7 +60,28 @@ type Attempt = {
   max_score: number | null;
   pct: number | null;
   passed: boolean | null;
+  time_spent_seconds?: number | null;
 };
+type Feedback = {
+  is_correct: boolean;
+  correct_option_ids: string[];
+  explanation: string | null;
+};
+type AnswerState = {
+  selected: string[];
+  status: "correct" | "wrong" | "skipped";
+  correct_option_ids: string[];
+  explanation: string | null;
+};
+
+const CORRECT_DELAY = 1000;
+const WRONG_DELAY = 1800;
+
+function fmtDuration(seconds: number) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}m ${s.toString().padStart(2, "0")}s`;
+}
 
 function QuizPage() {
   const { quizId } = Route.useParams();
@@ -58,6 +95,25 @@ function QuizPage() {
       if (error) throw error;
       if (!data || data.status !== "published") throw notFound();
       return data;
+    },
+  });
+
+  // Subject / unit context for the header
+  const contextQ = useQuery({
+    queryKey: ["public-quiz-context", quizQ.data?.unit_id],
+    enabled: !!quizQ.data?.unit_id,
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("units")
+        .select("id, number, title, subjects(id, title, slug)")
+        .eq("id", quizQ.data!.unit_id)
+        .maybeSingle();
+      const row = data as unknown as
+        | { number: number; title: string; subjects: { title: string } | null }
+        | null;
+      return row
+        ? { unitLabel: `Unit ${row.number} · ${row.title}`, subject: row.subjects?.title ?? null }
+        : null;
     },
   });
 
@@ -92,12 +148,47 @@ function QuizPage() {
   });
 
   const [activeAttempt, setActiveAttempt] = useState<Attempt | null>(null);
-  const [answers, setAnswers] = useState<Record<string, string[]>>({});
+  const [answers, setAnswers] = useState<Record<string, AnswerState>>({});
+  const [selection, setSelection] = useState<string[]>([]);
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [grading, setGrading] = useState(false);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [result, setResult] = useState<Attempt | null>(null);
-  const [resultAnswers, setResultAnswers] = useState<Record<string, { selected: string[]; is_correct: boolean | null }>>({});
+  const [instantFeedback, setInstantFeedback] = useState(true);
+  const [elapsed, setElapsed] = useState(0);
 
   const startedAtRef = useRef<number | null>(null);
+  const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const questions = questionsQ.data ?? [];
+  const total = questions.length;
+  const current = activeAttempt ? questions[currentIdx] : null;
+
+  const optionsByQ = useMemo(() => {
+    const map: Record<string, Option[]> = {};
+    for (const o of optionsQ.data ?? []) (map[o.question_id] ??= []).push(o);
+    return map;
+  }, [optionsQ.data]);
+
+  const stats = useMemo(() => {
+    let correct = 0, wrong = 0, skipped = 0, points = 0;
+    for (const q of questions) {
+      const a = answers[q.id];
+      if (!a) continue;
+      if (a.status === "correct") { correct++; points += q.points; }
+      else if (a.status === "wrong") wrong++;
+      else skipped++;
+    }
+    const answered = correct + wrong;
+    return {
+      correct,
+      wrong,
+      skipped,
+      points,
+      answered,
+      accuracy: answered ? Math.round((correct / answered) * 100) : 0,
+    };
+  }, [questions, answers]);
 
   const startMutation = useMutation({
     mutationFn: async () => {
@@ -110,9 +201,12 @@ function QuizPage() {
     onSuccess: (a) => {
       setActiveAttempt(a);
       setAnswers({});
+      setSelection([]);
+      setFeedback(null);
       setCurrentIdx(0);
       setResult(null);
-      setResultAnswers({});
+      setElapsed(0);
+      setInstantFeedback(true);
       startedAtRef.current = Date.now();
       qc.invalidateQueries({ queryKey: ["public-quiz-attempts", quizId, user?.id] });
     },
@@ -120,11 +214,13 @@ function QuizPage() {
   });
 
   const submitMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (finalAnswers: Record<string, AnswerState>) => {
       if (!activeAttempt) throw new Error("No active attempt");
+      const payload: Record<string, string[]> = {};
+      for (const q of questions) payload[q.id] = finalAnswers[q.id]?.selected ?? [];
       const { data, error } = await supabase.rpc("submit_quiz_attempt", {
         _attempt_id: activeAttempt.id,
-        _answers: answers as never,
+        _answers: payload as never,
       });
       if (error) throw error;
       return data as unknown as Attempt;
@@ -132,53 +228,163 @@ function QuizPage() {
     onSuccess: async (a) => {
       setResult(a);
       setActiveAttempt(null);
-      const { data: ans } = await supabase
-        .from("quiz_attempt_answers").select("question_id, selected_option_ids, is_correct").eq("attempt_id", a.id);
-      const map: Record<string, { selected: string[]; is_correct: boolean | null }> = {};
-      for (const r of ans ?? []) map[r.question_id] = { selected: r.selected_option_ids ?? [], is_correct: r.is_correct };
-      setResultAnswers(map);
       qc.invalidateQueries({ queryKey: ["public-quiz-attempts", quizId, user?.id] });
-      toast.success(`Submitted — ${a.pct}%`);
+      // Reconcile local statuses with the server's authoritative grading
+      const { data: graded } = await supabase
+        .from("quiz_attempt_answers")
+        .select("question_id, selected_option_ids, is_correct")
+        .eq("attempt_id", a.id);
+      if (graded?.length) {
+        setAnswers((prev) => {
+          const next = { ...prev };
+          for (const row of graded) {
+            const sel = row.selected_option_ids ?? [];
+            next[row.question_id] = {
+              selected: sel,
+              status: sel.length === 0 ? "skipped" : row.is_correct ? "correct" : "wrong",
+              correct_option_ids: prev[row.question_id]?.correct_option_ids ?? [],
+              explanation: prev[row.question_id]?.explanation ?? null,
+            };
+          }
+          return next;
+        });
+      }
+      if ((a.pct ?? 0) >= 80) {
+        confetti({ particleCount: 140, spread: 78, origin: { y: 0.3 }, disableForReducedMotion: true });
+        setTimeout(() => confetti({ particleCount: 90, spread: 100, origin: { y: 0.35 }, disableForReducedMotion: true }), 320);
+      }
     },
     onError: (e: Error) => toast.error(e.message),
   });
 
-  const optionsByQ = useMemo(() => {
-    const map: Record<string, Option[]> = {};
-    for (const o of optionsQ.data ?? []) (map[o.question_id] ??= []).push(o);
-    return map;
-  }, [optionsQ.data]);
+  const clearTimer = () => {
+    if (advanceTimer.current) { clearTimeout(advanceTimer.current); advanceTimer.current = null; }
+  };
+  useEffect(() => clearTimer, []);
 
-  const questions = questionsQ.data ?? [];
-  const total = questions.length;
-  const current = activeAttempt ? questions[currentIdx] : null;
-  const answeredCount = useMemo(
-    () => questions.reduce((n, q) => n + ((answers[q.id]?.length ?? 0) > 0 ? 1 : 0), 0),
-    [questions, answers],
+  const goToIndex = useCallback((i: number, all: Record<string, AnswerState>) => {
+    clearTimer();
+    const q = questions[i];
+    setCurrentIdx(i);
+    const prev = q ? all[q.id] : undefined;
+    setSelection(prev?.selected ?? []);
+    setFeedback(
+      prev && prev.status !== "skipped"
+        ? { is_correct: prev.status === "correct", correct_option_ids: prev.correct_option_ids, explanation: prev.explanation }
+        : null,
+    );
+  }, [questions]);
+
+  const finish = useCallback((all: Record<string, AnswerState>) => {
+    clearTimer();
+    submitMutation.mutate(all);
+  }, [submitMutation]);
+
+  const commitAndAdvance = useCallback(
+    (questionId: string, state: AnswerState, delay: number) => {
+      const all = { ...answers, [questionId]: state };
+      setAnswers(all);
+      const isLast = currentIdx >= total - 1;
+      clearTimer();
+      advanceTimer.current = setTimeout(() => {
+        if (isLast) finish(all);
+        else goToIndex(currentIdx + 1, all);
+      }, delay);
+    },
+    [answers, currentIdx, total, finish, goToIndex],
   );
 
-  // Countdown display (does not auto-submit)
-  const timeLimitMin = quizQ.data?.time_limit_minutes as number | null | undefined;
-  const [now, setNow] = useState(Date.now());
+  const gradeNow = useCallback(
+    async (sel: string[]) => {
+      if (!current || !activeAttempt || grading) return;
+      setGrading(true);
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { data, error } = await (supabase.rpc as any)("grade_quiz_answer", {
+          _attempt_id: activeAttempt.id,
+          _question_id: current.id,
+          _selected: sel,
+        });
+        if (error) throw error;
+        const fb = data as Feedback;
+        setFeedback(fb);
+        commitAndAdvance(
+          current.id,
+          {
+            selected: sel,
+            status: fb.is_correct ? "correct" : "wrong",
+            correct_option_ids: fb.correct_option_ids ?? [],
+            explanation: fb.explanation ?? current.explanation,
+          },
+          fb.is_correct ? CORRECT_DELAY : WRONG_DELAY,
+        );
+      } catch {
+        // Grading RPC unavailable — fall back to classic "answer now, grade at the end".
+        setInstantFeedback(false);
+        setAnswers((prev) => ({
+          ...prev,
+          [current.id]: { selected: sel, status: "wrong", correct_option_ids: [], explanation: current.explanation },
+        }));
+      } finally {
+        setGrading(false);
+      }
+    },
+    [current, activeAttempt, grading, commitAndAdvance],
+  );
+
+  const selectOption = useCallback(
+    (optionId: string) => {
+      if (!current || feedback) return;
+      const multi = current.type === "multiple";
+      if (multi) {
+        setSelection((prev) => (prev.includes(optionId) ? prev.filter((x) => x !== optionId) : [...prev, optionId]));
+        return;
+      }
+      const sel = [optionId];
+      setSelection(sel);
+      if (instantFeedback) void gradeNow(sel);
+      else setAnswers((prev) => ({ ...prev, [current.id]: { selected: sel, status: "wrong", correct_option_ids: [], explanation: current.explanation } }));
+    },
+    [current, feedback, instantFeedback, gradeNow],
+  );
+
+  const skipQuestion = useCallback(() => {
+    if (!current) return;
+    const all = {
+      ...answers,
+      [current.id]: { selected: [], status: "skipped" as const, correct_option_ids: [], explanation: current.explanation },
+    };
+    setAnswers(all);
+    if (currentIdx >= total - 1) finish(all);
+    else goToIndex(currentIdx + 1, all);
+  }, [current, answers, currentIdx, total, finish, goToIndex]);
+
+  const goNext = useCallback(() => {
+    if (currentIdx >= total - 1) finish(answers);
+    else goToIndex(currentIdx + 1, answers);
+  }, [currentIdx, total, answers, finish, goToIndex]);
+
+  const goPrev = useCallback(() => {
+    if (currentIdx > 0) goToIndex(currentIdx - 1, answers);
+  }, [currentIdx, answers, goToIndex]);
+
+  // Elapsed timer
   useEffect(() => {
-    if (!activeAttempt || !timeLimitMin) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    if (!activeAttempt) return;
+    const id = setInterval(() => {
+      setElapsed(Math.floor((Date.now() - (startedAtRef.current ?? Date.now())) / 1000));
+    }, 1000);
     return () => clearInterval(id);
-  }, [activeAttempt, timeLimitMin]);
-  const remainingLabel = useMemo(() => {
-    if (!timeLimitMin || !startedAtRef.current) return null;
-    const total = timeLimitMin * 60;
-    const elapsed = Math.floor((now - startedAtRef.current) / 1000);
-    const left = Math.max(0, total - elapsed);
-    const m = Math.floor(left / 60).toString().padStart(2, "0");
-    const s = (left % 60).toString().padStart(2, "0");
-    return `${m}:${s}`;
-  }, [now, timeLimitMin]);
+  }, [activeAttempt]);
 
-  const goPrev = useCallback(() => setCurrentIdx((i) => Math.max(0, i - 1)), []);
-  const goNext = useCallback(() => setCurrentIdx((i) => Math.min(total - 1, i + 1)), [total]);
+  const timeLimitMin = quizQ.data?.time_limit_minutes as number | null | undefined;
+  const remainingSec = timeLimitMin ? Math.max(0, timeLimitMin * 60 - elapsed) : null;
+  useEffect(() => {
+    if (remainingSec === 0 && activeAttempt && !submitMutation.isPending) finish(answers);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remainingSec]);
 
-  // Keyboard: arrow nav + digit hotkeys for options
+  // Keyboard: 1-9 select, arrows navigate, s skip
   useEffect(() => {
     if (!activeAttempt || !current) return;
     const opts = optionsByQ[current.id] ?? [];
@@ -187,57 +393,54 @@ function QuizPage() {
       if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (e.key === "ArrowRight") { e.preventDefault(); goNext(); return; }
       if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); return; }
+      if (e.key.toLowerCase() === "s") { e.preventDefault(); skipQuestion(); return; }
       if (/^[1-9]$/.test(e.key)) {
-        const idx = parseInt(e.key, 10) - 1;
-        const opt = opts[idx];
-        if (!opt) return;
-        e.preventDefault();
-        setAnswers((prev) => {
-          const sel = prev[current.id] ?? [];
-          if (current.type === "multiple") {
-            const next = sel.includes(opt.id) ? sel.filter((x) => x !== opt.id) : [...sel, opt.id];
-            return { ...prev, [current.id]: next };
-          }
-          return { ...prev, [current.id]: [opt.id] };
-        });
+        const opt = opts[parseInt(e.key, 10) - 1];
+        if (opt) { e.preventDefault(); selectOption(opt.id); }
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [activeAttempt, current, optionsByQ, goNext, goPrev]);
+  }, [activeAttempt, current, optionsByQ, goNext, goPrev, selectOption, skipQuestion]);
 
-  const progressPct = total ? Math.round(((currentIdx + 1) / total) * 100) : 0;
+  const progressPct = total ? ((currentIdx + (feedback ? 1 : 0)) / total) * 100 : 0;
+  const answeredCurrent = !!current && !!answers[current.id];
 
   return (
     <div className="min-h-screen bg-background">
       <PublicHeader />
 
-      {/* Sticky quiz header during an active attempt */}
+      {/* Live quiz header */}
       {activeAttempt && quizQ.data && (
-        <div className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
-          <div className="mx-auto max-w-3xl px-6 py-3">
-            <div className="flex items-center justify-between gap-4">
+        <div className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
+          <div className="mx-auto max-w-3xl px-4 py-3 sm:px-6">
+            <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
-                <div className="truncate font-display text-sm font-semibold text-foreground">
-                  {quizQ.data.title}
+                <div className="truncate text-xs font-medium text-muted-foreground">
+                  {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") || quizQ.data.title}
                 </div>
-                <div className="mt-0.5 text-xs text-muted-foreground tabular-nums">
-                  Question {currentIdx + 1} of {total} · {answeredCount} answered
+                <div className="mt-0.5 font-display text-sm font-semibold tabular-nums text-foreground">
+                  Question {currentIdx + 1} of {total}
                 </div>
               </div>
-              {remainingLabel && (
-                <div className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium tabular-nums text-foreground">
-                  <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                  {remainingLabel}
-                </div>
-              )}
+              <div className="flex items-center gap-2">
+                <Pill icon={<Check className="h-3.5 w-3.5 text-success" />} value={stats.correct} label="correct" />
+                <Pill icon={<X className="h-3.5 w-3.5 text-destructive" />} value={stats.wrong} label="wrong" />
+                <Pill
+                  icon={<Timer className="h-3.5 w-3.5 text-muted-foreground" />}
+                  value={remainingSec !== null ? fmtDuration(remainingSec) : fmtDuration(elapsed)}
+                  label={remainingSec !== null ? "left" : "elapsed"}
+                />
+              </div>
             </div>
-            <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-muted">
-              <div
-                className="h-full bg-primary transition-all"
-                style={{ width: `${progressPct}%` }}
+            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted">
+              <motion.div
+                className="h-full rounded-full bg-primary"
+                initial={false}
+                animate={{ width: `${progressPct}%` }}
+                transition={{ type: "spring", stiffness: 140, damping: 22 }}
                 role="progressbar"
-                aria-valuenow={progressPct}
+                aria-valuenow={Math.round(progressPct)}
                 aria-valuemin={0}
                 aria-valuemax={100}
               />
@@ -246,161 +449,210 @@ function QuizPage() {
         </div>
       )}
 
-      <main className="mx-auto max-w-3xl px-6 py-10 pb-32">
+      <main className="mx-auto max-w-3xl px-4 py-8 pb-36 sm:px-6 sm:py-10">
         {!activeAttempt && !result && (
           <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ArrowLeft className="h-4 w-4" /> All courses
           </Link>
         )}
 
-        {/* Intro / start screen */}
+        {/* Start screen */}
         {!activeAttempt && !result && quizQ.data && (
-          <>
-            <header className="mt-6">
-              <div className="flex items-center gap-2">
-                <FlaskConical className="h-6 w-6 text-primary" />
-                <h1 className="font-display text-3xl font-semibold text-foreground">{quizQ.data.title}</h1>
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
+            <header className="mt-6 rounded-3xl border border-border bg-surface p-6 shadow-sm sm:p-8">
+              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <FlaskConical className="h-4 w-4 text-primary" />
+                {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") || "Practice quiz"}
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                <Badge variant="outline">Pass {quizQ.data.passing_pct}%</Badge>
-                {quizQ.data.time_limit_minutes && (
-                  <Badge variant="outline"><Clock className="mr-1 h-3 w-3" />{quizQ.data.time_limit_minutes} min</Badge>
-                )}
-                <Badge variant="outline">{total} questions</Badge>
-              </div>
+              <h1 className="mt-3 font-display text-3xl font-semibold text-foreground">{quizQ.data.title}</h1>
               {quizQ.data.description && <p className="mt-3 text-muted-foreground">{quizQ.data.description}</p>}
+              <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
+                <Badge variant="outline" className="rounded-full">{total} questions</Badge>
+                <Badge variant="outline" className="rounded-full">Pass {quizQ.data.passing_pct}%</Badge>
+                {quizQ.data.time_limit_minutes && (
+                  <Badge variant="outline" className="rounded-full">
+                    <Clock className="mr-1 h-3 w-3" />{quizQ.data.time_limit_minutes} min
+                  </Badge>
+                )}
+              </div>
+
+              {!user ? (
+                <div className="mt-6 rounded-2xl border border-border bg-background p-5 text-center">
+                  <p className="text-muted-foreground">Sign in to take this quiz and track your results.</p>
+                  <Link to="/auth" className="mt-3 inline-block"><Button className="rounded-full">Sign in</Button></Link>
+                </div>
+              ) : (
+                <>
+                  {quizQ.data.instructions && (
+                    <div className="mt-6 whitespace-pre-wrap rounded-2xl border border-border bg-background p-5 text-sm text-muted-foreground">
+                      {quizQ.data.instructions}
+                    </div>
+                  )}
+                  <Button
+                    size="lg"
+                    className="mt-6 rounded-full px-8"
+                    onClick={() => startMutation.mutate()}
+                    disabled={startMutation.isPending || total === 0}
+                  >
+                    {startMutation.isPending ? "Starting…" : "Start quiz"}
+                  </Button>
+                </>
+              )}
             </header>
 
-            {!user && (
-              <div className="mt-8 rounded-xl border border-border bg-surface p-6 text-center">
-                <p className="text-muted-foreground">Sign in to take this quiz and track your results.</p>
-                <Link to="/auth" className="mt-3 inline-block"><Button>Sign in</Button></Link>
-              </div>
-            )}
-
-            {user && (
-              <section className="mt-8 space-y-4">
-                {quizQ.data.instructions && (
-                  <div className="rounded-xl border border-border bg-surface p-5 text-sm text-muted-foreground whitespace-pre-wrap">
-                    {quizQ.data.instructions}
-                  </div>
-                )}
-                <Button size="lg" onClick={() => startMutation.mutate()} disabled={startMutation.isPending}>
-                  {startMutation.isPending ? "Starting…" : "Start attempt"}
-                </Button>
-
-                {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length > 0 && (
-                  <div className="mt-6">
-                    <h2 className="font-display text-lg font-semibold text-foreground">Your previous attempts</h2>
-                    <ul className="mt-2 space-y-2">
-                      {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).map((a) => (
-                        <li key={a.id} className="rounded-lg border border-border bg-surface px-4 py-3 text-sm">
-                          <span className="font-medium tabular-nums">{a.pct}%</span> · {a.score}/{a.max_score} ·{" "}
-                          <Badge variant={a.passed ? "default" : "secondary"}>{a.passed ? "Passed" : "Did not pass"}</Badge>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+            {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length > 0 && (
+              <section className="mt-8">
+                <h2 className="font-display text-lg font-semibold text-foreground">Your previous attempts</h2>
+                <ul className="mt-3 space-y-2">
+                  {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).map((a, i, arr) => (
+                    <li key={a.id} className="flex items-center justify-between rounded-2xl border border-border bg-surface px-4 py-3 text-sm">
+                      <span className="text-muted-foreground">Attempt {arr.length - i}</span>
+                      <span className="flex items-center gap-3">
+                        <span className="font-semibold tabular-nums text-foreground">{a.pct}%</span>
+                        <Badge variant={a.passed ? "default" : "secondary"} className="rounded-full">
+                          {a.passed ? "Passed" : "Did not pass"}
+                        </Badge>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
-          </>
+          </motion.div>
         )}
 
-        {/* Active attempt — one question at a time */}
+        {/* Active question */}
         {user && activeAttempt && current && (
-          <section className="mt-8">
-            <div key={current.id} className="quiz-slide-in">
-              <QuestionView
-                index={currentIdx + 1}
-                question={current}
-                options={optionsByQ[current.id] ?? []}
-                selected={answers[current.id] ?? []}
-                onChange={(sel) => setAnswers((prev) => ({ ...prev, [current.id]: sel }))}
-              />
-            </div>
+          <section>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, x: 36 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -36 }}
+                transition={{ duration: 0.28, ease: [0.2, 0.7, 0.2, 1] }}
+                className="rounded-3xl border border-border bg-surface p-5 shadow-sm sm:p-7"
+              >
+                <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  {current.type === "multiple" ? "Select all that apply" : "Select one answer"}
+                </div>
+                <h2 className="mt-3 font-display text-xl font-semibold leading-snug text-foreground sm:text-2xl">
+                  {current.prompt}
+                </h2>
 
-            {/* Question navigator */}
-            <div className="mt-8">
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                Questions
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {questions.map((q, i) => {
-                  const isCurrent = i === currentIdx;
-                  const isAnswered = (answers[q.id]?.length ?? 0) > 0;
-                  return (
-                    <button
-                      key={q.id}
-                      type="button"
-                      onClick={() => setCurrentIdx(i)}
-                      aria-label={`Go to question ${i + 1}${isAnswered ? ", answered" : ""}`}
-                      aria-current={isCurrent ? "step" : undefined}
+                <ul className="mt-6 space-y-3">
+                  {(optionsByQ[current.id] ?? []).map((o, i) => (
+                    <li key={o.id}>
+                      <OptionButton
+                        letter={String.fromCharCode(65 + i)}
+                        text={o.text}
+                        selected={selection.includes(o.id)}
+                        isCorrectOption={!!feedback && feedback.correct_option_ids?.includes(o.id)}
+                        revealed={!!feedback}
+                        disabled={!!feedback || grading}
+                        onClick={() => selectOption(o.id)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Multi-select check button */}
+                {current.type === "multiple" && !feedback && (
+                  <Button
+                    className="mt-5 rounded-full"
+                    disabled={selection.length === 0 || grading}
+                    onClick={() => (instantFeedback ? void gradeNow(selection) : goNext())}
+                  >
+                    {grading ? "Checking…" : "Check answer"}
+                  </Button>
+                )}
+
+                <AnimatePresence>
+                  {feedback && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
                       className={[
-                        "h-9 w-9 rounded-md border text-sm font-medium tabular-nums transition",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                        isCurrent
-                          ? "border-primary bg-primary text-primary-foreground"
-                          : isAnswered
-                            ? "border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15"
-                            : "border-border bg-surface text-muted-foreground hover:text-foreground",
+                        "mt-6 rounded-2xl border p-4 text-sm",
+                        feedback.is_correct
+                          ? "border-success/40 bg-success/10 text-success"
+                          : "border-destructive/40 bg-destructive/10 text-destructive",
                       ].join(" ")}
+                      role="status"
+                      aria-live="polite"
                     >
-                      {i + 1}
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="mt-3 flex items-center gap-4 text-xs text-muted-foreground">
-                <LegendDot className="border-primary bg-primary" label="Current" />
-                <LegendDot className="border-primary/40 bg-primary/10" label="Answered" />
-                <LegendDot className="border-border bg-surface" label="Unanswered" />
-              </div>
+                      <div className="flex items-center gap-2 font-semibold">
+                        {feedback.is_correct ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
+                        {feedback.is_correct
+                          ? "Correct Answer!"
+                          : `Wrong Answer! Correct answer: ${(optionsByQ[current.id] ?? [])
+                              .filter((o) => feedback.correct_option_ids?.includes(o.id))
+                              .map((o) => o.text)
+                              .join(", ")}`}
+                      </div>
+                      {feedback.explanation && (
+                        <p className="mt-2 text-foreground/80">{feedback.explanation}</p>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <p className="mt-6 text-xs text-muted-foreground">
+                  Keys: <Kbd>1</Kbd>–<Kbd>{Math.min((optionsByQ[current.id] ?? []).length, 9)}</Kbd> answer ·{" "}
+                  <Kbd>S</Kbd> skip · <Kbd>←</Kbd>/<Kbd>→</Kbd> navigate
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Live stats */}
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <MiniStat label="Correct" value={stats.correct} tone="positive" />
+              <MiniStat label="Wrong" value={stats.wrong} tone="negative" />
+              <MiniStat label="Skipped" value={stats.skipped} tone="muted" />
+              <MiniStat label="Accuracy" value={`${stats.accuracy}%`} tone="muted" />
             </div>
           </section>
         )}
 
-        {/* Results */}
+        {/* Result */}
         {result && quizQ.data && (
-          <ResultsView
+          <ResultScreen
             quizTitle={quizQ.data.title}
             passingPct={quizQ.data.passing_pct}
             result={result}
             questions={questions}
             optionsByQ={optionsByQ}
-            resultAnswers={resultAnswers}
+            answers={answers}
+            elapsed={result.time_spent_seconds ?? elapsed}
+            attemptNumber={(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length}
             onRetry={() => startMutation.mutate()}
             retryPending={startMutation.isPending}
           />
         )}
       </main>
 
-
-      {/* Sticky footer nav during an active attempt */}
+      {/* Sticky nav */}
       {activeAttempt && current && (
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 backdrop-blur">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-6 py-3">
-            <Button
-              variant="outline"
-              onClick={goPrev}
-              disabled={currentIdx === 0}
-              className="gap-1"
-            >
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/90 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+            <Button variant="outline" className="gap-1 rounded-full" onClick={goPrev} disabled={currentIdx === 0}>
               <ChevronLeft className="h-4 w-4" /> Previous
             </Button>
-            <div className="hidden text-xs text-muted-foreground tabular-nums sm:block">
-              {answeredCount} / {total} answered
-            </div>
+            <Button variant="ghost" className="gap-1 rounded-full" onClick={skipQuestion}>
+              <SkipForward className="h-4 w-4" /> Skip
+            </Button>
             {currentIdx < total - 1 ? (
-              <Button onClick={goNext} className="gap-1">
+              <Button className="gap-1 rounded-full" onClick={goNext} disabled={!answeredCurrent && !feedback}>
                 Next <ChevronRight className="h-4 w-4" />
               </Button>
             ) : (
               <Button
-                onClick={() => submitMutation.mutate()}
+                className="rounded-full"
+                onClick={() => finish(answers)}
                 disabled={submitMutation.isPending}
               >
-                {submitMutation.isPending ? "Submitting…" : "Submit quiz"}
+                {submitMutation.isPending ? "Finishing…" : "Finish"}
               </Button>
             )}
           </div>
@@ -410,299 +662,289 @@ function QuizPage() {
   );
 }
 
-function LegendDot({ className, label }: { className: string; label: string }) {
+/* ---------- pieces ---------- */
+
+function Kbd({ children }: { children: React.ReactNode }) {
+  return <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">{children}</kbd>;
+}
+
+function Pill({ icon, value, label }: { icon: React.ReactNode; value: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <span className={`inline-block h-3 w-3 rounded-sm border ${className}`} />
-      {label}
+    <span className="inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium tabular-nums text-foreground">
+      {icon}
+      {value}
+      <span className="hidden text-muted-foreground sm:inline">{label}</span>
     </span>
   );
 }
 
-function QuestionView({ index, question, options, selected, onChange }: {
-  index: number;
-  question: Question;
-  options: Option[];
-  selected: string[];
-  onChange: (sel: string[]) => void;
-}) {
-  const multi = question.type === "multiple";
+function MiniStat({ label, value, tone }: { label: string; value: React.ReactNode; tone: "positive" | "negative" | "muted" }) {
+  const toneClass =
+    tone === "positive" ? "text-success" : tone === "negative" ? "text-destructive" : "text-foreground";
   return (
-    <div>
-      <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        Question {index} <span className="ml-1 normal-case tracking-normal text-muted-foreground/80">· {multi ? "select all that apply" : "select one"}</span>
-      </div>
-      <h2 className="mt-3 font-display text-2xl font-semibold leading-snug text-foreground">
-        {question.prompt}
-      </h2>
-
-      <ul className="mt-8 space-y-3" role={multi ? "group" : "radiogroup"} aria-label={`Options for question ${index}`}>
-        {options.map((o, i) => {
-          const checked = selected.includes(o.id);
-          const letter = String.fromCharCode(65 + i);
-          return (
-            <li key={o.id}>
-              <label
-                className={[
-                  "group flex cursor-pointer items-center gap-4 rounded-xl border bg-surface px-4 py-4 transition",
-                  "hover:border-primary/50",
-                  "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2",
-                  checked ? "border-primary bg-primary/5 ring-1 ring-primary quiz-option-pop" : "border-border",
-                ].join(" ")}
-              >
-                <span
-                  className={[
-                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-md border text-sm font-semibold tabular-nums transition",
-                    checked
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border bg-background text-muted-foreground group-hover:text-foreground",
-                  ].join(" ")}
-                  aria-hidden="true"
-                >
-                  {letter}
-                </span>
-                <span className="min-w-0 flex-1 text-base leading-relaxed text-foreground">{o.text}</span>
-                {multi ? (
-                  <Checkbox
-                    checked={checked}
-                    onCheckedChange={(c) => {
-                      const next = c ? [...selected, o.id] : selected.filter((id) => id !== o.id);
-                      onChange(next);
-                    }}
-                    aria-label={o.text}
-                  />
-                ) : (
-                  <input
-                    type="radio"
-                    name={question.id}
-                    checked={checked}
-                    onChange={() => onChange([o.id])}
-                    className="h-4 w-4 accent-primary"
-                    aria-label={o.text}
-                  />
-                )}
-              </label>
-            </li>
-          );
-        })}
-      </ul>
-
-      <p className="mt-6 text-xs text-muted-foreground">
-        Tip: press <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">1</kbd>–<kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">{Math.min(options.length, 9)}</kbd> to select, <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">←</kbd> / <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">→</kbd> to navigate.
-      </p>
+    <div className="rounded-2xl border border-border bg-surface px-4 py-3 shadow-sm">
+      <div className={`font-display text-2xl font-semibold tabular-nums ${toneClass}`}>{value}</div>
+      <div className="mt-0.5 text-xs text-muted-foreground">{label}</div>
     </div>
   );
 }
 
-function ResultsView({
-  quizTitle,
-  passingPct,
-  result,
-  questions,
-  optionsByQ,
-  resultAnswers,
-  onRetry,
-  retryPending,
+function OptionButton({
+  letter, text, selected, isCorrectOption, revealed, disabled, onClick,
+}: {
+  letter: string;
+  text: string;
+  selected: boolean;
+  isCorrectOption: boolean;
+  revealed: boolean;
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  const wrongPick = revealed && selected && !isCorrectOption;
+  const rightPick = revealed && isCorrectOption;
+
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      whileHover={disabled ? undefined : { scale: 1.01 }}
+      whileTap={disabled ? undefined : { scale: 0.985 }}
+      animate={
+        rightPick && selected
+          ? { scale: [1, 1.04, 1] }
+          : wrongPick
+            ? { x: [0, -8, 8, -6, 6, 0] }
+            : { scale: 1, x: 0 }
+      }
+      transition={{ duration: wrongPick ? 0.4 : 0.32 }}
+      aria-pressed={selected}
+      className={[
+        "flex w-full items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        rightPick
+          ? "border-success bg-success/15 shadow-[0_0_0_4px_color-mix(in_oklab,var(--success)_18%,transparent)]"
+          : wrongPick
+            ? "border-destructive bg-destructive/15"
+            : selected
+              ? "border-primary bg-primary/10"
+              : "border-border bg-surface hover:border-primary/50 hover:bg-primary/5",
+        disabled && !revealed ? "opacity-70" : "",
+      ].join(" ")}
+    >
+      <span
+        className={[
+          "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border text-sm font-semibold",
+          rightPick
+            ? "border-success bg-success text-success-foreground"
+            : wrongPick
+              ? "border-destructive bg-destructive text-destructive-foreground"
+              : selected
+                ? "border-primary bg-primary text-primary-foreground"
+                : "border-border bg-background text-muted-foreground",
+        ].join(" ")}
+        aria-hidden="true"
+      >
+        {rightPick ? <Check className="h-4 w-4" /> : wrongPick ? <X className="h-4 w-4" /> : letter}
+      </span>
+      <span className="min-w-0 flex-1 text-base leading-relaxed text-foreground">{text}</span>
+    </motion.button>
+  );
+}
+
+function ScoreRing({ pct }: { pct: number }) {
+  const r = 68;
+  const c = 2 * Math.PI * r;
+  return (
+    <div className="relative h-44 w-44">
+      <svg viewBox="0 0 160 160" className="h-full w-full -rotate-90">
+        <circle cx="80" cy="80" r={r} fill="none" strokeWidth="14" className="stroke-muted" />
+        <motion.circle
+          cx="80" cy="80" r={r} fill="none" strokeWidth="14" strokeLinecap="round"
+          className={pct >= 50 ? "stroke-success" : "stroke-destructive"}
+          strokeDasharray={c}
+          initial={{ strokeDashoffset: c }}
+          animate={{ strokeDashoffset: c - (c * Math.min(100, Math.max(0, pct))) / 100 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.25, type: "spring", stiffness: 200, damping: 14 }}
+          className="font-display text-4xl font-semibold tabular-nums text-foreground"
+        >
+          {Math.round(pct)}%
+        </motion.span>
+        <span className="text-xs text-muted-foreground">score</span>
+      </div>
+    </div>
+  );
+}
+
+function ResultScreen({
+  quizTitle, passingPct, result, questions, optionsByQ, answers, elapsed, attemptNumber, onRetry, retryPending,
 }: {
   quizTitle: string;
   passingPct: number;
   result: Attempt;
   questions: Question[];
   optionsByQ: Record<string, Option[]>;
-  resultAnswers: Record<string, { selected: string[]; is_correct: boolean | null }>;
+  answers: Record<string, AnswerState>;
+  elapsed: number;
+  attemptNumber: number;
   onRetry: () => void;
   retryPending: boolean;
 }) {
-  const summary = useMemo(() => {
-    let correct = 0;
-    let incorrect = 0;
-    let skipped = 0;
-    for (const q of questions) {
-      const r = resultAnswers[q.id];
-      if (!r || (r.selected?.length ?? 0) === 0) skipped++;
-      else if (r.is_correct) correct++;
-      else incorrect++;
-    }
-    return { correct, incorrect, skipped, total: questions.length };
-  }, [questions, resultAnswers]);
+  const [showReview, setShowReview] = useState(false);
+  const pct = Number(result.pct ?? 0);
 
-  const pct = result.pct ?? 0;
-  const encouragement = useMemo(() => {
-    if (pct >= 90) return "Excellent work — you've mastered this material.";
-    if (result.passed) return "Great job — you passed. Keep the momentum going.";
-    if (pct >= passingPct - 10) return "Almost there. Review the misses and try again.";
-    return "Keep practicing — every attempt sharpens your understanding.";
-  }, [pct, result.passed, passingPct]);
+  const summary = useMemo(() => {
+    let correct = 0, wrong = 0, skipped = 0;
+    for (const q of questions) {
+      const a = answers[q.id];
+      if (!a || a.status === "skipped") skipped++;
+      else if (a.status === "correct") correct++;
+      else wrong++;
+    }
+    const answered = correct + wrong;
+    return { correct, wrong, skipped, accuracy: answered ? Math.round((correct / answered) * 100) : 0 };
+  }, [questions, answers]);
+
+  const message =
+    pct >= 90 ? "🏆 Excellent!" : pct >= 75 ? "🎉 Very Good!" : pct >= 50 ? "👍 Good, keep practicing." : "📚 Needs Improvement.";
 
   return (
-    <section className="mt-10 space-y-10" aria-labelledby="results-heading">
-      {/* Hero */}
-      <header className="border-b border-border pb-10">
-        <div className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-          Quiz completed
-        </div>
-        <h1 id="results-heading" className="mt-3 font-display text-2xl font-semibold text-foreground">
-          {quizTitle}
-        </h1>
-        <div className="mt-6 flex flex-wrap items-end gap-6">
-          <div>
-            <div className="quiz-score-in font-display text-6xl font-semibold leading-none text-foreground tabular-nums">
-              {pct}
-              <span className="text-3xl text-muted-foreground">%</span>
+    <motion.section
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="space-y-6"
+      aria-labelledby="quiz-result-heading"
+    >
+      <div className="rounded-3xl border border-border bg-surface p-6 shadow-sm sm:p-8">
+        <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-10">
+          <ScoreRing pct={pct} />
+          <div className="text-center sm:text-left">
+            <div className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              Attempt {Math.max(1, attemptNumber)} · {quizTitle}
             </div>
-            <div className="mt-2 text-sm text-muted-foreground tabular-nums">
+            <h1 id="quiz-result-heading" className="mt-2 font-display text-3xl font-semibold text-foreground">
+              {message}
+            </h1>
+            <p className="mt-2 text-sm text-muted-foreground tabular-nums">
               Score {result.score} / {result.max_score} · Pass mark {passingPct}%
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Badge
-              variant={result.passed ? "default" : "secondary"}
-              className="w-fit px-3 py-1 text-sm"
-            >
+            </p>
+            <Badge variant={result.passed ? "default" : "secondary"} className="mt-3 rounded-full px-3 py-1">
               {result.passed ? "Passed" : "Did not pass"}
             </Badge>
-            <p className="max-w-md text-sm text-foreground/80">
-              <Sparkles className="mr-1.5 inline h-4 w-4 text-primary" aria-hidden="true" />
-              {encouragement}
-            </p>
           </div>
         </div>
-      </header>
 
-      {/* Summary tiles */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <SummaryTile label="Correct" value={summary.correct} tone="positive" />
-        <SummaryTile label="Incorrect" value={summary.incorrect} tone="negative" />
-        <SummaryTile label="Skipped" value={summary.skipped} tone="muted" />
-        <SummaryTile label="Total" value={summary.total} tone="muted" />
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <MiniStat label="Questions" value={questions.length} tone="muted" />
+          <MiniStat label="Correct" value={summary.correct} tone="positive" />
+          <MiniStat label="Wrong" value={summary.wrong} tone="negative" />
+          <MiniStat label="Skipped" value={summary.skipped} tone="muted" />
+          <MiniStat label="Accuracy" value={`${summary.accuracy}%`} tone="muted" />
+          <MiniStat label="Time" value={fmtDuration(elapsed)} tone="muted" />
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button onClick={onRetry} disabled={retryPending} className="gap-1.5 rounded-full">
+            <RotateCcw className="h-4 w-4" /> {retryPending ? "Starting…" : "Retry quiz"}
+          </Button>
+          <Button variant="outline" className="gap-1.5 rounded-full" onClick={() => setShowReview((v) => !v)}>
+            <ListChecks className="h-4 w-4" /> {showReview ? "Hide review" : "Review answers"}
+          </Button>
+          <Button asChild variant="outline" className="gap-1.5 rounded-full">
+            <Link to="/courses"><Target className="h-4 w-4" /> Next unit</Link>
+          </Button>
+          <Button asChild variant="ghost" className="gap-1.5 rounded-full">
+            <Link to="/dashboard"><LayoutDashboard className="h-4 w-4" /> Back to dashboard</Link>
+          </Button>
+        </div>
       </div>
 
-      {/* Next steps */}
-      <div className="flex flex-wrap items-center gap-3">
-        <Button asChild size="lg">
-          <Link to="/courses">Continue learning</Link>
-        </Button>
-        <Button variant="outline" onClick={onRetry} disabled={retryPending} className="gap-1.5">
-          <RotateCcw className="h-4 w-4" />
-          {retryPending ? "Starting…" : "Retry quiz"}
-        </Button>
-        <Button asChild variant="ghost">
-          <Link to="/courses">Back to courses</Link>
-        </Button>
-      </div>
-
-      {/* Review */}
-      <div>
-        <h2 className="font-display text-xl font-semibold text-foreground">
-          Review your answers
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Understanding the misses is where the real learning happens.
-        </p>
-
-        <ol className="mt-6 space-y-4">
-          {questions.map((q, idx) => {
-            const r = resultAnswers[q.id];
-            const opts = optionsByQ[q.id] ?? [];
-            const skipped = !r || (r.selected?.length ?? 0) === 0;
-            const status: "correct" | "incorrect" | "skipped" = skipped
-              ? "skipped"
-              : r?.is_correct
-                ? "correct"
-                : "incorrect";
-            const statusLabel =
-              status === "correct" ? "Correct" : status === "incorrect" ? "Incorrect" : "Skipped";
-            return (
-              <li key={q.id} className="rounded-2xl border border-border bg-surface p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    {status === "correct" ? (
-                      <CheckCircle2 className="h-5 w-5 text-emerald-600" aria-hidden="true" />
-                    ) : status === "incorrect" ? (
-                      <XCircle className="h-5 w-5 text-destructive" aria-hidden="true" />
-                    ) : (
-                      <span
-                        className="h-2 w-2 rounded-full bg-muted-foreground/60"
-                        aria-hidden="true"
-                      />
-                    )}
-                    <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground tabular-nums">
-                      Question {idx + 1}
-                    </span>
-                  </div>
-                  <Badge variant="outline" className="text-xs">
-                    {statusLabel}
-                  </Badge>
-                </div>
-                <p className="mt-3 text-foreground">{q.prompt}</p>
-
-                <ul className="mt-4 space-y-2 text-sm">
-                  {opts.map((o) => {
-                    const picked = r?.selected.includes(o.id);
-                    return (
-                      <li
-                        key={o.id}
+      <AnimatePresence>
+        {showReview && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <h2 className="font-display text-xl font-semibold text-foreground">
+              <Trophy className="mr-2 inline h-5 w-5 text-primary" aria-hidden="true" />
+              Review your answers
+            </h2>
+            <ol className="mt-4 space-y-4">
+              {questions.map((q, idx) => {
+                const a = answers[q.id];
+                const opts = optionsByQ[q.id] ?? [];
+                const status = a?.status ?? "skipped";
+                const correctIds = a?.correct_option_ids ?? [];
+                return (
+                  <li key={q.id} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-medium text-foreground">
+                        {idx + 1}. {q.prompt}
+                      </h3>
+                      <Badge
                         className={[
-                          "rounded-lg border px-3 py-2.5",
-                          picked
-                            ? status === "correct"
-                              ? "border-emerald-500/50 bg-emerald-500/5 text-foreground"
-                              : "border-destructive/50 bg-destructive/5 text-foreground"
-                            : "border-border text-muted-foreground",
+                          "shrink-0 rounded-full",
+                          status === "correct"
+                            ? "bg-success text-success-foreground"
+                            : status === "wrong"
+                              ? "bg-destructive text-destructive-foreground"
+                              : "bg-muted text-muted-foreground",
                         ].join(" ")}
                       >
-                        {o.text}
-                        {picked && (
-                          <span className="ml-2 text-xs text-muted-foreground">
-                            (your answer)
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-
-                {q.explanation && (
-                  <div className="mt-4 rounded-lg border border-border bg-background p-3 text-sm text-muted-foreground">
-                    <div className="mb-1 text-xs font-semibold uppercase tracking-wide text-foreground">
-                      Explanation
+                        {status === "correct" ? "Correct" : status === "wrong" ? "Wrong" : "Skipped"}
+                      </Badge>
                     </div>
-                    {q.explanation}
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </div>
-    </section>
+                    <ul className="mt-3 space-y-2">
+                      {opts.map((o) => {
+                        const picked = a?.selected.includes(o.id);
+                        const isRight = correctIds.includes(o.id);
+                        return (
+                          <li
+                            key={o.id}
+                            className={[
+                              "flex items-center gap-2 rounded-xl border px-3 py-2 text-sm",
+                              isRight
+                                ? "border-success/50 bg-success/10 text-foreground"
+                                : picked
+                                  ? "border-destructive/50 bg-destructive/10 text-foreground"
+                                  : "border-border text-muted-foreground",
+                            ].join(" ")}
+                          >
+                            {isRight ? (
+                              <CheckCircle2 className="h-4 w-4 text-success" />
+                            ) : picked ? (
+                              <XCircle className="h-4 w-4 text-destructive" />
+                            ) : (
+                              <span className="h-4 w-4" />
+                            )}
+                            <span>{o.text}</span>
+                            {picked && <span className="ml-auto text-xs text-muted-foreground">your answer</span>}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    {(a?.explanation ?? q.explanation) && (
+                      <p className="mt-3 rounded-xl bg-muted/60 p-3 text-sm text-foreground/80">
+                        {a?.explanation ?? q.explanation}
+                      </p>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.section>
   );
 }
-
-function SummaryTile({
-  label,
-  value,
-  tone,
-}: {
-  label: string;
-  value: number;
-  tone: "positive" | "negative" | "muted";
-}) {
-  const valueClass =
-    tone === "positive"
-      ? "text-emerald-600"
-      : tone === "negative"
-        ? "text-destructive"
-        : "text-foreground";
-  return (
-    <div className="rounded-xl border border-border bg-surface px-4 py-4">
-      <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        {label}
-      </div>
-      <div className={`mt-1 font-display text-2xl font-semibold tabular-nums ${valueClass}`}>
-        {value}
-      </div>
-    </div>
-  );
-}
-
