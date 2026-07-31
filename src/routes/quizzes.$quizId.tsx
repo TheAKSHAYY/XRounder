@@ -225,10 +225,30 @@ function QuizPage() {
       if (error) throw error;
       return data as unknown as Attempt;
     },
-    onSuccess: (a) => {
+    onSuccess: async (a) => {
       setResult(a);
       setActiveAttempt(null);
       qc.invalidateQueries({ queryKey: ["public-quiz-attempts", quizId, user?.id] });
+      // Reconcile local statuses with the server's authoritative grading
+      const { data: graded } = await supabase
+        .from("quiz_attempt_answers")
+        .select("question_id, selected_option_ids, is_correct")
+        .eq("attempt_id", a.id);
+      if (graded?.length) {
+        setAnswers((prev) => {
+          const next = { ...prev };
+          for (const row of graded) {
+            const sel = row.selected_option_ids ?? [];
+            next[row.question_id] = {
+              selected: sel,
+              status: sel.length === 0 ? "skipped" : row.is_correct ? "correct" : "wrong",
+              correct_option_ids: prev[row.question_id]?.correct_option_ids ?? [],
+              explanation: prev[row.question_id]?.explanation ?? null,
+            };
+          }
+          return next;
+        });
+      }
       if ((a.pct ?? 0) >= 80) {
         confetti({ particleCount: 140, spread: 78, origin: { y: 0.3 }, disableForReducedMotion: true });
         setTimeout(() => confetti({ particleCount: 90, spread: 100, origin: { y: 0.35 }, disableForReducedMotion: true }), 320);
