@@ -7,18 +7,25 @@ import listPapers from "./tools/list-papers";
 // point the MCP OAuth issuer at the project's GoTrue instance. Falls back to
 // the VITE-prefixed value that Vite inlines at build time when the raw server
 // var is unset (e.g. during `vite build`).
+// Defensive: do NOT throw at module scope. The MCP route is part of the
+// generated route tree, so a missing Supabase URL would crash the entire app
+// during startup before any "missing config" guard can render. Instead, fall
+// back to a placeholder issuer; OAuth validation will fail safely, and the
+// main app routes can show a configuration message when env vars are absent.
 const supabaseUrl =
   process.env.SUPABASE_URL ??
   process.env.VITE_SUPABASE_URL ??
   import.meta.env?.VITE_SUPABASE_URL;
 
 if (!supabaseUrl) {
-  throw new Error(
-    "MCP auth: SUPABASE_URL (or VITE_SUPABASE_URL) must be set to enable OAuth on /mcp",
+  console.warn(
+    "[mcp] SUPABASE_URL (or VITE_SUPABASE_URL) is missing. The /mcp endpoint is disabled until Supabase is configured.",
   );
 }
 
-const issuer = `${supabaseUrl.replace(/\/+$/, "")}/auth/v1`;
+const issuer = supabaseUrl
+  ? `${supabaseUrl.replace(/\/+$/, "")}/auth/v1`
+  : "http://localhost/auth/v1";
 
 export default defineMcp({
   name: "bca-gurukul-mcp",
