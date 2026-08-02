@@ -21,12 +21,12 @@ function checkSupabaseEnv(): EnvCheck {
     ? import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
     : process.env.SUPABASE_PUBLISHABLE_KEY;
 
+  // Names must be identical on server and client, otherwise the fallback
+  // screen hydration-mismatches.
   const missing: string[] = [];
-  if (!url) missing.push(isBrowser ? "VITE_SUPABASE_URL" : "SUPABASE_URL");
+  if (!url) missing.push("VITE_SUPABASE_URL / SUPABASE_URL");
   if (!key)
-    missing.push(
-      isBrowser ? "VITE_SUPABASE_PUBLISHABLE_KEY" : "SUPABASE_PUBLISHABLE_KEY",
-    );
+    missing.push("VITE_SUPABASE_PUBLISHABLE_KEY / SUPABASE_PUBLISHABLE_KEY");
 
   return missing.length ? { ok: false, missing } : { ok: true };
 }
