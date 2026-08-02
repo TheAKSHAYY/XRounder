@@ -5,6 +5,7 @@ import {
   createRoute,
   HeadContent,
   Scripts,
+  type Router,
 } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import appCss from "./styles.css?url";
@@ -86,7 +87,7 @@ function FallbackShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function createFallbackRouter(missing: string[]): ReturnType<typeof createRouter> {
+function createFallbackRouter(missing: string[]): Router<any> {
   const queryClient = new QueryClient();
   const rootRoute = createRootRoute({
     component: () => <ConfigMissing missing={missing} />,
@@ -115,7 +116,7 @@ function createFallbackRouter(missing: string[]): ReturnType<typeof createRouter
   });
 }
 
-export const getRouter = (): ReturnType<typeof createRouter> => {
+export const getRouter = (): Router<any> => {
   const envCheck = checkSupabaseEnv();
   if (!envCheck.ok) {
     return createFallbackRouter(envCheck.missing);
