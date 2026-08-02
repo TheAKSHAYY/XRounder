@@ -86,7 +86,7 @@ function FallbackShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function createFallbackRouter(missing: string[]) {
+function createFallbackRouter(missing: string[]): ReturnType<typeof createRouter> {
   const queryClient = new QueryClient();
   const rootRoute = createRootRoute({
     component: () => <ConfigMissing missing={missing} />,
@@ -115,7 +115,7 @@ function createFallbackRouter(missing: string[]) {
   });
 }
 
-export const getRouter = () => {
+export const getRouter = (): ReturnType<typeof createRouter> => {
   const envCheck = checkSupabaseEnv();
   if (!envCheck.ok) {
     return createFallbackRouter(envCheck.missing);
