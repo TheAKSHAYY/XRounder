@@ -451,17 +451,34 @@
     border-color: var(--color-border);
   }
 
+  /* P0: kill the mobile horizontal wobble globally. Any element that breaks
+     out of the viewport is clipped here instead of page-by-page patches. */
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  iframe {
+    max-width: 100%;
   }
 
   h1,
@@ -474,10 +491,91 @@
     letter-spacing: -0.01em;
   }
 
+  /* Visible focus state on every interactive element (a11y pass). */
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
   ::selection {
     background-color: oklch(0.78 0.16 60 / 0.3);
   }
 }
+
+/*
+ * ── Type scale ────────────────────────────────────────────────────────────
+ * Use these instead of ad-hoc `text-3xl sm:text-[2.25rem]` one-offs.
+ *   .text-h1  page title (one per page)
+ *   .text-h2  section title
+ *   .text-h3  card / subsection title
+ *   .text-h4  label-weight heading
+ *   .text-eyebrow  uppercase kicker above a heading
+ */
+@utility text-h1 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.75rem);
+}
+
+@utility text-h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  font-size: clamp(1.375rem, 1.2rem + 0.9vw, 1.875rem);
+}
+
+@utility text-h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  font-size: clamp(1.075rem, 1rem + 0.4vw, 1.25rem);
+}
+
+@utility text-h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.35;
+  font-size: 1rem;
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/*
+ * ── Radius per surface type ───────────────────────────────────────────────
+ * cards / tiles / panels ....... rounded-lg   (var(--radius))
+ * inputs, inner surfaces ....... rounded-md
+ * modals, sheets, drawers ...... rounded-xl
+ * pills, chips, buttons, avatar  rounded-full
+ * Do not introduce rounded-2xl / rounded-3xl on new surfaces.
+ */
+
+/* Safe area for the mobile bottom tab bar. */
+@utility pb-mobile-nav {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  @media (width >= 48rem) {
+    padding-bottom: 0;
+  }
+}
+
 
 @keyframes marquee {
   from { transform: translateX(0); }
