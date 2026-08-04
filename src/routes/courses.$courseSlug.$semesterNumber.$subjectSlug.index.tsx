@@ -260,108 +260,98 @@ function SubjectDetail() {
     <div className="min-h-screen bg-background">
       <PublicHeader />
       <main className="mx-auto max-w-5xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
-        <Link
-          to="/courses/$courseSlug/$semesterNumber"
-          params={{ courseSlug, semesterNumber }}
-          className="inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          {subjectQuery.data?.sem.title ?? "Semester"}
-        </Link>
+        <Breadcrumbs
+          items={[
+            { label: "Courses", to: "/courses" },
+            {
+              label: subjectQuery.data?.course.title ?? "Course",
+              to: "/courses/$courseSlug",
+              params: { courseSlug },
+            },
+            {
+              label: subjectQuery.data?.sem.title ?? `Semester ${semesterNumber}`,
+              to: "/courses/$courseSlug/$semesterNumber",
+              params: { courseSlug, semesterNumber },
+            },
+            { label: subjectQuery.data?.subject.title ?? "Subject" },
+          ]}
+        />
 
         {/* ─── Hero ─── */}
-        <section className="mt-6 rounded-3xl border border-border bg-surface p-6 sm:p-10">
-          {loadingCore ? (
-            <div className="space-y-4">
-              <Skeleton className="h-4 w-40" />
-              <Skeleton className="h-10 w-72" />
-              <Skeleton className="h-4 w-96 max-w-full" />
-              <Skeleton className="h-11 w-48" />
-            </div>
-          ) : subjectQuery.data ? (
-            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-              <div className="min-w-0">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  {subjectQuery.data.subject.code}
-                  {subjectQuery.data.subject.credits != null && (
-                    <span className="ml-2 text-muted-foreground/70">
-                      · {subjectQuery.data.subject.credits} credits
-                    </span>
-                  )}
-                </p>
-                <h1 className="mt-3 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.5rem]">
-                  {subjectQuery.data.subject.title}
-                </h1>
-                {subjectQuery.data.subject.description && (
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    {subjectQuery.data.subject.description}
-                  </p>
+        <StudentHero
+          className="mt-5"
+          loading={loadingCore}
+          eyebrow={
+            subjectQuery.data ? (
+              <>
+                {subjectQuery.data.subject.code}
+                {subjectQuery.data.subject.credits != null && (
+                  <span className="ml-2 text-muted-foreground/70">
+                    · {subjectQuery.data.subject.credits} credits
+                  </span>
                 )}
-
-                {overall.total > 0 && (
-                  <div className="mt-6 max-w-md">
-                    <ProgressBar
-                      value={user ? overall.pct : 0}
-                      label={`${subjectQuery.data.subject.title} progress`}
-                    />
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-medium text-muted-foreground">
-                      <span>
-                        {user
-                          ? overall.completed === overall.total
-                            ? `All ${overall.total} units completed`
-                            : `You've completed ${overall.completed} of ${overall.total} units.`
-                          : `${overall.total} units in this subject. Sign in to track your progress.`}
-                      </span>
-                      {user && (
-                        <span className="tabular-nums text-foreground">{overall.pct}%</span>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {overall.total > 0 && overall.resume && (
-                <div className="md:pl-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="h-12 w-full gap-2 rounded-xl px-6 text-sm font-semibold shadow-sm sm:w-auto"
-                  >
-                    <Link
-                      to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                      params={{
-                        courseSlug,
-                        semesterNumber,
-                        subjectSlug,
-                        unitNumber: String(overall.resume.unit.number),
-                      }}
-                    >
-                      <span className="truncate">{heroCtaLabel}</span>
-                      <ArrowRight className="h-4 w-4 shrink-0" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
-            </div>
-          ) : null}
-        </section>
+              </>
+            ) : undefined
+          }
+          title={subjectQuery.data?.subject.title ?? "Subject"}
+          description={subjectQuery.data?.subject.description ?? undefined}
+          progress={
+            overall.total > 0
+              ? {
+                  value: user ? overall.pct : 0,
+                  label: `${subjectQuery.data?.subject.title ?? "Subject"} progress`,
+                  caption: user
+                    ? overall.completed === overall.total
+                      ? `All ${overall.total} units completed`
+                      : `You've completed ${overall.completed} of ${overall.total} units.`
+                    : `${overall.total} units in this subject. Sign in to track your progress.`,
+                }
+              : undefined
+          }
+          action={
+            overall.total > 0 && overall.resume ? (
+              <Button
+                asChild
+                size="lg"
+                className="h-12 w-full gap-2 rounded-full px-6 text-sm font-semibold shadow-sm sm:w-auto"
+              >
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                  params={{
+                    courseSlug,
+                    semesterNumber,
+                    subjectSlug,
+                    unitNumber: String(overall.resume.unit.number),
+                  }}
+                >
+                  <span className="truncate">{heroCtaLabel}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </Button>
+            ) : undefined
+          }
+        />
 
         {/* ─── Quick Stats ─── */}
         {subjectQuery.data && overall.total > 0 && (
           <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Units"
               value={user ? `${overall.completed} / ${overall.total}` : `${overall.total} total`}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Study materials"
-              value={String(subjectQuery.data.subjectContent.total)}
+              value={subjectQuery.data.subjectContent.total}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Past papers"
-              value={String(subjectQuery.data.papers.length)}
+              value={subjectQuery.data.papers.length}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Last studied"
               value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
             />
@@ -371,14 +361,15 @@ function SubjectDetail() {
         {/* ─── Content mix ─── */}
         {subjectQuery.data && subjectQuery.data.subjectContent.total > 0 && (
           <section className="mt-4 flex flex-wrap gap-2">
-            <ContentPill icon={FileText} label="Notes" count={subjectQuery.data.subjectContent.note} />
-            <ContentPill icon={FileType} label="PDFs" count={subjectQuery.data.subjectContent.pdf} />
-            <ContentPill icon={Presentation} label="Slides" count={subjectQuery.data.subjectContent.ppt} />
-            <ContentPill icon={Video} label="Videos" count={subjectQuery.data.subjectContent.video} />
-            <ContentPill icon={ListChecks} label="Assignments" count={subjectQuery.data.subjectContent.assignment} />
-            <ContentPill icon={Link2} label="Links" count={subjectQuery.data.subjectContent.link} />
+            <StatChip variant="chip" icon={FileText} label="Notes" value={subjectQuery.data.subjectContent.note} />
+            <StatChip variant="chip" icon={FileType} label="PDFs" value={subjectQuery.data.subjectContent.pdf} />
+            <StatChip variant="chip" icon={Presentation} label="Slides" value={subjectQuery.data.subjectContent.ppt} />
+            <StatChip variant="chip" icon={Video} label="Videos" value={subjectQuery.data.subjectContent.video} />
+            <StatChip variant="chip" icon={ListChecks} label="Assignments" value={subjectQuery.data.subjectContent.assignment} />
+            <StatChip variant="chip" icon={Link2} label="Links" value={subjectQuery.data.subjectContent.link} />
           </section>
         )}
+
 
         {/* ─── Learning Path ─── */}
         <section className="mt-14">
