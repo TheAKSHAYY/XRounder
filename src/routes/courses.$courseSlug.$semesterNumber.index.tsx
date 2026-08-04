@@ -1,14 +1,18 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, ArrowRight, BookOpen, Check, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Compass } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { StudentHero } from "@/components/student/student-hero";
 import { PublicHeader } from "./courses.index";
+
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   head: () => ({ meta: [{ title: "Semester · BCA Gurukul" }] }),
