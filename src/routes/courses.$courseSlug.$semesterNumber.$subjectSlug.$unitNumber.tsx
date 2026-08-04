@@ -18,6 +18,7 @@ import {
   Timer,
 } from "lucide-react";
 
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
@@ -416,7 +417,7 @@ function UnitDetail() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                 Unit {unit.number}
               </p>
-              <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="mt-2 text-h1 text-foreground">
                 {unit.title}
               </h2>
               {unit.summary && (
@@ -485,7 +486,7 @@ function UnitDetail() {
             {/* Completion + Quiz zone */}
             {notes.length > 0 && (
               <section className="mt-14 space-y-4">
-                <div className="rounded-3xl border border-border bg-surface p-6 sm:p-8">
+                <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <h3 className="font-display text-lg font-semibold text-foreground">
@@ -523,7 +524,7 @@ function UnitDetail() {
                 </div>
 
                 {primaryQuiz && (
-                  <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/[0.04] p-6 sm:p-8">
+                  <div className="rounded-xl border border-dashed border-primary/40 bg-primary/[0.04] p-6 sm:p-8">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-start gap-3">
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
