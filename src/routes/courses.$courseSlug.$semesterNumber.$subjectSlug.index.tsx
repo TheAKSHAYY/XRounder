@@ -737,28 +737,18 @@ function EmptyUnits({
   semesterNumber: string;
 }) {
   return (
-    <div className="mt-6 rounded-3xl border border-dashed border-border bg-surface px-6 py-14 text-center">
-      <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
-        <Sparkles className="h-5 w-5" aria-hidden />
-      </span>
-      <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-        Units are on their way
-      </h3>
-      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-        A senior is curating structured, exam-ready units for this subject. As soon as they're
-        published, they'll appear here.
-      </p>
-      <div className="mt-6">
-        <Button asChild variant="outline" size="sm" className="rounded-xl">
-          <Link
-            to="/courses/$courseSlug/$semesterNumber"
-            params={{ courseSlug, semesterNumber }}
-          >
-            <BookOpen className="mr-2 h-4 w-4" />
-            Back to semester
-          </Link>
-        </Button>
-      </div>
-    </div>
+    <EmptyState
+      className="mt-6"
+      icon={Sparkles}
+      title="Units are on their way"
+      description="A senior is curating structured, exam-ready units for this subject. As soon as they're published, they'll appear here."
+      primaryAction={{
+        label: "Back to semester",
+        to: "/courses/$courseSlug/$semesterNumber",
+        params: { courseSlug, semesterNumber },
+        icon: BookOpen,
+      }}
+    />
   );
 }
+
