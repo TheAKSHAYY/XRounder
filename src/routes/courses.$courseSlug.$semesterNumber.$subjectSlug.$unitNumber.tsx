@@ -389,7 +389,26 @@ function UnitDetail() {
 
       {/* ─── Body ─── */}
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-10">
+        <Breadcrumbs
+          className="mb-6"
+          items={[
+            { label: "Courses", to: "/courses" },
+            { label: "Course", to: "/courses/$courseSlug", params: { courseSlug } },
+            {
+              label: `Semester ${semesterNumber}`,
+              to: "/courses/$courseSlug/$semesterNumber",
+              params: { courseSlug, semesterNumber },
+            },
+            {
+              label: subject.title,
+              to: "/courses/$courseSlug/$semesterNumber/$subjectSlug",
+              params: { courseSlug, semesterNumber, subjectSlug },
+            },
+            { label: `Unit ${unit.number}` },
+          ]}
+        />
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
+
           {/* Article column */}
           <article ref={articleRef} className="min-w-0">
             {/* Title block */}
