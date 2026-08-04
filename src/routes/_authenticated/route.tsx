@@ -2,6 +2,7 @@ import { createFileRoute, Outlet, redirect, useRouterState } from "@tanstack/rea
 
 import { supabase } from "@/integrations/supabase/client";
 import { AppNavbar } from "@/components/app-navbar";
+import { MobileTabBar } from "@/components/student/mobile-tab-bar";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -24,9 +25,13 @@ function AuthenticatedLayout() {
   // Admin shell renders its own chrome.
   const hideChrome = pathname.startsWith("/admin");
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       {!hideChrome && <AppNavbar />}
-      <Outlet />
+      <div className={hideChrome ? undefined : "pb-mobile-nav"}>
+        <Outlet />
+      </div>
+      {!hideChrome && <MobileTabBar />}
     </div>
   );
 }
+
