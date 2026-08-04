@@ -374,7 +374,7 @@ function SubjectDetail() {
         {/* ─── Learning Path ─── */}
         <section className="mt-14">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+            <h2 className="text-h2 text-foreground">
               Learning path
             </h2>
             {overall.total > 0 && user && (
@@ -386,9 +386,9 @@ function SubjectDetail() {
 
           {loadingCore ? (
             <div className="mt-6 space-y-4">
-              <Skeleton className="h-28 rounded-2xl" />
-              <Skeleton className="h-28 rounded-2xl" />
-              <Skeleton className="h-28 rounded-2xl" />
+              <Skeleton className="h-28 rounded-lg" />
+              <Skeleton className="h-28 rounded-lg" />
+              <Skeleton className="h-28 rounded-lg" />
             </div>
           ) : unitStats.length === 0 ? (
             <EmptyUnits courseSlug={courseSlug} semesterNumber={semesterNumber} />
@@ -428,7 +428,7 @@ function SubjectDetail() {
         {subjectQuery.data && (
           <section className="mt-14">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              <h2 className="text-h2 text-foreground">
                 Resources
               </h2>
               {subjectQuery.data.papers.length > 0 && (
@@ -440,7 +440,7 @@ function SubjectDetail() {
 
             <div className="mt-6 space-y-3">
               {subjectQuery.data.papers.length === 0 ? (
-                <p className="rounded-2xl border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
+                <p className="rounded-lg border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
                   No past papers archived yet for this subject.
                 </p>
               ) : (
@@ -449,7 +449,7 @@ function SubjectDetail() {
                     key={p.id}
                     to="/papers/$paperId"
                     params={{ paperId: p.id }}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="group flex items-center justify-between gap-4 rounded-lg border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     <div className="flex min-w-0 items-start gap-4">
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -521,7 +521,7 @@ function UnitCard({
       aria-label={`Unit ${unit.number}: ${unit.title} — ${ctaLabel}`}
       aria-current={isResume ? "step" : undefined}
       className={cn(
-        "group relative flex items-start gap-4 rounded-2xl border bg-surface p-5 pr-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
+        "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
         isResume ? "border-primary/60 ring-1 ring-primary/30" : "border-border",
       )}
     >
@@ -563,22 +563,22 @@ function UnitCard({
         {stats.content.total > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {stats.content.note > 0 && (
-              <MiniChip icon={FileText} count={stats.content.note} label="notes" />
+              <StatChip variant="chip" icon={FileText} value={stats.content.note} label="notes" />
             )}
             {stats.content.pdf > 0 && (
-              <MiniChip icon={FileType} count={stats.content.pdf} label="PDFs" />
+              <StatChip variant="chip" icon={FileType} value={stats.content.pdf} label="PDFs" />
             )}
             {stats.content.ppt > 0 && (
-              <MiniChip icon={Presentation} count={stats.content.ppt} label="slides" />
+              <StatChip variant="chip" icon={Presentation} value={stats.content.ppt} label="slides" />
             )}
             {stats.content.video > 0 && (
-              <MiniChip icon={Video} count={stats.content.video} label="videos" />
+              <StatChip variant="chip" icon={Video} value={stats.content.video} label="videos" />
             )}
             {stats.content.assignment > 0 && (
-              <MiniChip icon={ListChecks} count={stats.content.assignment} label="tasks" />
+              <StatChip variant="chip" icon={ListChecks} value={stats.content.assignment} label="tasks" />
             )}
             {stats.content.link > 0 && (
-              <MiniChip icon={Link2} count={stats.content.link} label="links" />
+              <StatChip variant="chip" icon={Link2} value={stats.content.link} label="links" />
             )}
           </div>
         )}
