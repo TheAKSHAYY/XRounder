@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
-  ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
@@ -22,8 +21,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { StatChip } from "@/components/ui/stat-chip";
+import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
 import { PublicHeader } from "./courses.index";
+
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
   head: () => ({ meta: [{ title: "Subject · BCA Gurukul" }] }),
