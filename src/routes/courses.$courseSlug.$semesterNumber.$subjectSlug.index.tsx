@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
-  ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
@@ -22,8 +21,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { StatChip } from "@/components/ui/stat-chip";
+import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
 import { PublicHeader } from "./courses.index";
+
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
   head: () => ({ meta: [{ title: "Subject · BCA Gurukul" }] }),
@@ -255,108 +260,98 @@ function SubjectDetail() {
     <div className="min-h-screen bg-background">
       <PublicHeader />
       <main className="mx-auto max-w-5xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
-        <Link
-          to="/courses/$courseSlug/$semesterNumber"
-          params={{ courseSlug, semesterNumber }}
-          className="inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          {subjectQuery.data?.sem.title ?? "Semester"}
-        </Link>
+        <Breadcrumbs
+          items={[
+            { label: "Courses", to: "/courses" },
+            {
+              label: subjectQuery.data?.course.title ?? "Course",
+              to: "/courses/$courseSlug",
+              params: { courseSlug },
+            },
+            {
+              label: subjectQuery.data?.sem.title ?? `Semester ${semesterNumber}`,
+              to: "/courses/$courseSlug/$semesterNumber",
+              params: { courseSlug, semesterNumber },
+            },
+            { label: subjectQuery.data?.subject.title ?? "Subject" },
+          ]}
+        />
 
         {/* ─── Hero ─── */}
-        <section className="mt-6 rounded-3xl border border-border bg-surface p-6 sm:p-10">
-          {loadingCore ? (
-            <div className="space-y-4">
-              <Skeleton className="h-4 w-40" />
-              <Skeleton className="h-10 w-72" />
-              <Skeleton className="h-4 w-96 max-w-full" />
-              <Skeleton className="h-11 w-48" />
-            </div>
-          ) : subjectQuery.data ? (
-            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-              <div className="min-w-0">
-                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                  {subjectQuery.data.subject.code}
-                  {subjectQuery.data.subject.credits != null && (
-                    <span className="ml-2 text-muted-foreground/70">
-                      · {subjectQuery.data.subject.credits} credits
-                    </span>
-                  )}
-                </p>
-                <h1 className="mt-3 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.5rem]">
-                  {subjectQuery.data.subject.title}
-                </h1>
-                {subjectQuery.data.subject.description && (
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                    {subjectQuery.data.subject.description}
-                  </p>
+        <StudentHero
+          className="mt-5"
+          loading={loadingCore}
+          eyebrow={
+            subjectQuery.data ? (
+              <>
+                {subjectQuery.data.subject.code}
+                {subjectQuery.data.subject.credits != null && (
+                  <span className="ml-2 text-muted-foreground/70">
+                    · {subjectQuery.data.subject.credits} credits
+                  </span>
                 )}
-
-                {overall.total > 0 && (
-                  <div className="mt-6 max-w-md">
-                    <ProgressBar
-                      value={user ? overall.pct : 0}
-                      label={`${subjectQuery.data.subject.title} progress`}
-                    />
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-medium text-muted-foreground">
-                      <span>
-                        {user
-                          ? overall.completed === overall.total
-                            ? `All ${overall.total} units completed`
-                            : `You've completed ${overall.completed} of ${overall.total} units.`
-                          : `${overall.total} units in this subject. Sign in to track your progress.`}
-                      </span>
-                      {user && (
-                        <span className="tabular-nums text-foreground">{overall.pct}%</span>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {overall.total > 0 && overall.resume && (
-                <div className="md:pl-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="h-12 w-full gap-2 rounded-xl px-6 text-sm font-semibold shadow-sm sm:w-auto"
-                  >
-                    <Link
-                      to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                      params={{
-                        courseSlug,
-                        semesterNumber,
-                        subjectSlug,
-                        unitNumber: String(overall.resume.unit.number),
-                      }}
-                    >
-                      <span className="truncate">{heroCtaLabel}</span>
-                      <ArrowRight className="h-4 w-4 shrink-0" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
-            </div>
-          ) : null}
-        </section>
+              </>
+            ) : undefined
+          }
+          title={subjectQuery.data?.subject.title ?? "Subject"}
+          description={subjectQuery.data?.subject.description ?? undefined}
+          progress={
+            overall.total > 0
+              ? {
+                  value: user ? overall.pct : 0,
+                  label: `${subjectQuery.data?.subject.title ?? "Subject"} progress`,
+                  caption: user
+                    ? overall.completed === overall.total
+                      ? `All ${overall.total} units completed`
+                      : `You've completed ${overall.completed} of ${overall.total} units.`
+                    : `${overall.total} units in this subject. Sign in to track your progress.`,
+                }
+              : undefined
+          }
+          action={
+            overall.total > 0 && overall.resume ? (
+              <Button
+                asChild
+                size="lg"
+                className="h-12 w-full gap-2 rounded-full px-6 text-sm font-semibold shadow-sm sm:w-auto"
+              >
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                  params={{
+                    courseSlug,
+                    semesterNumber,
+                    subjectSlug,
+                    unitNumber: String(overall.resume.unit.number),
+                  }}
+                >
+                  <span className="truncate">{heroCtaLabel}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </Button>
+            ) : undefined
+          }
+        />
 
         {/* ─── Quick Stats ─── */}
         {subjectQuery.data && overall.total > 0 && (
           <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Units"
               value={user ? `${overall.completed} / ${overall.total}` : `${overall.total} total`}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Study materials"
-              value={String(subjectQuery.data.subjectContent.total)}
+              value={subjectQuery.data.subjectContent.total}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Past papers"
-              value={String(subjectQuery.data.papers.length)}
+              value={subjectQuery.data.papers.length}
             />
-            <StatTile
+            <StatChip
+              variant="tile"
               label="Last studied"
               value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
             />
@@ -366,19 +361,20 @@ function SubjectDetail() {
         {/* ─── Content mix ─── */}
         {subjectQuery.data && subjectQuery.data.subjectContent.total > 0 && (
           <section className="mt-4 flex flex-wrap gap-2">
-            <ContentPill icon={FileText} label="Notes" count={subjectQuery.data.subjectContent.note} />
-            <ContentPill icon={FileType} label="PDFs" count={subjectQuery.data.subjectContent.pdf} />
-            <ContentPill icon={Presentation} label="Slides" count={subjectQuery.data.subjectContent.ppt} />
-            <ContentPill icon={Video} label="Videos" count={subjectQuery.data.subjectContent.video} />
-            <ContentPill icon={ListChecks} label="Assignments" count={subjectQuery.data.subjectContent.assignment} />
-            <ContentPill icon={Link2} label="Links" count={subjectQuery.data.subjectContent.link} />
+            <StatChip variant="chip" icon={FileText} label="Notes" value={subjectQuery.data.subjectContent.note} />
+            <StatChip variant="chip" icon={FileType} label="PDFs" value={subjectQuery.data.subjectContent.pdf} />
+            <StatChip variant="chip" icon={Presentation} label="Slides" value={subjectQuery.data.subjectContent.ppt} />
+            <StatChip variant="chip" icon={Video} label="Videos" value={subjectQuery.data.subjectContent.video} />
+            <StatChip variant="chip" icon={ListChecks} label="Assignments" value={subjectQuery.data.subjectContent.assignment} />
+            <StatChip variant="chip" icon={Link2} label="Links" value={subjectQuery.data.subjectContent.link} />
           </section>
         )}
+
 
         {/* ─── Learning Path ─── */}
         <section className="mt-14">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+            <h2 className="text-h2 text-foreground">
               Learning path
             </h2>
             {overall.total > 0 && user && (
@@ -390,9 +386,9 @@ function SubjectDetail() {
 
           {loadingCore ? (
             <div className="mt-6 space-y-4">
-              <Skeleton className="h-28 rounded-2xl" />
-              <Skeleton className="h-28 rounded-2xl" />
-              <Skeleton className="h-28 rounded-2xl" />
+              <Skeleton className="h-28 rounded-lg" />
+              <Skeleton className="h-28 rounded-lg" />
+              <Skeleton className="h-28 rounded-lg" />
             </div>
           ) : unitStats.length === 0 ? (
             <EmptyUnits courseSlug={courseSlug} semesterNumber={semesterNumber} />
@@ -432,7 +428,7 @@ function SubjectDetail() {
         {subjectQuery.data && (
           <section className="mt-14">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              <h2 className="text-h2 text-foreground">
                 Resources
               </h2>
               {subjectQuery.data.papers.length > 0 && (
@@ -444,7 +440,7 @@ function SubjectDetail() {
 
             <div className="mt-6 space-y-3">
               {subjectQuery.data.papers.length === 0 ? (
-                <p className="rounded-2xl border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
+                <p className="rounded-lg border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
                   No past papers archived yet for this subject.
                 </p>
               ) : (
@@ -453,7 +449,7 @@ function SubjectDetail() {
                     key={p.id}
                     to="/papers/$paperId"
                     params={{ paperId: p.id }}
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="group flex items-center justify-between gap-4 rounded-lg border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     <div className="flex min-w-0 items-start gap-4">
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -484,81 +480,6 @@ function SubjectDetail() {
 
 /* ─────────────── components ─────────────── */
 
-function ProgressBar({ value, label }: { value: number; label: string }) {
-  return (
-    <div
-      className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
-      role="progressbar"
-      aria-label={label}
-      aria-valuenow={value}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuetext={`${value} percent`}
-    >
-      <div
-        className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
-
-function StatTile({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-border bg-surface px-5 py-4">
-      <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-        {label}
-      </div>
-      <div className="mt-1 font-display text-lg font-semibold tabular-nums text-foreground">
-        {value}
-      </div>
-    </div>
-  );
-}
-
-function ContentPill({
-  icon: Icon,
-  label,
-  count,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  count: number;
-}) {
-  const empty = count === 0;
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium",
-        empty
-          ? "border-border bg-transparent text-muted-foreground/60"
-          : "border-primary/20 bg-primary/5 text-primary",
-      )}
-    >
-      <Icon className="h-3 w-3" aria-hidden />
-      <span className="tabular-nums">{count}</span>
-      <span>{label}</span>
-    </span>
-  );
-}
-
-function MiniChip({
-  icon: Icon,
-  count,
-  label,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  count: number;
-  label: string;
-}) {
-  return (
-    <span className="inline-flex items-center gap-1 rounded-md bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
-      <Icon className="h-2.5 w-2.5" aria-hidden />
-      <span className="tabular-nums text-foreground">{count}</span>
-      <span>{label}</span>
-    </span>
-  );
-}
 
 function UnitCard({
   stats,
@@ -600,7 +521,7 @@ function UnitCard({
       aria-label={`Unit ${unit.number}: ${unit.title} — ${ctaLabel}`}
       aria-current={isResume ? "step" : undefined}
       className={cn(
-        "group relative flex items-start gap-4 rounded-2xl border bg-surface p-5 pr-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
+        "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
         isResume ? "border-primary/60 ring-1 ring-primary/30" : "border-border",
       )}
     >
@@ -642,22 +563,22 @@ function UnitCard({
         {stats.content.total > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {stats.content.note > 0 && (
-              <MiniChip icon={FileText} count={stats.content.note} label="notes" />
+              <StatChip variant="chip" icon={FileText} value={stats.content.note} label="notes" />
             )}
             {stats.content.pdf > 0 && (
-              <MiniChip icon={FileType} count={stats.content.pdf} label="PDFs" />
+              <StatChip variant="chip" icon={FileType} value={stats.content.pdf} label="PDFs" />
             )}
             {stats.content.ppt > 0 && (
-              <MiniChip icon={Presentation} count={stats.content.ppt} label="slides" />
+              <StatChip variant="chip" icon={Presentation} value={stats.content.ppt} label="slides" />
             )}
             {stats.content.video > 0 && (
-              <MiniChip icon={Video} count={stats.content.video} label="videos" />
+              <StatChip variant="chip" icon={Video} value={stats.content.video} label="videos" />
             )}
             {stats.content.assignment > 0 && (
-              <MiniChip icon={ListChecks} count={stats.content.assignment} label="tasks" />
+              <StatChip variant="chip" icon={ListChecks} value={stats.content.assignment} label="tasks" />
             )}
             {stats.content.link > 0 && (
-              <MiniChip icon={Link2} count={stats.content.link} label="links" />
+              <StatChip variant="chip" icon={Link2} value={stats.content.link} label="links" />
             )}
           </div>
         )}
@@ -741,28 +662,18 @@ function EmptyUnits({
   semesterNumber: string;
 }) {
   return (
-    <div className="mt-6 rounded-3xl border border-dashed border-border bg-surface px-6 py-14 text-center">
-      <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
-        <Sparkles className="h-5 w-5" aria-hidden />
-      </span>
-      <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-        Units are on their way
-      </h3>
-      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-        A senior is curating structured, exam-ready units for this subject. As soon as they're
-        published, they'll appear here.
-      </p>
-      <div className="mt-6">
-        <Button asChild variant="outline" size="sm" className="rounded-xl">
-          <Link
-            to="/courses/$courseSlug/$semesterNumber"
-            params={{ courseSlug, semesterNumber }}
-          >
-            <BookOpen className="mr-2 h-4 w-4" />
-            Back to semester
-          </Link>
-        </Button>
-      </div>
-    </div>
+    <EmptyState
+      className="mt-6"
+      icon={Sparkles}
+      title="Units are on their way"
+      description="A senior is curating structured, exam-ready units for this subject. As soon as they're published, they'll appear here."
+      primaryAction={{
+        label: "Back to semester",
+        to: "/courses/$courseSlug/$semesterNumber",
+        params: { courseSlug, semesterNumber },
+        icon: BookOpen,
+      }}
+    />
   );
 }
+

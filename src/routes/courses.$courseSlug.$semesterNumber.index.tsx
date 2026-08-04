@@ -1,14 +1,18 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ArrowLeft, ArrowRight, BookOpen, Check, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Compass } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ProgressBar } from "@/components/ui/progress-bar";
+import { StudentHero } from "@/components/student/student-hero";
 import { PublicHeader } from "./courses.index";
+
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   head: () => ({ meta: [{ title: "Semester · BCA Gurukul" }] }),
@@ -267,89 +271,69 @@ function SemesterDetail() {
     <div className="min-h-screen bg-background">
       <PublicHeader />
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
-        <Link
-          to="/courses/$courseSlug"
-          params={{ courseSlug }}
-          className="inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          {semQuery.data?.course.title ?? "Course"}
-        </Link>
+        <Breadcrumbs
+          items={[
+            { label: "Courses", to: "/courses" },
+            {
+              label: semQuery.data?.course.title ?? "Course",
+              to: "/courses/$courseSlug",
+              params: { courseSlug },
+            },
+            { label: `Semester ${semesterNumber}` },
+          ]}
+        />
 
         {/* ─── Hero ─── */}
-        <section className="mt-6 rounded-3xl border border-border bg-surface p-6 sm:p-10">
-          {loadingCore ? (
-            <div className="space-y-4">
-              <Skeleton className="h-4 w-40" />
-              <Skeleton className="h-10 w-72" />
-              <Skeleton className="h-4 w-96 max-w-full" />
-              <Skeleton className="h-11 w-48" />
-            </div>
-          ) : (
-            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-              <div className="min-w-0">
-                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                  {semQuery.data?.course.title} · Semester {semQuery.data?.sem.number}
-                </p>
-                <h1 className="mt-3 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.5rem]">
-                  {firstName ? (
-                    <>
-                      Welcome back, <span className="text-primary">{firstName}</span>.
-                    </>
-                  ) : (
-                    <>Your learning workspace.</>
-                  )}
-                </h1>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                  {heroSubtitle}
-                </p>
-
-                {user && stats.length > 0 && (
-                  <div className="mt-6 max-w-sm">
-                    <ProgressBar
-                      value={overall.avgPct}
-                      label="Semester progress"
-                      tone={overall.completedSubjects === stats.length ? "done" : "active"}
-                    />
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-medium text-muted-foreground">
-                      <span>Overall progress</span>
-                      <span className="tabular-nums text-foreground">{overall.avgPct}%</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {heroCta && (
-                <div className="md:pl-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="h-12 w-full gap-2 rounded-xl px-6 text-sm font-semibold shadow-sm sm:w-auto"
-                  >
-                    <Link
-                      to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
-                      params={{
-                        courseSlug,
-                        semesterNumber,
-                        subjectSlug: heroCta.subjectSlug,
-                      }}
-                    >
-                      <span className="truncate">{heroCta.label}</span>
-                      <ArrowRight className="h-4 w-4 shrink-0" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
-        </section>
+        <StudentHero
+          className="mt-5"
+          loading={loadingCore}
+          eyebrow={`${semQuery.data?.course.title ?? ""} · Semester ${semQuery.data?.sem.number ?? semesterNumber}`}
+          title={
+            firstName ? (
+              <>
+                Welcome back, <span className="text-primary">{firstName}</span>.
+              </>
+            ) : (
+              <>Your learning workspace.</>
+            )
+          }
+          description={heroSubtitle}
+          progress={
+            user && stats.length > 0
+              ? {
+                  value: overall.avgPct,
+                  label: "Semester progress",
+                  caption: "Overall progress",
+                }
+              : undefined
+          }
+          action={
+            heroCta ? (
+              <Button
+                asChild
+                size="lg"
+                className="h-12 w-full gap-2 rounded-full px-6 text-sm font-semibold shadow-sm sm:w-auto"
+              >
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                  params={{
+                    courseSlug,
+                    semesterNumber,
+                    subjectSlug: heroCta.subjectSlug,
+                  }}
+                >
+                  <span className="truncate">{heroCta.label}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </Button>
+            ) : undefined
+          }
+        />
 
         {/* ─── Subjects ─── */}
         <section className="mt-14">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Subjects
-            </h2>
+            <h2 className="text-h2 text-foreground">Subjects</h2>
             {stats.length > 0 && user && (
               <span className="text-xs font-medium tabular-nums text-muted-foreground">
                 {overall.completedSubjects}/{stats.length} completed
@@ -359,12 +343,23 @@ function SemesterDetail() {
 
           {loadingCore ? (
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <Skeleton className="h-48 rounded-2xl" />
-              <Skeleton className="h-48 rounded-2xl" />
-              <Skeleton className="h-48 rounded-2xl" />
+              <Skeleton className="h-48 rounded-lg" />
+              <Skeleton className="h-48 rounded-lg" />
+              <Skeleton className="h-48 rounded-lg" />
             </div>
           ) : stats.length === 0 ? (
-            <EmptySubjects courseSlug={courseSlug} />
+            <EmptyState
+              className="mt-6"
+              icon={BookOpen}
+              title="Subjects are on their way"
+              description="Nothing has been published for this semester yet. Explore other semesters in this course while you wait."
+              primaryAction={{
+                label: "Browse semesters",
+                to: "/courses/$courseSlug",
+                params: { courseSlug },
+                icon: Compass,
+              }}
+            />
           ) : (
             <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {stats.map((s) => (
@@ -392,35 +387,7 @@ function SemesterDetail() {
   );
 }
 
-function ProgressBar({
-  value,
-  label,
-  tone = "active",
-}: {
-  value: number;
-  label: string;
-  tone?: "active" | "done";
-}) {
-  return (
-    <div
-      className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
-      role="progressbar"
-      aria-label={label}
-      aria-valuenow={value}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuetext={`${value} percent`}
-    >
-      <div
-        className={cn(
-          "h-full rounded-full transition-[width] duration-500 ease-out",
-          tone === "done" ? "bg-primary" : "bg-primary/75",
-        )}
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
+
 
 function SubjectCard({
   stats,
@@ -452,7 +419,7 @@ function SubjectCard({
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="group flex h-full w-full flex-col rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group flex h-full w-full flex-col rounded-lg border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
@@ -468,7 +435,7 @@ function SubjectCard({
       </div>
 
       {/* Title */}
-      <h3 className="mt-3 font-display text-lg font-semibold leading-snug tracking-tight text-foreground line-clamp-2">
+      <h3 className="mt-3 text-h3 text-foreground line-clamp-2">
         {subject.title}
       </h3>
 
@@ -510,26 +477,4 @@ function SubjectCard({
   );
 }
 
-function EmptySubjects({ courseSlug }: { courseSlug: string }) {
-  return (
-    <div className="mt-6 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface px-6 py-20 text-center">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/10">
-        <BookOpen className="h-6 w-6" aria-hidden />
-      </div>
-      <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-foreground">
-        Subjects are on their way
-      </h3>
-      <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Nothing has been published for this semester yet. Explore other semesters in this
-        course while you wait.
-      </p>
-      <Button asChild variant="outline" className="mt-6 h-11 gap-2 rounded-xl">
-        <Link to="/courses/$courseSlug" params={{ courseSlug }}>
-          <Compass className="h-4 w-4" aria-hidden />
-          Browse semesters
-        </Link>
-      </Button>
-    </div>
-  );
-}
 

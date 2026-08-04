@@ -18,6 +18,7 @@ import {
   Timer,
 } from "lucide-react";
 
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
@@ -389,7 +390,26 @@ function UnitDetail() {
 
       {/* ─── Body ─── */}
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-10">
+        <Breadcrumbs
+          className="mb-6"
+          items={[
+            { label: "Courses", to: "/courses" },
+            { label: "Course", to: "/courses/$courseSlug", params: { courseSlug } },
+            {
+              label: `Semester ${semesterNumber}`,
+              to: "/courses/$courseSlug/$semesterNumber",
+              params: { courseSlug, semesterNumber },
+            },
+            {
+              label: subject.title,
+              to: "/courses/$courseSlug/$semesterNumber/$subjectSlug",
+              params: { courseSlug, semesterNumber, subjectSlug },
+            },
+            { label: `Unit ${unit.number}` },
+          ]}
+        />
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
+
           {/* Article column */}
           <article ref={articleRef} className="min-w-0">
             {/* Title block */}
@@ -397,7 +417,7 @@ function UnitDetail() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                 Unit {unit.number}
               </p>
-              <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="mt-2 text-h1 text-foreground">
                 {unit.title}
               </h2>
               {unit.summary && (
@@ -466,7 +486,7 @@ function UnitDetail() {
             {/* Completion + Quiz zone */}
             {notes.length > 0 && (
               <section className="mt-14 space-y-4">
-                <div className="rounded-3xl border border-border bg-surface p-6 sm:p-8">
+                <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <h3 className="font-display text-lg font-semibold text-foreground">
@@ -504,7 +524,7 @@ function UnitDetail() {
                 </div>
 
                 {primaryQuiz && (
-                  <div className="rounded-3xl border border-dashed border-primary/40 bg-primary/[0.04] p-6 sm:p-8">
+                  <div className="rounded-xl border border-dashed border-primary/40 bg-primary/[0.04] p-6 sm:p-8">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-start gap-3">
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">

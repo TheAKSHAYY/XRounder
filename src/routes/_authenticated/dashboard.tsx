@@ -15,7 +15,6 @@ import {
   Trophy,
 } from "lucide-react";
 
-import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -495,13 +494,13 @@ function ContinueHero({
   courseSlug: string | undefined;
 }) {
   if (loading) {
-    return <Skeleton className="h-56 rounded-3xl" />;
+    return <Skeleton className="h-56 rounded-xl" />;
   }
 
   // In-progress state — the primary case
   if (pickUp) {
     return (
-      <article className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
+      <article className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl"
@@ -561,7 +560,7 @@ function ContinueHero({
   // Personalized "start your semester" state
   if (semester && courseSlug) {
     return (
-      <article className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
+      <article className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl"
@@ -595,7 +594,7 @@ function ContinueHero({
 
   // First-time / no personalization
   return (
-    <article className="rounded-3xl border border-border bg-surface p-7 sm:p-10">
+    <article className="rounded-xl border border-border bg-surface p-7 sm:p-10">
       <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-primary">
         <Sparkles className="h-3 w-3" /> Let's set you up
       </span>
