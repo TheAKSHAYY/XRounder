@@ -271,89 +271,69 @@ function SemesterDetail() {
     <div className="min-h-screen bg-background">
       <PublicHeader />
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
-        <Link
-          to="/courses/$courseSlug"
-          params={{ courseSlug }}
-          className="inline-flex items-center gap-1.5 rounded-md text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          {semQuery.data?.course.title ?? "Course"}
-        </Link>
+        <Breadcrumbs
+          items={[
+            { label: "Courses", to: "/courses" },
+            {
+              label: semQuery.data?.course.title ?? "Course",
+              to: "/courses/$courseSlug",
+              params: { courseSlug },
+            },
+            { label: `Semester ${semesterNumber}` },
+          ]}
+        />
 
         {/* ─── Hero ─── */}
-        <section className="mt-6 rounded-3xl border border-border bg-surface p-6 sm:p-10">
-          {loadingCore ? (
-            <div className="space-y-4">
-              <Skeleton className="h-4 w-40" />
-              <Skeleton className="h-10 w-72" />
-              <Skeleton className="h-4 w-96 max-w-full" />
-              <Skeleton className="h-11 w-48" />
-            </div>
-          ) : (
-            <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-              <div className="min-w-0">
-                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                  {semQuery.data?.course.title} · Semester {semQuery.data?.sem.number}
-                </p>
-                <h1 className="mt-3 font-display text-3xl font-semibold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.5rem]">
-                  {firstName ? (
-                    <>
-                      Welcome back, <span className="text-primary">{firstName}</span>.
-                    </>
-                  ) : (
-                    <>Your learning workspace.</>
-                  )}
-                </h1>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[15px]">
-                  {heroSubtitle}
-                </p>
-
-                {user && stats.length > 0 && (
-                  <div className="mt-6 max-w-sm">
-                    <ProgressBar
-                      value={overall.avgPct}
-                      label="Semester progress"
-                      tone={overall.completedSubjects === stats.length ? "done" : "active"}
-                    />
-                    <div className="mt-2 flex items-center justify-between text-[11px] font-medium text-muted-foreground">
-                      <span>Overall progress</span>
-                      <span className="tabular-nums text-foreground">{overall.avgPct}%</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {heroCta && (
-                <div className="md:pl-6">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="h-12 w-full gap-2 rounded-xl px-6 text-sm font-semibold shadow-sm sm:w-auto"
-                  >
-                    <Link
-                      to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
-                      params={{
-                        courseSlug,
-                        semesterNumber,
-                        subjectSlug: heroCta.subjectSlug,
-                      }}
-                    >
-                      <span className="truncate">{heroCta.label}</span>
-                      <ArrowRight className="h-4 w-4 shrink-0" />
-                    </Link>
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
-        </section>
+        <StudentHero
+          className="mt-5"
+          loading={loadingCore}
+          eyebrow={`${semQuery.data?.course.title ?? ""} · Semester ${semQuery.data?.sem.number ?? semesterNumber}`}
+          title={
+            firstName ? (
+              <>
+                Welcome back, <span className="text-primary">{firstName}</span>.
+              </>
+            ) : (
+              <>Your learning workspace.</>
+            )
+          }
+          description={heroSubtitle}
+          progress={
+            user && stats.length > 0
+              ? {
+                  value: overall.avgPct,
+                  label: "Semester progress",
+                  caption: "Overall progress",
+                }
+              : undefined
+          }
+          action={
+            heroCta ? (
+              <Button
+                asChild
+                size="lg"
+                className="h-12 w-full gap-2 rounded-full px-6 text-sm font-semibold shadow-sm sm:w-auto"
+              >
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                  params={{
+                    courseSlug,
+                    semesterNumber,
+                    subjectSlug: heroCta.subjectSlug,
+                  }}
+                >
+                  <span className="truncate">{heroCta.label}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </Button>
+            ) : undefined
+          }
+        />
 
         {/* ─── Subjects ─── */}
         <section className="mt-14">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Subjects
-            </h2>
+            <h2 className="text-h2 text-foreground">Subjects</h2>
             {stats.length > 0 && user && (
               <span className="text-xs font-medium tabular-nums text-muted-foreground">
                 {overall.completedSubjects}/{stats.length} completed
@@ -363,12 +343,23 @@ function SemesterDetail() {
 
           {loadingCore ? (
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <Skeleton className="h-48 rounded-2xl" />
-              <Skeleton className="h-48 rounded-2xl" />
-              <Skeleton className="h-48 rounded-2xl" />
+              <Skeleton className="h-48 rounded-lg" />
+              <Skeleton className="h-48 rounded-lg" />
+              <Skeleton className="h-48 rounded-lg" />
             </div>
           ) : stats.length === 0 ? (
-            <EmptySubjects courseSlug={courseSlug} />
+            <EmptyState
+              className="mt-6"
+              icon={BookOpen}
+              title="Subjects are on their way"
+              description="Nothing has been published for this semester yet. Explore other semesters in this course while you wait."
+              primaryAction={{
+                label: "Browse semesters",
+                to: "/courses/$courseSlug",
+                params: { courseSlug },
+                icon: Compass,
+              }}
+            />
           ) : (
             <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {stats.map((s) => (
@@ -396,35 +387,7 @@ function SemesterDetail() {
   );
 }
 
-function ProgressBar({
-  value,
-  label,
-  tone = "active",
-}: {
-  value: number;
-  label: string;
-  tone?: "active" | "done";
-}) {
-  return (
-    <div
-      className="h-1.5 w-full overflow-hidden rounded-full bg-muted"
-      role="progressbar"
-      aria-label={label}
-      aria-valuenow={value}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuetext={`${value} percent`}
-    >
-      <div
-        className={cn(
-          "h-full rounded-full transition-[width] duration-500 ease-out",
-          tone === "done" ? "bg-primary" : "bg-primary/75",
-        )}
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  );
-}
+
 
 function SubjectCard({
   stats,
