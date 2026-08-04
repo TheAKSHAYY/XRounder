@@ -477,26 +477,4 @@ function SubjectCard({
   );
 }
 
-function EmptySubjects({ courseSlug }: { courseSlug: string }) {
-  return (
-    <div className="mt-6 flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-surface px-6 py-20 text-center">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/10">
-        <BookOpen className="h-6 w-6" aria-hidden />
-      </div>
-      <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-foreground">
-        Subjects are on their way
-      </h3>
-      <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Nothing has been published for this semester yet. Explore other semesters in this
-        course while you wait.
-      </p>
-      <Button asChild variant="outline" className="mt-6 h-11 gap-2 rounded-xl">
-        <Link to="/courses/$courseSlug" params={{ courseSlug }}>
-          <Compass className="h-4 w-4" aria-hidden />
-          Browse semesters
-        </Link>
-      </Button>
-    </div>
-  );
-}
 
