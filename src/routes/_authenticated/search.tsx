@@ -6,6 +6,8 @@ import { BookOpen, FileText, GraduationCap, Layers, ListChecks, Loader2, Search 
 
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
 
 const searchSchema = z.object({ q: z.string().optional().default("") });
 
@@ -143,9 +145,12 @@ function SearchPage() {
           <p className="text-sm text-destructive">Something went wrong. Try again.</p>
         ) : total === 0 ? (
           <EmptyState
+            icon={Search}
             title="No matches"
-            body={`Nothing found for "${debounced}". Try a different keyword.`}
+            description={`Nothing found for "${debounced}". Try a shorter or different keyword.`}
+            primaryAction={{ label: "Browse courses", to: "/courses" }}
           />
+
         ) : (
         <div className="space-y-8">
             <Group icon={GraduationCap} title="Courses" items={query.data!.courses} render={(c) => (
@@ -208,12 +213,3 @@ function Group<T extends SearchHit>({
   );
 }
 
-function EmptyState({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="rounded-2xl border border-dashed border-border bg-surface px-6 py-12 text-center">
-      <Search className="mx-auto h-6 w-6 text-muted-foreground" />
-      <p className="mt-3 text-sm font-medium text-foreground">{title}</p>
-      <p className="mt-1 text-xs text-muted-foreground">{body}</p>
-    </div>
-  );
-}
