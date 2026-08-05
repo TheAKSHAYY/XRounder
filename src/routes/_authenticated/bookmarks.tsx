@@ -139,7 +139,7 @@ function BookmarksPage() {
               return (
                 <li key={b.id}>
                   <Link
-                    {...(r as never)}
+                    {...(r as any)}
                     aria-label={`${meta.label}: ${b.title ?? "Untitled"}`}
                     className="group flex items-center gap-4 rounded-lg border border-border bg-surface px-4 py-3.5 transition-colors hover:border-primary/40 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
