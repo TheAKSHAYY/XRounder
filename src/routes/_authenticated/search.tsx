@@ -13,9 +13,21 @@ const searchSchema = z.object({ q: z.string().optional().default("") });
 
 export const Route = createFileRoute("/_authenticated/search")({
   validateSearch: searchSchema,
-  head: ({ match }) => ({
-    meta: [{ title: `${match.search.q ? `${match.search.q} · ` : ""}Search · BCA Gurukul` }],
-  }),
+  head: ({ match }) => {
+    const title = `${match.search.q ? `${match.search.q} · ` : ""}Search · BCA Gurukul`;
+    const description =
+      "Search published courses, semesters, subjects, units, notes, papers and quizzes.";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
+      ],
+    };
+  },
   component: SearchPage,
 });
 
