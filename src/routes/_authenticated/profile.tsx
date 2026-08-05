@@ -81,38 +81,50 @@ function ProfilePage() {
 
   if (profile.isLoading) {
     return (
-      <div className="grid min-h-[60vh] place-items-center">
+      <div className="grid min-h-[60vh] place-items-center" aria-busy="true" aria-live="polite">
         <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+        <span className="sr-only">Loading your profile</span>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <div className="mb-8 flex items-center gap-4">
-        <Avatar className="h-16 w-16">
+    <div className="mx-auto max-w-3xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
+      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Profile" }]} />
+
+      <div className="mt-5 flex flex-col gap-4 rounded-lg border border-border bg-surface p-6 sm:flex-row sm:items-center">
+        <Avatar className="h-16 w-16 shrink-0">
           {avatarUrl ? (
-            <img src={avatarUrl} alt="" className="h-full w-full rounded-full object-cover" />
+            <img
+              src={avatarUrl}
+              alt={`${fullName || displayName || "Your"} avatar`}
+              className="h-full w-full rounded-full object-cover"
+            />
           ) : null}
           <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
             {initials}
           </AvatarFallback>
         </Avatar>
-        <div>
-          <h1 className="font-display text-2xl font-semibold text-foreground">
+        <div className="min-w-0">
+          <h1 className="text-h1 text-foreground">
             {fullName || displayName || "Your profile"}
           </h1>
-          <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
-            <span>{user?.email}</span>
-            <Badge variant="secondary" className="text-[10px]">{role}</Badge>
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <span className="truncate">{user?.email}</span>
+            <Badge variant="secondary" className="text-[10px]">
+              {role}
+            </Badge>
           </div>
         </div>
       </div>
 
       <form
         onSubmit={onSave}
-        className="space-y-5 rounded-2xl border border-border bg-surface p-6 shadow-sm"
+        aria-label="Profile details"
+        className="mt-6 space-y-5 rounded-lg border border-border bg-surface p-6 shadow-sm"
       >
+        <h2 className="text-h3 text-foreground">Your details</h2>
+
         <div className="grid gap-5 sm:grid-cols-2">
           <div className="space-y-2">
             <Label htmlFor="full">Full name</Label>
