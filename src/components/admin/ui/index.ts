@@ -1,5 +1,5 @@
 export { ConfirmDialog } from "./confirm-dialog";
-export { EmptyState } from "./empty-state";
+export { EmptyState } from "@/components/ui/empty-state";
 export { FormRow, FormSection } from "./form-section";
 export { PageContainer } from "./page-container";
 export { PageHeader } from "./page-header";

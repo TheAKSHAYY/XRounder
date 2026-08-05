@@ -1,9 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { BookMarked, Loader2 } from "lucide-react";
+import { ArrowRight, BookMarked, Compass, FileText, ListChecks, StickyNote } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Skeleton } from "@/components/ui/skeleton";
+import { StatChip } from "@/components/ui/stat-chip";
+import { StudentHero } from "@/components/student/student-hero";
 
 type Bookmark = {
   id: string;
@@ -13,11 +18,32 @@ type Bookmark = {
   created_at: string;
 };
 
-
 export const Route = createFileRoute("/_authenticated/bookmarks")({
-  head: () => ({ meta: [{ title: "Your bookmarks · BCA Gurukul" }] }),
+  head: () => ({
+    meta: [
+      { title: "Your bookmarks · BCA Gurukul" },
+      {
+        name: "description",
+        content: "Every note, paper and quiz you saved for revision, in one place.",
+      },
+      { property: "og:title", content: "Your bookmarks · BCA Gurukul" },
+      {
+        property: "og:description",
+        content: "Every note, paper and quiz you saved for revision, in one place.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: BookmarksPage,
 });
+
+const KIND_META = {
+  note: { label: "Note", icon: StickyNote },
+  paper: { label: "Paper", icon: FileText },
+  quiz: { label: "Quiz", icon: ListChecks },
+  unit: { label: "Unit", icon: BookMarked },
+} as const;
 
 function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } {
   switch (b.kind) {
@@ -32,6 +58,10 @@ function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } 
   }
 }
 
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+}
+
 function BookmarksPage() {
   const { user } = useAuth();
   const q = useQuery({
@@ -44,49 +74,97 @@ function BookmarksPage() {
     },
   });
 
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-      <h1 className="font-display text-3xl font-semibold text-foreground">Bookmarks</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Your saved notes, papers, quizzes and units.
-      </p>
+  const items = q.data ?? [];
+  const counts = {
+    note: items.filter((i) => i.kind === "note").length,
+    paper: items.filter((i) => i.kind === "paper").length,
+    quiz: items.filter((i) => i.kind === "quiz").length,
+  };
 
-      <div className="mt-6">
+  return (
+    <div className="mx-auto max-w-4xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
+      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Bookmarks" }]} />
+
+      <StudentHero
+        className="mt-5"
+        loading={q.isLoading}
+        eyebrow="Revision list"
+        title={
+          <>
+            Saved for <span className="text-primary">later</span>.
+          </>
+        }
+        description={
+          items.length === 0
+            ? "Bookmark notes, papers and quizzes as you study and they'll gather here."
+            : `${items.length} saved item${items.length === 1 ? "" : "s"} across your subjects.`
+        }
+        aside={
+          items.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              <StatChip variant="chip" icon={StickyNote} value={counts.note} label="notes" />
+              <StatChip variant="chip" icon={FileText} value={counts.paper} label="papers" />
+              <StatChip variant="chip" icon={ListChecks} value={counts.quiz} label="quizzes" />
+            </div>
+          ) : undefined
+        }
+      />
+
+      <section className="mt-12" aria-labelledby="bookmarks-list">
+        <h2 id="bookmarks-list" className="text-h2 text-foreground">
+          All bookmarks
+        </h2>
+
         {q.isLoading ? (
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Loader2 className="h-4 w-4 animate-spin" /> Loading…
+          <div className="mt-6 space-y-2" aria-live="polite" aria-busy="true">
+            <Skeleton className="h-14 rounded-lg" />
+            <Skeleton className="h-14 rounded-lg" />
+            <Skeleton className="h-14 rounded-lg" />
           </div>
-        ) : (q.data ?? []).length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-border bg-surface px-6 py-12 text-center">
-            <BookMarked className="mx-auto h-6 w-6 text-muted-foreground" />
-            <p className="mt-3 text-sm font-medium text-foreground">No bookmarks yet</p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Save anything you want to revisit and it'll show up here.
-            </p>
-          </div>
+        ) : items.length === 0 ? (
+          <EmptyState
+            className="mt-6"
+            icon={BookMarked}
+            title="No bookmarks yet"
+            description="Open any note, paper or quiz and tap the bookmark icon to save it for revision."
+            primaryAction={{ label: "Browse courses", to: "/courses", icon: Compass }}
+            secondaryAction={{ label: "Search library", to: "/search" }}
+          />
         ) : (
-          <ul className="space-y-2">
-            {(q.data ?? []).map((b) => {
+          <ul className="mt-6 space-y-2">
+            {items.map((b) => {
               const r = routeFor(b);
+              const meta = KIND_META[b.kind] ?? KIND_META.unit;
+              const Icon = meta.icon;
               return (
                 <li key={b.id}>
                   <Link
-                    {...(r as any)}
-                    className="flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-3 transition-colors hover:border-primary/40 hover:bg-muted"
+                    {...(r as never)}
+                    aria-label={`${meta.label}: ${b.title ?? "Untitled"}`}
+                    className="group flex items-center gap-4 rounded-lg border border-border bg-surface px-4 py-3.5 transition-colors hover:border-primary/40 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
-                    <span className="text-sm font-medium text-foreground">
-                      {b.title ?? "Untitled"}
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                      <Icon className="h-4 w-4" aria-hidden />
                     </span>
-                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
-                      {b.kind}
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-foreground">
+                        {b.title ?? "Untitled"}
+                      </span>
+                      <span className="mt-0.5 block text-[11px] text-muted-foreground">
+                        {meta.label} · saved {formatDate(b.created_at)}
+                      </span>
                     </span>
+                    <ArrowRight
+                      className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                      aria-hidden
+                    />
                   </Link>
                 </li>
               );
             })}
           </ul>
         )}
-      </div>
+      </section>
     </div>
   );
 }
