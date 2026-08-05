@@ -13,9 +13,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 export const Route = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "Your profile · BCA Gurukul" }] }),
+  head: () => ({
+    meta: [
+      { title: "Your profile · BCA Gurukul" },
+      {
+        name: "description",
+        content: "Update your name, avatar and bio for your BCA Gurukul account.",
+      },
+      { property: "og:title", content: "Your profile · BCA Gurukul" },
+      {
+        property: "og:description",
+        content: "Update your name, avatar and bio for your BCA Gurukul account.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: ProfilePage,
 });
 
