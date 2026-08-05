@@ -96,29 +96,45 @@ function SearchPage() {
   }, [query.data]);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-      <h1 className="font-display text-3xl font-semibold text-foreground">Search</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
+    <div className="mx-auto max-w-4xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
+      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Search" }]} />
+
+      <h1 className="mt-5 text-h1 text-foreground">Search</h1>
+      <p className="mt-2 text-sm text-muted-foreground">
         Find published courses, semesters, subjects, units, notes, papers and quizzes.
       </p>
 
-      <div className="relative mt-6">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <form
+        role="search"
+        className="relative mt-6"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <label htmlFor="global-search" className="sr-only">
+          Search the library
+        </label>
+        <Search
+          className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+          aria-hidden
+        />
         <Input
+          id="global-search"
           autoFocus
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type at least 2 characters…"
-          className="pl-9"
+          className="h-12 rounded-full pl-9"
         />
-      </div>
+      </form>
 
-      <div className="mt-8">
+      <div className="mt-8" aria-live="polite">
         {!enabled ? (
           <EmptyState
+            icon={Search}
             title="Start typing to search"
-            body="Search across the entire library. Results respect your permissions."
+            description="Search across the entire library. Results respect your permissions."
+            tip="Tip: try a subject code like BCA-101 or a topic like “normalization”."
           />
+
         ) : query.isLoading ? (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" /> Searching…
