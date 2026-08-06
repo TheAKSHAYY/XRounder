@@ -24,6 +24,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandMark } from "@/components/brand-mark";
+import { Reveal } from "@/components/ui/reveal";
 import {
   Accordion,
   AccordionContent,
@@ -483,26 +484,32 @@ function Features() {
           body="Each unit is paired with notes, papers, videos and a quiz — so theory, revision and practice live in the same place."
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <FeatureCard
-            icon={<BookOpen className="h-5 w-5" />}
-            title="Structured notes"
-            body="Hand-curated, semester-wise notes with diagrams, code snippets and downloadable PDFs."
-          />
-          <FeatureCard
-            icon={<FileText className="h-5 w-5" />}
-            title="Past papers"
-            body="Year-wise question papers with an in-app PDF viewer and one-tap downloads."
-          />
-          <FeatureCard
-            icon={<PlayCircle className="h-5 w-5" />}
-            title="Video lectures"
-            body="Curated YouTube playlists embedded next to the unit — no tab-hopping."
-          />
-          <FeatureCard
-            icon={<ListChecks className="h-5 w-5" />}
-            title="MCQ practice"
-            body="Timed quizzes with detailed explanations after every question."
-          />
+          {[
+            {
+              icon: <BookOpen className="h-5 w-5" />,
+              title: "Structured notes",
+              body: "Hand-curated, semester-wise notes with diagrams, code snippets and downloadable PDFs.",
+            },
+            {
+              icon: <FileText className="h-5 w-5" />,
+              title: "Past papers",
+              body: "Year-wise question papers with an in-app PDF viewer and one-tap downloads.",
+            },
+            {
+              icon: <PlayCircle className="h-5 w-5" />,
+              title: "Video lectures",
+              body: "Curated YouTube playlists embedded next to the unit — no tab-hopping.",
+            },
+            {
+              icon: <ListChecks className="h-5 w-5" />,
+              title: "MCQ practice",
+              body: "Timed quizzes with detailed explanations after every question.",
+            },
+          ].map((f, i) => (
+            <Reveal key={f.title} delay={i * 90} className="h-full">
+              <FeatureCard icon={f.icon} title={f.title} body={f.body} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -519,12 +526,12 @@ function FeatureCard({
   body: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+    <div className="group relative overflow-hidden rounded-3xl border border-accent/15 bg-surface/60 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:shadow-2xl hover:shadow-primary/10">
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
       />
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground">
         {icon}
       </div>
       <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
@@ -574,7 +581,7 @@ function WhyChoose() {
           {reasons.map((r) => (
             <div
               key={r.title}
-              className="flex gap-4 rounded-2xl border border-border bg-surface p-6"
+              className="flex gap-4 rounded-3xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/20 text-accent-foreground">
                 {r.icon}
@@ -629,9 +636,9 @@ function Journey() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.step} className="relative">
-              <div className="rounded-2xl border border-border bg-surface p-6">
-                <div className="font-display text-3xl font-semibold text-primary/30">
+            <Reveal key={s.step} delay={i * 90} className="relative">
+              <div className="h-full rounded-3xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-colors hover:border-accent/40">
+                <div className="font-display text-3xl font-semibold italic text-accent">
                   {s.step}
                 </div>
                 <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
@@ -647,7 +654,7 @@ function Journey() {
                   className="absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-border lg:block"
                 />
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -678,14 +685,13 @@ function Benefits() {
           />
         </div>
         <ul className="space-y-3">
-          {items.map((i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4"
-            >
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" />
-              <span className="text-sm text-foreground">{i}</span>
-            </li>
+          {items.map((item, idx) => (
+            <Reveal as="li" key={item} delay={idx * 60}>
+              <div className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/40">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                <span className="text-sm text-foreground">{item}</span>
+              </div>
+            </Reveal>
           ))}
         </ul>
       </div>
@@ -765,7 +771,7 @@ function FAQ() {
         <Accordion type="single" collapsible className="mt-12">
           {items.map((it, idx) => (
             <AccordionItem key={idx} value={`item-${idx}`}>
-              <AccordionTrigger className="text-left font-display text-base font-semibold">
+              <AccordionTrigger className="text-left font-display text-base font-semibold [&>svg]:text-accent">
                 {it.q}
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
@@ -941,7 +947,7 @@ function SiteFooter() {
             links={[
               { label: "Browse courses", to: "/courses" },
               { label: "Features", href: "#features" },
-              { label: "Semesters", href: "#semesters" },
+              { label: "Learning journey", href: "#journey" },
               { label: "FAQ", href: "#faq" },
             ]}
           />
