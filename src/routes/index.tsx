@@ -24,6 +24,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandMark } from "@/components/brand-mark";
+import { Reveal } from "@/components/ui/reveal";
 import {
   Accordion,
   AccordionContent,
@@ -268,78 +269,99 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         />
       </div>
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 pb-20 pt-20 text-center sm:pt-28">
-        {/* Eyebrow pill with pulsing saffron dot */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1">
-          <span className="relative grid h-2 w-2 place-items-center">
-            <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
-            <span className="relative h-2 w-2 rounded-full bg-accent" />
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            BCA Batch 2025–26 is live
-          </span>
-        </div>
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 sm:pt-28">
+        <div className="max-w-4xl">
+          {/* Eyebrow pill with pulsing saffron dot */}
+          <Reveal>
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1">
+              <span className="relative grid h-2 w-2 place-items-center">
+                <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                <span className="relative h-2 w-2 rounded-full bg-accent" />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                BCA Batch 2025–26 is live
+              </span>
+            </div>
+          </Reveal>
 
-        {/* Headline with italic-saffron accent word */}
-        <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-          Master your BCA <br className="hidden sm:block" />
-          <span className="italic text-accent">journey</span>, with clarity.
-        </h1>
+          {/* Headline with italic-saffron accent word */}
+          <Reveal delay={80}>
+            <h1 className="mt-8 font-display text-5xl font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Master your BCA <br className="hidden sm:block" />
+              <span className="accent-sheen italic">journey</span>, with clarity.
+            </h1>
+          </Reveal>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          One organised home for notes, past papers, video lectures and timed
-          MCQ practice — curated semester by semester, so you always know
-          exactly what to study next.
-        </p>
+          <Reveal delay={160}>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              One organised home for notes, past papers, video lectures and timed
+              MCQ practice — curated semester by semester, so you always know
+              exactly what to study next.
+            </p>
+          </Reveal>
 
-        {/* Stacked-then-row CTAs, primary first */}
-        <div className="mt-9 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-          {loading ? null : user ? (
-            <Button asChild size="lg" className="h-12 px-7 text-base shadow-lg shadow-primary/15">
-              <Link to="/dashboard">
-                Open your dashboard
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          ) : (
-            <Button asChild size="lg" className="h-12 px-7 text-base shadow-lg shadow-primary/15">
-              <Link to="/auth" search={{ mode: "signup" }}>
-                Start learning free
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          )}
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="h-12 border-2 border-border/80 px-7 text-base"
-          >
-            <Link to="/courses">
-              Browse syllabus
-              <ArrowUpRight className="ml-1.5 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+          {/* Stacked-then-row CTAs, primary first */}
+          <Reveal delay={240}>
+            <div className="mt-10 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row">
+              {loading ? null : user ? (
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full px-8 text-base shadow-xl shadow-primary/15 transition-transform hover:scale-[1.03] active:scale-95"
+                >
+                  <Link to="/dashboard">
+                    Open your dashboard
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full px-8 text-base shadow-xl shadow-primary/15 transition-transform hover:scale-[1.03] active:scale-95"
+                >
+                  <Link to="/auth" search={{ mode: "signup" }}>
+                    Start learning free
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="group h-12 rounded-full border-2 border-border/80 px-8 text-base transition-colors hover:border-accent/50"
+              >
+                <Link to="/courses">
+                  Browse syllabus
+                  <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </Button>
+            </div>
+          </Reveal>
 
-        {/* Reassurance row */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            Free for every BCA student
-          </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            No credit card
-          </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            Mobile-first
-          </span>
+          {/* Reassurance row */}
+          <Reveal delay={320}>
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                Free for every BCA student
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                No credit card
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                Mobile-first
+              </span>
+            </div>
+          </Reveal>
         </div>
       </div>
+
     </section>
   );
 }
@@ -454,7 +476,7 @@ function TrustBar() {
 
 function Features() {
   return (
-    <section id="features" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="features" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Everything you need"
@@ -462,26 +484,32 @@ function Features() {
           body="Each unit is paired with notes, papers, videos and a quiz — so theory, revision and practice live in the same place."
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <FeatureCard
-            icon={<BookOpen className="h-5 w-5" />}
-            title="Structured notes"
-            body="Hand-curated, semester-wise notes with diagrams, code snippets and downloadable PDFs."
-          />
-          <FeatureCard
-            icon={<FileText className="h-5 w-5" />}
-            title="Past papers"
-            body="Year-wise question papers with an in-app PDF viewer and one-tap downloads."
-          />
-          <FeatureCard
-            icon={<PlayCircle className="h-5 w-5" />}
-            title="Video lectures"
-            body="Curated YouTube playlists embedded next to the unit — no tab-hopping."
-          />
-          <FeatureCard
-            icon={<ListChecks className="h-5 w-5" />}
-            title="MCQ practice"
-            body="Timed quizzes with detailed explanations after every question."
-          />
+          {[
+            {
+              icon: <BookOpen className="h-5 w-5" />,
+              title: "Structured notes",
+              body: "Hand-curated, semester-wise notes with diagrams, code snippets and downloadable PDFs.",
+            },
+            {
+              icon: <FileText className="h-5 w-5" />,
+              title: "Past papers",
+              body: "Year-wise question papers with an in-app PDF viewer and one-tap downloads.",
+            },
+            {
+              icon: <PlayCircle className="h-5 w-5" />,
+              title: "Video lectures",
+              body: "Curated YouTube playlists embedded next to the unit — no tab-hopping.",
+            },
+            {
+              icon: <ListChecks className="h-5 w-5" />,
+              title: "MCQ practice",
+              body: "Timed quizzes with detailed explanations after every question.",
+            },
+          ].map((f, i) => (
+            <Reveal key={f.title} delay={i * 90} className="h-full">
+              <FeatureCard icon={f.icon} title={f.title} body={f.body} />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -498,12 +526,12 @@ function FeatureCard({
   body: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+    <div className="group relative overflow-hidden rounded-3xl border border-accent/15 bg-surface/60 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:shadow-2xl hover:shadow-primary/10">
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
       />
-      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground">
         {icon}
       </div>
       <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
@@ -553,7 +581,7 @@ function WhyChoose() {
           {reasons.map((r) => (
             <div
               key={r.title}
-              className="flex gap-4 rounded-2xl border border-border bg-surface p-6"
+              className="flex gap-4 rounded-3xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent/20 text-accent-foreground">
                 {r.icon}
@@ -600,7 +628,7 @@ function Journey() {
     },
   ];
   return (
-    <section id="journey" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="journey" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Your learning journey"
@@ -608,9 +636,9 @@ function Journey() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.step} className="relative">
-              <div className="rounded-2xl border border-border bg-surface p-6">
-                <div className="font-display text-3xl font-semibold text-primary/30">
+            <Reveal key={s.step} delay={i * 90} className="relative">
+              <div className="h-full rounded-3xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-colors hover:border-accent/40">
+                <div className="font-display text-3xl font-semibold italic text-accent">
                   {s.step}
                 </div>
                 <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
@@ -626,7 +654,7 @@ function Journey() {
                   className="absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-border lg:block"
                 />
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -657,14 +685,13 @@ function Benefits() {
           />
         </div>
         <ul className="space-y-3">
-          {items.map((i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4"
-            >
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" />
-              <span className="text-sm text-foreground">{i}</span>
-            </li>
+          {items.map((item, idx) => (
+            <Reveal as="li" key={item} delay={idx * 60}>
+              <div className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4 transition-colors hover:border-accent/40">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" />
+                <span className="text-sm text-foreground">{item}</span>
+              </div>
+            </Reveal>
           ))}
         </ul>
       </div>
@@ -735,7 +762,7 @@ function FAQ() {
     },
   ];
   return (
-    <section id="faq" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="faq" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeading
           eyebrow="FAQ"
@@ -744,7 +771,7 @@ function FAQ() {
         <Accordion type="single" collapsible className="mt-12">
           {items.map((it, idx) => (
             <AccordionItem key={idx} value={`item-${idx}`}>
-              <AccordionTrigger className="text-left font-display text-base font-semibold">
+              <AccordionTrigger className="text-left font-display text-base font-semibold [&>svg]:text-accent">
                 {it.q}
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
@@ -818,7 +845,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 sm:py-24">
+    <section id="contact" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <SectionHeading
@@ -920,7 +947,7 @@ function SiteFooter() {
             links={[
               { label: "Browse courses", to: "/courses" },
               { label: "Features", href: "#features" },
-              { label: "Semesters", href: "#semesters" },
+              { label: "Learning journey", href: "#journey" },
               { label: "FAQ", href: "#faq" },
             ]}
           />
@@ -1015,7 +1042,7 @@ function SectionHeading({
   const alignment =
     align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
   return (
-    <div className={`flex max-w-2xl flex-col ${alignment}`}>
+    <Reveal className={`flex max-w-2xl flex-col ${alignment}`}>
       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
         {eyebrow}
       </span>
@@ -1025,6 +1052,6 @@ function SectionHeading({
       {body && (
         <p className="mt-4 text-base text-muted-foreground">{body}</p>
       )}
-    </div>
+    </Reveal>
   );
 }
