@@ -602,3 +602,51 @@
 .quiz-slide-in  { animation: quiz-slide-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .quiz-option-pop { animation: quiz-option-pop 220ms ease-out; }
 .quiz-score-in  { animation: quiz-score-in 600ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+
+/* ── Scroll reveal (see components/ui/reveal.tsx) ───────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Slow saffron shimmer used on the hero accent word */
+@keyframes accent-sheen {
+  0%,
+  100% { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+}
+
+@utility accent-sheen {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-accent) 0%,
+    color-mix(in oklab, var(--color-accent) 55%, var(--color-primary)) 45%,
+    var(--color-accent) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: accent-sheen 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-sheen { animation: none; }
+}
+
