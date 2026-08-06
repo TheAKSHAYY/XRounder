@@ -476,7 +476,7 @@ function TrustBar() {
 
 function Features() {
   return (
-    <section id="features" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="features" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Everything you need"
@@ -628,7 +628,7 @@ function Journey() {
     },
   ];
   return (
-    <section id="journey" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="journey" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Your learning journey"
@@ -762,7 +762,7 @@ function FAQ() {
     },
   ];
   return (
-    <section id="faq" className="border-b border-border/60 py-20 sm:py-28">
+    <section id="faq" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeading
           eyebrow="FAQ"
@@ -845,7 +845,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
 
 function Contact() {
   return (
-    <section id="contact" className="py-20 sm:py-24">
+    <section id="contact" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <SectionHeading
