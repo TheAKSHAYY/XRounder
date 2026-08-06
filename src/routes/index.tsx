@@ -1042,7 +1042,7 @@ function SectionHeading({
   const alignment =
     align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
   return (
-    <div className={`flex max-w-2xl flex-col ${alignment}`}>
+    <Reveal className={`flex max-w-2xl flex-col ${alignment}`}>
       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
         {eyebrow}
       </span>
@@ -1052,6 +1052,6 @@ function SectionHeading({
       {body && (
         <p className="mt-4 text-base text-muted-foreground">{body}</p>
       )}
-    </div>
+    </Reveal>
   );
 }
