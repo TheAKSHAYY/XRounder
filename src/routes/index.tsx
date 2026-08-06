@@ -268,78 +268,99 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         />
       </div>
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center px-6 pb-20 pt-20 text-center sm:pt-28">
-        {/* Eyebrow pill with pulsing saffron dot */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1">
-          <span className="relative grid h-2 w-2 place-items-center">
-            <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
-            <span className="relative h-2 w-2 rounded-full bg-accent" />
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            BCA Batch 2025–26 is live
-          </span>
-        </div>
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 sm:pt-28">
+        <div className="max-w-4xl">
+          {/* Eyebrow pill with pulsing saffron dot */}
+          <Reveal>
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1">
+              <span className="relative grid h-2 w-2 place-items-center">
+                <span className="absolute inset-0 animate-ping rounded-full bg-accent/60" />
+                <span className="relative h-2 w-2 rounded-full bg-accent" />
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                BCA Batch 2025–26 is live
+              </span>
+            </div>
+          </Reveal>
 
-        {/* Headline with italic-saffron accent word */}
-        <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-          Master your BCA <br className="hidden sm:block" />
-          <span className="italic text-accent">journey</span>, with clarity.
-        </h1>
+          {/* Headline with italic-saffron accent word */}
+          <Reveal delay={80}>
+            <h1 className="mt-8 font-display text-5xl font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Master your BCA <br className="hidden sm:block" />
+              <span className="accent-sheen italic">journey</span>, with clarity.
+            </h1>
+          </Reveal>
 
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          One organised home for notes, past papers, video lectures and timed
-          MCQ practice — curated semester by semester, so you always know
-          exactly what to study next.
-        </p>
+          <Reveal delay={160}>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              One organised home for notes, past papers, video lectures and timed
+              MCQ practice — curated semester by semester, so you always know
+              exactly what to study next.
+            </p>
+          </Reveal>
 
-        {/* Stacked-then-row CTAs, primary first */}
-        <div className="mt-9 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-          {loading ? null : user ? (
-            <Button asChild size="lg" className="h-12 px-7 text-base shadow-lg shadow-primary/15">
-              <Link to="/dashboard">
-                Open your dashboard
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          ) : (
-            <Button asChild size="lg" className="h-12 px-7 text-base shadow-lg shadow-primary/15">
-              <Link to="/auth" search={{ mode: "signup" }}>
-                Start learning free
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          )}
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="h-12 border-2 border-border/80 px-7 text-base"
-          >
-            <Link to="/courses">
-              Browse syllabus
-              <ArrowUpRight className="ml-1.5 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+          {/* Stacked-then-row CTAs, primary first */}
+          <Reveal delay={240}>
+            <div className="mt-10 flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row">
+              {loading ? null : user ? (
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full px-8 text-base shadow-xl shadow-primary/15 transition-transform hover:scale-[1.03] active:scale-95"
+                >
+                  <Link to="/dashboard">
+                    Open your dashboard
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 rounded-full px-8 text-base shadow-xl shadow-primary/15 transition-transform hover:scale-[1.03] active:scale-95"
+                >
+                  <Link to="/auth" search={{ mode: "signup" }}>
+                    Start learning free
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="group h-12 rounded-full border-2 border-border/80 px-8 text-base transition-colors hover:border-accent/50"
+              >
+                <Link to="/courses">
+                  Browse syllabus
+                  <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </Button>
+            </div>
+          </Reveal>
 
-        {/* Reassurance row */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            Free for every BCA student
-          </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            No credit card
-          </span>
-          <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-            Mobile-first
-          </span>
+          {/* Reassurance row */}
+          <Reveal delay={320}>
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                Free for every BCA student
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                No credit card
+              </span>
+              <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                Mobile-first
+              </span>
+            </div>
+          </Reveal>
         </div>
       </div>
+
     </section>
   );
 }
