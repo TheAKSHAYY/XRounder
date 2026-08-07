@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BrandMark } from "@/components/brand-mark";
 import { Reveal } from "@/components/ui/reveal";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import {
   Accordion,
   AccordionContent,
@@ -75,7 +77,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader user={user} loading={loading} />
+      <SiteHeader marketing />
       <main>
         {isLoading ? (
           <LandingSkeleton />
@@ -110,7 +112,7 @@ function Index() {
           })
         )}
       </main>
-      <SiteFooter />
+      <SiteFooter marketing />
     </div>
   );
 }
@@ -176,77 +178,6 @@ function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
 
 /* ──────────────────────────────────────────────────────────── Header */
 
-function SiteHeader({ user, loading }: { user: unknown; loading: boolean }) {
-  return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3">
-          <BrandMark className="h-10 w-10" />
-          <div className="leading-tight">
-            <div className="font-display text-lg font-semibold text-foreground">
-              BCA Gurukul
-            </div>
-            <div className="hidden text-xs text-muted-foreground sm:block">
-              Structured learning for BCA students
-            </div>
-          </div>
-        </Link>
-        <nav className="hidden items-center gap-1 md:flex">
-          <a
-            href="#features"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Features
-          </a>
-          <a
-            href="#journey"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Journey
-          </a>
-          <a
-            href="#faq"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            FAQ
-          </a>
-          <Link
-            to="/developer"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Developer
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-            <Link to="/courses">Browse</Link>
-          </Button>
-          {loading ? null : user ? (
-            <Button asChild size="sm">
-              <Link to="/developer">
-                Developer
-                <ArrowRight className="ml-1.5 h-4 w-4" />
-              </Link>
-            </Button>
-          ) : (
-            <>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/auth" search={{ mode: "signin" }}>
-                  Sign in
-                </Link>
-              </Button>
-              <Button asChild size="sm">
-                <Link to="/auth" search={{ mode: "signup" }}>
-                  Get started
-                </Link>
-              </Button>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-}
 
 /* ──────────────────────────────────────────────────────────── Hero */
 
@@ -269,7 +200,7 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         />
       </div>
 
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 sm:pt-28">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 sm:pt-16 lg:pt-20">
         <div className="max-w-4xl">
           {/* Eyebrow pill with pulsing saffron dot */}
           <Reveal>
@@ -286,7 +217,7 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
           {/* Headline with italic-saffron accent word */}
           <Reveal delay={80}>
-            <h1 className="mt-8 font-display text-5xl font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 font-display text-[2.25rem] font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Master your BCA <br className="hidden sm:block" />
               <span className="accent-sheen italic">journey</span>, with clarity.
             </h1>
@@ -925,108 +856,6 @@ function Contact() {
 }
 
 /* ──────────────────────────────────────────────────────────── Footer */
-
-function SiteFooter() {
-  return (
-    <footer className="border-t border-border/60 bg-surface-muted/60">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <Link to="/" className="flex items-center gap-3">
-              <BrandMark className="h-10 w-10" />
-              <div className="font-display text-base font-semibold text-foreground">
-                BCA Gurukul
-              </div>
-            </Link>
-            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              The structured learning home for BCA students across India.
-            </p>
-          </div>
-          <FooterCol
-            title="Product"
-            links={[
-              { label: "Browse courses", to: "/courses" },
-              { label: "Features", href: "#features" },
-              { label: "Learning journey", href: "#journey" },
-              { label: "FAQ", href: "#faq" },
-            ]}
-          />
-          <FooterCol
-            title="Account"
-            links={[
-              { label: "Sign in", to: "/auth", search: { mode: "signin" as const } },
-              { label: "Create account", to: "/auth", search: { mode: "signup" as const } },
-              { label: "Reset password", to: "/auth", search: { mode: "forgot" as const } },
-            ]}
-          />
-          <FooterCol
-            title="Company"
-            links={[
-              { label: "Developer", to: "/developer" },
-              { label: "Contact", href: "#contact" },
-              { label: "Privacy", to: "/privacy" },
-              { label: "Terms", to: "/terms" },
-            ]}
-          />
-        </div>
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} BCA Gurukul. All rights reserved.</span>
-          <span>Built with care for BCA students.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-type FooterLink =
-  | { label: string; to: "/courses" | "/auth" | "/privacy" | "/terms" | "/developer"; search?: { mode: "signin" | "signup" | "forgot" }; href?: never }
-  | { label: string; href: string; to?: never; search?: never };
-
-function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
-  return (
-    <div>
-      <h4 className="font-display text-sm font-semibold text-foreground">
-        {title}
-      </h4>
-      <ul className="mt-3 space-y-2 text-sm">
-        {links.map((l) =>
-          l.to ? (
-            <li key={l.label}>
-              <Link
-                to={l.to}
-                search={l.search as never}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </Link>
-            </li>
-          ) : (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                onClick={(e) => {
-                  if (l.href.startsWith("#") && l.href.length > 1) {
-                    const el = document.getElementById(l.href.slice(1));
-                    if (el) {
-                      e.preventDefault();
-                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }
-                  }
-                }}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            </li>
-          ),
-        )}
-      </ul>
-    </div>
-  );
-}
-
-/* ──────────────────────────────────────────────────────────── Shared */
 
 function SectionHeading({
   eyebrow,
