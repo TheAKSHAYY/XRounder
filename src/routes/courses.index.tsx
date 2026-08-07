@@ -10,7 +10,6 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/courses/")({
   head: () => ({
