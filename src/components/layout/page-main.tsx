@@ -19,16 +19,9 @@ export function PageMain({
   width?: "narrow" | "default" | "wide";
   className?: string;
 }) {
-  const max =
-    width === "narrow" ? "max-w-4xl" : width === "wide" ? "max-w-7xl" : "max-w-6xl";
+  const max = width === "narrow" ? "max-w-4xl" : width === "wide" ? "max-w-7xl" : "max-w-6xl";
   return (
-    <main
-      className={cn(
-        "mx-auto w-full px-4 py-8 sm:px-6 sm:py-10 lg:py-12",
-        max,
-        className,
-      )}
-    >
+    <main className={cn("mx-auto w-full px-4 py-8 sm:px-6 sm:py-10 lg:py-12", max, className)}>
       {children}
     </main>
   );

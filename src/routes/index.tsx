@@ -150,8 +150,8 @@ function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
           Your platform is ready.
         </h1>
         <p className="mt-4 text-base text-muted-foreground">
-          No homepage content has been published yet. An administrator can compose this
-          page from the admin panel — every section is editable, nothing is hardcoded.
+          No homepage content has been published yet. An administrator can compose this page from
+          the admin panel — every section is editable, nothing is hardcoded.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {!loading && !user ? (
@@ -174,9 +174,7 @@ function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
   );
 }
 
-
 /* ──────────────────────────────────────────────────────────── Header */
-
 
 /* ──────────────────────────────────────────────────────────── Hero */
 
@@ -191,8 +189,7 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage:
-              "radial-gradient(currentColor 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)",
             backgroundSize: "28px 28px",
             color: "var(--color-foreground)",
           }}
@@ -224,9 +221,8 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
           <Reveal delay={160}>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              One organised home for notes, past papers, video lectures and timed
-              MCQ practice — curated semester by semester, so you always know
-              exactly what to study next.
+              One organised home for notes, past papers, video lectures and timed MCQ practice —
+              curated semester by semester, so you always know exactly what to study next.
             </p>
           </Reveal>
 
@@ -291,7 +287,6 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
           </Reveal>
         </div>
       </div>
-
     </section>
   );
 }
@@ -317,7 +312,11 @@ function useLandingStats() {
         supabase.from("notes").select("*", head).eq("status", "published").is("deleted_at", null),
         supabase.from("papers").select("*", head).eq("status", "published").is("deleted_at", null),
         supabase.from("quizzes").select("*", head).eq("status", "published").is("deleted_at", null),
-        supabase.from("semesters").select("*", head).eq("status", "published").is("deleted_at", null),
+        supabase
+          .from("semesters")
+          .select("*", head)
+          .eq("status", "published")
+          .is("deleted_at", null),
       ]);
       return {
         students: s.count ?? 0,
@@ -464,12 +463,8 @@ function FeatureCard({
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground">
         {icon}
       </div>
-      <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {body}
-      </p>
+      <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </div>
   );
 }
@@ -517,12 +512,8 @@ function WhyChoose() {
                 {r.icon}
               </div>
               <div className="min-w-0">
-                <h3 className="font-display text-lg font-semibold text-foreground">
-                  {r.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {r.body}
-                </p>
+                <h3 className="font-display text-lg font-semibold text-foreground">{r.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{r.body}</p>
               </div>
             </div>
           ))}
@@ -574,9 +565,7 @@ function Journey() {
                 <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {s.body}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
               </div>
               {i < steps.length - 1 && (
                 <div
@@ -648,8 +637,8 @@ function Testimonials() {
             Be one of the first voices
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Use BCA Gurukul this semester and share how it helped. We'll feature
-            real student stories here once we have them — no fake quotes.
+            Use BCA Gurukul this semester and share how it helped. We'll feature real student
+            stories here once we have them — no fake quotes.
           </p>
           <Button asChild className="mt-6" variant="outline">
             <Link to="/auth" search={{ mode: "signup" }}>
@@ -694,10 +683,7 @@ function FAQ() {
   return (
     <section id="faq" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Frequently asked questions"
-        />
+        <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
         <Accordion type="single" collapsible className="mt-12">
           {items.map((it, idx) => (
             <AccordionItem key={idx} value={`item-${idx}`}>
@@ -735,8 +721,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
             Your best semester starts today.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-primary-foreground/80">
-            Free for students. Sign up in 30 seconds and start with your current
-            semester.
+            Free for students. Sign up in 30 seconds and start with your current semester.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {loading ? null : user ? (
@@ -800,10 +785,7 @@ function Contact() {
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label
-                htmlFor="contact-name"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="contact-name" className="text-sm font-medium text-foreground">
                 Name
               </label>
               <input
@@ -814,10 +796,7 @@ function Contact() {
               />
             </div>
             <div>
-              <label
-                htmlFor="contact-email"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="contact-email" className="text-sm font-medium text-foreground">
                 Email
               </label>
               <input
@@ -829,10 +808,7 @@ function Contact() {
             </div>
           </div>
           <div className="mt-4">
-            <label
-              htmlFor="contact-msg"
-              className="text-sm font-medium text-foreground"
-            >
+            <label htmlFor="contact-msg" className="text-sm font-medium text-foreground">
               Message
             </label>
             <textarea
@@ -877,9 +853,7 @@ function SectionHeading({
       <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
         {title}
       </h2>
-      {body && (
-        <p className="mt-4 text-base text-muted-foreground">{body}</p>
-      )}
+      {body && <p className="mt-4 text-base text-muted-foreground">{body}</p>}
     </Reveal>
   );
 }

@@ -1,6 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, ArrowRight, GraduationCap, Library, Bell, Layers, CalendarClock } from "lucide-react";
+import {
+  BookOpen,
+  ArrowRight,
+  GraduationCap,
+  Library,
+  Bell,
+  Layers,
+  CalendarClock,
+} from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -17,12 +25,14 @@ export const Route = createFileRoute("/courses/")({
       { title: "Courses · BCA Gurukul" },
       {
         name: "description",
-        content: "Browse all programs offered on BCA Gurukul — structured semester-by-semester learning paths.",
+        content:
+          "Browse all programs offered on BCA Gurukul — structured semester-by-semester learning paths.",
       },
       { property: "og:title", content: "All courses · BCA Gurukul" },
       {
         property: "og:description",
-        content: "Browse every BCA Gurukul program with semester-by-semester subjects, notes, papers and quizzes.",
+        content:
+          "Browse every BCA Gurukul program with semester-by-semester subjects, notes, papers and quizzes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -134,11 +144,25 @@ function CoursesIndex() {
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{c.description}</p>
                 )}
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <StatChip variant="chip" label="semesters" value={c.total_semesters ?? 0} icon={Layers} />
+                  <StatChip
+                    variant="chip"
+                    label="semesters"
+                    value={c.total_semesters ?? 0}
+                    icon={Layers}
+                  />
                   {c.duration_years ? (
-                    <StatChip variant="chip" label="years" value={c.duration_years} icon={CalendarClock} tone="accent" />
+                    <StatChip
+                      variant="chip"
+                      label="years"
+                      value={c.duration_years}
+                      icon={CalendarClock}
+                      tone="accent"
+                    />
                   ) : null}
-                  <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5" aria-hidden />
+                  <ArrowRight
+                    className="ml-auto h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
                 </div>
               </Link>
             ))}
@@ -149,4 +173,3 @@ function CoursesIndex() {
     </div>
   );
 }
-
