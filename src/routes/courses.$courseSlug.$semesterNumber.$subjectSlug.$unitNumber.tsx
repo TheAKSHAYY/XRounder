@@ -441,7 +441,7 @@ function UnitDetail() {
 
             {/* Mobile TOC */}
             {toc.length > 1 && (
-              <details className="mb-6 rounded-2xl border border-border bg-surface p-4 lg:hidden">
+              <details className="mb-6 rounded-xl border border-border bg-surface p-4 lg:hidden">
                 <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-foreground">
                   <span className="inline-flex items-center gap-2">
                     <ListOrdered className="h-4 w-4 text-primary" aria-hidden />
@@ -573,7 +573,7 @@ function UnitDetail() {
                     subjectSlug,
                     unitNumber: String(prevUnit.number),
                   }}
-                  className="group flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="group flex items-center gap-3 rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <ArrowLeft className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
                   <div className="min-w-0">
@@ -602,7 +602,7 @@ function UnitDetail() {
                     subjectSlug,
                     unitNumber: String(nextUnit.number),
                   }}
-                  className="group flex items-center justify-end gap-3 rounded-2xl border border-border bg-surface p-5 text-right transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="group flex items-center justify-end gap-3 rounded-xl border border-border bg-surface p-5 text-right interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <div className="min-w-0">
                     <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
@@ -734,7 +734,7 @@ function NoteBlock({ note, anchorId }: { note: NoteRow; anchorId: string }) {
       )}
 
       {note.body && (
-        <div className="relative mt-6 rounded-2xl border border-border bg-surface">
+        <div className="relative mt-6 rounded-xl border border-border bg-surface">
           <button
             type="button"
             onClick={onCopy}
@@ -758,7 +758,7 @@ function NoteBlock({ note, anchorId }: { note: NoteRow; anchorId: string }) {
       )}
 
       {pdfUrl && (
-        <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface">
+        <div className="mt-6 overflow-hidden rounded-xl border border-border bg-surface">
           <PdfViewer url={pdfUrl} title={note.title} />
         </div>
       )}

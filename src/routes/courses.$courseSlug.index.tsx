@@ -99,7 +99,7 @@ function CourseDetail() {
                 key={s.id}
                 to="/courses/$courseSlug/$semesterNumber"
                 params={{ courseSlug, semesterNumber: String(s.number) }}
-                className="group rounded-xl border border-border bg-surface p-5 transition hover:border-primary/50"
+                className="group rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/50"
               >
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground font-display text-base">

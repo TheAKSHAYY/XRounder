@@ -421,7 +421,7 @@ function SubjectCard({
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="group flex h-full w-full flex-col rounded-lg border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group flex h-full w-full flex-col rounded-lg border border-border bg-surface p-6 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-3">

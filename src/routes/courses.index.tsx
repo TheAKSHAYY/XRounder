@@ -133,7 +133,7 @@ function CoursesIndex() {
                 key={c.id}
                 to="/courses/$courseSlug"
                 params={{ courseSlug: c.slug }}
-                className="group rounded-lg border border-border bg-surface p-6 transition hover:border-primary/50 hover:shadow-sm"
+                className="group rounded-lg border border-border bg-surface p-6 interactive-card shadow-soft-xs hover:border-primary/50"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <BookOpen className="h-5 w-5" aria-hidden />
