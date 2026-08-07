@@ -27,7 +27,8 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
@@ -258,7 +259,7 @@ function SubjectDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-5xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
         <Breadcrumbs
           items={[
@@ -474,6 +475,7 @@ function SubjectDetail() {
           </section>
         )}
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -26,7 +26,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PdfViewer } from "@/components/pdf-viewer";
 import { cn } from "@/lib/utils";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
@@ -292,7 +293,7 @@ function UnitDetail() {
   if (dataQuery.isLoading) {
     return (
       <div className="min-h-dvh bg-background">
-        <PublicHeader />
+        <SiteHeader />
         <main className="mx-auto max-w-5xl px-5 py-10 sm:px-8">
           <Skeleton className="h-4 w-40" />
           <Skeleton className="mt-4 h-10 w-3/4" />
@@ -309,7 +310,7 @@ function UnitDetail() {
   if (dataQuery.isError || !dataQuery.data) {
     return (
       <div className="min-h-dvh bg-background">
-        <PublicHeader />
+        <SiteHeader />
         <main className="mx-auto max-w-5xl px-5 py-12 sm:px-8">
           <EmptyState
             icon={AlertCircle}
@@ -328,7 +329,7 @@ function UnitDetail() {
 
   return (
     <div className="min-h-dvh bg-background">
-      <PublicHeader />
+      <SiteHeader />
 
       {/* ─── Compact reading header ─── */}
       <div className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -674,6 +675,7 @@ function UnitDetail() {
           )}
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

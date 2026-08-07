@@ -11,7 +11,8 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { StudentHero } from "@/components/student/student-hero";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
@@ -269,7 +270,7 @@ function SemesterDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
         <Breadcrumbs
           items={[
@@ -383,6 +384,7 @@ function SemesterDetail() {
           )}
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

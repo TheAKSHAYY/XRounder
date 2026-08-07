@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { PdfViewer } from "@/components/pdf-viewer";
 import { EmptyState } from "@/components/ui/empty-state";
 import { useAuth } from "@/hooks/use-auth";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/notes/$noteId")({
   head: () => ({ meta: [{ title: "Note · BCA Gurukul" }] }),
@@ -79,7 +80,7 @@ function NoteViewer() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-10">
         <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" /> Back to catalog
@@ -152,6 +153,7 @@ function NoteViewer() {
           </article>
         )}
       </main>
+      <SiteFooter />
     </div>
   );
 }
