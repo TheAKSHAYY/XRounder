@@ -1,14 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, ArrowRight, GraduationCap, Library, Bell, Layers, CalendarClock } from "lucide-react";
+import {
+  BookOpen,
+  ArrowRight,
+  GraduationCap,
+  Library,
+  Bell,
+  Layers,
+  CalendarClock,
+} from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { EmptyState } from "@/components/ui/empty-state";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/courses/")({
   head: () => ({
@@ -16,12 +25,14 @@ export const Route = createFileRoute("/courses/")({
       { title: "Courses · BCA Gurukul" },
       {
         name: "description",
-        content: "Browse all programs offered on BCA Gurukul — structured semester-by-semester learning paths.",
+        content:
+          "Browse all programs offered on BCA Gurukul — structured semester-by-semester learning paths.",
       },
       { property: "og:title", content: "All courses · BCA Gurukul" },
       {
         property: "og:description",
-        content: "Browse every BCA Gurukul program with semester-by-semester subjects, notes, papers and quizzes.",
+        content:
+          "Browse every BCA Gurukul program with semester-by-semester subjects, notes, papers and quizzes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -50,7 +61,7 @@ function CoursesIndex() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
         <Breadcrumbs items={[{ label: "Courses" }]} />
 
@@ -122,7 +133,7 @@ function CoursesIndex() {
                 key={c.id}
                 to="/courses/$courseSlug"
                 params={{ courseSlug: c.slug }}
-                className="group rounded-lg border border-border bg-surface p-6 transition hover:border-primary/50 hover:shadow-sm"
+                className="group rounded-lg border border-border bg-surface p-6 interactive-card shadow-soft-xs hover:border-primary/50"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <BookOpen className="h-5 w-5" aria-hidden />
@@ -133,54 +144,32 @@ function CoursesIndex() {
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{c.description}</p>
                 )}
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <StatChip variant="chip" label="semesters" value={c.total_semesters ?? 0} icon={Layers} />
+                  <StatChip
+                    variant="chip"
+                    label="semesters"
+                    value={c.total_semesters ?? 0}
+                    icon={Layers}
+                  />
                   {c.duration_years ? (
-                    <StatChip variant="chip" label="years" value={c.duration_years} icon={CalendarClock} tone="accent" />
+                    <StatChip
+                      variant="chip"
+                      label="years"
+                      value={c.duration_years}
+                      icon={CalendarClock}
+                      tone="accent"
+                    />
                   ) : null}
-                  <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5" aria-hidden />
+                  <ArrowRight
+                    className="ml-auto h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
                 </div>
               </Link>
             ))}
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
-  );
-}
-
-export function PublicHeader() {
-  const { user, loading } = useAuth();
-
-  return (
-    <header className="border-b border-border/60">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">
-            <span className="font-display text-base font-semibold">ब</span>
-          </div>
-          <span className="font-display text-lg font-semibold text-foreground">BCA Gurukul</span>
-        </Link>
-        <nav className="flex items-center gap-5 text-sm">
-          <Link to="/courses" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary" }}>
-            Courses
-          </Link>
-          {!loading && user ? (
-            <Link
-              to="/dashboard"
-              className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground hover:bg-primary/90"
-            >
-              Dashboard
-            </Link>
-          ) : (
-            <Link
-              to="/auth"
-              className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground hover:bg-primary/90"
-            >
-              Sign in
-            </Link>
-          )}
-        </nav>
-      </div>
-    </header>
   );
 }

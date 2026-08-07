@@ -6,7 +6,8 @@ import { ArrowLeft, Download, FileStack } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/papers/$paperId")({
   head: () => ({ meta: [{ title: "Question Paper · BCA Gurukul" }] }),
@@ -53,7 +54,7 @@ function PaperViewer() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-10">
         <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" /> Back to catalog
@@ -96,6 +97,7 @@ function PaperViewer() {
           </article>
         )}
       </main>
+      <SiteFooter />
     </div>
   );
 }

@@ -27,7 +27,8 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
@@ -258,7 +259,7 @@ function SubjectDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-5xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
         <Breadcrumbs
           items={[
@@ -449,7 +450,7 @@ function SubjectDetail() {
                     key={p.id}
                     to="/papers/$paperId"
                     params={{ paperId: p.id }}
-                    className="group flex items-center justify-between gap-4 rounded-lg border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="group flex items-center justify-between gap-4 rounded-lg border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     <div className="flex min-w-0 items-start gap-4">
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -474,6 +475,7 @@ function SubjectDetail() {
           </section>
         )}
       </main>
+      <SiteFooter />
     </div>
   );
 }
@@ -521,7 +523,7 @@ function UnitCard({
       aria-label={`Unit ${unit.number}: ${unit.title} — ${ctaLabel}`}
       aria-current={isResume ? "step" : undefined}
       className={cn(
-        "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
+        "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
         isResume ? "border-primary/60 ring-1 ring-primary/30" : "border-border",
       )}
     >

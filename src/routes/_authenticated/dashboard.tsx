@@ -321,7 +321,7 @@ function DashboardPage() {
                   semesterNumber: String(semester.number),
                   subjectSlug: s.slug,
                 }}
-                className="group min-w-[78%] shrink-0 snap-start rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm sm:min-w-0 sm:shrink"
+                className="group min-w-[78%] shrink-0 snap-start rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/40 sm:min-w-0 sm:shrink"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
@@ -348,7 +348,7 @@ function DashboardPage() {
       {/* ─── Secondary: quizzes + bookmarks ─── */}
       <section className="mt-12 grid gap-5 lg:grid-cols-5">
         {/* Recent quiz attempts */}
-        <div className="rounded-2xl border border-border bg-surface p-6 lg:col-span-3">
+        <div className="rounded-xl border border-border bg-surface p-6 lg:col-span-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <h3 className="font-display text-base font-semibold text-foreground">
@@ -441,7 +441,7 @@ function DashboardPage() {
         </div>
 
         {/* Bookmarks */}
-        <div className="rounded-2xl border border-border bg-surface p-6 lg:col-span-2">
+        <div className="rounded-xl border border-border bg-surface p-6 lg:col-span-2">
           <div className="flex items-start justify-between gap-3">
             <h3 className="font-display text-base font-semibold text-foreground">
               <Bookmark className="mr-1.5 inline h-4 w-4 text-primary" />

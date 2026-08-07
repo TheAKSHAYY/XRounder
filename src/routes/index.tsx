@@ -23,8 +23,9 @@ import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BrandMark } from "@/components/brand-mark";
 import { Reveal } from "@/components/ui/reveal";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import {
   Accordion,
   AccordionContent,
@@ -75,7 +76,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SiteHeader user={user} loading={loading} />
+      <SiteHeader marketing />
       <main>
         {isLoading ? (
           <LandingSkeleton />
@@ -110,7 +111,7 @@ function Index() {
           })
         )}
       </main>
-      <SiteFooter />
+      <SiteFooter marketing />
     </div>
   );
 }
@@ -149,8 +150,8 @@ function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
           Your platform is ready.
         </h1>
         <p className="mt-4 text-base text-muted-foreground">
-          No homepage content has been published yet. An administrator can compose this
-          page from the admin panel — every section is editable, nothing is hardcoded.
+          No homepage content has been published yet. An administrator can compose this page from
+          the admin panel — every section is editable, nothing is hardcoded.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           {!loading && !user ? (
@@ -173,80 +174,7 @@ function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
   );
 }
 
-
 /* ──────────────────────────────────────────────────────────── Header */
-
-function SiteHeader({ user, loading }: { user: unknown; loading: boolean }) {
-  return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3">
-          <BrandMark className="h-10 w-10" />
-          <div className="leading-tight">
-            <div className="font-display text-lg font-semibold text-foreground">
-              BCA Gurukul
-            </div>
-            <div className="hidden text-xs text-muted-foreground sm:block">
-              Structured learning for BCA students
-            </div>
-          </div>
-        </Link>
-        <nav className="hidden items-center gap-1 md:flex">
-          <a
-            href="#features"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Features
-          </a>
-          <a
-            href="#journey"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Journey
-          </a>
-          <a
-            href="#faq"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            FAQ
-          </a>
-          <Link
-            to="/developer"
-            className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Developer
-          </Link>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-            <Link to="/courses">Browse</Link>
-          </Button>
-          {loading ? null : user ? (
-            <Button asChild size="sm">
-              <Link to="/developer">
-                Developer
-                <ArrowRight className="ml-1.5 h-4 w-4" />
-              </Link>
-            </Button>
-          ) : (
-            <>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/auth" search={{ mode: "signin" }}>
-                  Sign in
-                </Link>
-              </Button>
-              <Button asChild size="sm">
-                <Link to="/auth" search={{ mode: "signup" }}>
-                  Get started
-                </Link>
-              </Button>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
-  );
-}
 
 /* ──────────────────────────────────────────────────────────── Hero */
 
@@ -261,15 +189,14 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage:
-              "radial-gradient(currentColor 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)",
             backgroundSize: "28px 28px",
             color: "var(--color-foreground)",
           }}
         />
       </div>
 
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-20 sm:pt-28">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 sm:pt-16 lg:pt-20">
         <div className="max-w-4xl">
           {/* Eyebrow pill with pulsing saffron dot */}
           <Reveal>
@@ -286,7 +213,7 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
           {/* Headline with italic-saffron accent word */}
           <Reveal delay={80}>
-            <h1 className="mt-8 font-display text-5xl font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 font-display text-[2.25rem] font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Master your BCA <br className="hidden sm:block" />
               <span className="accent-sheen italic">journey</span>, with clarity.
             </h1>
@@ -294,9 +221,8 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
           <Reveal delay={160}>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              One organised home for notes, past papers, video lectures and timed
-              MCQ practice — curated semester by semester, so you always know
-              exactly what to study next.
+              One organised home for notes, past papers, video lectures and timed MCQ practice —
+              curated semester by semester, so you always know exactly what to study next.
             </p>
           </Reveal>
 
@@ -361,7 +287,6 @@ function Hero({ user, loading }: { user: unknown; loading: boolean }) {
           </Reveal>
         </div>
       </div>
-
     </section>
   );
 }
@@ -387,7 +312,11 @@ function useLandingStats() {
         supabase.from("notes").select("*", head).eq("status", "published").is("deleted_at", null),
         supabase.from("papers").select("*", head).eq("status", "published").is("deleted_at", null),
         supabase.from("quizzes").select("*", head).eq("status", "published").is("deleted_at", null),
-        supabase.from("semesters").select("*", head).eq("status", "published").is("deleted_at", null),
+        supabase
+          .from("semesters")
+          .select("*", head)
+          .eq("status", "published")
+          .is("deleted_at", null),
       ]);
       return {
         students: s.count ?? 0,
@@ -534,12 +463,8 @@ function FeatureCard({
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground">
         {icon}
       </div>
-      <h3 className="mt-5 font-display text-lg font-semibold text-foreground">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {body}
-      </p>
+      <h3 className="mt-5 font-display text-lg font-semibold text-foreground">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </div>
   );
 }
@@ -587,12 +512,8 @@ function WhyChoose() {
                 {r.icon}
               </div>
               <div className="min-w-0">
-                <h3 className="font-display text-lg font-semibold text-foreground">
-                  {r.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  {r.body}
-                </p>
+                <h3 className="font-display text-lg font-semibold text-foreground">{r.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{r.body}</p>
               </div>
             </div>
           ))}
@@ -644,9 +565,7 @@ function Journey() {
                 <h3 className="mt-2 font-display text-lg font-semibold text-foreground">
                   {s.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {s.body}
-                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
               </div>
               {i < steps.length - 1 && (
                 <div
@@ -718,8 +637,8 @@ function Testimonials() {
             Be one of the first voices
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Use BCA Gurukul this semester and share how it helped. We'll feature
-            real student stories here once we have them — no fake quotes.
+            Use BCA Gurukul this semester and share how it helped. We'll feature real student
+            stories here once we have them — no fake quotes.
           </p>
           <Button asChild className="mt-6" variant="outline">
             <Link to="/auth" search={{ mode: "signup" }}>
@@ -764,10 +683,7 @@ function FAQ() {
   return (
     <section id="faq" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-3xl px-6">
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Frequently asked questions"
-        />
+        <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
         <Accordion type="single" collapsible className="mt-12">
           {items.map((it, idx) => (
             <AccordionItem key={idx} value={`item-${idx}`}>
@@ -805,8 +721,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
             Your best semester starts today.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-primary-foreground/80">
-            Free for students. Sign up in 30 seconds and start with your current
-            semester.
+            Free for students. Sign up in 30 seconds and start with your current semester.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {loading ? null : user ? (
@@ -870,10 +785,7 @@ function Contact() {
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label
-                htmlFor="contact-name"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="contact-name" className="text-sm font-medium text-foreground">
                 Name
               </label>
               <input
@@ -884,10 +796,7 @@ function Contact() {
               />
             </div>
             <div>
-              <label
-                htmlFor="contact-email"
-                className="text-sm font-medium text-foreground"
-              >
+              <label htmlFor="contact-email" className="text-sm font-medium text-foreground">
                 Email
               </label>
               <input
@@ -899,10 +808,7 @@ function Contact() {
             </div>
           </div>
           <div className="mt-4">
-            <label
-              htmlFor="contact-msg"
-              className="text-sm font-medium text-foreground"
-            >
+            <label htmlFor="contact-msg" className="text-sm font-medium text-foreground">
               Message
             </label>
             <textarea
@@ -926,108 +832,6 @@ function Contact() {
 
 /* ──────────────────────────────────────────────────────────── Footer */
 
-function SiteFooter() {
-  return (
-    <footer className="border-t border-border/60 bg-surface-muted/60">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <Link to="/" className="flex items-center gap-3">
-              <BrandMark className="h-10 w-10" />
-              <div className="font-display text-base font-semibold text-foreground">
-                BCA Gurukul
-              </div>
-            </Link>
-            <p className="mt-3 max-w-xs text-sm text-muted-foreground">
-              The structured learning home for BCA students across India.
-            </p>
-          </div>
-          <FooterCol
-            title="Product"
-            links={[
-              { label: "Browse courses", to: "/courses" },
-              { label: "Features", href: "#features" },
-              { label: "Learning journey", href: "#journey" },
-              { label: "FAQ", href: "#faq" },
-            ]}
-          />
-          <FooterCol
-            title="Account"
-            links={[
-              { label: "Sign in", to: "/auth", search: { mode: "signin" as const } },
-              { label: "Create account", to: "/auth", search: { mode: "signup" as const } },
-              { label: "Reset password", to: "/auth", search: { mode: "forgot" as const } },
-            ]}
-          />
-          <FooterCol
-            title="Company"
-            links={[
-              { label: "Developer", to: "/developer" },
-              { label: "Contact", href: "#contact" },
-              { label: "Privacy", to: "/privacy" },
-              { label: "Terms", to: "/terms" },
-            ]}
-          />
-        </div>
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} BCA Gurukul. All rights reserved.</span>
-          <span>Built with care for BCA students.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-type FooterLink =
-  | { label: string; to: "/courses" | "/auth" | "/privacy" | "/terms" | "/developer"; search?: { mode: "signin" | "signup" | "forgot" }; href?: never }
-  | { label: string; href: string; to?: never; search?: never };
-
-function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
-  return (
-    <div>
-      <h4 className="font-display text-sm font-semibold text-foreground">
-        {title}
-      </h4>
-      <ul className="mt-3 space-y-2 text-sm">
-        {links.map((l) =>
-          l.to ? (
-            <li key={l.label}>
-              <Link
-                to={l.to}
-                search={l.search as never}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </Link>
-            </li>
-          ) : (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                onClick={(e) => {
-                  if (l.href.startsWith("#") && l.href.length > 1) {
-                    const el = document.getElementById(l.href.slice(1));
-                    if (el) {
-                      e.preventDefault();
-                      const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }
-                  }
-                }}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {l.label}
-              </a>
-            </li>
-          ),
-        )}
-      </ul>
-    </div>
-  );
-}
-
-/* ──────────────────────────────────────────────────────────── Shared */
-
 function SectionHeading({
   eyebrow,
   title,
@@ -1049,9 +853,7 @@ function SectionHeading({
       <h2 className="mt-3 font-display text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
         {title}
       </h2>
-      {body && (
-        <p className="mt-4 text-base text-muted-foreground">{body}</p>
-      )}
+      {body && <p className="mt-4 text-base text-muted-foreground">{body}</p>}
     </Reveal>
   );
 }

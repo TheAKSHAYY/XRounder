@@ -650,3 +650,75 @@
   .accent-sheen { animation: none; }
 }
 
+
+/*
+ * ── Elevation + interaction primitives ────────────────────────────────────
+ * Softer, warmer shadows than Tailwind defaults (indigo-tinted, low alpha),
+ * plus the shared interaction utilities so cards animate identically
+ * everywhere. All motion stays under 250ms and respects reduced-motion.
+ */
+@theme inline {
+  --shadow-soft-xs: 0 1px 2px oklch(0.25 0.06 268 / 0.06);
+  --shadow-soft: 0 1px 2px oklch(0.25 0.06 268 / 0.05), 0 4px 12px oklch(0.25 0.06 268 / 0.06);
+  --shadow-soft-md:
+    0 2px 4px oklch(0.25 0.06 268 / 0.05), 0 8px 24px oklch(0.25 0.06 268 / 0.08);
+  --shadow-soft-lg:
+    0 4px 8px oklch(0.25 0.06 268 / 0.06), 0 16px 40px oklch(0.25 0.06 268 / 0.1);
+}
+
+/* Minimum comfortable touch target (WCAG 2.5.5 / HIG 44px). */
+@utility tap-target {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+/* Shared card interaction: lift + shadow on hover, press-in on tap. */
+@utility interactive-card {
+  transition:
+    transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 200ms ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft-lg);
+  }
+  &:active {
+    transform: translateY(0) scale(0.995);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-fade-in-up {
+  animation: fade-in-up 220ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Horizontal scroll containers (breadcrumb trails, chip rows) without chrome. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card {
+    transition: none;
+  }
+  .interactive-card:hover {
+    transform: none;
+  }
+  .animate-fade-in-up {
+    animation: none;
+  }
+}

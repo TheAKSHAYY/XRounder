@@ -3,7 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, BookOpen, Layers } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/courses/$courseSlug/")({
   head: () => ({ meta: [{ title: "Course · BCA Gurukul" }] }),
@@ -55,7 +56,7 @@ function CourseDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-12">
         <Link
           to="/courses"
@@ -98,7 +99,7 @@ function CourseDetail() {
                 key={s.id}
                 to="/courses/$courseSlug/$semesterNumber"
                 params={{ courseSlug, semesterNumber: String(s.number) }}
-                className="group rounded-xl border border-border bg-surface p-5 transition hover:border-primary/50"
+                className="group rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/50"
               >
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground font-display text-base">
@@ -114,6 +115,7 @@ function CourseDetail() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

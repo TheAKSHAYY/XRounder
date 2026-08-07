@@ -27,7 +27,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/use-auth";
-import { PublicHeader } from "./courses.index";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: () => ({
@@ -408,7 +409,7 @@ function QuizPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <PublicHeader />
+      <SiteHeader />
 
       {/* Live quiz header */}
       {activeAttempt && quizQ.data && (
@@ -631,6 +632,7 @@ function QuizPage() {
           />
         )}
       </main>
+      <SiteFooter />
 
       {/* Sticky nav */}
       {activeAttempt && current && (
