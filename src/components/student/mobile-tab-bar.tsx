@@ -13,7 +13,8 @@ const TABS = [
 
 /**
  * Fixed bottom navigation for mobile only. Pages get `pb-mobile-nav` so
- * content never hides behind it.
+ * content never hides behind it. Each tab is a >=44px target and the active
+ * tab is marked with both colour and a top rail (never colour alone).
  */
 export function MobileTabBar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -34,12 +35,26 @@ export function MobileTabBar() {
                 aria-label={label}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex min-h-[3.25rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[0.6875rem] font-medium transition-colors",
+                  "relative flex min-h-[3.5rem] flex-col items-center justify-center gap-1 px-1 py-2 text-[0.6875rem] font-medium transition-colors duration-200 active:bg-muted/60",
                   active ? "text-primary" : "text-muted-foreground",
                 )}
               >
-                <Icon className="size-5 shrink-0" strokeWidth={active ? 2.4 : 2} aria-hidden />
-                <span className="truncate">{label}</span>
+                <span
+                  aria-hidden
+                  className={cn(
+                    "absolute inset-x-4 top-0 h-0.5 rounded-full bg-primary transition-opacity duration-200",
+                    active ? "opacity-100" : "opacity-0",
+                  )}
+                />
+                <Icon
+                  className={cn(
+                    "size-5 shrink-0 transition-transform duration-200",
+                    active && "scale-110",
+                  )}
+                  strokeWidth={active ? 2.4 : 2}
+                  aria-hidden
+                />
+                <span className="max-w-full truncate">{label}</span>
               </Link>
             </li>
           );
