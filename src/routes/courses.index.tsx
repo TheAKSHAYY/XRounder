@@ -4,6 +4,8 @@ import { BookOpen, ArrowRight, GraduationCap, Library, Bell, Layers, CalendarClo
 
 import { supabase } from "@/integrations/supabase/client";
 import { EmptyState } from "@/components/ui/empty-state";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
@@ -149,39 +151,3 @@ function CoursesIndex() {
   );
 }
 
-export function PublicHeader() {
-  const { user, loading } = useAuth();
-
-  return (
-    <header className="border-b border-border/60">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground">
-            <span className="font-display text-base font-semibold">ब</span>
-          </div>
-          <span className="font-display text-lg font-semibold text-foreground">BCA Gurukul</span>
-        </Link>
-        <nav className="flex items-center gap-5 text-sm">
-          <Link to="/courses" className="text-foreground hover:text-primary" activeProps={{ className: "text-primary" }}>
-            Courses
-          </Link>
-          {!loading && user ? (
-            <Link
-              to="/dashboard"
-              className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground hover:bg-primary/90"
-            >
-              Dashboard
-            </Link>
-          ) : (
-            <Link
-              to="/auth"
-              className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground hover:bg-primary/90"
-            >
-              Sign in
-            </Link>
-          )}
-        </nav>
-      </div>
-    </header>
-  );
-}
