@@ -497,9 +497,9 @@ function SubjectCard({
           )}
         </div>
 
-        <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary">
+        <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary transition-transform duration-180 group-active:translate-x-0.5">
           {ctaLabel}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5" />
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5 group-active:translate-x-1" />
         </span>
       </div>
     </Link>
