@@ -717,10 +717,16 @@
   .interactive-card {
     transition: none;
   }
-  .interactive-card:hover {
+  .interactive-card:hover,
+  .interactive-card:active {
     transform: none;
   }
   .animate-fade-in-up {
     animation: none;
+  }
+  .subject-cta,
+  .subject-cta * {
+    transition: none !important;
+    transform: none !important;
   }
 }
