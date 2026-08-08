@@ -422,16 +422,16 @@ function SubjectCard({
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="group relative flex h-full min-h-[13rem] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs ring-1 ring-inset ring-border/40 hover:border-primary/40 hover:ring-primary/20 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-soft-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
+      className="group relative flex h-full min-h-[13rem] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs ring-1 ring-inset ring-border/40 hover:border-primary/40 hover:ring-primary/20 active:border-primary/30 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-soft-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
     >
       {/* Top accent sheen — subtle premium lighting, purely decorative */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100 group-active:via-accent/60"
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-opacity duration-200 group-hover:bg-primary/10"
+        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10 group-active:scale-95"
       />
 
       {/* Header: code chip + status badge, never wrapping into the title */}
@@ -497,9 +497,9 @@ function SubjectCard({
           )}
         </div>
 
-        <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary">
+        <span className="subject-cta inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary transition-transform duration-180 group-active:translate-x-0.5">
           {ctaLabel}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5" />
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5 group-active:translate-x-1" />
         </span>
       </div>
     </Link>
