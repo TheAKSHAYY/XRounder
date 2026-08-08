@@ -105,77 +105,148 @@ function ProfilePage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
+    <div className="mx-auto w-full max-w-3xl px-4 pb-28 pt-6 sm:px-8 sm:pt-12">
       <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Profile" }]} />
 
-      <div className="mt-5 flex flex-col gap-4 rounded-lg border border-border bg-surface p-6 sm:flex-row sm:items-center">
-        <Avatar className="h-16 w-16 shrink-0">
-          {avatarUrl ? (
-            <img
-              src={avatarUrl}
-              alt={`${fullName || displayName || "Your"} avatar`}
-              className="h-full w-full rounded-full object-cover"
-            />
-          ) : null}
-          <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
-            {initials}
-          </AvatarFallback>
-        </Avatar>
-        <div className="min-w-0">
-          <h1 className="text-h1 text-foreground">
-            {fullName || displayName || "Your profile"}
-          </h1>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span className="truncate">{user?.email}</span>
-            <Badge variant="secondary" className="text-[10px]">
-              {role}
-            </Badge>
+      {/* Identity card */}
+      <section className="relative mt-5 overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-primary/12 via-accent/10 to-transparent"
+        />
+        <div className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-5 sm:gap-5 sm:p-6">
+          <Avatar className="h-16 w-16 shrink-0 ring-2 ring-background sm:h-20 sm:w-20">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt={`${fullName || displayName || "Your"} avatar`}
+                className="h-full w-full rounded-full object-cover"
+              />
+            ) : null}
+            <AvatarFallback className="bg-primary/10 text-lg font-semibold text-primary">
+              {initials}
+            </AvatarFallback>
+          </Avatar>
+          <div className="min-w-0">
+            <h1 className="truncate text-h2 text-foreground sm:text-h1">
+              {fullName || displayName || "Your profile"}
+            </h1>
+            <div className="mt-1.5 flex min-w-0 flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <span className="max-w-full truncate [overflow-wrap:anywhere]">{user?.email}</span>
+              <Badge variant="secondary" className="shrink-0 text-[10px]">
+                {role}
+              </Badge>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <form
-        onSubmit={onSave}
-        aria-label="Profile details"
-        className="mt-6 space-y-5 rounded-lg border border-border bg-surface p-6 shadow-sm"
-      >
-        <h2 className="text-h3 text-foreground">Your details</h2>
+      <form onSubmit={onSave} aria-label="Profile details" className="mt-5 space-y-5">
+        {/* Avatar editor */}
+        <fieldset className="rounded-xl border border-border bg-surface p-5 shadow-soft sm:p-6">
+          <legend className="sr-only">Profile photo</legend>
+          <h2 className="text-h3 text-foreground">Profile photo</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Paste an image link. Square images look best.
+          </p>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div className="space-y-2">
-            <Label htmlFor="full">Full name</Label>
-            <Input id="full" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+          <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
+            <Avatar className="h-14 w-14 shrink-0 border border-border">
+              {avatarUrl ? (
+                <img src={avatarUrl} alt="" className="h-full w-full rounded-full object-cover" />
+              ) : null}
+              <AvatarFallback className="bg-muted text-sm font-semibold text-muted-foreground">
+                {initials}
+              </AvatarFallback>
+            </Avatar>
+            <div className="min-w-0 space-y-2">
+              <Label htmlFor="avatar">Avatar URL</Label>
+              <Input
+                id="avatar"
+                value={avatarUrl}
+                onChange={(e) => setAvatarUrl(e.target.value)}
+                placeholder="https://…"
+                inputMode="url"
+                autoComplete="photo"
+                className="w-full"
+              />
+              <div className="flex flex-wrap gap-2 pt-1">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="tap-target"
+                  onClick={() => setAvatarUrl("")}
+                  disabled={!avatarUrl}
+                >
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Remove photo
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="display">Display name</Label>
-            <Input
-              id="display"
-              value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
-            />
+        </fieldset>
+
+        {/* Details */}
+        <fieldset className="rounded-xl border border-border bg-surface p-5 shadow-soft sm:p-6">
+          <legend className="sr-only">Your details</legend>
+          <h2 className="text-h3 text-foreground">Your details</h2>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-5">
+            <div className="min-w-0 space-y-2">
+              <Label htmlFor="full">Full name</Label>
+              <Input
+                id="full"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                autoComplete="name"
+                className="w-full"
+              />
+            </div>
+            <div className="min-w-0 space-y-2">
+              <Label htmlFor="display">Display name</Label>
+              <Input
+                id="display"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                autoComplete="nickname"
+                className="w-full"
+              />
+            </div>
+            <div className="min-w-0 space-y-2 sm:col-span-2">
+              <Label htmlFor="bio">Bio</Label>
+              <Textarea
+                id="bio"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                rows={4}
+                placeholder="Tell others about yourself"
+                className="w-full resize-y"
+              />
+              <p className="text-xs text-muted-foreground">
+                A short intro shown alongside your name.
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="avatar">Avatar URL</Label>
-          <Input
-            id="avatar"
-            value={avatarUrl}
-            onChange={(e) => setAvatarUrl(e.target.value)}
-            placeholder="https://…"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="bio">Bio</Label>
-          <Textarea
-            id="bio"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            rows={4}
-            placeholder="Tell others about yourself"
-          />
-        </div>
-        <div className="flex justify-end">
-          <Button type="submit" disabled={saving}>
+        </fieldset>
+
+        {/* Actions: full-width on mobile, right-aligned on desktop */}
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button
+            type="button"
+            variant="ghost"
+            className="tap-target w-full sm:w-auto"
+            onClick={() => {
+              setFullName(profile.data?.full_name ?? "");
+              setDisplayName(profile.data?.display_name ?? "");
+              setBio(profile.data?.bio ?? "");
+              setAvatarUrl(profile.data?.avatar_url ?? "");
+            }}
+            disabled={saving}
+          >
+            Reset
+          </Button>
+          <Button type="submit" disabled={saving} className="tap-target w-full sm:w-auto">
             {saving ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
             ) : (
