@@ -362,9 +362,9 @@ function SemesterDetail() {
               }}
             />
           ) : (
-            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-6 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
               {stats.map((s) => (
-                <li key={s.subject.id} className="flex">
+                <li key={s.subject.id} className="flex min-w-0">
                   <SubjectCard
                     stats={s}
                     loading={loadingProgress}
@@ -381,6 +381,7 @@ function SemesterDetail() {
                 </li>
               ))}
             </ul>
+
           )}
         </section>
       </main>
