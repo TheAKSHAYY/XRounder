@@ -422,23 +422,49 @@ function SubjectCard({
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="group flex h-full w-full flex-col rounded-lg border border-border bg-surface p-6 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group relative flex h-full min-h-[13rem] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs ring-1 ring-inset ring-border/40 hover:border-primary/40 hover:ring-primary/20 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-soft-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
     >
-      {/* Header */}
-      <div className="flex items-start justify-between gap-3">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+      {/* Top accent sheen — subtle premium lighting, purely decorative */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-opacity duration-200 group-hover:bg-primary/10"
+      />
+
+      {/* Header: code chip + status badge, never wrapping into the title */}
+      <div className="flex min-w-0 items-center gap-2">
+        <span className="min-w-0 truncate rounded-md bg-surface-muted px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
           {subject.code}
         </span>
-        {showProgress && isDone && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
-            <Check className="h-3 w-3" aria-hidden />
-            Done
+        {showProgress && (
+          <span
+            className={
+              isDone
+                ? "ml-auto inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary"
+                : status === "in_progress"
+                  ? "ml-auto inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-foreground"
+                  : "ml-auto inline-flex shrink-0 items-center rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+            }
+          >
+            {isDone ? (
+              <>
+                <Check className="h-3 w-3" aria-hidden />
+                Done
+              </>
+            ) : status === "in_progress" ? (
+              `${pct}%`
+            ) : (
+              "New"
+            )}
           </span>
         )}
       </div>
 
       {/* Title */}
-      <h3 className="mt-3 text-h3 text-foreground line-clamp-2">
+      <h3 className="mt-3 text-h3 text-foreground line-clamp-2 [overflow-wrap:anywhere]">
         {subject.title}
       </h3>
 
@@ -457,7 +483,7 @@ function SubjectCard({
       <div className="flex-1" />
 
       {/* Footer: single meta line + right-aligned CTA */}
-      <div className="mt-5 flex items-end justify-between gap-3">
+      <div className="mt-5 flex items-end justify-between gap-3 border-t border-border/60 pt-4">
         <div className="min-w-0 text-[11px] font-medium text-muted-foreground">
           <div className="tabular-nums">
             {totalUnits === 0
@@ -471,7 +497,7 @@ function SubjectCard({
           )}
         </div>
 
-        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg text-sm font-semibold text-primary">
+        <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary">
           {ctaLabel}
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5" />
         </span>
@@ -479,5 +505,6 @@ function SubjectCard({
     </Link>
   );
 }
+
 
 
