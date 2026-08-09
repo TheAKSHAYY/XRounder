@@ -133,17 +133,27 @@ function CoursesIndex() {
                 key={c.id}
                 to="/courses/$courseSlug"
                 params={{ courseSlug: c.slug }}
-                className="group rounded-lg border border-border bg-surface p-6 interactive-card shadow-soft-xs hover:border-primary/50"
+                className="group relative flex h-full min-h-[12.5rem] flex-col overflow-hidden rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs ring-1 ring-inset ring-border/40 hover:border-primary/40 hover:ring-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10"
+                />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
                   <BookOpen className="h-5 w-5" aria-hidden />
                 </div>
                 <div className="mt-4 text-eyebrow text-muted-foreground">{c.code}</div>
-                <h3 className="mt-1 text-h3 text-foreground">{c.title}</h3>
+                <h3 className="mt-1 text-h3 text-foreground [overflow-wrap:anywhere]">{c.title}</h3>
                 {c.description && (
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{c.description}</p>
                 )}
-                <div className="mt-4 flex flex-wrap items-center gap-2">
+                <div className="flex-1" />
+                <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
+
                   <StatChip
                     variant="chip"
                     label="semesters"
