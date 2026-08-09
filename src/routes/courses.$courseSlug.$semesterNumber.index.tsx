@@ -427,7 +427,7 @@ function SubjectCard({
       {/* Top accent sheen — subtle premium lighting, purely decorative */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100 group-active:via-accent/60"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100 group-active:via-accent/60"
       />
       <span
         aria-hidden

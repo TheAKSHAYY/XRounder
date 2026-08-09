@@ -178,7 +178,7 @@ function ProfilePage() {
       <section className="relative mt-5 overflow-hidden rounded-xl border border-border bg-surface shadow-soft">
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-primary/12 via-accent/10 to-transparent"
+          className="absolute inset-x-0 top-0 h-24 bg-linear-to-r from-primary/12 via-accent/10 to-transparent"
         />
         <div className="relative grid grid-cols-[auto_minmax(0,1fr)] items-center gap-4 p-5 sm:gap-5 sm:p-6">
           <Avatar className="h-16 w-16 shrink-0 ring-2 ring-background sm:h-20 sm:w-20">
