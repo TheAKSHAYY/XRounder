@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Loader2, Save, Trash2 } from "lucide-react";
+import { Loader2, Save, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+
 
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
@@ -59,6 +60,71 @@ function ProfilePage() {
   const [bio, setBio] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useRef<HTMLInputElement | null>(null);
+
+  async function onPickFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please choose an image file (JPG, PNG, WebP or GIF).");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image is too large. Maximum size is 5 MB.");
+      return;
+    }
+
+    setUploading(true);
+    const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const path = `${user.id}/avatar-${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("avatars")
+      .upload(path, file, { contentType: file.type, upsert: true });
+
+    if (upErr) {
+      setUploading(false);
+      toast.error(upErr.message);
+      return;
+    }
+
+    const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl;
+    const { error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: publicUrl })
+      .eq("user_id", user.id);
+    setUploading(false);
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    setAvatarUrl(publicUrl);
+    toast.success("Profile photo updated");
+    qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
+    qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
+  }
+
+  async function onRemovePhoto() {
+    if (!user) return;
+    setUploading(true);
+    const { error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: null })
+      .eq("user_id", user.id);
+    setUploading(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    setAvatarUrl("");
+    toast.success("Profile photo removed");
+    qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
+    qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
+  }
+
 
   useEffect(() => {
     if (!profile.data) return;
@@ -147,7 +213,7 @@ function ProfilePage() {
           <legend className="sr-only">Profile photo</legend>
           <h2 className="text-h3 text-foreground">Profile photo</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Paste an image link. Square images look best.
+            Upload a photo from your device. Square images look best (max 5 MB).
           </p>
 
           <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
@@ -160,31 +226,48 @@ function ProfilePage() {
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0 space-y-2">
-              <Label htmlFor="avatar">Avatar URL</Label>
-              <Input
-                id="avatar"
-                value={avatarUrl}
-                onChange={(e) => setAvatarUrl(e.target.value)}
-                placeholder="https://…"
-                inputMode="url"
-                autoComplete="photo"
-                className="w-full"
+              <input
+                ref={fileRef}
+                id="avatar-file"
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+                className="sr-only"
+                onChange={onPickFile}
               />
-              <div className="flex flex-wrap gap-2 pt-1">
+              <div className="flex flex-wrap gap-2">
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   className="tap-target"
-                  onClick={() => setAvatarUrl("")}
-                  disabled={!avatarUrl}
+                  onClick={() => fileRef.current?.click()}
+                  disabled={uploading}
+                >
+                  {uploading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Upload className="mr-2 h-4 w-4" />
+                  )}
+                  {avatarUrl ? "Change photo" : "Upload photo"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="tap-target"
+                  onClick={onRemovePhoto}
+                  disabled={!avatarUrl || uploading}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Remove photo
                 </Button>
               </div>
+              <p className="text-xs text-muted-foreground">
+                PNG, JPG, WebP or GIF. Your photo saves as soon as it finishes uploading.
+              </p>
             </div>
           </div>
+
         </fieldset>
 
         {/* Details */}
