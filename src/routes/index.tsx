@@ -118,7 +118,7 @@ function Index() {
 
 function LandingSkeleton() {
   return (
-    <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-28">
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
         <Skeleton className="mb-8 h-6 w-48 rounded-full" />
         <Skeleton className="h-14 w-full max-w-2xl rounded-lg sm:h-20" />
@@ -141,7 +141,7 @@ function LandingSkeleton() {
 function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+      <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-32">
         <div className="mx-auto inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
           <Sparkles className="h-3 w-3" />
           BCA Gurukul
@@ -376,7 +376,7 @@ function TrustBar() {
 
   return (
     <section className="border-b border-border/60 bg-surface/70 backdrop-blur-sm">
-      <div className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
         <p className="text-center text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
           Built for every BCA student in India
         </p>
@@ -405,14 +405,14 @@ function TrustBar() {
 
 function Features() {
   return (
-    <section id="features" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="features" className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Everything you need"
           title="One platform, four pillars of preparation"
           body="Each unit is paired with notes, papers, videos and a quiz — so theory, revision and practice live in the same place."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-9 grid sm:mt-14 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               icon: <BookOpen className="h-5 w-5" />,
@@ -495,14 +495,14 @@ function WhyChoose() {
     },
   ];
   return (
-    <section className="border-b border-border/60 bg-surface-muted/40 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="border-b border-border/60 bg-surface-muted/40 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Why BCA Gurukul"
           title="Designed around how BCA students actually study"
           body="The syllabus is messy. Your study workflow shouldn't be."
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-9 grid sm:mt-14 gap-6 sm:grid-cols-2">
           {reasons.map((r) => (
             <div
               key={r.title}
@@ -549,13 +549,13 @@ function Journey() {
     },
   ];
   return (
-    <section id="journey" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="journey" className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Your learning journey"
           title="From syllabus to confidence in four clear steps"
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-9 grid sm:mt-14 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
             <Reveal key={s.step} delay={i * 90} className="relative">
               <div className="h-full rounded-3xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-colors hover:border-accent/40">
@@ -593,8 +593,8 @@ function Benefits() {
     "Dark mode that's actually easy on the eyes",
   ];
   return (
-    <section className="border-b border-border/60 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2 lg:items-center">
+    <section className="border-b border-border/60 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div>
           <SectionHeading
             align="left"
@@ -622,14 +622,14 @@ function Benefits() {
 
 function Testimonials() {
   return (
-    <section className="border-b border-border/60 bg-surface-muted/40 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="border-b border-border/60 bg-surface-muted/40 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="What students say"
           title="Real stories, coming soon"
           body="We're rolling out across colleges this semester. Your story could be one of the first."
         />
-        <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-dashed border-border bg-surface p-10 text-center">
+        <div className="mx-auto mt-10 max-w-2xl rounded-3xl border border-dashed border-border bg-surface p-6 text-center sm:mt-12 sm:p-10">
           <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-accent/20 text-accent-foreground">
             <Quote className="h-6 w-6" />
           </div>
@@ -681,8 +681,8 @@ function FAQ() {
     },
   ];
   return (
-    <section id="faq" className="scroll-mt-24 border-b border-border/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-6">
+    <section id="faq" className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
         <Accordion type="single" collapsible className="mt-12">
           {items.map((it, idx) => (
@@ -705,8 +705,8 @@ function FAQ() {
 
 function CTA({ user, loading }: { user: unknown; loading: boolean }) {
   return (
-    <section className="border-b border-border/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="border-b border-border/60 py-14 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary to-primary/80 p-10 text-center shadow-xl shadow-primary/20 sm:p-16">
           <div
             aria-hidden
@@ -761,7 +761,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
 function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 py-20 sm:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_1.2fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <SectionHeading
             align="left"
