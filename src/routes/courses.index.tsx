@@ -103,7 +103,7 @@ function CoursesIndex() {
 
         <section className="mt-10" aria-label="Course catalog">
           <h2 className="text-h2 text-foreground">Programs</h2>
-          <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {isLoading &&
               Array.from({ length: 3 }).map((_, i) => (
                 <div key={i} className="rounded-lg border border-border bg-surface p-6">
