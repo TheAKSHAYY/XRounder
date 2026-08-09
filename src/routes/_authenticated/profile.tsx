@@ -60,6 +60,71 @@ function ProfilePage() {
   const [bio, setBio] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const fileRef = useRef<HTMLInputElement | null>(null);
+
+  async function onPickFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || !user) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please choose an image file (JPG, PNG, WebP or GIF).");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image is too large. Maximum size is 5 MB.");
+      return;
+    }
+
+    setUploading(true);
+    const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+    const path = `${user.id}/avatar-${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage
+      .from("avatars")
+      .upload(path, file, { contentType: file.type, upsert: true });
+
+    if (upErr) {
+      setUploading(false);
+      toast.error(upErr.message);
+      return;
+    }
+
+    const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl;
+    const { error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: publicUrl })
+      .eq("user_id", user.id);
+    setUploading(false);
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    setAvatarUrl(publicUrl);
+    toast.success("Profile photo updated");
+    qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
+    qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
+  }
+
+  async function onRemovePhoto() {
+    if (!user) return;
+    setUploading(true);
+    const { error } = await supabase
+      .from("profiles")
+      .update({ avatar_url: null })
+      .eq("user_id", user.id);
+    setUploading(false);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+    setAvatarUrl("");
+    toast.success("Profile photo removed");
+    qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
+    qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
+  }
+
 
   useEffect(() => {
     if (!profile.data) return;
