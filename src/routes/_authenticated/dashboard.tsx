@@ -500,7 +500,7 @@ function ContinueHero({
   // In-progress state — the primary case
   if (pickUp) {
     return (
-      <article className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
+      <article className="relative overflow-hidden rounded-xl border border-border bg-linear-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl"
@@ -560,7 +560,7 @@ function ContinueHero({
   // Personalized "start your semester" state
   if (semester && courseSlug) {
     return (
-      <article className="relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
+      <article className="relative overflow-hidden rounded-xl border border-border bg-linear-to-br from-primary via-primary to-primary/90 p-7 text-primary-foreground shadow-sm sm:p-10">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl"

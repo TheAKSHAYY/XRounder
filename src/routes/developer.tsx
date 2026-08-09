@@ -248,7 +248,7 @@ function DeveloperPage() {
             </span>
             <h1 className="mt-5 font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl">
               Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 {name.split(" ")[0]}
               </span>
               .
@@ -322,7 +322,7 @@ function DeveloperPage() {
 
           {/* Portrait card */}
           <div className="relative mx-auto w-full max-w-sm animate-scale-in">
-            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/40 via-primary/25 to-transparent blur-2xl" />
+            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-linear-to-br from-accent/40 via-primary/25 to-transparent blur-2xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-surface p-2 shadow-2xl">
               <div className="aspect-square w-full overflow-hidden rounded-[1.6rem] bg-muted">
                 {profile.photo_url ? (
@@ -390,7 +390,7 @@ function DeveloperPage() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="grid h-full min-h-[20rem] place-items-center bg-gradient-to-br from-primary/10 via-accent/10 to-transparent">
+                    <div className="grid h-full min-h-[20rem] place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent">
                       <Layers className="h-16 w-16 text-primary/40" />
                     </div>
                   )}
@@ -466,7 +466,7 @@ function DeveloperPage() {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="grid h-full place-items-center bg-gradient-to-br from-primary/10 to-accent/10 text-primary/40">
+                      <div className="grid h-full place-items-center bg-linear-to-br from-primary/10 to-accent/10 text-primary/40">
                         <Sparkles className="h-10 w-10" />
                       </div>
                     )}

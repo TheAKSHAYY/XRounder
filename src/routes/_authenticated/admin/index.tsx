@@ -80,7 +80,7 @@ function AdminDashboard() {
   return (
     <PageContainer>
       {/* Focus bar — greet + primary CTA */}
-      <div className="mb-6 grid gap-4 rounded-2xl border border-border/70 bg-gradient-to-br from-primary/8 via-surface to-surface p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-6">
+      <div className="mb-6 grid gap-4 rounded-2xl border border-border/70 bg-linear-to-br from-primary/8 via-surface to-surface p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-6">
         <div className="min-w-0">
           <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-primary">
             <Sparkles className="h-3.5 w-3.5" />

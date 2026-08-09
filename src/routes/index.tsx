@@ -458,7 +458,7 @@ function FeatureCard({
     <div className="group relative overflow-hidden rounded-3xl border border-accent/15 bg-surface/60 p-6 shadow-sm backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:shadow-2xl hover:shadow-primary/10">
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+        className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100"
       />
       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground">
         {icon}
@@ -707,7 +707,7 @@ function CTA({ user, loading }: { user: unknown; loading: boolean }) {
   return (
     <section className="border-b border-border/60 py-14 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary to-primary/80 p-10 text-center shadow-xl shadow-primary/20 sm:p-16">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-linear-to-br from-primary to-primary/80 p-10 text-center shadow-xl shadow-primary/20 sm:p-16">
           <div
             aria-hidden
             className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/30 blur-3xl"
