@@ -213,7 +213,7 @@ function ProfilePage() {
           <legend className="sr-only">Profile photo</legend>
           <h2 className="text-h3 text-foreground">Profile photo</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Paste an image link. Square images look best.
+            Upload a photo from your device. Square images look best (max 5 MB).
           </p>
 
           <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
@@ -226,31 +226,48 @@ function ProfilePage() {
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0 space-y-2">
-              <Label htmlFor="avatar">Avatar URL</Label>
-              <Input
-                id="avatar"
-                value={avatarUrl}
-                onChange={(e) => setAvatarUrl(e.target.value)}
-                placeholder="https://…"
-                inputMode="url"
-                autoComplete="photo"
-                className="w-full"
+              <input
+                ref={fileRef}
+                id="avatar-file"
+                type="file"
+                accept="image/png,image/jpeg,image/webp,image/gif"
+                className="sr-only"
+                onChange={onPickFile}
               />
-              <div className="flex flex-wrap gap-2 pt-1">
+              <div className="flex flex-wrap gap-2">
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   className="tap-target"
-                  onClick={() => setAvatarUrl("")}
-                  disabled={!avatarUrl}
+                  onClick={() => fileRef.current?.click()}
+                  disabled={uploading}
+                >
+                  {uploading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Upload className="mr-2 h-4 w-4" />
+                  )}
+                  {avatarUrl ? "Change photo" : "Upload photo"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="tap-target"
+                  onClick={onRemovePhoto}
+                  disabled={!avatarUrl || uploading}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Remove photo
                 </Button>
               </div>
+              <p className="text-xs text-muted-foreground">
+                PNG, JPG, WebP or GIF. Your photo saves as soon as it finishes uploading.
+              </p>
             </div>
           </div>
+
         </fieldset>
 
         {/* Details */}
