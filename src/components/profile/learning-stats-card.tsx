@@ -42,7 +42,7 @@ export function LearningStatsCard({
             icon={Target}
             title="No activity yet"
             description="Attempt your first quiz or open a unit and your statistics will appear here."
-            action={{ label: "Browse courses", to: "/courses" }}
+            primaryAction={{ label: "Browse courses", to: "/courses" }}
           />
         </div>
       ) : (
