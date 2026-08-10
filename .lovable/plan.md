@@ -1,69 +1,54 @@
-## Scope
+# Profile Section Upgrade
 
-Visual/UX only. No data models, Supabase queries, RLS, auth, or routing changes. Brand identity (Fraunces + Inter, indigo/saffron) stays; it just gets applied consistently.
+Rebuild `/profile` into a production-quality student profile: compact header, editable personal + academic info, real learning statistics, achievements, completion meter, and account/security/notification controls — all on the existing auth and Supabase schema.
 
-This is roughly 4 phases of work across ~30 files. I'd ship it in the order below so each phase is reviewable in the preview.
+## What exists today
 
----
+- `/profile` is a single page: identity card, avatar upload to the `avatars` bucket, and three fields (full name, display name, bio).
+- `profiles` table has: `full_name, display_name, bio, avatar_url, locale, timezone, current_course_id, current_semester_id, onboarded_at`.
+- Real activity data already exists: `quiz_attempts` (score, pct, passed, time_spent_seconds, submitted_at), `quiz_attempt_answers`, `bookmarks`, `progress_tracking`, `note_views`, `user_sessions`.
+- No columns for phone, date of birth, gender, college/university, roll number, academic session, or notification preferences — these need to be added.
+- Settings page currently only holds theme choices and a link back to profile.
 
-### Phase 1 — Foundations (tokens + global fixes)
+## Database change (one migration)
 
-**`src/styles.css`**
-- Add a type scale as utilities: `.text-h1` … `.text-h4` (Fraunces, responsive clamp) plus `.text-body`/`.text-caption`. Replace ad-hoc `text-3xl sm:text-[2.25rem]` one-offs later, per page.
-- Codify radius-per-surface rules on top of the existing `--radius` scale: cards/tiles = `rounded-lg`, inputs/inner surfaces = `rounded-md`, modals/sheets = `rounded-xl`, pills/buttons/avatars = `rounded-full`. Document it in a comment block so future work follows it.
-- Finish the four broken alternate themes (Midnight, Ocean, Emerald, Purple): every theme block gets the full token set the root defines — background/foreground, card, popover, muted, accent, border, input, ring, destructive, sidebar tokens — so no near-white borders on dark surfaces.
-- Rewrite `.high-contrast` using tokens instead of hardcoded hex.
-- Add `overflow-x-hidden` + `max-w-full` safety rules on `html, body`, `img`, `svg`, `video`, and a `.no-overflow` guard for hero sections.
+Add nullable columns to `profiles` (no new tables, no duplicate user records):
+`phone`, `date_of_birth`, `gender`, `college`, `university`, `roll_number`, `academic_session`, `current_year`, and `notification_prefs jsonb` (quiz reminders, new material, announcements, exam reminders, achievements — defaults on).
 
-**`src/routes/__root.tsx`**
-- Skip-to-content link (visible on focus) targeting the single `<main>`.
-- Global focus-visible ring style via tokens.
-- Root wrapper gets `overflow-x-hidden` and mobile bottom-nav safe padding (`pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0`).
+Existing RLS on `profiles` (own-row read/update) already covers these; the migration adds no new policies. Since Cloud is disconnected, the SQL is written to `.lovable/profile_fields_migration.sql` for you to run in the Supabase SQL editor — the page will handle missing columns gracefully until then.
 
-**Mobile overflow audit**: sweep hero sections, card grids, and marquee/animated blocks for negative margins and fixed widths; convert multi-item header rows to the `grid-cols-[minmax(0,1fr)_auto]` + `min-w-0` + `shrink-0` pattern.
+## Layout
 
----
+```text
+Desktop (2 col)                       Mobile (stacked)
++---------------------------+-------+  +----------------+
+| Profile header (compact)  | Compl.|  | Header         |
+| Personal information      | Quick |  | Completion     |
+| Academic information      | acts  |  | Quick actions  |
+| Learning activity         | Acct  |  | Personal info  |
+| Achievements              | Secur.|  | Academic       |
++---------------------------+-------+  | Stats (2 col)  |
+                                       | Achievements   |
+                                       | Account/Sec.   |
+```
 
-### Phase 2 — Shared components
+## Sections
 
-New files under `src/components/ui/` and `src/components/student/`:
+1. **Header** — avatar with initials fallback and camera overlay button, name, email, `Student` badge, semester + college line, inline completion percentage, Edit Profile action. Compact, app-like, no oversized banner.
+2. **Personal information** — full name, display name, phone, date of birth, gender, college, university, roll number. Email shown read-only (owned by auth). Inline validation (phone digits, DOB not future, max lengths), disabled inputs while saving, `Editing → Saving… → Saved ✓` states, unsaved-changes guard on navigation.
+3. **Academic information** — chip/card grid: course and semester resolved from `current_course_id` / `current_semester_id`, current year, academic session, college, university, enrolled-subject count, overall progress ring from `progress_tracking`.
+4. **Learning activity** — real aggregates only: quizzes attempted, quizzes completed (submitted), average score, highest score, questions solved (`quiz_attempt_answers`), bookmarks, study time (`time_spent_seconds`), study streak (consecutive days from attempt/view dates), overall progress. Skeletons while loading, empty state when the user has no activity yet.
+5. **Achievements** — derived from the same aggregates: First Quiz, 10 Quizzes, 100 Questions, 7-Day Streak, Top Performer (90%+ attempt), Semester Completed. Locked badges rendered muted with the unlock requirement.
+6. **Profile completion** — percentage over the tracked profile fields, progress bar, list of missing fields, CTA scrolling to the relevant section.
+7. **Quick actions** — links to existing modules: Bookmarks, Dashboard results, Search, Settings, Help. No duplicate pages.
+8. **Account & settings** — email preferences and notification toggles (switches persisting to `notification_prefs`), theme switcher reusing the existing theme provider, language/locale select, link to full Settings, Logout.
+9. **Security** — Change password (Supabase password update), last login timestamp, active sessions from `user_sessions`, Delete Account. Destructive actions go through the existing `ConfirmDialog`.
 
-| Component | Replaces |
-|---|---|
-| `<ProgressBar>` | 3 bespoke bars (dashboard, semester, quiz) |
-| `<ProgressRing>` | quiz result ring + new student usage |
-| `<StatChip>` | admin `StatCard` variants + student `MiniChip`/quick-stats |
-| `<StudentHero>` | 4 hand-rolled hero blocks |
-| `<ContentCard>` | subject/unit/note/paper cards |
-| `<Breadcrumbs>` | new; course > semester > subject > unit |
-| `<MobileTabBar>` | new; Home, Courses, Quiz, Search, Profile — fixed, `md:hidden`, 44px+ targets, active state from router |
-| `<EmptyState>` (extend existing admin one, move to shared) | flat empty states without CTAs |
+## Technical notes
 
-`StatCard` in admin becomes a thin wrapper over `StatChip` so admin pages don't all need edits.
-
----
-
-### Phase 3 — Page refactors
-
-- `dashboard.tsx`, `courses.$courseSlug.$semesterNumber.index.tsx`, `…$subjectSlug.index.tsx`, `…$unitNumber.tsx`: consume `StudentHero` / `ContentCard` / `ProgressBar` / `StatChip`; drop duplicated markup; apply the type scale and radius rules. Breadcrumbs on subject + unit pages.
-- `quizzes.$quizId.tsx`: swap its bar/ring for the shared ones, keep all quiz logic and animations untouched.
-- Hardcoded color cleanup: `google-signin-button.tsx`, `admin/homepage.tsx`, `admin/tags.tsx`.
-
----
-
-### Phase 4 — Thin screens, a11y, empty states
-
-- `/help`: real structure — search field (client-side filter over static content), grouped FAQ accordion, "getting started" cards, contact-support CTA.
-- `/profile`: profile header (avatar, name, course/semester), stat chips, achievements placeholder section, then the existing settings form in a `SectionCard`.
-- `/bookmarks`: filter toolbar (type: notes/papers/quizzes) + grouping by subject, card grid, CTA empty state.
-- A11y sweep: aria-labels on all icon-only buttons, 44px minimum touch targets, visible focus states, single `<main>`, heading-level order.
-- Every empty state gets a primary CTA (Browse courses / Take a quiz / Clear filters).
-
----
-
-### Technical notes
-
-- Type scale ships as `@utility` blocks in `src/styles.css` (Tailwind v4 — no `tailwind.config.js`).
-- Theme tokens use `oklch`; alternate themes are plain class blocks already wired through `theme-provider.tsx`, so no provider changes needed beyond keeping all five selectable.
-- Bottom tab bar reads the active route via `useRouterState` for highlighting — read-only, no routing changes.
-- Verification each phase: typecheck + build, plus Playwright screenshots at 390px and 1280px to confirm zero horizontal overflow.
+- All reads/writes use the browser Supabase client with the authenticated `user.id`; TanStack Query keys `profile-full`, `profile-stats`, `profile-sessions`, invalidated on save so the navbar avatar (`profile-mini`) stays in sync.
+- Page split into focused components under `src/components/profile/` (header, personal form, academic card, stats grid, achievements, completion card, quick actions, account panel, security panel); the route file composes them.
+- Reuses existing primitives: `Breadcrumbs`, `StatChip`, `ProgressBar`, `ProgressRing`, `Skeleton`, `Switch`, `Select`, `ConfirmDialog`, sonner toasts. Semantic tokens only — no hardcoded colors, no new gradients or glass effects.
+- Avatar keeps the current `avatars` bucket flow, plus local preview before save, remove action, image type/size validation, and loading state. No storage credentials in client code.
+- Mobile-first: 2-column stat grid, full-width cards, `tap-target` buttons, `min-w-0`/`truncate` on text rows to prevent horizontal scroll.
+- Verified after build: profile load, edit + persist, avatar upload/remove, toggles, logout, 320px–1440px layout, empty and error states.
