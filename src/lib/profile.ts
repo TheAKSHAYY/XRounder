@@ -143,29 +143,34 @@ export const EMPTY_STATS: LearningStats = {
   lastActivityAt: null,
 };
 
-function dayKey(iso: string) {
-  return iso.slice(0, 10);
+/** Local-timezone day key (YYYY-MM-DD). Using UTC here broke streaks for
+ *  users ahead of/behind UTC (e.g. IST late-evening activity). */
+export function localDayKey(value: string | Date): string {
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+  const m = `${d.getMonth() + 1}`.padStart(2, "0");
+  const day = `${d.getDate()}`.padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
 }
 
 /** Consecutive days of activity ending today (or yesterday — a streak stays
  *  alive until the day after the last activity has passed). */
-export function computeStreak(dates: string[]): number {
-  const days = new Set(dates.filter(Boolean).map(dayKey));
+export function computeStreak(dates: Array<string | Date>): number {
+  const days = new Set(dates.filter(Boolean).map((d) => localDayKey(d)));
+  days.delete("");
   if (days.size === 0) return 0;
 
-  const today = new Date();
-  const cursor = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()));
-  const key = (d: Date) => d.toISOString().slice(0, 10);
+  const cursor = new Date();
 
-  if (!days.has(key(cursor))) {
-    cursor.setUTCDate(cursor.getUTCDate() - 1);
-    if (!days.has(key(cursor))) return 0;
+  if (!days.has(localDayKey(cursor))) {
+    cursor.setDate(cursor.getDate() - 1);
+    if (!days.has(localDayKey(cursor))) return 0;
   }
 
   let streak = 0;
-  while (days.has(key(cursor))) {
+  while (days.has(localDayKey(cursor))) {
     streak += 1;
-    cursor.setUTCDate(cursor.getUTCDate() - 1);
+    cursor.setDate(cursor.getDate() - 1);
   }
   return streak;
 }
