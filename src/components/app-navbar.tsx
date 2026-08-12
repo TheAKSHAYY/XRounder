@@ -55,6 +55,16 @@ type NotificationRow = {
   kind: string;
 };
 
+/** Desktop primary destinations — mirrors the mobile tab bar. */
+const PRIMARY_LINKS = [
+  { to: "/dashboard", label: "Home" },
+  { to: "/courses", label: "Courses" },
+  { to: "/progress", label: "Progress" },
+  { to: "/bookmarks", label: "Saved" },
+] as const;
+
+
+
 export function AppNavbar() {
   const { user } = useAuth();
   const { isAdmin, isSuperAdmin } = useRoles();
@@ -148,6 +158,20 @@ export function AppNavbar() {
           <BrandMark className="h-8 w-8" />
           <span className="hidden sm:inline">BCA Gurukul</span>
         </Link>
+
+        <nav aria-label="Primary" className="ml-2 hidden items-center gap-0.5 lg:flex">
+          {PRIMARY_LINKS.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="inline-flex h-9 items-center rounded-full px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              activeProps={{ className: "bg-muted text-foreground" }}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
 
         <form onSubmit={onSubmitSearch} className="ml-2 hidden flex-1 max-w-xl md:flex">
           <div className="relative w-full">

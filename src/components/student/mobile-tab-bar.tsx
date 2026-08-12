@@ -1,13 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bookmark, GraduationCap, Home, Search, User } from "lucide-react";
+import { Bookmark, GraduationCap, Home, TrendingUp, User } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 const TABS = [
   { to: "/dashboard", label: "Home", icon: Home },
   { to: "/courses", label: "Courses", icon: GraduationCap },
+  { to: "/progress", label: "Progress", icon: TrendingUp },
   { to: "/bookmarks", label: "Saved", icon: Bookmark },
-  { to: "/search", label: "Search", icon: Search },
   { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
