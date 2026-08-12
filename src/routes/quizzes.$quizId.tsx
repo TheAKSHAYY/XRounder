@@ -532,7 +532,13 @@ function QuizPage() {
                     onClick={() => startMutation.mutate()}
                     disabled={startMutation.isPending || total === 0}
                   >
-                    {startMutation.isPending ? "Starting…" : "Start quiz"}
+                    {startMutation.isPending
+                      ? openAttempt
+                        ? "Resuming…"
+                        : "Starting…"
+                      : openAttempt
+                        ? "Resume quiz"
+                        : "Start quiz"}
                   </Button>
                 </>
               )}
