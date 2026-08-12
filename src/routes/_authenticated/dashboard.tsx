@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { AnnouncementBanner } from "@/components/announcement-banner";
 import { cn } from "@/lib/utils";
+import { computeStreak } from "@/lib/profile";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard · BCA Gurukul" }] }),
