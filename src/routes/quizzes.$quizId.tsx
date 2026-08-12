@@ -194,25 +194,62 @@ function QuizPage() {
   const startMutation = useMutation({
     mutationFn: async () => {
       if (!user) throw new Error("Sign in to take this quiz");
+
+      // Reuse an unfinished attempt instead of creating an orphan on every reload.
+      const { data: open } = await supabase
+        .from("quiz_attempts")
+        .select("*")
+        .eq("quiz_id", quizId)
+        .eq("user_id", user.id)
+        .is("submitted_at", null)
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (open) {
+        const { data: prior } = await supabase
+          .from("quiz_attempt_answers")
+          .select("question_id, selected_option_ids, is_correct")
+          .eq("attempt_id", open.id);
+        return { attempt: open as Attempt, prior: prior ?? [], resumed: true };
+      }
+
       const { data, error } = await supabase
         .from("quiz_attempts").insert({ quiz_id: quizId, user_id: user.id }).select("*").single();
       if (error) throw error;
-      return data as Attempt;
+      return { attempt: data as Attempt, prior: [] as { question_id: string; selected_option_ids: string[] | null; is_correct: boolean | null }[], resumed: false };
     },
-    onSuccess: (a) => {
-      setActiveAttempt(a);
-      setAnswers({});
+    onSuccess: ({ attempt, prior, resumed }) => {
+      const restored: Record<string, AnswerState> = {};
+      for (const row of prior) {
+        const sel = row.selected_option_ids ?? [];
+        restored[row.question_id] = {
+          selected: sel,
+          status: sel.length === 0 ? "skipped" : row.is_correct ? "correct" : "wrong",
+          correct_option_ids: [],
+          explanation: questions.find((q) => q.id === row.question_id)?.explanation ?? null,
+        };
+      }
+      const firstUnanswered = questions.findIndex((q) => !restored[q.id]);
+      setActiveAttempt(attempt);
+      setAnswers(restored);
       setSelection([]);
       setFeedback(null);
-      setCurrentIdx(0);
+      setCurrentIdx(firstUnanswered === -1 ? 0 : firstUnanswered);
       setResult(null);
       setElapsed(0);
       setInstantFeedback(true);
       startedAtRef.current = Date.now();
       qc.invalidateQueries({ queryKey: ["public-quiz-attempts", quizId, user?.id] });
+      if (resumed && prior.length > 0) toast.success("Resumed your unfinished attempt");
     },
     onError: (e: Error) => toast.error(e.message),
   });
+
+  const openAttempt = useMemo(
+    () => (myAttemptsQ.data ?? []).find((a) => !a.submitted_at) ?? null,
+    [myAttemptsQ.data],
+  );
 
   const submitMutation = useMutation({
     mutationFn: async (finalAnswers: Record<string, AnswerState>) => {
