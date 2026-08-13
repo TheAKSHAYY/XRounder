@@ -234,71 +234,8 @@ function bumpBucket(b: StatsBucket, type: string) {
   b.total++;
 }
 
-export const getSubjectStats = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .inputValidator((input: { subjectId: string }) =>
-    z.object({ subjectId: z.string().uuid() }).parse(input),
-  )
-  .handler(async ({ data, context }) => {
-    const sb = context.supabase;
-    const [unitsRes, itemsRes] = await Promise.all([
-      sb.from("units").select("id,title,number").eq("subject_id", data.subjectId).is("deleted_at", null).order("number"),
-      sb.from("content_items")
-        .select("type,unit_id,updated_at")
-        .eq("subject_id", data.subjectId)
-        .eq("status", "published")
-        .is("deleted_at", null),
-    ]);
-    if (unitsRes.error) throw new Error(unitsRes.error.message);
-    if (itemsRes.error) throw new Error(itemsRes.error.message);
 
-    // Optional MCQ counts — table may not exist in some deploys, so guard.
-    let mcqRows: Array<{ unit_id: string | null }> = [];
-    try {
-      const { data: mcqData } = await sb
-        .from("mcq_questions" as never)
-        .select("unit_id")
-        .eq("subject_id", data.subjectId as never) as { data: Array<{ unit_id: string | null }> | null };
-      mcqRows = mcqData ?? [];
-    } catch { /* table missing — treat as zero */ }
 
-    const total = emptyBucket();
-    const perUnit = new Map<string, StatsBucket>();
-    let lastUpdated: string | null = null;
-    for (const it of itemsRes.data ?? []) {
-      bumpBucket(total, it.type);
-      if (it.unit_id) {
-        const b = perUnit.get(it.unit_id) ?? emptyBucket();
-        bumpBucket(b, it.type);
-        perUnit.set(it.unit_id, b);
-      }
-      if (!lastUpdated || (it.updated_at && it.updated_at > lastUpdated)) {
-        lastUpdated = it.updated_at ?? lastUpdated;
-      }
-    }
-    for (const row of mcqRows) {
-      total.mcqs++;
-      if (row.unit_id) {
-        const b = perUnit.get(row.unit_id) ?? emptyBucket();
-        b.mcqs++;
-        perUnit.set(row.unit_id, b);
-      }
-    }
-
-    const units = (unitsRes.data ?? []).map((u) => ({
-      id: u.id,
-      title: u.title,
-      number: u.number,
-      stats: perUnit.get(u.id) ?? emptyBucket(),
-    }));
-
-    return {
-      unitCount: units.length,
-      total,
-      units,
-      lastUpdated,
-    };
-  });
 
 // Subjects with aggregated content stats, grouped by course + semester.
 export const listSubjectsWithStats = createServerFn({ method: "GET" })
