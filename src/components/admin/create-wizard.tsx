@@ -7,6 +7,7 @@ import {
   Library,
   Layers,
   FileText,
+  FileStack,
   Megaphone,
   ClipboardList,
   Video,
