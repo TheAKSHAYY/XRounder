@@ -14,6 +14,7 @@ import {
   type ContentStatus,
   type ContentType,
   type ContentVisibility,
+  type StatsBucket,
 } from "@/lib/content.schemas";
 
 export type { ContentItem, ContentStatus, ContentType, ContentVisibility };
