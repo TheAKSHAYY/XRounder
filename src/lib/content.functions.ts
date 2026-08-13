@@ -2,31 +2,25 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import type { Database } from "@/integrations/supabase/types";
+import {
+  bumpBucket,
+  contentBulkPatchSchema,
+  contentInputSchema,
+  contentListSchema,
+  emptyBucket,
+  idSchema,
+  idsSchema,
+  type ContentItem,
+  type ContentStatus,
+  type ContentType,
+  type ContentVisibility,
+} from "@/lib/content.schemas";
 
-export type ContentType = Database["public"]["Enums"]["content_type"];
-export type ContentVisibility = Database["public"]["Enums"]["content_visibility"];
-export type ContentStatus = "draft" | "published" | "archived";
-
-export type ContentItem = Database["public"]["Tables"]["content_items"]["Row"] & {
-  subject?: { id: string; title: string } | null;
-  unit?: { id: string; title: string } | null;
-};
-
-const listSchema = z.object({
-  type: z.string().optional(),
-  status: z.string().optional(),
-  subjectId: z.string().uuid().optional(),
-  search: z.string().optional(),
-  page: z.number().int().min(1).default(1),
-  pageSize: z.number().int().min(1).max(100).default(20),
-  sort: z.enum(["created_at", "title", "updated_at"]).default("created_at"),
-  dir: z.enum(["asc", "desc"]).default("desc"),
-});
+export type { ContentItem, ContentStatus, ContentType, ContentVisibility };
 
 export const listContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: z.input<typeof listSchema>) => listSchema.parse(input))
+  .inputValidator((input: z.input<typeof contentListSchema>) => contentListSchema.parse(input))
   .handler(async ({ data, context }) => {
     const sb = context.supabase;
     const from = (data.page - 1) * data.pageSize;
@@ -50,7 +44,7 @@ export const listContent = createServerFn({ method: "POST" })
 
 export const getContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
+  .inputValidator((input: { id: string }) => idSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: row, error } = await context.supabase
       .from("content_items")
@@ -63,23 +57,6 @@ export const getContent = createServerFn({ method: "POST" })
     if (!row) throw new Error("Not found");
     return row as unknown as ContentItem;
   });
-
-const contentInputSchema = z.object({
-  type: z.enum(["note", "pdf", "ppt", "video", "assignment", "link"]),
-  title: z.string().min(1).max(300),
-  description: z.string().optional().nullable(),
-  subject_id: z.string().uuid().optional().nullable(),
-  unit_id: z.string().uuid().optional().nullable(),
-  file_bucket: z.string().optional().nullable(),
-  file_path: z.string().optional().nullable(),
-  file_mime: z.string().optional().nullable(),
-  file_size_bytes: z.number().optional().nullable(),
-  file_url: z.string().url().optional().nullable().or(z.literal("")),
-  thumbnail_path: z.string().optional().nullable(),
-  tags: z.array(z.string()).default([]),
-  visibility: z.enum(["public", "students", "private"]).default("students"),
-  status: z.enum(["draft", "published", "archived"]).default("draft"),
-});
 
 export const createContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -113,13 +90,7 @@ export const updateContent = createServerFn({ method: "POST" })
 export const bulkUpdateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { ids: string[]; patch: { status?: ContentStatus; visibility?: ContentVisibility } }) =>
-    z.object({
-      ids: z.array(z.string().uuid()).min(1),
-      patch: z.object({
-        status: z.enum(["draft", "published", "archived"]).optional(),
-        visibility: z.enum(["public", "students", "private"]).optional(),
-      }),
-    }).parse(input),
+    contentBulkPatchSchema.parse(input),
   )
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase
@@ -133,7 +104,7 @@ export const bulkUpdateContent = createServerFn({ method: "POST" })
 export const deleteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { ids: string[] }) =>
-    z.object({ ids: z.array(z.string().uuid()).min(1) }).parse(input),
+    idsSchema.parse(input),
   )
   .handler(async ({ data, context }) => {
     // Soft delete first. Some deployments have an UPDATE policy whose WITH CHECK
@@ -164,7 +135,7 @@ export const deleteContent = createServerFn({ method: "POST" })
 
 export const duplicateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
+  .inputValidator((input: { id: string }) => idSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: src, error: e1 } = await context.supabase
       .from("content_items").select("*").eq("id", data.id).single();
@@ -207,32 +178,6 @@ export const listSubjectsFlat = createServerFn({ method: "GET" })
 // Returns totals by type for a subject, per-unit breakdown, and lastUpdated.
 // ---------------------------------------------------------------------------
 
-type StatsBucket = {
-  notes: number;
-  pdfs: number;
-  ppts: number;
-  videos: number;
-  assignments: number;
-  links: number;
-  mcqs: number;
-  total: number;
-};
-
-function emptyBucket(): StatsBucket {
-  return { notes: 0, pdfs: 0, ppts: 0, videos: 0, assignments: 0, links: 0, mcqs: 0, total: 0 };
-}
-
-function bumpBucket(b: StatsBucket, type: string) {
-  switch (type) {
-    case "note": b.notes++; break;
-    case "pdf": b.pdfs++; break;
-    case "ppt": b.ppts++; break;
-    case "video": b.videos++; break;
-    case "assignment": b.assignments++; break;
-    case "link": b.links++; break;
-  }
-  b.total++;
-}
 
 
 
