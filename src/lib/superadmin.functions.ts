@@ -1,16 +1,8 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { assertSuperAdmin } from "@/lib/role-guards.server";
 
 export type AppRole = "super_admin" | "admin" | "instructor" | "student";
-
-async function assertSuperAdmin(supabase: any, userId: string) {
-  const { data, error } = await supabase.rpc("has_role", {
-    _user_id: userId,
-    _role: "super_admin",
-  });
-  if (error) throw new Error(error.message);
-  if (!data) throw new Error("Forbidden: super_admin required");
-}
 
 export type AdminUserRow = {
   user_id: string;
