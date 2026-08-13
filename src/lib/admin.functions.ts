@@ -83,24 +83,44 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
       subjectsRes,
       publishedItemsRes,
     ] = await Promise.all([
-      sb.from("content_items").select("id", { count: "exact", head: true })
-        .eq("status", "draft").is("deleted_at", null),
-      sb.from("content_items").select("id,title,updated_at,type")
-        .eq("status", "draft").is("deleted_at", null)
-        .order("updated_at", { ascending: false }).limit(5),
-      sb.from("contact_messages").select("id", { count: "exact", head: true })
-        .eq("status", "new"),
-      sb.from("contact_messages").select("id,name,subject,created_at")
-        .eq("status", "new").order("created_at", { ascending: false }).limit(4),
-      sb.from("content_items").select("id", { count: "exact", head: true })
-        .eq("status", "published").gte("updated_at", weekAgo).is("deleted_at", null),
-      sb.from("quiz_attempts").select("id", { count: "exact", head: true })
+      sb
+        .from("content_items")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "draft")
+        .is("deleted_at", null),
+      sb
+        .from("content_items")
+        .select("id,title,updated_at,type")
+        .eq("status", "draft")
+        .is("deleted_at", null)
+        .order("updated_at", { ascending: false })
+        .limit(5),
+      sb.from("contact_messages").select("id", { count: "exact", head: true }).eq("status", "new"),
+      sb
+        .from("contact_messages")
+        .select("id,name,subject,created_at")
+        .eq("status", "new")
+        .order("created_at", { ascending: false })
+        .limit(4),
+      sb
+        .from("content_items")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "published")
+        .gte("updated_at", weekAgo)
+        .is("deleted_at", null),
+      sb
+        .from("quiz_attempts")
+        .select("id", { count: "exact", head: true })
         .gte("created_at", weekAgo),
-      sb.from("profiles").select("id", { count: "exact", head: true })
-        .gte("created_at", weekAgo),
+      sb.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", weekAgo),
       sb.from("subjects").select("id,title").is("deleted_at", null).limit(500),
-      sb.from("content_items").select("subject_id")
-        .eq("status", "published").is("deleted_at", null).not("subject_id", "is", null).limit(2000),
+      sb
+        .from("content_items")
+        .select("subject_id")
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .not("subject_id", "is", null)
+        .limit(2000),
     ]);
 
     const withContent = new Set(
@@ -123,9 +143,6 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
     };
   });
 
-
-
-
 // Migrate legacy `notes` rows into `content_items` so old uploads
 // appear in the new unified Content page and dashboards.
 export const migrateLegacyNotes = createServerFn({ method: "POST" })
@@ -134,7 +151,9 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     const sb = context.supabase;
     const { data: notes, error } = await sb
       .from("notes")
-      .select("id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at")
+      .select(
+        "id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at",
+      )
       .is("deleted_at", null);
     if (error) throw new Error(`Reading legacy notes failed: ${error.message}`);
     if (!notes || notes.length === 0) return { migrated: 0, skipped: 0, errors: [] as string[] };
@@ -146,7 +165,10 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string | null]));
 
     // Skip notes already migrated (match by unit_id + title)
-    const { data: existing } = await sb.from("content_items").select("unit_id, title").is("deleted_at", null);
+    const { data: existing } = await sb
+      .from("content_items")
+      .select("unit_id, title")
+      .is("deleted_at", null);
     const existingKey = new Set((existing ?? []).map((e) => `${e.unit_id}::${e.title}`));
 
     const rows = notes
@@ -181,4 +203,3 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     if (migrated === 0 && errors.length > 0) throw new Error(errors.join(" | "));
     return { migrated, skipped, errors };
   });
-

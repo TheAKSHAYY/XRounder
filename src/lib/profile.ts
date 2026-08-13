@@ -34,12 +34,32 @@ export type NotificationPrefs = {
 };
 
 export const NOTIFICATION_PREF_KEYS = [
-  { key: "quiz_reminders", label: "Quiz reminders", hint: "Nudges for quizzes you started but never finished." },
-  { key: "new_material", label: "New study material", hint: "When notes or papers land in your subjects." },
-  { key: "announcements", label: "Announcements", hint: "Important updates from your faculty and admins." },
-  { key: "exam_reminders", label: "Exam prep reminders", hint: "Reminders as exam season approaches." },
+  {
+    key: "quiz_reminders",
+    label: "Quiz reminders",
+    hint: "Nudges for quizzes you started but never finished.",
+  },
+  {
+    key: "new_material",
+    label: "New study material",
+    hint: "When notes or papers land in your subjects.",
+  },
+  {
+    key: "announcements",
+    label: "Announcements",
+    hint: "Important updates from your faculty and admins.",
+  },
+  {
+    key: "exam_reminders",
+    label: "Exam prep reminders",
+    hint: "Reminders as exam season approaches.",
+  },
   { key: "achievements", label: "Achievements", hint: "When you unlock a new badge or streak." },
-  { key: "email_updates", label: "Email updates", hint: "A short digest of your activity by email." },
+  {
+    key: "email_updates",
+    label: "Email updates",
+    hint: "A short digest of your activity by email.",
+  },
 ] as const satisfies ReadonlyArray<{ key: keyof NotificationPrefs; label: string; hint: string }>;
 
 export const DEFAULT_NOTIFICATION_PREFS: Required<NotificationPrefs> = {
@@ -245,8 +265,7 @@ export async function fetchLearningStats(userId: string): Promise<LearningStats>
     unitsStarted: progress.length,
     unitsCompleted,
     overallProgress: Math.round(overall),
-    lastActivityAt:
-      activityDates.length > 0 ? activityDates.sort().slice(-1)[0]! : null,
+    lastActivityAt: activityDates.length > 0 ? activityDates.sort().slice(-1)[0]! : null,
   };
 }
 
@@ -262,8 +281,7 @@ export type Achievement = {
 };
 
 export function computeAchievements(stats: LearningStats): Achievement[] {
-  const pct = (value: number, target: number) =>
-    Math.min(100, Math.round((value / target) * 100));
+  const pct = (value: number, target: number) => Math.min(100, Math.round((value / target) * 100));
 
   return [
     {
