@@ -123,52 +123,8 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
     };
   });
 
-export type TreeNode = {
-  id: string;
-  name: string;
-  children?: TreeNode[];
-  counts?: { notes: number; papers: number; quizzes: number };
-};
 
-export const getContentTree = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const sb = context.supabase;
-    const [coursesRes, semestersRes, subjectsRes, unitsRes] = await Promise.all([
-      sb.from("courses").select("id,title,sort_order").is("deleted_at", null).order("sort_order"),
-      sb.from("semesters").select("id,title,number,course_id").is("deleted_at", null).order("number"),
-      sb.from("subjects").select("id,title,semester_id").is("deleted_at", null).order("title"),
-      sb.from("units").select("id,title,subject_id").is("deleted_at", null).order("title"),
-    ]);
-    const err = coursesRes.error ?? semestersRes.error ?? subjectsRes.error ?? unitsRes.error;
-    if (err) throw new Error(err.message);
 
-    const courses = coursesRes.data ?? [];
-    const semesters = semestersRes.data ?? [];
-    const subjects = subjectsRes.data ?? [];
-    const units = unitsRes.data ?? [];
-
-    const tree: TreeNode[] = courses.map((c) => ({
-      id: c.id,
-      name: c.title,
-      children: semesters
-        .filter((s) => s.course_id === c.id)
-        .map((s) => ({
-          id: s.id,
-          name: s.title ?? `Semester ${s.number}`,
-          children: subjects
-            .filter((sj) => sj.semester_id === s.id)
-            .map((sj) => ({
-              id: sj.id,
-              name: sj.title,
-              children: units
-                .filter((u) => u.subject_id === sj.id)
-                .map((u) => ({ id: u.id, name: u.title })),
-            })),
-        })),
-    }));
-    return tree;
-  });
 
 // Migrate legacy `notes` rows into `content_items` so old uploads
 // appear in the new unified Content page and dashboards.
