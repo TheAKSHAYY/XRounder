@@ -1,9 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { slugify } from "@/lib/slug";
-
-const makeSlug = (input: string) => slugify(input, `item-${Date.now().toString(36)}`);
+import { slugifyOrGenerated } from "@/lib/slug";
 
 export type NodeType = "course" | "semester" | "subject" | "unit";
 export type NodeStatus = "draft" | "published" | "archived";
@@ -126,7 +124,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
     if (type === "course") {
       const { data: row, error } = await sb.from("courses").insert({
         title: name,
-        slug: makeSlug(name) + "-" + Math.random().toString(36).slice(2, 6),
+        slug: slugifyOrGenerated(name) + "-" + Math.random().toString(36).slice(2, 6),
         code: name.replace(/[^A-Za-z0-9]/g, "").slice(0, 12).toUpperCase() || "COURSE",
         total_semesters: 6,
         status: "draft",
@@ -155,7 +153,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       const next = ((existing?.[0]?.sort_order as number | undefined) ?? 0) + 1;
       const { data: row, error } = await sb.from("subjects").insert({
         semester_id: parentId, title: name,
-        slug: makeSlug(name) + "-" + Math.random().toString(36).slice(2, 6),
+        slug: slugifyOrGenerated(name) + "-" + Math.random().toString(36).slice(2, 6),
         code: name.replace(/[^A-Za-z0-9]/g, "").slice(0, 12).toUpperCase() || "SUBJ",
         sort_order: next, status: "draft",
       }).select("id").single();
@@ -248,7 +246,7 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
     copy.status = "draft";
 
     if (data.type === "course" || data.type === "subject") {
-      copy.slug = makeSlug(String(copy.title)) + "-" + Math.random().toString(36).slice(2, 6);
+      copy.slug = slugifyOrGenerated(String(copy.title)) + "-" + Math.random().toString(36).slice(2, 6);
       copy.code = String(src.code ?? "COPY") + "C";
       const parentField = data.type === "subject" ? "semester_id" : null;
       let q = sb.from(table).select("sort_order").is("deleted_at", null);

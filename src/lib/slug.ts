@@ -13,3 +13,8 @@ export function slugify(input: string, fallback?: string): string {
     .slice(0, 60);
   return slug || fallback || "";
 }
+
+/** Slug that always produces a value — used for generated DB records. */
+export function slugifyOrGenerated(input: string): string {
+  return slugify(input, `item-${Date.now().toString(36)}`);
+}
