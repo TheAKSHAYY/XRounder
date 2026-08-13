@@ -46,18 +46,6 @@ type SubjectStats = {
   status: "not_started" | "in_progress" | "completed";
 };
 
-function formatRelative(iso: string | null) {
-  if (!iso) return null;
-  const then = new Date(iso).getTime();
-  const diff = Date.now() - then;
-  const day = 86_400_000;
-  if (diff < day) return "Today";
-  if (diff < 2 * day) return "Yesterday";
-  const days = Math.floor(diff / day);
-  if (days < 7) return `${days}d ago`;
-  if (days < 30) return `${Math.floor(days / 7)}w ago`;
-  return new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short" });
-}
 
 function SemesterDetail() {
   const { courseSlug, semesterNumber } = Route.useParams();
@@ -407,7 +395,7 @@ function SubjectCard({
   showProgress: boolean;
 }) {
   const { subject, totalUnits, completedUnits, pct, lastActivity, status } = stats;
-  const rel = formatRelative(lastActivity);
+  const rel = formatRelativeDay(lastActivity);
   const isDone = status === "completed";
 
   const ctaLabel = !showProgress

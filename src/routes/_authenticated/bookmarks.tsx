@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookMarked, Compass, FileText, ListChecks, StickyNote } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
+import { formatShortDate } from "@/lib/format";
 import { useAuth } from "@/hooks/use-auth";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -58,9 +59,6 @@ function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } 
   }
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short" });
-}
 
 function BookmarksPage() {
   const { user } = useAuth();
@@ -151,7 +149,7 @@ function BookmarksPage() {
                         {b.title ?? "Untitled"}
                       </span>
                       <span className="mt-0.5 block text-[11px] text-muted-foreground">
-                        {meta.label} · saved {formatDate(b.created_at)}
+                        {meta.label} · saved {formatShortDate(b.created_at)}
                       </span>
                     </span>
                     <ArrowRight

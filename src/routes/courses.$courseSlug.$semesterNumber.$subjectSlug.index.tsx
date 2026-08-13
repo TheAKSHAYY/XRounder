@@ -27,6 +27,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
+import { formatRelativeDay } from "@/lib/format";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
@@ -74,18 +75,6 @@ type UnitStats = {
   content: ContentBucket;
 };
 
-function formatRelative(iso: string | null) {
-  if (!iso) return null;
-  const then = new Date(iso).getTime();
-  const diff = Date.now() - then;
-  const day = 86_400_000;
-  if (diff < day) return "Today";
-  if (diff < 2 * day) return "Yesterday";
-  const days = Math.floor(diff / day);
-  if (days < 7) return `${days}d ago`;
-  if (days < 30) return `${Math.floor(days / 7)}w ago`;
-  return new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short" });
-}
 
 function SubjectDetail() {
   const { courseSlug, semesterNumber, subjectSlug } = Route.useParams();
@@ -354,7 +343,7 @@ function SubjectDetail() {
             <StatChip
               variant="tile"
               label="Last studied"
-              value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
+              value={user ? (formatRelativeDay(overall.lastActivity) ?? "Not yet") : "—"}
             />
           </section>
         )}
@@ -505,7 +494,7 @@ function UnitCard({
   };
 }) {
   const { unit, status, pct, lastActivity } = stats;
-  const rel = formatRelative(lastActivity);
+  const rel = formatRelativeDay(lastActivity);
   const isDone = status === "completed";
   const inProgress = status === "in_progress";
 
