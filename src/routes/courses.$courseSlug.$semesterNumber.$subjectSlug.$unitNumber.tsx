@@ -28,6 +28,7 @@ import { PdfViewer } from "@/components/pdf-viewer";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { slugify } from "@/lib/slug";
 
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
@@ -49,13 +50,6 @@ type SiblingUnit = { id: string; number: number };
 
 type QuizRow = { id: string; title: string; time_limit_minutes: number | null };
 
-function slugify(s: string) {
-  return s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 60);
-}
 
 function estimateReadMinutes(notes: NoteRow[]) {
   const words = notes.reduce((total, n) => {
