@@ -83,24 +83,44 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
       subjectsRes,
       publishedItemsRes,
     ] = await Promise.all([
-      sb.from("content_items").select("id", { count: "exact", head: true })
-        .eq("status", "draft").is("deleted_at", null),
-      sb.from("content_items").select("id,title,updated_at,type")
-        .eq("status", "draft").is("deleted_at", null)
-        .order("updated_at", { ascending: false }).limit(5),
-      sb.from("contact_messages").select("id", { count: "exact", head: true })
-        .eq("status", "new"),
-      sb.from("contact_messages").select("id,name,subject,created_at")
-        .eq("status", "new").order("created_at", { ascending: false }).limit(4),
-      sb.from("content_items").select("id", { count: "exact", head: true })
-        .eq("status", "published").gte("updated_at", weekAgo).is("deleted_at", null),
-      sb.from("quiz_attempts").select("id", { count: "exact", head: true })
+      sb
+        .from("content_items")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "draft")
+        .is("deleted_at", null),
+      sb
+        .from("content_items")
+        .select("id,title,updated_at,type")
+        .eq("status", "draft")
+        .is("deleted_at", null)
+        .order("updated_at", { ascending: false })
+        .limit(5),
+      sb.from("contact_messages").select("id", { count: "exact", head: true }).eq("status", "new"),
+      sb
+        .from("contact_messages")
+        .select("id,name,subject,created_at")
+        .eq("status", "new")
+        .order("created_at", { ascending: false })
+        .limit(4),
+      sb
+        .from("content_items")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "published")
+        .gte("updated_at", weekAgo)
+        .is("deleted_at", null),
+      sb
+        .from("quiz_attempts")
+        .select("id", { count: "exact", head: true })
         .gte("created_at", weekAgo),
-      sb.from("profiles").select("id", { count: "exact", head: true })
-        .gte("created_at", weekAgo),
+      sb.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", weekAgo),
       sb.from("subjects").select("id,title").is("deleted_at", null).limit(500),
-      sb.from("content_items").select("subject_id")
-        .eq("status", "published").is("deleted_at", null).not("subject_id", "is", null).limit(2000),
+      sb
+        .from("content_items")
+        .select("subject_id")
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .not("subject_id", "is", null)
+        .limit(2000),
     ]);
 
     const withContent = new Set(
@@ -123,53 +143,6 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
     };
   });
 
-export type TreeNode = {
-  id: string;
-  name: string;
-  children?: TreeNode[];
-  counts?: { notes: number; papers: number; quizzes: number };
-};
-
-export const getContentTree = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async ({ context }) => {
-    const sb = context.supabase;
-    const [coursesRes, semestersRes, subjectsRes, unitsRes] = await Promise.all([
-      sb.from("courses").select("id,title,sort_order").is("deleted_at", null).order("sort_order"),
-      sb.from("semesters").select("id,title,number,course_id").is("deleted_at", null).order("number"),
-      sb.from("subjects").select("id,title,semester_id").is("deleted_at", null).order("title"),
-      sb.from("units").select("id,title,subject_id").is("deleted_at", null).order("title"),
-    ]);
-    const err = coursesRes.error ?? semestersRes.error ?? subjectsRes.error ?? unitsRes.error;
-    if (err) throw new Error(err.message);
-
-    const courses = coursesRes.data ?? [];
-    const semesters = semestersRes.data ?? [];
-    const subjects = subjectsRes.data ?? [];
-    const units = unitsRes.data ?? [];
-
-    const tree: TreeNode[] = courses.map((c) => ({
-      id: c.id,
-      name: c.title,
-      children: semesters
-        .filter((s) => s.course_id === c.id)
-        .map((s) => ({
-          id: s.id,
-          name: s.title ?? `Semester ${s.number}`,
-          children: subjects
-            .filter((sj) => sj.semester_id === s.id)
-            .map((sj) => ({
-              id: sj.id,
-              name: sj.title,
-              children: units
-                .filter((u) => u.subject_id === sj.id)
-                .map((u) => ({ id: u.id, name: u.title })),
-            })),
-        })),
-    }));
-    return tree;
-  });
-
 // Migrate legacy `notes` rows into `content_items` so old uploads
 // appear in the new unified Content page and dashboards.
 export const migrateLegacyNotes = createServerFn({ method: "POST" })
@@ -178,7 +151,9 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     const sb = context.supabase;
     const { data: notes, error } = await sb
       .from("notes")
-      .select("id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at")
+      .select(
+        "id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at",
+      )
       .is("deleted_at", null);
     if (error) throw new Error(`Reading legacy notes failed: ${error.message}`);
     if (!notes || notes.length === 0) return { migrated: 0, skipped: 0, errors: [] as string[] };
@@ -190,7 +165,10 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string | null]));
 
     // Skip notes already migrated (match by unit_id + title)
-    const { data: existing } = await sb.from("content_items").select("unit_id, title").is("deleted_at", null);
+    const { data: existing } = await sb
+      .from("content_items")
+      .select("unit_id, title")
+      .is("deleted_at", null);
     const existingKey = new Set((existing ?? []).map((e) => `${e.unit_id}::${e.title}`));
 
     const rows = notes
@@ -225,4 +203,3 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     if (migrated === 0 && errors.length > 0) throw new Error(errors.join(" | "));
     return { migrated, skipped, errors };
   });
-

@@ -2,31 +2,26 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import type { Database } from "@/integrations/supabase/types";
+import {
+  bumpBucket,
+  contentBulkPatchSchema,
+  contentInputSchema,
+  contentListSchema,
+  emptyBucket,
+  idSchema,
+  idsSchema,
+  type ContentItem,
+  type ContentStatus,
+  type ContentType,
+  type ContentVisibility,
+  type StatsBucket,
+} from "@/lib/content.schemas";
 
-export type ContentType = Database["public"]["Enums"]["content_type"];
-export type ContentVisibility = Database["public"]["Enums"]["content_visibility"];
-export type ContentStatus = "draft" | "published" | "archived";
-
-export type ContentItem = Database["public"]["Tables"]["content_items"]["Row"] & {
-  subject?: { id: string; title: string } | null;
-  unit?: { id: string; title: string } | null;
-};
-
-const listSchema = z.object({
-  type: z.string().optional(),
-  status: z.string().optional(),
-  subjectId: z.string().uuid().optional(),
-  search: z.string().optional(),
-  page: z.number().int().min(1).default(1),
-  pageSize: z.number().int().min(1).max(100).default(20),
-  sort: z.enum(["created_at", "title", "updated_at"]).default("created_at"),
-  dir: z.enum(["asc", "desc"]).default("desc"),
-});
+export type { ContentItem, ContentStatus, ContentType, ContentVisibility };
 
 export const listContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: z.input<typeof listSchema>) => listSchema.parse(input))
+  .inputValidator((input: z.input<typeof contentListSchema>) => contentListSchema.parse(input))
   .handler(async ({ data, context }) => {
     const sb = context.supabase;
     const from = (data.page - 1) * data.pageSize;
@@ -50,36 +45,17 @@ export const listContent = createServerFn({ method: "POST" })
 
 export const getContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
+  .inputValidator((input: { id: string }) => idSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: row, error } = await context.supabase
       .from("content_items")
-      .select(
-        "*,subject:subjects(id,title),unit:units(id,title)",
-      )
+      .select("*,subject:subjects(id,title),unit:units(id,title)")
       .eq("id", data.id)
       .maybeSingle();
     if (error) throw new Error(error.message);
     if (!row) throw new Error("Not found");
     return row as unknown as ContentItem;
   });
-
-const contentInputSchema = z.object({
-  type: z.enum(["note", "pdf", "ppt", "video", "assignment", "link"]),
-  title: z.string().min(1).max(300),
-  description: z.string().optional().nullable(),
-  subject_id: z.string().uuid().optional().nullable(),
-  unit_id: z.string().uuid().optional().nullable(),
-  file_bucket: z.string().optional().nullable(),
-  file_path: z.string().optional().nullable(),
-  file_mime: z.string().optional().nullable(),
-  file_size_bytes: z.number().optional().nullable(),
-  file_url: z.string().url().optional().nullable().or(z.literal("")),
-  thumbnail_path: z.string().optional().nullable(),
-  tags: z.array(z.string()).default([]),
-  visibility: z.enum(["public", "students", "private"]).default("students"),
-  status: z.enum(["draft", "published", "archived"]).default("draft"),
-});
 
 export const createContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -102,24 +78,16 @@ export const updateContent = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }) => {
     const patch = { ...data.patch, file_url: data.patch.file_url || null };
-    const { error } = await context.supabase
-      .from("content_items")
-      .update(patch)
-      .eq("id", data.id);
+    const { error } = await context.supabase.from("content_items").update(patch).eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
 
 export const bulkUpdateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { ids: string[]; patch: { status?: ContentStatus; visibility?: ContentVisibility } }) =>
-    z.object({
-      ids: z.array(z.string().uuid()).min(1),
-      patch: z.object({
-        status: z.enum(["draft", "published", "archived"]).optional(),
-        visibility: z.enum(["public", "students", "private"]).optional(),
-      }),
-    }).parse(input),
+  .inputValidator(
+    (input: { ids: string[]; patch: { status?: ContentStatus; visibility?: ContentVisibility } }) =>
+      contentBulkPatchSchema.parse(input),
   )
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase
@@ -132,9 +100,7 @@ export const bulkUpdateContent = createServerFn({ method: "POST" })
 
 export const deleteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { ids: string[] }) =>
-    z.object({ ids: z.array(z.string().uuid()).min(1) }).parse(input),
-  )
+  .inputValidator((input: { ids: string[] }) => idsSchema.parse(input))
   .handler(async ({ data, context }) => {
     // Soft delete first. Some deployments have an UPDATE policy whose WITH CHECK
     // rejects rows with deleted_at set; in that case fall back to a hard delete
@@ -145,9 +111,7 @@ export const deleteContent = createServerFn({ method: "POST" })
       .in("id", data.ids);
 
     if (error) {
-      const isRls =
-        error.code === "42501" ||
-        /row-level security/i.test(error.message ?? "");
+      const isRls = error.code === "42501" || /row-level security/i.test(error.message ?? "");
       if (!isRls) throw new Error(error.message);
 
       const { error: delErr } = await context.supabase
@@ -161,13 +125,15 @@ export const deleteContent = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
-
 export const duplicateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { id: string }) => z.object({ id: z.string().uuid() }).parse(input))
+  .inputValidator((input: { id: string }) => idSchema.parse(input))
   .handler(async ({ data, context }) => {
     const { data: src, error: e1 } = await context.supabase
-      .from("content_items").select("*").eq("id", data.id).single();
+      .from("content_items")
+      .select("*")
+      .eq("id", data.id)
+      .single();
     if (e1) throw new Error(e1.message);
     const copy = {
       ...src,
@@ -185,7 +151,10 @@ export const duplicateContent = createServerFn({ method: "POST" })
     delete (copy as Record<string, unknown>).created_at;
     delete (copy as Record<string, unknown>).updated_at;
     const { data: row, error: e2 } = await context.supabase
-      .from("content_items").insert(copy).select("id").single();
+      .from("content_items")
+      .insert(copy)
+      .select("id")
+      .single();
     if (e2) throw new Error(e2.message);
     return row;
   });
@@ -207,115 +176,19 @@ export const listSubjectsFlat = createServerFn({ method: "GET" })
 // Returns totals by type for a subject, per-unit breakdown, and lastUpdated.
 // ---------------------------------------------------------------------------
 
-type StatsBucket = {
-  notes: number;
-  pdfs: number;
-  ppts: number;
-  videos: number;
-  assignments: number;
-  links: number;
-  mcqs: number;
-  total: number;
-};
-
-function emptyBucket(): StatsBucket {
-  return { notes: 0, pdfs: 0, ppts: 0, videos: 0, assignments: 0, links: 0, mcqs: 0, total: 0 };
-}
-
-function bumpBucket(b: StatsBucket, type: string) {
-  switch (type) {
-    case "note": b.notes++; break;
-    case "pdf": b.pdfs++; break;
-    case "ppt": b.ppts++; break;
-    case "video": b.videos++; break;
-    case "assignment": b.assignments++; break;
-    case "link": b.links++; break;
-  }
-  b.total++;
-}
-
-export const getSubjectStats = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .inputValidator((input: { subjectId: string }) =>
-    z.object({ subjectId: z.string().uuid() }).parse(input),
-  )
-  .handler(async ({ data, context }) => {
-    const sb = context.supabase;
-    const [unitsRes, itemsRes] = await Promise.all([
-      sb.from("units").select("id,title,number").eq("subject_id", data.subjectId).is("deleted_at", null).order("number"),
-      sb.from("content_items")
-        .select("type,unit_id,updated_at")
-        .eq("subject_id", data.subjectId)
-        .eq("status", "published")
-        .is("deleted_at", null),
-    ]);
-    if (unitsRes.error) throw new Error(unitsRes.error.message);
-    if (itemsRes.error) throw new Error(itemsRes.error.message);
-
-    // Optional MCQ counts — table may not exist in some deploys, so guard.
-    let mcqRows: Array<{ unit_id: string | null }> = [];
-    try {
-      const { data: mcqData } = await sb
-        .from("mcq_questions" as never)
-        .select("unit_id")
-        .eq("subject_id", data.subjectId as never) as { data: Array<{ unit_id: string | null }> | null };
-      mcqRows = mcqData ?? [];
-    } catch { /* table missing — treat as zero */ }
-
-    const total = emptyBucket();
-    const perUnit = new Map<string, StatsBucket>();
-    let lastUpdated: string | null = null;
-    for (const it of itemsRes.data ?? []) {
-      bumpBucket(total, it.type);
-      if (it.unit_id) {
-        const b = perUnit.get(it.unit_id) ?? emptyBucket();
-        bumpBucket(b, it.type);
-        perUnit.set(it.unit_id, b);
-      }
-      if (!lastUpdated || (it.updated_at && it.updated_at > lastUpdated)) {
-        lastUpdated = it.updated_at ?? lastUpdated;
-      }
-    }
-    for (const row of mcqRows) {
-      total.mcqs++;
-      if (row.unit_id) {
-        const b = perUnit.get(row.unit_id) ?? emptyBucket();
-        b.mcqs++;
-        perUnit.set(row.unit_id, b);
-      }
-    }
-
-    const units = (unitsRes.data ?? []).map((u) => ({
-      id: u.id,
-      title: u.title,
-      number: u.number,
-      stats: perUnit.get(u.id) ?? emptyBucket(),
-    }));
-
-    return {
-      unitCount: units.length,
-      total,
-      units,
-      lastUpdated,
-    };
-  });
-
 // Subjects with aggregated content stats, grouped by course + semester.
 export const listSubjectsWithStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     const sb = context.supabase;
     const [subjectsRes, itemsRes, unitsRes] = await Promise.all([
-      sb.from("subjects")
+      sb
+        .from("subjects")
         .select("id,title,code,status,semester:semesters(id,number,course:courses(id,title,slug))")
         .is("deleted_at", null)
         .order("title"),
-      sb.from("content_items")
-        .select("subject_id,type,status")
-        .is("deleted_at", null),
-      sb.from("units")
-        .select("subject_id")
-        .is("deleted_at", null),
+      sb.from("content_items").select("subject_id,type,status").is("deleted_at", null),
+      sb.from("units").select("subject_id").is("deleted_at", null),
     ]);
     if (subjectsRes.error) throw new Error(subjectsRes.error.message);
     if (itemsRes.error) throw new Error(itemsRes.error.message);
@@ -345,5 +218,3 @@ export const listSubjectsWithStats = createServerFn({ method: "GET" })
       stats: statsBySubject.get(s.id) ?? { ...emptyBucket(), drafts: 0 },
     }));
   });
-
-

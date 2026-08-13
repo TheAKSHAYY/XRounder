@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { assertAdmin } from "@/lib/role-guards.server";
 
 export type Announcement = {
   id: string;
@@ -14,14 +15,6 @@ export type Announcement = {
   created_at: string;
   updated_at: string;
 };
-
-async function assertAdmin(supabase: any, userId: string) {
-  const [{ data: isAdmin }, { data: isSuper }] = await Promise.all([
-    supabase.rpc("has_role", { _user_id: userId, _role: "admin" }),
-    supabase.rpc("has_role", { _user_id: userId, _role: "super_admin" }),
-  ]);
-  if (!isAdmin && !isSuper) throw new Error("Forbidden: admin required");
-}
 
 export const listAnnouncementsAdmin = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -136,7 +129,7 @@ export const setUserSuspended = createServerFn({ method: "POST" })
       .from("profiles")
       .update({
         suspended: data.suspended,
-        suspended_reason: data.suspended ? data.reason ?? null : null,
+        suspended_reason: data.suspended ? (data.reason ?? null) : null,
         suspended_at: data.suspended ? new Date().toISOString() : null,
       })
       .eq("user_id", data.userId);
@@ -152,7 +145,11 @@ export const setUserSuspended = createServerFn({ method: "POST" })
 
     // Revoke live sessions on suspend.
     if (data.suspended) {
-      await sb.from("user_sessions").update({ revoked_at: new Date().toISOString() }).eq("user_id", data.userId).is("revoked_at", null);
+      await sb
+        .from("user_sessions")
+        .update({ revoked_at: new Date().toISOString() })
+        .eq("user_id", data.userId)
+        .is("revoked_at", null);
     }
     return { ok: true };
   });

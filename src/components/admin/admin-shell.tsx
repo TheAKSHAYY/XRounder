@@ -7,7 +7,6 @@ import {
   FlaskConical,
   BookOpen,
   Library,
-  Shield,
   ShieldCheck,
   Search,
   Plus,

@@ -27,9 +27,9 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
+import { formatRelativeDay } from "@/lib/format";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
   head: () => ({ meta: [{ title: "Subject · BCA Gurukul" }] }),
@@ -73,19 +73,6 @@ type UnitStats = {
   lastActivity: string | null;
   content: ContentBucket;
 };
-
-function formatRelative(iso: string | null) {
-  if (!iso) return null;
-  const then = new Date(iso).getTime();
-  const diff = Date.now() - then;
-  const day = 86_400_000;
-  if (diff < day) return "Today";
-  if (diff < 2 * day) return "Yesterday";
-  const days = Math.floor(diff / day);
-  if (days < 7) return `${days}d ago`;
-  if (days < 30) return `${Math.floor(days / 7)}w ago`;
-  return new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "short" });
-}
 
 function SubjectDetail() {
   const { courseSlug, semesterNumber, subjectSlug } = Route.useParams();
@@ -151,13 +138,19 @@ function SubjectDetail() {
               .eq("subject_id", subject.id)
               .eq("status", "published")
               .is("deleted_at", null)
-          : Promise.resolve({ data: [] as Array<{ type: string; unit_id: string | null }>, error: null }),
+          : Promise.resolve({
+              data: [] as Array<{ type: string; unit_id: string | null }>,
+              error: null,
+            }),
       ]);
 
       const contentByUnit = new Map<string, ContentBucket>();
       const subjectContent = emptyContentBucket();
-      for (const row of (contentRes.data ?? []) as Array<{ type: string; unit_id: string | null }>) {
-        const key = (row.type as keyof ContentBucket);
+      for (const row of (contentRes.data ?? []) as Array<{
+        type: string;
+        unit_id: string | null;
+      }>) {
+        const key = row.type as keyof ContentBucket;
         if (key in subjectContent && key !== "total") {
           (subjectContent as Record<string, number>)[key] += 1;
           subjectContent.total++;
@@ -232,10 +225,7 @@ function SubjectDetail() {
       .sort((a, b) => (b.lastActivity! > a.lastActivity! ? 1 : -1));
     const activeResume = withActivity.find((u) => u.status !== "completed");
     const resume =
-      activeResume ??
-      unitStats.find((u) => u.status !== "completed") ??
-      unitStats[0] ??
-      null;
+      activeResume ?? unitStats.find((u) => u.status !== "completed") ?? unitStats[0] ?? null;
 
     const lastActivity = withActivity[0]?.lastActivity ?? null;
 
@@ -346,15 +336,11 @@ function SubjectDetail() {
               label="Study materials"
               value={subjectQuery.data.subjectContent.total}
             />
-            <StatChip
-              variant="tile"
-              label="Past papers"
-              value={subjectQuery.data.papers.length}
-            />
+            <StatChip variant="tile" label="Past papers" value={subjectQuery.data.papers.length} />
             <StatChip
               variant="tile"
               label="Last studied"
-              value={user ? (formatRelative(overall.lastActivity) ?? "Not yet") : "—"}
+              value={user ? (formatRelativeDay(overall.lastActivity) ?? "Not yet") : "—"}
             />
           </section>
         )}
@@ -362,22 +348,49 @@ function SubjectDetail() {
         {/* ─── Content mix ─── */}
         {subjectQuery.data && subjectQuery.data.subjectContent.total > 0 && (
           <section className="mt-4 flex flex-wrap gap-2">
-            <StatChip variant="chip" icon={FileText} label="Notes" value={subjectQuery.data.subjectContent.note} />
-            <StatChip variant="chip" icon={FileType} label="PDFs" value={subjectQuery.data.subjectContent.pdf} />
-            <StatChip variant="chip" icon={Presentation} label="Slides" value={subjectQuery.data.subjectContent.ppt} />
-            <StatChip variant="chip" icon={Video} label="Videos" value={subjectQuery.data.subjectContent.video} />
-            <StatChip variant="chip" icon={ListChecks} label="Assignments" value={subjectQuery.data.subjectContent.assignment} />
-            <StatChip variant="chip" icon={Link2} label="Links" value={subjectQuery.data.subjectContent.link} />
+            <StatChip
+              variant="chip"
+              icon={FileText}
+              label="Notes"
+              value={subjectQuery.data.subjectContent.note}
+            />
+            <StatChip
+              variant="chip"
+              icon={FileType}
+              label="PDFs"
+              value={subjectQuery.data.subjectContent.pdf}
+            />
+            <StatChip
+              variant="chip"
+              icon={Presentation}
+              label="Slides"
+              value={subjectQuery.data.subjectContent.ppt}
+            />
+            <StatChip
+              variant="chip"
+              icon={Video}
+              label="Videos"
+              value={subjectQuery.data.subjectContent.video}
+            />
+            <StatChip
+              variant="chip"
+              icon={ListChecks}
+              label="Assignments"
+              value={subjectQuery.data.subjectContent.assignment}
+            />
+            <StatChip
+              variant="chip"
+              icon={Link2}
+              label="Links"
+              value={subjectQuery.data.subjectContent.link}
+            />
           </section>
         )}
-
 
         {/* ─── Learning Path ─── */}
         <section className="mt-14">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="text-h2 text-foreground">
-              Learning path
-            </h2>
+            <h2 className="text-h2 text-foreground">Learning path</h2>
             {overall.total > 0 && user && (
               <span className="text-xs font-medium tabular-nums text-muted-foreground">
                 {overall.completed}/{overall.total} completed
@@ -405,7 +418,9 @@ function SubjectDetail() {
                   <li key={s.unit.id} className="relative">
                     <UnitCard
                       stats={s}
-                      isResume={!!user && overall.resume?.unit.id === s.unit.id && s.status !== "completed"}
+                      isResume={
+                        !!user && overall.resume?.unit.id === s.unit.id && s.status !== "completed"
+                      }
                       loading={loadingProgress}
                       showProgress={!!user}
                       href={{
@@ -429,9 +444,7 @@ function SubjectDetail() {
         {subjectQuery.data && (
           <section className="mt-14">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-h2 text-foreground">
-                Resources
-              </h2>
+              <h2 className="text-h2 text-foreground">Resources</h2>
               {subjectQuery.data.papers.length > 0 && (
                 <span className="text-xs font-medium text-muted-foreground">
                   Previous-year papers
@@ -482,7 +495,6 @@ function SubjectDetail() {
 
 /* ─────────────── components ─────────────── */
 
-
 function UnitCard({
   stats,
   isResume,
@@ -505,17 +517,11 @@ function UnitCard({
   };
 }) {
   const { unit, status, pct, lastActivity } = stats;
-  const rel = formatRelative(lastActivity);
+  const rel = formatRelativeDay(lastActivity);
   const isDone = status === "completed";
   const inProgress = status === "in_progress";
 
-  const ctaLabel = !showProgress
-    ? "Open"
-    : isDone
-      ? "Review"
-      : inProgress
-        ? "Continue"
-        : "Start";
+  const ctaLabel = !showProgress ? "Open" : isDone ? "Review" : inProgress ? "Continue" : "Start";
 
   return (
     <Link
@@ -549,9 +555,7 @@ function UnitCard({
           <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
             Unit {unit.number}
           </span>
-          {showProgress && (
-            <StatusPill status={status} isResume={isResume} />
-          )}
+          {showProgress && <StatusPill status={status} isResume={isResume} />}
         </div>
         <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-foreground">
           {unit.title}
@@ -571,13 +575,23 @@ function UnitCard({
               <StatChip variant="chip" icon={FileType} value={stats.content.pdf} label="PDFs" />
             )}
             {stats.content.ppt > 0 && (
-              <StatChip variant="chip" icon={Presentation} value={stats.content.ppt} label="slides" />
+              <StatChip
+                variant="chip"
+                icon={Presentation}
+                value={stats.content.ppt}
+                label="slides"
+              />
             )}
             {stats.content.video > 0 && (
               <StatChip variant="chip" icon={Video} value={stats.content.video} label="videos" />
             )}
             {stats.content.assignment > 0 && (
-              <StatChip variant="chip" icon={ListChecks} value={stats.content.assignment} label="tasks" />
+              <StatChip
+                variant="chip"
+                icon={ListChecks}
+                value={stats.content.assignment}
+                label="tasks"
+              />
             )}
             {stats.content.link > 0 && (
               <StatChip variant="chip" icon={Link2} value={stats.content.link} label="links" />
@@ -619,13 +633,7 @@ function UnitCard({
   );
 }
 
-function StatusPill({
-  status,
-  isResume,
-}: {
-  status: UnitStatus;
-  isResume: boolean;
-}) {
+function StatusPill({ status, isResume }: { status: UnitStatus; isResume: boolean }) {
   if (status === "completed") {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
@@ -678,4 +686,3 @@ function EmptyUnits({
     />
   );
 }
-

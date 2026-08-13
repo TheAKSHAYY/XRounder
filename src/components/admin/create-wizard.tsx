@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
@@ -129,19 +129,6 @@ function WizardForm({ type, onBack, onDone }: { type: ContentType; onBack: () =>
     default:
       return <div className="py-6 text-sm text-muted-foreground">Coming soon.</div>;
   }
-}
-
-function FooterBar({ onBack, busy, label }: { onBack: () => void; busy: boolean; label: string }) {
-  return (
-    <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-      <Button type="button" variant="ghost" onClick={onBack} disabled={busy}>
-        ← Back
-      </Button>
-      <Button type="submit" disabled={busy}>
-        {busy ? "Saving…" : label}
-      </Button>
-    </div>
-  );
 }
 
 /* ---------------- forms ---------------- */

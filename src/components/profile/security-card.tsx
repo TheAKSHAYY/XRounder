@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
+import { formatDateTime } from "@/lib/format";
 
 export type SessionRow = {
   id: string;
@@ -14,14 +15,6 @@ export type SessionRow = {
   country: string | null;
   last_seen_at: string;
 };
-
-function formatDate(iso: string | null | undefined) {
-  if (!iso) return "Unknown";
-  return new Date(iso).toLocaleString(undefined, {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-}
 
 export function SecurityCard({
   lastSignInAt,
@@ -73,7 +66,7 @@ export function SecurityCard({
         Security
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">
-        Last sign-in: <span className="text-foreground">{formatDate(lastSignInAt)}</span>
+        Last sign-in: <span className="text-foreground">{formatDateTime(lastSignInAt)}</span>
       </p>
 
       <form onSubmit={submitPassword} className="mt-4 space-y-3" aria-label="Change password">
@@ -141,7 +134,7 @@ export function SecurityCard({
                 </div>
                 <div className="truncate text-xs text-muted-foreground">
                   {[s.city, s.country].filter(Boolean).join(", ") || "Location unknown"} ·{" "}
-                  {formatDate(s.last_seen_at)}
+                  {formatDateTime(s.last_seen_at)}
                 </div>
               </li>
             ))}

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import {
-  FileText, FileStack, FlaskConical, Plus, ArrowUpRight, BookOpen,
+  FileText, FlaskConical, Plus, ArrowUpRight, BookOpen,
   Inbox, AlertCircle, TrendingUp, Users, Sparkles, ChevronRight,
   CheckCircle2, MessageSquare, Library,
 } from "lucide-react";
@@ -16,7 +16,7 @@ import {
 } from "@/lib/admin.functions";
 import { useAuth } from "@/hooks/use-auth";
 import {
-  PageContainer, PageHeader, SectionCard,
+  PageContainer, SectionCard,
 } from "@/components/admin/ui";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
