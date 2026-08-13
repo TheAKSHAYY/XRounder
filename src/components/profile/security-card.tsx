@@ -16,7 +16,6 @@ export type SessionRow = {
   last_seen_at: string;
 };
 
-
 export function SecurityCard({
   lastSignInAt,
   sessions,

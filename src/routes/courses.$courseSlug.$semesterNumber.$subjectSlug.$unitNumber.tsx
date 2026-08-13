@@ -50,7 +50,6 @@ type SiblingUnit = { id: string; number: number };
 
 type QuizRow = { id: string; title: string; time_limit_minutes: number | null };
 
-
 function estimateReadMinutes(notes: NoteRow[]) {
   const words = notes.reduce((total, n) => {
     const text = `${n.title ?? ""} ${n.summary ?? ""} ${n.body ?? ""}`.trim();
@@ -404,7 +403,6 @@ function UnitDetail() {
           ]}
         />
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
-
           {/* Article column */}
           <article ref={articleRef} className="min-w-0">
             {/* Title block */}
@@ -412,9 +410,7 @@ function UnitDetail() {
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                 Unit {unit.number}
               </p>
-              <h2 className="mt-2 text-h1 text-foreground">
-                {unit.title}
-              </h2>
+              <h2 className="mt-2 text-h1 text-foreground">{unit.title}</h2>
               {unit.summary && (
                 <p className="mt-3 max-w-[68ch] text-base leading-relaxed text-muted-foreground">
                   {unit.summary}
@@ -554,10 +550,7 @@ function UnitDetail() {
             )}
 
             {/* Prev / Next navigation */}
-            <nav
-              aria-label="Unit navigation"
-              className="mt-12 grid gap-3 sm:grid-cols-2"
-            >
+            <nav aria-label="Unit navigation" className="mt-12 grid gap-3 sm:grid-cols-2">
               {prevUnit ? (
                 <Link
                   to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"

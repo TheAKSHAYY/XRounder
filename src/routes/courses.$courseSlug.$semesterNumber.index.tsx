@@ -15,7 +15,6 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { formatRelativeDay } from "@/lib/format";
 
-
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   head: () => ({ meta: [{ title: "Semester · BCA Gurukul" }] }),
   component: SemesterDetail,
@@ -46,7 +45,6 @@ type SubjectStats = {
   resumeUnitNumber: number | null;
   status: "not_started" | "in_progress" | "completed";
 };
-
 
 function SemesterDetail() {
   const { courseSlug, semesterNumber } = Route.useParams();
@@ -137,17 +135,32 @@ function SemesterDetail() {
       .channel(`public-sem-${courseSlug}-${semesterNumber}`)
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "subjects", ...(semesterId ? { filter: `semester_id=eq.${semesterId}` } : {}) },
+        {
+          event: "*",
+          schema: "public",
+          table: "subjects",
+          ...(semesterId ? { filter: `semester_id=eq.${semesterId}` } : {}),
+        },
         () => qc.invalidateQueries({ queryKey }),
       )
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "semesters", ...(semesterId ? { filter: `id=eq.${semesterId}` } : {}) },
+        {
+          event: "*",
+          schema: "public",
+          table: "semesters",
+          ...(semesterId ? { filter: `id=eq.${semesterId}` } : {}),
+        },
         () => qc.invalidateQueries({ queryKey }),
       )
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "courses", ...(courseId ? { filter: `id=eq.${courseId}` } : {}) },
+        {
+          event: "*",
+          schema: "public",
+          table: "courses",
+          ...(courseId ? { filter: `id=eq.${courseId}` } : {}),
+        },
         () => qc.invalidateQueries({ queryKey }),
       )
       .subscribe();
@@ -187,7 +200,12 @@ function SemesterDetail() {
         }
       }
       if (!resumeUnit) {
-        resumeUnit = unitList.find((u) => (progressByUnit.get(u.id)?.status ?? "not_started") !== "completed") ?? unitList[0] ?? null;
+        resumeUnit =
+          unitList.find(
+            (u) => (progressByUnit.get(u.id)?.status ?? "not_started") !== "completed",
+          ) ??
+          unitList[0] ??
+          null;
       }
 
       const pct = total > 0 ? Math.round(pctSum / total) : 0;
@@ -226,9 +244,7 @@ function SemesterDetail() {
 
   const firstName = useMemo(() => {
     const fullName =
-      (user?.user_metadata?.full_name as string | undefined) ??
-      user?.email?.split("@")[0] ??
-      null;
+      (user?.user_metadata?.full_name as string | undefined) ?? user?.email?.split("@")[0] ?? null;
     return fullName?.split(" ")[0] ?? null;
   }, [user]);
 
@@ -252,8 +268,7 @@ function SemesterDetail() {
     if (!user) return `${stats.length} subjects in this semester. Sign in to track your progress.`;
     if (overall.completedSubjects === stats.length)
       return `All ${stats.length} subjects completed. Beautifully done.`;
-    if (overall.inProgressOrDone === 0)
-      return `${stats.length} subjects ready. Pick one to begin.`;
+    if (overall.inProgressOrDone === 0) return `${stats.length} subjects ready. Pick one to begin.`;
     return `${overall.inProgressOrDone} of ${stats.length} subjects in progress · ${overall.completedSubjects} completed`;
   })();
 
@@ -370,7 +385,6 @@ function SemesterDetail() {
                 </li>
               ))}
             </ul>
-
           )}
         </section>
       </main>
@@ -378,8 +392,6 @@ function SemesterDetail() {
     </div>
   );
 }
-
-
 
 function SubjectCard({
   stats,
@@ -481,9 +493,7 @@ function SubjectCard({
                 ? `${completedUnits} of ${totalUnits} units`
                 : `${totalUnits} unit${totalUnits === 1 ? "" : "s"}`}
           </div>
-          {showProgress && rel && (
-            <div className="mt-0.5 truncate">Last studied {rel}</div>
-          )}
+          {showProgress && rel && <div className="mt-0.5 truncate">Last studied {rel}</div>}
         </div>
 
         <span className="subject-cta inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary transition-transform duration-180 group-active:translate-x-0.5">
@@ -494,6 +504,3 @@ function SubjectCard({
     </Link>
   );
 }
-
-
-

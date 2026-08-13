@@ -129,7 +129,7 @@ export const setUserSuspended = createServerFn({ method: "POST" })
       .from("profiles")
       .update({
         suspended: data.suspended,
-        suspended_reason: data.suspended ? data.reason ?? null : null,
+        suspended_reason: data.suspended ? (data.reason ?? null) : null,
         suspended_at: data.suspended ? new Date().toISOString() : null,
       })
       .eq("user_id", data.userId);
@@ -145,7 +145,11 @@ export const setUserSuspended = createServerFn({ method: "POST" })
 
     // Revoke live sessions on suspend.
     if (data.suspended) {
-      await sb.from("user_sessions").update({ revoked_at: new Date().toISOString() }).eq("user_id", data.userId).is("revoked_at", null);
+      await sb
+        .from("user_sessions")
+        .update({ revoked_at: new Date().toISOString() })
+        .eq("user_id", data.userId)
+        .is("revoked_at", null);
     }
     return { ok: true };
   });

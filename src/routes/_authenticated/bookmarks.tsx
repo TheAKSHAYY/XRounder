@@ -59,7 +59,6 @@ function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } 
   }
 }
 
-
 function BookmarksPage() {
   const { user } = useAuth();
   const q = useQuery({

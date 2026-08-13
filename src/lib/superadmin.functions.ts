@@ -33,13 +33,26 @@ export const listUsers = createServerFn({ method: "GET" })
     const ids = authList.users.map((u) => u.id);
     const sbAdmin = supabaseAdmin as any;
     const [profilesRes, rolesRes] = await Promise.all([
-      sbAdmin.from("profiles").select("user_id,full_name,avatar_url,suspended,suspended_reason").in("user_id", ids),
+      sbAdmin
+        .from("profiles")
+        .select("user_id,full_name,avatar_url,suspended,suspended_reason")
+        .in("user_id", ids),
       sbAdmin.from("user_roles").select("user_id,role").in("user_id", ids),
     ]);
     if (profilesRes.error) throw new Error(profilesRes.error.message);
     if (rolesRes.error) throw new Error(rolesRes.error.message);
 
-    const profileMap = new Map(((profilesRes.data ?? []) as Array<{ user_id: string; full_name: string | null; avatar_url: string | null; suspended?: boolean; suspended_reason?: string | null }>).map((p) => [p.user_id, p]));
+    const profileMap = new Map(
+      (
+        (profilesRes.data ?? []) as Array<{
+          user_id: string;
+          full_name: string | null;
+          avatar_url: string | null;
+          suspended?: boolean;
+          suspended_reason?: string | null;
+        }>
+      ).map((p) => [p.user_id, p]),
+    );
     const roleMap = new Map<string, AppRole[]>();
     for (const r of rolesRes.data ?? []) {
       const arr = roleMap.get(r.user_id) ?? [];
@@ -149,7 +162,9 @@ export const listAuditLogs = createServerFn({ method: "GET" })
     const { data: rows, error } = await q;
     if (error) throw new Error(error.message);
 
-    const actorIds = Array.from(new Set((rows ?? []).map((r) => r.actor_id).filter(Boolean))) as string[];
+    const actorIds = Array.from(
+      new Set((rows ?? []).map((r) => r.actor_id).filter(Boolean)),
+    ) as string[];
     const emailMap = new Map<string, string>();
     if (actorIds.length) {
       const { data: list } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
@@ -160,7 +175,7 @@ export const listAuditLogs = createServerFn({ method: "GET" })
     return (rows ?? []).map((r) => ({
       ...r,
       metadata: r.metadata ? JSON.stringify(r.metadata) : null,
-      actor_email: r.actor_id ? emailMap.get(r.actor_id) ?? null : null,
+      actor_email: r.actor_id ? (emailMap.get(r.actor_id) ?? null) : null,
     })) as AuditLogRow[];
   });
 
@@ -190,7 +205,9 @@ export const listFeatureFlags = createServerFn({ method: "GET" })
 
 export const updateFeatureFlag = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: { key: string; enabled?: boolean; kill_switch?: boolean; rollout_pct?: number }) => data)
+  .inputValidator(
+    (data: { key: string; enabled?: boolean; kill_switch?: boolean; rollout_pct?: number }) => data,
+  )
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -232,10 +249,22 @@ export const getPlatformStats = createServerFn({ method: "GET" })
     const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
     const [users, admins, supers, sessions, audits] = await Promise.all([
       supabaseAdmin.from("profiles").select("user_id", { count: "exact", head: true }),
-      supabaseAdmin.from("user_roles").select("user_id", { count: "exact", head: true }).eq("role", "admin"),
-      supabaseAdmin.from("user_roles").select("user_id", { count: "exact", head: true }).eq("role", "super_admin"),
-      supabaseAdmin.from("user_sessions").select("id", { count: "exact", head: true }).is("revoked_at", null),
-      supabaseAdmin.from("audit_logs").select("id", { count: "exact", head: true }).gte("created_at", since),
+      supabaseAdmin
+        .from("user_roles")
+        .select("user_id", { count: "exact", head: true })
+        .eq("role", "admin"),
+      supabaseAdmin
+        .from("user_roles")
+        .select("user_id", { count: "exact", head: true })
+        .eq("role", "super_admin"),
+      supabaseAdmin
+        .from("user_sessions")
+        .select("id", { count: "exact", head: true })
+        .is("revoked_at", null),
+      supabaseAdmin
+        .from("audit_logs")
+        .select("id", { count: "exact", head: true })
+        .gte("created_at", since),
     ]);
     return {
       total_users: users.count ?? 0,
