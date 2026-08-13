@@ -3,7 +3,7 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { slugifyOrGenerated } from "@/lib/slug";
 import {
-  NODE_NODE_TYPE,
+  NODE_TYPE,
   tableFor,
   type ExplorerNode,
   type NodeMeta,
