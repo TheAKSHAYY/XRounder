@@ -13,6 +13,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StudentHero } from "@/components/student/student-hero";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { formatRelativeDay } from "@/lib/format";
 
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
