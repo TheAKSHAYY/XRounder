@@ -21,7 +21,7 @@ const themes = [
 ] as const;
 
 export function ThemeToggle() {
-  const { theme, setTheme, resolved } = useTheme();
+  const { theme, setTheme } = useTheme();
   const ActiveIcon = themes.find((option) => option.value === theme)?.icon ?? Sun;
 
   return (
