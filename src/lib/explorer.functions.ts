@@ -2,38 +2,16 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { slugifyOrGenerated } from "@/lib/slug";
+import {
+  NODE_NODE_TYPE,
+  tableFor,
+  type ExplorerNode,
+  type NodeMeta,
+  type NodeStatus,
+  type NodeType,
+} from "@/lib/explorer.types";
 
-export type NodeType = "course" | "semester" | "subject" | "unit";
-export type NodeStatus = "draft" | "published" | "archived";
-
-export type NodeMeta = {
-  slug?: string | null;
-  code?: string | null;
-  number?: number | null;
-  description?: string | null;
-  summary?: string | null;
-};
-
-export type ExplorerNode = {
-  id: string;
-  type: NodeType;
-  name: string;
-  status: NodeStatus;
-  position: number;
-  parentId: string | null;
-  meta: NodeMeta;
-  childCount: number;
-  children?: ExplorerNode[];
-};
-
-
-const TYPE = z.enum(["course", "semester", "subject", "unit"]);
-
-function tableFor(type: NodeType): "courses" | "semesters" | "subjects" | "units" {
-  return type === "course" ? "courses"
-    : type === "semester" ? "semesters"
-    : type === "subject" ? "subjects" : "units";
-}
+export type { ExplorerNode, NodeMeta, NodeStatus, NodeType };
 
 // ---------------- TREE ----------------
 export const getExplorerTree = createServerFn({ method: "GET" })
@@ -111,7 +89,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) =>
     z.object({
-      type: TYPE,
+      type: NODE_TYPE,
       parentId: z.string().uuid().nullable().optional(),
       name: z.string().min(1).max(160),
     }).parse(d),
@@ -177,7 +155,7 @@ export const updateExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) =>
     z.object({
-      type: TYPE,
+      type: NODE_TYPE,
       id: z.string().uuid(),
       patch: z.object({
         name: z.string().min(1).max(200).optional(),
@@ -217,7 +195,7 @@ export const updateExplorerNode = createServerFn({ method: "POST" })
 // ---------------- DELETE (soft) ----------------
 export const deleteExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ type: TYPE, id: z.string().uuid() }).parse(d))
+  .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sb = context.supabase as any;
@@ -230,7 +208,7 @@ export const deleteExplorerNode = createServerFn({ method: "POST" })
 // ---------------- DUPLICATE ----------------
 export const duplicateExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ type: TYPE, id: z.string().uuid() }).parse(d))
+  .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sb = context.supabase as any;
@@ -271,7 +249,7 @@ export const reorderExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) =>
     z.object({
-      type: TYPE,
+      type: NODE_TYPE,
       id: z.string().uuid(),
       direction: z.enum(["up", "down"]),
     }).parse(d),
