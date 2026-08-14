@@ -3,6 +3,7 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { slugifyOrGenerated } from "@/lib/slug";
 import {
+import { loose } from "@/lib/supabase-loose";
   NODE_TYPE,
   tableFor,
   type ExplorerNode,
@@ -113,8 +114,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { type, parentId, name } = data;
 
     if (type === "course") {
@@ -233,8 +233,7 @@ export const updateExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { type, id, patch } = data;
     const table = tableFor(type);
 
@@ -262,8 +261,7 @@ export const deleteExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { error } = await sb
       .from(tableFor(data.type))
       .update({ deleted_at: new Date().toISOString() })
@@ -277,8 +275,7 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const table = tableFor(data.type);
     const { data: src, error } = await sb.from(table).select("*").eq("id", data.id).single();
     if (error) throw new Error(error.message);
@@ -329,8 +326,7 @@ export const reorderExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { type, id, direction } = data;
     const table = tableFor(type);
     const orderField = type === "semester" || type === "unit" ? "number" : "sort_order";

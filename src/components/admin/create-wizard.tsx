@@ -262,7 +262,7 @@ function SubjectForm({ onBack, onDone }: { onBack: () => void; onDone: () => voi
         <Select value={semesterId} onValueChange={setSemesterId}>
           <SelectTrigger><SelectValue placeholder="Choose semester" /></SelectTrigger>
           <SelectContent>
-            {semesters?.map((s: any) => (
+            {semesters?.map((s) => (
               <SelectItem key={s.id} value={s.id}>
                 {s.courses?.title ?? "Course"} · Sem {s.number}
               </SelectItem>
@@ -318,7 +318,7 @@ function UnitForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
         <Select value={subjectId} onValueChange={setSubjectId}>
           <SelectTrigger><SelectValue placeholder="Choose subject" /></SelectTrigger>
           <SelectContent>
-            {subjects?.map((s: any) => (
+            {subjects?.map((s) => (
               <SelectItem key={s.id} value={s.id}>
                 {s.semesters?.courses?.title ?? ""} · Sem {s.semesters?.number} · {s.title}
               </SelectItem>
@@ -397,7 +397,7 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
         <Select value={unitId} onValueChange={setUnitId}>
           <SelectTrigger><SelectValue placeholder="Choose unit" /></SelectTrigger>
           <SelectContent>
-            {units?.map((u: any) => (
+            {units?.map((u) => (
               <SelectItem key={u.id} value={u.id}>
                 Sem {u.subjects?.semesters?.number} · {u.subjects?.title} · {u.title}
               </SelectItem>
@@ -455,7 +455,7 @@ function PaperForm({ onBack, onDone }: { onBack: () => void; onDone: () => void 
         <Select value={subjectId} onValueChange={setSubjectId}>
           <SelectTrigger><SelectValue placeholder="Choose subject" /></SelectTrigger>
           <SelectContent>
-            {subjects?.map((s: any) => (
+            {subjects?.map((s) => (
               <SelectItem key={s.id} value={s.id}>Sem {s.semesters?.number} · {s.title}</SelectItem>
             ))}
           </SelectContent>
@@ -506,7 +506,7 @@ function QuizForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
         <Select value={unitId} onValueChange={setUnitId}>
           <SelectTrigger><SelectValue placeholder="Choose unit" /></SelectTrigger>
           <SelectContent>
-            {units?.map((u: any) => (
+            {units?.map((u) => (
               <SelectItem key={u.id} value={u.id}>
                 Sem {u.subjects?.semesters?.number} · {u.subjects?.title} · {u.title}
               </SelectItem>

@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { getErrorMessage } from "@/lib/utils";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -47,7 +48,7 @@ export function ContactForm() {
       setValues({ name: "", email: "", subject: "", message: "" });
       toast.success("Message sent — I'll get back to you soon.");
     },
-    onError: (e: any) => toast.error(e?.message || "Failed to send message"),
+    onError: (e) => toast.error(getErrorMessage(e, "Failed to send message")),
   });
 
   if (done) {

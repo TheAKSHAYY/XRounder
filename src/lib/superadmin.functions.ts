@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { assertSuperAdmin } from "@/lib/role-guards.server";
+import { loose } from "@/lib/supabase-loose";
 
 export type AppRole = "super_admin" | "admin" | "instructor" | "student";
 
@@ -31,7 +32,7 @@ export const listUsers = createServerFn({ method: "GET" })
     if (authErr) throw new Error(authErr.message);
 
     const ids = authList.users.map((u) => u.id);
-    const sbAdmin = supabaseAdmin as any;
+    const sbAdmin = loose(supabaseAdmin);
     const [profilesRes, rolesRes] = await Promise.all([
       sbAdmin
         .from("profiles")
