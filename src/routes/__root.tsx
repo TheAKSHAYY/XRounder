@@ -15,6 +15,8 @@ import { MaintenanceGate } from "@/components/maintenance-gate";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { BrandingApplier } from "@/components/branding/branding-applier";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { EnvErrorScreen } from "@/components/env-error-screen";
+import { formatEnvError, validateSupabaseEnv } from "@/lib/env";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -147,6 +149,11 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const envResult = validateSupabaseEnv();
+if (!envResult.valid) {
+  console.error(`[env] ${formatEnvError(envResult)}`);
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -160,6 +167,10 @@ function RootComponent() {
     });
     return () => sub.subscription.unsubscribe();
   }, [router, queryClient]);
+
+  if (!envResult.valid) {
+    return <EnvErrorScreen result={envResult} />;
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
