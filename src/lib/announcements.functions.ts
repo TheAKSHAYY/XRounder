@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { assertAdmin } from "@/lib/role-guards.server";
+import { loose } from "@/lib/supabase-loose";
 
 export type Announcement = {
   id: string;
@@ -20,7 +21,7 @@ export const listAnnouncementsAdmin = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     await assertAdmin(context.supabase, context.userId);
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { data, error } = await sb
       .from("announcements")
       .select("*")
@@ -47,7 +48,7 @@ export const upsertAnnouncement = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const payload = {
       title: data.title.trim(),
       body: data.body.trim(),
@@ -79,7 +80,7 @@ export const deleteAnnouncement = createServerFn({ method: "POST" })
   .inputValidator((d: { id: string }) => d)
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { error } = await sb.from("announcements").delete().eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
@@ -89,7 +90,7 @@ export const deleteAnnouncement = createServerFn({ method: "POST" })
 export const listActiveAnnouncements = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const nowIso = new Date().toISOString();
     const { data, error } = await sb
       .from("announcements")
@@ -116,7 +117,7 @@ export const setUserSuspended = createServerFn({ method: "POST" })
     if (data.userId === context.userId) throw new Error("You cannot suspend yourself.");
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const sb = supabaseAdmin as any;
+    const sb = loose(supabaseAdmin);
 
     // Ban / unban the auth user so they cannot get new sessions.
     const { error: banErr } = await supabaseAdmin.auth.admin.updateUserById(data.userId, {
@@ -160,7 +161,7 @@ export const reorderUnits = createServerFn({ method: "POST" })
   .inputValidator((d: { subjectId: string; unitIds: string[] }) => d)
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
-    const sb = context.supabase as any;
+    const sb = loose(context.supabase);
     const { error } = await sb.rpc("admin_reorder_units", {
       _subject_id: data.subjectId,
       _unit_ids: data.unitIds,
