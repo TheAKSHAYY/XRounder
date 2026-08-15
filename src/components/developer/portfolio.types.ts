@@ -1,3 +1,13 @@
+import {
+  Github,
+  Globe,
+  Instagram,
+  Linkedin,
+  Mail,
+  Twitter,
+  Youtube,
+} from "lucide-react";
+
 export type Profile = {
   full_name: string | null;
   professional_title: string | null;
@@ -42,6 +52,11 @@ export type Achievement = {
 
 export function platformIcon(p: string) {
   const k = p.toLowerCase();
-  if (k.includes("github")) return "github";
-  return "unused";
+  if (k.includes("github")) return Github;
+  if (k.includes("linkedin")) return Linkedin;
+  if (k.includes("instagram")) return Instagram;
+  if (k.includes("youtube")) return Youtube;
+  if (k.includes("twitter") || k === "x") return Twitter;
+  if (k.includes("mail") || k.includes("email")) return Mail;
+  return Globe;
 }
