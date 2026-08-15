@@ -350,7 +350,7 @@ export const reorderExplorerNode = createServerFn({ method: "POST" })
         : q.gt(orderField, cur[orderField]).order(orderField, { ascending: true }).limit(1);
 
     const { data: neighbor } = await q;
-    const n = neighbor?.[0];
+    const n = neighbor?.[0] as Record<string, unknown> | undefined;
     if (!n) return { ok: true };
 
     await sb
