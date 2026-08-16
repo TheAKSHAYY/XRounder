@@ -68,9 +68,7 @@ export function AchievementsEditor() {
           .eq("id", row.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase
-          .from("developer_achievements")
-          .insert(row);
+        const { error } = await supabase.from("developer_achievements").insert(row);
         if (error) throw error;
       }
     },
@@ -83,10 +81,7 @@ export function AchievementsEditor() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
-        .from("developer_achievements")
-        .delete()
-        .eq("id", id);
+      const { error } = await supabase.from("developer_achievements").delete().eq("id", id);
       if (error) throw error;
     },
     onSuccess: invalidate,
@@ -114,9 +109,7 @@ export function AchievementsEditor() {
             </Badge>
             <div className="min-w-0 flex-1">
               <div className="truncate font-medium">{a.title}</div>
-              {a.issuer && (
-                <div className="truncate text-xs text-muted-foreground">{a.issuer}</div>
-              )}
+              {a.issuer && <div className="truncate text-xs text-muted-foreground">{a.issuer}</div>}
             </div>
             <AchievementDialog
               initial={a}
@@ -133,9 +126,7 @@ export function AchievementsEditor() {
           </li>
         ))}
         {(data ?? []).length === 0 && (
-          <li className="py-6 text-center text-sm text-muted-foreground">
-            No achievements yet.
-          </li>
+          <li className="py-6 text-center text-sm text-muted-foreground">No achievements yet.</li>
         )}
       </ul>
     </div>
@@ -191,11 +182,7 @@ function AchievementDialog({
               <Input value={issuer} onChange={(e) => setIssuer(e.target.value)} />
             </Field>
             <Field label="Date awarded">
-              <Input
-                type="date"
-                value={date ?? ""}
-                onChange={(e) => setDate(e.target.value)}
-              />
+              <Input type="date" value={date ?? ""} onChange={(e) => setDate(e.target.value)} />
             </Field>
             <Field label="Sort order">
               <Input

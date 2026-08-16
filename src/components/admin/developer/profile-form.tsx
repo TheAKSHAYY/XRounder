@@ -48,10 +48,7 @@ export function ProfileForm() {
 
   const save = useMutation({
     mutationFn: async (row: ProfileRow) => {
-      const { error } = await supabase
-        .from("developer_profile")
-        .update(row)
-        .eq("id", 1);
+      const { error } = await supabase.from("developer_profile").update(row).eq("id", 1);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -72,16 +69,10 @@ export function ProfileForm() {
     <div className="space-y-6 rounded-2xl border border-border bg-surface p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Switch
-            checked={current.enabled}
-            onCheckedChange={(v) => set("enabled", v)}
-          />
+          <Switch checked={current.enabled} onCheckedChange={(v) => set("enabled", v)} />
           <Label className="text-sm">Show developer page publicly</Label>
         </div>
-        <Button
-          onClick={() => save.mutate(current)}
-          disabled={save.isPending}
-        >
+        <Button onClick={() => save.mutate(current)} disabled={save.isPending}>
           {save.isPending ? "Saving…" : "Save changes"}
         </Button>
       </div>
@@ -145,11 +136,7 @@ export function ProfileForm() {
       </Field>
 
       <Field label="Bio">
-        <Textarea
-          rows={5}
-          value={current.bio ?? ""}
-          onChange={(e) => set("bio", e.target.value)}
-        />
+        <Textarea rows={5} value={current.bio ?? ""} onChange={(e) => set("bio", e.target.value)} />
       </Field>
 
       <div className="grid gap-4 sm:grid-cols-2">

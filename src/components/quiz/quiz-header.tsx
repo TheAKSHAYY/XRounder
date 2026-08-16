@@ -40,8 +40,16 @@ export function QuizHeader({
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Pill icon={<Check className="h-3.5 w-3.5 text-success" />} value={correct} label="correct" />
-            <Pill icon={<X className="h-3.5 w-3.5 text-destructive" />} value={wrong} label="wrong" />
+            <Pill
+              icon={<Check className="h-3.5 w-3.5 text-success" />}
+              value={correct}
+              label="correct"
+            />
+            <Pill
+              icon={<X className="h-3.5 w-3.5 text-destructive" />}
+              value={wrong}
+              label="wrong"
+            />
             <Pill
               icon={<Timer className="h-3.5 w-3.5 text-muted-foreground" />}
               value={remainingSec !== null ? fmtDuration(remainingSec) : fmtDuration(elapsed)}

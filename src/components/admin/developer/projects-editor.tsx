@@ -63,15 +63,10 @@ export function ProjectsEditor() {
   const upsert = useMutation({
     mutationFn: async (row: Partial<ProjectRow> & { name: string }) => {
       if (row.id) {
-        const { error } = await supabase
-          .from("developer_projects")
-          .update(row)
-          .eq("id", row.id);
+        const { error } = await supabase.from("developer_projects").update(row).eq("id", row.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase
-          .from("developer_projects")
-          .insert(row);
+        const { error } = await supabase.from("developer_projects").insert(row);
         if (error) throw error;
       }
     },
@@ -84,10 +79,7 @@ export function ProjectsEditor() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
-        .from("developer_projects")
-        .delete()
-        .eq("id", id);
+      const { error } = await supabase.from("developer_projects").delete().eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -98,8 +90,8 @@ export function ProjectsEditor() {
 
   const seedBcaGurukul = useMutation({
     mutationFn: async () => {
-      const existing = (data ?? []).find(
-        (p) => (p.name || "").toLowerCase().includes("bca gurukul"),
+      const existing = (data ?? []).find((p) =>
+        (p.name || "").toLowerCase().includes("bca gurukul"),
       );
       const row = {
         name: "BCA Gurukul",
@@ -170,7 +162,6 @@ export function ProjectsEditor() {
           <li key={p.id} className="flex items-center gap-3 py-3">
             <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md bg-muted">
               {p.thumbnail_url && (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img src={p.thumbnail_url} alt="" className="h-full w-full object-cover" />
               )}
             </div>
@@ -201,9 +192,7 @@ export function ProjectsEditor() {
           </li>
         ))}
         {(data ?? []).length === 0 && (
-          <li className="py-6 text-center text-sm text-muted-foreground">
-            No projects yet.
-          </li>
+          <li className="py-6 text-center text-sm text-muted-foreground">No projects yet.</li>
         )}
       </ul>
     </div>

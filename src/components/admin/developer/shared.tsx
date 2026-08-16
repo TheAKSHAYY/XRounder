@@ -11,9 +11,7 @@ export function Field({
 }) {
   return (
     <div className={className}>
-      <Label className="mb-1.5 block text-xs font-medium text-muted-foreground">
-        {label}
-      </Label>
+      <Label className="mb-1.5 block text-xs font-medium text-muted-foreground">{label}</Label>
       {children}
     </div>
   );

@@ -6,7 +6,13 @@ import { Kbd, MiniStat } from "@/components/quiz/quiz-shared";
 import type { Feedback, Option, Question } from "@/components/quiz/types";
 
 function OptionButton({
-  letter, text, selected, isCorrectOption, revealed, disabled, onClick,
+  letter,
+  text,
+  selected,
+  isCorrectOption,
+  revealed,
+  disabled,
+  onClick,
 }: {
   letter: string;
   text: string;
@@ -152,7 +158,11 @@ export function QuestionCard({
                 aria-live="polite"
               >
                 <div className="flex items-center gap-2 font-semibold">
-                  {feedback.is_correct ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}
+                  {feedback.is_correct ? (
+                    <CheckCircle2 className="h-4 w-4" />
+                  ) : (
+                    <XCircle className="h-4 w-4" />
+                  )}
                   {feedback.is_correct
                     ? "Correct Answer!"
                     : `Wrong Answer! Correct answer: ${options
@@ -168,8 +178,8 @@ export function QuestionCard({
           </AnimatePresence>
 
           <p className="mt-6 text-xs text-muted-foreground">
-            Keys: <Kbd>1</Kbd>–<Kbd>{Math.min(options.length, 9)}</Kbd> answer ·{" "}
-            <Kbd>S</Kbd> skip · <Kbd>←</Kbd>/<Kbd>→</Kbd> navigate
+            Keys: <Kbd>1</Kbd>–<Kbd>{Math.min(options.length, 9)}</Kbd> answer · <Kbd>S</Kbd> skip ·{" "}
+            <Kbd>←</Kbd>/<Kbd>→</Kbd> navigate
           </p>
         </motion.div>
       </AnimatePresence>
