@@ -162,7 +162,6 @@ export function ProjectsEditor() {
           <li key={p.id} className="flex items-center gap-3 py-3">
             <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md bg-muted">
               {p.thumbnail_url && (
-                // eslint-disable-next-line @next/next/no-img-element
                 <img src={p.thumbnail_url} alt="" className="h-full w-full object-cover" />
               )}
             </div>
