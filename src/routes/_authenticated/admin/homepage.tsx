@@ -121,9 +121,7 @@ function HomepageBuilder() {
         </div>
       </header>
 
-      {isLoading && (
-        <p className="text-sm text-muted-foreground">Loading sections…</p>
-      )}
+      {isLoading && <p className="text-sm text-muted-foreground">Loading sections…</p>}
 
       {!isLoading && sections.length === 0 && (
         <Card>
@@ -142,9 +140,7 @@ function HomepageBuilder() {
             canDown={i < sections.length - 1}
             onUp={() => swap(s, sections[i - 1])}
             onDown={() => swap(s, sections[i + 1])}
-            onToggle={() =>
-              update.mutate({ id: s.id, updates: { enabled: !s.enabled } })
-            }
+            onToggle={() => update.mutate({ id: s.id, updates: { enabled: !s.enabled } })}
             onSaveDraft={(patch) => update.mutate({ id: s.id, updates: patch })}
             onPublish={(patch) =>
               update.mutate({

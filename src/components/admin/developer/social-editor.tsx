@@ -73,9 +73,7 @@ export function SocialEditor() {
           .eq("id", row.id);
         if (error) throw error;
       } else {
-        const { error } = await supabase
-          .from("developer_social_links")
-          .insert(row);
+        const { error } = await supabase.from("developer_social_links").insert(row);
         if (error) throw error;
       }
     },
@@ -88,10 +86,7 @@ export function SocialEditor() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
-        .from("developer_social_links")
-        .delete()
-        .eq("id", id);
+      const { error } = await supabase.from("developer_social_links").delete().eq("id", id);
       if (error) throw error;
     },
     onSuccess: () => {
@@ -122,9 +117,7 @@ export function SocialEditor() {
             </Badge>
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm">{s.url}</div>
-              {s.label && (
-                <div className="truncate text-xs text-muted-foreground">{s.label}</div>
-              )}
+              {s.label && <div className="truncate text-xs text-muted-foreground">{s.label}</div>}
             </div>
             <Switch
               checked={s.enabled}
@@ -141,19 +134,13 @@ export function SocialEditor() {
                 </Button>
               }
             />
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => remove.mutate(s.id)}
-            >
+            <Button size="icon" variant="ghost" onClick={() => remove.mutate(s.id)}>
               <Trash2 className="h-4 w-4 text-destructive" />
             </Button>
           </li>
         ))}
         {(data ?? []).length === 0 && (
-          <li className="py-6 text-center text-sm text-muted-foreground">
-            No links yet.
-          </li>
+          <li className="py-6 text-center text-sm text-muted-foreground">No links yet.</li>
         )}
       </ul>
     </div>
@@ -166,7 +153,13 @@ function SocialDialog({
   trigger,
 }: {
   initial?: SocialRow;
-  onSubmit: (v: { platform: string; url: string; label: string | null; sort_order: number; enabled: boolean }) => void;
+  onSubmit: (v: {
+    platform: string;
+    url: string;
+    label: string | null;
+    sort_order: number;
+    enabled: boolean;
+  }) => void;
   trigger: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
@@ -204,11 +197,7 @@ function SocialDialog({
             <Input value={label} onChange={(e) => setLabel(e.target.value)} />
           </Field>
           <Field label="Sort order">
-            <Input
-              type="number"
-              value={order}
-              onChange={(e) => setOrder(Number(e.target.value))}
-            />
+            <Input type="number" value={order} onChange={(e) => setOrder(Number(e.target.value))} />
           </Field>
         </div>
         <DialogFooter>

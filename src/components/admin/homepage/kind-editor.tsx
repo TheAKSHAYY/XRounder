@@ -22,8 +22,7 @@ export function KindEditor({
   onChange: (next: Record<string, unknown>) => void;
   idPrefix: string;
 }) {
-  const set = (key: string, value: unknown) =>
-    onChange({ ...content, [key]: value });
+  const set = (key: string, value: unknown) => onChange({ ...content, [key]: value });
 
   // common fields used by most kinds
   const commonText = (
@@ -247,8 +246,7 @@ export function StyleEditor({
   onChange: (next: Record<string, unknown>) => void;
   idPrefix: string;
 }) {
-  const set = (key: string, value: unknown) =>
-    onChange({ ...style, [key]: value });
+  const set = (key: string, value: unknown) => onChange({ ...style, [key]: value });
   return (
     <details className="rounded-md border bg-muted/30 p-3">
       <summary className="cursor-pointer text-xs font-medium uppercase tracking-wider text-muted-foreground">

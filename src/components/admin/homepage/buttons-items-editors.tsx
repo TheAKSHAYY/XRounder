@@ -53,7 +53,9 @@ export function ButtonsEditor({
             aria-label={`${idPrefix}-btn-href-${i}`}
           />
           <Select value={b.variant ?? "default"} onValueChange={(v) => update(i, "variant", v)}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
             <SelectContent>
               <SelectItem value="default">Primary</SelectItem>
               <SelectItem value="outline">Outline</SelectItem>

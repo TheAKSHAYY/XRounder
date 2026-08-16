@@ -1,6 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Clock, FlaskConical, SkipForward } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  FlaskConical,
+  SkipForward,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,9 +22,17 @@ export const Route = createFileRoute("/quizzes/$quizId")({
   head: () => ({
     meta: [
       { title: "Quiz · BCA Gurukul" },
-      { name: "description", content: "Take an interactive quiz with instant feedback and a detailed performance summary." },
+      {
+        name: "description",
+        content:
+          "Take an interactive quiz with instant feedback and a detailed performance summary.",
+      },
       { property: "og:title", content: "Quiz · BCA Gurukul" },
-      { property: "og:description", content: "Take an interactive quiz with instant feedback and a detailed performance summary." },
+      {
+        property: "og:description",
+        content:
+          "Take an interactive quiz with instant feedback and a detailed performance summary.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -81,34 +96,55 @@ function QuizPage() {
 
       <main className="mx-auto max-w-3xl px-4 py-8 pb-36 sm:px-6 sm:py-10">
         {!activeAttempt && !result && (
-          <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+          <Link
+            to="/courses"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+          >
             <ArrowLeft className="h-4 w-4" /> All courses
           </Link>
         )}
 
         {!activeAttempt && !result && quizQ.data && (
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+          >
             <header className="mt-6 rounded-3xl border border-border bg-surface p-6 shadow-sm sm:p-8">
               <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
                 <FlaskConical className="h-4 w-4 text-primary" />
-                {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") || "Practice quiz"}
+                {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") ||
+                  "Practice quiz"}
               </div>
-              <h1 className="mt-3 font-display text-3xl font-semibold text-foreground">{quizQ.data.title}</h1>
-              {quizQ.data.description && <p className="mt-3 text-muted-foreground">{quizQ.data.description}</p>}
+              <h1 className="mt-3 font-display text-3xl font-semibold text-foreground">
+                {quizQ.data.title}
+              </h1>
+              {quizQ.data.description && (
+                <p className="mt-3 text-muted-foreground">{quizQ.data.description}</p>
+              )}
               <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
-                <Badge variant="outline" className="rounded-full">{total} questions</Badge>
-                <Badge variant="outline" className="rounded-full">Pass {quizQ.data.passing_pct}%</Badge>
+                <Badge variant="outline" className="rounded-full">
+                  {total} questions
+                </Badge>
+                <Badge variant="outline" className="rounded-full">
+                  Pass {quizQ.data.passing_pct}%
+                </Badge>
                 {quizQ.data.time_limit_minutes && (
                   <Badge variant="outline" className="rounded-full">
-                    <Clock className="mr-1 h-3 w-3" />{quizQ.data.time_limit_minutes} min
+                    <Clock className="mr-1 h-3 w-3" />
+                    {quizQ.data.time_limit_minutes} min
                   </Badge>
                 )}
               </div>
 
               {!user ? (
                 <div className="mt-6 rounded-2xl border border-border bg-background p-5 text-center">
-                  <p className="text-muted-foreground">Sign in to take this quiz and track your results.</p>
-                  <Link to="/auth" className="mt-3 inline-block"><Button className="rounded-full">Sign in</Button></Link>
+                  <p className="text-muted-foreground">
+                    Sign in to take this quiz and track your results.
+                  </p>
+                  <Link to="/auth" className="mt-3 inline-block">
+                    <Button className="rounded-full">Sign in</Button>
+                  </Link>
                 </div>
               ) : (
                 <>
@@ -137,19 +173,31 @@ function QuizPage() {
 
             {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length > 0 && (
               <section className="mt-8">
-                <h2 className="font-display text-lg font-semibold text-foreground">Your previous attempts</h2>
+                <h2 className="font-display text-lg font-semibold text-foreground">
+                  Your previous attempts
+                </h2>
                 <ul className="mt-3 space-y-2">
-                  {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).map((a, i, arr) => (
-                    <li key={a.id} className="flex items-center justify-between rounded-2xl border border-border bg-surface px-4 py-3 text-sm">
-                      <span className="text-muted-foreground">Attempt {arr.length - i}</span>
-                      <span className="flex items-center gap-3">
-                        <span className="font-semibold tabular-nums text-foreground">{a.pct}%</span>
-                        <Badge variant={a.passed ? "default" : "secondary"} className="rounded-full">
-                          {a.passed ? "Passed" : "Did not pass"}
-                        </Badge>
-                      </span>
-                    </li>
-                  ))}
+                  {(myAttemptsQ.data ?? [])
+                    .filter((a) => a.submitted_at)
+                    .map((a, i, arr) => (
+                      <li
+                        key={a.id}
+                        className="flex items-center justify-between rounded-2xl border border-border bg-surface px-4 py-3 text-sm"
+                      >
+                        <span className="text-muted-foreground">Attempt {arr.length - i}</span>
+                        <span className="flex items-center gap-3">
+                          <span className="font-semibold tabular-nums text-foreground">
+                            {a.pct}%
+                          </span>
+                          <Badge
+                            variant={a.passed ? "default" : "secondary"}
+                            className="rounded-full"
+                          >
+                            {a.passed ? "Passed" : "Did not pass"}
+                          </Badge>
+                        </span>
+                      </li>
+                    ))}
                 </ul>
               </section>
             )}
@@ -191,14 +239,23 @@ function QuizPage() {
       {activeAttempt && current && (
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/90 backdrop-blur-xl">
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-            <Button variant="outline" className="gap-1 rounded-full" onClick={goPrev} disabled={currentIdx === 0}>
+            <Button
+              variant="outline"
+              className="gap-1 rounded-full"
+              onClick={goPrev}
+              disabled={currentIdx === 0}
+            >
               <ChevronLeft className="h-4 w-4" /> Previous
             </Button>
             <Button variant="ghost" className="gap-1 rounded-full" onClick={skipQuestion}>
               <SkipForward className="h-4 w-4" /> Skip
             </Button>
             {currentIdx < total - 1 ? (
-              <Button className="gap-1 rounded-full" onClick={goNext} disabled={!answeredCurrent && !feedback}>
+              <Button
+                className="gap-1 rounded-full"
+                onClick={goNext}
+                disabled={!answeredCurrent && !feedback}
+              >
                 Next <ChevronRight className="h-4 w-4" />
               </Button>
             ) : (

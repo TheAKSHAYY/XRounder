@@ -66,10 +66,7 @@ export function SkillsEditor() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase
-        .from("developer_skills")
-        .delete()
-        .eq("id", id);
+      const { error } = await supabase.from("developer_skills").delete().eq("id", id);
       if (error) throw error;
     },
     onSuccess: invalidate,
@@ -79,11 +76,7 @@ export function SkillsEditor() {
     <div className="space-y-6 rounded-2xl border border-border bg-surface p-6">
       <div className="flex flex-wrap items-end gap-3">
         <Field label="New skill" className="flex-1 min-w-[200px]">
-          <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="React"
-          />
+          <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="React" />
         </Field>
         <Field label="Category">
           <Select value={category} onValueChange={setCategory}>

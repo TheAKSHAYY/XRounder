@@ -18,7 +18,11 @@ export function useQuizAttempt(quizId: string) {
   const quizQ = useQuery({
     queryKey: ["public-quiz", quizId],
     queryFn: async () => {
-      const { data, error } = await supabase.from("quizzes").select("*").eq("id", quizId).maybeSingle();
+      const { data, error } = await supabase
+        .from("quizzes")
+        .select("*")
+        .eq("id", quizId)
+        .maybeSingle();
       if (error) throw error;
       if (!data || data.status !== "published") throw notFound();
       return data;
@@ -35,9 +39,11 @@ export function useQuizAttempt(quizId: string) {
         .select("id, number, title, subjects(id, title, slug)")
         .eq("id", quizQ.data!.unit_id)
         .maybeSingle();
-      const row = data as unknown as
-        | { number: number; title: string; subjects: { title: string } | null }
-        | null;
+      const row = data as unknown as {
+        number: number;
+        title: string;
+        subjects: { title: string } | null;
+      } | null;
       return row
         ? { unitLabel: `Unit ${row.number} · ${row.title}`, subject: row.subjects?.title ?? null }
         : null;
@@ -48,7 +54,10 @@ export function useQuizAttempt(quizId: string) {
     queryKey: ["public-quiz-questions", quizId],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("quiz_questions").select("*").eq("quiz_id", quizId).order("order_index");
+        .from("quiz_questions")
+        .select("*")
+        .eq("quiz_id", quizId)
+        .order("order_index");
       if (error) throw error;
       return (data ?? []) as Question[];
     },
@@ -68,7 +77,11 @@ export function useQuizAttempt(quizId: string) {
     enabled: !!user,
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("quiz_attempts").select("*").eq("quiz_id", quizId).eq("user_id", user!.id).order("created_at", { ascending: false });
+        .from("quiz_attempts")
+        .select("*")
+        .eq("quiz_id", quizId)
+        .eq("user_id", user!.id)
+        .order("created_at", { ascending: false });
       if (error) throw error;
       return (data ?? []) as Attempt[];
     },
@@ -98,12 +111,17 @@ export function useQuizAttempt(quizId: string) {
   }, [optionsQ.data]);
 
   const stats = useMemo(() => {
-    let correct = 0, wrong = 0, skipped = 0, points = 0;
+    let correct = 0,
+      wrong = 0,
+      skipped = 0,
+      points = 0;
     for (const q of questions) {
       const a = answers[q.id];
       if (!a) continue;
-      if (a.status === "correct") { correct++; points += q.points; }
-      else if (a.status === "wrong") wrong++;
+      if (a.status === "correct") {
+        correct++;
+        points += q.points;
+      } else if (a.status === "wrong") wrong++;
       else skipped++;
     }
     const answered = correct + wrong;
@@ -141,9 +159,20 @@ export function useQuizAttempt(quizId: string) {
       }
 
       const { data, error } = await supabase
-        .from("quiz_attempts").insert({ quiz_id: quizId, user_id: user.id }).select("*").single();
+        .from("quiz_attempts")
+        .insert({ quiz_id: quizId, user_id: user.id })
+        .select("*")
+        .single();
       if (error) throw error;
-      return { attempt: data as Attempt, prior: [] as { question_id: string; selected_option_ids: string[] | null; is_correct: boolean | null }[], resumed: false };
+      return {
+        attempt: data as Attempt,
+        prior: [] as {
+          question_id: string;
+          selected_option_ids: string[] | null;
+          is_correct: boolean | null;
+        }[],
+        resumed: false,
+      };
     },
     onSuccess: ({ attempt, prior, resumed }) => {
       const restored: Record<string, AnswerState> = {};
@@ -214,35 +243,62 @@ export function useQuizAttempt(quizId: string) {
         });
       }
       if ((a.pct ?? 0) >= 80) {
-        confetti({ particleCount: 140, spread: 78, origin: { y: 0.3 }, disableForReducedMotion: true });
-        setTimeout(() => confetti({ particleCount: 90, spread: 100, origin: { y: 0.35 }, disableForReducedMotion: true }), 320);
+        confetti({
+          particleCount: 140,
+          spread: 78,
+          origin: { y: 0.3 },
+          disableForReducedMotion: true,
+        });
+        setTimeout(
+          () =>
+            confetti({
+              particleCount: 90,
+              spread: 100,
+              origin: { y: 0.35 },
+              disableForReducedMotion: true,
+            }),
+          320,
+        );
       }
     },
     onError: (e: Error) => toast.error(e.message),
   });
 
   const clearTimer = () => {
-    if (advanceTimer.current) { clearTimeout(advanceTimer.current); advanceTimer.current = null; }
+    if (advanceTimer.current) {
+      clearTimeout(advanceTimer.current);
+      advanceTimer.current = null;
+    }
   };
   useEffect(() => clearTimer, []);
 
-  const goToIndex = useCallback((i: number, all: Record<string, AnswerState>) => {
-    clearTimer();
-    const q = questions[i];
-    setCurrentIdx(i);
-    const prev = q ? all[q.id] : undefined;
-    setSelection(prev?.selected ?? []);
-    setFeedback(
-      prev && prev.status !== "skipped"
-        ? { is_correct: prev.status === "correct", correct_option_ids: prev.correct_option_ids, explanation: prev.explanation }
-        : null,
-    );
-  }, [questions]);
+  const goToIndex = useCallback(
+    (i: number, all: Record<string, AnswerState>) => {
+      clearTimer();
+      const q = questions[i];
+      setCurrentIdx(i);
+      const prev = q ? all[q.id] : undefined;
+      setSelection(prev?.selected ?? []);
+      setFeedback(
+        prev && prev.status !== "skipped"
+          ? {
+              is_correct: prev.status === "correct",
+              correct_option_ids: prev.correct_option_ids,
+              explanation: prev.explanation,
+            }
+          : null,
+      );
+    },
+    [questions],
+  );
 
-  const finish = useCallback((all: Record<string, AnswerState>) => {
-    clearTimer();
-    submitMutation.mutate(all);
-  }, [submitMutation]);
+  const finish = useCallback(
+    (all: Record<string, AnswerState>) => {
+      clearTimer();
+      submitMutation.mutate(all);
+    },
+    [submitMutation],
+  );
 
   const commitAndAdvance = useCallback(
     (questionId: string, state: AnswerState, delay: number) => {
@@ -287,7 +343,12 @@ export function useQuizAttempt(quizId: string) {
         setInstantFeedback(false);
         setAnswers((prev) => ({
           ...prev,
-          [current.id]: { selected: sel, status: "wrong", correct_option_ids: [], explanation: current.explanation },
+          [current.id]: {
+            selected: sel,
+            status: "wrong",
+            correct_option_ids: [],
+            explanation: current.explanation,
+          },
         }));
       } finally {
         setGrading(false);
@@ -301,13 +362,24 @@ export function useQuizAttempt(quizId: string) {
       if (!current || feedback) return;
       const multi = current.type === "multiple";
       if (multi) {
-        setSelection((prev) => (prev.includes(optionId) ? prev.filter((x) => x !== optionId) : [...prev, optionId]));
+        setSelection((prev) =>
+          prev.includes(optionId) ? prev.filter((x) => x !== optionId) : [...prev, optionId],
+        );
         return;
       }
       const sel = [optionId];
       setSelection(sel);
       if (instantFeedback) void gradeNow(sel);
-      else setAnswers((prev) => ({ ...prev, [current.id]: { selected: sel, status: "wrong", correct_option_ids: [], explanation: current.explanation } }));
+      else
+        setAnswers((prev) => ({
+          ...prev,
+          [current.id]: {
+            selected: sel,
+            status: "wrong",
+            correct_option_ids: [],
+            explanation: current.explanation,
+          },
+        }));
     },
     [current, feedback, instantFeedback, gradeNow],
   );
@@ -316,7 +388,12 @@ export function useQuizAttempt(quizId: string) {
     if (!current) return;
     const all = {
       ...answers,
-      [current.id]: { selected: [], status: "skipped" as const, correct_option_ids: [], explanation: current.explanation },
+      [current.id]: {
+        selected: [],
+        status: "skipped" as const,
+        correct_option_ids: [],
+        explanation: current.explanation,
+      },
     };
     setAnswers(all);
     if (currentIdx >= total - 1) finish(all);
@@ -355,12 +432,27 @@ export function useQuizAttempt(quizId: string) {
     const handler = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-      if (e.key === "ArrowRight") { e.preventDefault(); goNext(); return; }
-      if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); return; }
-      if (e.key.toLowerCase() === "s") { e.preventDefault(); skipQuestion(); return; }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goNext();
+        return;
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goPrev();
+        return;
+      }
+      if (e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        skipQuestion();
+        return;
+      }
       if (/^[1-9]$/.test(e.key)) {
         const opt = opts[parseInt(e.key, 10) - 1];
-        if (opt) { e.preventDefault(); selectOption(opt.id); }
+        if (opt) {
+          e.preventDefault();
+          selectOption(opt.id);
+        }
       }
     };
     window.addEventListener("keydown", handler);

@@ -17,8 +17,8 @@ function DeveloperAdmin() {
       <header>
         <h1 className="font-display text-2xl font-semibold">Developer portfolio</h1>
         <p className="text-sm text-muted-foreground">
-          Edit every section that appears at <code>/developer</code>. All
-          changes are live on the public site.
+          Edit every section that appears at <code>/developer</code>. All changes are live on the
+          public site.
         </p>
       </header>
 

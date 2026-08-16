@@ -1,12 +1,26 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { CheckCircle2, LayoutDashboard, ListChecks, RotateCcw, Target, Trophy, XCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  LayoutDashboard,
+  ListChecks,
+  RotateCcw,
+  Target,
+  Trophy,
+  XCircle,
+} from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MiniStat } from "@/components/quiz/quiz-shared";
-import { fmtDuration, type AnswerState, type Attempt, type Option, type Question } from "@/components/quiz/types";
+import {
+  fmtDuration,
+  type AnswerState,
+  type Attempt,
+  type Option,
+  type Question,
+} from "@/components/quiz/types";
 
 function ScoreRing({ pct }: { pct: number }) {
   const r = 68;
@@ -16,7 +30,12 @@ function ScoreRing({ pct }: { pct: number }) {
       <svg viewBox="0 0 160 160" className="h-full w-full -rotate-90">
         <circle cx="80" cy="80" r={r} fill="none" strokeWidth="14" className="stroke-muted" />
         <motion.circle
-          cx="80" cy="80" r={r} fill="none" strokeWidth="14" strokeLinecap="round"
+          cx="80"
+          cy="80"
+          r={r}
+          fill="none"
+          strokeWidth="14"
+          strokeLinecap="round"
           className={pct >= 50 ? "stroke-success" : "stroke-destructive"}
           strokeDasharray={c}
           initial={{ strokeDashoffset: c }}
@@ -40,7 +59,16 @@ function ScoreRing({ pct }: { pct: number }) {
 }
 
 export function ResultsView({
-  quizTitle, passingPct, result, questions, optionsByQ, answers, elapsed, attemptNumber, onRetry, retryPending,
+  quizTitle,
+  passingPct,
+  result,
+  questions,
+  optionsByQ,
+  answers,
+  elapsed,
+  attemptNumber,
+  onRetry,
+  retryPending,
 }: {
   quizTitle: string;
   passingPct: number;
@@ -57,7 +85,9 @@ export function ResultsView({
   const pct = Number(result.pct ?? 0);
 
   const summary = useMemo(() => {
-    let correct = 0, wrong = 0, skipped = 0;
+    let correct = 0,
+      wrong = 0,
+      skipped = 0;
     for (const q of questions) {
       const a = answers[q.id];
       if (!a || a.status === "skipped") skipped++;
@@ -65,11 +95,22 @@ export function ResultsView({
       else wrong++;
     }
     const answered = correct + wrong;
-    return { correct, wrong, skipped, accuracy: answered ? Math.round((correct / answered) * 100) : 0 };
+    return {
+      correct,
+      wrong,
+      skipped,
+      accuracy: answered ? Math.round((correct / answered) * 100) : 0,
+    };
   }, [questions, answers]);
 
   const message =
-    pct >= 90 ? "🏆 Excellent!" : pct >= 75 ? "🎉 Very Good!" : pct >= 50 ? "👍 Good, keep practicing." : "📚 Needs Improvement.";
+    pct >= 90
+      ? "🏆 Excellent!"
+      : pct >= 75
+        ? "🎉 Very Good!"
+        : pct >= 50
+          ? "👍 Good, keep practicing."
+          : "📚 Needs Improvement.";
 
   return (
     <motion.section
@@ -86,13 +127,19 @@ export function ResultsView({
             <div className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
               Attempt {Math.max(1, attemptNumber)} · {quizTitle}
             </div>
-            <h1 id="quiz-result-heading" className="mt-2 font-display text-3xl font-semibold text-foreground">
+            <h1
+              id="quiz-result-heading"
+              className="mt-2 font-display text-3xl font-semibold text-foreground"
+            >
               {message}
             </h1>
             <p className="mt-2 text-sm text-muted-foreground tabular-nums">
               Score {result.score} / {result.max_score} · Pass mark {passingPct}%
             </p>
-            <Badge variant={result.passed ? "default" : "secondary"} className="mt-3 rounded-full px-3 py-1">
+            <Badge
+              variant={result.passed ? "default" : "secondary"}
+              className="mt-3 rounded-full px-3 py-1"
+            >
               {result.passed ? "Passed" : "Did not pass"}
             </Badge>
           </div>
@@ -111,14 +158,22 @@ export function ResultsView({
           <Button onClick={onRetry} disabled={retryPending} className="gap-1.5 rounded-full">
             <RotateCcw className="h-4 w-4" /> {retryPending ? "Starting…" : "Retry quiz"}
           </Button>
-          <Button variant="outline" className="gap-1.5 rounded-full" onClick={() => setShowReview((v) => !v)}>
+          <Button
+            variant="outline"
+            className="gap-1.5 rounded-full"
+            onClick={() => setShowReview((v) => !v)}
+          >
             <ListChecks className="h-4 w-4" /> {showReview ? "Hide review" : "Review answers"}
           </Button>
           <Button asChild variant="outline" className="gap-1.5 rounded-full">
-            <Link to="/courses"><Target className="h-4 w-4" /> Next unit</Link>
+            <Link to="/courses">
+              <Target className="h-4 w-4" /> Next unit
+            </Link>
           </Button>
           <Button asChild variant="ghost" className="gap-1.5 rounded-full">
-            <Link to="/dashboard"><LayoutDashboard className="h-4 w-4" /> Back to dashboard</Link>
+            <Link to="/dashboard">
+              <LayoutDashboard className="h-4 w-4" /> Back to dashboard
+            </Link>
           </Button>
         </div>
       </div>
@@ -142,7 +197,10 @@ export function ResultsView({
                 const status = a?.status ?? "skipped";
                 const correctIds = a?.correct_option_ids ?? [];
                 return (
-                  <li key={q.id} className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
+                  <li
+                    key={q.id}
+                    className="rounded-2xl border border-border bg-surface p-5 shadow-sm"
+                  >
                     <div className="flex items-start justify-between gap-3">
                       <h3 className="font-medium text-foreground">
                         {idx + 1}. {q.prompt}
@@ -157,7 +215,11 @@ export function ResultsView({
                               : "bg-muted text-muted-foreground",
                         ].join(" ")}
                       >
-                        {status === "correct" ? "Correct" : status === "wrong" ? "Wrong" : "Skipped"}
+                        {status === "correct"
+                          ? "Correct"
+                          : status === "wrong"
+                            ? "Wrong"
+                            : "Skipped"}
                       </Badge>
                     </div>
                     <ul className="mt-3 space-y-2">
@@ -184,7 +246,11 @@ export function ResultsView({
                               <span className="h-4 w-4" />
                             )}
                             <span>{o.text}</span>
-                            {picked && <span className="ml-auto text-xs text-muted-foreground">your answer</span>}
+                            {picked && (
+                              <span className="ml-auto text-xs text-muted-foreground">
+                                your answer
+                              </span>
+                            )}
                           </li>
                         );
                       })}
