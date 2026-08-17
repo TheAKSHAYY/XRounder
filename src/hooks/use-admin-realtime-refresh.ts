@@ -31,9 +31,16 @@ const ADMIN_REALTIME_TABLES = [
 function shouldRefreshQuery(queryKey: readonly unknown[]) {
   const [first, second] = queryKey;
   if (first === "admin" || first === "superadmin") return true;
-  if (typeof first === "string" && (first.startsWith("admin-") || first.startsWith("admin_"))) return true;
+  if (typeof first === "string" && (first.startsWith("admin-") || first.startsWith("admin_")))
+    return true;
   if (first === "user-roles") return true;
-  if (first === "public" || first === "public-quiz" || first === "public-quiz-questions" || first === "public-quiz-options") return true;
+  if (
+    first === "public" ||
+    first === "public-quiz" ||
+    first === "public-quiz-questions" ||
+    first === "public-quiz-options"
+  )
+    return true;
   if (first === "homepage_sections" && second === "public") return true;
   if (first === "public-branding" || first === "branding") return true;
   if (first === "maintenance" || first === "seo-meta") return true;
@@ -60,11 +67,7 @@ export function useAdminRealtimeRefresh() {
 
     const channel = supabase.channel("admin-live-refresh");
     for (const table of ADMIN_REALTIME_TABLES) {
-      channel.on(
-        "postgres_changes",
-        { event: "*", schema: "public", table },
-        scheduleRefresh,
-      );
+      channel.on("postgres_changes", { event: "*", schema: "public", table }, scheduleRefresh);
     }
     channel.subscribe();
 

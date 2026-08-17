@@ -1,5 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Droplet, Leaf, Monitor, Moon, Palette, Settings as SettingsIcon, Sparkles, Sun, User } from "lucide-react";
+import {
+  Droplet,
+  Leaf,
+  Monitor,
+  Moon,
+  Palette,
+  Settings as SettingsIcon,
+  Sparkles,
+  Sun,
+  User,
+} from "lucide-react";
 
 import { useTheme } from "@/components/theme/theme-provider";
 import { Button } from "@/components/ui/button";
@@ -26,14 +36,54 @@ function SettingsPage() {
           Choose how BCA Gurukul looks on this device.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <ThemeChoice active={theme === "light"} onClick={() => setTheme("light")} icon={Sun} label="Light" />
-          <ThemeChoice active={theme === "dark"} onClick={() => setTheme("dark")} icon={Moon} label="Dark" />
-          <ThemeChoice active={theme === "midnight"} onClick={() => setTheme("midnight")} icon={Sparkles} label="Midnight" />
-          <ThemeChoice active={theme === "ocean"} onClick={() => setTheme("ocean")} icon={Droplet} label="Ocean" />
-          <ThemeChoice active={theme === "emerald"} onClick={() => setTheme("emerald")} icon={Leaf} label="Emerald" />
-          <ThemeChoice active={theme === "purple"} onClick={() => setTheme("purple")} icon={Palette} label="Purple" />
-          <ThemeChoice active={theme === "high-contrast"} onClick={() => setTheme("high-contrast")} icon={Monitor} label="High contrast" />
-          <ThemeChoice active={theme === "system"} onClick={() => setTheme("system")} icon={Monitor} label="System" />
+          <ThemeChoice
+            active={theme === "light"}
+            onClick={() => setTheme("light")}
+            icon={Sun}
+            label="Light"
+          />
+          <ThemeChoice
+            active={theme === "dark"}
+            onClick={() => setTheme("dark")}
+            icon={Moon}
+            label="Dark"
+          />
+          <ThemeChoice
+            active={theme === "midnight"}
+            onClick={() => setTheme("midnight")}
+            icon={Sparkles}
+            label="Midnight"
+          />
+          <ThemeChoice
+            active={theme === "ocean"}
+            onClick={() => setTheme("ocean")}
+            icon={Droplet}
+            label="Ocean"
+          />
+          <ThemeChoice
+            active={theme === "emerald"}
+            onClick={() => setTheme("emerald")}
+            icon={Leaf}
+            label="Emerald"
+          />
+          <ThemeChoice
+            active={theme === "purple"}
+            onClick={() => setTheme("purple")}
+            icon={Palette}
+            label="Purple"
+          />
+          <ThemeChoice
+            active={theme === "high-contrast"}
+            onClick={() => setTheme("high-contrast")}
+            icon={Monitor}
+            label="High contrast"
+          />
+          <ThemeChoice
+            active={theme === "system"}
+            onClick={() => setTheme("system")}
+            icon={Monitor}
+            label="System"
+          />
         </div>
       </section>
 

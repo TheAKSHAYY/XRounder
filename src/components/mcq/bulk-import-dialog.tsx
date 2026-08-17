@@ -3,12 +3,25 @@ import { toast } from "sonner";
 import { CheckCircle2, XCircle, Sparkles, Upload, FileUp } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { parseMcqBulk } from "@/lib/mcq/parser";
 
@@ -129,12 +142,16 @@ export function BulkImportDialog({
       });
       if (error) {
         fail += 1;
-        lastError = [error.message, error.details, error.hint].filter(Boolean).join(" ") || String(error);
+        lastError =
+          [error.message, error.details, error.hint].filter(Boolean).join(" ") || String(error);
         console.error("admin_create_mcq failed", error);
       } else ok += 1;
     }
     setImporting(false);
-    if (ok > 0) toast.success(`Imported ${ok} question${ok === 1 ? "" : "s"}${fail ? ` · ${fail} failed` : ""}`);
+    if (ok > 0)
+      toast.success(
+        `Imported ${ok} question${ok === 1 ? "" : "s"}${fail ? ` · ${fail} failed` : ""}`,
+      );
     else toast.error(`Import failed: ${lastError ?? "unknown error"}`);
     if (ok > 0) {
       setText("");
@@ -169,7 +186,10 @@ export function BulkImportDialog({
               <SelectContent>
                 {(quizzesQuery.data ?? []).map((q) => (
                   <SelectItem key={q.id} value={q.id}>
-                    {q.title} {q.status !== "published" && <span className="text-muted-foreground">· {q.status}</span>}
+                    {q.title}{" "}
+                    {q.status !== "published" && (
+                      <span className="text-muted-foreground">· {q.status}</span>
+                    )}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -193,13 +213,23 @@ export function BulkImportDialog({
                     e.target.value = "";
                   }}
                 />
-                <Button type="button" variant="outline" size="sm" onClick={() => fileRef.current?.click()}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => fileRef.current?.click()}
+                >
                   <FileUp className="mr-1.5 h-3.5 w-3.5" /> Upload file
                 </Button>
                 <Button type="button" variant="ghost" size="sm" onClick={() => setText(EXAMPLE)}>
                   Text example
                 </Button>
-                <Button type="button" variant="ghost" size="sm" onClick={() => setText(JSON_EXAMPLE)}>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setText(JSON_EXAMPLE)}
+                >
                   JSON example
                 </Button>
               </div>
@@ -211,9 +241,9 @@ export function BulkImportDialog({
               onChange={(e) => setText(e.target.value)}
             />
             <p className="text-xs text-muted-foreground">
-              Text meta (own lines): <code>E:</code> explanation, <code>D:</code>{" "}
-              easy/medium/hard, <code>T:</code> comma tags, <code>Y:</code> year, <code>X:</code>{" "}
-              exam name. JSON also accepts <code>question</code>/<code>choices</code>/<code>answer</code>.
+              Text meta (own lines): <code>E:</code> explanation, <code>D:</code> easy/medium/hard,{" "}
+              <code>T:</code> comma tags, <code>Y:</code> year, <code>X:</code> exam name. JSON also
+              accepts <code>question</code>/<code>choices</code>/<code>answer</code>.
             </p>
           </div>
 
@@ -222,7 +252,9 @@ export function BulkImportDialog({
               <label className="text-sm font-medium">Preview</label>
               <div className="flex gap-2 text-xs">
                 <Badge variant="default">{validCount} ready</Badge>
-                {invalidCount > 0 && <Badge variant="destructive">{invalidCount} with errors</Badge>}
+                {invalidCount > 0 && (
+                  <Badge variant="destructive">{invalidCount} with errors</Badge>
+                )}
               </div>
             </div>
             <div className="max-h-[420px] space-y-2 overflow-y-auto rounded-lg border border-border bg-muted/30 p-3">
@@ -253,7 +285,11 @@ export function BulkImportDialog({
                           {p.options.map((o, oi) => (
                             <li
                               key={oi}
-                              className={o.is_correct ? "text-emerald-700 dark:text-emerald-400" : "text-muted-foreground"}
+                              className={
+                                o.is_correct
+                                  ? "text-emerald-700 dark:text-emerald-400"
+                                  : "text-muted-foreground"
+                              }
                             >
                               {String.fromCharCode(65 + oi)}) {o.text} {o.is_correct && "✓"}
                             </li>
@@ -261,15 +297,27 @@ export function BulkImportDialog({
                         </ul>
                       )}
                       <div className="mt-1.5 flex flex-wrap gap-1">
-                        {p.difficulty && <Badge variant="outline" className="text-[10px]">{p.difficulty}</Badge>}
-                        {p.year && <Badge variant="outline" className="text-[10px]">{p.year}</Badge>}
+                        {p.difficulty && (
+                          <Badge variant="outline" className="text-[10px]">
+                            {p.difficulty}
+                          </Badge>
+                        )}
+                        {p.year && (
+                          <Badge variant="outline" className="text-[10px]">
+                            {p.year}
+                          </Badge>
+                        )}
                         {(p.tags ?? []).map((t) => (
-                          <Badge key={t} variant="secondary" className="text-[10px]">{t}</Badge>
+                          <Badge key={t} variant="secondary" className="text-[10px]">
+                            {t}
+                          </Badge>
                         ))}
                       </div>
                       {p.errors.length > 0 && (
                         <ul className="mt-1.5 text-xs text-destructive">
-                          {p.errors.map((e, ei) => <li key={ei}>· {e}</li>)}
+                          {p.errors.map((e, ei) => (
+                            <li key={ei}>· {e}</li>
+                          ))}
                         </ul>
                       )}
                     </div>
@@ -281,10 +329,17 @@ export function BulkImportDialog({
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
-          <Button onClick={runImport} disabled={importing || validCount === 0 || (!quizId && !selectedQuizId)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>
+            Cancel
+          </Button>
+          <Button
+            onClick={runImport}
+            disabled={importing || validCount === 0 || (!quizId && !selectedQuizId)}
+          >
             <Upload className="mr-2 h-4 w-4" />
-            {importing ? "Importing…" : `Import ${validCount} question${validCount === 1 ? "" : "s"}`}
+            {importing
+              ? "Importing…"
+              : `Import ${validCount} question${validCount === 1 ? "" : "s"}`}
           </Button>
         </DialogFooter>
       </DialogContent>

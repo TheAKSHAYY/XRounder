@@ -62,9 +62,7 @@ function DeveloperPage() {
     return (
       <div className="mx-auto max-w-3xl px-6 py-24 text-center">
         <Sparkles className="mx-auto h-10 w-10 text-accent" />
-        <h1 className="mt-4 font-display text-3xl font-semibold">
-          Developer profile coming soon
-        </h1>
+        <h1 className="mt-4 font-display text-3xl font-semibold">Developer profile coming soon</h1>
         <p className="mt-3 text-muted-foreground">
           The developer hasn't published their portfolio yet. Check back soon.
         </p>
@@ -77,7 +75,11 @@ function DeveloperPage() {
 
   const name = profile.full_name || "The Developer";
   const initials = name
-    .split(/\s+/).slice(0, 2).map((p) => p[0]).join("").toUpperCase();
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((p) => p[0])
+    .join("")
+    .toUpperCase();
 
   const socials = socialQ.data ?? [];
   const projects = projectsQ.data ?? [];
@@ -117,10 +119,11 @@ function DeveloperPage() {
 
       {otherProjects.length > 0 && <ProjectGridSection projects={otherProjects} />}
 
-      {(profile.bio || profile.education || profile.current_goal ||
-        profile.career_objective || profile.interests) && (
-        <AboutSection profile={profile} />
-      )}
+      {(profile.bio ||
+        profile.education ||
+        profile.current_goal ||
+        profile.career_objective ||
+        profile.interests) && <AboutSection profile={profile} />}
 
       {skills.length > 0 && <SkillsSection skillGroups={skillGroups} />}
 

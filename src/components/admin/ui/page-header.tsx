@@ -13,7 +13,12 @@ export function PageHeader({
   className?: string;
 }) {
   return (
-    <div className={cn("mb-6 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-border/60 pb-5", className)}>
+    <div
+      className={cn(
+        "mb-6 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-b border-border/60 pb-5",
+        className,
+      )}
+    >
       <div className="min-w-0">
         <h1 className="font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {title}

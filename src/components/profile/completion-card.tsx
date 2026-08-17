@@ -50,7 +50,10 @@ export function CompletionCard({
           </p>
           <ul className="mt-3 space-y-1.5">
             {missing.slice(0, 5).map((f) => (
-              <li key={f.key} className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
+              <li
+                key={f.key}
+                className="flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground"
+              >
                 <CircleDashed className="h-3 w-3 shrink-0" aria-hidden />
                 <span className="truncate">{f.label}</span>
               </li>

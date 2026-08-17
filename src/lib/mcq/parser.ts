@@ -53,7 +53,6 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
     .map((b) => b.trim())
     .filter(Boolean);
 
-
   const out: ParsedQuestion[] = [];
 
   for (const block of blocks) {
@@ -74,9 +73,15 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
         else if (key === "D") {
           const d = val.toLowerCase();
           if (d === "easy" || d === "medium" || d === "hard") q.difficulty = d;
-        } else if (key === "T") q.tags = val.split(",").map((t) => t.trim()).filter(Boolean);
-        else if (key === "Y") { const n = parseInt(val, 10); if (!isNaN(n)) q.year = n; }
-        else if (key === "X") q.exam_name = val;
+        } else if (key === "T")
+          q.tags = val
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean);
+        else if (key === "Y") {
+          const n = parseInt(val, 10);
+          if (!isNaN(n)) q.year = n;
+        } else if (key === "X") q.exam_name = val;
         continue;
       }
 
@@ -177,7 +182,15 @@ function normalizeJsonQuestion(raw: unknown): ParsedQuestion {
       if (match >= 0) applyIndex(match);
     }
   };
-  const ans = r.answer ?? r.correct ?? r.ans ?? r.correctIndex ?? r.correct_answer ?? r.correctAnswer ?? r.correct_answers ?? r.correctAnswers;
+  const ans =
+    r.answer ??
+    r.correct ??
+    r.ans ??
+    r.correctIndex ??
+    r.correct_answer ??
+    r.correctAnswer ??
+    r.correct_answers ??
+    r.correctAnswers;
   if (typeof ans === "number") applyIndex(ans);
   else if (typeof ans === "string" && ans.trim()) {
     ans.split(/[,;|]/).forEach(applyAnswerToken);
@@ -205,4 +218,3 @@ function normalizeJsonQuestion(raw: unknown): ParsedQuestion {
     q.errors.push("No correct option marked (set is_correct: true or answer index)");
   return q;
 }
-

@@ -7,7 +7,10 @@ export default defineTool({
   title: "List past papers",
   description: "List published past exam papers, optionally filtered by exam type.",
   inputSchema: {
-    examType: z.string().optional().describe("Optional exam type filter (e.g. 'midterm', 'final')."),
+    examType: z
+      .string()
+      .optional()
+      .describe("Optional exam type filter (e.g. 'midterm', 'final')."),
     limit: z.number().int().min(1).max(100).default(50),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },

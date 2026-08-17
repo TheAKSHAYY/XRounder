@@ -28,9 +28,11 @@ export function StatCard({
       )}
     >
       <div className="min-w-0">
-        <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</div>
+        <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+          {label}
+        </div>
         <div className="mt-1.5 font-serif text-2xl font-semibold text-foreground">
-          {loading ? <Skeleton className="h-7 w-16" /> : value ?? 0}
+          {loading ? <Skeleton className="h-7 w-16" /> : (value ?? 0)}
         </div>
         {hint && <div className="mt-0.5 text-xs text-muted-foreground">{hint}</div>}
       </div>

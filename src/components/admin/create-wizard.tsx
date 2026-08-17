@@ -41,20 +41,56 @@ type ContentType =
   | "announcement"
   | "assignment";
 
-const TYPES: { id: ContentType; label: string; icon: React.ComponentType<{ className?: string }>; desc: string; ready: boolean }[] = [
+const TYPES: {
+  id: ContentType;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  desc: string;
+  ready: boolean;
+}[] = [
   { id: "course", label: "Course", icon: BookOpen, desc: "Top-level programme", ready: true },
-  { id: "semester", label: "Semester", icon: GraduationCap, desc: "Belongs to a course", ready: true },
+  {
+    id: "semester",
+    label: "Semester",
+    icon: GraduationCap,
+    desc: "Belongs to a course",
+    ready: true,
+  },
   { id: "subject", label: "Subject", icon: Library, desc: "Belongs to a semester", ready: true },
   { id: "unit", label: "Unit", icon: Layers, desc: "Belongs to a subject", ready: true },
-  { id: "note", label: "Note / PDF", icon: FileText, desc: "Study material for a unit", ready: true },
-  { id: "paper", label: "Previous Year Paper", icon: FileStack, desc: "Past exam paper for a subject", ready: true },
-  { id: "quiz", label: "MCQ Quiz", icon: FlaskConical, desc: "Quiz attached to a unit", ready: true },
+  {
+    id: "note",
+    label: "Note / PDF",
+    icon: FileText,
+    desc: "Study material for a unit",
+    ready: true,
+  },
+  {
+    id: "paper",
+    label: "Previous Year Paper",
+    icon: FileStack,
+    desc: "Past exam paper for a subject",
+    ready: true,
+  },
+  {
+    id: "quiz",
+    label: "MCQ Quiz",
+    icon: FlaskConical,
+    desc: "Quiz attached to a unit",
+    ready: true,
+  },
   { id: "video", label: "Video", icon: Video, desc: "Coming soon", ready: false },
   { id: "assignment", label: "Assignment", icon: ClipboardList, desc: "Coming soon", ready: false },
   { id: "announcement", label: "Announcement", icon: Megaphone, desc: "Coming soon", ready: false },
 ];
 
-export function CreateWizard({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
+export function CreateWizard({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (o: boolean) => void;
+}) {
   const [type, setType] = useState<ContentType | null>(null);
 
   useEffect(() => {
@@ -66,7 +102,9 @@ export function CreateWizard({ open, onOpenChange }: { open: boolean; onOpenChan
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle className="font-display">
-            {type ? `Create ${TYPES.find((t) => t.id === type)?.label}` : "What do you want to create?"}
+            {type
+              ? `Create ${TYPES.find((t) => t.id === type)?.label}`
+              : "What do you want to create?"}
           </DialogTitle>
         </DialogHeader>
         {!type && (
@@ -79,7 +117,9 @@ export function CreateWizard({ open, onOpenChange }: { open: boolean; onOpenChan
                 onClick={() => t.ready && setType(t.id)}
                 className={cn(
                   "group flex flex-col items-start gap-2 rounded-lg border border-border bg-surface p-3 text-left transition",
-                  t.ready ? "hover:border-primary/50 hover:bg-primary/5" : "cursor-not-allowed opacity-50",
+                  t.ready
+                    ? "hover:border-primary/50 hover:bg-primary/5"
+                    : "cursor-not-allowed opacity-50",
                 )}
               >
                 <div className="rounded-md bg-primary/10 p-1.5 text-primary">
@@ -108,24 +148,88 @@ export function CreateWizard({ open, onOpenChange }: { open: boolean; onOpenChan
   );
 }
 
-function WizardForm({ type, onBack, onDone }: { type: ContentType; onBack: () => void; onDone: () => void }) {
+function WizardForm({
+  type,
+  onBack,
+  onDone,
+}: {
+  type: ContentType;
+  onBack: () => void;
+  onDone: () => void;
+}) {
   const qc = useQueryClient();
 
   switch (type) {
     case "course":
-      return <CourseForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <CourseForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "semester":
-      return <SemesterForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <SemesterForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "subject":
-      return <SubjectForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <SubjectForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "unit":
-      return <UnitForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <UnitForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "note":
-      return <NoteForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <NoteForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "paper":
-      return <PaperForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <PaperForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     case "quiz":
-      return <QuizForm onBack={onBack} onDone={() => { qc.invalidateQueries({ queryKey: ["admin"] }); onDone(); }} />;
+      return (
+        <QuizForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin"] });
+            onDone();
+          }}
+        />
+      );
     default:
       return <div className="py-6 text-sm text-muted-foreground">Coming soon.</div>;
   }
@@ -143,7 +247,9 @@ function CourseForm({ onBack, onDone }: { onBack: () => void; onDone: () => void
     if (!title.trim() || !code.trim()) return toast.error("Title and code are required");
     setBusy(true);
     const slug = code.toLowerCase().replace(/\s+/g, "-");
-    const { error } = await supabase.from("courses").insert({ title, code, slug, description, status });
+    const { error } = await supabase
+      .from("courses")
+      .insert({ title, code, slug, description, status });
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Course created");
@@ -159,7 +265,11 @@ function CourseForm({ onBack, onDone }: { onBack: () => void; onDone: () => void
       className="space-y-3 pt-2"
     >
       <Field label="Title">
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Bachelor of Computer Applications" />
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Bachelor of Computer Applications"
+        />
       </Field>
       <Field label="Code">
         <Input value={code} onChange={(e) => setCode(e.target.value)} placeholder="BCA" />
@@ -181,7 +291,11 @@ function SemesterForm({ onBack, onDone }: { onBack: () => void; onDone: () => vo
   const { data: courses } = useQuery({
     queryKey: ["admin", "courses-list"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("courses").select("id,title").is("deleted_at", null).order("title");
+      const { data, error } = await supabase
+        .from("courses")
+        .select("id,title")
+        .is("deleted_at", null)
+        .order("title");
       if (error) throw error;
       return data;
     },
@@ -203,20 +317,42 @@ function SemesterForm({ onBack, onDone }: { onBack: () => void; onDone: () => vo
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("published"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Course">
         <Select value={courseId} onValueChange={setCourseId}>
-          <SelectTrigger><SelectValue placeholder="Choose course" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose course" />
+          </SelectTrigger>
           <SelectContent>
-            {courses?.map((c) => (<SelectItem key={c.id} value={c.id}>{c.title}</SelectItem>))}
+            {courses?.map((c) => (
+              <SelectItem key={c.id} value={c.id}>
+                {c.title}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </Field>
       <Field label="Number">
-        <Input type="number" min={1} max={20} value={number} onChange={(e) => setNumber(parseInt(e.target.value || "1"))} />
+        <Input
+          type="number"
+          min={1}
+          max={20}
+          value={number}
+          onChange={(e) => setNumber(parseInt(e.target.value || "1"))}
+        />
       </Field>
       <Field label="Title (optional)">
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder={`Semester ${number}`} />
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder={`Semester ${number}`}
+        />
       </Field>
       <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
     </form>
@@ -245,10 +381,17 @@ function SubjectForm({ onBack, onDone }: { onBack: () => void; onDone: () => voi
   async function submit(status: "draft" | "published") {
     if (!semesterId || !title.trim()) return toast.error("Semester and title required");
     setBusy(true);
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-    const finalCode = (code || slug.toUpperCase().slice(0, 12)) || "SUBJ";
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+    const finalCode = code || slug.toUpperCase().slice(0, 12) || "SUBJ";
     const { error } = await supabase.from("subjects").insert({
-      semester_id: semesterId, title, code: finalCode, slug, status,
+      semester_id: semesterId,
+      title,
+      code: finalCode,
+      slug,
+      status,
     });
     setBusy(false);
     if (error) return toast.error(error.message);
@@ -257,10 +400,18 @@ function SubjectForm({ onBack, onDone }: { onBack: () => void; onDone: () => voi
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("published"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Semester">
         <Select value={semesterId} onValueChange={setSemesterId}>
-          <SelectTrigger><SelectValue placeholder="Choose semester" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose semester" />
+          </SelectTrigger>
           <SelectContent>
             {semesters?.map((s) => (
               <SelectItem key={s.id} value={s.id}>
@@ -271,7 +422,11 @@ function SubjectForm({ onBack, onDone }: { onBack: () => void; onDone: () => voi
         </Select>
       </Field>
       <Field label="Title">
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Data Structures" />
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Data Structures"
+        />
       </Field>
       <Field label="Code (optional)">
         <Input value={code} onChange={(e) => setCode(e.target.value)} placeholder="CS-201" />
@@ -303,9 +458,15 @@ function UnitForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
     if (!subjectId || !title.trim()) return toast.error("Subject and title required");
     setBusy(true);
     const { data: existing } = await supabase
-      .from("units").select("number").eq("subject_id", subjectId).order("number", { ascending: false }).limit(1);
+      .from("units")
+      .select("number")
+      .eq("subject_id", subjectId)
+      .order("number", { ascending: false })
+      .limit(1);
     const nextNumber = (existing?.[0]?.number ?? 0) + 1;
-    const { error } = await supabase.from("units").insert({ subject_id: subjectId, title, number: nextNumber, status });
+    const { error } = await supabase
+      .from("units")
+      .insert({ subject_id: subjectId, title, number: nextNumber, status });
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Unit created");
@@ -313,10 +474,18 @@ function UnitForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("published"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Subject">
         <Select value={subjectId} onValueChange={setSubjectId}>
-          <SelectTrigger><SelectValue placeholder="Choose subject" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose subject" />
+          </SelectTrigger>
           <SelectContent>
             {subjects?.map((s) => (
               <SelectItem key={s.id} value={s.id}>
@@ -327,7 +496,11 @@ function UnitForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
         </Select>
       </Field>
       <Field label="Title">
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Unit 1 — Introduction" />
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Unit 1 — Introduction"
+        />
       </Field>
       <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
     </form>
@@ -357,7 +530,9 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   async function submit(status: "draft" | "published") {
     if (!unitId || !title.trim()) return toast.error("Unit and title required");
     setBusy(true);
-    const unit = (units as Array<{ id: string; subject_id: string }> | undefined)?.find((u) => u.id === unitId);
+    const unit = (units as Array<{ id: string; subject_id: string }> | undefined)?.find(
+      (u) => u.id === unitId,
+    );
     const subject_id = unit?.subject_id ?? null;
     let file_path: string | null = null;
     let file_mime: string | null = null;
@@ -367,9 +542,16 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
     const type: "note" | "pdf" = hasFile && file!.type === "application/pdf" ? "pdf" : "note";
     if (file) {
       const path = `content/${type}/${Date.now()}-${file.name}`;
-      const { error: upErr } = await supabase.storage.from("notes").upload(path, file, { upsert: false });
-      if (upErr) { setBusy(false); return toast.error(upErr.message); }
-      file_path = path; file_mime = file.type; file_size_bytes = file.size;
+      const { error: upErr } = await supabase.storage
+        .from("notes")
+        .upload(path, file, { upsert: false });
+      if (upErr) {
+        setBusy(false);
+        return toast.error(upErr.message);
+      }
+      file_path = path;
+      file_mime = file.type;
+      file_size_bytes = file.size;
     }
     const { error } = await supabase.from("content_items").insert({
       type,
@@ -392,10 +574,18 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("published"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Unit">
         <Select value={unitId} onValueChange={setUnitId}>
-          <SelectTrigger><SelectValue placeholder="Choose unit" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose unit" />
+          </SelectTrigger>
           <SelectContent>
             {units?.map((u) => (
               <SelectItem key={u.id} value={u.id}>
@@ -405,10 +595,18 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
           </SelectContent>
         </Select>
       </Field>
-      <Field label="Title"><Input value={title} onChange={(e) => setTitle(e.target.value)} /></Field>
-      <Field label="Summary"><Textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={2} /></Field>
+      <Field label="Title">
+        <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </Field>
+      <Field label="Summary">
+        <Textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={2} />
+      </Field>
       <Field label="PDF / Document (optional)">
-        <Input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+        <Input
+          type="file"
+          accept=".pdf,.doc,.docx,.ppt,.pptx"
+          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+        />
       </Field>
       <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
     </form>
@@ -426,22 +624,36 @@ function PaperForm({ onBack, onDone }: { onBack: () => void; onDone: () => void 
     queryKey: ["admin", "subjects-list"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("subjects").select("id,title,semesters(number)")
-        .is("deleted_at", null).order("title");
+        .from("subjects")
+        .select("id,title,semesters(number)")
+        .is("deleted_at", null)
+        .order("title");
       if (error) throw error;
       return data;
     },
   });
 
   async function submit(status: "draft" | "published") {
-    if (!subjectId || !title.trim() || !file) return toast.error("Subject, title and file required");
+    if (!subjectId || !title.trim() || !file)
+      return toast.error("Subject, title and file required");
     setBusy(true);
     const path = `${subjectId}/${year}-${Date.now()}-${file.name}`;
-    const { error: upErr } = await supabase.storage.from("papers").upload(path, file, { upsert: false });
-    if (upErr) { setBusy(false); return toast.error(upErr.message); }
+    const { error: upErr } = await supabase.storage
+      .from("papers")
+      .upload(path, file, { upsert: false });
+    if (upErr) {
+      setBusy(false);
+      return toast.error(upErr.message);
+    }
     const { error } = await supabase.from("papers").insert({
-      subject_id: subjectId, title, year, status,
-      file_path: path, file_bucket: "papers", file_mime: file.type, file_size_bytes: file.size,
+      subject_id: subjectId,
+      title,
+      year,
+      status,
+      file_path: path,
+      file_bucket: "papers",
+      file_mime: file.type,
+      file_size_bytes: file.size,
     });
     setBusy(false);
     if (error) return toast.error(error.message);
@@ -450,20 +662,48 @@ function PaperForm({ onBack, onDone }: { onBack: () => void; onDone: () => void 
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("published"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Subject">
         <Select value={subjectId} onValueChange={setSubjectId}>
-          <SelectTrigger><SelectValue placeholder="Choose subject" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose subject" />
+          </SelectTrigger>
           <SelectContent>
             {subjects?.map((s) => (
-              <SelectItem key={s.id} value={s.id}>Sem {s.semesters?.number} · {s.title}</SelectItem>
+              <SelectItem key={s.id} value={s.id}>
+                Sem {s.semesters?.number} · {s.title}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </Field>
-      <Field label="Title"><Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Mid-term 2024" /></Field>
-      <Field label="Year"><Input type="number" value={year} onChange={(e) => setYear(parseInt(e.target.value || "0"))} /></Field>
-      <Field label="PDF"><Input type="file" accept="application/pdf" onChange={(e) => setFile(e.target.files?.[0] ?? null)} /></Field>
+      <Field label="Title">
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Mid-term 2024"
+        />
+      </Field>
+      <Field label="Year">
+        <Input
+          type="number"
+          value={year}
+          onChange={(e) => setYear(parseInt(e.target.value || "0"))}
+        />
+      </Field>
+      <Field label="PDF">
+        <Input
+          type="file"
+          accept="application/pdf"
+          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+        />
+      </Field>
       <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
     </form>
   );
@@ -479,8 +719,10 @@ function QuizForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
     queryKey: ["admin", "units-list"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("units").select("id,title,subjects(title,semesters(number))")
-        .is("deleted_at", null).order("title");
+        .from("units")
+        .select("id,title,subjects(title,semesters(number))")
+        .is("deleted_at", null)
+        .order("title");
       if (error) throw error;
       return data;
     },
@@ -489,10 +731,16 @@ function QuizForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   async function submit(status: "draft" | "published") {
     if (!unitId || !title.trim()) return toast.error("Unit and title required");
     setBusy(true);
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 80);
-    const { data, error } = await supabase.from("quizzes")
+    const slug = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .slice(0, 80);
+    const { data, error } = await supabase
+      .from("quizzes")
       .insert({ unit_id: unitId, title, slug, description, status })
-      .select("id").single();
+      .select("id")
+      .single();
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Quiz created — add questions next");
@@ -501,10 +749,18 @@ function QuizForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit("draft"); }} className="space-y-3 pt-2">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("draft");
+      }}
+      className="space-y-3 pt-2"
+    >
       <Field label="Unit">
         <Select value={unitId} onValueChange={setUnitId}>
-          <SelectTrigger><SelectValue placeholder="Choose unit" /></SelectTrigger>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose unit" />
+          </SelectTrigger>
           <SelectContent>
             {units?.map((u) => (
               <SelectItem key={u.id} value={u.id}>
@@ -514,11 +770,19 @@ function QuizForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
           </SelectContent>
         </Select>
       </Field>
-      <Field label="Title"><Input value={title} onChange={(e) => setTitle(e.target.value)} /></Field>
-      <Field label="Description"><Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={2} /></Field>
+      <Field label="Title">
+        <Input value={title} onChange={(e) => setTitle(e.target.value)} />
+      </Field>
+      <Field label="Description">
+        <Textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={2} />
+      </Field>
       <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-        <Button type="button" variant="ghost" onClick={onBack} disabled={busy}>← Back</Button>
-        <Button type="submit" disabled={busy}>{busy ? "Creating…" : "Create & open builder"}</Button>
+        <Button type="button" variant="ghost" onClick={onBack} disabled={busy}>
+          ← Back
+        </Button>
+        <Button type="submit" disabled={busy}>
+          {busy ? "Creating…" : "Create & open builder"}
+        </Button>
       </div>
     </form>
   );
@@ -533,13 +797,27 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function FooterRowDraft({ onBack, busy, onDraft }: { onBack: () => void; busy: boolean; onDraft: () => void }) {
+function FooterRowDraft({
+  onBack,
+  busy,
+  onDraft,
+}: {
+  onBack: () => void;
+  busy: boolean;
+  onDraft: () => void;
+}) {
   return (
     <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
-      <Button type="button" variant="ghost" onClick={onBack} disabled={busy}>← Back</Button>
+      <Button type="button" variant="ghost" onClick={onBack} disabled={busy}>
+        ← Back
+      </Button>
       <div className="flex items-center gap-2">
-        <Button type="button" variant="outline" onClick={onDraft} disabled={busy}>Save as draft</Button>
-        <Button type="submit" disabled={busy}>{busy ? "Publishing…" : "Publish"}</Button>
+        <Button type="button" variant="outline" onClick={onDraft} disabled={busy}>
+          Save as draft
+        </Button>
+        <Button type="submit" disabled={busy}>
+          {busy ? "Publishing…" : "Publish"}
+        </Button>
       </div>
     </div>
   );

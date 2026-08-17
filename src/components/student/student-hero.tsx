@@ -31,9 +31,7 @@ export function StudentHero({
   children?: ReactNode;
 }) {
   return (
-    <section
-      className={cn("rounded-lg border border-border bg-surface p-6 sm:p-9", className)}
-    >
+    <section className={cn("rounded-lg border border-border bg-surface p-6 sm:p-9", className)}>
       {loading ? (
         <div className="space-y-4">
           <Skeleton className="h-4 w-40" />

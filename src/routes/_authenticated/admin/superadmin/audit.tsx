@@ -41,49 +41,55 @@ function AuditPage() {
       </div>
 
       <div className="overflow-hidden rounded-xl border border-border/70 bg-surface">
-          {isLoading ? (
-            <div className="p-10 text-center text-sm text-muted-foreground">Loading…</div>
-          ) : (logs ?? []).length === 0 ? (
-            <div className="p-10 text-center text-sm text-muted-foreground">No audit events found.</div>
-          ) : (
-            <table className="w-full text-sm">
-              <thead className="border-b border-border bg-muted/30 text-left text-xs uppercase tracking-wide text-muted-foreground">
-                <tr>
-                  <th className="px-4 py-3">When</th>
-                  <th className="px-4 py-3">Actor</th>
-                  <th className="px-4 py-3">Action</th>
-                  <th className="px-4 py-3">Entity</th>
-                  <th className="px-4 py-3">Metadata</th>
+        {isLoading ? (
+          <div className="p-10 text-center text-sm text-muted-foreground">Loading…</div>
+        ) : (logs ?? []).length === 0 ? (
+          <div className="p-10 text-center text-sm text-muted-foreground">
+            No audit events found.
+          </div>
+        ) : (
+          <table className="w-full text-sm">
+            <thead className="border-b border-border bg-muted/30 text-left text-xs uppercase tracking-wide text-muted-foreground">
+              <tr>
+                <th className="px-4 py-3">When</th>
+                <th className="px-4 py-3">Actor</th>
+                <th className="px-4 py-3">Action</th>
+                <th className="px-4 py-3">Entity</th>
+                <th className="px-4 py-3">Metadata</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(logs ?? []).map((row) => (
+                <tr key={row.id} className="border-b border-border/60 last:border-0 align-top">
+                  <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                    {new Date(row.created_at).toLocaleString()}
+                  </td>
+                  <td className="px-4 py-3">
+                    <div className="font-medium text-foreground">{row.actor_email ?? "system"}</div>
+                    {row.ip && <div className="text-xs text-muted-foreground">{row.ip}</div>}
+                  </td>
+                  <td className="px-4 py-3">
+                    <Badge variant="outline" className="font-mono text-[11px]">
+                      {row.action}
+                    </Badge>
+                  </td>
+                  <td className="px-4 py-3 text-muted-foreground">
+                    {row.entity_type && <div className="text-xs">{row.entity_type}</div>}
+                    {row.entity_id && (
+                      <div className="font-mono text-[11px]">{row.entity_id.slice(0, 18)}…</div>
+                    )}
+                  </td>
+                  <td className="px-4 py-3">
+                    {row.metadata && (
+                      <pre className="max-w-md overflow-hidden text-ellipsis whitespace-pre-wrap break-words rounded bg-muted/40 p-2 font-mono text-[11px] text-muted-foreground">
+                        {row.metadata}
+                      </pre>
+                    )}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {(logs ?? []).map((row) => (
-                  <tr key={row.id} className="border-b border-border/60 last:border-0 align-top">
-                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
-                      {new Date(row.created_at).toLocaleString()}
-                    </td>
-                    <td className="px-4 py-3">
-                      <div className="font-medium text-foreground">{row.actor_email ?? "system"}</div>
-                      {row.ip && <div className="text-xs text-muted-foreground">{row.ip}</div>}
-                    </td>
-                    <td className="px-4 py-3">
-                      <Badge variant="outline" className="font-mono text-[11px]">{row.action}</Badge>
-                    </td>
-                    <td className="px-4 py-3 text-muted-foreground">
-                      {row.entity_type && <div className="text-xs">{row.entity_type}</div>}
-                      {row.entity_id && <div className="font-mono text-[11px]">{row.entity_id.slice(0, 18)}…</div>}
-                    </td>
-                    <td className="px-4 py-3">
-                      {row.metadata && (
-                        <pre className="max-w-md overflow-hidden text-ellipsis whitespace-pre-wrap break-words rounded bg-muted/40 p-2 font-mono text-[11px] text-muted-foreground">
-                          {row.metadata}
-                        </pre>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
     </PageContainer>

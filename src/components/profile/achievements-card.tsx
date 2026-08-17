@@ -36,7 +36,9 @@ export function AchievementsCard({
 
       <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
         {loading
-          ? Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-24 rounded-lg" />)
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-24 rounded-lg" />
+            ))
           : achievements.map((a) => (
               <div
                 key={a.id}

@@ -26,9 +26,7 @@ export function FormSection({
     >
       <div className="min-w-0">
         <h3 className="font-serif text-sm font-semibold text-foreground">{title}</h3>
-        {description && (
-          <p className="mt-1 text-xs text-muted-foreground">{description}</p>
-        )}
+        {description && <p className="mt-1 text-xs text-muted-foreground">{description}</p>}
       </div>
       <div className="space-y-4">{children}</div>
     </section>
@@ -62,9 +60,7 @@ export function FormRow({
         </Label>
       )}
       {children}
-      {hint && !error && (
-        <p className="text-[11px] text-muted-foreground">{hint}</p>
-      )}
+      {hint && !error && <p className="text-[11px] text-muted-foreground">{hint}</p>}
       {error && <p className="text-[11px] text-destructive">{error}</p>}
     </div>
   );

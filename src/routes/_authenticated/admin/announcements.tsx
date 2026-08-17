@@ -2,7 +2,16 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { Megaphone, Plus, Pencil, Trash2, AlertTriangle, Info, CheckCircle2, XCircle } from "lucide-react";
+import {
+  Megaphone,
+  Plus,
+  Pencil,
+  Trash2,
+  AlertTriangle,
+  Info,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -19,19 +28,46 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/admin/announcements")({
   head: () => ({ meta: [{ title: "Announcements · Admin · BCA Gurukul" }] }),
   component: AnnouncementsPage,
 });
 
-const SEVERITY_META: Record<Announcement["severity"], { label: string; icon: typeof Info; tone: string }> = {
+const SEVERITY_META: Record<
+  Announcement["severity"],
+  { label: string; icon: typeof Info; tone: string }
+> = {
   info: { label: "Info", icon: Info, tone: "bg-primary/10 text-primary border-primary/30" },
-  success: { label: "Success", icon: CheckCircle2, tone: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30" },
-  warning: { label: "Warning", icon: AlertTriangle, tone: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30" },
-  critical: { label: "Critical", icon: XCircle, tone: "bg-destructive/10 text-destructive border-destructive/30" },
+  success: {
+    label: "Success",
+    icon: CheckCircle2,
+    tone: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
+  },
+  warning: {
+    label: "Warning",
+    icon: AlertTriangle,
+    tone: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
+  },
+  critical: {
+    label: "Critical",
+    icon: XCircle,
+    tone: "bg-destructive/10 text-destructive border-destructive/30",
+  },
 };
 
 type FormState = {
@@ -153,7 +189,9 @@ function AnnouncementsPage() {
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="font-medium text-foreground">{a.title}</span>
-                      <Badge variant="outline" className={meta.tone}>{meta.label}</Badge>
+                      <Badge variant="outline" className={meta.tone}>
+                        {meta.label}
+                      </Badge>
                       <Badge variant="outline">{a.audience}</Badge>
                       {!a.published && <Badge variant="secondary">Draft</Badge>}
                       {expired && <Badge variant="secondary">Expired</Badge>}
@@ -193,17 +231,31 @@ function AnnouncementsPage() {
           <div className="space-y-4">
             <div>
               <Label>Title</Label>
-              <Input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+              <Input
+                value={form.title}
+                onChange={(e) => setForm({ ...form, title: e.target.value })}
+              />
             </div>
             <div>
               <Label>Message</Label>
-              <Textarea rows={4} value={form.body} onChange={(e) => setForm({ ...form, body: e.target.value })} />
+              <Textarea
+                rows={4}
+                value={form.body}
+                onChange={(e) => setForm({ ...form, body: e.target.value })}
+              />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label>Severity</Label>
-                <Select value={form.severity} onValueChange={(v) => setForm({ ...form, severity: v as Announcement["severity"] })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
+                <Select
+                  value={form.severity}
+                  onValueChange={(v) =>
+                    setForm({ ...form, severity: v as Announcement["severity"] })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="info">Info</SelectItem>
                     <SelectItem value="success">Success</SelectItem>
@@ -214,8 +266,15 @@ function AnnouncementsPage() {
               </div>
               <div>
                 <Label>Audience</Label>
-                <Select value={form.audience} onValueChange={(v) => setForm({ ...form, audience: v as Announcement["audience"] })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
+                <Select
+                  value={form.audience}
+                  onValueChange={(v) =>
+                    setForm({ ...form, audience: v as Announcement["audience"] })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">Everyone</SelectItem>
                     <SelectItem value="students">Students</SelectItem>
@@ -233,12 +292,17 @@ function AnnouncementsPage() {
               />
             </div>
             <div className="flex items-center gap-3">
-              <Switch checked={form.published} onCheckedChange={(v) => setForm({ ...form, published: v })} />
+              <Switch
+                checked={form.published}
+                onCheckedChange={(v) => setForm({ ...form, published: v })}
+              />
               <Label>Published</Label>
             </div>
           </div>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="ghost" onClick={() => setOpen(false)}>
+              Cancel
+            </Button>
             <Button onClick={() => saveMut.mutate(form)} disabled={saveMut.isPending}>
               {saveMut.isPending ? "Saving…" : form.id ? "Save" : "Publish"}
             </Button>

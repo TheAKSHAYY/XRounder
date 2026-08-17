@@ -22,8 +22,7 @@ export function ProgressBar({
 }) {
   const pct = Math.max(0, Math.min(100, Math.round(value)));
   const height = size === "xs" ? "h-1" : size === "md" ? "h-2.5" : "h-1.5";
-  const track =
-    tone === "onPrimary" ? "bg-primary-foreground/20" : "bg-muted";
+  const track = tone === "onPrimary" ? "bg-primary-foreground/20" : "bg-muted";
   const fill =
     tone === "onPrimary"
       ? "bg-primary-foreground"

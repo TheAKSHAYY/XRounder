@@ -71,8 +71,7 @@ function calcStreak(dates: string[]): number {
 function DashboardPage() {
   const { user } = Route.useRouteContext();
 
-  const fullName =
-    (user.user_metadata?.full_name as string | undefined) ?? user.email ?? "there";
+  const fullName = (user.user_metadata?.full_name as string | undefined) ?? user.email ?? "there";
   const firstName = fullName.split(" ")[0];
 
   // ---------- queries (preserved) ----------
@@ -561,8 +560,8 @@ function ContinueHero({
             Start Semester {semester.number}
           </h2>
           <p className="mt-1.5 max-w-lg text-sm text-primary-foreground/85">
-            Open your first subject — your progress, bookmarks and quiz scores will start showing
-            up here automatically.
+            Open your first subject — your progress, bookmarks and quiz scores will start showing up
+            here automatically.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <Button asChild size="lg" variant="secondary">
@@ -618,7 +617,14 @@ function BookmarkLink({
   title: string | null;
 }) {
   const label = title ?? "Untitled";
-  const Icon = kind === "note" ? FileText : kind === "paper" ? FileText : kind === "quiz" ? ListChecks : BookOpen;
+  const Icon =
+    kind === "note"
+      ? FileText
+      : kind === "paper"
+        ? FileText
+        : kind === "quiz"
+          ? ListChecks
+          : BookOpen;
   const kindLabel =
     kind === "note" ? "Note" : kind === "paper" ? "Paper" : kind === "quiz" ? "Quiz" : "Unit";
   const inner = (
@@ -633,8 +639,23 @@ function BookmarkLink({
       <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
     </div>
   );
-  if (kind === "note") return <Link to="/notes/$noteId" params={{ noteId: refId }}>{inner}</Link>;
-  if (kind === "paper") return <Link to="/papers/$paperId" params={{ paperId: refId }}>{inner}</Link>;
-  if (kind === "quiz") return <Link to="/quizzes/$quizId" params={{ quizId: refId }}>{inner}</Link>;
+  if (kind === "note")
+    return (
+      <Link to="/notes/$noteId" params={{ noteId: refId }}>
+        {inner}
+      </Link>
+    );
+  if (kind === "paper")
+    return (
+      <Link to="/papers/$paperId" params={{ paperId: refId }}>
+        {inner}
+      </Link>
+    );
+  if (kind === "quiz")
+    return (
+      <Link to="/quizzes/$quizId" params={{ quizId: refId }}>
+        {inner}
+      </Link>
+    );
   return <Link to="/courses">{inner}</Link>;
 }

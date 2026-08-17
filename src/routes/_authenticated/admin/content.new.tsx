@@ -28,7 +28,9 @@ function NewContentPage() {
         description="Pick a type and fill in the details. Save as draft or publish."
         actions={
           <Button asChild variant="ghost" size="sm">
-            <Link to="/admin/content"><ArrowLeft className="mr-1.5 h-4 w-4" /> Back</Link>
+            <Link to="/admin/content">
+              <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
+            </Link>
           </Button>
         }
       />
@@ -37,8 +39,6 @@ function NewContentPage() {
         initial={search.subjectId ? { subject_id: search.subjectId } : undefined}
         onSaved={(id) => navigate({ to: "/admin/content/$id", params: { id } })}
       />
-
     </PageContainer>
   );
 }
-

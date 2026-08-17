@@ -1,4 +1,12 @@
-import { BookOpen, Building2, CalendarDays, GraduationCap, Layers, Loader2, Save } from "lucide-react";
+import {
+  BookOpen,
+  Building2,
+  CalendarDays,
+  GraduationCap,
+  Layers,
+  Loader2,
+  Save,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -69,8 +77,7 @@ export function AcademicCard({
   onChange: (patch: Partial<AcademicForm>) => void;
   onSubmit: (e: React.FormEvent) => void;
 }) {
-  const courseLabel =
-    courses.find((c) => c.id === form.current_course_id)?.label ?? "Not set";
+  const courseLabel = courses.find((c) => c.id === form.current_course_id)?.label ?? "Not set";
   const semesterLabel =
     semesters.find((s) => s.id === form.current_semester_id)?.label ?? "Not set";
 
@@ -89,16 +96,14 @@ export function AcademicCard({
       <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
         <div className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
           {loading ? (
-            Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} className="h-16 rounded-lg" />)
+            Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-16 rounded-lg" />
+            ))
           ) : (
             <>
               <InfoChip icon={BookOpen} label="Course" value={courseLabel} />
               <InfoChip icon={Layers} label="Semester" value={semesterLabel} />
-              <InfoChip
-                icon={GraduationCap}
-                label="Year"
-                value={form.current_year || "Not set"}
-              />
+              <InfoChip icon={GraduationCap} label="Year" value={form.current_year || "Not set"} />
               <InfoChip
                 icon={CalendarDays}
                 label="Session"
@@ -111,9 +116,7 @@ export function AcademicCard({
         </div>
         <div className="hidden shrink-0 flex-col items-center gap-1 sm:flex">
           <ProgressRing value={overallProgress} size={84} thickness={7} label="Overall progress" />
-          <span className="text-xs text-muted-foreground">
-            {subjectCount ?? 0} subjects
-          </span>
+          <span className="text-xs text-muted-foreground">{subjectCount ?? 0} subjects</span>
         </div>
       </div>
 

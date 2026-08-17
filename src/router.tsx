@@ -14,9 +14,7 @@ type EnvCheck = { ok: true } | { ok: false; missing: string[] };
 
 function checkSupabaseEnv(): EnvCheck {
   const isBrowser = typeof window !== "undefined";
-  const url = isBrowser
-    ? import.meta.env.VITE_SUPABASE_URL
-    : process.env.SUPABASE_URL;
+  const url = isBrowser ? import.meta.env.VITE_SUPABASE_URL : process.env.SUPABASE_URL;
   const key = isBrowser
     ? import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
     : process.env.SUPABASE_PUBLISHABLE_KEY;
@@ -25,8 +23,7 @@ function checkSupabaseEnv(): EnvCheck {
   // screen hydration-mismatches.
   const missing: string[] = [];
   if (!url) missing.push("VITE_SUPABASE_URL / SUPABASE_URL");
-  if (!key)
-    missing.push("VITE_SUPABASE_PUBLISHABLE_KEY / SUPABASE_PUBLISHABLE_KEY");
+  if (!key) missing.push("VITE_SUPABASE_PUBLISHABLE_KEY / SUPABASE_PUBLISHABLE_KEY");
 
   return missing.length ? { ok: false, missing } : { ok: true };
 }
@@ -51,19 +48,13 @@ function ConfigMissing({ missing }: { missing: string[] }) {
             />
           </svg>
         </div>
-        <h1 className="text-xl font-semibold tracking-tight">
-          Configuration missing
-        </h1>
+        <h1 className="text-xl font-semibold tracking-tight">Configuration missing</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Supabase environment variables are missing. Set the variables below
-          and restart the app.
+          Supabase environment variables are missing. Set the variables below and restart the app.
         </p>
         <ul className="mt-4 space-y-2 text-left">
           {missing.map((name) => (
-            <li
-              key={name}
-              className="rounded-md bg-muted px-3 py-2 font-mono text-sm"
-            >
+            <li key={name} className="rounded-md bg-muted px-3 py-2 font-mono text-sm">
               {name}
             </li>
           ))}

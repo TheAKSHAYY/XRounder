@@ -2,9 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import {
-  FileText, FlaskConical, Plus, ArrowUpRight, BookOpen,
-  Inbox, AlertCircle, TrendingUp, Users, Sparkles, ChevronRight,
-  CheckCircle2, MessageSquare, Library,
+  FileText,
+  FlaskConical,
+  Plus,
+  ArrowUpRight,
+  BookOpen,
+  Inbox,
+  AlertCircle,
+  TrendingUp,
+  Users,
+  Sparkles,
+  ChevronRight,
+  CheckCircle2,
+  MessageSquare,
+  Library,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
@@ -15,9 +26,7 @@ import {
   getWorkflowSummary,
 } from "@/lib/admin.functions";
 import { useAuth } from "@/hooks/use-auth";
-import {
-  PageContainer, SectionCard,
-} from "@/components/admin/ui";
+import { PageContainer, SectionCard } from "@/components/admin/ui";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -54,15 +63,23 @@ function AdminDashboard() {
   });
 
   const firstName =
-    (user?.user_metadata as { full_name?: string; name?: string } | undefined)?.full_name?.split(" ")[0] ??
+    (user?.user_metadata as { full_name?: string; name?: string } | undefined)?.full_name?.split(
+      " ",
+    )[0] ??
     (user?.user_metadata as { name?: string } | undefined)?.name?.split(" ")[0] ??
     user?.email?.split("@")[0] ??
     "Admin";
 
-  const isColdStart = !statsLoading && stats
-    ? ((stats.semesters ?? 0) + (stats.subjects ?? 0) + (stats.units ?? 0) +
-       (stats.notes ?? 0) + (stats.papers ?? 0) + (stats.quizzes ?? 0)) === 0
-    : false;
+  const isColdStart =
+    !statsLoading && stats
+      ? (stats.semesters ?? 0) +
+          (stats.subjects ?? 0) +
+          (stats.units ?? 0) +
+          (stats.notes ?? 0) +
+          (stats.papers ?? 0) +
+          (stats.quizzes ?? 0) ===
+        0
+      : false;
 
   const attention = [
     workflow?.drafts_count ?? 0,
@@ -71,10 +88,30 @@ function AdminDashboard() {
   ].reduce((a, b) => a + b, 0);
 
   const trendTiles = [
-    { label: "Published this week", value: workflow?.published_7d, icon: FileText, tone: "primary" as const },
-    { label: "Quiz attempts", value: workflow?.attempts_7d, icon: FlaskConical, tone: "accent" as const },
-    { label: "New students", value: workflow?.new_students_7d, icon: Users, tone: "success" as const },
-    { label: "Active (24h)", value: stats?.active_users_24h, icon: TrendingUp, tone: "info" as const },
+    {
+      label: "Published this week",
+      value: workflow?.published_7d,
+      icon: FileText,
+      tone: "primary" as const,
+    },
+    {
+      label: "Quiz attempts",
+      value: workflow?.attempts_7d,
+      icon: FlaskConical,
+      tone: "accent" as const,
+    },
+    {
+      label: "New students",
+      value: workflow?.new_students_7d,
+      icon: Users,
+      tone: "success" as const,
+    },
+    {
+      label: "Active (24h)",
+      value: stats?.active_users_24h,
+      icon: TrendingUp,
+      tone: "info" as const,
+    },
   ];
 
   return (
@@ -97,10 +134,14 @@ function AdminDashboard() {
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2">
           <Button asChild variant="outline" size="sm">
-            <Link to="/admin/content"><FileText className="mr-1.5 h-4 w-4" /> Content</Link>
+            <Link to="/admin/content">
+              <FileText className="mr-1.5 h-4 w-4" /> Content
+            </Link>
           </Button>
           <Button asChild size="sm">
-            <Link to="/admin/content/new"><Plus className="mr-1.5 h-4 w-4" /> New content</Link>
+            <Link to="/admin/content/new">
+              <Plus className="mr-1.5 h-4 w-4" /> New content
+            </Link>
           </Button>
         </div>
       </div>
@@ -137,7 +178,8 @@ function AdminDashboard() {
               <div className="min-w-0">
                 <div className="truncate text-sm font-medium text-foreground">{d.title}</div>
                 <div className="text-[11px] capitalize text-muted-foreground">
-                  {d.type} · edited {formatDistanceToNow(new Date(d.updated_at), { addSuffix: true })}
+                  {d.type} · edited{" "}
+                  {formatDistanceToNow(new Date(d.updated_at), { addSuffix: true })}
                 </div>
               </div>
               <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-foreground" />
@@ -215,10 +257,30 @@ function AdminDashboard() {
         </div>
         <div className="grid grid-cols-3 gap-2 rounded-xl border border-border/70 bg-surface p-3 sm:grid-cols-6">
           <MiniStat label="Students" value={stats?.students} loading={statsLoading} />
-          <MiniStat label="Subjects" value={stats?.subjects} loading={statsLoading} to="/admin/subjects" />
-          <MiniStat label="Content" value={stats?.notes} loading={statsLoading} to="/admin/content" />
-          <MiniStat label="Papers" value={stats?.papers} loading={statsLoading} to="/admin/papers" />
-          <MiniStat label="Quizzes" value={stats?.quizzes} loading={statsLoading} to="/admin/quizzes" />
+          <MiniStat
+            label="Subjects"
+            value={stats?.subjects}
+            loading={statsLoading}
+            to="/admin/subjects"
+          />
+          <MiniStat
+            label="Content"
+            value={stats?.notes}
+            loading={statsLoading}
+            to="/admin/content"
+          />
+          <MiniStat
+            label="Papers"
+            value={stats?.papers}
+            loading={statsLoading}
+            to="/admin/papers"
+          />
+          <MiniStat
+            label="Quizzes"
+            value={stats?.quizzes}
+            loading={statsLoading}
+            to="/admin/quizzes"
+          />
           <MiniStat label="MCQs" value={stats?.mcqs} loading={statsLoading} to="/admin/quizzes" />
         </div>
       </section>
@@ -236,7 +298,10 @@ function AdminDashboard() {
         >
           <div className="divide-y divide-border/60">
             {(uploads ?? []).slice(0, 6).map((u) => (
-              <div key={`${u.kind}-${u.id}`} className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
+              <div
+                key={`${u.kind}-${u.id}`}
+                className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-5"
+              >
                 <div className="min-w-0">
                   <div className="truncate text-sm font-medium text-foreground">{u.title}</div>
                   <div className="text-xs capitalize text-muted-foreground">{u.kind}</div>
@@ -247,7 +312,9 @@ function AdminDashboard() {
               </div>
             ))}
             {(!uploads || uploads.length === 0) && (
-              <div className="px-4 py-8 text-center text-sm text-muted-foreground">No uploads yet.</div>
+              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
+                No uploads yet.
+              </div>
             )}
           </div>
         </SectionCard>
@@ -258,7 +325,9 @@ function AdminDashboard() {
               <div key={i} className="flex items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
                 <div className="min-w-0">
                   <div className="truncate text-sm text-foreground">{a.title ?? "—"}</div>
-                  <div className="text-xs capitalize text-muted-foreground">{a.kind.replace("_", " ")}</div>
+                  <div className="text-xs capitalize text-muted-foreground">
+                    {a.kind.replace("_", " ")}
+                  </div>
                 </div>
                 <div className="shrink-0 text-xs text-muted-foreground">
                   {a.at ? formatDistanceToNow(new Date(a.at), { addSuffix: true }) : ""}
@@ -266,7 +335,9 @@ function AdminDashboard() {
               </div>
             ))}
             {(!activity || activity.length === 0) && (
-              <div className="px-4 py-8 text-center text-sm text-muted-foreground">No activity yet.</div>
+              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
+                No activity yet.
+              </div>
             )}
           </div>
         </SectionCard>
@@ -282,7 +353,10 @@ function AdminDashboard() {
 const TONE_STYLES = {
   warning: { badge: "bg-warning/15 text-warning border-warning/30", icon: "text-warning" },
   info: { badge: "bg-info/15 text-info border-info/30", icon: "text-info" },
-  destructive: { badge: "bg-destructive/15 text-destructive border-destructive/30", icon: "text-destructive" },
+  destructive: {
+    badge: "bg-destructive/15 text-destructive border-destructive/30",
+    icon: "text-destructive",
+  },
   success: { badge: "bg-success/15 text-success border-success/30", icon: "text-success" },
 } as const;
 
@@ -336,7 +410,12 @@ function AttentionCard({
         {!isClear && children}
       </div>
 
-      <Button asChild variant="ghost" size="sm" className="mt-auto justify-between px-2 text-primary hover:text-primary">
+      <Button
+        asChild
+        variant="ghost"
+        size="sm"
+        className="mt-auto justify-between px-2 text-primary hover:text-primary"
+      >
         <Link to={actionTo}>
           {actionLabel} <ChevronRight className="h-4 w-4" />
         </Link>
@@ -346,7 +425,11 @@ function AttentionCard({
 }
 
 function TrendTile({
-  label, value, icon: Icon, tone, loading,
+  label,
+  value,
+  icon: Icon,
+  tone,
+  loading,
 }: {
   label: string;
   value?: number | null;
@@ -378,7 +461,10 @@ function TrendTile({
 }
 
 function MiniStat({
-  label, value, loading, to,
+  label,
+  value,
+  loading,
+  to,
 }: {
   label: string;
   value?: number | null;

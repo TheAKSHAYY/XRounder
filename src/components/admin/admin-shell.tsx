@@ -49,10 +49,7 @@ import { BrandMark } from "@/components/brand-mark";
 
 import { CreateWizard } from "./create-wizard";
 import { CommandPalette } from "./command-palette";
-import {
-  KeyboardShortcutsDialog,
-  useKeyboardShortcutsDialog,
-} from "./keyboard-shortcuts";
+import { KeyboardShortcutsDialog, useKeyboardShortcutsDialog } from "./keyboard-shortcuts";
 
 type NavItem = {
   label: string;
@@ -85,9 +82,7 @@ const SITE: NavItem[] = [
   { label: "Developer", to: "/admin/developer", icon: Sparkles },
 ];
 
-const SYSTEM: NavItem[] = [
-  { label: "Settings", to: "/admin/settings", icon: Settings },
-];
+const SYSTEM: NavItem[] = [{ label: "Settings", to: "/admin/settings", icon: Settings }];
 
 const PLATFORM: NavItem[] = [
   { label: "Overview", to: "/admin/superadmin", icon: ShieldCheck, exact: true },
@@ -170,11 +165,7 @@ export function AdminShell() {
                 <SidebarGroupContent>
                   <SidebarMenu>
                     {PLATFORM.map((item) => (
-                      <NavRow
-                        key={item.to}
-                        item={item}
-                        active={isActive(item.to, item.exact)}
-                      />
+                      <NavRow key={item.to} item={item} active={isActive(item.to, item.exact)} />
                     ))}
                   </SidebarMenu>
                 </SidebarGroupContent>
@@ -242,12 +233,7 @@ export function AdminShell() {
               >
                 <Keyboard className="h-4 w-4" />
               </Button>
-              <Button
-                asChild
-                variant="ghost"
-                size="sm"
-                className="hidden md:inline-flex"
-              >
+              <Button asChild variant="ghost" size="sm" className="hidden md:inline-flex">
                 <Link to="/dashboard">
                   <Home className="mr-1.5 h-4 w-4" /> Student view
                 </Link>
@@ -272,15 +258,7 @@ export function AdminShell() {
   );
 }
 
-function NavRow({
-  item,
-  active,
-  badge,
-}: {
-  item: NavItem;
-  active: boolean;
-  badge?: number;
-}) {
+function NavRow({ item, active, badge }: { item: NavItem; active: boolean; badge?: number }) {
   return (
     <SidebarMenuItem>
       <SidebarMenuButton asChild isActive={active} tooltip={item.label}>

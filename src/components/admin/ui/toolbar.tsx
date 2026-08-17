@@ -21,12 +21,8 @@ export function Toolbar({
         className,
       )}
     >
-      {filters && (
-        <div className="flex min-w-0 flex-wrap items-center gap-2">{filters}</div>
-      )}
-      {actions && (
-        <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>
-      )}
+      {filters && <div className="flex min-w-0 flex-wrap items-center gap-2">{filters}</div>}
+      {actions && <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>}
     </div>
   );
 }

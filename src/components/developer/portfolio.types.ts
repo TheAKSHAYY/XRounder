@@ -1,12 +1,4 @@
-import {
-  Github,
-  Globe,
-  Instagram,
-  Linkedin,
-  Mail,
-  Twitter,
-  Youtube,
-} from "lucide-react";
+import { Github, Globe, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 
 export type Profile = {
   full_name: string | null;

@@ -191,7 +191,10 @@ function ProgressPage() {
         </div>
       </header>
 
-      <section aria-label="Learning statistics" className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <section
+        aria-label="Learning statistics"
+        className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4"
+      >
         {statsQuery.isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <Skeleton key={i} className="h-[6.5rem] rounded-2xl" />
