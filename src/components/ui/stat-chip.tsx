@@ -62,10 +62,7 @@ export function StatChip({
   const inner =
     variant === "tile" ? (
       <div
-        className={cn(
-          "min-w-0 rounded-lg border border-border/70 bg-surface px-4 py-3",
-          className,
-        )}
+        className={cn("min-w-0 rounded-lg border border-border/70 bg-surface px-4 py-3", className)}
       >
         <div className="text-eyebrow text-muted-foreground">{label}</div>
         <div className="mt-1 font-serif text-lg font-semibold tabular-nums text-foreground">

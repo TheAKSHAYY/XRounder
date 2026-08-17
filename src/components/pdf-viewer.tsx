@@ -38,12 +38,7 @@ export function PdfViewer({ url, title }: { url: string; title: string }) {
             className="tap-target px-2 sm:px-3"
             title="Open full screen"
           >
-            <a
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Open ${title} full screen`}
-            >
+            <a href={url} target="_blank" rel="noreferrer" aria-label={`Open ${title} full screen`}>
               <Maximize2 className="h-4 w-4 sm:mr-2" aria-hidden />
               <span className="hidden sm:inline">Full screen</span>
               <ExternalLink className="ml-2 hidden h-3.5 w-3.5 opacity-60 lg:inline" aria-hidden />

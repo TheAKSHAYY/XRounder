@@ -147,105 +147,102 @@ function BrandingPage() {
         description="The identity students see across the platform, emails, and shareable links."
       />
 
+      <section className="mt-8 rounded-2xl border border-border bg-surface p-6">
+        <h2 className="font-display text-lg font-semibold">Maintenance mode</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          When enabled, students see a maintenance page. Admins can still sign in.
+        </p>
+        <div className="mt-4 flex items-center gap-3">
+          <Switch
+            checked={!!maintenanceQuery.data?.enabled}
+            onCheckedChange={(v) => toggleMaintenance.mutate(v)}
+            disabled={toggleMaintenance.isPending}
+          />
+          <span className="text-sm font-medium">
+            {maintenanceQuery.data?.enabled ? "Site is in maintenance mode" : "Site is live"}
+          </span>
+        </div>
+      </section>
 
-        <section className="mt-8 rounded-2xl border border-border bg-surface p-6">
-          <h2 className="font-display text-lg font-semibold">Maintenance mode</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            When enabled, students see a maintenance page. Admins can still sign in.
-          </p>
-          <div className="mt-4 flex items-center gap-3">
-            <Switch
-              checked={!!maintenanceQuery.data?.enabled}
-              onCheckedChange={(v) => toggleMaintenance.mutate(v)}
-              disabled={toggleMaintenance.isPending}
-            />
-            <span className="text-sm font-medium">
-              {maintenanceQuery.data?.enabled ? "Site is in maintenance mode" : "Site is live"}
-            </span>
-          </div>
-        </section>
+      <form
+        onSubmit={form.handleSubmit((v) => saveBranding.mutate(v))}
+        className="mt-6 space-y-5 rounded-2xl border border-border bg-surface p-6"
+      >
+        <h2 className="font-display text-lg font-semibold">Identity</h2>
 
-        <form
-          onSubmit={form.handleSubmit((v) => saveBranding.mutate(v))}
-          className="mt-6 space-y-5 rounded-2xl border border-border bg-surface p-6"
-        >
-          <h2 className="font-display text-lg font-semibold">Identity</h2>
+        <Field label="Site name" error={form.formState.errors.site_name?.message}>
+          <Input {...form.register("site_name")} />
+        </Field>
+        <Field label="Tagline" error={form.formState.errors.tagline?.message}>
+          <Input
+            {...form.register("tagline")}
+            placeholder="Short one-liner shown on the landing page"
+          />
+        </Field>
+        <Field label="Logo wordmark" error={form.formState.errors.logo_text?.message}>
+          <Input {...form.register("logo_text")} placeholder="Shown next to the logo mark" />
+        </Field>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field label="Logo URL" error={form.formState.errors.logo_url?.message}>
+            <Input {...form.register("logo_url")} placeholder="https://…" />
+          </Field>
+          <Field label="Favicon URL" error={form.formState.errors.favicon_url?.message}>
+            <Input {...form.register("favicon_url")} placeholder="https://…" />
+          </Field>
+        </div>
+        <Field label="Support email" error={form.formState.errors.support_email?.message}>
+          <Input {...form.register("support_email")} placeholder="support@…" />
+        </Field>
+        <Field label="Footer text" error={form.formState.errors.footer_text?.message}>
+          <Input {...form.register("footer_text")} />
+        </Field>
 
-          <Field label="Site name" error={form.formState.errors.site_name?.message}>
-            <Input {...form.register("site_name")} />
+        <h2 className="pt-4 font-display text-lg font-semibold">Theme</h2>
+        <p className="-mt-3 text-xs text-muted-foreground">
+          Colors accept any CSS value (oklch, hsl, hex). Leave blank to use the design-system
+          default.
+        </p>
+        <div className="grid gap-5 sm:grid-cols-3">
+          <Field label="Primary" error={form.formState.errors.primary_color?.message}>
+            <Input {...form.register("primary_color")} placeholder="oklch(0.36 0.13 268)" />
           </Field>
-          <Field label="Tagline" error={form.formState.errors.tagline?.message}>
-            <Input {...form.register("tagline")} placeholder="Short one-liner shown on the landing page" />
+          <Field label="Secondary" error={form.formState.errors.secondary_color?.message}>
+            <Input {...form.register("secondary_color")} placeholder="oklch(0.94 0.018 270)" />
           </Field>
-          <Field label="Logo wordmark" error={form.formState.errors.logo_text?.message}>
-            <Input {...form.register("logo_text")} placeholder="Shown next to the logo mark" />
+          <Field label="Accent" error={form.formState.errors.accent_color?.message}>
+            <Input {...form.register("accent_color")} placeholder="oklch(0.78 0.16 60)" />
           </Field>
-          <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Logo URL" error={form.formState.errors.logo_url?.message}>
-              <Input {...form.register("logo_url")} placeholder="https://…" />
-            </Field>
-            <Field label="Favicon URL" error={form.formState.errors.favicon_url?.message}>
-              <Input {...form.register("favicon_url")} placeholder="https://…" />
-            </Field>
-          </div>
-          <Field label="Support email" error={form.formState.errors.support_email?.message}>
-            <Input {...form.register("support_email")} placeholder="support@…" />
+        </div>
+        <div className="grid gap-5 sm:grid-cols-3">
+          <Field label="Heading font" error={form.formState.errors.font_heading?.message}>
+            <Input {...form.register("font_heading")} placeholder="Fraunces" />
           </Field>
-          <Field label="Footer text" error={form.formState.errors.footer_text?.message}>
-            <Input {...form.register("footer_text")} />
+          <Field label="Body font" error={form.formState.errors.font_body?.message}>
+            <Input {...form.register("font_body")} placeholder="Inter" />
           </Field>
+          <Field label="Radius (rem)" error={form.formState.errors.radius_rem?.message}>
+            <Input type="number" step="0.05" min="0" max="2" {...form.register("radius_rem")} />
+          </Field>
+        </div>
 
-          <h2 className="pt-4 font-display text-lg font-semibold">Theme</h2>
-          <p className="-mt-3 text-xs text-muted-foreground">
-            Colors accept any CSS value (oklch, hsl, hex). Leave blank to use the design-system default.
-          </p>
-          <div className="grid gap-5 sm:grid-cols-3">
-            <Field label="Primary" error={form.formState.errors.primary_color?.message}>
-              <Input {...form.register("primary_color")} placeholder="oklch(0.36 0.13 268)" />
-            </Field>
-            <Field label="Secondary" error={form.formState.errors.secondary_color?.message}>
-              <Input {...form.register("secondary_color")} placeholder="oklch(0.94 0.018 270)" />
-            </Field>
-            <Field label="Accent" error={form.formState.errors.accent_color?.message}>
-              <Input {...form.register("accent_color")} placeholder="oklch(0.78 0.16 60)" />
-            </Field>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-3">
-            <Field label="Heading font" error={form.formState.errors.font_heading?.message}>
-              <Input {...form.register("font_heading")} placeholder="Fraunces" />
-            </Field>
-            <Field label="Body font" error={form.formState.errors.font_body?.message}>
-              <Input {...form.register("font_body")} placeholder="Inter" />
-            </Field>
-            <Field label="Radius (rem)" error={form.formState.errors.radius_rem?.message}>
-              <Input
-                type="number"
-                step="0.05"
-                min="0"
-                max="2"
-                {...form.register("radius_rem")}
-              />
-            </Field>
-          </div>
+        <h2 className="pt-4 font-display text-lg font-semibold">SEO defaults</h2>
+        <Field label="SEO title" error={form.formState.errors.seo_title?.message}>
+          <Input {...form.register("seo_title")} />
+        </Field>
+        <Field label="SEO description" error={form.formState.errors.seo_description?.message}>
+          <Textarea {...form.register("seo_description")} rows={3} />
+        </Field>
+        <Field label="Open Graph image URL" error={form.formState.errors.og_image_url?.message}>
+          <Input {...form.register("og_image_url")} placeholder="https://… 1200x630" />
+        </Field>
 
-          <h2 className="pt-4 font-display text-lg font-semibold">SEO defaults</h2>
-          <Field label="SEO title" error={form.formState.errors.seo_title?.message}>
-            <Input {...form.register("seo_title")} />
-          </Field>
-          <Field label="SEO description" error={form.formState.errors.seo_description?.message}>
-            <Textarea {...form.register("seo_description")} rows={3} />
-          </Field>
-          <Field label="Open Graph image URL" error={form.formState.errors.og_image_url?.message}>
-            <Input {...form.register("og_image_url")} placeholder="https://… 1200x630" />
-          </Field>
-
-          <div className="flex justify-end pt-2">
-            <Button type="submit" disabled={saveBranding.isPending}>
-              <Save className="mr-2 h-4 w-4" />
-              {saveBranding.isPending ? "Saving…" : "Save changes"}
-            </Button>
-          </div>
-        </form>
+        <div className="flex justify-end pt-2">
+          <Button type="submit" disabled={saveBranding.isPending}>
+            <Save className="mr-2 h-4 w-4" />
+            {saveBranding.isPending ? "Saving…" : "Save changes"}
+          </Button>
+        </div>
+      </form>
     </PageContainer>
   );
 }

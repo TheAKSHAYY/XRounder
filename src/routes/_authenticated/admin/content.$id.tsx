@@ -43,7 +43,9 @@ function EditContentPage() {
         description="Edit metadata, replace the file, or change visibility."
         actions={
           <Button asChild variant="ghost" size="sm">
-            <Link to="/admin/content"><ArrowLeft className="mr-1.5 h-4 w-4" /> Back</Link>
+            <Link to="/admin/content">
+              <ArrowLeft className="mr-1.5 h-4 w-4" /> Back
+            </Link>
           </Button>
         }
       />

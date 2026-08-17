@@ -14,13 +14,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { formatLearningTime, type LearningStats } from "@/lib/profile";
 
-export function LearningStatsCard({
-  stats,
-  loading,
-}: {
-  stats: LearningStats;
-  loading: boolean;
-}) {
+export function LearningStatsCard({ stats, loading }: { stats: LearningStats; loading: boolean }) {
   const empty = !loading && stats.attempts === 0 && stats.unitsStarted === 0;
 
   return (
@@ -48,12 +42,43 @@ export function LearningStatsCard({
       ) : (
         <>
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-            <StatChip label="Quizzes attempted" value={stats.attempts} icon={ListChecks} loading={loading} />
-            <StatChip label="Quizzes completed" value={stats.completed} icon={Trophy} loading={loading} />
-            <StatChip label="Average score" value={`${stats.avgScore}%`} icon={TrendingUp} loading={loading} />
-            <StatChip label="Highest score" value={`${stats.bestScore}%`} icon={Award} loading={loading} />
-            <StatChip label="Questions solved" value={stats.questionsSolved} icon={Target} loading={loading} />
-            <StatChip label="Bookmarks" value={stats.bookmarks} icon={BookMarked} to="/bookmarks" loading={loading} />
+            <StatChip
+              label="Quizzes attempted"
+              value={stats.attempts}
+              icon={ListChecks}
+              loading={loading}
+            />
+            <StatChip
+              label="Quizzes completed"
+              value={stats.completed}
+              icon={Trophy}
+              loading={loading}
+            />
+            <StatChip
+              label="Average score"
+              value={`${stats.avgScore}%`}
+              icon={TrendingUp}
+              loading={loading}
+            />
+            <StatChip
+              label="Highest score"
+              value={`${stats.bestScore}%`}
+              icon={Award}
+              loading={loading}
+            />
+            <StatChip
+              label="Questions solved"
+              value={stats.questionsSolved}
+              icon={Target}
+              loading={loading}
+            />
+            <StatChip
+              label="Bookmarks"
+              value={stats.bookmarks}
+              icon={BookMarked}
+              to="/bookmarks"
+              loading={loading}
+            />
             <StatChip
               label="Study streak"
               value={stats.streakDays === 1 ? "1 day" : `${stats.streakDays} days`}

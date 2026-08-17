@@ -9,7 +9,10 @@ export function usePortfolioData() {
     queryKey: ["dev-profile"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_profile").select("*").eq("id", 1).maybeSingle();
+        .from("developer_profile")
+        .select("*")
+        .eq("id", 1)
+        .maybeSingle();
       if (error) throw error;
       return data as Profile | null;
     },
@@ -19,7 +22,8 @@ export function usePortfolioData() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("developer_social_links")
-        .select("id,platform,url,label").eq("enabled", true)
+        .select("id,platform,url,label")
+        .eq("enabled", true)
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Social[];
@@ -30,7 +34,9 @@ export function usePortfolioData() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("developer_projects")
-        .select("id,name,description,thumbnail_url,tech_stack,github_url,live_url,category,featured")
+        .select(
+          "id,name,description,thumbnail_url,tech_stack,github_url,live_url,category,featured",
+        )
         .eq("status", "published")
         .order("featured", { ascending: false })
         .order("sort_order", { ascending: true });
@@ -42,8 +48,11 @@ export function usePortfolioData() {
     queryKey: ["dev-skills"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_skills").select("id,name,category,icon").eq("enabled", true)
-        .order("category", { ascending: true }).order("sort_order", { ascending: true });
+        .from("developer_skills")
+        .select("id,name,category,icon")
+        .eq("enabled", true)
+        .order("category", { ascending: true })
+        .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Skill[];
     },
@@ -52,7 +61,9 @@ export function usePortfolioData() {
     queryKey: ["dev-achievements"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("developer_achievements").select("*").eq("enabled", true)
+        .from("developer_achievements")
+        .select("*")
+        .eq("enabled", true)
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Achievement[];

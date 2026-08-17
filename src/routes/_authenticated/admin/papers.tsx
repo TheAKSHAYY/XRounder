@@ -3,8 +3,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
-  FileStack, Pencil, Plus, Trash2, Upload, Search, MoreHorizontal,
-  CheckCircle2, XCircle, Archive,
+  FileStack,
+  Pencil,
+  Plus,
+  Trash2,
+  Upload,
+  Search,
+  MoreHorizontal,
+  CheckCircle2,
+  XCircle,
+  Archive,
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
@@ -21,13 +29,25 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import {
-  Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 export const Route = createFileRoute("/_authenticated/admin/papers")({
@@ -85,7 +105,9 @@ function AdminPapersPage() {
     queryKey: ["admin", "papers", "subjects-all"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("subjects").select("id, code, title").order("title");
+        .from("subjects")
+        .select("id, code, title")
+        .order("title");
       if (error) throw error;
       return data ?? [];
     },
@@ -126,7 +148,10 @@ function AdminPapersPage() {
       const { error } = await supabase.from("papers").update({ status: s }).eq("id", id);
       if (error) throw error;
     },
-    onSuccess: () => { invalidate(); toast.success("Updated"); },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Updated");
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -136,7 +161,11 @@ function AdminPapersPage() {
       const { error } = await supabase.from("papers").delete().eq("id", p.id);
       if (error) throw error;
     },
-    onSuccess: () => { invalidate(); setConfirmDelete(null); toast.success("Deleted"); },
+    onSuccess: () => {
+      invalidate();
+      setConfirmDelete(null);
+      toast.success("Deleted");
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -146,7 +175,13 @@ function AdminPapersPage() {
         title="Previous Papers"
         description="Curate past exam papers per subject — searchable across every course."
         actions={
-          <Button size="sm" onClick={() => { setEditing(null); setOpen(true); }}>
+          <Button
+            size="sm"
+            onClick={() => {
+              setEditing(null);
+              setOpen(true);
+            }}
+          >
             <Plus className="mr-1.5 h-4 w-4" /> New paper
           </Button>
         }
@@ -163,31 +198,53 @@ function AdminPapersPage() {
           />
         </div>
         <Select value={subjectId} onValueChange={setSubjectId}>
-          <SelectTrigger className="h-9 w-48"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="h-9 w-48">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All subjects</SelectItem>
             {subjects.map((s) => (
-              <SelectItem key={s.id} value={s.id}>{s.code} · {s.title}</SelectItem>
+              <SelectItem key={s.id} value={s.id}>
+                {s.code} · {s.title}
+              </SelectItem>
             ))}
           </SelectContent>
         </Select>
         <Select value={examType} onValueChange={setExamType}>
-          <SelectTrigger className="h-9 w-32"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="h-9 w-32">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
-            {EXAM_TYPES.map((o) => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}
+            {EXAM_TYPES.map((o) => (
+              <SelectItem key={o.value} value={o.value}>
+                {o.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <Select value={year} onValueChange={setYear}>
-          <SelectTrigger className="h-9 w-24"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="h-9 w-24">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All years</SelectItem>
-            {years.map((y) => <SelectItem key={y} value={String(y)}>{y}</SelectItem>)}
+            {years.map((y) => (
+              <SelectItem key={y} value={String(y)}>
+                {y}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger className="h-9 w-36"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="h-9 w-36">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
-            {STATUSES.map((o) => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}
+            {STATUSES.map((o) => (
+              <SelectItem key={o.value} value={o.value}>
+                {o.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <div className="ml-auto text-xs text-muted-foreground">{total} papers</div>
@@ -198,13 +255,32 @@ function AdminPapersPage() {
       ) : items.length === 0 ? (
         <EmptyState
           icon={FileStack}
-          title={search || subjectId !== "all" || examType !== "all" || status !== "all" || year !== "all" ? "No matches" : "No previous papers yet"}
+          title={
+            search ||
+            subjectId !== "all" ||
+            examType !== "all" ||
+            status !== "all" ||
+            year !== "all"
+              ? "No matches"
+              : "No previous papers yet"
+          }
           description={
-            search || subjectId !== "all" || examType !== "all" || status !== "all" || year !== "all"
+            search ||
+            subjectId !== "all" ||
+            examType !== "all" ||
+            status !== "all" ||
+            year !== "all"
               ? "Try clearing filters or adjusting your search."
               : "Upload past exam papers so students can practice with real questions."
           }
-          primaryAction={{ label: "New paper", onClick: () => { setEditing(null); setOpen(true); }, icon: Plus }}
+          primaryAction={{
+            label: "New paper",
+            onClick: () => {
+              setEditing(null);
+              setOpen(true);
+            },
+            icon: Plus,
+          }}
         />
       ) : (
         <div className="overflow-hidden rounded-xl border border-border/70 bg-surface">
@@ -226,8 +302,17 @@ function AdminPapersPage() {
                 return (
                   <tr key={p.id} className="text-sm hover:bg-surface-muted/40">
                     <td className="px-3 py-2.5">
-                      <button type="button" onClick={() => { setEditing(p); setOpen(true); }} className="text-left">
-                        <span className="block font-medium text-foreground hover:text-primary">{p.title}</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditing(p);
+                          setOpen(true);
+                        }}
+                        className="text-left"
+                      >
+                        <span className="block font-medium text-foreground hover:text-primary">
+                          {p.title}
+                        </span>
                         {p.paper_number && (
                           <span className="text-xs text-muted-foreground">#{p.paper_number}</span>
                         )}
@@ -236,13 +321,19 @@ function AdminPapersPage() {
                     <td className="px-3 py-2.5 hidden md:table-cell text-muted-foreground">
                       {subj ? `${subj.code} · ${subj.title}` : "—"}
                     </td>
-                    <td className="px-3 py-2.5"><Badge variant="outline">{p.year}</Badge></td>
+                    <td className="px-3 py-2.5">
+                      <Badge variant="outline">{p.year}</Badge>
+                    </td>
                     <td className="px-3 py-2.5 hidden md:table-cell text-xs capitalize text-muted-foreground">
                       {p.exam_type.replace("_", " ")}
                     </td>
-                    <td className="px-3 py-2.5"><StatusBadge value={p.status} /></td>
+                    <td className="px-3 py-2.5">
+                      <StatusBadge value={p.status} />
+                    </td>
                     <td className="px-3 py-2.5 hidden lg:table-cell text-xs text-muted-foreground">
-                      {formatDistanceToNow(new Date(p.updated_at ?? p.created_at), { addSuffix: true })}
+                      {formatDistanceToNow(new Date(p.updated_at ?? p.created_at), {
+                        addSuffix: true,
+                      })}
                     </td>
                     <td className="px-3 py-2.5 text-right">
                       <DropdownMenu>
@@ -252,24 +343,38 @@ function AdminPapersPage() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => { setEditing(p); setOpen(true); }}>
+                          <DropdownMenuItem
+                            onClick={() => {
+                              setEditing(p);
+                              setOpen(true);
+                            }}
+                          >
                             <Pencil className="mr-2 h-3.5 w-3.5" /> Edit
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           {p.status !== "published" ? (
-                            <DropdownMenuItem onClick={() => updateStatus.mutate({ id: p.id, status: "published" })}>
+                            <DropdownMenuItem
+                              onClick={() => updateStatus.mutate({ id: p.id, status: "published" })}
+                            >
                               <CheckCircle2 className="mr-2 h-3.5 w-3.5" /> Publish
                             </DropdownMenuItem>
                           ) : (
-                            <DropdownMenuItem onClick={() => updateStatus.mutate({ id: p.id, status: "draft" })}>
+                            <DropdownMenuItem
+                              onClick={() => updateStatus.mutate({ id: p.id, status: "draft" })}
+                            >
                               <XCircle className="mr-2 h-3.5 w-3.5" /> Unpublish
                             </DropdownMenuItem>
                           )}
-                          <DropdownMenuItem onClick={() => updateStatus.mutate({ id: p.id, status: "archived" })}>
+                          <DropdownMenuItem
+                            onClick={() => updateStatus.mutate({ id: p.id, status: "archived" })}
+                          >
                             <Archive className="mr-2 h-3.5 w-3.5" /> Archive
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem className="text-destructive" onClick={() => setConfirmDelete(p)}>
+                          <DropdownMenuItem
+                            className="text-destructive"
+                            onClick={() => setConfirmDelete(p)}
+                          >
                             <Trash2 className="mr-2 h-3.5 w-3.5" /> Delete
                           </DropdownMenuItem>
                         </DropdownMenuContent>
@@ -305,7 +410,11 @@ function AdminPapersPage() {
 }
 
 function PaperDialog({
-  open, onOpenChange, editing, subjects, onSaved,
+  open,
+  onOpenChange,
+  editing,
+  subjects,
+  onSaved,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
@@ -347,10 +456,15 @@ function PaperDialog({
       if (file) {
         const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
         const path = `${subjectId}/${year}/${Date.now()}-${safe}`;
-        const { error: upErr } = await supabase.storage.from("papers").upload(path, file, { contentType: file.type });
+        const { error: upErr } = await supabase.storage
+          .from("papers")
+          .upload(path, file, { contentType: file.type });
         if (upErr) throw upErr;
-        if (editing?.file_path) await supabase.storage.from(editing.file_bucket ?? "papers").remove([editing.file_path]);
-        file_path = path; file_mime = file.type; file_size_bytes = file.size;
+        if (editing?.file_path)
+          await supabase.storage.from(editing.file_bucket ?? "papers").remove([editing.file_path]);
+        file_path = path;
+        file_mime = file.type;
+        file_size_bytes = file.size;
       }
       const payload = {
         subject_id: subjectId,
@@ -371,7 +485,9 @@ function PaperDialog({
         toast.success("Paper updated");
       } else {
         const { data: u } = await supabase.auth.getUser();
-        const { error } = await supabase.from("papers").insert({ ...payload, created_by: u.user?.id });
+        const { error } = await supabase
+          .from("papers")
+          .insert({ ...payload, created_by: u.user?.id });
         if (error) throw error;
         toast.success("Paper added");
       }
@@ -387,29 +503,50 @@ function PaperDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
-        <DialogHeader><DialogTitle>{editing ? "Edit paper" : "New paper"}</DialogTitle></DialogHeader>
+        <DialogHeader>
+          <DialogTitle>{editing ? "Edit paper" : "New paper"}</DialogTitle>
+        </DialogHeader>
         <div className="grid gap-4">
           <div>
             <Label>Subject</Label>
             <Select value={subjectId} onValueChange={setSubjectId}>
-              <SelectTrigger className="mt-1"><SelectValue placeholder="Select subject" /></SelectTrigger>
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Select subject" />
+              </SelectTrigger>
               <SelectContent>
                 {subjects.map((s) => (
-                  <SelectItem key={s.id} value={s.id}>{s.code} · {s.title}</SelectItem>
+                  <SelectItem key={s.id} value={s.id}>
+                    {s.code} · {s.title}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
-          <div><Label>Title</Label>
-            <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="e.g. End Semester Examination" />
+          <div>
+            <Label>Title</Label>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="e.g. End Semester Examination"
+            />
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
-            <div><Label>Year</Label>
-              <Input type="number" min={1990} max={2100} value={year} onChange={(e) => setYear(Number(e.target.value))} />
+            <div>
+              <Label>Year</Label>
+              <Input
+                type="number"
+                min={1990}
+                max={2100}
+                value={year}
+                onChange={(e) => setYear(Number(e.target.value))}
+              />
             </div>
-            <div><Label>Exam type</Label>
+            <div>
+              <Label>Exam type</Label>
               <Select value={examType} onValueChange={setExamType}>
-                <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
+                <SelectTrigger className="mt-1">
+                  <SelectValue />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="end_sem">End semester</SelectItem>
                   <SelectItem value="mid_sem">Mid semester</SelectItem>
@@ -419,16 +556,29 @@ function PaperDialog({
                 </SelectContent>
               </Select>
             </div>
-            <div><Label>Paper #</Label>
-              <Input value={paperNumber} onChange={(e) => setPaperNumber(e.target.value)} placeholder="optional" />
+            <div>
+              <Label>Paper #</Label>
+              <Input
+                value={paperNumber}
+                onChange={(e) => setPaperNumber(e.target.value)}
+                placeholder="optional"
+              />
             </div>
           </div>
-          <div><Label>Description</Label>
-            <Textarea rows={2} value={description} onChange={(e) => setDescription(e.target.value)} />
+          <div>
+            <Label>Description</Label>
+            <Textarea
+              rows={2}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
-          <div><Label>Status</Label>
+          <div>
+            <Label>Status</Label>
             <Select value={status} onValueChange={setStatus}>
-              <SelectTrigger className="mt-1"><SelectValue /></SelectTrigger>
+              <SelectTrigger className="mt-1">
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="draft">Draft</SelectItem>
                 <SelectItem value="published">Published</SelectItem>
@@ -436,15 +586,29 @@ function PaperDialog({
               </SelectContent>
             </Select>
           </div>
-          <div><Label>PDF {editing?.file_path && <span className="text-xs text-muted-foreground">(replaces existing)</span>}</Label>
-            <Input type="file" accept="application/pdf" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+          <div>
+            <Label>
+              PDF{" "}
+              {editing?.file_path && (
+                <span className="text-xs text-muted-foreground">(replaces existing)</span>
+              )}
+            </Label>
+            <Input
+              type="file"
+              accept="application/pdf"
+              onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            />
             {editing?.file_path && !file && (
-              <p className="mt-1 text-xs text-muted-foreground">Current: {editing.file_path.split("/").pop()}</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Current: {editing.file_path.split("/").pop()}
+              </p>
             )}
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
+          <Button variant="outline" onClick={() => onOpenChange(false)}>
+            Cancel
+          </Button>
           <Button onClick={save} disabled={busy}>
             <Upload className="mr-2 h-4 w-4" /> {busy ? "Saving…" : "Save paper"}
           </Button>

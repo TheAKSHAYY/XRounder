@@ -18,11 +18,7 @@ export function PageContainer({
   className?: string;
 }) {
   const max =
-    width === "narrow"
-      ? "max-w-4xl"
-      : width === "wide"
-        ? "max-w-screen-2xl"
-        : "max-w-7xl";
+    width === "narrow" ? "max-w-4xl" : width === "wide" ? "max-w-screen-2xl" : "max-w-7xl";
   return (
     <div className={cn("mx-auto w-full px-4 py-6 sm:px-6 sm:py-8 lg:px-8", max, className)}>
       {children}

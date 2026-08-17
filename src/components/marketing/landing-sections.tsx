@@ -319,7 +319,10 @@ export function TrustBar() {
 
 export function Features() {
   return (
-    <section id="features" className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28">
+    <section
+      id="features"
+      className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Everything you need"
@@ -463,7 +466,10 @@ export function Journey() {
     },
   ];
   return (
-    <section id="journey" className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28">
+    <section
+      id="journey"
+      className="scroll-mt-24 border-b border-border/60 py-14 sm:py-24 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Your learning journey"

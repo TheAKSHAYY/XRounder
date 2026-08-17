@@ -48,9 +48,7 @@ export function StatPill({
 export function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="mx-auto max-w-2xl text-center">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-        {eyebrow}
-      </div>
+      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{eyebrow}</div>
       <h2 className="mt-2 font-display text-3xl font-semibold text-foreground sm:text-4xl">
         {title}
       </h2>
@@ -58,7 +56,15 @@ export function SectionHeading({ eyebrow, title }: { eyebrow: string; title: str
   );
 }
 
-export function InfoCard({ title, body, className }: { title: string; body: string; className?: string }) {
+export function InfoCard({
+  title,
+  body,
+  className,
+}: {
+  title: string;
+  body: string;
+  className?: string;
+}) {
   return (
     <div className={"rounded-2xl border border-border bg-surface p-6 " + (className || "")}>
       <h3 className="font-display text-base font-semibold text-foreground">{title}</h3>
@@ -98,8 +104,7 @@ export function HeroSection({
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+            backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
             backgroundSize: "22px 22px",
           }}
         />
@@ -194,11 +199,7 @@ export function HeroSection({
           <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-surface p-2 shadow-2xl">
             <div className="aspect-square w-full overflow-hidden rounded-[1.6rem] bg-muted">
               {profile.photo_url ? (
-                <img
-                  src={profile.photo_url}
-                  alt={name}
-                  className="h-full w-full object-cover"
-                />
+                <img src={profile.photo_url} alt={name} className="h-full w-full object-cover" />
               ) : (
                 <Avatar className="h-full w-full rounded-[1.6rem]">
                   <AvatarFallback className="h-full w-full rounded-[1.6rem] bg-primary/10 font-display text-7xl text-primary">
@@ -352,9 +353,7 @@ export function ProjectGridSection({ projects }: { projects: Project[] }) {
                   {p.name}
                 </h3>
                 {p.description && (
-                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                    {p.description}
-                  </p>
+                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.description}</p>
                 )}
                 {p.tech_stack && p.tech_stack.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-1.5">
@@ -469,13 +468,9 @@ export function AchievementsSection({ achievements }: { achievements: Achievemen
                 <div className="font-display text-base font-semibold text-foreground">
                   {a.title}
                 </div>
-                {a.issuer && (
-                  <div className="text-xs text-muted-foreground">{a.issuer}</div>
-                )}
+                {a.issuer && <div className="text-xs text-muted-foreground">{a.issuer}</div>}
                 {a.description && (
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
-                    {a.description}
-                  </p>
+                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{a.description}</p>
                 )}
               </div>
             </a>
@@ -533,7 +528,9 @@ export function ContactSection({ profile, socials }: { profile: Profile; socials
         <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
           Open to collaborations, feedback, and a friendly hello.
         </p>
-        <div className="mt-10"><ContactForm /></div>
+        <div className="mt-10">
+          <ContactForm />
+        </div>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
           {profile.email && (
             <Button asChild variant="outline" size="sm">

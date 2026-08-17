@@ -163,10 +163,7 @@ export function PersonalInfoCard({
 
         <div className="min-w-0 space-y-2">
           <Label htmlFor="gender">Gender</Label>
-          <Select
-            value={form.gender || undefined}
-            onValueChange={(v) => onChange({ gender: v })}
-          >
+          <Select value={form.gender || undefined} onValueChange={(v) => onChange({ gender: v })}>
             <SelectTrigger id="gender">
               <SelectValue placeholder="Prefer not to say" />
             </SelectTrigger>

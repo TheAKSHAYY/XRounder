@@ -2,27 +2,65 @@ import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { FileText, FileType, Video, Link as LinkIcon, ClipboardList, FileImage, UploadCloud } from "lucide-react";
+import {
+  FileText,
+  FileType,
+  Video,
+  Link as LinkIcon,
+  ClipboardList,
+  FileImage,
+  UploadCloud,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import {
-  createContent, updateContent, listSubjectsFlat,
-  type ContentItem, type ContentType,
+  createContent,
+  updateContent,
+  listSubjectsFlat,
+  type ContentItem,
+  type ContentType,
 } from "@/lib/content.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-const TYPE_META: Record<ContentType, { label: string; icon: LucideIcon; accept?: string; needsFile: boolean; needsUrl: boolean }> = {
-  note: { label: "Note", icon: FileText, accept: ".pdf,.doc,.docx,.md,.txt", needsFile: false, needsUrl: false },
+const TYPE_META: Record<
+  ContentType,
+  { label: string; icon: LucideIcon; accept?: string; needsFile: boolean; needsUrl: boolean }
+> = {
+  note: {
+    label: "Note",
+    icon: FileText,
+    accept: ".pdf,.doc,.docx,.md,.txt",
+    needsFile: false,
+    needsUrl: false,
+  },
   pdf: { label: "PDF", icon: FileType, accept: ".pdf", needsFile: true, needsUrl: false },
-  ppt: { label: "Slides", icon: FileImage, accept: ".ppt,.pptx,.pdf", needsFile: true, needsUrl: false },
+  ppt: {
+    label: "Slides",
+    icon: FileImage,
+    accept: ".ppt,.pptx,.pdf",
+    needsFile: true,
+    needsUrl: false,
+  },
   video: { label: "Video", icon: Video, needsFile: false, needsUrl: true },
-  assignment: { label: "Assignment", icon: ClipboardList, accept: ".pdf,.doc,.docx", needsFile: false, needsUrl: false },
+  assignment: {
+    label: "Assignment",
+    icon: ClipboardList,
+    accept: ".pdf,.doc,.docx",
+    needsFile: false,
+    needsUrl: false,
+  },
   link: { label: "External link", icon: LinkIcon, needsFile: false, needsUrl: true },
 };
 
@@ -75,7 +113,9 @@ export function ContentEditor({
         setBusy(true);
         const bucket = type === "video" ? "media" : "notes";
         const path = `content/${type}/${Date.now()}-${file.name}`;
-        const { error: upErr } = await supabase.storage.from(bucket).upload(path, file, { upsert: false });
+        const { error: upErr } = await supabase.storage
+          .from(bucket)
+          .upload(path, file, { upsert: false });
         if (upErr) throw new Error(upErr.message);
         file_bucket = bucket;
         file_path = path;
@@ -83,7 +123,10 @@ export function ContentEditor({
         file_size_bytes = file.size;
       }
 
-      const tags = tagsText.split(",").map((t) => t.trim()).filter(Boolean);
+      const tags = tagsText
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
       const payload = {
         type,
         title: title.trim(),
@@ -115,7 +158,10 @@ export function ContentEditor({
       setBusy(false);
       if (!contentId) onSaved?.(id);
     },
-    onError: (e: Error) => { setBusy(false); toast.error(e.message); },
+    onError: (e: Error) => {
+      setBusy(false);
+      toast.error(e.message);
+    },
   });
 
   return (
@@ -175,11 +221,14 @@ export function ContentEditor({
           <div>
             <Label>Subject</Label>
             <Select value={subjectId} onValueChange={setSubjectId}>
-              <SelectTrigger className="mt-1.5"><SelectValue placeholder="Choose subject" /></SelectTrigger>
+              <SelectTrigger className="mt-1.5">
+                <SelectValue placeholder="Choose subject" />
+              </SelectTrigger>
               <SelectContent>
                 {(subjects ?? []).map((s: unknown) => {
                   const row = s as {
-                    id: string; title: string;
+                    id: string;
+                    title: string;
                     semester?: { number?: number; course?: { title?: string } | null } | null;
                   };
                   return (
@@ -194,7 +243,9 @@ export function ContentEditor({
           <div>
             <Label>Visibility</Label>
             <Select value={visibility} onValueChange={(v) => setVisibility(v as typeof visibility)}>
-              <SelectTrigger className="mt-1.5"><SelectValue /></SelectTrigger>
+              <SelectTrigger className="mt-1.5">
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 <SelectItem value="public">Public (anyone)</SelectItem>
                 <SelectItem value="students">Students only</SelectItem>

@@ -5,8 +5,21 @@ import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { z } from "zod";
 import {
-  FileText, Search, Plus, Trash2, Copy, Archive, CheckCircle2, XCircle,
-  MoreHorizontal, FileType, Video, Link as LinkIcon, ClipboardList, FileImage, X,
+  FileText,
+  Search,
+  Plus,
+  Trash2,
+  Copy,
+  Archive,
+  CheckCircle2,
+  XCircle,
+  MoreHorizontal,
+  FileType,
+  Video,
+  Link as LinkIcon,
+  ClipboardList,
+  FileImage,
+  X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -30,10 +43,18 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDistanceToNow } from "date-fns";
 
@@ -46,7 +67,6 @@ export const Route = createFileRoute("/_authenticated/admin/content/")({
   validateSearch: contentSearchSchema,
   component: ContentPage,
 });
-
 
 const TYPE_ICON: Record<ContentType, LucideIcon> = {
   note: FileText,
@@ -95,13 +115,17 @@ function ContentPage() {
   const [confirmDelete, setConfirmDelete] = useState(false);
 
   // Sync URL param → local state when someone deep-links from Subjects page.
-  useEffect(() => { setSubjectId(subjectIdParam); setPage(1); }, [subjectIdParam]);
+  useEffect(() => {
+    setSubjectId(subjectIdParam);
+    setPage(1);
+  }, [subjectIdParam]);
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "content", { type, status, search, subjectId, page }],
-    queryFn: () => list({
-      data: { type, status, subjectId, search, page, pageSize, sort: "created_at", dir: "desc" },
-    }),
+    queryFn: () =>
+      list({
+        data: { type, status, subjectId, search, page, pageSize, sort: "created_at", dir: "desc" },
+      }),
   });
 
   const { data: subjectOptions } = useQuery({
@@ -111,8 +135,9 @@ function ContentPage() {
   });
   const activeSubject = useMemo(() => {
     if (!subjectId) return null;
-    const found = (subjectOptions as Array<{ id: string; title: string; code: string | null }> | undefined)
-      ?.find((s) => s.id === subjectId);
+    const found = (
+      subjectOptions as Array<{ id: string; title: string; code: string | null }> | undefined
+    )?.find((s) => s.id === subjectId);
     return found ?? null;
   }, [subjectId, subjectOptions]);
 
@@ -120,22 +145,33 @@ function ContentPage() {
   const total = data?.total ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
-
   const invalidate = () => qc.invalidateQueries({ queryKey: ["admin", "content"] });
 
   const bulkMutation = useMutation({
     mutationFn: bulk,
-    onSuccess: () => { invalidate(); setSelected(new Set()); toast.success("Updated"); },
+    onSuccess: () => {
+      invalidate();
+      setSelected(new Set());
+      toast.success("Updated");
+    },
     onError: (e: Error) => toast.error(e.message),
   });
   const deleteMutation = useMutation({
     mutationFn: del,
-    onSuccess: () => { invalidate(); setSelected(new Set()); setConfirmDelete(false); toast.success("Deleted"); },
+    onSuccess: () => {
+      invalidate();
+      setSelected(new Set());
+      setConfirmDelete(false);
+      toast.success("Deleted");
+    },
     onError: (e: Error) => toast.error(e.message),
   });
   const duplicateMutation = useMutation({
     mutationFn: dup,
-    onSuccess: () => { invalidate(); toast.success("Duplicated"); },
+    onSuccess: () => {
+      invalidate();
+      toast.success("Duplicated");
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -146,7 +182,8 @@ function ContentPage() {
   };
   const toggleOne = (id: string) => {
     const next = new Set(selected);
-    if (next.has(id)) next.delete(id); else next.add(id);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
     setSelected(next);
   };
 
@@ -166,9 +203,13 @@ function ContentPage() {
                 try {
                   const res = await migrateLegacy();
                   if (res.errors?.length) {
-                    toast.error(`Imported ${res.migrated}, failed ${res.errors.length}: ${res.errors[0]}`);
+                    toast.error(
+                      `Imported ${res.migrated}, failed ${res.errors.length}: ${res.errors[0]}`,
+                    );
                   } else {
-                    toast.success(`Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`);
+                    toast.success(
+                      `Imported ${res.migrated} legacy note(s)${res.skipped ? `, skipped ${res.skipped}` : ""}`,
+                    );
                   }
                   invalidate();
                 } catch (e) {
@@ -179,7 +220,9 @@ function ContentPage() {
               Import legacy notes
             </Button>
             <Button asChild size="sm">
-              <Link to="/admin/content/new"><Plus className="mr-1.5 h-4 w-4" /> New content</Link>
+              <Link to="/admin/content/new">
+                <Plus className="mr-1.5 h-4 w-4" /> New content
+              </Link>
             </Button>
           </>
         }
@@ -190,21 +233,48 @@ function ContentPage() {
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
-            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder="Search title…"
             className="h-9 pl-8"
           />
         </div>
-        <Select value={type} onValueChange={(v) => { setType(v); setPage(1); }}>
-          <SelectTrigger className="h-9 w-36"><SelectValue /></SelectTrigger>
+        <Select
+          value={type}
+          onValueChange={(v) => {
+            setType(v);
+            setPage(1);
+          }}
+        >
+          <SelectTrigger className="h-9 w-36">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
-            {TYPE_OPTIONS.map((o) => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}
+            {TYPE_OPTIONS.map((o) => (
+              <SelectItem key={o.value} value={o.value}>
+                {o.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
-        <Select value={status} onValueChange={(v) => { setStatus(v); setPage(1); }}>
-          <SelectTrigger className="h-9 w-36"><SelectValue /></SelectTrigger>
+        <Select
+          value={status}
+          onValueChange={(v) => {
+            setStatus(v);
+            setPage(1);
+          }}
+        >
+          <SelectTrigger className="h-9 w-36">
+            <SelectValue />
+          </SelectTrigger>
           <SelectContent>
-            {STATUS_OPTIONS.map((o) => <SelectItem key={o.value} value={o.value}>{o.label}</SelectItem>)}
+            {STATUS_OPTIONS.map((o) => (
+              <SelectItem key={o.value} value={o.value}>
+                {o.label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <div className="ml-auto text-xs text-muted-foreground">{total} items</div>
@@ -214,7 +284,9 @@ function ContentPage() {
         <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 py-1 pl-3 pr-1 text-xs text-primary">
           <span className="font-medium">Subject: {activeSubject.title}</span>
           {activeSubject.code && (
-            <span className="rounded bg-primary/10 px-1.5 font-mono text-[10px]">{activeSubject.code}</span>
+            <span className="rounded bg-primary/10 px-1.5 font-mono text-[10px]">
+              {activeSubject.code}
+            </span>
           )}
           <button
             type="button"
@@ -227,23 +299,47 @@ function ContentPage() {
         </div>
       )}
 
-
       {selectedIds.length > 0 && (
         <div className="mb-3 flex flex-wrap items-center gap-2 rounded-lg border border-primary/40 bg-primary/5 px-3 py-2 text-sm">
           <span className="font-medium">{selectedIds.length} selected</span>
-          <Button size="sm" variant="outline" onClick={() => bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "published" } } })}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() =>
+              bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "published" } } })
+            }
+          >
             <CheckCircle2 className="mr-1.5 h-3.5 w-3.5" /> Publish
           </Button>
-          <Button size="sm" variant="outline" onClick={() => bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "draft" } } })}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() =>
+              bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "draft" } } })
+            }
+          >
             <XCircle className="mr-1.5 h-3.5 w-3.5" /> Unpublish
           </Button>
-          <Button size="sm" variant="outline" onClick={() => bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "archived" } } })}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() =>
+              bulkMutation.mutate({ data: { ids: selectedIds, patch: { status: "archived" } } })
+            }
+          >
             <Archive className="mr-1.5 h-3.5 w-3.5" /> Archive
           </Button>
-          <Button size="sm" variant="outline" className="text-destructive hover:text-destructive" onClick={() => setConfirmDelete(true)}>
+          <Button
+            size="sm"
+            variant="outline"
+            className="text-destructive hover:text-destructive"
+            onClick={() => setConfirmDelete(true)}
+          >
             <Trash2 className="mr-1.5 h-3.5 w-3.5" /> Delete
           </Button>
-          <Button size="sm" variant="ghost" onClick={() => setSelected(new Set())}>Clear</Button>
+          <Button size="sm" variant="ghost" onClick={() => setSelected(new Set())}>
+            Clear
+          </Button>
         </div>
       )}
 
@@ -266,7 +362,11 @@ function ContentPage() {
             <thead className="border-b border-border/70 bg-surface-muted text-left text-xs font-medium uppercase tracking-wider text-muted-foreground">
               <tr>
                 <th className="w-10 px-3 py-2.5">
-                  <Checkbox checked={allChecked} onCheckedChange={toggleAll} aria-label="Select all" />
+                  <Checkbox
+                    checked={allChecked}
+                    onCheckedChange={toggleAll}
+                    aria-label="Select all"
+                  />
                 </th>
                 <th className="px-3 py-2.5">Title</th>
                 <th className="px-3 py-2.5 hidden md:table-cell">Subject</th>
@@ -290,22 +390,30 @@ function ContentPage() {
                     <td className="px-3 py-2.5">
                       <button
                         type="button"
-                        onClick={() => navigate({ to: "/admin/content/$id", params: { id: row.id } })}
+                        onClick={() =>
+                          navigate({ to: "/admin/content/$id", params: { id: row.id } })
+                        }
                         className="flex items-start gap-2.5 text-left"
                       >
                         <span className="mt-0.5 rounded-md bg-primary/10 p-1 text-primary">
                           <Icon className="h-3.5 w-3.5" />
                         </span>
                         <span className="min-w-0">
-                          <span className="block truncate font-medium text-foreground hover:text-primary">{row.title}</span>
-                          <span className="text-xs capitalize text-muted-foreground">{row.type}</span>
+                          <span className="block truncate font-medium text-foreground hover:text-primary">
+                            {row.title}
+                          </span>
+                          <span className="text-xs capitalize text-muted-foreground">
+                            {row.type}
+                          </span>
                         </span>
                       </button>
                     </td>
                     <td className="px-3 py-2.5 hidden md:table-cell text-muted-foreground">
                       {row.subject?.title ?? "—"}
                     </td>
-                    <td className="px-3 py-2.5"><StatusBadge value={row.status} /></td>
+                    <td className="px-3 py-2.5">
+                      <StatusBadge value={row.status} />
+                    </td>
                     <td className="px-3 py-2.5 hidden lg:table-cell text-xs text-muted-foreground">
                       {formatDistanceToNow(new Date(row.updated_at), { addSuffix: true })}
                     </td>
@@ -317,29 +425,56 @@ function ContentPage() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => navigate({ to: "/admin/content/$id", params: { id: row.id } })}>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              navigate({ to: "/admin/content/$id", params: { id: row.id } })
+                            }
+                          >
                             Edit
                           </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => duplicateMutation.mutate({ data: { id: row.id } })}>
+                          <DropdownMenuItem
+                            onClick={() => duplicateMutation.mutate({ data: { id: row.id } })}
+                          >
                             <Copy className="mr-2 h-3.5 w-3.5" /> Duplicate
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           {row.status !== "published" ? (
-                            <DropdownMenuItem onClick={() => bulkMutation.mutate({ data: { ids: [row.id], patch: { status: "published" } } })}>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                bulkMutation.mutate({
+                                  data: { ids: [row.id], patch: { status: "published" } },
+                                })
+                              }
+                            >
                               Publish
                             </DropdownMenuItem>
                           ) : (
-                            <DropdownMenuItem onClick={() => bulkMutation.mutate({ data: { ids: [row.id], patch: { status: "draft" } } })}>
+                            <DropdownMenuItem
+                              onClick={() =>
+                                bulkMutation.mutate({
+                                  data: { ids: [row.id], patch: { status: "draft" } },
+                                })
+                              }
+                            >
                               Unpublish
                             </DropdownMenuItem>
                           )}
-                          <DropdownMenuItem onClick={() => bulkMutation.mutate({ data: { ids: [row.id], patch: { status: "archived" } } })}>
+                          <DropdownMenuItem
+                            onClick={() =>
+                              bulkMutation.mutate({
+                                data: { ids: [row.id], patch: { status: "archived" } },
+                              })
+                            }
+                          >
                             Archive
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem
                             className="text-destructive"
-                            onClick={() => { setSelected(new Set([row.id])); setConfirmDelete(true); }}
+                            onClick={() => {
+                              setSelected(new Set([row.id]));
+                              setConfirmDelete(true);
+                            }}
                           >
                             <Trash2 className="mr-2 h-3.5 w-3.5" /> Delete
                           </DropdownMenuItem>
@@ -356,11 +491,23 @@ function ContentPage() {
 
       {totalPages > 1 && (
         <div className="mt-4 flex items-center justify-end gap-2">
-          <Button size="sm" variant="outline" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={page <= 1}
+            onClick={() => setPage((p) => p - 1)}
+          >
             Previous
           </Button>
-          <div className="text-xs text-muted-foreground">Page {page} of {totalPages}</div>
-          <Button size="sm" variant="outline" disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>
+          <div className="text-xs text-muted-foreground">
+            Page {page} of {totalPages}
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            disabled={page >= totalPages}
+            onClick={() => setPage((p) => p + 1)}
+          >
             Next
           </Button>
         </div>

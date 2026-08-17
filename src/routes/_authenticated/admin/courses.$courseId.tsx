@@ -2,7 +2,22 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { ArrowLeft, Plus, Trash2, Layers, BookText, ListTree, Pencil, FileText, FileQuestion, ClipboardList, ChevronDown, ChevronRight, ArrowUp, ArrowDown } from "lucide-react";
+import {
+  ArrowLeft,
+  Plus,
+  Trash2,
+  Layers,
+  BookText,
+  ListTree,
+  Pencil,
+  FileText,
+  FileQuestion,
+  ClipboardList,
+  ChevronDown,
+  ChevronRight,
+  ArrowUp,
+  ArrowDown,
+} from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { reorderUnits } from "@/lib/announcements.functions";
 import { PageContainer } from "@/components/admin/ui/page-container";
@@ -48,7 +63,11 @@ function CourseTreePage() {
   const courseQuery = useQuery({
     queryKey: ["admin", "course", courseId],
     queryFn: async () => {
-      const { data, error } = await supabase.from("courses").select("*").eq("id", courseId).single();
+      const { data, error } = await supabase
+        .from("courses")
+        .select("*")
+        .eq("id", courseId)
+        .single();
       if (error) throw error;
       return data;
     },
@@ -94,7 +113,9 @@ function CourseTreePage() {
           <div className="flex items-center gap-3">
             <Layers className="h-6 w-6 text-primary" />
             <div>
-              <h1 className="font-display text-3xl font-semibold text-foreground">{courseQuery.data.title}</h1>
+              <h1 className="font-display text-3xl font-semibold text-foreground">
+                {courseQuery.data.title}
+              </h1>
               <p className="text-sm text-muted-foreground">
                 <span className="font-mono uppercase">{courseQuery.data.code}</span> ·{" "}
                 {courseQuery.data.total_semesters} semesters
@@ -108,13 +129,19 @@ function CourseTreePage() {
           {semestersQuery.data && semestersQuery.data.length === 0 && (
             <div className="rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
               <p className="font-display text-lg text-foreground">No semesters yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">Add the first semester to begin structuring this course.</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Add the first semester to begin structuring this course.
+              </p>
             </div>
           )}
 
           <Accordion type="multiple" className="space-y-3">
             {semestersQuery.data?.map((sem) => (
-              <SemesterCard key={sem.id} sem={{ ...sem, status: sem.status as Status }} onChange={invalidateAll} />
+              <SemesterCard
+                key={sem.id}
+                sem={{ ...sem, status: sem.status as Status }}
+                onChange={invalidateAll}
+              />
             ))}
           </Accordion>
         </section>
@@ -187,7 +214,9 @@ function SemesterCard({
           </div>
           <div className="text-left">
             <div className="font-display text-base font-semibold text-foreground">{sem.title}</div>
-            {sem.description && <div className="text-xs text-muted-foreground">{sem.description}</div>}
+            {sem.description && (
+              <div className="text-xs text-muted-foreground">{sem.description}</div>
+            )}
           </div>
           <Badge className="ml-auto" variant={sem.status === "published" ? "default" : "secondary"}>
             {sem.status}
@@ -208,7 +237,11 @@ function SemesterCard({
               size="sm"
               variant="ghost"
               onClick={() => {
-                if (confirm(`Delete semester ${sem.number}? Subjects and units inside will also be deleted.`)) {
+                if (
+                  confirm(
+                    `Delete semester ${sem.number}? Subjects and units inside will also be deleted.`,
+                  )
+                ) {
                   removeSem.mutate();
                 }
               }}
@@ -310,9 +343,14 @@ function SubjectRow({
         <BookText className="h-4 w-4 text-primary" />
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{sub.code}</span>
+            <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              {sub.code}
+            </span>
             <span className="font-display text-sm font-semibold text-foreground">{sub.title}</span>
-            <Badge variant={sub.status === "published" ? "default" : "secondary"} className="text-[10px]">
+            <Badge
+              variant={sub.status === "published" ? "default" : "secondary"}
+              className="text-[10px]"
+            >
               {sub.status}
             </Badge>
           </div>
@@ -342,8 +380,12 @@ function SubjectRow({
       {expanded && (
         <div className="space-y-4 border-t border-border px-4 py-3">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Units</p>
-            {unitsQuery.isLoading && <p className="text-xs text-muted-foreground">Loading units…</p>}
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Units
+            </p>
+            {unitsQuery.isLoading && (
+              <p className="text-xs text-muted-foreground">Loading units…</p>
+            )}
             {unitsQuery.data?.length === 0 && (
               <p className="text-xs text-muted-foreground">No units yet.</p>
             )}
@@ -356,7 +398,9 @@ function SubjectRow({
                   index={i}
                   total={unitsQuery.data!.length}
                   allUnitIds={unitsQuery.data!.map((x) => x.id)}
-                  onDelete={() => { if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id); }}
+                  onDelete={() => {
+                    if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id);
+                  }}
                 />
               ))}
             </ul>
@@ -471,11 +515,19 @@ function SemesterDialog({
           <div className="grid grid-cols-3 gap-3">
             <div className="grid gap-1.5">
               <Label>Number</Label>
-              <Input type="number" value={number} onChange={(e) => setNumber(Number(e.target.value))} />
+              <Input
+                type="number"
+                value={number}
+                onChange={(e) => setNumber(Number(e.target.value))}
+              />
             </div>
             <div className="col-span-2 grid gap-1.5">
               <Label>Title</Label>
-              <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Semester I" />
+              <Input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Semester I"
+              />
             </div>
           </div>
           <div className="grid gap-1.5">
@@ -537,7 +589,12 @@ function SubjectDialog({
         semester_id: semesterId,
         code: code.trim().toUpperCase(),
         title: title.trim(),
-        slug: slug.trim() || code.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-"),
+        slug:
+          slug.trim() ||
+          code
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9-]+/g, "-"),
         credits,
         status,
       });
@@ -573,7 +630,11 @@ function SubjectDialog({
           </div>
           <div className="grid gap-1.5">
             <Label>Title</Label>
-            <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Programming in C" />
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Programming in C"
+            />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1.5">
@@ -603,7 +664,10 @@ function SubjectDialog({
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button onClick={() => mutation.mutate()} disabled={!code || !title || mutation.isPending}>
+          <Button
+            onClick={() => mutation.mutate()}
+            disabled={!code || !title || mutation.isPending}
+          >
             {mutation.isPending ? "Saving…" : "Add"}
           </Button>
         </DialogFooter>
@@ -667,11 +731,19 @@ function UnitDialog({
           <div className="grid grid-cols-3 gap-3">
             <div className="grid gap-1.5">
               <Label>Number</Label>
-              <Input type="number" value={number} onChange={(e) => setNumber(Number(e.target.value))} />
+              <Input
+                type="number"
+                value={number}
+                onChange={(e) => setNumber(Number(e.target.value))}
+              />
             </div>
             <div className="col-span-2 grid gap-1.5">
               <Label>Title</Label>
-              <Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Introduction to C" />
+              <Input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Introduction to C"
+              />
             </div>
           </div>
           <div className="grid gap-1.5">
@@ -733,7 +805,12 @@ function UnitRow({
     queryKey: ["admin", "unit-notes", unit.id],
     enabled: open,
     queryFn: async () => {
-      const { data, error } = await supabase.from("notes").select("id, title, status").eq("unit_id", unit.id).is("deleted_at", null).order("created_at");
+      const { data, error } = await supabase
+        .from("notes")
+        .select("id, title, status")
+        .eq("unit_id", unit.id)
+        .is("deleted_at", null)
+        .order("created_at");
       if (error) throw error;
       return data;
     },
@@ -743,7 +820,12 @@ function UnitRow({
     queryKey: ["admin", "unit-quizzes", unit.id],
     enabled: open,
     queryFn: async () => {
-      const { data, error } = await supabase.from("quizzes").select("id, title, status").eq("unit_id", unit.id).is("deleted_at", null).order("created_at");
+      const { data, error } = await supabase
+        .from("quizzes")
+        .select("id, title, status")
+        .eq("unit_id", unit.id)
+        .is("deleted_at", null)
+        .order("created_at");
       if (error) throw error;
       return data;
     },
@@ -754,7 +836,10 @@ function UnitRow({
       const { error } = await supabase.from("notes").delete().eq("id", id);
       if (error) throw error;
     },
-    onSuccess: () => { toast.success("Note deleted"); qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unit.id] }); },
+    onSuccess: () => {
+      toast.success("Note deleted");
+      qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unit.id] });
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -763,19 +848,34 @@ function UnitRow({
       const { error } = await supabase.from("quizzes").delete().eq("id", id);
       if (error) throw error;
     },
-    onSuccess: () => { toast.success("Quiz deleted"); qc.invalidateQueries({ queryKey: ["admin", "unit-quizzes", unit.id] }); },
+    onSuccess: () => {
+      toast.success("Quiz deleted");
+      qc.invalidateQueries({ queryKey: ["admin", "unit-quizzes", unit.id] });
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
   return (
     <li className="rounded-md bg-surface">
       <div className="flex items-center gap-3 px-3 py-2 text-sm">
-        <button type="button" onClick={() => setOpen((v) => !v)} className="grid h-6 w-6 place-items-center rounded hover:bg-primary/10" aria-label="Toggle contents">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="grid h-6 w-6 place-items-center rounded hover:bg-primary/10"
+          aria-label="Toggle contents"
+        >
           {open ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
         </button>
-        <span className="grid h-6 w-6 place-items-center rounded bg-primary/10 text-xs font-semibold text-primary">{unit.number}</span>
+        <span className="grid h-6 w-6 place-items-center rounded bg-primary/10 text-xs font-semibold text-primary">
+          {unit.number}
+        </span>
         <span className="flex-1 text-foreground">{unit.title}</span>
-        <Badge variant={unit.status === "published" ? "default" : "secondary"} className="text-[10px]">{unit.status}</Badge>
+        <Badge
+          variant={unit.status === "published" ? "default" : "secondary"}
+          className="text-[10px]"
+        >
+          {unit.status}
+        </Badge>
         <Button
           size="sm"
           variant="ghost"
@@ -815,13 +915,30 @@ function UnitRow({
               <FileText className="h-3 w-3" /> Notes
             </p>
             {notesQuery.isLoading && <p className="text-xs text-muted-foreground">Loading…</p>}
-            {notesQuery.data?.length === 0 && <p className="text-xs text-muted-foreground">No notes.</p>}
+            {notesQuery.data?.length === 0 && (
+              <p className="text-xs text-muted-foreground">No notes.</p>
+            )}
             <ul className="space-y-1">
               {notesQuery.data?.map((n) => (
-                <li key={n.id} className="flex items-center gap-2 rounded bg-background px-2 py-1.5 text-xs">
+                <li
+                  key={n.id}
+                  className="flex items-center gap-2 rounded bg-background px-2 py-1.5 text-xs"
+                >
                   <span className="flex-1 truncate">{n.title}</span>
-                  <Badge variant={n.status === "published" ? "default" : "secondary"} className="text-[10px]">{n.status}</Badge>
-                  <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => { if (confirm(`Delete note "${n.title}"?`)) removeNote.mutate(n.id); }}>
+                  <Badge
+                    variant={n.status === "published" ? "default" : "secondary"}
+                    className="text-[10px]"
+                  >
+                    {n.status}
+                  </Badge>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0"
+                    onClick={() => {
+                      if (confirm(`Delete note "${n.title}"?`)) removeNote.mutate(n.id);
+                    }}
+                  >
                     <Trash2 className="h-3 w-3" />
                   </Button>
                 </li>
@@ -833,13 +950,30 @@ function UnitRow({
               <FileQuestion className="h-3 w-3" /> Quizzes
             </p>
             {quizzesQuery.isLoading && <p className="text-xs text-muted-foreground">Loading…</p>}
-            {quizzesQuery.data?.length === 0 && <p className="text-xs text-muted-foreground">No quizzes.</p>}
+            {quizzesQuery.data?.length === 0 && (
+              <p className="text-xs text-muted-foreground">No quizzes.</p>
+            )}
             <ul className="space-y-1">
               {quizzesQuery.data?.map((q) => (
-                <li key={q.id} className="flex items-center gap-2 rounded bg-background px-2 py-1.5 text-xs">
+                <li
+                  key={q.id}
+                  className="flex items-center gap-2 rounded bg-background px-2 py-1.5 text-xs"
+                >
                   <span className="flex-1 truncate">{q.title}</span>
-                  <Badge variant={q.status === "published" ? "default" : "secondary"} className="text-[10px]">{q.status}</Badge>
-                  <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => { if (confirm(`Delete quiz "${q.title}"?`)) removeQuiz.mutate(q.id); }}>
+                  <Badge
+                    variant={q.status === "published" ? "default" : "secondary"}
+                    className="text-[10px]"
+                  >
+                    {q.status}
+                  </Badge>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0"
+                    onClick={() => {
+                      if (confirm(`Delete quiz "${q.title}"?`)) removeQuiz.mutate(q.id);
+                    }}
+                  >
                     <Trash2 className="h-3 w-3" />
                   </Button>
                 </li>
@@ -857,7 +991,12 @@ function PapersList({ subjectId }: { subjectId: string }) {
   const papersQuery = useQuery({
     queryKey: ["admin", "subject-papers", subjectId],
     queryFn: async () => {
-      const { data, error } = await supabase.from("papers").select("id, title, status").eq("subject_id", subjectId).is("deleted_at", null).order("created_at");
+      const { data, error } = await supabase
+        .from("papers")
+        .select("id, title, status")
+        .eq("subject_id", subjectId)
+        .is("deleted_at", null)
+        .order("created_at");
       if (error) throw error;
       return data;
     },
@@ -868,7 +1007,10 @@ function PapersList({ subjectId }: { subjectId: string }) {
       const { error } = await supabase.from("papers").delete().eq("id", id);
       if (error) throw error;
     },
-    onSuccess: () => { toast.success("Paper deleted"); qc.invalidateQueries({ queryKey: ["admin", "subject-papers", subjectId] }); },
+    onSuccess: () => {
+      toast.success("Paper deleted");
+      qc.invalidateQueries({ queryKey: ["admin", "subject-papers", subjectId] });
+    },
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -878,13 +1020,27 @@ function PapersList({ subjectId }: { subjectId: string }) {
         <ClipboardList className="h-3.5 w-3.5" /> Previous year papers
       </p>
       {papersQuery.isLoading && <p className="text-xs text-muted-foreground">Loading…</p>}
-      {papersQuery.data?.length === 0 && <p className="text-xs text-muted-foreground">No papers.</p>}
+      {papersQuery.data?.length === 0 && (
+        <p className="text-xs text-muted-foreground">No papers.</p>
+      )}
       <ul className="space-y-1">
         {papersQuery.data?.map((p) => (
           <li key={p.id} className="flex items-center gap-2 rounded bg-surface px-3 py-1.5 text-xs">
             <span className="flex-1 truncate">{p.title}</span>
-            <Badge variant={p.status === "published" ? "default" : "secondary"} className="text-[10px]">{p.status}</Badge>
-            <Button size="sm" variant="ghost" className="h-6 w-6 p-0" onClick={() => { if (confirm(`Delete paper "${p.title}"?`)) removePaper.mutate(p.id); }}>
+            <Badge
+              variant={p.status === "published" ? "default" : "secondary"}
+              className="text-[10px]"
+            >
+              {p.status}
+            </Badge>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-6 w-6 p-0"
+              onClick={() => {
+                if (confirm(`Delete paper "${p.title}"?`)) removePaper.mutate(p.id);
+              }}
+            >
               <Trash2 className="h-3 w-3" />
             </Button>
           </li>

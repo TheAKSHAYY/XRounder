@@ -20,8 +20,7 @@ export const Route = createFileRoute("/_authenticated/help")({
       { title: "Help & support · BCA Gurukul" },
       {
         name: "description",
-        content:
-          "Guides, shortcuts and support contacts for studying on BCA Gurukul.",
+        content: "Guides, shortcuts and support contacts for studying on BCA Gurukul.",
       },
       { property: "og:title", content: "Help & support · BCA Gurukul" },
       {

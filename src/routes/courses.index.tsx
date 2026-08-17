@@ -153,7 +153,6 @@ function CoursesIndex() {
                 )}
                 <div className="flex-1" />
                 <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
-
                   <StatChip
                     variant="chip"
                     label="semesters"

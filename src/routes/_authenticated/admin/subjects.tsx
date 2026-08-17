@@ -3,8 +3,19 @@ import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import {
-  Library, Search, Plus, ChevronRight, FileText, FileType, FileImage, Video,
-  ClipboardList, Link as LinkIcon, Layers, ExternalLink, Circle,
+  Library,
+  Search,
+  Plus,
+  ChevronRight,
+  FileText,
+  FileType,
+  FileImage,
+  Video,
+  ClipboardList,
+  Link as LinkIcon,
+  Layers,
+  ExternalLink,
+  Circle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -35,8 +46,15 @@ type Subject = {
     course?: { id: string; title: string; slug: string } | null;
   } | null;
   stats: {
-    notes: number; pdfs: number; ppts: number; videos: number;
-    assignments: number; links: number; mcqs: number; total: number; drafts: number;
+    notes: number;
+    pdfs: number;
+    ppts: number;
+    videos: number;
+    assignments: number;
+    links: number;
+    mcqs: number;
+    total: number;
+    drafts: number;
   };
 };
 
@@ -129,7 +147,9 @@ function SubjectsPage() {
         description="Every subject grouped by course & semester. Expand to see content coverage at a glance."
         actions={
           <Button asChild size="sm">
-            <Link to="/admin/courses"><Plus className="mr-1.5 h-4 w-4" /> New via course</Link>
+            <Link to="/admin/courses">
+              <Plus className="mr-1.5 h-4 w-4" /> New via course
+            </Link>
           </Button>
         }
       />
@@ -224,8 +244,14 @@ function SubjectsPage() {
 }
 
 function FilterPill({
-  active, onClick, children,
-}: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
   return (
     <button
       type="button"
@@ -243,8 +269,14 @@ function FilterPill({
 }
 
 function SubjectCard({
-  subject, expanded, onToggle,
-}: { subject: Subject; expanded: boolean; onToggle: () => void }) {
+  subject,
+  expanded,
+  onToggle,
+}: {
+  subject: Subject;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
   const coverage = subject.stats.total > 0 || subject.stats.mcqs > 0;
 
   return (
@@ -286,9 +318,7 @@ function SubjectCard({
                 <Circle className="h-2 w-2 fill-current" /> {subject.stats.drafts} draft
               </span>
             )}
-            {!coverage && (
-              <span className="text-destructive/80">No content yet</span>
-            )}
+            {!coverage && <span className="text-destructive/80">No content yet</span>}
           </div>
         </div>
         <StatusBadge value={subject.status} />
@@ -320,23 +350,18 @@ function SubjectCard({
           </div>
           {subject.stats.mcqs > 0 && (
             <div className="mt-2 text-xs text-muted-foreground">
-              {subject.stats.mcqs} MCQ question{subject.stats.mcqs === 1 ? "" : "s"} in the question bank
+              {subject.stats.mcqs} MCQ question{subject.stats.mcqs === 1 ? "" : "s"} in the question
+              bank
             </div>
           )}
           <div className="mt-3 flex flex-wrap gap-2">
             <Button asChild size="sm" variant="outline">
-              <Link
-                to="/admin/content"
-                search={{ subjectId: subject.id }}
-              >
+              <Link to="/admin/content" search={{ subjectId: subject.id }}>
                 <FileText className="mr-1.5 h-3.5 w-3.5" /> Manage content
               </Link>
             </Button>
             <Button asChild size="sm" variant="outline">
-              <Link
-                to="/admin/content/new"
-                search={{ subjectId: subject.id }}
-              >
+              <Link to="/admin/content/new" search={{ subjectId: subject.id }}>
                 <Plus className="mr-1.5 h-3.5 w-3.5" /> Add content
               </Link>
             </Button>

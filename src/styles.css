@@ -26,8 +26,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -445,7 +444,6 @@
   --sidebar-ring: oklch(0.9 0.16 180);
 }
 
-
 @layer base {
   * {
     border-color: var(--color-border);
@@ -576,32 +574,62 @@
   }
 }
 
-
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes quiz-slide-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes quiz-option-pop {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes quiz-score-in {
-  0%   { opacity: 0; transform: scale(0.7); }
-  60%  { opacity: 1; transform: scale(1.08); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.quiz-slide-in  { animation: quiz-slide-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-.quiz-option-pop { animation: quiz-option-pop 220ms ease-out; }
-.quiz-score-in  { animation: quiz-score-in 600ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
+.quiz-slide-in {
+  animation: quiz-slide-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.quiz-option-pop {
+  animation: quiz-option-pop 220ms ease-out;
+}
+.quiz-score-in {
+  animation: quiz-score-in 600ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
 
 /* ── Scroll reveal (see components/ui/reveal.tsx) ───────────────────── */
 .reveal {
@@ -628,8 +656,12 @@
 /* Slow saffron shimmer used on the hero accent word */
 @keyframes accent-sheen {
   0%,
-  100% { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @utility accent-sheen {
@@ -647,9 +679,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .accent-sheen { animation: none; }
+  .accent-sheen {
+    animation: none;
+  }
 }
-
 
 /*
  * ── Elevation + interaction primitives ────────────────────────────────────
@@ -660,10 +693,8 @@
 @theme inline {
   --shadow-soft-xs: 0 1px 2px oklch(0.25 0.06 268 / 0.06);
   --shadow-soft: 0 1px 2px oklch(0.25 0.06 268 / 0.05), 0 4px 12px oklch(0.25 0.06 268 / 0.06);
-  --shadow-soft-md:
-    0 2px 4px oklch(0.25 0.06 268 / 0.05), 0 8px 24px oklch(0.25 0.06 268 / 0.08);
-  --shadow-soft-lg:
-    0 4px 8px oklch(0.25 0.06 268 / 0.06), 0 16px 40px oklch(0.25 0.06 268 / 0.1);
+  --shadow-soft-md: 0 2px 4px oklch(0.25 0.06 268 / 0.05), 0 8px 24px oklch(0.25 0.06 268 / 0.08);
+  --shadow-soft-lg: 0 4px 8px oklch(0.25 0.06 268 / 0.06), 0 16px 40px oklch(0.25 0.06 268 / 0.1);
 }
 
 /* Minimum comfortable touch target (WCAG 2.5.5 / HIG 44px). */

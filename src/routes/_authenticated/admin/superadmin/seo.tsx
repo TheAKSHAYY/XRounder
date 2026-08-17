@@ -38,10 +38,7 @@ function SeoPage() {
   const list = useQuery({
     queryKey: ["seo-meta"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("seo_meta")
-        .select("*")
-        .order("path");
+      const { data, error } = await supabase.from("seo_meta").select("*").order("path");
       if (error) throw error;
       return (data ?? []) as Row[];
     },
@@ -81,67 +78,67 @@ function SeoPage() {
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <aside className="rounded-xl border border-border/70 bg-surface p-4">
-            <div className="flex gap-2">
-              <Input
-                placeholder="/about"
-                value={newPath}
-                onChange={(e) => setNewPath(e.target.value)}
-              />
-              <Button
-                size="icon"
-                onClick={() => {
-                  const path = newPath.trim();
-                  if (!path.startsWith("/")) return toast.error("Path must start with /");
-                  upsert.mutate({ path });
-                  setNewPath("");
-                }}
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
-            </div>
+          <div className="flex gap-2">
+            <Input
+              placeholder="/about"
+              value={newPath}
+              onChange={(e) => setNewPath(e.target.value)}
+            />
+            <Button
+              size="icon"
+              onClick={() => {
+                const path = newPath.trim();
+                if (!path.startsWith("/")) return toast.error("Path must start with /");
+                upsert.mutate({ path });
+                setNewPath("");
+              }}
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
 
-            <ul className="mt-4 space-y-1">
-              {list.data?.map((r) => (
-                <li key={r.id}>
-                  <button
-                    onClick={() => setSelected(r)}
-                    className={`w-full rounded-md px-3 py-2 text-left text-sm transition ${
-                      selected?.id === r.id
-                        ? "bg-primary/10 text-primary"
-                        : "hover:bg-muted text-foreground"
-                    }`}
-                  >
-                    <div className="font-medium">{r.path}</div>
-                    {r.title && (
-                      <div className="truncate text-xs text-muted-foreground">{r.title}</div>
-                    )}
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <ul className="mt-4 space-y-1">
+            {list.data?.map((r) => (
+              <li key={r.id}>
+                <button
+                  onClick={() => setSelected(r)}
+                  className={`w-full rounded-md px-3 py-2 text-left text-sm transition ${
+                    selected?.id === r.id
+                      ? "bg-primary/10 text-primary"
+                      : "hover:bg-muted text-foreground"
+                  }`}
+                >
+                  <div className="font-medium">{r.path}</div>
+                  {r.title && (
+                    <div className="truncate text-xs text-muted-foreground">{r.title}</div>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-            {list.data && list.data.length === 0 && (
-              <p className="mt-4 text-center text-sm text-muted-foreground">
-                No overrides yet. Add a route path above.
-              </p>
-            )}
-          </aside>
+          {list.data && list.data.length === 0 && (
+            <p className="mt-4 text-center text-sm text-muted-foreground">
+              No overrides yet. Add a route path above.
+            </p>
+          )}
+        </aside>
 
-          <section className="rounded-2xl border border-border bg-surface p-6">
-            {selected ? (
-              <SeoForm
-                key={selected.id}
-                row={selected}
-                onSave={(patch) => upsert.mutate({ ...patch, path: selected.path })}
-                onDelete={() => remove.mutate(selected.id)}
-                saving={upsert.isPending}
-              />
-            ) : (
-              <EmptyState
-                icon={FileSearch}
-                title="Pick a route"
-                description="Choose a route on the left or add a new one to override its SEO metadata."
-              />
+        <section className="rounded-2xl border border-border bg-surface p-6">
+          {selected ? (
+            <SeoForm
+              key={selected.id}
+              row={selected}
+              onSave={(patch) => upsert.mutate({ ...patch, path: selected.path })}
+              onDelete={() => remove.mutate(selected.id)}
+              saving={upsert.isPending}
+            />
+          ) : (
+            <EmptyState
+              icon={FileSearch}
+              title="Pick a route"
+              description="Choose a route on the left or add a new one to override its SEO metadata."
+            />
           )}
         </section>
       </div>
@@ -170,8 +167,10 @@ function SeoForm({
     canonical: row.canonical ?? "",
   });
 
-  const f = <K extends keyof typeof form>(k: K) => (v: string) =>
-    setForm((prev) => ({ ...prev, [k]: v }));
+  const f =
+    <K extends keyof typeof form>(k: K) =>
+    (v: string) =>
+      setForm((prev) => ({ ...prev, [k]: v }));
 
   return (
     <div className="space-y-5">

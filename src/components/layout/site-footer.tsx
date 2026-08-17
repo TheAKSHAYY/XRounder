@@ -40,7 +40,6 @@ export function SiteFooter({
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-4">
           <div className="col-span-2 min-w-0 lg:col-span-1">
-
             <Link to="/" className="flex items-center gap-3">
               <BrandMark className="h-10 w-10 shrink-0" />
               <span className="font-display text-base font-semibold text-foreground">

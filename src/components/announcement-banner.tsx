@@ -42,7 +42,11 @@ function writeDismissed(set: Set<string>) {
   localStorage.setItem("bg:dismissed-announcements", JSON.stringify(Array.from(set)));
 }
 
-export function AnnouncementBanner({ audience = "students" }: { audience?: "students" | "admins" }) {
+export function AnnouncementBanner({
+  audience = "students",
+}: {
+  audience?: "students" | "admins";
+}) {
   const list = useServerFn(listActiveAnnouncements);
   const [dismissed, setDismissed] = useState<Set<string>>(() => readDismissed());
 

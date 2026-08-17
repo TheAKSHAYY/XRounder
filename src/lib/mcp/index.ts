@@ -13,9 +13,7 @@ import listPapers from "./tools/list-papers";
 // back to a placeholder issuer; OAuth validation will fail safely, and the
 // main app routes can show a configuration message when env vars are absent.
 const supabaseUrl =
-  process.env.SUPABASE_URL ??
-  process.env.VITE_SUPABASE_URL ??
-  import.meta.env?.VITE_SUPABASE_URL;
+  process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL ?? import.meta.env?.VITE_SUPABASE_URL;
 
 if (!supabaseUrl) {
   console.warn(
