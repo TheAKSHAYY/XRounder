@@ -12,6 +12,10 @@ import {
   FolderTree,
   ScrollText,
   Flag,
+  Library,
+  FileStack,
+  Megaphone,
+
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
