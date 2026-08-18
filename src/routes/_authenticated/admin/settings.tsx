@@ -28,9 +28,34 @@ type Section = { title: string; description: string; cards: Card[] };
 
 const SECTIONS: Section[] = [
   {
+    title: "Learning structure",
+    description: "Curriculum, papers, and student-facing notices.",
+    cards: [
+      {
+        label: "Subjects",
+        description: "All subjects across courses and semesters.",
+        to: "/admin/subjects",
+        icon: Library,
+      },
+      {
+        label: "Previous papers",
+        description: "Exam papers students can download.",
+        to: "/admin/papers",
+        icon: FileStack,
+      },
+      {
+        label: "Announcements",
+        description: "Banners shown on the student dashboard.",
+        to: "/admin/announcements",
+        icon: Megaphone,
+      },
+    ],
+  },
+  {
     title: "Site & Content",
     description: "How the public site looks and what shows up on it.",
     cards: [
+
       {
         label: "Homepage sections",
         description: "Hero, features, testimonials on the landing page.",
