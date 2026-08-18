@@ -18,12 +18,9 @@ import {
   Tag,
   LayoutTemplate,
   Sparkles,
-  Users,
-  ScrollText,
-  Flag,
-  Palette,
   Megaphone,
-  Search as SearchIcon,
+  FolderTree,
+  ChevronRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -59,38 +56,26 @@ type NavItem = {
   badgeKey?: "inbox" | "drafts";
 };
 
-type NavGroup = {
-  label: string;
-  items: NavItem[];
-};
-
-const LEARNING: NavItem[] = [
+// Six primary destinations cover ~90% of daily admin work.
+const PRIMARY: NavItem[] = [
   { label: "Dashboard", to: "/admin", icon: LayoutDashboard, exact: true },
-  { label: "Courses", to: "/admin/courses", icon: BookOpen },
-  { label: "Subjects", to: "/admin/subjects", icon: Library },
   { label: "Content", to: "/admin/content", icon: FileText, badgeKey: "drafts" },
-  { label: "Previous papers", to: "/admin/papers", icon: FileStack },
+  { label: "Courses", to: "/admin/courses", icon: BookOpen },
   { label: "Question bank", to: "/admin/quizzes", icon: FlaskConical },
+  { label: "Inbox", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
+  { label: "Settings", to: "/admin/settings", icon: Settings },
 ];
 
-const SITE: NavItem[] = [
-  { label: "Homepage", to: "/admin/homepage", icon: LayoutTemplate },
+// Everything else stays one click away, but out of the way.
+const SECONDARY: NavItem[] = [
+  { label: "Subjects", to: "/admin/subjects", icon: Library },
+  { label: "Previous papers", to: "/admin/papers", icon: FileStack },
   { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
-  { label: "Inbox", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
+  { label: "Homepage", to: "/admin/homepage", icon: LayoutTemplate },
+  { label: "Content tree", to: "/admin/explorer", icon: FolderTree },
   { label: "Media", to: "/admin/media", icon: ImageIcon },
   { label: "Tags", to: "/admin/tags", icon: Tag },
   { label: "Developer", to: "/admin/developer", icon: Sparkles },
-];
-
-const SYSTEM: NavItem[] = [{ label: "Settings", to: "/admin/settings", icon: Settings }];
-
-const PLATFORM: NavItem[] = [
-  { label: "Overview", to: "/admin/superadmin", icon: ShieldCheck, exact: true },
-  { label: "Users & roles", to: "/admin/superadmin/users", icon: Users },
-  { label: "Audit log", to: "/admin/superadmin/audit", icon: ScrollText },
-  { label: "Feature flags", to: "/admin/superadmin/flags", icon: Flag },
-  { label: "Branding", to: "/admin/superadmin/branding", icon: Palette },
-  { label: "SEO", to: "/admin/superadmin/seo", icon: SearchIcon },
 ];
 
 export function AdminShell() {
@@ -105,12 +90,15 @@ export function AdminShell() {
     exact ? pathname === to : pathname === to || pathname.startsWith(to + "/");
 
   const inPlatform = pathname.startsWith("/admin/superadmin");
+  const inSecondary = SECONDARY.some((i) => isActive(i.to));
+  const [moreOpen, setMoreOpen] = useState(inSecondary);
 
   const getBadge = (item: NavItem): number | undefined => {
     if (item.badgeKey === "inbox") return badges.inboxUnread || undefined;
     if (item.badgeKey === "drafts") return badges.contentDrafts || undefined;
     return undefined;
   };
+
 
   const groups: NavGroup[] = [
     { label: "Learning", items: LEARNING },
