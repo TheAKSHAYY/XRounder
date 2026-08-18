@@ -100,12 +100,6 @@ export function AdminShell() {
   };
 
 
-  const groups: NavGroup[] = [
-    { label: "Learning", items: LEARNING },
-    { label: "Site", items: SITE },
-    { label: "System", items: SYSTEM },
-  ];
-
   return (
     <SidebarProvider>
       <div className="flex min-h-dvh w-full bg-background">
@@ -123,23 +117,43 @@ export function AdminShell() {
               </div>
             </div>
 
-            {groups.map((group) => (
-              <SidebarGroup key={group.label}>
-                <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {group.items.map((item) => (
-                      <NavRow
-                        key={item.to}
-                        item={item}
-                        active={isActive(item.to, item.exact)}
-                        badge={getBadge(item)}
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {PRIMARY.map((item) => (
+                    <NavRow
+                      key={item.to}
+                      item={item}
+                      active={isActive(item.to, item.exact)}
+                      badge={getBadge(item)}
+                    />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      onClick={() => setMoreOpen((v) => !v)}
+                      aria-expanded={moreOpen}
+                      tooltip="More"
+                    >
+                      <ChevronRight
+                        className={cn("h-4 w-4 transition-transform", moreOpen && "rotate-90")}
                       />
+                      <span>More</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  {moreOpen &&
+                    SECONDARY.map((item) => (
+                      <NavRow key={item.to} item={item} active={isActive(item.to)} />
                     ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
 
             {isSuperAdmin && (
               <SidebarGroup>
@@ -152,13 +166,15 @@ export function AdminShell() {
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    {PLATFORM.map((item) => (
-                      <NavRow key={item.to} item={item} active={isActive(item.to, item.exact)} />
-                    ))}
+                    <NavRow
+                      item={{ label: "Super admin", to: "/admin/superadmin", icon: ShieldCheck }}
+                      active={inPlatform}
+                    />
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
             )}
+
 
             <SidebarGroup className="mt-auto">
               <SidebarGroupContent>
