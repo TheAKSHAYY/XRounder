@@ -2,6 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { assertAdmin } from "@/lib/role-guards.server";
 import { loose } from "@/lib/supabase-loose";
+import { logAudit, tryAdminClient } from "@/lib/admin-client.server";
+
 
 export type Announcement = {
   id: string;
