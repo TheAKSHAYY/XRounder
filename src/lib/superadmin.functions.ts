@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { assertSuperAdmin } from "@/lib/role-guards.server";
 import { loose } from "@/lib/supabase-loose";
+import { logAudit, tryAdminClient } from "@/lib/admin-client.server";
 
 export type AppRole = "super_admin" | "admin" | "instructor" | "student";
 
@@ -22,60 +23,90 @@ export const listUsers = createServerFn({ method: "GET" })
   .inputValidator((data: { search?: string; limit?: number } | undefined) => data ?? {})
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const limit = Math.min(data?.limit ?? 200, 1000);
-    const { data: authList, error: authErr } = await supabaseAdmin.auth.admin.listUsers({
-      page: 1,
-      perPage: limit,
-    });
-    if (authErr) throw new Error(authErr.message);
+    const sb = loose(context.supabase);
 
-    const ids = authList.users.map((u) => u.id);
-    const sbAdmin = loose(supabaseAdmin);
+    // Base list comes from profiles + user_roles, which super admins can read
+    // through RLS. This keeps the page working without a service-role key.
     const [profilesRes, rolesRes] = await Promise.all([
-      sbAdmin
+      sb
         .from("profiles")
-        .select("user_id,full_name,avatar_url,suspended,suspended_reason")
-        .in("user_id", ids),
-      sbAdmin.from("user_roles").select("user_id,role").in("user_id", ids),
+        .select("user_id,full_name,avatar_url,created_at,suspended,suspended_reason")
+        .order("created_at", { ascending: false })
+        .limit(limit),
+      sb.from("user_roles").select("user_id,role"),
     ]);
     if (profilesRes.error) throw new Error(profilesRes.error.message);
     if (rolesRes.error) throw new Error(rolesRes.error.message);
 
-    const profileMap = new Map(
-      (
-        (profilesRes.data ?? []) as Array<{
-          user_id: string;
-          full_name: string | null;
-          avatar_url: string | null;
-          suspended?: boolean;
-          suspended_reason?: string | null;
-        }>
-      ).map((p) => [p.user_id, p]),
-    );
     const roleMap = new Map<string, AppRole[]>();
-    for (const r of rolesRes.data ?? []) {
+    for (const r of (rolesRes.data ?? []) as Array<{ user_id: string; role: AppRole }>) {
       const arr = roleMap.get(r.user_id) ?? [];
-      arr.push(r.role as AppRole);
+      arr.push(r.role);
       roleMap.set(r.user_id, arr);
     }
 
+    type ProfileRow = {
+      user_id: string;
+      full_name: string | null;
+      avatar_url: string | null;
+      created_at: string | null;
+      suspended?: boolean | null;
+      suspended_reason?: string | null;
+    };
+
+    let rows: AdminUserRow[] = ((profilesRes.data ?? []) as ProfileRow[]).map((p) => ({
+      user_id: p.user_id,
+      email: null,
+      full_name: p.full_name ?? null,
+      avatar_url: p.avatar_url ?? null,
+      created_at: p.created_at ?? "",
+      last_sign_in_at: null,
+      roles: roleMap.get(p.user_id) ?? [],
+      suspended: !!p.suspended,
+      suspended_reason: p.suspended_reason ?? null,
+    }));
+
+    // Enrich with auth data (email, last sign-in) when a service key exists.
+    const admin = await tryAdminClient();
+    if (admin) {
+      try {
+        const { data: authList } = await admin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+        const authMap = new Map(authList?.users.map((u) => [u.id, u]) ?? []);
+        rows = rows.map((r) => {
+          const u = authMap.get(r.user_id);
+          return u
+            ? {
+                ...r,
+                email: u.email ?? null,
+                created_at: r.created_at || u.created_at,
+                last_sign_in_at: u.last_sign_in_at ?? null,
+              }
+            : r;
+        });
+        // Include auth users that have no profile row yet.
+        for (const u of authList?.users ?? []) {
+          if (!rows.some((r) => r.user_id === u.id)) {
+            rows.push({
+              user_id: u.id,
+              email: u.email ?? null,
+              full_name: null,
+              avatar_url: null,
+              created_at: u.created_at,
+              last_sign_in_at: u.last_sign_in_at ?? null,
+              roles: roleMap.get(u.id) ?? [],
+              suspended: false,
+              suspended_reason: null,
+            });
+          }
+        }
+      } catch {
+        // Fall back to profile-only data.
+      }
+    }
+
     const search = (data?.search ?? "").toLowerCase().trim();
-    let rows: AdminUserRow[] = authList.users.map((u) => {
-      const prof = profileMap.get(u.id);
-      return {
-        user_id: u.id,
-        email: u.email ?? null,
-        full_name: prof?.full_name ?? null,
-        avatar_url: prof?.avatar_url ?? null,
-        created_at: u.created_at,
-        last_sign_in_at: u.last_sign_in_at ?? null,
-        roles: roleMap.get(u.id) ?? [],
-        suspended: !!prof?.suspended,
-        suspended_reason: prof?.suspended_reason ?? null,
-      };
-    });
     if (search) {
       rows = rows.filter(
         (r) =>
@@ -92,15 +123,20 @@ export const grantRole = createServerFn({ method: "POST" })
   .inputValidator((data: { userId: string; role: AppRole }) => data)
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin
+    const sb = loose(context.supabase);
+    const { data: existing } = await sb
       .from("user_roles")
-      .upsert(
-        { user_id: data.userId, role: data.role, granted_by: context.userId },
-        { onConflict: "user_id,role", ignoreDuplicates: true },
-      );
-    if (error) throw new Error(error.message);
-    await supabaseAdmin.from("audit_logs").insert({
+      .select("id")
+      .eq("user_id", data.userId)
+      .eq("role", data.role)
+      .maybeSingle();
+    if (!existing) {
+      const { error } = await sb
+        .from("user_roles")
+        .insert({ user_id: data.userId, role: data.role, granted_by: context.userId });
+      if (error) throw new Error(error.message);
+    }
+    await logAudit(context.supabase, {
       actor_id: context.userId,
       action: "role.grant",
       entity_type: "user_role",
@@ -118,14 +154,13 @@ export const revokeRole = createServerFn({ method: "POST" })
     if (data.userId === context.userId && data.role === "super_admin") {
       throw new Error("You cannot revoke your own super_admin role.");
     }
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin
+    const { error } = await loose(context.supabase)
       .from("user_roles")
       .delete()
       .eq("user_id", data.userId)
       .eq("role", data.role);
     if (error) throw new Error(error.message);
-    await supabaseAdmin.from("audit_logs").insert({
+    await logAudit(context.supabase, {
       actor_id: context.userId,
       action: "role.revoke",
       entity_type: "user_role",
@@ -152,9 +187,8 @@ export const listAuditLogs = createServerFn({ method: "GET" })
   .inputValidator((data: { limit?: number; action?: string } | undefined) => data ?? {})
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const limit = Math.min(data?.limit ?? 200, 1000);
-    let q = supabaseAdmin
+    let q = loose(context.supabase)
       .from("audit_logs")
       .select("id,actor_id,action,entity_type,entity_id,metadata,ip,created_at")
       .order("created_at", { ascending: false })
@@ -163,20 +197,38 @@ export const listAuditLogs = createServerFn({ method: "GET" })
     const { data: rows, error } = await q;
     if (error) throw new Error(error.message);
 
-    const actorIds = Array.from(
-      new Set((rows ?? []).map((r) => r.actor_id).filter(Boolean)),
-    ) as string[];
-    const emailMap = new Map<string, string>();
+    type Row = Omit<AuditLogRow, "metadata" | "actor_email"> & { metadata: unknown };
+    const list = (rows ?? []) as Row[];
+
+    const actorIds = Array.from(new Set(list.map((r) => r.actor_id).filter(Boolean))) as string[];
+    const nameMap = new Map<string, string>();
     if (actorIds.length) {
-      const { data: list } = await supabaseAdmin.auth.admin.listUsers({ page: 1, perPage: 1000 });
-      for (const u of list?.users ?? []) {
-        if (actorIds.includes(u.id) && u.email) emailMap.set(u.id, u.email);
+      const admin = await tryAdminClient();
+      if (admin) {
+        try {
+          const { data: authList } = await admin.auth.admin.listUsers({ page: 1, perPage: 1000 });
+          for (const u of authList?.users ?? []) {
+            if (u.email && actorIds.includes(u.id)) nameMap.set(u.id, u.email);
+          }
+        } catch {
+          /* fall through to profile names */
+        }
+      }
+      if (nameMap.size === 0) {
+        const { data: profs } = await loose(context.supabase)
+          .from("profiles")
+          .select("user_id,full_name")
+          .in("user_id", actorIds);
+        for (const p of (profs ?? []) as Array<{ user_id: string; full_name: string | null }>) {
+          if (p.full_name) nameMap.set(p.user_id, p.full_name);
+        }
       }
     }
-    return (rows ?? []).map((r) => ({
+
+    return list.map((r) => ({
       ...r,
       metadata: r.metadata ? JSON.stringify(r.metadata) : null,
-      actor_email: r.actor_id ? (emailMap.get(r.actor_id) ?? null) : null,
+      actor_email: r.actor_id ? (nameMap.get(r.actor_id) ?? null) : null,
     })) as AuditLogRow[];
   });
 
@@ -194,8 +246,7 @@ export const listFeatureFlags = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await loose(context.supabase)
       .from("feature_flags")
       .select("key,module,description,enabled,rollout_pct,kill_switch,updated_at")
       .order("module")
@@ -211,7 +262,6 @@ export const updateFeatureFlag = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const patch: {
       updated_by: string;
       updated_at: string;
@@ -222,14 +272,17 @@ export const updateFeatureFlag = createServerFn({ method: "POST" })
     if (typeof data.enabled === "boolean") patch.enabled = data.enabled;
     if (typeof data.kill_switch === "boolean") patch.kill_switch = data.kill_switch;
     if (typeof data.rollout_pct === "number") patch.rollout_pct = data.rollout_pct;
-    const { error } = await supabaseAdmin.from("feature_flags").update(patch).eq("key", data.key);
+    const { error } = await loose(context.supabase)
+      .from("feature_flags")
+      .update(patch)
+      .eq("key", data.key);
     if (error) throw new Error(error.message);
-    await supabaseAdmin.from("audit_logs").insert({
+    await logAudit(context.supabase, {
       actor_id: context.userId,
       action: "flag.update",
       entity_type: "feature_flag",
       entity_id: data.key,
-      metadata: patch as unknown as Record<string, string | number | boolean>,
+      metadata: patch,
     });
     return { ok: true };
   });
@@ -246,26 +299,17 @@ export const getPlatformStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const sb = loose(context.supabase);
     const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
     const [users, admins, supers, sessions, audits] = await Promise.all([
-      supabaseAdmin.from("profiles").select("user_id", { count: "exact", head: true }),
-      supabaseAdmin
-        .from("user_roles")
-        .select("user_id", { count: "exact", head: true })
-        .eq("role", "admin"),
-      supabaseAdmin
+      sb.from("profiles").select("user_id", { count: "exact", head: true }),
+      sb.from("user_roles").select("user_id", { count: "exact", head: true }).eq("role", "admin"),
+      sb
         .from("user_roles")
         .select("user_id", { count: "exact", head: true })
         .eq("role", "super_admin"),
-      supabaseAdmin
-        .from("user_sessions")
-        .select("id", { count: "exact", head: true })
-        .is("revoked_at", null),
-      supabaseAdmin
-        .from("audit_logs")
-        .select("id", { count: "exact", head: true })
-        .gte("created_at", since),
+      sb.from("user_sessions").select("id", { count: "exact", head: true }).is("revoked_at", null),
+      sb.from("audit_logs").select("id", { count: "exact", head: true }).gte("created_at", since),
     ]);
     return {
       total_users: users.count ?? 0,
