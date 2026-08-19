@@ -116,16 +116,19 @@ export const setUserSuspended = createServerFn({ method: "POST" })
     if (!isSuper) throw new Error("Forbidden: super_admin required");
     if (data.userId === context.userId) throw new Error("You cannot suspend yourself.");
 
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const sb = loose(supabaseAdmin);
+    const admin = await tryAdminClient();
+    const sb = loose(admin ?? context.supabase);
 
     // Ban / unban the auth user so they cannot get new sessions.
-    const { error: banErr } = await supabaseAdmin.auth.admin.updateUserById(data.userId, {
-      ban_duration: data.suspended ? "876000h" : "none", // ~100 years, or clear
-    });
-    if (banErr) throw new Error(banErr.message);
+    // Only possible with a service-role key; profile-level suspension still applies.
+    if (admin) {
+      const { error: banErr } = await admin.auth.admin.updateUserById(data.userId, {
+        ban_duration: data.suspended ? "876000h" : "none", // ~100 years, or clear
+      });
+      if (banErr) throw new Error(banErr.message);
+    }
 
-    // Reflect state on profile for UI badges.
+    // Reflect state on profile for UI badges and app-level gating.
     const { error: profErr } = await sb
       .from("profiles")
       .update({
@@ -136,7 +139,7 @@ export const setUserSuspended = createServerFn({ method: "POST" })
       .eq("user_id", data.userId);
     if (profErr) throw new Error(profErr.message);
 
-    await sb.from("audit_logs").insert({
+    await logAudit(context.supabase, {
       actor_id: context.userId,
       action: data.suspended ? "user.suspend" : "user.unsuspend",
       entity_type: "user",
@@ -153,6 +156,7 @@ export const setUserSuspended = createServerFn({ method: "POST" })
         .is("revoked_at", null);
     }
     return { ok: true };
+
   });
 
 // -------- Reorder units --------
