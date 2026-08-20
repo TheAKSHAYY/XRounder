@@ -589,7 +589,7 @@ function ContinueHero({
         Pick your course and semester
       </h2>
       <p className="mt-1.5 max-w-lg text-sm text-muted-foreground">
-        Tell us where you are in your BCA journey — we'll personalize your dashboard, your subjects
+        Tell us where you are in your learning journey — we'll personalize your dashboard, your subjects
         and your recommended practice.
       </p>
       <div className="mt-5 flex flex-wrap gap-2">

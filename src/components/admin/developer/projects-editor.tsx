@@ -96,7 +96,7 @@ export function ProjectsEditor() {
       const row = {
         name: "XRounder",
         description:
-          "Enterprise-grade Learning Management System for BCA students — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
+          "Enterprise-grade Learning Management System for students on any course — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
         category: "SaaS · EdTech",
         tech_stack: [
           "TanStack Start",

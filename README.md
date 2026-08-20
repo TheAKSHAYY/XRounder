@@ -1,6 +1,6 @@
 # XRounder
 
-An enterprise-grade Learning Management System (LMS) for BCA students, built as a
+An enterprise-grade universal Learning Management System (LMS) for students on any course, built as a
 multi-course content platform with a full admin CMS.
 
 Content is organised as a strict hierarchy:

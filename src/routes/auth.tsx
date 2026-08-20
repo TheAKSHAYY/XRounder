@@ -64,7 +64,7 @@ function AuthPage() {
           <div className="leading-tight">
             <div className="font-display text-lg font-semibold">XRounder</div>
             <div className="text-xs text-primary-foreground/70">
-              Structured learning for BCA students
+              Structured learning for every course
             </div>
           </div>
         </Link>
@@ -78,14 +78,14 @@ function AuthPage() {
               Your time, respected.
             </h2>
             <p className="mt-4 max-w-md text-sm text-primary-foreground/80">
-              Join thousands of BCA students using notes, past papers, video lectures and MCQ
+              Join thousands of students using notes, past papers, video lectures and MCQ
               practice — all in one place.
             </p>
           </div>
 
           <ul className="space-y-3">
             {[
-              "Free for every BCA student",
+              "Free for every student",
               "Notes, papers, videos & quizzes",
               "Track progress semester by semester",
             ].map((b) => (
