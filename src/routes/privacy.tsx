@@ -56,7 +56,7 @@ function PrivacyPage() {
           <p>
             You can update your profile at any time from{" "}
             <Link to="/profile">your profile page</Link>, or email{" "}
-            <a href="mailto:hello@bcagurukul.in">hello@bcagurukul.in</a> to request a data export or
+            <a href="mailto:hello@xrounder.app">hello@xrounder.app</a> to request a data export or
             account deletion.
           </p>
 
@@ -68,7 +68,7 @@ function PrivacyPage() {
 
           <h2>Contact</h2>
           <p>
-            Questions? Reach us at <a href="mailto:hello@bcagurukul.in">hello@bcagurukul.in</a>.
+            Questions? Reach us at <a href="mailto:hello@xrounder.app">hello@xrounder.app</a>.
           </p>
         </div>
       </div>

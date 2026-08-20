@@ -60,7 +60,7 @@ function TermsPage() {
           <h2>Contact</h2>
           <p>
             Questions or disputes? Email{" "}
-            <a href="mailto:hello@bcagurukul.in">hello@bcagurukul.in</a>.
+            <a href="mailto:hello@xrounder.app">hello@xrounder.app</a>.
           </p>
         </div>
       </div>

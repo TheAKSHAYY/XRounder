@@ -691,11 +691,11 @@ export function Contact() {
           />
           <div className="mt-6 space-y-3 text-sm">
             <a
-              href="mailto:hello@bcagurukul.app"
+              href="mailto:hello@xrounder.app"
               className="flex items-center gap-3 text-foreground hover:text-primary"
             >
               <Mail className="h-4 w-4" />
-              hello@bcagurukul.app
+              hello@xrounder.app
             </a>
           </div>
         </div>

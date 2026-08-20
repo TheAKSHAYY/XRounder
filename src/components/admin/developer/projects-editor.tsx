@@ -88,10 +88,10 @@ export function ProjectsEditor() {
     },
   });
 
-  const seedBcaGurukul = useMutation({
+  const seedFlagshipProject = useMutation({
     mutationFn: async () => {
       const existing = (data ?? []).find((p) =>
-        (p.name || "").toLowerCase().includes("bca gurukul"),
+        (p.name || "").toLowerCase().includes("xrounder"),
       );
       const row = {
         name: "XRounder",
@@ -141,10 +141,10 @@ export function ProjectsEditor() {
           <Button
             size="sm"
             variant="outline"
-            onClick={() => seedBcaGurukul.mutate()}
-            disabled={seedBcaGurukul.isPending}
+            onClick={() => seedFlagshipProject.mutate()}
+            disabled={seedFlagshipProject.isPending}
           >
-            {seedBcaGurukul.isPending ? "Adding…" : "✨ Seed XRounder"}
+            {seedFlagshipProject.isPending ? "Adding…" : "✨ Seed XRounder"}
           </Button>
           <ProjectDialog
             onSubmit={(v) => upsert.mutate(v)}

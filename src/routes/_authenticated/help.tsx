@@ -111,7 +111,7 @@ function HelpPage() {
             size="lg"
             className="h-12 w-full gap-2 rounded-full px-6 text-sm font-semibold sm:w-auto"
           >
-            <a href="mailto:support@bcagurukul.app">
+            <a href="mailto:support@xrounder.app">
               <Mail className="h-4 w-4 shrink-0" aria-hidden />
               Email support
             </a>
@@ -170,7 +170,7 @@ function HelpPage() {
           Send us the subject and unit you were on and we'll get back within one business day.
         </p>
         <Button asChild variant="outline" className="mt-5 rounded-full">
-          <a href="mailto:support@bcagurukul.app">support@bcagurukul.app</a>
+          <a href="mailto:support@xrounder.app">support@xrounder.app</a>
         </Button>
       </section>
     </div>
