@@ -23,7 +23,7 @@ import { PageContainer, PageHeader } from "@/components/admin/ui";
 import { useRoles } from "@/hooks/use-roles";
 
 export const Route = createFileRoute("/_authenticated/admin/settings")({
-  head: () => ({ meta: [{ title: "Settings · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Settings · Admin · XRounder" }] }),
   component: SettingsPage,
 });
 

@@ -32,7 +32,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
-  head: () => ({ meta: [{ title: "Subject · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Subject · XRounder" }] }),
   component: SubjectDetail,
 });
 

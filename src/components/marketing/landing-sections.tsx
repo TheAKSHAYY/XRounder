@@ -58,7 +58,7 @@ export function EmptyLanding({ user, loading }: { user: unknown; loading: boolea
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-32">
         <div className="mx-auto inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
           <Sparkles className="h-3 w-3" />
-          BCA Gurukul
+          XRounder
         </div>
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           Your platform is ready.
@@ -120,7 +120,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                 <span className="relative h-2 w-2 rounded-full bg-accent" />
               </span>
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-                BCA Batch 2025–26 is live
+                New 2025–26 batches are live
               </span>
             </div>
           </Reveal>
@@ -128,7 +128,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
           {/* Headline with italic-saffron accent word */}
           <Reveal delay={80}>
             <h1 className="mt-6 font-display text-[2.25rem] font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Master your BCA <br className="hidden sm:block" />
+              Master your course <br className="hidden sm:block" />
               <span className="accent-sheen italic">journey</span>, with clarity.
             </h1>
           </Reveal>
@@ -185,7 +185,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-success" />
-                Free for every BCA student
+                Free for every student
               </span>
               <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
               <span className="flex items-center gap-1.5">
@@ -292,7 +292,7 @@ export function TrustBar() {
     <section className="border-b border-border/60 bg-surface/70 backdrop-blur-sm">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
         <p className="text-center text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-          Built for every BCA student in India
+          Built for every student, on every course
         </p>
         <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {items.map((it) => (
@@ -415,8 +415,8 @@ export function WhyChoose() {
     <section className="border-b border-border/60 bg-surface-muted/40 py-14 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Why BCA Gurukul"
-          title="Designed around how BCA students actually study"
+          eyebrow="Why XRounder"
+          title="Designed around how students actually study"
           body="The syllabus is messy. Your study workflow shouldn't be."
         />
         <div className="mt-9 grid sm:mt-14 gap-6 sm:grid-cols-2">
@@ -505,7 +505,7 @@ export function Journey() {
 
 export function Benefits() {
   const items = [
-    "Free for every BCA student — no paywalls",
+    "Free for every student — no paywalls",
     "Mobile-first — study from your phone in transit",
     "Bookmark units and pick up exactly where you left off",
     "MCQ explanations so you learn from every mistake",
@@ -557,7 +557,7 @@ export function Testimonials() {
             Be one of the first voices
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Use BCA Gurukul this semester and share how it helped. We'll feature real student
+            Use XRounder this semester and share how it helped. We'll feature real student
             stories here once we have them — no fake quotes.
           </p>
           <Button asChild className="mt-6" variant="outline">
@@ -576,12 +576,12 @@ export function Testimonials() {
 export function FAQ() {
   const items = [
     {
-      q: "Is BCA Gurukul free?",
-      a: "Yes — the core platform is free for all BCA students. You only need an email to sign up.",
+      q: "Is XRounder free?",
+      a: "Yes — the core platform is free for all students. You only need an email to sign up.",
     },
     {
       q: "Does it cover my university's syllabus?",
-      a: "We follow the standard Indian BCA syllabus and cover the most common subjects across universities. Unit names may differ slightly, but the underlying concepts are the same.",
+      a: "We follow standard university syllabi across courses and cover the most common subjects. Unit names may differ slightly, but the underlying concepts are the same.",
     },
     {
       q: "Can I use it on my phone?",
@@ -691,11 +691,11 @@ export function Contact() {
           />
           <div className="mt-6 space-y-3 text-sm">
             <a
-              href="mailto:hello@bcagurukul.app"
+              href="mailto:hello@xrounder.app"
               className="flex items-center gap-3 text-foreground hover:text-primary"
             >
               <Mail className="h-4 w-4" />
-              hello@bcagurukul.app
+              hello@xrounder.app
             </a>
           </div>
         </div>

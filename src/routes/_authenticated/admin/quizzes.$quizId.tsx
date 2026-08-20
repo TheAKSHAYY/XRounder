@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/admin/quizzes/$quizId")({
-  head: () => ({ meta: [{ title: "Quiz editor · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Quiz editor · Admin · XRounder" }] }),
   component: QuizEditor,
 });
 

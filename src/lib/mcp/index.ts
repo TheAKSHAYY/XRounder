@@ -26,11 +26,11 @@ const issuer = supabaseUrl
   : "http://localhost/auth/v1";
 
 export default defineMcp({
-  name: "bca-gurukul-mcp",
-  title: "BCA Gurukul",
+  name: "xrounder-mcp",
+  title: "XRounder",
   version: "0.1.0",
   instructions:
-    "Read-only access to BCA Gurukul learning content: courses, published study notes, and past exam papers.",
+    "Read-only access to XRounder learning content: courses, published study notes, and past exam papers.",
   tools: [listCourses, searchNotes, listPapers],
   // Require a valid Supabase-issued access token on every MCP request.
   // Without this, the /mcp endpoint is publicly callable once the site ships.
@@ -38,6 +38,6 @@ export default defineMcp({
     issuer,
     jwksUri: `${issuer}/.well-known/jwks.json`,
     acceptedAudiences: ["authenticated"],
-    resourceName: "BCA Gurukul MCP",
+    resourceName: "XRounder MCP",
   }),
 });

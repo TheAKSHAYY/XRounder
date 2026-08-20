@@ -51,7 +51,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export const Route = createFileRoute("/_authenticated/admin/papers")({
-  head: () => ({ meta: [{ title: "Previous Papers · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Previous Papers · Admin · XRounder" }] }),
   component: AdminPapersPage,
 });
 

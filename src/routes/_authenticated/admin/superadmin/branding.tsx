@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 
 export const Route = createFileRoute("/_authenticated/admin/superadmin/branding")({
-  head: () => ({ meta: [{ title: "Branding · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Branding · XRounder" }] }),
   component: BrandingPage,
 });
 

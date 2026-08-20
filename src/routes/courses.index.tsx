@@ -22,17 +22,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Route = createFileRoute("/courses/")({
   head: () => ({
     meta: [
-      { title: "Courses · BCA Gurukul" },
+      { title: "Courses · XRounder" },
       {
         name: "description",
         content:
-          "Browse all programs offered on BCA Gurukul — structured semester-by-semester learning paths.",
+          "Browse all programs offered on XRounder — structured semester-by-semester learning paths.",
       },
-      { property: "og:title", content: "All courses · BCA Gurukul" },
+      { property: "og:title", content: "All courses · XRounder" },
       {
         property: "og:description",
         content:
-          "Browse every BCA Gurukul program with semester-by-semester subjects, notes, papers and quizzes.",
+          "Browse every XRounder program with semester-by-semester subjects, notes, papers and quizzes.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

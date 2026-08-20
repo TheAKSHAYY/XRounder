@@ -109,7 +109,7 @@ export function AdminShell() {
               <BrandMark className="h-8 w-8" />
               <div className="min-w-0">
                 <div className="truncate font-serif text-sm font-semibold text-foreground">
-                  BCA Gurukul
+                  XRounder
                 </div>
                 <div className="truncate text-[10px] uppercase tracking-wider text-muted-foreground">
                   Admin CMS

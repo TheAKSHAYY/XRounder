@@ -15,7 +15,7 @@ import { useTheme } from "@/components/theme/theme-provider";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Settings · XRounder" }] }),
   component: SettingsPage,
 });
 
@@ -33,7 +33,7 @@ function SettingsPage() {
       <section className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
         <h2 className="text-sm font-semibold text-foreground">Appearance</h2>
         <p className="mt-1 text-xs text-muted-foreground">
-          Choose how BCA Gurukul looks on this device.
+          Choose how XRounder looks on this device.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <ThemeChoice

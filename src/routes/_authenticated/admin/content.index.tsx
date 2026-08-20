@@ -63,7 +63,7 @@ const contentSearchSchema = z.object({
 });
 
 export const Route = createFileRoute("/_authenticated/admin/content/")({
-  head: () => ({ meta: [{ title: "Content · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Content · Admin · XRounder" }] }),
   validateSearch: contentSearchSchema,
   component: ContentPage,
 });

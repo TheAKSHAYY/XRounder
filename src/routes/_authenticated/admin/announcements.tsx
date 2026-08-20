@@ -44,7 +44,7 @@ import {
 } from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/admin/announcements")({
-  head: () => ({ meta: [{ title: "Announcements · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Announcements · Admin · XRounder" }] }),
   component: AnnouncementsPage,
 });
 

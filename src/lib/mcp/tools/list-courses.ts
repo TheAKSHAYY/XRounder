@@ -5,7 +5,7 @@ import { mcpSupabase } from "../supabase";
 export default defineTool({
   name: "list_courses",
   title: "List courses",
-  description: "List published BCA Gurukul courses with code, title, and slug.",
+  description: "List published XRounder courses with code, title, and slug.",
   inputSchema: {
     limit: z.number().int().min(1).max(100).default(50).describe("Max courses to return."),
   },

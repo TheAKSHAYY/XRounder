@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/courses/$courseSlug/")({
-  head: () => ({ meta: [{ title: "Course · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Course · XRounder" }] }),
   component: CourseDetail,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">

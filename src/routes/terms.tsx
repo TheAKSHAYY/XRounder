@@ -4,10 +4,10 @@ import { ArrowLeft } from "lucide-react";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Use · BCA Gurukul" },
-      { name: "description", content: "The terms that govern your use of BCA Gurukul." },
-      { property: "og:title", content: "Terms of Use · BCA Gurukul" },
-      { property: "og:description", content: "The terms that govern your use of BCA Gurukul." },
+      { title: "Terms of Use · XRounder" },
+      { name: "description", content: "The terms that govern your use of XRounder." },
+      { property: "og:title", content: "Terms of Use · XRounder" },
+      { property: "og:description", content: "The terms that govern your use of XRounder." },
     ],
   }),
   component: TermsPage,
@@ -27,9 +27,9 @@ function TermsPage() {
         <p className="mt-2 text-sm text-muted-foreground">Last updated: 30 June 2026</p>
 
         <div className="prose prose-neutral mt-10 max-w-none dark:prose-invert">
-          <h2>Who can use BCA Gurukul</h2>
+          <h2>Who can use XRounder</h2>
           <p>
-            BCA Gurukul is free for students enrolled in or preparing for a Bachelor of Computer
+            XRounder is free for students enrolled in or preparing for a Bachelor of Computer
             Applications programme. You must provide accurate information when you sign up.
           </p>
 
@@ -41,7 +41,7 @@ function TermsPage() {
 
           <h2>Content</h2>
           <p>
-            Notes, past papers and quizzes published on BCA Gurukul are for personal study. Don't
+            Notes, past papers and quizzes published on XRounder are for personal study. Don't
             redistribute, resell, or claim ownership of the material.
           </p>
 
@@ -60,7 +60,7 @@ function TermsPage() {
           <h2>Contact</h2>
           <p>
             Questions or disputes? Email{" "}
-            <a href="mailto:hello@bcagurukul.in">hello@bcagurukul.in</a>.
+            <a href="mailto:hello@xrounder.app">hello@xrounder.app</a>.
           </p>
         </div>
       </div>

@@ -53,7 +53,7 @@ import {
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
 
 export const Route = createFileRoute("/_authenticated/admin/quizzes/")({
-  head: () => ({ meta: [{ title: "Question Bank · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Question Bank · Admin · XRounder" }] }),
   component: AdminQuizzesPage,
 });
 

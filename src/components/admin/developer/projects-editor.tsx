@@ -88,15 +88,15 @@ export function ProjectsEditor() {
     },
   });
 
-  const seedBcaGurukul = useMutation({
+  const seedFlagshipProject = useMutation({
     mutationFn: async () => {
       const existing = (data ?? []).find((p) =>
-        (p.name || "").toLowerCase().includes("bca gurukul"),
+        (p.name || "").toLowerCase().includes("xrounder"),
       );
       const row = {
-        name: "BCA Gurukul",
+        name: "XRounder",
         description:
-          "Enterprise-grade Learning Management System for BCA students — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
+          "Enterprise-grade Learning Management System for students on any course — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
         category: "SaaS · EdTech",
         tech_stack: [
           "TanStack Start",
@@ -127,7 +127,7 @@ export function ProjectsEditor() {
       }
     },
     onSuccess: () => {
-      toast.success("BCA Gurukul added as featured project");
+      toast.success("XRounder added as featured project");
       invalidate();
     },
     onError: (e: Error) => toast.error(e.message),
@@ -141,10 +141,10 @@ export function ProjectsEditor() {
           <Button
             size="sm"
             variant="outline"
-            onClick={() => seedBcaGurukul.mutate()}
-            disabled={seedBcaGurukul.isPending}
+            onClick={() => seedFlagshipProject.mutate()}
+            disabled={seedFlagshipProject.isPending}
           >
-            {seedBcaGurukul.isPending ? "Adding…" : "✨ Seed BCA Gurukul"}
+            {seedFlagshipProject.isPending ? "Adding…" : "✨ Seed XRounder"}
           </Button>
           <ProjectDialog
             onSubmit={(v) => upsert.mutate(v)}

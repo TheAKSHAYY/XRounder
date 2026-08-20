@@ -22,7 +22,7 @@ const searchSchema = z.object({ q: z.string().optional().default("") });
 export const Route = createFileRoute("/_authenticated/search")({
   validateSearch: searchSchema,
   head: ({ match }) => {
-    const title = `${match.search.q ? `${match.search.q} · ` : ""}Search · BCA Gurukul`;
+    const title = `${match.search.q ? `${match.search.q} · ` : ""}Search · XRounder`;
     const description =
       "Search published courses, semesters, subjects, units, notes, papers and quizzes.";
     return {

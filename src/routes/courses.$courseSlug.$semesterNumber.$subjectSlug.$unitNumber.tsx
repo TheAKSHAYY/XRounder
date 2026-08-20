@@ -33,7 +33,7 @@ import { slugify } from "@/lib/slug";
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
 )({
-  head: () => ({ meta: [{ title: "Unit · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Unit · XRounder" }] }),
   component: UnitDetail,
 });
 

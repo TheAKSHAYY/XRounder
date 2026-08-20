@@ -24,13 +24,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/_authenticated/progress")({
   head: () => ({
     meta: [
-      { title: "My Progress · BCA Gurukul" },
+      { title: "My Progress · XRounder" },
       {
         name: "description",
         content:
           "Track your unit completion, quiz accuracy, study streak and learning time across every subject.",
       },
-      { property: "og:title", content: "My Progress · BCA Gurukul" },
+      { property: "og:title", content: "My Progress · XRounder" },
       {
         property: "og:description",
         content: "Your units, quiz scores, streak and study time in one place.",

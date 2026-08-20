@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/_authenticated/admin/tags")({
-  head: () => ({ meta: [{ title: "Tags · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Tags · Admin · XRounder" }] }),
   component: TagsAdmin,
 });
 

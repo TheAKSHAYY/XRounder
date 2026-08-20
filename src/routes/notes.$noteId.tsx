@@ -12,7 +12,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/notes/$noteId")({
-  head: () => ({ meta: [{ title: "Note · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Note · XRounder" }] }),
   component: NoteViewer,
 });
 
