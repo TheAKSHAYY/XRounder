@@ -16,7 +16,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { formatRelativeDay } from "@/lib/format";
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
-  head: () => ({ meta: [{ title: "Semester · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Semester · XRounder" }] }),
   component: SemesterDetail,
 });
 

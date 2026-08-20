@@ -49,10 +49,10 @@ export function SiteHeader({
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5" aria-label="BCA Gurukul home">
+        <Link to="/" className="flex min-w-0 items-center gap-2.5" aria-label="XRounder home">
           <BrandMark className="h-9 w-9 shrink-0" />
           <span className="truncate font-display text-base font-semibold text-foreground sm:text-lg">
-            BCA Gurukul
+            XRounder
           </span>
         </Link>
 

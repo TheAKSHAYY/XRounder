@@ -22,12 +22,12 @@ type Bookmark = {
 export const Route = createFileRoute("/_authenticated/bookmarks")({
   head: () => ({
     meta: [
-      { title: "Your bookmarks · BCA Gurukul" },
+      { title: "Your bookmarks · XRounder" },
       {
         name: "description",
         content: "Every note, paper and quiz you saved for revision, in one place.",
       },
-      { property: "og:title", content: "Your bookmarks · BCA Gurukul" },
+      { property: "og:title", content: "Your bookmarks · XRounder" },
       {
         property: "og:description",
         content: "Every note, paper and quiz you saved for revision, in one place.",

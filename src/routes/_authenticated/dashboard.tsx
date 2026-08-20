@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 import { computeStreak } from "@/lib/profile";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Dashboard · XRounder" }] }),
   component: DashboardPage,
 });
 

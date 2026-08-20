@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/setup")({
-  head: () => ({ meta: [{ title: "First-time setup · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "First-time setup · XRounder" }] }),
   component: SetupPage,
 });
 

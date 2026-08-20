@@ -33,7 +33,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
-  head: () => ({ meta: [{ title: "Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Admin · XRounder" }] }),
   component: AdminDashboard,
 });
 

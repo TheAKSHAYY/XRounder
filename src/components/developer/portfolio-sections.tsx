@@ -214,7 +214,7 @@ export function HeroSection({
                 <Zap className="h-3.5 w-3.5 text-accent" />
                 <span className="font-medium text-foreground">Currently building</span>
               </div>
-              <div className="mt-0.5 text-xs text-muted-foreground">BCA Gurukul LMS</div>
+              <div className="mt-0.5 text-xs text-muted-foreground">XRounder LMS</div>
             </div>
             {profile.education && (
               <div className="absolute -top-3 -right-3 hidden rounded-full border border-border bg-surface px-3 py-1.5 text-xs shadow-lg sm:flex sm:items-center sm:gap-1.5">

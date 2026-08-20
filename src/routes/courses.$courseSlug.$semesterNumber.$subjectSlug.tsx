@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug")({
-  head: () => ({ meta: [{ title: "Subject · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Subject · XRounder" }] }),
   component: () => <Outlet />,
 });

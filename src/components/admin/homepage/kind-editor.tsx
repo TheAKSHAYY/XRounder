@@ -227,7 +227,7 @@ export function KindEditor({
               id={`${idPrefix}-copyright`}
               value={(content.copyright as string) ?? ""}
               onChange={(e) => set("copyright", e.target.value)}
-              placeholder="© 2026 BCA Gurukul"
+              placeholder="© 2026 XRounder"
             />
           </Field>
         </div>

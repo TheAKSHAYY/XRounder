@@ -43,7 +43,7 @@ export function SiteFooter({
             <Link to="/" className="flex items-center gap-3">
               <BrandMark className="h-10 w-10 shrink-0" />
               <span className="font-display text-base font-semibold text-foreground">
-                BCA Gurukul
+                XRounder
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -69,7 +69,7 @@ export function SiteFooter({
           />
         </div>
         <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} BCA Gurukul. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} XRounder. All rights reserved.</span>
           <span>Built with care for BCA students.</span>
         </div>
       </div>

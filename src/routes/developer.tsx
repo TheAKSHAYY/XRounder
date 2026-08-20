@@ -20,17 +20,17 @@ import {
 export const Route = createFileRoute("/developer")({
   head: () => ({
     meta: [
-      { title: "Developer · Portfolio — BCA Gurukul" },
+      { title: "Developer · Portfolio — XRounder" },
       {
         name: "description",
         content:
-          "Portfolio of the developer behind BCA Gurukul — featured projects, tech stack, achievements, GitHub activity, and a way to say hi.",
+          "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, GitHub activity, and a way to say hi.",
       },
-      { property: "og:title", content: "Developer · Portfolio — BCA Gurukul" },
+      { property: "og:title", content: "Developer · Portfolio — XRounder" },
       {
         property: "og:description",
         content:
-          "Featured projects, tech stack, achievements and contact — the maker behind BCA Gurukul.",
+          "Featured projects, tech stack, achievements and contact — the maker behind XRounder.",
       },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },

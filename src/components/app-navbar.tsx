@@ -153,7 +153,7 @@ export function AppNavbar() {
           className="flex items-center gap-2 font-display text-base font-semibold text-foreground"
         >
           <BrandMark className="h-8 w-8" />
-          <span className="hidden sm:inline">BCA Gurukul</span>
+          <span className="hidden sm:inline">XRounder</span>
         </Link>
 
         <nav aria-label="Primary" className="ml-2 hidden items-center gap-0.5 lg:flex">

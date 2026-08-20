@@ -1,4 +1,4 @@
-# BCA Gurukul
+# XRounder
 
 An enterprise-grade Learning Management System (LMS) for BCA students, built as a
 multi-course content platform with a full admin CMS.

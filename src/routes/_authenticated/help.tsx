@@ -17,15 +17,15 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/_authenticated/help")({
   head: () => ({
     meta: [
-      { title: "Help & support · BCA Gurukul" },
+      { title: "Help & support · XRounder" },
       {
         name: "description",
-        content: "Guides, shortcuts and support contacts for studying on BCA Gurukul.",
+        content: "Guides, shortcuts and support contacts for studying on XRounder.",
       },
-      { property: "og:title", content: "Help & support · BCA Gurukul" },
+      { property: "og:title", content: "Help & support · XRounder" },
       {
         property: "og:description",
-        content: "Guides, shortcuts and support contacts for BCA Gurukul students.",
+        content: "Guides, shortcuts and support contacts for XRounder students.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

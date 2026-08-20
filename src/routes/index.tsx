@@ -23,13 +23,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BCA Gurukul — Master your BCA, semester by semester" },
+      { title: "XRounder — Master your BCA, semester by semester" },
       {
         name: "description",
         content:
           "The structured learning platform for BCA students. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
-      { property: "og:title", content: "BCA Gurukul — Master your BCA, semester by semester" },
+      { property: "og:title", content: "XRounder — Master your BCA, semester by semester" },
       {
         property: "og:description",
         content:

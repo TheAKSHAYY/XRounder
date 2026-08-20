@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/select";
 
 export const Route = createFileRoute("/_authenticated/admin/courses/")({
-  head: () => ({ meta: [{ title: "Courses · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Courses · Admin · XRounder" }] }),
   component: CoursesAdmin,
 });
 

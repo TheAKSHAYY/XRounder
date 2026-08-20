@@ -4,15 +4,15 @@ import { ArrowLeft } from "lucide-react";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy · BCA Gurukul" },
+      { title: "Privacy Policy · XRounder" },
       {
         name: "description",
-        content: "How BCA Gurukul collects, uses, and protects student data.",
+        content: "How XRounder collects, uses, and protects student data.",
       },
-      { property: "og:title", content: "Privacy Policy · BCA Gurukul" },
+      { property: "og:title", content: "Privacy Policy · XRounder" },
       {
         property: "og:description",
-        content: "How BCA Gurukul collects, uses, and protects student data.",
+        content: "How XRounder collects, uses, and protects student data.",
       },
     ],
   }),
@@ -48,7 +48,7 @@ function PrivacyPage() {
 
           <h2>Who can see it</h2>
           <p>
-            Only you and authorised BCA Gurukul administrators can see your profile and progress.
+            Only you and authorised XRounder administrators can see your profile and progress.
             Public content (courses, notes, papers) is visible to everyone.
           </p>
 

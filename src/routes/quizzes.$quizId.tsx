@@ -21,13 +21,13 @@ import { useQuizAttempt } from "@/components/quiz/use-quiz-attempt";
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: () => ({
     meta: [
-      { title: "Quiz · BCA Gurukul" },
+      { title: "Quiz · XRounder" },
       {
         name: "description",
         content:
           "Take an interactive quiz with instant feedback and a detailed performance summary.",
       },
-      { property: "og:title", content: "Quiz · BCA Gurukul" },
+      { property: "og:title", content: "Quiz · XRounder" },
       {
         property: "og:description",
         content:

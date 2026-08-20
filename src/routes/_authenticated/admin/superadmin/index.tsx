@@ -8,7 +8,7 @@ import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 
 export const Route = createFileRoute("/_authenticated/admin/superadmin/")({
-  head: () => ({ meta: [{ title: "Platform · Super Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Platform · Super Admin · XRounder" }] }),
   component: SuperAdminHome,
 });
 

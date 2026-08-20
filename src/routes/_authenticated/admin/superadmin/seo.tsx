@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { EmptyState } from "@/components/ui/empty-state";
 
 export const Route = createFileRoute("/_authenticated/admin/superadmin/seo")({
-  head: () => ({ meta: [{ title: "SEO Manager · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "SEO Manager · XRounder" }] }),
   component: SeoPage,
 });
 

@@ -19,7 +19,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 
 export const Route = createFileRoute("/_authenticated/onboarding")({
-  head: () => ({ meta: [{ title: "Complete your profile · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Complete your profile · XRounder" }] }),
   component: OnboardingPage,
 });
 
@@ -119,7 +119,7 @@ function OnboardingPage() {
       toast.error(error.message);
       return;
     }
-    toast.success("Welcome to BCA Gurukul");
+    toast.success("Welcome to XRounder");
     await router.invalidate();
     const dest = await resolvePostAuthRoute(user.id);
     navigate({ to: dest, replace: true });

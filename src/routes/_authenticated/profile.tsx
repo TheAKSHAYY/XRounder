@@ -38,17 +38,17 @@ import {
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
     meta: [
-      { title: "Your profile · BCA Gurukul" },
+      { title: "Your profile · XRounder" },
       {
         name: "description",
         content:
-          "Manage your BCA Gurukul student profile: personal and academic details, learning statistics, achievements and account security.",
+          "Manage your XRounder student profile: personal and academic details, learning statistics, achievements and account security.",
       },
-      { property: "og:title", content: "Your profile · BCA Gurukul" },
+      { property: "og:title", content: "Your profile · XRounder" },
       {
         property: "og:description",
         content:
-          "Manage your BCA Gurukul student profile: personal and academic details, learning statistics, achievements and account security.",
+          "Manage your XRounder student profile: personal and academic details, learning statistics, achievements and account security.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

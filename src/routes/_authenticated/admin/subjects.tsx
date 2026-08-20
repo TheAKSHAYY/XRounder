@@ -30,7 +30,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/subjects")({
-  head: () => ({ meta: [{ title: "Subjects · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Subjects · Admin · XRounder" }] }),
   component: SubjectsPage,
 });
 

@@ -94,7 +94,7 @@ export function ProjectsEditor() {
         (p.name || "").toLowerCase().includes("bca gurukul"),
       );
       const row = {
-        name: "BCA Gurukul",
+        name: "XRounder",
         description:
           "Enterprise-grade Learning Management System for BCA students — multi-course hierarchy (Course → Semester → Subject → Unit) with notes, past papers, server-graded quizzes, admin CMS, role-based access, and real-time updates. Built solo, production-ready.",
         category: "SaaS · EdTech",
@@ -127,7 +127,7 @@ export function ProjectsEditor() {
       }
     },
     onSuccess: () => {
-      toast.success("BCA Gurukul added as featured project");
+      toast.success("XRounder added as featured project");
       invalidate();
     },
     onError: (e: Error) => toast.error(e.message),
@@ -144,7 +144,7 @@ export function ProjectsEditor() {
             onClick={() => seedBcaGurukul.mutate()}
             disabled={seedBcaGurukul.isPending}
           >
-            {seedBcaGurukul.isPending ? "Adding…" : "✨ Seed BCA Gurukul"}
+            {seedBcaGurukul.isPending ? "Adding…" : "✨ Seed XRounder"}
           </Button>
           <ProjectDialog
             onSubmit={(v) => upsert.mutate(v)}

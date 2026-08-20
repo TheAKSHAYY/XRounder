@@ -58,7 +58,7 @@ export function EmptyLanding({ user, loading }: { user: unknown; loading: boolea
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6 sm:py-32">
         <div className="mx-auto inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-xs text-muted-foreground">
           <Sparkles className="h-3 w-3" />
-          BCA Gurukul
+          XRounder
         </div>
         <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           Your platform is ready.
@@ -415,7 +415,7 @@ export function WhyChoose() {
     <section className="border-b border-border/60 bg-surface-muted/40 py-14 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Why BCA Gurukul"
+          eyebrow="Why XRounder"
           title="Designed around how BCA students actually study"
           body="The syllabus is messy. Your study workflow shouldn't be."
         />
@@ -557,7 +557,7 @@ export function Testimonials() {
             Be one of the first voices
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Use BCA Gurukul this semester and share how it helped. We'll feature real student
+            Use XRounder this semester and share how it helped. We'll feature real student
             stories here once we have them — no fake quotes.
           </p>
           <Button asChild className="mt-6" variant="outline">
@@ -576,7 +576,7 @@ export function Testimonials() {
 export function FAQ() {
   const items = [
     {
-      q: "Is BCA Gurukul free?",
+      q: "Is XRounder free?",
       a: "Yes — the core platform is free for all BCA students. You only need an email to sign up.",
     },
     {

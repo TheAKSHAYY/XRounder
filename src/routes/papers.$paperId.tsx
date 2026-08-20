@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/papers/$paperId")({
-  head: () => ({ meta: [{ title: "Question Paper · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Question Paper · XRounder" }] }),
   component: PaperViewer,
 });
 

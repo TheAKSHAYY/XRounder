@@ -17,7 +17,7 @@ export function EnvErrorScreen({ result }: { result: EnvValidationResult }) {
               Configuration required
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              BCA Gurukul can&apos;t connect to its backend because some environment values are
+              XRounder can&apos;t connect to its backend because some environment values are
               missing or invalid.
             </p>
           </div>

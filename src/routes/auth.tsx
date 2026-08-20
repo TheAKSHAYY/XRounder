@@ -26,11 +26,11 @@ export const Route = createFileRoute("/auth")({
   validateSearch: (search) => searchSchema.parse(search),
   head: () => ({
     meta: [
-      { title: "Sign in · BCA Gurukul" },
+      { title: "Sign in · XRounder" },
       {
         name: "description",
         content:
-          "Sign in or create your BCA Gurukul account to access notes, papers, videos, and MCQ practice.",
+          "Sign in or create your XRounder account to access notes, papers, videos, and MCQ practice.",
       },
     ],
   }),
@@ -62,7 +62,7 @@ function AuthPage() {
         <Link to="/" className="relative flex items-center gap-3">
           <BrandMark variant="inverse" className="h-10 w-10" />
           <div className="leading-tight">
-            <div className="font-display text-lg font-semibold">BCA Gurukul</div>
+            <div className="font-display text-lg font-semibold">XRounder</div>
             <div className="text-xs text-primary-foreground/70">
               Structured learning for BCA students
             </div>
@@ -115,7 +115,7 @@ function AuthPage() {
           </Link>
           <Link to="/" className="flex items-center gap-2 lg:hidden">
             <BrandMark className="h-8 w-8" />
-            <span className="font-display text-sm font-semibold">BCA Gurukul</span>
+            <span className="font-display text-sm font-semibold">XRounder</span>
           </Link>
         </div>
 

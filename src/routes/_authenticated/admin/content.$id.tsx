@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const Route = createFileRoute("/_authenticated/admin/content/$id")({
-  head: () => ({ meta: [{ title: "Edit content · Admin · BCA Gurukul" }] }),
+  head: () => ({ meta: [{ title: "Edit content · Admin · XRounder" }] }),
   component: EditContentPage,
   errorComponent: ({ error }) => (
     <PageContainer width="narrow">
