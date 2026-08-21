@@ -655,7 +655,7 @@
   }
 }
 
-/* Slow saffron shimmer used on the hero accent word */
+/* Slow flame-orange shimmer used on the hero accent word */
 @keyframes accent-sheen {
   0%,
   100% {
@@ -688,7 +688,7 @@
 
 /*
  * ── Elevation + interaction primitives ────────────────────────────────────
- * Softer, warmer shadows than Tailwind defaults (indigo-tinted, low alpha),
+ * Softer, warmer shadows than Tailwind defaults (ink-tinted, low alpha),
  * plus the shared interaction utilities so cards animate identically
  * everywhere. All motion stays under 250ms and respects reduced-motion.
  */
