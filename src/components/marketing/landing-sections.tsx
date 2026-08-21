@@ -95,7 +95,7 @@ export function EmptyLanding({ user, loading }: { user: unknown; loading: boolea
 export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
   return (
     <section className="relative overflow-hidden border-b border-border/60">
-      {/* Soft saffron aurora behind the headline */}
+      {/* Soft flame-orange aurora behind the headline */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-[-12rem] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/25 blur-[120px]" />
         <div className="absolute left-[10%] top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
@@ -112,7 +112,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 sm:pt-16 lg:pt-20">
         <div className="max-w-4xl">
-          {/* Eyebrow pill with pulsing saffron dot */}
+          {/* Eyebrow pill with pulsing flame-orange dot */}
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1">
               <span className="relative grid h-2 w-2 place-items-center">
@@ -125,7 +125,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             </div>
           </Reveal>
 
-          {/* Headline with italic-saffron accent word */}
+          {/* Headline with italic-flame-orange accent word */}
           <Reveal delay={80}>
             <h1 className="mt-6 font-display text-[2.25rem] font-semibold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Master your course <br className="hidden sm:block" />
