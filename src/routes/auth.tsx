@@ -15,7 +15,7 @@ import { PasswordStrengthMeter, scorePassword } from "@/components/auth/password
 
 import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
-import { BrandLockup, BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 
 const searchSchema = z.object({
   redirect: z.string().optional(),
@@ -60,7 +60,7 @@ function AuthPage() {
         </div>
 
         <Link to="/" className="relative flex items-center gap-3">
-          <BrandLockup className="h-10 w-auto" />
+          <BrandLockup className="h-12" textClassName="text-2xl text-primary-foreground" />
           <span className="sr-only">XRounder</span>
         </Link>
 
@@ -110,8 +110,7 @@ function AuthPage() {
             Back to home
           </Link>
           <Link to="/" className="flex items-center gap-2 lg:hidden">
-            <BrandMark className="h-8 w-8" />
-            <span className="font-display text-sm font-semibold">XRounder</span>
+            <BrandLockup className="h-9" textClassName="text-base" />
           </Link>
         </div>
 

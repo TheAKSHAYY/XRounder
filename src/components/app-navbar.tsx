@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useRoles } from "@/hooks/use-roles";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -152,8 +152,7 @@ export function AppNavbar() {
           to="/dashboard"
           className="flex items-center gap-2 font-display text-base font-semibold text-foreground"
         >
-          <BrandMark className="h-8 w-8" />
-          <span className="hidden sm:inline">XRounder</span>
+          <BrandLockup className="h-9" textClassName="hidden text-lg sm:inline" />
         </Link>
 
         <nav aria-label="Primary" className="ml-2 hidden items-center gap-0.5 lg:flex">

@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Menu } from "lucide-react";
 
 import { useAuth } from "@/hooks/use-auth";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -49,11 +49,8 @@ export function SiteHeader({
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5" aria-label="XRounder home">
-          <BrandMark className="h-9 w-9 shrink-0" />
-          <span className="truncate font-display text-base font-semibold text-foreground sm:text-lg">
-            XRounder
-          </span>
+        <Link to="/" className="flex min-w-0 items-center" aria-label="XRounder home">
+          <BrandLockup className="h-10" textClassName="text-lg sm:text-xl" />
         </Link>
 
         <nav aria-label="Main" className="ml-4 hidden items-center gap-1 md:flex">

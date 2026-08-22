@@ -1,11 +1,10 @@
 import markAsset from "@/assets/xrounder-mark.png.asset.json";
-import logoAsset from "@/assets/xrounder-logo.png.asset.json";
-import logoDarkTextAsset from "@/assets/xrounder-logo-dark.png.asset.json";
 import { cn } from "@/lib/utils";
 
 /**
- * BrandMark — the XRounder logo mark (the red brush-stroke X).
- * Transparent PNG, square box, aspect ratio kept. Works on any surface.
+ * BrandMark — the XRounder logo mark: the hand-painted red brush-stroke X
+ * taken straight from the source artwork (transparent PNG, square box).
+ * Never substitute a font/CSS "X" for this.
  */
 export function BrandMark({ className }: { className?: string; variant?: "filled" | "inverse" }) {
   return (
@@ -22,41 +21,49 @@ export function BrandMark({ className }: { className?: string; variant?: "filled
 }
 
 /**
- * BrandLockup — the full XRounder logo (red X + ROUNDER wordmark + flame).
- * Automatically swaps the wordmark colour for light and dark surfaces.
+ * BrandLockup — the full XRounder logo: the custom brush-stroke X (large,
+ * vivid red, image asset) immediately followed by "Rounder" set in the clean
+ * bold display face. The X is intentionally larger than the wordmark and the
+ * spacing is tight, matching the source logo.
+ *
+ * `className` controls the overall lockup height (e.g. "h-10").
  */
 export function BrandLockup({
   className,
+  textClassName,
   tone = "auto",
 }: {
   className?: string;
-  /** "auto" follows the theme, "light" forces the near-white wordmark (dark surfaces). */
+  textClassName?: string;
+  /** "light" forces a near-white wordmark (dark surfaces), "dark" forces near-black. */
   tone?: "auto" | "light" | "dark";
 }) {
-  const base = cn("h-10 w-auto object-contain", className);
-
-  if (tone === "light") {
-    return <img src={logoAsset.url} alt="XRounder" className={base} loading="eager" />;
-  }
-  if (tone === "dark") {
-    return <img src={logoDarkTextAsset.url} alt="XRounder" className={base} loading="eager" />;
-  }
+  const wordTone =
+    tone === "light"
+      ? "text-primary-foreground"
+      : tone === "dark"
+        ? "text-foreground"
+        : "text-foreground";
 
   return (
-    <>
+    <span className={cn("inline-flex h-10 items-center", className)} aria-label="XRounder">
       <img
-        src={logoDarkTextAsset.url}
-        alt="XRounder"
-        className={cn(base, "dark:hidden")}
-        loading="eager"
-      />
-      <img
-        src={logoAsset.url}
+        src={markAsset.url}
         alt=""
         aria-hidden
-        className={cn(base, "hidden dark:block")}
+        className="h-full w-auto shrink-0 object-contain"
         loading="eager"
+        decoding="async"
       />
-    </>
+      <span
+        className={cn(
+          "-ml-0.5 font-sans text-lg font-extrabold leading-none tracking-tight",
+          wordTone,
+          textClassName,
+        )}
+      >
+        Rounder
+      </span>
+    </span>
   );
 }
