@@ -108,9 +108,6 @@ export function AdminShell() {
             <div className="flex items-center gap-2 px-3 py-3">
               <BrandLockup className="h-9" textClassName="text-base" />
               <div className="min-w-0">
-                <div className="truncate font-serif text-sm font-semibold text-foreground">
-                  XRounder
-                </div>
                 <div className="truncate text-[10px] uppercase tracking-wider text-muted-foreground">
                   Admin CMS
                 </div>
