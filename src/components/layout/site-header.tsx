@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Menu } from "lucide-react";
 
 import { useAuth } from "@/hooks/use-auth";
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";

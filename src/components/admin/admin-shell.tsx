@@ -42,7 +42,7 @@ import { useAdminSidebarBadges } from "@/hooks/use-admin-sidebar-badges";
 import { useRoles } from "@/hooks/use-roles";
 import { cn } from "@/lib/utils";
 
-import { BrandMark } from "@/components/brand-mark";
+import { BrandLockup } from "@/components/brand-mark";
 
 import { CreateWizard } from "./create-wizard";
 import { CommandPalette } from "./command-palette";
@@ -106,7 +106,7 @@ export function AdminShell() {
         <Sidebar collapsible="icon" className="border-r border-border/70">
           <SidebarContent>
             <div className="flex items-center gap-2 px-3 py-3">
-              <BrandMark className="h-8 w-8" />
+              <BrandLockup className="h-9" textClassName="text-base" />
               <div className="min-w-0">
                 <div className="truncate font-serif text-sm font-semibold text-foreground">
                   XRounder
