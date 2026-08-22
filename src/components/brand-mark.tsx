@@ -57,7 +57,7 @@ export function BrandLockup({
       />
       <span
         className={cn(
-          "-ml-0.5 font-display text-lg font-extrabold leading-none tracking-tight",
+          "-ml-0.5 font-sans text-lg font-extrabold leading-none tracking-tight",
           wordTone,
           textClassName,
         )}
