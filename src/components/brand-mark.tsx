@@ -57,11 +57,10 @@ export function BrandLockup({
       />
       <span
         className={cn(
-          "-ml-[0.12em] font-display text-[0.58em] font-extrabold uppercase leading-none tracking-tight",
+          "-ml-0.5 font-display text-lg font-extrabold leading-none tracking-tight",
           wordTone,
           textClassName,
         )}
-        style={{ fontSize: "0.58em" }}
       >
         Rounder
       </span>
