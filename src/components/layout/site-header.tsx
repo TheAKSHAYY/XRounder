@@ -80,6 +80,7 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
+          {isGuest && <GuestBadge className="hidden sm:inline-flex" />}
           <ThemeToggle />
 
           {loading ? (
@@ -110,6 +111,7 @@ export function SiteHeader({
               </Button>
             </>
           )}
+
 
           <Sheet>
             <SheetTrigger asChild>
