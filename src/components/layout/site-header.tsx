@@ -2,7 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Menu } from "lucide-react";
 
 import { useAuth } from "@/hooks/use-auth";
+import { useGuest } from "@/hooks/use-guest";
+import { GuestBadge } from "@/components/guest/guest-badge";
 import { BrandLockup } from "@/components/brand-mark";
+
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -22,6 +25,8 @@ export function SiteHeader({
   className?: string;
 }) {
   const { user, loading } = useAuth();
+  const { isGuest } = useGuest();
+
 
   const anchors = marketing
     ? [
@@ -80,6 +85,7 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
+          {isGuest && <GuestBadge className="hidden sm:inline-flex" />}
           <ThemeToggle />
 
           {loading ? (
@@ -110,6 +116,7 @@ export function SiteHeader({
               </Button>
             </>
           )}
+
 
           <Sheet>
             <SheetTrigger asChild>

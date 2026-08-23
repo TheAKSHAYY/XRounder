@@ -172,11 +172,12 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                 variant="outline"
                 className="group h-12 rounded-full border-2 border-border/80 px-8 text-base transition-colors hover:border-accent/50"
               >
-                <Link to="/courses">
-                  Browse syllabus
+                <Link to={user ? "/courses" : "/explore"}>
+                  {user ? "Browse syllabus" : "Explore as guest"}
                   <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </Button>
+
             </div>
           </Reveal>
 
