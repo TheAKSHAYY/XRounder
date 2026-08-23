@@ -25,6 +25,8 @@ export function SiteHeader({
   className?: string;
 }) {
   const { user, loading } = useAuth();
+  const { isGuest } = useGuest();
+
 
   const anchors = marketing
     ? [
