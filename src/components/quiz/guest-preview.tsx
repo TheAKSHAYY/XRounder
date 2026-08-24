@@ -68,7 +68,11 @@ export function GuestQuizPreview({
           onOpenChange={setPromptOpen}
           title="Take the full quiz"
           description="You've used your guest preview for this quiz. Sign up free to answer every question, get scored instantly and track your progress."
-          benefits={["Full quizzes with instant scoring", "Attempt history & analytics", "Saved bookmarks and progress"]}
+          benefits={[
+            "Full quizzes with instant scoring",
+            "Attempt history & analytics",
+            "Saved bookmarks and progress",
+          ]}
         />
       </>
     );
@@ -87,9 +91,7 @@ export function GuestQuizPreview({
         </span>
       </div>
 
-      <h2 className="mt-4 text-lg font-semibold leading-snug text-foreground">
-        {current!.prompt}
-      </h2>
+      <h2 className="mt-4 text-lg font-semibold leading-snug text-foreground">{current!.prompt}</h2>
 
       <ul className="mt-5 space-y-2">
         {options.map((o) => (
