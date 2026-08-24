@@ -17,6 +17,9 @@ import { QuizHeader } from "@/components/quiz/quiz-header";
 import { QuestionCard } from "@/components/quiz/question-card";
 import { ResultsView } from "@/components/quiz/results-view";
 import { useQuizAttempt } from "@/components/quiz/use-quiz-attempt";
+import { GuestQuizPreview } from "@/components/quiz/guest-preview";
+import { useGuest } from "@/hooks/use-guest";
+import { GUEST_LIMITS } from "@/lib/guest";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: () => ({
@@ -42,6 +45,7 @@ export const Route = createFileRoute("/quizzes/$quizId")({
 
 function QuizPage() {
   const { quizId } = Route.useParams();
+  const { isGuest, startGuestMode } = useGuest();
   const {
     user,
     quizQ,
@@ -140,11 +144,24 @@ function QuizPage() {
               {!user ? (
                 <div className="mt-6 rounded-2xl border border-border bg-background p-5 text-center">
                   <p className="text-muted-foreground">
-                    Sign in to take this quiz and track your results.
+                    {isGuest
+                      ? `You can preview ${GUEST_LIMITS.mcqPerQuiz} questions as a guest. Sign in to take the full quiz and track results.`
+                      : "Sign in to take this quiz and track your results."}
                   </p>
-                  <Link to="/auth" className="mt-3 inline-block">
-                    <Button className="rounded-full">Sign in</Button>
-                  </Link>
+                  <div className="mt-3 flex flex-wrap justify-center gap-2">
+                    <Button asChild className="rounded-full">
+                      <Link to="/auth">Sign in</Link>
+                    </Button>
+                    {!isGuest && (
+                      <Button
+                        variant="outline"
+                        className="rounded-full"
+                        onClick={() => startGuestMode()}
+                      >
+                        Preview as guest
+                      </Button>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <>
@@ -202,6 +219,10 @@ function QuizPage() {
               </section>
             )}
           </motion.div>
+        )}
+
+        {!user && isGuest && quizQ.data && (
+          <GuestQuizPreview quizId={quizId} questions={questions} optionsByQ={optionsByQ} />
         )}
 
         {user && activeAttempt && current && (
