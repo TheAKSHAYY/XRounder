@@ -17,6 +17,9 @@ import { QuizHeader } from "@/components/quiz/quiz-header";
 import { QuestionCard } from "@/components/quiz/question-card";
 import { ResultsView } from "@/components/quiz/results-view";
 import { useQuizAttempt } from "@/components/quiz/use-quiz-attempt";
+import { GuestQuizPreview } from "@/components/quiz/guest-preview";
+import { useGuest } from "@/hooks/use-guest";
+import { GUEST_LIMITS } from "@/lib/guest";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: () => ({
@@ -42,6 +45,7 @@ export const Route = createFileRoute("/quizzes/$quizId")({
 
 function QuizPage() {
   const { quizId } = Route.useParams();
+  const { isGuest, startGuestMode } = useGuest();
   const {
     user,
     quizQ,
@@ -215,6 +219,10 @@ function QuizPage() {
               </section>
             )}
           </motion.div>
+        )}
+
+        {!user && isGuest && quizQ.data && (
+          <GuestQuizPreview quizId={quizId} questions={questions} optionsByQ={optionsByQ} />
         )}
 
         {user && activeAttempt && current && (
