@@ -140,11 +140,24 @@ function QuizPage() {
               {!user ? (
                 <div className="mt-6 rounded-2xl border border-border bg-background p-5 text-center">
                   <p className="text-muted-foreground">
-                    Sign in to take this quiz and track your results.
+                    {isGuest
+                      ? `You can preview ${GUEST_LIMITS.mcqPerQuiz} questions as a guest. Sign in to take the full quiz and track results.`
+                      : "Sign in to take this quiz and track your results."}
                   </p>
-                  <Link to="/auth" className="mt-3 inline-block">
-                    <Button className="rounded-full">Sign in</Button>
-                  </Link>
+                  <div className="mt-3 flex flex-wrap justify-center gap-2">
+                    <Button asChild className="rounded-full">
+                      <Link to="/auth">Sign in</Link>
+                    </Button>
+                    {!isGuest && (
+                      <Button
+                        variant="outline"
+                        className="rounded-full"
+                        onClick={() => startGuestMode()}
+                      >
+                        Preview as guest
+                      </Button>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <>
