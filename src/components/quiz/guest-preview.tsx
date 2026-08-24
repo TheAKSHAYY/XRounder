@@ -104,7 +104,7 @@ export function GuestQuizPreview({
                   : "border-border bg-background hover:bg-muted/60",
               )}
             >
-              {o.body}
+              {o.text}
             </button>
           </li>
         ))}
