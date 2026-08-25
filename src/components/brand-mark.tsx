@@ -1,5 +1,6 @@
-import markAsset from "@/assets/xrounder-mark.png.asset.json";
 import { cn } from "@/lib/utils";
+
+const LOGO_MARK_SRC = "/xrounder-mark.png";
 
 /**
  * BrandMark — the XRounder logo mark: the hand-painted red brush-stroke X
@@ -10,11 +11,14 @@ export function BrandMark({ className }: { className?: string; variant?: "filled
   return (
     <span className={cn("relative inline-grid shrink-0 place-items-center", className)}>
       <img
-        src={markAsset.url}
+        src={LOGO_MARK_SRC}
         alt="XRounder"
         className="h-full w-full object-contain"
         loading="eager"
         decoding="async"
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).src = "/favicon.png";
+        }}
       />
     </span>
   );
@@ -51,12 +55,15 @@ export function BrandLockup({
       aria-label="XRounder"
     >
       <img
-        src={markAsset.url}
+        src={LOGO_MARK_SRC}
         alt=""
         aria-hidden
         className="h-[2.5em] w-auto max-w-none shrink-0 object-contain"
         loading="eager"
         decoding="async"
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).src = "/favicon.png";
+        }}
       />
 
       <span
