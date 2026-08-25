@@ -71,5 +71,3 @@ export function BrandLockup({
     </span>
   );
 }
-
-
