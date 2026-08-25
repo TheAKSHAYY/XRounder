@@ -252,6 +252,8 @@ function ProfilePage() {
     if (!user) return;
     qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
     qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
+    qc.invalidateQueries({ queryKey: ["dashboard-profile", user.id] });
+    qc.invalidateQueries({ queryKey: ["dashboard-context"] });
   }
 
   async function updateProfile(patch: Record<string, unknown>) {

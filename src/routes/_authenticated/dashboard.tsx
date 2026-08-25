@@ -20,6 +20,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { AnnouncementBanner } from "@/components/announcement-banner";
+import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { cn } from "@/lib/utils";
 import { computeStreak } from "@/lib/profile";
 
@@ -80,7 +81,7 @@ function DashboardPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select("current_course_id, current_semester_id, onboarded_at")
+        .select("current_course_id, current_semester_id, current_year, onboarded_at")
         .eq("user_id", user.id)
         .maybeSingle();
       if (error) throw error;
@@ -205,17 +206,28 @@ function DashboardPage() {
 
         <div className="flex shrink-0 flex-wrap items-center gap-2">
           {semester && (
-            <Link
-              to="/courses/$courseSlug/$semesterNumber"
-              params={{
-                courseSlug: courseSlug ?? "",
-                semesterNumber: String(semester.number),
-              }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-            >
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-foreground transition-colors">
               <GraduationCap className="h-3.5 w-3.5 text-primary" />
-              {courseTitle ? `${courseTitle} · ` : ""}Semester {semester.number}
-            </Link>
+              <Link
+                to="/courses/$courseSlug/$semesterNumber"
+                params={{
+                  courseSlug: courseSlug ?? "",
+                  semesterNumber: String(semester.number),
+                }}
+                className="hover:text-primary transition-colors"
+              >
+                {courseTitle ? `${courseTitle} · ` : ""}
+                {profileQuery.data?.current_year ? `Year ${profileQuery.data.current_year} · ` : ""}
+                Semester {semester.number}
+              </Link>
+              <Link
+                to="/onboarding"
+                className="ml-1 text-[11px] text-muted-foreground hover:text-primary transition-colors underline"
+                title="Change course, year or semester"
+              >
+                Change
+              </Link>
+            </div>
           )}
           {!semester && !profileQuery.isLoading && (
             <Link
@@ -223,7 +235,7 @@ function DashboardPage() {
               className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:text-primary"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              Choose your semester
+              Set up learning path
             </Link>
           )}
           <span
@@ -241,14 +253,53 @@ function DashboardPage() {
         </div>
       </section>
 
-      {/* ─── The one primary action ─── */}
-      <section className="mt-8">
-        <ContinueHero
-          loading={progressQuery.isLoading || profileQuery.isLoading}
-          pickUp={pickUp}
-          semester={semester}
-          courseSlug={courseSlug}
-        />
+      {/* ─── Primary Action & Today's Goal Grid ─── */}
+      <section className="mt-8 grid gap-5 lg:grid-cols-12 items-stretch">
+        <div className="lg:col-span-8">
+          <ContinueHero
+            loading={progressQuery.isLoading || profileQuery.isLoading}
+            pickUp={pickUp}
+            semester={semester}
+            courseSlug={courseSlug}
+          />
+        </div>
+        <div className="lg:col-span-4 flex flex-col justify-between rounded-xl border border-border bg-surface p-6 shadow-xs">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-primary font-mono">
+                Today's Goal
+              </span>
+              <span className="text-xs text-muted-foreground font-medium">Daily Focus</span>
+            </div>
+            <h3 className="mt-3 font-display text-lg font-bold text-foreground">
+              Master 1 Syllabus Unit
+            </h3>
+            <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+              Read unit notes, take the 5-question check quiz, and keep your {streak}d streak active.
+            </p>
+          </div>
+
+          <div className="mt-5 pt-4 border-t border-border/60">
+            {semester && courseSlug ? (
+              <Button asChild variant="outline" size="sm" className="w-full justify-between rounded-lg text-xs font-semibold">
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber"
+                  params={{ courseSlug, semesterNumber: String(semester.number) }}
+                >
+                  <span>Open today's units</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            ) : (
+              <Button asChild variant="outline" size="sm" className="w-full justify-between rounded-lg text-xs font-semibold">
+                <Link to="/onboarding">
+                  <span>Set learning goal</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            )}
+          </div>
+        </div>
       </section>
 
       {/* ─── Your semester rail ─── */}
@@ -463,6 +514,7 @@ function DashboardPage() {
           )}
         </div>
       </section>
+      <MobileBottomNav />
     </main>
   );
 }

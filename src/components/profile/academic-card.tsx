@@ -6,6 +6,7 @@ import {
   Layers,
   Loader2,
   Save,
+  Sparkles,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -42,7 +43,7 @@ function InfoChip({
   return (
     <div className="min-w-0 rounded-lg border border-border/70 bg-background px-3 py-2.5">
       <div className="flex items-center gap-1.5 text-eyebrow text-muted-foreground">
-        <Icon className="h-3 w-3 shrink-0" aria-hidden />
+        <Icon className="h-3 w-3 shrink-0 text-primary" aria-hidden />
         <span className="truncate">{label}</span>
       </div>
       <div className="mt-1 truncate text-sm font-medium text-foreground">{value}</div>
@@ -85,13 +86,20 @@ export function AcademicCard({
     <form
       id="academic"
       onSubmit={onSubmit}
-      aria-label="Academic information"
+      aria-label="Learning Preferences and Academic Information"
       className="rounded-xl border border-border bg-surface p-4 shadow-soft sm:p-5"
     >
-      <h2 className="text-h3 text-foreground">Academic information</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Drives which course content and papers you see across the app.
-      </p>
+      <div className="flex items-center gap-2">
+        <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary/10 text-primary">
+          <Sparkles className="h-4 w-4" />
+        </span>
+        <div>
+          <h2 className="text-h3 text-foreground">Learning Preferences & Academic Info</h2>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            Drives your dashboard, subjects, and study materials across XRounder.
+          </p>
+        </div>
+      </div>
 
       <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
         <div className="grid min-w-0 grid-cols-2 gap-2 sm:grid-cols-3">
@@ -103,7 +111,7 @@ export function AcademicCard({
             <>
               <InfoChip icon={BookOpen} label="Course" value={courseLabel} />
               <InfoChip icon={Layers} label="Semester" value={semesterLabel} />
-              <InfoChip icon={GraduationCap} label="Year" value={form.current_year || "Not set"} />
+              <InfoChip icon={GraduationCap} label="Year" value={form.current_year ? `Year ${form.current_year}` : "Not set"} />
               <InfoChip
                 icon={CalendarDays}
                 label="Session"
@@ -120,9 +128,9 @@ export function AcademicCard({
         </div>
       </div>
 
-      <fieldset disabled={saving} className="mt-4 grid gap-4 sm:grid-cols-2">
+      <fieldset disabled={saving} className="mt-5 grid gap-4 sm:grid-cols-2">
         <div className="min-w-0 space-y-2">
-          <Label htmlFor="course">Course</Label>
+          <Label htmlFor="course">Program / Course</Label>
           <Select
             value={form.current_course_id || undefined}
             onValueChange={(v) => onChange({ current_course_id: v, current_semester_id: "" })}
@@ -141,7 +149,26 @@ export function AcademicCard({
         </div>
 
         <div className="min-w-0 space-y-2">
-          <Label htmlFor="semester">Current semester</Label>
+          <Label htmlFor="year">Current Year</Label>
+          <Select
+            value={form.current_year || undefined}
+            onValueChange={(v) => onChange({ current_year: v, current_semester_id: "" })}
+          >
+            <SelectTrigger id="year">
+              <SelectValue placeholder="Choose year" />
+            </SelectTrigger>
+            <SelectContent>
+              {["1", "2", "3", "4", "5"].map((y) => (
+                <SelectItem key={y} value={y}>
+                  Year {y}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="min-w-0 space-y-2 sm:col-span-2">
+          <Label htmlFor="semester">Current Semester</Label>
           <Select
             value={form.current_semester_id || undefined}
             onValueChange={(v) => onChange({ current_semester_id: v })}
@@ -162,27 +189,8 @@ export function AcademicCard({
           </Select>
         </div>
 
-        <div className="min-w-0 space-y-2">
-          <Label htmlFor="year">Current year</Label>
-          <Select
-            value={form.current_year || undefined}
-            onValueChange={(v) => onChange({ current_year: v })}
-          >
-            <SelectTrigger id="year">
-              <SelectValue placeholder="Choose year" />
-            </SelectTrigger>
-            <SelectContent>
-              {["1", "2", "3", "4"].map((y) => (
-                <SelectItem key={y} value={y}>
-                  Year {y}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="min-w-0 space-y-2">
-          <Label htmlFor="session">Academic session</Label>
+        <div className="min-w-0 space-y-2 sm:col-span-2">
+          <Label htmlFor="session">Academic Session (optional)</Label>
           <Input
             id="session"
             value={form.academic_session}
@@ -199,7 +207,7 @@ export function AcademicCard({
           ) : (
             <Save className="mr-2 h-4 w-4" />
           )}
-          {saving ? "Saving…" : "Save academic details"}
+          {saving ? "Saving…" : "Save Learning Preferences"}
         </Button>
       </div>
     </form>

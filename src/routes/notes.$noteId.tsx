@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Download, FileText, Lock } from "lucide-react";
+import { ArrowLeft, Download, FileText, Lock, Sparkles } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -10,9 +10,10 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 
 export const Route = createFileRoute("/notes/$noteId")({
-  head: () => ({ meta: [{ title: "Note · XRounder" }] }),
+  head: () => ({ meta: [{ title: "Study Note · XRounder" }] }),
   component: NoteViewer,
 });
 
@@ -142,24 +143,24 @@ function NoteViewer() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader />
-      <main className="mx-auto max-w-5xl px-6 py-10">
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
         <Link
           to="/courses"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to catalog
+          <ArrowLeft className="h-4 w-4" /> Back to courses
         </Link>
 
         {noteQuery.isLoading && (
-          <div className="mt-6 rounded-2xl border border-border bg-surface p-8 text-sm text-muted-foreground">
-            Opening note…
+          <div className="mt-8 rounded-2xl border border-border bg-surface p-12 text-center text-sm text-muted-foreground">
+            Opening study note…
           </div>
         )}
 
         {!noteQuery.isLoading && !noteQuery.data && (
-          <div className="mt-6">
+          <div className="mt-8">
             <EmptyState
               icon={Lock}
               tone="accent"
@@ -180,32 +181,44 @@ function NoteViewer() {
         )}
 
         {noteQuery.data && (
-          <article className="mt-6">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground">
-              <FileText className="h-3.5 w-3.5" /> Study note
+          <article className="mt-8">
+            {/* Header */}
+            <div className="border-b border-border/70 pb-6">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
+                  <Sparkles className="h-3 w-3" /> Syllabus Note
+                </span>
+              </div>
+              <h1 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+                {noteQuery.data.title}
+              </h1>
+              {noteQuery.data.summary && (
+                <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-2xl">
+                  {noteQuery.data.summary}
+                </p>
+              )}
             </div>
-            <h1 className="mt-2 font-display text-4xl font-semibold text-foreground">
-              {noteQuery.data.title}
-            </h1>
-            {noteQuery.data.summary && (
-              <p className="mt-3 max-w-3xl text-muted-foreground">{noteQuery.data.summary}</p>
-            )}
 
+            {/* Distraction-free body */}
             {noteQuery.data.body && (
-              <div className="prose prose-neutral mt-8 max-w-none whitespace-pre-wrap rounded-2xl border border-border bg-surface p-6 text-foreground">
+              <div className="prose prose-neutral dark:prose-invert mt-8 max-w-[68ch] whitespace-pre-wrap text-foreground leading-relaxed text-base font-normal">
                 {noteQuery.data.body}
               </div>
             )}
 
+            {/* Embedded PDF Viewer */}
             {pdfUrl && (
-              <section className="mt-8">
-                <div className="mb-3 flex items-center justify-between">
-                  <h2 className="font-display text-xl font-semibold text-foreground">
-                    PDF preview
-                  </h2>
+              <section className="mt-10 pt-8 border-t border-border/70">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h2 className="font-display text-xl font-bold text-foreground">
+                      Document Preview
+                    </h2>
+                    <p className="text-xs text-muted-foreground">Original PDF document</p>
+                  </div>
                   <a href={pdfUrl} target="_blank" rel="noreferrer" onClick={recordDownload}>
-                    <Button variant="outline" size="sm">
-                      <Download className="mr-2 h-4 w-4" /> Download
+                    <Button variant="outline" size="sm" className="rounded-lg">
+                      <Download className="mr-2 h-4 w-4" /> Download PDF
                     </Button>
                   </a>
                 </div>
@@ -214,14 +227,15 @@ function NoteViewer() {
             )}
 
             {!noteQuery.data.body && !pdfUrl && (
-              <p className="mt-8 rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
-                This note has no content yet.
+              <p className="mt-8 rounded-xl border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
+                This note has no written text or PDF attachments yet.
               </p>
             )}
           </article>
         )}
       </main>
       <SiteFooter />
+      <MobileBottomNav />
     </div>
   );
 }

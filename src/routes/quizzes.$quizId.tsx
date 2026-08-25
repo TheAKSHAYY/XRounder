@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { QuizHeader } from "@/components/quiz/quiz-header";
 import { QuestionCard } from "@/components/quiz/question-card";
 import { ResultsView } from "@/components/quiz/results-view";
@@ -256,6 +257,7 @@ function QuizPage() {
         )}
       </main>
       <SiteFooter />
+      {!activeAttempt && <MobileBottomNav />}
 
       {activeAttempt && current && (
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/90 backdrop-blur-xl">
