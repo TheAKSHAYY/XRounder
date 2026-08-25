@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
-import { ArrowLeft, BookOpen, CheckCircle2, Loader2, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  BookOpen,
+  CheckCircle2,
+  Compass,
+  Loader2,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
+
 import { toast } from "sonner";
 
 import { supabase, setRememberMe } from "@/integrations/supabase/client";
@@ -16,6 +25,8 @@ import { PasswordStrengthMeter, scorePassword } from "@/components/auth/password
 import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { BrandLockup } from "@/components/brand-mark";
+import { useGuest } from "@/hooks/use-guest";
+
 
 const searchSchema = z.object({
   redirect: z.string().optional(),
