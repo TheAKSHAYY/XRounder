@@ -132,9 +132,12 @@ function AuthPage() {
             </TabsContent>
           </Tabs>
 
-          <p className="mt-10 text-center text-xs text-muted-foreground">
+          <GuestStartButton />
+
+          <p className="mt-6 text-center text-xs text-muted-foreground">
             By continuing you agree to our terms and privacy policy.
           </p>
+
         </div>
 
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
