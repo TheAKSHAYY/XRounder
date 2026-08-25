@@ -47,17 +47,18 @@ export function BrandLockup({
 
   return (
     <span
-      className={cn("inline-flex h-10 items-center overflow-visible", className)}
+      className={cn("inline-flex items-center text-lg leading-none", className)}
       aria-label="XRounder"
     >
       <img
         src={markAsset.url}
         alt=""
         aria-hidden
-        className="h-[132%] w-auto max-w-none shrink-0 object-contain"
+        className="h-[2.5em] w-auto max-w-none shrink-0 object-contain"
         loading="eager"
         decoding="async"
       />
+
       <span
         className={cn(
           "-ml-[0.1em] font-sans text-lg font-extrabold leading-none tracking-[-0.02em]",
