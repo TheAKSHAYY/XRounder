@@ -10,7 +10,6 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 
 export const Route = createFileRoute("/notes/$noteId")({
   head: () => ({ meta: [{ title: "Study Note · XRounder" }] }),

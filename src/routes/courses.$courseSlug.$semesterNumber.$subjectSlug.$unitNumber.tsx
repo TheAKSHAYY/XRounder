@@ -35,7 +35,6 @@ import { PdfViewer } from "@/components/pdf-viewer";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { slugify } from "@/lib/slug";
 
 export const Route = createFileRoute(

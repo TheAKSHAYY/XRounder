@@ -20,7 +20,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { AnnouncementBanner } from "@/components/announcement-banner";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { cn } from "@/lib/utils";
 import { computeStreak } from "@/lib/profile";
 
@@ -514,7 +513,6 @@ function DashboardPage() {
           )}
         </div>
       </section>
-      <MobileBottomNav />
     </main>
   );
 }
