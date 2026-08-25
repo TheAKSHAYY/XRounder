@@ -51,6 +51,42 @@ export const Route = createFileRoute("/auth")({
 const emailSchema = z.string().email("Enter a valid email");
 const passwordSchema = z.string().min(8, "At least 8 characters");
 
+function GuestStartButton() {
+  const navigate = useNavigate();
+  const { startGuestMode } = useGuest();
+
+  return (
+    <div className="mt-8">
+      <OrDivider />
+      <Button
+        type="button"
+        variant="outline"
+        className="h-11 w-full rounded-full"
+        onClick={() => {
+          startGuestMode();
+          navigate({ to: "/explore" });
+        }}
+      >
+        <Compass className="mr-2 h-4 w-4" />
+        Start as guest
+      </Button>
+      <p className="mt-2 text-center text-xs text-muted-foreground">
+        Browse notes, papers and quiz previews — no account needed.
+      </p>
+    </div>
+  );
+}
+
+function OrDivider() {
+  return (
+    <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground">
+      <div className="h-px flex-1 bg-border" />
+      or
+      <div className="h-px flex-1 bg-border" />
+    </div>
+  );
+}
+
 function AuthPage() {
   const { mode = "signin" } = Route.useSearch();
   return (
@@ -74,7 +110,6 @@ function AuthPage() {
           <BrandLockup className="h-12" textClassName="text-2xl text-primary-foreground" />
           <span className="sr-only">XRounder</span>
         </Link>
-
 
         <div className="relative space-y-8">
           <div>
@@ -148,7 +183,6 @@ function AuthPage() {
           <p className="mt-6 text-center text-xs text-muted-foreground">
             By continuing you agree to our terms and privacy policy.
           </p>
-
         </div>
 
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -160,42 +194,6 @@ function AuthPage() {
   );
 }
 
-function GuestStartButton() {
-  const navigate = useNavigate();
-  const { startGuestMode } = useGuest();
-
-  return (
-    <div className="mt-8">
-      <OrDivider />
-      <Button
-        type="button"
-        variant="outline"
-        className="h-11 w-full rounded-full"
-        onClick={() => {
-          startGuestMode();
-          navigate({ to: "/explore" });
-        }}
-      >
-        <Compass className="mr-2 h-4 w-4" />
-        Start as guest
-      </Button>
-      <p className="mt-2 text-center text-xs text-muted-foreground">
-        Browse notes, papers and quiz previews — no account needed.
-      </p>
-    </div>
-  );
-}
-
-function OrDivider() {
-
-  return (
-    <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground">
-      <div className="h-px flex-1 bg-border" />
-      or
-      <div className="h-px flex-1 bg-border" />
-    </div>
-  );
-}
 
 function SignInForm() {
   const { redirect } = Route.useSearch();
