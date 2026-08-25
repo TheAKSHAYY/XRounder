@@ -146,12 +146,19 @@ function NoteViewer() {
     <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
-        <Link
-          to="/courses"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
+        <button
+          type="button"
+          onClick={() => {
+            if (typeof window !== "undefined" && window.history.length > 1) {
+              window.history.back();
+            } else {
+              window.location.href = "/courses";
+            }
+          }}
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors cursor-pointer"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to courses
-        </Link>
+          <ArrowLeft className="h-4 w-4" /> Back
+        </button>
 
         {noteQuery.isLoading && (
           <div className="mt-8 rounded-2xl border border-border bg-surface p-12 text-center text-sm text-muted-foreground">
@@ -235,7 +242,6 @@ function NoteViewer() {
         )}
       </main>
       <SiteFooter />
-      <MobileBottomNav />
     </div>
   );
 }

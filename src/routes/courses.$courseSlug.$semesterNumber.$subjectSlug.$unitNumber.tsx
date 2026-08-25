@@ -750,7 +750,6 @@ function UnitDetail() {
         </div>
       </main>
       <SiteFooter />
-      <MobileBottomNav />
     </div>
   );
 }

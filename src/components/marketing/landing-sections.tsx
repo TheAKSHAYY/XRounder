@@ -106,7 +106,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               </div>
 
               {/* Product Preview Tabs */}
-              <div className="mt-4 flex items-center gap-1.5 border-b border-border/70 pb-3">
+              <div className="mt-4 flex flex-wrap items-center gap-1.5 border-b border-border/70 pb-3">
                 <button
                   type="button"
                   onClick={() => setActiveTab("notes")}
@@ -186,7 +186,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                     <p className="text-xs font-medium text-foreground">
                       Which keyword is used to terminate a loop prematurely in C?
                     </p>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                       <div className="rounded-lg border border-border/80 bg-surface px-3 py-2 text-muted-foreground">
                         A. continue
                       </div>

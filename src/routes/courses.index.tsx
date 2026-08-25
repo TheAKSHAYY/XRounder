@@ -193,7 +193,6 @@ function CoursesIndex() {
         </section>
       </main>
       <SiteFooter />
-      <MobileBottomNav />
     </div>
   );
 }

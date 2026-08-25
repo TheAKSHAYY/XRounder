@@ -257,7 +257,6 @@ function QuizPage() {
         )}
       </main>
       <SiteFooter />
-      {!activeAttempt && <MobileBottomNav />}
 
       {activeAttempt && current && (
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/90 backdrop-blur-xl">

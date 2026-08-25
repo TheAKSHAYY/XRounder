@@ -103,7 +103,6 @@ function Index() {
         })}
       </main>
       <SiteFooter marketing />
-      <MobileBottomNav />
     </div>
   );
 }
