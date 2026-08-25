@@ -46,20 +46,22 @@ export function BrandLockup({
         : "text-foreground";
 
   return (
-    <span className={cn("inline-flex h-10 items-center", className)} aria-label="XRounder">
+    <span
+      className={cn("inline-flex items-center text-lg sm:text-xl", className, textClassName)}
+      aria-label="XRounder"
+    >
       <img
         src={markAsset.url}
         alt=""
         aria-hidden
-        className="h-full w-auto shrink-0 object-contain"
+        className="h-[1.9em] w-auto shrink-0 object-contain"
         loading="eager"
         decoding="async"
       />
       <span
         className={cn(
-          "-ml-0.5 font-sans text-lg font-extrabold leading-none tracking-tight",
+          "-ml-[0.08em] font-sans font-extrabold leading-none tracking-[-0.02em]",
           wordTone,
-          textClassName,
         )}
       >
         Rounder
@@ -67,3 +69,4 @@ export function BrandLockup({
     </span>
   );
 }
+
