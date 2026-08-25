@@ -6,6 +6,7 @@ import { ArrowLeft, Download, FileStack } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PdfViewer } from "@/components/pdf-viewer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
@@ -32,14 +33,26 @@ function PaperViewer() {
   });
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+
   useEffect(() => {
     if (!paperQuery.data?.file_path) return;
     let active = true;
     (async () => {
-      const { data, error } = await supabase.storage
-        .from(paperQuery.data!.file_bucket ?? "papers")
-        .createSignedUrl(paperQuery.data!.file_path!, 60 * 60);
-      if (!error && active) setPdfUrl(data?.signedUrl ?? null);
+      try {
+        const { data, error } = await supabase.storage
+          .from(paperQuery.data!.file_bucket ?? "papers")
+          .createSignedUrl(paperQuery.data!.file_path!, 60 * 60);
+        if (!error && active && data?.signedUrl) {
+          setPdfUrl(data.signedUrl);
+        }
+      } catch {
+        if (active) {
+          const { data: pubData } = supabase.storage
+            .from(paperQuery.data!.file_bucket ?? "papers")
+            .getPublicUrl(paperQuery.data!.file_path!);
+          if (pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
+        }
+      }
     })();
     return () => {
       active = false;
@@ -89,7 +102,7 @@ function PaperViewer() {
             {pdfUrl ? (
               <section className="mt-8">
                 <div className="mb-3 flex items-center justify-between">
-                  <h2 className="font-display text-xl font-semibold text-foreground">Paper</h2>
+                  <h2 className="font-display text-xl font-semibold text-foreground">Paper PDF</h2>
                   <a href={pdfUrl} target="_blank" rel="noreferrer" onClick={recordDownload}>
                     <Button variant="outline" size="sm">
                       <Download className="mr-2 h-4 w-4" /> Download
@@ -97,7 +110,7 @@ function PaperViewer() {
                   </a>
                 </div>
                 <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-                  <iframe src={pdfUrl} title={paperQuery.data.title} className="h-[80vh] w-full" />
+                  <PdfViewer url={pdfUrl} title={paperQuery.data.title} />
                 </div>
               </section>
             ) : (

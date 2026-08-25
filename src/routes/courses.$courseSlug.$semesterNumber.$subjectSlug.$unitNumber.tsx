@@ -10,12 +10,19 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
+  ClipboardList,
   Clock,
   Copy,
+  Download,
+  ExternalLink,
+  FileImage,
   FileText,
+  FileType,
+  Link2,
   ListOrdered,
   Sparkles,
   Timer,
+  Video,
 } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -37,27 +44,53 @@ export const Route = createFileRoute(
   component: UnitDetail,
 });
 
-type NoteRow = {
+export type UnitContentItem = {
   id: string;
+  type: "note" | "pdf" | "ppt" | "video" | "assignment" | "link";
   title: string;
-  summary: string | null;
-  body: string | null;
+  description: string | null;
+  body?: string | null;
   file_path: string | null;
   file_bucket: string | null;
+  file_mime: string | null;
+  file_size_bytes: number | null;
+  file_url: string | null;
+  tags?: string[];
+  created_at: string;
 };
 
 type SiblingUnit = { id: string; number: number };
 
 type QuizRow = { id: string; title: string; time_limit_minutes: number | null };
 
-function estimateReadMinutes(notes: NoteRow[]) {
-  const words = notes.reduce((total, n) => {
-    const text = `${n.title ?? ""} ${n.summary ?? ""} ${n.body ?? ""}`.trim();
+function estimateReadMinutes(items: UnitContentItem[]) {
+  const words = items.reduce((total, n) => {
+    const text = `${n.title ?? ""} ${n.description ?? ""} ${n.body ?? ""}`.trim();
     if (!text) return total;
     return total + text.split(/\s+/).length;
   }, 0);
   if (words === 0) return 0;
   return Math.max(1, Math.round(words / 200));
+}
+
+function getVideoEmbedUrl(url: string | null | undefined): { isEmbed: boolean; src: string } | null {
+  if (!url || !url.trim()) return null;
+  const trimmed = url.trim();
+  try {
+    const ytMatch = trimmed.match(
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
+    );
+    if (ytMatch && ytMatch[1]) {
+      return { isEmbed: true, src: `https://www.youtube-nocookie.com/embed/${ytMatch[1]}` };
+    }
+    const vimeoMatch = trimmed.match(/(?:vimeo\.com\/)(\d+)/);
+    if (vimeoMatch && vimeoMatch[1]) {
+      return { isEmbed: true, src: `https://player.vimeo.com/video/${vimeoMatch[1]}` };
+    }
+    return { isEmbed: false, src: trimmed };
+  } catch {
+    return { isEmbed: false, src: trimmed };
+  }
 }
 
 function UnitDetail() {
@@ -106,10 +139,24 @@ function UnitDetail() {
         .maybeSingle();
       if (!unit) throw notFound();
 
-      const [{ data: notes }, { data: siblings }, { data: quizzes }] = await Promise.all([
+      const [
+        { data: contentItemsRes },
+        { data: legacyNotesRes },
+        { data: siblingsRes },
+        { data: quizzesRes },
+      ] = await Promise.all([
+        supabase
+          .from("content_items")
+          .select(
+            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
+          )
+          .eq("unit_id", unit.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("created_at", { ascending: true }),
         supabase
           .from("notes")
-          .select("id, title, summary, body, file_path, file_bucket")
+          .select("id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at")
           .eq("unit_id", unit.id)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -131,14 +178,49 @@ function UnitDetail() {
           .order("order_index"),
       ]);
 
+      const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
+        id: c.id,
+        type: (c.type ?? "note") as UnitContentItem["type"],
+        title: c.title,
+        description: c.description,
+        body: c.description,
+        file_path: c.file_path,
+        file_bucket: c.file_bucket,
+        file_mime: c.file_mime,
+        file_size_bytes: c.file_size_bytes,
+        file_url: c.file_url,
+        tags: c.tags ?? [],
+        created_at: c.created_at ?? "",
+      }));
+
+      // Add legacy notes that are not duplicated by ID in content_items
+      const itemIds = new Set(items.map((i) => i.id));
+      for (const n of legacyNotesRes ?? []) {
+        if (!itemIds.has(n.id)) {
+          items.push({
+            id: n.id,
+            type: n.file_mime === "application/pdf" ? "pdf" : "note",
+            title: n.title,
+            description: n.summary,
+            body: n.body || n.summary,
+            file_path: n.file_path,
+            file_bucket: n.file_bucket,
+            file_mime: n.file_mime,
+            file_size_bytes: n.file_size_bytes,
+            file_url: null,
+            created_at: n.created_at ?? "",
+          });
+        }
+      }
+
       return {
         course,
         sem,
         subject,
         unit,
-        notes: (notes ?? []) as NoteRow[],
-        siblings: (siblings ?? []) as SiblingUnit[],
-        quizzes: (quizzes ?? []) as QuizRow[],
+        items,
+        siblings: (siblingsRes ?? []) as SiblingUnit[],
+        quizzes: (quizzesRes ?? []) as QuizRow[],
       };
     },
   });
@@ -216,16 +298,17 @@ function UnitDetail() {
 
   /* ─────────── derived ─────────── */
 
-  const notes = dataQuery.data?.notes ?? [];
-  const readMinutes = useMemo(() => estimateReadMinutes(notes), [notes]);
+  const items = dataQuery.data?.items ?? [];
+  const readMinutes = useMemo(() => estimateReadMinutes(items), [items]);
 
   const toc = useMemo(
     () =>
-      notes.map((n) => ({
-        id: `note-${slugify(n.title)}-${n.id.slice(0, 6)}`,
+      items.map((n) => ({
+        id: `content-${slugify(n.title)}-${n.id.slice(0, 6)}`,
         title: n.title,
+        type: n.type,
       })),
-    [notes],
+    [items],
   );
 
   const { prevUnit, nextUnit } = useMemo(() => {
@@ -318,7 +401,6 @@ function UnitDetail() {
   }
 
   const { subject, unit } = dataQuery.data;
-  const hasBodyContent = notes.some((n) => n.body && n.body.trim().length > 0);
 
   return (
     <div className="min-h-dvh bg-background">
@@ -424,7 +506,7 @@ function UnitDetail() {
                 )}
                 <span className="inline-flex items-center gap-1.5">
                   <FileText className="h-3 w-3" aria-hidden />
-                  {notes.length} {notes.length === 1 ? "note" : "notes"}
+                  {items.length} {items.length === 1 ? "study item" : "study items"}
                 </span>
               </div>
             </header>
@@ -449,7 +531,7 @@ function UnitDetail() {
                         <span className="tabular-nums text-muted-foreground/70">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span>{item.title}</span>
+                        <span className="truncate">{item.title}</span>
                       </a>
                     </li>
                   ))}
@@ -457,25 +539,29 @@ function UnitDetail() {
               </details>
             )}
 
-            {/* Notes */}
-            {notes.length === 0 && !hasBodyContent && (
+            {/* Content Items */}
+            {items.length === 0 && (
               <EmptyState
                 icon={FileText}
                 tone="accent"
-                title="Notes are being prepared"
-                description="A senior is curating structured, exam-ready notes for this unit. As soon as they're published, you'll see them right here."
+                title="Study material is being prepared"
+                description="Structured, syllabus-aligned notes, PDFs, videos, and study material for this unit will appear here as soon as they are published."
                 primaryAction={{ label: "Explore other units", to: "/courses", icon: BookOpen }}
               />
             )}
 
             <div className="space-y-10">
-              {notes.map((n, i) => (
-                <NoteBlock key={n.id} note={n} anchorId={toc[i]?.id ?? `note-${n.id}`} />
+              {items.map((item, i) => (
+                <ContentBlock
+                  key={item.id}
+                  item={item}
+                  anchorId={toc[i]?.id ?? `content-${item.id}`}
+                />
               ))}
             </div>
 
             {/* Completion + Quiz zone */}
-            {notes.length > 0 && (
+            {items.length > 0 && (
               <section className="mt-14 space-y-4">
                 <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -667,45 +753,85 @@ function UnitDetail() {
   );
 }
 
-/* ─────────── NoteBlock ─────────── */
+/* ─────────── ContentBlock (Unified Note / PDF / Video / Slides / Task) ─────────── */
 
-function NoteBlock({ note, anchorId }: { note: NoteRow; anchorId: string }) {
+function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: string }) {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!note.file_path) {
+    if (item.file_url && (item.type === "pdf" || item.file_mime === "application/pdf")) {
+      setPdfUrl(item.file_url);
+      return;
+    }
+    if (!item.file_path) {
       setPdfUrl(null);
       return;
     }
     let active = true;
     (async () => {
-      const { data, error } = await supabase.storage
-        .from(note.file_bucket ?? "notes")
-        .createSignedUrl(note.file_path!, 60 * 60);
-      if (!error && active) setPdfUrl(data?.signedUrl ?? null);
+      try {
+        const { data, error } = await supabase.storage
+          .from(item.file_bucket ?? "notes")
+          .createSignedUrl(item.file_path!, 60 * 60);
+        if (!error && active && data?.signedUrl) {
+          setPdfUrl(data.signedUrl);
+        }
+      } catch {
+        /* fallback to public url */
+        if (active) {
+          const { data: pubData } = supabase.storage
+            .from(item.file_bucket ?? "notes")
+            .getPublicUrl(item.file_path!);
+          if (pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
+        }
+      }
     })();
     return () => {
       active = false;
     };
-  }, [note.file_path, note.file_bucket]);
+  }, [item.file_path, item.file_bucket, item.file_url, item.type, item.file_mime]);
 
   const onCopy = useCallback(async () => {
-    if (!note.body) return;
+    const text = item.body || item.description;
+    if (!text) return;
     try {
-      await navigator.clipboard.writeText(note.body);
+      await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {
       /* ignore */
     }
-  }, [note.body]);
+  }, [item.body, item.description]);
+
+  const videoMeta = useMemo(() => {
+    if (item.type !== "video") return null;
+    return getVideoEmbedUrl(item.file_url || item.file_path);
+  }, [item.type, item.file_url, item.file_path]);
+
+  const bodyText = item.body || (item.type === "note" ? item.description : null);
+
+  const typeIcon = {
+    note: FileText,
+    pdf: FileType,
+    ppt: FileImage,
+    video: Video,
+    assignment: ClipboardList,
+    link: Link2,
+  }[item.type] ?? FileText;
+
+  const TypeIcon = typeIcon;
 
   return (
     <section id={anchorId} className="scroll-mt-28">
-      <h2 className="font-display text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-[1.75rem]">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <TypeIcon className="h-4 w-4 text-primary" aria-hidden />
+        <span className="capitalize">{item.type}</span>
+      </div>
+
+      <h2 className="mt-2 font-display text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-[1.75rem]">
         <a href={`#${anchorId}`} className="group inline-flex items-center gap-2 no-underline">
-          {note.title}
+          {item.title}
           <span
             aria-hidden
             className="text-base font-normal text-muted-foreground/40 opacity-0 transition-opacity group-hover:opacity-100"
@@ -714,13 +840,92 @@ function NoteBlock({ note, anchorId }: { note: NoteRow; anchorId: string }) {
           </span>
         </a>
       </h2>
-      {note.summary && (
+
+      {item.description && item.type !== "note" && (
         <p className="mt-2 max-w-[68ch] text-base leading-relaxed text-muted-foreground">
-          {note.summary}
+          {item.description}
         </p>
       )}
 
-      {note.body && (
+      {/* Video Content */}
+      {item.type === "video" && (
+        <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface shadow-soft">
+          {videoMeta ? (
+            videoMeta.isEmbed ? (
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src={videoMeta.src}
+                  title={item.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full border-0"
+                />
+              </div>
+            ) : (
+              <div className="p-4 sm:p-6">
+                <video
+                  controls
+                  src={videoMeta.src}
+                  className="aspect-video w-full rounded-xl bg-black"
+                />
+              </div>
+            )
+          ) : (
+            <div className="p-8 text-center text-sm text-muted-foreground">
+              Video URL is not available.
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Slides / PPT Card */}
+      {item.type === "ppt" && !pdfUrl && item.file_url && (
+        <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div className="flex items-center gap-3">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+              <FileImage className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="font-display text-base font-semibold text-foreground">
+                Presentation Slides
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {item.file_mime ?? "Presentation document"}
+              </div>
+            </div>
+          </div>
+          <Button asChild className="gap-2">
+            <a href={item.file_url} target="_blank" rel="noreferrer">
+              <ExternalLink className="h-4 w-4" /> Open slides
+            </a>
+          </Button>
+        </div>
+      )}
+
+      {/* External Link Card */}
+      {item.type === "link" && item.file_url && (
+        <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+          <div className="flex items-center gap-3">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+              <Link2 className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="font-display text-base font-semibold text-foreground">
+                External resource
+              </div>
+              <div className="truncate text-xs text-muted-foreground">{item.file_url}</div>
+            </div>
+          </div>
+          <Button asChild variant="outline" className="gap-2">
+            <a href={item.file_url} target="_blank" rel="noreferrer">
+              <ExternalLink className="h-4 w-4" /> Open resource
+            </a>
+          </Button>
+        </div>
+      )}
+
+      {/* Note Body Text */}
+      {bodyText && (
         <div className="relative mt-6 rounded-xl border border-border bg-surface">
           <button
             type="button"
@@ -739,20 +944,22 @@ function NoteBlock({ note, anchorId }: { note: NoteRow; anchorId: string }) {
             )}
           </button>
           <div className="prose-reader max-w-[68ch] whitespace-pre-wrap px-5 py-6 text-[17px] leading-[1.75] text-foreground sm:px-7 sm:py-8">
-            {note.body}
+            {bodyText}
           </div>
         </div>
       )}
 
+      {/* PDF Viewer Embed */}
       {pdfUrl && (
         <div className="mt-6 overflow-hidden rounded-xl border border-border bg-surface">
-          <PdfViewer url={pdfUrl} title={note.title} />
+          <PdfViewer url={pdfUrl} title={item.title} />
         </div>
       )}
 
-      {!note.body && !pdfUrl && (
+      {/* Fallback empty message */}
+      {!bodyText && !pdfUrl && item.type !== "video" && item.type !== "link" && (
         <p className="mt-6 rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
-          This note has no content yet.
+          This study item has no additional text or attached file.
         </p>
       )}
     </section>

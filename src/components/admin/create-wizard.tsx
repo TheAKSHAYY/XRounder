@@ -564,7 +564,7 @@ function NoteForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }
       file_mime,
       file_size_bytes,
       status,
-      visibility: "students",
+      visibility: "public",
       tags: [],
     });
     setBusy(false);

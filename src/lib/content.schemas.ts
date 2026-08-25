@@ -35,7 +35,7 @@ export const contentInputSchema = z.object({
   file_url: z.string().url().optional().nullable().or(z.literal("")),
   thumbnail_path: z.string().optional().nullable(),
   tags: z.array(z.string()).default([]),
-  visibility: z.enum(["public", "students", "private"]).default("students"),
+  visibility: z.enum(["public", "students", "private"]).default("public"),
   status: z.enum(["draft", "published", "archived"]).default("draft"),
 });
 

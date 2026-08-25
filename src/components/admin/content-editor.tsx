@@ -85,7 +85,7 @@ export function ContentEditor({
   const [description, setDescription] = useState(initial?.description ?? "");
   const [subjectId, setSubjectId] = useState<string>(initial?.subject_id ?? "");
   const [visibility, setVisibility] = useState<"public" | "students" | "private">(
-    (initial?.visibility as "public" | "students" | "private") ?? "students",
+    (initial?.visibility as "public" | "students" | "private") ?? "public",
   );
   const [fileUrl, setFileUrl] = useState(initial?.file_url ?? "");
   const [tagsText, setTagsText] = useState((initial?.tags ?? []).join(", "));

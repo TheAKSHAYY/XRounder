@@ -16,43 +16,104 @@ export const Route = createFileRoute("/notes/$noteId")({
   component: NoteViewer,
 });
 
+type NoteData = {
+  id: string;
+  title: string;
+  summary: string | null;
+  body: string | null;
+  file_path: string | null;
+  file_bucket: string | null;
+  file_mime: string | null;
+  file_url: string | null;
+};
+
 function NoteViewer() {
   const { noteId } = Route.useParams();
   const { user, loading: authLoading } = useAuth();
 
   const noteQuery = useQuery({
     queryKey: ["public", "note", noteId],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("notes")
-        .select("id, title, summary, body, file_path, file_bucket, file_mime, unit_id")
+    queryFn: async (): Promise<NoteData | null> => {
+      // 1. Try content_items table
+      const { data: item } = await supabase
+        .from("content_items")
+        .select("id, title, description, file_path, file_bucket, file_mime, file_url")
         .eq("id", noteId)
         .eq("status", "published")
         .is("deleted_at", null)
         .maybeSingle();
-      if (error) throw error;
-      return data;
+
+      if (item) {
+        return {
+          id: item.id,
+          title: item.title,
+          summary: item.description,
+          body: item.description,
+          file_path: item.file_path,
+          file_bucket: item.file_bucket,
+          file_mime: item.file_mime,
+          file_url: item.file_url,
+        };
+      }
+
+      // 2. Fallback to legacy notes table
+      const { data: note, error: ne } = await supabase
+        .from("notes")
+        .select("id, title, summary, body, file_path, file_bucket, file_mime")
+        .eq("id", noteId)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+
+      if (ne) throw ne;
+      if (!note) return null;
+
+      return {
+        id: note.id,
+        title: note.title,
+        summary: note.summary,
+        body: note.body || note.summary,
+        file_path: note.file_path,
+        file_bucket: note.file_bucket,
+        file_mime: note.file_mime,
+        file_url: null,
+      };
     },
   });
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   useEffect(() => {
+    if (noteQuery.data?.file_url) {
+      setPdfUrl(noteQuery.data.file_url);
+      return;
+    }
     if (!noteQuery.data?.file_path) {
       setPdfUrl(null);
       return;
     }
     let active = true;
     (async () => {
-      const { data, error } = await supabase.storage
-        .from(noteQuery.data!.file_bucket ?? "notes")
-        .createSignedUrl(noteQuery.data!.file_path!, 60 * 60);
-      if (!error && active) setPdfUrl(data?.signedUrl ?? null);
+      try {
+        const { data, error } = await supabase.storage
+          .from(noteQuery.data!.file_bucket ?? "notes")
+          .createSignedUrl(noteQuery.data!.file_path!, 60 * 60);
+        if (!error && active && data?.signedUrl) {
+          setPdfUrl(data.signedUrl);
+        }
+      } catch {
+        if (active) {
+          const { data: pubData } = supabase.storage
+            .from(noteQuery.data!.file_bucket ?? "notes")
+            .getPublicUrl(noteQuery.data!.file_path!);
+          if (pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
+        }
+      }
     })();
     return () => {
       active = false;
     };
-  }, [noteQuery.data?.file_path, noteQuery.data?.file_bucket]);
+  }, [noteQuery.data?.file_path, noteQuery.data?.file_bucket, noteQuery.data?.file_url]);
 
   // record view (best-effort, signed-in users only)
   useEffect(() => {
