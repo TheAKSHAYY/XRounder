@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { z } from "zod";
-import { ArrowLeft, BookOpen, CheckCircle2, Loader2, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  BookOpen,
+  CheckCircle2,
+  Compass,
+  Loader2,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
+
 import { toast } from "sonner";
 
 import { supabase, setRememberMe } from "@/integrations/supabase/client";
@@ -16,6 +25,8 @@ import { PasswordStrengthMeter, scorePassword } from "@/components/auth/password
 import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { BrandLockup } from "@/components/brand-mark";
+import { useGuest } from "@/hooks/use-guest";
+
 
 const searchSchema = z.object({
   redirect: z.string().optional(),
@@ -132,9 +143,12 @@ function AuthPage() {
             </TabsContent>
           </Tabs>
 
-          <p className="mt-10 text-center text-xs text-muted-foreground">
+          <GuestStartButton />
+
+          <p className="mt-6 text-center text-xs text-muted-foreground">
             By continuing you agree to our terms and privacy policy.
           </p>
+
         </div>
 
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -146,7 +160,34 @@ function AuthPage() {
   );
 }
 
+function GuestStartButton() {
+  const navigate = useNavigate();
+  const { startGuestMode } = useGuest();
+
+  return (
+    <div className="mt-8">
+      <OrDivider />
+      <Button
+        type="button"
+        variant="outline"
+        className="h-11 w-full rounded-full"
+        onClick={() => {
+          startGuestMode();
+          navigate({ to: "/explore" });
+        }}
+      >
+        <Compass className="mr-2 h-4 w-4" />
+        Start as guest
+      </Button>
+      <p className="mt-2 text-center text-xs text-muted-foreground">
+        Browse notes, papers and quiz previews — no account needed.
+      </p>
+    </div>
+  );
+}
+
 function OrDivider() {
+
   return (
     <div className="my-5 flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground">
       <div className="h-px flex-1 bg-border" />
