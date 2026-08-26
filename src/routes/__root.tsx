@@ -51,6 +51,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
+  const isNotFoundErr =
+    (error as any)?.isNotFound ||
+    (error as any)?.status === 404 ||
+    (error as any)?.name === "NotFoundError" ||
+    (error as any)?.constructor?.name === "NotFoundError" ||
+    error?.message?.toLowerCase().includes("not found");
+
+  if (isNotFoundErr) {
+    return <NotFoundComponent />;
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -60,6 +71,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
+        {error?.message && (
+          <div className="mt-4 overflow-hidden rounded-md border border-destructive/20 bg-destructive/10 p-3 text-left text-xs font-mono text-destructive">
+            <p className="font-semibold">Error Details:</p>
+            <p className="mt-1 select-all break-words">{error.message}</p>
+          </div>
+        )}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
