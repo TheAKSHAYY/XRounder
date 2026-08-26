@@ -9,6 +9,7 @@ import {
   FileStack,
   FileText,
   FileType,
+  FlaskConical,
   Link2,
   ListChecks,
   PlayCircle,
@@ -16,6 +17,7 @@ import {
   Sparkles,
   Video,
 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
@@ -590,38 +592,28 @@ function UnitCard({
           </p>
         )}
 
-        {stats.content.total > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {stats.content.note > 0 && (
-              <StatChip variant="chip" icon={FileText} value={stats.content.note} label="notes" />
-            )}
-            {stats.content.pdf > 0 && (
-              <StatChip variant="chip" icon={FileType} value={stats.content.pdf} label="PDFs" />
-            )}
-            {stats.content.ppt > 0 && (
-              <StatChip
-                variant="chip"
-                icon={Presentation}
-                value={stats.content.ppt}
-                label="slides"
-              />
-            )}
-            {stats.content.video > 0 && (
-              <StatChip variant="chip" icon={Video} value={stats.content.video} label="videos" />
-            )}
-            {stats.content.assignment > 0 && (
-              <StatChip
-                variant="chip"
-                icon={ListChecks}
-                value={stats.content.assignment}
-                label="tasks"
-              />
-            )}
-            {stats.content.link > 0 && (
-              <StatChip variant="chip" icon={Link2} value={stats.content.link} label="links" />
-            )}
-          </div>
-        )}
+        {/* Unit Readiness Badges */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          {stats.content.note > 0 ? (
+            <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30">
+              <Check className="h-3 w-3 mr-1" /> Notes Ready
+            </Badge>
+          ) : (
+            <Badge variant="outline" className="text-[10px] font-medium rounded-lg text-muted-foreground bg-muted/40">
+              Notes in draft
+            </Badge>
+          )}
+
+          {stats.content.pdf > 0 && (
+            <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-primary/10 text-primary border-primary/30">
+              <FileType className="h-3 w-3 mr-1" /> College PDF
+            </Badge>
+          )}
+
+          <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-card text-foreground">
+            <FlaskConical className="h-3 w-3 mr-1 text-primary" /> Practice MCQs
+          </Badge>
+        </div>
 
         {showProgress && inProgress && (
           <div className="mt-3 max-w-xs">

@@ -18,6 +18,10 @@ import {
   FileImage,
   FileText,
   FileType,
+  FlaskConical,
+  GraduationCap,
+  HelpCircle,
+  Layers,
   Link2,
   ListOrdered,
   Sparkles,
@@ -29,9 +33,9 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { EmptyState } from "@/components/ui/empty-state";
-import { PdfViewer } from "@/components/pdf-viewer";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -40,7 +44,7 @@ import { slugify } from "@/lib/slug";
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
 )({
-  head: () => ({ meta: [{ title: "Unit · XRounder" }] }),
+  head: () => ({ meta: [{ title: "Unit Learning Hub · XRounder" }] }),
   component: UnitDetail,
 });
 
@@ -62,6 +66,16 @@ export type UnitContentItem = {
 type SiblingUnit = { id: string; number: number };
 
 type QuizRow = { id: string; title: string; time_limit_minutes: number | null };
+
+type PyqQuestion = {
+  id: string;
+  prompt: string;
+  explanation: string | null;
+  exam_name: string | null;
+  year: number | null;
+  points: number;
+  difficulty: string | null;
+};
 
 function estimateReadMinutes(items: UnitContentItem[]) {
   const words = items.reduce((total, n) => {
@@ -98,7 +112,9 @@ function UnitDetail() {
   const { user } = useAuth();
   const qc = useQueryClient();
 
-  /* ─────────── data ─────────── */
+  const [activeTab, setActiveTab] = useState<"LEARN" | "NOTES" | "PRACTICE">("LEARN");
+
+  /* ─────────── Data Query ─────────── */
 
   const dataQuery = useQuery({
     queryKey: ["public", "unit", courseSlug, semesterNumber, subjectSlug, unitNumber],
@@ -111,6 +127,7 @@ function UnitDetail() {
         .is("deleted_at", null)
         .maybeSingle();
       if (!course) throw notFound();
+
       const { data: sem } = await supabase
         .from("semesters")
         .select("id, number, title")
@@ -120,6 +137,7 @@ function UnitDetail() {
         .is("deleted_at", null)
         .maybeSingle();
       if (!sem) throw notFound();
+
       const { data: subject } = await supabase
         .from("subjects")
         .select("id, code, title")
@@ -129,6 +147,7 @@ function UnitDetail() {
         .is("deleted_at", null)
         .maybeSingle();
       if (!subject) throw notFound();
+
       const { data: unit } = await supabase
         .from("units")
         .select("id, number, title, summary")
@@ -226,7 +245,40 @@ function UnitDetail() {
   });
 
   const unitId = dataQuery.data?.unit.id;
+  const primaryQuiz = dataQuery.data?.quizzes[0];
 
+  // 2. Fetch Quiz Questions & PYQ Insights
+  const quizDetailsQuery = useQuery({
+    queryKey: ["unit-quiz-details", primaryQuiz?.id],
+    enabled: !!primaryQuiz?.id,
+    queryFn: async () => {
+      const { data: qst, error } = await supabase
+        .from("quiz_questions")
+        .select("id, prompt, explanation, exam_name, year, points, difficulty")
+        .eq("quiz_id", primaryQuiz!.id);
+      if (error) throw error;
+      return (qst ?? []) as PyqQuestion[];
+    },
+  });
+
+  // 3. Fetch User Quiz Attempts for Accuracy
+  const userAttemptQuery = useQuery({
+    queryKey: ["unit-user-attempt", primaryQuiz?.id, user?.id],
+    enabled: !!primaryQuiz?.id && !!user?.id,
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("quiz_attempts")
+        .select("id, pct, score, max_score, passed")
+        .eq("quiz_id", primaryQuiz!.id)
+        .eq("user_id", user!.id)
+        .order("completed_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      return data;
+    },
+  });
+
+  // 4. Progress tracking
   const progressQuery = useQuery({
     queryKey: ["student", "unit-progress", user?.id, unitId],
     enabled: !!user?.id && !!unitId,
@@ -277,7 +329,7 @@ function UnitDetail() {
     },
   });
 
-  // Mark as in_progress on first visit (best-effort)
+  // Mark as in_progress on first visit
   useEffect(() => {
     if (!user?.id || !unitId) return;
     if (progressQuery.isLoading) return;
@@ -293,22 +345,38 @@ function UnitDetail() {
       });
       qc.invalidateQueries({ queryKey: ["student", "unit-progress", user?.id, unitId] });
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.id, unitId, progressQuery.isLoading, progressQuery.data]);
 
-  /* ─────────── derived ─────────── */
+  /* ─────────── Derived Content Filters ─────────── */
 
   const items = dataQuery.data?.items ?? [];
-  const readMinutes = useMemo(() => estimateReadMinutes(items), [items]);
+  const readArticles = useMemo(
+    () => items.filter((i) => i.type === "note" || (!i.file_path && i.body)),
+    [items],
+  );
+  const referenceMaterials = useMemo(
+    () => items.filter((i) => i.type === "pdf" || i.type === "ppt" || i.file_path),
+    [items],
+  );
+
+  const pyqQuestions = useMemo(
+    () =>
+      (quizDetailsQuery.data ?? []).filter(
+        (q) => q.exam_name || q.year || q.points >= 5,
+      ),
+    [quizDetailsQuery.data],
+  );
+
+  const readMinutes = useMemo(() => estimateReadMinutes(readArticles), [readArticles]);
 
   const toc = useMemo(
     () =>
-      items.map((n) => ({
+      readArticles.map((n) => ({
         id: `content-${slugify(n.title)}-${n.id.slice(0, 6)}`,
         title: n.title,
         type: n.type,
       })),
-    [items],
+    [readArticles],
   );
 
   const { prevUnit, nextUnit } = useMemo(() => {
@@ -321,9 +389,8 @@ function UnitDetail() {
   }, [dataQuery.data?.siblings, unitNumber]);
 
   const isCompleted = progressQuery.data?.status === "completed";
-  const primaryQuiz = dataQuery.data?.quizzes[0];
 
-  /* ─────────── scroll progress ─────────── */
+  /* ─────────── Scroll Progress & Active Section ─────────── */
 
   const articleRef = useRef<HTMLElement | null>(null);
   const [readPct, setReadPct] = useState(0);
@@ -341,7 +408,6 @@ function UnitDetail() {
       const pct = Math.round((scrolled / total) * 100);
       setReadPct(pct);
 
-      // active section
       let current: string | null = toc[0]?.id ?? null;
       for (const item of toc) {
         const node = document.getElementById(item.id);
@@ -363,8 +429,6 @@ function UnitDetail() {
       window.removeEventListener("resize", onScroll);
     };
   }, [toc]);
-
-  /* ─────────── render ─────────── */
 
   if (dataQuery.isLoading) {
     return (
@@ -392,7 +456,7 @@ function UnitDetail() {
             icon={AlertCircle}
             tone="accent"
             title="This unit is not available yet"
-            description="The unit may still be a draft, unpublished, or temporarily unavailable. Published content will open here automatically."
+            description="The unit may still be in draft or unpublished. Content will appear here once published."
             primaryAction={{ label: "Browse courses", to: "/courses", icon: BookOpen }}
           />
         </main>
@@ -403,26 +467,26 @@ function UnitDetail() {
   const { subject, unit } = dataQuery.data;
 
   return (
-    <div className="min-h-dvh bg-background">
+    <div className="min-h-dvh bg-background flex flex-col">
       <SiteHeader />
 
-      {/* ─── Compact reading header ─── */}
-      <div className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      {/* ─── Compact Reading Header ─── */}
+      <div className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-5 py-3 sm:px-8">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0 flex-1">
               <Link
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
                 params={{ courseSlug, semesterNumber, subjectSlug }}
-                className="inline-flex items-center gap-1.5 rounded-md text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="inline-flex items-center gap-1.5 rounded-md text-[11px] font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ChevronLeft className="h-3.5 w-3.5" />
                 <span className="truncate">
                   {subject.code} · {subject.title}
                 </span>
               </Link>
-              <div className="mt-1 flex items-center gap-3 truncate">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              <div className="mt-0.5 flex items-center gap-3 truncate">
+                <span className="font-mono text-[10px] uppercase font-bold text-primary">
                   Unit {unit.number}
                 </span>
                 <h1 className="truncate font-display text-sm font-semibold text-foreground sm:text-base">
@@ -431,41 +495,43 @@ function UnitDetail() {
               </div>
             </div>
 
-            <div className="hidden shrink-0 items-center gap-2 sm:flex">
+            <div className="flex shrink-0 items-center gap-2">
               {readMinutes > 0 && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
                   <Timer className="h-3 w-3" aria-hidden />
                   {readMinutes} min read
                 </span>
               )}
-              {isCompleted && (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold text-primary">
-                  <Check className="h-3 w-3" aria-hidden />
-                  Completed
+              {isCompleted ? (
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-3 py-1 text-[11px] font-semibold">
+                  <Check className="h-3 w-3" /> Completed
                 </span>
+              ) : (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => completeMutation.mutate()}
+                  disabled={completeMutation.isPending || !user}
+                  className="rounded-full h-8 text-xs font-semibold"
+                >
+                  <Check className="h-3 w-3 mr-1" /> Mark Complete
+                </Button>
               )}
             </div>
           </div>
         </div>
 
         {/* Reading progress bar */}
-        <div
-          className="h-0.5 w-full bg-transparent"
-          role="progressbar"
-          aria-label="Reading progress"
-          aria-valuenow={readPct}
-          aria-valuemin={0}
-          aria-valuemax={100}
-        >
+        <div className="h-0.5 w-full bg-transparent">
           <div
-            className="h-full bg-primary transition-[width] duration-150 ease-out"
+            className="h-full bg-primary transition-all duration-150 ease-out"
             style={{ width: `${readPct}%` }}
           />
         </div>
       </div>
 
-      {/* ─── Body ─── */}
-      <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-10">
+      {/* ─── Main Content Hub ─── */}
+      <main className="flex-1 mx-auto w-full max-w-6xl px-5 pb-24 pt-6 sm:px-8 sm:pt-8">
         <Breadcrumbs
           className="mb-6"
           items={[
@@ -484,313 +550,400 @@ function UnitDetail() {
             { label: `Unit ${unit.number}` },
           ]}
         />
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
-          {/* Article column */}
-          <article ref={articleRef} className="min-w-0">
-            {/* Title block */}
-            <header className="mb-8">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-                Unit {unit.number}
-              </p>
-              <h2 className="mt-2 text-h1 text-foreground">{unit.title}</h2>
-              {unit.summary && (
-                <p className="mt-3 max-w-[68ch] text-base leading-relaxed text-muted-foreground">
-                  {unit.summary}
-                </p>
+
+        {/* Unit Header Block */}
+        <div className="mb-8 rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-6 sm:p-8 shadow-soft">
+          <Badge variant="outline" className="mb-2 text-xs font-mono font-bold rounded-lg text-primary border-primary/30">
+            Unit {unit.number} Learning Hub
+          </Badge>
+          <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+            {unit.title}
+          </h2>
+          {unit.summary && (
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-3xl leading-relaxed">
+              {unit.summary}
+            </p>
+          )}
+
+          {/* Three Pillar Tabs */}
+          <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-border/60 pt-5">
+            <button
+              type="button"
+              onClick={() => setActiveTab("LEARN")}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                activeTab === "LEARN"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
-              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-medium text-muted-foreground">
-                {readMinutes > 0 && (
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="h-3 w-3" aria-hidden /> {readMinutes} min read
-                  </span>
-                )}
-                <span className="inline-flex items-center gap-1.5">
-                  <FileText className="h-3 w-3" aria-hidden />
-                  {items.length} {items.length === 1 ? "study item" : "study items"}
-                </span>
-              </div>
-            </header>
+            >
+              <BookOpen className="h-4 w-4" /> 1. Read &amp; Master ({readArticles.length})
+            </button>
 
-            {/* Mobile TOC */}
-            {toc.length > 1 && (
-              <details className="mb-6 rounded-xl border border-border bg-surface p-4 lg:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-foreground">
-                  <span className="inline-flex items-center gap-2">
-                    <ListOrdered className="h-4 w-4 text-primary" aria-hidden />
-                    On this page
-                  </span>
-                  <ChevronRight className="h-4 w-4 transition-transform group-open:rotate-90" />
-                </summary>
-                <ol className="mt-3 space-y-1.5 text-sm">
-                  {toc.map((item, i) => (
-                    <li key={item.id}>
-                      <a
-                        href={`#${item.id}`}
-                        className="flex gap-3 rounded-md px-2 py-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
-                      >
-                        <span className="tabular-nums text-muted-foreground/70">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="truncate">{item.title}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </details>
-            )}
+            <button
+              type="button"
+              onClick={() => setActiveTab("NOTES")}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                activeTab === "NOTES"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <FileType className="h-4 w-4" /> 2. Reference Notes ({referenceMaterials.length})
+            </button>
 
-            {/* Content Items */}
-            {items.length === 0 && (
-              <EmptyState
-                icon={FileText}
-                tone="accent"
-                title="Study material is being prepared"
-                description="Structured, syllabus-aligned notes, PDFs, videos, and study material for this unit will appear here as soon as they are published."
-                primaryAction={{ label: "Explore other units", to: "/courses", icon: BookOpen }}
-              />
-            )}
+            <button
+              type="button"
+              onClick={() => setActiveTab("PRACTICE")}
+              className={cn(
+                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                activeTab === "PRACTICE"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <FlaskConical className="h-4 w-4" /> 3. Practice &amp; PYQs ({quizDetailsQuery.data?.length ?? 0})
+            </button>
+          </div>
+        </div>
 
-            <div className="space-y-10">
-              {items.map((item, i) => (
-                <ContentBlock
-                  key={item.id}
-                  item={item}
-                  anchorId={toc[i]?.id ?? `content-${item.id}`}
+        {/* ─── TAB 1: READ & MASTER ─── */}
+        {activeTab === "LEARN" && (
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
+            <article ref={articleRef} className="min-w-0">
+              {readArticles.length === 0 ? (
+                <EmptyState
+                  icon={FileText}
+                  tone="accent"
+                  title="Educational article in progress"
+                  description="The online learning content for this unit is currently being drafted. Check back soon."
+                  primaryAction={{ label: "View reference notes", onClick: () => setActiveTab("NOTES"), icon: FileType }}
                 />
-              ))}
-            </div>
+              ) : (
+                <div className="space-y-12">
+                  {readArticles.map((item, i) => (
+                    <ContentBlock
+                      key={item.id}
+                      item={item}
+                      anchorId={toc[i]?.id ?? `content-${item.id}`}
+                    />
+                  ))}
+                </div>
+              )}
 
-            {/* Completion + Quiz zone */}
-            {items.length > 0 && (
-              <section className="mt-14 space-y-4">
-                <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <h3 className="font-display text-lg font-semibold text-foreground">
-                        {isCompleted ? "You've finished this unit." : "Finished reading?"}
-                      </h3>
-                      <p className="mt-1 max-w-lg text-sm text-muted-foreground">
-                        {isCompleted
-                          ? "Nice work. Move on to the next unit to keep your streak going."
-                          : "Mark this unit as complete to track your progress across the semester."}
-                      </p>
+              {/* Bottom "Test Your Knowledge" Action Loop */}
+              {primaryQuiz && (
+                <div className="mt-14 rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-6 sm:p-8 shadow-soft">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-3.5">
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
+                        <FlaskConical className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1">
+                          Reinforce Learning
+                        </Badge>
+                        <h3 className="font-display text-lg font-bold text-foreground">
+                          Test Your Knowledge on Unit {unit.number}
+                        </h3>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          Practice MCQs with instant explanations and track your accuracy.
+                        </p>
+                      </div>
                     </div>
-                    {user ? (
-                      isCompleted ? (
-                        <span className="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary">
-                          <Check className="h-4 w-4" aria-hidden />
-                          Completed
-                        </span>
-                      ) : (
-                        <Button
-                          size="lg"
-                          className="h-11 gap-2 rounded-xl px-5 text-sm font-semibold"
-                          onClick={() => completeMutation.mutate()}
-                          disabled={completeMutation.isPending}
-                        >
-                          <Check className="h-4 w-4" aria-hidden />
-                          {completeMutation.isPending ? "Saving…" : "Mark as complete"}
-                        </Button>
-                      )
-                    ) : (
-                      <Button asChild variant="outline" className="rounded-xl">
-                        <Link to="/auth">Sign in to track progress</Link>
-                      </Button>
+
+                    <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shrink-0 shadow-sm">
+                      <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
+                        Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              {/* Next / Previous Unit Navigation */}
+              <nav aria-label="Unit navigation" className="mt-12 grid gap-3 sm:grid-cols-2">
+                {prevUnit ? (
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug,
+                      semesterNumber,
+                      subjectSlug,
+                      unitNumber: String(prevUnit.number),
+                    }}
+                    className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40"
+                  >
+                    <ArrowLeft className="h-4 w-4 text-muted-foreground" />
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase text-muted-foreground">Previous Unit</div>
+                      <div className="font-bold text-sm text-foreground truncate">Unit {prevUnit.number}</div>
+                    </div>
+                  </Link>
+                ) : <div />}
+
+                {nextUnit ? (
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug,
+                      semesterNumber,
+                      subjectSlug,
+                      unitNumber: String(nextUnit.number),
+                    }}
+                    className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40"
+                  >
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase text-muted-foreground">Next Unit</div>
+                      <div className="font-bold text-sm text-foreground truncate">Unit {nextUnit.number}</div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                  </Link>
+                ) : <div />}
+              </nav>
+            </article>
+
+            {/* Desktop Sticky TOC */}
+            {toc.length > 1 && (
+              <aside className="hidden lg:block">
+                <div className="sticky top-24 rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
+                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                    <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
+                  </div>
+                  <nav>
+                    <ol className="space-y-1 text-xs">
+                      {toc.map((item, i) => {
+                        const active = activeSection === item.id;
+                        return (
+                          <li key={item.id}>
+                            <a
+                              href={`#${item.id}`}
+                              className={cn(
+                                "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
+                                active
+                                  ? "bg-primary/10 font-bold text-primary"
+                                  : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                              )}
+                            >
+                              <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                              <span className="truncate">{item.title}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </nav>
+                </div>
+              </aside>
+            )}
+          </div>
+        )}
+
+        {/* ─── TAB 2: REFERENCE NOTES ─── */}
+        {activeTab === "NOTES" && (
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+              <h3 className="font-display text-lg font-bold text-foreground flex items-center gap-2 mb-1">
+                <FileType className="h-5 w-5 text-primary" /> College Reference Notes &amp; Slides
+              </h3>
+              <p className="text-xs text-muted-foreground mb-6">
+                Official documents, presentation slides, and university lecture PDFs for Unit {unit.number}.
+              </p>
+
+              {referenceMaterials.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center">
+                  <FileText className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
+                  <div className="text-sm font-semibold text-foreground">Reference notes coming soon</div>
+                  <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+                    You can study the complete online article in the Read &amp; Master tab above while official PDFs are uploaded.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setActiveTab("LEARN")}
+                    className="mt-4 rounded-xl text-xs font-semibold"
+                  >
+                    Read Online Article
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {referenceMaterials.map((item) => (
+                    <ReferenceCard key={item.id} item={item} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ─── TAB 3: PRACTICE & PYQ INSIGHTS ─── */}
+        {activeTab === "PRACTICE" && (
+          <div className="space-y-8">
+            {/* Unit MCQ Card */}
+            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2">
+                    Unit {unit.number} Question Bank
+                  </Badge>
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    Interactive Unit Quiz
+                  </h3>
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
+                    <span>{quizDetailsQuery.data?.length ?? 0} Questions</span>
+                    {userAttemptQuery.data && (
+                      <span className="font-semibold text-primary">
+                        · Your best accuracy: {userAttemptQuery.data.pct ?? Math.round(((userAttemptQuery.data.score || 0) / (userAttemptQuery.data.max_score || 1)) * 100)}%
+                      </span>
                     )}
                   </div>
                 </div>
 
-                {primaryQuiz && (
-                  <div className="rounded-xl border border-dashed border-primary/40 bg-primary/[0.04] p-6 sm:p-8">
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                      <div className="flex items-start gap-3">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
-                          <ClipboardCheck className="h-5 w-5" aria-hidden />
-                        </span>
-                        <div>
-                          <h3 className="font-display text-lg font-semibold text-foreground">
-                            Ready to test yourself?
-                          </h3>
-                          <p className="mt-1 text-sm text-muted-foreground">
-                            {primaryQuiz.title}
-                            {primaryQuiz.time_limit_minutes
-                              ? ` · ${primaryQuiz.time_limit_minutes} min`
-                              : ""}
-                          </p>
-                        </div>
-                      </div>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="h-11 gap-2 rounded-xl border-primary/40 px-5 text-sm font-semibold text-primary hover:bg-primary/10"
-                      >
-                        <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                          Take quiz
-                          <ArrowRight className="h-4 w-4" aria-hidden />
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                )}
-              </section>
-            )}
-
-            {/* Prev / Next navigation */}
-            <nav aria-label="Unit navigation" className="mt-12 grid gap-3 sm:grid-cols-2">
-              {prevUnit ? (
-                <Link
-                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                  params={{
-                    courseSlug,
-                    semesterNumber,
-                    subjectSlug,
-                    unitNumber: String(prevUnit.number),
-                  }}
-                  className="group flex items-center gap-3 rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  <ArrowLeft className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                      Previous unit
-                    </div>
-                    <div className="truncate font-display text-sm font-semibold text-foreground">
-                      Unit {prevUnit.number}
-                    </div>
-                  </div>
-                </Link>
-              ) : (
-                <span
-                  aria-hidden
-                  className="hidden rounded-2xl border border-dashed border-border/60 bg-transparent p-5 text-xs text-muted-foreground/60 sm:block"
-                >
-                  Start of subject
-                </span>
-              )}
-              {nextUnit ? (
-                <Link
-                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                  params={{
-                    courseSlug,
-                    semesterNumber,
-                    subjectSlug,
-                    unitNumber: String(nextUnit.number),
-                  }}
-                  className="group flex items-center justify-end gap-3 rounded-xl border border-border bg-surface p-5 text-right interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                      Next unit
-                    </div>
-                    <div className="truncate font-display text-sm font-semibold text-foreground">
-                      Unit {nextUnit.number}
-                    </div>
-                  </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary" />
-                </Link>
-              ) : (
-                <span
-                  aria-hidden
-                  className="hidden rounded-2xl border border-dashed border-border/60 bg-transparent p-5 text-right text-xs text-muted-foreground/60 sm:block"
-                >
-                  End of subject
-                </span>
-              )}
-            </nav>
-          </article>
-
-          {/* Sticky TOC (desktop) */}
-          {toc.length > 0 && (
-            <aside className="hidden lg:block">
-              <div className="sticky top-24">
-                <div className="mb-3 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                  <ListOrdered className="h-3.5 w-3.5" aria-hidden />
-                  On this page
-                </div>
-                <nav aria-label="Table of contents">
-                  <ol className="space-y-1">
-                    {toc.map((item, i) => {
-                      const active = activeSection === item.id;
-                      return (
-                        <li key={item.id}>
-                          <a
-                            href={`#${item.id}`}
-                            aria-current={active ? "location" : undefined}
-                            className={cn(
-                              "flex gap-3 rounded-md border-l-2 py-1.5 pl-3 pr-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                              active
-                                ? "border-primary bg-primary/5 font-semibold text-foreground"
-                                : "border-transparent text-muted-foreground hover:border-border hover:text-foreground",
-                            )}
-                          >
-                            <span className="tabular-nums text-muted-foreground/70">
-                              {String(i + 1).padStart(2, "0")}
-                            </span>
-                            <span className="line-clamp-2">{item.title}</span>
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </nav>
-                {readMinutes > 0 && (
-                  <div className="mt-6 rounded-xl border border-border bg-surface px-4 py-3 text-[11px] text-muted-foreground">
-                    <div className="inline-flex items-center gap-1.5 font-medium text-foreground">
-                      <Sparkles className="h-3 w-3 text-primary" aria-hidden />
-                      Focus tip
-                    </div>
-                    <p className="mt-1 leading-relaxed">
-                      Aim for one uninterrupted {readMinutes}-min sitting to hold the thread.
-                    </p>
-                  </div>
+                {primaryQuiz ? (
+                  <Button asChild size="lg" className="rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm">
+                    <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
+                      <FlaskConical className="h-4 w-4 mr-2" /> Practice Unit MCQs
+                    </Link>
+                  </Button>
+                ) : (
+                  <div className="text-xs text-muted-foreground font-medium">No quiz attached to this unit yet.</div>
                 )}
               </div>
-            </aside>
-          )}
-        </div>
+            </div>
+
+            {/* Important Exam Questions / PYQ Insights */}
+            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+              <div className="flex items-center gap-2 mb-1">
+                <GraduationCap className="h-5 w-5 text-primary" />
+                <h3 className="font-display text-lg font-bold text-foreground">
+                  Important Exam Questions (PYQ Insights)
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground mb-6">
+                Frequently repeated university exam questions from Unit {unit.number}.
+              </p>
+
+              {pyqQuestions.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-6 text-center text-xs text-muted-foreground">
+                  PYQ questions for Unit {unit.number} are being indexed from university papers.
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {pyqQuestions.map((q, idx) => (
+                    <div
+                      key={q.id}
+                      className="rounded-2xl border border-border/70 bg-muted/20 p-4 transition-colors hover:border-primary/40"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-mono font-bold text-muted-foreground">Q{idx + 1}.</span>
+                          {q.points && (
+                            <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card">
+                              {q.points} Marks
+                            </Badge>
+                          )}
+                          {q.year && (
+                            <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30">
+                              {q.year} {q.exam_name || "Exam"}
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+
+                      <h4 className="text-sm font-bold text-foreground leading-snug">{q.prompt}</h4>
+
+                      {q.explanation && (
+                        <div className="mt-2 text-xs text-muted-foreground border-l-2 border-primary/40 pl-3 py-0.5">
+                          {q.explanation}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </main>
+
       <SiteFooter />
     </div>
   );
 }
 
-/* ─────────── ContentBlock (Unified Note / PDF / Video / Slides / Task) ─────────── */
+/* ─────────── ReferenceCard ─────────── */
 
-function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: string }) {
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+function ReferenceCard({ item }: { item: UnitContentItem }) {
+  const [pdfUrl, setPdfUrl] = useState<string | null>(item.file_url ?? null);
 
   useEffect(() => {
-    if (item.file_url && (item.type === "pdf" || item.file_mime === "application/pdf")) {
+    if (item.file_url) {
       setPdfUrl(item.file_url);
       return;
     }
-    if (!item.file_path) {
-      setPdfUrl(null);
-      return;
-    }
+    if (!item.file_path) return;
     let active = true;
     (async () => {
       try {
-        const { data, error } = await supabase.storage
+        const { data } = await supabase.storage
           .from(item.file_bucket ?? "notes")
           .createSignedUrl(item.file_path!, 60 * 60);
-        if (!error && active && data?.signedUrl) {
-          setPdfUrl(data.signedUrl);
-        }
+        if (active && data?.signedUrl) setPdfUrl(data.signedUrl);
       } catch {
-        /* fallback to public url */
-        if (active) {
-          const { data: pubData } = supabase.storage
-            .from(item.file_bucket ?? "notes")
-            .getPublicUrl(item.file_path!);
-          if (pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
-        }
+        const { data: pubData } = supabase.storage
+          .from(item.file_bucket ?? "notes")
+          .getPublicUrl(item.file_path!);
+        if (active && pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
       }
     })();
     return () => {
       active = false;
     };
-  }, [item.file_path, item.file_bucket, item.file_url, item.type, item.file_mime]);
+  }, [item.file_path, item.file_bucket, item.file_url]);
+
+  return (
+    <div className="rounded-2xl border border-border/80 bg-muted/20 p-5 flex flex-col justify-between gap-4">
+      <div className="flex items-start gap-3">
+        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+          <FileType className="h-5 w-5" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="font-bold text-sm text-foreground truncate">{item.title}</div>
+          <div className="text-xs text-muted-foreground mt-0.5">
+            {item.file_size_bytes ? `${Math.round(item.file_size_bytes / 1024)} KB · ` : ""}
+            {item.file_mime ?? "Reference Material"}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-2 pt-2 border-t border-border/60">
+        {pdfUrl ? (
+          <>
+            <Button asChild size="sm" variant="default" className="flex-1 rounded-xl text-xs font-bold h-9">
+              <a href={pdfUrl} target="_blank" rel="noreferrer">
+                <ExternalLink className="h-3.5 w-3.5 mr-1.5" /> Open Document
+              </a>
+            </Button>
+            <Button asChild size="sm" variant="outline" className="rounded-xl text-xs font-bold h-9">
+              <a href={pdfUrl} download target="_blank" rel="noreferrer">
+                <Download className="h-3.5 w-3.5" />
+              </a>
+            </Button>
+          </>
+        ) : (
+          <div className="text-xs text-muted-foreground">Document url is being processed.</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ─────────── ContentBlock (Markdown / Code / Visual Note) ─────────── */
+
+function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: string }) {
+  const [copied, setCopied] = useState(false);
 
   const onCopy = useCallback(async () => {
     const text = item.body || item.description;
@@ -804,163 +957,36 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
     }
   }, [item.body, item.description]);
 
-  const videoMeta = useMemo(() => {
-    if (item.type !== "video") return null;
-    return getVideoEmbedUrl(item.file_url || item.file_path);
-  }, [item.type, item.file_url, item.file_path]);
-
-  const bodyText = item.body || (item.type === "note" ? item.description : null);
-
-  const typeIcon = {
-    note: FileText,
-    pdf: FileType,
-    ppt: FileImage,
-    video: Video,
-    assignment: ClipboardList,
-    link: Link2,
-  }[item.type] ?? FileText;
-
-  const TypeIcon = typeIcon;
+  const bodyText = item.body || item.description;
 
   return (
     <section id={anchorId} className="scroll-mt-28">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-        <TypeIcon className="h-4 w-4 text-primary" aria-hidden />
-        <span className="capitalize">{item.type}</span>
+      <div className="flex items-center justify-between gap-4 mb-2">
+        <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+          {item.title}
+        </h2>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onCopy}
+          className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground"
+        >
+          {copied ? (
+            <>
+              <Check className="h-3.5 w-3.5 mr-1 text-emerald-500" /> Copied
+            </>
+          ) : (
+            <>
+              <Copy className="h-3.5 w-3.5 mr-1" /> Copy
+            </>
+          )}
+        </Button>
       </div>
 
-      <h2 className="mt-2 font-display text-2xl font-semibold leading-snug tracking-tight text-foreground sm:text-[1.75rem]">
-        <a href={`#${anchorId}`} className="group inline-flex items-center gap-2 no-underline">
-          {item.title}
-          <span
-            aria-hidden
-            className="text-base font-normal text-muted-foreground/40 opacity-0 transition-opacity group-hover:opacity-100"
-          >
-            #
-          </span>
-        </a>
-      </h2>
-
-      {item.description && item.type !== "note" && (
-        <p className="mt-2 max-w-[68ch] text-base leading-relaxed text-muted-foreground">
-          {item.description}
-        </p>
-      )}
-
-      {/* Video Content */}
-      {item.type === "video" && (
-        <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface shadow-soft">
-          {videoMeta ? (
-            videoMeta.isEmbed ? (
-              <div className="relative aspect-video w-full">
-                <iframe
-                  src={videoMeta.src}
-                  title={item.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="h-full w-full border-0"
-                />
-              </div>
-            ) : (
-              <div className="p-4 sm:p-6">
-                <video
-                  controls
-                  src={videoMeta.src}
-                  className="aspect-video w-full rounded-xl bg-black"
-                />
-              </div>
-            )
-          ) : (
-            <div className="p-8 text-center text-sm text-muted-foreground">
-              Video URL is not available.
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Slides / PPT Card */}
-      {item.type === "ppt" && !pdfUrl && item.file_url && (
-        <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-          <div className="flex items-center gap-3">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-              <FileImage className="h-5 w-5" />
-            </div>
-            <div>
-              <div className="font-display text-base font-semibold text-foreground">
-                Presentation Slides
-              </div>
-              <div className="text-xs text-muted-foreground">
-                {item.file_mime ?? "Presentation document"}
-              </div>
-            </div>
-          </div>
-          <Button asChild className="gap-2">
-            <a href={item.file_url} target="_blank" rel="noreferrer">
-              <ExternalLink className="h-4 w-4" /> Open slides
-            </a>
-          </Button>
-        </div>
-      )}
-
-      {/* External Link Card */}
-      {item.type === "link" && item.file_url && (
-        <div className="mt-6 flex flex-col gap-4 rounded-xl border border-border bg-surface p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-          <div className="flex items-center gap-3">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-              <Link2 className="h-5 w-5" />
-            </div>
-            <div>
-              <div className="font-display text-base font-semibold text-foreground">
-                External resource
-              </div>
-              <div className="truncate text-xs text-muted-foreground">{item.file_url}</div>
-            </div>
-          </div>
-          <Button asChild variant="outline" className="gap-2">
-            <a href={item.file_url} target="_blank" rel="noreferrer">
-              <ExternalLink className="h-4 w-4" /> Open resource
-            </a>
-          </Button>
-        </div>
-      )}
-
-      {/* Note Body Text */}
       {bodyText && (
-        <div className="relative mt-6 rounded-xl border border-border bg-surface">
-          <button
-            type="button"
-            onClick={onCopy}
-            aria-label={copied ? "Copied" : "Copy note text"}
-            className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1.5 text-[11px] font-medium text-muted-foreground opacity-0 shadow-sm transition-opacity hover:text-foreground focus:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background group-hover:opacity-100 sm:opacity-100"
-          >
-            {copied ? (
-              <>
-                <Check className="h-3 w-3" aria-hidden /> Copied
-              </>
-            ) : (
-              <>
-                <Copy className="h-3 w-3" aria-hidden /> Copy
-              </>
-            )}
-          </button>
-          <div className="prose-reader max-w-[68ch] whitespace-pre-wrap px-5 py-6 text-[17px] leading-[1.75] text-foreground sm:px-7 sm:py-8">
-            {bodyText}
-          </div>
+        <div className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft text-foreground text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+          {bodyText}
         </div>
-      )}
-
-      {/* PDF Viewer Embed */}
-      {pdfUrl && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-border bg-surface">
-          <PdfViewer url={pdfUrl} title={item.title} />
-        </div>
-      )}
-
-      {/* Fallback empty message */}
-      {!bodyText && !pdfUrl && item.type !== "video" && item.type !== "link" && (
-        <p className="mt-6 rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
-          This study item has no additional text or attached file.
-        </p>
       )}
     </section>
   );
