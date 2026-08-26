@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MockTestRouteImport } from './routes/mock-test'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as DeveloperRouteImport } from './routes/developer'
@@ -92,6 +93,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MockTestRoute = MockTestRouteImport.update({
+  id: '/mock-test',
+  path: '/mock-test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -398,6 +404,7 @@ export interface FileRoutesByFullPath {
   '/developer': typeof DeveloperRoute
   '/explore': typeof ExploreRoute
   '/mcp': typeof McpRoute
+  '/mock-test': typeof MockTestRoute
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/setup': typeof SetupRoute
@@ -458,6 +465,7 @@ export interface FileRoutesByTo {
   '/developer': typeof DeveloperRoute
   '/explore': typeof ExploreRoute
   '/mcp': typeof McpRoute
+  '/mock-test': typeof MockTestRoute
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/setup': typeof SetupRoute
@@ -517,6 +525,7 @@ export interface FileRoutesById {
   '/developer': typeof DeveloperRoute
   '/explore': typeof ExploreRoute
   '/mcp': typeof McpRoute
+  '/mock-test': typeof MockTestRoute
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/setup': typeof SetupRoute
@@ -579,6 +588,7 @@ export interface FileRouteTypes {
     | '/developer'
     | '/explore'
     | '/mcp'
+    | '/mock-test'
     | '/privacy'
     | '/reset-password'
     | '/setup'
@@ -639,6 +649,7 @@ export interface FileRouteTypes {
     | '/developer'
     | '/explore'
     | '/mcp'
+    | '/mock-test'
     | '/privacy'
     | '/reset-password'
     | '/setup'
@@ -697,6 +708,7 @@ export interface FileRouteTypes {
     | '/developer'
     | '/explore'
     | '/mcp'
+    | '/mock-test'
     | '/privacy'
     | '/reset-password'
     | '/setup'
@@ -759,6 +771,7 @@ export interface RootRouteChildren {
   DeveloperRoute: typeof DeveloperRoute
   ExploreRoute: typeof ExploreRoute
   McpRoute: typeof McpRoute
+  MockTestRoute: typeof MockTestRoute
   PrivacyRoute: typeof PrivacyRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SetupRoute: typeof SetupRoute
@@ -812,6 +825,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mock-test': {
+      id: '/mock-test'
+      path: '/mock-test'
+      fullPath: '/mock-test'
+      preLoaderRoute: typeof MockTestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -1330,6 +1350,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeveloperRoute: DeveloperRoute,
   ExploreRoute: ExploreRoute,
   McpRoute: McpRoute,
+  MockTestRoute: MockTestRoute,
   PrivacyRoute: PrivacyRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SetupRoute: SetupRoute,

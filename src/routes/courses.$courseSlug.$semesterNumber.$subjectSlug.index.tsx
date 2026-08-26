@@ -387,8 +387,32 @@ function SubjectDetail() {
           </section>
         )}
 
+        {/* ─── Mock Test Banner ─── */}
+        {subjectQuery.data && overall.total > 0 && (
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-3xl border border-primary/25 bg-linear-to-r from-primary/10 via-surface to-card p-5 sm:p-6 shadow-soft">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-1">
+                <Sparkles className="h-3.5 w-3.5" /> Exam Preparation
+              </div>
+              <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
+                Ready for Mid-Sem or Final Exams?
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5 max-w-xl">
+                Test your knowledge across multiple units of {subjectQuery.data.subject.title} with timed questions and unit-by-unit weakness analysis.
+              </p>
+            </div>
+
+            <Button asChild className="rounded-2xl h-11 px-5 font-bold text-xs shrink-0 shadow-sm">
+              <Link to="/mock-test">
+                <span>Launch Mock Exam</span>
+                <ArrowRight className="h-4 w-4 ml-1.5" />
+              </Link>
+            </Button>
+          </div>
+        )}
+
         {/* ─── Learning Path ─── */}
-        <section className="mt-14">
+        <section className="mt-12">
           <div className="flex items-baseline justify-between gap-4">
             <h2 className="text-h2 text-foreground">Learning path</h2>
             {overall.total > 0 && user && (

@@ -515,21 +515,24 @@ function DashboardPage() {
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-border/60">
-            {semester && courseSlug ? (
-              <Button asChild className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs">
+          <div className="mt-5 pt-4 border-t border-border/60 flex flex-col gap-2">
+            <Button asChild className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs">
+              <Link to="/mock-test">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
+                  Custom Mock Test
+                </span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </Button>
+
+            {semester && courseSlug && (
+              <Button asChild variant="outline" className="w-full justify-between rounded-xl text-xs font-semibold h-9">
                 <Link
                   to="/courses/$courseSlug/$semesterNumber"
                   params={{ courseSlug, semesterNumber: String(semester.number) }}
                 >
-                  <span>Start today's practice</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </Button>
-            ) : (
-              <Button asChild className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs">
-                <Link to="/onboarding">
-                  <span>Set learning goal</span>
+                  <span>Semester Syllabus</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Button>
