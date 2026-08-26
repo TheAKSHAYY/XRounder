@@ -3,10 +3,12 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
+  CheckCircle2,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -26,8 +28,10 @@ import {
   Link2,
   ListOrdered,
   Sparkles,
+  Target,
   Timer,
   Video,
+  Zap,
 } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -687,35 +691,48 @@ function UnitDetail() {
                 </div>
               )}
 
-              {/* Bottom "Test Your Knowledge" Action Loop */}
-              {primaryQuiz && (
-                <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-5 sm:p-8 shadow-soft">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex items-start gap-3.5">
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
-                        <FlaskConical className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1">
-                          Reinforce Learning
-                        </Badge>
-                        <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
-                          Test Your Knowledge on Unit {unit.number}
-                        </h3>
-                        <p className="text-xs text-muted-foreground mt-0.5">
-                          Practice MCQs with instant explanations and track your accuracy.
-                        </p>
-                      </div>
+              {/* End of Lesson Action Loop */}
+              <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-6 sm:p-8 shadow-soft">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                  <div className="flex items-start gap-4">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
+                      <FlaskConical className="h-6 w-6" />
                     </div>
+                    <div>
+                      <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1">
+                        Interactive Knowledge Check
+                      </Badge>
+                      <h3 className="font-display text-lg font-bold text-foreground">
+                        Ready to test yourself on Unit {unit.number}?
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                        You've covered the core concepts. Practice instant MCQs to measure your accuracy and prepare for university exams.
+                      </p>
+                    </div>
+                  </div>
 
-                    <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shrink-0 shadow-sm w-full sm:w-auto">
-                      <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                        Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
-                      </Link>
-                    </Button>
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+                    {!isCompleted && (
+                      <Button
+                        variant="outline"
+                        onClick={() => completeMutation.mutate()}
+                        disabled={completeMutation.isPending || !user}
+                        className="rounded-2xl h-11 px-5 text-xs font-bold"
+                      >
+                        <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
+                      </Button>
+                    )}
+
+                    {primaryQuiz && (
+                      <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm">
+                        <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
+                          Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </div>
-              )}
+              </div>
 
               {/* Next / Previous Unit Navigation */}
               <nav aria-label="Unit navigation" className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -773,8 +790,8 @@ function UnitDetail() {
 
             {/* Desktop Sticky TOC */}
             {toc.length > 1 && (
-              <aside className="hidden lg:block">
-                <div className="sticky top-24 rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
+              <aside className="hidden lg:block self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+                <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
                   <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                     <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
                   </div>
@@ -1069,112 +1086,183 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
 
       {bodyText && (
         <div className="rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-4 sm:p-9 shadow-soft text-foreground space-y-6 min-w-0 max-w-full overflow-hidden">
-          {blocks.map((b) => {
-            const headingId = `heading-${slugify(b.content)}-${b.id}`;
-            return (
-              <div key={b.id} className="min-w-0">
-                {b.type === "heading2" && (
-                  <h3
-                    id={headingId}
-                    className="font-display text-xl sm:text-2xl font-extrabold text-foreground mt-8 mb-4 border-b border-border/60 pb-2.5 pt-2 tracking-tight scroll-mt-28"
-                  >
-                    {renderFormattedText(b.content)}
-                  </h3>
-                )}
+          {(() => {
+            let h2Count = 0;
+            return blocks.map((b) => {
+              const headingId = `heading-${slugify(b.content)}-${b.id}`;
+              const isDiagram =
+                b.type === "code" &&
+                (b.language === "diagram" ||
+                  b.language === "ascii" ||
+                  /┌|└|│|─|\+---|\||->|INPUT|OUTPUT|CPU|MEMORY|ALU|CU/.test(b.content));
 
-                {b.type === "heading3" && (
-                  <h4
-                    id={headingId}
-                    className="font-display text-[17px] sm:text-lg font-bold text-primary mt-6 mb-3 tracking-tight scroll-mt-28"
-                  >
-                    {renderFormattedText(b.content)}
-                  </h4>
-                )}
+              const isQuickRevision =
+                (b.type === "heading2" || b.type === "heading3") &&
+                /revision|summary|takeaways|key points/i.test(b.content);
 
-                {b.type === "paragraph" && (
-                  <p className="text-[16px] sm:text-[17px] text-foreground/90 leading-[1.75] mb-5 whitespace-pre-wrap">
-                    {renderFormattedText(b.content)}
-                  </p>
-                )}
+              if (b.type === "heading2") {
+                h2Count++;
+              }
 
-                {b.type === "callout" && (
-                  <div className="my-6 rounded-2xl border-l-4 border-amber-500 border-border/60 bg-amber-500/10 dark:bg-amber-500/15 p-4 sm:p-5 text-[15px] sm:text-base leading-[1.7] text-foreground shadow-xs">
-                    <div className="flex items-center gap-2 font-bold text-amber-700 dark:text-amber-300 mb-1.5 text-xs sm:text-sm">
-                      <Sparkles className="h-4 w-4 shrink-0" />
-                      <span>
-                        {b.calloutType === "exam_tip"
-                          ? "Exam Tip / High Weightage"
-                          : b.calloutType === "formula"
-                            ? "Key Formula"
-                            : "Important Rule"}
-                      </span>
+              return (
+                <div key={b.id} className="min-w-0">
+                  {b.type === "heading2" && (
+                    <div id={headingId} className="scroll-mt-28 mt-10 mb-4 border-t border-border/50 pt-6">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-extrabold text-primary shrink-0">
+                          {String(h2Count).padStart(2, "0")}
+                        </span>
+                        <h3 className="font-display text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                          {renderFormattedText(b.content)}
+                        </h3>
+                      </div>
                     </div>
-                    <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">
+                  )}
+
+                  {b.type === "heading3" && (
+                    <h4
+                      id={headingId}
+                      className={cn(
+                        "font-display text-[17px] sm:text-lg font-bold mt-6 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2",
+                        isQuickRevision ? "text-amber-500 font-extrabold uppercase" : "text-primary",
+                      )}
+                    >
+                      {isQuickRevision && <Zap className="h-4 w-4 shrink-0" />}
                       {renderFormattedText(b.content)}
-                    </div>
-                  </div>
-                )}
+                    </h4>
+                  )}
 
-                {b.type === "code" && (
-                  <div className="my-6 max-w-full overflow-hidden rounded-2xl bg-slate-950 p-4 border border-border/70 shadow-xs dark:bg-slate-900">
-                    <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800">
-                      <span className="uppercase font-bold text-primary">{b.language || "code"}</span>
-                      <span className="text-[10px] uppercase tracking-wider text-slate-400">Diagram / Snippet</span>
-                    </div>
-                    <div className="max-w-full overflow-x-auto">
-                      <pre className="font-mono text-xs sm:text-sm text-slate-100 leading-relaxed whitespace-pre min-w-max">
-                        <code>{b.content}</code>
-                      </pre>
-                    </div>
-                  </div>
-                )}
+                  {b.type === "paragraph" && (
+                    <p className="text-[16px] sm:text-[17px] text-foreground/90 leading-[1.75] mb-5 whitespace-pre-wrap">
+                      {renderFormattedText(b.content)}
+                    </p>
+                  )}
 
-                {b.type === "table" && b.tableHeaders && (
-                  <div className="my-6 max-w-full overflow-x-auto rounded-2xl border border-border/80 bg-card shadow-xs">
-                    <table className="min-w-[500px] w-full text-xs sm:text-sm text-left border-collapse">
-                      <thead>
-                        <tr className="border-b border-border/80 bg-muted/50">
-                          {b.tableHeaders.map((h, hIdx) => (
-                            <th key={hIdx} className="p-3.5 font-bold text-foreground">
-                              {renderFormattedText(h)}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {(b.tableRows || []).map((row, rIdx) => (
-                          <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
-                            {row.map((cell, cIdx) => (
-                              <td key={cIdx} className="p-3.5 text-muted-foreground leading-relaxed">
-                                {renderFormattedText(cell)}
-                              </td>
+                  {b.type === "callout" && (
+                    <div
+                      className={cn(
+                        "my-6 rounded-2xl border-l-4 p-4 sm:p-5 text-[15px] sm:text-base leading-[1.7] shadow-xs",
+                        b.calloutType === "exam_tip"
+                          ? "border-amber-500 bg-amber-500/10 dark:bg-amber-500/15 text-foreground"
+                          : b.calloutType === "formula"
+                            ? "border-blue-500 bg-blue-500/10 dark:bg-blue-500/15 text-foreground"
+                            : b.calloutType === "warning"
+                              ? "border-rose-500 bg-rose-500/10 dark:bg-rose-500/15 text-foreground"
+                              : "border-emerald-500 bg-emerald-500/10 dark:bg-emerald-500/15 text-foreground",
+                      )}
+                    >
+                      <div
+                        className={cn(
+                          "flex items-center gap-2 font-bold mb-1.5 text-xs sm:text-sm",
+                          b.calloutType === "exam_tip"
+                            ? "text-amber-700 dark:text-amber-300"
+                            : b.calloutType === "formula"
+                              ? "text-blue-700 dark:text-blue-300"
+                              : b.calloutType === "warning"
+                                ? "text-rose-700 dark:text-rose-300"
+                                : "text-emerald-700 dark:text-emerald-300",
+                        )}
+                      >
+                        {b.calloutType === "exam_tip" ? (
+                          <Target className="h-4 w-4 shrink-0" />
+                        ) : b.calloutType === "formula" ? (
+                          <Zap className="h-4 w-4 shrink-0" />
+                        ) : b.calloutType === "warning" ? (
+                          <AlertTriangle className="h-4 w-4 shrink-0" />
+                        ) : (
+                          <CheckCircle2 className="h-4 w-4 shrink-0" />
+                        )}
+                        <span>
+                          {b.calloutType === "exam_tip"
+                            ? "🎯 Exam Tip / High Weightage"
+                            : b.calloutType === "formula"
+                              ? "⚡ Key Formula"
+                              : b.calloutType === "warning"
+                                ? "⚠️ Common Mistake"
+                                : "📌 Important Concept"}
+                        </span>
+                      </div>
+                      <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">
+                        {renderFormattedText(b.content)}
+                      </div>
+                    </div>
+                  )}
+
+                  {isDiagram ? (
+                    <div className="my-6 max-w-full overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-br from-primary/5 via-card to-card p-4 sm:p-5 shadow-xs">
+                      <div className="flex items-center justify-between font-mono text-[11px] text-primary mb-2.5 pb-2 border-b border-primary/15">
+                        <span className="flex items-center gap-2 font-bold uppercase tracking-wider">
+                          <Layers className="h-3.5 w-3.5" /> Concept Architecture / Diagram
+                        </span>
+                        <span className="text-[10px] text-muted-foreground uppercase font-mono">Scroll Horizontal</span>
+                      </div>
+                      <div className="max-w-full overflow-x-auto">
+                        <pre className="font-mono text-xs sm:text-sm text-foreground leading-relaxed whitespace-pre min-w-max p-3 rounded-xl bg-surface/80 border border-border/50">
+                          <code>{b.content}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  ) : b.type === "code" ? (
+                    <div className="my-6 max-w-full overflow-hidden rounded-2xl bg-slate-950 p-4 border border-border/70 shadow-xs dark:bg-slate-900">
+                      <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800">
+                        <span className="uppercase font-bold text-primary">{b.language || "code"}</span>
+                        <span className="text-[10px] uppercase tracking-wider text-slate-400">Code Snippet</span>
+                      </div>
+                      <div className="max-w-full overflow-x-auto">
+                        <pre className="font-mono text-xs sm:text-sm text-slate-100 leading-relaxed whitespace-pre min-w-max">
+                          <code>{b.content}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {b.type === "table" && b.tableHeaders && (
+                    <div className="my-6 max-w-full overflow-x-auto rounded-2xl border border-border/80 bg-card shadow-xs">
+                      <table className="min-w-[500px] w-full text-xs sm:text-sm text-left border-collapse">
+                        <thead>
+                          <tr className="border-b border-border/80 bg-muted/50">
+                            {b.tableHeaders.map((h, hIdx) => (
+                              <th key={hIdx} className="p-3.5 font-bold text-foreground">
+                                {renderFormattedText(h)}
+                              </th>
                             ))}
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
+                        </thead>
+                        <tbody>
+                          {(b.tableRows || []).map((row, rIdx) => (
+                            <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
+                              {row.map((cell, cIdx) => (
+                                <td key={cIdx} className="p-3.5 text-muted-foreground leading-relaxed">
+                                  {renderFormattedText(cell)}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
 
-                {(b.type === "bullet_list" || b.type === "numbered_list") && (
-                  <ul
-                    className={cn(
-                      "my-5 space-y-2 text-[16px] sm:text-[17px] text-foreground/90 pl-5 leading-[1.75]",
-                      b.type === "numbered_list" ? "list-decimal" : "list-disc",
-                    )}
-                  >
-                    {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
-                      .filter((item) => item.trim())
-                      .map((item, itemIdx) => (
-                        <li key={itemIdx} className="leading-relaxed">
-                          {renderFormattedText(item)}
-                        </li>
-                      ))}
-                  </ul>
-                )}
-              </div>
-            );
-          })}
+                  {(b.type === "bullet_list" || b.type === "numbered_list") && (
+                    <ul
+                      className={cn(
+                        "my-5 space-y-2 text-[16px] sm:text-[17px] text-foreground/90 pl-5 leading-[1.75]",
+                        b.type === "numbered_list" ? "list-decimal" : "list-disc",
+                      )}
+                    >
+                      {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
+                        .filter((item) => item.trim())
+                        .map((item, itemIdx) => (
+                          <li key={itemIdx} className="leading-relaxed">
+                            {renderFormattedText(item)}
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            });
+          })()}
         </div>
       )}
     </section>
