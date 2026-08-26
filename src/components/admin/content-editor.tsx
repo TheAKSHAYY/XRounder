@@ -32,6 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { VisualArticleEditor } from "@/components/admin/visual-article-editor";
 import { cn } from "@/lib/utils";
 
 const TYPE_META: Record<
@@ -207,14 +208,24 @@ export function ContentEditor({
         </div>
 
         <div>
-          <Label htmlFor="desc">Description</Label>
-          <Textarea
-            id="desc"
-            value={description ?? ""}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={3}
-            className="mt-1.5"
-          />
+          <Label htmlFor="desc" className="text-xs font-bold uppercase text-muted-foreground mb-1.5 block">
+            {type === "note" ? "Article Content (Visual Block Editor)" : "Description"}
+          </Label>
+          {type === "note" ? (
+            <VisualArticleEditor
+              value={description ?? ""}
+              onChange={setDescription}
+              unitTitle={title}
+            />
+          ) : (
+            <Textarea
+              id="desc"
+              value={description ?? ""}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
+              className="mt-1.5"
+            />
+          )}
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
