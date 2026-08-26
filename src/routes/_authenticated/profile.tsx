@@ -242,20 +242,38 @@ function ProfilePage() {
     setUploading(true);
 
     const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
-    const path = `${user.id}/avatar-${Date.now()}.${ext}`;
-    const { error: upErr } = await supabase.storage
-      .from("avatars")
+    let bucket = "avatars";
+    let path = `${user.id}/avatar-${Date.now()}.${ext}`;
+
+    let { error: upErr } = await supabase.storage
+      .from(bucket)
       .upload(path, file, { contentType: file.type, upsert: true });
+
+    // Fallback to 'notes' bucket if 'avatars' bucket is not found on remote instance
+    if (
+      upErr &&
+      (upErr.message?.toLowerCase().includes("not found") ||
+        (upErr as any).statusCode === "404" ||
+        (upErr as any).statusCode === 404 ||
+        (upErr as any).error === "Bucket not found")
+    ) {
+      bucket = "notes";
+      path = `avatars/${user.id}/avatar-${Date.now()}.${ext}`;
+      const fallbackRes = await supabase.storage
+        .from(bucket)
+        .upload(path, file, { contentType: file.type, upsert: true });
+      upErr = fallbackRes.error;
+    }
 
     if (upErr) {
       setUploading(false);
       setAvatarUrl(profile?.avatar_url ?? "");
       URL.revokeObjectURL(preview);
-      toast.error(upErr.message);
+      toast.error(upErr.message || "Failed to upload avatar photo");
       return;
     }
 
-    const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl;
+    const publicUrl = supabase.storage.from(bucket).getPublicUrl(path).data.publicUrl;
     try {
       const { error: updateErr } = await supabase
         .from("profiles")
