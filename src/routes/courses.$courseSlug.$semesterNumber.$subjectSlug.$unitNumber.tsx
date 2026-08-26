@@ -40,6 +40,7 @@ import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { slugify } from "@/lib/slug";
+import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
@@ -958,11 +959,12 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
   }, [item.body, item.description]);
 
   const bodyText = item.body || item.description;
+  const blocks = useMemo(() => parseMarkdownToBlocks(bodyText || ""), [bodyText]);
 
   return (
     <section id={anchorId} className="scroll-mt-28">
-      <div className="flex items-center justify-between gap-4 mb-2">
-        <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+      <div className="flex items-center justify-between gap-4 mb-3">
+        <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
           {item.title}
         </h2>
         <Button
@@ -984,8 +986,89 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
       </div>
 
       {bodyText && (
-        <div className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft text-foreground text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
-          {bodyText}
+        <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-9 shadow-soft text-foreground space-y-5">
+          {blocks.map((b) => (
+            <div key={b.id}>
+              {b.type === "heading2" && (
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mt-6 mb-2 border-b border-border/50 pb-2">
+                  {b.content}
+                </h3>
+              )}
+
+              {b.type === "heading3" && (
+                <h4 className="font-display text-base sm:text-lg font-bold text-foreground mt-4 mb-1 text-primary">
+                  {b.content}
+                </h4>
+              )}
+
+              {b.type === "paragraph" && (
+                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed whitespace-pre-wrap">
+                  {b.content}
+                </p>
+              )}
+
+              {b.type === "callout" && (
+                <div className="my-4 rounded-2xl border border-amber-500/30 bg-amber-500/8 p-4 sm:p-5 text-sm text-foreground shadow-xs">
+                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 mb-1.5">
+                    <Sparkles className="h-4 w-4" />
+                    <span>{b.calloutType === "exam_tip" ? "Exam Tip / High Weightage" : b.calloutType === "formula" ? "Key Formula" : "Important Exam Note"}</span>
+                  </div>
+                  <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">{b.content}</div>
+                </div>
+              )}
+
+              {b.type === "code" && (
+                <div className="my-4 rounded-2xl bg-muted/90 p-4 border border-border/70 overflow-hidden">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-muted-foreground mb-2 pb-2 border-b border-border/60">
+                    <span className="uppercase font-bold text-primary">{b.language || "c"}</span>
+                    <span>Code Snippet</span>
+                  </div>
+                  <pre className="font-mono text-xs sm:text-sm text-foreground overflow-x-auto leading-relaxed">
+                    <code>{b.content}</code>
+                  </pre>
+                </div>
+              )}
+
+              {b.type === "table" && b.tableHeaders && (
+                <div className="my-4 overflow-x-auto rounded-2xl border border-border/80 bg-muted/10 p-2">
+                  <table className="w-full text-xs sm:text-sm text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-border/80 bg-muted/40">
+                        {b.tableHeaders.map((h, hIdx) => (
+                          <th key={hIdx} className="p-3 font-bold text-foreground">
+                            {h}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(b.tableRows || []).map((row, rIdx) => (
+                        <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
+                          {row.map((cell, cIdx) => (
+                            <td key={cIdx} className="p-3 text-muted-foreground">
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {(b.type === "bullet_list" || b.type === "numbered_list") && (
+                <ul className={cn("my-3 space-y-1.5 text-sm sm:text-base text-foreground/90 pl-5", b.type === "numbered_list" ? "list-decimal" : "list-disc")}>
+                  {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
+                    .filter((item) => item.trim())
+                    .map((item, itemIdx) => (
+                      <li key={itemIdx} className="leading-relaxed">
+                        {item}
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </section>

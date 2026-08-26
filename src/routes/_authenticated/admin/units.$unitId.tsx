@@ -51,6 +51,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
+import { VisualArticleEditor } from "@/components/admin/visual-article-editor";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/units/$unitId")({
@@ -737,15 +738,13 @@ function AdminUnitWorkspace() {
             </div>
 
             <div>
-              <Label className="text-xs font-bold uppercase text-muted-foreground">
-                Article Body (Markdown Supported)
+              <Label className="text-xs font-bold uppercase text-muted-foreground mb-2 block">
+                Visual Article Content
               </Label>
-              <Textarea
-                rows={16}
+              <VisualArticleEditor
                 value={articleBody}
-                onChange={(e) => setArticleBody(e.target.value)}
-                placeholder="## Introduction&#10;&#10;Write educational content, code blocks, and key exam points here..."
-                className="mt-1 rounded-2xl bg-muted/20 font-mono text-sm leading-relaxed p-4"
+                onChange={setArticleBody}
+                unitTitle={articleTitle}
               />
             </div>
           </div>
