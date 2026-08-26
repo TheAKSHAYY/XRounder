@@ -31,8 +31,8 @@ export function SiteHeader({
   const anchors = marketing
     ? [
         { label: "Features", href: "#features" },
-        { label: "Journey", href: "#journey" },
-        { label: "FAQ", href: "#faq" },
+        { label: "Curriculum", href: "#curriculum" },
+        { label: "How It Works", href: "#how-it-works" },
       ]
     : [];
 

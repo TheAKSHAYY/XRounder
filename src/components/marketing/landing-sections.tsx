@@ -24,49 +24,48 @@ import { cn } from "@/lib/utils";
 /* ──────────────────────────────────────────────────────────── 1. Hero */
 
 export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
-  const [activeTab, setActiveTab] = useState<"notes" | "quiz" | "papers">("notes");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "notes" | "quiz">("dashboard");
 
   return (
-    <section className="relative overflow-hidden border-b border-border/70 bg-surface/50 py-12 sm:py-16 lg:py-20">
+    <section className="relative overflow-hidden border-b border-border/70 bg-surface/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Value Proposition */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              Syllabus-Aligned Learning Platform
+              Personal Semester Operating System
             </div>
 
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
-              Master your university syllabus,{" "}
-              <span className="text-primary">semester by semester.</span>
+              Your entire semester.{" "}
+              <span className="text-primary">One focused study system.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Curated notes, unit-wise MCQ practice, and solved past papers — organized precisely
-              by degree, year, and subject for maximum clarity.
+              Syllabus-aligned notes, unit-wise MCQs, previous-year papers and progress tracking — built around exactly what you need to learn and revise.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               {loading ? (
-                <Skeleton className="h-12 w-44 rounded-lg" />
+                <Skeleton className="h-12 w-44 rounded-xl" />
               ) : user ? (
-                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-lg">
+                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs">
                   <Link to="/dashboard">
-                    Go to my dashboard <ArrowRight className="ml-2 h-4 w-4" />
+                    Go to Dashboard <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               ) : (
-                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-lg">
+                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs">
                   <Link to="/courses">
-                    Browse courses <ArrowRight className="ml-2 h-4 w-4" />
+                    Start Learning <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               )}
 
-              <Button asChild variant="outline" size="lg" className="h-12 px-6 text-sm font-semibold rounded-lg">
+              <Button asChild variant="outline" size="lg" className="h-12 px-6 text-sm font-semibold rounded-xl">
                 <Link to="/explore">
-                  Explore as guest
+                  Explore as Guest
                 </Link>
               </Button>
             </div>
@@ -74,44 +73,56 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             <div className="flex items-center gap-6 pt-4 text-xs font-medium text-muted-foreground">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Zero fluff</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
                 <span>Unit-by-unit syllabus</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Free student access</span>
+                <span>Weak topic tracking</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                <span>100% free student access</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Live Interactive Product UI Preview */}
           <div className="lg:col-span-6">
-            <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6 shadow-sm ring-1 ring-border/50">
+            <div className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-md ring-1 ring-border/50">
               {/* Window Header Bar */}
-              <div className="flex items-center justify-between border-b border-border/70 pb-4">
+              <div className="flex items-center justify-between border-b border-border/70 pb-3.5">
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full bg-red-400/80" />
                   <span className="h-3 w-3 rounded-full bg-amber-400/80" />
                   <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
                   <span className="ml-2 font-mono text-xs text-muted-foreground">
-                    XRounder · BCA / Semester 1 / Programming in C
+                    XRounder · Semester OS
                   </span>
                 </div>
-                <Badge variant="outline" className="text-[11px] font-mono">
-                  Unit 2: Control Structures
+                <Badge variant="outline" className="text-[11px] font-mono border-primary/30 text-primary">
+                  Semester 5
                 </Badge>
               </div>
 
               {/* Product Preview Tabs */}
-              <div className="mt-4 flex flex-wrap items-center gap-1.5 border-b border-border/70 pb-3">
+              <div className="mt-3.5 flex flex-wrap items-center gap-1.5 border-b border-border/70 pb-3">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("dashboard")}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
+                    activeTab === "dashboard"
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "text-muted-foreground hover:bg-muted",
+                  )}
+                >
+                  <TrendingUp className="h-3.5 w-3.5" /> Dashboard
+                </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("notes")}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
                     activeTab === "notes"
                       ? "bg-primary text-primary-foreground font-semibold"
                       : "text-muted-foreground hover:bg-muted",
@@ -123,7 +134,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                   type="button"
                   onClick={() => setActiveTab("quiz")}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
                     activeTab === "quiz"
                       ? "bg-primary text-primary-foreground font-semibold"
                       : "text-muted-foreground hover:bg-muted",
@@ -131,22 +142,58 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                 >
                   <FlaskConical className="h-3.5 w-3.5" /> MCQ Solver
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("papers")}
-                  className={cn(
-                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
-                    activeTab === "papers"
-                      ? "bg-primary text-primary-foreground font-semibold"
-                      : "text-muted-foreground hover:bg-muted",
-                  )}
-                >
-                  <BookOpen className="h-3.5 w-3.5" /> Past Papers
-                </button>
               </div>
 
               {/* Dynamic Interactive Card Content */}
-              <div className="mt-4 min-h-[220px] rounded-xl bg-background p-4 border border-border/60">
+              <div className="mt-3.5 min-h-[260px] rounded-xl bg-background p-4 border border-border/60">
+                {activeTab === "dashboard" && (
+                  <div className="space-y-3.5">
+                    {/* Top Greeting in Preview */}
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-[11px] font-semibold text-muted-foreground uppercase">
+                          Good morning, Alex 👋
+                        </span>
+                        <h4 className="font-display font-bold text-sm text-foreground">
+                          Computer Networks · Semester 5
+                        </h4>
+                      </div>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent-foreground">
+                        🔥 4d streak
+                      </span>
+                    </div>
+
+                    {/* Continue Learning card */}
+                    <div className="rounded-xl border border-primary/20 bg-primary/5 p-3">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-bold text-primary flex items-center gap-1">
+                          <PlayCircle className="h-3.5 w-3.5" /> Continue Learning
+                        </span>
+                        <span className="font-semibold text-foreground">62% complete</span>
+                      </div>
+                      <p className="mt-1 font-semibold text-xs text-foreground">
+                        Unit 3 — Routing & IP Addressing
+                      </p>
+                      <div className="mt-2 h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                        <div className="h-full bg-primary rounded-full" style={{ width: "62%" }} />
+                      </div>
+                    </div>
+
+                    {/* Weak topics preview */}
+                    <div className="rounded-xl border border-amber-500/20 bg-amber-50/40 dark:bg-amber-950/20 p-3">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-bold text-amber-700 dark:text-amber-300">
+                          Weak Area: Exception Handling
+                        </span>
+                        <span className="font-semibold text-amber-600 dark:text-amber-400">42%</span>
+                      </div>
+                      <p className="mt-0.5 text-[11px] text-muted-foreground">
+                        Recommended: Practice 5 quick revision MCQs
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 {activeTab === "notes" && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -159,7 +206,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                       In C programming, conditional statements execute specific code blocks
                       based on whether an expression evaluates to non-zero (true) or zero (false).
                     </p>
-                    <div className="rounded-lg bg-surface p-3 font-mono text-[11px] text-foreground border border-border/60">
+                    <div className="rounded-lg bg-surface p-2.5 font-mono text-[11px] text-foreground border border-border/60">
                       <span className="text-primary font-bold">if</span> (score &gt;= 50) &#123;
                       <br />
                       &nbsp;&nbsp;printf(<span className="text-emerald-600">"Status: Passed\n"</span>);
@@ -199,27 +246,6 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                       </div>
                       <div className="rounded-lg border border-border/80 bg-surface px-3 py-2 text-muted-foreground">
                         D. return
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {activeTab === "papers" && (
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-display font-bold text-sm text-foreground">
-                        End-Term University Question Papers
-                      </h4>
-                      <Badge variant="secondary" className="text-[10px]">PDF Viewer</Badge>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between rounded-lg border border-border/60 bg-surface p-2.5 text-xs">
-                        <span className="font-medium text-foreground">December 2024 · Programming in C</span>
-                        <span className="text-primary font-semibold">View PDF →</span>
-                      </div>
-                      <div className="flex items-center justify-between rounded-lg border border-border/60 bg-surface p-2.5 text-xs">
-                        <span className="font-medium text-foreground">May 2024 · Computer Fundamentals</span>
-                        <span className="text-primary font-semibold">View PDF →</span>
                       </div>
                     </div>
                   </div>
@@ -345,7 +371,7 @@ export function CourseDiscovery() {
   const courses = coursesQ.data ?? [];
 
   return (
-    <section className="py-16 sm:py-20 border-b border-border/70 bg-surface/40">
+    <section id="curriculum" className="py-16 sm:py-20 border-b border-border/70 bg-surface/40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -444,7 +470,7 @@ export function LearningWorkflow() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 border-b border-border/70 bg-background">
+    <section id="how-it-works" className="py-16 sm:py-20 border-b border-border/70 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl text-center mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">

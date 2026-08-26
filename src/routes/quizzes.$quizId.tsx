@@ -252,6 +252,7 @@ function QuizPage() {
             attemptNumber={(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length}
             onRetry={() => startMutation.mutate()}
             retryPending={startMutation.isPending}
+            context={contextQ.data}
           />
         )}
       </main>

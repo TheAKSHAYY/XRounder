@@ -69,6 +69,7 @@ export function ResultsView({
   attemptNumber,
   onRetry,
   retryPending,
+  context,
 }: {
   quizTitle: string;
   passingPct: number;
@@ -80,6 +81,15 @@ export function ResultsView({
   attemptNumber: number;
   onRetry: () => void;
   retryPending: boolean;
+  context?: {
+    unitId?: string;
+    unitNumber?: number;
+    unitTitle?: string;
+    subject?: string | null;
+    subjectSlug?: string | null;
+    semesterNumber?: number | null;
+    courseSlug?: string | null;
+  } | null;
 }) {
   const [showReview, setShowReview] = useState(false);
   const pct = Number(result.pct ?? 0);
@@ -105,12 +115,12 @@ export function ResultsView({
 
   const message =
     pct >= 90
-      ? "🏆 Excellent!"
+      ? "🏆 Outstanding!"
       : pct >= 75
-        ? "🎉 Very Good!"
+        ? "🎉 Great work!"
         : pct >= 50
-          ? "👍 Good, keep practicing."
-          : "📚 Needs Improvement.";
+          ? "👍 Good attempt — keep practicing."
+          : "📚 Needs revision — review mistakes below.";
 
   return (
     <motion.section
@@ -120,27 +130,27 @@ export function ResultsView({
       className="space-y-6"
       aria-labelledby="quiz-result-heading"
     >
-      <div className="rounded-3xl border border-border bg-surface p-6 shadow-sm sm:p-8">
+      <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-10">
           <ScoreRing pct={pct} />
           <div className="text-center sm:text-left">
-            <div className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            <div className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Attempt {Math.max(1, attemptNumber)} · {quizTitle}
             </div>
             <h1
               id="quiz-result-heading"
-              className="mt-2 font-display text-3xl font-semibold text-foreground"
+              className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground"
             >
               {message}
             </h1>
-            <p className="mt-2 text-sm text-muted-foreground tabular-nums">
+            <p className="mt-2 text-sm text-muted-foreground tabular-nums font-medium">
               Score {result.score} / {result.max_score} · Pass mark {passingPct}%
             </p>
             <Badge
               variant={result.passed ? "default" : "secondary"}
-              className="mt-3 rounded-full px-3 py-1"
+              className="mt-3 rounded-full px-3 py-1 font-semibold"
             >
-              {result.passed ? "Passed" : "Did not pass"}
+              {result.passed ? "Passed" : "Needs Review"}
             </Badge>
           </div>
         </div>
@@ -154,25 +164,53 @@ export function ResultsView({
           <MiniStat label="Time" value={fmtDuration(elapsed)} tone="muted" />
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button onClick={onRetry} disabled={retryPending} className="gap-1.5 rounded-full">
+        <div className="mt-8 flex flex-wrap items-center gap-2.5">
+          <Button onClick={onRetry} disabled={retryPending} className="gap-1.5 rounded-xl font-semibold shadow-xs">
             <RotateCcw className="h-4 w-4" /> {retryPending ? "Starting…" : "Retry quiz"}
           </Button>
+
           <Button
             variant="outline"
-            className="gap-1.5 rounded-full"
+            className="gap-1.5 rounded-xl font-semibold"
             onClick={() => setShowReview((v) => !v)}
           >
             <ListChecks className="h-4 w-4" /> {showReview ? "Hide review" : "Review answers"}
           </Button>
-          <Button asChild variant="outline" className="gap-1.5 rounded-full">
-            <Link to="/courses">
-              <Target className="h-4 w-4" /> Next unit
-            </Link>
-          </Button>
-          <Button asChild variant="ghost" className="gap-1.5 rounded-full">
+
+          {context?.courseSlug && context.semesterNumber && context.subjectSlug && context.unitNumber && (
+            <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">
+              <Link
+                to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                params={{
+                  courseSlug: context.courseSlug,
+                  semesterNumber: String(context.semesterNumber),
+                  subjectSlug: context.subjectSlug,
+                  unitNumber: String(context.unitNumber),
+                }}
+              >
+                <Target className="h-4 w-4" /> Back to Unit Notes
+              </Link>
+            </Button>
+          )}
+
+          {context?.courseSlug && context.semesterNumber && context.subjectSlug && (
+            <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">
+              <Link
+                to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                params={{
+                  courseSlug: context.courseSlug,
+                  semesterNumber: String(context.semesterNumber),
+                  subjectSlug: context.subjectSlug,
+                }}
+              >
+                Subject Syllabus
+              </Link>
+            </Button>
+          )}
+
+          <Button asChild variant="ghost" className="gap-1.5 rounded-xl font-semibold ml-auto">
             <Link to="/dashboard">
-              <LayoutDashboard className="h-4 w-4" /> Back to dashboard
+              <LayoutDashboard className="h-4 w-4" /> Dashboard
             </Link>
           </Button>
         </div>

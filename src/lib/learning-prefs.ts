@@ -125,7 +125,9 @@ export function useGuestLearningPrefs() {
     const unsub = subscribeLearningPrefs(() => {
       setPrefs(getGuestLearningPrefs());
     });
-    return unsub;
+    return () => {
+      unsub();
+    };
   }, []);
 
   return {

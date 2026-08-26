@@ -1,35 +1,53 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useServerFn } from "@tanstack/react-start";
-import { Loader2 } from "lucide-react";
+import {
+  Bell,
+  Camera,
+  Check,
+  Edit3,
+  GraduationCap,
+  KeyRound,
+  Loader2,
+  LogOut,
+  Moon,
+  Palette,
+  Shield,
+  Sun,
+  Trash2,
+  User as UserIcon,
+} from "lucide-react";
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
-import { useRoles } from "@/hooks/use-roles";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ProfileHeader } from "@/components/profile/profile-header";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import {
-  PersonalInfoCard,
-  validatePersonal,
-  type PersonalForm,
-} from "@/components/profile/personal-info-card";
-import { AcademicCard, type AcademicForm } from "@/components/profile/academic-card";
-import { LearningStatsCard } from "@/components/profile/learning-stats-card";
-import { AchievementsCard } from "@/components/profile/achievements-card";
-import { CompletionCard } from "@/components/profile/completion-card";
-import { QuickActionsCard } from "@/components/profile/quick-actions-card";
-import { AccountCard } from "@/components/profile/account-card";
-import { SecurityCard, type SessionRow } from "@/components/profile/security-card";
-import { deleteMyAccount } from "@/lib/account.functions";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
-  computeAchievements,
-  computeCompletion,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useTheme } from "@/components/theme/theme-provider";
+import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
+import {
   DEFAULT_NOTIFICATION_PREFS,
-  EMPTY_STATS,
-  fetchLearningStats,
+  NOTIFICATION_PREF_KEYS,
   fetchProfile,
   type NotificationPrefs,
   type ProfileRow,
@@ -38,118 +56,44 @@ import {
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
     meta: [
-      { title: "Your profile · XRounder" },
+      { title: "Student Profile · XRounder" },
       {
         name: "description",
-        content:
-          "Manage your XRounder student profile: personal and academic details, learning statistics, achievements and account security.",
+        content: "Manage your student identity, academic program, and account preferences.",
       },
-      { property: "og:title", content: "Your profile · XRounder" },
+      { property: "og:title", content: "Student Profile · XRounder" },
       {
         property: "og:description",
-        content:
-          "Manage your XRounder student profile: personal and academic details, learning statistics, achievements and account security.",
+        content: "Manage your student identity, academic program, and account preferences.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: ProfilePage,
 });
 
-const EMPTY_PERSONAL: PersonalForm = {
-  full_name: "",
-  display_name: "",
-  bio: "",
-  phone: "",
-  date_of_birth: "",
-  gender: "",
-  college: "",
-  university: "",
-  roll_number: "",
+type EditProfileForm = {
+  full_name: string;
+  university: string;
+  current_course_id: string;
+  current_semester_id: string;
+  academic_session: string;
 };
-
-const EMPTY_ACADEMIC: AcademicForm = {
-  current_course_id: "",
-  current_semester_id: "",
-  current_year: "",
-  academic_session: "",
-};
-
-function personalFromProfile(p: ProfileRow | null | undefined): PersonalForm {
-  return {
-    full_name: p?.full_name ?? "",
-    display_name: p?.display_name ?? "",
-    bio: p?.bio ?? "",
-    phone: p?.phone ?? "",
-    date_of_birth: p?.date_of_birth ?? "",
-    gender: p?.gender ?? "",
-    college: p?.college ?? "",
-    university: p?.university ?? "",
-    roll_number: p?.roll_number ?? "",
-  };
-}
-
-function academicFromProfile(p: ProfileRow | null | undefined): AcademicForm {
-  return {
-    current_course_id: p?.current_course_id ?? "",
-    current_semester_id: p?.current_semester_id ?? "",
-    current_year: p?.current_year != null ? String(p.current_year) : "",
-    academic_session: p?.academic_session ?? "",
-  };
-}
-
-/** Strips keys whose columns don't exist yet (before the migration is run). */
-function pickSupported<T extends Record<string, unknown>>(
-  patch: T,
-  profile: ProfileRow | null | undefined,
-  optionalKeys: string[],
-) {
-  const out: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(patch)) {
-    if (optionalKeys.includes(k) && profile && !(k in profile)) continue;
-    out[k] = v;
-  }
-  return out;
-}
-
-const OPTIONAL_KEYS = [
-  "phone",
-  "date_of_birth",
-  "gender",
-  "college",
-  "university",
-  "roll_number",
-  "academic_session",
-  "current_year",
-  "notification_prefs",
-];
 
 function ProfilePage() {
   const { user } = useAuth();
-  const { isSuperAdmin, isAdmin, isInstructor } = useRoles();
   const qc = useQueryClient();
   const router = useRouter();
   const navigate = useNavigate();
   const fileRef = useRef<HTMLInputElement | null>(null);
-  const deleteAccount = useServerFn(deleteMyAccount);
+  const { theme, setTheme } = useTheme();
 
-  /* ------------------------------------------------------------- queries */
-
+  // Queries
   const profileQuery = useQuery({
     queryKey: ["profile-full", user?.id],
     enabled: !!user?.id,
     queryFn: () => fetchProfile(user!.id),
   });
   const profile = profileQuery.data;
-
-  const statsQuery = useQuery({
-    queryKey: ["profile-stats", user?.id],
-    enabled: !!user?.id,
-    staleTime: 30_000,
-    queryFn: () => fetchLearningStats(user!.id),
-  });
-  const stats = statsQuery.data ?? EMPTY_STATS;
 
   const coursesQuery = useQuery({
     queryKey: ["profile-courses"],
@@ -165,171 +109,127 @@ function ProfilePage() {
     },
   });
 
-  const [academic, setAcademic] = useState<AcademicForm>(EMPTY_ACADEMIC);
+  // Edit Modal State
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editForm, setEditForm] = useState<EditProfileForm>({
+    full_name: "",
+    university: "",
+    current_course_id: "",
+    current_semester_id: "",
+    academic_session: "",
+  });
 
+  // Semesters for selected course
+  const selectedCourseId = editForm.current_course_id || profile?.current_course_id || "";
   const semestersQuery = useQuery({
-    queryKey: ["profile-semesters", academic.current_course_id],
-    enabled: !!academic.current_course_id,
+    queryKey: ["profile-semesters", selectedCourseId],
+    enabled: !!selectedCourseId,
     staleTime: 5 * 60_000,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("semesters")
         .select("id, number, title")
-        .eq("course_id", academic.current_course_id)
+        .eq("course_id", selectedCourseId)
         .is("deleted_at", null)
         .order("number");
       if (error) throw error;
-      return (data ?? []).map((s) => ({ id: s.id, label: `Semester ${s.number} — ${s.title}` }));
+      return (data ?? []).map((s) => ({ id: s.id, number: s.number, label: `Semester ${s.number} — ${s.title}` }));
     },
   });
 
-  const subjectsQuery = useQuery({
-    queryKey: ["profile-subject-count", academic.current_semester_id],
-    enabled: !!academic.current_semester_id,
-    staleTime: 5 * 60_000,
-    queryFn: async () => {
-      const { count, error } = await supabase
-        .from("subjects")
-        .select("id", { count: "exact", head: true })
-        .eq("semester_id", academic.current_semester_id)
-        .is("deleted_at", null);
-      if (error) throw error;
-      return count ?? 0;
-    },
-  });
+  // Password & Security State
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [changingPassword, setChangingPassword] = useState(false);
 
-  const sessionsQuery = useQuery({
-    queryKey: ["profile-sessions", user?.id],
-    enabled: !!user?.id,
-    staleTime: 60_000,
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("user_sessions")
-        .select("id, device_kind, city, country, last_seen_at")
-        .eq("user_id", user!.id)
-        .is("revoked_at", null)
-        .order("last_seen_at", { ascending: false })
-        .limit(6);
-      if (error) return [] as SessionRow[];
-      return (data ?? []) as SessionRow[];
-    },
-  });
-
-  /* ---------------------------------------------------------------- form */
-
-  const [personal, setPersonal] = useState<PersonalForm>(EMPTY_PERSONAL);
-  const [prefs, setPrefs] = useState<NotificationPrefs>(DEFAULT_NOTIFICATION_PREFS);
+  // Avatar Upload State
   const [avatarUrl, setAvatarUrl] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [savedPersonal, setSavedPersonal] = useState(false);
+
+  // Notification Prefs State
+  const [prefs, setPrefs] = useState<NotificationPrefs>(DEFAULT_NOTIFICATION_PREFS);
 
   useEffect(() => {
     if (!profile) return;
-    setPersonal(personalFromProfile(profile));
-    setAcademic(academicFromProfile(profile));
     setAvatarUrl(profile.avatar_url ?? "");
     setPrefs({ ...DEFAULT_NOTIFICATION_PREFS, ...(profile.notification_prefs ?? {}) });
   }, [profile]);
 
-  const basePersonal = useMemo(() => personalFromProfile(profile), [profile]);
-  const baseAcademic = useMemo(() => academicFromProfile(profile), [profile]);
-  const personalDirty = JSON.stringify(personal) !== JSON.stringify(basePersonal);
-  const academicDirty = JSON.stringify(academic) !== JSON.stringify(baseAcademic);
-  const errors = useMemo(() => validatePersonal(personal), [personal]);
+  // Open Edit Modal with fresh data
+  const handleOpenEdit = () => {
+    setEditForm({
+      full_name: profile?.full_name ?? "",
+      university: profile?.university ?? profile?.college ?? "",
+      current_course_id: profile?.current_course_id ?? "",
+      current_semester_id: profile?.current_semester_id ?? "",
+      academic_session: profile?.academic_session ?? "",
+    });
+    setIsEditOpen(true);
+  };
 
-  // Unsaved-changes protection on tab close / reload.
-  useEffect(() => {
-    if (!personalDirty && !academicDirty) return;
-    const handler = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      e.returnValue = "";
-    };
-    window.addEventListener("beforeunload", handler);
-    return () => window.removeEventListener("beforeunload", handler);
-  }, [personalDirty, academicDirty]);
-
-  function invalidateProfile() {
+  const invalidateProfile = () => {
     if (!user) return;
     qc.invalidateQueries({ queryKey: ["profile-full", user.id] });
     qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
     qc.invalidateQueries({ queryKey: ["dashboard-profile", user.id] });
     qc.invalidateQueries({ queryKey: ["dashboard-context"] });
-  }
+  };
 
-  async function updateProfile(patch: Record<string, unknown>) {
-    if (!user) throw new Error("Not signed in");
-    const payload = pickSupported(patch, profile, OPTIONAL_KEYS);
-    const { error } = await supabase
-      .from("profiles")
-      // Extra columns are typed loosely until the generated types are refreshed.
-      .update(payload as never)
-      .eq("user_id", user.id);
-    if (error) throw error;
-  }
-
-  const savePersonal = useMutation({
-    mutationFn: () =>
-      updateProfile({
-        full_name: personal.full_name.trim() || null,
-        display_name: personal.display_name.trim() || null,
-        bio: personal.bio.trim() || null,
-        phone: personal.phone.trim() || null,
-        date_of_birth: personal.date_of_birth || null,
-        gender: personal.gender || null,
-        college: personal.college.trim() || null,
-        university: personal.university.trim() || null,
-        roll_number: personal.roll_number.trim() || null,
-      }),
+  // Save Edit Profile Mutation
+  const saveProfileMutation = useMutation({
+    mutationFn: async (data: EditProfileForm) => {
+      if (!user) throw new Error("Not authenticated");
+      const { error } = await supabase
+        .from("profiles")
+        .update({
+          full_name: data.full_name.trim() || null,
+          university: data.university.trim() || null,
+          current_course_id: data.current_course_id || null,
+          current_semester_id: data.current_semester_id || null,
+          academic_session: data.academic_session.trim() || null,
+        } as never)
+        .eq("user_id", user.id);
+      if (error) throw error;
+    },
     onSuccess: () => {
-      setSavedPersonal(true);
-      toast.success("Profile saved");
+      toast.success("Profile updated successfully");
+      setIsEditOpen(false);
       invalidateProfile();
     },
-    onError: (e: Error) => toast.error(e.message),
+    onError: (err: any) => {
+      toast.error(err.message || "Failed to save profile");
+    },
   });
 
-  const saveAcademic = useMutation({
-    mutationFn: () =>
-      updateProfile({
-        current_course_id: academic.current_course_id || null,
-        current_semester_id: academic.current_semester_id || null,
-        current_year: academic.current_year ? Number(academic.current_year) : null,
-        academic_session: academic.academic_session.trim() || null,
-      }),
+  // Save Notification Prefs Mutation
+  const savePrefsMutation = useMutation({
+    mutationFn: async (next: NotificationPrefs) => {
+      if (!user) return;
+      const { error } = await supabase
+        .from("profiles")
+        .update({ notification_prefs: next } as never)
+        .eq("user_id", user.id);
+      if (error) throw error;
+    },
     onSuccess: () => {
-      toast.success("Academic details saved");
+      toast.success("Notification preferences saved");
       invalidateProfile();
     },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
-  const savePrefs = useMutation({
-    mutationFn: (next: NotificationPrefs) => updateProfile({ notification_prefs: next }),
-    onSuccess: () => invalidateProfile(),
-    onError: (e: Error) => {
-      toast.error(e.message);
-      setPrefs({ ...DEFAULT_NOTIFICATION_PREFS, ...(profile?.notification_prefs ?? {}) });
+    onError: (err: any) => {
+      toast.error(err.message || "Failed to update preferences");
     },
   });
 
-  const saveLocale = useMutation({
-    mutationFn: (locale: string) => updateProfile({ locale }),
-    onSuccess: () => {
-      toast.success("Language updated");
-      invalidateProfile();
-    },
-    onError: (e: Error) => toast.error(e.message),
-  });
-
-  /* -------------------------------------------------------------- avatar */
-
-  async function onPickFile(e: React.ChangeEvent<HTMLInputElement>) {
+  // Avatar Upload Handler
+  const onPickAvatar = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file || !user) return;
 
     if (!file.type.startsWith("image/")) {
-      toast.error("Please choose an image file (JPG, PNG, WebP or GIF).");
+      toast.error("Please choose an image file (JPG, PNG, or WebP).");
       return;
     }
     if (file.size > 5 * 1024 * 1024) {
@@ -337,7 +237,6 @@ function ProfilePage() {
       return;
     }
 
-    // Optimistic local preview while the upload runs.
     const preview = URL.createObjectURL(file);
     setAvatarUrl(preview);
     setUploading(true);
@@ -358,267 +257,500 @@ function ProfilePage() {
 
     const publicUrl = supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl;
     try {
-      await updateProfile({ avatar_url: publicUrl });
+      const { error: updateErr } = await supabase
+        .from("profiles")
+        .update({ avatar_url: publicUrl } as never)
+        .eq("user_id", user.id);
+      if (updateErr) throw updateErr;
+
       setAvatarUrl(publicUrl);
       toast.success("Profile photo updated");
       invalidateProfile();
-    } catch (err) {
+    } catch (err: any) {
       setAvatarUrl(profile?.avatar_url ?? "");
-      toast.error((err as Error).message);
+      toast.error(err.message || "Failed to save photo");
     } finally {
       URL.revokeObjectURL(preview);
       setUploading(false);
     }
-  }
+  };
 
-  async function onRemovePhoto() {
+  const onRemovePhoto = async () => {
     if (!user) return;
     setUploading(true);
     try {
-      await updateProfile({ avatar_url: null });
+      await supabase
+        .from("profiles")
+        .update({ avatar_url: null } as never)
+        .eq("user_id", user.id);
       setAvatarUrl("");
       toast.success("Profile photo removed");
       invalidateProfile();
-    } catch (err) {
-      toast.error((err as Error).message);
+    } catch (err: any) {
+      toast.error(err.message || "Failed to remove photo");
     } finally {
       setUploading(false);
     }
-  }
+  };
 
-  /* ------------------------------------------------------------ security */
+  // Change Password Handler
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError(null);
+    if (newPassword.length < 8) {
+      setPasswordError("Password must be at least 8 characters.");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Passwords do not match.");
+      return;
+    }
 
-  const [changingPassword, setChangingPassword] = useState(false);
-  const [deleting, setDeleting] = useState(false);
-
-  async function onChangePassword(password: string) {
     setChangingPassword(true);
-    const { error } = await supabase.auth.updateUser({ password });
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
     setChangingPassword(false);
     if (error) {
-      toast.error(error.message);
-      return false;
+      setPasswordError(error.message);
+      return;
     }
-    toast.success("Password updated");
-    return true;
-  }
 
-  async function onSignOut() {
+    toast.success("Password updated successfully");
+    setNewPassword("");
+    setConfirmPassword("");
+    setIsPasswordModalOpen(false);
+  };
+
+  // Sign out
+  const onSignOut = async () => {
     await qc.cancelQueries();
     qc.clear();
     await supabase.auth.signOut();
     await router.invalidate();
     navigate({ to: "/auth", replace: true });
-  }
+  };
 
-  async function onDeleteAccount() {
-    setDeleting(true);
-    try {
-      await deleteAccount({});
-      await qc.cancelQueries();
-      qc.clear();
-      await supabase.auth.signOut();
-      toast.success("Your account has been deleted");
-      navigate({ to: "/", replace: true });
-    } catch (err) {
-      toast.error((err as Error).message || "Could not delete your account");
-    } finally {
-      setDeleting(false);
-    }
-  }
-
-  /* ---------------------------------------------------------------- misc */
-
-  function jumpTo(id: string) {
-    const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
-    el?.querySelector<HTMLElement>("input, select, textarea, button")?.focus({
-      preventScroll: true,
-    });
-  }
-
-  const completion = useMemo(
-    () =>
-      computeCompletion({
-        ...(profile ?? ({ user_id: user?.id ?? "" } as ProfileRow)),
-        ...personal,
-        ...academic,
-        current_year: academic.current_year ? Number(academic.current_year) : null,
-        avatar_url: avatarUrl || null,
-      } as ProfileRow),
-    [profile, personal, academic, avatarUrl, user?.id],
-  );
-
-  const achievements = useMemo(() => computeAchievements(stats), [stats]);
-
-  const role = isSuperAdmin
-    ? "Super Admin"
-    : isAdmin
-      ? "Admin"
-      : isInstructor
-        ? "Instructor"
-        : "Student";
-
-  const displayName =
-    personal.full_name || personal.display_name || user?.email?.split("@")[0] || "Your profile";
-  const initials = (personal.full_name || personal.display_name || user?.email || "U")
-    .trim()
+  const fullName = profile?.full_name || user?.user_metadata?.full_name || "Student";
+  const email = user?.email || "";
+  const initials = fullName
+    .split(" ")
+    .map((n: string) => n[0])
+    .join("")
     .slice(0, 2)
     .toUpperCase();
 
-  const semesterLabel =
-    (semestersQuery.data ?? []).find((s) => s.id === academic.current_semester_id)?.label ?? null;
-  const courseLabel =
-    (coursesQuery.data ?? []).find((c) => c.id === academic.current_course_id)?.label ?? null;
+  const currentCourse = (coursesQuery.data ?? []).find((c) => c.id === profile?.current_course_id)?.label || "Not specified";
+  const currentSemester = (semestersQuery.data ?? []).find((s) => s.id === profile?.current_semester_id)?.label || (profile?.current_semester_id ? `Semester ${profile.current_semester_id}` : "Not specified");
+  const universityName = profile?.university || profile?.college || "Not specified";
+  const academicSession = profile?.academic_session || "2026–2027";
 
   if (profileQuery.isLoading) {
     return (
-      <div className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
-        <Skeleton className="h-4 w-40" />
-        <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-          <div className="space-y-4">
-            <Skeleton className="h-44 rounded-xl" />
-            <Skeleton className="h-72 rounded-xl" />
-            <Skeleton className="h-52 rounded-xl" />
-          </div>
-          <div className="space-y-4">
-            <Skeleton className="h-40 rounded-xl" />
-            <Skeleton className="h-40 rounded-xl" />
-          </div>
-        </div>
-        <span className="sr-only" aria-live="polite">
-          Loading your profile
-        </span>
-      </div>
-    );
-  }
-
-  if (profileQuery.isError) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-16 text-center sm:px-6">
-        <h1 className="text-h2 text-foreground">We couldn’t load your profile</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {(profileQuery.error as Error).message}
-        </p>
-        <button
-          type="button"
-          onClick={() => profileQuery.refetch()}
-          className="tap-target mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
-        >
-          {profileQuery.isFetching && <Loader2 className="h-4 w-4 animate-spin" />} Try again
-        </button>
+      <div className="mx-auto max-w-2xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
+        <Skeleton className="h-4 w-36 mb-6" />
+        <Skeleton className="h-40 rounded-3xl mb-6" />
+        <Skeleton className="h-48 rounded-3xl mb-6" />
+        <Skeleton className="h-48 rounded-3xl" />
       </div>
     );
   }
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
+    <div className="mx-auto max-w-2xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
       <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Profile" }]} />
 
       <input
         ref={fileRef}
         type="file"
-        accept="image/png,image/jpeg,image/webp,image/gif"
+        accept="image/png,image/jpeg,image/webp"
         className="sr-only"
-        onChange={onPickFile}
+        onChange={onPickAvatar}
       />
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-start">
-        <div className="min-w-0 space-y-4">
-          <ProfileHeader
-            name={displayName}
-            email={user?.email ?? null}
-            role={role}
-            avatarUrl={avatarUrl}
-            initials={initials}
-            semesterLine={semesterLabel ?? courseLabel}
-            collegeLine={personal.college || personal.university || null}
-            completion={completion.pct}
-            uploading={uploading}
-            onPickPhoto={() => fileRef.current?.click()}
-            onRemovePhoto={onRemovePhoto}
-            onEdit={() => jumpTo("personal")}
-          />
+      {/* ──────────────── 1. Identity Card ──────────────── */}
+      <section className="mt-6 rounded-3xl border border-border/80 bg-card p-6 shadow-soft">
+        <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          <div className="relative group">
+            <Avatar className="h-20 w-20 ring-2 ring-primary/20">
+              <AvatarImage src={avatarUrl} alt={fullName} className="object-cover" />
+              <AvatarFallback className="bg-primary/10 text-primary font-display text-xl font-bold">
+                {initials}
+              </AvatarFallback>
+            </Avatar>
 
-          <PersonalInfoCard
-            form={personal}
-            errors={errors}
-            email={user?.email ?? null}
-            saving={savePersonal.isPending}
-            saved={savedPersonal}
-            dirty={personalDirty}
-            onChange={(patch) => {
-              setSavedPersonal(false);
-              setPersonal((prev) => ({ ...prev, ...patch }));
-            }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (Object.keys(validatePersonal(personal)).length > 0) {
-                toast.error("Please fix the highlighted fields.");
-                return;
-              }
-              savePersonal.mutate();
-            }}
-            onReset={() => {
-              setPersonal(basePersonal);
-              setSavedPersonal(false);
-            }}
-          />
+            <button
+              type="button"
+              onClick={() => fileRef.current?.click()}
+              disabled={uploading}
+              className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
+              title="Change photo"
+            >
+              {uploading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Camera className="h-3.5 w-3.5" />}
+            </button>
+          </div>
 
-          <AcademicCard
-            form={academic}
-            courses={coursesQuery.data ?? []}
-            semesters={semestersQuery.data ?? []}
-            subjectCount={subjectsQuery.data ?? null}
-            overallProgress={stats.overallProgress}
-            loading={coursesQuery.isLoading}
-            saving={saveAcademic.isPending}
-            dirty={academicDirty}
-            college={personal.college}
-            university={personal.university}
-            onChange={(patch) => setAcademic((prev) => ({ ...prev, ...patch }))}
-            onSubmit={(e) => {
-              e.preventDefault();
-              saveAcademic.mutate();
-            }}
-          />
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h1 className="font-display text-2xl font-bold tracking-tight text-foreground">
+                  {fullName}
+                </h1>
+                <p className="mt-0.5 text-sm text-muted-foreground">{email}</p>
+              </div>
 
-          <LearningStatsCard stats={stats} loading={statsQuery.isLoading} />
-          <AchievementsCard achievements={achievements} loading={statsQuery.isLoading} />
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleOpenEdit}
+                className="rounded-xl gap-1.5 h-9 text-xs font-semibold px-4 self-center sm:self-auto"
+              >
+                <Edit3 className="h-3.5 w-3.5" /> Edit Profile
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────── 2. Academic Information ──────────────── */}
+      <section className="mt-6 rounded-3xl border border-border/80 bg-card p-6 shadow-soft">
+        <div className="flex items-center justify-between border-b border-border/60 pb-3.5">
+          <div className="flex items-center gap-2 text-foreground font-display text-base font-bold">
+            <GraduationCap className="h-4 w-4 text-primary" /> Academic Details
+          </div>
+          <button
+            type="button"
+            onClick={handleOpenEdit}
+            className="text-xs font-semibold text-primary hover:underline"
+          >
+            Update
+          </button>
         </div>
 
-        <aside className="min-w-0 space-y-4 lg:sticky lg:top-20">
-          <CompletionCard
-            pct={completion.pct}
-            filled={completion.filled}
-            total={completion.total}
-            missing={completion.missing}
-            onJump={(section) => jumpTo(section === "photo" ? "photo" : section)}
-          />
-          <QuickActionsCard onJump={jumpTo} />
-          <AccountCard
-            prefs={prefs}
-            locale={profile?.locale ?? "en"}
-            savingPrefs={savePrefs.isPending}
-            onTogglePref={(key, value) => {
-              const next = { ...prefs, [key]: value };
-              setPrefs(next);
-              savePrefs.mutate(next);
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+          <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
+            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Course / Degree
+            </span>
+            <span className="mt-1 block font-semibold text-foreground">
+              {currentCourse}
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
+            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              University / College
+            </span>
+            <span className="mt-1 block font-semibold text-foreground">
+              {universityName}
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
+            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Current Semester
+            </span>
+            <span className="mt-1 block font-semibold text-foreground">
+              {currentSemester}
+            </span>
+          </div>
+
+          <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
+            <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Academic Session
+            </span>
+            <span className="mt-1 block font-semibold text-foreground">
+              {academicSession}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ──────────────── 3. Settings & Preferences ──────────────── */}
+      <section className="mt-6 rounded-3xl border border-border/80 bg-card p-6 shadow-soft space-y-6">
+        <div className="flex items-center gap-2 text-foreground font-display text-base font-bold border-b border-border/60 pb-3.5">
+          <Shield className="h-4 w-4 text-primary" /> Settings &amp; Preferences
+        </div>
+
+        {/* Notifications */}
+        <div>
+          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+            <Bell className="h-3.5 w-3.5" /> Notifications
+          </div>
+          <div className="divide-y divide-border/60 rounded-2xl border border-border/60 bg-background/60">
+            {NOTIFICATION_PREF_KEYS.map((p) => {
+              const checked = prefs[p.key] ?? DEFAULT_NOTIFICATION_PREFS[p.key];
+              return (
+                <div key={p.key} className="flex items-center justify-between p-3.5">
+                  <div>
+                    <Label htmlFor={`pref-${p.key}`} className="text-xs font-semibold text-foreground cursor-pointer">
+                      {p.label}
+                    </Label>
+                    <p className="text-[11px] text-muted-foreground">{p.hint}</p>
+                  </div>
+                  <Switch
+                    id={`pref-${p.key}`}
+                    checked={checked}
+                    disabled={savePrefsMutation.isPending}
+                    onCheckedChange={(val) => {
+                      const next = { ...prefs, [p.key]: val };
+                      setPrefs(next);
+                      savePrefsMutation.mutate(next);
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Appearance */}
+        <div>
+          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+            <Palette className="h-3.5 w-3.5" /> Appearance
+          </div>
+          <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/60 p-3.5">
+            <div>
+              <span className="text-xs font-semibold text-foreground">Theme Mode</span>
+              <p className="text-[11px] text-muted-foreground">Choose light, dark, or system preference</p>
+            </div>
+            <div className="w-36">
+              <Select value={theme} onValueChange={(v) => setTheme(v as any)}>
+                <SelectTrigger className="h-8 text-xs rounded-xl">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System Default</SelectItem>
+                  <SelectItem value="midnight">Midnight</SelectItem>
+                  <SelectItem value="ocean">Ocean</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+
+        {/* Security & Actions */}
+        <div className="pt-2 border-t border-border/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setIsPasswordModalOpen(true)}
+            className="rounded-xl h-10 text-xs font-semibold"
+          >
+            <KeyRound className="mr-2 h-4 w-4" /> Change Password
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onSignOut}
+            className="rounded-xl h-10 text-xs font-semibold text-destructive hover:text-destructive hover:bg-destructive/10"
+          >
+            <LogOut className="mr-2 h-4 w-4" /> Log out
+          </Button>
+        </div>
+      </section>
+
+      {/* ──────────────── Edit Profile Dialog ──────────────── */}
+      <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
+        <DialogContent className="sm:max-w-md rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="font-display text-xl font-bold">Edit Student Profile</DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Update your name, degree program, and university details.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              saveProfileMutation.mutate(editForm);
             }}
-            onLocaleChange={(locale) => saveLocale.mutate(locale)}
-            onSignOut={onSignOut}
-          />
-          <SecurityCard
-            lastSignInAt={user?.last_sign_in_at ?? null}
-            sessions={sessionsQuery.data ?? []}
-            sessionsLoading={sessionsQuery.isLoading}
-            changingPassword={changingPassword}
-            deleting={deleting}
-            onChangePassword={onChangePassword}
-            onDeleteAccount={onDeleteAccount}
-          />
-        </aside>
-      </div>
+            className="space-y-4 py-2"
+          >
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-name" className="text-xs font-semibold">
+                Full Name
+              </Label>
+              <Input
+                id="edit-name"
+                value={editForm.full_name}
+                onChange={(e) => setEditForm((prev) => ({ ...prev, full_name: e.target.value }))}
+                placeholder="Your full name"
+                className="h-10 text-sm rounded-xl"
+                required
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-email" className="text-xs font-semibold">
+                Email Address
+              </Label>
+              <Input
+                id="edit-email"
+                value={email}
+                disabled
+                className="h-10 text-sm rounded-xl bg-muted text-muted-foreground"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-course" className="text-xs font-semibold">
+                Degree / Course
+              </Label>
+              <Select
+                value={editForm.current_course_id}
+                onValueChange={(val) =>
+                  setEditForm((prev) => ({ ...prev, current_course_id: val, current_semester_id: "" }))
+                }
+              >
+                <SelectTrigger id="edit-course" className="h-10 text-sm rounded-xl">
+                  <SelectValue placeholder="Select course" />
+                </SelectTrigger>
+                <SelectContent>
+                  {(coursesQuery.data ?? []).map((c) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-semester" className="text-xs font-semibold">
+                Current Semester
+              </Label>
+              <Select
+                value={editForm.current_semester_id}
+                onValueChange={(val) => setEditForm((prev) => ({ ...prev, current_semester_id: val }))}
+                disabled={!editForm.current_course_id}
+              >
+                <SelectTrigger id="edit-semester" className="h-10 text-sm rounded-xl">
+                  <SelectValue placeholder={editForm.current_course_id ? "Select semester" : "Select course first"} />
+                </SelectTrigger>
+                <SelectContent>
+                  {(semestersQuery.data ?? []).map((s) => (
+                    <SelectItem key={s.id} value={s.id}>
+                      {s.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-university" className="text-xs font-semibold">
+                University / College
+              </Label>
+              <Input
+                id="edit-university"
+                value={editForm.university}
+                onChange={(e) => setEditForm((prev) => ({ ...prev, university: e.target.value }))}
+                placeholder="e.g. Guru Gobind Singh Indraprastha University"
+                className="h-10 text-sm rounded-xl"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="edit-session" className="text-xs font-semibold">
+                Academic Session
+              </Label>
+              <Input
+                id="edit-session"
+                value={editForm.academic_session}
+                onChange={(e) => setEditForm((prev) => ({ ...prev, academic_session: e.target.value }))}
+                placeholder="e.g. 2026–2027"
+                className="h-10 text-sm rounded-xl"
+              />
+            </div>
+
+            <DialogFooter className="pt-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setIsEditOpen(false)}
+                className="rounded-xl h-10 text-xs font-semibold"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                disabled={saveProfileMutation.isPending}
+                className="rounded-xl h-10 text-xs font-semibold"
+              >
+                {saveProfileMutation.isPending && <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />}
+                Save Changes
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* ──────────────── Change Password Dialog ──────────────── */}
+      <Dialog open={isPasswordModalOpen} onOpenChange={setIsPasswordModalOpen}>
+        <DialogContent className="sm:max-w-md rounded-3xl">
+          <DialogHeader>
+            <DialogTitle className="font-display text-xl font-bold">Change Password</DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Enter your new password below. It must be at least 8 characters.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handlePasswordSubmit} className="space-y-4 py-2">
+            <div className="space-y-1.5">
+              <Label htmlFor="new-pwd" className="text-xs font-semibold">New Password</Label>
+              <Input
+                id="new-pwd"
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="••••••••"
+                className="h-10 text-sm rounded-xl"
+                autoComplete="new-password"
+                required
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="confirm-pwd" className="text-xs font-semibold">Confirm Password</Label>
+              <Input
+                id="confirm-pwd"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="••••••••"
+                className="h-10 text-sm rounded-xl"
+                autoComplete="new-password"
+                required
+              />
+            </div>
+
+            {passwordError && (
+              <p className="text-xs text-destructive">{passwordError}</p>
+            )}
+
+            <DialogFooter className="pt-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setIsPasswordModalOpen(false)}
+                className="rounded-xl h-10 text-xs font-semibold"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                disabled={changingPassword || !newPassword || !confirmPassword}
+                className="rounded-xl h-10 text-xs font-semibold"
+              >
+                {changingPassword && <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />}
+                Update Password
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

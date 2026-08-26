@@ -1,6 +1,20 @@
+import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, BookMarked, Compass, FileText, ListChecks, StickyNote } from "lucide-react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  ArrowRight,
+  BookMarked,
+  BookOpen,
+  Compass,
+  FileText,
+  FlaskConical,
+  Layers,
+  ListChecks,
+  Search,
+  StickyNote,
+  Trash2,
+} from "lucide-react";
+import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
 import { formatShortDate } from "@/lib/format";
@@ -8,8 +22,10 @@ import { useAuth } from "@/hooks/use-auth";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
-import { StatChip } from "@/components/ui/stat-chip";
-import { StudentHero } from "@/components/student/student-hero";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 type Bookmark = {
   id: string;
@@ -22,28 +38,26 @@ type Bookmark = {
 export const Route = createFileRoute("/_authenticated/bookmarks")({
   head: () => ({
     meta: [
-      { title: "Your bookmarks · XRounder" },
+      { title: "Saved Bookmarks · XRounder" },
       {
         name: "description",
-        content: "Every note, paper and quiz you saved for revision, in one place.",
+        content: "Every note, paper, and quiz you saved for quick revision in one organized place.",
       },
-      { property: "og:title", content: "Your bookmarks · XRounder" },
+      { property: "og:title", content: "Saved Bookmarks · XRounder" },
       {
         property: "og:description",
-        content: "Every note, paper and quiz you saved for revision, in one place.",
+        content: "Every note, paper, and quiz you saved for revision in one organized place.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: BookmarksPage,
 });
 
 const KIND_META = {
-  note: { label: "Note", icon: StickyNote },
-  paper: { label: "Paper", icon: FileText },
-  quiz: { label: "Quiz", icon: ListChecks },
-  unit: { label: "Unit", icon: BookMarked },
+  note: { label: "Notes", singular: "Note", icon: FileText, color: "text-blue-500 bg-blue-500/10" },
+  paper: { label: "Past Papers", singular: "Paper", icon: BookOpen, color: "text-amber-500 bg-amber-500/10" },
+  quiz: { label: "MCQ Quizzes", singular: "Quiz", icon: FlaskConical, color: "text-emerald-500 bg-emerald-500/10" },
+  unit: { label: "Syllabus Units", singular: "Unit", icon: Layers, color: "text-primary bg-primary/10" },
 } as const;
 
 function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } {
@@ -59,9 +73,15 @@ function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } 
   }
 }
 
+type FilterTab = "all" | "note" | "paper" | "quiz" | "unit";
+
 function BookmarksPage() {
   const { user } = useAuth();
-  const q = useQuery({
+  const qc = useQueryClient();
+  const [activeTab, setActiveTab] = useState<FilterTab>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const bookmarksQuery = useQuery({
     queryKey: ["all-bookmarks", user?.id],
     enabled: !!user?.id,
     queryFn: async () => {
@@ -71,91 +91,190 @@ function BookmarksPage() {
     },
   });
 
-  const items = q.data ?? [];
-  const counts = {
-    note: items.filter((i) => i.kind === "note").length,
-    paper: items.filter((i) => i.kind === "paper").length,
-    quiz: items.filter((i) => i.kind === "quiz").length,
-  };
+  const removeMutation = useMutation({
+    mutationFn: async (bookmarkId: string) => {
+      const { error } = await supabase.from("bookmarks").delete().eq("id", bookmarkId);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("Bookmark removed");
+      qc.invalidateQueries({ queryKey: ["all-bookmarks"] });
+      qc.invalidateQueries({ queryKey: ["student-bookmarks"] });
+    },
+    onError: (err: any) => {
+      toast.error(err.message || "Failed to remove bookmark");
+    },
+  });
+
+  const allItems = bookmarksQuery.data ?? [];
+
+  const counts = useMemo(
+    () => ({
+      all: allItems.length,
+      note: allItems.filter((i) => i.kind === "note").length,
+      paper: allItems.filter((i) => i.kind === "paper").length,
+      quiz: allItems.filter((i) => i.kind === "quiz").length,
+      unit: allItems.filter((i) => i.kind === "unit").length,
+    }),
+    [allItems],
+  );
+
+  const filteredItems = useMemo(() => {
+    return allItems.filter((item) => {
+      const matchesTab = activeTab === "all" || item.kind === activeTab;
+      const matchesQuery =
+        !searchQuery.trim() ||
+        (item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase().trim()));
+      return matchesTab && matchesQuery;
+    });
+  }, [allItems, activeTab, searchQuery]);
 
   return (
-    <div className="mx-auto max-w-4xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
-      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Bookmarks" }]} />
+    <div className="mx-auto max-w-4xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
+      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Saved Bookmarks" }]} />
 
-      <StudentHero
-        className="mt-5"
-        loading={q.isLoading}
-        eyebrow="Revision list"
-        title={
-          <>
-            Saved for <span className="text-primary">later</span>.
-          </>
-        }
-        description={
-          items.length === 0
-            ? "Bookmark notes, papers and quizzes as you study and they'll gather here."
-            : `${items.length} saved item${items.length === 1 ? "" : "s"} across your subjects.`
-        }
-        aside={
-          items.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
-              <StatChip variant="chip" icon={StickyNote} value={counts.note} label="notes" />
-              <StatChip variant="chip" icon={FileText} value={counts.paper} label="papers" />
-              <StatChip variant="chip" icon={ListChecks} value={counts.quiz} label="quizzes" />
-            </div>
-          ) : undefined
-        }
-      />
+      {/* Header */}
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+            <BookMarked className="h-3.5 w-3.5" /> Revision Library
+          </span>
+          <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Saved for Revision
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Quickly jump back to your bookmarked notes, past papers, and practice questions.
+          </p>
+        </div>
 
-      <section className="mt-12" aria-labelledby="bookmarks-list">
-        <h2 id="bookmarks-list" className="text-h2 text-foreground">
-          All bookmarks
+        {/* Quick Search */}
+        {allItems.length > 0 && (
+          <div className="relative w-full sm:w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Filter bookmarks..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 h-9 text-xs rounded-xl bg-card"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Category Tabs */}
+      <div className="mt-6 flex items-center gap-1.5 overflow-x-auto pb-2 border-b border-border/70 scrollbar-none">
+        {(
+          [
+            { id: "all", label: "All Items", count: counts.all },
+            { id: "note", label: "Notes", count: counts.note },
+            { id: "paper", label: "Past Papers", count: counts.paper },
+            { id: "quiz", label: "MCQ Quizzes", count: counts.quiz },
+            { id: "unit", label: "Units", count: counts.unit },
+          ] as const
+        ).map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => setActiveTab(tab.id)}
+            className={cn(
+              "flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all",
+              activeTab === tab.id
+                ? "bg-primary text-primary-foreground shadow-xs"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            )}
+          >
+            <span>{tab.label}</span>
+            <span
+              className={cn(
+                "rounded-full px-1.5 py-0.2 text-[10px] font-bold",
+                activeTab === tab.id
+                  ? "bg-primary-foreground/20 text-primary-foreground"
+                  : "bg-muted text-muted-foreground",
+              )}
+            >
+              {tab.count}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* Content List */}
+      <section className="mt-6" aria-labelledby="bookmarks-heading">
+        <h2 id="bookmarks-heading" className="sr-only">
+          Bookmarks List
         </h2>
 
-        {q.isLoading ? (
-          <div className="mt-6 space-y-2" aria-live="polite" aria-busy="true">
-            <Skeleton className="h-14 rounded-lg" />
-            <Skeleton className="h-14 rounded-lg" />
-            <Skeleton className="h-14 rounded-lg" />
+        {bookmarksQuery.isLoading ? (
+          <div className="space-y-3">
+            <Skeleton className="h-16 rounded-2xl" />
+            <Skeleton className="h-16 rounded-2xl" />
+            <Skeleton className="h-16 rounded-2xl" />
           </div>
-        ) : items.length === 0 ? (
+        ) : allItems.length === 0 ? (
           <EmptyState
-            className="mt-6"
+            className="mt-8"
             icon={BookMarked}
             title="No bookmarks yet"
-            description="Open any note, paper or quiz and tap the bookmark icon to save it for revision."
+            description="Tap the bookmark icon on any note, paper, or quiz to save it here for fast revision before exams."
             primaryAction={{ label: "Browse courses", to: "/courses", icon: Compass }}
-            secondaryAction={{ label: "Search library", to: "/search" }}
+            secondaryAction={{ label: "Search syllabus", to: "/search" }}
           />
+        ) : filteredItems.length === 0 ? (
+          <div className="mt-8 rounded-2xl border border-dashed border-border bg-card p-8 text-center text-sm text-muted-foreground">
+            No bookmarks match "{searchQuery}" in this category.
+          </div>
         ) : (
-          <ul className="mt-6 space-y-2">
-            {items.map((b) => {
+          <ul className="space-y-2.5">
+            {filteredItems.map((b) => {
               const r = routeFor(b);
               const meta = KIND_META[b.kind] ?? KIND_META.unit;
               const Icon = meta.icon;
+
               return (
-                <li key={b.id}>
+                <li
+                  key={b.id}
+                  className="group relative flex items-center justify-between gap-3 rounded-2xl border border-border/80 bg-card p-3.5 sm:p-4 transition-all hover:border-primary/50 hover:shadow-xs"
+                >
                   <Link
                     {...(r as any)}
-                    aria-label={`${meta.label}: ${b.title ?? "Untitled"}`}
-                    className="group flex items-center gap-4 rounded-lg border border-border bg-surface px-4 py-3.5 transition-colors hover:border-primary/40 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="flex min-w-0 flex-1 items-center gap-3.5 focus-visible:outline-none"
                   >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
-                      <Icon className="h-4 w-4" aria-hidden />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-medium text-foreground">
-                        {b.title ?? "Untitled"}
-                      </span>
-                      <span className="mt-0.5 block text-[11px] text-muted-foreground">
-                        {meta.label} · saved {formatShortDate(b.created_at)}
-                      </span>
-                    </span>
-                    <ArrowRight
-                      className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                      aria-hidden
-                    />
+                    <div className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-xl", meta.color)}>
+                      <Icon className="h-5 w-5" />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <h3 className="truncate font-display text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                        {b.title ?? "Untitled Resource"}
+                      </h3>
+                      <p className="mt-0.5 text-[11px] text-muted-foreground">
+                        {meta.singular} · Saved {formatShortDate(b.created_at)}
+                      </p>
+                    </div>
                   </Link>
+
+                  <div className="flex shrink-0 items-center gap-2">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        removeMutation.mutate(b.id);
+                      }}
+                      className="h-8 w-8 p-0 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                      title="Remove bookmark"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+
+                    <Button asChild size="sm" variant="outline" className="h-8 rounded-lg text-xs font-semibold px-3 hidden sm:inline-flex">
+                      <Link {...(r as any)}>
+                        Open <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                      </Link>
+                    </Button>
+                  </div>
                 </li>
               );
             })}

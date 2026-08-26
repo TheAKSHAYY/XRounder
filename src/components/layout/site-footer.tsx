@@ -27,8 +27,8 @@ export function SiteFooter({
     ? [
         { label: "Browse courses", to: "/courses" },
         { label: "Features", href: "#features" },
-        { label: "Learning journey", href: "#journey" },
-        { label: "FAQ", href: "#faq" },
+        { label: "Curriculum", href: "#curriculum" },
+        { label: "How It Works", href: "#how-it-works" },
       ]
     : [
         { label: "Browse courses", to: "/courses" },

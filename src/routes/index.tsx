@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
 import { useAuth } from "@/hooks/use-auth";
@@ -14,6 +15,13 @@ import {
 } from "@/components/marketing/landing-sections";
 
 export const Route = createFileRoute("/")({
+  beforeLoad: async () => {
+    // If a session exists, seamlessly redirect to student dashboard
+    const { data } = await supabase.auth.getSession();
+    if (data.session?.user) {
+      throw redirect({ to: "/dashboard" });
+    }
+  },
   head: () => ({
     meta: [
       { title: "XRounder — Master any course, semester by semester" },
@@ -45,6 +53,13 @@ export const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
 
 function Index() {
   const { user, loading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate({ to: "/dashboard", replace: true });
+    }
+  }, [user, loading, navigate]);
   const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
     queryKey: ["homepage_sections", "public"],
     queryFn: async (): Promise<HomepageSection[]> => {

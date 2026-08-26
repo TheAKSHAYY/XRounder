@@ -29,24 +29,46 @@ export function useQuizAttempt(quizId: string) {
     },
   });
 
-  // Subject / unit context for the header
+  // Subject / unit context for header and results navigation
   const contextQ = useQuery({
     queryKey: ["public-quiz-context", quizQ.data?.unit_id],
     enabled: !!quizQ.data?.unit_id,
     queryFn: async () => {
       const { data } = await supabase
         .from("units")
-        .select("id, number, title, subjects(id, title, slug)")
+        .select(`
+          id,
+          number,
+          title,
+          subjects:subjects (
+            id,
+            title,
+            slug,
+            semesters:semesters (
+              id,
+              number,
+              courses:courses (
+                id,
+                slug,
+                title
+              )
+            )
+          )
+        `)
         .eq("id", quizQ.data!.unit_id)
         .maybeSingle();
-      const row = data as unknown as {
-        number: number;
-        title: string;
-        subjects: { title: string } | null;
-      } | null;
-      return row
-        ? { unitLabel: `Unit ${row.number} · ${row.title}`, subject: row.subjects?.title ?? null }
-        : null;
+      const row = data as any;
+      if (!row) return null;
+      return {
+        unitId: row.id,
+        unitNumber: row.number,
+        unitTitle: row.title,
+        unitLabel: `Unit ${row.number} · ${row.title}`,
+        subject: row.subjects?.title ?? null,
+        subjectSlug: row.subjects?.slug ?? null,
+        semesterNumber: row.subjects?.semesters?.number ?? null,
+        courseSlug: row.subjects?.semesters?.courses?.slug ?? null,
+      };
     },
   });
 
