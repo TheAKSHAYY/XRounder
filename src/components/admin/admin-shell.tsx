@@ -56,26 +56,27 @@ type NavItem = {
   badgeKey?: "inbox" | "drafts";
 };
 
-// Six primary destinations cover ~90% of daily admin work.
-const PRIMARY: NavItem[] = [
+// Primary operational sections
+const NAV_CONTENT: NavItem[] = [
   { label: "Dashboard", to: "/admin", icon: LayoutDashboard, exact: true },
-  { label: "Content", to: "/admin/content", icon: FileText, badgeKey: "drafts" },
   { label: "Courses", to: "/admin/courses", icon: BookOpen },
-  { label: "Question bank", to: "/admin/quizzes", icon: FlaskConical },
-  { label: "Inbox", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
-  { label: "Settings", to: "/admin/settings", icon: Settings },
+  { label: "Subjects", to: "/admin/subjects", icon: Library },
+  { label: "Notes & Articles", to: "/admin/content", icon: FileText, badgeKey: "drafts" },
+  { label: "MCQs & Quizzes", to: "/admin/quizzes", icon: FlaskConical },
+  { label: "Previous Papers", to: "/admin/papers", icon: FileStack },
 ];
 
-// Everything else stays one click away, but out of the way.
-const SECONDARY: NavItem[] = [
-  { label: "Subjects", to: "/admin/subjects", icon: Library },
-  { label: "Previous papers", to: "/admin/papers", icon: FileStack },
+const NAV_PUBLISHING: NavItem[] = [
   { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
-  { label: "Homepage", to: "/admin/homepage", icon: LayoutTemplate },
-  { label: "Content tree", to: "/admin/explorer", icon: FolderTree },
-  { label: "Media", to: "/admin/media", icon: ImageIcon },
+  { label: "Media Library", to: "/admin/media", icon: ImageIcon },
+  { label: "Content Tree", to: "/admin/explorer", icon: FolderTree },
   { label: "Tags", to: "/admin/tags", icon: Tag },
-  { label: "Developer", to: "/admin/developer", icon: Sparkles },
+];
+
+const NAV_COMMUNITY: NavItem[] = [
+  { label: "Student Directory", to: "/admin/users", icon: Library },
+  { label: "Inbox Messages", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
+  { label: "Settings", to: "/admin/settings", icon: Settings },
 ];
 
 export function AdminShell() {
@@ -90,15 +91,12 @@ export function AdminShell() {
     exact ? pathname === to : pathname === to || pathname.startsWith(to + "/");
 
   const inPlatform = pathname.startsWith("/admin/superadmin");
-  const inSecondary = SECONDARY.some((i) => isActive(i.to));
-  const [moreOpen, setMoreOpen] = useState(inSecondary);
 
   const getBadge = (item: NavItem): number | undefined => {
     if (item.badgeKey === "inbox") return badges.inboxUnread || undefined;
     if (item.badgeKey === "drafts") return badges.contentDrafts || undefined;
     return undefined;
   };
-
 
   return (
     <SidebarProvider>
@@ -108,16 +106,20 @@ export function AdminShell() {
             <div className="flex items-center gap-2 px-3 py-3">
               <BrandLockup className="h-9" textClassName="text-base" />
               <div className="min-w-0">
-                <div className="truncate text-[10px] uppercase tracking-wider text-muted-foreground">
-                  Admin CMS
+                <div className="truncate text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                  Control Center
                 </div>
               </div>
             </div>
 
+            {/* 1. Core Content Operations */}
             <SidebarGroup>
+              <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                Content Operations
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {PRIMARY.map((item) => (
+                  {NAV_CONTENT.map((item) => (
                     <NavRow
                       key={item.to}
                       item={item}
@@ -129,43 +131,71 @@ export function AdminShell() {
               </SidebarGroupContent>
             </SidebarGroup>
 
+            {/* 2. Publishing & Media */}
             <SidebarGroup>
+              <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                Publishing &amp; Library
+              </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      onClick={() => setMoreOpen((v) => !v)}
-                      aria-expanded={moreOpen}
-                      tooltip="More"
-                    >
-                      <ChevronRight
-                        className={cn("h-4 w-4 transition-transform", moreOpen && "rotate-90")}
-                      />
-                      <span>More</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                  {moreOpen &&
-                    SECONDARY.map((item) => (
-                      <NavRow key={item.to} item={item} active={isActive(item.to)} />
-                    ))}
+                  {NAV_PUBLISHING.map((item) => (
+                    <NavRow
+                      key={item.to}
+                      item={item}
+                      active={isActive(item.to, item.exact)}
+                      badge={getBadge(item)}
+                    />
+                  ))}
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
 
+            {/* 3. Community & Users */}
+            <SidebarGroup>
+              <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                Students &amp; Support
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {NAV_COMMUNITY.map((item) => (
+                    <NavRow
+                      key={item.to}
+                      item={item}
+                      active={isActive(item.to, item.exact)}
+                      badge={getBadge(item)}
+                    />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+
+            {/* 4. Super Admin / Platform Controls */}
             {isSuperAdmin && (
               <SidebarGroup>
-                <SidebarGroupLabel className="flex items-center gap-1.5">
+                <SidebarGroupLabel className="flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-destructive font-bold">
                   <span
                     aria-hidden
                     className="inline-block h-1.5 w-1.5 rounded-full bg-destructive"
                   />
-                  Platform
+                  Super Admin
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
                   <SidebarMenu>
                     <NavRow
-                      item={{ label: "Super admin", to: "/admin/superadmin", icon: ShieldCheck }}
-                      active={inPlatform}
+                      item={{ label: "Team & Roles", to: "/admin/superadmin/users", icon: ShieldCheck }}
+                      active={pathname === "/admin/superadmin/users"}
+                    />
+                    <NavRow
+                      item={{ label: "Audit Logs", to: "/admin/superadmin/audit", icon: ShieldCheck }}
+                      active={pathname === "/admin/superadmin/audit"}
+                    />
+                    <NavRow
+                      item={{ label: "Feature Flags", to: "/admin/superadmin/flags", icon: ShieldCheck }}
+                      active={pathname === "/admin/superadmin/flags"}
+                    />
+                    <NavRow
+                      item={{ label: "Platform Branding", to: "/admin/superadmin/branding", icon: ShieldCheck }}
+                      active={pathname === "/admin/superadmin/branding"}
                     />
                   </SidebarMenu>
                 </SidebarGroupContent>

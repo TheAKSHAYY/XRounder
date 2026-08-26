@@ -38,6 +38,7 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as CoursesCourseSlugIndexRouteImport } from './routes/courses.$courseSlug.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
 import { Route as AuthenticatedAdminTagsRouteImport } from './routes/_authenticated/admin/tags'
 import { Route as AuthenticatedAdminSubjectsRouteImport } from './routes/_authenticated/admin/subjects'
 import { Route as AuthenticatedAdminSettingsRouteImport } from './routes/_authenticated/admin/settings'
@@ -212,6 +213,11 @@ const CoursesCourseSlugIndexRoute = CoursesCourseSlugIndexRouteImport.update({
 const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
   getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
 const AuthenticatedAdminTagsRoute = AuthenticatedAdminTagsRouteImport.update({
@@ -425,6 +431,7 @@ export interface FileRoutesByFullPath {
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/admin/tags': typeof AuthenticatedAdminTagsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/courses/$courseSlug/': typeof CoursesCourseSlugIndexRoute
   '/admin/content/$id': typeof AuthenticatedAdminContentIdRoute
@@ -482,6 +489,7 @@ export interface FileRoutesByTo {
   '/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/admin/tags': typeof AuthenticatedAdminTagsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/courses/$courseSlug': typeof CoursesCourseSlugIndexRoute
   '/admin/content/$id': typeof AuthenticatedAdminContentIdRoute
@@ -542,6 +550,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/settings': typeof AuthenticatedAdminSettingsRoute
   '/_authenticated/admin/subjects': typeof AuthenticatedAdminSubjectsRoute
   '/_authenticated/admin/tags': typeof AuthenticatedAdminTagsRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/courses/$courseSlug/': typeof CoursesCourseSlugIndexRoute
   '/_authenticated/admin/content/$id': typeof AuthenticatedAdminContentIdRoute
@@ -603,6 +612,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/subjects'
     | '/admin/tags'
+    | '/admin/users'
     | '/admin/'
     | '/courses/$courseSlug/'
     | '/admin/content/$id'
@@ -660,6 +670,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/subjects'
     | '/admin/tags'
+    | '/admin/users'
     | '/admin'
     | '/courses/$courseSlug'
     | '/admin/content/$id'
@@ -719,6 +730,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/settings'
     | '/_authenticated/admin/subjects'
     | '/_authenticated/admin/tags'
+    | '/_authenticated/admin/users'
     | '/_authenticated/admin/'
     | '/courses/$courseSlug/'
     | '/_authenticated/admin/content/$id'
@@ -970,6 +982,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/tags': {
       id: '/_authenticated/admin/tags'
       path: '/tags'
@@ -1217,6 +1236,7 @@ interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminSettingsRoute: typeof AuthenticatedAdminSettingsRoute
   AuthenticatedAdminSubjectsRoute: typeof AuthenticatedAdminSubjectsRoute
   AuthenticatedAdminTagsRoute: typeof AuthenticatedAdminTagsRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedAdminContentIdRoute: typeof AuthenticatedAdminContentIdRoute
   AuthenticatedAdminContentNewRoute: typeof AuthenticatedAdminContentNewRoute
@@ -1241,6 +1261,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
     AuthenticatedAdminSettingsRoute: AuthenticatedAdminSettingsRoute,
     AuthenticatedAdminSubjectsRoute: AuthenticatedAdminSubjectsRoute,
     AuthenticatedAdminTagsRoute: AuthenticatedAdminTagsRoute,
+    AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
     AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
     AuthenticatedAdminContentIdRoute: AuthenticatedAdminContentIdRoute,
     AuthenticatedAdminContentNewRoute: AuthenticatedAdminContentNewRoute,
