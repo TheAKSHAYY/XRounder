@@ -7,6 +7,7 @@ import {
   ArrowRight,
   BookOpen,
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
@@ -373,11 +374,22 @@ function UnitDetail() {
 
   const toc = useMemo(
     () =>
-      readArticles.map((n) => ({
-        id: `content-${slugify(n.title)}-${n.id.slice(0, 6)}`,
-        title: n.title,
-        type: n.type,
-      })),
+      readArticles.flatMap((n) => {
+        const articleSlugId = `content-${slugify(n.title)}-${n.id.slice(0, 6)}`;
+        const blocks = parseMarkdownToBlocks(n.body || n.description || "");
+        const subheadings = blocks
+          .filter((b) => b.type === "heading2" || b.type === "heading3")
+          .map((b) => ({
+            id: `heading-${slugify(b.content)}-${b.id}`,
+            title: b.content,
+            isSub: b.type === "heading3",
+          }));
+
+        return [
+          { id: articleSlugId, title: n.title, isSub: false },
+          ...subheadings,
+        ];
+      }),
     [readArticles],
   );
 
@@ -397,6 +409,7 @@ function UnitDetail() {
   const articleRef = useRef<HTMLElement | null>(null);
   const [readPct, setReadPct] = useState(0);
   const [activeSection, setActiveSection] = useState<string | null>(toc[0]?.id ?? null);
+  const [mobileTocOpen, setMobileTocOpen] = useState(false);
 
   useEffect(() => {
     let raf = 0;
@@ -533,9 +546,9 @@ function UnitDetail() {
       </div>
 
       {/* ─── Main Content Hub ─── */}
-      <main className="flex-1 mx-auto w-full max-w-6xl px-5 pb-24 pt-6 sm:px-8 sm:pt-8">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-4 pb-24 pt-4 sm:px-8 sm:pt-8 min-w-0">
         <Breadcrumbs
-          className="mb-6"
+          className="mb-4 sm:mb-6"
           items={[
             { label: "Courses", to: "/courses" },
             { label: "Course", to: "/courses/$courseSlug", params: { courseSlug } },
@@ -554,7 +567,7 @@ function UnitDetail() {
         />
 
         {/* Unit Header Block */}
-        <div className="mb-8 rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-6 sm:p-8 shadow-soft">
+        <div className="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-4 sm:p-8 shadow-soft">
           <Badge variant="outline" className="mb-2 text-xs font-mono font-bold rounded-lg text-primary border-primary/30">
             Unit {unit.number} Learning Hub
           </Badge>
@@ -568,52 +581,92 @@ function UnitDetail() {
           )}
 
           {/* Three Pillar Tabs */}
-          <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-border/60 pt-5">
+          <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
             <button
               type="button"
               onClick={() => setActiveTab("LEARN")}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
                 activeTab === "LEARN"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <BookOpen className="h-4 w-4" /> 1. Read &amp; Master ({readArticles.length})
+              <BookOpen className="h-4 w-4 shrink-0" /> Read &amp; Master ({readArticles.length})
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab("NOTES")}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
                 activeTab === "NOTES"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FileType className="h-4 w-4" /> 2. Reference Notes ({referenceMaterials.length})
+              <FileType className="h-4 w-4 shrink-0" /> Notes ({referenceMaterials.length})
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab("PRACTICE")}
               className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-2xl text-xs font-bold transition-all",
+                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
                 activeTab === "PRACTICE"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FlaskConical className="h-4 w-4" /> 3. Practice &amp; PYQs ({quizDetailsQuery.data?.length ?? 0})
+              <FlaskConical className="h-4 w-4 shrink-0" /> Practice ({quizDetailsQuery.data?.length ?? 0})
             </button>
           </div>
         </div>
 
         {/* ─── TAB 1: READ & MASTER ─── */}
         {activeTab === "LEARN" && (
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem]">
-            <article ref={articleRef} className="min-w-0">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem] min-w-0">
+            <article ref={articleRef} className="min-w-0 max-w-full overflow-hidden">
+              {/* Mobile Collapsible "On this page" TOC */}
+              {toc.length > 1 && (
+                <div className="mb-6 rounded-2xl border border-border/80 bg-card p-3.5 shadow-soft lg:hidden">
+                  <button
+                    type="button"
+                    onClick={() => setMobileTocOpen(!mobileTocOpen)}
+                    className="flex w-full items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                  >
+                    <span className="flex items-center gap-2 text-foreground">
+                      <ListOrdered className="h-4 w-4 text-primary" /> On this page
+                    </span>
+                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobileTocOpen && "rotate-180")} />
+                  </button>
+                  {mobileTocOpen && (
+                    <nav className="mt-3 border-t border-border/60 pt-3">
+                      <ol className="space-y-1.5 text-xs">
+                        {toc.map((item, i) => (
+                          <li key={item.id}>
+                            <a
+                              href={`#${item.id}`}
+                              onClick={() => setMobileTocOpen(false)}
+                              className={cn(
+                                "flex gap-2 rounded-xl py-2 px-2.5 transition-colors",
+                                item.isSub && "pl-5 text-muted-foreground/80",
+                                activeSection === item.id
+                                  ? "bg-primary/10 font-bold text-primary"
+                                  : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                              )}
+                            >
+                              {!item.isSub && <span className="font-mono text-muted-foreground/60">{i + 1}.</span>}
+                              <span className="truncate">{item.title}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    </nav>
+                  )}
+                </div>
+              )}
+
               {readArticles.length === 0 ? (
                 <EmptyState
                   icon={FileText}
@@ -623,7 +676,7 @@ function UnitDetail() {
                   primaryAction={{ label: "View reference notes", onClick: () => setActiveTab("NOTES"), icon: FileType }}
                 />
               ) : (
-                <div className="space-y-12">
+                <div className="space-y-10 min-w-0 max-w-full">
                   {readArticles.map((item, i) => (
                     <ContentBlock
                       key={item.id}
@@ -636,17 +689,17 @@ function UnitDetail() {
 
               {/* Bottom "Test Your Knowledge" Action Loop */}
               {primaryQuiz && (
-                <div className="mt-14 rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-6 sm:p-8 shadow-soft">
+                <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-5 sm:p-8 shadow-soft">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-start gap-3.5">
-                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
-                        <FlaskConical className="h-6 w-6" />
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
+                        <FlaskConical className="h-5 w-5" />
                       </div>
                       <div>
                         <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1">
                           Reinforce Learning
                         </Badge>
-                        <h3 className="font-display text-lg font-bold text-foreground">
+                        <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
                           Test Your Knowledge on Unit {unit.number}
                         </h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
@@ -655,7 +708,7 @@ function UnitDetail() {
                       </div>
                     </div>
 
-                    <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shrink-0 shadow-sm">
+                    <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shrink-0 shadow-sm w-full sm:w-auto">
                       <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
                         Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
                       </Link>
@@ -665,7 +718,7 @@ function UnitDetail() {
               )}
 
               {/* Next / Previous Unit Navigation */}
-              <nav aria-label="Unit navigation" className="mt-12 grid gap-3 sm:grid-cols-2">
+              <nav aria-label="Unit navigation" className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 {prevUnit ? (
                   <Link
                     to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
@@ -675,15 +728,25 @@ function UnitDetail() {
                       subjectSlug,
                       unitNumber: String(prevUnit.number),
                     }}
-                    className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40"
+                    className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
                   >
-                    <ArrowLeft className="h-4 w-4 text-muted-foreground" />
+                    <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
                     <div className="min-w-0">
                       <div className="text-[10px] font-bold uppercase text-muted-foreground">Previous Unit</div>
                       <div className="font-bold text-sm text-foreground truncate">Unit {prevUnit.number}</div>
                     </div>
                   </Link>
-                ) : <div />}
+                ) : (
+                  <div className="hidden sm:block flex-1" />
+                )}
+
+                {primaryQuiz && (
+                  <Button asChild variant="secondary" className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs">
+                    <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
+                      <FlaskConical className="h-4 w-4 mr-2" /> Practice MCQs
+                    </Link>
+                  </Button>
+                )}
 
                 {nextUnit ? (
                   <Link
@@ -694,15 +757,17 @@ function UnitDetail() {
                       subjectSlug,
                       unitNumber: String(nextUnit.number),
                     }}
-                    className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40"
+                    className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
                   >
                     <div className="min-w-0">
                       <div className="text-[10px] font-bold uppercase text-muted-foreground">Next Unit</div>
                       <div className="font-bold text-sm text-foreground truncate">Unit {nextUnit.number}</div>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </Link>
-                ) : <div />}
+                ) : (
+                  <div className="hidden sm:block flex-1" />
+                )}
               </nav>
             </article>
 
@@ -723,12 +788,13 @@ function UnitDetail() {
                               href={`#${item.id}`}
                               className={cn(
                                 "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
+                                item.isSub && "pl-5 text-muted-foreground/80",
                                 active
                                   ? "bg-primary/10 font-bold text-primary"
                                   : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
                               )}
                             >
-                              <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                              {!item.isSub && <span className="font-mono text-muted-foreground/60">{i + 1}.</span>}
                               <span className="truncate">{item.title}</span>
                             </a>
                           </li>
@@ -942,6 +1008,21 @@ function ReferenceCard({ item }: { item: UnitContentItem }) {
   );
 }
 
+function renderFormattedText(text: string) {
+  if (!text) return null;
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
+      return (
+        <strong key={idx} className="font-bold text-foreground">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 /* ─────────── ContentBlock (Markdown / Code / Visual Note) ─────────── */
 
 function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: string }) {
@@ -963,7 +1044,7 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
   const blocks = useMemo(() => parseMarkdownToBlocks(bodyText || ""), [bodyText]);
 
   return (
-    <section id={anchorId} className="scroll-mt-28">
+    <section id={anchorId} className="scroll-mt-28 min-w-0 max-w-full">
       <div className="flex items-center justify-between gap-4 mb-3">
         <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
           {item.title}
@@ -972,7 +1053,7 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
           variant="ghost"
           size="sm"
           onClick={onCopy}
-          className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground"
+          className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground shrink-0"
         >
           {copied ? (
             <>
@@ -987,89 +1068,113 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
       </div>
 
       {bodyText && (
-        <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-9 shadow-soft text-foreground space-y-5">
-          {blocks.map((b) => (
-            <div key={b.id}>
-              {b.type === "heading2" && (
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mt-6 mb-2 border-b border-border/50 pb-2">
-                  {b.content}
-                </h3>
-              )}
+        <div className="rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-4 sm:p-9 shadow-soft text-foreground space-y-6 min-w-0 max-w-full overflow-hidden">
+          {blocks.map((b) => {
+            const headingId = `heading-${slugify(b.content)}-${b.id}`;
+            return (
+              <div key={b.id} className="min-w-0">
+                {b.type === "heading2" && (
+                  <h3
+                    id={headingId}
+                    className="font-display text-xl sm:text-2xl font-extrabold text-foreground mt-8 mb-4 border-b border-border/60 pb-2.5 pt-2 tracking-tight scroll-mt-28"
+                  >
+                    {renderFormattedText(b.content)}
+                  </h3>
+                )}
 
-              {b.type === "heading3" && (
-                <h4 className="font-display text-base sm:text-lg font-bold text-foreground mt-4 mb-1 text-primary">
-                  {b.content}
-                </h4>
-              )}
+                {b.type === "heading3" && (
+                  <h4
+                    id={headingId}
+                    className="font-display text-[17px] sm:text-lg font-bold text-primary mt-6 mb-3 tracking-tight scroll-mt-28"
+                  >
+                    {renderFormattedText(b.content)}
+                  </h4>
+                )}
 
-              {b.type === "paragraph" && (
-                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed whitespace-pre-wrap">
-                  {b.content}
-                </p>
-              )}
+                {b.type === "paragraph" && (
+                  <p className="text-[16px] sm:text-[17px] text-foreground/90 leading-[1.75] mb-5 whitespace-pre-wrap">
+                    {renderFormattedText(b.content)}
+                  </p>
+                )}
 
-              {b.type === "callout" && (
-                <div className="my-4 rounded-2xl border border-amber-500/30 bg-amber-500/8 p-4 sm:p-5 text-sm text-foreground shadow-xs">
-                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 mb-1.5">
-                    <Sparkles className="h-4 w-4" />
-                    <span>{b.calloutType === "exam_tip" ? "Exam Tip / High Weightage" : b.calloutType === "formula" ? "Key Formula" : "Important Exam Note"}</span>
+                {b.type === "callout" && (
+                  <div className="my-6 rounded-2xl border-l-4 border-amber-500 border-border/60 bg-amber-500/10 dark:bg-amber-500/15 p-4 sm:p-5 text-[15px] sm:text-base leading-[1.7] text-foreground shadow-xs">
+                    <div className="flex items-center gap-2 font-bold text-amber-700 dark:text-amber-300 mb-1.5 text-xs sm:text-sm">
+                      <Sparkles className="h-4 w-4 shrink-0" />
+                      <span>
+                        {b.calloutType === "exam_tip"
+                          ? "Exam Tip / High Weightage"
+                          : b.calloutType === "formula"
+                            ? "Key Formula"
+                            : "Important Rule"}
+                      </span>
+                    </div>
+                    <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">
+                      {renderFormattedText(b.content)}
+                    </div>
                   </div>
-                  <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">{b.content}</div>
-                </div>
-              )}
+                )}
 
-              {b.type === "code" && (
-                <div className="my-4 rounded-2xl bg-muted/90 p-4 border border-border/70 overflow-hidden">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-muted-foreground mb-2 pb-2 border-b border-border/60">
-                    <span className="uppercase font-bold text-primary">{b.language || "c"}</span>
-                    <span>Code Snippet</span>
+                {b.type === "code" && (
+                  <div className="my-6 max-w-full overflow-hidden rounded-2xl bg-slate-950 p-4 border border-border/70 shadow-xs dark:bg-slate-900">
+                    <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800">
+                      <span className="uppercase font-bold text-primary">{b.language || "code"}</span>
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400">Diagram / Snippet</span>
+                    </div>
+                    <div className="max-w-full overflow-x-auto">
+                      <pre className="font-mono text-xs sm:text-sm text-slate-100 leading-relaxed whitespace-pre min-w-max">
+                        <code>{b.content}</code>
+                      </pre>
+                    </div>
                   </div>
-                  <pre className="font-mono text-xs sm:text-sm text-foreground overflow-x-auto leading-relaxed">
-                    <code>{b.content}</code>
-                  </pre>
-                </div>
-              )}
+                )}
 
-              {b.type === "table" && b.tableHeaders && (
-                <div className="my-4 overflow-x-auto rounded-2xl border border-border/80 bg-muted/10 p-2">
-                  <table className="w-full text-xs sm:text-sm text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-border/80 bg-muted/40">
-                        {b.tableHeaders.map((h, hIdx) => (
-                          <th key={hIdx} className="p-3 font-bold text-foreground">
-                            {h}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {(b.tableRows || []).map((row, rIdx) => (
-                        <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
-                          {row.map((cell, cIdx) => (
-                            <td key={cIdx} className="p-3 text-muted-foreground">
-                              {cell}
-                            </td>
+                {b.type === "table" && b.tableHeaders && (
+                  <div className="my-6 max-w-full overflow-x-auto rounded-2xl border border-border/80 bg-card shadow-xs">
+                    <table className="min-w-[500px] w-full text-xs sm:text-sm text-left border-collapse">
+                      <thead>
+                        <tr className="border-b border-border/80 bg-muted/50">
+                          {b.tableHeaders.map((h, hIdx) => (
+                            <th key={hIdx} className="p-3.5 font-bold text-foreground">
+                              {renderFormattedText(h)}
+                            </th>
                           ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
+                      </thead>
+                      <tbody>
+                        {(b.tableRows || []).map((row, rIdx) => (
+                          <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
+                            {row.map((cell, cIdx) => (
+                              <td key={cIdx} className="p-3.5 text-muted-foreground leading-relaxed">
+                                {renderFormattedText(cell)}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
 
-              {(b.type === "bullet_list" || b.type === "numbered_list") && (
-                <ul className={cn("my-3 space-y-1.5 text-sm sm:text-base text-foreground/90 pl-5", b.type === "numbered_list" ? "list-decimal" : "list-disc")}>
-                  {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
-                    .filter((item) => item.trim())
-                    .map((item, itemIdx) => (
-                      <li key={itemIdx} className="leading-relaxed">
-                        {item}
-                      </li>
-                    ))}
-                </ul>
-              )}
-            </div>
-          ))}
+                {(b.type === "bullet_list" || b.type === "numbered_list") && (
+                  <ul
+                    className={cn(
+                      "my-5 space-y-2 text-[16px] sm:text-[17px] text-foreground/90 pl-5 leading-[1.75]",
+                      b.type === "numbered_list" ? "list-decimal" : "list-disc",
+                    )}
+                  >
+                    {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
+                      .filter((item) => item.trim())
+                      .map((item, itemIdx) => (
+                        <li key={itemIdx} className="leading-relaxed">
+                          {renderFormattedText(item)}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </section>

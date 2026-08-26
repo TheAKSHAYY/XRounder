@@ -82,10 +82,17 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
 
     // Code block ```
     if (line.trim().startsWith("```")) {
-      const lang = line.trim().replace(/^```/, "").trim() || "c";
+      const lang = line.trim().replace(/^```/, "").trim() || "code";
       const codeLines: string[] = [];
       i++;
-      while (i < lines.length && !lines[i].trim().startsWith("```")) {
+      while (
+        i < lines.length &&
+        !lines[i].trim().startsWith("```") &&
+        !lines[i].trim().startsWith("## ") &&
+        !lines[i].trim().startsWith("# ") &&
+        !lines[i].trim().startsWith("### ") &&
+        !lines[i].trim().startsWith("> [!")
+      ) {
         codeLines.push(lines[i]);
         i++;
       }
@@ -95,7 +102,9 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
         content: codeLines.join("\n"),
         language: lang,
       });
-      i++;
+      if (i < lines.length && lines[i].trim().startsWith("```")) {
+        i++;
+      }
       continue;
     }
 
