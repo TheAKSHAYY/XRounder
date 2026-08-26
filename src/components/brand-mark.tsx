@@ -44,21 +44,21 @@ export function BrandLockup({
 }) {
   const wordTone =
     tone === "light"
-      ? "text-primary-foreground"
+      ? "text-white dark:text-white"
       : tone === "dark"
-        ? "text-foreground"
-        : "text-foreground";
+        ? "text-slate-950 dark:text-slate-900"
+        : "text-slate-900 dark:text-slate-50";
 
   return (
     <span
-      className={cn("inline-flex items-center text-lg leading-none", className)}
+      className={cn("inline-flex items-center gap-1.5 leading-none select-none", className)}
       aria-label="XRounder"
     >
       <img
         src={LOGO_MARK_SRC}
         alt=""
         aria-hidden
-        className="h-[2.5em] w-auto max-w-none shrink-0 object-contain"
+        className="h-[1.5em] w-auto max-w-none shrink-0 object-contain drop-shadow-xs"
         loading="eager"
         decoding="async"
         onError={(e) => {
@@ -68,7 +68,7 @@ export function BrandLockup({
 
       <span
         className={cn(
-          "-ml-[0.1em] font-sans text-lg font-extrabold leading-none tracking-[-0.02em]",
+          "font-display text-lg sm:text-xl font-extrabold leading-none tracking-[-0.03em] transition-colors",
           wordTone,
           textClassName,
         )}
