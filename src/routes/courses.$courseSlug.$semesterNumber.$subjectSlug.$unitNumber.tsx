@@ -170,7 +170,8 @@ function UnitDetail() {
           .select(
             "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
           )
-          .eq("unit_id", unit.id)
+          .eq("subject_id", subject.id)
+          .or(`unit_id.eq.${unit.id},unit_id.is.null`)
           .eq("status", "published")
           .is("deleted_at", null)
           .order("created_at", { ascending: true }),
