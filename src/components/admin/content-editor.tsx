@@ -85,6 +85,7 @@ export function ContentEditor({
   const [title, setTitle] = useState(initial?.title ?? "");
   const [description, setDescription] = useState(initial?.description ?? "");
   const [subjectId, setSubjectId] = useState<string>(initial?.subject_id ?? "");
+  const [unitId, setUnitId] = useState<string>(initial?.unit_id ?? "");
   const [visibility, setVisibility] = useState<"public" | "students" | "private">(
     (initial?.visibility as "public" | "students" | "private") ?? "public",
   );
@@ -98,6 +99,21 @@ export function ContentEditor({
   const { data: subjects } = useQuery({
     queryKey: ["admin", "subjects-flat"],
     queryFn: () => listSubjects(),
+  });
+
+  const { data: units } = useQuery({
+    queryKey: ["admin", "units-for-subject", subjectId],
+    enabled: !!subjectId,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("units")
+        .select("id, number, title")
+        .eq("subject_id", subjectId)
+        .is("deleted_at", null)
+        .order("number");
+      if (error) throw error;
+      return data ?? [];
+    },
   });
 
   const saveMutation = useMutation({
@@ -133,7 +149,7 @@ export function ContentEditor({
         title: title.trim(),
         description: description || null,
         subject_id: subjectId || null,
-        unit_id: initial?.unit_id ?? null,
+        unit_id: unitId || initial?.unit_id || null,
         file_bucket,
         file_path,
         file_mime,
@@ -228,10 +244,10 @@ export function ContentEditor({
           )}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           <div>
             <Label>Subject</Label>
-            <Select value={subjectId} onValueChange={setSubjectId}>
+            <Select value={subjectId} onValueChange={(val) => { setSubjectId(val); setUnitId(""); }}>
               <SelectTrigger className="mt-1.5">
                 <SelectValue placeholder="Choose subject" />
               </SelectTrigger>
@@ -248,6 +264,21 @@ export function ContentEditor({
                     </SelectItem>
                   );
                 })}
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label>Unit (Optional)</Label>
+            <Select value={unitId} onValueChange={setUnitId} disabled={!subjectId || (units ?? []).length === 0}>
+              <SelectTrigger className="mt-1.5">
+                <SelectValue placeholder={!subjectId ? "Pick subject first" : (units ?? []).length === 0 ? "No units found" : "Choose unit"} />
+              </SelectTrigger>
+              <SelectContent>
+                {(units ?? []).map((u) => (
+                  <SelectItem key={u.id} value={u.id}>
+                    Unit {u.number}: {u.title}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>

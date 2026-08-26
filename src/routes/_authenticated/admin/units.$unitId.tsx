@@ -130,7 +130,8 @@ function AdminUnitWorkspace() {
 
   // 2. Fetch Primary Article (content_items type='note' or notes table)
   const articleQuery = useQuery({
-    queryKey: ["admin", "unit-article", unitId],
+    queryKey: ["admin", "unit-article", unitId, unitQuery.data?.subjects?.id],
+    enabled: !!unitId,
     queryFn: async () => {
       const { data: ci } = await supabase
         .from("content_items")
@@ -143,6 +144,28 @@ function AdminUnitWorkspace() {
         .maybeSingle();
 
       if (ci) return ci;
+
+      // Fallback: If note exists for subject with null unit_id, auto-link it
+      if (unitQuery.data?.subjects?.id) {
+        const { data: unlinked } = await supabase
+          .from("content_items")
+          .select("*")
+          .eq("subject_id", unitQuery.data.subjects.id)
+          .is("unit_id", null)
+          .eq("type", "note")
+          .is("deleted_at", null)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        if (unlinked) {
+          await supabase
+            .from("content_items")
+            .update({ unit_id: unitId })
+            .eq("id", unlinked.id);
+          return { ...unlinked, unit_id: unitId };
+        }
+      }
 
       // Fallback to legacy notes table
       const { data: n } = await supabase
@@ -257,14 +280,18 @@ function AdminUnitWorkspace() {
       if (!articleTitle.trim()) throw new Error("Article title is required.");
       setIsSavingArticle(true);
       const statusToSave = targetStatus || articleStatus;
+      const subjectId = unitQuery.data?.subjects?.id;
 
       if (articleQuery.data && !(articleQuery.data as any).is_legacy) {
         const { error } = await supabase
           .from("content_items")
           .update({
+            unit_id: unitId,
+            subject_id: subjectId,
             title: articleTitle.trim(),
             description: articleBody,
             status: statusToSave,
+            visibility: "public",
             updated_at: new Date().toISOString(),
           })
           .eq("id", articleQuery.data.id);
@@ -273,10 +300,12 @@ function AdminUnitWorkspace() {
       } else {
         const { error } = await supabase.from("content_items").insert({
           unit_id: unitId,
+          subject_id: subjectId,
           type: "note",
           title: articleTitle.trim(),
           description: articleBody,
           status: statusToSave,
+          visibility: "public",
           created_by: user?.id,
         });
 
@@ -286,6 +315,8 @@ function AdminUnitWorkspace() {
     onSuccess: (_, statusToSave) => {
       toast.success(statusToSave === "published" ? "Article Published!" : "Article Draft Saved!");
       qc.invalidateQueries({ queryKey: ["admin", "unit-article", unitId] });
+      qc.invalidateQueries({ queryKey: ["public", "unit"] });
+      qc.invalidateQueries({ queryKey: ["admin", "content"] });
       setIsSavingArticle(false);
     },
     onError: (err: any) => {
