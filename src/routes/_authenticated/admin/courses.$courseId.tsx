@@ -869,13 +869,18 @@ function UnitRow({
         <span className="grid h-6 w-6 place-items-center rounded bg-primary/10 text-xs font-semibold text-primary">
           {unit.number}
         </span>
-        <span className="flex-1 text-foreground">{unit.title}</span>
+        <span className="flex-1 text-foreground font-medium">{unit.title}</span>
         <Badge
           variant={unit.status === "published" ? "default" : "secondary"}
           className="text-[10px]"
         >
           {unit.status}
         </Badge>
+        <Button asChild size="sm" variant="outline" className="h-7 px-2.5 text-xs font-bold rounded-lg gap-1 border-primary/40 text-primary hover:bg-primary/10">
+          <Link to="/admin/units/$unitId" params={{ unitId: unit.id }}>
+            <Layers className="h-3.5 w-3.5" /> Workspace
+          </Link>
+        </Button>
         <Button
           size="sm"
           variant="ghost"

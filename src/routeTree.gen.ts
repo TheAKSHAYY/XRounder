@@ -58,6 +58,7 @@ import { Route as AuthenticatedAdminQuizzesIndexRouteImport } from './routes/_au
 import { Route as AuthenticatedAdminCoursesIndexRouteImport } from './routes/_authenticated/admin/courses.index'
 import { Route as AuthenticatedAdminContentIndexRouteImport } from './routes/_authenticated/admin/content.index'
 import { Route as CoursesCourseSlugSemesterNumberSubjectSlugRouteImport } from './routes/courses.$courseSlug.$semesterNumber.$subjectSlug'
+import { Route as AuthenticatedAdminUnitsUnitIdRouteImport } from './routes/_authenticated/admin/units.$unitId'
 import { Route as AuthenticatedAdminSuperadminUsersRouteImport } from './routes/_authenticated/admin/superadmin/users'
 import { Route as AuthenticatedAdminSuperadminSeoRouteImport } from './routes/_authenticated/admin/superadmin/seo'
 import { Route as AuthenticatedAdminSuperadminFlagsRouteImport } from './routes/_authenticated/admin/superadmin/flags'
@@ -331,6 +332,12 @@ const CoursesCourseSlugSemesterNumberSubjectSlugRoute =
     path: '/courses/$courseSlug/$semesterNumber/$subjectSlug',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AuthenticatedAdminUnitsUnitIdRoute =
+  AuthenticatedAdminUnitsUnitIdRouteImport.update({
+    id: '/units/$unitId',
+    path: '/units/$unitId',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
 const AuthenticatedAdminSuperadminUsersRoute =
   AuthenticatedAdminSuperadminUsersRouteImport.update({
     id: '/users',
@@ -450,6 +457,7 @@ export interface FileRoutesByFullPath {
   '/admin/superadmin/flags': typeof AuthenticatedAdminSuperadminFlagsRoute
   '/admin/superadmin/seo': typeof AuthenticatedAdminSuperadminSeoRoute
   '/admin/superadmin/users': typeof AuthenticatedAdminSuperadminUsersRoute
+  '/admin/units/$unitId': typeof AuthenticatedAdminUnitsUnitIdRoute
   '/courses/$courseSlug/$semesterNumber/$subjectSlug': typeof CoursesCourseSlugSemesterNumberSubjectSlugRouteWithChildren
   '/admin/content/': typeof AuthenticatedAdminContentIndexRoute
   '/admin/courses/': typeof AuthenticatedAdminCoursesIndexRoute
@@ -509,6 +517,7 @@ export interface FileRoutesByTo {
   '/admin/superadmin/flags': typeof AuthenticatedAdminSuperadminFlagsRoute
   '/admin/superadmin/seo': typeof AuthenticatedAdminSuperadminSeoRoute
   '/admin/superadmin/users': typeof AuthenticatedAdminSuperadminUsersRoute
+  '/admin/units/$unitId': typeof AuthenticatedAdminUnitsUnitIdRoute
   '/admin/content': typeof AuthenticatedAdminContentIndexRoute
   '/admin/courses': typeof AuthenticatedAdminCoursesIndexRoute
   '/admin/quizzes': typeof AuthenticatedAdminQuizzesIndexRoute
@@ -571,6 +580,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/superadmin/flags': typeof AuthenticatedAdminSuperadminFlagsRoute
   '/_authenticated/admin/superadmin/seo': typeof AuthenticatedAdminSuperadminSeoRoute
   '/_authenticated/admin/superadmin/users': typeof AuthenticatedAdminSuperadminUsersRoute
+  '/_authenticated/admin/units/$unitId': typeof AuthenticatedAdminUnitsUnitIdRoute
   '/courses/$courseSlug/$semesterNumber/$subjectSlug': typeof CoursesCourseSlugSemesterNumberSubjectSlugRouteWithChildren
   '/_authenticated/admin/content/': typeof AuthenticatedAdminContentIndexRoute
   '/_authenticated/admin/courses/': typeof AuthenticatedAdminCoursesIndexRoute
@@ -634,6 +644,7 @@ export interface FileRouteTypes {
     | '/admin/superadmin/flags'
     | '/admin/superadmin/seo'
     | '/admin/superadmin/users'
+    | '/admin/units/$unitId'
     | '/courses/$courseSlug/$semesterNumber/$subjectSlug'
     | '/admin/content/'
     | '/admin/courses/'
@@ -693,6 +704,7 @@ export interface FileRouteTypes {
     | '/admin/superadmin/flags'
     | '/admin/superadmin/seo'
     | '/admin/superadmin/users'
+    | '/admin/units/$unitId'
     | '/admin/content'
     | '/admin/courses'
     | '/admin/quizzes'
@@ -754,6 +766,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/superadmin/flags'
     | '/_authenticated/admin/superadmin/seo'
     | '/_authenticated/admin/superadmin/users'
+    | '/_authenticated/admin/units/$unitId'
     | '/courses/$courseSlug/$semesterNumber/$subjectSlug'
     | '/_authenticated/admin/content/'
     | '/_authenticated/admin/courses/'
@@ -1135,6 +1148,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCourseSlugSemesterNumberSubjectSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/units/$unitId': {
+      id: '/_authenticated/admin/units/$unitId'
+      path: '/units/$unitId'
+      fullPath: '/admin/units/$unitId'
+      preLoaderRoute: typeof AuthenticatedAdminUnitsUnitIdRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/superadmin/users': {
       id: '/_authenticated/admin/superadmin/users'
       path: '/users'
@@ -1262,6 +1282,7 @@ interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminContentNewRoute: typeof AuthenticatedAdminContentNewRoute
   AuthenticatedAdminCoursesCourseIdRoute: typeof AuthenticatedAdminCoursesCourseIdRoute
   AuthenticatedAdminQuizzesQuizIdRoute: typeof AuthenticatedAdminQuizzesQuizIdRoute
+  AuthenticatedAdminUnitsUnitIdRoute: typeof AuthenticatedAdminUnitsUnitIdRoute
   AuthenticatedAdminContentIndexRoute: typeof AuthenticatedAdminContentIndexRoute
   AuthenticatedAdminCoursesIndexRoute: typeof AuthenticatedAdminCoursesIndexRoute
   AuthenticatedAdminQuizzesIndexRoute: typeof AuthenticatedAdminQuizzesIndexRoute
@@ -1288,6 +1309,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
     AuthenticatedAdminCoursesCourseIdRoute:
       AuthenticatedAdminCoursesCourseIdRoute,
     AuthenticatedAdminQuizzesQuizIdRoute: AuthenticatedAdminQuizzesQuizIdRoute,
+    AuthenticatedAdminUnitsUnitIdRoute: AuthenticatedAdminUnitsUnitIdRoute,
     AuthenticatedAdminContentIndexRoute: AuthenticatedAdminContentIndexRoute,
     AuthenticatedAdminCoursesIndexRoute: AuthenticatedAdminCoursesIndexRoute,
     AuthenticatedAdminQuizzesIndexRoute: AuthenticatedAdminQuizzesIndexRoute,

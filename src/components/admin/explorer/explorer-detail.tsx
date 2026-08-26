@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { BookOpen, GraduationCap, Library, Layers, Save } from "lucide-react";
+import { BookOpen, GraduationCap, Library, Layers, Save, ExternalLink } from "lucide-react";
 
 import { updateExplorerNode, type ExplorerNode, type NodeType } from "@/lib/explorer.functions";
 import { Input } from "@/components/ui/input";
@@ -130,6 +131,13 @@ export function ExplorerDetail({ node }: { node: ExplorerNode | null }) {
           </div>
           <h2 className="truncate font-display text-lg font-semibold">{node.name}</h2>
         </div>
+        {node.type === "unit" && (
+          <Button asChild variant="outline" className="gap-1.5 border-primary/40 text-primary hover:bg-primary/10">
+            <Link to="/admin/units/$unitId" params={{ unitId: node.id }}>
+              <Layers className="h-4 w-4" /> Unit Workspace
+            </Link>
+          </Button>
+        )}
         <Button onClick={() => save.mutate()} disabled={save.isPending} className="gap-1.5">
           <Save className="h-4 w-4" />
           {save.isPending ? "Saving…" : "Save"}
