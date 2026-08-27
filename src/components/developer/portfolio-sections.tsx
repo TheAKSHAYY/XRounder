@@ -1,79 +1,162 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   Award,
-  Code2,
-  Download,
+  BookOpen,
   ExternalLink,
   Github,
-  Home,
-  Layers,
+  GraduationCap,
   Mail,
-  MapPin,
-  Rocket,
-  Sparkles,
   Star,
-  Trophy,
-  Zap,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Reveal } from "@/components/ui/reveal";
+import { cn } from "@/lib/utils";
 import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
+import { useGithubRepos, useGithubUser } from "./use-github-data";
 
-export function StatPill({
-  icon: Icon,
-  value,
-  label,
+/* ── Design-system primitives ─────────────────────────────────────────────
+ * One shell for every section, one chip, one section heading. Mobile-first:
+ * px-5 / py-14 on phones, wider gutters and rhythm from `sm:` upward.
+ */
+
+export function Section({
+  id,
+  children,
+  className,
+  muted = false,
 }: {
-  icon: typeof Rocket;
-  value: number;
-  label: string;
+  id?: string;
+  children: React.ReactNode;
+  className?: string;
+  muted?: boolean;
 }) {
   return (
-    <div className="rounded-2xl border border-border/70 bg-surface/80 p-3 backdrop-blur-sm">
-      <div className="flex items-center gap-2 text-muted-foreground">
-        <Icon className="h-3.5 w-3.5" />
-        <span className="text-[10px] font-semibold uppercase tracking-wide">{label}</span>
-      </div>
-      <div className="mt-1 font-display text-2xl font-semibold text-foreground">{value}</div>
-    </div>
+    <section
+      id={id}
+      className={cn(
+        "scroll-mt-16 border-b border-border/50 px-5 py-14 sm:px-8 sm:py-20 lg:py-24",
+        muted && "bg-surface-muted/30",
+        className,
+      )}
+    >
+      <div className="mx-auto w-full max-w-5xl">{children}</div>
+    </section>
   );
 }
 
-export function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+export function SectionHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}) {
   return (
-    <div className="mx-auto max-w-2xl text-center">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{eyebrow}</div>
-      <h2 className="mt-2 font-display text-3xl font-semibold text-foreground sm:text-4xl">
+    <div className="max-w-2xl">
+      <div className="text-[0.7rem] font-semibold tracking-[0.16em] text-accent uppercase">
+        {eyebrow}
+      </div>
+      <h2 className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl">
         {title}
       </h2>
+      {description && (
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {description}
+        </p>
+      )}
     </div>
   );
 }
 
-export function InfoCard({
-  title,
-  body,
+export function Chip({
+  children,
+  tone = "default",
   className,
 }: {
-  title: string;
-  body: string;
+  children: React.ReactNode;
+  tone?: "default" | "accent" | "outline";
   className?: string;
 }) {
   return (
-    <div className={"rounded-2xl border border-border bg-surface p-6 " + (className || "")}>
-      <h3 className="font-display text-base font-semibold text-foreground">{title}</h3>
-      <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
-        {body}
-      </p>
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium",
+        tone === "default" && "border-border bg-surface text-foreground",
+        tone === "accent" && "border-accent/30 bg-accent/10 text-accent",
+        tone === "outline" && "border-dashed border-border bg-transparent text-muted-foreground",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
+function StatCell({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="min-w-0">
+      <div className="font-display text-lg font-semibold text-foreground sm:text-xl">{value}</div>
+      <div className="truncate text-[0.7rem] text-muted-foreground sm:text-xs">{label}</div>
     </div>
   );
 }
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+
+const NAV = [
+  { href: "#top", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#github", label: "GitHub" },
+  { href: "#contact", label: "Contact" },
+];
+
+export function PortfolioNav({ name }: { name: string }) {
+  return (
+    <nav
+      aria-label="Portfolio sections"
+      className="sticky top-0 z-30 border-b border-border/50 bg-background/85 backdrop-blur-md"
+    >
+      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
+        <Link
+          to="/"
+          className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
+        >
+          {name.split(" ")[0]}
+        </Link>
+        <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground sm:text-sm"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────────── */
 
 export function HeroSection({
   profile,
@@ -81,9 +164,7 @@ export function HeroSection({
   initials,
   socials,
   projects,
-  skills,
-  achievements,
-  marqueeChips,
+  githubUsername,
 }: {
   profile: Profile;
   name: string;
@@ -92,473 +173,540 @@ export function HeroSection({
   projects: Project[];
   skills: Skill[];
   achievements: Achievement[];
-  marqueeChips: string[];
+  githubUsername: string | null;
 }) {
+  const ghUser = useGithubUser(githubUsername);
+  const liveProjects = projects.filter((p) => p.live_url).length;
+  const githubUrl = githubUsername ? `https://github.com/${githubUsername}` : null;
+
+  const stats: { value: string; label: string }[] = [];
+  if (liveProjects > 0)
+    stats.push({ value: String(liveProjects), label: liveProjects === 1 ? "Live product" : "Live products" });
+  if (ghUser.data) {
+    stats.push({ value: String(ghUser.data.public_repos), label: "Public repos" });
+    if (ghUser.data.followers > 0)
+      stats.push({ value: String(ghUser.data.followers), label: "GitHub followers" });
+  }
+  if (stats.length < 3 && profile.education) stats.push({ value: "BCA", label: "Student, 5th sem" });
+
   return (
-    <section className="relative overflow-hidden border-b border-border/60">
-      {/* Ambient background */}
+    <header id="top" className="relative overflow-hidden border-b border-border/50">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-[-14rem] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[140px]" />
-        <div className="absolute left-[6%] top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
-        <div className="absolute right-[6%] bottom-0 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
-            backgroundSize: "22px 22px",
-          }}
-        />
+        <div className="absolute -top-40 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-[110px] sm:h-[26rem] sm:w-[26rem]" />
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-        <div className="animate-fade-in">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+      <div className="mx-auto w-full max-w-5xl px-5 py-12 sm:px-8 sm:py-20">
+        <div className="grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70 motion-reduce:hidden" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+              </span>
+              Open to internships
             </span>
-            Available for opportunities
-          </span>
-          <h1 className="mt-5 font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl">
-            Hi, I'm{" "}
-            <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              {name.split(" ")[0]}
-            </span>
-            .
-          </h1>
-          {profile.professional_title && (
-            <p className="mt-4 font-display text-xl text-foreground/80">
-              {profile.professional_title}
-            </p>
-          )}
-          {profile.short_intro && (
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-              {profile.short_intro}
-            </p>
-          )}
 
-          {/* Stats strip */}
-          <div className="mt-8 grid max-w-lg grid-cols-3 gap-3">
-            <StatPill icon={Rocket} value={projects.length} label="Projects" />
-            <StatPill icon={Code2} value={skills.length} label="Skills" />
-            <StatPill icon={Trophy} value={achievements.length} label="Wins" />
-          </div>
+            <h1 className="mt-5 font-display text-[2rem] leading-[1.12] font-semibold text-foreground sm:text-5xl">
+              {name.trim()} — building production-ready web systems.
+            </h1>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg" className="shadow-lg shadow-primary/20">
-              <a href="#projects">
-                {profile.hero_cta_primary_label || "View Projects"}
-                <ArrowRight className="ml-1.5 h-4 w-4" />
-              </a>
-            </Button>
-            {profile.resume_url && (
-              <Button asChild variant="outline" size="lg">
-                <a href={profile.resume_url} target="_blank" rel="noreferrer">
-                  <Download className="mr-1.5 h-4 w-4" />
-                  {profile.hero_cta_secondary_label || "Resume"}
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              BCA student and Java-focused developer. I design and ship full-stack products
+              end-to-end — most recently <span className="text-foreground">XRounder</span>, a live
+              learning platform I built and maintain solo — while working toward becoming a strong
+              software engineer.
+            </p>
+
+            {stats.length > 0 && (
+              <dl className="mt-7 flex flex-wrap gap-x-8 gap-y-4 border-t border-border/60 pt-5">
+                {stats.slice(0, 4).map((s) => (
+                  <StatCell key={s.label} value={s.value} label={s.label} />
+                ))}
+              </dl>
+            )}
+
+            <div className="mt-7 flex flex-wrap items-center gap-2.5">
+              <Button asChild size="lg" className="h-11 flex-1 sm:flex-none">
+                <a href="#projects">
+                  View Projects
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
                 </a>
               </Button>
-            )}
-            <Button asChild variant="ghost" size="lg">
-              <a href="#contact">
-                <Mail className="mr-1.5 h-4 w-4" /> Say hi
-              </a>
-            </Button>
-            <Button asChild variant="ghost" size="lg">
-              <Link to="/">
-                <Home className="mr-1.5 h-4 w-4" /> Home
-              </Link>
-            </Button>
-          </div>
-
-          {/* Quick social row */}
-          {socials.length > 0 && (
-            <div className="mt-6 flex flex-wrap items-center gap-2">
-              {socials.slice(0, 6).map((s) => {
-                const Icon = platformIcon(s.platform);
-                return (
-                  <a
-                    key={s.id}
-                    href={s.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    title={s.label || s.platform}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-                  >
-                    <Icon className="h-4 w-4" />
+              {githubUrl && (
+                <Button asChild variant="outline" size="lg" className="h-11 flex-1 sm:flex-none">
+                  <a href={githubUrl} target="_blank" rel="noreferrer">
+                    <Github className="mr-1.5 h-4 w-4" /> GitHub
                   </a>
-                );
-              })}
-            </div>
-          )}
-        </div>
-
-        {/* Portrait card */}
-        <div className="relative mx-auto w-full max-w-sm animate-scale-in">
-          <div className="absolute inset-0 -z-10 rounded-[2rem] bg-linear-to-br from-accent/40 via-primary/25 to-transparent blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-surface p-2 shadow-2xl">
-            <div className="aspect-square w-full overflow-hidden rounded-[1.6rem] bg-muted">
-              {profile.photo_url ? (
-                <img src={profile.photo_url} alt={name} className="h-full w-full object-cover" />
-              ) : (
-                <Avatar className="h-full w-full rounded-[1.6rem]">
-                  <AvatarFallback className="h-full w-full rounded-[1.6rem] bg-primary/10 font-display text-7xl text-primary">
-                    {initials}
-                  </AvatarFallback>
-                </Avatar>
+                </Button>
+              )}
+              {profile.resume_url && (
+                <Button asChild variant="ghost" size="lg" className="h-11">
+                  <a href={profile.resume_url} target="_blank" rel="noreferrer">
+                    Resume
+                  </a>
+                </Button>
               )}
             </div>
-            {/* Floating status card */}
-            <div className="absolute -bottom-4 -left-4 hidden rounded-2xl border border-border bg-surface p-3 shadow-lg sm:block">
-              <div className="flex items-center gap-2 text-xs">
-                <Zap className="h-3.5 w-3.5 text-accent" />
-                <span className="font-medium text-foreground">Currently building</span>
-              </div>
-              <div className="mt-0.5 text-xs text-muted-foreground">XRounder LMS</div>
-            </div>
-            {profile.education && (
-              <div className="absolute -top-3 -right-3 hidden rounded-full border border-border bg-surface px-3 py-1.5 text-xs shadow-lg sm:flex sm:items-center sm:gap-1.5">
-                <MapPin className="h-3 w-3 text-primary" />
-                <span className="text-muted-foreground">{profile.education.split(",")[0]}</span>
-              </div>
+
+            {socials.length > 0 && (
+              <ul className="mt-6 flex flex-wrap items-center gap-2">
+                {socials.slice(0, 5).map((s) => {
+                  const Icon = platformIcon(s.platform);
+                  return (
+                    <li key={s.id}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={s.label || s.platform}
+                        className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-surface text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                      >
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             )}
+          </div>
+
+          {/* Portrait */}
+          <div className="order-first mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-sm">
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-surface">
+              <div className="aspect-square w-full bg-muted">
+                {profile.photo_url ? (
+                  <img
+                    src={profile.photo_url}
+                    alt={`Portrait of ${name.trim()}`}
+                    className="h-full w-full object-cover"
+                    width={512}
+                    height={512}
+                  />
+                ) : (
+                  <Avatar className="h-full w-full rounded-none">
+                    <AvatarFallback className="h-full w-full rounded-none bg-primary/10 font-display text-6xl text-primary">
+                      {initials}
+                    </AvatarFallback>
+                  </Avatar>
+                )}
+              </div>
+              {profile.professional_title && (
+                <p className="border-t border-border/70 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+                  {profile.professional_title.replace(/\s*\|\s*/g, " · ")}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Marquee of tech chips */}
-      {marqueeChips.length > 0 && (
-        <div className="relative overflow-hidden border-t border-border/60 bg-surface-muted/40 py-4">
-          <div className="flex animate-[marquee_35s_linear_infinite] gap-3 whitespace-nowrap">
-            {[...marqueeChips, ...marqueeChips].map((c, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium text-foreground"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                {c}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-    </section>
+    </header>
   );
 }
 
+/* ── Featured project ────────────────────────────────────────────────────── */
+
 export function FeaturedProjectSection({ featured }: { featured: Project }) {
+  const tech = featured.tech_stack ?? [];
   return (
-    <section id="projects" className="border-b border-border/60 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="Featured" title="Flagship project" />
-        <article className="mt-12 overflow-hidden rounded-3xl border border-border bg-surface shadow-xl">
-          <div className="grid gap-0 lg:grid-cols-2">
-            <div className="relative aspect-video w-full overflow-hidden bg-muted lg:aspect-auto">
-              {featured.thumbnail_url ? (
-                <img
-                  src={featured.thumbnail_url}
-                  alt={featured.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className="grid h-full min-h-[20rem] place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent">
-                  <Layers className="h-16 w-16 text-primary/40" />
-                </div>
-              )}
-              <Badge className="absolute left-4 top-4 gap-1 bg-accent text-accent-foreground hover:bg-accent">
-                <Star className="h-3 w-3" /> Featured
-              </Badge>
-            </div>
-            <div className="flex flex-col justify-center p-8 sm:p-10">
-              {featured.category && (
-                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                  {featured.category}
-                </div>
-              )}
-              <h3 className="mt-2 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-                {featured.name}
-              </h3>
-              {featured.description && (
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  {featured.description}
-                </p>
-              )}
-              {featured.tech_stack && featured.tech_stack.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {featured.tech_stack.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-md border border-border bg-muted/50 px-2.5 py-1 text-xs font-medium text-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                {featured.live_url && (
-                  <Button asChild size="lg">
-                    <a href={featured.live_url} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-1.5 h-4 w-4" /> Visit live
-                    </a>
-                  </Button>
-                )}
-                {featured.github_url && (
-                  <Button asChild variant="outline" size="lg">
-                    <a href={featured.github_url} target="_blank" rel="noreferrer">
-                      <Github className="mr-1.5 h-4 w-4" /> Source
-                    </a>
-                  </Button>
-                )}
+    <Section id="projects">
+      <SectionHeading eyebrow="Featured work" title={featured.name} />
+
+      <Reveal className="mt-7">
+        <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
+            {featured.thumbnail_url ? (
+              <img
+                src={featured.thumbnail_url}
+                alt={`${featured.name} interface`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div
+                aria-hidden
+                className="grid h-full place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
+              >
+                <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
+                  {featured.name}
+                </span>
               </div>
+            )}
+            <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-lg border border-border/60 bg-background/80 px-2 py-1 text-[0.7rem] font-medium text-foreground backdrop-blur">
+              <Star className="h-3 w-3 text-accent" aria-hidden /> Flagship
+            </span>
+          </div>
+
+          <div className="p-5 sm:p-8">
+            {featured.category && (
+              <div className="text-[0.7rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+                {featured.category}
+              </div>
+            )}
+            {featured.description && (
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {featured.description}
+              </p>
+            )}
+
+            <dl className="mt-6 grid gap-4 border-t border-border/60 pt-5 sm:grid-cols-2">
+              <div>
+                <dt className="text-[0.7rem] font-semibold tracking-wide text-muted-foreground uppercase">
+                  My contribution
+                </dt>
+                <dd className="mt-1 text-sm text-foreground">
+                  Built solo — data model, backend, admin CMS and full front-end.
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[0.7rem] font-semibold tracking-wide text-muted-foreground uppercase">
+                  Status
+                </dt>
+                <dd className="mt-1 text-sm text-foreground">
+                  {featured.live_url ? "Live and actively maintained" : "In development"}
+                </dd>
+              </div>
+            </dl>
+
+            {tech.length > 0 && (
+              <ul className="mt-5 flex flex-wrap gap-1.5">
+                {tech.map((t) => (
+                  <li key={t}>
+                    <Chip>{t}</Chip>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {featured.live_url && (
+                <Button asChild size="lg" className="h-11 flex-1 sm:flex-none">
+                  <a href={featured.live_url} target="_blank" rel="noreferrer">
+                    <ExternalLink className="mr-1.5 h-4 w-4" /> Live demo
+                  </a>
+                </Button>
+              )}
+              {featured.github_url && (
+                <Button asChild variant="outline" size="lg" className="h-11 flex-1 sm:flex-none">
+                  <a href={featured.github_url} target="_blank" rel="noreferrer">
+                    <Github className="mr-1.5 h-4 w-4" /> Source
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </article>
-      </div>
-    </section>
+      </Reveal>
+    </Section>
   );
 }
+
+/* ── Secondary projects ──────────────────────────────────────────────────── */
 
 export function ProjectGridSection({ projects }: { projects: Project[] }) {
   return (
-    <section className="border-b border-border/60 bg-surface-muted/40 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="Work" title="More things I've built" />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <article
-              key={p.id}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
-            >
-              <div className="relative aspect-video w-full overflow-hidden bg-muted">
-                {p.thumbnail_url ? (
-                  <img
-                    src={p.thumbnail_url}
-                    alt={p.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="grid h-full place-items-center bg-linear-to-br from-primary/10 to-accent/10 text-primary/40">
-                    <Sparkles className="h-10 w-10" />
-                  </div>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                {p.category && (
-                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground">
-                    {p.category}
-                  </div>
-                )}
-                <h3 className="mt-1 font-display text-lg font-semibold text-foreground">
-                  {p.name}
-                </h3>
-                {p.description && (
-                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.description}</p>
-                )}
-                {p.tech_stack && p.tech_stack.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {p.tech_stack.slice(0, 5).map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-border bg-muted/50 px-2 py-0.5 text-[10px] font-medium text-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <div className="mt-4 flex items-center gap-2 border-t border-border pt-3">
-                  {p.github_url && (
-                    <Button asChild size="sm" variant="ghost">
-                      <a href={p.github_url} target="_blank" rel="noreferrer">
-                        <Github className="mr-1 h-3.5 w-3.5" /> Code
-                      </a>
-                    </Button>
-                  )}
-                  {p.live_url && (
-                    <Button asChild size="sm" variant="ghost">
-                      <a href={p.live_url} target="_blank" rel="noreferrer">
-                        <ExternalLink className="mr-1 h-3.5 w-3.5" /> Live
-                      </a>
-                    </Button>
-                  )}
+    <Section muted>
+      <SectionHeading eyebrow="More work" title="Other projects" />
+      <div className="mt-7 grid gap-4 sm:grid-cols-2">
+        {projects.map((p, i) => (
+          <Reveal key={p.id} delay={i * 60}>
+            <article className="flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary/30">
+              {p.category && (
+                <div className="text-[0.7rem] tracking-wide text-muted-foreground uppercase">
+                  {p.category}
                 </div>
+              )}
+              <h3 className="mt-1 font-display text-lg font-semibold text-foreground">{p.name}</h3>
+              {p.description && (
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+              )}
+              {p.tech_stack && p.tech_stack.length > 0 && (
+                <ul className="mt-3 flex flex-wrap gap-1.5">
+                  {p.tech_stack.slice(0, 6).map((t) => (
+                    <li key={t}>
+                      <Chip>{t}</Chip>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div className="mt-4 flex flex-wrap gap-2 border-t border-border/60 pt-3">
+                {p.live_url && (
+                  <Button asChild size="sm" variant="outline">
+                    <a href={p.live_url} target="_blank" rel="noreferrer">
+                      <ExternalLink className="mr-1 h-3.5 w-3.5" /> Live
+                    </a>
+                  </Button>
+                )}
+                {p.github_url && (
+                  <Button asChild size="sm" variant="ghost">
+                    <a href={p.github_url} target="_blank" rel="noreferrer">
+                      <Github className="mr-1 h-3.5 w-3.5" /> Code
+                    </a>
+                  </Button>
+                )}
               </div>
             </article>
-          ))}
-        </div>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   );
+}
+
+/* ── About ───────────────────────────────────────────────────────────────── */
+
+function shortBio(bio: string) {
+  const sentences = bio.split(/(?<=\.)\s+/);
+  return sentences.slice(0, 3).join(" ");
 }
 
 export function AboutSection({ profile }: { profile: Profile }) {
+  const items = [
+    { key: "education", label: "Education", icon: GraduationCap, body: profile.education },
+    { key: "focus", label: "Current focus", icon: BookOpen, body: profile.current_goal },
+    { key: "goal", label: "Career goal", icon: Award, body: profile.career_objective },
+    { key: "interests", label: "Interests", icon: Star, body: profile.interests },
+  ].filter((i) => Boolean(i.body));
+
   return (
-    <section className="border-b border-border/60 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="About" title="Behind the keyboard" />
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {profile.bio && <InfoCard title="Bio" body={profile.bio} className="lg:col-span-3" />}
-          {profile.education && <InfoCard title="Education" body={profile.education} />}
-          {profile.current_goal && <InfoCard title="Current Goal" body={profile.current_goal} />}
-          {profile.career_objective && (
-            <InfoCard title="Career Objective" body={profile.career_objective} />
-          )}
-          {profile.interests && (
-            <InfoCard title="Interests" body={profile.interests} className="lg:col-span-3" />
-          )}
-        </div>
-      </div>
-    </section>
+    <Section id="about">
+      <SectionHeading eyebrow="About" title="A little background" />
+      {profile.bio && (
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {shortBio(profile.bio)}
+        </p>
+      )}
+      {items.length > 0 && (
+        <Accordion type="single" collapsible className="mt-6 max-w-2xl">
+          {items.map((item) => (
+            <AccordionItem key={item.key} value={item.key} className="border-border/60">
+              <AccordionTrigger className="py-4 text-sm font-medium hover:no-underline">
+                <span className="flex items-center gap-2.5">
+                  <item.icon className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                  {item.label}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-sm leading-relaxed whitespace-pre-wrap text-muted-foreground">
+                {item.body}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      )}
+    </Section>
   );
 }
 
+/* ── Skills ──────────────────────────────────────────────────────────────── */
+
+const CATEGORY_LABEL: Record<string, string> = {
+  language: "Languages",
+  framework: "Frameworks & development",
+  tool: "Tools & infrastructure",
+  learning: "Currently learning",
+  other: "Other",
+};
+
 export function SkillsSection({ skillGroups }: { skillGroups: Record<string, Skill[]> }) {
+  const order = ["language", "framework", "tool", "learning"];
+  const entries = Object.entries(skillGroups).sort(
+    (a, b) =>
+      (order.indexOf(a[0]) + 1 || 99) - (order.indexOf(b[0]) + 1 || 99) || a[0].localeCompare(b[0]),
+  );
+
   return (
-    <section className="border-b border-border/60 bg-surface-muted/40 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="Skills" title="Tools of the trade" />
-        <div className="mt-12 space-y-8">
-          {Object.entries(skillGroups).map(([cat, list]) => (
+    <Section id="skills" muted>
+      <SectionHeading eyebrow="Skills" title="What I work with" />
+      <div className="mt-7 space-y-7">
+        {entries.map(([cat, list]) => {
+          const learning = cat.toLowerCase().includes("learn");
+          return (
             <div key={cat}>
-              <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                {cat}
+              <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+                {CATEGORY_LABEL[cat.toLowerCase()] ?? cat}
+                {learning && <span className="ml-2 font-normal normal-case">(in progress)</span>}
               </h3>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {list.map((s, i) => (
-                  <span
-                    key={s.id}
-                    style={{ animationDelay: `${i * 30}ms` }}
-                    className="animate-fade-in rounded-full border border-border bg-surface px-4 py-1.5 text-sm font-medium text-foreground shadow-sm transition-transform hover:-translate-y-0.5 hover:border-primary/30"
-                  >
-                    {s.icon && <span className="mr-1.5">{s.icon}</span>}
-                    {s.name}
-                  </span>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {list.map((s) => (
+                  <li key={s.id}>
+                    <Chip tone={learning ? "outline" : "default"} className="px-3 py-1.5 text-sm">
+                      {s.icon && <span aria-hidden>{s.icon}</span>}
+                      {s.name}
+                    </Chip>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </section>
+    </Section>
   );
 }
+
+/* ── Achievements ────────────────────────────────────────────────────────── */
 
 export function AchievementsSection({ achievements }: { achievements: Achievement[] }) {
   return (
-    <section className="border-b border-border/60 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="Milestones" title="Achievements & badges" />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {achievements.map((a) => (
-            <a
-              key={a.id}
-              href={a.url || "#"}
-              target={a.url ? "_blank" : undefined}
-              rel="noreferrer"
-              className="group flex gap-4 rounded-2xl border border-border bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
-            >
-              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent/20 text-accent-foreground">
-                <Award className="h-5 w-5" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[10px] uppercase tracking-wide text-muted-foreground">
-                  {a.kind}
-                </div>
-                <div className="font-display text-base font-semibold text-foreground">
-                  {a.title}
-                </div>
-                {a.issuer && <div className="text-xs text-muted-foreground">{a.issuer}</div>}
-                {a.description && (
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{a.description}</p>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Section>
+      <SectionHeading eyebrow="Milestones" title="Achievements" />
+      <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+        {achievements.map((a) => {
+          const Wrapper = a.url ? "a" : "div";
+          return (
+            <li key={a.id}>
+              <Wrapper
+                {...(a.url ? { href: a.url, target: "_blank", rel: "noreferrer" } : {})}
+                className="flex h-full gap-4 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-primary/30"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent/15 text-accent">
+                  <Award className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[0.7rem] tracking-wide text-muted-foreground uppercase">
+                    {a.kind}
+                  </span>
+                  <span className="block font-display text-base font-semibold text-foreground">
+                    {a.title}
+                  </span>
+                  {a.issuer && (
+                    <span className="block text-xs text-muted-foreground">{a.issuer}</span>
+                  )}
+                  {a.description && (
+                    <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
+                      {a.description}
+                    </span>
+                  )}
+                </span>
+              </Wrapper>
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
   );
+}
+
+/* ── GitHub ──────────────────────────────────────────────────────────────── */
+
+function timeAgo(iso: string) {
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 30) return `${days}d ago`;
+  const months = Math.round(days / 30);
+  return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
 }
 
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
+  const user = useGithubUser(githubUsername);
+  const repos = useGithubRepos(githubUsername, 6);
+  const profileUrl = `https://github.com/${githubUsername}`;
+
   return (
-    <section className="border-b border-border/60 bg-surface-muted/40 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionHeading eyebrow="GitHub" title="Open-source on display" />
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
-          <div className="overflow-hidden rounded-2xl border border-border bg-surface p-4">
-            <img
-              src={`https://ghchart.rshah.org/2f4858/${githubUsername}`}
-              alt={`${githubUsername} GitHub contributions`}
-              className="w-full"
-              loading="lazy"
-            />
-          </div>
-          <div className="rounded-2xl border border-border bg-surface p-6">
-            <div className="flex items-center gap-3">
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-foreground text-background">
-                <Github className="h-6 w-6" />
-              </div>
-              <div>
-                <div className="text-xs text-muted-foreground">GitHub</div>
-                <div className="font-display text-lg font-semibold">@{githubUsername}</div>
-              </div>
+    <Section id="github" muted>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <SectionHeading eyebrow="GitHub" title="Code & activity" />
+        <Button asChild variant="outline" className="h-11">
+          <a href={profileUrl} target="_blank" rel="noreferrer">
+            <Github className="mr-1.5 h-4 w-4" /> View GitHub
+          </a>
+        </Button>
+      </div>
+
+      <div className="mt-7 rounded-2xl border border-border bg-surface p-5">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-foreground text-background">
+            <Github className="h-5 w-5" aria-hidden />
+          </span>
+          <div className="min-w-0">
+            <div className="truncate font-display text-base font-semibold text-foreground">
+              @{githubUsername}
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Follow along with my projects, contributions, and experiments.
-            </p>
-            <Button asChild className="mt-5 w-full">
-              <a href={`https://github.com/${githubUsername}`} target="_blank" rel="noreferrer">
-                <Github className="mr-1.5 h-4 w-4" /> View Profile
-              </a>
-            </Button>
+            <div className="text-xs text-muted-foreground">
+              {user.data
+                ? `${user.data.public_repos} public repositories${
+                    user.data.followers > 0 ? ` · ${user.data.followers} followers` : ""
+                  }`
+                : "Projects, experiments and daily commits"}
+            </div>
           </div>
         </div>
+
+        {repos.data && repos.data.length > 0 && (
+          <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
+            {repos.data.map((r) => (
+              <li key={r.id}>
+                <a
+                  href={r.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-start gap-3 py-3.5 transition-colors hover:text-primary"
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-center gap-1.5 font-medium text-foreground group-hover:text-primary">
+                      <span className="truncate">{r.name}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
+                    </span>
+                    {r.description && (
+                      <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">
+                        {r.description}
+                      </span>
+                    )}
+                    <span className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] text-muted-foreground">
+                      {r.language && <span>{r.language}</span>}
+                      {r.stargazers_count > 0 && (
+                        <span className="inline-flex items-center gap-1">
+                          <Star className="h-3 w-3" aria-hidden /> {r.stargazers_count}
+                        </span>
+                      )}
+                      <span>updated {timeAgo(r.pushed_at)}</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </section>
+    </Section>
   );
 }
 
+/* ── Contact ─────────────────────────────────────────────────────────────── */
+
 export function ContactSection({ profile, socials }: { profile: Profile; socials: Social[] }) {
   return (
-    <section id="contact" className="py-20">
-      <div className="mx-auto max-w-3xl px-6">
-        <SectionHeading eyebrow="Contact" title="Let's build something together" />
-        <p className="mx-auto mt-4 max-w-xl text-center text-muted-foreground">
-          Open to collaborations, feedback, and a friendly hello.
-        </p>
-        <div className="mt-10">
-          <ContactForm />
-        </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-          {profile.email && (
-            <Button asChild variant="outline" size="sm">
-              <a href={`mailto:${profile.email}`}>
-                <Mail className="mr-1.5 h-4 w-4" /> Email directly
-              </a>
-            </Button>
-          )}
-          {profile.resume_url && (
-            <Button asChild variant="ghost" size="sm">
-              <a href={profile.resume_url} target="_blank" rel="noreferrer">
-                <Download className="mr-1.5 h-4 w-4" /> Resume
-              </a>
-            </Button>
-          )}
-          {socials.slice(0, 4).map((s) => {
-            const Icon = platformIcon(s.platform);
-            return (
-              <Button asChild key={s.id} variant="ghost" size="sm">
-                <a href={s.url} target="_blank" rel="noreferrer">
-                  <Icon className="mr-1.5 h-4 w-4" />
-                  <span className="capitalize">{s.platform}</span>
-                </a>
-              </Button>
-            );
-          })}
-        </div>
+    <Section id="contact" className="border-b-0">
+      <SectionHeading
+        eyebrow="Contact"
+        title="Let's build something together"
+        description="Internships, collaborations, feedback on my work — my inbox is open."
+      />
+      <div className="mt-7 max-w-2xl">
+        <ContactForm />
       </div>
-    </section>
+      <div className="mt-6 flex flex-wrap items-center gap-2">
+        {profile.email && (
+          <Button asChild variant="outline" size="sm">
+            <a href={`mailto:${profile.email}`}>
+              <Mail className="mr-1.5 h-4 w-4" /> {profile.email}
+            </a>
+          </Button>
+        )}
+        {socials.slice(0, 4).map((s) => {
+          const Icon = platformIcon(s.platform);
+          return (
+            <Button asChild key={s.id} variant="ghost" size="sm">
+              <a href={s.url} target="_blank" rel="noreferrer">
+                <Icon className="mr-1.5 h-4 w-4" aria-hidden />
+                <span className="capitalize">{s.platform}</span>
+              </a>
+            </Button>
+          );
+        })}
+      </div>
+    </Section>
   );
 }

@@ -9,9 +9,12 @@ import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 import path from "node:path";
 
 const mcp = mcpPlugin();
-const originalConfigResolved = mcp.configResolved;
-if (originalConfigResolved) {
-  mcp.configResolved = function (config, ...args) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mcpAny = mcp as any;
+const originalConfigResolved = mcpAny.configResolved;
+if (typeof originalConfigResolved === "function") {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mcpAny.configResolved = function (this: unknown, config: any, ...args: any[]) {
     const originalRoot = config.root;
     // Normalize Vite's forward-slash root to the OS-specific path (fixes Windows bug in mcpPlugin)
     config.root = path.resolve(config.root);
@@ -20,6 +23,7 @@ if (originalConfigResolved) {
     return result;
   };
 }
+
 
 export default defineConfig({
   tanstackStart: {
