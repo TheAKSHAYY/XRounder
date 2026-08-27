@@ -14,7 +14,17 @@ export type Crumb = {
  * On mobile the middle crumbs collapse behind an ellipsis (only home, the
  * parent and the current page stay visible) so the trail never overflows.
  */
-export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: string }) {
+export function Breadcrumbs({
+  items,
+  homeTo = "/",
+  homeLabel = "Home",
+  className,
+}: {
+  items: Crumb[];
+  homeTo?: string;
+  homeLabel?: string;
+  className?: string;
+}) {
   const collapsed = items.length > 2;
 
   return (
@@ -22,9 +32,9 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
       <ol className="flex min-w-0 items-center gap-x-1.5 text-xs text-muted-foreground sm:flex-wrap sm:gap-y-1">
         <li className="flex shrink-0 items-center">
           <Link
-            to="/dashboard"
+            to={homeTo}
             className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-muted hover:text-foreground"
-            aria-label="Dashboard"
+            aria-label={homeLabel}
           >
             <Home className="h-3.5 w-3.5" aria-hidden />
           </Link>

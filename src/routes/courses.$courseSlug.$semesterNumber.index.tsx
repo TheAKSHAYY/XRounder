@@ -15,17 +15,111 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { formatRelativeDay } from "@/lib/format";
 
-export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
-  head: () => ({ meta: [{ title: "Semester · XRounder" }] }),
-  component: SemesterDetail,
-});
-
-type Subject = {
+type SubjectItem = {
   id: string;
   code: string;
   slug: string;
   title: string;
 };
+
+type SemesterData = {
+  course: { id: string; code: string; title: string; slug: string };
+  sem: { id: string; number: number; title: string; description: string | null };
+  subjects: SubjectItem[];
+};
+
+async function fetchSemesterDetails(
+  queryClient: any,
+  courseSlug: string,
+  semesterNumber: string,
+): Promise<SemesterData> {
+  const queryKey = ["public", "sem", courseSlug, semesterNumber];
+  return await queryClient.ensureQueryData({
+    queryKey,
+    queryFn: async () => {
+      const { data: course, error: ce } = await supabase
+        .from("courses")
+        .select("id, code, title, slug")
+        .eq("slug", courseSlug)
+        .eq("status", "published")
+        .maybeSingle();
+      if (ce) throw ce;
+      if (!course) throw notFound();
+
+      const { data: sem, error: se } = await supabase
+        .from("semesters")
+        .select("id, number, title, description")
+        .eq("course_id", course.id)
+        .eq("number", Number(semesterNumber))
+        .eq("status", "published")
+        .maybeSingle();
+      if (se) throw se;
+      if (!sem) throw notFound();
+
+      const { data: subjects, error: sue } = await supabase
+        .from("subjects")
+        .select("id, code, slug, title")
+        .eq("semester_id", sem.id)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .order("sort_order")
+        .order("code");
+      if (sue) throw sue;
+
+      return { course, sem, subjects: (subjects ?? []) as SubjectItem[] };
+    },
+  });
+}
+
+export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
+  loader: async ({ params, context: { queryClient } }) => {
+    const data = await fetchSemesterDetails(queryClient, params.courseSlug, params.semesterNumber);
+    if (!data) throw notFound();
+    return data;
+  },
+  head: ({ loaderData, params }) => {
+    const course = loaderData?.course;
+    const sem = loaderData?.sem;
+    const title = course && sem
+      ? `${course.title} Semester ${params.semesterNumber} (${sem.title}) Subjects & Notes · XRounder`
+      : `Semester ${params.semesterNumber} · XRounder`;
+    const description = sem?.description
+      ? sem.description
+      : course
+        ? `Browse all subjects, notes, past papers, and practice MCQs for ${course.title} Semester ${params.semesterNumber}.`
+        : "Semester-wise university curriculum subjects and notes on XRounder.";
+    const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
+  component: SemesterDetail,
+  notFoundComponent: () => (
+    <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
+      <div>
+        <h1 className="font-display text-2xl font-bold text-foreground">Semester not found</h1>
+        <p className="mt-2 text-sm text-muted-foreground">The requested semester does not exist or has not been published yet.</p>
+        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+          Back to all courses
+        </Link>
+      </div>
+    </div>
+  ),
+});
+
+type Subject = SubjectItem;
 
 type UnitRow = { id: string; subject_id: string; number: number };
 
@@ -48,6 +142,7 @@ type SubjectStats = {
 
 function SemesterDetail() {
   const { courseSlug, semesterNumber } = Route.useParams();
+  const loaderData = Route.useLoaderData();
   const { user } = useAuth();
   const qc = useQueryClient();
   const queryKey = ["public", "sem", courseSlug, semesterNumber];
@@ -86,6 +181,7 @@ function SemesterDetail() {
 
       return { course, sem, subjects: (subjects ?? []) as Subject[] };
     },
+    initialData: loaderData,
   });
 
   const semesterId = semQuery.data?.sem.id;
@@ -97,7 +193,7 @@ function SemesterDetail() {
     queryKey: ["public", "sem-units", semesterId],
     enabled: !!semesterId && subjects.length > 0,
     queryFn: async () => {
-      const subjectIds = subjects.map((s) => s.id);
+      const subjectIds = subjects.map((s: SubjectItem) => s.id);
       const { data, error } = await supabase
         .from("units")
         .select("id, subject_id, number")
@@ -181,7 +277,7 @@ function SemesterDetail() {
     const progressByUnit = new Map<string, ProgressRow>();
     for (const p of progress) progressByUnit.set(p.unit_id, p);
 
-    return subjects.map((s) => {
+    return subjects.map((s: SubjectItem) => {
       const unitList = (unitBySubject.get(s.id) ?? []).sort((a, b) => a.number - b.number);
       const total = unitList.length;
       let completed = 0;

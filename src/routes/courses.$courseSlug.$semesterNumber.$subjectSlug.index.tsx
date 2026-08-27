@@ -33,9 +33,172 @@ import { formatRelativeDay } from "@/lib/format";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
+type SubjectDetailData = {
+  course: { id: string; title: string };
+  sem: { id: string; number: number; title: string };
+  subject: { id: string; code: string; title: string; description: string | null; credits: number | null };
+  units: UnitRow[];
+  papers: any[];
+  contentByUnit: Map<string, ContentBucket>;
+  subjectContent: ContentBucket;
+};
+
+async function fetchSubjectDetails(
+  queryClient: any,
+  courseSlug: string,
+  semesterNumber: string,
+  subjectSlug: string,
+): Promise<SubjectDetailData> {
+  const queryKey = ["public", "subject", courseSlug, semesterNumber, subjectSlug];
+  return await queryClient.ensureQueryData({
+    queryKey,
+    queryFn: async () => {
+      const { data: course, error: ce } = await supabase
+        .from("courses")
+        .select("id, title")
+        .eq("slug", courseSlug)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (ce) throw ce;
+      if (!course) throw notFound();
+
+      const { data: sem, error: se } = await supabase
+        .from("semesters")
+        .select("id, number, title")
+        .eq("course_id", course.id)
+        .eq("number", Number(semesterNumber))
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (se) throw se;
+      if (!sem) throw notFound();
+
+      const { data: subject, error: sue } = await supabase
+        .from("subjects")
+        .select("id, code, title, description, credits")
+        .eq("semester_id", sem.id)
+        .eq("slug", subjectSlug)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (sue) throw sue;
+      if (!subject) throw notFound();
+
+      const { data: units, error: ue } = await supabase
+        .from("units")
+        .select("id, number, title, summary")
+        .eq("subject_id", subject.id)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .order("number");
+      if (ue) throw ue;
+
+      const unitIds = (units ?? []).map((u) => u.id);
+      const [papersRes, contentRes] = await Promise.all([
+        supabase
+          .from("papers")
+          .select("id, title, year, exam_type, paper_number")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("year", { ascending: false }),
+        unitIds.length
+          ? supabase
+              .from("content_items")
+              .select("type, unit_id")
+              .eq("subject_id", subject.id)
+              .eq("status", "published")
+              .is("deleted_at", null)
+          : Promise.resolve({
+              data: [] as Array<{ type: string; unit_id: string | null }>,
+              error: null,
+            }),
+      ]);
+
+      const contentByUnit = new Map<string, ContentBucket>();
+      const subjectContent = emptyContentBucket();
+      for (const row of (contentRes.data ?? []) as Array<{
+        type: string;
+        unit_id: string | null;
+      }>) {
+        const key = row.type as keyof ContentBucket;
+        if (key in subjectContent && key !== "total") {
+          (subjectContent as Record<string, number>)[key] += 1;
+          subjectContent.total++;
+        }
+        if (row.unit_id) {
+          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+          if (key in b && key !== "total") {
+            (b as Record<string, number>)[key] += 1;
+            b.total++;
+          }
+          contentByUnit.set(row.unit_id, b);
+        }
+      }
+
+      return {
+        course,
+        sem,
+        subject,
+        units: (units ?? []) as UnitRow[],
+        papers: papersRes.data ?? [],
+        contentByUnit,
+        subjectContent,
+      };
+    },
+  });
+}
+
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
-  head: () => ({ meta: [{ title: "Subject · XRounder" }] }),
+  loader: async ({ params, context: { queryClient } }) => {
+    const data = await fetchSubjectDetails(
+      queryClient,
+      params.courseSlug,
+      params.semesterNumber,
+      params.subjectSlug,
+    );
+    if (!data) throw notFound();
+    return data;
+  },
+  head: ({ loaderData, params }) => {
+    const subject = loaderData?.subject;
+    const course = loaderData?.course;
+    const title = subject
+      ? `${subject.title} (${subject.code}) Notes & Past Papers · XRounder`
+      : "Subject · XRounder";
+    const description = subject
+      ? `Study ${subject.title} (${subject.code}) for ${course?.title ?? "Degree"} Semester ${params.semesterNumber}. Exam-ready unit notes, past papers, and MCQs.`
+      : "Syllabus-aligned subject notes and learning resources on XRounder.";
+    const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: SubjectDetail,
+  notFoundComponent: () => (
+    <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
+      <div>
+        <h1 className="font-display text-2xl font-bold text-foreground">Subject not found</h1>
+        <p className="mt-2 text-sm text-muted-foreground">The requested subject does not exist or has not been published yet.</p>
+        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+          Back to all courses
+        </Link>
+      </div>
+    </div>
+  ),
 });
 
 type UnitRow = {
@@ -78,6 +241,7 @@ type UnitStats = {
 
 function SubjectDetail() {
   const { courseSlug, semesterNumber, subjectSlug } = Route.useParams();
+  const loaderData = Route.useLoaderData();
   const { user } = useAuth();
 
   const subjectQuery = useQuery({
@@ -177,6 +341,7 @@ function SubjectDetail() {
         subjectContent,
       };
     },
+    initialData: loaderData,
   });
 
   const subjectId = subjectQuery.data?.subject.id;
@@ -186,7 +351,7 @@ function SubjectDetail() {
     queryKey: ["student", "subject-progress", user?.id, subjectId],
     enabled: !!user?.id && units.length > 0,
     queryFn: async () => {
-      const unitIds = units.map((u) => u.id);
+      const unitIds = units.map((u: UnitRow) => u.id);
       const { data, error } = await supabase
         .from("progress_tracking")
         .select("unit_id, progress_pct, status, last_activity_at")
@@ -204,7 +369,7 @@ function SubjectDetail() {
   const unitStats: UnitStats[] = useMemo(() => {
     const byUnit = new Map<string, ProgressRow>();
     for (const p of progress) byUnit.set(p.unit_id, p);
-    return units.map((u) => {
+    return units.map((u: UnitRow) => {
       const p = byUnit.get(u.id);
       return {
         unit: u,
@@ -484,7 +649,7 @@ function SubjectDetail() {
                   No past papers archived yet for this subject.
                 </p>
               ) : (
-                subjectQuery.data.papers.map((p) => (
+                subjectQuery.data.papers.map((p: any) => (
                   <Link
                     key={p.id}
                     to="/papers/$paperId"

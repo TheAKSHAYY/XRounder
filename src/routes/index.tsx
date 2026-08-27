@@ -116,7 +116,7 @@ function Index() {
           }
         })}
       </main>
-      <SiteFooter marketing />
+      <SiteFooter />
     </div>
   );
 }

@@ -47,11 +47,207 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { slugify } from "@/lib/slug";
 import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 
+type UnitDetailData = {
+  course: { id: string; title: string };
+  sem: { id: string; number: number; title: string };
+  subject: { id: string; code: string; title: string };
+  unit: { id: string; number: number; title: string; summary: string | null };
+  items: UnitContentItem[];
+  siblings: SiblingUnit[];
+  quizzes: QuizRow[];
+};
+
+async function fetchUnitDetails(
+  queryClient: any,
+  courseSlug: string,
+  semesterNumber: string,
+  subjectSlug: string,
+  unitNumber: string,
+): Promise<UnitDetailData> {
+  const queryKey = ["public", "unit", courseSlug, semesterNumber, subjectSlug, unitNumber];
+  return await queryClient.ensureQueryData({
+    queryKey,
+    queryFn: async () => {
+      const { data: course } = await supabase
+        .from("courses")
+        .select("id, title")
+        .eq("slug", courseSlug)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (!course) throw notFound();
+
+      const { data: sem } = await supabase
+        .from("semesters")
+        .select("id, number, title")
+        .eq("course_id", course.id)
+        .eq("number", Number(semesterNumber))
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (!sem) throw notFound();
+
+      const { data: subject } = await supabase
+        .from("subjects")
+        .select("id, code, title")
+        .eq("semester_id", sem.id)
+        .eq("slug", subjectSlug)
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (!subject) throw notFound();
+
+      const { data: unit } = await supabase
+        .from("units")
+        .select("id, number, title, summary")
+        .eq("subject_id", subject.id)
+        .eq("number", Number(unitNumber))
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .maybeSingle();
+      if (!unit) throw notFound();
+
+      const [
+        { data: contentItemsRes },
+        { data: legacyNotesRes },
+        { data: siblingsRes },
+        { data: quizzesRes },
+      ] = await Promise.all([
+        supabase
+          .from("content_items")
+          .select(
+            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
+          )
+          .eq("subject_id", subject.id)
+          .or(`unit_id.eq.${unit.id},unit_id.is.null`)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("created_at", { ascending: true }),
+        supabase
+          .from("notes")
+          .select("id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at")
+          .eq("unit_id", unit.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("sort_order")
+          .order("created_at"),
+        supabase
+          .from("units")
+          .select("id, number")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("number"),
+        supabase
+          .from("quizzes")
+          .select("id, title, time_limit_minutes")
+          .eq("unit_id", unit.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("order_index"),
+      ]);
+
+      const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
+        id: c.id,
+        type: (c.type ?? "note") as UnitContentItem["type"],
+        title: c.title,
+        description: c.description,
+        body: c.description,
+        file_path: c.file_path,
+        file_bucket: c.file_bucket,
+        file_mime: c.file_mime,
+        file_size_bytes: c.file_size_bytes,
+        file_url: c.file_url,
+        tags: c.tags ?? [],
+        created_at: c.created_at ?? "",
+      }));
+
+      const itemIds = new Set(items.map((i) => i.id));
+      for (const n of legacyNotesRes ?? []) {
+        if (!itemIds.has(n.id)) {
+          items.push({
+            id: n.id,
+            type: n.file_mime === "application/pdf" ? "pdf" : "note",
+            title: n.title,
+            description: n.summary,
+            body: n.body || n.summary,
+            file_path: n.file_path,
+            file_bucket: n.file_bucket,
+            file_mime: n.file_mime,
+            file_size_bytes: n.file_size_bytes,
+            file_url: null,
+            created_at: n.created_at ?? "",
+          });
+        }
+      }
+
+      return {
+        course,
+        sem,
+        subject,
+        unit,
+        items,
+        siblings: (siblingsRes ?? []) as SiblingUnit[],
+        quizzes: (quizzesRes ?? []) as QuizRow[],
+      };
+    },
+  });
+}
+
 export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
 )({
-  head: () => ({ meta: [{ title: "Unit Learning Hub · XRounder" }] }),
+  loader: async ({ params, context: { queryClient } }) => {
+    const data = await fetchUnitDetails(
+      queryClient,
+      params.courseSlug,
+      params.semesterNumber,
+      params.subjectSlug,
+      params.unitNumber,
+    );
+    if (!data) throw notFound();
+    return data;
+  },
+  head: ({ loaderData, params }) => {
+    const unit = loaderData?.unit;
+    const subject = loaderData?.subject;
+    const title = unit && subject
+      ? `Unit ${unit.number}: ${unit.title} — ${subject.title} · XRounder`
+      : `Unit ${params.unitNumber} Learning Hub · XRounder`;
+    const description = unit?.summary
+      ? unit.summary
+      : subject
+        ? `Study Unit ${params.unitNumber} of ${subject.title} on XRounder. Exam notes, attachments, and practice MCQs.`
+        : "Unit notes, syllabus-aligned learning materials, and practice MCQs on XRounder.";
+    const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}/${params.unitNumber}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: UnitDetail,
+  notFoundComponent: () => (
+    <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
+      <div>
+        <h1 className="font-display text-2xl font-bold text-foreground">Unit not found</h1>
+        <p className="mt-2 text-sm text-muted-foreground">The requested unit does not exist or has not been published yet.</p>
+        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+          Back to all courses
+        </Link>
+      </div>
+    </div>
+  ),
 });
 
 export type UnitContentItem = {
@@ -115,6 +311,7 @@ function getVideoEmbedUrl(url: string | null | undefined): { isEmbed: boolean; s
 
 function UnitDetail() {
   const { courseSlug, semesterNumber, subjectSlug, unitNumber } = Route.useParams();
+  const loaderData = Route.useLoaderData();
   const { user } = useAuth();
   const qc = useQueryClient();
 
@@ -249,6 +446,7 @@ function UnitDetail() {
         quizzes: (quizzesRes ?? []) as QuizRow[],
       };
     },
+    initialData: loaderData,
   });
 
   const unitId = dataQuery.data?.unit.id;
@@ -358,18 +556,18 @@ function UnitDetail() {
 
   const items = dataQuery.data?.items ?? [];
   const readArticles = useMemo(
-    () => items.filter((i) => i.type === "note" || (!i.file_path && i.body)),
+    () => items.filter((i: UnitContentItem) => i.type === "note" || (!i.file_path && i.body)),
     [items],
   );
   const referenceMaterials = useMemo(
-    () => items.filter((i) => i.type === "pdf" || i.type === "ppt" || i.file_path),
+    () => items.filter((i: UnitContentItem) => i.type === "pdf" || i.type === "ppt" || i.file_path),
     [items],
   );
 
   const pyqQuestions = useMemo(
     () =>
       (quizDetailsQuery.data ?? []).filter(
-        (q) => q.exam_name || q.year || q.points >= 5,
+        (q: PyqQuestion) => q.exam_name || q.year || q.points >= 5,
       ),
     [quizDetailsQuery.data],
   );
@@ -378,7 +576,7 @@ function UnitDetail() {
 
   const toc = useMemo(
     () =>
-      readArticles.flatMap((n) => {
+      readArticles.flatMap((n: UnitContentItem) => {
         const articleSlugId = `content-${slugify(n.title)}-${n.id.slice(0, 6)}`;
         const blocks = parseMarkdownToBlocks(n.body || n.description || "");
         const subheadings = blocks
@@ -399,7 +597,7 @@ function UnitDetail() {
 
   const { prevUnit, nextUnit } = useMemo(() => {
     const list = dataQuery.data?.siblings ?? [];
-    const idx = list.findIndex((u) => u.number === Number(unitNumber));
+    const idx = list.findIndex((u: SiblingUnit) => u.number === Number(unitNumber));
     return {
       prevUnit: idx > 0 ? list[idx - 1] : null,
       nextUnit: idx >= 0 && idx < list.length - 1 ? list[idx + 1] : null,
@@ -647,7 +845,7 @@ function UnitDetail() {
                   {mobileTocOpen && (
                     <nav className="mt-3 border-t border-border/60 pt-3">
                       <ol className="space-y-1.5 text-xs">
-                        {toc.map((item, i) => (
+                        {toc.map((item: any, i: number) => (
                           <li key={item.id}>
                             <a
                               href={`#${item.id}`}
@@ -681,7 +879,7 @@ function UnitDetail() {
                 />
               ) : (
                 <div className="space-y-10 min-w-0 max-w-full">
-                  {readArticles.map((item, i) => (
+                  {readArticles.map((item: UnitContentItem, i: number) => (
                     <ContentBlock
                       key={item.id}
                       item={item}
@@ -797,7 +995,7 @@ function UnitDetail() {
                   </div>
                   <nav>
                     <ol className="space-y-1 text-xs">
-                      {toc.map((item, i) => {
+                      {toc.map((item: any, i: number) => {
                         const active = activeSection === item.id;
                         return (
                           <li key={item.id}>
@@ -854,7 +1052,7 @@ function UnitDetail() {
                 </div>
               ) : (
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {referenceMaterials.map((item) => (
+                  {referenceMaterials.map((item: UnitContentItem) => (
                     <ReferenceCard key={item.id} item={item} />
                   ))}
                 </div>

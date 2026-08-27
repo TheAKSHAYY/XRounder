@@ -20,21 +20,29 @@ import {
 export const Route = createFileRoute("/developer")({
   head: () => ({
     meta: [
-      { title: "Developer · Portfolio — XRounder" },
+      { title: "Developer Portfolio · Engineering — XRounder" },
       {
         name: "description",
         content:
-          "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, GitHub activity, and a way to say hi.",
+          "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, GitHub activity, and contact details.",
       },
-      { property: "og:title", content: "Developer · Portfolio — XRounder" },
+      { property: "og:title", content: "Developer Portfolio · Engineering — XRounder" },
       {
         property: "og:description",
         content:
           "Featured projects, tech stack, achievements and contact — the maker behind XRounder.",
       },
+      { property: "og:url", content: "https://www.xrounder.in/developer" },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Developer Portfolio · Engineering — XRounder" },
+      {
+        name: "twitter:description",
+        content:
+          "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, and contact details.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
   }),
   component: DeveloperPage,
 });

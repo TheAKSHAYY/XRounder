@@ -6,14 +6,100 @@ import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
+type CourseItem = {
+  id: string;
+  code: string;
+  title: string;
+  description: string | null;
+  duration_years: number | null;
+  total_semesters: number | null;
+};
+
+type SemesterItem = {
+  id: string;
+  number: number;
+  title: string;
+  description: string | null;
+};
+
+type CourseDetailData = {
+  course: CourseItem;
+  semesters: SemesterItem[];
+};
+
+async function fetchCourseDetails(queryClient: any, courseSlug: string): Promise<CourseDetailData> {
+  const course = await queryClient.ensureQueryData({
+    queryKey: ["public", "course", courseSlug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("courses")
+        .select("id, code, title, description, duration_years, total_semesters")
+        .eq("slug", courseSlug)
+        .eq("status", "published")
+        .maybeSingle();
+      if (error) throw error;
+      if (!data) throw notFound();
+      return data as CourseItem;
+    },
+  });
+
+  if (!course) throw notFound();
+
+  const semesters = await queryClient.ensureQueryData({
+    queryKey: ["public", "semesters", course.id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("semesters")
+        .select("id, number, title, description")
+        .eq("course_id", course.id)
+        .eq("status", "published")
+        .order("number");
+      if (error) throw error;
+      return (data ?? []) as SemesterItem[];
+    },
+  });
+
+  return { course, semesters };
+}
+
 export const Route = createFileRoute("/courses/$courseSlug/")({
-  head: () => ({ meta: [{ title: "Course · XRounder" }] }),
+  loader: async ({ params, context: { queryClient } }) => {
+    return await fetchCourseDetails(queryClient, params.courseSlug);
+  },
+  head: ({ loaderData, params }) => {
+    const course = loaderData?.course;
+    const title = course
+      ? `${course.title} (${course.code}) Syllabus & Semester Notes · XRounder`
+      : "Course · XRounder";
+    const description = course?.description
+      ? course.description
+      : course
+        ? `Explore semester-wise syllabus, notes, past papers, and practice MCQs for ${course.title}.`
+        : "Browse syllabus-aligned degree courses on XRounder.";
+    const url = `https://www.xrounder.in/courses/${params.courseSlug}`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: CourseDetail,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
-        <h1 className="font-display text-2xl text-foreground">Course not found</h1>
-        <Link to="/courses" className="mt-3 inline-block text-primary hover:underline">
+        <h1 className="font-display text-2xl font-bold text-foreground">Course not found</h1>
+        <p className="mt-2 text-sm text-muted-foreground">The requested program does not exist or has been unpublished.</p>
+        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
           Back to all courses
         </Link>
       </div>
@@ -23,6 +109,7 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
 
 function CourseDetail() {
   const { courseSlug } = Route.useParams();
+  const loaderData = Route.useLoaderData();
 
   const courseQuery = useQuery({
     queryKey: ["public", "course", courseSlug],
@@ -37,6 +124,7 @@ function CourseDetail() {
       if (!data) throw notFound();
       return data;
     },
+    initialData: loaderData?.course,
   });
 
   const semestersQuery = useQuery({
@@ -52,6 +140,7 @@ function CourseDetail() {
       if (error) throw error;
       return data;
     },
+    initialData: loaderData?.semesters,
   });
 
   return (
@@ -96,7 +185,7 @@ function CourseDetail() {
                 Semesters are being prepared.
               </p>
             )}
-            {semestersQuery.data?.map((s) => (
+            {semestersQuery.data?.map((s: SemesterItem) => (
               <Link
                 key={s.id}
                 to="/courses/$courseSlug/$semesterNumber"

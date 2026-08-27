@@ -6,3 +6,6 @@ Disallow: /admin/
 Disallow: /_authenticated/
 Disallow: /setup
 Disallow: /reset-password
+
+Sitemap: https://www.xrounder.in/sitemap.xml
+

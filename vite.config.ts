@@ -6,6 +6,20 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
+import path from "node:path";
+
+const mcp = mcpPlugin();
+const originalConfigResolved = mcp.configResolved;
+if (originalConfigResolved) {
+  mcp.configResolved = function (config, ...args) {
+    const originalRoot = config.root;
+    // Normalize Vite's forward-slash root to the OS-specific path (fixes Windows bug in mcpPlugin)
+    config.root = path.resolve(config.root);
+    const result = originalConfigResolved.call(this, config, ...args);
+    config.root = originalRoot;
+    return result;
+  };
+}
 
 export default defineConfig({
   tanstackStart: {
@@ -14,6 +28,6 @@ export default defineConfig({
     server: { entry: "server" },
   },
   vite: {
-    plugins: [mcpPlugin()],
+    plugins: [mcp],
   },
 });

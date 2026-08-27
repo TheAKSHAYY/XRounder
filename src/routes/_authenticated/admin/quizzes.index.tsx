@@ -51,6 +51,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
+import { UnitSelector } from "@/components/admin/ui/unit-selector";
 
 export const Route = createFileRoute("/_authenticated/admin/quizzes/")({
   head: () => ({ meta: [{ title: "Question Bank · Admin · XRounder" }] }),
@@ -88,7 +89,12 @@ type UnitLite = {
   number: number;
   title: string;
   subject_id: string;
-  subject?: { id: string; code: string; title: string } | null;
+  subject?: { 
+    id: string; 
+    code: string; 
+    title: string;
+    semester?: { id: string; number: number; title: string } | null;
+  } | null;
 };
 
 const STATUSES = [
@@ -129,7 +135,7 @@ function AdminQuizzesList() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("units")
-        .select("id, number, title, subject_id, subject:subjects(id, code, title)")
+        .select("id, number, title, subject_id, subject:subjects(id, code, title, semester:semesters(id, number, title))")
         .order("number");
       if (error) throw error;
       return (data ?? []) as unknown as UnitLite[];
@@ -501,18 +507,11 @@ function QuizDialog({
         <div className="grid gap-4">
           <div>
             <Label>Unit</Label>
-            <Select value={unitId} onValueChange={setUnitId}>
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Select unit" />
-              </SelectTrigger>
-              <SelectContent>
-                {units.map((u) => (
-                  <SelectItem key={u.id} value={u.id}>
-                    {u.subject ? `${u.subject.code} · ` : ""}U{u.number} · {u.title}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <UnitSelector
+              units={units}
+              value={unitId}
+              onChange={setUnitId}
+            />
           </div>
           <div>
             <Label>Title</Label>

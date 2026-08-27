@@ -19,51 +19,81 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGuestLearningPrefs } from "@/lib/learning-prefs";
 
+type CourseItem = {
+  id: string;
+  code: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  duration_years: number | null;
+  total_semesters: number | null;
+};
+
+async function fetchPublicCourses(): Promise<CourseItem[]> {
+  const { data, error } = await supabase
+    .from("courses")
+    .select("id, code, title, slug, description, duration_years, total_semesters")
+    .eq("status", "published")
+    .is("deleted_at", null)
+    .order("sort_order");
+  if (error) throw error;
+  return (data ?? []) as CourseItem[];
+}
+
 export const Route = createFileRoute("/courses/")({
+  loader: async ({ context: { queryClient } }) => {
+    return await queryClient.ensureQueryData({
+      queryKey: ["public", "courses"],
+      queryFn: fetchPublicCourses,
+    });
+  },
   head: () => ({
     meta: [
-      { title: "Academic Programs & Courses · XRounder" },
+      { title: "Academic Programs & Degree Courses · XRounder" },
       {
         name: "description",
         content:
-          "Browse all degree programs on XRounder — syllabus-aligned notes, previous year papers, and practice questions.",
+          "Browse syllabus-aligned degree courses, notes, previous year papers, and practice questions for BCA, B.Tech, and university exams on XRounder.",
       },
-      { property: "og:title", content: "All Courses · XRounder" },
+      { property: "og:title", content: "Academic Programs & Degree Courses · XRounder" },
       {
         property: "og:description",
         content:
-          "Browse every XRounder program with semester-by-semester subjects, notes, papers and quizzes.",
+          "Browse every XRounder degree program with semester-by-semester subjects, notes, past papers, and practice MCQs.",
+      },
+      { property: "og:url", content: "https://www.xrounder.in/courses" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Academic Programs & Degree Courses · XRounder" },
+      {
+        name: "twitter:description",
+        content:
+          "Browse syllabus-aligned degree courses, notes, previous year papers, and practice questions on XRounder.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/courses" }],
   }),
   component: CoursesIndex,
 });
 
 function CoursesIndex() {
+  const initialCourses = Route.useLoaderData();
   const [search, setSearch] = useState("");
   const { prefs: guestPrefs } = useGuestLearningPrefs();
 
   const { data, isLoading } = useQuery({
     queryKey: ["public", "courses"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("courses")
-        .select("id, code, title, slug, description, duration_years, total_semesters")
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("sort_order");
-      if (error) throw error;
-      return data ?? [];
-    },
+    queryFn: fetchPublicCourses,
+    initialData: initialCourses,
   });
 
-  const courses = data ?? [];
+  const courses: CourseItem[] = (data ?? []) as CourseItem[];
 
   const filteredCourses = useMemo(() => {
     if (!search.trim()) return courses;
     const q = search.toLowerCase();
     return courses.filter(
-      (c) =>
+      (c: CourseItem) =>
         c.title.toLowerCase().includes(q) ||
         c.code.toLowerCase().includes(q) ||
         (c.description && c.description.toLowerCase().includes(q)),
@@ -148,7 +178,7 @@ function CoursesIndex() {
             </div>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredCourses.map((c) => (
+              {filteredCourses.map((c: CourseItem) => (
                 <Link
                   key={c.id}
                   to="/courses/$courseSlug"
