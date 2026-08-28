@@ -314,22 +314,24 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
       <Reveal className="mt-7">
         <article className="overflow-hidden rounded-2xl border border-border bg-surface">
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
-            {featured.thumbnail_url ? (
+            <div
+              aria-hidden
+              className="absolute inset-0 grid place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
+            >
+              <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
+                {featured.name}
+              </span>
+            </div>
+            {featured.thumbnail_url && (
               <img
                 src={featured.thumbnail_url}
                 alt={`${featured.name} interface`}
-                className="h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
               />
-            ) : (
-              <div
-                aria-hidden
-                className="grid h-full place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
-              >
-                <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
-                  {featured.name}
-                </span>
-              </div>
             )}
             <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-lg border border-border/60 bg-background/80 px-2 py-1 text-[0.7rem] font-medium text-foreground backdrop-blur">
               <Star className="h-3 w-3 text-accent" aria-hidden /> Flagship
