@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  ArrowUpRight,
   Award,
   BookOpen,
   ExternalLink,
@@ -599,15 +598,6 @@ export function AchievementsSection({ achievements }: { achievements: Achievemen
 
 /* ── GitHub ──────────────────────────────────────────────────────────────── */
 
-function timeAgo(iso: string) {
-  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
-  if (days <= 0) return "today";
-  if (days === 1) return "yesterday";
-  if (days < 30) return `${days}d ago`;
-  const months = Math.round(days / 30);
-  return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
-}
-
 const LEVEL_CLASS = [
   "bg-border/50",
   "bg-primary/25",
@@ -758,49 +748,6 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
         )}
 
         <ContributionGraph username={githubUsername} />
-
-        {repos.data && repos.data.length > 0 && (
-          <p className="mt-5 text-[0.7rem] tracking-wide text-muted-foreground uppercase">
-            Recent repositories
-          </p>
-        )}
-
-
-        {repos.data && repos.data.length > 0 && (
-          <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
-            {repos.data.map((r) => (
-              <li key={r.id}>
-                <a
-                  href={r.html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start gap-3 py-3.5 transition-colors hover:text-primary"
-                >
-                  <span className="min-w-0 flex-1">
-                    <span className="flex items-center gap-1.5 font-medium text-foreground group-hover:text-primary">
-                      <span className="truncate">{r.name}</span>
-                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
-                    </span>
-                    {r.description && (
-                      <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">
-                        {r.description}
-                      </span>
-                    )}
-                    <span className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] text-muted-foreground">
-                      {r.language && <span>{r.language}</span>}
-                      {r.stargazers_count > 0 && (
-                        <span className="inline-flex items-center gap-1">
-                          <Star className="h-3 w-3" aria-hidden /> {r.stargazers_count}
-                        </span>
-                      )}
-                      <span>updated {timeAgo(r.pushed_at)}</span>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </Section>
   );
