@@ -36,8 +36,46 @@ export const Route = createFileRoute("/")({
         content:
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
+      { property: "og:url", content: "https://www.xrounder.in/" },
+      { property: "og:type", content: "website" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://www.xrounder.in/#website",
+              "url": "https://www.xrounder.in/",
+              "name": "XRounder",
+              "description":
+                "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+              "publisher": {
+                "@id": "https://www.xrounder.in/#organization",
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.xrounder.in/courses?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            },
+            {
+              "@type": "EducationalOrganization",
+              "@id": "https://www.xrounder.in/#organization",
+              "name": "XRounder",
+              "url": "https://www.xrounder.in/",
+              "logo": "https://www.xrounder.in/xrounder-mark.png",
+              "sameAs": ["https://github.com/TheAKSHAYY"],
+              "description":
+                "Structured semester-by-semester learning platform with syllabus-aligned notes, past university papers, and practice exams.",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });

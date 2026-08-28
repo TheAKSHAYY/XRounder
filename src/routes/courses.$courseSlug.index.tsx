@@ -1,10 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, BookOpen, Layers } from "lucide-react";
+import { BookOpen, Layers } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 
 type CourseItem = {
   id: string;
@@ -78,6 +79,47 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
         : "Browse syllabus-aligned degree courses on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}`;
 
+    const schemas: any[] = [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.xrounder.in/",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Courses",
+            "item": "https://www.xrounder.in/courses",
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": course?.title ?? "Course",
+            "item": url,
+          },
+        ],
+      },
+    ];
+
+    if (course) {
+      schemas.push({
+        "@type": "Course",
+        "name": course.title,
+        "description": description,
+        "courseCode": course.code,
+        "url": url,
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "XRounder",
+          "url": "https://www.xrounder.in/",
+        },
+      });
+    }
+
     return {
       meta: [
         { title },
@@ -91,6 +133,15 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
         { name: "twitter:description", content: description },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": schemas,
+          }),
+        },
+      ],
     };
   },
   component: CourseDetail,
@@ -147,12 +198,12 @@ function CourseDetail() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-12">
-        <Link
-          to="/courses"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> All courses
-        </Link>
+        <Breadcrumbs
+          items={[
+            { label: "Courses", to: "/courses" },
+            { label: courseQuery.data?.title ?? "Course" },
+          ]}
+        />
 
         {courseQuery.data && (
           <div className="mt-6 flex items-start gap-4">

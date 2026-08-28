@@ -14,8 +14,39 @@ export const Route = createFileRoute("/privacy")({
         property: "og:description",
         content: "How XRounder collects, uses, and protects student data.",
       },
+      { property: "og:url", content: "https://www.xrounder.in/privacy" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Privacy Policy · XRounder" },
+      {
+        name: "twitter:description",
+        content: "How XRounder collects, uses, and protects student data.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/privacy" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.xrounder.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy Policy",
+              "item": "https://www.xrounder.in/privacy",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: PrivacyPage,
 });

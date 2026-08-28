@@ -221,6 +221,71 @@ export const Route = createFileRoute(
         : "Unit notes, syllabus-aligned learning materials, and practice MCQs on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}/${params.unitNumber}`;
 
+    const schemas: any[] = [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.xrounder.in/",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Courses",
+            "item": "https://www.xrounder.in/courses",
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": course?.title ?? "Course",
+            "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": `Semester ${params.semesterNumber}`,
+            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": subject?.title ?? "Subject",
+            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": unit ? `Unit ${unit.number}: ${unit.title}` : `Unit ${params.unitNumber}`,
+            "item": url,
+          },
+        ],
+      },
+    ];
+
+    if (unit && subject) {
+      schemas.push({
+        "@type": "LearningResource",
+        "name": `Unit ${unit.number}: ${unit.title}`,
+        "description": description,
+        "learningResourceType": "Study Guide",
+        "educationalLevel": "Undergraduate",
+        "url": url,
+        "isPartOf": {
+          "@type": "Course",
+          "name": subject.title,
+          "courseCode": subject.code,
+        },
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "XRounder",
+          "url": "https://www.xrounder.in/",
+        },
+      });
+    }
+
     return {
       meta: [
         { title },
@@ -234,6 +299,15 @@ export const Route = createFileRoute(
         { name: "twitter:description", content: description },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": schemas,
+          }),
+        },
+      ],
     };
   },
   component: UnitDetail,

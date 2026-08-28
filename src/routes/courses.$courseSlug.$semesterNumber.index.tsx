@@ -103,6 +103,41 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
         { name: "twitter:description", content: description },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.xrounder.in/",
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Courses",
+                "item": "https://www.xrounder.in/courses",
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": course?.title ?? "Course",
+                "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": sem ? `Semester ${sem.number}` : `Semester ${params.semesterNumber}`,
+                "item": url,
+              },
+            ],
+          }),
+        },
+      ],
     };
   },
   component: SemesterDetail,

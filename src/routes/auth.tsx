@@ -44,6 +44,7 @@ export const Route = createFileRoute("/auth")({
           "Sign in or create your XRounder account to access notes, papers, videos, and MCQ practice.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/auth" }],
   }),
   component: AuthPage,
 });

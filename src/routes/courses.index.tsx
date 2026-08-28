@@ -72,6 +72,29 @@ export const Route = createFileRoute("/courses/")({
       },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/courses" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.xrounder.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Courses",
+              "item": "https://www.xrounder.in/courses",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: CoursesIndex,
 });

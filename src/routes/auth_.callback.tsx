@@ -10,6 +10,12 @@ import { resolvePostAuthRoute } from "@/lib/post-auth";
 export const Route = createFileRoute("/auth_/callback")({
   ssr: false,
   validateSearch: (s) => z.object({ redirect: z.string().optional() }).parse(s),
+  head: () => ({
+    meta: [
+      { title: "Authenticating · XRounder" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+  }),
   component: AuthCallbackPage,
 });
 

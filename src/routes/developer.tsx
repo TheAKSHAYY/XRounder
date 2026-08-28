@@ -44,6 +44,45 @@ export const Route = createFileRoute("/developer")({
       },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.xrounder.in/",
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Developer Portfolio",
+                  "item": "https://www.xrounder.in/developer",
+                },
+              ],
+            },
+            {
+              "@type": "ProfilePage",
+              "name": "Developer Portfolio · XRounder",
+              "url": "https://www.xrounder.in/developer",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Akshay",
+                "url": "https://www.xrounder.in/developer",
+                "sameAs": ["https://github.com/TheAKSHAYY"],
+                "jobTitle": "Full-Stack Software Engineer",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: DeveloperPage,
 });

@@ -11,7 +11,35 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/papers/$paperId")({
-  head: () => ({ meta: [{ title: "Question Paper · XRounder" }] }),
+  head: ({ params }) => {
+    const url = `https://www.xrounder.in/papers/${params.paperId}`;
+    return {
+      meta: [
+        { title: "University Question Paper · XRounder" },
+        {
+          name: "description",
+          content:
+            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
+        },
+        { property: "og:title", content: "University Question Paper · XRounder" },
+        {
+          property: "og:description",
+          content:
+            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
+        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "University Question Paper · XRounder" },
+        {
+          name: "twitter:description",
+          content:
+            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
+        },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: PaperViewer,
 });
 

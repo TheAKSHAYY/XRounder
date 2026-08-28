@@ -40,10 +40,40 @@ export const Route = createFileRoute("/explore")({
         content:
           "Browse courses, notes, papers and sample quiz questions with no account needed.",
       },
+      { property: "og:url", content: "https://www.xrounder.in/explore" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Explore as a guest · XRounder" },
+      {
+        name: "twitter:description",
+        content:
+          "Browse courses, notes, papers and sample quiz questions with no account needed.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/explore" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.xrounder.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Explore",
+              "item": "https://www.xrounder.in/explore",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: ExplorePage,
 });

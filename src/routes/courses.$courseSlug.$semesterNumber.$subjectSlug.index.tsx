@@ -172,6 +172,59 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
       : "Syllabus-aligned subject notes and learning resources on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`;
 
+    const schemas: any[] = [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.xrounder.in/",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Courses",
+            "item": "https://www.xrounder.in/courses",
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": course?.title ?? "Course",
+            "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": `Semester ${params.semesterNumber}`,
+            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": subject?.title ?? "Subject",
+            "item": url,
+          },
+        ],
+      },
+    ];
+
+    if (subject) {
+      schemas.push({
+        "@type": "Course",
+        "name": subject.title,
+        "description": description,
+        "courseCode": subject.code,
+        "url": url,
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "XRounder",
+          "url": "https://www.xrounder.in/",
+        },
+      });
+    }
+
     return {
       meta: [
         { title },
@@ -185,6 +238,15 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
         { name: "twitter:description", content: description },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": schemas,
+          }),
+        },
+      ],
     };
   },
   component: SubjectDetail,

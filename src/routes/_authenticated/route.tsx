@@ -6,6 +6,9 @@ import { MobileTabBar } from "@/components/student/mobile-tab-bar";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
+  head: () => ({
+    meta: [{ name: "robots", content: "noindex, nofollow" }],
+  }),
   beforeLoad: async ({ location }) => {
     const { data: sessionData } = await supabase.auth.getSession();
     if (!sessionData.session) {

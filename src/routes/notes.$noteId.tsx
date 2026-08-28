@@ -12,7 +12,35 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const Route = createFileRoute("/notes/$noteId")({
-  head: () => ({ meta: [{ title: "Study Note · XRounder" }] }),
+  head: ({ params }) => {
+    const url = `https://www.xrounder.in/notes/${params.noteId}`;
+    return {
+      meta: [
+        { title: "Study Note & Reading Material · XRounder" },
+        {
+          name: "description",
+          content:
+            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
+        },
+        { property: "og:title", content: "Study Note & Reading Material · XRounder" },
+        {
+          property: "og:description",
+          content:
+            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
+        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "Study Note & Reading Material · XRounder" },
+        {
+          name: "twitter:description",
+          content:
+            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
+        },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: NoteViewer,
 });
 

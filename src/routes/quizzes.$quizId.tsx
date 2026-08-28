@@ -22,24 +22,35 @@ import { useGuest } from "@/hooks/use-guest";
 import { GUEST_LIMITS } from "@/lib/guest";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
-  head: () => ({
-    meta: [
-      { title: "Quiz · XRounder" },
-      {
-        name: "description",
-        content:
-          "Take an interactive quiz with instant feedback and a detailed performance summary.",
-      },
-      { property: "og:title", content: "Quiz · XRounder" },
-      {
-        property: "og:description",
-        content:
-          "Take an interactive quiz with instant feedback and a detailed performance summary.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: ({ params }) => {
+    const url = `https://www.xrounder.in/quizzes/${params.quizId}`;
+    return {
+      meta: [
+        { title: "MCQ Practice Quiz · XRounder" },
+        {
+          name: "description",
+          content:
+            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
+        },
+        { property: "og:title", content: "MCQ Practice Quiz · XRounder" },
+        {
+          property: "og:description",
+          content:
+            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
+        },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "MCQ Practice Quiz · XRounder" },
+        {
+          name: "twitter:description",
+          content:
+            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
+        },
+      ],
+      links: [{ rel: "canonical", href: url }],
+    };
+  },
   component: QuizPage,
 });
 

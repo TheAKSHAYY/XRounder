@@ -8,8 +8,36 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: "The terms that govern your use of XRounder." },
       { property: "og:title", content: "Terms of Use · XRounder" },
       { property: "og:description", content: "The terms that govern your use of XRounder." },
+      { property: "og:url", content: "https://www.xrounder.in/terms" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Terms of Use · XRounder" },
+      { name: "twitter:description", content: "The terms that govern your use of XRounder." },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/terms" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.xrounder.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Terms of Use",
+              "item": "https://www.xrounder.in/terms",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: TermsPage,
 });

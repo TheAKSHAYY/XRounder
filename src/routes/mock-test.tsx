@@ -43,8 +43,46 @@ export const Route = createFileRoute("/mock-test")({
         content:
           "Generate customized multi-unit mock exams with realistic timers, question banks, and instant unit-by-unit weakness analytics.",
       },
+      { property: "og:title", content: "Custom Mock Test & Exam Simulator · XRounder" },
+      {
+        property: "og:description",
+        content:
+          "Generate customized multi-unit mock exams with realistic timers, question banks, and instant unit-by-unit weakness analytics.",
+      },
+      { property: "og:url", content: "https://www.xrounder.in/mock-test" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Custom Mock Test & Exam Simulator · XRounder" },
+      {
+        name: "twitter:description",
+        content:
+          "Generate customized multi-unit mock exams with realistic timers, question banks, and instant unit-by-unit weakness analytics.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/mock-test" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.xrounder.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Mock Test",
+              "item": "https://www.xrounder.in/mock-test",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: MockTestPage,
 });
