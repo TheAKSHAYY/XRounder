@@ -106,7 +106,7 @@ function DeveloperPage() {
   const githubSocial = socials.find((s) => s.platform.toLowerCase() === "github");
   const githubUsername =
     profile.github_username ||
-    (githubSocial ? githubSocial.url.replace(/\/$/, "").split("/").pop() : null);
+    (githubSocial ? (githubSocial.url.replace(/\/$/, "").split("/").pop() ?? null) : null);
 
   return (
     <div className="bg-background">
