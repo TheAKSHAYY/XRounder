@@ -13,26 +13,34 @@ interface SitemapEntry {
   priority?: string;
 }
 
+function escapeXml(unsafe: string): string {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      case "'":
+        return "&apos;";
+      case '"':
+        return "&quot;";
+      default:
+        return c;
+    }
+  });
+}
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const supabaseUrl =
-          process.env.SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL;
-        const supabaseKey =
-          process.env.SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-
-        const supabase = createClient<Database>(supabaseUrl!, supabaseKey!, {
-          auth: {
-            storage: undefined,
-            persistSession: false,
-            autoRefreshToken: false,
-          },
-        });
-
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/courses", changefreq: "daily", priority: "0.9" },
+          { path: "/explore", changefreq: "weekly", priority: "0.8" },
+          { path: "/mock-test", changefreq: "weekly", priority: "0.8" },
           { path: "/developer", changefreq: "monthly", priority: "0.7" },
           { path: "/privacy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms", changefreq: "yearly", priority: "0.3" },
@@ -40,119 +48,144 @@ export const Route = createFileRoute("/sitemap.xml")({
 
         const pathSet = new Set<string>(entries.map((e) => e.path));
 
-        // 1. Published courses → /courses/:courseSlug
-        const { data: courses } = await supabase
-          .from("courses")
-          .select("id, slug, updated_at")
-          .eq("status", "published")
-          .is("deleted_at", null);
+        try {
+          const supabaseUrl =
+            process.env.SUPABASE_URL ||
+            (typeof import.meta !== "undefined" && import.meta.env
+              ? import.meta.env.VITE_SUPABASE_URL
+              : undefined);
+          const supabaseKey =
+            process.env.SUPABASE_PUBLISHABLE_KEY ||
+            (typeof import.meta !== "undefined" && import.meta.env
+              ? import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+              : undefined);
 
-        const courseMap = new Map<string, string>();
-        for (const c of courses ?? []) {
-          if (!c.slug) continue;
-          courseMap.set(c.id, c.slug);
-          const p = `/courses/${c.slug}`;
-          if (!pathSet.has(p)) {
-            pathSet.add(p);
-            entries.push({
-              path: p,
-              lastmod: c.updated_at ?? undefined,
-              changefreq: "weekly",
-              priority: "0.8",
+          if (supabaseUrl && supabaseKey) {
+            const supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+              auth: {
+                storage: undefined,
+                persistSession: false,
+                autoRefreshToken: false,
+              },
             });
-          }
-        }
 
-        // 2. Published semesters → /courses/:courseSlug/:semesterNumber
-        if (courseMap.size > 0) {
-          const { data: semesters } = await supabase
-            .from("semesters")
-            .select("id, course_id, number, updated_at")
-            .in("course_id", Array.from(courseMap.keys()))
-            .eq("status", "published")
-            .is("deleted_at", null);
-
-          const semMap = new Map<string, { courseSlug: string; number: number }>();
-          for (const s of semesters ?? []) {
-            const courseSlug = courseMap.get(s.course_id);
-            if (!courseSlug || s.number == null) continue;
-            semMap.set(s.id, { courseSlug, number: s.number });
-            const p = `/courses/${courseSlug}/${s.number}`;
-            if (!pathSet.has(p)) {
-              pathSet.add(p);
-              entries.push({
-                path: p,
-                lastmod: s.updated_at ?? undefined,
-                changefreq: "weekly",
-                priority: "0.8",
-              });
-            }
-          }
-
-          // 3. Published subjects → /courses/:courseSlug/:semesterNumber/:subjectSlug
-          if (semMap.size > 0) {
-            const { data: subjects } = await supabase
-              .from("subjects")
-              .select("id, semester_id, slug, updated_at")
-              .in("semester_id", Array.from(semMap.keys()))
+            // 1. Published courses → /courses/:courseSlug
+            const { data: courses } = await supabase
+              .from("courses")
+              .select("id, slug, updated_at")
               .eq("status", "published")
               .is("deleted_at", null);
 
-            const subjectMap = new Map<string, { courseSlug: string; semesterNumber: number; slug: string }>();
-            for (const subj of subjects ?? []) {
-              const semInfo = semMap.get(subj.semester_id);
-              if (!semInfo || !subj.slug) continue;
-              subjectMap.set(subj.id, {
-                courseSlug: semInfo.courseSlug,
-                semesterNumber: semInfo.number,
-                slug: subj.slug,
-              });
-              const p = `/courses/${semInfo.courseSlug}/${semInfo.number}/${subj.slug}`;
+            const courseMap = new Map<string, string>();
+            for (const c of courses ?? []) {
+              if (!c.slug) continue;
+              courseMap.set(c.id, c.slug);
+              const p = `/courses/${c.slug}`;
               if (!pathSet.has(p)) {
                 pathSet.add(p);
                 entries.push({
                   path: p,
-                  lastmod: subj.updated_at ?? undefined,
+                  lastmod: c.updated_at ?? undefined,
                   changefreq: "weekly",
-                  priority: "0.7",
+                  priority: "0.8",
                 });
               }
             }
 
-            // 4. Published units → /courses/:courseSlug/:semesterNumber/:subjectSlug/:unitNumber
-            if (subjectMap.size > 0) {
-              const { data: units } = await supabase
-                .from("units")
-                .select("id, subject_id, number, updated_at")
-                .in("subject_id", Array.from(subjectMap.keys()))
+            // 2. Published semesters → /courses/:courseSlug/:semesterNumber
+            if (courseMap.size > 0) {
+              const { data: semesters } = await supabase
+                .from("semesters")
+                .select("id, course_id, number, updated_at")
+                .in("course_id", Array.from(courseMap.keys()))
                 .eq("status", "published")
                 .is("deleted_at", null);
 
-              for (const u of units ?? []) {
-                const subjInfo = subjectMap.get(u.subject_id);
-                if (!subjInfo || u.number == null) continue;
-                const p = `/courses/${subjInfo.courseSlug}/${subjInfo.semesterNumber}/${subjInfo.slug}/${u.number}`;
+              const semMap = new Map<string, { courseSlug: string; number: number }>();
+              for (const s of semesters ?? []) {
+                const courseSlug = courseMap.get(s.course_id);
+                if (!courseSlug || s.number == null) continue;
+                semMap.set(s.id, { courseSlug, number: s.number });
+                const p = `/courses/${courseSlug}/${s.number}`;
                 if (!pathSet.has(p)) {
                   pathSet.add(p);
                   entries.push({
                     path: p,
-                    lastmod: u.updated_at ?? undefined,
+                    lastmod: s.updated_at ?? undefined,
                     changefreq: "weekly",
-                    priority: "0.7",
+                    priority: "0.8",
                   });
+                }
+              }
+
+              // 3. Published subjects → /courses/:courseSlug/:semesterNumber/:subjectSlug
+              if (semMap.size > 0) {
+                const { data: subjects } = await supabase
+                  .from("subjects")
+                  .select("id, semester_id, slug, updated_at")
+                  .in("semester_id", Array.from(semMap.keys()))
+                  .eq("status", "published")
+                  .is("deleted_at", null);
+
+                const subjectMap = new Map<string, { courseSlug: string; semesterNumber: number; slug: string }>();
+                for (const subj of subjects ?? []) {
+                  const semInfo = semMap.get(subj.semester_id);
+                  if (!semInfo || !subj.slug) continue;
+                  subjectMap.set(subj.id, {
+                    courseSlug: semInfo.courseSlug,
+                    semesterNumber: semInfo.number,
+                    slug: subj.slug,
+                  });
+                  const p = `/courses/${semInfo.courseSlug}/${semInfo.number}/${subj.slug}`;
+                  if (!pathSet.has(p)) {
+                    pathSet.add(p);
+                    entries.push({
+                      path: p,
+                      lastmod: subj.updated_at ?? undefined,
+                      changefreq: "weekly",
+                      priority: "0.7",
+                    });
+                  }
+                }
+
+                // 4. Published units → /courses/:courseSlug/:semesterNumber/:subjectSlug/:unitNumber
+                if (subjectMap.size > 0) {
+                  const { data: units } = await supabase
+                    .from("units")
+                    .select("id, subject_id, number, updated_at")
+                    .in("subject_id", Array.from(subjectMap.keys()))
+                    .eq("status", "published")
+                    .is("deleted_at", null);
+
+                  for (const u of units ?? []) {
+                    const subjInfo = subjectMap.get(u.subject_id);
+                    if (!subjInfo || u.number == null) continue;
+                    const p = `/courses/${subjInfo.courseSlug}/${subjInfo.semesterNumber}/${subjInfo.slug}/${u.number}`;
+                    if (!pathSet.has(p)) {
+                      pathSet.add(p);
+                      entries.push({
+                        path: p,
+                        lastmod: u.updated_at ?? undefined,
+                        changefreq: "weekly",
+                        priority: "0.7",
+                      });
+                    }
+                  }
                 }
               }
             }
           }
+        } catch (error) {
+          console.error("[sitemap] Failed to fetch dynamic database routes:", error);
         }
 
         const urls = entries.map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
-            e.lastmod ? `    <lastmod>${e.lastmod.split("T")[0]}</lastmod>` : null,
-            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-            e.priority ? `    <priority>${e.priority}</priority>` : null,
+            `    <loc>${escapeXml(`${BASE_URL}${e.path}`)}</loc>`,
+            e.lastmod ? `    <lastmod>${escapeXml(e.lastmod.split("T")[0])}</lastmod>` : null,
+            e.changefreq ? `    <changefreq>${escapeXml(e.changefreq)}</changefreq>` : null,
+            e.priority ? `    <priority>${escapeXml(e.priority)}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
@@ -176,4 +209,5 @@ export const Route = createFileRoute("/sitemap.xml")({
     },
   },
 });
+
 

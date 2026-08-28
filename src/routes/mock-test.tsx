@@ -44,6 +44,7 @@ export const Route = createFileRoute("/mock-test")({
           "Generate customized multi-unit mock exams with realistic timers, question banks, and instant unit-by-unit weakness analytics.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/mock-test" }],
   }),
   component: MockTestPage,
 });

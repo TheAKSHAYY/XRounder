@@ -43,6 +43,7 @@ export const Route = createFileRoute("/explore")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/explore" }],
   }),
   component: ExplorePage,
 });

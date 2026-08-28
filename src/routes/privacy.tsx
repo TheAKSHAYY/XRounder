@@ -15,6 +15,7 @@ export const Route = createFileRoute("/privacy")({
         content: "How XRounder collects, uses, and protects student data.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/privacy" }],
   }),
   component: PrivacyPage,
 });

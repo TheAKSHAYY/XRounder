@@ -37,6 +37,7 @@ export const Route = createFileRoute("/")({
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/" }],
   }),
   component: Index,
 });

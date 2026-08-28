@@ -9,6 +9,7 @@ export const Route = createFileRoute("/terms")({
       { property: "og:title", content: "Terms of Use · XRounder" },
       { property: "og:description", content: "The terms that govern your use of XRounder." },
     ],
+    links: [{ rel: "canonical", href: "https://www.xrounder.in/terms" }],
   }),
   component: TermsPage,
 });
