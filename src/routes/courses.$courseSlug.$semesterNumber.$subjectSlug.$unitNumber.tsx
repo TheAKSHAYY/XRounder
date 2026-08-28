@@ -209,6 +209,7 @@ export const Route = createFileRoute(
     return data;
   },
   head: ({ loaderData, params }) => {
+    const course = loaderData?.course;
     const unit = loaderData?.unit;
     const subject = loaderData?.subject;
     const title = unit && subject
