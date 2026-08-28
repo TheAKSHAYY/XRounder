@@ -25,7 +25,8 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
-import { useGithubRepos, useGithubUser } from "./use-github-data";
+import type { GithubContributionDay } from "./use-github-data";
+import { useGithubContributions, useGithubRepos, useGithubUser } from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
@@ -601,10 +602,111 @@ function timeAgo(iso: string) {
   return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
 }
 
+const LEVEL_CLASS = [
+  "bg-border/50",
+  "bg-primary/25",
+  "bg-primary/45",
+  "bg-primary/70",
+  "bg-primary",
+] as const;
+
+function ContributionGraph({ username }: { username: string }) {
+  const { data, isLoading, isError } = useGithubContributions(username);
+
+  if (isError) return null;
+
+  // Group into week columns (calendar starts on a Sunday-aligned padded grid).
+  const days = data?.days ?? [];
+  const firstDow = days.length ? new Date(days[0]!.date).getUTCDay() : 0;
+  const cells: (GithubContributionDay | null)[] = [
+    ...Array.from({ length: firstDow }, () => null),
+    ...days,
+  ];
+  const weeks: (GithubContributionDay | null)[][] = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+
+  const monthLabels: { col: number; label: string }[] = [];
+  weeks.forEach((week, col) => {
+    const first = week.find(Boolean);
+    if (!first) return;
+    const d = new Date(first.date);
+    if (d.getUTCDate() <= 7) {
+      monthLabels.push({ col, label: d.toLocaleString("en", { month: "short", timeZone: "UTC" }) });
+    }
+  });
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <h3 className="text-sm font-medium text-foreground">
+          {data ? `${data.total.toLocaleString()} contributions` : "Contributions"}
+          <span className="ml-1 font-normal text-muted-foreground">in the last year</span>
+        </h3>
+        <p className="text-[0.7rem] text-muted-foreground">Live from GitHub</p>
+      </div>
+
+      {isLoading || !data ? (
+        <div className="mt-3 h-[92px] animate-pulse rounded-lg bg-border/40" aria-hidden />
+      ) : (
+        <>
+          <div
+            className="-mx-1 mt-3 overflow-x-auto px-1 pb-1"
+            role="img"
+            aria-label={`${data.total} GitHub contributions in the last year`}
+          >
+            <div className="inline-block min-w-max">
+              <div className="relative mb-1 h-3 text-[0.6rem] text-muted-foreground">
+                {monthLabels.map((m) => (
+                  <span
+                    key={`${m.col}-${m.label}`}
+                    className="absolute top-0"
+                    style={{ left: `${m.col * 13}px` }}
+                  >
+                    {m.label}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-[3px]">
+                {weeks.map((week, wi) => (
+                  <div key={wi} className="flex flex-col gap-[3px]">
+                    {Array.from({ length: 7 }, (_, di) => {
+                      const day = week[di] ?? null;
+                      if (!day)
+                        return <span key={di} className="h-[10px] w-[10px] rounded-[2px]" />;
+                      return (
+                        <span
+                          key={di}
+                          title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
+                          className={`h-[10px] w-[10px] rounded-[2px] ${LEVEL_CLASS[day.level]}`}
+                        />
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-2 flex items-center gap-1.5 text-[0.65rem] text-muted-foreground">
+            <span>Less</span>
+            {LEVEL_CLASS.map((c) => (
+              <span key={c} className={`h-[10px] w-[10px] rounded-[2px] ${c}`} aria-hidden />
+            ))}
+            <span>More</span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
   const user = useGithubUser(githubUsername);
   const repos = useGithubRepos(githubUsername, 6);
   const profileUrl = `https://github.com/${githubUsername}`;
+
+  const languages = Array.from(
+    new Set((repos.data ?? []).map((r) => r.language).filter((l): l is string => Boolean(l))),
+  ).slice(0, 5);
 
   return (
     <Section id="github" muted>
@@ -635,6 +737,28 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
             </div>
           </div>
         </div>
+
+        {languages.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-1.5">
+            {languages.map((l) => (
+              <li
+                key={l}
+                className="rounded-full border border-border bg-background px-2.5 py-1 text-[0.7rem] text-muted-foreground"
+              >
+                {l}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <ContributionGraph username={githubUsername} />
+
+        {repos.data && repos.data.length > 0 && (
+          <p className="mt-5 text-[0.7rem] tracking-wide text-muted-foreground uppercase">
+            Recent repositories
+          </p>
+        )}
+
 
         {repos.data && repos.data.length > 0 && (
           <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
