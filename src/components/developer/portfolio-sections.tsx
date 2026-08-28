@@ -182,13 +182,14 @@ export function HeroSection({
 
   const stats: { value: string; label: string }[] = [];
   if (liveProjects > 0)
-    stats.push({ value: String(liveProjects), label: liveProjects === 1 ? "Live product" : "Live products" });
+    stats.push({ value: "Production", label: "Live platform" });
   if (ghUser.data) {
-    stats.push({ value: String(ghUser.data.public_repos), label: "Public repos" });
+    stats.push({ value: `${ghUser.data.public_repos}+`, label: "Public repos" });
     if (ghUser.data.followers > 0)
       stats.push({ value: String(ghUser.data.followers), label: "GitHub followers" });
   }
   if (stats.length < 3 && profile.education) stats.push({ value: "BCA", label: "Student, 5th sem" });
+  if (stats.length < 4) stats.push({ value: "Full-Stack", label: "Architecture" });
 
   return (
     <header id="top" className="relative overflow-hidden border-b border-border/50">
@@ -273,7 +274,7 @@ export function HeroSection({
 
           {/* Portrait */}
           <div className="order-first mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-sm">
-            <div className="overflow-hidden rounded-2xl border border-border/70 bg-surface">
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-soft ring-1 ring-border/60 transition-all duration-300 hover:ring-2 hover:ring-primary/40">
               <div className="aspect-square w-full bg-muted">
                 {profile.photo_url ? (
                   <img
@@ -308,34 +309,39 @@ export function HeroSection({
 
 export function FeaturedProjectSection({ featured }: { featured: Project }) {
   const tech = featured.tech_stack ?? [];
+  const thumbnail =
+    featured.thumbnail_url ||
+    (featured.name?.toLowerCase().includes("xrounder") ? "/og-image.png" : null);
+
   return (
     <Section id="projects">
       <SectionHeading eyebrow="Featured work" title={featured.name} />
 
       <Reveal className="mt-7">
-        <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+        <article className="group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:border-primary/40 hover:shadow-soft">
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
-            <div
-              aria-hidden
-              className="absolute inset-0 grid place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
-            >
-              <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
-                {featured.name}
-              </span>
-            </div>
-            {featured.thumbnail_url && (
+            {thumbnail ? (
               <img
-                src={featured.thumbnail_url}
+                src={thumbnail}
                 alt={`${featured.name} interface`}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
               />
+            ) : (
+              <div
+                aria-hidden
+                className="absolute inset-0 grid place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
+              >
+                <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
+                  {featured.name}
+                </span>
+              </div>
             )}
-            <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-lg border border-border/60 bg-background/80 px-2 py-1 text-[0.7rem] font-medium text-foreground backdrop-blur">
-              <Star className="h-3 w-3 text-accent" aria-hidden /> Flagship
+            <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-background/85 px-2.5 py-1 text-[0.7rem] font-semibold text-foreground shadow-xs backdrop-blur-md">
+              <Star className="h-3.5 w-3.5 text-accent fill-accent/20" aria-hidden /> Flagship Product
             </span>
           </div>
 
