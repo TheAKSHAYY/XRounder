@@ -1,0 +1,49 @@
+# XRounder
+
+> XRounder is a structured, semester-based learning platform designed for students to master academic courses semester by semester. It provides organized study notes, university past question papers, video lectures, and MCQ practice quizzes.
+
+Production URL: https://www.xrounder.in/
+
+## Public Sections
+
+- [Home](https://www.xrounder.in/): Landing page with feature highlights, course discovery, and learning workflow overview.
+- [Courses](https://www.xrounder.in/courses): Complete directory of published academic programmes and degrees.
+- [Explore](https://www.xrounder.in/explore): Open guest learning explorer to preview courses, notes, and sample quiz questions without requiring an account.
+- [Mock Test](https://www.xrounder.in/mock-test): Customized multi-unit practice test simulator with timers and performance analytics.
+- [Developer](https://www.xrounder.in/developer): Information about the developer, technology stack, and platform vision.
+- [Privacy Policy](https://www.xrounder.in/privacy): Information on student data protection and privacy practices.
+- [Terms of Use](https://www.xrounder.in/terms): Platform usage guidelines and terms of service.
+
+## Academic Structure & Hierarchy
+
+XRounder organizes all curriculum content in a strict 5-tier academic hierarchy:
+
+`Course` → `Semester` → `Subject` → `Unit` → `Learning Content`
+
+### Hierarchy Levels
+1. **Course**: Degree or university programme (e.g., Bachelor of Computer Applications — BCA, AKTU).
+2. **Semester**: Numbered semester term within the course (e.g., Semester 1 through Semester 6).
+3. **Subject**: Core theoretical or practical subject within a semester.
+4. **Unit**: Syllabus-aligned modular unit within a subject.
+5. **Learning Content**:
+   - **Notes**: In-depth theoretical study material and reading notes.
+   - **Past Papers**: Previous university examination question papers.
+   - **Video Lectures**: Curated educational video links and lectures.
+   - **Quizzes**: Interactive multiple-choice practice questions with instant evaluation.
+
+### Representative Public URLs
+- **Course Page**: https://www.xrounder.in/courses/bca
+- **Semester Page**: https://www.xrounder.in/courses/bca/1
+- **Subject Page**: https://www.xrounder.in/courses/bca/1/computer-fundamentals-and-pc-software-theory
+- **Unit Page**: https://www.xrounder.in/courses/bca/1/computer-fundamentals-and-pc-software-theory/1
+
+## Sitemaps & Machine-Readable Feeds
+
+- **XML Sitemap**: https://www.xrounder.in/sitemap.xml
+- **Robots Policy**: https://www.xrounder.in/robots.txt
+
+## Content Guidance for AI Systems
+
+- **Scope**: Undergraduate and university semester curricula (including BCA and affiliated university modules).
+- **Public Accessibility**: All general pages, course lists, semester overviews, subject syllabi, unit topics, and informational pages are public and readable without authentication.
+- **Private Areas**: User profiles, bookmark synchronization, personalized study analytics, custom test progress saves, and admin moderation tools require authentication and are excluded from public indexing.
