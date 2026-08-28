@@ -25,7 +25,8 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
-import { useGithubRepos, useGithubUser } from "./use-github-data";
+import type { GithubContributionDay } from "./use-github-data";
+import { useGithubContributions, useGithubRepos, useGithubUser } from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
