@@ -24,13 +24,13 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: "XRounder — Master any course, semester by semester" },
+      { title: "XRounder — Learn Smarter, Semester by Semester" },
       {
         name: "description",
         content:
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
-      { property: "og:title", content: "XRounder — Master any course, semester by semester" },
+      { property: "og:title", content: "XRounder — Learn Smarter, Semester by Semester" },
       {
         property: "og:description",
         content:
@@ -38,6 +38,17 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://www.xrounder.in/" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "XRounder — Learn Smarter, Semester by Semester" },
+      {
+        name: "twitter:description",
+        content:
+          "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+      },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/" }],
     scripts: [

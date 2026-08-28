@@ -42,6 +42,9 @@ export const Route = createFileRoute("/explore")({
       },
       { property: "og:url", content: "https://www.xrounder.in/explore" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Explore as a guest · XRounder" },
       {
@@ -49,6 +52,7 @@ export const Route = createFileRoute("/explore")({
         content:
           "Browse courses, notes, papers and sample quiz questions with no account needed.",
       },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/explore" }],
     scripts: [

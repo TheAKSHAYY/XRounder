@@ -35,6 +35,9 @@ export const Route = createFileRoute("/developer")({
       },
       { property: "og:url", content: "https://www.xrounder.in/developer" },
       { property: "og:type", content: "profile" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Developer Portfolio · Engineering — XRounder" },
       {
@@ -42,6 +45,7 @@ export const Route = createFileRoute("/developer")({
         content:
           "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, and contact details.",
       },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
     scripts: [

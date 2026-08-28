@@ -30,6 +30,9 @@ export const Route = createFileRoute("/notes/$noteId")({
         },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "Study Note & Reading Material · XRounder" },
         {
@@ -37,6 +40,7 @@ export const Route = createFileRoute("/notes/$noteId")({
           content:
             "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
         },
+        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
       ],
       links: [{ rel: "canonical", href: url }],
     };

@@ -29,6 +29,9 @@ export const Route = createFileRoute("/papers/$paperId")({
         },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "University Question Paper · XRounder" },
         {
@@ -36,6 +39,7 @@ export const Route = createFileRoute("/papers/$paperId")({
           content:
             "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
         },
+        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
       ],
       links: [{ rel: "canonical", href: url }],
     };

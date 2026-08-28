@@ -98,13 +98,7 @@ export function BrandingApplier() {
       if (link.href !== href) link.href = href;
     }
 
-    // Title + favicon + theme-color
-    if (typeof data.seo_title === "string" && data.seo_title.trim()) {
-      document.title = data.seo_title;
-    } else if (typeof data.site_name === "string" && data.site_name.trim()) {
-      document.title = data.site_name;
-    }
-
+    // Favicon + theme-color
     if (typeof data.favicon_url === "string" && data.favicon_url.trim()) {
       let icon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
       if (!icon) {

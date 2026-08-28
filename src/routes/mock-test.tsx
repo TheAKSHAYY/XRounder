@@ -51,6 +51,9 @@ export const Route = createFileRoute("/mock-test")({
       },
       { property: "og:url", content: "https://www.xrounder.in/mock-test" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Custom Mock Test & Exam Simulator · XRounder" },
       {
@@ -58,6 +61,7 @@ export const Route = createFileRoute("/mock-test")({
         content:
           "Generate customized multi-unit mock exams with realistic timers, question banks, and instant unit-by-unit weakness analytics.",
       },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/mock-test" }],
     scripts: [

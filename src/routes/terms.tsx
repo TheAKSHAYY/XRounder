@@ -10,9 +10,13 @@ export const Route = createFileRoute("/terms")({
       { property: "og:description", content: "The terms that govern your use of XRounder." },
       { property: "og:url", content: "https://www.xrounder.in/terms" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Terms of Use · XRounder" },
       { name: "twitter:description", content: "The terms that govern your use of XRounder." },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/terms" }],
     scripts: [

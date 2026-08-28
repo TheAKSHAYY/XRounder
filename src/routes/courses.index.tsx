@@ -63,6 +63,9 @@ export const Route = createFileRoute("/courses/")({
       },
       { property: "og:url", content: "https://www.xrounder.in/courses" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Academic Programs & Degree Courses · XRounder" },
       {
@@ -70,6 +73,7 @@ export const Route = createFileRoute("/courses/")({
         content:
           "Browse syllabus-aligned degree courses, notes, previous year papers, and practice questions on XRounder.",
       },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/courses" }],
     scripts: [

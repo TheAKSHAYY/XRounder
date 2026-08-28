@@ -104,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "XRounder — Master any course, semester by semester" },
+      { title: "XRounder — Learn Smarter, Semester by Semester" },
       {
         name: "description",
         content:
@@ -113,24 +113,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#2a2566" },
       { property: "og:site_name", content: "XRounder" },
       { property: "og:type", content: "website" },
-      { property: "og:title", content: "XRounder — Master any course, semester by semester" },
+      { property: "og:title", content: "XRounder — Learn Smarter, Semester by Semester" },
       {
         property: "og:description",
         content:
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
-      { property: "og:image", content: "https://www.xrounder.in/og-image.jpg" },
+      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "XRounder — Structured Semester Learning Platform" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "XRounder — Master any course, semester by semester" },
+      { name: "twitter:title", content: "XRounder — Learn Smarter, Semester by Semester" },
       {
         name: "twitter:description",
         content:
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/og-image.jpg" },
+      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
