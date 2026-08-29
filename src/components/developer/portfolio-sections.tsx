@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   Award,
   BookOpen,
   ExternalLink,
@@ -24,8 +25,7 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
-import type { GithubContributionDay } from "./use-github-data";
-import { useGithubContributions, useGithubRepos, useGithubUser } from "./use-github-data";
+import { useGithubRepos, useGithubUser } from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
@@ -181,14 +181,13 @@ export function HeroSection({
 
   const stats: { value: string; label: string }[] = [];
   if (liveProjects > 0)
-    stats.push({ value: "Production", label: "Live platform" });
+    stats.push({ value: String(liveProjects), label: liveProjects === 1 ? "Live product" : "Live products" });
   if (ghUser.data) {
-    stats.push({ value: `${ghUser.data.public_repos}+`, label: "Public repos" });
+    stats.push({ value: String(ghUser.data.public_repos), label: "Public repos" });
     if (ghUser.data.followers > 0)
       stats.push({ value: String(ghUser.data.followers), label: "GitHub followers" });
   }
   if (stats.length < 3 && profile.education) stats.push({ value: "BCA", label: "Student, 5th sem" });
-  if (stats.length < 4) stats.push({ value: "Full-Stack", label: "Architecture" });
 
   return (
     <header id="top" className="relative overflow-hidden border-b border-border/50">
@@ -273,7 +272,7 @@ export function HeroSection({
 
           {/* Portrait */}
           <div className="order-first mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-sm">
-            <div className="overflow-hidden rounded-2xl border border-border/80 bg-surface shadow-soft ring-1 ring-border/60 transition-all duration-300 hover:ring-2 hover:ring-primary/40">
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-surface">
               <div className="aspect-square w-full bg-muted">
                 {profile.photo_url ? (
                   <img
@@ -308,39 +307,32 @@ export function HeroSection({
 
 export function FeaturedProjectSection({ featured }: { featured: Project }) {
   const tech = featured.tech_stack ?? [];
-  const thumbnail =
-    featured.thumbnail_url ||
-    (featured.name?.toLowerCase().includes("xrounder") ? "/og-image.png" : null);
-
   return (
     <Section id="projects">
       <SectionHeading eyebrow="Featured work" title={featured.name} />
 
       <Reveal className="mt-7">
-        <article className="group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:border-primary/40 hover:shadow-soft">
+        <article className="overflow-hidden rounded-2xl border border-border bg-surface">
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
-            {thumbnail ? (
+            {featured.thumbnail_url ? (
               <img
-                src={thumbnail}
+                src={featured.thumbnail_url}
                 alt={`${featured.name} interface`}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                className="h-full w-full object-cover"
                 loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
               />
             ) : (
               <div
                 aria-hidden
-                className="absolute inset-0 grid place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
+                className="grid h-full place-items-center bg-linear-to-br from-primary/10 via-accent/10 to-transparent"
               >
                 <span className="font-display text-3xl font-semibold text-foreground/25 sm:text-5xl">
                   {featured.name}
                 </span>
               </div>
             )}
-            <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-background/85 px-2.5 py-1 text-[0.7rem] font-semibold text-foreground shadow-xs backdrop-blur-md">
-              <Star className="h-3.5 w-3.5 text-accent fill-accent/20" aria-hidden /> Flagship Product
+            <span className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-lg border border-border/60 bg-background/80 px-2 py-1 text-[0.7rem] font-medium text-foreground backdrop-blur">
+              <Star className="h-3 w-3 text-accent" aria-hidden /> Flagship
             </span>
           </div>
 
@@ -598,111 +590,19 @@ export function AchievementsSection({ achievements }: { achievements: Achievemen
 
 /* ── GitHub ──────────────────────────────────────────────────────────────── */
 
-const LEVEL_CLASS = [
-  "bg-border/50",
-  "bg-primary/25",
-  "bg-primary/45",
-  "bg-primary/70",
-  "bg-primary",
-] as const;
-
-function ContributionGraph({ username }: { username: string }) {
-  const { data, isLoading, isError } = useGithubContributions(username);
-
-  if (isError) return null;
-
-  // Group into week columns (calendar starts on a Sunday-aligned padded grid).
-  const days = data?.days ?? [];
-  const firstDow = days.length ? new Date(days[0]!.date).getUTCDay() : 0;
-  const cells: (GithubContributionDay | null)[] = [
-    ...Array.from({ length: firstDow }, () => null),
-    ...days,
-  ];
-  const weeks: (GithubContributionDay | null)[][] = [];
-  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
-
-  const monthLabels: { col: number; label: string }[] = [];
-  weeks.forEach((week, col) => {
-    const first = week.find(Boolean);
-    if (!first) return;
-    const d = new Date(first.date);
-    if (d.getUTCDate() <= 7) {
-      monthLabels.push({ col, label: d.toLocaleString("en", { month: "short", timeZone: "UTC" }) });
-    }
-  });
-
-  return (
-    <div className="mt-5 border-t border-border/60 pt-5">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h3 className="text-sm font-medium text-foreground">
-          {data ? `${data.total.toLocaleString()} contributions` : "Contributions"}
-          <span className="ml-1 font-normal text-muted-foreground">in the last year</span>
-        </h3>
-        <p className="text-[0.7rem] text-muted-foreground">Live from GitHub</p>
-      </div>
-
-      {isLoading || !data ? (
-        <div className="mt-3 h-[92px] animate-pulse rounded-lg bg-border/40" aria-hidden />
-      ) : (
-        <>
-          <div
-            className="-mx-1 mt-3 overflow-x-auto px-1 pb-1"
-            role="img"
-            aria-label={`${data.total} GitHub contributions in the last year`}
-          >
-            <div className="inline-block min-w-max">
-              <div className="relative mb-1 h-3 text-[0.6rem] text-muted-foreground">
-                {monthLabels.map((m) => (
-                  <span
-                    key={`${m.col}-${m.label}`}
-                    className="absolute top-0"
-                    style={{ left: `${m.col * 13}px` }}
-                  >
-                    {m.label}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-[3px]">
-                {weeks.map((week, wi) => (
-                  <div key={wi} className="flex flex-col gap-[3px]">
-                    {Array.from({ length: 7 }, (_, di) => {
-                      const day = week[di] ?? null;
-                      if (!day)
-                        return <span key={di} className="h-[10px] w-[10px] rounded-[2px]" />;
-                      return (
-                        <span
-                          key={di}
-                          title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
-                          className={`h-[10px] w-[10px] rounded-[2px] ${LEVEL_CLASS[day.level]}`}
-                        />
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="mt-2 flex items-center gap-1.5 text-[0.65rem] text-muted-foreground">
-            <span>Less</span>
-            {LEVEL_CLASS.map((c) => (
-              <span key={c} className={`h-[10px] w-[10px] rounded-[2px] ${c}`} aria-hidden />
-            ))}
-            <span>More</span>
-          </div>
-        </>
-      )}
-    </div>
-  );
+function timeAgo(iso: string) {
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 30) return `${days}d ago`;
+  const months = Math.round(days / 30);
+  return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
 }
 
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
   const user = useGithubUser(githubUsername);
   const repos = useGithubRepos(githubUsername, 6);
   const profileUrl = `https://github.com/${githubUsername}`;
-
-  const languages = Array.from(
-    new Set((repos.data ?? []).map((r) => r.language).filter((l): l is string => Boolean(l))),
-  ).slice(0, 5);
 
   return (
     <Section id="github" muted>
@@ -734,20 +634,41 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
           </div>
         </div>
 
-        {languages.length > 0 && (
-          <ul className="mt-4 flex flex-wrap gap-1.5">
-            {languages.map((l) => (
-              <li
-                key={l}
-                className="rounded-full border border-border bg-background px-2.5 py-1 text-[0.7rem] text-muted-foreground"
-              >
-                {l}
+        {repos.data && repos.data.length > 0 && (
+          <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
+            {repos.data.map((r) => (
+              <li key={r.id}>
+                <a
+                  href={r.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-start gap-3 py-3.5 transition-colors hover:text-primary"
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-center gap-1.5 font-medium text-foreground group-hover:text-primary">
+                      <span className="truncate">{r.name}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
+                    </span>
+                    {r.description && (
+                      <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">
+                        {r.description}
+                      </span>
+                    )}
+                    <span className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] text-muted-foreground">
+                      {r.language && <span>{r.language}</span>}
+                      {r.stargazers_count > 0 && (
+                        <span className="inline-flex items-center gap-1">
+                          <Star className="h-3 w-3" aria-hidden /> {r.stargazers_count}
+                        </span>
+                      )}
+                      <span>updated {timeAgo(r.pushed_at)}</span>
+                    </span>
+                  </span>
+                </a>
               </li>
             ))}
           </ul>
         )}
-
-        <ContributionGraph username={githubUsername} />
       </div>
     </Section>
   );

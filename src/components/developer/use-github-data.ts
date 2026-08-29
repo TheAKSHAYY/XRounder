@@ -67,34 +67,3 @@ export function useGithubRepos(username: string | null | undefined, limit = 6) {
     ...common,
   });
 }
-
-export type GithubContributionDay = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
-
-export type GithubContributions = {
-  total: number;
-  days: GithubContributionDay[];
-};
-
-/**
- * Public contribution calendar (no token needed). Mirrors the graph shown on the
- * GitHub profile; failures are treated as "no data" so the section degrades.
- */
-export function useGithubContributions(username: string | null | undefined) {
-  return useQuery({
-    queryKey: ["gh-contributions", username],
-    enabled: Boolean(username),
-    queryFn: async (): Promise<GithubContributions> => {
-      const res = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-      );
-      if (!res.ok) throw new Error(`Contributions ${res.status}`);
-      const json = (await res.json()) as {
-        total: Record<string, number>;
-        contributions: GithubContributionDay[];
-      };
-      const total = Object.values(json.total ?? {})[0] ?? 0;
-      return { total, days: json.contributions ?? [] };
-    },
-    ...common,
-  });
-}
