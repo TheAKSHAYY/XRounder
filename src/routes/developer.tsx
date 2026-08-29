@@ -105,10 +105,7 @@ function DeveloperPage() {
   const githubSocial = socials.find((s) => s.platform.toLowerCase() === "github");
   const githubUsername =
     profile.github_username ||
-    (githubSocial ? githubSocial.url.replace(/\/$/, "").split("/").pop() : null);
-
-  // Marquee chips from top skills
-  const marqueeChips = skills.slice(0, 14).map((s) => s.name);
+    (githubSocial ? (githubSocial.url.replace(/\/$/, "").split("/").pop() ?? null) : null);
 
   return (
     <div className="bg-background">
@@ -120,7 +117,7 @@ function DeveloperPage() {
         projects={projects}
         skills={skills}
         achievements={achievements}
-        marqueeChips={marqueeChips}
+        githubUsername={githubUsername}
       />
 
       {featured && <FeaturedProjectSection featured={featured} />}
