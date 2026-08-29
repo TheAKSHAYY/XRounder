@@ -13,7 +13,6 @@ import {
   FeaturedProjectSection,
   GithubSection,
   HeroSection,
-  PortfolioNav,
   ProjectGridSection,
   SkillsSection,
 } from "@/components/developer/portfolio-sections";
@@ -35,9 +34,6 @@ export const Route = createFileRoute("/developer")({
       },
       { property: "og:url", content: "https://www.xrounder.in/developer" },
       { property: "og:type", content: "profile" },
-      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Developer Portfolio · Engineering — XRounder" },
       {
@@ -45,48 +41,8 @@ export const Route = createFileRoute("/developer")({
         content:
           "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, and contact details.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.xrounder.in/",
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Developer Portfolio",
-                  "item": "https://www.xrounder.in/developer",
-                },
-              ],
-            },
-            {
-              "@type": "ProfilePage",
-              "name": "Developer Portfolio · XRounder",
-              "url": "https://www.xrounder.in/developer",
-              "mainEntity": {
-                "@type": "Person",
-                "name": "Akshay",
-                "url": "https://www.xrounder.in/developer",
-                "sameAs": ["https://github.com/TheAKSHAYY"],
-                "jobTitle": "Full-Stack Software Engineer",
-              },
-            },
-          ],
-        }),
-      },
-    ],
   }),
   component: DeveloperPage,
 });
@@ -149,11 +105,13 @@ function DeveloperPage() {
   const githubSocial = socials.find((s) => s.platform.toLowerCase() === "github");
   const githubUsername =
     profile.github_username ||
-    (githubSocial ? (githubSocial.url.replace(/\/$/, "").split("/").pop() ?? null) : null);
+    (githubSocial ? githubSocial.url.replace(/\/$/, "").split("/").pop() : null);
+
+  // Marquee chips from top skills
+  const marqueeChips = skills.slice(0, 14).map((s) => s.name);
 
   return (
     <div className="bg-background">
-      <PortfolioNav name={name} />
       <HeroSection
         profile={profile}
         name={name}
@@ -162,7 +120,7 @@ function DeveloperPage() {
         projects={projects}
         skills={skills}
         achievements={achievements}
-        githubUsername={githubUsername}
+        marqueeChips={marqueeChips}
       />
 
       {featured && <FeaturedProjectSection featured={featured} />}
