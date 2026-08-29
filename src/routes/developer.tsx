@@ -107,9 +107,6 @@ function DeveloperPage() {
     profile.github_username ||
     (githubSocial ? githubSocial.url.replace(/\/$/, "").split("/").pop() : null);
 
-  // Marquee chips from top skills
-  const marqueeChips = skills.slice(0, 14).map((s) => s.name);
-
   return (
     <div className="bg-background">
       <HeroSection
@@ -120,7 +117,7 @@ function DeveloperPage() {
         projects={projects}
         skills={skills}
         achievements={achievements}
-        marqueeChips={marqueeChips}
+        githubUsername={githubUsername}
       />
 
       {featured && <FeaturedProjectSection featured={featured} />}
