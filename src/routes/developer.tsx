@@ -13,6 +13,7 @@ import {
   FeaturedProjectSection,
   GithubSection,
   HeroSection,
+  PortfolioNav,
   ProjectGridSection,
   SkillsSection,
 } from "@/components/developer/portfolio-sections";
@@ -109,6 +110,26 @@ function DeveloperPage() {
 
   return (
     <div className="bg-background">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name,
+            jobTitle: profile.professional_title ?? undefined,
+            description: profile.short_intro ?? profile.bio ?? undefined,
+            email: profile.email ? `mailto:${profile.email}` : undefined,
+            url: "https://www.xrounder.in/developer",
+            image: profile.photo_url ?? undefined,
+            sameAs: socials.map((s) => s.url),
+          }),
+        }}
+      />
+
+      <PortfolioNav name={name} />
+
       <HeroSection
         profile={profile}
         name={name}
