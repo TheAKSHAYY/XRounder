@@ -683,18 +683,15 @@ function ContributionGraph({ username }: { username: string }) {
   const { data } = useGithubContributions(username);
   if (!data || data.days.length === 0) return null;
 
-  // Group into week columns (weeks start on the first day present).
-  const weeks: (typeof data.days)[] = [];
+  // Column = calendar week. First column is padded so rows align to weekdays.
   const lead = new Date(data.days[0]!.date).getDay();
-  let current: typeof data.days = Array.from({ length: lead }, () => null as never).filter(Boolean);
-  for (const day of data.days) {
-    current.push(day);
-    if (current.length + (weeks.length === 0 ? lead : 0) >= 7 || current.length === 7) {
-      weeks.push(current);
-      current = [];
-    }
-  }
-  if (current.length) weeks.push(current);
+  const cells: (ContributionDay | null)[] = [
+    ...Array.from({ length: lead }, () => null),
+    ...data.days,
+  ];
+  const weeks: (ContributionDay | null)[][] = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+
 
   const months: { label: string; index: number }[] = [];
   weeks.forEach((week, i) => {
