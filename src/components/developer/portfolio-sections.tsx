@@ -902,11 +902,27 @@ export function ContactSection({ profile, socials }: { profile: Profile; socials
       </div>
       <div className="mt-6 flex flex-wrap items-center gap-2">
         {profile.email && (
-          <Button asChild variant="outline" size="sm">
-            <a href={`mailto:${profile.email}`}>
-              <Mail className="mr-1.5 h-4 w-4" /> {profile.email}
-            </a>
-          </Button>
+          <>
+            <Button asChild variant="outline" size="sm">
+              <a href={`mailto:${profile.email}`}>
+                <Mail className="mr-1.5 h-4 w-4" /> {profile.email}
+              </a>
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={copyEmail}
+              aria-label={copied ? "Email copied" : "Copy email address"}
+            >
+              {copied ? (
+                <Check className="mr-1.5 h-4 w-4 text-accent" aria-hidden />
+              ) : (
+                <Copy className="mr-1.5 h-4 w-4" aria-hidden />
+              )}
+              {copied ? "Copied" : "Copy"}
+            </Button>
+          </>
         )}
         {socials.slice(0, 4).map((s) => {
           const Icon = platformIcon(s.platform);
