@@ -136,32 +136,94 @@ const NAV = [
   { href: "#contact", label: "Contact" },
 ];
 
+/** Scroll spy + read-progress, both cheap (one rAF-throttled scroll listener). */
+function useScrollState() {
+  const [state, setState] = useState({ active: "top", progress: 0, scrolled: false });
+
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        const progress = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
+        let active = "top";
+        for (const item of NAV) {
+          const el = document.getElementById(item.href.slice(1));
+          if (el && el.getBoundingClientRect().top <= 140) active = item.href.slice(1);
+        }
+        setState({ active, progress, scrolled: doc.scrollTop > 400 });
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return state;
+}
+
 export function PortfolioNav({ name }: { name: string }) {
+  const { active, progress, scrolled } = useScrollState();
+
   return (
-    <nav
-      aria-label="Portfolio sections"
-      className="sticky top-0 z-30 border-b border-border/50 bg-background/85 backdrop-blur-md"
-    >
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
-        <Link
-          to="/"
-          className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
-        >
-          {name.split(" ")[0]}
-        </Link>
-        <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground sm:text-sm"
-            >
-              {item.label}
-            </a>
-          ))}
+    <>
+      <nav
+        aria-label="Portfolio sections"
+        className="sticky top-0 z-30 border-b border-border/50 bg-background/85 backdrop-blur-md"
+      >
+        <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
+          <Link
+            to="/"
+            className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
+          >
+            {name.split(" ")[0]}
+          </Link>
+          <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {NAV.map((item) => {
+              const isActive = active === item.href.slice(1);
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={cn(
+                    "shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors sm:text-sm",
+                    isActive
+                      ? "bg-surface text-foreground"
+                      : "text-muted-foreground hover:bg-surface hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </nav>
+        <div
+          aria-hidden
+          className="h-0.5 origin-left bg-primary transition-transform duration-150"
+          style={{ transform: `scaleX(${progress})` }}
+        />
+      </nav>
+
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        className={cn(
+          "fixed right-4 bottom-4 z-40 grid h-11 w-11 place-items-center rounded-full border border-border bg-surface text-foreground shadow-lg transition-all",
+          scrolled ? "opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+        )}
+      >
+        <ArrowUp className="h-4 w-4" aria-hidden />
+      </button>
+    </>
   );
 }
 
