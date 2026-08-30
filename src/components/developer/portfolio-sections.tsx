@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   Award,
   BookOpen,
+  Check,
+  Copy,
   ExternalLink,
   Github,
   GraduationCap,
@@ -25,7 +29,12 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
-import { useGithubRepos, useGithubUser } from "./use-github-data";
+import {
+  useGithubContributions,
+  useGithubLanguages,
+  useGithubRepos,
+  useGithubUser,
+} from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
