@@ -877,6 +877,19 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
 /* ── Contact ─────────────────────────────────────────────────────────────── */
 
 export function ContactSection({ profile, socials }: { profile: Profile; socials: Social[] }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    if (!profile.email) return;
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable — the mailto link below still works */
+    }
+  };
+
   return (
     <Section id="contact" className="border-b-0">
       <SectionHeading
