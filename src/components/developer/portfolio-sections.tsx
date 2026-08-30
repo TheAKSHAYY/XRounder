@@ -29,6 +29,7 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
+import type { ContributionDay } from "./use-github-data";
 import {
   useGithubContributions,
   useGithubLanguages,
@@ -730,13 +731,17 @@ function ContributionGraph({ username }: { username: string }) {
           <div className="flex gap-[3px]">
             {weeks.map((week, i) => (
               <div key={i} className="flex w-[10px] shrink-0 flex-col gap-[3px]">
-                {week.map((day) => (
+                {week.map((day, di) =>
+                  !day ? (
+                    <span key={di} className="h-[10px] w-[10px]" aria-hidden />
+                  ) : (
                   <span
                     key={day.date}
                     title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
                     className={cn("h-[10px] w-[10px] rounded-[2px]", LEVEL_BG[day.level])}
                   />
-                ))}
+                  ),
+                )}
               </div>
             ))}
           </div>
