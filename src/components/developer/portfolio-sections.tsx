@@ -1,9 +1,13 @@
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   Award,
   BookOpen,
+  Check,
+  Copy,
   ExternalLink,
   Github,
   GraduationCap,
@@ -25,7 +29,13 @@ import { ContactForm } from "@/components/developer/contact-form";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
-import { useGithubRepos, useGithubUser } from "./use-github-data";
+import type { ContributionDay } from "./use-github-data";
+import {
+  useGithubContributions,
+  useGithubLanguages,
+  useGithubRepos,
+  useGithubUser,
+} from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
@@ -127,32 +137,94 @@ const NAV = [
   { href: "#contact", label: "Contact" },
 ];
 
+/** Scroll spy + read-progress, both cheap (one rAF-throttled scroll listener). */
+function useScrollState() {
+  const [state, setState] = useState({ active: "top", progress: 0, scrolled: false });
+
+  useEffect(() => {
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        const progress = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
+        let active = "top";
+        for (const item of NAV) {
+          const el = document.getElementById(item.href.slice(1));
+          if (el && el.getBoundingClientRect().top <= 140) active = item.href.slice(1);
+        }
+        setState({ active, progress, scrolled: doc.scrollTop > 400 });
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return state;
+}
+
 export function PortfolioNav({ name }: { name: string }) {
+  const { active, progress, scrolled } = useScrollState();
+
   return (
-    <nav
-      aria-label="Portfolio sections"
-      className="sticky top-0 z-30 border-b border-border/50 bg-background/85 backdrop-blur-md"
-    >
-      <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
-        <Link
-          to="/"
-          className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
-        >
-          {name.split(" ")[0]}
-        </Link>
-        <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-surface hover:text-foreground sm:text-sm"
-            >
-              {item.label}
-            </a>
-          ))}
+    <>
+      <nav
+        aria-label="Portfolio sections"
+        className="sticky top-0 z-30 border-b border-border/50 bg-background/85 backdrop-blur-md"
+      >
+        <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
+          <Link
+            to="/"
+            className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
+          >
+            {name.split(" ")[0]}
+          </Link>
+          <div className="-mx-1 flex min-w-0 flex-1 gap-1 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {NAV.map((item) => {
+              const isActive = active === item.href.slice(1);
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={cn(
+                    "shrink-0 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors sm:text-sm",
+                    isActive
+                      ? "bg-surface text-foreground"
+                      : "text-muted-foreground hover:bg-surface hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </nav>
+        <div
+          aria-hidden
+          className="h-0.5 origin-left bg-primary transition-transform duration-150"
+          style={{ transform: `scaleX(${progress})` }}
+        />
+      </nav>
+
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        className={cn(
+          "fixed right-4 bottom-4 z-40 grid h-11 w-11 place-items-center rounded-full border border-border bg-surface text-foreground shadow-lg transition-all",
+          scrolled ? "opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+        )}
+      >
+        <ArrowUp className="h-4 w-4" aria-hidden />
+      </button>
+    </>
   );
 }
 
@@ -599,6 +671,130 @@ function timeAgo(iso: string) {
   return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
 }
 
+const LEVEL_BG = [
+  "bg-border/60",
+  "bg-primary/25",
+  "bg-primary/45",
+  "bg-primary/70",
+  "bg-primary",
+] as const;
+
+/** Real GitHub contribution heatmap — renders nothing when data is unavailable. */
+function ContributionGraph({ username }: { username: string }) {
+  const { data } = useGithubContributions(username);
+  if (!data || data.days.length === 0) return null;
+
+  // Column = calendar week. First column is padded so rows align to weekdays.
+  const lead = new Date(data.days[0]!.date).getDay();
+  const cells: (ContributionDay | null)[] = [
+    ...Array.from({ length: lead }, () => null),
+    ...data.days,
+  ];
+  const weeks: (ContributionDay | null)[][] = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+
+
+  const months: { label: string; index: number }[] = [];
+  weeks.forEach((week, i) => {
+    const first = week[0];
+    if (!first) return;
+    const d = new Date(first.date);
+    if (d.getDate() <= 7) {
+      months.push({ label: d.toLocaleString("en", { month: "short" }), index: i });
+    }
+  });
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+          Contributions
+        </h3>
+        <p className="text-xs text-muted-foreground">
+          <span className="font-medium text-foreground">{data.total.toLocaleString()}</span> in the
+          last year
+        </p>
+      </div>
+
+      <div className="-mx-1 mt-3 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="min-w-max">
+          <div className="mb-1 flex gap-[3px] text-[0.6rem] text-muted-foreground">
+            {weeks.map((_, i) => {
+              const month = months.find((m) => m.index === i);
+              return (
+                <span key={i} className="w-[10px] shrink-0">
+                  {month ? month.label : ""}
+                </span>
+              );
+            })}
+          </div>
+          <div className="flex gap-[3px]">
+            {weeks.map((week, i) => (
+              <div key={i} className="flex w-[10px] shrink-0 flex-col gap-[3px]">
+                {week.map((day, di) =>
+                  !day ? (
+                    <span key={di} className="h-[10px] w-[10px]" aria-hidden />
+                  ) : (
+                  <span
+                    key={day.date}
+                    title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
+                    className={cn("h-[10px] w-[10px] rounded-[2px]", LEVEL_BG[day.level])}
+                  />
+                  ),
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-2 flex items-center justify-end gap-1 text-[0.65rem] text-muted-foreground">
+        <span>Less</span>
+        {LEVEL_BG.map((bg) => (
+          <span key={bg} className={cn("h-[10px] w-[10px] rounded-[2px]", bg)} aria-hidden />
+        ))}
+        <span>More</span>
+      </div>
+    </div>
+  );
+}
+
+/** Language mix computed from the user's own public repos. */
+function LanguageMix({ username }: { username: string }) {
+  const { languages } = useGithubLanguages(username);
+  if (languages.length === 0) return null;
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+        Most-used languages
+      </h3>
+      <div className="mt-3 flex h-2 overflow-hidden rounded-full bg-border/60">
+        {languages.map((l, i) => (
+          <span
+            key={l.name}
+            className={cn("h-full", LEVEL_BG[Math.max(1, 4 - i)])}
+            style={{ width: `${l.pct}%` }}
+            aria-hidden
+          />
+        ))}
+      </div>
+      <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+        {languages.map((l, i) => (
+          <li key={l.name} className="inline-flex items-center gap-1.5">
+            <span
+              className={cn("h-2 w-2 rounded-full", LEVEL_BG[Math.max(1, 4 - i)])}
+              aria-hidden
+            />
+            <span className="text-foreground">{l.name}</span>
+            <span>{Math.round(l.pct)}%</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
   const user = useGithubUser(githubUsername);
   const repos = useGithubRepos(githubUsername, 6);
@@ -633,6 +829,10 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
             </div>
           </div>
         </div>
+
+        <ContributionGraph username={githubUsername} />
+        <LanguageMix username={githubUsername} />
+
 
         {repos.data && repos.data.length > 0 && (
           <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
@@ -677,6 +877,19 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
 /* ── Contact ─────────────────────────────────────────────────────────────── */
 
 export function ContactSection({ profile, socials }: { profile: Profile; socials: Social[] }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    if (!profile.email) return;
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable — the mailto link below still works */
+    }
+  };
+
   return (
     <Section id="contact" className="border-b-0">
       <SectionHeading
@@ -689,11 +902,27 @@ export function ContactSection({ profile, socials }: { profile: Profile; socials
       </div>
       <div className="mt-6 flex flex-wrap items-center gap-2">
         {profile.email && (
-          <Button asChild variant="outline" size="sm">
-            <a href={`mailto:${profile.email}`}>
-              <Mail className="mr-1.5 h-4 w-4" /> {profile.email}
-            </a>
-          </Button>
+          <>
+            <Button asChild variant="outline" size="sm">
+              <a href={`mailto:${profile.email}`}>
+                <Mail className="mr-1.5 h-4 w-4" /> {profile.email}
+              </a>
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={copyEmail}
+              aria-label={copied ? "Email copied" : "Copy email address"}
+            >
+              {copied ? (
+                <Check className="mr-1.5 h-4 w-4 text-accent" aria-hidden />
+              ) : (
+                <Copy className="mr-1.5 h-4 w-4" aria-hidden />
+              )}
+              {copied ? "Copied" : "Copy"}
+            </Button>
+          </>
         )}
         {socials.slice(0, 4).map((s) => {
           const Icon = platformIcon(s.platform);
