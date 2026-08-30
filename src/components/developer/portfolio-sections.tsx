@@ -670,6 +670,129 @@ function timeAgo(iso: string) {
   return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
 }
 
+const LEVEL_BG = [
+  "bg-border/60",
+  "bg-primary/25",
+  "bg-primary/45",
+  "bg-primary/70",
+  "bg-primary",
+] as const;
+
+/** Real GitHub contribution heatmap — renders nothing when data is unavailable. */
+function ContributionGraph({ username }: { username: string }) {
+  const { data } = useGithubContributions(username);
+  if (!data || data.days.length === 0) return null;
+
+  // Group into week columns (weeks start on the first day present).
+  const weeks: (typeof data.days)[] = [];
+  const lead = new Date(data.days[0]!.date).getDay();
+  let current: typeof data.days = Array.from({ length: lead }, () => null as never).filter(Boolean);
+  for (const day of data.days) {
+    current.push(day);
+    if (current.length + (weeks.length === 0 ? lead : 0) >= 7 || current.length === 7) {
+      weeks.push(current);
+      current = [];
+    }
+  }
+  if (current.length) weeks.push(current);
+
+  const months: { label: string; index: number }[] = [];
+  weeks.forEach((week, i) => {
+    const first = week[0];
+    if (!first) return;
+    const d = new Date(first.date);
+    if (d.getDate() <= 7) {
+      months.push({ label: d.toLocaleString("en", { month: "short" }), index: i });
+    }
+  });
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+          Contributions
+        </h3>
+        <p className="text-xs text-muted-foreground">
+          <span className="font-medium text-foreground">{data.total.toLocaleString()}</span> in the
+          last year
+        </p>
+      </div>
+
+      <div className="-mx-1 mt-3 overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="min-w-max">
+          <div className="mb-1 flex gap-[3px] text-[0.6rem] text-muted-foreground">
+            {weeks.map((_, i) => {
+              const month = months.find((m) => m.index === i);
+              return (
+                <span key={i} className="w-[10px] shrink-0">
+                  {month ? month.label : ""}
+                </span>
+              );
+            })}
+          </div>
+          <div className="flex gap-[3px]">
+            {weeks.map((week, i) => (
+              <div key={i} className="flex w-[10px] shrink-0 flex-col gap-[3px]">
+                {week.map((day) => (
+                  <span
+                    key={day.date}
+                    title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
+                    className={cn("h-[10px] w-[10px] rounded-[2px]", LEVEL_BG[day.level])}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-2 flex items-center justify-end gap-1 text-[0.65rem] text-muted-foreground">
+        <span>Less</span>
+        {LEVEL_BG.map((bg) => (
+          <span key={bg} className={cn("h-[10px] w-[10px] rounded-[2px]", bg)} aria-hidden />
+        ))}
+        <span>More</span>
+      </div>
+    </div>
+  );
+}
+
+/** Language mix computed from the user's own public repos. */
+function LanguageMix({ username }: { username: string }) {
+  const { languages } = useGithubLanguages(username);
+  if (languages.length === 0) return null;
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+        Most-used languages
+      </h3>
+      <div className="mt-3 flex h-2 overflow-hidden rounded-full bg-border/60">
+        {languages.map((l, i) => (
+          <span
+            key={l.name}
+            className={cn("h-full", LEVEL_BG[Math.max(1, 4 - i)])}
+            style={{ width: `${l.pct}%` }}
+            aria-hidden
+          />
+        ))}
+      </div>
+      <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+        {languages.map((l, i) => (
+          <li key={l.name} className="inline-flex items-center gap-1.5">
+            <span
+              className={cn("h-2 w-2 rounded-full", LEVEL_BG[Math.max(1, 4 - i)])}
+              aria-hidden
+            />
+            <span className="text-foreground">{l.name}</span>
+            <span>{Math.round(l.pct)}%</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
   const user = useGithubUser(githubUsername);
   const repos = useGithubRepos(githubUsername, 6);
@@ -704,6 +827,10 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
             </div>
           </div>
         </div>
+
+        <ContributionGraph username={githubUsername} />
+        <LanguageMix username={githubUsername} />
+
 
         {repos.data && repos.data.length > 0 && (
           <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
