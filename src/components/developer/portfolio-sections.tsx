@@ -11,6 +11,7 @@ import {
   Github,
   GraduationCap,
   Mail,
+  Share2,
   Star,
 } from "lucide-react";
 
@@ -887,6 +888,22 @@ export function ContactSection({ profile, socials }: { profile: Profile; socials
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
       /* clipboard unavailable — the mailto link below still works */
+    }
+  };
+
+  const [shared, setShared] = useState(false);
+  const sharePage = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: document.title, url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      setShared(true);
+      window.setTimeout(() => setShared(false), 2000);
+    } catch {
+      /* share/clipboard unavailable — nothing to do */
     }
   };
 
