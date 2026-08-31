@@ -68,31 +68,42 @@ export function useGithubRepos(username: string | null | undefined, limit = 6) {
   });
 }
 
-export type GithubContributionDay = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
+/* ── Contributions (real data, public proxy of the GitHub contribution graph) ── */
 
-export type GithubContributions = {
-  total: number;
-  days: GithubContributionDay[];
-};
+export type ContributionDay = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
+export type Contributions = { total: number; days: ContributionDay[] };
 
-/**
- * Public contribution calendar (no token needed). Mirrors the graph shown on the
- * GitHub profile; failures are treated as "no data" so the section degrades.
- */
 export function useGithubContributions(username: string | null | undefined) {
   return useQuery({
-    queryKey: ["gh-contributions", username],
+    queryKey: ["gh-contrib", username],
     enabled: Boolean(username),
-    queryFn: async (): Promise<GithubContributions> => {
-      const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
+    queryFn: async (): Promise<Contributions> => {
+      const res = await fetch(
+        `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+      );
       if (!res.ok) throw new Error(`Contributions ${res.status}`);
       const json = (await res.json()) as {
         total: Record<string, number>;
-        contributions: GithubContributionDay[];
+        contributions: ContributionDay[];
       };
-      const total = Object.values(json.total ?? {})[0] ?? 0;
+      const total = Object.values(json.total ?? {}).reduce((a, b) => a + b, 0);
       return { total, days: json.contributions ?? [] };
     },
     ...common,
   });
+}
+
+/** Language mix derived from the user's own repos — no invented numbers. */
+export function useGithubLanguages(username: string | null | undefined) {
+  const repos = useGithubRepos(username, 100);
+  const counts = new Map<string, number>();
+  for (const r of repos.data ?? []) {
+    if (r.language) counts.set(r.language, (counts.get(r.language) ?? 0) + 1);
+  }
+  const total = [...counts.values()].reduce((a, b) => a + b, 0);
+  const languages = [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([name, count]) => ({ name, count, pct: total ? (count / total) * 100 : 0 }));
+  return { languages, isLoading: repos.isLoading };
 }

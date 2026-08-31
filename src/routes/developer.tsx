@@ -35,9 +35,6 @@ export const Route = createFileRoute("/developer")({
       },
       { property: "og:url", content: "https://www.xrounder.in/developer" },
       { property: "og:type", content: "profile" },
-      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Developer Portfolio · Engineering — XRounder" },
       {
@@ -45,48 +42,8 @@ export const Route = createFileRoute("/developer")({
         content:
           "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, and contact details.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://www.xrounder.in/",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Developer Portfolio",
-                  item: "https://www.xrounder.in/developer",
-                },
-              ],
-            },
-            {
-              "@type": "ProfilePage",
-              name: "Developer Portfolio · XRounder",
-              url: "https://www.xrounder.in/developer",
-              mainEntity: {
-                "@type": "Person",
-                name: "Akshay",
-                url: "https://www.xrounder.in/developer",
-                sameAs: ["https://github.com/TheAKSHAYY"],
-                jobTitle: "Full-Stack Software Engineer",
-              },
-            },
-          ],
-        }),
-      },
-    ],
   }),
   component: DeveloperPage,
 });
@@ -153,7 +110,26 @@ function DeveloperPage() {
 
   return (
     <div className="bg-background">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name,
+            jobTitle: profile.professional_title ?? undefined,
+            description: profile.short_intro ?? profile.bio ?? undefined,
+            email: profile.email ? `mailto:${profile.email}` : undefined,
+            url: "https://www.xrounder.in/developer",
+            image: profile.photo_url ?? undefined,
+            sameAs: socials.map((s) => s.url),
+          }),
+        }}
+      />
+
       <PortfolioNav name={name} />
+
       <HeroSection
         profile={profile}
         name={name}
