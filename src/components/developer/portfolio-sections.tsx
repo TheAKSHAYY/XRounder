@@ -376,8 +376,26 @@ export function HeroSection({
 
 /* ── Featured project ────────────────────────────────────────────────────── */
 
+function prettyHost(url: string | null | undefined) {
+  if (!url) return null;
+  try {
+    return new URL(url).host.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+
+/** XRounder is this project itself — its canonical URL is known, not invented. */
+function resolveLiveUrl(p: Project) {
+  if (p.live_url) return p.live_url;
+  if (/xrounder/i.test(p.name)) return "https://www.xrounder.in";
+  return null;
+}
+
 export function FeaturedProjectSection({ featured }: { featured: Project }) {
   const tech = featured.tech_stack ?? [];
+  const liveUrl = resolveLiveUrl(featured);
+  const host = prettyHost(liveUrl);
   return (
     <Section id="projects">
       <SectionHeading eyebrow="Featured work" title={featured.name} />
