@@ -451,9 +451,26 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
                   Status
                 </dt>
                 <dd className="mt-1 text-sm text-foreground">
-                  {featured.live_url ? "Live and actively maintained" : "In development"}
+                  {liveUrl ? "Live and actively maintained" : "In development"}
                 </dd>
               </div>
+              {host && (
+                <div>
+                  <dt className="text-[0.7rem] font-semibold tracking-wide text-muted-foreground uppercase">
+                    Live at
+                  </dt>
+                  <dd className="mt-1 text-sm">
+                    <a
+                      href={liveUrl!}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-primary underline-offset-4 hover:underline"
+                    >
+                      {host}
+                    </a>
+                  </dd>
+                </div>
+              )}
             </dl>
 
             {tech.length > 0 && (
@@ -467,12 +484,13 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
             )}
 
             <div className="mt-6 flex flex-wrap gap-2.5">
-              {featured.live_url && (
+              {liveUrl && (
                 <Button asChild size="lg" className="h-11 flex-1 sm:flex-none">
-                  <a href={featured.live_url} target="_blank" rel="noreferrer">
+                  <a href={liveUrl} target="_blank" rel="noreferrer">
                     <ExternalLink className="mr-1.5 h-4 w-4" /> Live demo
                   </a>
                 </Button>
+              )}
               )}
               {featured.github_url && (
                 <Button asChild variant="outline" size="lg" className="h-11 flex-1 sm:flex-none">
