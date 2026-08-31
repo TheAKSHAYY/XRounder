@@ -401,13 +401,13 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
       <SectionHeading eyebrow="Featured work" title={featured.name} />
 
       <Reveal className="mt-7">
-        <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+        <article className="group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
             {featured.thumbnail_url ? (
               <img
                 src={featured.thumbnail_url}
                 alt={`${featured.name} interface`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none"
                 loading="lazy"
               />
             ) : (
