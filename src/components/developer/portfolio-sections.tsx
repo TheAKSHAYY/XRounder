@@ -253,13 +253,17 @@ export function HeroSection({
 
   const stats: { value: string; label: string }[] = [];
   if (liveProjects > 0)
-    stats.push({ value: String(liveProjects), label: liveProjects === 1 ? "Live product" : "Live products" });
+    stats.push({
+      value: String(liveProjects),
+      label: liveProjects === 1 ? "Live product" : "Live products",
+    });
   if (ghUser.data) {
     stats.push({ value: String(ghUser.data.public_repos), label: "Public repos" });
     if (ghUser.data.followers > 0)
       stats.push({ value: String(ghUser.data.followers), label: "GitHub followers" });
   }
-  if (stats.length < 3 && profile.education) stats.push({ value: "BCA", label: "Student, 5th sem" });
+  if (stats.length < 3 && profile.education)
+    stats.push({ value: "BCA", label: "Student, 5th sem" });
 
   return (
     <header id="top" className="relative overflow-hidden border-b border-border/50">
@@ -693,7 +697,6 @@ function ContributionGraph({ username }: { username: string }) {
   const weeks: (ContributionDay | null)[][] = [];
   for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
 
-
   const months: { label: string; index: number }[] = [];
   weeks.forEach((week, i) => {
     const first = week[0];
@@ -735,11 +738,11 @@ function ContributionGraph({ username }: { username: string }) {
                   !day ? (
                     <span key={di} className="h-[10px] w-[10px]" aria-hidden />
                   ) : (
-                  <span
-                    key={day.date}
-                    title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
-                    className={cn("h-[10px] w-[10px] rounded-[2px]", LEVEL_BG[day.level])}
-                  />
+                    <span
+                      key={day.date}
+                      title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${day.date}`}
+                      className={cn("h-[10px] w-[10px] rounded-[2px]", LEVEL_BG[day.level])}
+                    />
                   ),
                 )}
               </div>
@@ -832,7 +835,6 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
 
         <ContributionGraph username={githubUsername} />
         <LanguageMix username={githubUsername} />
-
 
         {repos.data && repos.data.length > 0 && (
           <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
