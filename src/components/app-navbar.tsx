@@ -16,10 +16,11 @@ import {
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth, clearAuthStore } from "@/hooks/use-auth";
+import { recordLogoutHistory } from "@/lib/auth-history";
 import { useRoles } from "@/hooks/use-roles";
 import { BrandLockup } from "@/components/brand-mark";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -116,7 +117,9 @@ export function AppNavbar() {
   }, []);
 
   async function onSignOut() {
+    await recordLogoutHistory();
     await supabase.auth.signOut();
+    clearAuthStore();
     qc.clear();
     toast.success("Signed out");
     await router.invalidate();
@@ -255,14 +258,11 @@ export function AppNavbar() {
                 aria-label="Account menu"
               >
                 <Avatar className="h-7 w-7">
-                  {profileQuery.data?.avatar_url && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={profileQuery.data.avatar_url}
-                      alt=""
-                      className="h-full w-full rounded-full object-cover"
-                    />
-                  )}
+                  <AvatarImage
+                    src={profileQuery.data?.avatar_url ?? undefined}
+                    alt=""
+                    className="h-full w-full rounded-full object-cover"
+                  />
                   <AvatarFallback className="bg-primary/10 text-xs font-semibold text-primary">
                     {initials}
                   </AvatarFallback>

@@ -26,7 +26,8 @@ import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { BrandLockup } from "@/components/brand-mark";
 import { useGuest } from "@/hooks/use-guest";
-
+import { useAuth, waitForAuth } from "@/hooks/use-auth";
+import { recordLoginHistory } from "@/lib/auth-history";
 
 const searchSchema = z.object({
   redirect: z.string().optional(),
@@ -35,6 +36,13 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (search) => searchSchema.parse(search),
+  beforeLoad: async ({ search }) => {
+    const auth = await waitForAuth();
+    if (auth.isAuthenticated && auth.user) {
+      const dest = search.redirect || (await resolvePostAuthRoute(auth.user.id));
+      throw redirect({ to: dest });
+    }
+  },
   head: () => ({
     meta: [
       { title: "Sign in · XRounder" },
@@ -121,8 +129,8 @@ function AuthPage() {
               Your time, respected.
             </h2>
             <p className="mt-4 max-w-md text-sm text-primary-foreground/80">
-              Join thousands of students using notes, past papers, video lectures and MCQ
-              practice — all in one place.
+              Join thousands of students using notes, past papers, video lectures and MCQ practice —
+              all in one place.
             </p>
           </div>
 
@@ -195,7 +203,6 @@ function AuthPage() {
   );
 }
 
-
 function SignInForm() {
   const { redirect } = Route.useSearch();
 
@@ -238,6 +245,9 @@ function EmailSignInForm() {
     if (error) {
       toast.error(error.message);
       return;
+    }
+    if (data.user) {
+      await recordLoginHistory(data.user.id);
     }
     toast.success("Welcome back");
     await router.invalidate();
@@ -353,6 +363,7 @@ function SignUpForm() {
       toast.success("Check your email to confirm your account.");
       return;
     }
+    await recordLoginHistory(data.user.id);
     toast.success("Account created — welcome!");
     await router.invalidate();
     const dest = redirect ?? (await resolvePostAuthRoute(data.user.id));

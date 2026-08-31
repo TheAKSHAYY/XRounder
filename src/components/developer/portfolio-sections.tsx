@@ -180,14 +180,14 @@ export function HeroSection({
   const githubUrl = githubUsername ? `https://github.com/${githubUsername}` : null;
 
   const stats: { value: string; label: string }[] = [];
-  if (liveProjects > 0)
-    stats.push({ value: "Production", label: "Live platform" });
+  if (liveProjects > 0) stats.push({ value: "Production", label: "Live platform" });
   if (ghUser.data) {
     stats.push({ value: `${ghUser.data.public_repos}+`, label: "Public repos" });
     if (ghUser.data.followers > 0)
       stats.push({ value: String(ghUser.data.followers), label: "GitHub followers" });
   }
-  if (stats.length < 3 && profile.education) stats.push({ value: "BCA", label: "Student, 5th sem" });
+  if (stats.length < 3 && profile.education)
+    stats.push({ value: "BCA", label: "Student, 5th sem" });
   if (stats.length < 4) stats.push({ value: "Full-Stack", label: "Architecture" });
 
   return (
@@ -340,7 +340,8 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
               </div>
             )}
             <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-background/85 px-2.5 py-1 text-[0.7rem] font-semibold text-foreground shadow-xs backdrop-blur-md">
-              <Star className="h-3.5 w-3.5 text-accent fill-accent/20" aria-hidden /> Flagship Product
+              <Star className="h-3.5 w-3.5 text-accent fill-accent/20" aria-hidden /> Flagship
+              Product
             </span>
           </div>
 

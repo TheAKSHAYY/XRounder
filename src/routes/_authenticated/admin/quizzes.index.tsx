@@ -89,9 +89,9 @@ type UnitLite = {
   number: number;
   title: string;
   subject_id: string;
-  subject?: { 
-    id: string; 
-    code: string; 
+  subject?: {
+    id: string;
+    code: string;
     title: string;
     semester?: { id: string; number: number; title: string } | null;
   } | null;
@@ -135,7 +135,9 @@ function AdminQuizzesList() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("units")
-        .select("id, number, title, subject_id, subject:subjects(id, code, title, semester:semesters(id, number, title))")
+        .select(
+          "id, number, title, subject_id, subject:subjects(id, code, title, semester:semesters(id, number, title))",
+        )
         .order("number");
       if (error) throw error;
       return (data ?? []) as unknown as UnitLite[];
@@ -507,11 +509,7 @@ function QuizDialog({
         <div className="grid gap-4">
           <div>
             <Label>Unit</Label>
-            <UnitSelector
-              units={units}
-              value={unitId}
-              onChange={setUnitId}
-            />
+            <UnitSelector units={units} value={unitId} onChange={setUnitId} />
           </div>
           <div>
             <Label>Title</Label>

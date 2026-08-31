@@ -27,7 +27,6 @@ export function SiteHeader({
   const { user, loading } = useAuth();
   const { isGuest } = useGuest();
 
-
   const anchors = marketing
     ? [
         { label: "Features", href: "#features" },
@@ -116,7 +115,6 @@ export function SiteHeader({
               </Button>
             </>
           )}
-
 
           <Sheet>
             <SheetTrigger asChild>

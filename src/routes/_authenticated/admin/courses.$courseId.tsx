@@ -876,7 +876,12 @@ function UnitRow({
         >
           {unit.status}
         </Badge>
-        <Button asChild size="sm" variant="outline" className="h-7 px-2.5 text-xs font-bold rounded-lg gap-1 border-primary/40 text-primary hover:bg-primary/10">
+        <Button
+          asChild
+          size="sm"
+          variant="outline"
+          className="h-7 px-2.5 text-xs font-bold rounded-lg gap-1 border-primary/40 text-primary hover:bg-primary/10"
+        >
           <Link to="/admin/units/$unitId" params={{ unitId: unit.id }}>
             <Layers className="h-3.5 w-3.5" /> Workspace
           </Link>

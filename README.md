@@ -31,29 +31,29 @@ Course  →  Semester  →  Subject  →  Unit  →  Content (notes, PDFs, PPTs,
 
 ### Student experience
 
-| Area | What it does |
-| --- | --- |
-| Dashboard | Personalised focus bar, "continue where you left off" hero, content rails, announcement banner |
-| Course / Semester home | Progress hero, subject grid with per-subject content chips and quick stats |
-| Subject detail | Vertical "learning path" timeline of units with status medallions |
-| Unit learning page | Sticky progress header, ~68ch reading measure, attachments, "mark as complete" footer |
-| Quizzes | One-question-at-a-time paged runner, keyboard hotkeys, animated option feedback |
-| Quiz results | Score hero, summary tiles, per-question review with explanations |
-| Extras | Global search, bookmarks, profile, settings, onboarding, help |
+| Area                   | What it does                                                                                   |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| Dashboard              | Personalised focus bar, "continue where you left off" hero, content rails, announcement banner |
+| Course / Semester home | Progress hero, subject grid with per-subject content chips and quick stats                     |
+| Subject detail         | Vertical "learning path" timeline of units with status medallions                              |
+| Unit learning page     | Sticky progress header, ~68ch reading measure, attachments, "mark as complete" footer          |
+| Quizzes                | One-question-at-a-time paged runner, keyboard hotkeys, animated option feedback                |
+| Quiz results           | Score hero, summary tiles, per-question review with explanations                               |
+| Extras                 | Global search, bookmarks, profile, settings, onboarding, help                                  |
 
 ### Admin CMS
 
-| Module | Route | Purpose |
-| --- | --- | --- |
-| Dashboard | `/admin` | Focus bar, attention cards, 7-day trend strip |
-| Content | `/admin/content` | Unified content workspace (list, create, edit, bulk actions, legacy import) |
-| Courses | `/admin/courses` | Course → semester → subject → unit tree, unit reordering |
-| Subjects | `/admin/subjects` | Expandable subject cards with inline content counts |
-| Question bank | `/admin/quizzes` | Quizzes, questions, JSON/CSV/TXT bulk MCQ import |
-| Papers | `/admin/papers` | Previous-year question papers |
-| Announcements | `/admin/announcements` | Site-wide announcements shown on the student dashboard |
-| Media / Tags / Inbox / Explorer / Homepage | `/admin/*` | Supporting content operations |
-| Settings | `/admin/settings` | Grouped configuration |
+| Module                                     | Route                  | Purpose                                                                     |
+| ------------------------------------------ | ---------------------- | --------------------------------------------------------------------------- |
+| Dashboard                                  | `/admin`               | Focus bar, attention cards, 7-day trend strip                               |
+| Content                                    | `/admin/content`       | Unified content workspace (list, create, edit, bulk actions, legacy import) |
+| Courses                                    | `/admin/courses`       | Course → semester → subject → unit tree, unit reordering                    |
+| Subjects                                   | `/admin/subjects`      | Expandable subject cards with inline content counts                         |
+| Question bank                              | `/admin/quizzes`       | Quizzes, questions, JSON/CSV/TXT bulk MCQ import                            |
+| Papers                                     | `/admin/papers`        | Previous-year question papers                                               |
+| Announcements                              | `/admin/announcements` | Site-wide announcements shown on the student dashboard                      |
+| Media / Tags / Inbox / Explorer / Homepage | `/admin/*`             | Supporting content operations                                               |
+| Settings                                   | `/admin/settings`      | Grouped configuration                                                       |
 
 ### Super admin
 

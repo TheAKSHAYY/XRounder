@@ -224,7 +224,10 @@ export function ContentEditor({
         </div>
 
         <div>
-          <Label htmlFor="desc" className="text-xs font-bold uppercase text-muted-foreground mb-1.5 block">
+          <Label
+            htmlFor="desc"
+            className="text-xs font-bold uppercase text-muted-foreground mb-1.5 block"
+          >
             {type === "note" ? "Article Content (Visual Block Editor)" : "Description"}
           </Label>
           {type === "note" ? (
@@ -247,7 +250,13 @@ export function ContentEditor({
         <div className="grid gap-4 sm:grid-cols-3">
           <div>
             <Label>Subject</Label>
-            <Select value={subjectId} onValueChange={(val) => { setSubjectId(val); setUnitId(""); }}>
+            <Select
+              value={subjectId}
+              onValueChange={(val) => {
+                setSubjectId(val);
+                setUnitId("");
+              }}
+            >
               <SelectTrigger className="mt-1.5">
                 <SelectValue placeholder="Choose subject" />
               </SelectTrigger>
@@ -269,9 +278,21 @@ export function ContentEditor({
           </div>
           <div>
             <Label>Unit (Optional)</Label>
-            <Select value={unitId} onValueChange={setUnitId} disabled={!subjectId || (units ?? []).length === 0}>
+            <Select
+              value={unitId}
+              onValueChange={setUnitId}
+              disabled={!subjectId || (units ?? []).length === 0}
+            >
               <SelectTrigger className="mt-1.5">
-                <SelectValue placeholder={!subjectId ? "Pick subject first" : (units ?? []).length === 0 ? "No units found" : "Choose unit"} />
+                <SelectValue
+                  placeholder={
+                    !subjectId
+                      ? "Pick subject first"
+                      : (units ?? []).length === 0
+                        ? "No units found"
+                        : "Choose unit"
+                  }
+                />
               </SelectTrigger>
               <SelectContent>
                 {(units ?? []).map((u) => (

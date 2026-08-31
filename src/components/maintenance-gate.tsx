@@ -46,8 +46,7 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
           We'll be right back
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          {data.message ??
-            "XRounder is undergoing scheduled maintenance. Please check back soon."}
+          {data.message ?? "XRounder is undergoing scheduled maintenance. Please check back soon."}
         </p>
         {data.scheduled_end && (
           <p className="mt-2 text-xs text-muted-foreground">

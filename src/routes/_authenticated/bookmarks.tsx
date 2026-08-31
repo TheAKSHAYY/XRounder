@@ -55,9 +55,24 @@ export const Route = createFileRoute("/_authenticated/bookmarks")({
 
 const KIND_META = {
   note: { label: "Notes", singular: "Note", icon: FileText, color: "text-blue-500 bg-blue-500/10" },
-  paper: { label: "Past Papers", singular: "Paper", icon: BookOpen, color: "text-amber-500 bg-amber-500/10" },
-  quiz: { label: "MCQ Quizzes", singular: "Quiz", icon: FlaskConical, color: "text-emerald-500 bg-emerald-500/10" },
-  unit: { label: "Syllabus Units", singular: "Unit", icon: Layers, color: "text-primary bg-primary/10" },
+  paper: {
+    label: "Past Papers",
+    singular: "Paper",
+    icon: BookOpen,
+    color: "text-amber-500 bg-amber-500/10",
+  },
+  quiz: {
+    label: "MCQ Quizzes",
+    singular: "Quiz",
+    icon: FlaskConical,
+    color: "text-emerald-500 bg-emerald-500/10",
+  },
+  unit: {
+    label: "Syllabus Units",
+    singular: "Unit",
+    icon: Layers,
+    color: "text-primary bg-primary/10",
+  },
 } as const;
 
 function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } {
@@ -131,7 +146,9 @@ function BookmarksPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 pb-28 pt-6 sm:px-6 sm:pt-10">
-      <Breadcrumbs items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Saved Bookmarks" }]} />
+      <Breadcrumbs
+        items={[{ label: "Dashboard", to: "/dashboard" }, { label: "Saved Bookmarks" }]}
+      />
 
       {/* Header */}
       <div className="mt-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -240,7 +257,12 @@ function BookmarksPage() {
                     {...(r as any)}
                     className="flex min-w-0 flex-1 items-center gap-3.5 focus-visible:outline-none"
                   >
-                    <div className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-xl", meta.color)}>
+                    <div
+                      className={cn(
+                        "grid h-10 w-10 shrink-0 place-items-center rounded-xl",
+                        meta.color,
+                      )}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
 
@@ -269,7 +291,12 @@ function BookmarksPage() {
                       <Trash2 className="h-4 w-4" />
                     </Button>
 
-                    <Button asChild size="sm" variant="outline" className="h-8 rounded-lg text-xs font-semibold px-3 hidden sm:inline-flex">
+                    <Button
+                      asChild
+                      size="sm"
+                      variant="outline"
+                      className="h-8 rounded-lg text-xs font-semibold px-3 hidden sm:inline-flex"
+                    >
                       <Link {...(r as any)}>
                         Open <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                       </Link>

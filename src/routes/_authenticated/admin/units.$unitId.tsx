@@ -96,7 +96,8 @@ function AdminUnitWorkspace() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("units")
-        .select(`
+        .select(
+          `
           id,
           number,
           title,
@@ -118,7 +119,8 @@ function AdminUnitWorkspace() {
               )
             )
           )
-        `)
+        `,
+        )
         .eq("id", unitId)
         .maybeSingle();
 
@@ -159,10 +161,7 @@ function AdminUnitWorkspace() {
           .maybeSingle();
 
         if (unlinked) {
-          await supabase
-            .from("content_items")
-            .update({ unit_id: unitId })
-            .eq("id", unlinked.id);
+          await supabase.from("content_items").update({ unit_id: unitId }).eq("id", unlinked.id);
           return { ...unlinked, unit_id: unitId };
         }
       }
@@ -232,7 +231,8 @@ function AdminUnitWorkspace() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("quiz_questions")
-        .select(`
+        .select(
+          `
           id,
           prompt,
           explanation,
@@ -247,7 +247,8 @@ function AdminUnitWorkspace() {
             is_correct,
             order_index
           )
-        `)
+        `,
+        )
         .eq("quiz_id", quizQuery.data!.id)
         .order("order_index");
 
@@ -259,7 +260,9 @@ function AdminUnitWorkspace() {
   // Article Form State
   const [articleTitle, setArticleTitle] = useState("");
   const [articleBody, setArticleBody] = useState("");
-  const [articleStatus, setArticleStatus] = useState<"draft" | "published" | "archived">("published");
+  const [articleStatus, setArticleStatus] = useState<"draft" | "published" | "archived">(
+    "published",
+  );
   const [isSavingArticle, setIsSavingArticle] = useState(false);
 
   useEffect(() => {
@@ -549,9 +552,15 @@ function AdminUnitWorkspace() {
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground font-medium mb-1">
-            <Link to="/admin/courses" className="hover:text-foreground">Courses</Link>
+            <Link to="/admin/courses" className="hover:text-foreground">
+              Courses
+            </Link>
             <span>/</span>
-            <Link to="/admin/courses/$courseId" params={{ courseId: course.id }} className="hover:text-foreground">
+            <Link
+              to="/admin/courses/$courseId"
+              params={{ courseId: course.id }}
+              className="hover:text-foreground"
+            >
               {course.code}
             </Link>
             <span>/</span>
@@ -597,7 +606,9 @@ function AdminUnitWorkspace() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1">
             {/* Article Status */}
             <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
-              <span className="block text-[10px] uppercase font-bold text-muted-foreground">Online Article</span>
+              <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                Online Article
+              </span>
               <span className="text-sm font-bold flex items-center gap-1.5 mt-0.5">
                 {health.articlePublished ? (
                   <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
@@ -615,7 +626,9 @@ function AdminUnitWorkspace() {
 
             {/* Reference Notes */}
             <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
-              <span className="block text-[10px] uppercase font-bold text-muted-foreground">Reference Notes</span>
+              <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                Reference Notes
+              </span>
               <span className="text-sm font-bold flex items-center gap-1.5 mt-0.5 text-foreground">
                 <FileType className="h-3.5 w-3.5 text-primary" /> {health.refCount} PDF/Files
               </span>
@@ -623,7 +636,9 @@ function AdminUnitWorkspace() {
 
             {/* MCQs */}
             <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
-              <span className="block text-[10px] uppercase font-bold text-muted-foreground">Practice MCQs</span>
+              <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                Practice MCQs
+              </span>
               <span className="text-sm font-bold flex items-center gap-1.5 mt-0.5 text-foreground">
                 <FlaskConical className="h-3.5 w-3.5 text-primary" /> {health.mcqCount} Questions
               </span>
@@ -631,7 +646,9 @@ function AdminUnitWorkspace() {
 
             {/* PYQ Insights */}
             <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
-              <span className="block text-[10px] uppercase font-bold text-muted-foreground">PYQ Insights</span>
+              <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                PYQ Insights
+              </span>
               <span className="text-sm font-bold flex items-center gap-1.5 mt-0.5 text-foreground">
                 <GraduationCap className="h-3.5 w-3.5 text-primary" /> {health.pyqCount} Questions
               </span>
@@ -639,13 +656,18 @@ function AdminUnitWorkspace() {
           </div>
 
           <div className="sm:border-l sm:border-border/60 sm:pl-5 flex flex-col items-center justify-center">
-            <span className="block text-[10px] uppercase font-bold text-muted-foreground mb-1">Overall Status</span>
+            <span className="block text-[10px] uppercase font-bold text-muted-foreground mb-1">
+              Overall Status
+            </span>
             {health.isReady ? (
               <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">
                 READY FOR STUDENTS
               </Badge>
             ) : (
-              <Badge variant="outline" className="text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/10 text-xs font-bold px-3 py-1 rounded-full">
+              <Badge
+                variant="outline"
+                className="text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/10 text-xs font-bold px-3 py-1 rounded-full"
+              >
                 NEEDS ATTENTION
               </Badge>
             )}
@@ -665,7 +687,8 @@ function AdminUnitWorkspace() {
               : "bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground",
           )}
         >
-          <BookOpen className="h-4 w-4" /> 1. Online Article ({health.articlePublished ? "Published" : "Draft"})
+          <BookOpen className="h-4 w-4" /> 1. Online Article (
+          {health.articlePublished ? "Published" : "Draft"})
         </button>
 
         <button
@@ -759,7 +782,9 @@ function AdminUnitWorkspace() {
 
           <div className="space-y-4">
             <div>
-              <Label className="text-xs font-bold uppercase text-muted-foreground">Article Title</Label>
+              <Label className="text-xs font-bold uppercase text-muted-foreground">
+                Article Title
+              </Label>
               <Input
                 value={articleTitle}
                 onChange={(e) => setArticleTitle(e.target.value)}
@@ -809,7 +834,12 @@ function AdminUnitWorkspace() {
                   }}
                   disabled={isUploadingDoc}
                 />
-                <Button asChild size="sm" className="rounded-xl text-xs font-bold gap-1.5" disabled={isUploadingDoc}>
+                <Button
+                  asChild
+                  size="sm"
+                  className="rounded-xl text-xs font-bold gap-1.5"
+                  disabled={isUploadingDoc}
+                >
                   <span>
                     <Upload className="h-3.5 w-3.5" />
                     {isUploadingDoc ? "Uploading Document…" : "Upload PDF / Notes"}
@@ -838,7 +868,9 @@ function AdminUnitWorkspace() {
                     <div className="min-w-0">
                       <div className="text-sm font-bold text-foreground truncate">{file.title}</div>
                       <div className="text-xs text-muted-foreground">
-                        {file.file_size_bytes ? `${Math.round(file.file_size_bytes / 1024)} KB · ` : ""}
+                        {file.file_size_bytes
+                          ? `${Math.round(file.file_size_bytes / 1024)} KB · `
+                          : ""}
                         {file.type.toUpperCase()}
                       </div>
                     </div>
@@ -912,8 +944,13 @@ function AdminUnitWorkspace() {
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-mono font-bold text-muted-foreground">Q{idx + 1}.</span>
-                      <Badge variant="outline" className="text-[10px] uppercase font-bold rounded-md">
+                      <span className="text-xs font-mono font-bold text-muted-foreground">
+                        Q{idx + 1}.
+                      </span>
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] uppercase font-bold rounded-md"
+                      >
                         {q.difficulty || "medium"}
                       </Badge>
                     </div>
@@ -984,7 +1021,8 @@ function AdminUnitWorkspace() {
           {pyqQuestions.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-border/80 bg-muted/10 p-8 text-center text-xs text-muted-foreground">
               <GraduationCap className="mx-auto h-8 w-8 text-muted-foreground/40 mb-2" />
-              No PYQ questions linked to Unit {unit.number} yet. Add 5-mark and 10-mark repeated questions.
+              No PYQ questions linked to Unit {unit.number} yet. Add 5-mark and 10-mark repeated
+              questions.
             </div>
           ) : (
             <div className="space-y-3">
@@ -995,8 +1033,13 @@ function AdminUnitWorkspace() {
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-xs font-mono font-bold text-muted-foreground">PYQ #{idx + 1}</span>
-                      <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30">
+                      <span className="text-xs font-mono font-bold text-muted-foreground">
+                        PYQ #{idx + 1}
+                      </span>
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30"
+                      >
                         {q.year || "Past"} {q.exam_name || "Exam"}
                       </Badge>
                       <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card">
@@ -1008,7 +1051,9 @@ function AdminUnitWorkspace() {
 
                     {q.explanation && (
                       <div className="mt-2 text-xs text-muted-foreground bg-card/60 p-2.5 rounded-xl border border-border/50">
-                        <span className="font-semibold text-primary block mb-0.5">Model Answer / Key Points:</span>
+                        <span className="font-semibold text-primary block mb-0.5">
+                          Model Answer / Key Points:
+                        </span>
                         {q.explanation}
                       </div>
                     )}
@@ -1070,8 +1115,16 @@ function AdminUnitWorkspace() {
             <div className="space-y-2">
               <Label className="text-xs font-bold">Options (Select correct choice)</Label>
               {(["A", "B", "C", "D"] as const).map((letter) => {
-                const val = letter === "A" ? optA : letter === "B" ? optB : letter === "C" ? optC : optD;
-                const setVal = letter === "A" ? setOptA : letter === "B" ? setOptB : letter === "C" ? setOptC : setOptD;
+                const val =
+                  letter === "A" ? optA : letter === "B" ? optB : letter === "C" ? optC : optD;
+                const setVal =
+                  letter === "A"
+                    ? setOptA
+                    : letter === "B"
+                      ? setOptB
+                      : letter === "C"
+                        ? setOptC
+                        : setOptD;
 
                 return (
                   <div key={letter} className="flex items-center gap-2">
@@ -1111,7 +1164,11 @@ function AdminUnitWorkspace() {
           </div>
 
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setNewMcqOpen(false)} className="rounded-xl text-xs">
+            <Button
+              variant="ghost"
+              onClick={() => setNewMcqOpen(false)}
+              className="rounded-xl text-xs"
+            >
               Cancel
             </Button>
             <Button
@@ -1192,7 +1249,11 @@ function AdminUnitWorkspace() {
           </div>
 
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setNewPyqOpen(false)} className="rounded-xl text-xs">
+            <Button
+              variant="ghost"
+              onClick={() => setNewPyqOpen(false)}
+              className="rounded-xl text-xs"
+            >
               Cancel
             </Button>
             <Button

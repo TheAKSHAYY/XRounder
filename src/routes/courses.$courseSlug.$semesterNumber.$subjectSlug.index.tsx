@@ -36,7 +36,13 @@ import { SiteFooter } from "@/components/layout/site-footer";
 type SubjectDetailData = {
   course: { id: string; title: string };
   sem: { id: string; number: number; title: string };
-  subject: { id: string; code: string; title: string; description: string | null; credits: number | null };
+  subject: {
+    id: string;
+    code: string;
+    title: string;
+    description: string | null;
+    credits: number | null;
+  };
   units: UnitRow[];
   papers: any[];
   contentByUnit: Map<string, ContentBucket>;
@@ -175,36 +181,36 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
     const schemas: any[] = [
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.xrounder.in/",
+            position: 1,
+            name: "Home",
+            item: "https://www.xrounder.in/",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Courses",
-            "item": "https://www.xrounder.in/courses",
+            position: 2,
+            name: "Courses",
+            item: "https://www.xrounder.in/courses",
           },
           {
             "@type": "ListItem",
-            "position": 3,
-            "name": course?.title ?? "Course",
-            "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+            position: 3,
+            name: course?.title ?? "Course",
+            item: `https://www.xrounder.in/courses/${params.courseSlug}`,
           },
           {
             "@type": "ListItem",
-            "position": 4,
-            "name": `Semester ${params.semesterNumber}`,
-            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
+            position: 4,
+            name: `Semester ${params.semesterNumber}`,
+            item: `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
           },
           {
             "@type": "ListItem",
-            "position": 5,
-            "name": subject?.title ?? "Subject",
-            "item": url,
+            position: 5,
+            name: subject?.title ?? "Subject",
+            item: url,
           },
         ],
       },
@@ -213,14 +219,14 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
     if (subject) {
       schemas.push({
         "@type": "Course",
-        "name": subject.title,
-        "description": description,
-        "courseCode": subject.code,
-        "url": url,
-        "provider": {
+        name: subject.title,
+        description: description,
+        courseCode: subject.code,
+        url: url,
+        provider: {
           "@type": "EducationalOrganization",
-          "name": "XRounder",
-          "url": "https://www.xrounder.in/",
+          name: "XRounder",
+          url: "https://www.xrounder.in/",
         },
       });
     }
@@ -258,8 +264,13 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">Subject not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">The requested subject does not exist or has not been published yet.</p>
-        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+        <p className="mt-2 text-sm text-muted-foreground">
+          The requested subject does not exist or has not been published yet.
+        </p>
+        <Link
+          to="/courses"
+          className="mt-4 inline-block font-semibold text-primary hover:underline"
+        >
           Back to all courses
         </Link>
       </div>
@@ -631,7 +642,8 @@ function SubjectDetail() {
                 Ready for Mid-Sem or Final Exams?
               </h3>
               <p className="text-xs text-muted-foreground mt-0.5 max-w-xl">
-                Test your knowledge across multiple units of {subjectQuery.data.subject.title} with timed questions and unit-by-unit weakness analysis.
+                Test your knowledge across multiple units of {subjectQuery.data.subject.title} with
+                timed questions and unit-by-unit weakness analysis.
               </p>
             </div>
 
@@ -826,22 +838,34 @@ function UnitCard({
         {/* Unit Readiness Badges */}
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {stats.content.note > 0 ? (
-            <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30">
+            <Badge
+              variant="outline"
+              className="text-[10px] font-bold rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
+            >
               <Check className="h-3 w-3 mr-1" /> Notes Ready
             </Badge>
           ) : (
-            <Badge variant="outline" className="text-[10px] font-medium rounded-lg text-muted-foreground bg-muted/40">
+            <Badge
+              variant="outline"
+              className="text-[10px] font-medium rounded-lg text-muted-foreground bg-muted/40"
+            >
               Notes in draft
             </Badge>
           )}
 
           {stats.content.pdf > 0 && (
-            <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-primary/10 text-primary border-primary/30">
+            <Badge
+              variant="outline"
+              className="text-[10px] font-bold rounded-lg bg-primary/10 text-primary border-primary/30"
+            >
               <FileType className="h-3 w-3 mr-1" /> College PDF
             </Badge>
           )}
 
-          <Badge variant="outline" className="text-[10px] font-bold rounded-lg bg-card text-foreground">
+          <Badge
+            variant="outline"
+            className="text-[10px] font-bold rounded-lg bg-card text-foreground"
+          >
             <FlaskConical className="h-3 w-3 mr-1 text-primary" /> Practice MCQs
           </Badge>
         </div>

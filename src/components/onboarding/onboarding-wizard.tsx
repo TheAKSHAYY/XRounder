@@ -240,9 +240,7 @@ export function OnboardingWizard({
                     <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
                       <GraduationCap className="h-3.5 w-3.5 text-muted-foreground/70" />
                       <span>{c.total_semesters ?? 6} Semesters</span>
-                      {c.duration_years && (
-                        <span>· {c.duration_years} Years</span>
-                      )}
+                      {c.duration_years && <span>· {c.duration_years} Years</span>}
                     </div>
                   </button>
                 );
@@ -252,7 +250,13 @@ export function OnboardingWizard({
 
           <div className="flex items-center justify-between pt-4 border-t border-border">
             {onSkip && isGuest ? (
-              <Button type="button" variant="ghost" size="sm" onClick={onSkip} className="text-muted-foreground">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={onSkip}
+                className="text-muted-foreground"
+              >
                 Skip for now
               </Button>
             ) : (
@@ -289,7 +293,8 @@ export function OnboardingWizard({
           <div className="grid gap-3 sm:grid-cols-3">
             {availableYears.map((yearNum) => {
               const active = selectedYear === yearNum;
-              const suffix = yearNum === 1 ? "st" : yearNum === 2 ? "nd" : yearNum === 3 ? "rd" : "th";
+              const suffix =
+                yearNum === 1 ? "st" : yearNum === 2 ? "nd" : yearNum === 3 ? "rd" : "th";
               const semsInYear = `Semesters ${(yearNum - 1) * 2 + 1} & ${yearNum * 2}`;
 
               return (
@@ -318,11 +323,10 @@ export function OnboardingWizard({
                     )}
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold text-foreground">
-                    {yearNum}{suffix} Year
+                    {yearNum}
+                    {suffix} Year
                   </h3>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {semsInYear}
-                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground">{semsInYear}</p>
                 </button>
               );
             })}
@@ -362,7 +366,8 @@ export function OnboardingWizard({
               Select your current semester
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              Your dashboard will immediately showcase all notes, units, and practice for this semester.
+              Your dashboard will immediately showcase all notes, units, and practice for this
+              semester.
             </p>
           </div>
 

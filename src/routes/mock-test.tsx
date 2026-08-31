@@ -70,18 +70,18 @@ export const Route = createFileRoute("/mock-test")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": [
+          itemListElement: [
             {
               "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.xrounder.in/",
+              position: 1,
+              name: "Home",
+              item: "https://www.xrounder.in/",
             },
             {
               "@type": "ListItem",
-              "position": 2,
-              "name": "Mock Test",
-              "item": "https://www.xrounder.in/mock-test",
+              position: 2,
+              name: "Mock Test",
+              item: "https://www.xrounder.in/mock-test",
             },
           ],
         }),
@@ -302,7 +302,8 @@ function MockTestPage() {
       // Fetch quizzes for selected units
       const { data: quizzes, error: qErr } = await supabase
         .from("quizzes")
-        .select(`
+        .select(
+          `
           id,
           unit_id,
           units:units (
@@ -321,7 +322,8 @@ function MockTestPage() {
               )
             )
           )
-        `)
+        `,
+        )
         .in("unit_id", selectedUnitIds)
         .eq("status", "published");
 
@@ -338,7 +340,8 @@ function MockTestPage() {
       // Fetch questions from these quizzes
       const { data: rawQuestions, error: qstErr } = await supabase
         .from("quiz_questions")
-        .select(`
+        .select(
+          `
           id,
           quiz_id,
           prompt,
@@ -350,7 +353,8 @@ function MockTestPage() {
             is_correct,
             order_index
           )
-        `)
+        `,
+        )
         .in("quiz_id", quizIds);
 
       if (qstErr) throw qstErr;
@@ -389,7 +393,9 @@ function MockTestPage() {
             prompt: q.prompt,
             explanation: q.explanation,
             difficulty: q.difficulty,
-            options: (q.quiz_options as QuestionOption[]).sort((a, b) => a.order_index - b.order_index),
+            options: (q.quiz_options as QuestionOption[]).sort(
+              (a, b) => a.order_index - b.order_index,
+            ),
           };
         });
 
@@ -543,7 +549,8 @@ function MockTestPage() {
                 Custom Multi-Unit Mock Exam
               </h1>
               <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-2xl">
-                Combine questions across multiple syllabus units to simulate real mid-term and semester final exams.
+                Combine questions across multiple syllabus units to simulate real mid-term and
+                semester final exams.
               </p>
             </div>
 
@@ -676,8 +683,12 @@ function MockTestPage() {
                             {isChecked && <Check className="h-3.5 w-3.5 stroke-[3]" />}
                           </div>
                           <div className="min-w-0 flex-1">
-                            <span className="text-xs font-mono block text-muted-foreground">Unit {u.number}</span>
-                            <span className="text-sm truncate block text-foreground">{u.title}</span>
+                            <span className="text-xs font-mono block text-muted-foreground">
+                              Unit {u.number}
+                            </span>
+                            <span className="text-sm truncate block text-foreground">
+                              {u.title}
+                            </span>
                           </div>
                         </button>
                       );
@@ -800,7 +811,7 @@ function MockTestPage() {
                 <div
                   className="h-full bg-primary transition-all duration-300"
                   style={{
-                    width: `${((Object.keys(selectedAnswers).length) / questions.length) * 100}%`,
+                    width: `${(Object.keys(selectedAnswers).length / questions.length) * 100}%`,
                   }}
                 />
               </div>
@@ -872,7 +883,9 @@ function MockTestPage() {
                       >
                         {optionLetters[idx] || idx + 1}
                       </div>
-                      <span className="text-sm sm:text-base leading-snug flex-1">{option.text}</span>
+                      <span className="text-sm sm:text-base leading-snug flex-1">
+                        {option.text}
+                      </span>
                     </button>
                   );
                 })}
@@ -949,19 +962,27 @@ function MockTestPage() {
               </div>
 
               <h1 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground">
-                {diagnostics.passed ? "Great Job! Exam Completed" : "Exam Complete — Needs Revision"}
+                {diagnostics.passed
+                  ? "Great Job! Exam Completed"
+                  : "Exam Complete — Needs Revision"}
               </h1>
               <p className="mt-2 text-sm text-muted-foreground">
-                You scored <span className="font-bold text-foreground">{diagnostics.totalCorrect}</span> out of{" "}
-                <span className="font-bold text-foreground">{diagnostics.totalQuestions}</span> questions (
-                {diagnostics.scorePct}% accuracy) in {Math.floor(timeSpentSeconds / 60)}m {timeSpentSeconds % 60}s.
+                You scored{" "}
+                <span className="font-bold text-foreground">{diagnostics.totalCorrect}</span> out of{" "}
+                <span className="font-bold text-foreground">{diagnostics.totalQuestions}</span>{" "}
+                questions ({diagnostics.scorePct}% accuracy) in {Math.floor(timeSpentSeconds / 60)}m{" "}
+                {timeSpentSeconds % 60}s.
               </p>
 
               {/* Stats Strip */}
               <div className="grid grid-cols-3 gap-3 max-w-md mx-auto mt-6">
                 <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
-                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">Score</span>
-                  <span className="text-xl font-extrabold text-foreground">{diagnostics.scorePct}%</span>
+                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                    Score
+                  </span>
+                  <span className="text-xl font-extrabold text-foreground">
+                    {diagnostics.scorePct}%
+                  </span>
                 </div>
                 <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-3">
                   <span className="block text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400">
@@ -972,8 +993,12 @@ function MockTestPage() {
                   </span>
                 </div>
                 <div className="rounded-2xl border border-destructive/20 bg-destructive/10 p-3">
-                  <span className="block text-[10px] uppercase font-bold text-destructive">Wrong</span>
-                  <span className="text-xl font-extrabold text-destructive">{diagnostics.totalWrong}</span>
+                  <span className="block text-[10px] uppercase font-bold text-destructive">
+                    Wrong
+                  </span>
+                  <span className="text-xl font-extrabold text-destructive">
+                    {diagnostics.totalWrong}
+                  </span>
                 </div>
               </div>
 
@@ -985,7 +1010,11 @@ function MockTestPage() {
                 >
                   <RotateCcw className="h-4 w-4" /> Create New Mock Test
                 </Button>
-                <Button asChild variant="outline" className="rounded-2xl h-11 px-6 font-bold text-sm">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="rounded-2xl h-11 px-6 font-bold text-sm"
+                >
                   <Link to="/dashboard">Go to Dashboard</Link>
                 </Button>
               </div>
@@ -1010,7 +1039,9 @@ function MockTestPage() {
                       key={unit.unitNumber}
                       className={cn(
                         "rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors",
-                        isWeak ? "border-amber-500/30 bg-amber-500/5" : "border-border/60 bg-muted/20",
+                        isWeak
+                          ? "border-amber-500/30 bg-amber-500/5"
+                          : "border-border/60 bg-muted/20",
                       )}
                     >
                       <div className="min-w-0 flex-1">
@@ -1024,7 +1055,9 @@ function MockTestPage() {
                           >
                             Unit {unit.unitNumber}
                           </Badge>
-                          <span className="font-bold text-sm text-foreground truncate">{unit.unitTitle}</span>
+                          <span className="font-bold text-sm text-foreground truncate">
+                            {unit.unitTitle}
+                          </span>
                         </div>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
                           <span>
@@ -1058,7 +1091,8 @@ function MockTestPage() {
                             unitNumber: String(unit.unitNumber),
                           }}
                         >
-                          <BookOpen className="h-3.5 w-3.5 mr-1.5" /> Read Unit {unit.unitNumber} Notes
+                          <BookOpen className="h-3.5 w-3.5 mr-1.5" /> Read Unit {unit.unitNumber}{" "}
+                          Notes
                         </Link>
                       </Button>
                     </div>
@@ -1082,7 +1116,9 @@ function MockTestPage() {
                   return (
                     <div key={q.id} className={idx > 0 ? "pt-6" : ""}>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-bold text-muted-foreground font-mono">Q{idx + 1}.</span>
+                        <span className="text-xs font-bold text-muted-foreground font-mono">
+                          Q{idx + 1}.
+                        </span>
                         <Badge variant="outline" className="text-[10px] rounded-md">
                           Unit {q.unit_number}
                         </Badge>
@@ -1097,7 +1133,9 @@ function MockTestPage() {
                         )}
                       </div>
 
-                      <h3 className="text-sm sm:text-base font-bold text-foreground mb-3">{q.prompt}</h3>
+                      <h3 className="text-sm sm:text-base font-bold text-foreground mb-3">
+                        {q.prompt}
+                      </h3>
 
                       <div className="space-y-2 mb-3">
                         {q.options.map((opt) => {

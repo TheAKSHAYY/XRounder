@@ -82,18 +82,18 @@ export const Route = createFileRoute("/courses/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": [
+          itemListElement: [
             {
               "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.xrounder.in/",
+              position: 1,
+              name: "Home",
+              item: "https://www.xrounder.in/",
             },
             {
               "@type": "ListItem",
-              "position": 2,
-              "name": "Courses",
-              "item": "https://www.xrounder.in/courses",
+              position: 2,
+              name: "Courses",
+              item: "https://www.xrounder.in/courses",
             },
           ],
         }),
@@ -143,8 +143,8 @@ function CoursesIndex() {
               Degree Programs
             </h1>
             <p className="mt-2 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Explore syllabus-aligned notes, past university papers, video lectures, and MCQ practice
-              for each semester.
+              Explore syllabus-aligned notes, past university papers, video lectures, and MCQ
+              practice for each semester.
             </p>
           </div>
 
@@ -172,14 +172,12 @@ function CoursesIndex() {
                   Your Selected Semester
                 </span>
                 <p className="text-sm font-bold text-foreground">
-                  {guestPrefs.courseTitle ?? "Course"} · Year {guestPrefs.year} · Semester {guestPrefs.semesterNumber ?? 1}
+                  {guestPrefs.courseTitle ?? "Course"} · Year {guestPrefs.year} · Semester{" "}
+                  {guestPrefs.semesterNumber ?? 1}
                 </p>
               </div>
             </div>
-            <Link
-              to="/onboarding"
-              className="text-xs font-semibold text-primary hover:underline"
-            >
+            <Link to="/onboarding" className="text-xs font-semibold text-primary hover:underline">
               Change
             </Link>
           </div>
@@ -200,7 +198,9 @@ function CoursesIndex() {
                 No programs found
               </h3>
               <p className="mt-1 text-sm text-muted-foreground">
-                {search ? `No matches for "${search}". Try another keyword.` : "Curriculums are currently being uploaded."}
+                {search
+                  ? `No matches for "${search}". Try another keyword.`
+                  : "Curriculums are currently being uploaded."}
               </p>
             </div>
           ) : (
@@ -239,7 +239,8 @@ function CoursesIndex() {
                       {c.total_semesters ?? 6} Semesters
                     </span>
                     <span className="font-semibold text-primary inline-flex items-center gap-1">
-                      View semesters <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                      View semesters{" "}
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </div>
                 </Link>

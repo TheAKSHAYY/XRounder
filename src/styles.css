@@ -126,7 +126,7 @@
   --sidebar-foreground: oklch(0.94 0.005 85);
   --sidebar-primary: oklch(0.48 0.16 275);
   --sidebar-primary-foreground: oklch(0.99 0.002 85);
-  --sidebar-accent: oklch(0.20 0.015 275);
+  --sidebar-accent: oklch(0.2 0.015 275);
   --sidebar-accent-foreground: oklch(0.98 0.002 85);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.48 0.16 275);
@@ -136,7 +136,7 @@
   --background: oklch(0.12 0.015 275);
   --foreground: oklch(0.97 0.004 85);
   --surface: oklch(0.16 0.02 275);
-  --surface-muted: oklch(0.20 0.02 275);
+  --surface-muted: oklch(0.2 0.02 275);
 
   --card: oklch(0.16 0.02 275);
   --card-foreground: oklch(0.97 0.004 85);
@@ -161,7 +161,7 @@
   --success-foreground: oklch(0.12 0.015 275);
   --warning: oklch(0.82 0.16 75);
   --warning-foreground: oklch(0.16 0.03 45);
-  --info: oklch(0.70 0.13 245);
+  --info: oklch(0.7 0.13 245);
   --info-foreground: oklch(0.12 0.015 275);
 
   --border: oklch(1 0 0 / 10%);
@@ -170,11 +170,11 @@
 
   --chart-1: oklch(0.68 0.16 275);
   --chart-2: oklch(0.72 0.17 35);
-  --chart-3: oklch(0.80 0.008 85);
+  --chart-3: oklch(0.8 0.008 85);
   --chart-4: oklch(0.72 0.15 145);
   --chart-5: oklch(0.82 0.16 75);
 
-  --sidebar: oklch(0.10 0.012 275);
+  --sidebar: oklch(0.1 0.012 275);
   --sidebar-foreground: oklch(0.94 0.005 85);
   --sidebar-primary: oklch(0.68 0.16 275);
   --sidebar-primary-foreground: oklch(0.12 0.015 275);
@@ -183,7 +183,6 @@
   --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.68 0.16 275);
 }
-
 
 /*
  * Alternate themes. Each block MUST define the FULL token set — partial themes

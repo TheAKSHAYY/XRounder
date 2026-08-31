@@ -43,7 +43,6 @@ export default tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
-
     },
   },
   eslintPluginPrettier,

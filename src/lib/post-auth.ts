@@ -26,7 +26,10 @@ export async function resolvePostAuthRoute(userId: string): Promise<string> {
     .eq("user_id", userId)
     .maybeSingle();
 
-  if (!profile || (!profile.onboarded_at && (!profile.current_course_id || !profile.current_semester_id))) {
+  if (
+    !profile ||
+    (!profile.onboarded_at && (!profile.current_course_id || !profile.current_semester_id))
+  ) {
     return "/onboarding";
   }
   return "/dashboard";

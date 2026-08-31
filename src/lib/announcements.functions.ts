@@ -4,7 +4,6 @@ import { assertAdmin } from "@/lib/role-guards.server";
 import { loose } from "@/lib/supabase-loose";
 import { logAudit, tryAdminClient } from "@/lib/admin-client.server";
 
-
 export type Announcement = {
   id: string;
   title: string;
@@ -158,7 +157,6 @@ export const setUserSuspended = createServerFn({ method: "POST" })
         .is("revoked_at", null);
     }
     return { ok: true };
-
   });
 
 // -------- Reorder units --------

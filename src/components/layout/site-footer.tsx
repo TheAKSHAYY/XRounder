@@ -102,4 +102,3 @@ function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
     </div>
   );
 }
-

@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, redirect, useRouterState } from "@tanstack/react-router";
 
-import { supabase } from "@/integrations/supabase/client";
+import { useAuth, waitForAuth } from "@/hooks/use-auth";
 import { AppNavbar } from "@/components/app-navbar";
 import { MobileTabBar } from "@/components/student/mobile-tab-bar";
 
@@ -10,15 +10,11 @@ export const Route = createFileRoute("/_authenticated")({
     meta: [{ name: "robots", content: "noindex, nofollow" }],
   }),
   beforeLoad: async ({ location }) => {
-    const { data: sessionData } = await supabase.auth.getSession();
-    if (!sessionData.session) {
+    const auth = await waitForAuth();
+    if (!auth.isAuthenticated || !auth.user) {
       throw redirect({ to: "/auth", search: { redirect: location.href } });
     }
-    const { data } = await supabase.auth.getUser();
-    if (!data.user && !sessionData.session.user) {
-      throw redirect({ to: "/auth", search: { redirect: location.href } });
-    }
-    return { user: data.user ?? sessionData.session.user };
+    return { user: auth.user };
   },
   component: AuthenticatedLayout,
 });

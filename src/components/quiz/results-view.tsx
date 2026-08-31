@@ -165,7 +165,11 @@ export function ResultsView({
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-2.5">
-          <Button onClick={onRetry} disabled={retryPending} className="gap-1.5 rounded-xl font-semibold shadow-xs">
+          <Button
+            onClick={onRetry}
+            disabled={retryPending}
+            className="gap-1.5 rounded-xl font-semibold shadow-xs"
+          >
             <RotateCcw className="h-4 w-4" /> {retryPending ? "Starting…" : "Retry quiz"}
           </Button>
 
@@ -177,21 +181,24 @@ export function ResultsView({
             <ListChecks className="h-4 w-4" /> {showReview ? "Hide review" : "Review answers"}
           </Button>
 
-          {context?.courseSlug && context.semesterNumber && context.subjectSlug && context.unitNumber && (
-            <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">
-              <Link
-                to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                params={{
-                  courseSlug: context.courseSlug,
-                  semesterNumber: String(context.semesterNumber),
-                  subjectSlug: context.subjectSlug,
-                  unitNumber: String(context.unitNumber),
-                }}
-              >
-                <Target className="h-4 w-4" /> Back to Unit Notes
-              </Link>
-            </Button>
-          )}
+          {context?.courseSlug &&
+            context.semesterNumber &&
+            context.subjectSlug &&
+            context.unitNumber && (
+              <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">
+                <Link
+                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                  params={{
+                    courseSlug: context.courseSlug,
+                    semesterNumber: String(context.semesterNumber),
+                    subjectSlug: context.subjectSlug,
+                    unitNumber: String(context.unitNumber),
+                  }}
+                >
+                  <Target className="h-4 w-4" /> Back to Unit Notes
+                </Link>
+              </Button>
+            )}
 
           {context?.courseSlug && context.semesterNumber && context.subjectSlug && (
             <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">

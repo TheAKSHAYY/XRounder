@@ -127,7 +127,10 @@ export const Route = createFileRoute("/sitemap.xml")({
                   .eq("status", "published")
                   .is("deleted_at", null);
 
-                const subjectMap = new Map<string, { courseSlug: string; semesterNumber: number; slug: string }>();
+                const subjectMap = new Map<
+                  string,
+                  { courseSlug: string; semesterNumber: number; slug: string }
+                >();
                 for (const subj of subjects ?? []) {
                   const semInfo = semMap.get(subj.semester_id);
                   if (!semInfo || !subj.slug) continue;
@@ -209,5 +212,3 @@ export const Route = createFileRoute("/sitemap.xml")({
     },
   },
 });
-
-

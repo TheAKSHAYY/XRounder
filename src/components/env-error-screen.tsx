@@ -17,8 +17,8 @@ export function EnvErrorScreen({ result }: { result: EnvValidationResult }) {
               Configuration required
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              XRounder can&apos;t connect to its backend because some environment values are
-              missing or invalid.
+              XRounder can&apos;t connect to its backend because some environment values are missing
+              or invalid.
             </p>
           </div>
         </div>

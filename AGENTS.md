@@ -1,4 +1,5 @@
 <!-- LOVABLE:BEGIN -->
+
 > [!IMPORTANT]
 > This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
 > published git history — force pushing, or rebasing/amending/squashing commits
@@ -7,6 +8,7 @@
 >
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
+
 <!-- LOVABLE:END -->
 
 ## Routing conventions
@@ -21,4 +23,3 @@ route silently fails to render (URL changes, no error, nothing displays). This
 bug has already occurred twice (`content.tsx`, `courses.tsx`). Use `.index.tsx`
 naming for all future list+detail admin pages instead of patching around it with
 manual `Outlet` checks.
-

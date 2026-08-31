@@ -37,8 +37,7 @@ export const Route = createFileRoute("/explore")({
       { property: "og:title", content: "Explore XRounder as a guest" },
       {
         property: "og:description",
-        content:
-          "Browse courses, notes, papers and sample quiz questions with no account needed.",
+        content: "Browse courses, notes, papers and sample quiz questions with no account needed.",
       },
       { property: "og:url", content: "https://www.xrounder.in/explore" },
       { property: "og:type", content: "website" },
@@ -49,8 +48,7 @@ export const Route = createFileRoute("/explore")({
       { name: "twitter:title", content: "Explore as a guest · XRounder" },
       {
         name: "twitter:description",
-        content:
-          "Browse courses, notes, papers and sample quiz questions with no account needed.",
+        content: "Browse courses, notes, papers and sample quiz questions with no account needed.",
       },
       { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
@@ -61,18 +59,18 @@ export const Route = createFileRoute("/explore")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": [
+          itemListElement: [
             {
               "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.xrounder.in/",
+              position: 1,
+              name: "Home",
+              item: "https://www.xrounder.in/",
             },
             {
               "@type": "ListItem",
-              "position": 2,
-              "name": "Explore",
-              "item": "https://www.xrounder.in/explore",
+              position: 2,
+              name: "Explore",
+              item: "https://www.xrounder.in/explore",
             },
           ],
         }),
@@ -151,7 +149,8 @@ function ExplorePage() {
     setWizardOpen(false);
   }
 
-  const guestCourseSlug = (guestSemesterQuery.data?.semester?.courses as { slug?: string } | null)?.slug;
+  const guestCourseSlug = (guestSemesterQuery.data?.semester?.courses as { slug?: string } | null)
+    ?.slug;
   const guestSemNumber = guestSemesterQuery.data?.semester?.number;
   const guestSubjects = guestSemesterQuery.data?.subjects ?? [];
 
@@ -168,7 +167,8 @@ function ExplorePage() {
             </Badge>
             {guestPrefs && (
               <Badge variant="secondary" className="rounded-full">
-                {guestPrefs.courseCode ?? "Course"} · Year {guestPrefs.year} · Sem {guestPrefs.semesterNumber ?? 1}
+                {guestPrefs.courseCode ?? "Course"} · Year {guestPrefs.year} · Sem{" "}
+                {guestPrefs.semesterNumber ?? 1}
               </Badge>
             )}
           </div>
@@ -238,7 +238,8 @@ function ExplorePage() {
               </div>
             ) : guestSubjects.length === 0 ? (
               <p className="mt-4 text-sm text-muted-foreground">
-                Subjects for this semester are being prepared. You can explore all available courses below.
+                Subjects for this semester are being prepared. You can explore all available courses
+                below.
               </p>
             ) : (
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -278,7 +279,9 @@ function ExplorePage() {
 
         {/* ─── What you can do ─── */}
         <section className="mt-10">
-          <h2 className="font-display text-xl font-semibold text-foreground">What you can do now</h2>
+          <h2 className="font-display text-xl font-semibold text-foreground">
+            What you can do now
+          </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <GuestCard
               icon={BookOpen}
@@ -316,7 +319,9 @@ function ExplorePage() {
         {/* ─── Course Catalog ─── */}
         <section className="mt-10">
           <div className="flex items-end justify-between gap-3">
-            <h2 className="font-display text-xl font-semibold text-foreground">Start with a course</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground">
+              Start with a course
+            </h2>
             <Link to="/courses" className="text-sm text-primary hover:underline">
               View all
             </Link>

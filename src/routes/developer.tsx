@@ -56,31 +56,31 @@ export const Route = createFileRoute("/developer")({
           "@graph": [
             {
               "@type": "BreadcrumbList",
-              "itemListElement": [
+              itemListElement: [
                 {
                   "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://www.xrounder.in/",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.xrounder.in/",
                 },
                 {
                   "@type": "ListItem",
-                  "position": 2,
-                  "name": "Developer Portfolio",
-                  "item": "https://www.xrounder.in/developer",
+                  position: 2,
+                  name: "Developer Portfolio",
+                  item: "https://www.xrounder.in/developer",
                 },
               ],
             },
             {
               "@type": "ProfilePage",
-              "name": "Developer Portfolio · XRounder",
-              "url": "https://www.xrounder.in/developer",
-              "mainEntity": {
+              name: "Developer Portfolio · XRounder",
+              url: "https://www.xrounder.in/developer",
+              mainEntity: {
                 "@type": "Person",
-                "name": "Akshay",
-                "url": "https://www.xrounder.in/developer",
-                "sameAs": ["https://github.com/TheAKSHAYY"],
-                "jobTitle": "Full-Stack Software Engineer",
+                name: "Akshay",
+                url: "https://www.xrounder.in/developer",
+                sameAs: ["https://github.com/TheAKSHAYY"],
+                jobTitle: "Full-Stack Software Engineer",
               },
             },
           ],

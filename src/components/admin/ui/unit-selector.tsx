@@ -11,11 +11,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -60,10 +56,7 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
   }, [units]);
 
   const subjects = useMemo(() => {
-    const map = new Map<
-      string,
-      { id: string; code: string; title: string; semesterId?: string }
-    >();
+    const map = new Map<string, { id: string; code: string; title: string; semesterId?: string }>();
     units.forEach((u) => {
       if (u.subject && !map.has(u.subject.id)) {
         map.set(u.subject.id, {
@@ -84,11 +77,7 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
     const groups = new Map<string, UnitLite[]>();
     units.forEach((u) => {
       // Apply filters
-      if (
-        semesterFilter !== "all" &&
-        u.subject?.semester?.id !== semesterFilter
-      )
-        return;
+      if (semesterFilter !== "all" && u.subject?.semester?.id !== semesterFilter) return;
       if (subjectFilter !== "all" && u.subject_id !== subjectFilter) return;
 
       const subId = u.subject_id || "unknown";
@@ -116,15 +105,13 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
           aria-expanded={open}
           className={cn(
             "w-full justify-between mt-1 font-normal",
-            !value && "text-muted-foreground"
+            !value && "text-muted-foreground",
           )}
         >
           {selectedUnit ? (
             <span className="truncate">
-              {selectedUnit.subject
-                ? `${selectedUnit.subject.code} · `
-                : ""}
-              U{selectedUnit.number} · {selectedUnit.title}
+              {selectedUnit.subject ? `${selectedUnit.subject.code} · ` : ""}U{selectedUnit.number}{" "}
+              · {selectedUnit.title}
             </span>
           ) : (
             "Select unit"
@@ -146,12 +133,12 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
         >
           <div className="flex items-center border-b px-3">
             <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-            <CommandInput 
-              placeholder="Search unit, subject or code..." 
+            <CommandInput
+              placeholder="Search unit, subject or code..."
               className="border-none focus:ring-0 shadow-none h-11"
             />
           </div>
-          
+
           <div className="flex gap-2 p-2 border-b bg-muted/20">
             <Select
               value={semesterFilter}
@@ -173,10 +160,7 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
               </SelectContent>
             </Select>
 
-            <Select
-              value={subjectFilter}
-              onValueChange={setSubjectFilter}
-            >
+            <Select value={subjectFilter} onValueChange={setSubjectFilter}>
               <SelectTrigger className="h-8 text-xs flex-1">
                 <SelectValue placeholder="All Subjects" />
               </SelectTrigger>
@@ -196,14 +180,13 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
             {Array.from(filteredUnitsBySubject.entries()).map(([subId, subUnits]) => {
               if (subUnits.length === 0) return null;
               const subject = subUnits[0].subject;
-              const heading = subject
-                ? `${subject.code} — ${subject.title}`
-                : "Other Units";
+              const heading = subject ? `${subject.code} — ${subject.title}` : "Other Units";
 
               return (
                 <CommandGroup key={subId} heading={heading}>
                   {subUnits.map((u) => {
-                    const searchString = `${u.subject?.code || ""} ${u.subject?.title || ""} U${u.number} ${u.title} Semester ${u.subject?.semester?.number || ""}`.toLowerCase();
+                    const searchString =
+                      `${u.subject?.code || ""} ${u.subject?.title || ""} U${u.number} ${u.title} Semester ${u.subject?.semester?.number || ""}`.toLowerCase();
                     return (
                       <CommandItem
                         key={u.id}
@@ -214,7 +197,7 @@ export function UnitSelector({ units, value, onChange }: UnitSelectorProps) {
                         <Check
                           className={cn(
                             "absolute left-2 h-3.5 w-3.5",
-                            value === u.id ? "opacity-100" : "opacity-0"
+                            value === u.id ? "opacity-100" : "opacity-0",
                           )}
                         />
                         <span className="truncate">

@@ -25,11 +25,7 @@ const SERVER_SNAPSHOT: GuestState = {
  */
 export function useGuest() {
   const { user, loading } = useAuth();
-  const state = useSyncExternalStore(
-    subscribeGuest,
-    getGuestState,
-    () => SERVER_SNAPSHOT,
-  );
+  const state = useSyncExternalStore(subscribeGuest, getGuestState, () => SERVER_SNAPSHOT);
 
   useEffect(() => {
     if (user && state.active) clearGuestState();

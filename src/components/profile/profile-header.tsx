@@ -1,6 +1,6 @@
 import { Camera, GraduationCap, Loader2, Pencil, Trash2 } from "lucide-react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "@/components/ui/progress-bar";
@@ -41,13 +41,11 @@ export function ProfileHeader({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-4">
         <div className="relative shrink-0">
           <Avatar className="h-16 w-16 border border-border sm:h-20 sm:w-20">
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt={`${name} avatar`}
-                className="h-full w-full rounded-full object-cover"
-              />
-            ) : null}
+            <AvatarImage
+              src={avatarUrl || undefined}
+              alt={`${name} avatar`}
+              className="h-full w-full rounded-full object-cover"
+            />
             <AvatarFallback className="bg-primary/10 text-base font-semibold text-primary">
               {initials}
             </AvatarFallback>

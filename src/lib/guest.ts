@@ -109,9 +109,11 @@ export function guestMcqRemaining(quizId: string): number {
   return Math.max(0, GUEST_LIMITS.mcqPerQuiz - guestMcqSeen(quizId));
 }
 
-export function toggleGuestBookmark(item: { id: string; label: string; href: string }):
-  | { ok: true; saved: boolean }
-  | { ok: false; reason: "limit" } {
+export function toggleGuestBookmark(item: {
+  id: string;
+  label: string;
+  href: string;
+}): { ok: true; saved: boolean } | { ok: false; reason: "limit" } {
   const s = read();
   const exists = s.bookmarks.some((b) => b.id === item.id);
   if (exists) {

@@ -111,7 +111,11 @@ export function AcademicCard({
             <>
               <InfoChip icon={BookOpen} label="Course" value={courseLabel} />
               <InfoChip icon={Layers} label="Semester" value={semesterLabel} />
-              <InfoChip icon={GraduationCap} label="Year" value={form.current_year ? `Year ${form.current_year}` : "Not set"} />
+              <InfoChip
+                icon={GraduationCap}
+                label="Year"
+                value={form.current_year ? `Year ${form.current_year}` : "Not set"}
+              />
               <InfoChip
                 icon={CalendarDays}
                 label="Session"

@@ -15,7 +15,6 @@ import {
   Library,
   FileStack,
   Megaphone,
-
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -59,7 +58,6 @@ const SECTIONS: Section[] = [
     title: "Site & Content",
     description: "How the public site looks and what shows up on it.",
     cards: [
-
       {
         label: "Homepage sections",
         description: "Hero, features, testimonials on the landing page.",

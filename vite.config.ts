@@ -24,7 +24,6 @@ if (typeof originalConfigResolved === "function") {
   };
 }
 
-
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).

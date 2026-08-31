@@ -34,18 +34,18 @@ export const Route = createFileRoute("/privacy")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": [
+          itemListElement: [
             {
               "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.xrounder.in/",
+              position: 1,
+              name: "Home",
+              item: "https://www.xrounder.in/",
             },
             {
               "@type": "ListItem",
-              "position": 2,
-              "name": "Privacy Policy",
-              "item": "https://www.xrounder.in/privacy",
+              position: 2,
+              name: "Privacy Policy",
+              item: "https://www.xrounder.in/privacy",
             },
           ],
         }),

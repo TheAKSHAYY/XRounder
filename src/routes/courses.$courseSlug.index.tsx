@@ -82,24 +82,24 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     const schemas: any[] = [
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.xrounder.in/",
+            position: 1,
+            name: "Home",
+            item: "https://www.xrounder.in/",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Courses",
-            "item": "https://www.xrounder.in/courses",
+            position: 2,
+            name: "Courses",
+            item: "https://www.xrounder.in/courses",
           },
           {
             "@type": "ListItem",
-            "position": 3,
-            "name": course?.title ?? "Course",
-            "item": url,
+            position: 3,
+            name: course?.title ?? "Course",
+            item: url,
           },
         ],
       },
@@ -108,14 +108,14 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     if (course) {
       schemas.push({
         "@type": "Course",
-        "name": course.title,
-        "description": description,
-        "courseCode": course.code,
-        "url": url,
-        "provider": {
+        name: course.title,
+        description: description,
+        courseCode: course.code,
+        url: url,
+        provider: {
           "@type": "EducationalOrganization",
-          "name": "XRounder",
-          "url": "https://www.xrounder.in/",
+          name: "XRounder",
+          url: "https://www.xrounder.in/",
         },
       });
     }
@@ -153,8 +153,13 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">Course not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">The requested program does not exist or has been unpublished.</p>
-        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+        <p className="mt-2 text-sm text-muted-foreground">
+          The requested program does not exist or has been unpublished.
+        </p>
+        <Link
+          to="/courses"
+          className="mt-4 inline-block font-semibold text-primary hover:underline"
+        >
           Back to all courses
         </Link>
       </div>

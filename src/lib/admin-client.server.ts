@@ -15,7 +15,7 @@ type AdminClient = SupabaseClient<Database>;
  * operations such as banning a user.
  */
 export async function tryAdminClient(): Promise<AdminClient | null> {
-  if (!process.env['SUPABASE_SERVICE_ROLE_KEY'] || !process.env['SUPABASE_URL']) return null;
+  if (!process.env["SUPABASE_SERVICE_ROLE_KEY"] || !process.env["SUPABASE_URL"]) return null;
   try {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     // Touch a property so a misconfigured client fails here, not later.

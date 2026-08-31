@@ -25,18 +25,18 @@ export const Route = createFileRoute("/terms")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          "itemListElement": [
+          itemListElement: [
             {
               "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.xrounder.in/",
+              position: 1,
+              name: "Home",
+              item: "https://www.xrounder.in/",
             },
             {
               "@type": "ListItem",
-              "position": 2,
-              "name": "Terms of Use",
-              "item": "https://www.xrounder.in/terms",
+              position: 2,
+              name: "Terms of Use",
+              item: "https://www.xrounder.in/terms",
             },
           ],
         }),
@@ -92,8 +92,7 @@ function TermsPage() {
 
           <h2>Contact</h2>
           <p>
-            Questions or disputes? Email{" "}
-            <a href="mailto:hello@xrounder.app">hello@xrounder.app</a>.
+            Questions or disputes? Email <a href="mailto:hello@xrounder.app">hello@xrounder.app</a>.
           </p>
         </div>
       </div>

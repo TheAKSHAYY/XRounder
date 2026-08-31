@@ -80,9 +80,10 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   head: ({ loaderData, params }) => {
     const course = loaderData?.course;
     const sem = loaderData?.sem;
-    const title = course && sem
-      ? `${course.title} Semester ${params.semesterNumber} (${sem.title}) Subjects & Notes · XRounder`
-      : `Semester ${params.semesterNumber} · XRounder`;
+    const title =
+      course && sem
+        ? `${course.title} Semester ${params.semesterNumber} (${sem.title}) Subjects & Notes · XRounder`
+        : `Semester ${params.semesterNumber} · XRounder`;
     const description = sem?.description
       ? sem.description
       : course
@@ -113,30 +114,30 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            "itemListElement": [
+            itemListElement: [
               {
                 "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.xrounder.in/",
+                position: 1,
+                name: "Home",
+                item: "https://www.xrounder.in/",
               },
               {
                 "@type": "ListItem",
-                "position": 2,
-                "name": "Courses",
-                "item": "https://www.xrounder.in/courses",
+                position: 2,
+                name: "Courses",
+                item: "https://www.xrounder.in/courses",
               },
               {
                 "@type": "ListItem",
-                "position": 3,
-                "name": course?.title ?? "Course",
-                "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+                position: 3,
+                name: course?.title ?? "Course",
+                item: `https://www.xrounder.in/courses/${params.courseSlug}`,
               },
               {
                 "@type": "ListItem",
-                "position": 4,
-                "name": sem ? `Semester ${sem.number}` : `Semester ${params.semesterNumber}`,
-                "item": url,
+                position: 4,
+                name: sem ? `Semester ${sem.number}` : `Semester ${params.semesterNumber}`,
+                item: url,
               },
             ],
           }),
@@ -149,8 +150,13 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">Semester not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">The requested semester does not exist or has not been published yet.</p>
-        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+        <p className="mt-2 text-sm text-muted-foreground">
+          The requested semester does not exist or has not been published yet.
+        </p>
+        <Link
+          to="/courses"
+          className="mt-4 inline-block font-semibold text-primary hover:underline"
+        >
           Back to all courses
         </Link>
       </div>

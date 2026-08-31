@@ -20,7 +20,9 @@ import {
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth, clearAuthStore } from "@/hooks/use-auth";
+import { recordLogoutHistory } from "@/lib/auth-history";
+import { uploadAvatar, AVATAR_ACCEPTED_TYPES, AVATAR_MAX_BYTES } from "@/lib/avatar";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -133,7 +135,11 @@ function ProfilePage() {
         .is("deleted_at", null)
         .order("number");
       if (error) throw error;
-      return (data ?? []).map((s) => ({ id: s.id, number: s.number, label: `Semester ${s.number} — ${s.title}` }));
+      return (data ?? []).map((s) => ({
+        id: s.id,
+        number: s.number,
+        label: `Semester ${s.number} — ${s.title}`,
+      }));
     },
   });
 
@@ -228,11 +234,11 @@ function ProfilePage() {
     e.target.value = "";
     if (!file || !user) return;
 
-    if (!file.type.startsWith("image/")) {
-      toast.error("Please choose an image file (JPG, PNG, or WebP).");
+    if (!AVATAR_ACCEPTED_TYPES.includes(file.type)) {
+      toast.error("Please choose an image file (JPG, PNG, WebP, or GIF).");
       return;
     }
-    if (file.size > 5 * 1024 * 1024) {
+    if (file.size > AVATAR_MAX_BYTES) {
       toast.error("Image is too large. Maximum size is 5 MB.");
       return;
     }
@@ -241,40 +247,11 @@ function ProfilePage() {
     setAvatarUrl(preview);
     setUploading(true);
 
-    const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
-    let bucket = "avatars";
-    let path = `${user.id}/avatar-${Date.now()}.${ext}`;
-
-    let { error: upErr } = await supabase.storage
-      .from(bucket)
-      .upload(path, file, { contentType: file.type, upsert: true });
-
-    // Fallback to 'notes' bucket if 'avatars' bucket is not found on remote instance
-    if (
-      upErr &&
-      (upErr.message?.toLowerCase().includes("not found") ||
-        (upErr as any).statusCode === "404" ||
-        (upErr as any).statusCode === 404 ||
-        (upErr as any).error === "Bucket not found")
-    ) {
-      bucket = "notes";
-      path = `avatars/${user.id}/avatar-${Date.now()}.${ext}`;
-      const fallbackRes = await supabase.storage
-        .from(bucket)
-        .upload(path, file, { contentType: file.type, upsert: true });
-      upErr = fallbackRes.error;
-    }
-
-    if (upErr) {
-      setUploading(false);
-      setAvatarUrl(profile?.avatar_url ?? "");
-      URL.revokeObjectURL(preview);
-      toast.error(upErr.message || "Failed to upload avatar photo");
-      return;
-    }
-
-    const publicUrl = supabase.storage.from(bucket).getPublicUrl(path).data.publicUrl;
     try {
+      // Upload to the dedicated public 'avatars' bucket.
+      // Uses a fixed path per-user (upsert overwrites the previous file).
+      const publicUrl = await uploadAvatar(user.id, file);
+
       const { error: updateErr } = await supabase
         .from("profiles")
         .update({ avatar_url: publicUrl } as never)
@@ -286,7 +263,7 @@ function ProfilePage() {
       invalidateProfile();
     } catch (err: any) {
       setAvatarUrl(profile?.avatar_url ?? "");
-      toast.error(err.message || "Failed to save photo");
+      toast.error(err.message || "Failed to upload avatar photo");
     } finally {
       URL.revokeObjectURL(preview);
       setUploading(false);
@@ -340,9 +317,11 @@ function ProfilePage() {
 
   // Sign out
   const onSignOut = async () => {
+    await recordLogoutHistory();
     await qc.cancelQueries();
     qc.clear();
     await supabase.auth.signOut();
+    clearAuthStore();
     await router.invalidate();
     navigate({ to: "/auth", replace: true });
   };
@@ -356,8 +335,12 @@ function ProfilePage() {
     .slice(0, 2)
     .toUpperCase();
 
-  const currentCourse = (coursesQuery.data ?? []).find((c) => c.id === profile?.current_course_id)?.label || "Not specified";
-  const currentSemester = (semestersQuery.data ?? []).find((s) => s.id === profile?.current_semester_id)?.label || (profile?.current_semester_id ? `Semester ${profile.current_semester_id}` : "Not specified");
+  const currentCourse =
+    (coursesQuery.data ?? []).find((c) => c.id === profile?.current_course_id)?.label ||
+    "Not specified";
+  const currentSemester =
+    (semestersQuery.data ?? []).find((s) => s.id === profile?.current_semester_id)?.label ||
+    (profile?.current_semester_id ? `Semester ${profile.current_semester_id}` : "Not specified");
   const universityName = profile?.university || profile?.college || "Not specified";
   const academicSession = profile?.academic_session || "2026–2027";
 
@@ -379,7 +362,7 @@ function ProfilePage() {
       <input
         ref={fileRef}
         type="file"
-        accept="image/png,image/jpeg,image/webp"
+        accept={AVATAR_ACCEPTED_TYPES.join(",")}
         className="sr-only"
         onChange={onPickAvatar}
       />
@@ -389,7 +372,12 @@ function ProfilePage() {
         <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
           <div className="relative group">
             <Avatar className="h-20 w-20 ring-2 ring-primary/20">
-              <AvatarImage src={avatarUrl} alt={fullName} className="object-cover" />
+              <AvatarImage
+                src={avatarUrl || undefined}
+                alt={fullName}
+                className="object-cover"
+                onError={() => setAvatarUrl("")}
+              />
               <AvatarFallback className="bg-primary/10 text-primary font-display text-xl font-bold">
                 {initials}
               </AvatarFallback>
@@ -402,7 +390,11 @@ function ProfilePage() {
               className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
               title="Change photo"
             >
-              {uploading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Camera className="h-3.5 w-3.5" />}
+              {uploading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Camera className="h-3.5 w-3.5" />
+              )}
             </button>
           </div>
 
@@ -448,36 +440,28 @@ function ProfilePage() {
             <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               Course / Degree
             </span>
-            <span className="mt-1 block font-semibold text-foreground">
-              {currentCourse}
-            </span>
+            <span className="mt-1 block font-semibold text-foreground">{currentCourse}</span>
           </div>
 
           <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
             <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               University / College
             </span>
-            <span className="mt-1 block font-semibold text-foreground">
-              {universityName}
-            </span>
+            <span className="mt-1 block font-semibold text-foreground">{universityName}</span>
           </div>
 
           <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
             <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               Current Semester
             </span>
-            <span className="mt-1 block font-semibold text-foreground">
-              {currentSemester}
-            </span>
+            <span className="mt-1 block font-semibold text-foreground">{currentSemester}</span>
           </div>
 
           <div className="rounded-2xl border border-border/50 bg-background/50 p-3.5">
             <span className="block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
               Academic Session
             </span>
-            <span className="mt-1 block font-semibold text-foreground">
-              {academicSession}
-            </span>
+            <span className="mt-1 block font-semibold text-foreground">{academicSession}</span>
           </div>
         </div>
       </section>
@@ -499,7 +483,10 @@ function ProfilePage() {
               return (
                 <div key={p.key} className="flex items-center justify-between p-3.5">
                   <div>
-                    <Label htmlFor={`pref-${p.key}`} className="text-xs font-semibold text-foreground cursor-pointer">
+                    <Label
+                      htmlFor={`pref-${p.key}`}
+                      className="text-xs font-semibold text-foreground cursor-pointer"
+                    >
                       {p.label}
                     </Label>
                     <p className="text-[11px] text-muted-foreground">{p.hint}</p>
@@ -528,7 +515,9 @@ function ProfilePage() {
           <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-background/60 p-3.5">
             <div>
               <span className="text-xs font-semibold text-foreground">Theme Mode</span>
-              <p className="text-[11px] text-muted-foreground">Choose light, dark, or system preference</p>
+              <p className="text-[11px] text-muted-foreground">
+                Choose light, dark, or system preference
+              </p>
             </div>
             <div className="w-36">
               <Select value={theme} onValueChange={(v) => setTheme(v as any)}>
@@ -573,7 +562,9 @@ function ProfilePage() {
       <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
         <DialogContent className="sm:max-w-md rounded-3xl">
           <DialogHeader>
-            <DialogTitle className="font-display text-xl font-bold">Edit Student Profile</DialogTitle>
+            <DialogTitle className="font-display text-xl font-bold">
+              Edit Student Profile
+            </DialogTitle>
             <DialogDescription className="text-xs text-muted-foreground">
               Update your name, degree program, and university details.
             </DialogDescription>
@@ -619,7 +610,11 @@ function ProfilePage() {
               <Select
                 value={editForm.current_course_id}
                 onValueChange={(val) =>
-                  setEditForm((prev) => ({ ...prev, current_course_id: val, current_semester_id: "" }))
+                  setEditForm((prev) => ({
+                    ...prev,
+                    current_course_id: val,
+                    current_semester_id: "",
+                  }))
                 }
               >
                 <SelectTrigger id="edit-course" className="h-10 text-sm rounded-xl">
@@ -641,11 +636,17 @@ function ProfilePage() {
               </Label>
               <Select
                 value={editForm.current_semester_id}
-                onValueChange={(val) => setEditForm((prev) => ({ ...prev, current_semester_id: val }))}
+                onValueChange={(val) =>
+                  setEditForm((prev) => ({ ...prev, current_semester_id: val }))
+                }
                 disabled={!editForm.current_course_id}
               >
                 <SelectTrigger id="edit-semester" className="h-10 text-sm rounded-xl">
-                  <SelectValue placeholder={editForm.current_course_id ? "Select semester" : "Select course first"} />
+                  <SelectValue
+                    placeholder={
+                      editForm.current_course_id ? "Select semester" : "Select course first"
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   {(semestersQuery.data ?? []).map((s) => (
@@ -677,7 +678,9 @@ function ProfilePage() {
               <Input
                 id="edit-session"
                 value={editForm.academic_session}
-                onChange={(e) => setEditForm((prev) => ({ ...prev, academic_session: e.target.value }))}
+                onChange={(e) =>
+                  setEditForm((prev) => ({ ...prev, academic_session: e.target.value }))
+                }
                 placeholder="e.g. 2026–2027"
                 className="h-10 text-sm rounded-xl"
               />
@@ -697,7 +700,9 @@ function ProfilePage() {
                 disabled={saveProfileMutation.isPending}
                 className="rounded-xl h-10 text-xs font-semibold"
               >
-                {saveProfileMutation.isPending && <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />}
+                {saveProfileMutation.isPending && (
+                  <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                )}
                 Save Changes
               </Button>
             </DialogFooter>
@@ -717,7 +722,9 @@ function ProfilePage() {
 
           <form onSubmit={handlePasswordSubmit} className="space-y-4 py-2">
             <div className="space-y-1.5">
-              <Label htmlFor="new-pwd" className="text-xs font-semibold">New Password</Label>
+              <Label htmlFor="new-pwd" className="text-xs font-semibold">
+                New Password
+              </Label>
               <Input
                 id="new-pwd"
                 type="password"
@@ -731,7 +738,9 @@ function ProfilePage() {
             </div>
 
             <div className="space-y-1.5">
-              <Label htmlFor="confirm-pwd" className="text-xs font-semibold">Confirm Password</Label>
+              <Label htmlFor="confirm-pwd" className="text-xs font-semibold">
+                Confirm Password
+              </Label>
               <Input
                 id="confirm-pwd"
                 type="password"
@@ -744,9 +753,7 @@ function ProfilePage() {
               />
             </div>
 
-            {passwordError && (
-              <p className="text-xs text-destructive">{passwordError}</p>
-            )}
+            {passwordError && <p className="text-xs text-destructive">{passwordError}</p>}
 
             <DialogFooter className="pt-2">
               <Button

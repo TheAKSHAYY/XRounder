@@ -90,9 +90,7 @@ export function ProjectsEditor() {
 
   const seedFlagshipProject = useMutation({
     mutationFn: async () => {
-      const existing = (data ?? []).find((p) =>
-        (p.name || "").toLowerCase().includes("xrounder"),
-      );
+      const existing = (data ?? []).find((p) => (p.name || "").toLowerCase().includes("xrounder"));
       const row = {
         name: "XRounder",
         description:

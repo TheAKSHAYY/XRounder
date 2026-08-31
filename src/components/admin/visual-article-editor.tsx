@@ -163,7 +163,10 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
     // Bullet List - or *
     if (line.trim().startsWith("- ") || line.trim().startsWith("* ")) {
       const items: string[] = [];
-      while (i < lines.length && (lines[i].trim().startsWith("- ") || lines[i].trim().startsWith("* "))) {
+      while (
+        i < lines.length &&
+        (lines[i].trim().startsWith("- ") || lines[i].trim().startsWith("* "))
+      ) {
         items.push(lines[i].trim().replace(/^[-*]\s+/, ""));
         i++;
       }
@@ -343,7 +346,8 @@ export function VisualArticleEditor({
       language: type === "code" ? "c" : undefined,
       calloutType: type === "callout" ? "exam_tip" : undefined,
       listItems: type === "bullet_list" || type === "numbered_list" ? [""] : undefined,
-      tableHeaders: type === "table" ? ["Feature / Concept", "Description", "Exam Weight"] : undefined,
+      tableHeaders:
+        type === "table" ? ["Feature / Concept", "Description", "Exam Weight"] : undefined,
       tableRows: type === "table" ? [["", "", ""]] : undefined,
     };
 
@@ -509,7 +513,10 @@ export function VisualArticleEditor({
               {/* Block Header & Controls */}
               <div className="flex items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-[10px] uppercase font-bold text-muted-foreground bg-muted/40">
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] uppercase font-bold text-muted-foreground bg-muted/40"
+                  >
                     {block.type === "heading2"
                       ? "Section Heading"
                       : block.type === "heading3"
@@ -677,7 +684,9 @@ export function VisualArticleEditor({
               {block.type === "table" && (
                 <div className="space-y-3 rounded-2xl border border-border/80 bg-muted/20 p-4">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-bold text-muted-foreground">Comparison Matrix</span>
+                    <span className="text-xs font-bold text-muted-foreground">
+                      Comparison Matrix
+                    </span>
                     <Button
                       type="button"
                       variant="outline"
@@ -699,19 +708,27 @@ export function VisualArticleEditor({
                     <table className="w-full text-xs text-left border-collapse">
                       <thead>
                         <tr className="border-b border-border/70">
-                          {(block.tableHeaders || ["Topic", "Key Concept", "Exam Note"]).map((h, hIdx) => (
-                            <th key={hIdx} className="p-2">
-                              <Input
-                                value={h}
-                                onChange={(e) => {
-                                  const nextHeaders = [...(block.tableHeaders || ["Topic", "Key Concept", "Exam Note"])];
-                                  nextHeaders[hIdx] = e.target.value;
-                                  updateBlockField(idx, { tableHeaders: nextHeaders });
-                                }}
-                                className="h-7 text-xs font-bold bg-card rounded-lg"
-                              />
-                            </th>
-                          ))}
+                          {(block.tableHeaders || ["Topic", "Key Concept", "Exam Note"]).map(
+                            (h, hIdx) => (
+                              <th key={hIdx} className="p-2">
+                                <Input
+                                  value={h}
+                                  onChange={(e) => {
+                                    const nextHeaders = [
+                                      ...(block.tableHeaders || [
+                                        "Topic",
+                                        "Key Concept",
+                                        "Exam Note",
+                                      ]),
+                                    ];
+                                    nextHeaders[hIdx] = e.target.value;
+                                    updateBlockField(idx, { tableHeaders: nextHeaders });
+                                  }}
+                                  className="h-7 text-xs font-bold bg-card rounded-lg"
+                                />
+                              </th>
+                            ),
+                          )}
                         </tr>
                       </thead>
                       <tbody>
@@ -777,7 +794,9 @@ export function VisualArticleEditor({
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Left: Quick raw editor */}
           <div className="space-y-2">
-            <span className="text-xs font-bold uppercase text-muted-foreground">Markdown Source</span>
+            <span className="text-xs font-bold uppercase text-muted-foreground">
+              Markdown Source
+            </span>
             <Textarea
               rows={24}
               value={value}
@@ -788,7 +807,9 @@ export function VisualArticleEditor({
 
           {/* Right: Live visual rendered preview */}
           <div className="space-y-4 rounded-2xl border border-border/80 bg-card p-6 shadow-soft overflow-y-auto max-h-[600px]">
-            <span className="text-xs font-bold uppercase text-primary mb-2 block">Student Article Live Preview</span>
+            <span className="text-xs font-bold uppercase text-primary mb-2 block">
+              Student Article Live Preview
+            </span>
             {blocks.map((b) => (
               <div key={b.id}>
                 {b.type === "heading2" && (
@@ -829,7 +850,9 @@ export function VisualArticleEditor({
       {editorMode === "RAW" && (
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-            <span>Direct Markdown Source (Great for pasting verified AI drafts or lecture notes)</span>
+            <span>
+              Direct Markdown Source (Great for pasting verified AI drafts or lecture notes)
+            </span>
           </div>
           <Textarea
             rows={22}

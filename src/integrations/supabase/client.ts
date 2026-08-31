@@ -29,6 +29,54 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
   };
 }
 
+function createPersistentAuthStorage() {
+  return {
+    getItem: (key: string) => {
+      try {
+        if (typeof window === "undefined") return null;
+        // Check localStorage first (default persistent store)
+        const localVal = window.localStorage.getItem(key);
+        if (localVal !== null) return localVal;
+        // Check sessionStorage fallback in case a previous session was placed there
+        return window.sessionStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    setItem: (key: string, value: string) => {
+      try {
+        if (typeof window === "undefined") return;
+        window.localStorage.setItem(key, value);
+        // Clean up sessionStorage to prevent stale copies
+        try {
+          window.sessionStorage.removeItem(key);
+        } catch {
+          /* ignore */
+        }
+      } catch {
+        try {
+          window.sessionStorage.setItem(key, value);
+        } catch {
+          /* ignore */
+        }
+      }
+    },
+    removeItem: (key: string) => {
+      try {
+        if (typeof window === "undefined") return;
+        window.localStorage.removeItem(key);
+        window.sessionStorage.removeItem(key);
+      } catch {
+        /* ignore */
+      }
+    },
+  } satisfies {
+    getItem: (k: string) => string | null;
+    setItem: (k: string, v: string) => void;
+    removeItem: (k: string) => void;
+  };
+}
+
 function createSupabaseClient() {
   // Use import.meta.env for client-side (Vite build-time replacement)
   // Fall back to process.env for SSR (server-side rendering)
@@ -51,74 +99,19 @@ function createSupabaseClient() {
       fetch: createSupabaseFetch(SUPABASE_PUBLISHABLE_KEY),
     },
     auth: {
-      storage: typeof window !== "undefined" ? createHybridAuthStorage() : undefined,
+      storage: typeof window !== "undefined" ? createPersistentAuthStorage() : undefined,
       persistSession: true,
       autoRefreshToken: true,
+      detectSessionInUrl: true,
     },
   });
 }
 
-// Storage adapter that routes reads/writes to either localStorage (persistent
-// across browser restarts — "Remember me" ON) or sessionStorage (cleared when
-// the tab closes — "Remember me" OFF). The mode is decided BEFORE sign-in by
-// setRememberMe() below and stored in localStorage so it survives reloads.
-const STORAGE_MODE_KEY = "sb-auth-storage-mode";
-
-function getActiveStorage(): Storage {
-  try {
-    return window.localStorage.getItem(STORAGE_MODE_KEY) === "session"
-      ? window.sessionStorage
-      : window.localStorage;
-  } catch {
-    return window.localStorage;
-  }
-}
-
-function createHybridAuthStorage() {
-  return {
-    getItem: (key: string) => {
-      // Read from the active store first; fall back to the other so a
-      // session started in one mode is still found if the flag flipped.
-      const primary = getActiveStorage().getItem(key);
-      if (primary !== null) return primary;
-      const fallback =
-        getActiveStorage() === window.localStorage ? window.sessionStorage : window.localStorage;
-      return fallback.getItem(key);
-    },
-    setItem: (key: string, value: string) => {
-      const active = getActiveStorage();
-      active.setItem(key, value);
-      // Make sure the other store doesn't hold a stale token.
-      const other = active === window.localStorage ? window.sessionStorage : window.localStorage;
-      other.removeItem(key);
-    },
-    removeItem: (key: string) => {
-      window.localStorage.removeItem(key);
-      window.sessionStorage.removeItem(key);
-    },
-  } satisfies {
-    getItem: (k: string) => string | null;
-    setItem: (k: string, v: string) => void;
-    removeItem: (k: string) => void;
-  };
-}
-
 /**
- * Call BEFORE supabase.auth.signInWithPassword / signInWithOtp / OAuth.
- * `true`  → persist session in localStorage (survives browser restart).
- * `false` → keep session in sessionStorage only (cleared on tab close).
+ * Kept for backwards compatibility with any existing callers.
  */
-export function setRememberMe(remember: boolean) {
-  if (typeof window === "undefined") return;
-  try {
-    if (remember) {
-      window.localStorage.removeItem(STORAGE_MODE_KEY);
-    } else {
-      window.localStorage.setItem(STORAGE_MODE_KEY, "session");
-    }
-  } catch {
-    /* ignore */
-  }
+export function setRememberMe(_remember: boolean) {
+  // Supabase sessions are now always reliably persisted in localStorage
 }
 
 let _supabase: ReturnType<typeof createSupabaseClient> | undefined;

@@ -125,7 +125,9 @@ async function fetchUnitDetails(
           .order("created_at", { ascending: true }),
         supabase
           .from("notes")
-          .select("id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at")
+          .select(
+            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at",
+          )
           .eq("unit_id", unit.id)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -212,9 +214,10 @@ export const Route = createFileRoute(
     const course = loaderData?.course;
     const unit = loaderData?.unit;
     const subject = loaderData?.subject;
-    const title = unit && subject
-      ? `Unit ${unit.number}: ${unit.title} — ${subject.title} · XRounder`
-      : `Unit ${params.unitNumber} Learning Hub · XRounder`;
+    const title =
+      unit && subject
+        ? `Unit ${unit.number}: ${unit.title} — ${subject.title} · XRounder`
+        : `Unit ${params.unitNumber} Learning Hub · XRounder`;
     const description = unit?.summary
       ? unit.summary
       : subject
@@ -225,42 +228,42 @@ export const Route = createFileRoute(
     const schemas: any[] = [
       {
         "@type": "BreadcrumbList",
-        "itemListElement": [
+        itemListElement: [
           {
             "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.xrounder.in/",
+            position: 1,
+            name: "Home",
+            item: "https://www.xrounder.in/",
           },
           {
             "@type": "ListItem",
-            "position": 2,
-            "name": "Courses",
-            "item": "https://www.xrounder.in/courses",
+            position: 2,
+            name: "Courses",
+            item: "https://www.xrounder.in/courses",
           },
           {
             "@type": "ListItem",
-            "position": 3,
-            "name": course?.title ?? "Course",
-            "item": `https://www.xrounder.in/courses/${params.courseSlug}`,
+            position: 3,
+            name: course?.title ?? "Course",
+            item: `https://www.xrounder.in/courses/${params.courseSlug}`,
           },
           {
             "@type": "ListItem",
-            "position": 4,
-            "name": `Semester ${params.semesterNumber}`,
-            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
+            position: 4,
+            name: `Semester ${params.semesterNumber}`,
+            item: `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`,
           },
           {
             "@type": "ListItem",
-            "position": 5,
-            "name": subject?.title ?? "Subject",
-            "item": `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`,
+            position: 5,
+            name: subject?.title ?? "Subject",
+            item: `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`,
           },
           {
             "@type": "ListItem",
-            "position": 6,
-            "name": unit ? `Unit ${unit.number}: ${unit.title}` : `Unit ${params.unitNumber}`,
-            "item": url,
+            position: 6,
+            name: unit ? `Unit ${unit.number}: ${unit.title}` : `Unit ${params.unitNumber}`,
+            item: url,
           },
         ],
       },
@@ -269,20 +272,20 @@ export const Route = createFileRoute(
     if (unit && subject) {
       schemas.push({
         "@type": "LearningResource",
-        "name": `Unit ${unit.number}: ${unit.title}`,
-        "description": description,
-        "learningResourceType": "Study Guide",
-        "educationalLevel": "Undergraduate",
-        "url": url,
-        "isPartOf": {
+        name: `Unit ${unit.number}: ${unit.title}`,
+        description: description,
+        learningResourceType: "Study Guide",
+        educationalLevel: "Undergraduate",
+        url: url,
+        isPartOf: {
           "@type": "Course",
-          "name": subject.title,
-          "courseCode": subject.code,
+          name: subject.title,
+          courseCode: subject.code,
         },
-        "provider": {
+        provider: {
           "@type": "EducationalOrganization",
-          "name": "XRounder",
-          "url": "https://www.xrounder.in/",
+          name: "XRounder",
+          url: "https://www.xrounder.in/",
         },
       });
     }
@@ -320,8 +323,13 @@ export const Route = createFileRoute(
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
         <h1 className="font-display text-2xl font-bold text-foreground">Unit not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">The requested unit does not exist or has not been published yet.</p>
-        <Link to="/courses" className="mt-4 inline-block font-semibold text-primary hover:underline">
+        <p className="mt-2 text-sm text-muted-foreground">
+          The requested unit does not exist or has not been published yet.
+        </p>
+        <Link
+          to="/courses"
+          className="mt-4 inline-block font-semibold text-primary hover:underline"
+        >
           Back to all courses
         </Link>
       </div>
@@ -368,7 +376,9 @@ function estimateReadMinutes(items: UnitContentItem[]) {
   return Math.max(1, Math.round(words / 200));
 }
 
-function getVideoEmbedUrl(url: string | null | undefined): { isEmbed: boolean; src: string } | null {
+function getVideoEmbedUrl(
+  url: string | null | undefined,
+): { isEmbed: boolean; src: string } | null {
   if (!url || !url.trim()) return null;
   const trimmed = url.trim();
   try {
@@ -458,7 +468,9 @@ function UnitDetail() {
           .order("created_at", { ascending: true }),
         supabase
           .from("notes")
-          .select("id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at")
+          .select(
+            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at",
+          )
           .eq("unit_id", unit.id)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -666,10 +678,7 @@ function UnitDetail() {
             isSub: b.type === "heading3",
           }));
 
-        return [
-          { id: articleSlugId, title: n.title, isSub: false },
-          ...subheadings,
-        ];
+        return [{ id: articleSlugId, title: n.title, isSub: false }, ...subheadings];
       }),
     [readArticles],
   );
@@ -849,7 +858,10 @@ function UnitDetail() {
 
         {/* Unit Header Block */}
         <div className="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-4 sm:p-8 shadow-soft">
-          <Badge variant="outline" className="mb-2 text-xs font-mono font-bold rounded-lg text-primary border-primary/30">
+          <Badge
+            variant="outline"
+            className="mb-2 text-xs font-mono font-bold rounded-lg text-primary border-primary/30"
+          >
             Unit {unit.number} Learning Hub
           </Badge>
           <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
@@ -899,7 +911,8 @@ function UnitDetail() {
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FlaskConical className="h-4 w-4 shrink-0" /> Practice ({quizDetailsQuery.data?.length ?? 0})
+              <FlaskConical className="h-4 w-4 shrink-0" /> Practice (
+              {quizDetailsQuery.data?.length ?? 0})
             </button>
           </div>
         </div>
@@ -919,7 +932,12 @@ function UnitDetail() {
                     <span className="flex items-center gap-2 text-foreground">
                       <ListOrdered className="h-4 w-4 text-primary" /> On this page
                     </span>
-                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobileTocOpen && "rotate-180")} />
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform duration-200",
+                        mobileTocOpen && "rotate-180",
+                      )}
+                    />
                   </button>
                   {mobileTocOpen && (
                     <nav className="mt-3 border-t border-border/60 pt-3">
@@ -937,7 +955,9 @@ function UnitDetail() {
                                   : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
                               )}
                             >
-                              {!item.isSub && <span className="font-mono text-muted-foreground/60">{i + 1}.</span>}
+                              {!item.isSub && (
+                                <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                              )}
                               <span className="truncate">{item.title}</span>
                             </a>
                           </li>
@@ -954,7 +974,11 @@ function UnitDetail() {
                   tone="accent"
                   title="Educational article in progress"
                   description="The online learning content for this unit is currently being drafted. Check back soon."
-                  primaryAction={{ label: "View reference notes", onClick: () => setActiveTab("NOTES"), icon: FileType }}
+                  primaryAction={{
+                    label: "View reference notes",
+                    onClick: () => setActiveTab("NOTES"),
+                    icon: FileType,
+                  }}
                 />
               ) : (
                 <div className="space-y-10 min-w-0 max-w-full">
@@ -976,14 +1000,18 @@ function UnitDetail() {
                       <FlaskConical className="h-6 w-6" />
                     </div>
                     <div>
-                      <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1">
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
+                      >
                         Interactive Knowledge Check
                       </Badge>
                       <h3 className="font-display text-lg font-bold text-foreground">
                         Ready to test yourself on Unit {unit.number}?
                       </h3>
                       <p className="text-xs text-muted-foreground mt-1 max-w-md">
-                        You've covered the core concepts. Practice instant MCQs to measure your accuracy and prepare for university exams.
+                        You've covered the core concepts. Practice instant MCQs to measure your
+                        accuracy and prepare for university exams.
                       </p>
                     </div>
                   </div>
@@ -1012,7 +1040,10 @@ function UnitDetail() {
               </div>
 
               {/* Next / Previous Unit Navigation */}
-              <nav aria-label="Unit navigation" className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <nav
+                aria-label="Unit navigation"
+                className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
                 {prevUnit ? (
                   <Link
                     to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
@@ -1026,8 +1057,12 @@ function UnitDetail() {
                   >
                     <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[10px] font-bold uppercase text-muted-foreground">Previous Unit</div>
-                      <div className="font-bold text-sm text-foreground truncate">Unit {prevUnit.number}</div>
+                      <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Previous Unit
+                      </div>
+                      <div className="font-bold text-sm text-foreground truncate">
+                        Unit {prevUnit.number}
+                      </div>
                     </div>
                   </Link>
                 ) : (
@@ -1035,7 +1070,11 @@ function UnitDetail() {
                 )}
 
                 {primaryQuiz && (
-                  <Button asChild variant="secondary" className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs">
+                  <Button
+                    asChild
+                    variant="secondary"
+                    className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs"
+                  >
                     <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
                       <FlaskConical className="h-4 w-4 mr-2" /> Practice MCQs
                     </Link>
@@ -1054,8 +1093,12 @@ function UnitDetail() {
                     className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
                   >
                     <div className="min-w-0">
-                      <div className="text-[10px] font-bold uppercase text-muted-foreground">Next Unit</div>
-                      <div className="font-bold text-sm text-foreground truncate">Unit {nextUnit.number}</div>
+                      <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                        Next Unit
+                      </div>
+                      <div className="font-bold text-sm text-foreground truncate">
+                        Unit {nextUnit.number}
+                      </div>
                     </div>
                     <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </Link>
@@ -1088,7 +1131,9 @@ function UnitDetail() {
                                   : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
                               )}
                             >
-                              {!item.isSub && <span className="font-mono text-muted-foreground/60">{i + 1}.</span>}
+                              {!item.isSub && (
+                                <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                              )}
                               <span className="truncate">{item.title}</span>
                             </a>
                           </li>
@@ -1110,15 +1155,19 @@ function UnitDetail() {
                 <FileType className="h-5 w-5 text-primary" /> College Reference Notes &amp; Slides
               </h3>
               <p className="text-xs text-muted-foreground mb-6">
-                Official documents, presentation slides, and university lecture PDFs for Unit {unit.number}.
+                Official documents, presentation slides, and university lecture PDFs for Unit{" "}
+                {unit.number}.
               </p>
 
               {referenceMaterials.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center">
                   <FileText className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
-                  <div className="text-sm font-semibold text-foreground">Reference notes coming soon</div>
+                  <div className="text-sm font-semibold text-foreground">
+                    Reference notes coming soon
+                  </div>
                   <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
-                    You can study the complete online article in the Read &amp; Master tab above while official PDFs are uploaded.
+                    You can study the complete online article in the Read &amp; Master tab above
+                    while official PDFs are uploaded.
                   </p>
                   <Button
                     size="sm"
@@ -1147,7 +1196,10 @@ function UnitDetail() {
             <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <Badge variant="outline" className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2">
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
+                  >
                     Unit {unit.number} Question Bank
                   </Badge>
                   <h3 className="font-display text-xl font-bold text-foreground">
@@ -1157,20 +1209,33 @@ function UnitDetail() {
                     <span>{quizDetailsQuery.data?.length ?? 0} Questions</span>
                     {userAttemptQuery.data && (
                       <span className="font-semibold text-primary">
-                        · Your best accuracy: {userAttemptQuery.data.pct ?? Math.round(((userAttemptQuery.data.score || 0) / (userAttemptQuery.data.max_score || 1)) * 100)}%
+                        · Your best accuracy:{" "}
+                        {userAttemptQuery.data.pct ??
+                          Math.round(
+                            ((userAttemptQuery.data.score || 0) /
+                              (userAttemptQuery.data.max_score || 1)) *
+                              100,
+                          )}
+                        %
                       </span>
                     )}
                   </div>
                 </div>
 
                 {primaryQuiz ? (
-                  <Button asChild size="lg" className="rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm"
+                  >
                     <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
                       <FlaskConical className="h-4 w-4 mr-2" /> Practice Unit MCQs
                     </Link>
                   </Button>
                 ) : (
-                  <div className="text-xs text-muted-foreground font-medium">No quiz attached to this unit yet.</div>
+                  <div className="text-xs text-muted-foreground font-medium">
+                    No quiz attached to this unit yet.
+                  </div>
                 )}
               </div>
             </div>
@@ -1200,14 +1265,22 @@ function UnitDetail() {
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-muted-foreground">Q{idx + 1}.</span>
+                          <span className="text-xs font-mono font-bold text-muted-foreground">
+                            Q{idx + 1}.
+                          </span>
                           {q.points && (
-                            <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card">
+                            <Badge
+                              variant="outline"
+                              className="text-[10px] font-bold rounded-md bg-card"
+                            >
                               {q.points} Marks
                             </Badge>
                           )}
                           {q.year && (
-                            <Badge variant="outline" className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30">
+                            <Badge
+                              variant="outline"
+                              className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30"
+                            >
                               {q.year} {q.exam_name || "Exam"}
                             </Badge>
                           )}
@@ -1283,12 +1356,22 @@ function ReferenceCard({ item }: { item: UnitContentItem }) {
       <div className="flex items-center gap-2 pt-2 border-t border-border/60">
         {pdfUrl ? (
           <>
-            <Button asChild size="sm" variant="default" className="flex-1 rounded-xl text-xs font-bold h-9">
+            <Button
+              asChild
+              size="sm"
+              variant="default"
+              className="flex-1 rounded-xl text-xs font-bold h-9"
+            >
               <a href={pdfUrl} target="_blank" rel="noreferrer">
                 <ExternalLink className="h-3.5 w-3.5 mr-1.5" /> Open Document
               </a>
             </Button>
-            <Button asChild size="sm" variant="outline" className="rounded-xl text-xs font-bold h-9">
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="rounded-xl text-xs font-bold h-9"
+            >
               <a href={pdfUrl} download target="_blank" rel="noreferrer">
                 <Download className="h-3.5 w-3.5" />
               </a>
@@ -1384,7 +1467,10 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
               return (
                 <div key={b.id} className="min-w-0">
                   {b.type === "heading2" && (
-                    <div id={headingId} className="scroll-mt-28 mt-10 mb-4 border-t border-border/50 pt-6">
+                    <div
+                      id={headingId}
+                      className="scroll-mt-28 mt-10 mb-4 border-t border-border/50 pt-6"
+                    >
                       <div className="flex items-center gap-3">
                         <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-extrabold text-primary shrink-0">
                           {String(h2Count).padStart(2, "0")}
@@ -1401,7 +1487,9 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
                       id={headingId}
                       className={cn(
                         "font-display text-[17px] sm:text-lg font-bold mt-6 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2",
-                        isQuickRevision ? "text-amber-500 font-extrabold uppercase" : "text-primary",
+                        isQuickRevision
+                          ? "text-amber-500 font-extrabold uppercase"
+                          : "text-primary",
                       )}
                     >
                       {isQuickRevision && <Zap className="h-4 w-4 shrink-0" />}
@@ -1471,7 +1559,9 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
                         <span className="flex items-center gap-2 font-bold uppercase tracking-wider">
                           <Layers className="h-3.5 w-3.5" /> Concept Architecture / Diagram
                         </span>
-                        <span className="text-[10px] text-muted-foreground uppercase font-mono">Scroll Horizontal</span>
+                        <span className="text-[10px] text-muted-foreground uppercase font-mono">
+                          Scroll Horizontal
+                        </span>
                       </div>
                       <div className="max-w-full overflow-x-auto">
                         <pre className="font-mono text-xs sm:text-sm text-foreground leading-relaxed whitespace-pre min-w-max p-3 rounded-xl bg-surface/80 border border-border/50">
@@ -1482,8 +1572,12 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
                   ) : b.type === "code" ? (
                     <div className="my-6 max-w-full overflow-hidden rounded-2xl bg-slate-950 p-4 border border-border/70 shadow-xs dark:bg-slate-900">
                       <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800">
-                        <span className="uppercase font-bold text-primary">{b.language || "code"}</span>
-                        <span className="text-[10px] uppercase tracking-wider text-slate-400">Code Snippet</span>
+                        <span className="uppercase font-bold text-primary">
+                          {b.language || "code"}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-wider text-slate-400">
+                          Code Snippet
+                        </span>
                       </div>
                       <div className="max-w-full overflow-x-auto">
                         <pre className="font-mono text-xs sm:text-sm text-slate-100 leading-relaxed whitespace-pre min-w-max">
@@ -1509,7 +1603,10 @@ function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: str
                           {(b.tableRows || []).map((row, rIdx) => (
                             <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
                               {row.map((cell, cIdx) => (
-                                <td key={cIdx} className="p-3.5 text-muted-foreground leading-relaxed">
+                                <td
+                                  key={cIdx}
+                                  className="p-3.5 text-muted-foreground leading-relaxed"
+                                >
                                   {renderFormattedText(cell)}
                                 </td>
                               ))}

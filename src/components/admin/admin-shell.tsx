@@ -182,26 +182,41 @@ export function AdminShell() {
                 <SidebarGroupContent>
                   <SidebarMenu>
                     <NavRow
-                      item={{ label: "Team & Roles", to: "/admin/superadmin/users", icon: ShieldCheck }}
+                      item={{
+                        label: "Team & Roles",
+                        to: "/admin/superadmin/users",
+                        icon: ShieldCheck,
+                      }}
                       active={pathname === "/admin/superadmin/users"}
                     />
                     <NavRow
-                      item={{ label: "Audit Logs", to: "/admin/superadmin/audit", icon: ShieldCheck }}
+                      item={{
+                        label: "Audit Logs",
+                        to: "/admin/superadmin/audit",
+                        icon: ShieldCheck,
+                      }}
                       active={pathname === "/admin/superadmin/audit"}
                     />
                     <NavRow
-                      item={{ label: "Feature Flags", to: "/admin/superadmin/flags", icon: ShieldCheck }}
+                      item={{
+                        label: "Feature Flags",
+                        to: "/admin/superadmin/flags",
+                        icon: ShieldCheck,
+                      }}
                       active={pathname === "/admin/superadmin/flags"}
                     />
                     <NavRow
-                      item={{ label: "Platform Branding", to: "/admin/superadmin/branding", icon: ShieldCheck }}
+                      item={{
+                        label: "Platform Branding",
+                        to: "/admin/superadmin/branding",
+                        icon: ShieldCheck,
+                      }}
                       active={pathname === "/admin/superadmin/branding"}
                     />
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
             )}
-
 
             <SidebarGroup className="mt-auto">
               <SidebarGroupContent>

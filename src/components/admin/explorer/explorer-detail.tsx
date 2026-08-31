@@ -132,7 +132,11 @@ export function ExplorerDetail({ node }: { node: ExplorerNode | null }) {
           <h2 className="truncate font-display text-lg font-semibold">{node.name}</h2>
         </div>
         {node.type === "unit" && (
-          <Button asChild variant="outline" className="gap-1.5 border-primary/40 text-primary hover:bg-primary/10">
+          <Button
+            asChild
+            variant="outline"
+            className="gap-1.5 border-primary/40 text-primary hover:bg-primary/10"
+          >
             <Link to="/admin/units/$unitId" params={{ unitId: node.id }}>
               <Layers className="h-4 w-4" /> Unit Workspace
             </Link>

@@ -38,36 +38,52 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             </div>
 
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
-              Your entire semester.{" "}
-              <span className="text-primary">One focused study system.</span>
+              Your entire semester. <span className="text-primary">One focused study system.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Syllabus-aligned notes, unit-wise MCQs, previous-year papers and progress tracking — built around exactly what you need to learn and revise.
+              Syllabus-aligned notes, unit-wise MCQs, previous-year papers and progress tracking —
+              built around exactly what you need to learn and revise.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               {loading ? (
-                <Skeleton className="h-12 w-44 rounded-xl" />
+                <div className="flex items-center gap-3">
+                  <Skeleton className="h-12 w-44 rounded-xl" />
+                  <Skeleton className="h-12 w-36 rounded-xl" />
+                </div>
               ) : user ? (
-                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs">
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs"
+                >
                   <Link to="/dashboard">
                     Go to Dashboard <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               ) : (
-                <Button asChild size="lg" className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs">
-                  <Link to="/courses">
-                    Start Learning <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
+                <>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs"
+                  >
+                    <Link to="/courses">
+                      Start Learning <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
 
-              <Button asChild variant="outline" size="lg" className="h-12 px-6 text-sm font-semibold rounded-xl">
-                <Link to="/explore">
-                  Explore as Guest
-                </Link>
-              </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-12 px-6 text-sm font-semibold rounded-xl"
+                  >
+                    <Link to="/explore">Explore as Guest</Link>
+                  </Button>
+                </>
+              )}
             </div>
 
             <div className="flex items-center gap-6 pt-4 text-xs font-medium text-muted-foreground">
@@ -99,7 +115,10 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                     XRounder · Semester OS
                   </span>
                 </div>
-                <Badge variant="outline" className="text-[11px] font-mono border-primary/30 text-primary">
+                <Badge
+                  variant="outline"
+                  className="text-[11px] font-mono border-primary/30 text-primary"
+                >
                   Semester 5
                 </Badge>
               </div>
@@ -185,7 +204,9 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                         <span className="font-bold text-amber-700 dark:text-amber-300">
                           Weak Area: Exception Handling
                         </span>
-                        <span className="font-semibold text-amber-600 dark:text-amber-400">42%</span>
+                        <span className="font-semibold text-amber-600 dark:text-amber-400">
+                          42%
+                        </span>
                       </div>
                       <p className="mt-0.5 text-[11px] text-muted-foreground">
                         Recommended: Practice 5 quick revision MCQs
@@ -203,13 +224,14 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                       <span className="text-[11px] font-mono text-muted-foreground">Unit 2.1</span>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">
-                      In C programming, conditional statements execute specific code blocks
-                      based on whether an expression evaluates to non-zero (true) or zero (false).
+                      In C programming, conditional statements execute specific code blocks based on
+                      whether an expression evaluates to non-zero (true) or zero (false).
                     </p>
                     <div className="rounded-lg bg-surface p-2.5 font-mono text-[11px] text-foreground border border-border/60">
                       <span className="text-primary font-bold">if</span> (score &gt;= 50) &#123;
                       <br />
-                      &nbsp;&nbsp;printf(<span className="text-emerald-600">"Status: Passed\n"</span>);
+                      &nbsp;&nbsp;printf(
+                      <span className="text-emerald-600">"Status: Passed\n"</span>);
                       <br />
                       &#125;
                     </div>
@@ -226,7 +248,10 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
                         Question 3 of 10
                       </span>
-                      <Badge variant="outline" className="text-[10px] text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40">
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] text-emerald-700 bg-emerald-50 dark:bg-emerald-950/40"
+                      >
                         Immediate Feedback
                       </Badge>
                     </div>
@@ -324,12 +349,8 @@ export function Features() {
                   <h3 className="mt-4 font-display text-lg font-bold text-foreground">
                     {cap.title}
                   </h3>
-                  <p className="mt-0.5 font-semibold text-xs text-primary">
-                    {cap.subtitle}
-                  </p>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {cap.desc}
-                  </p>
+                  <p className="mt-0.5 font-semibold text-xs text-primary">{cap.subtitle}</p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-border/60">
@@ -385,7 +406,12 @@ export function CourseDiscovery() {
               Select your academic degree to explore full semester structures and subjects.
             </p>
           </div>
-          <Button asChild variant="outline" size="sm" className="rounded-lg self-start sm:self-auto">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="rounded-lg self-start sm:self-auto"
+          >
             <Link to="/courses">
               View all programs <ArrowRight className="ml-1.5 h-4 w-4" />
             </Link>
@@ -483,16 +509,13 @@ export function LearningWorkflow() {
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.num} className="relative flex flex-col items-center text-center p-6 rounded-2xl border border-border bg-surface">
-              <span className="font-mono text-2xl font-black text-primary/30">
-                {s.num}
-              </span>
-              <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {s.desc}
-              </p>
+            <div
+              key={s.num}
+              className="relative flex flex-col items-center text-center p-6 rounded-2xl border border-border bg-surface"
+            >
+              <span className="font-mono text-2xl font-black text-primary/30">{s.num}</span>
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground">{s.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -512,7 +535,8 @@ export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
             Ready to ace your next semester?
           </h2>
           <p className="mt-3 max-w-xl mx-auto text-sm sm:text-base text-muted-foreground">
-            Get instant access to syllabus-aligned notes, previous year papers, and practice questions.
+            Get instant access to syllabus-aligned notes, previous year papers, and practice
+            questions.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -529,7 +553,12 @@ export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
                     Get Started Free
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-12 px-6 text-sm font-semibold rounded-lg">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-6 text-sm font-semibold rounded-lg"
+                >
                   <Link to="/courses">Browse Catalog</Link>
                 </Button>
               </>
@@ -542,13 +571,27 @@ export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
 }
 
 /* ──────────────────────────────────────────────────────────── Compatibility stubs */
-export function TrustBar() { return null; }
-export function WhyChoose() { return null; }
-export function Journey() { return null; }
-export function Benefits() { return null; }
-export function Testimonials() { return null; }
-export function FAQ() { return null; }
-export function Contact() { return null; }
+export function TrustBar() {
+  return null;
+}
+export function WhyChoose() {
+  return null;
+}
+export function Journey() {
+  return null;
+}
+export function Benefits() {
+  return null;
+}
+export function Testimonials() {
+  return null;
+}
+export function FAQ() {
+  return null;
+}
+export function Contact() {
+  return null;
+}
 export function EmptyLanding({ user, loading }: { user: unknown; loading: boolean }) {
   return <Hero user={user} loading={loading} />;
 }

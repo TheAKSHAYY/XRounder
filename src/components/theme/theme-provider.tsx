@@ -1,14 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme =
-  | "light"
-  | "dark"
-  | "midnight"
-  | "ocean"
-  | "emerald"
-  | "purple"
-  | "high-contrast"
-  | "system";
+  "light" | "dark" | "midnight" | "ocean" | "emerald" | "purple" | "high-contrast" | "system";
 
 type ThemeContextValue = {
   theme: Theme;

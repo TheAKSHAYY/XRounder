@@ -36,7 +36,8 @@ export function useQuizAttempt(quizId: string) {
     queryFn: async () => {
       const { data } = await supabase
         .from("units")
-        .select(`
+        .select(
+          `
           id,
           number,
           title,
@@ -54,7 +55,8 @@ export function useQuizAttempt(quizId: string) {
               )
             )
           )
-        `)
+        `,
+        )
         .eq("id", quizQ.data!.unit_id)
         .maybeSingle();
       const row = data as any;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
-import { useAuth } from "@/hooks/use-auth";
+import { useAuth, waitForAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -17,8 +17,8 @@ import {
 export const Route = createFileRoute("/")({
   beforeLoad: async () => {
     // If a session exists, seamlessly redirect to student dashboard
-    const { data } = await supabase.auth.getSession();
-    if (data.session?.user) {
+    const auth = await waitForAuth();
+    if (auth.isAuthenticated && auth.user) {
       throw redirect({ to: "/dashboard" });
     }
   },
@@ -60,27 +60,27 @@ export const Route = createFileRoute("/")({
             {
               "@type": "WebSite",
               "@id": "https://www.xrounder.in/#website",
-              "url": "https://www.xrounder.in/",
-              "name": "XRounder",
-              "description":
+              url: "https://www.xrounder.in/",
+              name: "XRounder",
+              description:
                 "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
-              "publisher": {
+              publisher: {
                 "@id": "https://www.xrounder.in/#organization",
               },
-              "potentialAction": {
+              potentialAction: {
                 "@type": "SearchAction",
-                "target": "https://www.xrounder.in/courses?q={search_term_string}",
+                target: "https://www.xrounder.in/courses?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             },
             {
               "@type": "EducationalOrganization",
               "@id": "https://www.xrounder.in/#organization",
-              "name": "XRounder",
-              "url": "https://www.xrounder.in/",
-              "logo": "https://www.xrounder.in/xrounder-mark.png",
-              "sameAs": ["https://github.com/TheAKSHAYY"],
-              "description":
+              name: "XRounder",
+              url: "https://www.xrounder.in/",
+              logo: "https://www.xrounder.in/xrounder-mark.png",
+              sameAs: ["https://github.com/TheAKSHAYY"],
+              description:
                 "Structured semester-by-semester learning platform with syllabus-aligned notes, past university papers, and practice exams.",
             },
           ],
@@ -102,16 +102,18 @@ export const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
 ];
 
 function Index() {
-  const { user, loading } = useAuth();
+  const { user, loading, status, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading && user) {
+    if (isAuthenticated && user) {
       navigate({ to: "/dashboard", replace: true });
     }
-  }, [user, loading, navigate]);
+  }, [isAuthenticated, user, navigate]);
+
   const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
     queryKey: ["homepage_sections", "public"],
+    enabled: status === "unauthenticated",
     queryFn: async (): Promise<HomepageSection[]> => {
       try {
         const { data, error } = await supabase.rpc("list_homepage_sections_public");
@@ -142,6 +144,21 @@ function Index() {
     initialData: DEFAULT_HOMEPAGE_SECTIONS,
     staleTime: 60_000,
   });
+
+  // If auth state is loading or user is authenticated (while redirect to dashboard is running),
+  // show a minimal clean loading state and NEVER briefly render "Continue as Guest" or landing page.
+  if (status === "loading" || (isAuthenticated && user)) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          <span className="text-sm font-medium text-muted-foreground">
+            {isAuthenticated ? "Redirecting to dashboard…" : "Loading XRounder…"}
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   const list = sections && sections.length > 0 ? sections : DEFAULT_HOMEPAGE_SECTIONS;
 

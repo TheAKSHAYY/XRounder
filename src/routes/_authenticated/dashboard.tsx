@@ -151,7 +151,8 @@ function DashboardPage() {
       try {
         const { data, error } = await supabase
           .from("progress_tracking")
-          .select(`
+          .select(
+            `
             id,
             unit_id,
             status,
@@ -179,7 +180,8 @@ function DashboardPage() {
                 )
               )
             )
-          `)
+          `,
+          )
           .eq("user_id", user.id)
           .order("last_activity_at", { ascending: false })
           .limit(10);
@@ -268,7 +270,8 @@ function DashboardPage() {
       try {
         const { data, error } = await supabase
           .from("quiz_attempts")
-          .select(`
+          .select(
+            `
             id,
             quiz_id,
             pct,
@@ -292,7 +295,8 @@ function DashboardPage() {
                 )
               )
             )
-          `)
+          `,
+          )
           .eq("user_id", user.id)
           .not("submitted_at", "is", null)
           .order("submitted_at", { ascending: false })
@@ -433,7 +437,12 @@ function DashboardPage() {
             )}
             title={streak > 0 ? `${streak}-day study streak` : "Study today to start your streak"}
           >
-            <Flame className={cn("h-3.5 w-3.5", streak > 0 ? "text-accent-foreground" : "text-muted-foreground")} />
+            <Flame
+              className={cn(
+                "h-3.5 w-3.5",
+                streak > 0 ? "text-accent-foreground" : "text-muted-foreground",
+              )}
+            />
             <span>{streakQuery.isLoading ? "—" : `${streak}d streak`}</span>
           </div>
         </div>
@@ -451,7 +460,8 @@ function DashboardPage() {
                 </span>
               </div>
               <p className="mt-1 text-sm font-medium text-foreground">
-                {completedUnitsCount} unit{completedUnitsCount === 1 ? "" : "s"} completed · {semesterSubjects.length} subject{semesterSubjects.length === 1 ? "" : "s"}
+                {completedUnitsCount} unit{completedUnitsCount === 1 ? "" : "s"} completed ·{" "}
+                {semesterSubjects.length} subject{semesterSubjects.length === 1 ? "" : "s"}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -496,7 +506,8 @@ function DashboardPage() {
               Master 1 Syllabus Unit
             </h3>
             <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-              Read unit notes, test yourself with practice MCQs, and identify areas to revise before exams.
+              Read unit notes, test yourself with practice MCQs, and identify areas to revise before
+              exams.
             </p>
 
             <div className="mt-4 rounded-xl bg-muted/60 p-3 border border-border/40 space-y-2">
@@ -516,7 +527,10 @@ function DashboardPage() {
           </div>
 
           <div className="mt-5 pt-4 border-t border-border/60 flex flex-col gap-2">
-            <Button asChild className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs">
+            <Button
+              asChild
+              className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs"
+            >
               <Link to="/mock-test">
                 <span className="flex items-center gap-1.5">
                   <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
@@ -527,7 +541,11 @@ function DashboardPage() {
             </Button>
 
             {semester && courseSlug && (
-              <Button asChild variant="outline" className="w-full justify-between rounded-xl text-xs font-semibold h-9">
+              <Button
+                asChild
+                variant="outline"
+                className="w-full justify-between rounded-xl text-xs font-semibold h-9"
+              >
                 <Link
                   to="/courses/$courseSlug/$semesterNumber"
                   params={{ courseSlug, semesterNumber: String(semester.number) }}
@@ -569,7 +587,10 @@ function DashboardPage() {
                 <div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-muted-foreground">{topic.subjectTitle}</span>
-                    <Badge variant="outline" className="border-amber-500/40 text-amber-700 dark:text-amber-300 text-[10px]">
+                    <Badge
+                      variant="outline"
+                      className="border-amber-500/40 text-amber-700 dark:text-amber-300 text-[10px]"
+                    >
                       {topic.avgPct}% Accuracy
                     </Badge>
                   </div>
@@ -585,7 +606,12 @@ function DashboardPage() {
                   <span className="text-[11px] text-muted-foreground">
                     {topic.attemptsCount} attempt{topic.attemptsCount === 1 ? "" : "s"}
                   </span>
-                  <Button asChild size="sm" variant="outline" className="h-8 rounded-lg text-xs font-semibold border-amber-500/40 hover:bg-amber-500/10">
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="h-8 rounded-lg text-xs font-semibold border-amber-500/40 hover:bg-amber-500/10"
+                  >
                     <Link to="/quizzes/$quizId" params={{ quizId: topic.quizId }}>
                       <RotateCcw className="mr-1.5 h-3 w-3" />
                       Practice Weak Topic
@@ -691,9 +717,7 @@ function DashboardPage() {
         <div className="rounded-2xl border border-border/80 bg-card p-6 shadow-xs lg:col-span-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <h3 className="font-display text-base font-bold text-foreground">
-                Recent Practice
-              </h3>
+              <h3 className="font-display text-base font-bold text-foreground">Recent Practice</h3>
               <p className="mt-0.5 text-xs text-muted-foreground">
                 {avgScore !== null
                   ? `Average ${avgScore}% across ${attempts.length} attempt${attempts.length === 1 ? "" : "s"}`
@@ -808,7 +832,8 @@ function DashboardPage() {
             </div>
           ) : bookmarks.length === 0 ? (
             <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-              Bookmark key notes, previous year papers, and quizzes while studying for quick revision.
+              Bookmark key notes, previous year papers, and quizzes while studying for quick
+              revision.
             </p>
           ) : (
             <ul className="mt-4 space-y-2">
@@ -879,7 +904,12 @@ function ContinueHero({
           </div>
 
           <div className="flex shrink-0 flex-wrap gap-2.5 sm:flex-col">
-            <Button asChild size="lg" variant="secondary" className="shadow-sm font-semibold rounded-xl h-11">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="shadow-sm font-semibold rounded-xl h-11"
+            >
               <Link
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
                 params={{
@@ -926,10 +956,16 @@ function ContinueHero({
             Start Semester {semester.number}
           </h2>
           <p className="mt-2 text-sm text-primary-foreground/85 leading-relaxed">
-            Open your first subject to read structured syllabus notes, solve MCQs, and track your progress.
+            Open your first subject to read structured syllabus notes, solve MCQs, and track your
+            progress.
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">
-            <Button asChild size="lg" variant="secondary" className="rounded-xl font-semibold shadow-sm h-11">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="rounded-xl font-semibold shadow-sm h-11"
+            >
               <Link
                 to="/courses/$courseSlug/$semesterNumber"
                 params={{ courseSlug, semesterNumber: String(semester.number) }}
@@ -954,7 +990,8 @@ function ContinueHero({
         Select your course & semester
       </h2>
       <p className="mt-2 max-w-lg text-sm text-muted-foreground leading-relaxed">
-        Set up your course and semester once to get a personalized semester dashboard with syllabus notes, practice quizzes, and progress tracking.
+        Set up your course and semester once to get a personalized semester dashboard with syllabus
+        notes, practice quizzes, and progress tracking.
       </p>
       <div className="mt-5 flex flex-wrap gap-2.5">
         <Button asChild size="lg" className="rounded-xl font-semibold h-11">

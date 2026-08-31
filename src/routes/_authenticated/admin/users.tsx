@@ -79,7 +79,8 @@ function AdminStudentsPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select(`
+        .select(
+          `
           user_id,
           full_name,
           avatar_url,
@@ -93,7 +94,8 @@ function AdminStudentsPage() {
           created_at,
           courses:courses(title, code),
           semesters:semesters(number, title)
-        `)
+        `,
+        )
         .order("created_at", { ascending: false })
         .limit(200);
 
@@ -260,7 +262,10 @@ function AdminStudentsPage() {
                             Suspended
                           </Badge>
                         ) : (
-                          <Badge variant="outline" className="text-[10px] rounded-full text-emerald-600 border-emerald-500/30 bg-emerald-500/10">
+                          <Badge
+                            variant="outline"
+                            className="text-[10px] rounded-full text-emerald-600 border-emerald-500/30 bg-emerald-500/10"
+                          >
                             Active
                           </Badge>
                         )}
@@ -283,7 +288,9 @@ function AdminStudentsPage() {
                               variant="ghost"
                               size="sm"
                               disabled={suspendMut.isPending}
-                              onClick={() => suspendMut.mutate({ userId: s.user_id, suspended: false })}
+                              onClick={() =>
+                                suspendMut.mutate({ userId: s.user_id, suspended: false })
+                              }
                               className="h-8 px-2.5 text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-500/10 rounded-lg"
                               title="Reinstate student"
                             >
@@ -344,28 +351,38 @@ function AdminStudentsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-xl border border-border/60 p-3 bg-card">
-                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">Course</span>
+                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                    Course
+                  </span>
                   <span className="font-semibold text-foreground">
                     {selectedStudent.courses?.title || "Not selected"}
                   </span>
                 </div>
 
                 <div className="rounded-xl border border-border/60 p-3 bg-card">
-                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">Semester</span>
+                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                    Semester
+                  </span>
                   <span className="font-semibold text-foreground">
-                    {selectedStudent.semesters?.title ? `Semester ${selectedStudent.semesters.number}` : "Not selected"}
+                    {selectedStudent.semesters?.title
+                      ? `Semester ${selectedStudent.semesters.number}`
+                      : "Not selected"}
                   </span>
                 </div>
 
                 <div className="rounded-xl border border-border/60 p-3 bg-card">
-                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">University</span>
+                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                    University
+                  </span>
                   <span className="font-semibold text-foreground truncate block">
                     {selectedStudent.university || selectedStudent.college || "—"}
                   </span>
                 </div>
 
                 <div className="rounded-xl border border-border/60 p-3 bg-card">
-                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">Academic Session</span>
+                  <span className="block text-[10px] uppercase font-bold text-muted-foreground">
+                    Academic Session
+                  </span>
                   <span className="font-semibold text-foreground">
                     {selectedStudent.academic_session || "2026–2027"}
                   </span>
@@ -374,9 +391,13 @@ function AdminStudentsPage() {
 
               <div className="flex items-center justify-between pt-2 border-t border-border/60">
                 <div>
-                  <span className="text-xs font-semibold text-foreground block">Account Status</span>
+                  <span className="text-xs font-semibold text-foreground block">
+                    Account Status
+                  </span>
                   <span className="text-[11px] text-muted-foreground">
-                    {selectedStudent.suspended ? "Suspended from student platform" : "Active student access"}
+                    {selectedStudent.suspended
+                      ? "Suspended from student platform"
+                      : "Active student access"}
                   </span>
                 </div>
 
