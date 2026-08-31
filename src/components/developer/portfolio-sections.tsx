@@ -376,20 +376,38 @@ export function HeroSection({
 
 /* ── Featured project ────────────────────────────────────────────────────── */
 
+function prettyHost(url: string | null | undefined) {
+  if (!url) return null;
+  try {
+    return new URL(url).host.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+
+/** XRounder is this project itself — its canonical URL is known, not invented. */
+function resolveLiveUrl(p: Project) {
+  if (p.live_url) return p.live_url;
+  if (/xrounder/i.test(p.name)) return "https://www.xrounder.in";
+  return null;
+}
+
 export function FeaturedProjectSection({ featured }: { featured: Project }) {
   const tech = featured.tech_stack ?? [];
+  const liveUrl = resolveLiveUrl(featured);
+  const host = prettyHost(liveUrl);
   return (
     <Section id="projects">
       <SectionHeading eyebrow="Featured work" title={featured.name} />
 
       <Reveal className="mt-7">
-        <article className="overflow-hidden rounded-2xl border border-border bg-surface">
+        <article className="group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted sm:aspect-[16/7]">
             {featured.thumbnail_url ? (
               <img
                 src={featured.thumbnail_url}
                 alt={`${featured.name} interface`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none"
                 loading="lazy"
               />
             ) : (
@@ -433,9 +451,26 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
                   Status
                 </dt>
                 <dd className="mt-1 text-sm text-foreground">
-                  {featured.live_url ? "Live and actively maintained" : "In development"}
+                  {liveUrl ? "Live and actively maintained" : "In development"}
                 </dd>
               </div>
+              {host && (
+                <div>
+                  <dt className="text-[0.7rem] font-semibold tracking-wide text-muted-foreground uppercase">
+                    Live at
+                  </dt>
+                  <dd className="mt-1 text-sm">
+                    <a
+                      href={liveUrl!}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-primary underline-offset-4 hover:underline"
+                    >
+                      {host}
+                    </a>
+                  </dd>
+                </div>
+              )}
             </dl>
 
             {tech.length > 0 && (
@@ -449,9 +484,9 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
             )}
 
             <div className="mt-6 flex flex-wrap gap-2.5">
-              {featured.live_url && (
+              {liveUrl && (
                 <Button asChild size="lg" className="h-11 flex-1 sm:flex-none">
-                  <a href={featured.live_url} target="_blank" rel="noreferrer">
+                  <a href={liveUrl} target="_blank" rel="noreferrer">
                     <ExternalLink className="mr-1.5 h-4 w-4" /> Live demo
                   </a>
                 </Button>
