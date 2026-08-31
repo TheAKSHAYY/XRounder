@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUp,
-  ArrowUpRight,
   Award,
   BookOpen,
   Check,
@@ -30,12 +29,7 @@ import { ContactForm } from "@/components/developer/contact-form";
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
 import type { ContributionDay } from "./use-github-data";
-import {
-  useGithubContributions,
-  useGithubLanguages,
-  useGithubRepos,
-  useGithubUser,
-} from "./use-github-data";
+import { useGithubContributions, useGithubLanguages, useGithubUser } from "./use-github-data";
 
 /* ── Design-system primitives ─────────────────────────────────────────────
  * One shell for every section, one chip, one section heading. Mobile-first:
@@ -665,15 +659,6 @@ export function AchievementsSection({ achievements }: { achievements: Achievemen
 }
 
 /* ── GitHub ──────────────────────────────────────────────────────────────── */
-
-function timeAgo(iso: string) {
-  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
-  if (days <= 0) return "today";
-  if (days === 1) return "yesterday";
-  if (days < 30) return `${days}d ago`;
-  const months = Math.round(days / 30);
-  return months < 12 ? `${months}mo ago` : `${Math.round(days / 365)}y ago`;
-}
 
 const LEVEL_BG = [
   "bg-border/60",
