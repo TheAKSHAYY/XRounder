@@ -491,7 +491,6 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
                   </a>
                 </Button>
               )}
-              )}
               {featured.github_url && (
                 <Button asChild variant="outline" size="lg" className="h-11 flex-1 sm:flex-none">
                   <a href={featured.github_url} target="_blank" rel="noreferrer">
