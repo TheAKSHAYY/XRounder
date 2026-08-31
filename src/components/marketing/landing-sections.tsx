@@ -372,6 +372,27 @@ export function Features() {
 
 /* ──────────────────────────────────────────────────────────── 3. Live Course Discovery Grid */
 
+const DEFAULT_COURSES = [
+  {
+    id: "cb0c4026-0d38-4401-8c57-c88b485ad121",
+    code: "BCA",
+    title: "Bachelor of Computer Applications",
+    slug: "bca",
+    description: "3-year undergraduate program in computer applications.",
+    duration_years: 3,
+    total_semesters: 6,
+  },
+  {
+    id: "6ccdfdf8-caca-41a4-ba2e-4cae8e88dd8d",
+    code: "BCA (AKTU)",
+    title: "Bachelor of computer applications(AKTU)",
+    slug: "aktu",
+    description: "Syllabus aligned notes & papers for AKTU BCA curriculum.",
+    duration_years: 3,
+    total_semesters: 6,
+  },
+];
+
 export function CourseDiscovery() {
   const coursesQ = useQuery({
     queryKey: ["homepage", "courses", "live"],
@@ -386,6 +407,7 @@ export function CourseDiscovery() {
       if (error) throw error;
       return data ?? [];
     },
+    initialData: DEFAULT_COURSES,
     staleTime: 60_000,
   });
 

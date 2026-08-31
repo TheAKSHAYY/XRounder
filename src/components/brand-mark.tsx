@@ -13,6 +13,8 @@ export function BrandMark({ className }: { className?: string; variant?: "filled
       <img
         src={LOGO_MARK_SRC}
         alt="XRounder"
+        width={36}
+        height={36}
         className="h-full w-full object-contain"
         loading="eager"
         decoding="async"
@@ -58,6 +60,8 @@ export function BrandLockup({
         src={LOGO_MARK_SRC}
         alt=""
         aria-hidden
+        width={36}
+        height={36}
         className="h-[1.5em] w-auto max-w-none shrink-0 object-contain drop-shadow-xs"
         loading="eager"
         decoding="async"

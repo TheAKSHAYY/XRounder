@@ -17,18 +17,47 @@ export interface AuthState {
 const SERVER_AUTH_STATE: AuthState = {
   session: null,
   user: null,
-  status: "loading",
-  loading: true,
+  status: "unauthenticated",
+  loading: false,
   isAuthenticated: false,
 };
 
-let currentAuthState: AuthState = {
-  session: null,
-  user: null,
-  status: "loading",
-  loading: true,
-  isAuthenticated: false,
-};
+function getInitialClientAuthState(): AuthState {
+  if (typeof window === "undefined") {
+    return SERVER_AUTH_STATE;
+  }
+  try {
+    const storageKeys = Object.keys(window.localStorage);
+    const authKey = storageKeys.find((k) => k.startsWith("sb-") && k.endsWith("-auth-token"));
+    if (authKey) {
+      const raw = window.localStorage.getItem(authKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        const user = (parsed?.user as User) ?? null;
+        if (user) {
+          return {
+            session: parsed as Session,
+            user,
+            status: "authenticated",
+            loading: false,
+            isAuthenticated: true,
+          };
+        }
+      }
+    }
+  } catch {
+    // Ignore storage read exceptions
+  }
+  return {
+    session: null,
+    user: null,
+    status: "unauthenticated",
+    loading: false,
+    isAuthenticated: false,
+  };
+}
+
+let currentAuthState: AuthState = getInitialClientAuthState();
 
 const listeners = new Set<() => void>();
 let initialized = false;

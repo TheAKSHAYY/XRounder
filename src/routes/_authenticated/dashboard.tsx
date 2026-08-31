@@ -109,16 +109,15 @@ function DashboardPage() {
     },
   });
 
+  const currentSemesterId = profileQuery.data?.current_semester_id;
+  const currentCourseId = profileQuery.data?.current_course_id;
+
   // 2. Active semester context query
   const contextQuery = useQuery({
-    queryKey: [
-      "dashboard-context",
-      profileQuery.data?.current_course_id,
-      profileQuery.data?.current_semester_id,
-    ],
-    enabled: !!profileQuery.data?.current_semester_id,
+    queryKey: ["dashboard-context", currentCourseId, currentSemesterId],
+    enabled: !!currentSemesterId,
     queryFn: async () => {
-      const semId = profileQuery.data!.current_semester_id!;
+      const semId = currentSemesterId!;
       const [semRes, subjRes] = await Promise.all([
         supabase
           .from("semesters")
@@ -127,7 +126,7 @@ function DashboardPage() {
           .maybeSingle(),
         supabase
           .from("subjects")
-          .select("id, code, slug, title, credits")
+          .select("id, code, slug, title, credits, units(id, status, deleted_at)")
           .eq("semester_id", semId)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -144,10 +143,12 @@ function DashboardPage() {
     },
   });
 
-  // 3. Enriched continue learning progress query
+  // 3. Enriched continue learning progress query (strictly scoped to active semester)
   const progressQuery = useQuery({
-    queryKey: ["student-detailed-progress", user.id],
+    queryKey: ["student-detailed-progress", user.id, currentSemesterId],
+    enabled: !!currentSemesterId,
     queryFn: async (): Promise<EnrichedProgress[]> => {
+      if (!currentSemesterId) return [];
       try {
         const { data, error } = await supabase
           .from("progress_tracking")
@@ -183,25 +184,11 @@ function DashboardPage() {
           `,
           )
           .eq("user_id", user.id)
+          .eq("units.subjects.semester_id", currentSemesterId)
           .order("last_activity_at", { ascending: false })
           .limit(10);
 
-        if (error || !data || data.length === 0) {
-          const { data: rpcData } = await supabase.rpc("student_progress", { _limit: 10 });
-          return (rpcData ?? []).map((r) => ({
-            id: r.id,
-            unit_id: r.unit_id,
-            unit_number: 1,
-            unit_title: r.unit_title ?? "Unit",
-            subject_title: r.subject_title ?? "Subject",
-            subject_slug: "",
-            semester_number: 1,
-            course_slug: "",
-            status: r.status,
-            progress_pct: Number(r.progress_pct ?? 0),
-            last_activity_at: r.last_activity_at,
-          }));
-        }
+        if (error || !data) return [];
 
         return data.map((r: any) => ({
           id: r.id,
@@ -232,14 +219,40 @@ function DashboardPage() {
     },
   });
 
-  // 5. Quiz attempts query
+  // 5. Quiz attempts query (strictly scoped to active semester)
   const quizAttemptsQuery = useQuery({
-    queryKey: ["student-quiz-attempts", user.id],
+    queryKey: ["student-quiz-attempts", user.id, currentSemesterId],
+    enabled: !!currentSemesterId,
     queryFn: async () => {
+      if (!currentSemesterId) return [];
       const { data, error } = await supabase
         .from("quiz_attempts")
-        .select("id, quiz_id, pct, score, max_score, passed, submitted_at, quizzes(title)")
+        .select(
+          `
+          id,
+          quiz_id,
+          pct,
+          score,
+          max_score,
+          passed,
+          submitted_at,
+          quizzes:quizzes!inner (
+            id,
+            title,
+            unit_id,
+            units:units!inner (
+              id,
+              subject_id,
+              subjects:subjects!inner (
+                id,
+                semester_id
+              )
+            )
+          )
+        `,
+        )
         .eq("user_id", user.id)
+        .eq("quizzes.units.subjects.semester_id", currentSemesterId)
         .not("submitted_at", "is", null)
         .order("submitted_at", { ascending: false })
         .limit(8);
@@ -263,10 +276,12 @@ function DashboardPage() {
     },
   });
 
-  // 7. Weak topics query
+  // 7. Weak topics query (strictly scoped to active semester)
   const weakTopicsQuery = useQuery({
-    queryKey: ["student-weak-topics", user.id],
+    queryKey: ["student-weak-topics", user.id, currentSemesterId],
+    enabled: !!currentSemesterId,
     queryFn: async (): Promise<WeakTopic[]> => {
+      if (!currentSemesterId) return [];
       try {
         const { data, error } = await supabase
           .from("quiz_attempts")
@@ -283,21 +298,23 @@ function DashboardPage() {
               id,
               title,
               unit_id,
-              units:units (
+              units:units!inner (
                 id,
                 number,
                 title,
                 subject_id,
-                subjects:subjects (
+                subjects:subjects!inner (
                   id,
                   title,
-                  slug
+                  slug,
+                  semester_id
                 )
               )
             )
           `,
           )
           .eq("user_id", user.id)
+          .eq("quizzes.units.subjects.semester_id", currentSemesterId)
           .not("submitted_at", "is", null)
           .order("submitted_at", { ascending: false })
           .limit(20);
@@ -356,6 +373,22 @@ function DashboardPage() {
   const courseTitle = (semester?.courses as { title?: string; slug?: string } | null)?.title;
   const courseSlug = (semester?.courses as { title?: string; slug?: string } | null)?.slug;
 
+  type SubjectWithUnits = {
+    id: string;
+    code: string;
+    slug: string;
+    title: string;
+    credits: number | null;
+    units?: { id: string; status: string; deleted_at: string | null }[];
+  };
+
+  const totalPublishedUnits = useMemo(() => {
+    return (semesterSubjects as unknown as SubjectWithUnits[]).reduce((total, subj) => {
+      const units = (subj.units ?? []).filter((u) => u.status === "published" && !u.deleted_at);
+      return total + units.length;
+    }, 0);
+  }, [semesterSubjects]);
+
   const avgScore = useMemo(() => {
     const scored = attempts.filter((a) => typeof a.pct === "number");
     if (!scored.length) return null;
@@ -369,12 +402,11 @@ function DashboardPage() {
   );
 
   const semesterProgressPct = useMemo(() => {
-    if (!progress.length) return 0;
-    const sum = progress.reduce((acc, p) => acc + (p.progress_pct || 0), 0);
-    return Math.round(sum / Math.max(1, progress.length));
-  }, [progress]);
+    if (totalPublishedUnits <= 0) return 0;
+    return Math.min(100, Math.round((completedUnitsCount / totalPublishedUnits) * 100));
+  }, [completedUnitsCount, totalPublishedUnits]);
 
-  const pickUp = progress.find((p) => p.status !== "completed") ?? progress[0] ?? null;
+  const pickUp = progress.find((p) => p.status !== "completed") ?? null;
 
   return (
     <main className="mx-auto max-w-6xl px-4 pb-24 pt-6 sm:px-6 sm:pt-10">
@@ -460,8 +492,10 @@ function DashboardPage() {
                 </span>
               </div>
               <p className="mt-1 text-sm font-medium text-foreground">
-                {completedUnitsCount} unit{completedUnitsCount === 1 ? "" : "s"} completed ·{" "}
-                {semesterSubjects.length} subject{semesterSubjects.length === 1 ? "" : "s"}
+                {totalPublishedUnits > 0
+                  ? `${completedUnitsCount} of ${totalPublishedUnits} unit${totalPublishedUnits === 1 ? "" : "s"} completed`
+                  : `${completedUnitsCount} unit${completedUnitsCount === 1 ? "" : "s"} completed`}{" "}
+                · {semesterSubjects.length} subject{semesterSubjects.length === 1 ? "" : "s"}
               </p>
             </div>
             <div className="flex items-center gap-3">

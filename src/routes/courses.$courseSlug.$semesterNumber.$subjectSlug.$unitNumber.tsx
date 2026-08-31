@@ -625,24 +625,6 @@ function UnitDetail() {
     },
   });
 
-  // Mark as in_progress on first visit
-  useEffect(() => {
-    if (!user?.id || !unitId) return;
-    if (progressQuery.isLoading) return;
-    if (progressQuery.data) return;
-    (async () => {
-      const now = new Date().toISOString();
-      await supabase.from("progress_tracking").insert({
-        user_id: user.id,
-        unit_id: unitId,
-        status: "in_progress",
-        progress_pct: 25,
-        last_activity_at: now,
-      });
-      qc.invalidateQueries({ queryKey: ["student", "unit-progress", user?.id, unitId] });
-    })();
-  }, [user?.id, unitId, progressQuery.isLoading, progressQuery.data]);
-
   /* ─────────── Derived Content Filters ─────────── */
 
   const items = dataQuery.data?.items ?? [];

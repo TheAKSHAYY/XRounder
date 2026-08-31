@@ -7,8 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-import { Toaster } from "sonner";
+import { useEffect, lazy, Suspense, type ReactNode } from "react";
+
+const Toaster = lazy(() => import("sonner").then((m) => ({ default: m.Toaster })));
 
 import { supabase } from "@/integrations/supabase/client";
 import { MaintenanceGate } from "@/components/maintenance-gate";
@@ -144,7 +145,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap",
       },
     ],
   }),
@@ -213,7 +214,9 @@ function RootComponent() {
           </div>
         </MaintenanceGate>
         <ScrollToTop />
-        <Toaster richColors position="top-center" />
+        <Suspense fallback={null}>
+          <Toaster richColors position="top-center" />
+        </Suspense>
       </ThemeProvider>
     </QueryClientProvider>
   );

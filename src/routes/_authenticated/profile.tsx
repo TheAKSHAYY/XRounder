@@ -181,6 +181,9 @@ function ProfilePage() {
     qc.invalidateQueries({ queryKey: ["profile-mini", user.id] });
     qc.invalidateQueries({ queryKey: ["dashboard-profile", user.id] });
     qc.invalidateQueries({ queryKey: ["dashboard-context"] });
+    qc.invalidateQueries({ queryKey: ["student-detailed-progress"] });
+    qc.invalidateQueries({ queryKey: ["student-quiz-attempts"] });
+    qc.invalidateQueries({ queryKey: ["student-weak-topics"] });
   };
 
   // Save Edit Profile Mutation

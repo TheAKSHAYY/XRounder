@@ -78,9 +78,7 @@ export function useGithubContributions(username: string | null | undefined) {
     queryKey: ["gh-contrib", username],
     enabled: Boolean(username),
     queryFn: async (): Promise<Contributions> => {
-      const res = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-      );
+      const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
       if (!res.ok) throw new Error(`Contributions ${res.status}`);
       const json = (await res.json()) as {
         total: Record<string, number>;

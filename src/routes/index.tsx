@@ -93,7 +93,7 @@ export const Route = createFileRoute("/")({
 
 type HomepageSection = { id: string; type: string; position: number };
 
-export const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
+const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
   { id: "default-hero", type: "hero", position: 10 },
   { id: "default-features", type: "features", position: 20 },
   { id: "default-courses", type: "courses", position: 30 },

@@ -65,6 +65,9 @@ function OnboardingPage() {
     await qc.invalidateQueries({ queryKey: ["dashboard-profile"] });
     await qc.invalidateQueries({ queryKey: ["dashboard-context"] });
     await qc.invalidateQueries({ queryKey: ["profile-full"] });
+    await qc.invalidateQueries({ queryKey: ["student-detailed-progress"] });
+    await qc.invalidateQueries({ queryKey: ["student-quiz-attempts"] });
+    await qc.invalidateQueries({ queryKey: ["student-weak-topics"] });
     await qc.invalidateQueries({ queryKey: ["student-progress"] });
 
     toast.success("Your learning path has been set!");
