@@ -924,6 +924,9 @@ export function ContactSection({ profile, socials }: { profile: Profile; socials
             </Button>
           </>
         )}
+        <Button type="button" variant="ghost" size="sm" onClick={sharePage}>
+          <Share2 className="mr-1.5 h-4 w-4" aria-hidden /> {shared ? "Link copied" : "Share"}
+        </Button>
         {socials.slice(0, 4).map((s) => {
           const Icon = platformIcon(s.platform);
           return (
