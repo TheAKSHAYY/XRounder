@@ -622,6 +622,8 @@ function UnitDetail() {
       qc.invalidateQueries({ queryKey: ["student", "unit-progress", user?.id, unitId] });
       qc.invalidateQueries({ queryKey: ["student", "subject-progress"] });
       qc.invalidateQueries({ queryKey: ["student", "sem-progress"] });
+      qc.invalidateQueries({ queryKey: ["student-detailed-progress"] });
+      qc.invalidateQueries({ queryKey: ["student-streak"] });
     },
   });
 
