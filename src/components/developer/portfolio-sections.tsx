@@ -798,9 +798,57 @@ function LanguageMix({ username }: { username: string }) {
   );
 }
 
+/** Streaks / cadence derived from the same real contribution days. */
+function ActivityStats({ username }: { username: string }) {
+  const { data } = useGithubContributions(username);
+  if (!data || data.days.length === 0) return null;
+
+  const days = data.days.filter((d) => new Date(d.date) <= new Date());
+  const activeDays = days.filter((d) => d.count > 0).length;
+
+  let longest = 0;
+  let run = 0;
+  for (const d of days) {
+    run = d.count > 0 ? run + 1 : 0;
+    if (run > longest) longest = run;
+  }
+
+  let current = 0;
+  for (let i = days.length - 1; i >= 0; i--) {
+    if (days[i]!.count > 0) current++;
+    else break;
+  }
+
+  const best = days.reduce((a, b) => (b.count > a.count ? b : a), days[0]!);
+  const last30 = days.slice(-30).reduce((sum, d) => sum + d.count, 0);
+
+  const items = [
+    { label: "Current streak", value: `${current}d` },
+    { label: "Longest streak", value: `${longest}d` },
+    { label: "Active days / yr", value: String(activeDays) },
+    { label: "Last 30 days", value: String(last30) },
+    { label: "Best day", value: `${best.count}` },
+  ];
+
+  return (
+    <div className="mt-5 border-t border-border/60 pt-5">
+      <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+        Coding cadence
+      </h3>
+      <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-5">
+        {items.map((s) => (
+          <div key={s.label} className="min-w-0">
+            <dd className="font-display text-lg font-semibold text-foreground">{s.value}</dd>
+            <dt className="truncate text-[0.7rem] text-muted-foreground">{s.label}</dt>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
 export function GithubSection({ githubUsername }: { githubUsername: string }) {
   const user = useGithubUser(githubUsername);
-  const repos = useGithubRepos(githubUsername, 6);
   const profileUrl = `https://github.com/${githubUsername}`;
 
   return (
@@ -834,43 +882,8 @@ export function GithubSection({ githubUsername }: { githubUsername: string }) {
         </div>
 
         <ContributionGraph username={githubUsername} />
+        <ActivityStats username={githubUsername} />
         <LanguageMix username={githubUsername} />
-
-        {repos.data && repos.data.length > 0 && (
-          <ul className="mt-5 divide-y divide-border/60 border-t border-border/60">
-            {repos.data.map((r) => (
-              <li key={r.id}>
-                <a
-                  href={r.html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-start gap-3 py-3.5 transition-colors hover:text-primary"
-                >
-                  <span className="min-w-0 flex-1">
-                    <span className="flex items-center gap-1.5 font-medium text-foreground group-hover:text-primary">
-                      <span className="truncate">{r.name}</span>
-                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden />
-                    </span>
-                    {r.description && (
-                      <span className="mt-0.5 line-clamp-2 block text-xs leading-relaxed text-muted-foreground">
-                        {r.description}
-                      </span>
-                    )}
-                    <span className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.7rem] text-muted-foreground">
-                      {r.language && <span>{r.language}</span>}
-                      {r.stargazers_count > 0 && (
-                        <span className="inline-flex items-center gap-1">
-                          <Star className="h-3 w-3" aria-hidden /> {r.stargazers_count}
-                        </span>
-                      )}
-                      <span>updated {timeAgo(r.pushed_at)}</span>
-                    </span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </Section>
   );
