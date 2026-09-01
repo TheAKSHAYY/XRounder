@@ -4,10 +4,12 @@
   "path": "/mcp",
   "auth": {
     "type": "oauth",
-    "issuer": "https://cifnalemfmokembqxidh.supabase.co/auth/v1",
+    "issuer": "http://localhost/auth/v1",
     "resource_name": "XRounder MCP",
-    "accepted_audiences": ["authenticated"],
-    "jwks_uri": "https://cifnalemfmokembqxidh.supabase.co/auth/v1/.well-known/jwks.json"
+    "accepted_audiences": [
+      "authenticated"
+    ],
+    "jwks_uri": "http://localhost/auth/v1/.well-known/jwks.json"
   },
   "mcp": {
     "server": {
@@ -65,7 +67,9 @@
               "maximum": 50
             }
           },
-          "required": ["query"]
+          "required": [
+            "query"
+          ]
         },
         "outputSchema": null
       },
