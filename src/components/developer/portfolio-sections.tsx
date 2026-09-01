@@ -515,7 +515,7 @@ export function ProjectGridSection({ projects }: { projects: Project[] }) {
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         {projects.map((p, i) => (
           <Reveal key={p.id} delay={i * 60}>
-            <article className="flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary/30">
+            <article className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
               {p.category && (
                 <div className="text-[0.7rem] tracking-wide text-muted-foreground uppercase">
                   {p.category}
@@ -536,18 +536,18 @@ export function ProjectGridSection({ projects }: { projects: Project[] }) {
                   ))}
                 </ul>
               )}
-              <div className="mt-4 flex flex-wrap gap-2 border-t border-border/60 pt-3">
+              <div className="mt-auto flex flex-wrap gap-2 border-t border-border/60 pt-4">
                 {p.live_url && (
-                  <Button asChild size="sm" variant="outline">
+                  <Button asChild size="lg" className="h-11 flex-1 sm:flex-none">
                     <a href={p.live_url} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-1 h-3.5 w-3.5" /> Live
+                      <ExternalLink className="mr-1.5 h-4 w-4" /> Live demo
                     </a>
                   </Button>
                 )}
                 {p.github_url && (
-                  <Button asChild size="sm" variant="ghost">
+                  <Button asChild size="lg" variant="outline" className="h-11 flex-1 sm:flex-none">
                     <a href={p.github_url} target="_blank" rel="noreferrer">
-                      <Github className="mr-1 h-3.5 w-3.5" /> Code
+                      <Github className="mr-1.5 h-4 w-4" /> Code
                     </a>
                   </Button>
                 )}
