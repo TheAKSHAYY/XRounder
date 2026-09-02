@@ -36,7 +36,7 @@ export function PortfolioCommand({
   socials: Social[];
 }) {
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolved, setTheme } = useTheme();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -114,14 +114,14 @@ export function PortfolioCommand({
             )}
             <CommandItem
               value="toggle theme dark light"
-              onSelect={() => run(() => setTheme(theme === "dark" ? "light" : "dark"))}
+              onSelect={() => run(() => setTheme(resolved === "dark" ? "light" : "dark"))}
             >
-              {theme === "dark" ? (
+              {resolved === "dark" ? (
                 <Sun className="mr-2 h-4 w-4" aria-hidden />
               ) : (
                 <Moon className="mr-2 h-4 w-4" aria-hidden />
               )}
-              Switch to {theme === "dark" ? "light" : "dark"} mode
+              Switch to {resolved === "dark" ? "light" : "dark"} mode
             </CommandItem>
             {socials.map((s) => {
               const Icon = platformIcon(s.platform);
