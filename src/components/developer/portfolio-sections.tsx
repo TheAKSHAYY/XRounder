@@ -26,6 +26,7 @@ import {
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 import { ContactForm } from "@/components/developer/contact-form";
+import { PortfolioCommand } from "@/components/developer/portfolio-command";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
