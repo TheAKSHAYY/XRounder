@@ -128,7 +128,7 @@ function DeveloperPage() {
         }}
       />
 
-      <PortfolioNav name={name} />
+      <PortfolioNav name={name} profile={profile} projects={projects} socials={socials} />
 
       <HeroSection
         profile={profile}
