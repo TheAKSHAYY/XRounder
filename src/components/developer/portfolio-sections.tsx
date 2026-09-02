@@ -26,6 +26,7 @@ import {
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 import { ContactForm } from "@/components/developer/contact-form";
+import { PortfolioCommand } from "@/components/developer/portfolio-command";
 
 import { platformIcon } from "./portfolio.types";
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
@@ -164,7 +165,17 @@ function useScrollState() {
   return state;
 }
 
-export function PortfolioNav({ name }: { name: string }) {
+export function PortfolioNav({
+  name,
+  profile,
+  projects,
+  socials,
+}: {
+  name: string;
+  profile?: Profile;
+  projects?: Project[];
+  socials?: Social[];
+}) {
   const { active, progress, scrolled } = useScrollState();
 
   return (
@@ -200,6 +211,9 @@ export function PortfolioNav({ name }: { name: string }) {
               );
             })}
           </div>
+          {profile && (
+            <PortfolioCommand profile={profile} projects={projects ?? []} socials={socials ?? []} />
+          )}
         </div>
         <div
           aria-hidden
@@ -509,11 +523,63 @@ export function FeaturedProjectSection({ featured }: { featured: Project }) {
 /* ── Secondary projects ──────────────────────────────────────────────────── */
 
 export function ProjectGridSection({ projects }: { projects: Project[] }) {
+  const [filter, setFilter] = useState<string | null>(null);
+
+  // Tech chips derived from the projects themselves — no extra data needed.
+  const techs = Array.from(
+    projects.reduce((map, p) => {
+      for (const t of p.tech_stack ?? []) map.set(t, (map.get(t) ?? 0) + 1);
+      return map;
+    }, new Map<string, number>()),
+  )
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 10)
+    .map(([t]) => t);
+
+  const visible = filter ? projects.filter((p) => (p.tech_stack ?? []).includes(filter)) : projects;
+
   return (
     <Section muted>
       <SectionHeading eyebrow="More work" title="Other projects" />
+      {techs.length > 1 && (
+        <div
+          className="mt-5 flex flex-wrap items-center gap-2"
+          role="group"
+          aria-label="Filter projects by tech"
+        >
+          <button
+            type="button"
+            onClick={() => setFilter(null)}
+            aria-pressed={filter === null}
+            className={cn(
+              "rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors",
+              filter === null
+                ? "border-primary/40 bg-primary/10 text-primary"
+                : "border-border bg-surface text-muted-foreground hover:text-foreground",
+            )}
+          >
+            All ({projects.length})
+          </button>
+          {techs.map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setFilter(filter === t ? null : t)}
+              aria-pressed={filter === t}
+              className={cn(
+                "rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors",
+                filter === t
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border bg-surface text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
-        {projects.map((p, i) => (
+        {visible.map((p, i) => (
           <Reveal key={p.id} delay={i * 60}>
             <article className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
               {p.category && (
