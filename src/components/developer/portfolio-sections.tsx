@@ -210,6 +210,13 @@ export function PortfolioNav({
               );
             })}
           </div>
+          {profile && (
+            <PortfolioCommand
+              profile={profile}
+              projects={projects ?? []}
+              socials={socials ?? []}
+            />
+          )}
         </div>
         <div
           aria-hidden
