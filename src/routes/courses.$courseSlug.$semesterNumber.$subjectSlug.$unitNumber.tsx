@@ -1,37 +1,22 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
-  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   BookOpen,
   Check,
-  CheckCircle2,
   ChevronDown,
   ChevronLeft,
-  ChevronRight,
-  ClipboardCheck,
-  ClipboardList,
-  Clock,
-  Copy,
   Download,
   ExternalLink,
-  FileImage,
   FileText,
   FileType,
   FlaskConical,
   GraduationCap,
-  HelpCircle,
-  Layers,
-  Link2,
   ListOrdered,
-  Sparkles,
-  Target,
   Timer,
-  Video,
-  Zap,
 } from "lucide-react";
 
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
@@ -46,6 +31,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { slugify } from "@/lib/slug";
 import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
+import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 
 type UnitDetailData = {
   course: { id: string; title: string };
@@ -107,6 +93,11 @@ async function fetchUnitDetails(
         .maybeSingle();
       if (!unit) throw notFound();
 
+      const contentFilter =
+        Number(unitNumber) === 1
+          ? `unit_id.eq.${unit.id},unit_id.is.null`
+          : `unit_id.eq.${unit.id}`;
+
       const [
         { data: contentItemsRes },
         { data: legacyNotesRes },
@@ -119,7 +110,7 @@ async function fetchUnitDetails(
             "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
           )
           .eq("subject_id", subject.id)
-          .or(`unit_id.eq.${unit.id},unit_id.is.null`)
+          .or(contentFilter)
           .eq("status", "published")
           .is("deleted_at", null)
           .order("created_at", { ascending: true }),
@@ -450,6 +441,9 @@ function UnitDetail() {
         .maybeSingle();
       if (!unit) throw notFound();
 
+      const contentFilter =
+        unit.number === 1 ? `unit_id.eq.${unit.id},unit_id.is.null` : `unit_id.eq.${unit.id}`;
+
       const [
         { data: contentItemsRes },
         { data: legacyNotesRes },
@@ -462,7 +456,7 @@ function UnitDetail() {
             "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
           )
           .eq("subject_id", subject.id)
-          .or(`unit_id.eq.${unit.id},unit_id.is.null`)
+          .or(contentFilter)
           .eq("status", "published")
           .is("deleted_at", null)
           .order("created_at", { ascending: true }),
@@ -965,11 +959,12 @@ function UnitDetail() {
                   }}
                 />
               ) : (
-                <div className="space-y-10 min-w-0 max-w-full">
+                <div className="space-y-12 min-w-0 max-w-full">
                   {readArticles.map((item: UnitContentItem, i: number) => (
-                    <ContentBlock
+                    <EducationalContentRenderer
                       key={item.id}
-                      item={item}
+                      title={item.title}
+                      content={item.body || item.description || ""}
                       anchorId={toc[i]?.id ?? `content-${item.id}`}
                     />
                   ))}
@@ -1366,263 +1361,5 @@ function ReferenceCard({ item }: { item: UnitContentItem }) {
         )}
       </div>
     </div>
-  );
-}
-
-function renderFormattedText(text: string) {
-  if (!text) return null;
-  const parts = text.split(/(\*\*.*?\*\*)/g);
-  return parts.map((part, idx) => {
-    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
-      return (
-        <strong key={idx} className="font-bold text-foreground">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return part;
-  });
-}
-
-/* ─────────── ContentBlock (Markdown / Code / Visual Note) ─────────── */
-
-function ContentBlock({ item, anchorId }: { item: UnitContentItem; anchorId: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const onCopy = useCallback(async () => {
-    const text = item.body || item.description;
-    if (!text) return;
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
-    } catch {
-      /* ignore */
-    }
-  }, [item.body, item.description]);
-
-  const bodyText = item.body || item.description;
-  const blocks = useMemo(() => parseMarkdownToBlocks(bodyText || ""), [bodyText]);
-
-  return (
-    <section id={anchorId} className="scroll-mt-28 min-w-0 max-w-full">
-      <div className="flex items-center justify-between gap-4 mb-3">
-        <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-          {item.title}
-        </h2>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={onCopy}
-          className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground shrink-0"
-        >
-          {copied ? (
-            <>
-              <Check className="h-3.5 w-3.5 mr-1 text-emerald-500" /> Copied
-            </>
-          ) : (
-            <>
-              <Copy className="h-3.5 w-3.5 mr-1" /> Copy
-            </>
-          )}
-        </Button>
-      </div>
-
-      {bodyText && (
-        <div className="rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-4 sm:p-9 shadow-soft text-foreground space-y-6 min-w-0 max-w-full overflow-hidden">
-          {(() => {
-            let h2Count = 0;
-            return blocks.map((b) => {
-              const headingId = `heading-${slugify(b.content)}-${b.id}`;
-              const isDiagram =
-                b.type === "code" &&
-                (b.language === "diagram" ||
-                  b.language === "ascii" ||
-                  /┌|└|│|─|\+---|\||->|INPUT|OUTPUT|CPU|MEMORY|ALU|CU/.test(b.content));
-
-              const isQuickRevision =
-                (b.type === "heading2" || b.type === "heading3") &&
-                /revision|summary|takeaways|key points/i.test(b.content);
-
-              if (b.type === "heading2") {
-                h2Count++;
-              }
-
-              return (
-                <div key={b.id} className="min-w-0">
-                  {b.type === "heading2" && (
-                    <div
-                      id={headingId}
-                      className="scroll-mt-28 mt-10 mb-4 border-t border-border/50 pt-6"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-extrabold text-primary shrink-0">
-                          {String(h2Count).padStart(2, "0")}
-                        </span>
-                        <h3 className="font-display text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
-                          {renderFormattedText(b.content)}
-                        </h3>
-                      </div>
-                    </div>
-                  )}
-
-                  {b.type === "heading3" && (
-                    <h4
-                      id={headingId}
-                      className={cn(
-                        "font-display text-[17px] sm:text-lg font-bold mt-6 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2",
-                        isQuickRevision
-                          ? "text-amber-500 font-extrabold uppercase"
-                          : "text-primary",
-                      )}
-                    >
-                      {isQuickRevision && <Zap className="h-4 w-4 shrink-0" />}
-                      {renderFormattedText(b.content)}
-                    </h4>
-                  )}
-
-                  {b.type === "paragraph" && (
-                    <p className="text-[16px] sm:text-[17px] text-foreground/90 leading-[1.75] mb-5 whitespace-pre-wrap">
-                      {renderFormattedText(b.content)}
-                    </p>
-                  )}
-
-                  {b.type === "callout" && (
-                    <div
-                      className={cn(
-                        "my-6 rounded-2xl border-l-4 p-4 sm:p-5 text-[15px] sm:text-base leading-[1.7] shadow-xs",
-                        b.calloutType === "exam_tip"
-                          ? "border-amber-500 bg-amber-500/10 dark:bg-amber-500/15 text-foreground"
-                          : b.calloutType === "formula"
-                            ? "border-blue-500 bg-blue-500/10 dark:bg-blue-500/15 text-foreground"
-                            : b.calloutType === "warning"
-                              ? "border-rose-500 bg-rose-500/10 dark:bg-rose-500/15 text-foreground"
-                              : "border-emerald-500 bg-emerald-500/10 dark:bg-emerald-500/15 text-foreground",
-                      )}
-                    >
-                      <div
-                        className={cn(
-                          "flex items-center gap-2 font-bold mb-1.5 text-xs sm:text-sm",
-                          b.calloutType === "exam_tip"
-                            ? "text-amber-700 dark:text-amber-300"
-                            : b.calloutType === "formula"
-                              ? "text-blue-700 dark:text-blue-300"
-                              : b.calloutType === "warning"
-                                ? "text-rose-700 dark:text-rose-300"
-                                : "text-emerald-700 dark:text-emerald-300",
-                        )}
-                      >
-                        {b.calloutType === "exam_tip" ? (
-                          <Target className="h-4 w-4 shrink-0" />
-                        ) : b.calloutType === "formula" ? (
-                          <Zap className="h-4 w-4 shrink-0" />
-                        ) : b.calloutType === "warning" ? (
-                          <AlertTriangle className="h-4 w-4 shrink-0" />
-                        ) : (
-                          <CheckCircle2 className="h-4 w-4 shrink-0" />
-                        )}
-                        <span>
-                          {b.calloutType === "exam_tip"
-                            ? "🎯 Exam Tip / High Weightage"
-                            : b.calloutType === "formula"
-                              ? "⚡ Key Formula"
-                              : b.calloutType === "warning"
-                                ? "⚠️ Common Mistake"
-                                : "📌 Important Concept"}
-                        </span>
-                      </div>
-                      <div className="leading-relaxed whitespace-pre-wrap text-foreground/90">
-                        {renderFormattedText(b.content)}
-                      </div>
-                    </div>
-                  )}
-
-                  {isDiagram ? (
-                    <div className="my-6 max-w-full overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-br from-primary/5 via-card to-card p-4 sm:p-5 shadow-xs">
-                      <div className="flex items-center justify-between font-mono text-[11px] text-primary mb-2.5 pb-2 border-b border-primary/15">
-                        <span className="flex items-center gap-2 font-bold uppercase tracking-wider">
-                          <Layers className="h-3.5 w-3.5" /> Concept Architecture / Diagram
-                        </span>
-                        <span className="text-[10px] text-muted-foreground uppercase font-mono">
-                          Scroll Horizontal
-                        </span>
-                      </div>
-                      <div className="max-w-full overflow-x-auto">
-                        <pre className="font-mono text-xs sm:text-sm text-foreground leading-relaxed whitespace-pre min-w-max p-3 rounded-xl bg-surface/80 border border-border/50">
-                          <code>{b.content}</code>
-                        </pre>
-                      </div>
-                    </div>
-                  ) : b.type === "code" ? (
-                    <div className="my-6 max-w-full overflow-hidden rounded-2xl bg-slate-950 p-4 border border-border/70 shadow-xs dark:bg-slate-900">
-                      <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 mb-2.5 pb-2 border-b border-slate-800">
-                        <span className="uppercase font-bold text-primary">
-                          {b.language || "code"}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-wider text-slate-400">
-                          Code Snippet
-                        </span>
-                      </div>
-                      <div className="max-w-full overflow-x-auto">
-                        <pre className="font-mono text-xs sm:text-sm text-slate-100 leading-relaxed whitespace-pre min-w-max">
-                          <code>{b.content}</code>
-                        </pre>
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {b.type === "table" && b.tableHeaders && (
-                    <div className="my-6 max-w-full overflow-x-auto rounded-2xl border border-border/80 bg-card shadow-xs">
-                      <table className="min-w-[500px] w-full text-xs sm:text-sm text-left border-collapse">
-                        <thead>
-                          <tr className="border-b border-border/80 bg-muted/50">
-                            {b.tableHeaders.map((h, hIdx) => (
-                              <th key={hIdx} className="p-3.5 font-bold text-foreground">
-                                {renderFormattedText(h)}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {(b.tableRows || []).map((row, rIdx) => (
-                            <tr key={rIdx} className="border-b border-border/40 hover:bg-muted/20">
-                              {row.map((cell, cIdx) => (
-                                <td
-                                  key={cIdx}
-                                  className="p-3.5 text-muted-foreground leading-relaxed"
-                                >
-                                  {renderFormattedText(cell)}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-
-                  {(b.type === "bullet_list" || b.type === "numbered_list") && (
-                    <ul
-                      className={cn(
-                        "my-5 space-y-2 text-[16px] sm:text-[17px] text-foreground/90 pl-5 leading-[1.75]",
-                        b.type === "numbered_list" ? "list-decimal" : "list-disc",
-                      )}
-                    >
-                      {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
-                        .filter((item) => item.trim())
-                        .map((item, itemIdx) => (
-                          <li key={itemIdx} className="leading-relaxed">
-                            {renderFormattedText(item)}
-                          </li>
-                        ))}
-                    </ul>
-                  )}
-                </div>
-              );
-            });
-          })()}
-        </div>
-      )}
-    </section>
   );
 }

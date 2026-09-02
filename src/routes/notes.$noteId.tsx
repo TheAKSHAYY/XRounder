@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 
 export const Route = createFileRoute("/notes/$noteId")({
   head: ({ params }) => {
@@ -237,10 +238,13 @@ function NoteViewer() {
               )}
             </div>
 
-            {/* Distraction-free body */}
+            {/* Educational content renderer */}
             {noteQuery.data.body && (
-              <div className="prose prose-neutral dark:prose-invert mt-8 max-w-[68ch] whitespace-pre-wrap text-foreground leading-relaxed text-base font-normal">
-                {noteQuery.data.body}
+              <div className="mt-8">
+                <EducationalContentRenderer
+                  title={noteQuery.data.title}
+                  content={noteQuery.data.body}
+                />
               </div>
             )}
 

@@ -101,7 +101,7 @@ async function fetchSubjectDetails(
       if (ue) throw ue;
 
       const unitIds = (units ?? []).map((u) => u.id);
-      const [papersRes, contentRes] = await Promise.all([
+      const [papersRes, contentRes, legacyNotesRes] = await Promise.all([
         supabase
           .from("papers")
           .select("id, title, year, exam_type, paper_number")
@@ -112,33 +112,77 @@ async function fetchSubjectDetails(
         unitIds.length
           ? supabase
               .from("content_items")
-              .select("type, unit_id")
+              .select("id, type, unit_id")
               .eq("subject_id", subject.id)
               .eq("status", "published")
               .is("deleted_at", null)
           : Promise.resolve({
-              data: [] as Array<{ type: string; unit_id: string | null }>,
+              data: [] as Array<{ id: string; type: string; unit_id: string | null }>,
+              error: null,
+            }),
+        unitIds.length
+          ? supabase
+              .from("notes")
+              .select("id, unit_id, file_path, file_mime")
+              .in("unit_id", unitIds)
+              .eq("status", "published")
+              .is("deleted_at", null)
+          : Promise.resolve({
+              data: [] as Array<{
+                id: string;
+                unit_id: string;
+                file_path: string | null;
+                file_mime: string | null;
+              }>,
               error: null,
             }),
       ]);
 
       const contentByUnit = new Map<string, ContentBucket>();
       const subjectContent = emptyContentBucket();
+      const countedIds = new Set<string>();
+
       for (const row of (contentRes.data ?? []) as Array<{
+        id: string;
         type: string;
         unit_id: string | null;
       }>) {
+        if (countedIds.has(row.id)) continue;
+        countedIds.add(row.id);
         const key = row.type as keyof ContentBucket;
         if (key in subjectContent && key !== "total") {
           (subjectContent as Record<string, number>)[key] += 1;
           subjectContent.total++;
         }
-        if (row.unit_id) {
-          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+        const targetUnitId = row.unit_id || unitIds[0];
+        if (targetUnitId) {
+          const b = contentByUnit.get(targetUnitId) ?? emptyContentBucket();
           if (key in b && key !== "total") {
             (b as Record<string, number>)[key] += 1;
             b.total++;
           }
+          contentByUnit.set(targetUnitId, b);
+        }
+      }
+
+      for (const row of (legacyNotesRes.data ?? []) as Array<{
+        id: string;
+        unit_id: string;
+        file_path: string | null;
+        file_mime: string | null;
+      }>) {
+        if (countedIds.has(row.id)) continue;
+        countedIds.add(row.id);
+        const isPdf =
+          row.file_mime?.includes("pdf") ||
+          (row.file_path && row.file_path.toLowerCase().endsWith(".pdf"));
+        const key = isPdf ? "pdf" : "note";
+        (subjectContent as Record<string, number>)[key] += 1;
+        subjectContent.total++;
+        if (row.unit_id) {
+          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+          (b as Record<string, number>)[key] += 1;
+          b.total++;
           contentByUnit.set(row.unit_id, b);
         }
       }
@@ -366,7 +410,7 @@ function SubjectDetail() {
       if (ue) throw ue;
 
       const unitIds = (units ?? []).map((u) => u.id);
-      const [papersRes, contentRes] = await Promise.all([
+      const [papersRes, contentRes, legacyNotesRes] = await Promise.all([
         supabase
           .from("papers")
           .select("id, title, year, exam_type, paper_number")
@@ -377,33 +421,77 @@ function SubjectDetail() {
         unitIds.length
           ? supabase
               .from("content_items")
-              .select("type, unit_id")
+              .select("id, type, unit_id")
               .eq("subject_id", subject.id)
               .eq("status", "published")
               .is("deleted_at", null)
           : Promise.resolve({
-              data: [] as Array<{ type: string; unit_id: string | null }>,
+              data: [] as Array<{ id: string; type: string; unit_id: string | null }>,
+              error: null,
+            }),
+        unitIds.length
+          ? supabase
+              .from("notes")
+              .select("id, unit_id, file_path, file_mime")
+              .in("unit_id", unitIds)
+              .eq("status", "published")
+              .is("deleted_at", null)
+          : Promise.resolve({
+              data: [] as Array<{
+                id: string;
+                unit_id: string;
+                file_path: string | null;
+                file_mime: string | null;
+              }>,
               error: null,
             }),
       ]);
 
       const contentByUnit = new Map<string, ContentBucket>();
       const subjectContent = emptyContentBucket();
+      const countedIds = new Set<string>();
+
       for (const row of (contentRes.data ?? []) as Array<{
+        id: string;
         type: string;
         unit_id: string | null;
       }>) {
+        if (countedIds.has(row.id)) continue;
+        countedIds.add(row.id);
         const key = row.type as keyof ContentBucket;
         if (key in subjectContent && key !== "total") {
           (subjectContent as Record<string, number>)[key] += 1;
           subjectContent.total++;
         }
-        if (row.unit_id) {
-          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+        const targetUnitId = row.unit_id || unitIds[0];
+        if (targetUnitId) {
+          const b = contentByUnit.get(targetUnitId) ?? emptyContentBucket();
           if (key in b && key !== "total") {
             (b as Record<string, number>)[key] += 1;
             b.total++;
           }
+          contentByUnit.set(targetUnitId, b);
+        }
+      }
+
+      for (const row of (legacyNotesRes.data ?? []) as Array<{
+        id: string;
+        unit_id: string;
+        file_path: string | null;
+        file_mime: string | null;
+      }>) {
+        if (countedIds.has(row.id)) continue;
+        countedIds.add(row.id);
+        const isPdf =
+          row.file_mime?.includes("pdf") ||
+          (row.file_path && row.file_path.toLowerCase().endsWith(".pdf"));
+        const key = isPdf ? "pdf" : "note";
+        (subjectContent as Record<string, number>)[key] += 1;
+        subjectContent.total++;
+        if (row.unit_id) {
+          const b = contentByUnit.get(row.unit_id) ?? emptyContentBucket();
+          (b as Record<string, number>)[key] += 1;
+          b.total++;
           contentByUnit.set(row.unit_id, b);
         }
       }
@@ -802,7 +890,6 @@ function UnitCard({
         "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
         isResume ? "border-primary/60 ring-1 ring-primary/30" : "border-border",
       )}
-    >
     >
       {/* Medallion */}
       <span

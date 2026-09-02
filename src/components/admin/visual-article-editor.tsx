@@ -39,8 +39,10 @@ import {
 import { cn } from "@/lib/utils";
 
 export type BlockType =
+  | "heading1"
   | "heading2"
   | "heading3"
+  | "heading4"
   | "paragraph"
   | "code"
   | "callout"
@@ -85,14 +87,7 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
       const lang = line.trim().replace(/^```/, "").trim() || "code";
       const codeLines: string[] = [];
       i++;
-      while (
-        i < lines.length &&
-        !lines[i].trim().startsWith("```") &&
-        !lines[i].trim().startsWith("## ") &&
-        !lines[i].trim().startsWith("# ") &&
-        !lines[i].trim().startsWith("### ") &&
-        !lines[i].trim().startsWith("> [!")
-      ) {
+      while (i < lines.length && !lines[i].trim().startsWith("```")) {
         codeLines.push(lines[i]);
         i++;
       }
@@ -138,6 +133,28 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
       continue;
     }
 
+    // Heading 4 ####
+    if (line.trim().startsWith("#### ")) {
+      blocks.push({
+        id: `block-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
+        type: "heading4",
+        content: line.trim().replace(/^####\s+/, ""),
+      });
+      i++;
+      continue;
+    }
+
+    // Heading 3 ###
+    if (line.trim().startsWith("### ")) {
+      blocks.push({
+        id: `block-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
+        type: "heading3",
+        content: line.trim().replace(/^###\s+/, ""),
+      });
+      i++;
+      continue;
+    }
+
     // Heading 2 ##
     if (line.trim().startsWith("## ")) {
       blocks.push({
@@ -149,12 +166,12 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
       continue;
     }
 
-    // Heading 3 ### or Heading 1 #
-    if (line.trim().startsWith("### ") || line.trim().startsWith("# ")) {
+    // Heading 1 #
+    if (line.trim().startsWith("# ")) {
       blocks.push({
         id: `block-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`,
-        type: "heading3",
-        content: line.trim().replace(/^###?\s+/, ""),
+        type: "heading1",
+        content: line.trim().replace(/^#\s+/, ""),
       });
       i++;
       continue;
