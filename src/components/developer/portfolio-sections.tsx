@@ -212,11 +212,7 @@ export function PortfolioNav({
             })}
           </div>
           {profile && (
-            <PortfolioCommand
-              profile={profile}
-              projects={projects ?? []}
-              socials={socials ?? []}
-            />
+            <PortfolioCommand profile={profile} projects={projects ?? []} socials={socials ?? []} />
           )}
         </div>
         <div
@@ -546,7 +542,11 @@ export function ProjectGridSection({ projects }: { projects: Project[] }) {
     <Section muted>
       <SectionHeading eyebrow="More work" title="Other projects" />
       {techs.length > 1 && (
-        <div className="mt-5 flex flex-wrap items-center gap-2" role="group" aria-label="Filter projects by tech">
+        <div
+          className="mt-5 flex flex-wrap items-center gap-2"
+          role="group"
+          aria-label="Filter projects by tech"
+        >
           <button
             type="button"
             onClick={() => setFilter(null)}

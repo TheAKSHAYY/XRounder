@@ -78,7 +78,11 @@ export function PortfolioCommand({
           <CommandEmpty>No matches.</CommandEmpty>
           <CommandGroup heading="Sections">
             {SECTIONS.map((s) => (
-              <CommandItem key={s.id} value={`section ${s.label}`} onSelect={() => run(() => scrollTo(s.id))}>
+              <CommandItem
+                key={s.id}
+                value={`section ${s.label}`}
+                onSelect={() => run(() => scrollTo(s.id))}
+              >
                 <Link2 className="mr-2 h-4 w-4" aria-hidden />
                 {s.label}
               </CommandItem>
@@ -92,7 +96,9 @@ export function PortfolioCommand({
                   key={p.id}
                   value={`project ${p.name}`}
                   onSelect={() =>
-                    run(() => window.open(p.live_url || p.github_url || "#", "_blank", "noreferrer"))
+                    run(() =>
+                      window.open(p.live_url || p.github_url || "#", "_blank", "noreferrer"),
+                    )
                   }
                 >
                   <ExternalLink className="mr-2 h-4 w-4" aria-hidden />
