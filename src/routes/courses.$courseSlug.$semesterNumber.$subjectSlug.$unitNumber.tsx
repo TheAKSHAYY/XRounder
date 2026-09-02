@@ -820,7 +820,7 @@ function UnitDetail() {
       </div>
 
       {/* ─── Main Content Hub ─── */}
-      <main className="flex-1 mx-auto w-full max-w-6xl px-4 pb-24 pt-4 sm:px-8 sm:pt-8 min-w-0">
+      <main className="flex-1 mx-auto w-full sm:max-w-6xl px-4 sm:px-8 pb-24 pt-4 sm:pt-8 min-w-0">
         <Breadcrumbs
           className="mb-4 sm:mb-6"
           items={[

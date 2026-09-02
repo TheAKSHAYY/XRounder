@@ -28,7 +28,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
 
   return (
     <section className="relative overflow-hidden border-b border-border/70 bg-surface/30 py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Value Proposition */}
           <div className="lg:col-span-6 space-y-6">

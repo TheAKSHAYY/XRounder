@@ -95,7 +95,7 @@ function CourseTreePage() {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border/60">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <div className="mx-auto flex w-full sm:max-w-6xl items-center justify-between px-4 sm:px-6 py-5">
           <Link
             to="/admin/courses"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"

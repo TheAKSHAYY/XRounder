@@ -158,7 +158,7 @@ function ProgressPage() {
   }, [units]);
 
   return (
-    <main className="mx-auto max-w-6xl px-5 pb-mobile-nav pt-8 sm:px-6 sm:pt-12">
+    <main className="mx-auto w-full sm:max-w-6xl px-5 sm:px-6 pb-mobile-nav pt-8 sm:pt-12">
       <header className="flex flex-col gap-5 rounded-3xl border border-border bg-card p-6 shadow-soft sm:flex-row sm:items-center sm:gap-7">
         {statsQuery.isLoading ? (
           <Skeleton className="size-24 rounded-full" />

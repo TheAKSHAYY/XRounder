@@ -416,7 +416,7 @@ function SemesterDetail() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-5 pb-24 pt-8 sm:px-8 sm:pt-12">
+      <main className="mx-auto w-full sm:max-w-6xl px-5 sm:px-8 pb-24 pt-8 sm:pt-12">
         <Breadcrumbs
           items={[
             { label: "Courses", to: "/courses" },

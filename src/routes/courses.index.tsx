@@ -130,7 +130,7 @@ function CoursesIndex() {
   return (
     <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <main className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
         <Breadcrumbs items={[{ label: "Courses" }]} />
 
         {/* ─── Header Section ─── */}

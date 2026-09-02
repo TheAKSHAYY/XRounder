@@ -158,7 +158,7 @@ function ExplorePage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <main className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
         {/* ─── Hero Section ─── */}
         <section className="rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-10">
           <div className="flex items-center gap-2">

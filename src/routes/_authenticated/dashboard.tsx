@@ -409,7 +409,7 @@ function DashboardPage() {
   const pickUp = progress.find((p) => p.status !== "completed") ?? null;
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-24 pt-6 sm:px-6 sm:pt-10">
+    <main className="mx-auto max-w-full sm:max-w-6xl px-4 sm:px-6 pb-24 pt-6 sm:pt-10">
       <div className="mb-6">
         <AnnouncementBanner audience="students" />
       </div>
