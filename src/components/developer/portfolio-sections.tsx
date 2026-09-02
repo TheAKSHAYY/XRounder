@@ -164,7 +164,17 @@ function useScrollState() {
   return state;
 }
 
-export function PortfolioNav({ name }: { name: string }) {
+export function PortfolioNav({
+  name,
+  profile,
+  projects,
+  socials,
+}: {
+  name: string;
+  profile?: Profile;
+  projects?: Project[];
+  socials?: Social[];
+}) {
   const { active, progress, scrolled } = useScrollState();
 
   return (
