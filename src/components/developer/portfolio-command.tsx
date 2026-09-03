@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Command as CommandIcon, ExternalLink, Link2, Mail, Moon, Sun } from "lucide-react";
+import { Command as CommandIcon, ExternalLink, Home, Link2, Mail, Moon, Sun } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import {
   CommandDialog,
@@ -76,6 +77,17 @@ export function PortfolioCommand({
         <CommandInput placeholder="Jump to a section, project or link…" />
         <CommandList>
           <CommandEmpty>No matches.</CommandEmpty>
+          <CommandGroup heading="Go back">
+            <CommandItem
+              onSelect={() => run(() => {})}
+              asChild
+            >
+              <Link to="/" className="flex items-center gap-2">
+                <Home className="h-4 w-4" aria-hidden />
+                <span>Back to XRounder home</span>
+              </Link>
+            </CommandItem>
+          </CommandGroup>
           <CommandGroup heading="Sections">
             {SECTIONS.map((s) => (
               <CommandItem

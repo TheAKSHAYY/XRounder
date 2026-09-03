@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles } from "lucide-react";
+import { Home, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -75,8 +75,11 @@ function DeveloperPage() {
         <p className="mt-3 text-muted-foreground">
           The developer hasn't published their portfolio yet. Check back soon.
         </p>
-        <Button asChild className="mt-6">
-          <Link to="/">Back to home</Link>
+        <Button asChild className="mt-6 gap-2">
+          <Link to="/">
+            <Home className="h-4 w-4" aria-hidden />
+            Back to home
+          </Link>
         </Button>
       </div>
     );

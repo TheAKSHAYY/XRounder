@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Github,
   GraduationCap,
+  Home,
   Mail,
   Share2,
   Star,
@@ -187,7 +188,14 @@ export function PortfolioNav({
         <div className="mx-auto flex w-full max-w-5xl items-center gap-3 px-5 py-2.5 sm:px-8">
           <Link
             to="/"
-            className="shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary"
+            aria-label="Back to home"
+            className="shrink-0 grid h-8 w-8 place-items-center rounded-md border border-border bg-surface text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+          >
+            <Home className="h-4 w-4" aria-hidden />
+          </Link>
+          <Link
+            to="/"
+            className="hidden shrink-0 font-display text-sm font-semibold text-foreground hover:text-primary sm:inline-block"
           >
             {name.split(" ")[0]}
           </Link>
