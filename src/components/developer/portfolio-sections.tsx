@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Github,
   GraduationCap,
+  Home,
   Mail,
   Share2,
   Star,

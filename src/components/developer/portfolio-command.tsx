@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Command as CommandIcon, ExternalLink, Link2, Mail, Moon, Sun } from "lucide-react";
+import { Command as CommandIcon, ExternalLink, Home, Link2, Mail, Moon, Sun } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import {
   CommandDialog,
