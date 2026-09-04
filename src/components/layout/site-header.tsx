@@ -75,6 +75,15 @@ export function SiteHeader({
           >
             Courses
           </Link>
+          {!user && (
+            <Link
+              to="/explore"
+              className="inline-flex min-h-11 items-center rounded-md px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground" }}
+            >
+              Explore
+            </Link>
+          )}
           <Link
             to="/developer"
             className="inline-flex min-h-11 items-center rounded-md px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -84,7 +93,7 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          {isGuest && <GuestBadge className="hidden sm:inline-flex" />}
+          {isGuest && <GuestBadge />}
           <ThemeToggle />
 
           {loading ? (
