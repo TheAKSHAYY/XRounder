@@ -157,6 +157,14 @@ export function SiteHeader({
                 >
                   Courses
                 </Link>
+                {!user && (
+                  <Link
+                    to="/explore"
+                    className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    Explore
+                  </Link>
+                )}
                 <Link
                   to="/developer"
                   className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
