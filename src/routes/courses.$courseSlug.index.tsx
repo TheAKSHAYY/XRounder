@@ -246,7 +246,7 @@ function CourseDetail() {
                 className="col-span-full"
                 icon={Compass}
                 title="Semesters are being prepared"
-                description="Nothing has been published for this program yet. Browse the other programs — plenty of notes, papers and quizzes are already live."
+                description="Nothing has been published for this program yet. Check back soon, or take a look at the other programs."
                 primaryAction={{ label: "Browse other courses", to: "/courses", icon: ArrowRight }}
               />
             )}
