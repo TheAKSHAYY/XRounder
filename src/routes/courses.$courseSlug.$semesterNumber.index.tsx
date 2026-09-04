@@ -234,6 +234,23 @@ function SemesterDetail() {
   const subjects = semQuery.data?.subjects ?? [];
 
   // Units + progress for aggregation
+  // All published semesters of this course, so learners can hop between them
+  // without going back to the course page.
+  const siblingSemesters = useQuery({
+    queryKey: ["public", "course-semesters", courseId],
+    enabled: !!courseId,
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("semesters")
+        .select("id, number, title")
+        .eq("course_id", courseId!)
+        .eq("status", "published")
+        .order("number");
+      if (error) throw error;
+      return (data ?? []) as { id: string; number: number; title: string }[];
+    },
+  });
+
   const unitsQuery = useQuery({
     queryKey: ["public", "sem-units", semesterId],
     enabled: !!semesterId && subjects.length > 0,
@@ -475,6 +492,33 @@ function SemesterDetail() {
             ) : undefined
           }
         />
+
+        {/* ─── Semester switcher ─── */}
+        {(siblingSemesters.data?.length ?? 0) > 1 && (
+          <nav aria-label="Semesters" className="mt-8 -mx-1 overflow-x-auto pb-1">
+            <ul className="flex min-w-max items-center gap-2 px-1">
+              {siblingSemesters.data!.map((s) => {
+                const active = String(s.number) === String(semesterNumber);
+                return (
+                  <li key={s.id}>
+                    <Link
+                      to="/courses/$courseSlug/$semesterNumber"
+                      params={{ courseSlug, semesterNumber: String(s.number) }}
+                      aria-current={active ? "page" : undefined}
+                      className={
+                        active
+                          ? "inline-flex min-h-10 items-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground"
+                          : "inline-flex min-h-10 items-center rounded-full border border-border bg-surface px-4 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                      }
+                    >
+                      Semester {s.number}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        )}
 
         {/* ─── Subjects ─── */}
         <section className="mt-14">

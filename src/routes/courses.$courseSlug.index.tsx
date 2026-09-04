@@ -1,11 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, Layers } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Layers } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { EmptyState } from "@/components/ui/empty-state";
 
 type CourseItem = {
   id: string;
@@ -241,9 +242,13 @@ function CourseDetail() {
           </h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {semestersQuery.data?.length === 0 && (
-              <p className="col-span-full rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
-                Semesters are being prepared.
-              </p>
+              <EmptyState
+                className="col-span-full"
+                icon={Compass}
+                title="Semesters are being prepared"
+                description="Nothing has been published for this program yet. Check back soon, or take a look at the other programs."
+                primaryAction={{ label: "Browse other courses", to: "/courses", icon: ArrowRight }}
+              />
             )}
             {semestersQuery.data?.map((s: SemesterItem) => (
               <Link

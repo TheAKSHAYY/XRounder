@@ -116,6 +116,25 @@ function CoursesIndex() {
 
   const courses: CourseItem[] = (data ?? []) as CourseItem[];
 
+  // Real published-semester counts, so a card never advertises content that
+  // isn't live yet.
+  const { data: semCounts } = useQuery({
+    queryKey: ["public", "course-semester-counts"],
+    enabled: courses.length > 0,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("semesters")
+        .select("course_id")
+        .eq("status", "published");
+      if (error) throw error;
+      const map: Record<string, number> = {};
+      for (const r of (rows ?? []) as { course_id: string }[]) {
+        map[r.course_id] = (map[r.course_id] ?? 0) + 1;
+      }
+      return map;
+    },
+  });
+
   const filteredCourses = useMemo(() => {
     if (!search.trim()) return courses;
     const q = search.toLowerCase();
@@ -236,10 +255,12 @@ function CoursesIndex() {
                   <div className="mt-6 flex items-center justify-between border-t border-border/70 pt-4 text-xs">
                     <span className="flex items-center gap-1.5 text-muted-foreground font-medium">
                       <Layers className="h-3.5 w-3.5" />
-                      {c.total_semesters ?? 6} Semesters
+                      {(semCounts?.[c.id] ?? 0) > 0
+                        ? `${semCounts![c.id]} of ${c.total_semesters ?? semCounts![c.id]} semesters live`
+                        : "Coming soon"}
                     </span>
                     <span className="font-semibold text-primary inline-flex items-center gap-1">
-                      View semesters{" "}
+                      {(semCounts?.[c.id] ?? 0) > 0 ? "View semesters" : "Preview program"}{" "}
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </div>

@@ -75,6 +75,15 @@ export function SiteHeader({
           >
             Courses
           </Link>
+          {!user && (
+            <Link
+              to="/explore"
+              className="inline-flex min-h-11 items-center rounded-md px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              activeProps={{ className: "text-foreground" }}
+            >
+              Explore
+            </Link>
+          )}
           <Link
             to="/developer"
             className="inline-flex min-h-11 items-center rounded-md px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -84,7 +93,7 @@ export function SiteHeader({
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          {isGuest && <GuestBadge className="hidden sm:inline-flex" />}
+          {isGuest && <GuestBadge />}
           <ThemeToggle />
 
           {loading ? (
@@ -148,6 +157,14 @@ export function SiteHeader({
                 >
                   Courses
                 </Link>
+                {!user && (
+                  <Link
+                    to="/explore"
+                    className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    Explore
+                  </Link>
+                )}
                 <Link
                   to="/developer"
                   className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -161,13 +178,27 @@ export function SiteHeader({
                   Help
                 </Link>
                 {!user && (
-                  <Link
-                    to="/auth"
-                    search={{ mode: "signin" }}
-                    className="mt-2 flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-primary hover:bg-muted"
-                  >
-                    Sign in
-                  </Link>
+                  <>
+                    <Link
+                      to="/auth"
+                      search={{ mode: "signin" }}
+                      className="mt-2 flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-primary hover:bg-muted"
+                    >
+                      Sign in
+                    </Link>
+                    <div className="mt-3 rounded-xl border border-accent/40 bg-accent/10 p-3">
+                      <p className="text-xs font-medium text-foreground">
+                        {isGuest
+                          ? "You're exploring as a guest — progress isn't saved."
+                          : "Create a free account to save notes, bookmarks and quiz progress."}
+                      </p>
+                      <Button asChild size="sm" className="mt-2 h-10 w-full rounded-full">
+                        <Link to="/auth" search={{ mode: "signup" }}>
+                          Create free account
+                        </Link>
+                      </Button>
+                    </div>
+                  </>
                 )}
               </nav>
             </SheetContent>
