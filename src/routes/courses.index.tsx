@@ -116,6 +116,25 @@ function CoursesIndex() {
 
   const courses: CourseItem[] = (data ?? []) as CourseItem[];
 
+  // Real published-semester counts, so a card never advertises content that
+  // isn't live yet.
+  const { data: semCounts } = useQuery({
+    queryKey: ["public", "course-semester-counts"],
+    enabled: courses.length > 0,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("semesters")
+        .select("course_id")
+        .eq("status", "published");
+      if (error) throw error;
+      const map: Record<string, number> = {};
+      for (const r of (rows ?? []) as { course_id: string }[]) {
+        map[r.course_id] = (map[r.course_id] ?? 0) + 1;
+      }
+      return map;
+    },
+  });
+
   const filteredCourses = useMemo(() => {
     if (!search.trim()) return courses;
     const q = search.toLowerCase();
