@@ -178,13 +178,27 @@ export function SiteHeader({
                   Help
                 </Link>
                 {!user && (
-                  <Link
-                    to="/auth"
-                    search={{ mode: "signin" }}
-                    className="mt-2 flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-primary hover:bg-muted"
-                  >
-                    Sign in
-                  </Link>
+                  <>
+                    <Link
+                      to="/auth"
+                      search={{ mode: "signin" }}
+                      className="mt-2 flex min-h-11 items-center rounded-md px-3 text-sm font-semibold text-primary hover:bg-muted"
+                    >
+                      Sign in
+                    </Link>
+                    <div className="mt-3 rounded-xl border border-accent/40 bg-accent/10 p-3">
+                      <p className="text-xs font-medium text-foreground">
+                        {isGuest
+                          ? "You're exploring as a guest — progress isn't saved."
+                          : "Create a free account to save notes, bookmarks and quiz progress."}
+                      </p>
+                      <Button asChild size="sm" className="mt-2 h-10 w-full rounded-full">
+                        <Link to="/auth" search={{ mode: "signup" }}>
+                          Create free account
+                        </Link>
+                      </Button>
+                    </div>
+                  </>
                 )}
               </nav>
             </SheetContent>
