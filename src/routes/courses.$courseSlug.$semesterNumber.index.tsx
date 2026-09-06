@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Check, Compass } from "lucide-react";
 
