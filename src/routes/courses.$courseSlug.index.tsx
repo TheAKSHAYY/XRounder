@@ -242,7 +242,27 @@ function CourseDetail() {
           <h2 className="flex items-center gap-2 font-display text-xl font-semibold text-foreground">
             <Layers className="h-5 w-5 text-primary" /> Semesters
           </h2>
+          {semestersQuery.isError ? (
+            <ErrorPanel
+              className="mt-4"
+              title="We couldn't load the semesters"
+              error={semestersQuery.error}
+              onRetry={() => semestersQuery.refetch()}
+              retrying={semestersQuery.isFetching}
+            >
+              <Link
+                to="/courses"
+                className="inline-flex min-h-10 items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold text-foreground"
+              >
+                Back to courses
+              </Link>
+            </ErrorPanel>
+          ) : (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {semestersQuery.isLoading &&
+              Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-20 rounded-xl" />
+              ))}
             {semestersQuery.data?.length === 0 && (
               <EmptyState
                 className="col-span-full"
