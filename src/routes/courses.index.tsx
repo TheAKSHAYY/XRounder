@@ -101,7 +101,20 @@ export const Route = createFileRoute("/courses/")({
     ],
   }),
   component: CoursesIndex,
+  errorComponent: ({ error }) => <CoursesRouteError error={error} />,
 });
+
+function CoursesRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load the course catalog"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
 
 function CoursesIndex() {
   const initialCourses = Route.useLoaderData();
