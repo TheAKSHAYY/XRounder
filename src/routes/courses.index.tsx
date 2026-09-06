@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 import { useGuestLearningPrefs } from "@/lib/learning-prefs";
 
 type CourseItem = {
