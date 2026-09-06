@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Compass, Layers } from "lucide-react";
 
@@ -7,6 +7,8 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 
 type CourseItem = {
   id: string;
@@ -150,6 +152,7 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     };
   },
   component: CourseDetail,
+  errorComponent: ({ error }) => <CourseRouteError error={error} />,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
@@ -167,6 +170,19 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     </div>
   ),
 });
+
+function CourseRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load this program"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
+
 
 function CourseDetail() {
   const { courseSlug } = Route.useParams();
@@ -240,7 +256,27 @@ function CourseDetail() {
           <h2 className="flex items-center gap-2 font-display text-xl font-semibold text-foreground">
             <Layers className="h-5 w-5 text-primary" /> Semesters
           </h2>
+          {semestersQuery.isError ? (
+            <ErrorPanel
+              className="mt-4"
+              title="We couldn't load the semesters"
+              error={semestersQuery.error}
+              onRetry={() => semestersQuery.refetch()}
+              retrying={semestersQuery.isFetching}
+            >
+              <Link
+                to="/courses"
+                className="inline-flex min-h-10 items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold text-foreground"
+              >
+                Back to courses
+              </Link>
+            </ErrorPanel>
+          ) : (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {semestersQuery.isLoading &&
+              Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-20 rounded-xl" />
+              ))}
             {semestersQuery.data?.length === 0 && (
               <EmptyState
                 className="col-span-full"
@@ -273,6 +309,7 @@ function CourseDetail() {
               </Link>
             ))}
           </div>
+          )}
         </section>
       </main>
       <SiteFooter />

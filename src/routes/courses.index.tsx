@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
   BookOpen,
@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 import { useGuestLearningPrefs } from "@/lib/learning-prefs";
 
 type CourseItem = {
@@ -101,14 +102,34 @@ export const Route = createFileRoute("/courses/")({
     ],
   }),
   component: CoursesIndex,
+  errorComponent: ({ error }) => <CoursesRouteError error={error} />,
 });
+
+function CoursesRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load the course catalog"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
 
 function CoursesIndex() {
   const initialCourses = Route.useLoaderData();
   const [search, setSearch] = useState("");
   const { prefs: guestPrefs } = useGuestLearningPrefs();
 
-  const { data, isLoading } = useQuery({
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    isFetching,
+  } = useQuery({
     queryKey: ["public", "courses"],
     queryFn: fetchPublicCourses,
     initialData: initialCourses,
@@ -204,7 +225,14 @@ function CoursesIndex() {
 
         {/* ─── Program Cards Grid ─── */}
         <section className="mt-8" aria-label="Course catalog">
-          {isLoading ? (
+          {isError ? (
+            <ErrorPanel
+              title="We couldn't load the programs"
+              error={error}
+              onRetry={() => refetch()}
+              retrying={isFetching}
+            />
+          ) : isLoading ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
                 <Skeleton key={i} className="h-48 rounded-2xl" />

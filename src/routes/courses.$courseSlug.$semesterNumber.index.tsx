@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Check, Compass } from "lucide-react";
 
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { StudentHero } from "@/components/student/student-hero";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -146,6 +147,7 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
     };
   },
   component: SemesterDetail,
+  errorComponent: ({ error }) => <SemesterRouteError error={error} />,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
@@ -163,6 +165,19 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
     </div>
   ),
 });
+
+function SemesterRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load this semester"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
+
 
 type Subject = SubjectItem;
 
@@ -531,7 +546,26 @@ function SemesterDetail() {
             )}
           </div>
 
-          {loadingCore ? (
+          {semQuery.isError || unitsQuery.isError ? (
+            <ErrorPanel
+              className="mt-6"
+              title="We couldn't load the subjects"
+              error={semQuery.error ?? unitsQuery.error}
+              onRetry={() => {
+                if (semQuery.isError) semQuery.refetch();
+                if (unitsQuery.isError) unitsQuery.refetch();
+              }}
+              retrying={semQuery.isFetching || unitsQuery.isFetching}
+            >
+              <Link
+                to="/courses/$courseSlug"
+                params={{ courseSlug }}
+                className="inline-flex min-h-10 items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold text-foreground"
+              >
+                Back to semesters
+              </Link>
+            </ErrorPanel>
+          ) : loadingCore ? (
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <Skeleton className="h-48 rounded-lg" />
               <Skeleton className="h-48 rounded-lg" />
