@@ -147,6 +147,7 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
     };
   },
   component: SemesterDetail,
+  errorComponent: ({ error }) => <SemesterRouteError error={error} />,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
