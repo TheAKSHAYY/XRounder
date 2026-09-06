@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Compass, Layers } from "lucide-react";
 
@@ -7,6 +7,8 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 
 type CourseItem = {
   id: string;
