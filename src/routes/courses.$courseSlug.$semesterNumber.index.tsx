@@ -166,6 +166,19 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   ),
 });
 
+function SemesterRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load this semester"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
+
+
 type Subject = SubjectItem;
 
 type UnitRow = { id: string; subject_id: string; number: number };
