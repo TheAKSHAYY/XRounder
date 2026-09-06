@@ -171,6 +171,19 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
   ),
 });
 
+function CourseRouteError({ error }: { error: unknown }) {
+  const router = useRouter();
+  return (
+    <RouteErrorScreen
+      title="We couldn't load this program"
+      error={error}
+      onRetry={() => router.invalidate()}
+    />
+  );
+}
+
+
+
 function CourseDetail() {
   const { courseSlug } = Route.useParams();
   const loaderData = Route.useLoaderData();
