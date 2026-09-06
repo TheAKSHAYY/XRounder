@@ -295,6 +295,7 @@ function CourseDetail() {
               </Link>
             ))}
           </div>
+          )}
         </section>
       </main>
       <SiteFooter />
