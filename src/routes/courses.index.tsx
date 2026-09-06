@@ -122,7 +122,14 @@ function CoursesIndex() {
   const [search, setSearch] = useState("");
   const { prefs: guestPrefs } = useGuestLearningPrefs();
 
-  const { data, isLoading } = useQuery({
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    isFetching,
+  } = useQuery({
     queryKey: ["public", "courses"],
     queryFn: fetchPublicCourses,
     initialData: initialCourses,
