@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
+import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { StudentHero } from "@/components/student/student-hero";
 import { SiteHeader } from "@/components/layout/site-header";
