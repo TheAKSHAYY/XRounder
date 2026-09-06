@@ -152,6 +152,7 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
     };
   },
   component: CourseDetail,
+  errorComponent: ({ error }) => <CourseRouteError error={error} />,
   notFoundComponent: () => (
     <div className="grid min-h-screen place-items-center bg-background p-6 text-center">
       <div>
