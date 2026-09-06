@@ -225,7 +225,14 @@ function CoursesIndex() {
 
         {/* ─── Program Cards Grid ─── */}
         <section className="mt-8" aria-label="Course catalog">
-          {isLoading ? (
+          {isError ? (
+            <ErrorPanel
+              title="We couldn't load the programs"
+              error={error}
+              onRetry={() => refetch()}
+              retrying={isFetching}
+            />
+          ) : isLoading ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
                 <Skeleton key={i} className="h-48 rounded-2xl" />
