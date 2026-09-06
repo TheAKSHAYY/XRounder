@@ -546,7 +546,26 @@ function SemesterDetail() {
             )}
           </div>
 
-          {loadingCore ? (
+          {semQuery.isError || unitsQuery.isError ? (
+            <ErrorPanel
+              className="mt-6"
+              title="We couldn't load the subjects"
+              error={semQuery.error ?? unitsQuery.error}
+              onRetry={() => {
+                if (semQuery.isError) semQuery.refetch();
+                if (unitsQuery.isError) unitsQuery.refetch();
+              }}
+              retrying={semQuery.isFetching || unitsQuery.isFetching}
+            >
+              <Link
+                to="/courses/$courseSlug"
+                params={{ courseSlug }}
+                className="inline-flex min-h-10 items-center rounded-full border border-border bg-surface px-4 text-sm font-semibold text-foreground"
+              >
+                Back to semesters
+              </Link>
+            </ErrorPanel>
+          ) : loadingCore ? (
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <Skeleton className="h-48 rounded-lg" />
               <Skeleton className="h-48 rounded-lg" />
