@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { useEffect, useMemo, useRef } from "react";
+import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
+
 import { useQuery } from "@tanstack/react-query";
 import {
   BookOpen,
