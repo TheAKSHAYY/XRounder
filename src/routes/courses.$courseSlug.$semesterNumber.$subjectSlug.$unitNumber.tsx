@@ -996,16 +996,28 @@ function UnitDetail() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                    {!isCompleted && (
-                      <Button
-                        variant="outline"
-                        onClick={() => completeMutation.mutate()}
-                        disabled={completeMutation.isPending || !user}
-                        className="rounded-2xl h-11 px-5 text-xs font-bold"
-                      >
-                        <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
-                      </Button>
-                    )}
+                    {!isCompleted &&
+                      (user ? (
+                        <Button
+                          variant="outline"
+                          onClick={() => completeMutation.mutate()}
+                          disabled={completeMutation.isPending}
+                          className="rounded-2xl h-11 px-5 text-xs font-bold"
+                        >
+                          <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
+                        </Button>
+                      ) : (
+                        <Button
+                          asChild
+                          variant="outline"
+                          className="rounded-2xl h-11 px-5 text-xs font-bold"
+                        >
+                          <Link to="/auth" search={{ mode: "signup" }}>
+                            <Check className="h-4 w-4 mr-1.5" /> Sign in to save progress
+                          </Link>
+                        </Button>
+                      ))}
+
 
                     {primaryQuiz && (
                       <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm">
