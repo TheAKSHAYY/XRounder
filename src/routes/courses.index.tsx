@@ -42,12 +42,16 @@ async function fetchPublicCourses(): Promise<CourseItem[]> {
 }
 
 export const Route = createFileRoute("/courses/")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    q: typeof search.q === "string" ? search.q : "",
+  }),
   loader: async ({ context: { queryClient } }) => {
     return await queryClient.ensureQueryData({
       queryKey: ["public", "courses"],
       queryFn: fetchPublicCourses,
     });
   },
+
   head: () => ({
     meta: [
       { title: "Academic Programs & Degree Courses · XRounder" },
