@@ -3,6 +3,7 @@ import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
 import { useAuth, waitForAuth } from "@/hooks/use-auth";
+import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -16,10 +17,10 @@ import {
 
 export const Route = createFileRoute("/")({
   beforeLoad: async () => {
-    // If a session exists, seamlessly redirect to student dashboard
+    // If a session exists, send the user straight to their own home
     const auth = await waitForAuth();
     if (auth.isAuthenticated && auth.user) {
-      throw redirect({ to: "/dashboard" });
+      throw redirect({ to: await resolvePostAuthRoute(auth.user.id) });
     }
   },
   head: () => ({
@@ -106,9 +107,18 @@ function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      navigate({ to: "/dashboard", replace: true });
-    }
+    if (!isAuthenticated || !user) return;
+    let cancelled = false;
+    void resolvePostAuthRoute(user.id)
+      .then((dest) => {
+        if (!cancelled) navigate({ to: dest, replace: true });
+      })
+      .catch(() => {
+        if (!cancelled) navigate({ to: "/dashboard", replace: true });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [isAuthenticated, user, navigate]);
 
   const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
