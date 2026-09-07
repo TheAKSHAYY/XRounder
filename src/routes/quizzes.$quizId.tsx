@@ -296,14 +296,22 @@ function QuizPage() {
                 Next <ChevronRight className="h-4 w-4" />
               </Button>
             ) : (
-              <Button
-                className="rounded-full"
-                onClick={() => finish(answers)}
-                disabled={submitMutation.isPending}
-              >
-                {submitMutation.isPending ? "Finishing…" : "Finish"}
-              </Button>
+              <div className="flex flex-col items-end gap-1">
+                {total - Object.keys(answers).length > 0 && (
+                  <span className="text-[11px] font-medium text-muted-foreground">
+                    {total - Object.keys(answers).length} unanswered
+                  </span>
+                )}
+                <Button
+                  className="rounded-full"
+                  onClick={() => finish(answers)}
+                  disabled={submitMutation.isPending}
+                >
+                  {submitMutation.isPending ? "Finishing…" : "Finish"}
+                </Button>
+              </div>
             )}
+
           </div>
         </div>
       )}
