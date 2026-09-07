@@ -123,8 +123,34 @@ function CoursesRouteError({ error }: { error: unknown }) {
 
 function CoursesIndex() {
   const initialCourses = Route.useLoaderData();
-  const [search, setSearch] = useState("");
+  const { q } = Route.useSearch();
+  const navigate = useNavigate({ from: "/courses" });
+  const search = q;
+  const inputRef = useRef<HTMLInputElement>(null);
   const { prefs: guestPrefs } = useGuestLearningPrefs();
+
+  const setSearch = (value: string) =>
+    navigate({ search: { q: value }, replace: true, resetScroll: false });
+
+  // "/" jumps straight into search, Escape clears it — keyboard-first browsing.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const el = e.target as HTMLElement | null;
+      const typing =
+        el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable);
+      if (e.key === "/" && !typing) {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+      if (e.key === "Escape" && el === inputRef.current) {
+        setSearch("");
+        inputRef.current?.blur();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
 
   const {
     data,
