@@ -107,9 +107,18 @@ function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      navigate({ to: "/dashboard", replace: true });
-    }
+    if (!isAuthenticated || !user) return;
+    let cancelled = false;
+    void resolvePostAuthRoute(user.id)
+      .then((dest) => {
+        if (!cancelled) navigate({ to: dest, replace: true });
+      })
+      .catch(() => {
+        if (!cancelled) navigate({ to: "/dashboard", replace: true });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [isAuthenticated, user, navigate]);
 
   const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
