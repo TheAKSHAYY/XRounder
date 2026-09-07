@@ -46,7 +46,9 @@ function read(): GuestState {
   if (typeof window === "undefined") return EMPTY;
   if (cache) return cache;
   try {
-    const raw = window.sessionStorage.getItem(KEY);
+    // localStorage so a guest keeps their previews/bookmarks across reloads
+    // and tabs; the old sessionStorage value is migrated once.
+    const raw = window.localStorage.getItem(KEY) ?? window.sessionStorage.getItem(KEY);
     cache = raw ? { ...EMPTY, ...(JSON.parse(raw) as Partial<GuestState>) } : EMPTY;
   } catch {
     cache = EMPTY;
@@ -58,13 +60,24 @@ function write(next: GuestState) {
   cache = next;
   if (typeof window !== "undefined") {
     try {
-      window.sessionStorage.setItem(KEY, JSON.stringify(next));
+      window.localStorage.setItem(KEY, JSON.stringify(next));
+      window.sessionStorage.removeItem(KEY);
     } catch {
       /* private mode — in-memory only */
     }
   }
   listeners.forEach((l) => l());
 }
+
+// Keep other tabs in sync with whatever the guest just did.
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (e) => {
+    if (e.key !== KEY) return;
+    cache = null;
+    listeners.forEach((l) => l());
+  });
+}
+
 
 export function subscribeGuest(listener: () => void) {
   listeners.add(listener);
