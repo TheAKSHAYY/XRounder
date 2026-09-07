@@ -98,6 +98,7 @@ export function clearGuestState() {
   cache = EMPTY;
   if (typeof window !== "undefined") {
     try {
+      window.localStorage.removeItem(KEY);
       window.sessionStorage.removeItem(KEY);
     } catch {
       /* ignore */
@@ -105,6 +106,7 @@ export function clearGuestState() {
   }
   listeners.forEach((l) => l());
 }
+
 
 /** Count one previewed MCQ; returns the new count for that quiz. */
 export function recordGuestMcq(quizId: string): number {
