@@ -16,10 +16,10 @@ import {
 
 export const Route = createFileRoute("/")({
   beforeLoad: async () => {
-    // If a session exists, seamlessly redirect to student dashboard
+    // If a session exists, send the user straight to their own home
     const auth = await waitForAuth();
     if (auth.isAuthenticated && auth.user) {
-      throw redirect({ to: "/dashboard" });
+      throw redirect({ to: await resolvePostAuthRoute(auth.user.id) });
     }
   },
   head: () => ({
