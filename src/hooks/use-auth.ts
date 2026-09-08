@@ -3,6 +3,8 @@ import type { Session, User } from "@supabase/supabase-js";
 
 import { supabase } from "@/integrations/supabase/client";
 import { recordLoginHistory } from "@/lib/auth-history";
+import { clearCachedPostAuthRoute } from "@/lib/post-auth";
+
 
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
 
