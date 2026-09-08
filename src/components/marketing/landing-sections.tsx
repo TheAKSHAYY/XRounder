@@ -69,8 +69,8 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                     size="lg"
                     className="h-12 px-7 text-sm font-semibold rounded-xl shadow-xs"
                   >
-                    <Link to="/courses">
-                      Start Learning <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link to="/auth">
+                      Log in <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
 
