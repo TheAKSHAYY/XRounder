@@ -115,6 +115,11 @@ function Index() {
 
   useEffect(() => {
     if (!isAuthenticated || !user) return;
+    const cached = getCachedPostAuthRoute(user.id);
+    if (cached) {
+      navigate({ to: cached, replace: true });
+      return;
+    }
     let cancelled = false;
     void resolvePostAuthRoute(user.id)
       .then((dest) => {
@@ -127,6 +132,7 @@ function Index() {
       cancelled = true;
     };
   }, [isAuthenticated, user, navigate]);
+
 
   const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
     queryKey: ["homepage_sections", "public"],
