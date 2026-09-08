@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 
-import { useAuth, waitForAuth } from "@/hooks/use-auth";
-import { resolvePostAuthRoute } from "@/lib/post-auth";
+import { useAuth, getAuthState, waitForAuth } from "@/hooks/use-auth";
+import { getCachedPostAuthRoute, resolvePostAuthRoute } from "@/lib/post-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -17,12 +17,19 @@ import {
 
 export const Route = createFileRoute("/")({
   beforeLoad: async () => {
-    // If a session exists, send the user straight to their own home
+    // Fast path: a known session + cached home page redirects with zero network waits.
+    const sync = getAuthState();
+    if (sync.isAuthenticated && sync.user) {
+      const cached = getCachedPostAuthRoute(sync.user.id);
+      if (cached) throw redirect({ to: cached });
+    }
     const auth = await waitForAuth();
     if (auth.isAuthenticated && auth.user) {
-      throw redirect({ to: await resolvePostAuthRoute(auth.user.id) });
+      const cached = getCachedPostAuthRoute(auth.user.id);
+      throw redirect({ to: cached ?? (await resolvePostAuthRoute(auth.user.id)) });
     }
   },
+
   head: () => ({
     meta: [
       { title: "XRounder — Learn Smarter, Semester by Semester" },
