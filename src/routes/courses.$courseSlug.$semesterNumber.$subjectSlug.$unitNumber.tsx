@@ -789,12 +789,23 @@ function UnitDetail() {
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-3 py-1 text-[11px] font-semibold">
                   <Check className="h-3 w-3" /> Completed
                 </span>
+              ) : !user ? (
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="rounded-full h-8 text-xs font-semibold"
+                >
+                  <Link to="/auth" search={{ mode: "signin" }}>
+                    <Check className="h-3 w-3 mr-1" /> Sign in to save
+                  </Link>
+                </Button>
               ) : (
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => completeMutation.mutate()}
-                  disabled={completeMutation.isPending || !user}
+                  disabled={completeMutation.isPending}
                   className="rounded-full h-8 text-xs font-semibold"
                 >
                   <Check className="h-3 w-3 mr-1" /> Mark Complete
