@@ -177,7 +177,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                           Computer Networks · Semester 5
                         </h4>
                       </div>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent-foreground">
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2.5 py-0.5 text-[11px] font-bold text-accent">
                         🔥 4d streak
                       </span>
                     </div>
