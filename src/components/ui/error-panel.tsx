@@ -5,12 +5,15 @@ import { AlertTriangle, RefreshCw, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+/**
+ * Users never see raw API/technical error text ("Invalid API key", stack
+ * fragments) — it's confusing and leaks internals. Keep the detail in the dev
+ * console and show plain-language guidance instead.
+ */
 function messageOf(error: unknown, fallback: string): string {
-  if (!error) return fallback;
-  if (typeof error === "string") return error;
-  if (error instanceof Error && error.message) return error.message;
-  const maybe = error as { message?: unknown };
-  if (typeof maybe.message === "string" && maybe.message) return maybe.message;
+  if (error && import.meta.env.DEV) {
+    console.warn("[error-panel]", error);
+  }
   return fallback;
 }
 

@@ -4,6 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 
 import type { Achievement, Profile, Project, Skill, Social } from "./portfolio.types";
 
+/** Public portfolio reads: fail fast so the page can show a retry instead of endless skeletons. */
+const PUBLIC_READ = { retry: 1, staleTime: 60_000 } as const;
+
 export function usePortfolioData() {
   const profileQ = useQuery({
     queryKey: ["dev-profile"],
@@ -16,6 +19,7 @@ export function usePortfolioData() {
       if (error) throw error;
       return data as Profile | null;
     },
+    ...PUBLIC_READ,
   });
   const socialQ = useQuery({
     queryKey: ["dev-social"],
@@ -28,6 +32,7 @@ export function usePortfolioData() {
       if (error) throw error;
       return (data ?? []) as Social[];
     },
+    ...PUBLIC_READ,
   });
   const projectsQ = useQuery({
     queryKey: ["dev-projects"],
@@ -43,6 +48,7 @@ export function usePortfolioData() {
       if (error) throw error;
       return (data ?? []) as Project[];
     },
+    ...PUBLIC_READ,
   });
   const skillsQ = useQuery({
     queryKey: ["dev-skills"],
@@ -56,6 +62,7 @@ export function usePortfolioData() {
       if (error) throw error;
       return (data ?? []) as Skill[];
     },
+    ...PUBLIC_READ,
   });
   const achievementsQ = useQuery({
     queryKey: ["dev-achievements"],
@@ -68,6 +75,7 @@ export function usePortfolioData() {
       if (error) throw error;
       return (data ?? []) as Achievement[];
     },
+    ...PUBLIC_READ,
   });
 
   return { profileQ, socialQ, projectsQ, skillsQ, achievementsQ };
