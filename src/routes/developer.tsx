@@ -3,6 +3,7 @@ import { Home, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel } from "@/components/ui/error-panel";
 
 import { usePortfolioData } from "@/components/developer/use-portfolio-data";
 import type { Skill } from "@/components/developer/portfolio.types";
