@@ -18,7 +18,7 @@ export function usePortfolioData() {
         .maybeSingle();
       if (error) throw error;
       return data as Profile | null;
-    },,
+    },
     ...PUBLIC_READ,
   });
   const socialQ = useQuery({
@@ -31,7 +31,7 @@ export function usePortfolioData() {
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Social[];
-    },,
+    },
     ...PUBLIC_READ,
   });
   const projectsQ = useQuery({
@@ -47,7 +47,7 @@ export function usePortfolioData() {
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Project[];
-    },,
+    },
     ...PUBLIC_READ,
   });
   const skillsQ = useQuery({
@@ -61,7 +61,7 @@ export function usePortfolioData() {
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Skill[];
-    },,
+    },
     ...PUBLIC_READ,
   });
   const achievementsQ = useQuery({
@@ -74,7 +74,7 @@ export function usePortfolioData() {
         .order("sort_order", { ascending: true });
       if (error) throw error;
       return (data ?? []) as Achievement[];
-    },,
+    },
     ...PUBLIC_READ,
   });
 
