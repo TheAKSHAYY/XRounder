@@ -323,7 +323,7 @@ export function Features() {
   ];
 
   return (
-    <section id="features" className="py-16 sm:py-20 border-b border-border/70 bg-background">
+    <section id="features" className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -414,7 +414,7 @@ export function CourseDiscovery() {
   const courses = coursesQ.data ?? [];
 
   return (
-    <section id="curriculum" className="py-16 sm:py-20 border-b border-border/70 bg-surface/40">
+    <section id="curriculum" className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-surface/40">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -518,7 +518,7 @@ export function LearningWorkflow() {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 border-b border-border/70 bg-background">
+    <section id="how-it-works" className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl text-center mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -550,7 +550,7 @@ export function LearningWorkflow() {
 
 export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
   return (
-    <section className="py-16 sm:py-20 bg-surface">
+    <section className="reveal-on-scroll py-16 sm:py-20 bg-surface">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
         <div className="rounded-3xl border border-border bg-primary/5 p-8 sm:p-12">
           <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
