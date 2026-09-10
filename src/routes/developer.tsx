@@ -3,6 +3,7 @@ import { Home, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ErrorPanel } from "@/components/ui/error-panel";
 
 import { usePortfolioData } from "@/components/developer/use-portfolio-data";
 import type { Skill } from "@/components/developer/portfolio.types";
@@ -53,6 +54,26 @@ function DeveloperPage() {
 
   const profile = profileQ.data;
   const loading = profileQ.isLoading;
+
+  // Without this the page sits in skeletons forever whenever the fetch fails.
+  if (profileQ.isError) {
+    return (
+      <div className="mx-auto w-full max-w-lg px-4 py-24 sm:px-6">
+        <ErrorPanel
+          title="We couldn't load this profile"
+          onRetry={() => void profileQ.refetch()}
+          retrying={profileQ.isFetching}
+        >
+          <Button asChild variant="outline" className="rounded-full">
+            <Link to="/">
+              <Home className="h-4 w-4" aria-hidden />
+              Back to home
+            </Link>
+          </Button>
+        </ErrorPanel>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

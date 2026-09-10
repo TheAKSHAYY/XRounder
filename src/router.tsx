@@ -113,13 +113,29 @@ export const getRouter = (): Router<any> => {
     return createFallbackRouter(envCheck.missing);
   }
 
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        // Reuse cached data instantly on repeat visits, refresh quietly in background.
+        staleTime: 60_000,
+        gcTime: 10 * 60_000,
+        refetchOnWindowFocus: false,
+        retry: 1,
+      },
+    },
+  });
 
   const router = createRouter({
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
+    // Prefetch route code + data as soon as the user hovers/touches a link.
+    defaultPreload: "intent",
+    defaultPreloadDelay: 30,
+    defaultPreloadStaleTime: 30_000,
+    // Keep the current screen visible briefly instead of flashing a spinner.
+    defaultPendingMs: 400,
+    defaultPendingMinMs: 300,
   });
 
   return router;

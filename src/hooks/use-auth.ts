@@ -3,6 +3,8 @@ import type { Session, User } from "@supabase/supabase-js";
 
 import { supabase } from "@/integrations/supabase/client";
 import { recordLoginHistory } from "@/lib/auth-history";
+import { clearCachedPostAuthRoute } from "@/lib/post-auth";
+
 
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
 
@@ -95,7 +97,9 @@ function setupAuthListener() {
   // 1. Subscribe to auth state changes from Supabase
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_OUT") {
+      clearCachedPostAuthRoute();
       updateAuthState(null, "unauthenticated");
+
     } else if (session) {
       updateAuthState(session, "authenticated");
       // Record login history only on actual SIGNED_IN event (deduped automatically)
