@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { Flag, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 
-import { listFeatureFlags, updateFeatureFlag } from "@/lib/superadmin.functions";
+import { listFeatureFlags, updateFeatureFlag, type FeatureFlagRow } from "@/lib/superadmin.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import { TypedConfirmationDialog } from "@/components/admin/ui/typed-confirmation-dialog";
 
 export const Route = createFileRoute("/_authenticated/admin/superadmin/flags")({
   head: () => ({ meta: [{ title: "Feature Flags · Super Admin" }] }),
@@ -16,6 +18,7 @@ export const Route = createFileRoute("/_authenticated/admin/superadmin/flags")({
 });
 
 function FlagsPage() {
+  const [pendingKill, setPendingKill] = useState<FeatureFlagRow | null>(null);
   const fetchFlags = useServerFn(listFeatureFlags);
   const update = useServerFn(updateFeatureFlag);
   const qc = useQueryClient();
@@ -26,8 +29,12 @@ function FlagsPage() {
   });
 
   const updateMut = useMutation({
-    mutationFn: (vars: { key: string; enabled?: boolean; kill_switch?: boolean }) =>
-      update({ data: vars }),
+    mutationFn: (vars: {
+      key: string;
+      enabled?: boolean;
+      kill_switch?: boolean;
+      reason?: string;
+    }) => update({ data: vars }),
     onSuccess: () => {
       toast.success("Flag updated");
       qc.invalidateQueries({ queryKey: ["superadmin", "flags"] });
@@ -99,7 +106,13 @@ function FlagsPage() {
                         <Switch
                           checked={f.kill_switch}
                           disabled={updateMut.isPending}
-                          onCheckedChange={(v) => updateMut.mutate({ key: f.key, kill_switch: v })}
+                          onCheckedChange={(v) => {
+                            if (v) {
+                              setPendingKill(f);
+                            } else {
+                              updateMut.mutate({ key: f.key, kill_switch: false });
+                            }
+                          }}
                         />
                       </label>
                     </div>
@@ -109,6 +122,36 @@ function FlagsPage() {
             </section>
           ))}
         </div>
+      )}
+
+      {pendingKill && (
+        <TypedConfirmationDialog
+          open={!!pendingKill}
+          onOpenChange={(open) => {
+            if (!open) setPendingKill(null);
+          }}
+          title="Activate Emergency Kill Switch"
+          description={
+            <>
+              Activating the emergency kill switch for{" "}
+              <strong className="font-mono text-foreground">{pendingKill.key}</strong> will immediately disable the entire module for all users platform-wide.
+            </>
+          }
+          targetResourceName={pendingKill.key}
+          requireReason={true}
+          reasonLabel="Reason for emergency kill switch (recorded in audit log):"
+          confirmButtonText="Activate Kill Switch"
+          destructive={true}
+          isLoading={updateMut.isPending}
+          onConfirm={async (reason) => {
+            await updateMut.mutateAsync({
+              key: pendingKill.key,
+              kill_switch: true,
+              reason: reason || undefined,
+            });
+            setPendingKill(null);
+          }}
+        />
       )}
     </PageContainer>
   );

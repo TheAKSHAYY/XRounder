@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { assertAdmin } from "@/lib/role-guards.server";
 
 export type DashboardStats = {
   students: number;
@@ -19,6 +20,7 @@ export type DashboardStats = {
 export const getDashboardStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const { data, error } = await context.supabase.rpc("admin_dashboard_stats");
     if (error) throw new Error(error.message);
     return data as unknown as DashboardStats;
@@ -34,6 +36,7 @@ export type RecentUpload = {
 export const getRecentUploads = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const { data, error } = await context.supabase.rpc("admin_recent_uploads", { _limit: 10 });
     if (error) throw new Error(error.message);
     return (data ?? []) as RecentUpload[];
@@ -50,6 +53,7 @@ export type RecentActivity = {
 export const getRecentActivity = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const { data, error } = await context.supabase.rpc("admin_recent_activity", { _limit: 15 });
     if (error) throw new Error(error.message);
     return (data ?? []) as RecentActivity[];
@@ -69,6 +73,7 @@ export type WorkflowSummary = {
 export const getWorkflowSummary = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }): Promise<WorkflowSummary> => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = context.supabase;
     const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
@@ -148,6 +153,7 @@ export const getWorkflowSummary = createServerFn({ method: "GET" })
 export const migrateLegacyNotes = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = context.supabase;
     const { data: notes, error } = await sb
       .from("notes")

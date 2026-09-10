@@ -120,7 +120,7 @@ export const listUsers = createServerFn({ method: "GET" })
 
 export const grantRole = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: { userId: string; role: AppRole }) => data)
+  .inputValidator((data: { userId: string; role: AppRole; reason?: string }) => data)
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
@@ -141,18 +141,48 @@ export const grantRole = createServerFn({ method: "POST" })
       action: "role.grant",
       entity_type: "user_role",
       entity_id: data.userId,
-      metadata: { role: data.role },
+      metadata: { role: data.role, reason: data.reason ?? null },
     });
     return { ok: true };
   });
 
 export const revokeRole = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((data: { userId: string; role: AppRole }) => data)
+  .inputValidator((data: { userId: string; role: AppRole; reason?: string }) => data)
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
-    if (data.userId === context.userId && data.role === "super_admin") {
-      throw new Error("You cannot revoke your own super_admin role.");
+    if (data.role === "super_admin") {
+      if (data.userId === context.userId) {
+        throw new Error("You cannot revoke your own super_admin role.");
+      }
+      const sb = loose(context.supabase);
+      const { data: superRoles, error: rolesErr } = await sb
+        .from("user_roles")
+        .select("user_id")
+        .eq("role", "super_admin");
+      if (rolesErr) throw new Error(rolesErr.message);
+
+      const otherSuperIds = (superRoles ?? [])
+        .map((r: { user_id: string }) => r.user_id)
+        .filter((id: string) => id !== data.userId);
+
+      if (otherSuperIds.length === 0) {
+        throw new Error("Cannot revoke the last active Super Admin.");
+      }
+
+      // Verify that at least one OTHER super admin is active (not suspended)
+      const { data: activeProfiles, error: profErr } = await sb
+        .from("profiles")
+        .select("user_id,suspended")
+        .in("user_id", otherSuperIds);
+      if (profErr) throw new Error(profErr.message);
+
+      const activeCount = (activeProfiles ?? []).filter(
+        (p: { suspended?: boolean | null }) => !p.suspended,
+      ).length;
+      if (activeCount === 0) {
+        throw new Error("Cannot revoke role: all other Super Admins are currently suspended or inactive.");
+      }
     }
     const { error } = await loose(context.supabase)
       .from("user_roles")
@@ -165,7 +195,7 @@ export const revokeRole = createServerFn({ method: "POST" })
       action: "role.revoke",
       entity_type: "user_role",
       entity_id: data.userId,
-      metadata: { role: data.role },
+      metadata: { role: data.role, reason: data.reason ?? null },
     });
     return { ok: true };
   });
@@ -258,7 +288,13 @@ export const listFeatureFlags = createServerFn({ method: "GET" })
 export const updateFeatureFlag = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator(
-    (data: { key: string; enabled?: boolean; kill_switch?: boolean; rollout_pct?: number }) => data,
+    (data: {
+      key: string;
+      enabled?: boolean;
+      kill_switch?: boolean;
+      rollout_pct?: number;
+      reason?: string;
+    }) => data,
   )
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);
@@ -282,7 +318,7 @@ export const updateFeatureFlag = createServerFn({ method: "POST" })
       action: "flag.update",
       entity_type: "feature_flag",
       entity_id: data.key,
-      metadata: patch,
+      metadata: { ...patch, reason: data.reason ?? null },
     });
     return { ok: true };
   });
@@ -318,4 +354,52 @@ export const getPlatformStats = createServerFn({ method: "GET" })
       active_sessions: sessions.count ?? 0,
       audit_events_24h: audits.count ?? 0,
     } as PlatformStats;
+  });
+
+export const upsertSeoMeta = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator(
+    (d: {
+      path: string;
+      title?: string | null;
+      description?: string | null;
+      keywords?: string | null;
+      og_image?: string | null;
+      twitter_card?: string | null;
+      robots?: string | null;
+      canonical?: string | null;
+    }) => d,
+  )
+  .handler(async ({ data, context }) => {
+    await assertSuperAdmin(context.supabase, context.userId);
+    const sb = loose(context.supabase);
+    const { error } = await sb.from("seo_meta").upsert(data, { onConflict: "path" });
+    if (error) throw new Error(error.message);
+
+    await logAudit(context.supabase, {
+      actor_id: context.userId,
+      action: "seo.upsert",
+      entity_type: "seo_meta",
+      entity_id: data.path,
+      metadata: { path: data.path, title: data.title ?? null },
+    });
+    return { ok: true };
+  });
+
+export const deleteSeoMeta = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { id: string }) => d)
+  .handler(async ({ data, context }) => {
+    await assertSuperAdmin(context.supabase, context.userId);
+    const sb = loose(context.supabase);
+    const { error } = await sb.from("seo_meta").delete().eq("id", data.id);
+    if (error) throw new Error(error.message);
+
+    await logAudit(context.supabase, {
+      actor_id: context.userId,
+      action: "seo.delete",
+      entity_type: "seo_meta",
+      entity_id: data.id,
+    });
+    return { ok: true };
   });

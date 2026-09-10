@@ -21,6 +21,10 @@ import {
   Megaphone,
   FolderTree,
   ChevronRight,
+  Activity,
+  Globe,
+  SlidersHorizontal,
+  ArrowLeftRight,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -177,13 +181,22 @@ export function AdminShell() {
                     aria-hidden
                     className="inline-block h-1.5 w-1.5 rounded-full bg-destructive"
                   />
-                  Super Admin
+                  Platform Governance
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
                   <SidebarMenu>
                     <NavRow
                       item={{
-                        label: "Team & Roles",
+                        label: "Platform Overview",
+                        to: "/admin/superadmin",
+                        icon: Activity,
+                        exact: true,
+                      }}
+                      active={pathname === "/admin/superadmin" || pathname === "/admin/superadmin/"}
+                    />
+                    <NavRow
+                      item={{
+                        label: "Staff & Access",
                         to: "/admin/superadmin/users",
                         icon: ShieldCheck,
                       }}
@@ -193,7 +206,7 @@ export function AdminShell() {
                       item={{
                         label: "Audit Logs",
                         to: "/admin/superadmin/audit",
-                        icon: ShieldCheck,
+                        icon: FileText,
                       }}
                       active={pathname === "/admin/superadmin/audit"}
                     />
@@ -201,7 +214,7 @@ export function AdminShell() {
                       item={{
                         label: "Feature Flags",
                         to: "/admin/superadmin/flags",
-                        icon: ShieldCheck,
+                        icon: SlidersHorizontal,
                       }}
                       active={pathname === "/admin/superadmin/flags"}
                     />
@@ -209,9 +222,17 @@ export function AdminShell() {
                       item={{
                         label: "Platform Branding",
                         to: "/admin/superadmin/branding",
-                        icon: ShieldCheck,
+                        icon: LayoutTemplate,
                       }}
                       active={pathname === "/admin/superadmin/branding"}
+                    />
+                    <NavRow
+                      item={{
+                        label: "SEO Manager",
+                        to: "/admin/superadmin/seo",
+                        icon: Globe,
+                      }}
+                      active={pathname === "/admin/superadmin/seo"}
                     />
                   </SidebarMenu>
                 </SidebarGroupContent>
@@ -239,15 +260,28 @@ export function AdminShell() {
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border/70 bg-background/85 px-3 backdrop-blur sm:px-4">
             <SidebarTrigger aria-label="Toggle sidebar" />
-            {inPlatform && (
-              <span
-                className="inline-flex items-center gap-1.5 rounded-full border border-destructive/30 bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-destructive"
-                title="You are in Platform (Super Admin) mode"
-              >
-                <ShieldCheck className="h-3 w-3" />
-                Platform
-              </span>
-            )}
+            {inPlatform ? (
+              <div className="flex items-center gap-2">
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-full border border-destructive/30 bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-destructive"
+                  title="You are in Platform (Super Admin) mode"
+                >
+                  <ShieldCheck className="h-3 w-3" />
+                  Platform Governance
+                </span>
+                <Button asChild variant="ghost" size="sm" className="h-7 text-xs text-muted-foreground hover:text-foreground hidden sm:inline-flex">
+                  <Link to="/admin">
+                    <ArrowLeftRight className="mr-1 h-3 w-3" /> Content Operations
+                  </Link>
+                </Button>
+              </div>
+            ) : isSuperAdmin ? (
+              <Button asChild variant="outline" size="sm" className="h-7 text-xs border-destructive/30 text-destructive hover:bg-destructive/10 hidden sm:inline-flex">
+                <Link to="/admin/superadmin">
+                  <ShieldCheck className="mr-1 h-3 w-3" /> Platform Governance
+                </Link>
+              </Button>
+            ) : null}
             <button
               type="button"
               onClick={() =>

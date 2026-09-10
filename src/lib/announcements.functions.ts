@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
-import { assertAdmin } from "@/lib/role-guards.server";
+import { assertAdmin, assertSuperAdmin } from "@/lib/role-guards.server";
 import { loose } from "@/lib/supabase-loose";
 import { logAudit, tryAdminClient } from "@/lib/admin-client.server";
 
@@ -110,12 +110,22 @@ export const setUserSuspended = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: { userId: string; suspended: boolean; reason?: string }) => d)
   .handler(async ({ data, context }) => {
-    const { data: isSuper } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "super_admin",
-    });
-    if (!isSuper) throw new Error("Forbidden: super_admin required");
+    await assertSuperAdmin(context.supabase, context.userId);
     if (data.userId === context.userId) throw new Error("You cannot suspend yourself.");
+
+    // Prevent deactivating/suspending an active Super Admin
+    if (data.suspended) {
+      const { data: isTargetSuper, error: roleErr } = await context.supabase.rpc("has_role", {
+        _user_id: data.userId,
+        _role: "super_admin",
+      });
+      if (roleErr) throw new Error(`Role check failed: ${roleErr.message}`);
+      if (isTargetSuper) {
+        throw new Error(
+          "Cannot suspend an active Super Admin. Revoke their super_admin role first.",
+        );
+      }
+    }
 
     const admin = await tryAdminClient();
     const sb = loose(admin ?? context.supabase);
@@ -156,6 +166,25 @@ export const setUserSuspended = createServerFn({ method: "POST" })
         .eq("user_id", data.userId)
         .is("revoked_at", null);
     }
+    return { ok: true };
+  });
+
+// -------- Flag account for review (Admins and Super Admins) --------
+export const flagUserForReview = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: { userId: string; reason: string }) => d)
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
+    const reasonText = data.reason?.trim() || "Flagged for moderation review by admin";
+
+    await logAudit(context.supabase, {
+      actor_id: context.userId,
+      action: "user.flag_for_review",
+      entity_type: "user",
+      entity_id: data.userId,
+      metadata: { reason: reasonText },
+    });
+
     return { ok: true };
   });
 

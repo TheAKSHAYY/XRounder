@@ -13,7 +13,7 @@ export const Route = createFileRoute("/_authenticated/admin/superadmin")({
       _role: "super_admin",
     });
     if (error || !data) {
-      throw redirect({ to: "/dashboard" });
+      throw redirect({ to: "/admin" });
     }
   },
   component: () => <Outlet />,

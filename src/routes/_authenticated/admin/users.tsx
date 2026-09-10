@@ -19,7 +19,9 @@ import {
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
-import { setUserSuspended } from "@/lib/announcements.functions";
+import { setUserSuspended, flagUserForReview } from "@/lib/announcements.functions";
+import { useRoles } from "@/hooks/use-roles";
+import { TypedConfirmationDialog } from "@/components/admin/ui/typed-confirmation-dialog";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Input } from "@/components/ui/input";
@@ -65,12 +67,15 @@ type StudentRow = {
 };
 
 function AdminStudentsPage() {
+  const { isSuperAdmin } = useRoles();
   const [search, setSearch] = useState("");
   const [courseFilter, setCourseFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<"all" | "active" | "suspended">("all");
   const [selectedStudent, setSelectedStudent] = useState<StudentRow | null>(null);
+  const [pendingSuspendStudent, setPendingSuspendStudent] = useState<StudentRow | null>(null);
 
   const suspendFn = useServerFn(setUserSuspended);
+  const flagFn = useServerFn(flagUserForReview);
   const qc = useQueryClient();
 
   // 1. Fetch Students
@@ -130,6 +135,12 @@ function AdminStudentsPage() {
         setSelectedStudent((prev) => (prev ? { ...prev, suspended: vars.suspended } : null));
       }
     },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const flagMut = useMutation({
+    mutationFn: (vars: { userId: string; reason: string }) => flagFn({ data: vars }),
+    onSuccess: () => toast.success("Student flagged for Super Admin review (recorded in audit log)"),
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -283,35 +294,47 @@ function AdminStudentsPage() {
                             <Eye className="h-4 w-4" />
                           </Button>
 
-                          {s.suspended ? (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              disabled={suspendMut.isPending}
-                              onClick={() =>
-                                suspendMut.mutate({ userId: s.user_id, suspended: false })
-                              }
-                              className="h-8 px-2.5 text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-500/10 rounded-lg"
-                              title="Reinstate student"
-                            >
-                              <Undo2 className="mr-1 h-3.5 w-3.5" /> Restore
-                            </Button>
+                          {isSuperAdmin ? (
+                            s.suspended ? (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                disabled={suspendMut.isPending}
+                                onClick={() =>
+                                  suspendMut.mutate({ userId: s.user_id, suspended: false })
+                                }
+                                className="h-8 px-2.5 text-xs text-emerald-600 hover:text-emerald-700 hover:bg-emerald-500/10 rounded-lg"
+                                title="Reinstate student"
+                              >
+                                <Undo2 className="mr-1 h-3.5 w-3.5" /> Restore
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                disabled={suspendMut.isPending}
+                                onClick={() => setPendingSuspendStudent(s)}
+                                className="h-8 px-2.5 text-xs text-destructive hover:bg-destructive/10 rounded-lg"
+                                title="Suspend student"
+                              >
+                                <Ban className="mr-1 h-3.5 w-3.5" /> Suspend
+                              </Button>
+                            )
                           ) : (
                             <Button
                               variant="ghost"
                               size="sm"
-                              disabled={suspendMut.isPending}
+                              disabled={flagMut.isPending}
                               onClick={() =>
-                                suspendMut.mutate({
+                                flagMut.mutate({
                                   userId: s.user_id,
-                                  suspended: true,
-                                  reason: "Suspended by admin",
+                                  reason: `Account flagged for Super Admin review: ${s.full_name ?? s.user_id}`,
                                 })
                               }
-                              className="h-8 px-2.5 text-xs text-destructive hover:bg-destructive/10 rounded-lg"
-                              title="Suspend student"
+                              className="h-8 px-2.5 text-xs text-muted-foreground hover:text-foreground rounded-lg"
+                              title="Flag for moderation review"
                             >
-                              <Ban className="mr-1 h-3.5 w-3.5" /> Suspend
+                              <ShieldAlert className="mr-1 h-3.5 w-3.5 text-amber-500" /> Flag
                             </Button>
                           )}
                         </div>
@@ -365,7 +388,7 @@ function AdminStudentsPage() {
                   </span>
                   <span className="font-semibold text-foreground">
                     {selectedStudent.semesters?.title
-                      ? `Semester ${selectedStudent.semesters.number}`
+                       ? `Semester ${selectedStudent.semesters.number}`
                       : "Not selected"}
                   </span>
                 </div>
@@ -401,31 +424,42 @@ function AdminStudentsPage() {
                   </span>
                 </div>
 
-                {selectedStudent.suspended ? (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() =>
-                      suspendMut.mutate({ userId: selectedStudent.user_id, suspended: false })
-                    }
-                    className="rounded-xl h-9 text-xs text-emerald-600"
-                  >
-                    <Undo2 className="mr-1.5 h-3.5 w-3.5" /> Re-instate Access
-                  </Button>
+                {isSuperAdmin ? (
+                  selectedStudent.suspended ? (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() =>
+                        suspendMut.mutate({ userId: selectedStudent.user_id, suspended: false })
+                      }
+                      className="rounded-xl h-9 text-xs text-emerald-600"
+                    >
+                      <Undo2 className="mr-1.5 h-3.5 w-3.5" /> Re-instate Access
+                    </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => setPendingSuspendStudent(selectedStudent)}
+                      className="rounded-xl h-9 text-xs text-destructive hover:bg-destructive/10"
+                    >
+                      <Ban className="mr-1.5 h-3.5 w-3.5" /> Suspend Student
+                    </Button>
+                  )
                 ) : (
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() =>
-                      suspendMut.mutate({
+                    disabled={flagMut.isPending}
+                    onClick={() => {
+                      flagMut.mutate({
                         userId: selectedStudent.user_id,
-                        suspended: true,
-                        reason: "Suspended by admin",
-                      })
-                    }
-                    className="rounded-xl h-9 text-xs text-destructive hover:bg-destructive/10"
+                        reason: `Account flagged for Super Admin review: ${selectedStudent.full_name ?? selectedStudent.user_id}`,
+                      });
+                    }}
+                    className="rounded-xl h-9 text-xs text-amber-600 border-amber-500/30 hover:bg-amber-500/10"
                   >
-                    <Ban className="mr-1.5 h-3.5 w-3.5" /> Suspend Student
+                    <ShieldAlert className="mr-1.5 h-3.5 w-3.5 text-amber-500" /> Flag for Review
                   </Button>
                 )}
               </div>
@@ -433,6 +467,39 @@ function AdminStudentsPage() {
           </DialogContent>
         )}
       </Dialog>
+
+      {pendingSuspendStudent && (
+        <TypedConfirmationDialog
+          open={!!pendingSuspendStudent}
+          onOpenChange={(open) => {
+            if (!open) setPendingSuspendStudent(null);
+          }}
+          title="Suspend Student Account"
+          description={
+            <>
+              Suspending student{" "}
+              <strong className="text-foreground">
+                {pendingSuspendStudent.full_name ?? pendingSuspendStudent.email ?? pendingSuspendStudent.user_id}
+              </strong>{" "}
+              will immediately revoke all active sessions and block platform access.
+            </>
+          }
+          targetResourceName={pendingSuspendStudent.email ?? pendingSuspendStudent.user_id}
+          requireReason={true}
+          reasonLabel="Reason for account suspension (recorded in audit log):"
+          confirmButtonText="Suspend Student"
+          destructive={true}
+          isLoading={suspendMut.isPending}
+          onConfirm={async (reason) => {
+            await suspendMut.mutateAsync({
+              userId: pendingSuspendStudent.user_id,
+              suspended: true,
+              reason: reason || undefined,
+            });
+            setPendingSuspendStudent(null);
+          }}
+        />
+      )}
     </PageContainer>
   );
 }

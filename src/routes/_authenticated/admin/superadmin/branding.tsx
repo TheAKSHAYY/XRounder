@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Save } from "lucide-react";
+import { Save, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
+import { TypedConfirmationDialog } from "@/components/admin/ui/typed-confirmation-dialog";
+import { updateBrandingSettings, toggleMaintenanceMode, type BrandingInput } from "@/lib/branding.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,6 +47,10 @@ type FormValues = z.infer<typeof schema>;
 
 function BrandingPage() {
   const queryClient = useQueryClient();
+  const updateBrandingFn = useServerFn(updateBrandingSettings);
+  const toggleMaintenanceFn = useServerFn(toggleMaintenanceMode);
+
+  const [maintenanceDialogOpen, setMaintenanceDialogOpen] = useState(false);
 
   const brandingQuery = useQuery({
     queryKey: ["branding"],
@@ -89,7 +97,7 @@ function BrandingPage() {
 
   const saveBranding = useMutation({
     mutationFn: async (values: FormValues) => {
-      const payload = {
+      const payload: BrandingInput = {
         site_name: values.site_name,
         tagline: values.tagline || null,
         logo_text: values.logo_text || null,
@@ -107,8 +115,7 @@ function BrandingPage() {
         font_body: values.font_body || null,
         radius_rem: values.radius_rem ?? null,
       };
-      const { error } = await supabase.from("branding").update(payload).eq("id", 1);
-      if (error) throw error;
+      await updateBrandingFn({ data: payload });
     },
     onSuccess: () => {
       toast.success("Branding updated");
@@ -118,20 +125,8 @@ function BrandingPage() {
   });
 
   const toggleMaintenance = useMutation({
-    mutationFn: async (enabled: boolean) => {
-      const existing = maintenanceQuery.data;
-      if (existing) {
-        const { error } = await supabase
-          .from("maintenance")
-          .update({ enabled })
-          .eq("id", existing.id);
-        if (error) throw error;
-      } else {
-        const { error } = await supabase
-          .from("maintenance")
-          .insert({ enabled, message: "We'll be right back." });
-        if (error) throw error;
-      }
+    mutationFn: async ({ enabled, message }: { enabled: boolean; message?: string }) => {
+      await toggleMaintenanceFn({ data: { enabled, message } });
     },
     onSuccess: () => {
       toast.success("Maintenance updated");
@@ -139,6 +134,8 @@ function BrandingPage() {
     },
     onError: (e: Error) => toast.error(e.message),
   });
+
+  const currentSiteName = brandingQuery.data?.site_name || "XRounder";
 
   return (
     <PageContainer width="narrow">
@@ -148,21 +145,59 @@ function BrandingPage() {
       />
 
       <section className="mt-8 rounded-2xl border border-border bg-surface p-6">
-        <h2 className="font-display text-lg font-semibold">Maintenance mode</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          When enabled, students see a maintenance page. Admins can still sign in.
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h2 className="font-display text-lg font-semibold">Maintenance mode</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              When enabled, students see a maintenance page. Admins and Super Admins can still sign in.
+            </p>
+          </div>
+          {maintenanceQuery.data?.enabled && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-2.5 py-1 text-xs font-medium text-destructive">
+              <AlertTriangle className="h-3.5 w-3.5" /> Maintenance Active
+            </span>
+          )}
+        </div>
         <div className="mt-4 flex items-center gap-3">
           <Switch
             checked={!!maintenanceQuery.data?.enabled}
-            onCheckedChange={(v) => toggleMaintenance.mutate(v)}
+            onCheckedChange={(checked) => {
+              if (checked) {
+                setMaintenanceDialogOpen(true);
+              } else {
+                toggleMaintenance.mutate({ enabled: false });
+              }
+            }}
             disabled={toggleMaintenance.isPending}
           />
           <span className="text-sm font-medium">
             {maintenanceQuery.data?.enabled ? "Site is in maintenance mode" : "Site is live"}
           </span>
         </div>
+        {maintenanceQuery.data?.enabled && maintenanceQuery.data?.message && (
+          <p className="mt-2 text-xs text-muted-foreground italic">
+            Message: &quot;{maintenanceQuery.data.message}&quot;
+          </p>
+        )}
       </section>
+
+      <TypedConfirmationDialog
+        open={maintenanceDialogOpen}
+        onOpenChange={setMaintenanceDialogOpen}
+        title="Enable Maintenance Mode?"
+        description="Enabling maintenance mode will immediately lock out non-admin users from accessing courses, subjects, and study materials. Admins and Super Admins will continue to have access."
+        targetResourceName={currentSiteName}
+        confirmButtonText="Lock Platform & Enable Maintenance"
+        destructive
+        requireReason
+        reasonLabel="Maintenance message displayed to students:"
+        onConfirm={async (reason) => {
+          await toggleMaintenance.mutateAsync({
+            enabled: true,
+            message: reason || "We'll be right back.",
+          });
+        }}
+      />
 
       <form
         onSubmit={form.handleSubmit((v) => saveBranding.mutate(v))}

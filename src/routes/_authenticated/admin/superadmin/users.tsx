@@ -5,16 +5,17 @@ import { useServerFn } from "@tanstack/react-start";
 import { Search, Shield, ShieldCheck, GraduationCap, UserCog, Ban, Undo2 } from "lucide-react";
 import { toast } from "sonner";
 
-import { listUsers, grantRole, revokeRole, type AppRole } from "@/lib/superadmin.functions";
+import { listUsers, grantRole, revokeRole, type AppRole, type AdminUserRow } from "@/lib/superadmin.functions";
 import { setUserSuspended } from "@/lib/announcements.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TypedConfirmationDialog } from "@/components/admin/ui/typed-confirmation-dialog";
 
 export const Route = createFileRoute("/_authenticated/admin/superadmin/users")({
-  head: () => ({ meta: [{ title: "Users & Roles · Super Admin" }] }),
+  head: () => ({ meta: [{ title: "Staff & Access · Super Admin" }] }),
   component: UsersPage,
 });
 
@@ -45,6 +46,10 @@ const ASSIGNABLE: AppRole[] = ["admin", "instructor", "super_admin"];
 
 function UsersPage() {
   const [search, setSearch] = useState("");
+  const [pendingRevoke, setPendingRevoke] = useState<{ user: AdminUserRow; role: AppRole } | null>(null);
+  const [pendingGrant, setPendingGrant] = useState<{ user: AdminUserRow; role: AppRole } | null>(null);
+  const [pendingSuspend, setPendingSuspend] = useState<AdminUserRow | null>(null);
+
   const fetchUsers = useServerFn(listUsers);
   const grant = useServerFn(grantRole);
   const revoke = useServerFn(revokeRole);
@@ -57,7 +62,7 @@ function UsersPage() {
   });
 
   const grantMut = useMutation({
-    mutationFn: (vars: { userId: string; role: AppRole }) => grant({ data: vars }),
+    mutationFn: (vars: { userId: string; role: AppRole; reason?: string }) => grant({ data: vars }),
     onSuccess: (_d, vars) => {
       toast.success(`${ROLE_META[vars.role].label} granted`);
       qc.invalidateQueries({ queryKey: ["superadmin", "users"] });
@@ -65,7 +70,7 @@ function UsersPage() {
     onError: (e: Error) => toast.error(e.message),
   });
   const revokeMut = useMutation({
-    mutationFn: (vars: { userId: string; role: AppRole }) => revoke({ data: vars }),
+    mutationFn: (vars: { userId: string; role: AppRole; reason?: string }) => revoke({ data: vars }),
     onSuccess: (_d, vars) => {
       toast.success(`${ROLE_META[vars.role].label} revoked`);
       qc.invalidateQueries({ queryKey: ["superadmin", "users"] });
@@ -177,11 +182,15 @@ function UsersPage() {
                             size="sm"
                             variant={has ? "outline" : "secondary"}
                             disabled={grantMut.isPending || revokeMut.isPending}
-                            onClick={() =>
-                              has
-                                ? revokeMut.mutate({ userId: u.user_id, role })
-                                : grantMut.mutate({ userId: u.user_id, role })
-                            }
+                            onClick={() => {
+                              if (has) {
+                                setPendingRevoke({ user: u, role });
+                              } else if (role === "super_admin" || role === "admin") {
+                                setPendingGrant({ user: u, role });
+                              } else {
+                                grantMut.mutate({ userId: u.user_id, role });
+                              }
+                            }}
                           >
                             {has ? `Revoke ${ROLE_META[role].label}` : `+ ${ROLE_META[role].label}`}
                           </Button>
@@ -202,17 +211,7 @@ function UsersPage() {
                           variant="outline"
                           className="border-destructive/40 text-destructive hover:bg-destructive/10"
                           disabled={suspendMut.isPending}
-                          onClick={() => {
-                            const reason = prompt(
-                              `Suspend ${u.email ?? u.user_id}? Enter reason (optional):`,
-                            );
-                            if (reason === null) return;
-                            suspendMut.mutate({
-                              userId: u.user_id,
-                              suspended: true,
-                              reason: reason || undefined,
-                            });
-                          }}
+                          onClick={() => setPendingSuspend(u)}
                         >
                           <Ban className="mr-1 h-3 w-3" /> Suspend
                         </Button>
@@ -225,6 +224,94 @@ function UsersPage() {
           </table>
         )}
       </div>
+
+      {pendingRevoke && (
+        <TypedConfirmationDialog
+          open={!!pendingRevoke}
+          onOpenChange={(open) => {
+            if (!open) setPendingRevoke(null);
+          }}
+          title={`Revoke ${ROLE_META[pendingRevoke.role].label} Access`}
+          description={
+            <>
+              Revoking <strong className="text-foreground">{ROLE_META[pendingRevoke.role].label}</strong> permissions from{" "}
+              <strong className="text-foreground">{pendingRevoke.user.full_name ?? pendingRevoke.user.email ?? pendingRevoke.user.user_id}</strong> will immediately terminate their elevated administrative access.
+            </>
+          }
+          targetResourceName={pendingRevoke.user.email ?? pendingRevoke.user.user_id}
+          requireReason={true}
+          reasonLabel="Reason for role revocation (recorded in audit log):"
+          confirmButtonText="Revoke Role"
+          destructive={true}
+          isLoading={revokeMut.isPending}
+          onConfirm={async (reason) => {
+            await revokeMut.mutateAsync({
+              userId: pendingRevoke.user.user_id,
+              role: pendingRevoke.role,
+              reason: reason || undefined,
+            });
+            setPendingRevoke(null);
+          }}
+        />
+      )}
+
+      {pendingGrant && (
+        <TypedConfirmationDialog
+          open={!!pendingGrant}
+          onOpenChange={(open) => {
+            if (!open) setPendingGrant(null);
+          }}
+          title={`Grant ${ROLE_META[pendingGrant.role].label} Access`}
+          description={
+            <>
+              Granting <strong className="text-foreground">{ROLE_META[pendingGrant.role].label}</strong> privileges to{" "}
+              <strong className="text-foreground">{pendingGrant.user.full_name ?? pendingGrant.user.email ?? pendingGrant.user.user_id}</strong> gives them elevated administrative authority across XRounder.
+            </>
+          }
+          targetResourceName={pendingGrant.user.email ?? pendingGrant.user.user_id}
+          requireReason={false}
+          confirmButtonText={`Grant ${ROLE_META[pendingGrant.role].label}`}
+          destructive={false}
+          isLoading={grantMut.isPending}
+          onConfirm={async (reason) => {
+            await grantMut.mutateAsync({
+              userId: pendingGrant.user.user_id,
+              role: pendingGrant.role,
+              reason: reason || undefined,
+            });
+            setPendingGrant(null);
+          }}
+        />
+      )}
+
+      {pendingSuspend && (
+        <TypedConfirmationDialog
+          open={!!pendingSuspend}
+          onOpenChange={(open) => {
+            if (!open) setPendingSuspend(null);
+          }}
+          title="Suspend User Account"
+          description={
+            <>
+              Suspending account <strong className="text-foreground">{pendingSuspend.full_name ?? pendingSuspend.email ?? pendingSuspend.user_id}</strong> will immediately terminate all active sessions and block further platform access.
+            </>
+          }
+          targetResourceName={pendingSuspend.email ?? pendingSuspend.user_id}
+          requireReason={true}
+          reasonLabel="Reason for account suspension (recorded in audit log):"
+          confirmButtonText="Suspend Account"
+          destructive={true}
+          isLoading={suspendMut.isPending}
+          onConfirm={async (reason) => {
+            await suspendMut.mutateAsync({
+              userId: pendingSuspend.user_id,
+              suspended: true,
+              reason: reason || undefined,
+            });
+            setPendingSuspend(null);
+          }}
+        />
+      )}
     </PageContainer>
   );
 }

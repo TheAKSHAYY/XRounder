@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { FileSearch, Plus, Save, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
+import { upsertSeoMeta, deleteSeoMeta } from "@/lib/superadmin.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Button } from "@/components/ui/button";
@@ -32,6 +34,9 @@ type Row = {
 
 function SeoPage() {
   const qc = useQueryClient();
+  const upsertFn = useServerFn(upsertSeoMeta);
+  const deleteFn = useServerFn(deleteSeoMeta);
+
   const [selected, setSelected] = useState<Row | null>(null);
   const [newPath, setNewPath] = useState("");
 
@@ -46,8 +51,18 @@ function SeoPage() {
 
   const upsert = useMutation({
     mutationFn: async (row: Partial<Row> & { path: string }) => {
-      const { error } = await supabase.from("seo_meta").upsert(row, { onConflict: "path" });
-      if (error) throw error;
+      await upsertFn({
+        data: {
+          path: row.path,
+          title: row.title ?? null,
+          description: row.description ?? null,
+          keywords: row.keywords ?? null,
+          og_image: row.og_image ?? null,
+          twitter_card: row.twitter_card ?? null,
+          robots: row.robots ?? null,
+          canonical: row.canonical ?? null,
+        },
+      });
     },
     onSuccess: () => {
       toast.success("Saved");
@@ -58,8 +73,7 @@ function SeoPage() {
 
   const remove = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase.from("seo_meta").delete().eq("id", id);
-      if (error) throw error;
+      await deleteFn({ data: { id } });
     },
     onSuccess: () => {
       toast.success("Removed");
