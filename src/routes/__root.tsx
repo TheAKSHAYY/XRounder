@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -16,6 +17,7 @@ import { MaintenanceGate } from "@/components/maintenance-gate";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { BrandingApplier } from "@/components/branding/branding-applier";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { RouteProgress } from "@/components/route-progress";
 import { EnvErrorScreen } from "@/components/env-error-screen";
 import { formatEnvError, validateSupabaseEnv } from "@/lib/env";
 import appCss from "../styles.css?url";
