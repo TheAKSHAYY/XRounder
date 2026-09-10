@@ -56,12 +56,12 @@ const SEVERITY_META: Record<
   success: {
     label: "Success",
     icon: CheckCircle2,
-    tone: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
+    tone: "bg-success/10 text-success border-success/30",
   },
   warning: {
     label: "Warning",
     icon: AlertTriangle,
-    tone: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
+    tone: "bg-warning/15 text-warning-foreground dark:text-warning border-warning/30",
   },
   critical: {
     label: "Critical",
@@ -69,6 +69,7 @@ const SEVERITY_META: Record<
     tone: "bg-destructive/10 text-destructive border-destructive/30",
   },
 };
+
 
 type FormState = {
   id?: string;

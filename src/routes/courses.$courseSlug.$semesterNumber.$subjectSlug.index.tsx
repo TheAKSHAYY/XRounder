@@ -928,8 +928,8 @@ function UnitCard({
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {stats.content.note > 0 ? (
             <Badge
-              variant="outline"
-              className="text-[10px] font-bold rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
+              variant="success"
+              className="text-[10px] font-bold rounded-lg"
             >
               <Check className="h-3 w-3 mr-1" /> Notes Ready
             </Badge>

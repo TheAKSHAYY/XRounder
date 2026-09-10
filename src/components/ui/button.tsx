@@ -5,17 +5,34 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-all duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        /** Primary brand/navigation — deep indigo, flat */
+        default:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90 active:scale-[0.98]",
+        /** Hero CTA — indigo→violet gradient, reserved for the most important single action */
+        cta:
+          "btn-cta text-primary-foreground shadow hover:opacity-90 active:scale-[0.98]",
+        /** Destructive — red, for irreversible or dangerous actions */
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 active:scale-[0.98]",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        /** Learning / progress / completion — green */
+        success:
+          "bg-success text-success-foreground shadow-sm hover:bg-success/90 active:scale-[0.98]",
+        /** Practice / quiz / AI actions — violet-purple */
+        quiz:
+          "bg-quiz text-quiz-foreground shadow-sm hover:bg-quiz/90 active:scale-[0.98]",
+        /** Important attention / warning actions — amber */
+        warning:
+          "bg-warning text-warning-foreground shadow-sm hover:bg-warning/90 active:scale-[0.98]",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -30,6 +47,7 @@ const buttonVariants = cva(
     },
   },
 );
+
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {

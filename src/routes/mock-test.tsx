@@ -836,7 +836,7 @@ function MockTestPage() {
                   className={cn(
                     "h-8 px-2.5 rounded-xl text-xs font-medium gap-1.5",
                     flaggedQuestions[activeQuestion.id]
-                      ? "bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30"
+                      ? "bg-warning/15 text-warning-foreground dark:text-warning border border-warning/30"
                       : "text-muted-foreground hover:text-foreground",
                   )}
                 >
@@ -918,7 +918,7 @@ function MockTestPage() {
                         "h-8 w-8 rounded-lg text-xs font-bold flex items-center justify-center transition-all shrink-0",
                         isCurr && "ring-2 ring-primary ring-offset-2 ring-offset-background",
                         isFlag
-                          ? "bg-amber-500 text-white"
+                          ? "bg-warning text-warning-foreground"
                           : isAns
                             ? "bg-primary text-primary-foreground"
                             : "bg-muted text-muted-foreground hover:bg-muted/80",
@@ -939,9 +939,9 @@ function MockTestPage() {
                 </Button>
               ) : (
                 <Button
-                  variant="default"
+                  variant="quiz"
                   onClick={handleSubmitExam}
-                  className="h-11 rounded-xl px-5 font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white gap-1.5"
+                  className="h-11 rounded-xl px-5 font-bold text-xs gap-1.5"
                 >
                   Submit Exam
                 </Button>
@@ -984,11 +984,11 @@ function MockTestPage() {
                     {diagnostics.scorePct}%
                   </span>
                 </div>
-                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-3">
-                  <span className="block text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400">
+                <div className="rounded-2xl border border-success/20 bg-success/10 p-3">
+                  <span className="block text-[10px] uppercase font-bold text-success">
                     Correct
                   </span>
-                  <span className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                  <span className="text-xl font-extrabold text-success">
                     {diagnostics.totalCorrect}
                   </span>
                 </div>
@@ -1006,6 +1006,7 @@ function MockTestPage() {
               <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                 <Button
                   onClick={() => setExamState("CONFIG")}
+                  variant="cta"
                   className="rounded-2xl h-11 px-6 font-bold text-sm gap-2"
                 >
                   <RotateCcw className="h-4 w-4" /> Create New Mock Test
@@ -1040,18 +1041,15 @@ function MockTestPage() {
                       className={cn(
                         "rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors",
                         isWeak
-                          ? "border-amber-500/30 bg-amber-500/5"
+                          ? "border-warning/30 bg-warning/5"
                           : "border-border/60 bg-muted/20",
                       )}
                     >
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge
-                            variant={isWeak ? "outline" : "default"}
-                            className={cn(
-                              "text-[10px] font-bold rounded-md",
-                              isWeak && "border-amber-500/40 text-amber-600 dark:text-amber-400",
-                            )}
+                            variant={isWeak ? "warning" : "outline"}
+                            className="text-[10px] font-bold rounded-md"
                           >
                             Unit {unit.unitNumber}
                           </Badge>
@@ -1064,11 +1062,11 @@ function MockTestPage() {
                             {unit.correct} / {unit.total} correct ({unitPct}%)
                           </span>
                           {isWeak ? (
-                            <span className="inline-flex items-center gap-1 text-amber-600 dark:text-amber-400 font-medium text-[11px]">
+                            <span className="inline-flex items-center gap-1 text-warning-foreground dark:text-warning font-medium text-[11px]">
                               <AlertCircle className="h-3.5 w-3.5" /> Needs Revision
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-medium text-[11px]">
+                            <span className="inline-flex items-center gap-1 text-success font-medium text-[11px]">
                               <CheckCircle2 className="h-3.5 w-3.5" /> Well Mastered
                             </span>
                           )}
@@ -1079,7 +1077,7 @@ function MockTestPage() {
                       <Button
                         asChild
                         size="sm"
-                        variant={isWeak ? "default" : "outline"}
+                        variant={isWeak ? "warning" : "success"}
                         className="rounded-xl h-9 text-xs font-bold shrink-0"
                       >
                         <Link
@@ -1123,7 +1121,7 @@ function MockTestPage() {
                           Unit {q.unit_number}
                         </Badge>
                         {isRight ? (
-                          <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 text-[10px]">
+                          <Badge variant="success" className="text-[10px]">
                             Correct
                           </Badge>
                         ) : (
@@ -1148,7 +1146,7 @@ function MockTestPage() {
                               className={cn(
                                 "flex items-center gap-3 p-3 rounded-xl border text-xs sm:text-sm transition-colors",
                                 isCorrect
-                                  ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 font-semibold"
+                                  ? "border-success/40 bg-success/10 text-success font-semibold"
                                   : isUserChoice
                                     ? "border-destructive/40 bg-destructive/10 text-destructive font-medium"
                                     : "border-border/60 bg-muted/20 text-muted-foreground",
@@ -1158,10 +1156,10 @@ function MockTestPage() {
                                 className={cn(
                                   "h-5 w-5 rounded-md flex items-center justify-center shrink-0 text-[10px] font-bold",
                                   isCorrect
-                                    ? "bg-emerald-600 text-white"
-                                    : isUserChoice
-                                      ? "bg-destructive text-white"
-                                      : "bg-muted text-muted-foreground",
+                                  ? "bg-success text-success-foreground"
+                                  : isUserChoice
+                                    ? "bg-destructive text-white"
+                                    : "bg-muted text-muted-foreground",
                                 )}
                               >
                                 {isCorrect ? "✓" : isUserChoice ? "✕" : "·"}

@@ -660,13 +660,13 @@ function AdminUnitWorkspace() {
               Overall Status
             </span>
             {health.isReady ? (
-              <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full">
+              <Badge variant="success" className="text-xs font-bold px-3 py-1 rounded-full">
                 READY FOR STUDENTS
               </Badge>
             ) : (
               <Badge
-                variant="outline"
-                className="text-amber-600 dark:text-amber-400 border-amber-500/30 bg-amber-500/10 text-xs font-bold px-3 py-1 rounded-full"
+                variant="warning"
+                className="text-xs font-bold px-3 py-1 rounded-full"
               >
                 NEEDS ATTENTION
               </Badge>

@@ -506,7 +506,7 @@ function DashboardPage() {
                 </div>
                 <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-primary transition-all duration-500"
+                    className="h-full rounded-full bg-success transition-all duration-500"
                     style={{ width: `${semesterProgressPct}%` }}
                   />
                 </div>
@@ -563,6 +563,7 @@ function DashboardPage() {
           <div className="mt-5 pt-4 border-t border-border/60 flex flex-col gap-2">
             <Button
               asChild
+              variant="cta"
               className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs"
             >
               <Link to="/mock-test">
@@ -598,7 +599,7 @@ function DashboardPage() {
         <section className="mt-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="grid h-7 w-7 place-items-center rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              <span className="grid h-7 w-7 place-items-center rounded-lg bg-warning/10 text-warning-foreground dark:text-warning">
                 <AlertTriangle className="h-4 w-4" />
               </span>
               <div>
@@ -616,14 +617,14 @@ function DashboardPage() {
             {weakTopics.map((topic) => (
               <div
                 key={topic.quizId}
-                className="flex flex-col justify-between rounded-2xl border border-amber-500/30 bg-amber-50/30 dark:bg-amber-950/10 p-4 transition-all hover:border-amber-500/60"
+                className="flex flex-col justify-between rounded-2xl border border-warning/30 bg-warning/5 dark:bg-warning/5 p-4 transition-all hover:border-warning/50"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-muted-foreground">{topic.subjectTitle}</span>
                     <Badge
-                      variant="outline"
-                      className="border-amber-500/40 text-amber-700 dark:text-amber-300 text-[10px]"
+                      variant="warning"
+                      className="text-[10px]"
                     >
                       {topic.avgPct}% Accuracy
                     </Badge>
@@ -643,8 +644,8 @@ function DashboardPage() {
                   <Button
                     asChild
                     size="sm"
-                    variant="outline"
-                    className="h-8 rounded-lg text-xs font-semibold border-amber-500/40 hover:bg-amber-500/10"
+                    variant="warning"
+                    className="h-8 rounded-lg text-xs font-semibold"
                   >
                     <Link to="/quizzes/$quizId" params={{ quizId: topic.quizId }}>
                       <RotateCcw className="mr-1.5 h-3 w-3" />
@@ -760,12 +761,12 @@ function DashboardPage() {
             </div>
             {avgScore !== null && (
               <span
-                className={cn(
-                  "shrink-0 rounded-full px-3 py-1 text-xs font-bold",
-                  avgScore >= 70
-                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                    : "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-                )}
+                  className={cn(
+                    "shrink-0 rounded-full px-3 py-1 text-xs font-bold",
+                    avgScore >= 70
+                      ? "bg-success/10 text-success"
+                      : "bg-warning/15 text-warning-foreground dark:text-warning",
+                  )}
               >
                 <Trophy className="mr-1 inline h-3 w-3" />
                 {avgScore}% Avg
@@ -808,7 +809,7 @@ function DashboardPage() {
                         className={cn(
                           "grid h-10 w-10 shrink-0 place-items-center rounded-xl text-xs font-bold",
                           a.passed
-                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-success/10 text-success"
                             : "bg-destructive/10 text-destructive",
                         )}
                       >
@@ -1028,7 +1029,7 @@ function ContinueHero({
         notes, practice quizzes, and progress tracking.
       </p>
       <div className="mt-5 flex flex-wrap gap-2.5">
-        <Button asChild size="lg" className="rounded-xl font-semibold h-11">
+        <Button asChild size="lg" variant="cta" className="rounded-xl font-semibold h-11">
           <Link to="/onboarding">
             Get started
             <ArrowRight className="ml-2 h-4 w-4" />

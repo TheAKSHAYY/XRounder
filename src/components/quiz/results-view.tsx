@@ -147,7 +147,7 @@ export function ResultsView({
               Score {result.score} / {result.max_score} · Pass mark {passingPct}%
             </p>
             <Badge
-              variant={result.passed ? "default" : "secondary"}
+              variant={result.passed ? "success" : "warning"}
               className="mt-3 rounded-full px-3 py-1 font-semibold"
             >
               {result.passed ? "Passed" : "Needs Review"}
@@ -168,6 +168,7 @@ export function ResultsView({
           <Button
             onClick={onRetry}
             disabled={retryPending}
+            variant="quiz"
             className="gap-1.5 rounded-xl font-semibold shadow-xs"
           >
             <RotateCcw className="h-4 w-4" /> {retryPending ? "Starting…" : "Retry quiz"}
@@ -185,7 +186,7 @@ export function ResultsView({
             context.semesterNumber &&
             context.subjectSlug &&
             context.unitNumber && (
-              <Button asChild variant="outline" className="gap-1.5 rounded-xl font-semibold">
+              <Button asChild variant="success" className="gap-1.5 rounded-xl font-semibold">
                 <Link
                   to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
                   params={{

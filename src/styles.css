@@ -53,6 +53,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
+  --color-quiz: var(--quiz);
+  --color-quiz-foreground: var(--quiz-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -110,6 +112,9 @@
   --warning-foreground: oklch(0.2 0.04 45);
   --info: oklch(0.58 0.14 245);
   --info-foreground: oklch(0.99 0.002 85);
+  /* Violet-purple — practice / quiz / AI actions */
+  --quiz: oklch(0.52 0.21 290);
+  --quiz-foreground: oklch(0.99 0.002 85);
 
   --border: oklch(0.91 0.004 85);
   --input: oklch(0.91 0.004 85);
@@ -162,6 +167,8 @@
   --warning-foreground: oklch(0.16 0.03 45);
   --info: oklch(0.7 0.13 245);
   --info-foreground: oklch(0.12 0.015 275);
+  --quiz: oklch(0.72 0.18 290);
+  --quiz-foreground: oklch(0.12 0.015 275);
 
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 14%);
@@ -220,6 +227,8 @@
   --warning-foreground: oklch(0.14 0.03 50);
   --info: oklch(0.72 0.13 235);
   --info-foreground: oklch(0.1 0.03 260);
+  --quiz: oklch(0.74 0.19 290);
+  --quiz-foreground: oklch(0.09 0.03 260);
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -271,6 +280,8 @@
   --warning-foreground: oklch(0.18 0.04 50);
   --info: oklch(0.76 0.12 230);
   --info-foreground: oklch(0.16 0.05 215);
+  --quiz: oklch(0.76 0.17 300);
+  --quiz-foreground: oklch(0.16 0.05 215);
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -322,6 +333,8 @@
   --warning-foreground: oklch(0.18 0.04 50);
   --info: oklch(0.74 0.12 215);
   --info-foreground: oklch(0.16 0.045 155);
+  --quiz: oklch(0.74 0.19 295);
+  --quiz-foreground: oklch(0.16 0.045 155);
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -373,6 +386,9 @@
   --warning-foreground: oklch(0.18 0.04 50);
   --info: oklch(0.74 0.12 230);
   --info-foreground: oklch(0.15 0.05 300);
+  /* Purple theme: quiz uses a rose-adjacent hue to stay distinct from primary purple */
+  --quiz: oklch(0.78 0.18 330);
+  --quiz-foreground: oklch(0.15 0.05 300);
 
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
@@ -424,6 +440,8 @@
   --warning-foreground: oklch(0 0 0);
   --info: oklch(0.82 0.14 235);
   --info-foreground: oklch(0 0 0);
+  --quiz: oklch(0.84 0.23 295);
+  --quiz-foreground: oklch(0 0 0);
 
   --border: oklch(1 0 0 / 55%);
   --input: oklch(1 0 0 / 45%);
@@ -793,6 +811,30 @@ button,
 }
 
 /* Horizontal scroll containers (breadcrumb trails, chip rows) without chrome. */
+/*
+ * ── Semantic CTA gradient ────────────────────────────────────────────────
+ * Applied to hero/primary CTA buttons via className="btn-cta" alongside
+ * variant="default". The gradient overrides the flat bg-primary fill.
+ * Works in both light and dark modes — tokens adapt automatically.
+ */
+@utility btn-cta {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    color-mix(in oklch, var(--color-primary) 60%, var(--color-quiz)) 100%
+  );
+  &:hover {
+    background-image: linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--color-primary) 90%, black) 0%,
+      color-mix(in oklch, var(--color-quiz) 65%, var(--color-primary) 35%) 100%
+    );
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 @utility scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;

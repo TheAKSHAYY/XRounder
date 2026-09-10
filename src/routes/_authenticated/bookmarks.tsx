@@ -54,18 +54,18 @@ export const Route = createFileRoute("/_authenticated/bookmarks")({
 });
 
 const KIND_META = {
-  note: { label: "Notes", singular: "Note", icon: FileText, color: "text-blue-500 bg-blue-500/10" },
+  note: { label: "Notes", singular: "Note", icon: FileText, color: "text-info bg-info/10" },
   paper: {
     label: "Past Papers",
     singular: "Paper",
     icon: BookOpen,
-    color: "text-amber-500 bg-amber-500/10",
+    color: "text-warning-foreground bg-warning/15 dark:text-warning",
   },
   quiz: {
     label: "MCQ Quizzes",
     singular: "Quiz",
     icon: FlaskConical,
-    color: "text-emerald-500 bg-emerald-500/10",
+    color: "text-quiz bg-quiz/10",
   },
   unit: {
     label: "Syllabus Units",
@@ -74,6 +74,7 @@ const KIND_META = {
     color: "text-primary bg-primary/10",
   },
 } as const;
+
 
 function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } {
   switch (b.kind) {

@@ -812,7 +812,7 @@ function UnitDetail() {
                 </span>
               )}
               {isCompleted ? (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 px-3 py-1 text-[11px] font-semibold">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 text-success border border-success/20 px-3 py-1 text-[11px] font-semibold">
                   <Check className="h-3 w-3" /> Completed
                 </span>
               ) : !user ? (
