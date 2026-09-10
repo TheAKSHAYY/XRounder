@@ -755,6 +755,27 @@
   animation: route-progress 900ms cubic-bezier(0.15, 0.8, 0.25, 1) forwards;
 }
 
+/* Sections ease in as they scroll into view (mobile included).
+   Browsers without scroll-driven animations simply show them normally. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility reveal-on-scroll {
+  @supports (animation-timeline: view()) {
+    animation: reveal-in 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 26%;
+  }
+}
+
 /* Instant tap feedback on any interactive control */
 @media (hover: none) {
   a:active,
