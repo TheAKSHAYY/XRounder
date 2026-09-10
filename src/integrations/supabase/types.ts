@@ -8,6 +8,47 @@ export type Database = {
   };
   public: {
     Tables: {
+      syllabus_topics: {
+        Row: {
+          id: string;
+          unit_id: string;
+          title: string;
+          sort_order: number;
+          status: string;
+          created_at: string;
+          updated_at: string;
+          deleted_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          unit_id: string;
+          title: string;
+          sort_order?: number;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+          deleted_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          unit_id?: string;
+          title?: string;
+          sort_order?: number;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+          deleted_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "syllabus_topics_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "units"
+            referencedColumns: ["id"]
+          }
+        ]
+      };
       app_settings: {
         Row: {
           description: string | null;
@@ -316,6 +357,7 @@ export type Database = {
           thumbnail_path: string | null;
           title: string;
           type: Database["public"]["Enums"]["content_type"];
+          topic_id?: string | null;
           unit_id: string | null;
           updated_at: string;
           view_count: number;
@@ -340,6 +382,7 @@ export type Database = {
           thumbnail_path?: string | null;
           title: string;
           type?: Database["public"]["Enums"]["content_type"];
+          topic_id?: string | null;
           unit_id?: string | null;
           updated_at?: string;
           view_count?: number;
@@ -364,6 +407,7 @@ export type Database = {
           thumbnail_path?: string | null;
           title?: string;
           type?: Database["public"]["Enums"]["content_type"];
+          topic_id?: string | null;
           unit_id?: string | null;
           updated_at?: string;
           view_count?: number;
@@ -948,6 +992,7 @@ export type Database = {
           status: string;
           summary: string | null;
           title: string;
+          topic_id?: string | null;
           unit_id: string;
           updated_at: string;
           view_count: number;
@@ -969,6 +1014,7 @@ export type Database = {
           status?: string;
           summary?: string | null;
           title: string;
+          topic_id?: string | null;
           unit_id: string;
           updated_at?: string;
           view_count?: number;
@@ -990,6 +1036,7 @@ export type Database = {
           status?: string;
           summary?: string | null;
           title?: string;
+          topic_id?: string | null;
           unit_id?: string;
           updated_at?: string;
           view_count?: number;
@@ -1248,6 +1295,7 @@ export type Database = {
           last_activity_at: string;
           progress_pct: number;
           status: Database["public"]["Enums"]["progress_status"];
+          topic_id?: string | null;
           unit_id: string;
           updated_at: string;
           user_id: string;
@@ -1259,6 +1307,7 @@ export type Database = {
           last_activity_at?: string;
           progress_pct?: number;
           status?: Database["public"]["Enums"]["progress_status"];
+          topic_id?: string | null;
           unit_id: string;
           updated_at?: string;
           user_id: string;
@@ -1270,6 +1319,7 @@ export type Database = {
           last_activity_at?: string;
           progress_pct?: number;
           status?: Database["public"]["Enums"]["progress_status"];
+          topic_id?: string | null;
           unit_id?: string;
           updated_at?: string;
           user_id?: string;
@@ -1508,6 +1558,7 @@ export type Database = {
           status: Database["public"]["Enums"]["quiz_status"];
           time_limit_minutes: number | null;
           title: string;
+          topic_id?: string | null;
           unit_id: string;
           updated_at: string;
         };
@@ -1533,6 +1584,7 @@ export type Database = {
           status?: Database["public"]["Enums"]["quiz_status"];
           time_limit_minutes?: number | null;
           title: string;
+          topic_id?: string | null;
           unit_id: string;
           updated_at?: string;
         };
@@ -1558,6 +1610,7 @@ export type Database = {
           status?: Database["public"]["Enums"]["quiz_status"];
           time_limit_minutes?: number | null;
           title?: string;
+          topic_id?: string | null;
           unit_id?: string;
           updated_at?: string;
         };

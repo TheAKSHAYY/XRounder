@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { assertAdmin } from "@/lib/role-guards.server";
 import {
   bumpBucket,
   contentBulkPatchSchema,
@@ -29,7 +30,7 @@ export const listContent = createServerFn({ method: "POST" })
     let q = sb
       .from("content_items")
       .select(
-        "id,type,title,description,status,visibility,subject_id,unit_id,file_path,file_url,tags,view_count,download_count,created_at,updated_at,subject:subjects(id,title),unit:units(id,title)",
+        "id,type,title,description,status,visibility,subject_id,unit_id,topic_id,file_path,file_url,tags,view_count,download_count,created_at,updated_at,subject:subjects(id,title),unit:units(id,title)",
         { count: "exact" },
       )
       .is("deleted_at", null);
@@ -61,6 +62,7 @@ export const createContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: z.input<typeof contentInputSchema>) => contentInputSchema.parse(input))
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const payload = { ...data, created_by: context.userId, file_url: data.file_url || null };
     const { data: row, error } = await context.supabase
       .from("content_items")
@@ -77,6 +79,7 @@ export const updateContent = createServerFn({ method: "POST" })
     z.object({ id: z.string().uuid(), patch: contentInputSchema.partial() }).parse(input),
   )
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const patch = { ...data.patch, file_url: data.patch.file_url || null };
     const { error } = await context.supabase.from("content_items").update(patch).eq("id", data.id);
     if (error) throw new Error(error.message);
@@ -90,6 +93,7 @@ export const bulkUpdateContent = createServerFn({ method: "POST" })
       contentBulkPatchSchema.parse(input),
   )
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const { error } = await context.supabase
       .from("content_items")
       .update(data.patch)
@@ -102,6 +106,7 @@ export const deleteContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { ids: string[] }) => idsSchema.parse(input))
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     // Soft delete first. Some deployments have an UPDATE policy whose WITH CHECK
     // rejects rows with deleted_at set; in that case fall back to a hard delete
     // (admins have a DELETE policy).
@@ -129,6 +134,7 @@ export const duplicateContent = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: { id: string }) => idSchema.parse(input))
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const { data: src, error: e1 } = await context.supabase
       .from("content_items")
       .select("*")

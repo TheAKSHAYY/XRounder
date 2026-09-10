@@ -63,20 +63,23 @@ const ICONS: Record<NodeType, typeof BookOpen> = {
   semester: GraduationCap,
   subject: Library,
   unit: Layers,
+  topic: BookOpen,
 };
 
 const CHILD_TYPE: Record<NodeType, NodeType | null> = {
   course: "semester",
   semester: "subject",
   subject: "unit",
-  unit: null,
+  unit: "topic",
+  topic: null,
 };
 
 const CHILD_LABEL: Record<NodeType, string> = {
   course: "Semester",
   semester: "Subject",
   subject: "Unit",
-  unit: "",
+  unit: "Topic",
+  topic: "",
 };
 
 type Props = {

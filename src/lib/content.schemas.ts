@@ -28,6 +28,7 @@ export const contentInputSchema = z.object({
   description: z.string().optional().nullable(),
   subject_id: z.string().uuid().optional().nullable(),
   unit_id: z.string().uuid().optional().nullable(),
+  topic_id: z.string().uuid().optional().nullable(),
   file_bucket: z.string().optional().nullable(),
   file_path: z.string().optional().nullable(),
   file_mime: z.string().optional().nullable(),

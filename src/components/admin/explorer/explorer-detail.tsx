@@ -24,6 +24,7 @@ const ICONS: Record<NodeType, typeof BookOpen> = {
   semester: GraduationCap,
   subject: Library,
   unit: Layers,
+  topic: BookOpen,
 };
 
 const TYPE_LABEL: Record<NodeType, string> = {
@@ -31,6 +32,7 @@ const TYPE_LABEL: Record<NodeType, string> = {
   semester: "Semester",
   subject: "Subject",
   unit: "Unit",
+  topic: "Topic",
 };
 
 type FormState = {

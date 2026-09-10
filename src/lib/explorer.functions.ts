@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { assertAdmin } from "@/lib/role-guards.server";
 import { slugifyOrGenerated } from "@/lib/slug";
 import { loose } from "@/lib/supabase-loose";
 import {
@@ -19,7 +20,7 @@ export const getExplorerTree = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     const sb = context.supabase;
-    const [courses, semesters, subjects, units] = await Promise.all([
+    const [courses, semesters, subjects, units, topics] = await Promise.all([
       sb
         .from("courses")
         .select("id,title,status,sort_order,slug,code,description")
@@ -40,8 +41,13 @@ export const getExplorerTree = createServerFn({ method: "GET" })
         .select("id,title,number,status,subject_id,summary")
         .is("deleted_at", null)
         .order("number"),
+      sb
+        .from("syllabus_topics")
+        .select("id,title,sort_order,status,unit_id")
+        .is("deleted_at", null)
+        .order("sort_order"),
     ]);
-    const err = courses.error ?? semesters.error ?? subjects.error ?? units.error;
+    const err = courses.error ?? semesters.error ?? subjects.error ?? units.error ?? topics.error;
     if (err) throw new Error(err.message);
 
     const u = units.data ?? [];
@@ -82,16 +88,29 @@ export const getExplorerTree = createServerFn({ method: "GET" })
                 parentId: s.id,
                 meta: { slug: subj.slug, code: subj.code, description: subj.description },
                 childCount: subjUnits.length,
-                children: subjUnits.map((un) => ({
-                  id: un.id,
-                  type: "unit",
-                  name: un.title,
-                  status: un.status as NodeStatus,
-                  position: un.number,
-                  parentId: subj.id,
-                  meta: { number: un.number, summary: un.summary },
-                  childCount: 0,
-                })),
+                children: subjUnits.map((un) => {
+                  const unitTopics = (topics.data ?? []).filter((x) => x.unit_id === un.id);
+                  return {
+                    id: un.id,
+                    type: "unit",
+                    name: un.title,
+                    status: un.status as NodeStatus,
+                    position: un.number,
+                    parentId: subj.id,
+                    meta: { number: un.number, summary: un.summary },
+                    childCount: unitTopics.length,
+                    children: unitTopics.map((t) => ({
+                      id: t.id,
+                      type: "topic",
+                      name: t.title,
+                      status: t.status as NodeStatus,
+                      position: t.sort_order,
+                      parentId: un.id,
+                      meta: {},
+                      childCount: 0,
+                    })),
+                  };
+                }),
               };
             }),
           };
@@ -114,6 +133,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
     const { type, parentId, name } = data;
 
@@ -189,21 +209,43 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       if (error) throw new Error(error.message);
       return { id: row.id as string };
     }
-    // unit
+    if (type === "unit") {
+      const { data: existing } = await sb
+        .from("units")
+        .select("number")
+        .eq("subject_id", parentId)
+        .is("deleted_at", null)
+        .order("number", { ascending: false })
+        .limit(1);
+      const next = ((existing?.[0]?.number as number | undefined) ?? 0) + 1;
+      const { data: row, error } = await sb
+        .from("units")
+        .insert({
+          subject_id: parentId,
+          title: name,
+          number: next,
+          status: "draft",
+        })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+      return { id: row.id as string };
+    }
+    // topic
     const { data: existing } = await sb
-      .from("units")
-      .select("number")
-      .eq("subject_id", parentId)
+      .from("syllabus_topics")
+      .select("sort_order")
+      .eq("unit_id", parentId)
       .is("deleted_at", null)
-      .order("number", { ascending: false })
+      .order("sort_order", { ascending: false })
       .limit(1);
-    const next = ((existing?.[0]?.number as number | undefined) ?? 0) + 1;
+    const next = ((existing?.[0]?.sort_order as number | undefined) ?? 0) + 1;
     const { data: row, error } = await sb
-      .from("units")
+      .from("syllabus_topics")
       .insert({
-        subject_id: parentId,
+        unit_id: parentId,
         title: name,
-        number: next,
+        sort_order: next,
         status: "draft",
       })
       .select("id")
@@ -233,6 +275,7 @@ export const updateExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
     const { type, id, patch } = data;
     const table = tableFor(type);
@@ -261,6 +304,7 @@ export const deleteExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
     const { error } = await sb
       .from(tableFor(data.type))
@@ -275,6 +319,7 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => z.object({ type: NODE_TYPE, id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
     const table = tableFor(data.type);
     const { data: src, error } = await sb.from(table).select("*").eq("id", data.id).single();
@@ -297,15 +342,17 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
       const { data: next } = await q.order("sort_order", { ascending: false }).limit(1);
       copy.sort_order = ((next?.[0]?.sort_order as number | undefined) ?? 0) + 1;
     } else {
-      const parentField = data.type === "semester" ? "course_id" : "subject_id";
+      const parentField = data.type === "semester" ? "course_id" : data.type === "unit" ? "subject_id" : "unit_id";
+      const orderField = data.type === "topic" ? "sort_order" : "number";
       const { data: next } = await sb
         .from(table)
-        .select("number")
+        .select(orderField)
         .eq(parentField, src[parentField])
         .is("deleted_at", null)
-        .order("number", { ascending: false })
+        .order(orderField, { ascending: false })
         .limit(1);
-      copy.number = ((next?.[0]?.number as number | undefined) ?? 0) + 1;
+      const nxt = next?.[0] as any;
+      copy[orderField] = ((nxt?.[orderField] as number | undefined) ?? 0) + 1;
     }
 
     const { data: ins, error: e2 } = await sb.from(table).insert(copy).select("id").single();
@@ -326,6 +373,7 @@ export const reorderExplorerNode = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
+    await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
     const { type, id, direction } = data;
     const table = tableFor(type);
@@ -337,7 +385,9 @@ export const reorderExplorerNode = createServerFn({ method: "POST" })
           ? "course_id"
           : type === "subject"
             ? "semester_id"
-            : "subject_id";
+            : type === "unit"
+              ? "subject_id"
+              : "unit_id";
 
     const { data: cur, error } = await sb.from(table).select("*").eq("id", id).single();
     if (error) throw new Error(error.message);

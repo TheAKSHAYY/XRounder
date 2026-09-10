@@ -41,7 +41,10 @@ type UnitDetailData = {
   items: UnitContentItem[];
   siblings: SiblingUnit[];
   quizzes: QuizRow[];
+  topics: TopicRow[];
 };
+
+type TopicRow = { id: string; title: string; sort_order: number };
 
 async function fetchUnitDetails(
   queryClient: any,
@@ -103,11 +106,12 @@ async function fetchUnitDetails(
         { data: legacyNotesRes },
         { data: siblingsRes },
         { data: quizzesRes },
+        { data: topicsRes },
       ] = await Promise.all([
         supabase
           .from("content_items")
           .select(
-            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
+            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, topic_id, created_at",
           )
           .eq("subject_id", subject.id)
           .or(contentFilter)
@@ -117,7 +121,7 @@ async function fetchUnitDetails(
         supabase
           .from("notes")
           .select(
-            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at",
+            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, topic_id, created_at",
           )
           .eq("unit_id", unit.id)
           .eq("status", "published")
@@ -133,11 +137,18 @@ async function fetchUnitDetails(
           .order("number"),
         supabase
           .from("quizzes")
-          .select("id, title, time_limit_minutes")
+          .select("id, title, time_limit_minutes, topic_id")
           .eq("unit_id", unit.id)
           .eq("status", "published")
           .is("deleted_at", null)
           .order("order_index"),
+        supabase
+          .from("syllabus_topics")
+          .select("id, title, sort_order")
+          .eq("unit_id", unit.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("sort_order"),
       ]);
 
       const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
@@ -152,6 +163,7 @@ async function fetchUnitDetails(
         file_size_bytes: c.file_size_bytes,
         file_url: c.file_url,
         tags: c.tags ?? [],
+        topic_id: c.topic_id ?? null,
         created_at: c.created_at ?? "",
       }));
 
@@ -169,6 +181,7 @@ async function fetchUnitDetails(
             file_mime: n.file_mime,
             file_size_bytes: n.file_size_bytes,
             file_url: null,
+            topic_id: n.topic_id ?? null,
             created_at: n.created_at ?? "",
           });
         }
@@ -182,6 +195,7 @@ async function fetchUnitDetails(
         items,
         siblings: (siblingsRes ?? []) as SiblingUnit[],
         quizzes: (quizzesRes ?? []) as QuizRow[],
+        topics: (topicsRes ?? []) as TopicRow[],
       };
     },
   });
@@ -340,12 +354,13 @@ export type UnitContentItem = {
   file_size_bytes: number | null;
   file_url: string | null;
   tags?: string[];
+  topic_id: string | null;
   created_at: string;
 };
 
 type SiblingUnit = { id: string; number: number };
 
-type QuizRow = { id: string; title: string; time_limit_minutes: number | null };
+type QuizRow = { id: string; title: string; time_limit_minutes: number | null; topic_id: string | null };
 
 type PyqQuestion = {
   id: string;
@@ -449,11 +464,12 @@ function UnitDetail() {
         { data: legacyNotesRes },
         { data: siblingsRes },
         { data: quizzesRes },
+        { data: topicsRes },
       ] = await Promise.all([
         supabase
           .from("content_items")
           .select(
-            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, created_at",
+            "id, type, title, description, file_path, file_bucket, file_mime, file_size_bytes, file_url, tags, topic_id, created_at",
           )
           .eq("subject_id", subject.id)
           .or(contentFilter)
@@ -463,7 +479,7 @@ function UnitDetail() {
         supabase
           .from("notes")
           .select(
-            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, created_at",
+            "id, title, summary, body, file_path, file_bucket, file_mime, file_size_bytes, topic_id, created_at",
           )
           .eq("unit_id", unit.id)
           .eq("status", "published")
@@ -479,11 +495,18 @@ function UnitDetail() {
           .order("number"),
         supabase
           .from("quizzes")
-          .select("id, title, time_limit_minutes")
+          .select("id, title, time_limit_minutes, topic_id")
           .eq("unit_id", unit.id)
           .eq("status", "published")
           .is("deleted_at", null)
           .order("order_index"),
+        supabase
+          .from("syllabus_topics")
+          .select("id, title, sort_order")
+          .eq("unit_id", unit.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("sort_order"),
       ]);
 
       const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
@@ -498,6 +521,7 @@ function UnitDetail() {
         file_size_bytes: c.file_size_bytes,
         file_url: c.file_url,
         tags: c.tags ?? [],
+        topic_id: c.topic_id ?? null,
         created_at: c.created_at ?? "",
       }));
 
@@ -516,6 +540,7 @@ function UnitDetail() {
             file_mime: n.file_mime,
             file_size_bytes: n.file_size_bytes,
             file_url: null,
+            topic_id: n.topic_id ?? null,
             created_at: n.created_at ?? "",
           });
         }
@@ -529,6 +554,7 @@ function UnitDetail() {
         items,
         siblings: (siblingsRes ?? []) as SiblingUnit[],
         quizzes: (quizzesRes ?? []) as QuizRow[],
+        topics: (topicsRes ?? []) as TopicRow[],
       };
     },
     initialData: loaderData,

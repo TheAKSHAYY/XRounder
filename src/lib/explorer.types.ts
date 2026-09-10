@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export type NodeType = "course" | "semester" | "subject" | "unit";
+export type NodeType = "course" | "semester" | "subject" | "unit" | "topic";
 export type NodeStatus = "draft" | "published" | "archived";
 
 export type NodeMeta = {
@@ -23,9 +23,9 @@ export type ExplorerNode = {
   children?: ExplorerNode[];
 };
 
-export const NODE_TYPE = z.enum(["course", "semester", "subject", "unit"]);
+export const NODE_TYPE = z.enum(["course", "semester", "subject", "unit", "topic"]);
 
-export type NodeTable = "courses" | "semesters" | "subjects" | "units";
+export type NodeTable = "courses" | "semesters" | "subjects" | "units" | "syllabus_topics";
 
 export function tableFor(type: NodeType): NodeTable {
   switch (type) {
@@ -37,5 +37,7 @@ export function tableFor(type: NodeType): NodeTable {
       return "subjects";
     case "unit":
       return "units";
+    case "topic":
+      return "syllabus_topics";
   }
 }
