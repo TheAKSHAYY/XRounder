@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -16,6 +17,7 @@ import { MaintenanceGate } from "@/components/maintenance-gate";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { BrandingApplier } from "@/components/branding/branding-applier";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { RouteProgress } from "@/components/route-progress";
 import { EnvErrorScreen } from "@/components/env-error-screen";
 import { formatEnvError, validateSupabaseEnv } from "@/lib/env";
 import appCss from "../styles.css?url";
@@ -179,6 +181,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   const router = useRouter();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
@@ -207,9 +210,15 @@ function RootComponent() {
         >
           Skip to content
         </a>
+        <RouteProgress />
         <MaintenanceGate>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <div id="main-content" tabIndex={-1} className="outline-none">
+          <div
+            id="main-content"
+            tabIndex={-1}
+            key={pathname}
+            className="outline-none animate-fade-in-up"
+          >
             <Outlet />
           </div>
         </MaintenanceGate>
