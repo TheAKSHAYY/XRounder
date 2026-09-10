@@ -815,6 +815,11 @@ button,
   .animate-route-progress {
     animation: none;
   }
+  .reveal-on-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
   a:active,
   button:active,
   [role="button"]:active {
