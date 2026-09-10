@@ -181,6 +181,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   const router = useRouter();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
@@ -209,9 +210,15 @@ function RootComponent() {
         >
           Skip to content
         </a>
+        <RouteProgress />
         <MaintenanceGate>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <div id="main-content" tabIndex={-1} className="outline-none">
+          <div
+            id="main-content"
+            tabIndex={-1}
+            key={pathname}
+            className="outline-none animate-fade-in-up"
+          >
             <Outlet />
           </div>
         </MaintenanceGate>
