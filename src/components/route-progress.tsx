@@ -23,12 +23,12 @@ export function RouteProgress() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-x-0 top-0 z-[200] h-0.5 overflow-hidden"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[200] h-[3px] overflow-hidden sm:h-0.5"
     >
       <div
         className={
           isLoading
-            ? "h-full w-full origin-left bg-primary animate-route-progress"
+            ? "h-full w-full origin-left bg-primary shadow-[0_0_10px_2px_var(--color-primary)] animate-route-progress"
             : "h-full w-full bg-primary opacity-0 transition-opacity duration-200"
         }
       />

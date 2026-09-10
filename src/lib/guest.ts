@@ -71,10 +71,19 @@ function write(next: GuestState) {
 
 // Keep other tabs in sync with whatever the guest just did.
 if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e) => {
-    if (e.key !== KEY) return;
+  const rehydrate = () => {
     cache = null;
     listeners.forEach((l) => l());
+  };
+  window.addEventListener("storage", (e) => {
+    if (e.key !== KEY) return;
+    rehydrate();
+  });
+  // Coming back to a backgrounded tab picks up anything done elsewhere,
+  // so guest progress never needs a manual refresh.
+  window.addEventListener("focus", rehydrate);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") rehydrate();
   });
 }
 
