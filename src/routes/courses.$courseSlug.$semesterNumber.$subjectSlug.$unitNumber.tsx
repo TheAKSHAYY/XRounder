@@ -754,7 +754,7 @@ function UnitDetail() {
       <SiteHeader />
 
       {/* ─── Compact Reading Header ─── */}
-      <div className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="animate-fade-in-up sticky top-0 z-30 border-b border-border bg-background/90 shadow-sm backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300">
         <div className="mx-auto max-w-6xl px-5 py-3 sm:px-8">
           <div className="flex items-center justify-between gap-4">
             <div className="min-w-0 flex-1">
