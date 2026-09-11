@@ -588,45 +588,66 @@ export function LearningWorkflow() {
   const steps = [
     {
       num: "01",
-      title: "Choose Program & Semester",
-      desc: "Select your university degree and current semester to filter relevant subjects.",
+      title: "Monday — opens Semester 5",
+      desc: "Picks her program and semester once; Computer Networks Unit 3 is waiting where she left it.",
     },
     {
       num: "02",
-      title: "Study Structured Units",
-      desc: "Read concise, exam-focused syllabus notes and watch embedded video lectures.",
+      title: "Tuesday — reads Unit 3",
+      desc: "Works through the routing and IP addressing notes, then answers the unit MCQs.",
     },
     {
       num: "03",
-      title: "Practice MCQs & Papers",
-      desc: "Test your understanding with instant question evaluation and solve previous exams.",
+      title: "Wednesday — sees the gap",
+      desc: "Scores 7/10, but only 4 of 9 subnetting questions are right. Subnetting is flagged weak.",
+    },
+    {
+      num: "04",
+      title: "Thursday — revises what matters",
+      desc: "Her dashboard sends her back to Unit 3.2 instead of restarting the whole subject.",
+    },
+    {
+      num: "05",
+      title: "Friday — retests and moves on",
+      desc: "Retakes the quiz, clears subnetting, and the loop continues with the next unit.",
     },
   ];
 
   return (
-    <section id="how-it-works" className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background">
+    <section
+      id="how-it-works"
+      className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl text-center mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-            How It Works
+            A week with XRounder
           </span>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            A simple, disciplined learning workflow.
+            One student, one week, one weak topic closed.
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            An illustrative walkthrough of how the loop plays out in a real study week.
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((s) => (
             <div
               key={s.num}
-              className="relative flex flex-col items-center text-center p-6 rounded-2xl border border-border bg-surface"
+              className="relative flex flex-col p-5 rounded-2xl border border-border bg-surface"
             >
-              <span className="font-mono text-2xl font-black text-primary/30">{s.num}</span>
-              <h3 className="mt-3 font-display text-lg font-bold text-foreground">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              <span className="font-mono text-xl font-black text-primary/40">{s.num}</span>
+              <h3 className="mt-2 font-display text-sm font-bold text-foreground">{s.title}</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
       </div>
     </section>
   );
