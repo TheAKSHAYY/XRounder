@@ -196,7 +196,18 @@ function Index() {
         {list.map((s) => {
           switch (s.type) {
             case "hero":
-              return <Hero key={s.id} user={user} loading={loading} />;
+              return (
+                <div key={s.id}>
+                  <Hero user={user} loading={loading} />
+                  {/* Positioning sections always follow the hero, even for CMS-ordered lists. */}
+                  {!list.some((x) => x.type === "learning_loop") && <LearningLoop />}
+                  {!list.some((x) => x.type === "why") && <WhyXRounder />}
+                </div>
+              );
+            case "learning_loop":
+              return <LearningLoop key={s.id} />;
+            case "why":
+              return <WhyXRounder key={s.id} />;
             case "features":
               return <Features key={s.id} />;
             case "courses":
