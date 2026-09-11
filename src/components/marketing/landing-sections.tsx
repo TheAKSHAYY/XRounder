@@ -648,11 +648,6 @@ export function LearningWorkflow() {
   );
 }
 
-      </div>
-    </section>
-  );
-}
-
 /* ──────────────────────────────────────────────────────────── 5. Single Strong CTA */
 
 export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
