@@ -678,6 +678,176 @@ export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
   );
 }
 
+/* ─────────────────────────────────────── 6. The learning loop + personalization */
+
+export function LearningLoop() {
+  const loop = [
+    { title: "Learn", desc: "Read the unit notes for your syllabus." },
+    { title: "Practice", desc: "Answer unit-wise MCQs while the topic is fresh." },
+    { title: "Assess", desc: "Each attempt is scored question by question." },
+    { title: "Detect weakness", desc: "Low-scoring topics are surfaced, not hidden." },
+    { title: "Revise", desc: "Go back to the exact unit behind the mistakes." },
+    { title: "Retest", desc: "Re-attempt to confirm the gap is closed." },
+    { title: "Improve", desc: "Progress and streaks update across the semester." },
+  ];
+
+  const signals = [
+    {
+      icon: TrendingUp,
+      title: "Progress",
+      desc: "Which units you have finished, and where you stopped reading.",
+    },
+    {
+      icon: FlaskConical,
+      title: "Quiz performance",
+      desc: "Per-question results from every MCQ attempt you make.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Weak topics",
+      desc: "Topics where your accuracy stays lowest are flagged for you.",
+    },
+    {
+      icon: Target,
+      title: "Recommendations",
+      desc: "A concrete next step: this unit to re-read, this quiz to retake.",
+    },
+  ];
+
+  return (
+    <section
+      id="learning-loop"
+      className="reveal-on-scroll border-b border-border/70 bg-background py-16 sm:py-20"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            The learning loop
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            A closed loop, not a content dump.
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            “Personalized Semester Operating System” simply means this: XRounder keeps one loop
+            running for every subject in your semester, and each pass tells you where to go next.
+          </p>
+        </div>
+
+        <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {loop.map((step, i) => (
+            <li
+              key={step.title}
+              className={cn(
+                "rounded-2xl border p-4",
+                step.title === "Detect weakness"
+                  ? "border-primary/40 bg-primary/5"
+                  : "border-border bg-surface",
+              )}
+            >
+              <div className="flex items-center gap-2">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary/10 font-mono text-[11px] font-bold text-primary">
+                  {i + 1}
+                </span>
+                <h3 className="font-display text-sm font-bold text-foreground">{step.title}</h3>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+            </li>
+          ))}
+          <li className="flex items-center gap-2 rounded-2xl border border-dashed border-primary/40 bg-primary/5 p-4">
+            <RefreshCw className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+            <p className="text-xs font-semibold text-primary">
+              Loop repeats per unit until the weak topic is no longer weak.
+            </p>
+          </li>
+        </ol>
+
+        <div className="mt-12">
+          <h3 className="font-display text-xl font-bold text-foreground">
+            What personalization actually uses
+          </h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {signals.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.title} className="rounded-2xl border border-border bg-surface p-5">
+                  <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-4.5 w-4.5" />
+                  </div>
+                  <h4 className="mt-3 font-display text-sm font-bold text-foreground">{s.title}</h4>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────── 7. Why XRounder vs a traditional LMS */
+
+export function WhyXRounder() {
+  return (
+    <section
+      id="why"
+      className="reveal-on-scroll border-b border-border/70 bg-surface/40 py-16 sm:py-20"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Why XRounder?
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            The difference is what happens after the content.
+          </h2>
+        </div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-6">
+            <div className="flex items-center gap-2">
+              <XCircle className="h-4 w-4 text-muted-foreground" aria-hidden />
+              <h3 className="font-display text-base font-bold text-foreground">
+                Traditional LMS / notes site
+              </h3>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+              <span className="rounded-lg bg-muted px-2.5 py-1 text-foreground/80">Content</span>
+              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+              <span className="rounded-lg bg-muted px-2.5 py-1 text-foreground/80">
+                Student figures out what to do
+              </span>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Everything is available, nothing is prioritised. You guess which unit is weakest and
+              usually revise what already feels comfortable.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden />
+              <h3 className="font-display text-base font-bold text-foreground">XRounder</h3>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+              {["Content", "Performance", "Weakness detection", "Next best action"].map((s, i) => (
+                <span key={s} className="flex items-center gap-2">
+                  {i > 0 && <ChevronRight className="h-3.5 w-3.5 text-primary/60" aria-hidden />}
+                  <span className="rounded-lg bg-background px-2.5 py-1 text-foreground">{s}</span>
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              The same syllabus content, plus the part students actually miss: your results decide
+              what surfaces next, so study time goes to the weakest topic first.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ──────────────────────────────────────────────────────────── Compatibility stubs */
 export function TrustBar() {
   return null;
