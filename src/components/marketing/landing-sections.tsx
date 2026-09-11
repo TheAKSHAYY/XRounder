@@ -12,7 +12,11 @@ import {
   Layers,
   PlayCircle,
   Sparkles,
+  Target,
   TrendingUp,
+  RefreshCw,
+  AlertTriangle,
+  XCircle,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -24,29 +28,52 @@ import { cn } from "@/lib/utils";
 /* ──────────────────────────────────────────────────────────── 1. Hero */
 
 export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
-  const [activeTab, setActiveTab] = useState<"dashboard" | "notes" | "quiz">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "notes" | "quiz" | "next">("dashboard");
 
   return (
     <section className="relative overflow-hidden border-b border-border/70 bg-surface/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Value Proposition */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              Personal Semester Operating System
+              Personalized Semester OS · for university students
             </div>
 
-            <h1 className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
-              Your entire semester. <span className="text-primary">One focused study system.</span>
+            <h1 className="font-display text-[2rem] font-extrabold tracking-tight text-foreground sm:text-5xl leading-[1.12]">
+              Most platforms hand you notes.{" "}
+              <span className="text-primary">XRounder tells you what to study next.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Syllabus-aligned notes, unit-wise MCQs, previous-year papers and progress tracking —
-              built around exactly what you need to learn and revise.
+              XRounder organizes your whole semester — syllabus-aligned notes, unit-wise MCQs and
+              past papers — then reads your own quiz performance to find the topics you are
+              struggling with and points you to the next thing worth revising.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            {/* The learning loop, in one line */}
+            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] font-semibold text-muted-foreground">
+              {["Learn", "Practice", "Assess", "Detect weakness", "Revise", "Retest", "Improve"].map(
+                (step, i) => (
+                  <span key={step} className="flex items-center gap-1.5">
+                    {i > 0 && <ChevronRight className="h-3 w-3 text-primary/50" aria-hidden />}
+                    <span
+                      className={cn(
+                        "rounded-md px-1.5 py-0.5",
+                        step === "Detect weakness"
+                          ? "bg-primary/10 text-primary"
+                          : "bg-muted text-foreground/80",
+                      )}
+                    >
+                      {step}
+                    </span>
+                  </span>
+                ),
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               {loading ? (
                 <div className="flex items-center gap-3">
                   <Skeleton className="h-12 w-44 rounded-xl" />
@@ -86,21 +113,22 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               )}
             </div>
 
-            <div className="flex items-center gap-6 pt-4 text-xs font-medium text-muted-foreground">
+            <div className="grid gap-2 pt-2 text-xs font-medium text-muted-foreground sm:grid-cols-3">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Unit-by-unit syllabus</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Unit-wise syllabus structure</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Weak topic tracking</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Weak topics from your quizzes</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>100% free student access</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Browse free, no signup</span>
               </div>
             </div>
           </div>
+
 
           {/* Right Column: Live Interactive Product UI Preview */}
           <div className="lg:col-span-6">
@@ -160,6 +188,18 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                   )}
                 >
                   <FlaskConical className="h-3.5 w-3.5" /> MCQ Solver
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("next")}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
+                    activeTab === "next"
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "text-muted-foreground hover:bg-muted",
+                  )}
+                >
+                  <Target className="h-3.5 w-3.5" /> Next Step
                 </button>
               </div>
 
@@ -273,6 +313,52 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                         D. return
                       </div>
                     </div>
+                  </div>
+                )}
+
+                {activeTab === "next" && (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                        Next best action
+                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">
+                        based on your last 3 attempts
+                      </span>
+                    </div>
+                    <div className="rounded-xl border border-amber-500/25 bg-amber-50/40 p-3 dark:bg-amber-950/20">
+                      <p className="flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-300">
+                        <AlertTriangle className="h-3.5 w-3.5" aria-hidden /> Weakest topic: Subnetting
+                      </p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        4 of 9 correct across Unit 3 quizzes — lowest score in this subject.
+                      </p>
+                    </div>
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          1
+                        </span>
+                        <span className="text-foreground">Re-read Unit 3.2 — Subnetting notes</span>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          2
+                        </span>
+                        <span className="text-foreground">Retake the 10-question Unit 3 quiz</span>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          3
+                        </span>
+                        <span className="text-foreground">
+                          Solve subnetting questions from the 2023 paper
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground">
+                      Illustrative preview of a signed-in student's dashboard.
+                    </p>
                   </div>
                 )}
               </div>
@@ -502,42 +588,58 @@ export function LearningWorkflow() {
   const steps = [
     {
       num: "01",
-      title: "Choose Program & Semester",
-      desc: "Select your university degree and current semester to filter relevant subjects.",
+      title: "Monday — opens Semester 5",
+      desc: "Picks her program and semester once; Computer Networks Unit 3 is waiting where she left it.",
     },
     {
       num: "02",
-      title: "Study Structured Units",
-      desc: "Read concise, exam-focused syllabus notes and watch embedded video lectures.",
+      title: "Tuesday — reads Unit 3",
+      desc: "Works through the routing and IP addressing notes, then answers the unit MCQs.",
     },
     {
       num: "03",
-      title: "Practice MCQs & Papers",
-      desc: "Test your understanding with instant question evaluation and solve previous exams.",
+      title: "Wednesday — sees the gap",
+      desc: "Scores 7/10, but only 4 of 9 subnetting questions are right. Subnetting is flagged weak.",
+    },
+    {
+      num: "04",
+      title: "Thursday — revises what matters",
+      desc: "Her dashboard sends her back to Unit 3.2 instead of restarting the whole subject.",
+    },
+    {
+      num: "05",
+      title: "Friday — retests and moves on",
+      desc: "Retakes the quiz, clears subnetting, and the loop continues with the next unit.",
     },
   ];
 
   return (
-    <section id="how-it-works" className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background">
+    <section
+      id="how-it-works"
+      className="reveal-on-scroll py-16 sm:py-20 border-b border-border/70 bg-background"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl text-center mx-auto">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-            How It Works
+            A week with XRounder
           </span>
           <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            A simple, disciplined learning workflow.
+            One student, one week, one weak topic closed.
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            An illustrative walkthrough of how the loop plays out in a real study week.
+          </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((s) => (
             <div
               key={s.num}
-              className="relative flex flex-col items-center text-center p-6 rounded-2xl border border-border bg-surface"
+              className="relative flex flex-col p-5 rounded-2xl border border-border bg-surface"
             >
-              <span className="font-mono text-2xl font-black text-primary/30">{s.num}</span>
-              <h3 className="mt-3 font-display text-lg font-bold text-foreground">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              <span className="font-mono text-xl font-black text-primary/40">{s.num}</span>
+              <h3 className="mt-2 font-display text-sm font-bold text-foreground">{s.title}</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
@@ -585,6 +687,176 @@ export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
                 </Button>
               </>
             )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────── 6. The learning loop + personalization */
+
+export function LearningLoop() {
+  const loop = [
+    { title: "Learn", desc: "Read the unit notes for your syllabus." },
+    { title: "Practice", desc: "Answer unit-wise MCQs while the topic is fresh." },
+    { title: "Assess", desc: "Each attempt is scored question by question." },
+    { title: "Detect weakness", desc: "Low-scoring topics are surfaced, not hidden." },
+    { title: "Revise", desc: "Go back to the exact unit behind the mistakes." },
+    { title: "Retest", desc: "Re-attempt to confirm the gap is closed." },
+    { title: "Improve", desc: "Progress and streaks update across the semester." },
+  ];
+
+  const signals = [
+    {
+      icon: TrendingUp,
+      title: "Progress",
+      desc: "Which units you have finished, and where you stopped reading.",
+    },
+    {
+      icon: FlaskConical,
+      title: "Quiz performance",
+      desc: "Per-question results from every MCQ attempt you make.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Weak topics",
+      desc: "Topics where your accuracy stays lowest are flagged for you.",
+    },
+    {
+      icon: Target,
+      title: "Recommendations",
+      desc: "A concrete next step: this unit to re-read, this quiz to retake.",
+    },
+  ];
+
+  return (
+    <section
+      id="learning-loop"
+      className="reveal-on-scroll border-b border-border/70 bg-background py-16 sm:py-20"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            The learning loop
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            A closed loop, not a content dump.
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            “Personalized Semester Operating System” simply means this: XRounder keeps one loop
+            running for every subject in your semester, and each pass tells you where to go next.
+          </p>
+        </div>
+
+        <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {loop.map((step, i) => (
+            <li
+              key={step.title}
+              className={cn(
+                "rounded-2xl border p-4",
+                step.title === "Detect weakness"
+                  ? "border-primary/40 bg-primary/5"
+                  : "border-border bg-surface",
+              )}
+            >
+              <div className="flex items-center gap-2">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary/10 font-mono text-[11px] font-bold text-primary">
+                  {i + 1}
+                </span>
+                <h3 className="font-display text-sm font-bold text-foreground">{step.title}</h3>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+            </li>
+          ))}
+          <li className="flex items-center gap-2 rounded-2xl border border-dashed border-primary/40 bg-primary/5 p-4">
+            <RefreshCw className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+            <p className="text-xs font-semibold text-primary">
+              Loop repeats per unit until the weak topic is no longer weak.
+            </p>
+          </li>
+        </ol>
+
+        <div className="mt-12">
+          <h3 className="font-display text-xl font-bold text-foreground">
+            What personalization actually uses
+          </h3>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {signals.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.title} className="rounded-2xl border border-border bg-surface p-5">
+                  <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-4.5 w-4.5" />
+                  </div>
+                  <h4 className="mt-3 font-display text-sm font-bold text-foreground">{s.title}</h4>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────── 7. Why XRounder vs a traditional LMS */
+
+export function WhyXRounder() {
+  return (
+    <section
+      id="why"
+      className="reveal-on-scroll border-b border-border/70 bg-surface/40 py-16 sm:py-20"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+            Why XRounder?
+          </span>
+          <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            The difference is what happens after the content.
+          </h2>
+        </div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-background p-6">
+            <div className="flex items-center gap-2">
+              <XCircle className="h-4 w-4 text-muted-foreground" aria-hidden />
+              <h3 className="font-display text-base font-bold text-foreground">
+                Traditional LMS / notes site
+              </h3>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+              <span className="rounded-lg bg-muted px-2.5 py-1 text-foreground/80">Content</span>
+              <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+              <span className="rounded-lg bg-muted px-2.5 py-1 text-foreground/80">
+                Student figures out what to do
+              </span>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Everything is available, nothing is prioritised. You guess which unit is weakest and
+              usually revise what already feels comfortable.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden />
+              <h3 className="font-display text-base font-bold text-foreground">XRounder</h3>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-semibold">
+              {["Content", "Performance", "Weakness detection", "Next best action"].map((s, i) => (
+                <span key={s} className="flex items-center gap-2">
+                  {i > 0 && <ChevronRight className="h-3.5 w-3.5 text-primary/60" aria-hidden />}
+                  <span className="rounded-lg bg-background px-2.5 py-1 text-foreground">{s}</span>
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              The same syllabus content, plus the part students actually miss: your results decide
+              what surfaces next, so study time goes to the weakest topic first.
+            </p>
           </div>
         </div>
       </div>
