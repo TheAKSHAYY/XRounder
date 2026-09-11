@@ -12,7 +12,11 @@ import {
   Layers,
   PlayCircle,
   Sparkles,
+  Target,
   TrendingUp,
+  RefreshCw,
+  AlertTriangle,
+  XCircle,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -24,29 +28,52 @@ import { cn } from "@/lib/utils";
 /* ──────────────────────────────────────────────────────────── 1. Hero */
 
 export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
-  const [activeTab, setActiveTab] = useState<"dashboard" | "notes" | "quiz">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "notes" | "quiz" | "next">("dashboard");
 
   return (
     <section className="relative overflow-hidden border-b border-border/70 bg-surface/30 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Value Proposition */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-5">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
-              Personal Semester Operating System
+              Personalized Semester OS · for university students
             </div>
 
-            <h1 className="font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
-              Your entire semester. <span className="text-primary">One focused study system.</span>
+            <h1 className="font-display text-[2rem] font-extrabold tracking-tight text-foreground sm:text-5xl leading-[1.12]">
+              Most platforms hand you notes.{" "}
+              <span className="text-primary">XRounder tells you what to study next.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Syllabus-aligned notes, unit-wise MCQs, previous-year papers and progress tracking —
-              built around exactly what you need to learn and revise.
+              XRounder organizes your whole semester — syllabus-aligned notes, unit-wise MCQs and
+              past papers — then reads your own quiz performance to find the topics you are
+              struggling with and points you to the next thing worth revising.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            {/* The learning loop, in one line */}
+            <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[11px] font-semibold text-muted-foreground">
+              {["Learn", "Practice", "Assess", "Detect weakness", "Revise", "Retest", "Improve"].map(
+                (step, i) => (
+                  <span key={step} className="flex items-center gap-1.5">
+                    {i > 0 && <ChevronRight className="h-3 w-3 text-primary/50" aria-hidden />}
+                    <span
+                      className={cn(
+                        "rounded-md px-1.5 py-0.5",
+                        step === "Detect weakness"
+                          ? "bg-primary/10 text-primary"
+                          : "bg-muted text-foreground/80",
+                      )}
+                    >
+                      {step}
+                    </span>
+                  </span>
+                ),
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
               {loading ? (
                 <div className="flex items-center gap-3">
                   <Skeleton className="h-12 w-44 rounded-xl" />
@@ -86,21 +113,22 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               )}
             </div>
 
-            <div className="flex items-center gap-6 pt-4 text-xs font-medium text-muted-foreground">
+            <div className="grid gap-2 pt-2 text-xs font-medium text-muted-foreground sm:grid-cols-3">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Unit-by-unit syllabus</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Unit-wise syllabus structure</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>Weak topic tracking</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Weak topics from your quizzes</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                <span>100% free student access</span>
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" />
+                <span>Browse free, no signup</span>
               </div>
             </div>
           </div>
+
 
           {/* Right Column: Live Interactive Product UI Preview */}
           <div className="lg:col-span-6">
@@ -160,6 +188,18 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                   )}
                 >
                   <FlaskConical className="h-3.5 w-3.5" /> MCQ Solver
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("next")}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
+                    activeTab === "next"
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "text-muted-foreground hover:bg-muted",
+                  )}
+                >
+                  <Target className="h-3.5 w-3.5" /> Next Step
                 </button>
               </div>
 
@@ -273,6 +313,52 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                         D. return
                       </div>
                     </div>
+                  </div>
+                )}
+
+                {activeTab === "next" && (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                        Next best action
+                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">
+                        based on your last 3 attempts
+                      </span>
+                    </div>
+                    <div className="rounded-xl border border-amber-500/25 bg-amber-50/40 p-3 dark:bg-amber-950/20">
+                      <p className="flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-300">
+                        <AlertTriangle className="h-3.5 w-3.5" aria-hidden /> Weakest topic: Subnetting
+                      </p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        4 of 9 correct across Unit 3 quizzes — lowest score in this subject.
+                      </p>
+                    </div>
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          1
+                        </span>
+                        <span className="text-foreground">Re-read Unit 3.2 — Subnetting notes</span>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          2
+                        </span>
+                        <span className="text-foreground">Retake the 10-question Unit 3 quiz</span>
+                      </div>
+                      <div className="flex items-center gap-2 rounded-lg border border-border/70 bg-surface px-3 py-2">
+                        <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+                          3
+                        </span>
+                        <span className="text-foreground">
+                          Solve subnetting questions from the 2023 paper
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground">
+                      Illustrative preview of a signed-in student's dashboard.
+                    </p>
                   </div>
                 )}
               </div>
