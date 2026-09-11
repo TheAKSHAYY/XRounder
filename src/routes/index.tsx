@@ -12,7 +12,9 @@ import {
   CourseDiscovery,
   Features,
   Hero,
+  LearningLoop,
   LearningWorkflow,
+  WhyXRounder,
 } from "@/components/marketing/landing-sections";
 
 export const Route = createFileRoute("/")({
@@ -103,9 +105,11 @@ type HomepageSection = { id: string; type: string; position: number };
 
 const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
   { id: "default-hero", type: "hero", position: 10 },
+  { id: "default-loop", type: "learning_loop", position: 15 },
+  { id: "default-why", type: "why", position: 18 },
   { id: "default-features", type: "features", position: 20 },
-  { id: "default-courses", type: "courses", position: 30 },
-  { id: "default-workflow", type: "workflow", position: 40 },
+  { id: "default-workflow", type: "workflow", position: 30 },
+  { id: "default-courses", type: "courses", position: 40 },
   { id: "default-cta", type: "cta", position: 50 },
 ];
 
