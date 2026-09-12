@@ -76,6 +76,45 @@ type WeakTopic = {
   lastAttempt: string;
 };
 
+type RecentProgressResult = {
+  id: string;
+  unit_id: string;
+  status: string;
+  progress_pct: number | null;
+  last_activity_at: string | null;
+  units: {
+    number: number;
+    title: string;
+    subjects: {
+      title: string;
+      slug: string;
+      semesters: {
+        number: number;
+        courses: {
+          slug: string;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+};
+
+type WeakAttemptResult = {
+  quiz_id: string;
+  pct: number | null;
+  score: number | null;
+  max_score: number | null;
+  submitted_at: string | null;
+  quizzes: {
+    title: string | null;
+    units: {
+      title: string;
+      subjects: {
+        title: string;
+      } | null;
+    } | null;
+  } | null;
+};
+
 function greeting() {
   const h = new Date().getHours();
   if (h < 5) return "Burning the midnight oil";
@@ -190,7 +229,7 @@ function DashboardPage() {
 
         if (error || !data) return [];
 
-        return data.map((r: any) => ({
+        return (data as unknown as RecentProgressResult[]).map((r) => ({
           id: r.id,
           unit_id: r.unit_id,
           unit_number: r.units?.number ?? 1,
@@ -323,7 +362,7 @@ function DashboardPage() {
 
         const topicMap = new Map<string, WeakTopic>();
 
-        for (const a of data as any[]) {
+        for (const a of data as unknown as WeakAttemptResult[]) {
           const q = a.quizzes;
           if (!q) continue;
           const qId = a.quiz_id;
@@ -528,74 +567,258 @@ function DashboardPage() {
         </div>
 
         <div className="lg:col-span-4 flex flex-col justify-between rounded-2xl border border-border/80 bg-card p-6 shadow-xs">
-          <div>
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-primary font-mono inline-flex items-center gap-1">
-                <Zap className="h-3.5 w-3.5" /> Today's Practice
-              </span>
-              <span className="text-[11px] text-muted-foreground font-medium">Daily Goal</span>
-            </div>
-
-            <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-              Master 1 Syllabus Unit
-            </h3>
-            <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-              Read unit notes, test yourself with practice MCQs, and identify areas to revise before
-              exams.
-            </p>
-
-            <div className="mt-4 rounded-xl bg-muted/60 p-3 border border-border/40 space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">MCQs Solved:</span>
-                <span className="font-semibold text-foreground">
-                  {attempts.length > 0 ? `${attempts.length} attempts` : "None yet"}
+          {weakTopics.length > 0 ? (
+            /* 1. WEAKNESS STATE: Student has a topic < 70% */
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-warning font-mono inline-flex items-center gap-1">
+                  <AlertTriangle className="h-3.5 w-3.5" /> Next Best Action
                 </span>
+                <Badge variant="warning" className="text-[10px] font-bold rounded-full px-2 py-0.5">
+                  Revision Priority
+                </Badge>
               </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-muted-foreground">Accuracy:</span>
-                <span className="font-semibold text-foreground">
-                  {avgScore !== null ? `${avgScore}%` : "—"}
-                </span>
+
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground leading-snug">
+                Revise: {weakTopics[0].title}
+              </h3>
+              <p className="mt-1 text-xs font-medium text-muted-foreground">
+                {weakTopics[0].subjectTitle}{" "}
+                {weakTopics[0].unitTitle ? `· ${weakTopics[0].unitTitle}` : ""}
+              </p>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                Your average accuracy on this quiz is {weakTopics[0].avgPct}%. Review the core
+                concepts and retest to cement your understanding before exams.
+              </p>
+
+              <div className="mt-4 rounded-xl bg-warning/10 p-3 border border-warning/25 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">Topic Accuracy:</span>
+                  <span className="font-bold text-warning font-mono">{weakTopics[0].avgPct}%</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                  <span>Status:</span>
+                  <span>Needs Targeted Revision</span>
+                </div>
               </div>
             </div>
-          </div>
+          ) : pickUp ? (
+            /* 2. IN-PROGRESS STATE: Student has an active unit */
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-primary font-mono inline-flex items-center gap-1">
+                  <Zap className="h-3.5 w-3.5" /> Next Best Action
+                </span>
+                <Badge
+                  variant="outline"
+                  className="text-[10px] font-bold rounded-full px-2 py-0.5 border-primary/30 text-primary"
+                >
+                  Resume Study
+                </Badge>
+              </div>
+
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground leading-snug">
+                Continue Unit {pickUp.unit_number}: {pickUp.unit_title}
+              </h3>
+              <p className="mt-1 text-xs font-medium text-muted-foreground">
+                {pickUp.subject_title}
+              </p>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                You're {pickUp.progress_pct}% through this unit. Keep your momentum going and
+                complete the syllabus reading today.
+              </p>
+
+              <div className="mt-4 rounded-xl bg-muted/60 p-3 border border-border/40 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">Unit Progress:</span>
+                  <span className="font-semibold text-foreground font-mono">
+                    {pickUp.progress_pct}%
+                  </span>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-primary transition-all duration-300"
+                    style={{ width: `${Math.max(5, pickUp.progress_pct)}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          ) : attempts.length === 0 ? (
+            /* 3. COLD START: No quiz attempts yet */
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-primary font-mono inline-flex items-center gap-1">
+                  <Sparkles className="h-3.5 w-3.5" /> Next Best Action
+                </span>
+                <Badge
+                  variant="outline"
+                  className="text-[10px] font-bold rounded-full px-2 py-0.5 border-primary/30 text-primary"
+                >
+                  Getting Started
+                </Badge>
+              </div>
+
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground leading-snug">
+                Take Your First Practice Quiz
+              </h3>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                Test your current understanding with a quick 10-question practice drill to diagnose
+                where you stand and discover what to study first.
+              </p>
+
+              <div className="mt-4 rounded-xl bg-muted/60 p-3 border border-border/40 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">Quizzes Attempted:</span>
+                  <span className="font-semibold text-foreground">0</span>
+                </div>
+                <p className="text-[11px] text-muted-foreground">
+                  Instant explanations provided after every question.
+                </p>
+              </div>
+            </div>
+          ) : (
+            /* 4. MASTERY STATE: Strong performance */
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-success font-mono inline-flex items-center gap-1">
+                  <Trophy className="h-3.5 w-3.5" /> Next Best Action
+                </span>
+                <Badge variant="success" className="text-[10px] font-bold rounded-full px-2 py-0.5">
+                  Exam Ready
+                </Badge>
+              </div>
+
+              <h3 className="mt-3 font-display text-lg font-bold text-foreground leading-snug">
+                Challenge a Full Mock Exam
+              </h3>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                You have strong retention across completed units ({avgScore}% avg accuracy).
+                Simulate real university exam conditions with a timed multi-unit test.
+              </p>
+
+              <div className="mt-4 rounded-xl bg-success/10 p-3 border border-success/25 space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">Overall Accuracy:</span>
+                  <span className="font-bold text-success font-mono">{avgScore}%</span>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                  <span>Attempts Completed:</span>
+                  <span>{attempts.length}</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="mt-5 pt-4 border-t border-border/60 flex flex-col gap-2">
-            <Button
-              asChild
-              variant="cta"
-              className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs"
-            >
-              <Link to="/mock-test">
-                <span className="flex items-center gap-1.5">
-                  <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
-                  Custom Mock Test
-                </span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </Button>
-
-            {semester && courseSlug && (
-              <Button
-                asChild
-                variant="outline"
-                className="w-full justify-between rounded-xl text-xs font-semibold h-9"
-              >
-                <Link
-                  to="/courses/$courseSlug/$semesterNumber"
-                  params={{ courseSlug, semesterNumber: String(semester.number) }}
+            {weakTopics.length > 0 ? (
+              <>
+                <Button
+                  asChild
+                  variant="warning"
+                  className="w-full justify-between rounded-xl text-xs font-bold h-10 shadow-xs"
                 >
-                  <span>Semester Syllabus</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </Button>
+                  <Link to="/quizzes/$quizId" params={{ quizId: weakTopics[0].quizId }}>
+                    <span className="flex items-center gap-1.5">
+                      <RotateCcw className="h-3.5 w-3.5" />
+                      Retest Weak Topic
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full justify-between rounded-xl text-xs font-semibold h-9"
+                >
+                  <Link to="/mock-test">
+                    <span>Multi-Unit Mock Exam</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+              </>
+            ) : pickUp ? (
+              <>
+                <Button
+                  asChild
+                  variant="cta"
+                  className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs"
+                >
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug: pickUp.course_slug,
+                      semesterNumber: String(pickUp.semester_number),
+                      subjectSlug: pickUp.subject_slug,
+                      unitNumber: String(pickUp.unit_number),
+                    }}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <PlayCircle className="h-3.5 w-3.5 text-primary-foreground" />
+                      Resume Unit {pickUp.unit_number}
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full justify-between rounded-xl text-xs font-semibold h-9"
+                >
+                  <Link to="/mock-test">
+                    <span>Practice Mock Test</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  asChild
+                  variant="cta"
+                  className="w-full justify-between rounded-xl text-xs font-semibold h-10 shadow-xs"
+                >
+                  <Link to="/mock-test">
+                    <span className="flex items-center gap-1.5">
+                      <Sparkles className="h-3.5 w-3.5 text-primary-foreground" />
+                      Launch Mock Test
+                    </span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </Button>
+                {semester && courseSlug ? (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full justify-between rounded-xl text-xs font-semibold h-9"
+                  >
+                    <Link
+                      to="/courses/$courseSlug/$semesterNumber"
+                      params={{ courseSlug, semesterNumber: String(semester.number) }}
+                    >
+                      <span>Semester Syllabus</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full justify-between rounded-xl text-xs font-semibold h-9"
+                  >
+                    <Link to="/courses">
+                      <span>Explore BCA Courses</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </Button>
+                )}
+              </>
             )}
           </div>
         </div>
       </section>
 
       {/* ─── Weak Topics / Revision Spotlight ─── */}
-      {weakTopics.length > 0 && (
+      {weakTopics.length > 0 ? (
         <section className="mt-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -622,10 +845,7 @@ function DashboardPage() {
                 <div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-medium text-muted-foreground">{topic.subjectTitle}</span>
-                    <Badge
-                      variant="warning"
-                      className="text-[10px]"
-                    >
+                    <Badge variant="warning" className="text-[10px]">
                       {topic.avgPct}% Accuracy
                     </Badge>
                   </div>
@@ -657,7 +877,79 @@ function DashboardPage() {
             ))}
           </div>
         </section>
-      )}
+      ) : semester && attempts.length === 0 ? (
+        <section className="mt-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary/10 text-primary">
+                <Target className="h-4 w-4" />
+              </span>
+              <div>
+                <h2 className="font-display text-lg font-bold text-foreground">
+                  Weakness Detection
+                </h2>
+                <p className="text-xs text-muted-foreground">
+                  Complete your first unit practice quiz to identify topics that need revision.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 rounded-2xl border border-border/70 bg-card/60 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-foreground">
+                No practice quizzes completed yet
+              </p>
+              <p className="text-xs text-muted-foreground max-w-xl">
+                As you take MCQ quizzes, XRounder tracks which topics you find tricky and surfaces
+                them here for targeted revision before exams.
+              </p>
+            </div>
+            <Button
+              asChild
+              size="sm"
+              variant="cta"
+              className="shrink-0 text-xs font-semibold rounded-xl"
+            >
+              <Link to="/mock-test">
+                <PlayCircle className="mr-1.5 h-3.5 w-3.5" />
+                Start First Practice
+              </Link>
+            </Button>
+          </div>
+        </section>
+      ) : semester && attempts.length > 0 ? (
+        <section className="mt-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="grid h-7 w-7 place-items-center rounded-lg bg-success/15 text-success">
+                <Trophy className="h-4 w-4" />
+              </span>
+              <div>
+                <h2 className="font-display text-lg font-bold text-foreground">
+                  Revision Spotlight
+                </h2>
+                <p className="text-xs text-muted-foreground">
+                  All practiced topics are currently above 70% accuracy.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 rounded-2xl border border-success/30 bg-success/5 p-4 sm:p-5 flex items-center justify-between">
+            <p className="text-xs font-medium text-foreground">
+              Great mastery! You have no weak topics flagged in this semester. Keep taking quizzes
+              to maintain your streak.
+            </p>
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="text-xs font-semibold shrink-0 ml-4"
+            >
+              <Link to="/mock-test">Practice More</Link>
+            </Button>
+          </div>
+        </section>
+      ) : null}
 
       {/* ─── Your Semester Subjects Rail ─── */}
       <section className="mt-10">
@@ -761,12 +1053,12 @@ function DashboardPage() {
             </div>
             {avgScore !== null && (
               <span
-                  className={cn(
-                    "shrink-0 rounded-full px-3 py-1 text-xs font-bold",
-                    avgScore >= 70
-                      ? "bg-success/10 text-success"
-                      : "bg-warning/15 text-warning-foreground dark:text-warning",
-                  )}
+                className={cn(
+                  "shrink-0 rounded-full px-3 py-1 text-xs font-bold",
+                  avgScore >= 70
+                    ? "bg-success/10 text-success"
+                    : "bg-warning/15 text-warning-foreground dark:text-warning",
+                )}
               >
                 <Trophy className="mr-1 inline h-3 w-3" />
                 {avgScore}% Avg

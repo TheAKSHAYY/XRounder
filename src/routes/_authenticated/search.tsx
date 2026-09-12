@@ -4,10 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import {
   BookOpen,
+  FileStack,
   FileText,
+  FlaskConical,
   GraduationCap,
   Layers,
-  ListChecks,
   Loader2,
   Search,
 } from "lucide-react";
@@ -16,6 +17,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Badge } from "@/components/ui/badge";
 
 const searchSchema = z.object({ q: z.string().optional().default("") });
 
@@ -44,8 +46,14 @@ type SearchHit = {
   title: string;
   description: string;
   slug: string | null;
-  kind: "course" | "semester" | "subject" | "unit" | "note" | "paper" | "quiz";
+  kind: "course" | "semester" | "subject" | "unit" | "content_item" | "note" | "paper" | "quiz";
   rank: number;
+  course_slug?: string | null;
+  semester_number?: number | null;
+  subject_slug?: string | null;
+  unit_number?: number | null;
+  topic_id?: string | null;
+  content_type?: string | null;
 };
 
 type SearchResult = {
@@ -53,6 +61,7 @@ type SearchResult = {
   semesters: SearchHit[];
   subjects: SearchHit[];
   units: SearchHit[];
+  content_items: SearchHit[];
   notes: SearchHit[];
   papers: SearchHit[];
   quizzes: SearchHit[];
@@ -91,15 +100,25 @@ function SearchPage() {
       return hits.reduce<SearchResult>(
         (acc, hit) => {
           if (hit.kind === "course") acc.courses.push(hit);
-          if (hit.kind === "semester") acc.semesters.push(hit);
-          if (hit.kind === "subject") acc.subjects.push(hit);
-          if (hit.kind === "unit") acc.units.push(hit);
-          if (hit.kind === "note") acc.notes.push(hit);
-          if (hit.kind === "paper") acc.papers.push(hit);
-          if (hit.kind === "quiz") acc.quizzes.push(hit);
+          else if (hit.kind === "semester") acc.semesters.push(hit);
+          else if (hit.kind === "subject") acc.subjects.push(hit);
+          else if (hit.kind === "unit") acc.units.push(hit);
+          else if (hit.kind === "content_item") acc.content_items.push(hit);
+          else if (hit.kind === "note") acc.notes.push(hit);
+          else if (hit.kind === "paper") acc.papers.push(hit);
+          else if (hit.kind === "quiz") acc.quizzes.push(hit);
           return acc;
         },
-        { courses: [], semesters: [], subjects: [], units: [], notes: [], papers: [], quizzes: [] },
+        {
+          courses: [],
+          semesters: [],
+          subjects: [],
+          units: [],
+          content_items: [],
+          notes: [],
+          papers: [],
+          quizzes: [],
+        },
       );
     },
   });
@@ -111,6 +130,7 @@ function SearchPage() {
           d.semesters.length +
           d.subjects.length +
           d.units.length +
+          d.content_items.length +
           d.notes.length +
           d.papers.length +
           d.quizzes.length
@@ -190,29 +210,103 @@ function SearchPage() {
               icon={Layers}
               title="Semesters"
               items={query.data!.semesters}
-              render={(s) => (
-                <Link to="/courses" className={linkClass}>
-                  {s.title}
-                </Link>
-              )}
+              render={(s) =>
+                s.course_slug && s.semester_number ? (
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber"
+                    params={{
+                      courseSlug: s.course_slug,
+                      semesterNumber: String(s.semester_number),
+                    }}
+                    className={linkClass}
+                  >
+                    {s.title}
+                  </Link>
+                ) : (
+                  <Link to="/courses" className={linkClass}>
+                    {s.title}
+                  </Link>
+                )
+              }
             />
             <Group
               icon={BookOpen}
               title="Subjects"
               items={query.data!.subjects}
-              render={(s) => (
-                <Link to="/courses" className={linkClass}>
-                  {s.title}
-                </Link>
-              )}
+              render={(s) =>
+                s.course_slug && s.semester_number && s.subject_slug ? (
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                    params={{
+                      courseSlug: s.course_slug,
+                      semesterNumber: String(s.semester_number),
+                      subjectSlug: s.subject_slug,
+                    }}
+                    className={linkClass}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>{s.title}</span>
+                      {s.slug && (
+                        <span className="text-xs uppercase text-muted-foreground font-mono">
+                          {s.slug}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                ) : (
+                  <Link to="/courses" className={linkClass}>
+                    {s.title}
+                  </Link>
+                )
+              }
             />
             <Group
               icon={Layers}
               title="Units"
               items={query.data!.units}
-              render={(u) => (
-                <Link to="/courses" className={linkClass}>
-                  {u.title}
+              render={(u) =>
+                u.course_slug && u.semester_number && u.subject_slug && u.unit_number ? (
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug: u.course_slug,
+                      semesterNumber: String(u.semester_number),
+                      subjectSlug: u.subject_slug,
+                      unitNumber: String(u.unit_number),
+                    }}
+                    className={linkClass}
+                  >
+                    {u.title}
+                  </Link>
+                ) : (
+                  <Link to="/courses" className={linkClass}>
+                    {u.title}
+                  </Link>
+                )
+              }
+            />
+            <Group
+              icon={FileText}
+              title="Learning Content"
+              items={query.data!.content_items}
+              render={(c) => (
+                <Link to="/notes/$noteId" params={{ noteId: c.id }} className={linkClass}>
+                  <div className="flex items-center justify-between">
+                    <span>{c.title}</span>
+                    {c.content_type && (
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] uppercase font-mono tracking-wider ml-2"
+                      >
+                        {c.content_type}
+                      </Badge>
+                    )}
+                  </div>
+                  {c.description ? (
+                    <p className="mt-0.5 line-clamp-1 text-xs text-muted-foreground">
+                      {c.description}
+                    </p>
+                  ) : null}
                 </Link>
               )}
             />
@@ -222,12 +316,27 @@ function SearchPage() {
               items={query.data!.notes}
               render={(n) => (
                 <Link to="/notes/$noteId" params={{ noteId: n.id }} className={linkClass}>
-                  {n.title}
+                  <div className="flex items-center justify-between">
+                    <span>{n.title}</span>
+                    {n.content_type && n.content_type !== "note" && (
+                      <Badge
+                        variant="outline"
+                        className="text-[10px] uppercase font-mono tracking-wider ml-2"
+                      >
+                        {n.content_type}
+                      </Badge>
+                    )}
+                  </div>
+                  {n.description ? (
+                    <p className="mt-0.5 line-clamp-1 text-xs text-muted-foreground">
+                      {n.description}
+                    </p>
+                  ) : null}
                 </Link>
               )}
             />
             <Group
-              icon={FileText}
+              icon={FileStack}
               title="Papers"
               items={query.data!.papers}
               render={(p) => (
@@ -237,7 +346,7 @@ function SearchPage() {
               )}
             />
             <Group
-              icon={ListChecks}
+              icon={FlaskConical}
               title="Quizzes"
               items={query.data!.quizzes}
               render={(q) => (

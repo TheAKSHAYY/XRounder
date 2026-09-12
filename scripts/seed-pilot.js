@@ -3,7 +3,7 @@ import fs from "fs";
 
 // Read from env or assume local for script
 const supabaseUrl = process.env.VITE_SUPABASE_URL || "http://127.0.0.1:54321";
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 if (!supabaseKey) {
   console.error("Missing supabase key");
@@ -40,7 +40,7 @@ async function run() {
   }
 
   // 3. Get Subject (BCA-101N)
-  let { data: subject } = await sb.from("subjects").select("id").eq("semester_id", sem.id).eq("slug", "computer-fundamentals-and-pc-software").single();
+  let { data: subject } = await sb.from("subjects").select("id").eq("semester_id", sem.id).eq("slug", "computer-fundamentals-and-pc-software-theory").single();
   if (!subject) {
     const { data: newSubj } = await sb.from("subjects").insert({
       semester_id: sem.id,

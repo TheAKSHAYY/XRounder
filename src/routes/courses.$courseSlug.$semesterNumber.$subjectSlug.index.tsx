@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, type QueryClient } from "@tanstack/react-query";
 import {
+  AlertTriangle,
   ArrowRight,
   BookOpen,
   Check,
@@ -33,6 +34,14 @@ import { formatRelativeDay } from "@/lib/format";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
+type PaperRow = {
+  id: string;
+  title: string;
+  year: number;
+  exam_type: string;
+  paper_number: number | null;
+};
+
 type SubjectDetailData = {
   course: { id: string; title: string };
   sem: { id: string; number: number; title: string };
@@ -44,13 +53,13 @@ type SubjectDetailData = {
     credits: number | null;
   };
   units: UnitRow[];
-  papers: any[];
+  papers: PaperRow[];
   contentByUnit: Map<string, ContentBucket>;
   subjectContent: ContentBucket;
 };
 
 async function fetchSubjectDetails(
-  queryClient: any,
+  queryClient: QueryClient,
   courseSlug: string,
   semesterNumber: string,
   subjectSlug: string,
@@ -222,7 +231,7 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
       : "Syllabus-aligned subject notes and learning resources on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`;
 
-    const schemas: any[] = [
+    const schemas: Array<Record<string, unknown>> = [
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -358,6 +367,25 @@ type UnitStats = {
   pct: number;
   lastActivity: string | null;
   content: ContentBucket;
+  quiz?: {
+    id: string;
+    lastScorePct: number | null;
+    needsRevision: boolean;
+    isMastered: boolean;
+  } | null;
+};
+
+type QuizAttemptSummary = {
+  quiz_id: string;
+  pct: number | null;
+  score: number | null;
+  max_score: number | null;
+  submitted_at: string | null;
+};
+
+type QuizUnitRef = {
+  id: string;
+  unit_id: string;
 };
 
 function SubjectDetail() {
@@ -529,39 +557,114 @@ function SubjectDetail() {
 
   const progress = progressQuery.data ?? [];
 
+  const unitIds = units.map((u: UnitRow) => u.id);
+
+  const unitQuizzesQuery = useQuery({
+    queryKey: ["student", "unit-quizzes-mastery", user?.id, unitIds],
+    enabled: units.length > 0,
+    queryFn: async () => {
+      const { data: qData, error: qErr } = await supabase
+        .from("quizzes")
+        .select("id, unit_id")
+        .in("unit_id", unitIds)
+        .eq("status", "published")
+        .is("deleted_at", null);
+      if (qErr) throw qErr;
+
+      const quizzes: QuizUnitRef[] = (qData ?? []).filter(
+        (q): q is QuizUnitRef => typeof q.unit_id === "string",
+      );
+      const quizIds = quizzes.map((q) => q.id);
+      if (!user?.id || quizIds.length === 0) {
+        return { quizzes, attemptsByQuiz: new Map<string, QuizAttemptSummary>() };
+      }
+
+      const { data: aData, error: aErr } = await supabase
+        .from("quiz_attempts")
+        .select("quiz_id, pct, score, max_score, submitted_at")
+        .eq("user_id", user.id)
+        .in("quiz_id", quizIds)
+        .not("submitted_at", "is", null)
+        .order("submitted_at", { ascending: false });
+      if (aErr) throw aErr;
+
+      const attemptsByQuiz = new Map<string, QuizAttemptSummary>();
+      for (const a of (aData ?? []) as QuizAttemptSummary[]) {
+        if (!attemptsByQuiz.has(a.quiz_id)) {
+          attemptsByQuiz.set(a.quiz_id, a);
+        }
+      }
+
+      return { quizzes, attemptsByQuiz };
+    },
+  });
+
   const contentByUnit = subjectQuery.data?.contentByUnit ?? new Map<string, ContentBucket>();
+  const unitQuizzesData = unitQuizzesQuery.data;
 
   const unitStats: UnitStats[] = useMemo(() => {
     const byUnit = new Map<string, ProgressRow>();
     for (const p of progress) byUnit.set(p.unit_id, p);
+
+    const quizzes = unitQuizzesData?.quizzes ?? [];
+    const attemptsByQuiz = unitQuizzesData?.attemptsByQuiz ?? new Map<string, QuizAttemptSummary>();
+    const quizByUnit = new Map<string, QuizUnitRef>();
+    for (const q of quizzes) if (q.unit_id) quizByUnit.set(q.unit_id, q);
+
     return units.map((u: UnitRow) => {
       const p = byUnit.get(u.id);
+      const q = quizByUnit.get(u.id);
+      let quizMeta = null;
+      if (q) {
+        const att = attemptsByQuiz.get(q.id);
+        const lastScorePct = att
+          ? typeof att.pct === "number"
+            ? Math.round(att.pct)
+            : att.max_score
+              ? Math.round((Number(att.score ?? 0) / att.max_score) * 100)
+              : null
+          : null;
+        quizMeta = {
+          id: q.id,
+          lastScorePct,
+          needsRevision: lastScorePct !== null && lastScorePct < 70,
+          isMastered: lastScorePct !== null && lastScorePct >= 70,
+        };
+      }
+
       return {
         unit: u,
         status: (p?.status ?? "not_started") as UnitStatus,
         pct: Number(p?.progress_pct ?? 0),
         lastActivity: p?.last_activity_at ?? null,
         content: contentByUnit.get(u.id) ?? emptyContentBucket(),
+        quiz: quizMeta,
       };
     });
-  }, [units, progress, contentByUnit]);
+  }, [units, progress, contentByUnit, unitQuizzesData]);
 
   const overall = useMemo(() => {
     const total = unitStats.length;
     const completed = unitStats.filter((u) => u.status === "completed").length;
     const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
 
-    // Resume unit: most-recent activity that isn't complete, else first non-complete, else first
+    const needsRevUnit = unitStats.find((u) => u.quiz?.needsRevision);
+
+    // Resume unit: first unit needing revision, else most-recent activity that isn't complete, else first non-complete, else first
     const withActivity = unitStats
       .filter((u) => u.lastActivity)
       .sort((a, b) => (b.lastActivity! > a.lastActivity! ? 1 : -1));
     const activeResume = withActivity.find((u) => u.status !== "completed");
     const resume =
-      activeResume ?? unitStats.find((u) => u.status !== "completed") ?? unitStats[0] ?? null;
+      needsRevUnit ??
+      activeResume ??
+      unitStats.find((u) => u.status !== "completed") ??
+      unitStats[0] ??
+      null;
 
     const lastActivity = withActivity[0]?.lastActivity ?? null;
 
-    return { total, completed, pct, resume, lastActivity };
+    return { total, completed, pct, resume, lastActivity, needsRevUnit };
   }, [unitStats]);
 
   const started = overall.completed > 0 || unitStats.some((u) => u.status !== "not_started");
@@ -573,11 +676,13 @@ function SubjectDetail() {
     ? "Start Learning"
     : overall.total === 0
       ? "Coming soon"
-      : overall.completed === overall.total
-        ? "Review Learning"
-        : started
-          ? "Continue Learning"
-          : "Start Learning";
+      : overall.needsRevUnit
+        ? `Revise Unit ${overall.needsRevUnit.unit.number}`
+        : overall.completed === overall.total
+          ? "Review Learning"
+          : started
+            ? `Continue Unit ${overall.resume?.unit.number ?? 1}`
+            : "Start Unit 1";
 
   return (
     <div className="min-h-screen bg-background">
@@ -815,7 +920,7 @@ function SubjectDetail() {
                   No past papers archived yet for this subject.
                 </p>
               ) : (
-                subjectQuery.data.papers.map((p: any) => (
+                subjectQuery.data.papers.map((p: PaperRow) => (
                   <Link
                     key={p.id}
                     to="/papers/$paperId"
@@ -877,8 +982,18 @@ function UnitCard({
   const rel = formatRelativeDay(lastActivity);
   const isDone = status === "completed";
   const inProgress = status === "in_progress";
+  const needsRevision = !!stats.quiz?.needsRevision;
+  const isMastered = !!stats.quiz?.isMastered;
 
-  const ctaLabel = !showProgress ? "Open" : isDone ? "Review" : inProgress ? "Continue" : "Start";
+  const ctaLabel = !showProgress
+    ? "Open"
+    : needsRevision
+      ? "Revise"
+      : isDone
+        ? "Review"
+        : inProgress
+          ? "Continue"
+          : "Start";
 
   return (
     <Link
@@ -888,7 +1003,11 @@ function UnitCard({
       aria-current={isResume ? "step" : undefined}
       className={cn(
         "group relative flex items-start gap-4 rounded-lg border bg-surface p-5 pr-4 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6 sm:pl-6",
-        isResume ? "border-primary/60 ring-1 ring-primary/30" : "border-border",
+        needsRevision
+          ? "border-warning/60 ring-1 ring-warning/30 bg-warning/5"
+          : isResume
+            ? "border-primary/60 ring-1 ring-primary/30"
+            : "border-border",
       )}
     >
       {/* Medallion */}
@@ -896,16 +1015,24 @@ function UnitCard({
         aria-hidden
         className={cn(
           "relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-xl font-display text-sm font-semibold tabular-nums",
-          isDone
-            ? "bg-primary text-primary-foreground"
-            : isResume
-              ? "bg-primary/15 text-primary ring-2 ring-primary/40"
-              : inProgress
-                ? "bg-primary/10 text-primary"
-                : "bg-muted text-muted-foreground",
+          needsRevision
+            ? "bg-warning/15 text-warning ring-2 ring-warning/40"
+            : isDone
+              ? "bg-primary text-primary-foreground"
+              : isResume
+                ? "bg-primary/15 text-primary ring-2 ring-primary/40"
+                : inProgress
+                  ? "bg-primary/10 text-primary"
+                  : "bg-muted text-muted-foreground",
         )}
       >
-        {isDone ? <Check className="h-5 w-5" /> : unit.number}
+        {needsRevision ? (
+          <AlertTriangle className="h-5 w-5" />
+        ) : isDone ? (
+          <Check className="h-5 w-5" />
+        ) : (
+          unit.number
+        )}
       </span>
 
       <div className="min-w-0 flex-1">
@@ -913,7 +1040,14 @@ function UnitCard({
           <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
             Unit {unit.number}
           </span>
-          {showProgress && <StatusPill status={status} isResume={isResume} />}
+          {showProgress && (
+            <StatusPill
+              status={status}
+              isResume={isResume}
+              needsRevision={needsRevision}
+              isMastered={isMastered}
+            />
+          )}
         </div>
         <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-foreground">
           {unit.title}
@@ -927,10 +1061,7 @@ function UnitCard({
         {/* Unit Readiness Badges */}
         <div className="mt-3 flex flex-wrap items-center gap-2">
           {stats.content.note > 0 ? (
-            <Badge
-              variant="success"
-              className="text-[10px] font-bold rounded-lg"
-            >
+            <Badge variant="success" className="text-[10px] font-bold rounded-lg">
               <Check className="h-3 w-3 mr-1" /> Notes Ready
             </Badge>
           ) : (
@@ -951,12 +1082,23 @@ function UnitCard({
             </Badge>
           )}
 
-          <Badge
-            variant="outline"
-            className="text-[10px] font-bold rounded-lg bg-card text-foreground"
-          >
-            <FlaskConical className="h-3 w-3 mr-1 text-primary" /> Practice MCQs
-          </Badge>
+          {stats.quiz?.needsRevision ? (
+            <Badge variant="warning" className="text-[10px] font-bold rounded-lg">
+              <AlertTriangle className="h-3 w-3 mr-1" /> Quiz: {stats.quiz.lastScorePct}% (Needs
+              Revision)
+            </Badge>
+          ) : stats.quiz?.isMastered ? (
+            <Badge variant="success" className="text-[10px] font-bold rounded-lg">
+              <Check className="h-3 w-3 mr-1" /> Quiz: {stats.quiz.lastScorePct}% (Mastered)
+            </Badge>
+          ) : (
+            <Badge
+              variant="outline"
+              className="text-[10px] font-bold rounded-lg bg-card text-foreground"
+            >
+              <FlaskConical className="h-3 w-3 mr-1 text-primary" /> Practice MCQs
+            </Badge>
+          )}
         </div>
 
         {showProgress && inProgress && (
@@ -980,9 +1122,11 @@ function UnitCard({
         <span
           className={cn(
             "inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors",
-            isResume
-              ? "bg-primary text-primary-foreground shadow-sm"
-              : "bg-transparent text-primary group-hover:bg-primary/5",
+            needsRevision
+              ? "bg-warning text-warning-foreground shadow-sm"
+              : isResume
+                ? "bg-primary text-primary-foreground shadow-sm"
+                : "bg-transparent text-primary group-hover:bg-primary/5",
           )}
         >
           {ctaLabel}
@@ -993,7 +1137,33 @@ function UnitCard({
   );
 }
 
-function StatusPill({ status, isResume }: { status: UnitStatus; isResume: boolean }) {
+function StatusPill({
+  status,
+  isResume,
+  needsRevision,
+  isMastered,
+}: {
+  status: UnitStatus;
+  isResume: boolean;
+  needsRevision?: boolean;
+  isMastered?: boolean;
+}) {
+  if (needsRevision) {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-warning/15 border border-warning/30 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-warning">
+        <AlertTriangle className="h-3 w-3" aria-hidden />
+        Needs revision
+      </span>
+    );
+  }
+  if (isMastered) {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full bg-success/15 border border-success/30 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-success">
+        <Check className="h-3 w-3" aria-hidden />
+        Mastered
+      </span>
+    );
+  }
   if (status === "completed") {
     return (
       <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">

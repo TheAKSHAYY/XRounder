@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Download, FileText, Lock, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Download,
+  FileText,
+  FlaskConical,
+  Lock,
+  Sparkles,
+} from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { PdfViewer } from "@/components/pdf-viewer";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -49,6 +58,18 @@ export const Route = createFileRoute("/notes/$noteId")({
   component: NoteViewer,
 });
 
+type NoteHierarchy = {
+  unitId: string | null;
+  unitNumber: number | null;
+  unitTitle: string | null;
+  subjectTitle: string | null;
+  subjectSlug: string | null;
+  semesterNumber: number | null;
+  courseTitle: string | null;
+  courseSlug: string | null;
+  quizId: string | null;
+};
+
 type NoteData = {
   id: string;
   title: string;
@@ -58,7 +79,139 @@ type NoteData = {
   file_bucket: string | null;
   file_mime: string | null;
   file_url: string | null;
+  hierarchy: NoteHierarchy | null;
 };
+
+type UnitHierarchyQuery = {
+  id: string;
+  number: number;
+  title: string;
+  subjects: {
+    title: string;
+    slug: string;
+    semesters: {
+      number: number;
+      courses: {
+        title: string;
+        slug: string;
+      } | null;
+    } | null;
+  } | null;
+};
+
+type SubjectHierarchyQuery = {
+  title: string;
+  slug: string;
+  semesters: {
+    number: number;
+    courses: {
+      title: string;
+      slug: string;
+    } | null;
+  } | null;
+};
+
+async function resolveHierarchy(
+  unitId: string | null,
+  subjectId: string | null,
+): Promise<NoteHierarchy | null> {
+  try {
+    if (unitId) {
+      const [{ data: uData }, { data: qData }] = await Promise.all([
+        supabase
+          .from("units")
+          .select(
+            `
+            id,
+            number,
+            title,
+            subjects (
+              title,
+              slug,
+              semesters (
+                number,
+                courses (
+                  title,
+                  slug
+                )
+              )
+            )
+          `,
+          )
+          .eq("id", unitId)
+          .maybeSingle(),
+        supabase
+          .from("quizzes")
+          .select("id")
+          .eq("unit_id", unitId)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("order_index")
+          .limit(1)
+          .maybeSingle(),
+      ]);
+
+      if (uData) {
+        const u = uData as unknown as UnitHierarchyQuery;
+        const subj = u.subjects;
+        const sem = subj?.semesters;
+        const crs = sem?.courses;
+        return {
+          unitId: u.id,
+          unitNumber: u.number,
+          unitTitle: u.title,
+          subjectTitle: subj?.title ?? null,
+          subjectSlug: subj?.slug ?? null,
+          semesterNumber: sem?.number ?? null,
+          courseTitle: crs?.title ?? null,
+          courseSlug: crs?.slug ?? null,
+          quizId: qData?.id ?? null,
+        };
+      }
+    }
+
+    if (subjectId) {
+      const { data: sData } = await supabase
+        .from("subjects")
+        .select(
+          `
+          title,
+          slug,
+          semesters (
+            number,
+            courses (
+              title,
+              slug
+            )
+          )
+        `,
+        )
+        .eq("id", subjectId)
+        .maybeSingle();
+
+      if (sData) {
+        const s = sData as unknown as SubjectHierarchyQuery;
+        const sem = s.semesters;
+        const crs = sem?.courses;
+        return {
+          unitId: null,
+          unitNumber: null,
+          unitTitle: null,
+          subjectTitle: s.title,
+          subjectSlug: s.slug,
+          semesterNumber: sem?.number ?? null,
+          courseTitle: crs?.title ?? null,
+          courseSlug: crs?.slug ?? null,
+          quizId: null,
+        };
+      }
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
 
 function NoteViewer() {
   const { noteId } = Route.useParams();
@@ -70,13 +223,16 @@ function NoteViewer() {
       // 1. Try content_items table
       const { data: item } = await supabase
         .from("content_items")
-        .select("id, title, description, file_path, file_bucket, file_mime, file_url")
+        .select(
+          "id, title, description, file_path, file_bucket, file_mime, file_url, unit_id, subject_id",
+        )
         .eq("id", noteId)
         .eq("status", "published")
         .is("deleted_at", null)
         .maybeSingle();
 
       if (item) {
+        const hierarchy = await resolveHierarchy(item.unit_id, item.subject_id);
         return {
           id: item.id,
           title: item.title,
@@ -86,13 +242,14 @@ function NoteViewer() {
           file_bucket: item.file_bucket,
           file_mime: item.file_mime,
           file_url: item.file_url,
+          hierarchy,
         };
       }
 
       // 2. Fallback to legacy notes table
       const { data: note, error: ne } = await supabase
         .from("notes")
-        .select("id, title, summary, body, file_path, file_bucket, file_mime")
+        .select("id, title, summary, body, file_path, file_bucket, file_mime, unit_id")
         .eq("id", noteId)
         .eq("status", "published")
         .is("deleted_at", null)
@@ -100,6 +257,8 @@ function NoteViewer() {
 
       if (ne) throw ne;
       if (!note) return null;
+
+      const hierarchy = await resolveHierarchy(note.unit_id, null);
 
       return {
         id: note.id,
@@ -110,6 +269,7 @@ function NoteViewer() {
         file_bucket: note.file_bucket,
         file_mime: note.file_mime,
         file_url: null,
+        hierarchy,
       };
     },
   });
@@ -174,23 +334,85 @@ function NoteViewer() {
     }
   };
 
+  const hierarchy = noteQuery.data?.hierarchy;
+
+  // Build breadcrumbs dynamically from resolved academic hierarchy
+  const crumbs = [
+    { label: "Courses", to: "/courses" },
+    ...(hierarchy?.courseSlug
+      ? [
+          {
+            label: hierarchy.courseTitle || "Course",
+            to: "/courses/$courseSlug",
+            params: { courseSlug: hierarchy.courseSlug },
+          },
+        ]
+      : []),
+    ...(hierarchy?.courseSlug && hierarchy?.semesterNumber
+      ? [
+          {
+            label: `Semester ${hierarchy.semesterNumber}`,
+            to: "/courses/$courseSlug/$semesterNumber",
+            params: {
+              courseSlug: hierarchy.courseSlug,
+              semesterNumber: String(hierarchy.semesterNumber),
+            },
+          },
+        ]
+      : []),
+    ...(hierarchy?.courseSlug && hierarchy?.semesterNumber && hierarchy?.subjectSlug
+      ? [
+          {
+            label: hierarchy.subjectTitle || "Subject",
+            to: "/courses/$courseSlug/$semesterNumber/$subjectSlug",
+            params: {
+              courseSlug: hierarchy.courseSlug,
+              semesterNumber: String(hierarchy.semesterNumber),
+              subjectSlug: hierarchy.subjectSlug,
+            },
+          },
+        ]
+      : []),
+    ...(hierarchy?.courseSlug &&
+    hierarchy?.semesterNumber &&
+    hierarchy?.subjectSlug &&
+    hierarchy?.unitNumber
+      ? [
+          {
+            label: `Unit ${hierarchy.unitNumber}`,
+            to: "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
+            params: {
+              courseSlug: hierarchy.courseSlug,
+              semesterNumber: String(hierarchy.semesterNumber),
+              subjectSlug: hierarchy.subjectSlug,
+              unitNumber: String(hierarchy.unitNumber),
+            },
+          },
+        ]
+      : []),
+    { label: noteQuery.data?.title ?? "Study Material" },
+  ];
+
   return (
     <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
-        <button
-          type="button"
-          onClick={() => {
-            if (typeof window !== "undefined" && window.history.length > 1) {
-              window.history.back();
-            } else {
-              window.location.href = "/courses";
-            }
-          }}
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back
-        </button>
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <Breadcrumbs items={crumbs} />
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = "/courses";
+              }
+            }}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-primary transition-colors cursor-pointer shrink-0"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" /> Back
+          </button>
+        </div>
 
         {noteQuery.isLoading && (
           <div className="mt-8 rounded-2xl border border-border bg-surface p-12 text-center text-sm text-muted-foreground">
@@ -220,13 +442,21 @@ function NoteViewer() {
         )}
 
         {noteQuery.data && (
-          <article className="mt-8">
+          <article className="mt-4">
             {/* Header */}
             <div className="border-b border-border/70 pb-6">
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
-                  <Sparkles className="h-3 w-3" /> Syllabus Note
+                  <Sparkles className="h-3 w-3" />
+                  {hierarchy?.unitNumber
+                    ? `Unit ${hierarchy.unitNumber} Syllabus Note`
+                    : "Syllabus Note"}
                 </span>
+                {hierarchy?.subjectTitle && (
+                  <span className="text-xs text-muted-foreground font-medium">
+                    · {hierarchy.subjectTitle}
+                  </span>
+                )}
               </div>
               <h1 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
                 {noteQuery.data.title}
@@ -273,6 +503,71 @@ function NoteViewer() {
                 This note has no written text or PDF attachments yet.
               </p>
             )}
+
+            {/* ─── What Should You Do Next? (Eliminates Dead Ends) ─── */}
+            <section className="mt-12 rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-card to-card p-6 sm:p-8 shadow-soft">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                <div className="space-y-1.5 max-w-xl">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary font-mono">
+                    <Sparkles className="h-3.5 w-3.5" /> What Should You Do Next?
+                  </div>
+                  <h2 className="font-display text-lg sm:text-xl font-bold text-foreground">
+                    Test Your Understanding
+                  </h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    Now that you've read through these notes, practice unit MCQs to identify weak
+                    points and solidify your learning before exams.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                  {hierarchy?.quizId ? (
+                    <Button
+                      asChild
+                      variant="cta"
+                      className="h-11 px-5 rounded-2xl text-xs font-bold shadow-xs"
+                    >
+                      <Link to="/quizzes/$quizId" params={{ quizId: hierarchy.quizId }}>
+                        <FlaskConical className="h-4 w-4 mr-1.5" /> Practice Unit MCQs
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button
+                      asChild
+                      variant="cta"
+                      className="h-11 px-5 rounded-2xl text-xs font-bold shadow-xs"
+                    >
+                      <Link to="/mock-test">
+                        <FlaskConical className="h-4 w-4 mr-1.5" /> Practice Questions
+                      </Link>
+                    </Button>
+                  )}
+
+                  {hierarchy?.courseSlug &&
+                    hierarchy?.semesterNumber &&
+                    hierarchy?.subjectSlug &&
+                    hierarchy?.unitNumber && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="h-11 px-4 rounded-2xl text-xs font-semibold"
+                      >
+                        <Link
+                          to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                          params={{
+                            courseSlug: hierarchy.courseSlug,
+                            semesterNumber: String(hierarchy.semesterNumber),
+                            subjectSlug: hierarchy.subjectSlug,
+                            unitNumber: String(hierarchy.unitNumber),
+                          }}
+                        >
+                          Unit Learning Hub <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
+                        </Link>
+                      </Button>
+                    )}
+                </div>
+              </div>
+            </section>
           </article>
         )}
       </main>

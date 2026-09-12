@@ -2,16 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
 
 import { useQuery } from "@tanstack/react-query";
-import {
-  BookOpen,
-  ArrowRight,
-  GraduationCap,
-  Layers,
-  CalendarClock,
-  Search,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { BookOpen, ArrowRight, Layers, Search, Sparkles, X } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -122,7 +113,6 @@ function CoursesRouteError({ error }: { error: unknown }) {
   );
 }
 
-
 function CoursesIndex() {
   const initialCourses = Route.useLoaderData();
   const { q } = Route.useSearch();
@@ -153,15 +143,7 @@ function CoursesIndex() {
     return () => window.removeEventListener("keydown", onKey);
   });
 
-
-  const {
-    data,
-    isLoading,
-    isError,
-    error,
-    refetch,
-    isFetching,
-  } = useQuery({
+  const { data, isLoading, isError, error, refetch, isFetching } = useQuery({
     queryKey: ["public", "courses"],
     queryFn: fetchPublicCourses,
     initialData: initialCourses,
@@ -253,7 +235,6 @@ function CoursesIndex() {
               </p>
             )}
           </div>
-
         </div>
 
         {/* ─── Active Enrolled Path Reminder (if set) ─── */}
@@ -326,7 +307,7 @@ function CoursesIndex() {
                     </div>
 
                     <h2 className="mt-3 font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
-                      {c.title}
+                      {c.title.replace(/\(([^)]+)\)/, " ($1)")}
                     </h2>
 
                     {c.description && (

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
   ArrowLeft,
@@ -47,7 +47,7 @@ type UnitDetailData = {
 type TopicRow = { id: string; title: string; sort_order: number };
 
 async function fetchUnitDetails(
-  queryClient: any,
+  queryClient: QueryClient,
   courseSlug: string,
   semesterNumber: string,
   subjectSlug: string,
@@ -230,7 +230,7 @@ export const Route = createFileRoute(
         : "Unit notes, syllabus-aligned learning materials, and practice MCQs on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}/${params.unitNumber}`;
 
-    const schemas: any[] = [
+    const schemas: Array<Record<string, unknown>> = [
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -360,7 +360,12 @@ export type UnitContentItem = {
 
 type SiblingUnit = { id: string; number: number };
 
-type QuizRow = { id: string; title: string; time_limit_minutes: number | null; topic_id: string | null };
+type QuizRow = {
+  id: string;
+  title: string;
+  time_limit_minutes: number | null;
+  topic_id: string | null;
+};
 
 type PyqQuestion = {
   id: string;
@@ -382,14 +387,14 @@ function estimateReadMinutes(items: UnitContentItem[]) {
   return Math.max(1, Math.round(words / 200));
 }
 
-function getVideoEmbedUrl(
+function _getVideoEmbedUrl(
   url: string | null | undefined,
 ): { isEmbed: boolean; src: string } | null {
   if (!url || !url.trim()) return null;
   const trimmed = url.trim();
   try {
     const ytMatch = trimmed.match(
-      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/,
     );
     if (ytMatch && ytMatch[1]) {
       return { isEmbed: true, src: `https://www.youtube-nocookie.com/embed/${ytMatch[1]}` };
@@ -773,7 +778,7 @@ function UnitDetail() {
     );
   }
 
-  const { subject, unit } = dataQuery.data;
+  const { course, subject, unit } = dataQuery.data;
 
   return (
     <div className="min-h-dvh bg-background flex flex-col">
@@ -782,8 +787,8 @@ function UnitDetail() {
       {/* ─── Compact Reading Header ─── */}
       <div className="animate-fade-in-up sticky top-0 z-30 border-b border-border bg-background/90 shadow-sm backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300">
         <div className="mx-auto max-w-6xl px-5 py-3 sm:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-3 sm:gap-4">
+            <div className="min-w-0 flex-1 pr-2 sm:pr-4">
               <Link
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
                 params={{ courseSlug, semesterNumber, subjectSlug }}
@@ -856,7 +861,11 @@ function UnitDetail() {
           className="mb-4 sm:mb-6"
           items={[
             { label: "Courses", to: "/courses" },
-            { label: "Course", to: "/courses/$courseSlug", params: { courseSlug } },
+            {
+              label: course?.title ?? "Course",
+              to: "/courses/$courseSlug",
+              params: { courseSlug },
+            },
             {
               label: `Semester ${semesterNumber}`,
               to: "/courses/$courseSlug/$semesterNumber",
@@ -957,7 +966,7 @@ function UnitDetail() {
                   {mobileTocOpen && (
                     <nav className="mt-3 border-t border-border/60 pt-3">
                       <ol className="space-y-1.5 text-xs">
-                        {toc.map((item: any, i: number) => (
+                        {toc.map((item, i) => (
                           <li key={item.id}>
                             <a
                               href={`#${item.id}`}
@@ -1055,7 +1064,6 @@ function UnitDetail() {
                         </Button>
                       ))}
 
-
                     {primaryQuiz && (
                       <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm">
                         <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
@@ -1145,7 +1153,7 @@ function UnitDetail() {
                   </div>
                   <nav>
                     <ol className="space-y-1 text-xs">
-                      {toc.map((item: any, i: number) => {
+                      {toc.map((item, i) => {
                         const active = activeSection === item.id;
                         return (
                           <li key={item.id}>

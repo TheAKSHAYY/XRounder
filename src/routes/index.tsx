@@ -1,20 +1,19 @@
 import { useEffect } from "react";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 
 import { useAuth, getAuthState, waitForAuth } from "@/hooks/use-auth";
 import { getCachedPostAuthRoute, resolvePostAuthRoute } from "@/lib/post-auth";
-import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import {
-  CTA,
-  CourseDiscovery,
-  Features,
   Hero,
+  ValueStrip,
+  TheProblem,
   LearningLoop,
-  LearningWorkflow,
+  InteractiveQuizResultDemo,
+  CourseDiscovery,
   WhyXRounder,
+  CTA,
 } from "@/components/marketing/landing-sections";
 
 export const Route = createFileRoute("/")({
@@ -34,17 +33,17 @@ export const Route = createFileRoute("/")({
 
   head: () => ({
     meta: [
-      { title: "XRounder — Learn Smarter, Semester by Semester" },
+      { title: "XRounder — Learn Smarter. Know What to Study Next." },
       {
         name: "description",
         content:
-          "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+          "The structured learning platform for BCA students. Syllabus-aligned notes, diagnostic MCQs, weakness detection, and targeted revision for university exams.",
       },
-      { property: "og:title", content: "XRounder — Learn Smarter, Semester by Semester" },
+      { property: "og:title", content: "XRounder — Learn Smarter. Know What to Study Next." },
       {
         property: "og:description",
         content:
-          "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+          "The structured learning platform for BCA students. Syllabus-aligned notes, diagnostic MCQs, weakness detection, and targeted revision for university exams.",
       },
       { property: "og:url", content: "https://www.xrounder.in/" },
       { property: "og:type", content: "website" },
@@ -52,11 +51,11 @@ export const Route = createFileRoute("/")({
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "XRounder — Learn Smarter, Semester by Semester" },
+      { name: "twitter:title", content: "XRounder — Learn Smarter. Know What to Study Next." },
       {
         name: "twitter:description",
         content:
-          "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+          "The structured learning platform for BCA students. Syllabus-aligned notes, diagnostic MCQs, weakness detection, and targeted revision for university exams.",
       },
       { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
     ],
@@ -73,7 +72,7 @@ export const Route = createFileRoute("/")({
               url: "https://www.xrounder.in/",
               name: "XRounder",
               description:
-                "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+                "The structured learning platform for BCA students. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
               publisher: {
                 "@id": "https://www.xrounder.in/#organization",
               },
@@ -91,7 +90,7 @@ export const Route = createFileRoute("/")({
               logo: "https://www.xrounder.in/xrounder-mark.png",
               sameAs: ["https://github.com/TheAKSHAYY"],
               description:
-                "Structured semester-by-semester learning platform with syllabus-aligned notes, past university papers, and practice exams.",
+                "Structured semester-by-semester learning platform with syllabus-aligned notes, past university papers, and practice exams for BCA students.",
             },
           ],
         }),
@@ -100,18 +99,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-type HomepageSection = { id: string; type: string; position: number };
-
-const DEFAULT_HOMEPAGE_SECTIONS: HomepageSection[] = [
-  { id: "default-hero", type: "hero", position: 10 },
-  { id: "default-loop", type: "learning_loop", position: 15 },
-  { id: "default-why", type: "why", position: 18 },
-  { id: "default-features", type: "features", position: 20 },
-  { id: "default-workflow", type: "workflow", position: 30 },
-  { id: "default-courses", type: "courses", position: 40 },
-  { id: "default-cta", type: "cta", position: 50 },
-];
 
 function Index() {
   const { user, loading, status, isAuthenticated } = useAuth();
@@ -137,41 +124,6 @@ function Index() {
     };
   }, [isAuthenticated, user, navigate]);
 
-
-  const { data: sections = DEFAULT_HOMEPAGE_SECTIONS } = useQuery({
-    queryKey: ["homepage_sections", "public"],
-    enabled: status === "unauthenticated",
-    queryFn: async (): Promise<HomepageSection[]> => {
-      try {
-        const { data, error } = await supabase.rpc("list_homepage_sections_public");
-        if (error) {
-          if (import.meta.env.DEV) {
-            console.warn(
-              "[homepage] Failed to load CMS sections via RPC, using defaults:",
-              error.message,
-            );
-          }
-          return DEFAULT_HOMEPAGE_SECTIONS;
-        }
-        if (!data || data.length === 0) {
-          return DEFAULT_HOMEPAGE_SECTIONS;
-        }
-        return (data as Array<{ id: string; type: string; position: number }>).map((s) => ({
-          id: s.id,
-          type: s.type,
-          position: s.position,
-        }));
-      } catch (err) {
-        if (import.meta.env.DEV) {
-          console.warn("[homepage] Exception loading CMS sections, using defaults:", err);
-        }
-        return DEFAULT_HOMEPAGE_SECTIONS;
-      }
-    },
-    initialData: DEFAULT_HOMEPAGE_SECTIONS,
-    staleTime: 60_000,
-  });
-
   // If auth state is loading or user is authenticated (while redirect to dashboard is running),
   // show a minimal clean loading state and NEVER briefly render "Continue as Guest" or landing page.
   if (status === "loading" || (isAuthenticated && user)) {
@@ -187,39 +139,33 @@ function Index() {
     );
   }
 
-  const list = sections && sections.length > 0 ? sections : DEFAULT_HOMEPAGE_SECTIONS;
-
   return (
     <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader marketing />
-      <main>
-        {list.map((s) => {
-          switch (s.type) {
-            case "hero":
-              return (
-                <div key={s.id}>
-                  <Hero user={user} loading={loading} />
-                  {/* Positioning sections always follow the hero, even for CMS-ordered lists. */}
-                  {!list.some((x) => x.type === "learning_loop") && <LearningLoop />}
-                  {!list.some((x) => x.type === "why") && <WhyXRounder />}
-                </div>
-              );
-            case "learning_loop":
-              return <LearningLoop key={s.id} />;
-            case "why":
-              return <WhyXRounder key={s.id} />;
-            case "features":
-              return <Features key={s.id} />;
-            case "courses":
-              return <CourseDiscovery key={s.id} />;
-            case "workflow":
-              return <LearningWorkflow key={s.id} />;
-            case "cta":
-              return <CTA key={s.id} user={user} loading={loading} />;
-            default:
-              return null;
-          }
-        })}
+      <main className="flex flex-col">
+        {/* 1. Hero Section + Layered Product Preview */}
+        <Hero user={user} loading={loading} />
+
+        {/* 2. Trust & Value Strip */}
+        <ValueStrip />
+
+        {/* 3. The Problem — Dead-end vs Continuous Loop */}
+        <TheProblem />
+
+        {/* 4. The 7-Step Learning Loop */}
+        <LearningLoop />
+
+        {/* 5. Interactive Quiz Result Demo */}
+        <InteractiveQuizResultDemo />
+
+        {/* 6. Dynamic BCA Syllabus Explorer */}
+        <CourseDiscovery />
+
+        {/* 7. Why XRounder — 4 Core Pillars */}
+        <WhyXRounder />
+
+        {/* 8. Final High-Conversion CTA */}
+        <CTA user={user} loading={loading} />
       </main>
       <SiteFooter />
     </div>

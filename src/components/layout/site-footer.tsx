@@ -14,9 +14,9 @@ type FooterLink =
 
 export function SiteFooter({ className }: { className?: string }) {
   const product: FooterLink[] = [
-    { label: "Browse Courses", to: "/courses" },
-    { label: "Features", href: "/#features" },
-    { label: "Curriculum", href: "/#curriculum" },
+    { label: "BCA Syllabus", to: "/courses" },
+    { label: "Learning Loop", href: "/#learning-loop" },
+    { label: "Syllabus Explorer", href: "/#syllabus" },
     { label: "How It Works", href: "/#how-it-works" },
   ];
 

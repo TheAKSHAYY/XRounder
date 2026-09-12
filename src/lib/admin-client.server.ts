@@ -48,15 +48,30 @@ export async function logAudit(
 ): Promise<void> {
   try {
     const admin = await tryAdminClient();
+    if (!admin) {
+      console.warn(
+        `[AUDIT WARNING] SUPABASE_SERVICE_ROLE_KEY is not configured on this server. Attempting write with caller client for action "${entry.action}". In production, configure SUPABASE_SERVICE_ROLE_KEY to guarantee audit records.`,
+      );
+    }
     const client = loose(admin ?? userClient);
-    await client.from("audit_logs").insert({
+    const { error } = await client.from("audit_logs").insert({
       actor_id: entry.actor_id,
       action: entry.action,
       entity_type: entry.entity_type ?? null,
       entity_id: entry.entity_id ?? null,
       metadata: entry.metadata ?? {},
     });
-  } catch {
+    if (error) {
+      console.error(
+        `[AUDIT FAILURE] Could not record audit log for action "${entry.action}":`,
+        error.message,
+      );
+    }
+  } catch (err) {
+    console.error(
+      `[AUDIT EXCEPTION] Unexpected error during audit log recording for action "${entry.action}":`,
+      err,
+    );
     // Auditing must never block the primary action.
   }
 }

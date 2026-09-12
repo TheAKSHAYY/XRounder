@@ -4,14 +4,12 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   ArrowRight,
   BookMarked,
-  BookOpen,
   Compass,
+  FileStack,
   FileText,
   FlaskConical,
   Layers,
-  ListChecks,
   Search,
-  StickyNote,
   Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -24,7 +22,6 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 type Bookmark = {
@@ -33,6 +30,10 @@ type Bookmark = {
   ref_id: string;
   title: string | null;
   created_at: string;
+  course_slug?: string | null;
+  semester_number?: number | null;
+  subject_slug?: string | null;
+  unit_number?: number | null;
 };
 
 export const Route = createFileRoute("/_authenticated/bookmarks")({
@@ -58,7 +59,7 @@ const KIND_META = {
   paper: {
     label: "Past Papers",
     singular: "Paper",
-    icon: BookOpen,
+    icon: FileStack,
     color: "text-warning-foreground bg-warning/15 dark:text-warning",
   },
   quiz: {
@@ -75,7 +76,6 @@ const KIND_META = {
   },
 } as const;
 
-
 function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } {
   switch (b.kind) {
     case "note":
@@ -84,6 +84,19 @@ function routeFor(b: Bookmark): { to: string; params?: Record<string, string> } 
       return { to: "/papers/$paperId", params: { paperId: b.ref_id } };
     case "quiz":
       return { to: "/quizzes/$quizId", params: { quizId: b.ref_id } };
+    case "unit":
+      if (b.course_slug && b.semester_number && b.subject_slug && b.unit_number) {
+        return {
+          to: "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
+          params: {
+            courseSlug: b.course_slug,
+            semesterNumber: String(b.semester_number),
+            subjectSlug: b.subject_slug,
+            unitNumber: String(b.unit_number),
+          },
+        };
+      }
+      return { to: "/courses" };
     default:
       return { to: "/courses" };
   }
@@ -117,8 +130,9 @@ function BookmarksPage() {
       qc.invalidateQueries({ queryKey: ["all-bookmarks"] });
       qc.invalidateQueries({ queryKey: ["student-bookmarks"] });
     },
-    onError: (err: any) => {
-      toast.error(err.message || "Failed to remove bookmark");
+    onError: (err: unknown) => {
+      const msg = err instanceof Error ? err.message : "Failed to remove bookmark";
+      toast.error(msg);
     },
   });
 
@@ -255,7 +269,8 @@ function BookmarksPage() {
                   className="group relative flex items-center justify-between gap-3 rounded-2xl border border-border/80 bg-card p-3.5 sm:p-4 transition-all hover:border-primary/50 hover:shadow-xs"
                 >
                   <Link
-                    {...(r as any)}
+                    to={r.to as string}
+                    params={r.params}
                     className="flex min-w-0 flex-1 items-center gap-3.5 focus-visible:outline-none"
                   >
                     <div
@@ -298,7 +313,7 @@ function BookmarksPage() {
                       variant="outline"
                       className="h-8 rounded-lg text-xs font-semibold px-3 hidden sm:inline-flex"
                     >
-                      <Link {...(r as any)}>
+                      <Link to={r.to as string} params={r.params}>
                         Open <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                       </Link>
                     </Button>

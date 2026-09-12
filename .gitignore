@@ -54,3 +54,7 @@ dist
 .next
 out
 build
+
+# Supabase local temp
+supabase/.temp/
+
