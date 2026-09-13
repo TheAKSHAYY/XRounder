@@ -378,7 +378,7 @@ export function ValueStrip() {
   return (
     <section className="border-b border-border/60 bg-surface/50 py-6 sm:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {values.map((v) => {
             const Icon = v.icon;
             return (
@@ -392,10 +392,8 @@ export function ValueStrip() {
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-display text-xs sm:text-sm font-bold text-foreground truncate">
-                    {v.label}
-                  </p>
-                  <p className="text-[11px] text-muted-foreground truncate">{v.desc}</p>
+                  <p className="font-display text-sm font-bold text-foreground">{v.label}</p>
+                  <p className="text-[11px] leading-snug text-muted-foreground">{v.desc}</p>
                 </div>
               </div>
             );
