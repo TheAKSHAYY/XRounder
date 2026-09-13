@@ -107,6 +107,7 @@ type WeakAttemptResult = {
   quizzes: {
     title: string | null;
     units: {
+      number: number;
       title: string;
       subjects: {
         title: string;
