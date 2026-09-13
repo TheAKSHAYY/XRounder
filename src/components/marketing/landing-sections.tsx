@@ -241,14 +241,14 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                     </span>
                   </div>
 
-                  <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-                    🎯 Revise Subnetting & Supernetting
+                  <h3 className="mt-3 font-display text-base sm:text-lg font-bold text-foreground">
+                    Revise Subnetting &amp; Supernetting
                   </h3>
                   <p className="mt-1 text-xs text-muted-foreground">
                     Computer Networks · Semester 5 · Unit 3
                   </p>
 
-                  <div className="mt-3 flex items-center justify-between rounded-lg bg-surface p-2.5 text-xs border border-border/60">
+                  <div className="mt-3 flex flex-col gap-1 rounded-lg bg-surface p-2.5 text-xs border border-border/60 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                     <span className="text-muted-foreground">
                       Accuracy on last quiz: <strong className="text-amber-600">44%</strong>
                     </span>
@@ -378,7 +378,7 @@ export function ValueStrip() {
   return (
     <section className="border-b border-border/60 bg-surface/50 py-6 sm:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {values.map((v) => {
             const Icon = v.icon;
             return (
@@ -392,10 +392,8 @@ export function ValueStrip() {
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-display text-xs sm:text-sm font-bold text-foreground truncate">
-                    {v.label}
-                  </p>
-                  <p className="text-[11px] text-muted-foreground truncate">{v.desc}</p>
+                  <p className="font-display text-sm font-bold text-foreground">{v.label}</p>
+                  <p className="text-[11px] leading-snug text-muted-foreground">{v.desc}</p>
                 </div>
               </div>
             );

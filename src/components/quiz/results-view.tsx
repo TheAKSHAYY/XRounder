@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   FlaskConical,
   LayoutDashboard,
+  ListChecks,
   RotateCcw,
   Sparkles,
   Target,

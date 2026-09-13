@@ -107,6 +107,7 @@ type WeakAttemptResult = {
   quizzes: {
     title: string | null;
     units: {
+      number: number;
       title: string;
       subjects: {
         title: string;
@@ -238,9 +239,9 @@ function DashboardPage() {
           subject_slug: r.units?.subjects?.slug ?? "",
           semester_number: r.units?.subjects?.semesters?.number ?? 1,
           course_slug: r.units?.subjects?.semesters?.courses?.slug ?? "",
-          status: r.status,
+          status: (r.status ?? "not_started") as EnrichedProgress["status"],
           progress_pct: Number(r.progress_pct ?? 0),
-          last_activity_at: r.last_activity_at,
+          last_activity_at: r.last_activity_at ?? "",
         }));
       } catch {
         return [];
@@ -382,7 +383,7 @@ function DashboardPage() {
               unitTitle: q.units?.title ? `Unit ${q.units.number}` : "",
               avgPct: pct,
               attemptsCount: 1,
-              lastAttempt: a.submitted_at,
+              lastAttempt: a.submitted_at ?? "",
             });
           } else {
             existing.avgPct = Math.round(
