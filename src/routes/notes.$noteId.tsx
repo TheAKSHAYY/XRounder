@@ -337,7 +337,7 @@ function NoteViewer() {
   const hierarchy = noteQuery.data?.hierarchy;
 
   // Build breadcrumbs dynamically from resolved academic hierarchy
-  const crumbs = [
+  const crumbs: Crumb[] = [
     { label: "Courses", to: "/courses" },
     ...(hierarchy?.courseSlug
       ? [
