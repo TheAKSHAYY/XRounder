@@ -241,14 +241,14 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                     </span>
                   </div>
 
-                  <h3 className="mt-3 font-display text-lg font-bold text-foreground">
-                    🎯 Revise Subnetting & Supernetting
+                  <h3 className="mt-3 font-display text-base sm:text-lg font-bold text-foreground">
+                    Revise Subnetting &amp; Supernetting
                   </h3>
                   <p className="mt-1 text-xs text-muted-foreground">
                     Computer Networks · Semester 5 · Unit 3
                   </p>
 
-                  <div className="mt-3 flex items-center justify-between rounded-lg bg-surface p-2.5 text-xs border border-border/60">
+                  <div className="mt-3 flex flex-col gap-1 rounded-lg bg-surface p-2.5 text-xs border border-border/60 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
                     <span className="text-muted-foreground">
                       Accuracy on last quiz: <strong className="text-amber-600">44%</strong>
                     </span>
