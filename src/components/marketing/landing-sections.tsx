@@ -105,12 +105,12 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left: Value Proposition & Storytelling */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary">
+            <div className="landing-hero-enter landing-delay-1 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1 text-xs font-semibold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Personalized Semester OS · For BCA Students</span>
             </div>
 
-            <div className="space-y-3">
+            <div className="landing-hero-enter landing-delay-2 space-y-3">
               <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
                 Learn smarter. <br />
                 <span className="bg-gradient-to-r from-primary via-indigo-600 to-violet-600 bg-clip-text text-transparent dark:from-primary dark:to-violet-400">
@@ -125,13 +125,13 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             </div>
 
             {/* Quick Core Message Strip */}
-            <div className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-3 text-xs text-foreground/90">
+            <div className="landing-hero-enter landing-delay-3 rounded-xl border border-primary/15 bg-primary/5 px-4 py-3 text-xs text-foreground/90">
               <span className="font-bold text-primary">Core difference: </span>
               Most platforms hand you notes. XRounder tells you what to study next.
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <div className="landing-hero-enter landing-delay-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               {loading ? (
                 <div className="flex items-center gap-3">
                   <Skeleton className="h-12 w-44 rounded-xl" />
@@ -172,7 +172,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             </div>
 
             {/* Micro value badges */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-muted-foreground">
+            <div className="landing-hero-enter landing-delay-5 flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 Free syllabus browsing
@@ -189,7 +189,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
           </div>
 
           {/* Right: Layered Product Preview (Explicit Product Illustration) */}
-          <div className="lg:col-span-6 relative">
+          <div className="landing-preview-enter lg:col-span-6 relative">
             {/* Visual Container */}
             <div className="relative mx-auto max-w-lg lg:max-w-none pt-4 pb-6">
               {/* Illustration Label Pill */}
@@ -208,7 +208,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Main Central Card: "Your Next Best Action" */}
               <div
                 style={{ transform: cardTransform, transition: "transform 0.25s ease-out" }}
-                className="relative rounded-2xl border border-border/80 bg-card p-5 sm:p-6 shadow-xl ring-1 ring-border/50"
+                className="landing-product-card relative rounded-2xl border border-border/80 bg-card p-5 sm:p-6 shadow-xl ring-1 ring-border/50"
               >
                 {/* Header Window Bar */}
                 <div className="flex items-center justify-between border-b border-border/70 pb-3.5">
@@ -285,7 +285,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Badge 1: Mastered topic (top-right) */}
               <div
                 style={{ transform: badgeTransform1, transition: "transform 0.25s ease-out" }}
-                className="hidden sm:flex absolute -top-2 -right-4 z-20 items-center gap-2 rounded-xl border border-emerald-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
+                className="landing-float-a hidden sm:flex absolute -top-2 -right-4 z-20 items-center gap-2 rounded-xl border border-emerald-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
               >
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="h-3.5 w-3.5" />
@@ -301,7 +301,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Badge 2: Needs practice (bottom-left) */}
               <div
                 style={{ transform: badgeTransform2, transition: "transform 0.25s ease-out" }}
-                className="hidden sm:flex absolute -bottom-3 -left-4 z-20 items-center gap-2 rounded-xl border border-amber-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
+                className="landing-float-b hidden sm:flex absolute -bottom-3 -left-4 z-20 items-center gap-2 rounded-xl border border-amber-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
               >
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400">
                   <AlertTriangle className="h-3.5 w-3.5" />
@@ -376,15 +376,16 @@ export function ValueStrip() {
   ];
 
   return (
-    <section className="border-b border-border/60 bg-surface/50 py-6 sm:py-8">
+    <section className="reveal-on-scroll border-b border-border/60 bg-surface/50 py-6 sm:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {values.map((v) => {
+          {values.map((v, index) => {
             const Icon = v.icon;
             return (
               <div
                 key={v.label}
-                className="flex items-center gap-3 rounded-xl border border-border/60 bg-background/80 p-3 sm:p-4 shadow-2xs"
+                style={{ animationDelay: `${index * 70}ms` }}
+                className="landing-stagger-card interactive-card flex items-center gap-3 rounded-xl border border-border/60 bg-background/80 p-3 sm:p-4 shadow-2xs"
               >
                 <div
                   className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-xl", v.color)}
@@ -408,7 +409,7 @@ export function ValueStrip() {
 
 export function TheProblem() {
   return (
-    <section className="border-b border-border/60 bg-background py-16 sm:py-20">
+    <section className="reveal-on-scroll border-b border-border/60 bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl mx-auto text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -425,7 +426,7 @@ export function TheProblem() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2 items-stretch">
           {/* Traditional Loop */}
-          <div className="flex flex-col justify-between rounded-2xl border border-border/80 bg-surface/60 p-6 sm:p-8">
+          <div className="interactive-card flex flex-col justify-between rounded-2xl border border-border/80 bg-surface/60 p-6 sm:p-8">
             <div>
               <div className="inline-flex items-center gap-2 rounded-lg bg-muted px-3 py-1 text-xs font-bold text-muted-foreground">
                 Traditional Study Sites
@@ -459,7 +460,7 @@ export function TheProblem() {
           </div>
 
           {/* XRounder Loop */}
-          <div className="flex flex-col justify-between rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-6 sm:p-8 shadow-sm">
+          <div className="interactive-card flex flex-col justify-between rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-6 sm:p-8 shadow-sm">
             <div>
               <div className="inline-flex items-center gap-2 rounded-lg bg-primary/15 px-3 py-1 text-xs font-bold text-primary">
                 The XRounder Loop
@@ -568,7 +569,7 @@ export function LearningLoop() {
   ];
 
   return (
-    <section id="learning-loop" className="border-b border-border/60 bg-surface/30 py-16 sm:py-20">
+    <section id="learning-loop" className="reveal-on-scroll border-b border-border/60 bg-surface/30 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -621,7 +622,7 @@ export function LearningLoop() {
           </div>
 
           {/* Active Step Detail Preview Card */}
-          <div className="mt-6 rounded-2xl border border-primary/30 bg-card p-6 shadow-sm">
+          <div key={steps[activeStep].step} className="animate-smooth-swap mt-6 rounded-2xl border border-primary/30 bg-card p-6 shadow-sm">
             <div className="flex items-center gap-4">
               <span className="font-mono text-2xl font-black text-primary">
                 {steps[activeStep].step}
@@ -641,12 +642,13 @@ export function LearningLoop() {
 
         {/* Mobile Vertical Timeline */}
         <div className="mt-8 space-y-3 lg:hidden">
-          {steps.map((s) => {
+          {steps.map((s, index) => {
             const Icon = s.icon;
             return (
               <div
                 key={s.step}
-                className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-2xs"
+                style={{ animationDelay: `${index * 55}ms` }}
+                className="landing-stagger-card interactive-card flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-2xs"
               >
                 <div
                   className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-xl", s.color)}
@@ -683,7 +685,7 @@ export function InteractiveQuizResultDemo() {
   ];
 
   return (
-    <section className="border-b border-border/60 bg-background py-16 sm:py-20">
+    <section className="reveal-on-scroll border-b border-border/60 bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl mx-auto text-center">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -723,7 +725,7 @@ export function InteractiveQuizResultDemo() {
         </div>
 
         {/* Demo Display Card */}
-        <div className="mt-6 mx-auto max-w-2xl rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-md">
+        <div className="landing-demo-card mt-6 mx-auto max-w-2xl rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-md">
           {activeStage === 1 && (
             <div className="space-y-6 text-center animate-fade-in-up">
               <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
@@ -1032,7 +1034,7 @@ export function CourseDiscovery() {
   const subjects = useMemo(() => subjectsQuery.data ?? [], [subjectsQuery.data]);
 
   return (
-    <section id="syllabus" className="border-b border-border/60 bg-surface/40 py-16 sm:py-20">
+    <section id="syllabus" className="reveal-on-scroll border-b border-border/60 bg-surface/40 py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -1098,7 +1100,7 @@ export function CourseDiscovery() {
           </div>
         ) : (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {subjects.map((sub) => {
+            {subjects.map((sub, index) => {
               const visual = getSubjectVisual(sub.title);
               const Icon = visual.icon;
               const linkUrl =
@@ -1110,7 +1112,8 @@ export function CourseDiscovery() {
                 <Link
                   key={sub.id}
                   to={linkUrl}
-                  className="group flex flex-col justify-between rounded-2xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary/40 hover:shadow-sm"
+                  style={{ animationDelay: `${index * 55}ms` }}
+                  className="landing-stagger-card interactive-card group flex flex-col justify-between rounded-2xl border border-border bg-card p-5 hover:border-primary/40"
                 >
                   <div>
                     <div className="flex items-center justify-between">
@@ -1181,7 +1184,7 @@ export function WhyXRounder() {
   ];
 
   return (
-    <section id="how-it-works" className="border-b border-border/60 bg-background py-16 sm:py-20">
+    <section id="how-it-works" className="reveal-on-scroll border-b border-border/60 bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -1196,12 +1199,13 @@ export function WhyXRounder() {
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((p) => {
+          {pillars.map((p, index) => {
             const Icon = p.icon;
             return (
               <div
                 key={p.title}
-                className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-6 transition-all duration-200 hover:border-primary/40 shadow-2xs"
+                style={{ animationDelay: `${index * 70}ms` }}
+                className="landing-stagger-card interactive-card flex flex-col justify-between rounded-2xl border border-border bg-surface p-6 hover:border-primary/40 shadow-2xs"
               >
                 <div>
                   <div className={cn("grid h-11 w-11 place-items-center rounded-xl", p.color)}>
@@ -1225,9 +1229,9 @@ export function WhyXRounder() {
 
 export function CTA({ user, loading }: { user: unknown; loading: boolean }) {
   return (
-    <section className="py-16 sm:py-20 bg-surface/50">
+    <section className="reveal-on-scroll py-16 sm:py-20 bg-surface/50">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
-        <div className="rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-8 sm:p-14 shadow-lg">
+        <div className="landing-cta-card rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-8 sm:p-14 shadow-lg">
           <span className="inline-block rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
             Start Today · Free Access
           </span>
