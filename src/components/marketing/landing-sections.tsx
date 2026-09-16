@@ -212,17 +212,17 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                 className="landing-product-card relative rounded-2xl border border-border/80 bg-card p-5 sm:p-6 shadow-xl ring-1 ring-border/50"
               >
                 {/* Header Window Bar */}
-                <div className="flex items-center justify-between border-b border-border/70 pb-3.5">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-                    <span className="ml-2 font-mono text-xs font-semibold text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/70 pb-3.5">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-rose-500/80" />
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-500/80" />
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-500/80" />
+                    <span className="ml-2 truncate font-mono text-xs font-semibold text-muted-foreground">
                       XRounder Intelligence Engine
                     </span>
                   </div>
                   <span className="shrink-0 whitespace-nowrap rounded-md bg-primary/10 px-2 py-0.5 font-mono text-[11px] font-bold text-primary">
-                    Sem 5
+                    Semester 5
                   </span>
                 </div>
 
@@ -287,7 +287,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Badge 1: Mastered topic (top-right) */}
               <div
                 style={{ transform: badgeTransform1, transition: "transform 0.25s ease-out" }}
-                className="landing-float-a hidden sm:flex absolute -top-2 -right-4 z-20 items-center gap-2 rounded-xl border border-emerald-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
+                className="landing-float-a hidden lg:flex absolute -top-4 -right-6 z-20 items-center gap-2 rounded-xl border border-emerald-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
               >
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="h-3.5 w-3.5" />
@@ -303,7 +303,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Badge 2: Needs practice (bottom-left) */}
               <div
                 style={{ transform: badgeTransform2, transition: "transform 0.25s ease-out" }}
-                className="landing-float-b hidden sm:flex absolute -bottom-3 -left-4 z-20 items-center gap-2 rounded-xl border border-amber-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
+                className="landing-float-b hidden lg:flex absolute -bottom-5 -left-6 z-20 items-center gap-2 rounded-xl border border-amber-500/30 bg-card/95 px-3.5 py-2 shadow-lg backdrop-blur-sm"
               >
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400">
                   <AlertTriangle className="h-3.5 w-3.5" />
