@@ -191,20 +191,21 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
           {/* Right: Layered Product Preview (Explicit Product Illustration) */}
           <div className="landing-preview-enter lg:col-span-6 relative">
             {/* Visual Container */}
-            <div className="relative mx-auto max-w-lg lg:max-w-none pt-4 pb-6">
+            <div className="mx-auto max-w-lg lg:max-w-none pt-4 pb-6">
               {/* Illustration Label Pill */}
-              <div className="mb-3 flex items-center justify-between px-1">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-2 px-1 lg:mb-8">
+                <span className="min-w-0 font-mono text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   Product Preview · Illustrative Workflow
                 </span>
                 <Badge
                   variant="outline"
-                  className="text-[10px] font-mono border-border text-muted-foreground"
+                  className="shrink-0 text-[10px] font-mono border-border text-muted-foreground"
                 >
                   Demo
                 </Badge>
               </div>
 
+              <div className="relative">
               {/* Main Central Card: "Your Next Best Action" */}
               <div
                 style={{ transform: cardTransform, transition: "transform 0.25s ease-out" }}
@@ -220,23 +221,24 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                       XRounder Intelligence Engine
                     </span>
                   </div>
-                  <span className="rounded-md bg-primary/10 px-2 py-0.5 font-mono text-[11px] font-bold text-primary">
-                    Semester 5
+                  <span className="shrink-0 whitespace-nowrap rounded-md bg-primary/10 px-2 py-0.5 font-mono text-[11px] font-bold text-primary">
+                    Sem 5
                   </span>
                 </div>
 
                 {/* Central Next Best Action Box */}
                 <div className="mt-4 rounded-xl border border-primary/25 bg-gradient-to-br from-primary/5 via-background to-primary/10 p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary/15 text-primary">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary">
                         <Target className="h-4 w-4" />
                       </span>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
                         Your Next Best Action
                       </span>
                     </div>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">
+                    <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:text-amber-300">
+                      <AlertTriangle className="h-3 w-3" aria-hidden />
                       Weakness Detected
                     </span>
                   </div>
@@ -336,6 +338,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
                 <span className="text-xs font-bold text-rose-600 dark:text-rose-400">
                   +29% Retest Gain
                 </span>
+              </div>
               </div>
             </div>
           </div>
@@ -446,9 +449,10 @@ export function TheProblem() {
                 <span className="rounded-lg bg-muted px-3 py-1.5 text-foreground/80">Quiz</span>
                 <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
                 <span className="rounded-lg bg-muted px-3 py-1.5 text-foreground/80">Score</span>
-                <ChevronRight className="h-3.5 w-3.5 text-rose-500" />
-                <span className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 font-bold text-rose-600 dark:text-rose-400">
-                  What now? 🤔
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-rose-500" />
+                <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 font-bold text-rose-600 dark:text-rose-400">
+                  <HelpCircle className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                  What now?
                 </span>
               </div>
             </div>
@@ -890,8 +894,9 @@ export function InteractiveQuizResultDemo() {
                 </div>
               </div>
 
-              <div className="rounded-xl bg-primary/5 p-3 text-xs text-primary font-bold">
-                🎉 Score improved by +29% with targeted revision
+              <div className="flex items-center gap-2 rounded-xl bg-primary/5 p-3 text-xs text-primary font-bold">
+                <TrendingUp className="h-4 w-4 shrink-0" aria-hidden />
+                <span className="min-w-0">Score improved by +29% with targeted revision</span>
               </div>
 
               <Button
