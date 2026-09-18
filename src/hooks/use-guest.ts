@@ -14,6 +14,8 @@ const SERVER_SNAPSHOT: GuestState = {
   startedAt: null,
   mcqSeen: {},
   bookmarks: [],
+  notes: {},
+  topics: {},
   views: 0,
   lastPromptAt: null,
 };
