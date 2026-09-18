@@ -207,6 +207,9 @@ function ExplorePage() {
           </div>
         </section>
 
+        {/* ─── Real progress from this visitor's own activity ─── */}
+        <GuestProgressPanel sampleSubjects={guestSubjects} />
+
         {/* ─── Guest Personalized Semester Rail ─── */}
         {guestPrefs && (
           <section className="mt-10 rounded-3xl border border-border bg-surface p-6 sm:p-8">
