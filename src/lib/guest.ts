@@ -18,6 +18,28 @@ export const GUEST_LIMITS = {
 
 const KEY = "xr.guest.v1";
 
+/** A note the guest opened, plus how far they actually read it. */
+export type GuestNoteActivity = {
+  id: string;
+  title: string;
+  href: string;
+  subjectTitle: string | null;
+  unitTitle: string | null;
+  pct: number;
+  updatedAt: number;
+};
+
+/** A topic (quiz) the guest practised in preview mode. */
+export type GuestTopicActivity = {
+  quizId: string;
+  title: string;
+  subjectTitle: string | null;
+  unitTitle: string | null;
+  seen: number;
+  answered: number;
+  updatedAt: number;
+};
+
 export type GuestState = {
   active: boolean;
   startedAt: number | null;
@@ -25,6 +47,10 @@ export type GuestState = {
   mcqSeen: Record<string, number>;
   /** contentId -> label, tab-local "saved" items */
   bookmarks: { id: string; label: string; href: string }[];
+  /** noteId -> reading activity */
+  notes: Record<string, GuestNoteActivity>;
+  /** quizId -> practice activity */
+  topics: Record<string, GuestTopicActivity>;
   /** Route views since the last conversion prompt. */
   views: number;
   lastPromptAt: number | null;
@@ -35,6 +61,8 @@ const EMPTY: GuestState = {
   startedAt: null,
   mcqSeen: {},
   bookmarks: [],
+  notes: {},
+  topics: {},
   views: 0,
   lastPromptAt: null,
 };
@@ -95,6 +123,13 @@ export function subscribeGuest(listener: () => void) {
 
 export function getGuestState(): GuestState {
   return read();
+}
+
+/** Apply a functional update to the guest store and notify subscribers. */
+export function updateGuestState(updater: (state: GuestState) => GuestState) {
+  const current = read();
+  const next = updater(current);
+  if (next !== current) write(next);
 }
 
 export function startGuestMode() {
