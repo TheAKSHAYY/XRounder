@@ -125,6 +125,13 @@ export function getGuestState(): GuestState {
   return read();
 }
 
+/** Apply a functional update to the guest store and notify subscribers. */
+export function updateGuestState(updater: (state: GuestState) => GuestState) {
+  const current = read();
+  const next = updater(current);
+  if (next !== current) write(next);
+}
+
 export function startGuestMode() {
   const s = read();
   if (s.active) return;
