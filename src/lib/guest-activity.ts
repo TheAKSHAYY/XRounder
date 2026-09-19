@@ -42,6 +42,7 @@ export function recordGuestNoteProgress(input: {
       subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
       unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
       pct: Math.max(pct, prev?.pct ?? 0),
+      visits: prev?.visits ?? 1,
       updatedAt: Date.now(),
     };
     return { ...s, notes: { ...s.notes, [input.noteId]: next } };
@@ -115,6 +116,7 @@ export function recordGuestTopicAttempt(input: {
       unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
       seen: (prev?.seen ?? 0) + 1,
       answered: (prev?.answered ?? 0) + (input.answered ? 1 : 0),
+      sessions: prev?.sessions ?? 1,
       updatedAt: Date.now(),
     };
     return { ...s, topics: { ...s.topics, [input.quizId]: next } };
