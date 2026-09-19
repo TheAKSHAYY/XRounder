@@ -26,6 +26,8 @@ export type GuestNoteActivity = {
   subjectTitle: string | null;
   unitTitle: string | null;
   pct: number;
+  /** How many separate times the note was opened — 2+ means a revision. */
+  visits?: number;
   updatedAt: number;
 };
 
@@ -37,6 +39,8 @@ export type GuestTopicActivity = {
   unitTitle: string | null;
   seen: number;
   answered: number;
+  /** Separate practice sessions on this quiz — 2+ means a retest. */
+  sessions?: number;
   updatedAt: number;
 };
 

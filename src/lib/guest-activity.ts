@@ -42,9 +42,60 @@ export function recordGuestNoteProgress(input: {
       subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
       unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
       pct: Math.max(pct, prev?.pct ?? 0),
+      visits: prev?.visits ?? 1,
       updatedAt: Date.now(),
     };
     return { ...s, notes: { ...s.notes, [input.noteId]: next } };
+  });
+}
+
+/**
+ * Count one *opening* of a note. Called once per note page mount, so a second
+ * visit is an honest "came back to revise this" signal.
+ */
+export function recordGuestNoteVisit(input: {
+  noteId: string;
+  title: string;
+  href: string;
+  subjectTitle?: string | null;
+  unitTitle?: string | null;
+}) {
+  updateGuestState((s) => {
+    const prev = s.notes[input.noteId];
+    const next: GuestNoteActivity = {
+      id: input.noteId,
+      title: input.title,
+      href: input.href,
+      subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
+      unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
+      pct: prev?.pct ?? 0,
+      visits: (prev?.visits ?? 0) + 1,
+      updatedAt: Date.now(),
+    };
+    return { ...s, notes: { ...s.notes, [input.noteId]: next } };
+  });
+}
+
+/** Count one *practice session* on a quiz. Called once per quiz page mount. */
+export function recordGuestTopicSession(input: {
+  quizId: string;
+  quizTitle?: string | null;
+  subjectTitle?: string | null;
+  unitTitle?: string | null;
+}) {
+  updateGuestState((s) => {
+    const prev = s.topics[input.quizId];
+    const next: GuestTopicActivity = {
+      quizId: input.quizId,
+      title: input.quizTitle ?? prev?.title ?? "Practice quiz",
+      subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
+      unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
+      seen: prev?.seen ?? 0,
+      answered: prev?.answered ?? 0,
+      sessions: (prev?.sessions ?? 0) + 1,
+      updatedAt: Date.now(),
+    };
+    return { ...s, topics: { ...s.topics, [input.quizId]: next } };
   });
 }
 
@@ -65,6 +116,7 @@ export function recordGuestTopicAttempt(input: {
       unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
       seen: (prev?.seen ?? 0) + 1,
       answered: (prev?.answered ?? 0) + (input.answered ? 1 : 0),
+      sessions: prev?.sessions ?? 1,
       updatedAt: Date.now(),
     };
     return { ...s, topics: { ...s.topics, [input.quizId]: next } };
@@ -82,31 +134,139 @@ export type GuestWeakTopic = {
   href: string;
 };
 
+/** One step of the Learn → Practice → Detect → Revise → Retest loop. */
+export type GuestJourneyStage = {
+  key: "learn" | "practice" | "detect" | "revise" | "retest";
+  label: string;
+  /** What this step means, stated in terms of what the visitor did. */
+  detail: string;
+  done: boolean;
+  /** True for the single step the visitor should do next. */
+  current: boolean;
+  /** Where to go to complete this step, when we know a concrete target. */
+  href: string | null;
+  cta: string;
+};
+
 export type GuestActivitySummary = {
   hasActivity: boolean;
   notesOpened: number;
   notesRead: number;
+  notesRevisited: number;
   questionsPreviewed: number;
   questionsAnswered: number;
   topicsTouched: number;
+  topicsRetested: number;
   /** Average reading completion across every note opened. */
   readingProgress: number;
   lastActivityAt: number | null;
   continueNote: GuestNoteActivity | null;
   weakTopics: GuestWeakTopic[];
+  journey: GuestJourneyStage[];
+  /** 0–100 completion of the five-step loop. */
+  journeyPct: number;
 };
+
+function buildJourney(input: {
+  notesRead: number;
+  notesOpened: number;
+  questionsAnswered: number;
+  weakTopics: GuestWeakTopic[];
+  notesRevisited: number;
+  topicsRetested: number;
+  continueNote: GuestNoteActivity | null;
+  firstTopicHref: string | null;
+}): { journey: GuestJourneyStage[]; journeyPct: number } {
+  const weak = input.weakTopics[0] ?? null;
+
+  const raw = [
+    {
+      key: "learn" as const,
+      label: "Learn",
+      detail: input.notesRead
+        ? `${input.notesRead} note${input.notesRead === 1 ? "" : "s"} read end to end`
+        : input.notesOpened
+          ? "A note is open — finish reading it"
+          : "Open a unit note and read it",
+      done: input.notesRead > 0,
+      href: input.continueNote?.href ?? "/courses",
+      cta: input.notesOpened ? "Finish reading" : "Open a note",
+    },
+    {
+      key: "practice" as const,
+      label: "Practice",
+      detail: input.questionsAnswered
+        ? `${input.questionsAnswered} question${input.questionsAnswered === 1 ? "" : "s"} attempted`
+        : "Attempt questions from that unit",
+      done: input.questionsAnswered > 0,
+      href: input.firstTopicHref ?? "/mock-test",
+      cta: "Practice questions",
+    },
+    {
+      key: "detect" as const,
+      label: "Weak topic detected",
+      detail: weak
+        ? `Weakest right now: ${weak.title}`
+        : "We flag the topics you skipped or half-read",
+      done: input.weakTopics.length > 0,
+      href: weak?.href ?? null,
+      cta: "See weak topics",
+    },
+    {
+      key: "revise" as const,
+      label: "Revise",
+      detail: input.notesRevisited
+        ? `${input.notesRevisited} note${input.notesRevisited === 1 ? "" : "s"} revisited`
+        : "Go back to the note behind that weak topic",
+      done: input.notesRevisited > 0,
+      href: weak?.href ?? input.continueNote?.href ?? "/courses",
+      cta: "Revise it",
+    },
+    {
+      key: "retest" as const,
+      label: "Retest",
+      detail: input.topicsRetested
+        ? `${input.topicsRetested} topic${input.topicsRetested === 1 ? "" : "s"} practised again`
+        : "Practise the same topic again to confirm it improved",
+      done: input.topicsRetested > 0,
+      href: input.firstTopicHref ?? "/mock-test",
+      cta: "Retest now",
+    },
+  ];
+
+  const nextIdx = raw.findIndex((s) => !s.done);
+  const journey: GuestJourneyStage[] = raw.map((s, i) => ({ ...s, current: i === nextIdx }));
+  const doneCount = raw.filter((s) => s.done).length;
+
+  return { journey, journeyPct: Math.round((doneCount / raw.length) * 100) };
+}
+
+const EMPTY_JOURNEY = buildJourney({
+  notesRead: 0,
+  notesOpened: 0,
+  questionsAnswered: 0,
+  weakTopics: [],
+  notesRevisited: 0,
+  topicsRetested: 0,
+  continueNote: null,
+  firstTopicHref: null,
+});
 
 const EMPTY_SUMMARY: GuestActivitySummary = {
   hasActivity: false,
   notesOpened: 0,
   notesRead: 0,
+  notesRevisited: 0,
   questionsPreviewed: 0,
   questionsAnswered: 0,
   topicsTouched: 0,
+  topicsRetested: 0,
   readingProgress: 0,
   lastActivityAt: null,
   continueNote: null,
   weakTopics: [],
+  journey: EMPTY_JOURNEY.journey,
+  journeyPct: 0,
 };
 
 export function summarizeGuestActivity(state = getGuestState()): GuestActivitySummary {
