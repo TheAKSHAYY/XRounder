@@ -20,6 +20,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
+import { NoteReadingProgress } from "@/components/notes/note-reading-progress";
 
 export const Route = createFileRoute("/notes/$noteId")({
   head: ({ params }) => {
@@ -477,6 +478,15 @@ function NoteViewer() {
                 />
               </div>
             )}
+
+            <NoteReadingProgress
+              noteId={noteQuery.data.id}
+              title={noteQuery.data.title}
+              href={`/notes/${noteQuery.data.id}`}
+              subjectTitle={hierarchy?.subjectTitle ?? null}
+              unitTitle={hierarchy?.unitTitle ?? null}
+              quizId={hierarchy?.quizId ?? null}
+            />
 
             {/* Embedded PDF Viewer */}
             {pdfUrl && (

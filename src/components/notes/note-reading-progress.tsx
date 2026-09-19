@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { BookOpenCheck, FlaskConical, Target } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { ProgressBar } from "@/components/ui/progress-bar";
 import { READ_THRESHOLD, recordGuestNoteProgress } from "@/lib/guest-activity";
 
 /** How far down the page the reader has scrolled, 0–100. */
@@ -68,7 +68,7 @@ export function NoteReadingProgress({
         </div>
         <span className="text-sm font-bold text-primary">{pct}%</span>
       </div>
-      <Progress value={pct} className="mt-3 h-2" />
+      <ProgressBar value={pct} label="Reading progress" size="md" className="mt-3" />
       <p className="mt-3 text-xs text-muted-foreground">
         {finished
           ? "You've read this note end to end. Test it now so it actually sticks."
