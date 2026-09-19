@@ -237,7 +237,12 @@ function QuizPage() {
         )}
 
         {!user && isGuest && quizQ.data && (
-          <GuestQuizPreview quizId={quizId} questions={questions} optionsByQ={optionsByQ} />
+          <GuestQuizPreview
+            quizId={quizId}
+            questions={questions}
+            optionsByQ={optionsByQ}
+            quizTitle={quizQ.data.title}
+          />
         )}
 
         {user && activeAttempt && current && (
