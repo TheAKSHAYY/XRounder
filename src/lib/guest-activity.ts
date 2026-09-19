@@ -48,6 +48,56 @@ export function recordGuestNoteProgress(input: {
   });
 }
 
+/**
+ * Count one *opening* of a note. Called once per note page mount, so a second
+ * visit is an honest "came back to revise this" signal.
+ */
+export function recordGuestNoteVisit(input: {
+  noteId: string;
+  title: string;
+  href: string;
+  subjectTitle?: string | null;
+  unitTitle?: string | null;
+}) {
+  updateGuestState((s) => {
+    const prev = s.notes[input.noteId];
+    const next: GuestNoteActivity = {
+      id: input.noteId,
+      title: input.title,
+      href: input.href,
+      subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
+      unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
+      pct: prev?.pct ?? 0,
+      visits: (prev?.visits ?? 0) + 1,
+      updatedAt: Date.now(),
+    };
+    return { ...s, notes: { ...s.notes, [input.noteId]: next } };
+  });
+}
+
+/** Count one *practice session* on a quiz. Called once per quiz page mount. */
+export function recordGuestTopicSession(input: {
+  quizId: string;
+  quizTitle?: string | null;
+  subjectTitle?: string | null;
+  unitTitle?: string | null;
+}) {
+  updateGuestState((s) => {
+    const prev = s.topics[input.quizId];
+    const next: GuestTopicActivity = {
+      quizId: input.quizId,
+      title: input.quizTitle ?? prev?.title ?? "Practice quiz",
+      subjectTitle: input.subjectTitle ?? prev?.subjectTitle ?? null,
+      unitTitle: input.unitTitle ?? prev?.unitTitle ?? null,
+      seen: prev?.seen ?? 0,
+      answered: prev?.answered ?? 0,
+      sessions: (prev?.sessions ?? 0) + 1,
+      updatedAt: Date.now(),
+    };
+    return { ...s, topics: { ...s.topics, [input.quizId]: next } };
+  });
+}
+
 /** Record one previewed quiz question for a topic (quiz). */
 export function recordGuestTopicAttempt(input: {
   quizId: string;
