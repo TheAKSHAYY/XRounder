@@ -355,11 +355,21 @@ export function summarizeGuestActivity(state = getGuestState()): GuestActivitySu
   };
 }
 
+// useSyncExternalStore requires a stable snapshot reference, so the summary is
+// memoized against the guest store object and only recomputed when it changes.
+let snapshotSource: unknown = null;
+let snapshotValue: GuestActivitySummary = EMPTY_SUMMARY;
+
+function getSummarySnapshot(): GuestActivitySummary {
+  const state = getGuestState();
+  if (state !== snapshotSource) {
+    snapshotSource = state;
+    snapshotValue = summarizeGuestActivity(state);
+  }
+  return snapshotValue;
+}
+
 /** Reactive guest activity summary for components. */
 export function useGuestActivity(): GuestActivitySummary {
-  return useSyncExternalStore(
-    subscribeGuest,
-    () => summarizeGuestActivity(),
-    () => EMPTY_SUMMARY,
-  );
+  return useSyncExternalStore(subscribeGuest, getSummarySnapshot, () => EMPTY_SUMMARY);
 }
