@@ -20,6 +20,7 @@ import { useQuizAttempt } from "@/components/quiz/use-quiz-attempt";
 import { GuestQuizPreview } from "@/components/quiz/guest-preview";
 import { useGuest } from "@/hooks/use-guest";
 import { GUEST_LIMITS } from "@/lib/guest";
+import { recordGuestTopicSession } from "@/lib/guest-activity";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: ({ params }) => {
