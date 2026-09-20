@@ -204,7 +204,7 @@ function buildJourney(input: {
     },
     {
       key: "detect" as const,
-      label: "Weak topic detected",
+      label: "Detect",
       detail: weak
         ? `Weakest right now: ${weak.title}`
         : "We flag the topics you skipped or half-read",
