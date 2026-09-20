@@ -96,6 +96,18 @@ function QuizPage() {
     gradeNow,
   } = useQuizAttempt(quizId);
 
+  // One practice session per visit — a second session on the same quiz is a retest.
+  useEffect(() => {
+    if (!quizQ.data?.id) return;
+    recordGuestTopicSession({
+      quizId: quizQ.data.id,
+      quizTitle: quizQ.data.title,
+      subjectTitle: contextQ.data?.subjectTitle ?? null,
+      unitTitle: contextQ.data?.unitTitle ?? null,
+    });
+  }, [quizQ.data?.id]);
+
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
