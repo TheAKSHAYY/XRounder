@@ -204,7 +204,7 @@ function buildJourney(input: {
     },
     {
       key: "detect" as const,
-      label: "Weak topic detected",
+      label: "Detect",
       detail: weak
         ? `Weakest right now: ${weak.title}`
         : "We flag the topics you skipped or half-read",
@@ -320,17 +320,38 @@ export function summarizeGuestActivity(state = getGuestState()): GuestActivitySu
   const lastNote = [...notes].sort((a, b) => b.updatedAt - a.updatedAt)[0] ?? null;
   const lastTopic = [...topics].sort((a, b) => b.updatedAt - a.updatedAt)[0] ?? null;
 
+  const notesRevisited = notes.filter((n) => (n.visits ?? 1) > 1).length;
+  const topicsRetested = topics.filter((t) => (t.sessions ?? 1) > 1).length;
+  const questionsAnswered = topics.reduce((sum, t) => sum + t.answered, 0);
+  const continueNote = unfinished[0] ?? lastNote;
+  const firstTopicHref = lastTopic ? `/quizzes/${lastTopic.quizId}` : null;
+
+  const { journey, journeyPct } = buildJourney({
+    notesRead,
+    notesOpened: notes.length,
+    questionsAnswered,
+    weakTopics,
+    notesRevisited,
+    topicsRetested,
+    continueNote,
+    firstTopicHref,
+  });
+
   return {
     hasActivity: true,
     notesOpened: notes.length,
     notesRead,
+    notesRevisited,
     questionsPreviewed: topics.reduce((sum, t) => sum + t.seen, 0),
-    questionsAnswered: topics.reduce((sum, t) => sum + t.answered, 0),
+    questionsAnswered,
     topicsTouched: topics.length,
+    topicsRetested,
     readingProgress,
     lastActivityAt: Math.max(lastNote?.updatedAt ?? 0, lastTopic?.updatedAt ?? 0) || null,
-    continueNote: unfinished[0] ?? lastNote,
+    continueNote,
     weakTopics,
+    journey,
+    journeyPct,
   };
 }
 
