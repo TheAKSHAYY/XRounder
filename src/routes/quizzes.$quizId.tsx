@@ -102,7 +102,7 @@ function QuizPage() {
     recordGuestTopicSession({
       quizId: quizQ.data.id,
       quizTitle: quizQ.data.title,
-      subjectTitle: contextQ.data?.subjectTitle ?? null,
+      subjectTitle: contextQ.data?.subject ?? null,
       unitTitle: contextQ.data?.unitTitle ?? null,
     });
   }, [quizQ.data?.id]);
