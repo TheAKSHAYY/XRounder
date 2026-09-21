@@ -224,6 +224,12 @@ export function SiteHeader({
                   </>
                 )}
                 <Link
+                  to="/study-plan"
+                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
+                  Study plan
+                </Link>
+                <Link
                   to="/developer"
                   className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
                 >
