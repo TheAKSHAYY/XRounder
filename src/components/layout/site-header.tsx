@@ -113,6 +113,13 @@ export function SiteHeader({
             </>
           )}
           <Link
+            to="/study-plan"
+            className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            activeProps={{ className: "text-foreground font-semibold" }}
+          >
+            Study plan
+          </Link>
+          <Link
             to="/developer"
             className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -216,6 +223,12 @@ export function SiteHeader({
                     )}
                   </>
                 )}
+                <Link
+                  to="/study-plan"
+                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
+                  Study plan
+                </Link>
                 <Link
                   to="/developer"
                   className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
