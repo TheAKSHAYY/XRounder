@@ -180,6 +180,21 @@ export function recordGuestMcq(quizId: string): number {
   return next;
 }
 
+/** Count one study action towards today's goal / streak. */
+export function recordGuestStudyAction(weight = 1) {
+  const key = guestDayKey();
+  updateGuestState((s) => {
+    const counts = s.dayCounts ?? {};
+    return { ...s, dayCounts: { ...counts, [key]: (counts[key] ?? 0) + weight } };
+  });
+}
+
+/** Change how many actions a day needs to keep the streak alive. */
+export function setGuestDailyGoal(goal: number) {
+  const next = Math.max(1, Math.min(10, Math.round(goal)));
+  updateGuestState((s) => (s.dailyGoal === next ? s : { ...s, dailyGoal: next }));
+}
+
 export function guestMcqSeen(quizId: string): number {
   return read().mcqSeen[quizId] ?? 0;
 }
