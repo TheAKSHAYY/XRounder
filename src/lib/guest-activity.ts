@@ -464,6 +464,7 @@ export function summarizeGuestActivity(state = getGuestState()): GuestActivitySu
     weakTopics,
     journey,
     journeyPct,
+    streak,
   };
 }
 
