@@ -35,6 +35,9 @@ export function recordGuestNoteProgress(input: {
   pct: number;
 }) {
   const pct = Math.max(0, Math.min(100, Math.round(input.pct)));
+  const before = getGuestState().notes[input.noteId]?.pct ?? 0;
+  // Finishing a note is one study action towards today's goal.
+  if (before < READ_THRESHOLD && pct >= READ_THRESHOLD) recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.notes[input.noteId];
     // Progress only ever moves forward — scrolling back up isn't "unreading".
