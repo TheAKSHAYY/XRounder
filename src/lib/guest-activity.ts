@@ -116,6 +116,7 @@ export function recordGuestTopicAttempt(input: {
   unitTitle?: string | null;
   answered: boolean;
 }) {
+  if (input.answered) recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.topics[input.quizId];
     const next: GuestTopicActivity = {
