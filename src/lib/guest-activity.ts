@@ -10,10 +10,14 @@
 import { useSyncExternalStore } from "react";
 
 import {
+  GUEST_DAILY_GOAL,
   getGuestState,
+  guestDayKey,
+  recordGuestStudyAction,
   subscribeGuest,
   updateGuestState,
   type GuestNoteActivity,
+  type GuestState,
   type GuestTopicActivity,
 } from "@/lib/guest";
 
@@ -31,6 +35,9 @@ export function recordGuestNoteProgress(input: {
   pct: number;
 }) {
   const pct = Math.max(0, Math.min(100, Math.round(input.pct)));
+  const before = getGuestState().notes[input.noteId]?.pct ?? 0;
+  // Finishing a note is one study action towards today's goal.
+  if (before < READ_THRESHOLD && pct >= READ_THRESHOLD) recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.notes[input.noteId];
     // Progress only ever moves forward — scrolling back up isn't "unreading".
@@ -60,6 +67,7 @@ export function recordGuestNoteVisit(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.notes[input.noteId];
     const next: GuestNoteActivity = {
@@ -83,6 +91,7 @@ export function recordGuestTopicSession(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.topics[input.quizId];
     const next: GuestTopicActivity = {
@@ -107,6 +116,7 @@ export function recordGuestTopicAttempt(input: {
   unitTitle?: string | null;
   answered: boolean;
 }) {
+  if (input.answered) recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.topics[input.quizId];
     const next: GuestTopicActivity = {
@@ -165,7 +175,98 @@ export type GuestActivitySummary = {
   journey: GuestJourneyStage[];
   /** 0–100 completion of the five-step loop. */
   journeyPct: number;
+  streak: GuestStreak;
 };
+
+/** One day in the streak strip. */
+export type GuestStreakDay = {
+  key: string;
+  /** Single-letter weekday label, e.g. "M". */
+  label: string;
+  count: number;
+  met: boolean;
+  isToday: boolean;
+};
+
+export type GuestStreak = {
+  /** Consecutive days (up to today) where the daily goal was met. */
+  current: number;
+  /** Longest such run on record. */
+  best: number;
+  /** Study actions done today. */
+  today: number;
+  dailyGoal: number;
+  goalMet: boolean;
+  /** Today plus the previous six days, oldest first. */
+  last7: GuestStreakDay[];
+  /** Total days with at least one study action. */
+  activeDays: number;
+};
+
+const WEEKDAY = ["S", "M", "T", "W", "T", "F", "S"];
+
+function computeStreak(state: GuestState): GuestStreak {
+  const counts = state.dayCounts ?? {};
+  const goal = Math.max(1, state.dailyGoal ?? GUEST_DAILY_GOAL);
+  const today = new Date();
+  const todayKey = guestDayKey(today);
+
+  const dayAt = (offset: number) => {
+    const d = new Date(today);
+    d.setDate(d.getDate() - offset);
+    return d;
+  };
+
+  const last7: GuestStreakDay[] = Array.from({ length: 7 }, (_, i) => {
+    const d = dayAt(6 - i);
+    const key = guestDayKey(d);
+    const count = counts[key] ?? 0;
+    return {
+      key,
+      label: WEEKDAY[d.getDay()] ?? "",
+      count,
+      met: count >= goal,
+      isToday: key === todayKey,
+    };
+  });
+
+  const met = (offset: number) => (counts[guestDayKey(dayAt(offset))] ?? 0) >= goal;
+
+  // A streak survives today until midnight, so start counting from yesterday
+  // when today's goal isn't met yet.
+  let current = 0;
+  let cursor = met(0) ? 0 : 1;
+  if (met(cursor)) {
+    while (met(cursor)) {
+      current += 1;
+      cursor += 1;
+    }
+  }
+
+  const metKeys = Object.keys(counts)
+    .filter((k) => (counts[k] ?? 0) >= goal)
+    .sort();
+  let best = 0;
+  let run = 0;
+  let prev: number | null = null;
+  for (const key of metKeys) {
+    const time = new Date(`${key}T00:00:00`).getTime();
+    run = prev !== null && Math.round((time - prev) / 86_400_000) === 1 ? run + 1 : 1;
+    best = Math.max(best, run);
+    prev = time;
+  }
+
+  return {
+    current,
+    best: Math.max(best, current),
+    today: counts[todayKey] ?? 0,
+    dailyGoal: goal,
+    goalMet: (counts[todayKey] ?? 0) >= goal,
+    last7,
+    activeDays: Object.values(counts).filter((c) => c > 0).length,
+  };
+}
+
 
 function buildJourney(input: {
   notesRead: number;
@@ -267,13 +368,24 @@ const EMPTY_SUMMARY: GuestActivitySummary = {
   weakTopics: [],
   journey: EMPTY_JOURNEY.journey,
   journeyPct: 0,
+  streak: {
+    current: 0,
+    best: 0,
+    today: 0,
+    dailyGoal: GUEST_DAILY_GOAL,
+    goalMet: false,
+    last7: [],
+    activeDays: 0,
+  },
 };
 
 export function summarizeGuestActivity(state = getGuestState()): GuestActivitySummary {
   const notes = Object.values(state.notes ?? {});
   const topics = Object.values(state.topics ?? {});
+  const streak = computeStreak(state);
 
-  if (notes.length === 0 && topics.length === 0) return EMPTY_SUMMARY;
+  if (notes.length === 0 && topics.length === 0) return { ...EMPTY_SUMMARY, streak };
+
 
   const notesRead = notes.filter((n) => n.pct >= READ_THRESHOLD).length;
   const readingProgress = notes.length
@@ -352,6 +464,7 @@ export function summarizeGuestActivity(state = getGuestState()): GuestActivitySu
     weakTopics,
     journey,
     journeyPct,
+    streak,
   };
 }
 

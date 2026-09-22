@@ -58,7 +58,14 @@ export type GuestState = {
   /** Route views since the last conversion prompt. */
   views: number;
   lastPromptAt: number | null;
+  /** local date (YYYY-MM-DD) -> number of study actions that day */
+  dayCounts?: Record<string, number>;
+  /** Study actions the guest aims to do each day. */
+  dailyGoal?: number;
 };
+
+/** Default number of study actions that counts as "a day done". */
+export const GUEST_DAILY_GOAL = 3;
 
 const EMPTY: GuestState = {
   active: false,
@@ -69,7 +76,16 @@ const EMPTY: GuestState = {
   topics: {},
   views: 0,
   lastPromptAt: null,
+  dayCounts: {},
+  dailyGoal: GUEST_DAILY_GOAL,
 };
+
+/** Local calendar day key, so streaks follow the student's own clock. */
+export function guestDayKey(d: Date = new Date()): string {
+  const m = `${d.getMonth() + 1}`.padStart(2, "0");
+  const day = `${d.getDate()}`.padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
+}
 
 const listeners = new Set<() => void>();
 let cache: GuestState | null = null;
@@ -162,6 +178,21 @@ export function recordGuestMcq(quizId: string): number {
   const next = (s.mcqSeen[quizId] ?? 0) + 1;
   write({ ...s, mcqSeen: { ...s.mcqSeen, [quizId]: next } });
   return next;
+}
+
+/** Count one study action towards today's goal / streak. */
+export function recordGuestStudyAction(weight = 1) {
+  const key = guestDayKey();
+  updateGuestState((s) => {
+    const counts = s.dayCounts ?? {};
+    return { ...s, dayCounts: { ...counts, [key]: (counts[key] ?? 0) + weight } };
+  });
+}
+
+/** Change how many actions a day needs to keep the streak alive. */
+export function setGuestDailyGoal(goal: number) {
+  const next = Math.max(1, Math.min(10, Math.round(goal)));
+  updateGuestState((s) => (s.dailyGoal === next ? s : { ...s, dailyGoal: next }));
 }
 
 export function guestMcqSeen(quizId: string): number {
