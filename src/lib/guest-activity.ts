@@ -10,10 +10,14 @@
 import { useSyncExternalStore } from "react";
 
 import {
+  GUEST_DAILY_GOAL,
   getGuestState,
+  guestDayKey,
+  recordGuestStudyAction,
   subscribeGuest,
   updateGuestState,
   type GuestNoteActivity,
+  type GuestState,
   type GuestTopicActivity,
 } from "@/lib/guest";
 
