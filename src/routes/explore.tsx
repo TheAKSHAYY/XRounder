@@ -214,6 +214,10 @@ function ExplorePage() {
         {/* ─── The five-step learning loop, ticked by real activity ─── */}
         <GuestJourneyPanel />
 
+        {/* ─── Daily goal + streak, from real study actions ─── */}
+        <GuestStreakPanel />
+
+
 
         {/* ─── Guest Personalized Semester Rail ─── */}
         {guestPrefs && (
