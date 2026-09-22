@@ -91,6 +91,7 @@ export function recordGuestTopicSession(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.topics[input.quizId];
     const next: GuestTopicActivity = {
