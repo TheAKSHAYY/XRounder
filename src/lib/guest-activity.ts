@@ -67,6 +67,7 @@ export function recordGuestNoteVisit(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.notes[input.noteId];
     const next: GuestNoteActivity = {
