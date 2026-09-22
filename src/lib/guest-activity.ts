@@ -368,13 +368,24 @@ const EMPTY_SUMMARY: GuestActivitySummary = {
   weakTopics: [],
   journey: EMPTY_JOURNEY.journey,
   journeyPct: 0,
+  streak: {
+    current: 0,
+    best: 0,
+    today: 0,
+    dailyGoal: GUEST_DAILY_GOAL,
+    goalMet: false,
+    last7: [],
+    activeDays: 0,
+  },
 };
 
 export function summarizeGuestActivity(state = getGuestState()): GuestActivitySummary {
   const notes = Object.values(state.notes ?? {});
   const topics = Object.values(state.topics ?? {});
+  const streak = computeStreak(state);
 
-  if (notes.length === 0 && topics.length === 0) return EMPTY_SUMMARY;
+  if (notes.length === 0 && topics.length === 0) return { ...EMPTY_SUMMARY, streak };
+
 
   const notesRead = notes.filter((n) => n.pct >= READ_THRESHOLD).length;
   const readingProgress = notes.length
