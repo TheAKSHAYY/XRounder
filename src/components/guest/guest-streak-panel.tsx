@@ -36,9 +36,11 @@ export function GuestStreakPanel() {
               : `Do ${left} more study action${left === 1 ? "" : "s"} today to keep the streak going.`}
           </p>
         </div>
-        <Badge variant="secondary" className="shrink-0 whitespace-nowrap rounded-full">
-          Best {streak.best} {streak.best === 1 ? "day" : "days"}
-        </Badge>
+        {streak.best > 0 && (
+          <Badge variant="secondary" className="shrink-0 whitespace-nowrap rounded-full">
+            Best {streak.best} {streak.best === 1 ? "day" : "days"}
+          </Badge>
+        )}
       </div>
 
       <div className="mt-5">
