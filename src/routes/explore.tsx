@@ -20,6 +20,7 @@ import { AuthPromptDialog } from "@/components/guest/auth-prompt-dialog";
 import { GuestProgressPanel } from "@/components/guest/guest-progress-panel";
 import { GuestJourneyPanel } from "@/components/guest/guest-journey-panel";
 import { GuestStreakPanel } from "@/components/guest/guest-streak-panel";
+import { ActivePlanPanel } from "@/components/study-plan/active-plan-panel";
 import { OnboardingWizard } from "@/components/onboarding/onboarding-wizard";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -217,6 +218,7 @@ function ExplorePage() {
 
         {/* ─── Daily goal + streak, from real study actions ─── */}
         <GuestStreakPanel />
+          <ActivePlanPanel />
 
 
 
