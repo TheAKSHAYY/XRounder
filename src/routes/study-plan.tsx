@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { generateStudyPlan, type StudyPlan } from "@/lib/study-plan.functions";
+import { savePlan, useSavedPlan } from "@/lib/saved-plan";
+import { ActivePlanPanel } from "@/components/study-plan/active-plan-panel";
 
 const LEVELS = [
   { value: "beginner", label: "Just starting" },
@@ -52,9 +54,11 @@ function StudyPlanPage() {
 
   const mutation = useMutation<StudyPlan, Error>({
     mutationFn: () => runPlan({ data: { goal: goal.trim(), level, minutesPerDay } }),
+    onSuccess: (p) => savePlan(goal.trim(), p),
   });
 
   const plan = mutation.data;
+  const saved = useSavedPlan();
   const canSubmit = goal.trim().length >= 6 && !mutation.isPending;
 
   return (
@@ -166,6 +170,11 @@ function StudyPlanPage() {
         )}
       </form>
 
+      {saved && (
+        <div className="mt-10">
+          <ActivePlanPanel showLink={false} />
+        </div>
+      )}
       {plan && <PlanView plan={plan} />}
     </main>
   );
