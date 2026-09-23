@@ -26,6 +26,9 @@ export type { GuestNoteActivity, GuestTopicActivity };
 /** A note counts as "read" once the reader reaches this much of the page. */
 export const READ_THRESHOLD = 85;
 
+/** Re-opens within this window are treated as the same visit. */
+const DEDUPE_MS = 30_000;
+
 export function recordGuestNoteProgress(input: {
   noteId: string;
   title: string;
@@ -67,6 +70,9 @@ export function recordGuestNoteVisit(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  // Ignore duplicate mounts / quick reloads so one opening counts once.
+  const existing = getGuestState().notes[input.noteId];
+  if (existing && Date.now() - existing.updatedAt < DEDUPE_MS) return;
   recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.notes[input.noteId];
@@ -91,6 +97,8 @@ export function recordGuestTopicSession(input: {
   subjectTitle?: string | null;
   unitTitle?: string | null;
 }) {
+  const existing = getGuestState().topics[input.quizId];
+  if (existing && Date.now() - existing.updatedAt < DEDUPE_MS) return;
   recordGuestStudyAction();
   updateGuestState((s) => {
     const prev = s.topics[input.quizId];
