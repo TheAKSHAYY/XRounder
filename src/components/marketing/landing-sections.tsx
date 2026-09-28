@@ -89,7 +89,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
     >
       {/* Background ambient lighting and subtle micro-grid */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_10%,rgba(99,102,241,0.08),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_10%,color-mix(in_oklab,var(--primary)_10%,transparent),transparent_50%)]"
         aria-hidden
       />
       <div
@@ -113,7 +113,7 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
             <div className="landing-hero-enter landing-delay-2 space-y-3">
               <h1 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-5xl leading-[1.12]">
                 Learn smarter. <br />
-                <span className="bg-gradient-to-r from-primary via-indigo-600 to-violet-600 bg-clip-text text-transparent dark:from-primary dark:to-violet-400">
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent dark:from-primary dark:to-accent">
                   Know what to study next.
                 </span>
               </h1>
@@ -319,9 +319,9 @@ export function Hero({ user, loading }: { user: unknown; loading: boolean }) {
               {/* Badge 3: Diagnostic score (top-left) */}
               <div
                 style={{ transform: badgeTransform3, transition: "transform 0.25s ease-out" }}
-                className="hidden lg:flex absolute -top-3 -left-6 z-20 items-center gap-2 rounded-xl border border-violet-500/30 bg-card/95 px-3 py-1.5 shadow-md backdrop-blur-sm"
+                className="hidden lg:flex absolute -top-3 -left-6 z-20 items-center gap-2 rounded-xl border border-accent/30 bg-card/95 px-3 py-1.5 shadow-md backdrop-blur-sm"
               >
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-400">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-accent/15 text-accent">
                   <FlaskConical className="h-3.5 w-3.5" />
                 </span>
                 <span className="text-xs font-bold text-foreground">72% Quiz Score</span>
@@ -356,7 +356,7 @@ export function ValueStrip() {
       icon: GraduationCap,
       label: "Structured BCA Syllabus",
       desc: "Organized semester by semester",
-      color: "text-indigo-600 dark:text-indigo-400 bg-indigo-500/10",
+      color: "text-primary bg-primary/10",
     },
     {
       icon: FlaskConical,
@@ -536,7 +536,7 @@ export function LearningLoop() {
       tagline: "Test your understanding",
       desc: "Take scored unit quizzes under realistic conditions with per-question rationale and speed metrics.",
       icon: HelpCircle,
-      color: "text-violet-500 bg-violet-500/10 border-violet-500/20",
+      color: "text-accent bg-accent/10 border-accent/20",
     },
     {
       step: "04",
@@ -938,7 +938,7 @@ function getSubjectVisual(title: string): SubjectVisual {
     lower.includes("calculus") ||
     lower.includes("numerical")
   ) {
-    return { icon: Calculator, color: "text-violet-500 bg-violet-500/10 border-violet-500/20" };
+    return { icon: Calculator, color: "text-accent bg-accent/10 border-accent/20" };
   }
   if (
     lower.includes("english") ||
@@ -960,7 +960,7 @@ function getSubjectVisual(title: string): SubjectVisual {
     lower.includes("organization") ||
     lower.includes("principle")
   ) {
-    return { icon: Layers, color: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20" };
+    return { icon: Layers, color: "text-accent bg-accent/10 border-accent/20" };
   }
   return { icon: Monitor, color: "text-cyan-500 bg-cyan-500/10 border-cyan-500/20" };
 }
@@ -1184,7 +1184,7 @@ export function WhyXRounder() {
       icon: Sparkles,
       title: "Next-best actions",
       desc: "Open your dashboard and immediately know what to study next in under five seconds.",
-      color: "text-violet-500 bg-violet-500/10",
+      color: "text-accent bg-accent/10",
     },
   ];
 
