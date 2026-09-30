@@ -6,13 +6,12 @@
 /*
  * XRounder design system.
  *
- * Visual direction: bold + modern, driven by the XRounder logo. Brush-stroke
- * red as the primary, flame orange as the accent, near-black neutrals,
-
- * warm off-white surfaces. Serif display headings paired with a clean
- * humanist sans for body. No generic AI-purple gradients.
+ * Visual direction: premium lavender-indigo, user-specified palette.
+ * Slight lavender background, electric indigo primary, purple secondary,
+ * warm yellow accent, ink text, white cards. Space Grotesk display
+ * headings + stats, Plus Jakarta Sans body. Rich, dramatic detailing.
  *
- * All colors in oklch. Add new tokens by:
+ * Add new tokens by:
  *   1. Declare value in :root (and .dark)
  *   2. Register in @theme inline as --color-<name>: var(--<name>)
  */
@@ -26,9 +25,9 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-background: var(--background);
