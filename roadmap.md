@@ -1,5 +1,5 @@
 # Roadmap
 
-- [ ] Upgrade developer portfolio Projects section with verified live/source links and mobile-friendly interaction.
-- [ ] Add useful project discovery controls using existing project data only.
-- [ ] Validate the developer route at mobile and desktop sizes with no overflow or console errors.
+- [ ] Clean shared typography, contrast, spacing and motion while preserving content and features.
+- [ ] Fix verified frontend navigation and layout bugs across public/student pages.
+- [ ] Check public pages and core interactions on phone and desktop; report access blockers for private pages.
