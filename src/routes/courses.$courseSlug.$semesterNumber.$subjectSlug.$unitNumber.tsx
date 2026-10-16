@@ -741,7 +741,7 @@ function UnitDetail() {
 
   const readMinutes = useMemo(() => estimateReadMinutes(readArticles), [readArticles]);
 
-  const toc: { id: string; title: string; isSub: boolean }[] = useMemo(
+  const toc = useMemo<{ id: string; title: string; isSub: boolean }[]>(
     () =>
       readArticles.flatMap((n: UnitContentItem) => {
         const articleSlugId = `content-${slugify(n.title)}-${n.id.slice(0, 6)}`;

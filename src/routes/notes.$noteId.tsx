@@ -20,6 +20,8 @@ import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
+import { NoteReadingProgress } from "@/components/notes/note-reading-progress";
+import { recordGuestNoteVisit } from "@/lib/guest-activity";
 
 export const Route = createFileRoute("/notes/$noteId")({
   head: ({ params }) => {
@@ -322,6 +324,19 @@ function NoteViewer() {
     })();
   }, [noteQuery.data?.id]);
 
+  // Count one *opening* of this note — a second visit is an honest "revising" signal.
+  useEffect(() => {
+    const note = noteQuery.data;
+    if (!note?.id) return;
+    recordGuestNoteVisit({
+      noteId: note.id,
+      title: note.title,
+      href: `/notes/${note.id}`,
+      subjectTitle: note.hierarchy?.subjectTitle ?? null,
+      unitTitle: note.hierarchy?.unitTitle ?? null,
+    });
+  }, [noteQuery.data?.id]);
+
   const recordDownload = async () => {
     if (!noteQuery.data?.id) return;
     const { data: u } = await supabase.auth.getUser();
@@ -477,6 +492,15 @@ function NoteViewer() {
                 />
               </div>
             )}
+
+            <NoteReadingProgress
+              noteId={noteQuery.data.id}
+              title={noteQuery.data.title}
+              href={`/notes/${noteQuery.data.id}`}
+              subjectTitle={hierarchy?.subjectTitle ?? null}
+              unitTitle={hierarchy?.unitTitle ?? null}
+              quizId={hierarchy?.quizId ?? null}
+            />
 
             {/* Embedded PDF Viewer */}
             {pdfUrl && (

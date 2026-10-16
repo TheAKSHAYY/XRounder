@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
@@ -20,6 +21,7 @@ import { useQuizAttempt } from "@/components/quiz/use-quiz-attempt";
 import { GuestQuizPreview } from "@/components/quiz/guest-preview";
 import { useGuest } from "@/hooks/use-guest";
 import { GUEST_LIMITS } from "@/lib/guest";
+import { recordGuestTopicSession } from "@/lib/guest-activity";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   head: ({ params }) => {
@@ -94,6 +96,18 @@ function QuizPage() {
     finish,
     gradeNow,
   } = useQuizAttempt(quizId);
+
+  // One practice session per visit — a second session on the same quiz is a retest.
+  useEffect(() => {
+    if (!quizQ.data?.id) return;
+    recordGuestTopicSession({
+      quizId: quizQ.data.id,
+      quizTitle: quizQ.data.title,
+      subjectTitle: contextQ.data?.subject ?? null,
+      unitTitle: contextQ.data?.unitTitle ?? null,
+    });
+  }, [quizQ.data?.id]);
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -243,7 +257,12 @@ function QuizPage() {
         )}
 
         {!user && isGuest && quizQ.data && (
-          <GuestQuizPreview quizId={quizId} questions={questions} optionsByQ={optionsByQ} />
+          <GuestQuizPreview
+            quizId={quizId}
+            questions={questions}
+            optionsByQ={optionsByQ}
+            quizTitle={quizQ.data.title}
+          />
         )}
 
         {user && activeAttempt && current && (

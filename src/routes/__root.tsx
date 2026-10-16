@@ -7,6 +7,7 @@ import {
   useRouterState,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, lazy, Suspense, type ReactNode } from "react";
 
@@ -48,7 +49,8 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error: rawError, reset }: ErrorComponentProps) {
+  const error = rawError as Error;
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -185,6 +187,8 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
+    // Keep the configuration screen usable without touching the lazy client.
+    if (!envResult.valid) return;
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       if (event === "SIGNED_OUT") {

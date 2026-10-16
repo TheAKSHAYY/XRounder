@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AuthPromptDialog } from "@/components/guest/auth-prompt-dialog";
 import { GUEST_LIMITS, guestMcqSeen, recordGuestMcq } from "@/lib/guest";
+import { recordGuestTopicAttempt } from "@/lib/guest-activity";
 import type { Option, Question } from "@/components/quiz/types";
 import { cn } from "@/lib/utils";
 
@@ -17,10 +18,16 @@ export function GuestQuizPreview({
   quizId,
   questions,
   optionsByQ,
+  quizTitle,
+  subjectTitle,
+  unitTitle,
 }: {
   quizId: string;
   questions: Question[];
   optionsByQ: Record<string, Option[]>;
+  quizTitle?: string | null;
+  subjectTitle?: string | null;
+  unitTitle?: string | null;
 }) {
   const limit = GUEST_LIMITS.mcqPerQuiz;
   const previewable = questions.slice(0, limit);
@@ -33,6 +40,13 @@ export function GuestQuizPreview({
 
   function next() {
     recordGuestMcq(quizId);
+    recordGuestTopicAttempt({
+      quizId,
+      quizTitle,
+      subjectTitle,
+      unitTitle,
+      answered: picked !== null,
+    });
     setPicked(null);
     setIdx((i) => i + 1);
     if (idx + 1 >= previewable.length) setPromptOpen(true);

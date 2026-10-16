@@ -15,7 +15,7 @@ export const Route = createFileRoute("/_authenticated/admin/content/$id")({
   component: EditContentPage,
   errorComponent: ({ error }) => (
     <PageContainer width="narrow">
-      <p className="text-sm text-destructive">{error.message}</p>
+      <p className="text-sm text-destructive">{(error as Error).message}</p>
       <Button asChild size="sm" className="mt-4">
         <Link to="/admin/content">Back to content</Link>
       </Button>

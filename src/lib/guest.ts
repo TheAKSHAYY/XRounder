@@ -18,6 +18,32 @@ export const GUEST_LIMITS = {
 
 const KEY = "xr.guest.v1";
 
+/** A note the guest opened, plus how far they actually read it. */
+export type GuestNoteActivity = {
+  id: string;
+  title: string;
+  href: string;
+  subjectTitle: string | null;
+  unitTitle: string | null;
+  pct: number;
+  /** How many separate times the note was opened — 2+ means a revision. */
+  visits?: number;
+  updatedAt: number;
+};
+
+/** A topic (quiz) the guest practised in preview mode. */
+export type GuestTopicActivity = {
+  quizId: string;
+  title: string;
+  subjectTitle: string | null;
+  unitTitle: string | null;
+  seen: number;
+  answered: number;
+  /** Separate practice sessions on this quiz — 2+ means a retest. */
+  sessions?: number;
+  updatedAt: number;
+};
+
 export type GuestState = {
   active: boolean;
   startedAt: number | null;
@@ -25,19 +51,41 @@ export type GuestState = {
   mcqSeen: Record<string, number>;
   /** contentId -> label, tab-local "saved" items */
   bookmarks: { id: string; label: string; href: string }[];
+  /** noteId -> reading activity */
+  notes: Record<string, GuestNoteActivity>;
+  /** quizId -> practice activity */
+  topics: Record<string, GuestTopicActivity>;
   /** Route views since the last conversion prompt. */
   views: number;
   lastPromptAt: number | null;
+  /** local date (YYYY-MM-DD) -> number of study actions that day */
+  dayCounts?: Record<string, number>;
+  /** Study actions the guest aims to do each day. */
+  dailyGoal?: number;
 };
+
+/** Default number of study actions that counts as "a day done". */
+export const GUEST_DAILY_GOAL = 3;
 
 const EMPTY: GuestState = {
   active: false,
   startedAt: null,
   mcqSeen: {},
   bookmarks: [],
+  notes: {},
+  topics: {},
   views: 0,
   lastPromptAt: null,
+  dayCounts: {},
+  dailyGoal: GUEST_DAILY_GOAL,
 };
+
+/** Local calendar day key, so streaks follow the student's own clock. */
+export function guestDayKey(d: Date = new Date()): string {
+  const m = `${d.getMonth() + 1}`.padStart(2, "0");
+  const day = `${d.getDate()}`.padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
+}
 
 const listeners = new Set<() => void>();
 let cache: GuestState | null = null;
@@ -96,6 +144,13 @@ export function getGuestState(): GuestState {
   return read();
 }
 
+/** Apply a functional update to the guest store and notify subscribers. */
+export function updateGuestState(updater: (state: GuestState) => GuestState) {
+  const current = read();
+  const next = updater(current);
+  if (next !== current) write(next);
+}
+
 export function startGuestMode() {
   const s = read();
   if (s.active) return;
@@ -121,6 +176,21 @@ export function recordGuestMcq(quizId: string): number {
   const next = (s.mcqSeen[quizId] ?? 0) + 1;
   write({ ...s, mcqSeen: { ...s.mcqSeen, [quizId]: next } });
   return next;
+}
+
+/** Count one study action towards today's goal / streak. */
+export function recordGuestStudyAction(weight = 1) {
+  const key = guestDayKey();
+  updateGuestState((s) => {
+    const counts = s.dayCounts ?? {};
+    return { ...s, dayCounts: { ...counts, [key]: (counts[key] ?? 0) + weight } };
+  });
+}
+
+/** Change how many actions a day needs to keep the streak alive. */
+export function setGuestDailyGoal(goal: number) {
+  const next = Math.max(1, Math.min(10, Math.round(goal)));
+  updateGuestState((s) => (s.dailyGoal === next ? s : { ...s, dailyGoal: next }));
 }
 
 export function guestMcqSeen(quizId: string): number {
