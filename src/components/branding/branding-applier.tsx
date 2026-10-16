@@ -73,20 +73,24 @@ export function BrandingApplier() {
       root.style.setProperty("--radius", `${radius}rem`);
     }
 
-    const heading = sanitizeFont(data.font_heading as string, "Fraunces");
-    const body = sanitizeFont(data.font_body as string, "Inter");
+    const heading = sanitizeFont(data.font_heading as string, "Plus Jakarta Sans");
+    const body = sanitizeFont(data.font_body as string, "Plus Jakarta Sans");
     root.style.setProperty(
       "--font-sans",
-      `"${body}", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`,
+      `"${body}", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`,
+    );
+    root.style.setProperty(
+      "--font-display",
+      `"${heading}", "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`,
     );
     root.style.setProperty(
       "--font-serif",
-      `"${heading}", ui-serif, Georgia, "Times New Roman", serif`,
+      `"Fraunces", ui-serif, Georgia, "Times New Roman", serif`,
     );
 
     // Swap the Google Fonts stylesheet when fonts diverge from defaults.
     const linkId = "bca-branded-fonts";
-    if (heading !== "Fraunces" || body !== "Inter") {
+    if (heading !== "Plus Jakarta Sans" || body !== "Plus Jakarta Sans") {
       const href = buildFontHref(heading, body);
       let link = document.getElementById(linkId) as HTMLLinkElement | null;
       if (!link) {

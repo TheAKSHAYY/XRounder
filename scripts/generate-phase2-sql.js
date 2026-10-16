@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-import { createClient } from '@supabase/supabase-js';
+import fs from "fs";
+import path from "path";
+import crypto from "crypto";
+import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.VITE_SUPABASE_URL || "http://127.0.0.1:54321";
 const supabaseKey = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_ANON_KEY;
@@ -9,7 +9,7 @@ const supabaseKey = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.VIT
 const sb = createClient(supabaseUrl, supabaseKey);
 
 // We will load topicData from the existing script.
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -17,10 +17,10 @@ async function run() {
   console.log("Starting Phase 2 Content SQL Generation...");
 
   // We read the original topicData from the current file's content
-  const scriptContent = fs.readFileSync(path.join(__dirname, 'seed-phase2-content.js'), 'utf-8');
+  const scriptContent = fs.readFileSync(path.join(__dirname, "seed-phase2-content.js"), "utf-8");
   const topicDataMatch = scriptContent.match(/const topicData = (\[[\s\S]*?\]);\n\nasync function/);
   if (!topicDataMatch) throw new Error("Could not extract topicData");
-  
+
   // Safe eval to get topicData
   const topicData = eval(topicDataMatch[1]);
 
@@ -29,24 +29,42 @@ async function run() {
   if (!course) throw new Error("BCA Course not found");
 
   // 2. Get Sem 1
-  const { data: sem } = await sb.from("semesters").select("id").eq("course_id", course.id).eq("number", 1).single();
+  const { data: sem } = await sb
+    .from("semesters")
+    .select("id")
+    .eq("course_id", course.id)
+    .eq("number", 1)
+    .single();
   if (!sem) throw new Error("Semester 1 not found");
 
   // 3. Get Subject (Computer Fundamentals)
-  const { data: subject } = await sb.from("subjects").select("id").eq("semester_id", sem.id).eq("slug", "computer-fundamentals-and-pc-software-theory").single();
+  const { data: subject } = await sb
+    .from("subjects")
+    .select("id")
+    .eq("semester_id", sem.id)
+    .eq("slug", "computer-fundamentals-and-pc-software-theory")
+    .single();
   if (!subject) throw new Error("Subject not found");
 
   // 4. Get Unit 1
-  const { data: unit } = await sb.from("units").select("id").eq("subject_id", subject.id).eq("number", 1).single();
+  const { data: unit } = await sb
+    .from("units")
+    .select("id")
+    .eq("subject_id", subject.id)
+    .eq("number", 1)
+    .single();
   if (!unit) throw new Error("Unit 1 not found");
 
   console.log("Verified path: BCA -> Sem 1 -> Computer Fundamentals -> Unit 1");
 
   // Fetch topics in unit 1
-  const { data: existingTopics } = await sb.from("syllabus_topics").select("*").eq("unit_id", unit.id);
-  
+  const { data: existingTopics } = await sb
+    .from("syllabus_topics")
+    .select("*")
+    .eq("unit_id", unit.id);
+
   if (!existingTopics || existingTopics.length === 0) {
-     throw new Error("No syllabus topics found! Ensure topics are seeded.");
+    throw new Error("No syllabus topics found! Ensure topics are seeded.");
   }
 
   let sqlOutput = `-- Phase 2 Seed Script
@@ -58,17 +76,17 @@ BEGIN;
 
   // Function to escape strings for SQL
   const escapeSql = (str) => {
-    if (str === null || str === undefined) return 'NULL';
+    if (str === null || str === undefined) return "NULL";
     return "'" + str.replace(/'/g, "''") + "'";
   };
 
   for (const item of topicData) {
-    const topic = existingTopics.find(t => t.title === item.title);
+    const topic = existingTopics.find((t) => t.title === item.title);
     if (!topic) {
       console.warn(`Topic ${item.title} not found in DB. Skipping...`);
       continue;
     }
-    
+
     console.log(`\n--- Generating SQL for Topic: ${topic.title} ---`);
 
     const contentItemId = crypto.randomUUID();
@@ -101,7 +119,7 @@ VALUES (
   '${unit.id}',
   '${topic.id}',
   ${escapeSql(`${topic.title} - Full Notes`)},
-  ${escapeSql(`${topic.title.toLowerCase().replace(/ /g, '-')}-full-notes`)},
+  ${escapeSql(`${topic.title.toLowerCase().replace(/ /g, "-")}-full-notes`)},
   ${escapeSql(item.noteMarkdown)},
   'published',
   'public',
@@ -119,7 +137,7 @@ VALUES (
   '${unit.id}',
   '${topic.id}',
   ${escapeSql(item.quiz.title)},
-  ${escapeSql(`${item.quiz.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)},
+  ${escapeSql(`${item.quiz.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`)},
   ${escapeSql(item.quiz.description)},
   'published',
   true,
@@ -152,7 +170,7 @@ VALUES (
       for (let j = 0; j < q.options.length; j++) {
         const opt = q.options[j];
         const optId = crypto.randomUUID();
-        
+
         sqlOutput += `
 INSERT INTO public.quiz_options (id, question_id, text, is_correct, order_index)
 VALUES (
@@ -169,7 +187,7 @@ VALUES (
 
   sqlOutput += `\nCOMMIT;\n`;
 
-  const outputPath = path.join(__dirname, '../supabase/seed_phase2_content.sql');
+  const outputPath = path.join(__dirname, "../supabase/seed_phase2_content.sql");
   fs.writeFileSync(outputPath, sqlOutput);
   console.log(`\nSuccessfully wrote SQL to ${outputPath}`);
 }

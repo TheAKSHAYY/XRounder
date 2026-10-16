@@ -41,13 +41,13 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "syllabus_topics_unit_id_fkey"
-            columns: ["unit_id"]
-            isOneToOne: false
-            referencedRelation: "units"
-            referencedColumns: ["id"]
-          }
-        ]
+            foreignKeyName: "syllabus_topics_unit_id_fkey";
+            columns: ["unit_id"];
+            isOneToOne: false;
+            referencedRelation: "units";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       app_settings: {
         Row: {

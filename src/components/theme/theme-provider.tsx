@@ -1,44 +1,45 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme =
-  "light" | "dark" | "midnight" | "ocean" | "emerald" | "purple" | "high-contrast" | "system";
+export type Theme = "light" | "dark" | "system";
 
 type ThemeContextValue = {
   theme: Theme;
   resolved: "light" | "dark";
   setTheme: (t: Theme) => void;
+  toggleTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 const STORAGE_KEY = "bca-theme";
-const THEME_CLASSES: Exclude<Theme, "system" | "dark">[] = [
-  "light",
-  "midnight",
-  "ocean",
-  "emerald",
-  "purple",
-  "high-contrast",
-];
 
 function getSystemTheme(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function isDarkMode(theme: Theme): boolean {
-  if (theme === "system") return getSystemTheme() === "dark";
-  return theme !== "light";
+function normalizeTheme(raw: string | null): Theme {
+  if (raw === "light" || raw === "dark" || raw === "system") {
+    return raw;
+  }
+  // Gracefully migrate legacy themes (midnight, ocean, emerald, etc.) to dark
+  if (
+    raw === "midnight" ||
+    raw === "ocean" ||
+    raw === "emerald" ||
+    raw === "purple" ||
+    raw === "high-contrast"
+  ) {
+    return "dark";
+  }
+  return "system";
 }
 
 function applyTheme(theme: Theme): "light" | "dark" {
-  const resolved: "light" | "dark" = isDarkMode(theme) ? "dark" : "light";
+  const resolved: "light" | "dark" = theme === "system" ? getSystemTheme() : theme;
   const root = document.documentElement;
-  root.dataset.theme = theme;
-  THEME_CLASSES.forEach((value) => root.classList.remove(value));
+  root.dataset.theme = resolved;
+  root.classList.remove("light", "midnight", "ocean", "emerald", "purple", "high-contrast");
   root.classList.toggle("dark", resolved === "dark");
-  if (theme !== "system" && theme !== "light" && theme !== "dark") {
-    root.classList.add(theme);
-  }
   root.style.colorScheme = resolved;
   return resolved;
 }
@@ -48,11 +49,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [resolved, setResolved] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const stored =
-      (typeof window !== "undefined" && (localStorage.getItem(STORAGE_KEY) as Theme | null)) ||
-      "system";
-    setThemeState(stored);
-    setResolved(applyTheme(stored));
+    const raw = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
+    const initial = normalizeTheme(raw);
+    setThemeState(initial);
+    setResolved(applyTheme(initial));
   }, []);
 
   useEffect(() => {
@@ -73,8 +73,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setResolved(applyTheme(next));
   }
 
+  function toggleTheme() {
+    const next = resolved === "dark" ? "light" : "dark";
+    setTheme(next);
+  }
+
   return (
-    <ThemeContext.Provider value={{ theme, resolved, setTheme }}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, resolved, setTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 

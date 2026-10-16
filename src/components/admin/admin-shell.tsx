@@ -269,14 +269,24 @@ export function AdminShell() {
                   <ShieldCheck className="h-3 w-3" />
                   Platform Governance
                 </span>
-                <Button asChild variant="ghost" size="sm" className="h-7 text-xs text-muted-foreground hover:text-foreground hidden sm:inline-flex">
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="sm"
+                  className="h-7 text-xs text-muted-foreground hover:text-foreground hidden sm:inline-flex"
+                >
                   <Link to="/admin">
                     <ArrowLeftRight className="mr-1 h-3 w-3" /> Content Operations
                   </Link>
                 </Button>
               </div>
             ) : isSuperAdmin ? (
-              <Button asChild variant="outline" size="sm" className="h-7 text-xs border-destructive/30 text-destructive hover:bg-destructive/10 hidden sm:inline-flex">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="h-7 text-xs border-destructive/30 text-destructive hover:bg-destructive/10 hidden sm:inline-flex"
+              >
                 <Link to="/admin/superadmin">
                   <ShieldCheck className="mr-1 h-3 w-3" /> Platform Governance
                 </Link>

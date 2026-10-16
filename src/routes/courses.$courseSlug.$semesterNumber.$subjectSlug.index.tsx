@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery, type QueryClient } from "@tanstack/react-query";
 import {
@@ -10,13 +10,20 @@ import {
   FileStack,
   FileText,
   FileType,
+  Flame,
   FlaskConical,
   Link2,
+  List,
   ListChecks,
+  Lock,
+  Map as MapIcon,
   PlayCircle,
   Presentation,
   Sparkles,
+  Star,
+  Trophy,
   Video,
+  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -30,7 +37,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StatChip } from "@/components/ui/stat-chip";
 import { StudentHero } from "@/components/student/student-hero";
 import { cn } from "@/lib/utils";
-import { formatRelativeDay } from "@/lib/format";
+import { formatRelativeDay, formatTitleCase } from "@/lib/format";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
@@ -369,6 +376,7 @@ type UnitStats = {
   content: ContentBucket;
   quiz?: {
     id: string;
+    count?: number;
     lastScorePct: number | null;
     needsRevision: boolean;
     isMastered: boolean;
@@ -392,6 +400,7 @@ function SubjectDetail() {
   const { courseSlug, semesterNumber, subjectSlug } = Route.useParams();
   const loaderData = Route.useLoaderData();
   const { user } = useAuth();
+  const [pathView, setPathView] = useState<"map" | "list">("map");
 
   const subjectQuery = useQuery({
     queryKey: ["public", "subject", courseSlug, semesterNumber, subjectSlug],
@@ -608,27 +617,38 @@ function SubjectDetail() {
 
     const quizzes = unitQuizzesData?.quizzes ?? [];
     const attemptsByQuiz = unitQuizzesData?.attemptsByQuiz ?? new Map<string, QuizAttemptSummary>();
-    const quizByUnit = new Map<string, QuizUnitRef>();
-    for (const q of quizzes) if (q.unit_id) quizByUnit.set(q.unit_id, q);
 
     return units.map((u: UnitRow) => {
       const p = byUnit.get(u.id);
-      const q = quizByUnit.get(u.id);
+      const unitQuizList = quizzes.filter((q) => q.unit_id === u.id);
       let quizMeta = null;
-      if (q) {
-        const att = attemptsByQuiz.get(q.id);
-        const lastScorePct = att
-          ? typeof att.pct === "number"
-            ? Math.round(att.pct)
-            : att.max_score
-              ? Math.round((Number(att.score ?? 0) / att.max_score) * 100)
-              : null
-          : null;
+      if (unitQuizList.length > 0) {
+        const q = unitQuizList[0];
+        let highestScore: number | null = null;
+        let hasMastered = false;
+        let hasNeedsRevision = false;
+        for (const quizItem of unitQuizList) {
+          const att = attemptsByQuiz.get(quizItem.id);
+          if (att) {
+            const scorePct =
+              typeof att.pct === "number"
+                ? Math.round(att.pct)
+                : att.max_score
+                  ? Math.round((Number(att.score ?? 0) / att.max_score) * 100)
+                  : null;
+            if (scorePct !== null) {
+              if (highestScore === null || scorePct > highestScore) highestScore = scorePct;
+              if (scorePct >= 70) hasMastered = true;
+              else hasNeedsRevision = true;
+            }
+          }
+        }
         quizMeta = {
           id: q.id,
-          lastScorePct,
-          needsRevision: lastScorePct !== null && lastScorePct < 70,
-          isMastered: lastScorePct !== null && lastScorePct >= 70,
+          count: unitQuizList.length,
+          lastScorePct: highestScore,
+          needsRevision: hasNeedsRevision && !hasMastered,
+          isMastered: hasMastered,
         };
       }
 
@@ -701,7 +721,7 @@ function SubjectDetail() {
               to: "/courses/$courseSlug/$semesterNumber",
               params: { courseSlug, semesterNumber },
             },
-            { label: subjectQuery.data?.subject.title ?? "Subject" },
+            { label: formatTitleCase(subjectQuery.data?.subject.title) || "Subject" },
           ]}
         />
 
@@ -721,7 +741,7 @@ function SubjectDetail() {
               </>
             ) : undefined
           }
-          title={subjectQuery.data?.subject.title ?? "Subject"}
+          title={formatTitleCase(subjectQuery.data?.subject.title) || "Subject"}
           description={subjectQuery.data?.subject.description ?? undefined}
           progress={
             overall.total > 0
@@ -849,28 +869,365 @@ function SubjectDetail() {
           </div>
         )}
 
-        {/* ─── Learning Path ─── */}
+        {/* ─── Learning Path / Visual Quest Map ─── */}
         <section className="mt-12">
-          <div className="flex items-baseline justify-between gap-4">
-            <h2 className="text-h2 text-foreground">Learning path</h2>
-            {overall.total > 0 && user && (
-              <span className="text-xs font-medium tabular-nums text-muted-foreground">
-                {overall.completed}/{overall.total} completed
-              </span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/60 pb-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                  Syllabus Quest Roadmap
+                </span>
+                {overall.total > 0 && user && (
+                  <Badge variant="secondary" className="font-mono text-[11px] font-bold">
+                    {overall.completed}/{overall.total} Units
+                  </Badge>
+                )}
+              </div>
+              <h2 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                Learning Journey
+              </h2>
+            </div>
+
+            {/* View Mode Toggle: Quest Map vs Classic List */}
+            {unitStats.length > 0 && (
+              <div className="flex items-center gap-1.5 rounded-2xl border border-border/80 bg-muted/40 p-1">
+                <Button
+                  type="button"
+                  size="sm"
+                  variant={pathView === "map" ? "default" : "ghost"}
+                  onClick={() => setPathView("map")}
+                  className={cn(
+                    "h-8 gap-1.5 rounded-xl px-3 text-xs font-semibold cursor-pointer transition-all",
+                    pathView === "map" ? "shadow-xs" : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  <MapIcon className="h-3.5 w-3.5" />
+                  <span>Quest Map</span>
+                </Button>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant={pathView === "list" ? "default" : "ghost"}
+                  onClick={() => setPathView("list")}
+                  className={cn(
+                    "h-8 gap-1.5 rounded-xl px-3 text-xs font-semibold cursor-pointer transition-all",
+                    pathView === "list" ? "shadow-xs" : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  <List className="h-3.5 w-3.5" />
+                  <span>List View</span>
+                </Button>
+              </div>
             )}
           </div>
 
+          {/* Subject Mastery Milestone Reward Chests */}
+          {overall.total > 0 && (
+            <div className="mt-6 rounded-3xl border border-primary/20 bg-primary/5 p-4 sm:p-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <Trophy className="h-4 w-4 text-amber-500" />
+                  <span className="text-xs font-bold text-foreground font-display">
+                    Subject Mastery Milestone Chests
+                  </span>
+                </div>
+                <span className="font-mono text-xs font-bold text-primary">
+                  {overall.pct}% Complete
+                </span>
+              </div>
+
+              {/* Milestone Progress Bar */}
+              <div className="relative h-2 w-full rounded-full bg-muted/80 overflow-hidden">
+                <div
+                  className="h-full bg-primary transition-all duration-500"
+                  style={{ width: `${overall.pct}%` }}
+                />
+              </div>
+
+              {/* 3 Milestone Badges */}
+              <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                <div
+                  className={cn(
+                    "rounded-2xl border p-2.5 transition-all",
+                    overall.pct >= 25
+                      ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold"
+                      : "border-border/60 bg-muted/20 text-muted-foreground opacity-60",
+                  )}
+                >
+                  <div className="flex items-center justify-center gap-1 text-xs">
+                    <span>🥉</span>
+                    <span>25% Fast Track</span>
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground block mt-0.5">
+                    +100 XP
+                  </span>
+                </div>
+
+                <div
+                  className={cn(
+                    "rounded-2xl border p-2.5 transition-all",
+                    overall.pct >= 50
+                      ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold"
+                      : "border-border/60 bg-muted/20 text-muted-foreground opacity-60",
+                  )}
+                >
+                  <div className="flex items-center justify-center gap-1 text-xs">
+                    <span>🥈</span>
+                    <span>50% Mid-Sem Pro</span>
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground block mt-0.5">
+                    +200 XP
+                  </span>
+                </div>
+
+                <div
+                  className={cn(
+                    "rounded-2xl border p-2.5 transition-all",
+                    overall.pct >= 100
+                      ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold"
+                      : "border-border/60 bg-muted/20 text-muted-foreground opacity-60",
+                  )}
+                >
+                  <div className="flex items-center justify-center gap-1 text-xs">
+                    <span>💎</span>
+                    <span>100% Exam Master</span>
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground block mt-0.5">
+                    +500 XP
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
           {loadingCore ? (
-            <div className="mt-6 space-y-4">
-              <Skeleton className="h-28 rounded-lg" />
-              <Skeleton className="h-28 rounded-lg" />
-              <Skeleton className="h-28 rounded-lg" />
+            <div className="mt-8 space-y-4">
+              <Skeleton className="h-32 rounded-3xl" />
+              <Skeleton className="h-32 rounded-3xl" />
+              <Skeleton className="h-32 rounded-3xl" />
             </div>
           ) : unitStats.length === 0 ? (
             <EmptyUnits courseSlug={courseSlug} semesterNumber={semesterNumber} />
+          ) : pathView === "map" ? (
+            /* ─── Visual Quest Map (Roadmap) ─── */
+            <div className="mt-8 relative">
+              {/* Connected Glow Track */}
+              <div
+                aria-hidden
+                className="absolute left-7 top-8 bottom-8 w-1 bg-border/80 rounded-full hidden sm:block"
+              />
+
+              <div className="space-y-6">
+                {unitStats.map((s) => {
+                  const isDone = s.status === "completed";
+                  const inProgress = s.status === "in_progress";
+                  const isResume =
+                    !!user && overall.resume?.unit.id === s.unit.id && s.status !== "completed";
+                  const needsRevision = !!s.quiz?.needsRevision;
+                  const isMastered = !!s.quiz?.isMastered;
+
+                  // Determine Stars (0-3)
+                  const stars = s.quiz?.lastScorePct
+                    ? s.quiz.lastScorePct >= 90
+                      ? 3
+                      : s.quiz.lastScorePct >= 70
+                        ? 2
+                        : 1
+                    : isDone
+                      ? 1
+                      : 0;
+
+                  return (
+                    <div
+                      key={s.unit.id}
+                      className={cn(
+                        "relative flex flex-col sm:flex-row sm:items-center gap-4 rounded-3xl border p-5 sm:p-6 transition-all duration-300",
+                        isResume
+                          ? "border-primary/50 bg-linear-to-r from-primary/10 via-card to-card shadow-md ring-2 ring-primary/30"
+                          : isDone
+                            ? "border-success/30 bg-card hover:border-success/60 shadow-xs"
+                            : needsRevision
+                              ? "border-warning/40 bg-warning/5 hover:border-warning/70"
+                              : "border-border/70 bg-card hover:border-primary/40 shadow-xs",
+                      )}
+                    >
+                      {/* Left Quest Medallion */}
+                      <div className="relative flex shrink-0 items-center gap-4">
+                        <div
+                          className={cn(
+                            "relative flex h-14 w-14 items-center justify-center rounded-2xl font-display font-black text-lg transition-transform shadow-md",
+                            isMastered
+                              ? "bg-amber-500 text-white ring-4 ring-amber-500/20"
+                              : isDone
+                                ? "bg-success text-success-foreground ring-4 ring-success/20"
+                                : isResume
+                                  ? "bg-primary text-primary-foreground shadow-md ring-4 ring-primary/30"
+                                  : inProgress
+                                    ? "bg-primary/20 text-primary ring-2 ring-primary/40"
+                                    : "bg-muted text-muted-foreground ring-2 ring-border",
+                          )}
+                        >
+                          {isDone ? (
+                            <Check className="h-7 w-7 stroke-[3]" />
+                          ) : (
+                            <span>U{s.unit.number}</span>
+                          )}
+
+                          {isResume && (
+                            <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                              <span className="relative inline-flex rounded-full h-4 w-4 bg-accent" />
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Mobile Unit Number Label */}
+                        <div className="sm:hidden">
+                          <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                            Unit {s.unit.number} Quest
+                          </span>
+                          <div className="flex items-center gap-1 text-amber-500 mt-0.5">
+                            {[1, 2, 3].map((star) => (
+                              <Star
+                                key={star}
+                                className={cn(
+                                  "h-3.5 w-3.5",
+                                  star <= stars
+                                    ? "fill-amber-400 text-amber-400"
+                                    : "text-muted-foreground/30",
+                                )}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Middle Details */}
+                      <div className="min-w-0 flex-1">
+                        <div className="hidden sm:flex items-center gap-2">
+                          <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                            Unit {s.unit.number} Quest
+                          </span>
+                          <span className="text-muted-foreground">·</span>
+                          <div className="flex items-center gap-0.5 text-amber-500">
+                            {[1, 2, 3].map((star) => (
+                              <Star
+                                key={star}
+                                className={cn(
+                                  "h-3.5 w-3.5",
+                                  star <= stars
+                                    ? "fill-amber-400 text-amber-400"
+                                    : "text-muted-foreground/30",
+                                )}
+                              />
+                            ))}
+                          </div>
+                          {isResume && (
+                            <Badge
+                              variant="default"
+                              className="bg-primary text-primary-foreground text-[10px] font-bold rounded-full"
+                            >
+                              ⚡ Active Quest
+                            </Badge>
+                          )}
+                        </div>
+
+                        <h3 className="mt-1 font-display text-base sm:text-lg font-bold text-foreground">
+                          {formatTitleCase(s.unit.title)}
+                        </h3>
+
+                        {s.unit.summary && (
+                          <p className="mt-1 text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                            {s.unit.summary}
+                          </p>
+                        )}
+
+                        {/* Interactive Unit Pills */}
+                        <div className="mt-3 flex flex-wrap items-center gap-2">
+                          <Badge
+                            variant="secondary"
+                            className="font-mono text-[10px] font-bold bg-primary/10 text-primary border-primary/20"
+                          >
+                            +120 XP Reward
+                          </Badge>
+                          {s.content.note > 0 && (
+                            <Badge variant="outline" className="text-[10px] font-medium">
+                              <FileText className="h-3 w-3 mr-1 text-primary" />
+                              Interactive Lesson Ready
+                            </Badge>
+                          )}
+                          {s.content.pdf > 0 && (
+                            <Badge variant="outline" className="text-[10px] font-medium">
+                              <FileType className="h-3 w-3 mr-1" />
+                              College Notes
+                            </Badge>
+                          )}
+                          {s.quiz && (
+                            <Badge
+                              variant={
+                                s.quiz.isMastered
+                                  ? "success"
+                                  : s.quiz.needsRevision
+                                    ? "warning"
+                                    : "outline"
+                              }
+                              className="text-[10px] font-bold"
+                            >
+                              <FlaskConical className="h-3 w-3 mr-1" />
+                              {s.quiz.lastScorePct !== null
+                                ? `Quiz: ${s.quiz.lastScorePct}%`
+                                : s.quiz.count && s.quiz.count > 1
+                                  ? `${s.quiz.count} Topic Quizzes`
+                                  : "MCQ Quiz Ready"}
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right Action Button */}
+                      <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 pt-3 sm:pt-0 border-t sm:border-t-0 border-border/60 shrink-0">
+                        <Button
+                          asChild
+                          variant={isResume ? "cta" : isDone ? "outline" : "default"}
+                          className={cn(
+                            "btn-squishy rounded-2xl h-11 px-5 font-bold text-xs shadow-xs cursor-pointer",
+                            isResume && "shadow-md hover:brightness-105",
+                          )}
+                        >
+                          <Link
+                            to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                            params={{
+                              courseSlug,
+                              semesterNumber,
+                              subjectSlug,
+                              unitNumber: String(s.unit.number),
+                            }}
+                          >
+                            <span>
+                              {isResume ? "Resume Quest" : isDone ? "Review Quest" : "Start Quest"}
+                            </span>
+                            <ArrowRight className="h-4 w-4 ml-1.5" />
+                          </Link>
+                        </Button>
+
+                        {s.quiz?.id && (
+                          <Link
+                            to="/quizzes/$quizId"
+                            params={{ quizId: s.quiz.id }}
+                            className="text-[11px] font-mono text-muted-foreground hover:text-primary transition-colors underline"
+                          >
+                            Take Quiz →
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           ) : (
+            /* ─── Classic List View ─── */
             <ol className="mt-6 relative">
-              {/* Connector line */}
               <span
                 aria-hidden
                 className="absolute left-[27px] top-4 bottom-4 hidden w-px bg-border sm:block"
@@ -1050,7 +1407,7 @@ function UnitCard({
           )}
         </div>
         <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-foreground">
-          {unit.title}
+          {formatTitleCase(unit.title)}
         </h3>
         {unit.summary && (
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">

@@ -1,50 +1,26 @@
-import { Droplet, Leaf, Monitor, Moon, Palette, Sparkles, Sun } from "lucide-react";
-
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./theme-provider";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
-const themes = [
-  { value: "light", label: "Light", icon: Sun },
-  { value: "dark", label: "Dark", icon: Moon },
-  { value: "midnight", label: "Midnight", icon: Sparkles },
-  { value: "ocean", label: "Ocean", icon: Droplet },
-  { value: "emerald", label: "Emerald", icon: Leaf },
-  { value: "purple", label: "Purple", icon: Palette },
-  { value: "high-contrast", label: "High contrast", icon: Monitor },
-  { value: "system", label: "System", icon: Monitor },
-] as const;
-
-export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const ActiveIcon = themes.find((option) => option.value === theme)?.icon ?? Sun;
+export function ThemeToggle({ className }: { className?: string }) {
+  const { resolved, toggleTheme } = useTheme();
+  const isDark = resolved === "dark";
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label="Toggle theme">
-          <ActiveIcon className="h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[180px]">
-        {themes.map((option) => {
-          const Icon = option.icon;
-          return (
-            <DropdownMenuItem
-              key={option.value}
-              onClick={() => setTheme(option.value)}
-              className={theme === option.value ? "font-medium" : undefined}
-            >
-              <Icon className="mr-2 h-4 w-4" /> {option.label}
-            </DropdownMenuItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className={
+        className ??
+        "relative h-9 w-9 rounded-xl text-muted-foreground hover:text-foreground transition-colors"
+      }
+    >
+      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   );
 }

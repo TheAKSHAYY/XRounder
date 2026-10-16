@@ -158,7 +158,7 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
     const { data: notes, error } = await sb
       .from("notes")
       .select(
-        "id, unit_id, title, summary, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at",
+        "id, unit_id, title, summary, body, status, file_path, file_bucket, file_mime, file_size_bytes, created_at, updated_at",
       )
       .is("deleted_at", null);
     if (error) throw new Error(`Reading legacy notes failed: ${error.message}`);
@@ -182,7 +182,7 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
       .map((n) => ({
         type: (n.file_mime === "application/pdf" ? "pdf" : "note") as "pdf" | "note",
         title: n.title,
-        description: n.summary ?? null,
+        description: n.body || n.summary || null,
         unit_id: n.unit_id,
         subject_id: subjectByUnit.get(n.unit_id as string) ?? null,
         file_bucket: n.file_bucket,

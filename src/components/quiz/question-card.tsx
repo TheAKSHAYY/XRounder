@@ -3,6 +3,7 @@ import { Check, CheckCircle2, X, XCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Kbd, MiniStat } from "@/components/quiz/quiz-shared";
+import { playPopSound } from "@/lib/sound-fx";
 import type { Feedback, Option, Question } from "@/components/quiz/types";
 
 function OptionButton({
@@ -28,7 +29,10 @@ function OptionButton({
   return (
     <motion.button
       type="button"
-      onClick={onClick}
+      onClick={() => {
+        if (!disabled && !revealed) playPopSound();
+        onClick();
+      }}
       disabled={disabled}
       whileHover={disabled ? undefined : { scale: 1.01 }}
       whileTap={disabled ? undefined : { scale: 0.985 }}
@@ -42,7 +46,7 @@ function OptionButton({
       transition={{ duration: wrongPick ? 0.4 : 0.32 }}
       aria-pressed={selected}
       className={[
-        "flex w-full items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-colors",
+        "btn-squishy flex w-full items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-colors cursor-pointer",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         rightPick
           ? "border-success bg-success/15 shadow-[0_0_0_4px_color-mix(in_oklab,var(--success)_18%,transparent)]"
@@ -134,9 +138,13 @@ export function QuestionCard({
           {/* Multi-select check button */}
           {current.type === "multiple" && !feedback && (
             <Button
-              className="mt-5 rounded-full"
+              className="btn-squishy mt-5 rounded-full cursor-pointer shadow-xs"
               disabled={selection.length === 0 || grading}
-              onClick={() => (instantFeedback ? onGradeNow(selection) : onGoNext())}
+              onClick={() => {
+                playPopSound();
+                if (instantFeedback) onGradeNow(selection);
+                else onGoNext();
+              }}
             >
               {grading ? "Checking…" : "Check answer"}
             </Button>

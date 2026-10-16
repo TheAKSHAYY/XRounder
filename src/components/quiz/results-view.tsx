@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   FlaskConical,
   LayoutDashboard,
+  ListChecks,
   RotateCcw,
   Sparkles,
   Target,
@@ -17,6 +18,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MiniStat } from "@/components/quiz/quiz-shared";
+import confetti from "canvas-confetti";
+import { playCelebrationSound, playCuteGiggleSound } from "@/lib/sound-fx";
+import { MascotSvg } from "@/components/gamification/study-mascot";
 import {
   fmtDuration,
   type AnswerState,
@@ -122,6 +126,24 @@ export function ResultsView({
   const isMastered = pct >= 70;
   const unitLabel = context?.unitNumber ? `Unit ${context.unitNumber}` : "Unit";
 
+  const xpEarned = useMemo(() => {
+    let xp = 25; // Base participation XP
+    if (pct >= 70) xp += 60; // Mastery bonus
+    if (pct === 100) xp += 75; // Flawless score bonus
+    return xp;
+  }, [pct]);
+
+  const handleCheer = () => {
+    playCelebrationSound();
+    playCuteGiggleSound();
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.5 },
+      disableForReducedMotion: true,
+    });
+  };
+
   const message =
     pct >= 90
       ? "🏆 Outstanding Mastery!"
@@ -170,6 +192,18 @@ export function ResultsView({
               )}
             </div>
           </div>
+
+          {/* Cute Sparky Mascot Reaction */}
+          <div className="hidden sm:flex flex-col items-center justify-center p-3 rounded-2xl bg-muted/30 border border-border/70 shrink-0 select-none">
+            <MascotSvg
+              mood={isMastered ? "celebrating" : "thinking"}
+              size={64}
+              className="animate-cute-bounce"
+            />
+            <span className="mt-1 text-[11px] font-bold text-foreground font-mono">
+              {isMastered ? "Sparky: Crushed it! 🦖🎉" : "Sparky: Keep going! 🦖💪"}
+            </span>
+          </div>
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
@@ -179,6 +213,59 @@ export function ResultsView({
           <MiniStat label="Skipped" value={summary.skipped} tone="muted" />
           <MiniStat label="Accuracy" value={`${summary.accuracy}%`} tone="muted" />
           <MiniStat label="Time" value={fmtDuration(elapsed)} tone="muted" />
+        </div>
+
+        {/* ─── XP & Gamification Dopamine Reward Banner ─── */}
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-xs font-black text-xs font-mono">
+              XP
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-display text-sm font-bold text-foreground">
+                  +{xpEarned} XP Earned!
+                </span>
+                {pct === 100 && (
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] font-bold text-amber-500 border-amber-500/30 bg-amber-500/10"
+                  >
+                    Flawless 100%
+                  </Badge>
+                )}
+                {isMastered && pct < 100 && (
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] font-bold text-success border-success/30 bg-success/10"
+                  >
+                    Mastery Pass
+                  </Badge>
+                )}
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-0.5">
+                {isMastered
+                  ? "Base XP + Mastery bonus credited towards your student level."
+                  : "Every quiz attempt earns XP. Retest to claim the +60 XP mastery bonus!"}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleCheer}
+              className="btn-squishy h-8 gap-1 rounded-full text-xs font-semibold cursor-pointer border-primary/30 hover:bg-primary/10 text-primary"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Celebrate</span>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className="btn-squishy h-8 text-xs font-semibold">
+              <Link to="/dashboard">View Level &amp; Badges →</Link>
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -238,7 +325,7 @@ export function ResultsView({
                 onClick={onRetry}
                 disabled={retryPending}
                 variant="outline"
-                className="h-11 px-4 rounded-2xl text-xs font-bold"
+                className="btn-squishy h-11 px-4 rounded-2xl text-xs font-bold cursor-pointer"
               >
                 <RotateCcw className="h-4 w-4 mr-1.5" />{" "}
                 {retryPending ? "Starting…" : "Take Retest Now"}
@@ -249,7 +336,7 @@ export function ResultsView({
               <Button
                 asChild
                 variant="cta"
-                className="h-11 px-5 rounded-2xl text-xs font-bold shadow-xs"
+                className="btn-squishy h-11 px-5 rounded-2xl text-xs font-bold shadow-xs cursor-pointer"
               >
                 <Link
                   to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
@@ -266,7 +353,7 @@ export function ResultsView({
             )}
 
             {isMastered && (
-              <Button asChild variant="outline" className="h-11 px-4 rounded-2xl text-xs font-bold">
+              <Button asChild variant="outline" className="btn-squishy h-11 px-4 rounded-2xl text-xs font-bold cursor-pointer">
                 <Link to="/mock-test">
                   <FlaskConical className="h-4 w-4 mr-1.5" /> Challenge Mock Exam
                 </Link>

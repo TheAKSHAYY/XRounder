@@ -69,9 +69,8 @@ export const updateBrandingSettings = createServerFn({ method: "POST" })
 
 export const toggleMaintenanceMode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator(
-    (d: { enabled: boolean; message?: string }) =>
-      z.object({ enabled: z.boolean(), message: z.string().optional() }).parse(d),
+  .inputValidator((d: { enabled: boolean; message?: string }) =>
+    z.object({ enabled: z.boolean(), message: z.string().optional() }).parse(d),
   )
   .handler(async ({ data, context }) => {
     await assertSuperAdmin(context.supabase, context.userId);

@@ -299,7 +299,7 @@ function EmailSignInForm() {
         />
         Remember me on this device
       </label>
-      <Button type="submit" size="lg" className="w-full" disabled={loading}>
+      <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Sign in
       </Button>
@@ -418,7 +418,7 @@ function SignUpForm() {
           {capsOn && <p className="text-xs font-medium text-accent-foreground">Caps Lock is on</p>}
           <PasswordStrengthMeter password={password} />
         </div>
-        <Button type="submit" size="lg" className="w-full" disabled={loading}>
+        <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Create account
         </Button>
@@ -497,7 +497,7 @@ function ForgotForm() {
           required
         />
       </div>
-      <Button type="submit" size="lg" className="w-full" disabled={loading}>
+      <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Send reset link
       </Button>

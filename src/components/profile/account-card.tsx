@@ -97,11 +97,6 @@ export function AccountCard({
               <SelectItem value="light">Light</SelectItem>
               <SelectItem value="dark">Dark</SelectItem>
               <SelectItem value="system">System</SelectItem>
-              <SelectItem value="midnight">Midnight</SelectItem>
-              <SelectItem value="ocean">Ocean</SelectItem>
-              <SelectItem value="emerald">Emerald</SelectItem>
-              <SelectItem value="purple">Purple</SelectItem>
-              <SelectItem value="high-contrast">High contrast</SelectItem>
             </SelectContent>
           </Select>
         </div>

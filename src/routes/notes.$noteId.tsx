@@ -15,7 +15,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { PdfViewer } from "@/components/pdf-viewer";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { useAuth } from "@/hooks/use-auth";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -337,7 +337,7 @@ function NoteViewer() {
   const hierarchy = noteQuery.data?.hierarchy;
 
   // Build breadcrumbs dynamically from resolved academic hierarchy
-  const crumbs = [
+  const crumbs: Crumb[] = [
     { label: "Courses", to: "/courses" },
     ...(hierarchy?.courseSlug
       ? [
@@ -505,7 +505,7 @@ function NoteViewer() {
             )}
 
             {/* ─── What Should You Do Next? (Eliminates Dead Ends) ─── */}
-            <section className="mt-12 rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-card to-card p-6 sm:p-8 shadow-soft">
+            <section className="mt-12 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
                 <div className="space-y-1.5 max-w-xl">
                   <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary font-mono">

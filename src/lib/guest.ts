@@ -87,7 +87,6 @@ if (typeof window !== "undefined") {
   });
 }
 
-
 export function subscribeGuest(listener: () => void) {
   listeners.add(listener);
   return () => listeners.delete(listener);
@@ -115,7 +114,6 @@ export function clearGuestState() {
   }
   listeners.forEach((l) => l());
 }
-
 
 /** Count one previewed MCQ; returns the new count for that quiz. */
 export function recordGuestMcq(quizId: string): number {

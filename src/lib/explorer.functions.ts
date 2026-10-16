@@ -342,7 +342,8 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
       const { data: next } = await q.order("sort_order", { ascending: false }).limit(1);
       copy.sort_order = ((next?.[0]?.sort_order as number | undefined) ?? 0) + 1;
     } else {
-      const parentField = data.type === "semester" ? "course_id" : data.type === "unit" ? "subject_id" : "unit_id";
+      const parentField =
+        data.type === "semester" ? "course_id" : data.type === "unit" ? "subject_id" : "unit_id";
       const orderField = data.type === "topic" ? "sort_order" : "number";
       const { data: next } = await sb
         .from(table)

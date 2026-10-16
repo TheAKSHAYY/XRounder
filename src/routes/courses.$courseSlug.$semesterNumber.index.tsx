@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ArrowRight, BookOpen, Check, Compass } from "lucide-react";
+import { ArrowRight, ArrowLeft, BookOpen, Check, Compass } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
@@ -14,7 +14,7 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { StudentHero } from "@/components/student/student-hero";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { formatRelativeDay } from "@/lib/format";
+import { formatRelativeDay, formatTitleCase } from "@/lib/format";
 
 type SubjectItem = {
   id: string;
@@ -176,8 +176,6 @@ function SemesterRouteError({ error }: { error: unknown }) {
     />
   );
 }
-
-
 
 type Subject = SubjectItem;
 
@@ -449,17 +447,34 @@ function SemesterDetail() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto w-full sm:max-w-6xl px-5 sm:px-8 pb-24 pt-8 sm:pt-12">
-        <Breadcrumbs
-          items={[
-            { label: "Courses", to: "/courses" },
-            {
-              label: semQuery.data?.course.title ?? "Course",
-              to: "/courses/$courseSlug",
-              params: { courseSlug },
-            },
-            { label: `Semester ${semesterNumber}` },
-          ]}
-        />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Breadcrumbs
+            items={[
+              { label: "Courses", to: "/courses" },
+              {
+                label: semQuery.data?.course.title ?? "Course",
+                to: "/courses/$courseSlug",
+                params: { courseSlug },
+              },
+              { label: `Semester ${semesterNumber}` },
+            ]}
+          />
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = `/courses/${courseSlug}`;
+              }
+            }}
+            className="btn-squishy inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-2xs hover:border-primary/50 hover:bg-muted cursor-pointer transition-all"
+            title="Return to your previous page"
+          >
+            <ArrowLeft className="h-3.5 w-3.5 text-primary" />
+            <span>Back to where you were</span>
+          </button>
+        </div>
 
         {/* ─── Hero ─── */}
         <StudentHero
@@ -642,53 +657,58 @@ function SubjectCard({
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="group relative flex h-full min-h-[13rem] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs ring-1 ring-inset ring-border/40 hover:border-primary/40 hover:ring-primary/20 active:border-primary/30 focus-visible:-translate-y-0.5 focus-visible:border-primary/40 focus-visible:shadow-soft-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
+      className="hud-card interactive-card group relative flex h-full min-h-[14rem] w-full min-w-0 flex-col overflow-hidden rounded-2xl p-5 sm:p-6 shadow-soft-xs hover:border-primary/50 transition-all duration-200"
     >
-      {/* Top accent sheen — subtle premium lighting, purely decorative */}
+      {/* Top accent sheen */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100 group-active:via-accent/60"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
       />
       <span
         aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10 group-active:scale-95"
+        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10"
       />
 
-      {/* Header: code chip + status badge, never wrapping into the title */}
-      <div className="flex min-w-0 items-center gap-2">
-        <span className="min-w-0 truncate rounded-md bg-surface-muted px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+      {/* Header: code chip + status badge */}
+      <div className="flex min-w-0 items-center justify-between gap-2">
+        <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md">
           {subject.code}
         </span>
-        {showProgress && (
-          <span
-            className={
-              isDone
-                ? "ml-auto inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary"
-                : status === "in_progress"
-                  ? "ml-auto inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-foreground"
-                  : "ml-auto inline-flex shrink-0 items-center rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
-            }
-          >
-            {isDone ? (
-              <>
-                <Check className="h-3 w-3" aria-hidden />
-                Done
-              </>
-            ) : status === "in_progress" ? (
-              `${pct}%`
-            ) : (
-              "New"
-            )}
+        <div className="flex items-center gap-1.5">
+          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
+            15/15 Blueprint
           </span>
-        )}
+          {showProgress && (
+            <span
+              className={
+                isDone
+                  ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary"
+                  : status === "in_progress"
+                    ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-foreground"
+                    : "inline-flex shrink-0 items-center rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+              }
+            >
+              {isDone ? (
+                <>
+                  <Check className="h-3 w-3" aria-hidden />
+                  Done
+                </>
+              ) : status === "in_progress" ? (
+                `${pct}%`
+              ) : (
+                "New"
+              )}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Title */}
-      <h3 className="mt-3 text-h3 text-foreground line-clamp-2 [overflow-wrap:anywhere]">
-        {subject.title}
+      <h3 className="mt-3.5 text-h3 text-foreground font-display font-bold group-hover:text-primary transition-colors line-clamp-2 [overflow-wrap:anywhere]">
+        {formatTitleCase(subject.title)}
       </h3>
 
-      {/* Progress — promoted directly under title so it's instantly scannable */}
+      {/* Progress — scannable */}
       {showProgress && !isDone && (
         <div className="mt-4">
           {loading ? (
@@ -699,25 +719,25 @@ function SubjectCard({
         </div>
       )}
 
-      {/* Spacer pushes footer to bottom for equal-height alignment */}
+      {/* Spacer pushes footer to bottom */}
       <div className="flex-1" />
 
-      {/* Footer: single meta line + right-aligned CTA */}
-      <div className="mt-5 flex items-end justify-between gap-3 border-t border-border/60 pt-4">
+      {/* Footer: meta + CTA */}
+      <div className="mt-5 flex items-center justify-between gap-3 border-t border-border/60 pt-4">
         <div className="min-w-0 text-[11px] font-medium text-muted-foreground">
-          <div className="tabular-nums">
+          <div className="tabular-nums font-semibold">
             {totalUnits === 0
               ? "Units coming soon"
               : showProgress
                 ? `${completedUnits} of ${totalUnits} units`
                 : `${totalUnits} unit${totalUnits === 1 ? "" : "s"}`}
           </div>
-          {showProgress && rel && <div className="mt-0.5 truncate">Last studied {rel}</div>}
+          {showProgress && rel && <div className="mt-0.5 truncate text-[10px]">Last studied {rel}</div>}
         </div>
 
-        <span className="subject-cta inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary transition-transform duration-180 group-active:translate-x-0.5">
+        <span className="btn-squishy inline-flex shrink-0 items-center gap-1.5 text-xs sm:text-sm font-bold text-primary group-hover:underline">
           {ctaLabel}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5 group-active:translate-x-1" />
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-1" />
         </span>
       </div>
     </Link>

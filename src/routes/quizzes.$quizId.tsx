@@ -83,6 +83,7 @@ function QuizPage() {
     remainingSec,
     progressPct,
     answeredCurrent,
+    combo,
     openAttempt,
     startMutation,
     submitMutation,
@@ -110,6 +111,7 @@ function QuizPage() {
           remainingSec={remainingSec}
           elapsed={elapsed}
           progressPct={progressPct}
+          combo={combo}
         />
       )}
 
@@ -129,27 +131,31 @@ function QuizPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
           >
-            <header className="mt-6 rounded-3xl border border-border bg-surface p-6 shadow-sm sm:p-8">
-              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            <header className="hud-card relative overflow-hidden mt-6 rounded-3xl border border-border/80 p-6 shadow-soft sm:p-8">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-primary/10 blur-2xl"
+              />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
                 <FlaskConical className="h-4 w-4 text-primary" />
                 {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") ||
                   "Practice quiz"}
               </div>
-              <h1 className="mt-3 font-display text-3xl font-semibold text-foreground">
+              <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-foreground">
                 {quizQ.data.title}
               </h1>
               {quizQ.data.description && (
-                <p className="mt-3 text-muted-foreground">{quizQ.data.description}</p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{quizQ.data.description}</p>
               )}
               <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
-                <Badge variant="outline" className="rounded-full">
+                <Badge variant="outline" className="rounded-full font-mono">
                   {total} questions
                 </Badge>
-                <Badge variant="outline" className="rounded-full">
+                <Badge variant="outline" className="rounded-full font-mono">
                   Pass {quizQ.data.passing_pct}%
                 </Badge>
                 {quizQ.data.time_limit_minutes && (
-                  <Badge variant="outline" className="rounded-full">
+                  <Badge variant="outline" className="rounded-full font-mono">
                     <Clock className="mr-1 h-3 w-3" />
                     {quizQ.data.time_limit_minutes} min
                   </Badge>
@@ -157,20 +163,20 @@ function QuizPage() {
               </div>
 
               {!user ? (
-                <div className="mt-6 rounded-2xl border border-border bg-background p-5 text-center">
-                  <p className="text-muted-foreground">
+                <div className="mt-6 rounded-2xl border border-border bg-card/70 p-5 text-center">
+                  <p className="text-muted-foreground text-sm">
                     {isGuest
                       ? `You can preview ${GUEST_LIMITS.mcqPerQuiz} questions as a guest. Sign in to take the full quiz and track results.`
                       : "Sign in to take this quiz and track your results."}
                   </p>
-                  <div className="mt-3 flex flex-wrap justify-center gap-2">
-                    <Button asChild className="rounded-full">
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    <Button asChild className="btn-squishy btn-cta rounded-full px-6 font-bold shadow-xs">
                       <Link to="/auth">Sign in</Link>
                     </Button>
                     {!isGuest && (
                       <Button
                         variant="outline"
-                        className="rounded-full"
+                        className="btn-squishy rounded-full px-5 font-semibold"
                         onClick={() => startGuestMode()}
                       >
                         Preview as guest
@@ -181,13 +187,13 @@ function QuizPage() {
               ) : (
                 <>
                   {quizQ.data.instructions && (
-                    <div className="mt-6 whitespace-pre-wrap rounded-2xl border border-border bg-background p-5 text-sm text-muted-foreground">
+                    <div className="mt-6 whitespace-pre-wrap rounded-2xl border border-border bg-card/70 p-5 text-sm text-muted-foreground">
                       {quizQ.data.instructions}
                     </div>
                   )}
                   <Button
                     size="lg"
-                    className="mt-6 rounded-full px-8"
+                    className="btn-squishy btn-cta mt-6 rounded-full px-8 font-bold shadow-sm"
                     onClick={() => startMutation.mutate()}
                     disabled={startMutation.isPending || total === 0}
                   >
@@ -311,7 +317,6 @@ function QuizPage() {
                 </Button>
               </div>
             )}
-
           </div>
         </div>
       )}

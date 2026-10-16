@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { slugify } from "@/lib/slug";
 import { parseMarkdownToBlocks, ContentBlockItem } from "@/components/admin/visual-article-editor";
+import { playCorrectSound } from "@/lib/sound-fx";
 
 /* ═══════════════════════════════════════════════════════════════════
    INLINE FORMATTING COMPONENT (Bold, Italic, Inline Code, Links)
@@ -47,7 +48,7 @@ export function FormattedText({ text }: { text: string | null | undefined }) {
           return (
             <code
               key={idx}
-              className="mx-0.5 inline-block rounded-md border border-border/60 bg-muted/80 px-1.5 py-0.5 font-mono text-[0.875em] font-semibold text-primary dark:text-primary-foreground/90 transition-colors"
+              className="mx-0.5 inline-block rounded-md border border-border/60 bg-muted px-1.5 py-0.5 font-mono text-[0.875em] font-medium text-foreground/80 dark:text-foreground/75 dark:bg-muted/70 transition-colors"
             >
               {codeContent}
             </code>
@@ -263,6 +264,7 @@ export function CodeBlock({
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
+      playCorrectSound();
       setTimeout(() => setCopied(false), 2000);
     } catch {
       /* ignore */
@@ -582,6 +584,7 @@ export function EducationalContentRenderer({
     try {
       await navigator.clipboard.writeText(content);
       setCopied(true);
+      playCorrectSound();
       setTimeout(() => setCopied(false), 1800);
     } catch {
       /* ignore */
@@ -615,8 +618,8 @@ export function EducationalContentRenderer({
         </div>
       )}
 
-      {/* Main Educational Article Body Card */}
-      <div className="rounded-2xl sm:rounded-3xl border border-border/80 bg-card p-4 sm:p-9 shadow-soft text-foreground space-y-6 min-w-0 max-w-full overflow-hidden">
+      {/* Main Educational Article Body Card — publication-grade reading */}
+      <div className="rounded-2xl sm:rounded-3xl border border-border/60 bg-card px-4 py-7 sm:px-10 sm:py-10 shadow-soft min-w-0 max-w-full overflow-hidden">
         {(() => {
           let h2Count = 0;
           return blocks.map((b) => {
@@ -651,13 +654,13 @@ export function EducationalContentRenderer({
                 {b.type === "heading2" && (
                   <div
                     id={headingId}
-                    className="scroll-mt-28 mt-10 mb-4 border-t border-border/60 pt-6"
+                    className="scroll-mt-28 mt-12 mb-5 border-t border-border/50 pt-8"
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 font-mono text-xs font-extrabold text-primary shrink-0">
+                    <div className="flex items-start gap-3.5">
+                      <span className="flex h-6 w-6 mt-1 items-center justify-center rounded-md bg-primary/12 font-mono text-[10px] font-extrabold text-primary shrink-0 select-none">
                         {String(h2Count).padStart(2, "0")}
                       </span>
-                      <h3 className="font-display text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
+                      <h3 className="font-display text-[1.35rem] sm:text-[1.6rem] font-bold text-foreground tracking-tight leading-snug">
                         <FormattedText text={b.content} />
                       </h3>
                     </div>
@@ -669,11 +672,13 @@ export function EducationalContentRenderer({
                   <h4
                     id={headingId}
                     className={cn(
-                      "font-display text-[17px] sm:text-lg font-bold mt-7 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2",
-                      isQuickRevision ? "text-amber-500 font-extrabold uppercase" : "text-primary",
+                      "font-display text-[1.05rem] sm:text-[1.15rem] font-semibold mt-9 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2 leading-snug",
+                      isQuickRevision
+                        ? "text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wide"
+                        : "text-foreground",
                     )}
                   >
-                    {isQuickRevision && <Zap className="h-4 w-4 shrink-0" />}
+                    {isQuickRevision && <Zap className="h-3.5 w-3.5 shrink-0" />}
                     <FormattedText text={b.content} />
                   </h4>
                 )}
@@ -682,15 +687,17 @@ export function EducationalContentRenderer({
                 {b.type === "heading4" && (
                   <h5
                     id={headingId}
-                    className="font-display text-base font-bold text-foreground/90 mt-5 mb-2 tracking-tight scroll-mt-28"
+                    className="font-display text-[0.95rem] font-semibold text-muted-foreground mt-6 mb-2 tracking-wide uppercase text-xs scroll-mt-28 flex items-center gap-2"
                   >
+                    <span className="inline-block h-px flex-1 bg-border/60" />
                     <FormattedText text={b.content} />
+                    <span className="inline-block h-px flex-1 bg-border/60" />
                   </h5>
                 )}
 
-                {/* Paragraph */}
+                {/* Paragraph — Fraunces serif for warm, readable prose */}
                 {b.type === "paragraph" && (
-                  <p className="text-[16px] sm:text-[17px] text-foreground/90 leading-[1.8] mb-5 font-normal">
+                  <p className="font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 leading-[1.85] mb-5 dark:text-foreground/85">
                     <FormattedText text={b.content} />
                   </p>
                 )}
@@ -716,11 +723,11 @@ export function EducationalContentRenderer({
 
                 {/* Bullet List */}
                 {b.type === "bullet_list" && (
-                  <ul className="my-5 space-y-2.5 text-[16px] sm:text-[17px] text-foreground/90 pl-6 list-disc marker:text-primary leading-[1.75]">
+                  <ul className="my-5 space-y-2 font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 dark:text-foreground/85 pl-5 list-disc marker:text-primary/70 leading-[1.8]">
                     {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
                       .filter((item) => item.trim())
                       .map((item, itemIdx) => (
-                        <li key={itemIdx} className="leading-relaxed">
+                        <li key={itemIdx} className="pl-1">
                           <FormattedText text={item} />
                         </li>
                       ))}
@@ -729,11 +736,11 @@ export function EducationalContentRenderer({
 
                 {/* Numbered List */}
                 {b.type === "numbered_list" && (
-                  <ol className="my-5 space-y-2.5 text-[16px] sm:text-[17px] text-foreground/90 pl-6 list-decimal marker:font-mono marker:font-bold marker:text-primary leading-[1.75]">
+                  <ol className="my-5 space-y-2 font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 dark:text-foreground/85 pl-5 list-decimal marker:font-display marker:font-bold marker:text-primary leading-[1.8]">
                     {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
                       .filter((item) => item.trim())
                       .map((item, itemIdx) => (
-                        <li key={itemIdx} className="leading-relaxed">
+                        <li key={itemIdx} className="pl-1">
                           <FormattedText text={item} />
                         </li>
                       ))}

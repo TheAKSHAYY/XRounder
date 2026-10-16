@@ -531,8 +531,6 @@ function ProfilePage() {
                   <SelectItem value="light">Light</SelectItem>
                   <SelectItem value="dark">Dark</SelectItem>
                   <SelectItem value="system">System Default</SelectItem>
-                  <SelectItem value="midnight">Midnight</SelectItem>
-                  <SelectItem value="ocean">Ocean</SelectItem>
                 </SelectContent>
               </Select>
             </div>

@@ -109,7 +109,11 @@ export function TypedConfirmationDialog({
             <Label htmlFor="typed-confirmation" className="text-xs font-medium text-foreground">
               {inputLabel ?? (
                 <>
-                  To confirm, type <span className="font-mono font-bold text-foreground underline select-all">{targetResourceName}</span> below:
+                  To confirm, type{" "}
+                  <span className="font-mono font-bold text-foreground underline select-all">
+                    {targetResourceName}
+                  </span>{" "}
+                  below:
                 </>
               )}
             </Label>

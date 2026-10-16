@@ -1,15 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Droplet,
-  Leaf,
-  Monitor,
-  Moon,
-  Palette,
-  Settings as SettingsIcon,
-  Sparkles,
-  Sun,
-  User,
-} from "lucide-react";
+import { Monitor, Moon, Settings as SettingsIcon, Sun, User } from "lucide-react";
 
 import { useTheme } from "@/components/theme/theme-provider";
 import { Button } from "@/components/ui/button";
@@ -33,56 +23,29 @@ function SettingsPage() {
       <section className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
         <h2 className="text-sm font-semibold text-foreground">Appearance</h2>
         <p className="mt-1 text-xs text-muted-foreground">
-          Choose how XRounder looks on this device.
+          Choose your preferred theme for reading and navigation.
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <ThemeChoice
             active={theme === "light"}
             onClick={() => setTheme("light")}
             icon={Sun}
             label="Light"
+            description="Warm off-white, high clarity daylight reading"
           />
           <ThemeChoice
             active={theme === "dark"}
             onClick={() => setTheme("dark")}
             icon={Moon}
             label="Dark"
-          />
-          <ThemeChoice
-            active={theme === "midnight"}
-            onClick={() => setTheme("midnight")}
-            icon={Sparkles}
-            label="Midnight"
-          />
-          <ThemeChoice
-            active={theme === "ocean"}
-            onClick={() => setTheme("ocean")}
-            icon={Droplet}
-            label="Ocean"
-          />
-          <ThemeChoice
-            active={theme === "emerald"}
-            onClick={() => setTheme("emerald")}
-            icon={Leaf}
-            label="Emerald"
-          />
-          <ThemeChoice
-            active={theme === "purple"}
-            onClick={() => setTheme("purple")}
-            icon={Palette}
-            label="Purple"
-          />
-          <ThemeChoice
-            active={theme === "high-contrast"}
-            onClick={() => setTheme("high-contrast")}
-            icon={Monitor}
-            label="High contrast"
+            description="Warm charcoal, restful for focused night reading"
           />
           <ThemeChoice
             active={theme === "system"}
             onClick={() => setTheme("system")}
             icon={Monitor}
             label="System"
+            description="Automatically adapts to your device settings"
           />
         </div>
       </section>
@@ -107,23 +70,40 @@ function ThemeChoice({
   onClick,
   icon: Icon,
   label,
+  description,
 }: {
   active: boolean;
   onClick: () => void;
   icon: React.ComponentType<{ className?: string }>;
   label: string;
+  description: string;
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
-      className={`flex flex-col items-center gap-2 rounded-xl border px-4 py-4 text-sm transition-colors ${
+      className={`group relative flex flex-col items-start gap-2.5 rounded-2xl border p-4 text-left transition-all duration-200 ${
         active
-          ? "border-primary bg-primary/5 text-foreground"
-          : "border-border bg-background text-muted-foreground hover:bg-muted"
+          ? "border-primary bg-primary/5 text-foreground shadow-xs ring-1 ring-primary/30"
+          : "border-border/80 bg-background/60 text-muted-foreground hover:border-border hover:bg-muted/40 hover:text-foreground"
       }`}
     >
-      <Icon className="h-5 w-5" />
-      {label}
+      <div className="flex w-full items-center justify-between">
+        <span
+          className={`grid h-8 w-8 place-items-center rounded-xl transition-colors ${
+            active
+              ? "bg-primary text-primary-foreground"
+              : "bg-muted text-muted-foreground group-hover:text-foreground"
+          }`}
+        >
+          <Icon className="h-4 w-4" />
+        </span>
+        {active && <span className="inline-flex h-2 w-2 rounded-full bg-primary animate-pulse" />}
+      </div>
+      <div>
+        <div className="text-sm font-semibold text-foreground">{label}</div>
+        <p className="mt-0.5 text-xs text-muted-foreground leading-normal">{description}</p>
+      </div>
     </button>
   );
 }

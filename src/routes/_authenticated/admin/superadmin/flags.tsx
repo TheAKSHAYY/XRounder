@@ -5,7 +5,11 @@ import { useServerFn } from "@tanstack/react-start";
 import { Flag, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 
-import { listFeatureFlags, updateFeatureFlag, type FeatureFlagRow } from "@/lib/superadmin.functions";
+import {
+  listFeatureFlags,
+  updateFeatureFlag,
+  type FeatureFlagRow,
+} from "@/lib/superadmin.functions";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { Switch } from "@/components/ui/switch";
@@ -134,7 +138,8 @@ function FlagsPage() {
           description={
             <>
               Activating the emergency kill switch for{" "}
-              <strong className="font-mono text-foreground">{pendingKill.key}</strong> will immediately disable the entire module for all users platform-wide.
+              <strong className="font-mono text-foreground">{pendingKill.key}</strong> will
+              immediately disable the entire module for all users platform-wide.
             </>
           }
           targetResourceName={pendingKill.key}

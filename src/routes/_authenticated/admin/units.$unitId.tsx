@@ -52,6 +52,9 @@ import {
 } from "@/components/ui/select";
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
 import { VisualArticleEditor } from "@/components/admin/visual-article-editor";
+import { useServerFn } from "@tanstack/react-start";
+import { deleteContent } from "@/lib/content.functions";
+import { slugifyOrGenerated } from "@/lib/slug";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/units/$unitId")({
@@ -89,6 +92,7 @@ function AdminUnitWorkspace() {
   const qc = useQueryClient();
 
   const [activeTab, setActiveTab] = useState<"ARTICLE" | "NOTES" | "MCQS" | "PYQ">("ARTICLE");
+  const del = useServerFn(deleteContent);
 
   // 1. Fetch Unit and Parent Hierarchy Context
   const unitQuery = useQuery({
@@ -130,64 +134,114 @@ function AdminUnitWorkspace() {
     },
   });
 
-  // 2. Fetch Primary Article (content_items type='note' or notes table)
-  const articleQuery = useQuery({
-    queryKey: ["admin", "unit-article", unitId, unitQuery.data?.subjects?.id],
+  // 2. Fetch All Articles for this Unit (from both content_items and notes table)
+  const articlesQuery = useQuery({
+    queryKey: ["admin", "unit-articles", unitId, unitQuery.data?.subjects?.id],
     enabled: !!unitId,
     queryFn: async () => {
-      const { data: ci } = await supabase
+      const subjectId = unitQuery.data?.subjects?.id;
+      const unitNumber = unitQuery.data?.number;
+
+      // 1. Fetch from content_items
+      const { data: ciItems } = await supabase
         .from("content_items")
         .select("*")
         .eq("unit_id", unitId)
         .eq("type", "note")
         .is("deleted_at", null)
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
+        .order("created_at", { ascending: true });
 
-      if (ci) return ci;
+      // 2. Fetch from legacy notes
+      const { data: noteItems } = await supabase
+        .from("notes")
+        .select("id, unit_id, title, summary, body, status, created_at")
+        .eq("unit_id", unitId)
+        .is("deleted_at", null)
+        .order("sort_order")
+        .order("created_at", { ascending: true });
 
-      // Fallback: If note exists for subject with null unit_id, auto-link it
-      if (unitQuery.data?.subjects?.id) {
+      // 3. Fallback unlinked content_items for subject if unit 1
+      let unlinkedItems: any[] = [];
+      if (subjectId && unitNumber === 1) {
         const { data: unlinked } = await supabase
           .from("content_items")
           .select("*")
-          .eq("subject_id", unitQuery.data.subjects.id)
+          .eq("subject_id", subjectId)
           .is("unit_id", null)
           .eq("type", "note")
-          .is("deleted_at", null)
-          .order("created_at", { ascending: false })
-          .limit(1)
-          .maybeSingle();
-
-        if (unlinked) {
-          await supabase.from("content_items").update({ unit_id: unitId }).eq("id", unlinked.id);
-          return { ...unlinked, unit_id: unitId };
+          .is("deleted_at", null);
+        if (unlinked && unlinked.length > 0) {
+          unlinkedItems = unlinked;
         }
       }
 
-      // Fallback to legacy notes table
-      const { data: n } = await supabase
-        .from("notes")
-        .select("*")
-        .eq("unit_id", unitId)
-        .is("deleted_at", null)
-        .limit(1)
-        .maybeSingle();
+      type ArticleEntry = {
+        id: string;
+        unit_id: string | null;
+        subject_id?: string | null;
+        title: string;
+        description: string;
+        status: string;
+        type: string;
+        is_legacy?: boolean;
+        source: "content_items" | "notes";
+        created_at?: string;
+      };
 
-      if (n) {
-        return {
-          id: n.id,
-          unit_id: n.unit_id,
-          title: n.title,
-          description: n.summary || n.body,
-          status: n.status,
+      const map = new Map<string, ArticleEntry>();
+
+      // Populate from content_items
+      for (const item of ciItems ?? []) {
+        map.set(item.id, {
+          id: item.id,
+          unit_id: item.unit_id,
+          subject_id: item.subject_id ?? subjectId,
+          title: item.title,
+          description: item.description || "",
+          status: item.status || "published",
           type: "note",
-          is_legacy: true,
-        };
+          is_legacy: false,
+          source: "content_items",
+          created_at: item.created_at,
+        });
       }
 
-      return null;
+      for (const item of unlinkedItems) {
+        if (!map.has(item.id)) {
+          map.set(item.id, {
+            id: item.id,
+            unit_id: unitId,
+            subject_id: item.subject_id ?? subjectId,
+            title: item.title,
+            description: item.description || "",
+            status: item.status || "published",
+            type: "note",
+            is_legacy: false,
+            source: "content_items",
+            created_at: item.created_at,
+          });
+        }
+      }
+
+      // Populate from legacy notes table
+      for (const n of noteItems ?? []) {
+        if (!map.has(n.id)) {
+          map.set(n.id, {
+            id: n.id,
+            unit_id: n.unit_id,
+            subject_id: subjectId,
+            title: n.title,
+            description: n.body || n.summary || "",
+            status: n.status || "published",
+            type: "note",
+            is_legacy: true,
+            source: "notes",
+            created_at: n.created_at,
+          });
+        }
+      }
+
+      return Array.from(map.values());
     },
   });
 
@@ -257,7 +311,8 @@ function AdminUnitWorkspace() {
     },
   });
 
-  // Article Form State
+  // Article Form & Selection State
+  const [selectedArticleId, setSelectedArticleId] = useState<string | "new">("");
   const [articleTitle, setArticleTitle] = useState("");
   const [articleBody, setArticleBody] = useState("");
   const [articleStatus, setArticleStatus] = useState<"draft" | "published" | "archived">(
@@ -265,43 +320,76 @@ function AdminUnitWorkspace() {
   );
   const [isSavingArticle, setIsSavingArticle] = useState(false);
 
+  const articles = articlesQuery.data ?? [];
+
   useEffect(() => {
-    if (articleQuery.data) {
-      setArticleTitle(articleQuery.data.title || "");
-      setArticleBody(articleQuery.data.description || "");
-      setArticleStatus((articleQuery.data.status as any) || "published");
-    } else if (unitQuery.data) {
+    if (articles.length > 0) {
+      if (
+        !selectedArticleId ||
+        (selectedArticleId !== "new" && !articles.some((a) => a.id === selectedArticleId))
+      ) {
+        // Select first article with substantial content, or first article
+        const best =
+          articles.find((a) => a.description && a.description.trim().length > 0) || articles[0];
+        setSelectedArticleId(best.id);
+        setArticleTitle(best.title || "");
+        setArticleBody(best.description || "");
+        setArticleStatus((best.status as any) || "published");
+      }
+    } else if (unitQuery.data && !selectedArticleId) {
+      setSelectedArticleId("new");
       setArticleTitle(`Unit ${unitQuery.data.number}: ${unitQuery.data.title}`);
       setArticleBody("");
       setArticleStatus("published");
     }
-  }, [articleQuery.data, unitQuery.data]);
+  }, [articles, unitQuery.data, selectedArticleId]);
 
-  // Save / Publish Article Mutation
+  const activeArticle = useMemo(() => {
+    if (selectedArticleId === "new") return null;
+    return articles.find((a) => a.id === selectedArticleId) ?? null;
+  }, [articles, selectedArticleId]);
+
+  const handleSelectArticle = (id: string | "new") => {
+    setSelectedArticleId(id);
+    if (id === "new") {
+      setArticleTitle("");
+      setArticleBody("");
+      setArticleStatus("published");
+    } else {
+      const art = articles.find((a) => a.id === id);
+      if (art) {
+        setArticleTitle(art.title || "");
+        setArticleBody(art.description || "");
+        setArticleStatus((art.status as any) || "published");
+      }
+    }
+  };
+
+  // Save / Publish Article Mutation (Updates notes table AND content_items simultaneously)
   const saveArticleMutation = useMutation({
     mutationFn: async (targetStatus?: "draft" | "published") => {
       if (!articleTitle.trim()) throw new Error("Article title is required.");
       setIsSavingArticle(true);
       const statusToSave = targetStatus || articleStatus;
       const subjectId = unitQuery.data?.subjects?.id;
+      const now = new Date().toISOString();
 
-      if (articleQuery.data && !(articleQuery.data as any).is_legacy) {
-        const { error } = await supabase
-          .from("content_items")
+      if (selectedArticleId !== "new" && activeArticle) {
+        // 1. Update notes table so student unit page reads the change immediately
+        const { error: noteErr } = await supabase
+          .from("notes")
           .update({
-            unit_id: unitId,
-            subject_id: subjectId,
             title: articleTitle.trim(),
-            description: articleBody,
+            body: articleBody,
+            summary: articleBody.slice(0, 300),
             status: statusToSave,
-            visibility: "public",
-            updated_at: new Date().toISOString(),
+            updated_at: now,
           })
-          .eq("id", articleQuery.data.id);
+          .eq("id", activeArticle.id);
 
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.from("content_items").insert({
+        // 2. Also update or upsert in content_items for unified admin content management
+        const { error: ciErr } = await supabase.from("content_items").upsert({
+          id: activeArticle.id,
           unit_id: unitId,
           subject_id: subjectId,
           type: "note",
@@ -309,23 +397,152 @@ function AdminUnitWorkspace() {
           description: articleBody,
           status: statusToSave,
           visibility: "public",
-          created_by: user?.id,
+          updated_at: now,
         });
 
-        if (error) throw error;
+        if (noteErr && ciErr) {
+          throw new Error(noteErr.message || ciErr.message || "Failed to save article");
+        }
+      } else {
+        // Creating a new article for this unit
+        const { data: newCi, error: ciErr } = await supabase
+          .from("content_items")
+          .insert({
+            unit_id: unitId,
+            subject_id: subjectId,
+            type: "note",
+            title: articleTitle.trim(),
+            description: articleBody,
+            status: statusToSave,
+            visibility: "public",
+            created_by: user?.id,
+          })
+          .select("id")
+          .maybeSingle();
+
+        const createdId = newCi?.id;
+
+        const { data: newNote, error: nErr } = await supabase
+          .from("notes")
+          .insert({
+            ...(createdId ? { id: createdId } : {}),
+            unit_id: unitId,
+            title: articleTitle.trim(),
+            slug: slugifyOrGenerated(articleTitle.trim()),
+            body: articleBody,
+            summary: articleBody.slice(0, 300),
+            status: statusToSave,
+            visibility: "public",
+            created_by: user?.id,
+          })
+          .select("id")
+          .maybeSingle();
+
+        const targetId = createdId || newNote?.id;
+        if (targetId) setSelectedArticleId(targetId);
       }
     },
     onSuccess: (_, statusToSave) => {
       toast.success(statusToSave === "published" ? "Article Published!" : "Article Draft Saved!");
-      qc.invalidateQueries({ queryKey: ["admin", "unit-article", unitId] });
+      qc.invalidateQueries({ queryKey: ["admin", "unit-articles", unitId] });
       qc.invalidateQueries({ queryKey: ["public", "unit"] });
       qc.invalidateQueries({ queryKey: ["admin", "content"] });
+      qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
       setIsSavingArticle(false);
     },
     onError: (err: any) => {
       toast.error(err.message || "Failed to save article");
       setIsSavingArticle(false);
     },
+  });
+
+  // Delete Article Mutation (handles both soft-delete and hard-delete with full error reporting)
+  const deleteArticleMutation = useMutation({
+    mutationFn: async (idToDelete: string) => {
+      // 1. Invoke server function first (runs with assertAdmin)
+      try {
+        await del({ data: { ids: [idToDelete] } });
+      } catch (serverErr) {
+        console.warn("Server deleteContent encountered:", serverErr);
+      }
+
+      const now = new Date().toISOString();
+      // 2. Soft-delete across both tables so queries filter it out immediately
+      const { error: errNoteUpdate } = await supabase
+        .from("notes")
+        .update({ deleted_at: now, status: "archived" })
+        .eq("id", idToDelete);
+
+      const { error: errCiUpdate } = await supabase
+        .from("content_items")
+        .update({ deleted_at: now, status: "archived" })
+        .eq("id", idToDelete);
+
+      // 3. Also attempt hard-delete (removes row completely if no foreign key blocks it)
+      const { error: errNoteDel } = await supabase.from("notes").delete().eq("id", idToDelete);
+      const { error: errCiDel } = await supabase
+        .from("content_items")
+        .delete()
+        .eq("id", idToDelete);
+
+      // If every attempt failed with an error, throw so user knows
+      if (errNoteUpdate && errCiUpdate && errNoteDel && errCiDel) {
+        throw new Error(
+          errNoteUpdate?.message || errCiUpdate?.message || "Failed to delete article",
+        );
+      }
+    },
+    onSuccess: () => {
+      toast.success("Article deleted");
+      setSelectedArticleId("");
+      setArticleTitle("");
+      setArticleBody("");
+      qc.invalidateQueries({ queryKey: ["admin", "unit-articles", unitId] });
+      qc.invalidateQueries({ queryKey: ["public", "unit"] });
+      qc.invalidateQueries({ queryKey: ["admin", "content"] });
+      qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
+    },
+    onError: (err: any) => toast.error(err.message || "Failed to delete article"),
+  });
+
+  // Clear all articles in this unit
+  const clearAllArticlesMutation = useMutation({
+    mutationFn: async () => {
+      const ids = articles.map((a) => a.id).filter(Boolean);
+      if (ids.length > 0) {
+        try {
+          await del({ data: { ids } });
+        } catch (serverErr) {
+          console.warn("Server deleteContent encountered:", serverErr);
+        }
+      }
+
+      const now = new Date().toISOString();
+      const { error: e1 } = await supabase
+        .from("notes")
+        .update({ deleted_at: now, status: "archived" })
+        .eq("unit_id", unitId);
+      const { error: e2 } = await supabase
+        .from("content_items")
+        .update({ deleted_at: now, status: "archived" })
+        .eq("unit_id", unitId);
+
+      await supabase.from("notes").delete().eq("unit_id", unitId);
+      await supabase.from("content_items").delete().eq("unit_id", unitId);
+
+      if (e1 && e2) throw new Error(e1.message || e2.message || "Failed to clear articles");
+    },
+    onSuccess: () => {
+      toast.success("All articles in this unit cleared");
+      setSelectedArticleId("");
+      setArticleTitle("");
+      setArticleBody("");
+      qc.invalidateQueries({ queryKey: ["admin", "unit-articles", unitId] });
+      qc.invalidateQueries({ queryKey: ["public", "unit"] });
+      qc.invalidateQueries({ queryKey: ["admin", "content"] });
+      qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
+    },
+    onError: (err: any) => toast.error(err.message || "Failed to clear unit articles"),
   });
 
   // Reference Document Upload State
@@ -369,14 +586,24 @@ function AdminUnitWorkspace() {
   const deleteDocMutation = useMutation({
     mutationFn: async (doc: any) => {
       if (doc.file_path && doc.file_bucket) {
-        await supabase.storage.from(doc.file_bucket).remove([doc.file_path]);
+        try {
+          await supabase.storage.from(doc.file_bucket).remove([doc.file_path]);
+        } catch {
+          /* ignore */
+        }
       }
-      const { error } = await supabase.from("content_items").delete().eq("id", doc.id);
-      if (error) throw error;
+      const now = new Date().toISOString();
+      await supabase
+        .from("content_items")
+        .update({ deleted_at: now, status: "archived" })
+        .eq("id", doc.id);
+      await supabase.from("content_items").delete().eq("id", doc.id);
     },
     onSuccess: () => {
       toast.success("Document deleted");
       qc.invalidateQueries({ queryKey: ["admin", "unit-reference-files", unitId] });
+      qc.invalidateQueries({ queryKey: ["public", "unit"] });
+      qc.invalidateQueries({ queryKey: ["admin", "content"] });
     },
   });
 
@@ -506,8 +733,10 @@ function AdminUnitWorkspace() {
 
   // Calculate Health & Readiness Scorecard
   const health = useMemo(() => {
-    const hasArticle = !!articleQuery.data && !!articleQuery.data.description?.trim();
-    const articlePublished = hasArticle && articleQuery.data?.status === "published";
+    const hasArticle = articles.length > 0 && articles.some((a) => !!a.description?.trim());
+    const articlePublished = articles.some(
+      (a) => a.status === "published" && !!a.description?.trim(),
+    );
     const refCount = referenceFilesQuery.data?.length ?? 0;
     const allQuestions = questionsQuery.data ?? [];
     const mcqCount = allQuestions.filter((q) => !q.exam_name && !q.year && q.points < 5).length;
@@ -518,12 +747,13 @@ function AdminUnitWorkspace() {
     return {
       hasArticle,
       articlePublished,
+      articleCount: articles.length,
       refCount,
       mcqCount,
       pyqCount,
       isReady,
     };
-  }, [articleQuery.data, referenceFilesQuery.data, questionsQuery.data]);
+  }, [articles, referenceFilesQuery.data, questionsQuery.data]);
 
   if (unitQuery.isLoading) {
     return (
@@ -664,10 +894,7 @@ function AdminUnitWorkspace() {
                 READY FOR STUDENTS
               </Badge>
             ) : (
-              <Badge
-                variant="warning"
-                className="text-xs font-bold px-3 py-1 rounded-full"
-              >
+              <Badge variant="warning" className="text-xs font-bold px-3 py-1 rounded-full">
                 NEEDS ATTENTION
               </Badge>
             )}
@@ -687,8 +914,7 @@ function AdminUnitWorkspace() {
               : "bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground",
           )}
         >
-          <BookOpen className="h-4 w-4" /> 1. Online Article (
-          {health.articlePublished ? "Published" : "Draft"})
+          <BookOpen className="h-4 w-4" /> 1. Online Articles ({articles.length})
         </button>
 
         <button
@@ -738,15 +964,22 @@ function AdminUnitWorkspace() {
         <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/60 pb-4">
             <div>
-              <h2 className="font-display text-lg font-bold text-foreground">
-                Online Educational Article
-              </h2>
-              <p className="text-xs text-muted-foreground">
-                Write or paste the verified Markdown learning material for Unit {unit.number}.
+              <div className="flex items-center gap-2">
+                <h2 className="font-display text-lg font-bold text-foreground">
+                  Online Educational Articles
+                </h2>
+                <Badge variant="outline" className="text-xs font-semibold">
+                  {articles.length} {articles.length === 1 ? "article" : "articles"} in Unit{" "}
+                  {unit.number}
+                </Badge>
+              </div>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Select any article below to edit its content, or click "+ New Article" to add
+                another topic.
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
               <Select value={articleStatus} onValueChange={(v: any) => setArticleStatus(v)}>
                 <SelectTrigger className="h-9 w-32 rounded-xl text-xs font-bold bg-muted/30">
                   <SelectValue />
@@ -757,6 +990,28 @@ function AdminUnitWorkspace() {
                   <SelectItem value="archived">Archived</SelectItem>
                 </SelectContent>
               </Select>
+
+              {activeArticle && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  type="button"
+                  disabled={deleteArticleMutation.isPending}
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        `Delete article "${activeArticle.title || "Untitled"}"? This cannot be undone.`,
+                      )
+                    ) {
+                      deleteArticleMutation.mutate(activeArticle.id);
+                    }
+                  }}
+                  className="rounded-xl h-9 text-xs font-bold text-destructive hover:bg-destructive/10 border-destructive/30"
+                >
+                  <Trash2 className="h-3.5 w-3.5 mr-1" />
+                  Delete
+                </Button>
+              )}
 
               <Button
                 variant="outline"
@@ -780,6 +1035,79 @@ function AdminUnitWorkspace() {
             </div>
           </div>
 
+          {/* Article Selector Navigation */}
+          <div className="flex flex-wrap items-center gap-2 p-3 rounded-2xl bg-muted/30 border border-border/60">
+            <span className="text-xs font-bold text-muted-foreground mr-1 shrink-0">
+              Articles in Unit:
+            </span>
+            {articles.map((art, idx) => (
+              <button
+                key={art.id}
+                type="button"
+                onClick={() => handleSelectArticle(art.id)}
+                className={cn(
+                  "text-xs font-bold px-3 py-1.5 rounded-xl border transition-all text-left flex items-center gap-2",
+                  selectedArticleId === art.id
+                    ? "bg-primary text-primary-foreground border-primary shadow-xs"
+                    : "bg-card border-border/70 text-foreground hover:bg-muted/70",
+                )}
+              >
+                <span className="opacity-70 text-[11px]">#{idx + 1}</span>
+                <span className="truncate max-w-[160px] sm:max-w-[220px]">
+                  {art.title || "Untitled Article"}
+                </span>
+                <span
+                  className={cn(
+                    "text-[9px] uppercase px-1.5 py-0.5 rounded-md font-semibold shrink-0",
+                    selectedArticleId === art.id
+                      ? "bg-primary-foreground/20 text-primary-foreground"
+                      : art.status === "published"
+                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                        : "bg-amber-500/15 text-amber-700 dark:text-amber-300",
+                  )}
+                >
+                  {art.status}
+                </span>
+              </button>
+            ))}
+
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={() => handleSelectArticle("new")}
+              className={cn(
+                "rounded-xl h-8 text-xs font-bold gap-1.5 border-dashed",
+                selectedArticleId === "new"
+                  ? "border-primary text-primary bg-primary/10"
+                  : "hover:border-primary/60",
+              )}
+            >
+              <Plus className="h-3.5 w-3.5" /> New Article
+            </Button>
+
+            {articles.length > 0 && (
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                disabled={clearAllArticlesMutation.isPending}
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      `Are you sure you want to delete ALL ${articles.length} articles from Unit ${unit.number}? This will remove all notes and content for this unit.`,
+                    )
+                  ) {
+                    clearAllArticlesMutation.mutate();
+                  }
+                }}
+                className="rounded-xl h-8 text-xs font-bold text-destructive hover:bg-destructive/10 border-destructive/30 ml-auto"
+              >
+                <Trash2 className="h-3.5 w-3.5 mr-1" /> Clear All Unit Articles
+              </Button>
+            )}
+          </div>
+
           <div className="space-y-4">
             <div>
               <Label className="text-xs font-bold uppercase text-muted-foreground">
@@ -788,7 +1116,7 @@ function AdminUnitWorkspace() {
               <Input
                 value={articleTitle}
                 onChange={(e) => setArticleTitle(e.target.value)}
-                placeholder="Unit Title / Focus"
+                placeholder="e.g. Introduction to Computers - Full Notes"
                 className="mt-1 h-11 rounded-xl bg-muted/20 font-bold"
               />
             </div>

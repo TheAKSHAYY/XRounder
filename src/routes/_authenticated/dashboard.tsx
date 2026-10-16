@@ -27,6 +27,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { AnnouncementBanner } from "@/components/announcement-banner";
 import { cn } from "@/lib/utils";
 import { computeStreak } from "@/lib/profile";
+import { StudentGamificationCard } from "@/components/student/student-gamification-card";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard · XRounder" }] }),
@@ -107,6 +108,7 @@ type WeakAttemptResult = {
   quizzes: {
     title: string | null;
     units: {
+      number: number;
       title: string;
       subjects: {
         title: string;
@@ -238,9 +240,9 @@ function DashboardPage() {
           subject_slug: r.units?.subjects?.slug ?? "",
           semester_number: r.units?.subjects?.semesters?.number ?? 1,
           course_slug: r.units?.subjects?.semesters?.courses?.slug ?? "",
-          status: r.status,
+          status: r.status === "completed" || r.status === "in_progress" ? r.status : "not_started",
           progress_pct: Number(r.progress_pct ?? 0),
-          last_activity_at: r.last_activity_at,
+          last_activity_at: r.last_activity_at ?? new Date().toISOString(),
         }));
       } catch {
         return [];
@@ -382,7 +384,7 @@ function DashboardPage() {
               unitTitle: q.units?.title ? `Unit ${q.units.number}` : "",
               avgPct: pct,
               attemptsCount: 1,
-              lastAttempt: a.submitted_at,
+              lastAttempt: a.submitted_at ?? new Date().toISOString(),
             });
           } else {
             existing.avgPct = Math.round(
@@ -440,6 +442,18 @@ function DashboardPage() {
     [progress],
   );
 
+  const highestPct = useMemo(() => {
+    return attempts.reduce((max, a) => Math.max(max, Number(a.pct ?? 0)), 0);
+  }, [attempts]);
+
+  const perfectScoresCount = useMemo(() => {
+    return attempts.filter((a) => Number(a.pct ?? 0) === 100).length;
+  }, [attempts]);
+
+  const passedCount = useMemo(() => {
+    return attempts.filter((a) => a.passed || Number(a.pct ?? 0) >= 70).length;
+  }, [attempts]);
+
   const semesterProgressPct = useMemo(() => {
     if (totalPublishedUnits <= 0) return 0;
     return Math.min(100, Math.round((completedUnitsCount / totalPublishedUnits) * 100));
@@ -456,32 +470,40 @@ function DashboardPage() {
       {/* ─── Focus Header ─── */}
       <section className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 sm:flex sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {greeting()} 👋
-          </p>
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-primary">
+              <Sparkles className="h-3 w-3" aria-hidden="true" />
+              {greeting()}
+            </span>
+          </div>
           <h1 className="mt-1 truncate font-display text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
             {firstName}
+            {semester ? (
+              <span className="ml-2 font-serif font-normal italic text-muted-foreground text-xl sm:text-2xl">
+                · Semester {semester.number}
+              </span>
+            ) : null}
           </h1>
         </div>
 
         <div className="flex shrink-0 flex-wrap items-center gap-2">
           {semester && (
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-xs font-medium text-foreground shadow-xs">
-              <GraduationCap className="h-3.5 w-3.5 text-primary" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-3.5 py-1.5 text-xs font-medium text-foreground shadow-2xs">
+              <GraduationCap className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
               <Link
                 to="/courses/$courseSlug/$semesterNumber"
                 params={{
                   courseSlug: courseSlug ?? "",
                   semesterNumber: String(semester.number),
                 }}
-                className="hover:text-primary transition-colors font-medium"
+                className="hover:text-primary transition-colors font-medium cursor-pointer"
               >
                 {courseTitle ? `${courseTitle} · ` : ""}
                 Semester {semester.number}
               </Link>
               <Link
                 to="/onboarding"
-                className="text-[11px] text-muted-foreground hover:text-primary transition-colors underline ml-1"
+                className="text-[11px] font-mono text-muted-foreground hover:text-primary transition-colors underline ml-1 cursor-pointer"
                 title="Switch Semester"
               >
                 Change
@@ -492,16 +514,16 @@ function DashboardPage() {
           {!semester && !profileQuery.isLoading && (
             <Link
               to="/onboarding"
-              className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-primary/40 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-primary hover:bg-primary/10 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-primary/40 bg-primary/5 px-3.5 py-1.5 text-xs font-medium text-primary hover:bg-primary/10 transition-colors cursor-pointer"
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               Set up semester
             </Link>
           )}
 
           <div
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold shadow-xs",
+              "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold shadow-2xs font-mono",
               streak > 0
                 ? "bg-accent/15 text-accent-foreground border border-accent/30"
                 : "bg-muted text-muted-foreground",
@@ -513,35 +535,52 @@ function DashboardPage() {
                 "h-3.5 w-3.5",
                 streak > 0 ? "text-accent-foreground" : "text-muted-foreground",
               )}
+              aria-hidden="true"
             />
             <span>{streakQuery.isLoading ? "—" : `${streak}d streak`}</span>
           </div>
         </div>
       </section>
 
+      {/* ─── Gamification & XP Level ─── */}
+      <div className="mt-6">
+        <StudentGamificationCard
+          completedUnitsCount={completedUnitsCount}
+          attemptsCount={attempts.length}
+          highestPct={highestPct}
+          perfectScoresCount={perfectScoresCount}
+          passedCount={passedCount}
+          streakDays={streak}
+          firstName={firstName}
+        />
+      </div>
+
       {/* ─── Semester Progress Snapshot ─── */}
       {semester && (
         <section className="mt-6 rounded-2xl border border-border/80 bg-card p-4 sm:p-5 shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <Target className="h-4 w-4 text-primary" />
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Semester Overview
+                <Target className="h-4 w-4 text-primary" aria-hidden="true" />
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Semester Curriculum Overview
                 </span>
               </div>
               <p className="mt-1 text-sm font-medium text-foreground">
                 {totalPublishedUnits > 0
                   ? `${completedUnitsCount} of ${totalPublishedUnits} unit${totalPublishedUnits === 1 ? "" : "s"} completed`
                   : `${completedUnitsCount} unit${completedUnitsCount === 1 ? "" : "s"} completed`}{" "}
-                · {semesterSubjects.length} subject{semesterSubjects.length === 1 ? "" : "s"}
+                · <span className="font-mono">{semesterSubjects.length}</span> subject
+                {semesterSubjects.length === 1 ? "" : "s"}
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-36 sm:w-48">
+              <div className="w-36 sm:w-52">
                 <div className="flex justify-between text-[11px] font-medium text-muted-foreground mb-1">
-                  <span>Progress</span>
-                  <span className="font-semibold text-foreground">{semesterProgressPct}%</span>
+                  <span>Curriculum Progress</span>
+                  <span className="font-mono font-bold text-foreground">
+                    {semesterProgressPct}%
+                  </span>
                 </div>
                 <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
                   <div
@@ -1008,7 +1047,7 @@ function DashboardPage() {
                   semesterNumber: String(semester.number),
                   subjectSlug: s.slug,
                 }}
-                className="group relative flex flex-col justify-between rounded-2xl border border-border/80 bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-2xl border border-border/80 bg-card p-5 transition-all hover:border-primary/50 hover:shadow-md cursor-pointer"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -1016,7 +1055,7 @@ function DashboardPage() {
                       {s.code}
                     </span>
                     {s.credits != null && (
-                      <span className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+                      <span className="rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground font-mono">
                         {s.credits} Credits
                       </span>
                     )}
@@ -1030,7 +1069,10 @@ function DashboardPage() {
                   <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                     Open Syllabus
                   </span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
                 </div>
               </Link>
             ))}
@@ -1197,27 +1239,33 @@ function ContinueHero({
   // In-progress state — the primary personal semester OS case
   if (pickUp && pickUp.subject_slug && pickUp.course_slug) {
     return (
-      <article className="relative overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-br from-primary via-primary/95 to-primary/90 p-6 sm:p-8 text-primary-foreground shadow-sm">
+      <article className="relative overflow-hidden rounded-2xl border border-primary/25 bg-primary p-6 sm:p-8 text-primary-foreground shadow-md">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/25 blur-3xl"
+          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/20 blur-3xl"
         />
         <div className="relative grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
           <div className="min-w-0">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ring-primary-foreground/20">
-              <PlayCircle className="h-3.5 w-3.5" /> Continue where you left off
-            </span>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/15 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider ring-1 ring-primary-foreground/25">
+                <PlayCircle className="h-3.5 w-3.5" aria-hidden="true" /> Active Quest
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/25 px-2.5 py-0.5 font-mono text-[11px] font-bold text-amber-200 ring-1 ring-amber-300/40">
+                <Sparkles className="h-3 w-3" /> +120 XP Bounty
+              </span>
+            </div>
+            <p className="mt-3 font-mono text-xs font-semibold uppercase tracking-wider text-primary-foreground/80">
               {pickUp.subject_title}
             </p>
             <h2 className="mt-1 font-display text-2xl font-bold leading-tight sm:text-3xl">
-              Unit {pickUp.unit_number}: {pickUp.unit_title}
+              Unit {pickUp.unit_number}:{" "}
+              <span className="font-serif italic font-normal">{pickUp.unit_title}</span>
             </h2>
 
             <div className="mt-5 max-w-md">
-              <div className="flex items-center justify-between text-xs font-medium text-primary-foreground/80">
-                <span>Unit Progress</span>
-                <span className="font-bold text-primary-foreground">
+              <div className="flex items-center justify-between text-xs font-medium text-primary-foreground/85">
+                <span className="font-mono text-[11px]">Unit Progress</span>
+                <span className="font-mono font-bold text-primary-foreground">
                   {Math.round(Number(pickUp.progress_pct))}%
                 </span>
               </div>
@@ -1235,7 +1283,7 @@ function ContinueHero({
               asChild
               size="lg"
               variant="secondary"
-              className="shadow-sm font-semibold rounded-xl h-11"
+              className="shadow-sm font-bold rounded-xl h-11 cursor-pointer"
             >
               <Link
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
@@ -1246,18 +1294,18 @@ function ContinueHero({
                   unitNumber: String(pickUp.unit_number),
                 }}
               >
-                <PlayCircle className="mr-2 h-4 w-4" />
-                Resume Unit
+                <Zap className="mr-2 h-4 w-4 text-amber-500 fill-amber-500" aria-hidden="true" />
+                Resume Quest
               </Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="ghost"
-              className="text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground rounded-xl h-11"
+              className="text-primary-foreground hover:bg-primary-foreground/15 hover:text-primary-foreground rounded-xl h-11 cursor-pointer"
             >
               <Link to="/bookmarks">
-                <Bookmark className="mr-2 h-4 w-4" />
+                <Bookmark className="mr-2 h-4 w-4" aria-hidden="true" />
                 Saved Notes
               </Link>
             </Button>
@@ -1270,14 +1318,14 @@ function ContinueHero({
   // Personalized "start your semester" state
   if (semester && courseSlug) {
     return (
-      <article className="relative overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-br from-primary via-primary/95 to-primary/90 p-6 sm:p-8 text-primary-foreground shadow-sm">
+      <article className="relative overflow-hidden rounded-2xl border border-primary/25 bg-primary p-6 sm:p-8 text-primary-foreground shadow-md">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/25 blur-3xl"
+          className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/20 blur-3xl"
         />
         <div className="relative max-w-xl">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ring-primary-foreground/20">
-            <Sparkles className="h-3.5 w-3.5" /> Ready for your semester
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/15 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider ring-1 ring-primary-foreground/25">
+            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Ready for your semester
           </span>
           <h2 className="mt-3 font-display text-2xl font-bold leading-tight sm:text-3xl">
             Start Semester {semester.number}
@@ -1291,13 +1339,13 @@ function ContinueHero({
               asChild
               size="lg"
               variant="secondary"
-              className="rounded-xl font-semibold shadow-sm h-11"
+              className="rounded-xl font-semibold shadow-sm h-11 cursor-pointer"
             >
               <Link
                 to="/courses/$courseSlug/$semesterNumber"
                 params={{ courseSlug, semesterNumber: String(semester.number) }}
               >
-                <BookOpen className="mr-2 h-4 w-4" />
+                <BookOpen className="mr-2 h-4 w-4" aria-hidden="true" />
                 Open Semester Subjects
               </Link>
             </Button>
@@ -1309,9 +1357,9 @@ function ContinueHero({
 
   // First-time state
   return (
-    <article className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8">
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
-        <Sparkles className="h-3.5 w-3.5" /> Welcome to XRounder
+    <article className="rounded-2xl border border-border/80 bg-card p-6 sm:p-8 shadow-xs">
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">
+        <Sparkles className="h-3.5 w-3.5" aria-hidden="true" /> Welcome to XRounder
       </span>
       <h2 className="mt-3 font-display text-2xl font-bold leading-tight text-foreground sm:text-3xl">
         Select your course & semester
@@ -1321,13 +1369,23 @@ function ContinueHero({
         notes, practice quizzes, and progress tracking.
       </p>
       <div className="mt-5 flex flex-wrap gap-2.5">
-        <Button asChild size="lg" variant="cta" className="rounded-xl font-semibold h-11">
+        <Button
+          asChild
+          size="lg"
+          variant="cta"
+          className="rounded-xl font-semibold h-11 cursor-pointer"
+        >
           <Link to="/onboarding">
             Get started
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
         </Button>
-        <Button asChild size="lg" variant="outline" className="rounded-xl font-semibold h-11">
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="rounded-xl font-semibold h-11 cursor-pointer"
+        >
           <Link to="/courses">Browse courses</Link>
         </Button>
       </div>

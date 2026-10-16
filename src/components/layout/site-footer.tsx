@@ -6,74 +6,56 @@ import { cn } from "@/lib/utils";
 type FooterLink =
   | {
       label: string;
-      to: "/courses" | "/auth" | "/privacy" | "/terms" | "/developer";
-      search?: { mode: "signin" | "signup" | "forgot" };
+      to: "/courses" | "/privacy" | "/terms" | "/developer" | "/mock-test";
       href?: never;
     }
-  | { label: string; href: string; to?: never; search?: never };
+  | { label: string; href: string; to?: never };
+
+const FOOTER_LINKS: FooterLink[] = [
+  { label: "Courses", to: "/courses" },
+  { label: "Roadmap", href: "/#curriculum-roadmap" },
+  { label: "Mock Test", to: "/mock-test" },
+  { label: "Developer", to: "/developer" },
+  { label: "Privacy", to: "/privacy" },
+  { label: "Terms", to: "/terms" },
+];
 
 export function SiteFooter({ className }: { className?: string }) {
-  const product: FooterLink[] = [
-    { label: "BCA Syllabus", to: "/courses" },
-    { label: "Learning Loop", href: "/#learning-loop" },
-    { label: "Syllabus Explorer", href: "/#syllabus" },
-    { label: "How It Works", href: "/#how-it-works" },
-  ];
-
-  const account: FooterLink[] = [
-    { label: "Sign in", to: "/auth", search: { mode: "signin" } },
-    { label: "Create account", to: "/auth", search: { mode: "signup" } },
-    { label: "Reset password", to: "/auth", search: { mode: "forgot" } },
-  ];
-
-  const company: FooterLink[] = [
-    { label: "Developer", to: "/developer" },
-    { label: "Privacy", to: "/privacy" },
-    { label: "Terms", to: "/terms" },
-  ];
-
   return (
-    <footer className={cn("mt-16 border-t border-border/60 bg-surface-muted/60", className)}>
-      <div className="mx-auto w-full sm:max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-4">
-          <div className="col-span-2 min-w-0 lg:col-span-1">
-            <Link to="/" className="flex items-center">
-              <BrandLockup className="h-11 shrink-0" textClassName="text-xl" />
-            </Link>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              The structured learning home for students on every course and learning path.
-            </p>
-          </div>
-          <FooterCol title="Product" links={product} />
-          <FooterCol title="Account / Support" links={account} />
-          <FooterCol title="Company" links={company} />
+    <footer
+      className={cn(
+        "relative mt-12 sm:mt-16 border-t border-border/70 bg-card/60 backdrop-blur-md py-6 sm:py-7",
+        className,
+      )}
+    >
+      <div className="mx-auto flex w-full sm:max-w-6xl flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6">
+        {/* Brand & Minimal Tagline */}
+        <div className="flex items-center gap-2.5">
+          <Link to="/" className="flex items-center" aria-label="XRounder home">
+            <BrandLockup className="h-8 shrink-0" textClassName="text-base sm:text-lg font-bold" />
+          </Link>
+          <span className="text-xs text-muted-foreground hidden md:inline">
+            · Master BCA. Zero Exam Panic.
+          </span>
         </div>
-        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
-          <span>© {new Date().getFullYear()} XRounder. All rights reserved.</span>
-          <span>Built with care for students everywhere.</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
 
-function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
-  return (
-    <div className="min-w-0">
-      <h2 className="font-display text-sm font-semibold text-foreground">{title}</h2>
-      <ul className="mt-3 space-y-1 text-sm">
-        {links.map((l) => (
-          <li key={l.label}>
-            {l.to ? (
+        {/* Compact Horizontal Nav Links */}
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs text-muted-foreground font-medium"
+        >
+          {FOOTER_LINKS.map((l) =>
+            l.to ? (
               <Link
+                key={l.label}
                 to={l.to}
-                search={l.search as never}
-                className="inline-flex min-h-9 items-center text-muted-foreground transition-colors hover:text-foreground"
+                className="transition-colors hover:text-foreground"
               >
                 {l.label}
               </Link>
             ) : (
               <a
+                key={l.label}
                 href={l.href}
                 onClick={(e) => {
                   if (typeof window === "undefined") return;
@@ -91,14 +73,19 @@ function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
                     }
                   }
                 }}
-                className="inline-flex min-h-9 items-center text-muted-foreground transition-colors hover:text-foreground"
+                className="transition-colors hover:text-foreground"
               >
                 {l.label}
               </a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+            ),
+          )}
+        </nav>
+
+        {/* Copyright */}
+        <div className="text-[11px] text-muted-foreground font-mono">
+          © {new Date().getFullYear()} XRounder
+        </div>
+      </div>
+    </footer>
   );
 }

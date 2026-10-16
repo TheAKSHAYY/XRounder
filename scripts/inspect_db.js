@@ -29,13 +29,18 @@ async function run() {
 
       if (subjects && subjects.length > 0) {
         // Find computer fundamentals
-        const subject = subjects.find(s => s.code === 'BCA-101N' || s.title.includes('Fundamentals') || s.slug.includes('fundamentals'));
+        const subject = subjects.find(
+          (s) =>
+            s.code === "BCA-101N" ||
+            s.title.includes("Fundamentals") ||
+            s.slug.includes("fundamentals"),
+        );
         if (subject) {
           console.log("\nFetching Units for Subject:", subject.id);
           const { data: units } = await sb.from("units").select("*").eq("subject_id", subject.id);
           console.log(units);
         } else {
-            console.log("\nCould not find Computer Fundamentals subject!");
+          console.log("\nCould not find Computer Fundamentals subject!");
         }
       }
     }

@@ -29,3 +29,102 @@ export function formatDateTime(iso: string | null | undefined): string {
   if (!iso) return "Unknown";
   return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
 }
+
+const KNOWN_ACRONYMS = new Set([
+  "BCA",
+  "MCA",
+  "BTECH",
+  "MTECH",
+  "OS",
+  "COA",
+  "ISB",
+  "NAST",
+  "IT",
+  "AI",
+  "SQL",
+  "PHP",
+  "HTML",
+  "CSS",
+  "CPU",
+  "RAM",
+  "ROM",
+  "LAN",
+  "WAN",
+  "TCP",
+  "IP",
+  "UDP",
+  "DNS",
+  "HTTP",
+  "HTTPS",
+  "API",
+  "UI",
+  "UX",
+  "MCQ",
+  "MCQS",
+  "PDF",
+  "PDFS",
+  "DBMS",
+  "RDBMS",
+  "OOP",
+  "OOPS",
+  "OOB",
+  "DSA",
+  "CN",
+  "SE",
+  "I",
+  "II",
+  "III",
+  "IV",
+  "V",
+  "VI",
+]);
+
+const MINOR_WORDS = new Set([
+  "a",
+  "an",
+  "the",
+  "and",
+  "but",
+  "or",
+  "for",
+  "nor",
+  "on",
+  "at",
+  "to",
+  "by",
+  "with",
+  "in",
+  "of",
+  "using",
+  "via",
+]);
+
+/**
+ * Formats all-caps or messy database titles into clean, readable Title Case.
+ * Preserves standard technical acronyms (BCA, OS, COA, TCP, IP, etc.).
+ */
+export function formatTitleCase(str: string | null | undefined): string {
+  if (!str) return "";
+  const trimmed = str.trim();
+  if (!trimmed) return "";
+
+  // If already mixed case, return as-is
+  const isAllCaps = trimmed === trimmed.toUpperCase() && trimmed !== trimmed.toLowerCase();
+  if (!isAllCaps) return trimmed;
+
+  return trimmed
+    .toLowerCase()
+    .split(/\s+/)
+    .map((word, index) => {
+      // Strip punctuation for acronym check
+      const clean = word.replace(/[^a-zA-Z0-9]/g, "").toUpperCase();
+      if (KNOWN_ACRONYMS.has(clean)) {
+        return word.replace(new RegExp(clean, "i"), clean);
+      }
+      if (index > 0 && MINOR_WORDS.has(word.toLowerCase())) {
+        return word.toLowerCase();
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}

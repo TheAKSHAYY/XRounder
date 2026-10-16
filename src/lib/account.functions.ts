@@ -39,9 +39,7 @@ export const deleteMyAccount = createServerFn({ method: "POST" })
       ).length;
 
       if (activeCount === 0) {
-        throw new Error(
-          "Cannot delete account: All other Super Admins are suspended or inactive.",
-        );
+        throw new Error("Cannot delete account: All other Super Admins are suspended or inactive.");
       }
     }
 

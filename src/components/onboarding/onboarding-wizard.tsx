@@ -7,14 +7,20 @@ import {
   Calendar,
   Check,
   ChevronRight,
+  Flame,
   GraduationCap,
   Layers,
   Loader2,
   Sparkles,
+  Trophy,
+  Zap,
 } from "lucide-react";
+import confetti from "canvas-confetti";
+import { playCelebrationSound } from "@/lib/sound-fx";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import type { LearningPrefs } from "@/lib/learning-prefs";
@@ -60,6 +66,7 @@ export function OnboardingWizard({
   const [selectedCourseId, setSelectedCourseId] = useState<string>(initialCourseId ?? "");
   const [selectedYear, setSelectedYear] = useState<number>(initialYear ?? 1);
   const [selectedSemesterId, setSelectedSemesterId] = useState<string>(initialSemesterId ?? "");
+  const [dailyGoal, setDailyGoal] = useState<string>("regular");
   const [saving, setSaving] = useState(false);
 
   // 1. Fetch published courses
@@ -132,6 +139,13 @@ export function OnboardingWizard({
     if (!selectedCourse || !selectedSemester) return;
     setSaving(true);
     try {
+      playCelebrationSound();
+      confetti({
+        particleCount: 110,
+        spread: 85,
+        origin: { y: 0.6 },
+        disableForReducedMotion: true,
+      });
       const prefs: LearningPrefs = {
         courseId: selectedCourse.id,
         courseTitle: selectedCourse.title,
@@ -419,6 +433,80 @@ export function OnboardingWizard({
                   </button>
                 );
               })}
+            </div>
+          )}
+
+          {/* Daily Study Pace Goal */}
+          {selectedSemesterId && (
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:p-5 animate-in fade-in duration-200">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Flame className="h-4 w-4 text-amber-500" />
+                <h3 className="font-display text-sm font-bold text-foreground">
+                  Choose your daily study goal
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground mb-3">
+                Sets your daily habit streak. Earn daily bonus XP when completing learning units or practice quizzes.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {[
+                  {
+                    id: "casual",
+                    title: "Casual",
+                    time: "10 min / day",
+                    xp: "+50 XP / day",
+                    icon: Zap,
+                  },
+                  {
+                    id: "regular",
+                    title: "Regular",
+                    time: "20 min / day",
+                    xp: "+100 XP / day",
+                    badge: "Recommended",
+                    icon: Flame,
+                  },
+                  {
+                    id: "sprint",
+                    title: "Exam Sprint",
+                    time: "40 min / day",
+                    xp: "+200 XP / day",
+                    icon: Trophy,
+                  },
+                ].map((g) => {
+                  const active = dailyGoal === g.id;
+                  const Icon = g.icon;
+                  return (
+                    <button
+                      key={g.id}
+                      type="button"
+                      onClick={() => setDailyGoal(g.id)}
+                      className={cn(
+                        "relative flex flex-col items-start rounded-xl border p-3 text-left transition-all cursor-pointer",
+                        active
+                          ? "border-primary bg-card shadow-xs ring-1 ring-primary"
+                          : "border-border/60 bg-card/60 hover:border-primary/40",
+                      )}
+                    >
+                      {g.badge && (
+                        <span className="absolute -top-2 right-2 rounded-full bg-primary px-2 py-0.5 text-[9px] font-bold text-primary-foreground">
+                          {g.badge}
+                        </span>
+                      )}
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-foreground">
+                        <Icon
+                          className={cn(
+                            "h-3.5 w-3.5",
+                            active ? "text-primary" : "text-muted-foreground",
+                          )}
+                        />
+                        <span>{g.title}</span>
+                      </div>
+                      <span className="mt-1 text-[11px] text-muted-foreground">{g.time}</span>
+                      <span className="mt-1 font-mono text-[10px] font-bold text-primary">{g.xp}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           )}
 

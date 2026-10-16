@@ -7,7 +7,7 @@ const sb = createClient(supabaseUrl, supabaseKey);
 
 async function run() {
   const unitId = "0985c212-df92-48df-8412-93e7de4c34c8";
-  
+
   // Pilot topics
   const { data: topics, error: tErr } = await sb
     .from("syllabus_topics")
@@ -16,9 +16,9 @@ async function run() {
     .order("sort_order");
   console.log("=== 1. SYLLABUS TOPICS ===");
   console.log("Count:", topics?.length, tErr || "");
-  console.log(topics?.map(t => ({ id: t.id, title: t.title, sort_order: t.sort_order })));
+  console.log(topics?.map((t) => ({ id: t.id, title: t.title, sort_order: t.sort_order })));
 
-  const topicIds = topics?.map(t => t.id) || [];
+  const topicIds = topics?.map((t) => t.id) || [];
 
   // Content items
   const { data: contentItems, error: ciErr } = await sb
@@ -47,7 +47,7 @@ async function run() {
   console.log("Count:", quizzes?.length, qErr || "");
   console.log(quizzes);
 
-  const quizIds = quizzes?.map(q => q.id) || [];
+  const quizIds = quizzes?.map((q) => q.id) || [];
 
   // Quiz questions
   let questions = [];
@@ -64,7 +64,7 @@ async function run() {
     console.log("Count: 0 (no quizzes found)");
   }
 
-  const questionIds = questions.map(q => q.id);
+  const questionIds = questions.map((q) => q.id);
 
   // Quiz options
   if (questionIds.length > 0) {

@@ -181,7 +181,9 @@ export const revokeRole = createServerFn({ method: "POST" })
         (p: { suspended?: boolean | null }) => !p.suspended,
       ).length;
       if (activeCount === 0) {
-        throw new Error("Cannot revoke role: all other Super Admins are currently suspended or inactive.");
+        throw new Error(
+          "Cannot revoke role: all other Super Admins are currently suspended or inactive.",
+        );
       }
     }
     const { error } = await loose(context.supabase)

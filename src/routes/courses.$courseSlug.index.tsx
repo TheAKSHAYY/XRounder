@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, BookOpen, Compass, Layers } from "lucide-react";
+import { ArrowRight, ArrowLeft, BookOpen, Compass, Layers } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -9,6 +9,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ErrorPanel, RouteErrorScreen } from "@/components/ui/error-panel";
+import { formatTitleCase } from "@/lib/format";
 
 type CourseItem = {
   id: string;
@@ -182,8 +183,6 @@ function CourseRouteError({ error }: { error: unknown }) {
   );
 }
 
-
-
 function CourseDetail() {
   const { courseSlug } = Route.useParams();
   const loaderData = Route.useLoaderData();
@@ -221,44 +220,73 @@ function CourseDetail() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16 md:pb-0">
       <SiteHeader />
-      <main className="mx-auto max-w-5xl px-6 py-12">
-        <Breadcrumbs
-          items={[
-            { label: "Courses", to: "/courses" },
-            { label: courseQuery.data?.title ?? "Course" },
-          ]}
-        />
 
-        {courseQuery.data && (
-          <div className="mt-6 flex items-start gap-4">
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
-              <BookOpen className="h-6 w-6" />
-            </div>
-            <div>
-              <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                {courseQuery.data.code}
-              </div>
-              <h1 className="font-display text-4xl font-semibold text-foreground">
-                {courseQuery.data.title}
-              </h1>
-              {courseQuery.data.description && (
-                <p className="mt-3 max-w-3xl text-muted-foreground">
-                  {courseQuery.data.description}
-                </p>
-              )}
-            </div>
+      {/* ─── Hero Header with Atmospheric Grid ─── */}
+      <section className="relative overflow-hidden border-b border-border/70 gaming-grid-bg py-10 sm:py-14">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Breadcrumbs
+              items={[
+                { label: "Courses", to: "/courses" },
+                { label: courseQuery.data?.title ?? "Course" },
+              ]}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined" && window.history.length > 1) {
+                  window.history.back();
+                } else {
+                  window.location.href = "/courses";
+                }
+              }}
+              className="btn-squishy inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-card/80 backdrop-blur-sm px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-2xs hover:border-primary/50 hover:bg-muted cursor-pointer transition-all"
+              title="Return to your previous page"
+            >
+              <ArrowLeft className="h-3.5 w-3.5 text-primary" />
+              <span>Back to where you were</span>
+            </button>
           </div>
-        )}
 
-        <section className="mt-10">
-          <h2 className="flex items-center gap-2 font-display text-xl font-semibold text-foreground">
-            <Layers className="h-5 w-5 text-primary" /> Semesters
-          </h2>
+          {courseQuery.data && (
+            <div className="mt-8 flex items-start gap-4">
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-primary/10 border border-primary/25 text-primary shadow-2xs">
+                <BookOpen className="h-7 w-7" />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 border border-primary/25 px-2.5 py-0.5 font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                  {courseQuery.data.code}
+                </div>
+                <h1 className="mt-2 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+                  {courseQuery.data.title}
+                </h1>
+                {courseQuery.data.description && (
+                  <p className="mt-2.5 max-w-3xl text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {courseQuery.data.description}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14">
+        <section>
+          <div className="flex items-center justify-between border-b border-border/60 pb-4">
+            <h2 className="flex items-center gap-2 font-display text-xl sm:text-2xl font-bold text-foreground">
+              <Layers className="h-5 w-5 text-primary" /> Available Semesters
+            </h2>
+            <span className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-wider">
+              {semestersQuery.data?.length ?? 0} Semesters Published
+            </span>
+          </div>
+
           {semestersQuery.isError ? (
             <ErrorPanel
-              className="mt-4"
+              className="mt-6"
               title="We couldn't load the semesters"
               error={semestersQuery.error}
               onRetry={() => semestersQuery.refetch()}
@@ -272,43 +300,57 @@ function CourseDetail() {
               </Link>
             </ErrorPanel>
           ) : (
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {semestersQuery.isLoading &&
-              Array.from({ length: 4 }).map((_, i) => (
-                <Skeleton key={i} className="h-20 rounded-xl" />
-              ))}
-            {semestersQuery.data?.length === 0 && (
-              <EmptyState
-                className="col-span-full"
-                icon={Compass}
-                title="Semesters are being prepared"
-                description="Nothing has been published for this program yet. Check back soon, or take a look at the other programs."
-                primaryAction={{ label: "Browse other courses", to: "/courses", icon: ArrowRight }}
-              />
-            )}
-            {semestersQuery.data?.map((s: SemesterItem) => (
-              <Link
-                key={s.id}
-                to="/courses/$courseSlug/$semesterNumber"
-                params={{ courseSlug, semesterNumber: String(s.number) }}
-                className="group rounded-xl border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/50"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground font-display text-base">
-                    {s.number}
-                  </span>
-                  <div>
-                    <div className="font-display text-base font-semibold text-foreground">
-                      {s.title}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {semestersQuery.isLoading &&
+                Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} className="h-28 rounded-2xl" />
+                ))}
+              {semestersQuery.data?.length === 0 && (
+                <EmptyState
+                  className="col-span-full"
+                  icon={Compass}
+                  title="Semesters are being prepared"
+                  description="Nothing has been published for this program yet. Check back soon, or take a look at the other programs."
+                  primaryAction={{
+                    label: "Browse other courses",
+                    to: "/courses",
+                    icon: ArrowRight,
+                  }}
+                />
+              )}
+              {semestersQuery.data?.map((s: SemesterItem) => (
+                <Link
+                  key={s.id}
+                  to="/courses/$courseSlug/$semesterNumber"
+                  params={{ courseSlug, semesterNumber: String(s.number) }}
+                  className="hud-card interactive-card group relative flex items-center justify-between overflow-hidden rounded-2xl p-5 sm:p-6 shadow-soft-xs hover:border-primary/50 transition-all duration-200"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground font-display text-lg font-bold shadow-2xs group-hover:scale-105 transition-transform">
+                      {s.number}
+                    </span>
+                    <div>
+                      <div className="font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                        {s.title}
+                      </div>
+                      {s.description ? (
+                        <div className="mt-1 text-xs text-muted-foreground line-clamp-1">
+                          {formatTitleCase(s.description)}
+                        </div>
+                      ) : (
+                        <div className="mt-1 text-xs text-muted-foreground">
+                          Syllabus-aligned units, past papers & MCQs
+                        </div>
+                      )}
                     </div>
-                    {s.description && (
-                      <div className="text-xs text-muted-foreground">{s.description}</div>
-                    )}
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+
+                  <div className="btn-squishy grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/80 bg-muted/60 text-primary group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                    <ArrowRight className="h-4 w-4" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           )}
         </section>
       </main>

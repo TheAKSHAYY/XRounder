@@ -12,7 +12,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { TypedConfirmationDialog } from "@/components/admin/ui/typed-confirmation-dialog";
-import { updateBrandingSettings, toggleMaintenanceMode, type BrandingInput } from "@/lib/branding.functions";
+import {
+  updateBrandingSettings,
+  toggleMaintenanceMode,
+  type BrandingInput,
+} from "@/lib/branding.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -149,7 +153,8 @@ function BrandingPage() {
           <div>
             <h2 className="font-display text-lg font-semibold">Maintenance mode</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              When enabled, students see a maintenance page. Admins and Super Admins can still sign in.
+              When enabled, students see a maintenance page. Admins and Super Admins can still sign
+              in.
             </p>
           </div>
           {maintenanceQuery.data?.enabled && (

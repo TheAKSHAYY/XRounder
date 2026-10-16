@@ -107,12 +107,19 @@ export const deleteContent = createServerFn({ method: "POST" })
   .inputValidator((input: { ids: string[] }) => idsSchema.parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
-    // Soft delete first. Some deployments have an UPDATE policy whose WITH CHECK
-    // rejects rows with deleted_at set; in that case fall back to a hard delete
-    // (admins have a DELETE policy).
+    const now = new Date().toISOString();
+
+    // 1. Soft delete and delete from notes
+    await context.supabase
+      .from("notes")
+      .update({ deleted_at: now, status: "archived" })
+      .in("id", data.ids);
+    await context.supabase.from("notes").delete().in("id", data.ids);
+
+    // 2. Soft delete and delete from content_items
     const { error } = await context.supabase
       .from("content_items")
-      .update({ deleted_at: new Date().toISOString() })
+      .update({ deleted_at: now, status: "archived" })
       .in("id", data.ids);
 
     if (error) {

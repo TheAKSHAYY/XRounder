@@ -17,7 +17,31 @@ import {
   GraduationCap,
   ListOrdered,
   Timer,
+  Sparkles,
+  Trophy,
+  Flame,
+  Lightbulb,
+  Zap,
 } from "lucide-react";
+import confetti from "canvas-confetti";
+import {
+  playCelebrationSound,
+  playComboSound,
+  playCorrectSound,
+  playWrongSound,
+  playPopSound,
+} from "@/lib/sound-fx";
+import { SoundToggle } from "@/components/ui/sound-toggle";
+import { BiteSizedLessonMode } from "@/components/content/bite-sized-lesson-mode";
+import { MascotSvg } from "@/components/gamification/study-mascot";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { supabase } from "@/integrations/supabase/client";
@@ -30,6 +54,7 @@ import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { slugify } from "@/lib/slug";
+import { formatTitleCase } from "@/lib/format";
 import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 
@@ -167,25 +192,7 @@ async function fetchUnitDetails(
         created_at: c.created_at ?? "",
       }));
 
-      const itemIds = new Set(items.map((i) => i.id));
-      for (const n of legacyNotesRes ?? []) {
-        if (!itemIds.has(n.id)) {
-          items.push({
-            id: n.id,
-            type: n.file_mime === "application/pdf" ? "pdf" : "note",
-            title: n.title,
-            description: n.summary,
-            body: n.body || n.summary,
-            file_path: n.file_path,
-            file_bucket: n.file_bucket,
-            file_mime: n.file_mime,
-            file_size_bytes: n.file_size_bytes,
-            file_url: null,
-            topic_id: n.topic_id ?? null,
-            created_at: n.created_at ?? "",
-          });
-        }
-      }
+      // Only curated, published content items are included (legacy raw notes excluded)
 
       return {
         course,
@@ -363,11 +370,12 @@ type SiblingUnit = { id: string; number: number };
 type QuizRow = {
   id: string;
   title: string;
+  passing_pct?: number | null;
   time_limit_minutes: number | null;
   topic_id: string | null;
 };
 
-type PyqQuestion = {
+export type PyqQuestion = {
   id: string;
   prompt: string;
   explanation: string | null;
@@ -416,6 +424,25 @@ function UnitDetail() {
   const qc = useQueryClient();
 
   const [activeTab, setActiveTab] = useState<"LEARN" | "NOTES" | "PRACTICE">("LEARN");
+
+  const [studyMode, setStudyMode] = useState<"interactive" | "reader">(() => {
+    if (typeof window !== "undefined") {
+      return (
+        (localStorage.getItem("xrounder_study_mode") as "interactive" | "reader") || "interactive"
+      );
+    }
+    return "interactive";
+  });
+
+  const toggleStudyMode = (mode: "interactive" | "reader") => {
+    setStudyMode(mode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("xrounder_study_mode", mode);
+    }
+  };
+
+  const [revealedPyqs, setRevealedPyqs] = useState<Record<string, boolean>>({});
+  const [masteredPyqs, setMasteredPyqs] = useState<Record<string, boolean>>({});
 
   /* ─────────── Data Query ─────────── */
 
@@ -531,25 +558,7 @@ function UnitDetail() {
       }));
 
       // Add legacy notes that are not duplicated by ID in content_items
-      const itemIds = new Set(items.map((i) => i.id));
-      for (const n of legacyNotesRes ?? []) {
-        if (!itemIds.has(n.id)) {
-          items.push({
-            id: n.id,
-            type: n.file_mime === "application/pdf" ? "pdf" : "note",
-            title: n.title,
-            description: n.summary,
-            body: n.body || n.summary,
-            file_path: n.file_path,
-            file_bucket: n.file_bucket,
-            file_mime: n.file_mime,
-            file_size_bytes: n.file_size_bytes,
-            file_url: null,
-            topic_id: n.topic_id ?? null,
-            created_at: n.created_at ?? "",
-          });
-        }
-      }
+      // Only curated, published content items are included (legacy raw notes excluded)
 
       return {
         course,
@@ -566,38 +575,88 @@ function UnitDetail() {
   });
 
   const unitId = dataQuery.data?.unit.id;
-  const primaryQuiz = dataQuery.data?.quizzes[0];
+  const unitQuizzes = useMemo(
+    () => (dataQuery.data?.quizzes ?? []) as QuizRow[],
+    [dataQuery.data?.quizzes],
+  );
+  const primaryQuiz = unitQuizzes[0];
+  const allQuizIds = useMemo(() => unitQuizzes.map((q: QuizRow) => q.id), [unitQuizzes]);
 
-  // 2. Fetch Quiz Questions & PYQ Insights
+  // 2. Fetch Quiz Questions for all quizzes in this unit
   const quizDetailsQuery = useQuery({
-    queryKey: ["unit-quiz-details", primaryQuiz?.id],
-    enabled: !!primaryQuiz?.id,
+    queryKey: ["unit-quiz-details-all", allQuizIds],
+    enabled: allQuizIds.length > 0,
     queryFn: async () => {
       const { data: qst, error } = await supabase
         .from("quiz_questions")
-        .select("id, prompt, explanation, exam_name, year, points, difficulty")
-        .eq("quiz_id", primaryQuiz!.id);
+        .select("id, quiz_id, prompt, explanation, exam_name, year, points, difficulty")
+        .in("quiz_id", allQuizIds);
       if (error) throw error;
-      return (qst ?? []) as PyqQuestion[];
+      return (qst ?? []) as Array<PyqQuestion & { quiz_id: string }>;
     },
   });
 
-  // 3. Fetch User Quiz Attempts for Accuracy
-  const userAttemptQuery = useQuery({
-    queryKey: ["unit-user-attempt", primaryQuiz?.id, user?.id],
-    enabled: !!primaryQuiz?.id && !!user?.id,
+  // 3. Fetch User Quiz Attempts for all quizzes in this unit
+  const userAttemptsQuery = useQuery({
+    queryKey: ["unit-user-attempts-all", allQuizIds, user?.id],
+    enabled: allQuizIds.length > 0 && !!user?.id,
     queryFn: async () => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("quiz_attempts")
-        .select("id, pct, score, max_score, passed")
-        .eq("quiz_id", primaryQuiz!.id)
+        .select("id, quiz_id, pct, score, max_score, passed, submitted_at, created_at")
+        .in("quiz_id", allQuizIds)
         .eq("user_id", user!.id)
-        .order("completed_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-      return data;
+        .not("submitted_at", "is", null)
+        .order("submitted_at", { ascending: false });
+      if (error) throw error;
+      return (data ?? []) as Array<{
+        id: string;
+        quiz_id: string;
+        pct: number | null;
+        score: number | null;
+        max_score: number | null;
+        passed: boolean | null;
+        submitted_at: string | null;
+      }>;
     },
   });
+
+  const quizStatsMap = useMemo(() => {
+    const qCount = new Map<string, number>();
+    for (const q of quizDetailsQuery.data ?? []) {
+      qCount.set(q.quiz_id, (qCount.get(q.quiz_id) ?? 0) + 1);
+    }
+
+    const bestAttempts = new Map<string, { pct: number; passed: boolean }>();
+    for (const att of userAttemptsQuery.data ?? []) {
+      const current = bestAttempts.get(att.quiz_id);
+      const scorePct =
+        typeof att.pct === "number"
+          ? Math.round(att.pct)
+          : att.max_score
+            ? Math.round((Number(att.score ?? 0) / att.max_score) * 100)
+            : 0;
+      if (!current || scorePct > current.pct) {
+        bestAttempts.set(att.quiz_id, { pct: scorePct, passed: !!att.passed });
+      }
+    }
+
+    return { qCount, bestAttempts };
+  }, [quizDetailsQuery.data, userAttemptsQuery.data]);
+
+  const topicsById = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const t of dataQuery.data?.topics ?? []) {
+      map.set(t.id, t.title);
+    }
+    return map;
+  }, [dataQuery.data?.topics]);
+
+  // Backward compatibility alias for single quiz
+  const userAttemptQuery = useMemo(() => {
+    const best = primaryQuiz ? quizStatsMap.bestAttempts.get(primaryQuiz.id) : undefined;
+    return { data: best ? { pct: best.pct, passed: best.passed, score: best.pct, max_score: 100 } : null };
+  }, [primaryQuiz, quizStatsMap.bestAttempts]);
 
   // 4. Progress tracking
   const progressQuery = useQuery({
@@ -644,6 +703,14 @@ function UnitDetail() {
       }
     },
     onSuccess: () => {
+      playCelebrationSound();
+      confetti({
+        particleCount: 110,
+        spread: 85,
+        origin: { y: 0.6 },
+        disableForReducedMotion: true,
+      });
+      setShowCelebrationModal(true);
       qc.invalidateQueries({ queryKey: ["student", "unit-progress", user?.id, unitId] });
       qc.invalidateQueries({ queryKey: ["student", "subject-progress"] });
       qc.invalidateQueries({ queryKey: ["student", "sem-progress"] });
@@ -674,7 +741,7 @@ function UnitDetail() {
 
   const readMinutes = useMemo(() => estimateReadMinutes(readArticles), [readArticles]);
 
-  const toc = useMemo(
+  const toc: { id: string; title: string; isSub: boolean }[] = useMemo(
     () =>
       readArticles.flatMap((n: UnitContentItem) => {
         const articleSlugId = `content-${slugify(n.title)}-${n.id.slice(0, 6)}`;
@@ -709,6 +776,8 @@ function UnitDetail() {
   const [readPct, setReadPct] = useState(0);
   const [activeSection, setActiveSection] = useState<string | null>(toc[0]?.id ?? null);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
+  const [showCelebrationModal, setShowCelebrationModal] = useState(false);
+  const readingMilestones = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     let raf = 0;
@@ -721,6 +790,30 @@ function UnitDetail() {
       const scrolled = Math.min(total, Math.max(0, -rect.top));
       const pct = Math.round((scrolled / total) * 100);
       setReadPct(pct);
+
+      // Micro-dopamine milestones during focused reading
+      if (pct >= 25 && !readingMilestones.current.has(25)) {
+        readingMilestones.current.add(25);
+        playComboSound(1);
+      }
+      if (pct >= 50 && !readingMilestones.current.has(50)) {
+        readingMilestones.current.add(50);
+        playComboSound(2);
+        toast.success("🔥 50% read — Halfway through this unit! Keep the momentum going!", {
+          duration: 3500,
+        });
+      }
+      if (pct >= 75 && !readingMilestones.current.has(75)) {
+        readingMilestones.current.add(75);
+        playComboSound(3);
+      }
+      if (pct >= 96 && !readingMilestones.current.has(100)) {
+        readingMilestones.current.add(100);
+        playCelebrationSound();
+        toast.success("🏆 All topics read! Tap 'Mark Complete' to lock in +120 XP!", {
+          duration: 4500,
+        });
+      }
 
       let current: string | null = toc[0]?.id ?? null;
       for (const item of toc) {
@@ -804,18 +897,22 @@ function UnitDetail() {
                   Unit {unit.number}
                 </span>
                 <h1 className="truncate font-display text-sm font-semibold text-foreground sm:text-base">
-                  {unit.title}
+                  {formatTitleCase(unit.title)}
                 </h1>
               </div>
             </div>
 
             <div className="flex shrink-0 items-center gap-2">
+              <SoundToggle />
               {readMinutes > 0 && (
                 <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
                   <Timer className="h-3 w-3" aria-hidden />
                   {readMinutes} min read
                 </span>
               )}
+              <span className="hidden md:inline-flex items-center gap-1 rounded-full border border-border/80 bg-surface px-2.5 py-1 text-[11px] font-mono font-bold text-primary">
+                {readPct}% read
+              </span>
               {isCompleted ? (
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 text-success border border-success/20 px-3 py-1 text-[11px] font-semibold">
                   <Check className="h-3 w-3" /> Completed
@@ -837,7 +934,7 @@ function UnitDetail() {
                   variant="outline"
                   onClick={() => completeMutation.mutate()}
                   disabled={completeMutation.isPending}
-                  className="rounded-full h-8 text-xs font-semibold"
+                  className="rounded-full h-8 text-xs font-semibold cursor-pointer transition-transform active:scale-95"
                 >
                   <Check className="h-3 w-3 mr-1" /> Mark Complete
                 </Button>
@@ -847,7 +944,7 @@ function UnitDetail() {
         </div>
 
         {/* Reading progress bar */}
-        <div className="h-0.5 w-full bg-transparent">
+        <div className="h-1 w-full bg-muted/40 overflow-hidden">
           <div
             className="h-full bg-primary transition-all duration-150 ease-out"
             style={{ width: `${readPct}%` }}
@@ -872,7 +969,7 @@ function UnitDetail() {
               params: { courseSlug, semesterNumber },
             },
             {
-              label: subject.title,
+              label: formatTitleCase(subject.title),
               to: "/courses/$courseSlug/$semesterNumber/$subjectSlug",
               params: { courseSlug, semesterNumber, subjectSlug },
             },
@@ -889,7 +986,7 @@ function UnitDetail() {
             Unit {unit.number} Learning Hub
           </Badge>
           <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
-            {unit.title}
+            {formatTitleCase(unit.title)}
           </h2>
           {unit.summary && (
             <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-3xl leading-relaxed">
@@ -897,26 +994,51 @@ function UnitDetail() {
             </p>
           )}
 
+          {/* Syllabus Topics Pills (Phase 2 Gap 1 resolved) */}
+          {(dataQuery.data?.topics ?? []).length > 0 && (
+            <div className="mt-3.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground font-mono mr-1 inline-flex items-center gap-1">
+                <Sparkles className="h-3 w-3 text-primary" /> Syllabus Topics:
+              </span>
+              {(dataQuery.data?.topics ?? []).map((t: TopicRow) => (
+                <span
+                  key={t.id}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-surface px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium text-foreground shadow-2xs hover:border-primary/40 transition-colors"
+                >
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-primary" />
+                  {t.title}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* Three Pillar Tabs */}
           <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
             <button
               type="button"
-              onClick={() => setActiveTab("LEARN")}
+              onClick={() => {
+                playPopSound();
+                setActiveTab("LEARN");
+              }}
               className={cn(
-                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
                 activeTab === "LEARN"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <BookOpen className="h-4 w-4 shrink-0" /> Read &amp; Master ({readArticles.length})
+              <BookOpen className="h-4 w-4 shrink-0" /> Read &amp; Master (
+              {readArticles.length > 0 ? readArticles.length : 5})
             </button>
 
             <button
               type="button"
-              onClick={() => setActiveTab("NOTES")}
+              onClick={() => {
+                playPopSound();
+                setActiveTab("NOTES");
+              }}
               className={cn(
-                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
                 activeTab === "NOTES"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
@@ -927,9 +1049,12 @@ function UnitDetail() {
 
             <button
               type="button"
-              onClick={() => setActiveTab("PRACTICE")}
+              onClick={() => {
+                playPopSound();
+                setActiveTab("PRACTICE");
+              }}
               className={cn(
-                "flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
                 activeTab === "PRACTICE"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
@@ -943,242 +1068,335 @@ function UnitDetail() {
 
         {/* ─── TAB 1: READ & MASTER ─── */}
         {activeTab === "LEARN" && (
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem] min-w-0">
-            <article ref={articleRef} className="min-w-0 max-w-full overflow-hidden">
-              {/* Mobile Collapsible "On this page" TOC */}
-              {toc.length > 1 && (
-                <div className="mb-6 rounded-2xl border border-border/80 bg-card p-3.5 shadow-soft lg:hidden">
+          <div className="space-y-6">
+            {/* View Mode Switcher */}
+            {readArticles.length > 0 && (
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/80 bg-muted/40 p-2 sm:px-3">
+                <div className="flex items-center gap-1.5">
                   <button
                     type="button"
-                    onClick={() => setMobileTocOpen(!mobileTocOpen)}
-                    className="flex w-full items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground"
+                    onClick={() => toggleStudyMode("interactive")}
+                    className={cn(
+                      "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
+                      studyMode === "interactive"
+                        ? "bg-card text-primary shadow-xs ring-1 ring-border"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
                   >
-                    <span className="flex items-center gap-2 text-foreground">
-                      <ListOrdered className="h-4 w-4 text-primary" /> On this page
-                    </span>
-                    <ChevronDown
-                      className={cn(
-                        "h-4 w-4 transition-transform duration-200",
-                        mobileTocOpen && "rotate-180",
-                      )}
-                    />
+                    <Zap className="h-3.5 w-3.5 text-amber-500" />⚡ Interactive Cards (
+                    {readArticles.length})
                   </button>
-                  {mobileTocOpen && (
-                    <nav className="mt-3 border-t border-border/60 pt-3">
-                      <ol className="space-y-1.5 text-xs">
-                        {toc.map((item, i) => (
-                          <li key={item.id}>
-                            <a
-                              href={`#${item.id}`}
-                              onClick={() => setMobileTocOpen(false)}
-                              className={cn(
-                                "flex gap-2 rounded-xl py-2 px-2.5 transition-colors",
-                                item.isSub && "pl-5 text-muted-foreground/80",
-                                activeSection === item.id
-                                  ? "bg-primary/10 font-bold text-primary"
-                                  : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                              )}
-                            >
-                              {!item.isSub && (
-                                <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
-                              )}
-                              <span className="truncate">{item.title}</span>
-                            </a>
-                          </li>
-                        ))}
-                      </ol>
-                    </nav>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => toggleStudyMode("reader")}
+                    className={cn(
+                      "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
+                      studyMode === "reader"
+                        ? "bg-card text-primary shadow-xs ring-1 ring-border"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    📖 Continuous Reader
+                  </button>
                 </div>
-              )}
 
-              {readArticles.length === 0 ? (
-                <EmptyState
-                  icon={FileText}
-                  tone="accent"
-                  title="Educational article in progress"
-                  description="The online learning content for this unit is currently being drafted. Check back soon."
-                  primaryAction={{
-                    label: "View reference notes",
-                    onClick: () => setActiveTab("NOTES"),
-                    icon: FileType,
-                  }}
-                />
-              ) : (
-                <div className="space-y-12 min-w-0 max-w-full">
-                  {readArticles.map((item: UnitContentItem, i: number) => (
-                    <EducationalContentRenderer
-                      key={item.id}
-                      title={item.title}
-                      content={item.body || item.description || ""}
-                      anchorId={toc[i]?.id ?? `content-${item.id}`}
-                    />
-                  ))}
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
+                    {studyMode === "interactive"
+                      ? "Bite-sized cards with instant checks & XP"
+                      : "Continuous scroll with table of contents"}
+                  </span>
                 </div>
-              )}
+              </div>
+            )}
 
-              {/* End of Lesson Action Loop */}
-              <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/30 bg-linear-to-r from-primary/10 via-surface to-card p-6 sm:p-8 shadow-soft">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-                  <div className="flex items-start gap-4">
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
-                      <FlaskConical className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <Badge
-                        variant="outline"
-                        className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
+            {studyMode === "interactive" ? (
+              <BiteSizedLessonMode
+                articles={readArticles}
+                topics={dataQuery.data.topics ?? []}
+                unit={dataQuery.data.unit}
+                subject={dataQuery.data.subject}
+                courseSlug={courseSlug}
+                semesterNumber={semesterNumber}
+                subjectSlug={subjectSlug}
+                unitNumber={unitNumber}
+                pyqQuestions={pyqQuestions}
+                primaryQuizId={primaryQuiz?.id}
+                isCompleted={isCompleted}
+                onCompleteUnit={() => completeMutation.mutate()}
+                onSwitchToReader={() => toggleStudyMode("reader")}
+              />
+            ) : (
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem] min-w-0">
+                <article ref={articleRef} className="min-w-0 max-w-full overflow-hidden">
+                  {/* Mobile Collapsible "On this page" TOC */}
+                  {toc.length > 1 && (
+                    <div className="mb-6 rounded-2xl border border-border/80 bg-card p-3.5 shadow-soft lg:hidden">
+                      <button
+                        type="button"
+                        onClick={() => setMobileTocOpen(!mobileTocOpen)}
+                        className="flex w-full items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground"
                       >
-                        Interactive Knowledge Check
-                      </Badge>
-                      <h3 className="font-display text-lg font-bold text-foreground">
-                        Ready to test yourself on Unit {unit.number}?
-                      </h3>
-                      <p className="text-xs text-muted-foreground mt-1 max-w-md">
-                        You've covered the core concepts. Practice instant MCQs to measure your
-                        accuracy and prepare for university exams.
-                      </p>
+                        <span className="flex items-center gap-2 text-foreground">
+                          <ListOrdered className="h-4 w-4 text-primary" /> On this page
+                        </span>
+                        <ChevronDown
+                          className={cn(
+                            "h-4 w-4 transition-transform duration-200",
+                            mobileTocOpen && "rotate-180",
+                          )}
+                        />
+                      </button>
+                      {mobileTocOpen && (
+                        <nav className="mt-3 border-t border-border/60 pt-3">
+                          <ol className="space-y-1.5 text-xs">
+                            {toc.map((item, i) => (
+                              <li key={item.id}>
+                                <a
+                                  href={`#${item.id}`}
+                                  onClick={() => setMobileTocOpen(false)}
+                                  className={cn(
+                                    "flex gap-2 rounded-xl py-2 px-2.5 transition-colors",
+                                    item.isSub && "pl-5 text-muted-foreground/80",
+                                    activeSection === item.id
+                                      ? "bg-primary/10 font-bold text-primary"
+                                      : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                                  )}
+                                >
+                                  {!item.isSub && (
+                                    <span className="font-mono text-muted-foreground/60">
+                                      {i + 1}.
+                                    </span>
+                                  )}
+                                  <span className="truncate">{item.title}</span>
+                                </a>
+                              </li>
+                            ))}
+                          </ol>
+                        </nav>
+                      )}
+                    </div>
+                  )}
+
+                  {readArticles.length === 0 ? (
+                    <EmptyState
+                      icon={FileText}
+                      tone="accent"
+                      title="Educational article in progress"
+                      description="The online learning content for this unit is currently being drafted. Check back soon."
+                      primaryAction={{
+                        label: "View reference notes",
+                        onClick: () => setActiveTab("NOTES"),
+                        icon: FileType,
+                      }}
+                    />
+                  ) : (
+                    <div className="space-y-12 min-w-0 max-w-full">
+                      {readArticles.map((item: UnitContentItem, i: number) => (
+                        <div key={item.id} className="space-y-8">
+                          <EducationalContentRenderer
+                            title={item.title}
+                            content={item.body || item.description || ""}
+                            anchorId={toc[i]?.id ?? `content-${item.id}`}
+                          />
+                          {/* Topic Checkpoint */}
+                          {i < readArticles.length - 1 && (
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-2xl border border-border/70 bg-surface/70 px-4 py-3 text-xs">
+                              <div className="flex items-center gap-2 text-foreground font-semibold">
+                                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-success/20 text-success text-[11px]">
+                                  ✓
+                                </span>
+                                <span>
+                                  Topic {i + 1} covered:{" "}
+                                  <span className="text-muted-foreground font-normal">
+                                    {item.title}
+                                  </span>
+                                </span>
+                              </div>
+                              <a
+                                href={`#${toc[i + 1]?.id ?? `content-${readArticles[i + 1].id}`}`}
+                                className="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-primary hover:underline cursor-pointer"
+                              >
+                                <span>Next: {formatTitleCase(readArticles[i + 1].title)}</span>
+                                <span>↓</span>
+                              </a>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* End of Lesson Action Loop */}
+                  <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-xs">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                      <div className="flex items-start gap-4">
+                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
+                          <FlaskConical className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <Badge
+                            variant="outline"
+                            className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
+                          >
+                            Interactive Knowledge Check
+                          </Badge>
+                          <h3 className="font-display text-lg font-bold text-foreground">
+                            Ready to test yourself on Unit {unit.number}?
+                          </h3>
+                          <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                            You've covered the core concepts. Practice instant MCQs to measure your
+                            accuracy and prepare for university exams.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+                        {!isCompleted &&
+                          (user ? (
+                            <Button
+                              variant="outline"
+                              onClick={() => completeMutation.mutate()}
+                              disabled={completeMutation.isPending}
+                              className="rounded-2xl h-11 px-5 text-xs font-bold"
+                            >
+                              <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
+                            </Button>
+                          ) : (
+                            <Button
+                              asChild
+                              variant="outline"
+                              className="rounded-2xl h-11 px-5 text-xs font-bold"
+                            >
+                              <Link to="/auth" search={{ mode: "signup" }}>
+                                <Check className="h-4 w-4 mr-1.5" /> Sign in to save progress
+                              </Link>
+                            </Button>
+                          ))}
+
+                        {primaryQuiz && (
+                          <Button
+                            asChild
+                            className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm"
+                          >
+                            <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
+                              Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
+                            </Link>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                    {!isCompleted &&
-                      (user ? (
-                        <Button
-                          variant="outline"
-                          onClick={() => completeMutation.mutate()}
-                          disabled={completeMutation.isPending}
-                          className="rounded-2xl h-11 px-5 text-xs font-bold"
-                        >
-                          <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
-                        </Button>
-                      ) : (
-                        <Button
-                          asChild
-                          variant="outline"
-                          className="rounded-2xl h-11 px-5 text-xs font-bold"
-                        >
-                          <Link to="/auth" search={{ mode: "signup" }}>
-                            <Check className="h-4 w-4 mr-1.5" /> Sign in to save progress
-                          </Link>
-                        </Button>
-                      ))}
+                  {/* Next / Previous Unit Navigation */}
+                  <nav
+                    aria-label="Unit navigation"
+                    className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    {prevUnit ? (
+                      <Link
+                        to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                        params={{
+                          courseSlug,
+                          semesterNumber,
+                          subjectSlug,
+                          unitNumber: String(prevUnit.number),
+                        }}
+                        className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
+                      >
+                        <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
+                        <div className="min-w-0">
+                          <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                            Previous Unit
+                          </div>
+                          <div className="font-bold text-sm text-foreground truncate">
+                            Unit {prevUnit.number}
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <div className="hidden sm:block flex-1" />
+                    )}
 
                     {primaryQuiz && (
-                      <Button asChild className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm">
+                      <Button
+                        asChild
+                        variant="secondary"
+                        className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs"
+                      >
                         <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                          Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
+                          <FlaskConical className="h-4 w-4 mr-2" /> Practice MCQs
                         </Link>
                       </Button>
                     )}
-                  </div>
-                </div>
-              </div>
 
-              {/* Next / Previous Unit Navigation */}
-              <nav
-                aria-label="Unit navigation"
-                className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-              >
-                {prevUnit ? (
-                  <Link
-                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                    params={{
-                      courseSlug,
-                      semesterNumber,
-                      subjectSlug,
-                      unitNumber: String(prevUnit.number),
-                    }}
-                    className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
-                  >
-                    <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
-                    <div className="min-w-0">
-                      <div className="text-[10px] font-bold uppercase text-muted-foreground">
-                        Previous Unit
-                      </div>
-                      <div className="font-bold text-sm text-foreground truncate">
-                        Unit {prevUnit.number}
-                      </div>
-                    </div>
-                  </Link>
-                ) : (
-                  <div className="hidden sm:block flex-1" />
-                )}
-
-                {primaryQuiz && (
-                  <Button
-                    asChild
-                    variant="secondary"
-                    className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs"
-                  >
-                    <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                      <FlaskConical className="h-4 w-4 mr-2" /> Practice MCQs
-                    </Link>
-                  </Button>
-                )}
-
-                {nextUnit ? (
-                  <Link
-                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                    params={{
-                      courseSlug,
-                      semesterNumber,
-                      subjectSlug,
-                      unitNumber: String(nextUnit.number),
-                    }}
-                    className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
-                  >
-                    <div className="min-w-0">
-                      <div className="text-[10px] font-bold uppercase text-muted-foreground">
-                        Next Unit
-                      </div>
-                      <div className="font-bold text-sm text-foreground truncate">
-                        Unit {nextUnit.number}
-                      </div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
-                  </Link>
-                ) : (
-                  <div className="hidden sm:block flex-1" />
-                )}
-              </nav>
-            </article>
-
-            {/* Desktop Sticky TOC */}
-            {toc.length > 1 && (
-              <aside className="hidden lg:block self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
-                <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
-                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                    <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
-                  </div>
-                  <nav>
-                    <ol className="space-y-1 text-xs">
-                      {toc.map((item, i) => {
-                        const active = activeSection === item.id;
-                        return (
-                          <li key={item.id}>
-                            <a
-                              href={`#${item.id}`}
-                              className={cn(
-                                "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
-                                item.isSub && "pl-5 text-muted-foreground/80",
-                                active
-                                  ? "bg-primary/10 font-bold text-primary"
-                                  : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                              )}
-                            >
-                              {!item.isSub && (
-                                <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
-                              )}
-                              <span className="truncate">{item.title}</span>
-                            </a>
-                          </li>
-                        );
-                      })}
-                    </ol>
+                    {nextUnit ? (
+                      <Link
+                        to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                        params={{
+                          courseSlug,
+                          semesterNumber,
+                          subjectSlug,
+                          unitNumber: String(nextUnit.number),
+                        }}
+                        className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
+                      >
+                        <div className="min-w-0">
+                          <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                            Next Unit
+                          </div>
+                          <div className="font-bold text-sm text-foreground truncate">
+                            Unit {nextUnit.number}
+                          </div>
+                        </div>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+                      </Link>
+                    ) : (
+                      <div className="hidden sm:block flex-1" />
+                    )}
                   </nav>
-                </div>
-              </aside>
+                </article>
+
+                {/* Desktop Sticky TOC */}
+                {toc.length > 1 && (
+                  <aside className="hidden lg:block self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+                    <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
+                      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                        <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
+                      </div>
+                      <nav>
+                        <ol className="space-y-1 text-xs">
+                          {toc.map((item, i) => {
+                            const active = activeSection === item.id;
+                            return (
+                              <li key={item.id}>
+                                <a
+                                  href={`#${item.id}`}
+                                  className={cn(
+                                    "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
+                                    item.isSub && "pl-5 text-muted-foreground/80",
+                                    active
+                                      ? "bg-primary/10 font-bold text-primary"
+                                      : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                                  )}
+                                >
+                                  {!item.isSub && (
+                                    <span className="font-mono text-muted-foreground/60">
+                                      {i + 1}.
+                                    </span>
+                                  )}
+                                  <span className="truncate">{item.title}</span>
+                                </a>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      </nav>
+                    </div>
+                  </aside>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -1228,52 +1446,189 @@ function UnitDetail() {
         {/* ─── TAB 3: PRACTICE & PYQ INSIGHTS ─── */}
         {activeTab === "PRACTICE" && (
           <div className="space-y-8">
-            {/* Unit MCQ Card */}
-            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <Badge
-                    variant="outline"
-                    className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
-                  >
-                    Unit {unit.number} Question Bank
-                  </Badge>
-                  <h3 className="font-display text-xl font-bold text-foreground">
-                    Interactive Unit Quiz
-                  </h3>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
-                    <span>{quizDetailsQuery.data?.length ?? 0} Questions</span>
-                    {userAttemptQuery.data && (
-                      <span className="font-semibold text-primary">
-                        · Your best accuracy:{" "}
-                        {userAttemptQuery.data.pct ??
-                          Math.round(
-                            ((userAttemptQuery.data.score || 0) /
-                              (userAttemptQuery.data.max_score || 1)) *
-                              100,
-                          )}
-                        %
-                      </span>
-                    )}
+            {/* Multiple Topic Quizzes (Phase 2 Gap 2 resolved) */}
+            {unitQuizzes.length > 1 ? (
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      Unit {unit.number} Topic Practice ({unitQuizzes.length} Quizzes)
+                    </div>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                      Syllabus-Linked Diagnostic Quizzes
+                    </h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                      Take targeted diagnostic checks per syllabus topic to cement concepts and earn mastery XP.
+                    </p>
                   </div>
                 </div>
 
-                {primaryQuiz ? (
-                  <Button
-                    asChild
-                    size="lg"
-                    className="rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm"
-                  >
-                    <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                      <FlaskConical className="h-4 w-4 mr-2" /> Practice Unit MCQs
-                    </Link>
-                  </Button>
-                ) : (
-                  <div className="text-xs text-muted-foreground font-medium">
-                    No quiz attached to this unit yet.
+                {/* Sparky Mascot Cheer Tip */}
+                <div className="flex items-center gap-3.5 rounded-2xl border border-primary/20 bg-primary/5 p-3.5 sm:p-4">
+                  <MascotSvg mood="happy" size={44} className="shrink-0" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-semibold text-foreground">
+                      Sparky's Practice Goal:{" "}
+                      <span className="text-muted-foreground font-normal">
+                        Score 70%+ on all {unitQuizzes.length} topic quizzes to achieve complete unit mastery! 🚀
+                      </span>
+                    </p>
                   </div>
-                )}
+                </div>
+
+                <div className="grid gap-3.5 sm:grid-cols-2">
+                  {unitQuizzes.map((quiz: QuizRow, qIdx: number) => {
+                    const topicTitle = quiz.topic_id ? topicsById.get(quiz.topic_id) : null;
+                    const qCount = quizStatsMap.qCount.get(quiz.id) ?? 3;
+                    const bestAttempt = quizStatsMap.bestAttempts.get(quiz.id);
+                    const passMark = quiz.passing_pct ?? 40;
+                    const isMastered = bestAttempt && bestAttempt.pct >= passMark;
+
+                    return (
+                      <div
+                        key={quiz.id}
+                        className={cn(
+                          "group relative flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all shadow-xs",
+                          isMastered
+                            ? "border-success/40 bg-success/5 dark:bg-success/5"
+                            : bestAttempt
+                              ? "border-warning/30 bg-warning/5 dark:bg-warning/5"
+                              : "border-border/80 bg-card hover:border-primary/40",
+                        )}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground truncate max-w-[200px]">
+                              {topicTitle ? `Topic · ${topicTitle}` : `Quiz ${qIdx + 1}`}
+                            </span>
+                            {bestAttempt ? (
+                              <Badge
+                                variant={isMastered ? "success" : "warning"}
+                                className="text-[10px] font-bold rounded-full px-2 shrink-0"
+                              >
+                                {isMastered ? `✓ ${bestAttempt.pct}% Mastered` : `${bestAttempt.pct}% · Retest`}
+                              </Badge>
+                            ) : (
+                              <Badge variant="outline" className="text-[10px] font-medium text-muted-foreground shrink-0">
+                                Not attempted
+                              </Badge>
+                            )}
+                          </div>
+
+                          <h4 className="font-display text-base font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                            {quiz.title}
+                          </h4>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            {qCount} Questions · Pass mark {quiz.passing_pct}% · Instant explanations
+                          </p>
+                        </div>
+
+                        <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-3">
+                          <span className="text-[11px] font-medium text-muted-foreground flex items-center gap-1">
+                            <Zap className="h-3 w-3 text-amber-500" /> +35 XP
+                          </span>
+                          <Button
+                            asChild
+                            size="sm"
+                            className="btn-squishy rounded-xl font-bold text-xs shadow-2xs cursor-pointer"
+                            variant={isMastered ? "outline" : "default"}
+                          >
+                            <Link
+                              to="/quizzes/$quizId"
+                              params={{ quizId: quiz.id }}
+                              onClick={() => playPopSound()}
+                            >
+                              <FlaskConical className="h-3.5 w-3.5 mr-1" />
+                              {bestAttempt ? "Retest" : "Start"}
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+            ) : (
+              /* Single Unit MCQ Card */
+              <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <Badge
+                      variant="outline"
+                      className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
+                    >
+                      Unit {unit.number} Question Bank
+                    </Badge>
+                    <h3 className="font-display text-xl font-bold text-foreground">
+                      Interactive Unit Quiz
+                    </h3>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
+                      <span>{quizDetailsQuery.data?.length ?? 0} Questions</span>
+                      {userAttemptQuery.data && (
+                        <span className="font-semibold text-primary">
+                          · Your best accuracy: {userAttemptQuery.data.pct}%
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {primaryQuiz ? (
+                    <Button
+                      asChild
+                      size="lg"
+                      className="btn-squishy rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm cursor-pointer"
+                    >
+                      <Link
+                        to="/quizzes/$quizId"
+                        params={{ quizId: primaryQuiz.id }}
+                        onClick={() => playPopSound()}
+                      >
+                        <FlaskConical className="h-4 w-4 mr-2" /> Practice Unit MCQs
+                      </Link>
+                    </Button>
+                  ) : (
+                    <div className="text-xs text-muted-foreground font-medium">
+                      No quiz attached to this unit yet.
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Exam Simulator Drill-Down Banner */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-7 shadow-xs">
+              <div className="space-y-1">
+                <Badge
+                  variant="outline"
+                  className="font-mono text-[10px] font-bold uppercase text-primary border-primary/30"
+                >
+                  ⚡ Timed Exam Simulator
+                </Badge>
+                <h4 className="font-display text-lg sm:text-xl font-bold text-foreground">
+                  Unit {unit.number} High-Yield Exam Drill
+                </h4>
+                <p className="text-xs text-muted-foreground max-w-xl leading-relaxed">
+                  Test your real exam readiness with simulated timers, university PYQ questions, and
+                  detailed diagnostics for {formatTitleCase(subject.title)}.
+                </p>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="rounded-2xl font-bold text-xs h-11 px-6 shrink-0 shadow-md"
+              >
+                <Link
+                  to="/mock-test"
+                  search={{
+                    subjectId: dataQuery.data.subject.id,
+                    unitId: dataQuery.data.unit.id,
+                  }}
+                >
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Launch Unit Drill
+                </Link>
+              </Button>
             </div>
 
             {/* Important Exam Questions / PYQ Insights */}
@@ -1293,50 +1648,243 @@ function UnitDetail() {
                   PYQ questions for Unit {unit.number} are being indexed from university papers.
                 </div>
               ) : (
-                <div className="space-y-3">
-                  {pyqQuestions.map((q, idx) => (
-                    <div
-                      key={q.id}
-                      className="rounded-2xl border border-border/70 bg-muted/20 p-4 transition-colors hover:border-primary/40"
-                    >
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-muted-foreground">
-                            Q{idx + 1}.
-                          </span>
-                          {q.points && (
-                            <Badge
-                              variant="outline"
-                              className="text-[10px] font-bold rounded-md bg-card"
-                            >
-                              {q.points} Marks
-                            </Badge>
-                          )}
-                          {q.year && (
-                            <Badge
-                              variant="outline"
-                              className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30"
-                            >
-                              {q.year} {q.exam_name || "Exam"}
+                <div className="space-y-4">
+                  {pyqQuestions.map((q, idx) => {
+                    const isRevealed = revealedPyqs[q.id];
+                    const isMastered = masteredPyqs[q.id];
+                    return (
+                      <div
+                        key={q.id}
+                        className={cn(
+                          "rounded-2xl border p-4 sm:p-5 transition-all",
+                          isMastered
+                            ? "border-emerald-500/40 bg-emerald-500/5 dark:bg-emerald-500/5"
+                            : "border-border/70 bg-muted/20 hover:border-primary/40",
+                        )}
+                      >
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono font-bold text-muted-foreground">
+                              Q{idx + 1}.
+                            </span>
+                            {q.points && (
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] font-bold rounded-md bg-card"
+                              >
+                                {q.points} Marks
+                              </Badge>
+                            )}
+                            {q.year && (
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] font-bold rounded-md bg-card text-primary border-primary/30"
+                              >
+                                {q.year} {q.exam_name || "Exam"}
+                              </Badge>
+                            )}
+                          </div>
+
+                          {isMastered && (
+                            <Badge className="bg-emerald-600 text-white text-[10px] font-bold">
+                              ✓ Mastered (+10 XP)
                             </Badge>
                           )}
                         </div>
+
+                        <h4 className="text-sm font-bold text-foreground leading-snug">
+                          {q.prompt}
+                        </h4>
+
+                        {/* Interactive Solution Reveal */}
+                        {!isRevealed ? (
+                          <div className="mt-3">
+                            <Button
+                              type="button"
+                              size="sm"
+                              variant="outline"
+                              onClick={() => {
+                                setRevealedPyqs((prev) => ({ ...prev, [q.id]: true }));
+                                playComboSound(1);
+                              }}
+                              className="rounded-xl text-xs font-semibold cursor-pointer border-primary/30 text-primary hover:bg-primary/10"
+                            >
+                              <Lightbulb className="h-3.5 w-3.5 mr-1.5" />
+                              Reveal Model Answer &amp; Key Points
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="mt-3 space-y-3 pt-2">
+                            <div className="rounded-xl bg-card border border-primary/20 p-3.5 text-xs text-muted-foreground leading-relaxed">
+                              <div className="font-bold text-foreground mb-1 flex items-center gap-1.5">
+                                <Check className="h-4 w-4 text-emerald-500" />
+                                Model Answer &amp; Scoring Criteria:
+                              </div>
+                              {q.explanation ||
+                                "Answer should structure definitions, core diagrams/syntax, and real-world application examples for full marks."}
+                            </div>
+
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="text-xs text-muted-foreground font-medium mr-1">
+                                Self-Assess:
+                              </span>
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant={isMastered ? "default" : "outline"}
+                                onClick={() => {
+                                  setMasteredPyqs((prev) => ({ ...prev, [q.id]: true }));
+                                  playCorrectSound();
+                                  confetti({
+                                    particleCount: 25,
+                                    spread: 50,
+                                    origin: { y: 0.75 },
+                                    disableForReducedMotion: true,
+                                  });
+                                }}
+                                className={cn(
+                                  "rounded-xl text-xs font-bold cursor-pointer transition-transform active:scale-95",
+                                  isMastered && "bg-emerald-600 hover:bg-emerald-700 text-white",
+                                )}
+                              >
+                                <Check className="h-3.5 w-3.5 mr-1" />I Knew This (+10 XP)
+                              </Button>
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => {
+                                  setMasteredPyqs((prev) => ({ ...prev, [q.id]: false }));
+                                  playWrongSound();
+                                }}
+                                className="rounded-xl text-xs text-muted-foreground hover:text-foreground cursor-pointer"
+                              >
+                                Need to Revise
+                              </Button>
+                            </div>
+                          </div>
+                        )}
                       </div>
-
-                      <h4 className="text-sm font-bold text-foreground leading-snug">{q.prompt}</h4>
-
-                      {q.explanation && (
-                        <div className="mt-2 text-xs text-muted-foreground border-l-2 border-primary/40 pl-3 py-0.5">
-                          {q.explanation}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
           </div>
         )}
+
+        {/* ─── Unit Completion Celebration Modal (Dopamine Reward) ─── */}
+        <Dialog open={showCelebrationModal} onOpenChange={setShowCelebrationModal}>
+          <DialogContent className="sm:max-w-md border-primary/30 bg-card p-6 sm:p-8 text-center overflow-hidden">
+            {/* Ambient Background Glows */}
+            <div className="pointer-events-none absolute -top-20 -left-20 h-44 w-44 rounded-full bg-primary/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -right-20 h-44 w-44 rounded-full bg-amber-500/20 blur-3xl" />
+
+            <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-amber-500 text-white shadow-md ring-4 ring-amber-500/20">
+              <Trophy className="h-10 w-10 animate-bounce" />
+              <div className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold shadow-md">
+                <Sparkles className="h-4 w-4" />
+              </div>
+            </div>
+
+            <DialogHeader className="mt-4 space-y-1 text-center">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-amber-500">
+                Unit {unit.number} Conquered
+              </span>
+              <DialogTitle className="font-display text-2xl font-black text-foreground sm:text-3xl">
+                Unit Mastered! 🎉
+              </DialogTitle>
+              <DialogDescription className="text-sm text-muted-foreground mt-1">
+                You’ve completed all core topics in{" "}
+                <span className="font-semibold text-foreground">{formatTitleCase(unit.title)}</span>
+                .
+              </DialogDescription>
+            </DialogHeader>
+
+            {/* Reward Badges / XP Boost */}
+            <div className="mt-5 grid grid-cols-2 gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-3.5">
+              <div className="flex flex-col items-center justify-center rounded-xl bg-card p-2.5 text-center shadow-2xs">
+                <span className="font-mono text-lg font-black text-primary">+120 XP</span>
+                <span className="text-[11px] font-medium text-muted-foreground">
+                  Knowledge Claimed
+                </span>
+              </div>
+              <div className="flex flex-col items-center justify-center rounded-xl bg-card p-2.5 text-center shadow-2xs">
+                <div className="flex items-center gap-1 font-mono text-lg font-black text-amber-500">
+                  <Flame className="h-4 w-4 fill-amber-500" />
+                  <span>Active</span>
+                </div>
+                <span className="text-[11px] font-medium text-muted-foreground">
+                  Streak Safeguarded
+                </span>
+              </div>
+            </div>
+
+            {/* Action CTAs */}
+            <div className="mt-6 flex flex-col gap-2.5">
+              {pyqQuestions.length > 0 && (
+                <Button
+                  asChild
+                  size="lg"
+                  className="btn-squishy btn-cta w-full rounded-xl font-bold cursor-pointer"
+                  onClick={() => setShowCelebrationModal(false)}
+                >
+                  <a href="#unit-pyq-questions">
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Review Exam PYQs ({pyqQuestions.length} Qs)
+                  </a>
+                </Button>
+              )}
+
+              {nextUnit ? (
+                <Button
+                  asChild
+                  variant={pyqQuestions.length ? "outline" : "default"}
+                  size="lg"
+                  className="w-full rounded-2xl font-bold cursor-pointer"
+                  onClick={() => setShowCelebrationModal(false)}
+                >
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug,
+                      semesterNumber,
+                      subjectSlug,
+                      unitNumber: String(nextUnit.number),
+                    }}
+                  >
+                    Continue to Unit {nextUnit.number}: {nextUnit.title}
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full rounded-2xl font-bold cursor-pointer"
+                  onClick={() => setShowCelebrationModal(false)}
+                >
+                  <Link
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                    params={{ courseSlug, semesterNumber, subjectSlug }}
+                  >
+                    Back to Subject Syllabus
+                  </Link>
+                </Button>
+              )}
+
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowCelebrationModal(false)}
+                className="text-xs text-muted-foreground hover:text-foreground cursor-pointer"
+              >
+                Keep Reviewing Notes
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </main>
 
       <SiteFooter />

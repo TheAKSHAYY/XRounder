@@ -20,6 +20,7 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { RouteProgress } from "@/components/route-progress";
 import { EnvErrorScreen } from "@/components/env-error-screen";
 import { formatEnvError, validateSupabaseEnv } from "@/lib/env";
+import { StudyMascot } from "@/components/gamification/study-mascot";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -113,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "The structured learning platform for every student. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
       },
-      { name: "theme-color", content: "#2a2566" },
+      { name: "theme-color", content: "#1a1710" },
       { property: "og:site_name", content: "XRounder" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "XRounder — Learn Smarter, Semester by Semester" },
@@ -147,7 +148,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=JetBrains+Mono:wght@500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;600&display=swap",
       },
     ],
   }),
@@ -223,6 +224,7 @@ function RootComponent() {
           </div>
         </MaintenanceGate>
         <ScrollToTop />
+        {!pathname.startsWith("/admin") && <StudyMascot />}
         <Suspense fallback={null}>
           <Toaster richColors position="top-center" />
         </Suspense>

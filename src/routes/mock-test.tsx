@@ -22,8 +22,11 @@ import {
   Flag,
   Share2,
   Check,
+  Flame,
 } from "lucide-react";
 import { toast } from "sonner";
+import { playCelebrationSound, playComboSound, playWrongSound } from "@/lib/sound-fx";
+import { SoundToggle } from "@/components/ui/sound-toggle";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
@@ -135,6 +138,7 @@ function MockTestPage() {
   const routerState = useRouterState();
   const searchParams = new URLSearchParams(routerState.location.search);
   const preselectedSubjectId = searchParams.get("subjectId");
+  const preselectedUnitId = searchParams.get("unitId");
 
   const [examState, setExamState] = useState<ExamState>("CONFIG");
 
@@ -265,12 +269,16 @@ function MockTestPage() {
     },
   });
 
-  // Auto-select all units by default when units load
+  // Auto-select units when units load (or preselected unit if specified)
   useEffect(() => {
     if (unitsQuery.data && unitsQuery.data.length > 0) {
-      setSelectedUnitIds(unitsQuery.data.map((u) => u.id));
+      if (preselectedUnitId && unitsQuery.data.some((u) => u.id === preselectedUnitId)) {
+        setSelectedUnitIds([preselectedUnitId]);
+      } else {
+        setSelectedUnitIds(unitsQuery.data.map((u) => u.id));
+      }
     }
-  }, [unitsQuery.data]);
+  }, [unitsQuery.data, preselectedUnitId]);
 
   // Unit Selection Presets
   const handlePresetSelect = (preset: "ALL" | "MID_SEM" | "CUSTOM") => {
@@ -465,7 +473,12 @@ function MockTestPage() {
 
     const pct = Math.round((correct / questions.length) * 100);
     if (pct >= 80) {
-      confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+      playCelebrationSound();
+      confetti({ particleCount: 85, spread: 70, origin: { y: 0.6 } });
+    } else if (pct >= 50) {
+      playComboSound(3);
+    } else {
+      playWrongSound();
     }
   };
 
@@ -541,7 +554,7 @@ function MockTestPage() {
         {examState === "CONFIG" && (
           <div className="container max-w-4xl mx-auto px-4 py-8 md:py-12">
             {/* Header Banner */}
-            <div className="mb-8 text-center sm:text-left rounded-3xl border border-primary/20 bg-linear-to-br from-primary/10 via-surface to-background p-6 sm:p-8">
+            <div className="mb-8 text-center sm:text-left rounded-3xl border border-border/80 bg-surface p-6 sm:p-8">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary mb-3">
                 <Sparkles className="h-3.5 w-3.5" /> Exam Simulation Mode
               </div>
@@ -759,7 +772,7 @@ function MockTestPage() {
                   size="lg"
                   disabled={isSubmitting || selectedUnitIds.length === 0}
                   onClick={handleStartExam}
-                  className="w-full h-14 rounded-2xl text-base font-bold gap-2 shadow-lg shadow-primary/20"
+                  className="btn-squishy btn-cta w-full h-14 rounded-2xl text-base font-bold gap-2 shadow-lg shadow-primary/20 cursor-pointer"
                 >
                   <FlaskConical className="h-5 w-5" />
                   {isSubmitting ? "Generating Mock Exam…" : "Start Mock Exam Now"}
@@ -787,7 +800,8 @@ function MockTestPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <SoundToggle className="h-8 rounded-xl px-2.5 text-xs" />
                   {timeLimitMinutes > 0 && (
                     <div className="flex items-center gap-1.5 rounded-xl border border-border/80 bg-muted/40 px-3 py-1.5 font-mono text-sm font-bold text-foreground">
                       <Timer className="h-4 w-4 text-primary animate-pulse" />
@@ -860,12 +874,13 @@ function MockTestPage() {
                     <button
                       key={option.id}
                       type="button"
-                      onClick={() =>
+                      onClick={() => {
                         setSelectedAnswers((prev) => ({
                           ...prev,
                           [activeQuestion.id]: option.id,
-                        }))
-                      }
+                        }));
+                        playComboSound(currentIndex + 1);
+                      }}
                       className={cn(
                         "w-full flex items-center gap-3.5 p-4 rounded-2xl border text-left transition-all",
                         isSelected
@@ -1040,9 +1055,7 @@ function MockTestPage() {
                       key={unit.unitNumber}
                       className={cn(
                         "rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors",
-                        isWeak
-                          ? "border-warning/30 bg-warning/5"
-                          : "border-border/60 bg-muted/20",
+                        isWeak ? "border-warning/30 bg-warning/5" : "border-border/60 bg-muted/20",
                       )}
                     >
                       <div className="min-w-0 flex-1">
@@ -1156,10 +1169,10 @@ function MockTestPage() {
                                 className={cn(
                                   "h-5 w-5 rounded-md flex items-center justify-center shrink-0 text-[10px] font-bold",
                                   isCorrect
-                                  ? "bg-success text-success-foreground"
-                                  : isUserChoice
-                                    ? "bg-destructive text-white"
-                                    : "bg-muted text-muted-foreground",
+                                    ? "bg-success text-success-foreground"
+                                    : isUserChoice
+                                      ? "bg-destructive text-white"
+                                      : "bg-muted text-muted-foreground",
                                 )}
                               >
                                 {isCorrect ? "✓" : isUserChoice ? "✕" : "·"}

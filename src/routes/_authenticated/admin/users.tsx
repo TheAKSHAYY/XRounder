@@ -140,7 +140,8 @@ function AdminStudentsPage() {
 
   const flagMut = useMutation({
     mutationFn: (vars: { userId: string; reason: string }) => flagFn({ data: vars }),
-    onSuccess: () => toast.success("Student flagged for Super Admin review (recorded in audit log)"),
+    onSuccess: () =>
+      toast.success("Student flagged for Super Admin review (recorded in audit log)"),
     onError: (e: Error) => toast.error(e.message),
   });
 
@@ -388,7 +389,7 @@ function AdminStudentsPage() {
                   </span>
                   <span className="font-semibold text-foreground">
                     {selectedStudent.semesters?.title
-                       ? `Semester ${selectedStudent.semesters.number}`
+                      ? `Semester ${selectedStudent.semesters.number}`
                       : "Not selected"}
                   </span>
                 </div>
@@ -479,7 +480,9 @@ function AdminStudentsPage() {
             <>
               Suspending student{" "}
               <strong className="text-foreground">
-                {pendingSuspendStudent.full_name ?? pendingSuspendStudent.email ?? pendingSuspendStudent.user_id}
+                {pendingSuspendStudent.full_name ??
+                  pendingSuspendStudent.email ??
+                  pendingSuspendStudent.user_id}
               </strong>{" "}
               will immediately revoke all active sessions and block platform access.
             </>

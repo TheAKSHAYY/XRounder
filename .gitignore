@@ -58,3 +58,6 @@ build
 # Supabase local temp
 supabase/.temp/
 
+# Agent customizations
+.agents/
+skills-lock.json

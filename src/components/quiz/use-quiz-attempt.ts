@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { playCelebrationSound, playComboSound, playWrongSound } from "@/lib/sound-fx";
 import type { AnswerState, Attempt, Feedback, Option, Question } from "@/components/quiz/types";
 
 const CORRECT_DELAY = 1000;
@@ -120,6 +121,7 @@ export function useQuizAttempt(quizId: string) {
   const [result, setResult] = useState<Attempt | null>(null);
   const [instantFeedback, setInstantFeedback] = useState(true);
   const [elapsed, setElapsed] = useState(0);
+  const [combo, setCombo] = useState(0);
 
   const startedAtRef = useRef<number | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -217,6 +219,7 @@ export function useQuizAttempt(quizId: string) {
       setCurrentIdx(firstUnanswered === -1 ? 0 : firstUnanswered);
       setResult(null);
       setElapsed(0);
+      setCombo(0);
       setInstantFeedback(true);
       startedAtRef.current = Date.now();
       qc.invalidateQueries({ queryKey: ["public-quiz-attempts", quizId, user?.id] });
@@ -265,6 +268,9 @@ export function useQuizAttempt(quizId: string) {
           }
           return next;
         });
+      }
+      if ((a.pct ?? 0) >= 70) {
+        playCelebrationSound();
       }
       if ((a.pct ?? 0) >= 80) {
         confetti({
@@ -352,6 +358,16 @@ export function useQuizAttempt(quizId: string) {
         if (error) throw error;
         const fb = data as Feedback;
         setFeedback(fb);
+        if (fb.is_correct) {
+          setCombo((prev) => {
+            const next = prev + 1;
+            playComboSound(next);
+            return next;
+          });
+        } else {
+          setCombo(0);
+          playWrongSound();
+        }
         commitAndAdvance(
           current.id,
           {
@@ -410,6 +426,7 @@ export function useQuizAttempt(quizId: string) {
 
   const skipQuestion = useCallback(() => {
     if (!current) return;
+    setCombo(0);
     const all = {
       ...answers,
       [current.id]: {
@@ -510,6 +527,7 @@ export function useQuizAttempt(quizId: string) {
     remainingSec,
     progressPct,
     answeredCurrent,
+    combo,
     openAttempt,
     startMutation,
     submitMutation,

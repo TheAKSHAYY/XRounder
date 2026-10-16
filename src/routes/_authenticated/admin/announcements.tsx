@@ -70,7 +70,6 @@ const SEVERITY_META: Record<
   },
 };
 
-
 type FormState = {
   id?: string;
   title: string;

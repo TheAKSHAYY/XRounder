@@ -24,6 +24,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { formatTitleCase } from "@/lib/format";
 
 export const Route = createFileRoute("/explore")({
   head: () => ({
@@ -160,44 +161,47 @@ function ExplorePage() {
 
       <main className="mx-auto w-full sm:max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
         {/* ─── Hero Section ─── */}
-        <section className="rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-10">
+        <section className="hud-card relative overflow-hidden rounded-3xl p-6 sm:p-10 shadow-soft border border-border/80">
+          {/* Decorative ambient glow */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+          
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="rounded-full border-accent/40 text-accent">
+            <Badge variant="outline" className="rounded-full border-accent/40 bg-accent/10 text-accent font-semibold">
               {isAuthenticated ? "You're signed in" : "Guest mode"}
             </Badge>
             {guestPrefs && (
-              <Badge variant="secondary" className="rounded-full">
+              <Badge variant="secondary" className="rounded-full font-mono">
                 {guestPrefs.courseCode ?? "Course"} · Year {guestPrefs.year} · Sem{" "}
                 {guestPrefs.semesterNumber ?? 1}
               </Badge>
             )}
           </div>
 
-          <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl">
             Explore XRounder — no account needed
           </h1>
-          <p className="mt-3 max-w-2xl text-muted-foreground">
+          <p className="mt-3 max-w-2xl text-muted-foreground sm:text-base leading-relaxed">
             Browse published courses, read unit notes, open past papers and preview quiz questions.
             Personalize your learning path anytime or create a free account to track progress.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <Button
               type="button"
               size="lg"
-              className="h-12 rounded-full px-8 gap-2"
+              className="btn-squishy btn-cta h-12 rounded-full px-8 gap-2 font-bold shadow-xs cursor-pointer"
               onClick={() => setWizardOpen(true)}
             >
               <Sparkles className="h-4 w-4" />
               {guestPrefs ? "Change learning path" : "Personalize your journey"}
             </Button>
-            <Button asChild size="lg" variant="outline" className="h-12 rounded-full px-8">
+            <Button asChild size="lg" variant="outline" className="btn-squishy h-12 rounded-full px-8 font-semibold bg-card/80">
               <Link to="/courses">
                 Browse all courses <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             {!isAuthenticated && (
-              <Button asChild size="lg" variant="ghost" className="h-12 rounded-full px-6">
+              <Button asChild size="lg" variant="ghost" className="btn-squishy h-12 rounded-full px-6 font-semibold">
                 <Link to="/auth" search={{ mode: "signup" }}>
                   Create free account
                 </Link>
@@ -266,7 +270,7 @@ function ExplorePage() {
                         )}
                       </div>
                       <h3 className="mt-2 font-semibold text-sm text-foreground line-clamp-2">
-                        {s.title}
+                        {formatTitleCase(s.title)}
                       </h3>
                     </div>
                     <span className="mt-4 text-xs font-medium text-primary">Open units →</span>
@@ -344,22 +348,27 @@ function ExplorePage() {
                   <Link
                     to="/courses/$courseSlug"
                     params={{ courseSlug: c.slug }}
-                    className="flex h-full flex-col rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-primary/40"
+                    className="hud-card interactive-card flex h-full flex-col justify-between rounded-2xl p-5 shadow-soft-xs hover:border-primary/50 transition-all duration-200"
                   >
-                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {c.code}
-                    </span>
-                    <span className="mt-1 font-display text-lg font-semibold text-foreground">
-                      {c.title}
-                    </span>
-                    {c.description && (
-                      <span className="mt-2 line-clamp-2 text-sm text-muted-foreground">
-                        {c.description}
+                    <div>
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md">
+                        {c.code}
                       </span>
-                    )}
-                    <span className="mt-4 text-xs text-muted-foreground">
-                      {c.total_semesters ?? 0} semesters
-                    </span>
+                      <h3 className="mt-2.5 font-display text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                        {c.title}
+                      </h3>
+                      {c.description && (
+                        <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground leading-relaxed">
+                          {c.description}
+                        </p>
+                      )}
+                    </div>
+                    <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 text-xs text-muted-foreground font-medium">
+                      <span>{c.total_semesters ?? 0} semesters</span>
+                      <span className="text-primary font-bold inline-flex items-center gap-1">
+                        View <ArrowRight className="h-3 w-3" />
+                      </span>
+                    </div>
                   </Link>
                 </li>
               ))}
