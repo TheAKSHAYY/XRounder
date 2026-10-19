@@ -7,6 +7,8 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { ArrowLeft, BookOpen, Plus, Pencil, Trash2 } from "lucide-react";
 import { PageContainer } from "@/components/admin/ui/page-container";
+import { PageHeader } from "@/components/admin/ui/page-header";
+import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -60,12 +62,11 @@ type CourseRow = {
   total_semesters: number;
   status: "draft" | "published" | "archived";
   created_at: string;
-};
-
-function CoursesAdmin() {
+};function CoursesAdmin() {
   const qc = useQueryClient();
   const [editing, setEditing] = useState<CourseRow | null>(null);
   const [open, setOpen] = useState(false);
+  const [courseToDelete, setCourseToDelete] = useState<CourseRow | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "courses"],
@@ -93,105 +94,85 @@ function CoursesAdmin() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/60">
-        <div className="mx-auto flex w-full sm:max-w-6xl items-center justify-between px-4 sm:px-6 py-5">
-          <Link
-            to="/admin"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to admin
-          </Link>
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={[{ label: "Courses" }]}
+        title="Courses"
+        description="Programs offered on the platform. Open a course to manage its semesters, subjects, and units."
+        actions={
           <Button
             onClick={() => {
               setEditing(null);
               setOpen(true);
             }}
           >
-            <Plus className="mr-2 h-4 w-4" /> New course
+            <Plus className="mr-1.5 h-4 w-4" /> New course
           </Button>
-        </div>
-      </header>
+        }
+      />
 
-      <PageContainer>
-        <div className="flex items-center gap-3">
-          <BookOpen className="h-6 w-6 text-primary" />
-          <h1 className="font-display text-3xl font-semibold text-foreground">Courses</h1>
-        </div>
-        <p className="mt-2 max-w-2xl text-muted-foreground">
-          Programs offered on the platform. Open a course to manage its semesters, subjects, and
-          units.
-        </p>
-
-        <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {isLoading && <p className="text-sm text-muted-foreground">Loading…</p>}
-          {!isLoading && data && data.length === 0 && (
-            <div className="col-span-full rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
-              <p className="font-display text-lg text-foreground">No courses yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Create your first program to get started.
-              </p>
-            </div>
-          )}
-          {data?.map((c) => (
-            <article key={c.id} className="rounded-2xl border border-border bg-surface p-5">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                    {c.code}
-                  </div>
-                  <h3 className="mt-1 font-display text-lg font-semibold text-foreground">
-                    {c.title}
-                  </h3>
+      <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {isLoading && <p className="text-sm text-muted-foreground">Loading…</p>}
+        {!isLoading && data && data.length === 0 && (
+          <div className="col-span-full rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
+            <p className="font-display text-lg text-foreground">No courses yet</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Create your first program to get started.
+            </p>
+          </div>
+        )}
+        {data?.map((c) => (
+          <article key={c.id} className="rounded-2xl border border-border bg-surface p-5">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  {c.code}
                 </div>
-                <Badge variant={c.status === "published" ? "default" : "secondary"}>
-                  {c.status}
-                </Badge>
+                <h3 className="mt-1 font-display text-lg font-semibold text-foreground">
+                  {c.title}
+                </h3>
               </div>
-              {c.description && (
-                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{c.description}</p>
-              )}
-              <div className="mt-3 text-xs text-muted-foreground">
-                {c.total_semesters} semesters
-                {c.duration_years ? ` · ${c.duration_years} years` : ""}
-              </div>
-              <div className="mt-4 flex items-center gap-2">
-                <Link
-                  to="/admin/courses/$courseId"
-                  params={{ courseId: c.id }}
-                  preload="intent"
-                  className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  Manage tree
-                </Link>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => {
-                    setEditing(c);
-                    setOpen(true);
-                  }}
-                >
-                  <Pencil className="h-4 w-4" />
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => {
-                    if (
-                      confirm(`Delete ${c.title}? This removes all semesters, subjects and units.`)
-                    ) {
-                      removeMutation.mutate(c.id);
-                    }
-                  }}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </div>
-            </article>
-          ))}
-        </section>
-      </PageContainer>
+              <Badge variant={c.status === "published" ? "default" : "secondary"}>
+                {c.status}
+              </Badge>
+            </div>
+            {c.description && (
+              <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{c.description}</p>
+            )}
+            <div className="mt-3 text-xs text-muted-foreground">
+              {c.total_semesters} semesters
+              {c.duration_years ? ` · ${c.duration_years} years` : ""}
+            </div>
+            <div className="mt-4 flex items-center gap-2">
+              <Link
+                to="/admin/courses/$courseId"
+                params={{ courseId: c.id }}
+                preload="intent"
+                className="inline-flex h-9 items-center justify-center rounded-md border border-input bg-background px-3 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                Manage tree
+              </Link>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => {
+                  setEditing(c);
+                  setOpen(true);
+                }}
+              >
+                <Pencil className="h-4 w-4" />
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => setCourseToDelete(c)}
+              >
+                <Trash2 className="h-4 w-4 text-destructive" />
+              </Button>
+            </div>
+          </article>
+        ))}
+      </section>
 
       <CourseDialog
         open={open}
@@ -199,7 +180,22 @@ function CoursesAdmin() {
         editing={editing}
         onSaved={() => qc.invalidateQueries({ queryKey: ["admin", "courses"] })}
       />
-    </div>
+
+      <ConfirmDialog
+        open={!!courseToDelete}
+        onOpenChange={(open) => !open && setCourseToDelete(null)}
+        title={`Delete course "${courseToDelete?.title}"?`}
+        description="This removes this course and all associated semesters, subjects, and units. This action cannot be undone."
+        destructive
+        confirmLabel="Delete course"
+        onConfirm={() => {
+          if (courseToDelete) {
+            removeMutation.mutate(courseToDelete.id);
+            setCourseToDelete(null);
+          }
+        }}
+      />
+    </PageContainer>
   );
 }
 

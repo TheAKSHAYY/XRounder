@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
 import {
   Library,
   Search,
@@ -16,17 +17,35 @@ import {
   Layers,
   ExternalLink,
   Circle,
+  Loader2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { listSubjectsWithStats } from "@/lib/content.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { PageHeader } from "@/components/admin/ui/page-header";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { StatusBadge } from "@/components/admin/ui/status-badge";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/admin/subjects")({
@@ -68,6 +87,7 @@ const STAT_META: Array<{ key: keyof Subject["stats"]; label: string; icon: Lucid
 ];
 
 function SubjectsPage() {
+  const qc = useQueryClient();
   const fetchSubjects = useServerFn(listSubjectsWithStats);
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "subjects-with-stats"],
@@ -76,6 +96,7 @@ function SubjectsPage() {
   const [q, setQ] = useState("");
   const [courseFilter, setCourseFilter] = useState<string | "all">("all");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [createOpen, setCreateOpen] = useState(false);
 
   const subjects = (data ?? []) as Subject[];
 
@@ -143,14 +164,20 @@ function SubjectsPage() {
   return (
     <PageContainer>
       <PageHeader
+        breadcrumbs={[{ label: "Subjects" }]}
         title="Subjects"
         description="Every subject grouped by course & semester. Expand to see content coverage at a glance."
         actions={
-          <Button asChild size="sm">
-            <Link to="/admin/courses">
-              <Plus className="mr-1.5 h-4 w-4" /> New via course
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button size="sm" onClick={() => setCreateOpen(true)}>
+              <Plus className="mr-1.5 h-4 w-4" /> New subject
+            </Button>
+            <Button asChild size="sm" variant="outline">
+              <Link to="/admin/courses">
+                Curriculum tree
+              </Link>
+            </Button>
+          </div>
         }
       />
 
@@ -239,6 +266,12 @@ function SubjectsPage() {
           ))}
         </div>
       )}
+
+      <CreateSubjectDialog
+        open={createOpen}
+        onOpenChange={setCreateOpen}
+        onCreated={() => qc.invalidateQueries({ queryKey: ["admin", "subjects-with-stats"] })}
+      />
     </PageContainer>
   );
 }
@@ -384,5 +417,247 @@ function SubjectCard({
         </div>
       )}
     </div>
+  );
+}
+
+function CreateSubjectDialog({
+  open,
+  onOpenChange,
+  onCreated,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onCreated: () => void;
+}) {
+  const [courseId, setCourseId] = useState("");
+  const [semesterId, setSemesterId] = useState("");
+  const [code, setCode] = useState("");
+  const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
+  const [credits, setCredits] = useState("4");
+  const [status, setStatus] = useState<"draft" | "published">("published");
+  const [submitting, setSubmitting] = useState(false);
+
+  const coursesQ = useQuery({
+    queryKey: ["admin", "create-subject-courses"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("courses")
+        .select("id, code, title")
+        .order("sort_order")
+        .order("title");
+      if (error) throw error;
+      return data ?? [];
+    },
+    enabled: open,
+  });
+
+  const semestersQ = useQuery({
+    queryKey: ["admin", "create-subject-semesters", courseId],
+    queryFn: async () => {
+      if (!courseId) return [];
+      const { data, error } = await supabase
+        .from("semesters")
+        .select("id, number, title")
+        .eq("course_id", courseId)
+        .order("number");
+      if (error) throw error;
+      return data ?? [];
+    },
+    enabled: open && !!courseId,
+  });
+
+  const resetForm = () => {
+    setCourseId("");
+    setSemesterId("");
+    setCode("");
+    setTitle("");
+    setSlug("");
+    setCredits("4");
+    setStatus("published");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!semesterId) {
+      toast.error("Please pick a course and semester");
+      return;
+    }
+    if (!code.trim() || !title.trim()) {
+      toast.error("Subject code and title are required");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const autoSlug =
+        slug.trim() ||
+        code
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9-]+/g, "-");
+
+      const { error } = await supabase.from("subjects").insert({
+        semester_id: semesterId,
+        code: code.trim().toUpperCase(),
+        title: title.trim(),
+        slug: autoSlug,
+        credits: credits ? Number(credits) : 4,
+        status,
+      });
+      if (error) throw error;
+
+      toast.success(`Subject "${title.trim()}" created successfully`);
+      resetForm();
+      onCreated();
+      onOpenChange(false);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to create subject");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-md">
+        <form onSubmit={handleSubmit}>
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Library className="h-5 w-5 text-primary" /> New Subject
+            </DialogTitle>
+            <DialogDescription>
+              Create a new subject within a course semester. It will immediately be available for notes, PDFs, and units.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="grid gap-3.5 py-4">
+            <div>
+              <Label className="text-xs">Program / Course</Label>
+              <Select
+                value={courseId}
+                onValueChange={(val) => {
+                  setCourseId(val);
+                  setSemesterId("");
+                }}
+              >
+                <SelectTrigger className="mt-1 h-9">
+                  <SelectValue placeholder={coursesQ.isLoading ? "Loading courses…" : "Select a course"} />
+                </SelectTrigger>
+                <SelectContent>
+                  {(coursesQ.data ?? []).map((c) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      <span className="font-mono text-xs uppercase font-semibold mr-1.5">{c.code}</span>
+                      {c.title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label className="text-xs">Semester</Label>
+              <Select
+                value={semesterId}
+                onValueChange={setSemesterId}
+                disabled={!courseId || semestersQ.isLoading}
+              >
+                <SelectTrigger className="mt-1 h-9">
+                  <SelectValue
+                    placeholder={
+                      !courseId
+                        ? "Select a course first"
+                        : semestersQ.isLoading
+                          ? "Loading semesters…"
+                          : (semestersQ.data?.length ?? 0) === 0
+                            ? "No semesters found"
+                            : "Select a semester"
+                    }
+                  />
+                </SelectTrigger>
+                <SelectContent>
+                  {(semestersQ.data ?? []).map((s) => (
+                    <SelectItem key={s.id} value={s.id}>
+                      Semester {s.number}: {s.title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label className="text-xs">Subject Code</Label>
+                <Input
+                  className="mt-1 h-9 uppercase"
+                  placeholder="e.g. BCA101"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.toUpperCase())}
+                  required
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Credits</Label>
+                <Input
+                  type="number"
+                  min={1}
+                  max={20}
+                  className="mt-1 h-9"
+                  value={credits}
+                  onChange={(e) => setCredits(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div>
+              <Label className="text-xs">Subject Title</Label>
+              <Input
+                className="mt-1 h-9"
+                placeholder="e.g. Data Structures and Algorithms"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label className="text-xs">Slug (optional)</Label>
+                <Input
+                  className="mt-1 h-9 font-mono text-xs"
+                  placeholder="auto-derived if blank"
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Publication Status</Label>
+                <Select
+                  value={status}
+                  onValueChange={(val) => setStatus(val as "draft" | "published")}
+                >
+                  <SelectTrigger className="mt-1 h-9">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="published">Published</SelectItem>
+                    <SelectItem value="draft">Draft</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+              Cancel
+            </Button>
+            <Button type="submit" disabled={submitting || !semesterId || !code.trim() || !title.trim()}>
+              {submitting ? <Loader2 className="mr-1.5 h-4 w-4 animate-spin" /> : <Plus className="mr-1.5 h-4 w-4" />}
+              Create Subject
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }

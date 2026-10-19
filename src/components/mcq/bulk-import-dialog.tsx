@@ -148,15 +148,17 @@ export function BulkImportDialog({
       } else ok += 1;
     }
     setImporting(false);
-    if (ok > 0)
-      toast.success(
-        `Imported ${ok} question${ok === 1 ? "" : "s"}${fail ? ` · ${fail} failed` : ""}`,
-      );
-    else toast.error(`Import failed: ${lastError ?? "unknown error"}`);
-    if (ok > 0) {
+    if (ok > 0 && fail === 0) {
+      toast.success(`Successfully imported all ${ok} question${ok === 1 ? "" : "s"}`);
       setText("");
       onImported();
       onOpenChange(false);
+    } else if (ok > 0 && fail > 0) {
+      toast.warning(`Imported ${ok} question(s), but ${fail} failed: ${lastError ?? "validation error"}`);
+      onImported();
+      // Keep dialog open so user can inspect and fix the failing question(s) without losing input
+    } else {
+      toast.error(`Import failed: ${lastError ?? "unknown error"}`);
     }
   };
 

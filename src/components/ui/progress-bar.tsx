@@ -7,15 +7,15 @@ import { cn } from "@/lib/utils";
 export function ProgressBar({
   value,
   label,
-  tone = "primary",
+  tone = "accent",
   size = "sm",
   className,
   trackClassName,
 }: {
   value: number;
   label: string;
-  /** `primary` on light surfaces, `onPrimary` inside a primary-filled hero. */
-  tone?: "primary" | "muted" | "success" | "accent" | "onPrimary";
+  /** `accent` (muted olive) by default per Rule 4, `primary` on neutral, `onPrimary` inside dark panels. */
+  tone?: "accent" | "primary" | "muted" | "success" | "onPrimary";
   size?: "xs" | "sm" | "md";
   className?: string;
   trackClassName?: string;
@@ -27,12 +27,12 @@ export function ProgressBar({
     tone === "onPrimary"
       ? "bg-primary-foreground"
       : tone === "muted"
-        ? "bg-primary/60"
+        ? "bg-accent/60"
         : tone === "success"
           ? "bg-success"
-          : tone === "accent"
-            ? "bg-accent"
-            : "bg-primary";
+          : tone === "primary"
+            ? "bg-primary"
+            : "bg-accent";
 
   return (
     <div

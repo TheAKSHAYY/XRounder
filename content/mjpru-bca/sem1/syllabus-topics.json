@@ -1,0 +1,519 @@
+{
+  "semester": 1,
+  "subjects": [
+    {
+      "code": "BCA-101N",
+      "title": "Computer Fundamentals and PC Software",
+      "subject_id": "05968c8c-2a26-4933-a021-e457681771fc",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "0985c212-df92-48df-8412-93e7de4c34c8",
+          "title": "Computers Evolution, Architecture, Memory & Software Types",
+          "topics": [
+            "Definition & Characteristics of Computers",
+            "Computer Generations (1st to 5th Generation) & Evolution",
+            "Von Neumann Architecture & Stored Program Concept",
+            "Classification of Computers (Micro, Mini, Mainframe, Supercomputer, Distributed & Parallel)",
+            "Basic Components: Control Unit (CU), ALU, Memory Unit & I/O Interfaces",
+            "Instruction Execution Cycle (Fetch, Decode, Execute, Store)",
+            "Memory Hierarchy: Registers, Cache, RAM (SRAM/DRAM), ROM (PROM/EPROM/EEPROM)",
+            "Secondary Storage: Magnetic Disks, Optical Disks, Flash Storage & SSDs",
+            "Types of Software: System Software, Application Software & Utility Software",
+            "Software Licensing Models: Demoware, Shareware, Freeware, Firmware, Free & Open Source",
+            "Computer Languages: Machine Language, Assembly Language, High-Level Languages",
+            "Translators: Assemblers, Compilers, Interpreters, Linkers & Loaders",
+            "Problem-Solving Tools: Algorithms, Flowcharts, Pseudo-code & Characteristics of Good Languages"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "7e5f27ab-e67a-4bf1-9fde-769436769010",
+          "title": "Overview of Operating Systems, DOS & Windows Management",
+          "topics": [
+            "Operating System Overview: Definition, Objectives & Functions",
+            "OS Classification: Batch, Multiprogramming, Multitasking, Multithreading, Multiprocessing, Time-sharing, Real-Time (Hard/Soft), Single-user vs Multi-user",
+            "Computer Viruses: Definition, Types of Viruses (Boot Sector, File, Macro, Polymorphic), Infection Vectors & Antivirus Software",
+            "Disk Operating System (DOS) Basics: History, Versions & Physical Structure of Disk",
+            "DOS File Allocation Table (FAT), File/Directory Naming Conventions & Drive Naming",
+            "DOS Booting Process (Cold Boot vs Warm Boot) & System Files (IO.SYS, MSDOS.SYS, COMMAND.COM)",
+            "DOS Internal Commands (DIR, COPY, DEL, REN, MD, CD, RD, CLS, DATE, TIME, TYPE, VOL)",
+            "DOS External Commands (CHKDSK, FORMAT, DISKCOPY, XCOPY, ATTRIB, TREE, FIND, MORE)",
+            "Windows GUI Management: Desktop Features, Taskbar, Icons, Windows Explorer, My Computer, Accessories",
+            "File, Folder & Drive Management: Creating, Moving, Renaming, File Attributes, Recycle Bin",
+            "System Controls: Control Panel, Managing Multiple Windows, Task Manager, Logging Off & Shutting Down",
+            "Windows Entertainment & Multimedia: Media Player, Sound Recorder, Volume Control, Device Management"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "6ac663af-bbc9-4f09-8a83-16faa1b03efb",
+          "title": "PC Maintenance, Hardware, Motherboard & Internet Fundamentals",
+          "topics": [
+            "PC Maintenance & Troubleshooting: Opening Cabinet, Block Identification, Assembling & Disassembling",
+            "Device Configuration & Driver Installation: Printers, Microphone, Monitor, Sound Card, Video/Display Cards",
+            "Motherboard Architecture: Form Factors (AT, ATX, Micro-ATX), Sockets, Chipsets (Northbridge/Southbridge)",
+            "Buses & Expansion Slots: PCI, PCIe, AGP, Memory Slots (DIMM, SO-DIMM), Add-on Cards",
+            "Ports & Connectors: USB, HDMI, DisplayPort, VGA, Ethernet (RJ-45), Audio Jacks, SATA & Power Connectors",
+            "Power Supply Units: SMPS (Switched-Mode Power Supply), Wattage Calculation, Voltages & Connectors",
+            "Hardware Storage Media: Primary vs Secondary Storage, Magnetic Hard Disks vs Solid State Drives (NVMe/SATA)",
+            "Internet Fundamentals: History, Architecture, World Wide Web (WWW) vs Internet, URLs & HTTP/HTTPS",
+            "Web Browsers, IP Addressing (IPv4/IPv6 Basics) & Domain Name System (DNS Resolution)",
+            "Internet Infrastructure: ISPs, Search Engines, Net Etiquette, Intranet vs Extranet vs Internet",
+            "Electronic Mail (E-mail): Working Architecture, Protocols (SMTP, POP3, IMAP), Mail Formatting, Spam & Filters",
+            "Societal Impact of Internet: Education, Research, E-Governance & E-Commerce",
+            "Cyber Security Basics: Cybercrimes, Hackers vs Crackers, Phishing, Firewalls & Basic Digital Safety"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "9f2825ce-b9b6-4e90-9785-460a30314508",
+          "title": "Word Processing (MS Word) & Presentation (MS PowerPoint)",
+          "topics": [
+            "Word Processing Fundamentals: Evolution, Common Packages, GUI Environment, Title/Menu/Status Bars",
+            "Document Creation & Editing: Text Selection, Navigation, Find & Replace, Standard & Formatting Toolbars",
+            "Document Formatting: Font Styling, Paragraph Alignment, Indentation, Line/Paragraph Spacing, Margins, Borders & Shading",
+            "Page Layout & Structure: Headers, Footers, Page Numbers, Section Breaks, Watermarks, Columns & Page Orientation",
+            "Tables & Graphics in Word: Creating Tables, Cell Merging/Splitting, Borders, ClipArt, Shapes, WordArt & Pictures",
+            "Proofing Tools: Spell Check, Grammar Check, AutoCorrect, AutoText & Thesaurus",
+            "Mail Merge Architecture: Main Document, Data Source, Merge Fields, Filtering & Output Generation",
+            "Advanced Word Processing: Macros, Templates, Table of Contents & Printing Configuration",
+            "PowerPoint Fundamentals: UI Overview, AutoContent Wizard, Design Templates & Blank Presentations",
+            "Slide Views: Normal View, Slide Sorter View, Outline View, Notes Page View & Slide Show View",
+            "Slide Design & Master Slides: Color Schemes, Backgrounds, Placeholders, Bullets, Numbering & Graphic Galleries",
+            "Transitions & Animations: Slide Transitions, Custom Animation Effects, Timing Setup, Rehearse Timings",
+            "Presentation Delivery: Setting Up Slide Show, Speaker Notes, Audience Handouts & Export Formats"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "3fb2486f-4bad-4e52-9dbc-c5849ff7b720",
+          "title": "Spreadsheet (MS Excel) - Formulas, Functions & Macros",
+          "topics": [
+            "Electronic Spreadsheet Fundamentals: Definition, Advantages, Workbook vs Worksheet Architecture",
+            "Worksheet Navigation & Operations: Rows, Columns, Cells, Cell Addresses, Range Operations, Selection Techniques",
+            "Cell Referencing: Relative Referencing, Absolute Referencing ($A$1), Mixed Referencing ($A1, A$1)",
+            "Data Entry & Formatting: Text, Numbers, Dates, Times, AutoFill, Custom Series, Number Formats, Conditional Formatting",
+            "Built-in Formulas & Functions: Mathematical (SUM, PRODUCT, MOD, ROUND, SQRT, POWER)",
+            "Statistical Functions: AVERAGE, COUNT, COUNTA, COUNTIF, MAX, MIN, MEDIAN, MODE",
+            "Logical & Lookup Functions: IF, Nested IF, AND, OR, NOT, VLOOKUP, HLOOKUP Basics",
+            "Data Management in Excel: Sorting (Ascending/Descending, Multi-level), AutoFilter, Advanced Filter, Data Validation",
+            "Excel Charts & Visualizations: Column, Bar, Line, Pie, Area, Scatter Charts, Chart Elements & Formatting",
+            "Security & Protection: Worksheet Protection, Workbook Passwords, Cell Locking & Hidden Formulas",
+            "Page Setup & Printing: Print Area, Page Margins, Headers/Footers, Page Breaks, Orientation & Scale to Fit",
+            "Data Exchange & Interoperability: Importing/Exporting CSV, Text Files, Non-Worksheet Data Sources",
+            "Advanced Spreadsheet Automation: Recording Macros, Macro Security, Macro Naming & Macro Execution"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-103N",
+      "title": "Programming with C",
+      "subject_id": "45b20341-da58-472e-8e14-14aa711b3f03",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "c2a01209-faa5-46da-b90e-cc818bb4e848",
+          "title": "C Fundamentals, Structure, Data Types & Operators",
+          "topics": [
+            "Evolution of C: History, Dennis Ritchie, BCPL/B lineage & ANSI C Standards",
+            "Structure of a C Program: Preprocessor Directives, Global Declarations, main(), Functions & Comments",
+            "Compilation & Execution Pipeline: Source (.c) -> Preprocessor -> Compiler (.obj) -> Linker (.exe) -> Loader",
+            "C Character Set: Letters, Digits, Special Characters, White Spaces & Escape Sequences",
+            "Keywords & Identifiers: 32 Standard ANSI Keywords, Identifier Naming Rules & Conventions",
+            "Basic Data Types: char, int, float, double, void & Memory Representation",
+            "Type Qualifiers & Modifiers: short, long, signed, unsigned, const, volatile",
+            "Variables & Constants: Variable Declaration, Initialization, Literal Constants, Symbolic Constants (#define)",
+            "Operators in C: Arithmetic, Relational, Logical, Assignment, Increment/Decrement (++/--), Bitwise, Ternary",
+            "Operator Precedence & Associativity: Priority Table, Left-to-Right vs Right-to-Left Evaluation",
+            "Type Conversion: Implicit Type Promotion (Coercion) vs Explicit Type Casting",
+            "Formatted & Unformatted I/O: printf(), scanf(), Format Specifiers (%d, %c, %s, %f, %lf, %p), getchar(), putchar(), gets(), puts()"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "a07b13bd-36db-46de-9739-867e41126f4f",
+          "title": "Control Statements, Branching & Looping Constructs",
+          "topics": [
+            "Control Structures Overview: Sequential, Selective & Iterative Execution Flow",
+            "Decision Making Statements: Simple if, if-else, Nested if-else, Dangling Else Problem",
+            "Multi-way Selection: else-if Ladder vs switch-case Statement",
+            "Switch-case Mechanics: Expression Rules, case Labels, break Statement, default Clause & Fall-through Behavior",
+            "Conditional Operator (? :) as a Compact Branching Mechanism",
+            "Looping Fundamentals: Initialization, Test Condition, Update Expression & Loop Body",
+            "while Loop: Entry-Controlled Loop Syntax, Execution Cycle & Use Cases",
+            "for Loop: Syntax, Multiple Expressions, Empty Clauses, Infinite for Loops",
+            "do-while Loop: Exit-Controlled Loop Syntax, Guarantee of Minimum One Execution",
+            "Jump Statements: break Statement, continue Statement, return Statement",
+            "Unconditional Branching: goto Statement, Label Naming & Structured Programming Guidelines",
+            "Nested Loops: Multi-dimensional Iterations, Pattern Printing & Performance Considerations"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "ae86ea89-22a4-4f1d-8b26-e5cfd4c752d1",
+          "title": "Arrays, 2D Arrays, Strings & String Handling Functions",
+          "topics": [
+            "Array Fundamentals: Definition, Homogeneous Collection, Contiguous Memory Allocation, Subscripting",
+            "One-Dimensional Arrays: Declaration, Size Specification, Compile-time & Run-time Initialization",
+            "Array Element Access: Zero-based Indexing, Base Address & Address Calculation Formula (Base + i * sizeof(type))",
+            "Array Bound Checking & Overflow: Undefined Behavior in C, Buffer Overruns & Safety",
+            "Multi-Dimensional Arrays: 2D Arrays, Matrix Representation, Row-Major vs Column-Major Storage",
+            "2D Array Operations: Matrix Addition, Subtraction, Multiplication, Transpose & Diagonal Sums",
+            "Character Arrays vs Numeric Arrays: Character Storage, Trailing Null Character ('\\0')",
+            "Strings in C: String Literals, Declaration, Initialization & Memory Layout",
+            "String Input/Output: scanf(\"%s\") Limitations, gets() Security Risks, fgets() Safe Usage, puts()",
+            "String Handling Functions (string.h): strlen(), strcpy(), strncpy(), strcat(), strncat()",
+            "String Comparison & Manipulation: strcmp(), strncmp(), strrev(), strlwr(), strupr(), strchr(), strstr()",
+            "Building Custom String Operations without Library Functions"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "82bd3624-5f4d-4412-aec6-5cca36518690",
+          "title": "Functions, Parameter Passing, Recursion & Scope",
+          "topics": [
+            "Modular Programming & Functional Decomposition: Advantages, Code Reusability & Maintainability",
+            "Function Elements: Function Declaration (Prototype), Function Definition & Function Call",
+            "Function Arguments & Return Types: void Functions, Returning Values, Return Statement Semantics",
+            "Parameter Passing Mechanisms: Actual Parameters vs Formal Parameters",
+            "Call by Value: Value Copying, Independence of Caller Variables, Limitations",
+            "Call by Reference: Simulating Reference Passing via Pointer Arguments, Swapping Variables",
+            "Passing Arrays to Functions: Array Name as Pointer to First Element, Passing 2D Arrays",
+            "Recursion Fundamentals: Direct vs Indirect Recursion, Base Condition (Anchor), Recursive Leap of Faith",
+            "Memory Call Stack in Recursion: Stack Frames, Activation Records, Stack Overflow Risks",
+            "Classic Recursive Algorithms: Factorial, Fibonacci Series, GCD (Euclid's Algorithm), Tower of Hanoi",
+            "Storage Classes in C: auto, register, static, extern",
+            "Scope, Visibility & Lifetime of Variables: Block Scope, Function Scope, File Scope & Global Variables"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "772b49c1-6478-4438-9851-3749f4679875",
+          "title": "Pointers, Structures, Unions & Dynamic Memory Allocation",
+          "topics": [
+            "Pointer Fundamentals: Concept of Memory Address, Address-of Operator (&), Indirection Operator (*)",
+            "Pointer Declaration, Initialization, NULL Pointer & Void Pointer (Generic Pointer)",
+            "Pointer Arithmetic: Increment, Decrement, Pointer-Integer Addition, Pointer Subtraction, Pointer Comparison",
+            "Pointers and Arrays: Equivalence of Array Names and Constant Pointers, *(arr + i) Notation",
+            "Array of Pointers vs Pointer to an Array",
+            "Pointers and Strings: String Manipulation using Pointers, Pointer to String Literals",
+            "Pointers to Functions: Declaration, Callback Functions & Applications",
+            "Structures in C: Definition, struct Keyword, Structure Tag, Member Variables, Memory Alignment & Padding",
+            "Accessing Structure Members: Dot Operator (.), Array of Structures, Nested Structures",
+            "Pointers to Structures & Arrow Operator (->)",
+            "Unions in C: Definition, union Keyword, Memory Sharing among Members, Size Calculation, Structure vs Union",
+            "Memory Layout of C Programs: Code Segment, Data Segment (BSS/Initialized), Stack Segment, Heap Segment",
+            "Dynamic Memory Allocation (DMA): Need for DMA, Heap Management",
+            "DMA Functions (stdlib.h): malloc(), calloc(), realloc(), free()",
+            "Common Memory Errors: Memory Leaks, Dangling Pointers, Wild Pointers & Double Free Vulnerabilities"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-105N",
+      "title": "Basic Mathematics",
+      "subject_id": "a37d12d8-3bbe-4206-8c11-9c0a10c3a14d",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "bcd54cdd-5157-46cf-b779-31ff8b140e71",
+          "title": "Divisibility, Prime Factorization, Fractions & Binomial Theorem",
+          "topics": [
+            "Divisibility Tests: Rules of Divisibility by 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 & General Properties",
+            "Division Algorithm: Dividend = Divisor * Quotient + Remainder, Remainder Rules & Modular Arithmetic Basics",
+            "Prime Factorization: Prime vs Composite Numbers, Fundamental Theorem of Arithmetic, Sieve of Eratosthenes",
+            "HCF & LCM: Highest Common Factor (GCD), Least Common Multiple, Relation (HCF * LCM = Product of Numbers)",
+            "Fractions: Proper, Improper, Mixed, Equivalent Fractions & Fractional Comparison Techniques",
+            "Insertion of Rational Numbers: Methods to Insert n Fractions Between Two Given Rational Numbers",
+            "Order of Operations: VBODMAS Rule (Vinculum, Brackets, Orders, Division, Multiplication, Addition, Subtraction)",
+            "Algebraic Formulae: Expansions of (a+b)^2, (a-b)^2, a^2-b^2, (a+b+c)^2, (a+b)^3, (a-b)^3, a^3+b^3, a^3-b^3",
+            "Percentages: Definition, Percentage Calculations, Conversions Between Fractions, Decimals & Percentages",
+            "Ratios, Proportions & Averages: Simple Ratios, Direct/Inverse Proportions, Mean/Average Computations",
+            "Binomial Theorem for Positive Integral Index: Statement, Expansion Formula, Pascal's Triangle",
+            "General Term & Middle Term: Formula for (r+1)th Term, Determination of Middle Term(s) in Binomial Expansion"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "17b2f4f2-9228-4f4f-8f81-09bc7aac93af",
+          "title": "Sequences, Series & Progressions (AP, GP, HP, AM, GM, HM)",
+          "topics": [
+            "Sequences & Series: Definition of Sequence, Finite vs Infinite Sequences, Series & Summation Notation",
+            "Arithmetic Progression (AP): First Term (a), Common Difference (d), General Form of an AP",
+            "nth Term of an AP: Derivation of T_n = a + (n - 1)d & nth Term from the End",
+            "Sum of n Terms of an AP: Derivation of S_n = (n/2)[2a + (n-1)d] = (n/2)[a + l]",
+            "Arithmetic Mean (AM): Single Arithmetic Mean between Two Numbers, Insertion of n Arithmetic Means",
+            "Properties of AP: Linear Transformations, Addition/Subtraction of Constants",
+            "Geometric Progression (GP): First Term (a), Common Ratio (r), General Form of a GP",
+            "nth Term of a GP: Derivation of T_n = a * r^(n-1)",
+            "Sum of n Terms of a GP: S_n = a(1 - r^n)/(1 - r) for r < 1 and a(r^n - 1)/(r - 1) for r > 1",
+            "Sum of an Infinite GP: S_infinity = a / (1 - r) for |r| < 1",
+            "Geometric Mean (GM): Single GM between Two Numbers, Insertion of n Geometric Means",
+            "Harmonic Progression (HP): Definition, Relation to AP, nth Term of HP, Harmonic Mean (HM)",
+            "Interrelationships Between Means: Proof that AM >= GM >= HM & G^2 = A * H for Two Positive Numbers"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "cc1f38ec-8b64-4375-bd8d-74bd14d3a0eb",
+          "title": "Matrices and Determinants - Operations & Inverse",
+          "topics": [
+            "Matrix Fundamentals: Definition, Order of a Matrix (m x n), Elements & Matrix Notation",
+            "Types of Matrices: Row, Column, Zero/Null, Square, Diagonal, Scalar, Identity/Unit Matrices",
+            "Special Square Matrices: Upper Triangular, Lower Triangular, Symmetric & Skew-Symmetric Matrices",
+            "Matrix Operations: Addition, Subtraction, Properties (Commutative, Associative), Scalar Multiplication",
+            "Matrix Multiplication: Conformability Condition, Row-by-Column Rule, Non-Commutativity, Associativity, Distributivity",
+            "Transpose of a Matrix: Properties ((A^T)^T = A, (A+B)^T = A^T + B^T, (AB)^T = B^T A^T)",
+            "Orthogonal Matrices & Decomposition of Matrix into Symmetric and Skew-Symmetric Parts",
+            "Elementary Operations: Elementary Row Operations (ERO) & Column Operations (ECO)",
+            "Inverse of a Matrix using Elementary Row Operations (Gauss-Jordan Elimination Method)",
+            "Determinants: Definition, Determinant of Order 1, 2, and 3, Sarrus Rule",
+            "Minors and Cofactors: Calculation of Minors M_ij, Cofactors C_ij = (-1)^(i+j) * M_ij",
+            "Properties of Determinants: Reflection, All-Zero, Identical Rows/Cols, Scalar Multiplication, Sum Property",
+            "Adjoint of a Square Matrix: adj(A) Definition, Properties (A * adj(A) = adj(A) * A = |A| * I)",
+            "Inverse of a Matrix via Adjoint Formula: A^(-1) = adj(A) / |A| (for non-singular matrices |A| != 0)",
+            "System of Linear Equations: Cramer's Rule for Solving 2x2 and 3x3 Systems, Matrix Inversion Method (X = A^(-1)B)"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "72c28231-474c-4b38-b3eb-f72ec12003dd",
+          "title": "Differential Calculus - Chain Rule, Logs & Trigonometric Differentiation",
+          "topics": [
+            "Calculus Foundations: Concept of Limits, Left-Hand Limit, Right-Hand Limit, Continuity at a Point",
+            "Differentiability: Definition of Derivative, Tangent Slope, Geometric Meaning",
+            "Differentiation from First Principles (Delta Method): Proofs for x^n, sin x, cos x, e^x, a^x, ln x",
+            "Standard Differentiation Formulae: Algebraic, Trigonometric, Exponential & Logarithmic Derivatives",
+            "Rules of Differentiation: Derivative of a Constant, Constant Multiple Rule, Sum and Difference Rules",
+            "Product Rule (Leibniz Rule): d/dx [u * v] = u * (dv/dx) + v * (du/dx)",
+            "Quotient Rule: d/dx [u / v] = (v * du/dx - u * dv/dx) / v^2",
+            "Chain Rule (Function of a Function): Differentiation of Composite Functions y = f(g(x))",
+            "Derivatives of Exponential Functions: d/dx [e^(kx)], d/dx [a^x] = a^x * ln(a)",
+            "Derivatives of Logarithmic Functions: d/dx [ln x] = 1/x, d/dx [log_a x] = 1 / (x * ln a)",
+            "Derivatives of Inverse Trigonometric Functions: arcsin x, arccos x, arctan x, arccot x",
+            "Differentiation by Trigonometrical Transformations & Algebraic Substitutions",
+            "Differentiation of Implicit Functions: Equations where y cannot be explicitly expressed in terms of x",
+            "Logarithmic Differentiation: Differentiating Variable-Base Variable-Exponent Functions y = [f(x)]^[g(x)]"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "849ab8b5-b2b2-4818-b154-382c76210676",
+          "title": "Integral Calculus - Substitution, Trigonometric Identities & Parts",
+          "topics": [
+            "Indefinite Integration Fundamentals: Concept of Anti-Derivative, Indefinite Integral Notation, Constant of Integration (C)",
+            "Geometric Interpretation of Indefinite Integral: Family of Curves",
+            "Standard Integration Formulae: Power Rule int(x^n dx), Trigonometric, Exponential & Logarithmic Integrals",
+            "Properties of Integrals: Linearity Property, Integral of Constant Multiple, Integral of Sum/Difference",
+            "Integration by Substitution Method: Transformations of the Form int f(g(x)) * g'(x) dx",
+            "Standard Substitutions: Integrals involving sqrt(a^2 - x^2), sqrt(a^2 + x^2), sqrt(x^2 - a^2)",
+            "Integration Using Trigonometric Identities: Integrals of sin^2(x), cos^2(x), tan^2(x), sin(ax)cos(bx), sin(3x)",
+            "Integrals of Standard Rational & Irrational Functions: int dx / (x^2 + a^2), int dx / (x^2 - a^2), int dx / sqrt(a^2 - x^2)",
+            "Integration by Parts: Derivation from Product Rule of Differentiation (int u*v dx = u*int v dx - int (u' * int v dx) dx)",
+            "ILATE Rule for Selecting First Function (u): Inverse Trig, Logarithmic, Algebraic, Trigonometric, Exponential",
+            "Repeated Integration by Parts & Cyclic Integrals (e.g., int e^(ax) * sin(bx) dx)",
+            "Definite Integrals Preview: Fundamental Theorem of Calculus & Basic Evaluation"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-107N",
+      "title": "Communicative English",
+      "subject_id": "0b7d9736-bfb4-449a-bb44-56b5ce4d64b3",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "acf33d30-3d0c-4883-83c8-9c4ad035caf4",
+          "title": "Language Communication, Process, Components & Barriers",
+          "topics": [
+            "Importance of English Language in Computing, Information Technology & Global Business",
+            "Basics of Communication: Etymology (Communicare), Definition, Nature & Objectives of Communication",
+            "The Communication Process: Linear vs Interactive vs Transactional Models",
+            "Components of Communication: Sender, Encoding, Message, Channel/Medium, Receiver, Decoding, Feedback & Noise/Interference",
+            "The 7 Cs of Effective Communication: Completeness, Conciseness, Consideration, Clarity, Concreteness, Courtesy, Correctness",
+            "Communication Channels: Formal (Upward, Downward, Horizontal, Diagonal) vs Informal (Grapevine)",
+            "Barriers to Communication: Physical & Environmental Barriers (Noise, Distance, Equipment Malfunction)",
+            "Psychological & Emotional Barriers: Prejudice, Selective Perception, Filtering, Halo Effect, Anxiety",
+            "Semantic & Linguistic Barriers: Jargon, Ambiguity, Connotation vs Denotation, Faulty Translation",
+            "Organizational & Cultural Barriers: Rigid Hierarchy, Rules, Cross-Cultural Misunderstandings",
+            "Techniques to Overcome Communication Barriers: Empathy, Active Listening, Feedback Mechanism, Clear Medium"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "e703bbab-45e0-4360-9b04-c7650f716a9a",
+          "title": "English Skills - Reading, Listening, Verbal & Non-Verbal Techniques",
+          "topics": [
+            "Language Receptive Skills: Reading Comprehension Techniques (Skimming, Scanning, Intensive Reading, Extensive Reading)",
+            "Listening Skills: Hearing vs Listening, Stages of Listening Process (Receiving, Understanding, Remembering, Evaluating, Responding)",
+            "Types of Listening: Active Listening, Critical/Evaluative Listening, Empathetic Listening, Appreciative Listening",
+            "Barriers to Effective Listening & Strategies for Improving Listening Comprehension",
+            "Verbal Communication: Vocal Dynamics (Pitch, Tone, Pace/Rate, Volume, Modulation, Articulation, Pronunciation)",
+            "Oral Presentation Skills: Planning, Audience Analysis, Structuring Content (Introduction, Body, Conclusion), Delivery & Visual Aids",
+            "Non-Verbal Communication Overview: Significance in Human Interactions (Mehrabian's Rule: 55-38-7)",
+            "Kinesics (Body Language): Facial Expressions, Eye Contact (Oculesics), Gestures, Head Movements, Body Posture",
+            "Proxemics: Personal Space Zones (Intimate, Personal, Social, Public Space) & Cultural Variations",
+            "Haptics (Touch Communication), Chronemics (Time Perception) & Artifactics (Personal Appearance, Professional Attire)",
+            "Paralanguage: Voice Quality, Pitch, Pauses, Intonation, Sighs & Non-word Sounds"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "f6ba6ca3-8515-4b66-9180-a080e1745ab6",
+          "title": "Effective Writing - Abstracts, Summaries, Notes & Technical Reports",
+          "topics": [
+            "Principles of Effective Technical Writing: Clarity, Objectivity, Brevity, Coherence & Reader-Centric Approach",
+            "Writing Abstracts & Executive Summaries: Informative vs Descriptive Abstracts, Core Components, Length & Style",
+            "Precis Writing & Summarization: Steps in Condensing Texts, Maintaining Original Essence, Avoiding Redundancy",
+            "Note-Making Techniques: Linear Note-Making, Cornell System, Mind Mapping, Use of Abbreviations & Symbols",
+            "Technical Report Writing Overview: Purpose, Audience, Types of Reports (Informational, Analytical, Periodic, Feasibility)",
+            "Structure & Layout of Technical Reports: Three-Part Model (Front Matter, Main Body, Back Matter)",
+            "Front Matter Elements: Cover Page, Title Page, Certificate, Acknowledgements, Table of Contents, List of Figures/Tables, Executive Summary",
+            "Main Body Elements: Introduction, Statement of Problem, Scope, Methodology, Findings, Discussion, Conclusions & Recommendations",
+            "Back Matter Elements: Appendices, References/Bibliography (APA/IEEE Basics), Glossary of Terms",
+            "Laboratory Reports: Structure of Computer Science / Science Lab Reports (Aim, Apparatus/Environment, Theory, Procedure, Code, Observations, Results)"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "a68daa74-0c0e-420e-8600-27dd404836c2",
+          "title": "Grammar I - Parts of Speech, Subject-Predicate, Phrases, Clauses & Tenses",
+          "topics": [
+            "The Eight Parts of Speech: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection",
+            "Sentence Structure: Identification of Subject, Predicate, Direct Object, Indirect Object & Subject/Object Complements",
+            "Phrases vs Clauses: Definitions, Distinctions & Roles in Sentence Construction",
+            "Types of Phrases: Noun Phrases, Prepositional Phrases, Adjective Phrases, Adverb Phrases, Participial Phrases",
+            "Types of Clauses: Independent (Main) Clauses vs Dependent (Subordinate) Clauses (Noun, Adjective, Adverb Clauses)",
+            "Sentence Types by Structure: Simple Sentences, Compound Sentences, Complex Sentences, Compound-Complex Sentences",
+            "Tenses in English Overview: Time vs Tense, Aspect (Simple, Progressive, Perfect, Perfect Progressive)",
+            "Present Tense Forms: Simple Present (Habitual/Universal Truths), Present Continuous, Present Perfect, Present Perfect Continuous",
+            "Past Tense Forms: Simple Past, Past Continuous, Past Perfect (Action Preceding Past Action), Past Perfect Continuous",
+            "Future Tense Forms: Simple Future (will/shall), Future Continuous, Future Perfect, Future Perfect Continuous",
+            "Rules of Sequence of Tenses in Complex Sentences"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "0374d551-ad3d-4cc9-ba65-81bd218a3be7",
+          "title": "Grammar II - Active/Passive Voice, Concord & Reported Speech",
+          "topics": [
+            "Voice in English Grammar: Active Voice vs Passive Voice, Semantic Roles (Agent vs Patient)",
+            "Rationale for Passive Voice in Technical, Academic & Scientific Writing (Impersonality & Objectivity)",
+            "Rules of Voice Transformation across All 12 Tenses (and Tenses without Standard Passive Form)",
+            "Passive Transformation of Imperative Sentences, Interrogative Sentences & Prepositional Verbs",
+            "Passive Voice with Two Objects (Direct & Indirect Objects)",
+            "Concept of Concord (Subject-Verb Agreement): Fundamental Rule (Singular Subject takes Singular Verb)",
+            "Advanced Rules of Concord: Compound Subjects with 'and', 'as well as', 'together with', 'along with'",
+            "Concord with Correlative Conjunctions: 'Either...or', 'Neither...nor', 'Not only...but also' (Rule of Proximity)",
+            "Concord with Collective Nouns, Quantifiers, Indefinite Pronouns ('each', 'everyone', 'none', 'neither')",
+            "Reported Speech (Direct and Indirect Speech): Concept, Reporting Verb, Reported Clause",
+            "Rules of Transformation: Changes in Tenses (Backshifting), Pronouns, Possessives, Time and Place Adverbials",
+            "Reporting Assertive, Interrogative (Wh- questions & Yes/No questions with if/whether), Imperative (Commands/Requests) & Exclamatory Sentences"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-109N",
+      "title": "Principle of Management",
+      "subject_id": "c5721f68-696a-4c7b-8dcc-d13d736b7272",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "64224bb2-ac68-4999-b296-17dc4c81c745",
+          "title": "Management Fundamentals, Fayol & Taylor Principles, Theories",
+          "topics": [
+            "Management Definition, Nature (Art, Science, or Profession), Scope & Universal Objectives",
+            "Management Functions (POSDCORB - Planning, Organizing, Staffing, Directing, Coordinating, Reporting, Budgeting)",
+            "Henri Fayol's Administrative Management: 14 Principles of Management & Modern Workplace Relevance",
+            "Frederick Winslow Taylor's Scientific Management: Principles, Time and Motion Studies, Fatigue Study, Differential Piece Rate",
+            "Levels of Management: Top-Level, Middle-Level, Operative/Lower-Level Management & Their Distinct Responsibilities",
+            "Managerial Skills (Robert L. Katz): Conceptual Skills, Human/Interpersonal Skills, Technical Skills across Hierarchy",
+            "Managerial Roles (Henry Mintzberg): Interpersonal (Figurehead, Leader, Liaison), Informational (Monitor, Disseminator, Spokesperson), Decisional (Entrepreneur, Disturbance Handler, Resource Allocator, Negotiator)",
+            "Evolution of Management Thought: Classical Approach (Bureaucratic Theory of Max Weber)",
+            "Neo-Classical / Human Relations Approach: Elton Mayo & The Hawthorne Studies",
+            "Behavioral Science Approach, Quantitative Approach, Systems Approach (Open vs Closed Systems) & Contingency/Situational Approach"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "d4e127be-a094-4c81-9001-c1a9d43bf351",
+          "title": "Planning, Decision Making, Organizing & Departmentation",
+          "topics": [
+            "Planning: Meaning, Nature, Purpose, Primacy of Planning & Planning Hierarchy",
+            "The Planning Process: Goal Setting, Environmental Scanning, Developing Premises, Evaluating Alternatives, Implementation",
+            "Types of Plans: Strategic vs Tactical vs Operational Plans; Standing Plans (Policies, Procedures, Rules) vs Single-Use Plans (Programmes, Budgets)",
+            "Management by Objectives (MBO): Peter Drucker's Concept, MBO Process Steps, Advantages & Potential Pitfalls",
+            "Decision Making: Concept, Characteristics, Programmed vs Non-Programmed Decisions, Decisions Under Certainty, Risk & Uncertainty",
+            "The Rational Decision-Making Process: Problem Identification, Developing Alternatives, Evaluation, Choice & Feedback",
+            "Organizing Concept: Definition, Process, Principles of Organization (Unity of Command, Scalar Chain, Span of Control)",
+            "Departmentation: Concept, Need & Criteria for Grouping Activities (Functional, Product, Customer, Geographic, Process Departmentation)",
+            "Authority, Responsibility & Accountability: Parity Principle, Scalar Principle",
+            "Delegation of Authority: Elements of Delegation, Barriers to Effective Delegation & Overcoming Them",
+            "Centralization vs Decentralization: Concept, Distinction from Delegation, Factors Influencing Decentralization Degree",
+            "Span of Management / Span of Control: Narrow vs Wide Span, Flat vs Tall Organizations, Graicunas Formula"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "7af99f28-12e3-4751-a716-8234204b9200",
+          "title": "Staffing, Directing, Motivation (Maslow, Herzberg) & Controlling",
+          "topics": [
+            "Staffing: Concept, Nature, Importance & Elements of Staffing Process (HR Planning, Recruitment, Selection, Placement, Induction)",
+            "Training and Development: Need, On-the-Job Methods (Apprenticeship, Job Rotation) vs Off-the-Job Methods (Lectures, Case Study, Vestibule)",
+            "Directing: Meaning, Nature, Scope, Principles of Effective Direction (Unity of Direction, Maximum Individual Contribution)",
+            "Elements of Directing: Supervision, Motivation, Leadership, Communication",
+            "Motivation Fundamentals: Definition, Motivation Cycle (Need, Drive, Action, Goal), Financial vs Non-Financial Incentives",
+            "Theories of Motivation: Abraham Maslow's Hierarchy of Needs (Physiological, Safety, Social, Esteem, Self-Actualization)",
+            "Herzberg's Two-Factor Theory: Hygiene Factors (Dissatisfiers) vs Motivating Factors (Satisfiers)",
+            "Douglas McGregor's Theory X and Theory Y: Assumptions about Human Nature & Managerial Implications",
+            "Leadership: Concept, Leadership vs Management, Formal vs Informal Leaders",
+            "Leadership Styles: Autocratic (Authoritarian), Democratic (Participative), Laissez-Faire (Free-Rein), Transformational Leadership",
+            "Controlling: Nature, Importance, Relationship Between Planning and Controlling (Siamese Twins of Management)",
+            "The Controlling Process: Establishing Standards, Measuring Actual Performance, Comparing with Standards, Analyzing Deviations, Taking Corrective Action"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "a3da8c8f-c8ff-405a-b1db-85c531983c72",
+          "title": "Organizational Behavior - Personality, Learning, Perception & Attitudes",
+          "topics": [
+            "Organizational Behavior (OB): Definition, Scope, Multidisciplinary Nature (Psychology, Sociology, Anthropology), Goals of OB",
+            "Models of Organizational Behavior: Autocratic Model, Custodial Model, Supportive Model, Collegial Model, System Model",
+            "Understanding Individual Human Behavior in Organizations: MARS Model of Individual Behavior",
+            "Personality: Definition, Determinants of Personality (Heredity, Environment, Situation)",
+            "Personality Frameworks: The Big Five Model (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism), Myers-Briggs Type Indicator (MBTI)",
+            "Other Key Personality Traits: Locus of Control (Internal vs External), Machiavellianism, Self-Esteem, Self-Monitoring, Risk Taking",
+            "Learning in Organizations: Definition, Principles of Learning",
+            "Theories of Learning: Classical Conditioning (Pavlov), Operant Conditioning (Skinner - Reinforcement Theory), Social Learning Theory (Bandura)",
+            "Perception: Meaning, Perceptual Process (Selection, Organization, Interpretation)",
+            "Factors Influencing Perception & Perceptual Distortions: Stereotyping, Halo Effect, Contrast Effect, Projection, Selective Perception",
+            "Attitudes: Components of Attitude (ABC Model - Affective, Behavioral, Cognitive)",
+            "Workplace Attitudes: Job Satisfaction, Job Involvement, Organizational Commitment, Cognitive Dissonance Theory (Leon Festinger)"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "8d50f4ef-36f0-4e3a-99b6-8b91b256c5a4",
+          "title": "Computer Applications in Functional Management (Finance, HR, Mktg)",
+          "topics": [
+            "Role of Information Technology & Computer Systems in Contemporary Enterprise Management",
+            "Management Information Systems (MIS): Structure, Decision Support Systems (DSS), Executive Information Systems (EIS)",
+            "Computer Applications in Financial Management: Automated General Ledger, Accounts Receivable/Payable, Cash Flow Projections, Financial Ratio Analytics",
+            "Computerized Payroll & Tax Compliance Systems: Salary Computation, Provident Fund, ESI, TDS Calculation & Reporting",
+            "Computer Applications in Production & Operations Management: Material Requirements Planning (MRP I), Manufacturing Resource Planning (MRP II)",
+            "Inventory Control Systems: Economic Order Quantity (EOQ), ABC Analysis Automation, JIT (Just-In-Time) Coordination, Barcode & RFID Tracking",
+            "Computer Applications in Human Resource Management (HRIS): Employee Database Management, E-Recruitment, Performance Management Systems, Training Tracking",
+            "Computer Applications in Marketing Management: Customer Relationship Management (CRM) Architecture, Sales Force Automation, Lead Management",
+            "Digital Marketing Analytics: Market Research Databases, Consumer Behavior Tracking, Campaign Management Systems",
+            "Enterprise Resource Planning (ERP): Concept of Seamless Inter-Departmental Data Integration, Core ERP Modules, Implementation Challenges & Benefits"
+          ]
+        }
+      ]
+    }
+  ]
+}

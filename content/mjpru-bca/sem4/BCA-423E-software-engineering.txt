@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 4
+BCA-423E: SOFTWARE ENGINEERING - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-423e-u1-q01] (Unit 1) What is the formal IEEE definition of Software Engineering?
+  A.     The art of writing programming code as fast as possible
+  B. (*) The systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software
+  C.     Selling software licenses to corporations
+  D.     Installing operating systems on computers
+Explanation: IEEE Standard 610.12 formally defines Software Engineering as the application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software.
+
+[bca-423e-u1-q02] (Unit 1) What historical event in computing during the late 1960s prompted the emergence of Software Engineering as an engineering discipline?
+  A.     The Dot-com Bubble
+  B. (*) The Software Crisis (projects delivered late, exceeding budgets, and riddled with unmaintainable defects)
+  C.     The invention of the transistor
+  D.     The release of Microsoft Windows
+Explanation: The Software Crisis emerged at the 1968 NATO conference because software projects consistently ran over budget, missed deadlines, and failed user requirements.
+
+[bca-423e-u1-q03] (Unit 1) Which of the following is a fundamental characteristic of software that differentiates it from physical manufactured goods?
+  A.     Software wears out physically due to mechanical friction
+  B. (*) Software is engineered or developed, it is not manufactured in the classical sense, and software does not wear out
+  C.     Software cannot be duplicated
+  D.     Software requires gasoline to run
+Explanation: Physical hardware follows a 'bathtub curve' wearing out due to environmental stress; software deteriorates due to bad changes or defects, not wear and tear.
+
+[bca-423e-u1-q04] (Unit 1) Which SDLC model is characterized by a linear, sequential flow where each phase must be fully completed before the next phase begins?
+  A.     Prototyping Model
+  B. (*) Classical Waterfall Model
+  C.     Spiral Model
+  D.     Agile Scrum
+Explanation: The Classical Waterfall Model proceeds strictly sequentially: Feasibility -> Requirements -> Design -> Coding -> Testing -> Maintenance.
+
+[bca-423e-u1-q05] (Unit 1) What is the major weakness of the Classical Waterfall Model?
+  A.     It has no documentation
+  B. (*) It does not accommodate feedback or changing requirements late in the development cycle, leading to high risk of failure
+  C.     It requires too many prototypes
+  D.     It cannot be used for any software
+Explanation: Waterfall assumes requirements are frozen at inception. If user needs change during development, accommodating them is extremely expensive.
+
+[bca-423e-u1-q06] (Unit 1) How does the Iterative Waterfall Model improve upon the Classical Waterfall Model?
+  A.     By eliminating the testing phase
+  B. (*) By providing feedback paths between consecutive phases to allow correction of errors uncovered downstream
+  C.     By writing code before requirements
+  D.     By using only pair programming
+Explanation: Iterative Waterfall incorporates feedback loops from each phase to preceding phases, permitting rectification of discovered errors.
+
+[bca-423e-u1-q07] (Unit 1) When is the Prototyping Model most suitable for a software project?
+  A.     When requirements are well understood and completely frozen
+  B. (*) When customer requirements are vague, uncertain, or incompletely understood at project inception
+  C.     When developing critical aerospace software with zero budget
+  D.     When the team consists of only one programmer
+Explanation: Prototyping builds a working mockup to clarify and validate elusive requirements interactively with the client.
+
+[bca-423e-u1-q08] (Unit 1) What is a 'Throwaway Prototype'?
+  A.     A prototype that is deployed directly into production
+  B. (*) A rough, rapidly developed mockup created solely to clarify requirements and then discarded before building the actual system
+  C.     A broken software release
+  D.     An open-source library
+Explanation: Throwaway prototypes explore requirements or feasibility and are discarded once specifications are finalized.
+
+[bca-423e-u1-q09] (Unit 1) Who proposed the Spiral Model of software development?
+  A. (*) Barry Boehm
+  B.     Edsger Dijkstra
+  C.     Alan Turing
+  D.     Fred Brooks
+Explanation: Dr. Barry Boehm introduced the risk-driven Spiral Model in his seminal 1986 paper.
+
+[bca-423e-u1-q10] (Unit 1) What is the most distinctive feature of Barry Boehm's Spiral Model?
+  A.     Automated code generation
+  B. (*) Explicit, systematic Risk Analysis and risk mitigation at every cycle of development
+  C.     Zero documentation
+  D.     Elimination of design reviews
+Explanation: The Spiral Model is a risk-driven process model where every radial quadrant involves explicit risk assessment and risk resolution.
+
+[bca-423e-u1-q11] (Unit 1) What are the four quadrants of the Spiral Model in each cycle?
+  A.     Input, Process, Output, Storage
+  B. (*) Determine objectives/alternatives -> Evaluate alternatives and identify/resolve risks -> Develop and verify next-level product -> Plan next phase
+  C.     Planning, Coding, Compiling, Running
+  D.     Analysis, Design, Maintenance, Disposal
+Explanation: The four quadrants are: 1. Objective determination, 2. Risk analysis, 3. Engineering development & verification, 4. Customer evaluation & next phase planning.
+
+[bca-423e-u1-q12] (Unit 1) Which SDLC model delivers software in small, usable increments where each release adds new functional features to the working core?
+  A.     Classical Waterfall
+  B. (*) Incremental / Evolutionary Model
+  C.     Big Bang Model
+  D.     RAD Model without iterations
+Explanation: The Incremental Model releases partial implementations (core product first), progressively expanding functionality with successive builds.
+
+[bca-423e-u1-q13] (Unit 1) What is the primary objective of the Rapid Application Development (RAD) model?
+  A.     Writing code without testing
+  B. (*) Delivering a fully functional system within a very short development cycle (typically 60 to 90 days) using component-based construction
+  C.     Building software that runs only on supercomputers
+  D.     Eliminating user involvement
+Explanation: RAD emphasizes rapid development and fast delivery through visual programming, reusable components, and strict 60–90 day time-boxing.
+
+[bca-423e-u1-q14] (Unit 1) What is the core philosophy articulated in the Agile Manifesto?
+  A.     Processes and tools over individuals and interactions
+  B.     Comprehensive documentation over working software
+  C.     Contract negotiation over customer collaboration
+  D. (*) Responding to change over following a rigid plan
+Explanation: The Agile Manifesto values: Individuals and interactions, Working software, Customer collaboration, and Responding to change over following a plan.
+
+[bca-423e-u1-q15] (Unit 1) In the Scrum Agile framework, what is a 'Sprint'?
+  A.     A contest between developers to write the most code
+  B. (*) A time-boxed iteration (typically 2 to 4 weeks) during which the cross-functional team creates a usable, releasable increment of product
+  C.     A daily coffee break
+  D.     An emergency bug-fix session
+Explanation: A Sprint is a fixed duration iteration (usually 2–4 weeks) where a committed subset of product backlog items are designed, coded, and tested.
+
+[bca-423e-u1-q16] (Unit 1) Who is responsible for maximizing the business value of the product and managing the Product Backlog in Scrum?
+  A.     Scrum Master
+  B. (*) Product Owner
+  C.     Lead Developer
+  D.     External Consultant
+Explanation: The Product Owner represents the voice of customer, prioritizes features in the product backlog, and accepts/rejects completed work.
+
+[bca-423e-u1-q17] (Unit 1) What is the role of the Scrum Master?
+  A.     Project dictator who assigns tasks to developers
+  B. (*) A servant-leader who facilitates Scrum events, coaches the team, and removes operational impediments/blockers
+  C.     The client who pays for the software
+  D.     Chief quality auditor
+Explanation: The Scrum Master acts as a servant-leader and facilitator, protecting the team from distractions and clearing roadblocks.
+
+[bca-423e-u1-q18] (Unit 1) What is a 'Burndown Chart' in Scrum?
+  A.     A diagram showing CPU temperature during compilation
+  B. (*) A visual graphical representation of remaining work (hours or story points) versus time remaining in the sprint
+  C.     A chart showing employee turnover
+  D.     A map of failed server hardware
+Explanation: Burndown charts track remaining backlog effort over the days of a sprint, visually highlighting whether the team is on pace.
+
+[bca-423e-u1-q19] (Unit 1) Which of the following is an Extreme Programming (XP) core engineering practice?
+  A. (*) Pair Programming (two developers working at one keyboard)
+  B.     Freezing requirements for one year
+  C.     Separating coding from testing completely
+  D.     Individual isolated programming
+Explanation: Core XP practices include: Pair Programming, Test-Driven Development (TDD), Continuous Integration, Refactoring, and Small Releases.
+
+[bca-423e-u1-q20] (Unit 1) How many maturity levels are defined in the SEI Capability Maturity Model (CMM / CMMI)?
+  A.     3
+  B.     4
+  C. (*) 5
+  D.     7
+Explanation: The SEI CMM framework defines 5 distinct process maturity levels: 1 Initial, 2 Repeatable, 3 Defined, 4 Managed, 5 Optimizing.
+
+[bca-423e-u1-q21] (Unit 1) In the CMM framework, what characterizes Level 1 (Initial)?
+  A.     Strict statistical process control
+  B. (*) Chaotic, ad-hoc, and unpredictable processes where success depends entirely on individual heroics
+  C.     Standardized organization-wide documented processes
+  D.     Continuous automated self-optimization
+Explanation: At Level 1 (Initial), processes are disorganized and ad-hoc; schedules and budgets are routinely missed when crises occur.
+
+[bca-423e-u1-q22] (Unit 1) In CMM, what is Level 2 designated as?
+  A.     Defined
+  B. (*) Repeatable (Managed)
+  C.     Optimizing
+  D.     Quantitatively Managed
+Explanation: Level 2 is Repeatable: basic project management policies (tracking cost, schedule, and functionality) are established to repeat past successes.
+
+[bca-423e-u1-q23] (Unit 1) At which CMM level are processes standardized, documented, and integrated into organization-wide standard software engineering processes?
+  A.     Level 2 (Repeatable)
+  B. (*) Level 3 (Defined)
+  C.     Level 4 (Managed)
+  D.     Level 1 (Initial)
+Explanation: Level 3 is Defined: the organization has institutionalized standard, documented processes across all engineering and management activities.
+
+[bca-423e-u1-q24] (Unit 1) What distinguishes CMM Level 4 (Managed / Quantitatively Managed)?
+  A.     Productivity metrics are deleted
+  B. (*) Detailed quantitative measures of process quality and product productivity are collected and statistically controlled
+  C.     Software is written without documentation
+  D.     All projects are outsourced
+Explanation: Level 4 establishes quantitative quality goals using statistical process control metrics to predict process and product performance.
+
+[bca-423e-u1-q25] (Unit 1) What is CMM Level 5 (Optimizing)?
+  A. (*) Continuous process improvement enabled by quantitative feedback from processes and piloting innovative ideas and technologies
+  B.     Elimination of all human engineers
+  C.     Writing code in assembly language
+  D.     Static unchangeable processes
+Explanation: Level 5 focuses on continuous evolutionary process improvement through quantitative root-cause analysis and adopting innovative methods.
+
+[bca-423e-u1-q26] (Unit 1) Which international standard provides guidelines for quality management systems in software and engineering organizations?
+  A. (*) ISO 9001
+  B.     IEEE 802.11
+  C.     RFC 1918
+  D.     TCP/IP
+Explanation: ISO 9001 specifies international requirements for quality management systems (QMS) ensuring products consistently meet requirements.
+
+[bca-423e-u1-q27] (Unit 1) According to ISO/IEC 9126, which of the following is NOT one of the six core software quality characteristics?
+  A.     Functionality
+  B.     Reliability
+  C.     Maintainability
+  D. (*) Marketability
+Explanation: ISO 9126 defines six quality characteristics: Functionality, Reliability, Usability, Efficiency, Maintainability, Portability.
+
+[bca-423e-u1-q28] (Unit 1) In McCall's Quality Factors model, into which three categories are quality factors grouped?
+  A.     Input, Processing, Output
+  B. (*) Product Operation, Product Revision, and Product Transition
+  C.     Cost, Schedule, Quality
+  D.     Static, Dynamic, Semantic
+Explanation: McCall categorizes 11 quality factors under: Product Operation (correctness, reliability), Product Revision (maintainability, testability), and Product Transition (portability, reusability).
+
+[bca-423e-u1-q29] (Unit 1) What does 'Lines of Code' (LOC / KLOC) measure as a software metric?
+  A.     The execution speed of the program
+  B. (*) The physical size or volume of the source code written, often used to estimate effort and defect density
+  C.     The memory consumed by bytecode
+  D.     The number of comments
+Explanation: LOC/KLOC measures source code volume, though it suffers from language dependency (e.g., assembly vs Python).
+
+[bca-423e-u1-q30] (Unit 1) What is a major limitation of using LOC (Lines of Code) as a productivity metric?
+  A.     It cannot be counted by computers
+  B. (*) It is heavily programming-language dependent and penalizes concise, elegant, and expressive languages
+  C.     It ignores functions
+  D.     It only works on Windows
+Explanation: Writing 100 lines in Python achieves what might take 1,000 lines in Assembly; rewarding LOC rewards verbose, redundant code.
+
+[bca-423e-u1-q31] (Unit 1) Who developed the Function Point (FP) metric as a language-independent measure of software functionality?
+  A.     Barry Boehm
+  B. (*) Allan Albrecht
+  C.     Tom DeMarco
+  D.     Maurice Halstead
+Explanation: Allan Albrecht developed Function Point Analysis (FPA) at IBM in 1979 to quantify business functionality delivered to the user.
+
+[bca-423e-u1-q32] (Unit 1) Which of the following is NOT one of the five Function Point information domain characteristics?
+  A.     External Inputs (EI)
+  B.     External Outputs (EO)
+  C.     Internal Logical Files (ILF)
+  D. (*) Lines of Assembly Code (LAC)
+Explanation: The 5 FP components are: External Inputs (EI), External Outputs (EO), External Inquiries (EQ), Internal Logical Files (ILF), and External Interface Files (EIF).
+
+[bca-423e-u1-q33] (Unit 1) In Function Point calculation, what is the Value Adjustment Factor (VAF) based on?
+  A.     The number of monitors on developer desks
+  B. (*) The assessment of 14 General System Characteristics (GSCs) scored on a scale from 0 to 5
+  C.     The price of the server
+  D.     The disk space in gigabytes
+Explanation: The 14 GSCs (e.g., data communications, distributed processing, performance, transaction rate) yield $VAF = 0.65 + 0.01 \times \sum C_i$.
+
+[bca-423e-u1-q34] (Unit 1) What does Halstead's Software Science measure?
+  A.     The number of bugs found by users
+  B. (*) Software complexity and effort based on counts of unique and total Operators ($\eta_1, N_1$) and Operands ($\eta_2, N_2$)
+  C.     The cost of office electricity
+  D.     Project duration in months
+Explanation: Maurice Halstead's metrics compute Program Length ($N = N_1 + N_2$), Vocabulary ($\eta = \eta_1 + \eta_2$), Volume ($V = N \log_2 \eta$), and Effort.
+
+[bca-423e-u1-q35] (Unit 1) What is 'Process Metric' in software measurement?
+  A.     A metric quantifying the physical size of the executable
+  B. (*) A metric collected across projects to measure the efficiency and effectiveness of software development processes (e.g., defect removal efficiency)
+  C.     A metric measuring CPU usage
+  D.     The number of pages in the user manual
+Explanation: Process metrics assess development lifecycle effectiveness to improve long-term organizational capabilities.
+
+[bca-423e-u1-q36] (Unit 1) What is 'Defect Removal Efficiency' (DRE)?
+  A.     The speed of writing bug fixes
+  B. (*) The percentage of defects removed prior to software release relative to total defects found including post-release ($DRE = E / (E + D)$)
+  C.     The number of test cases automated
+  D.     The CPU time used by the compiler
+Explanation: $DRE = E / (E + D)$, where $E$ is defects found before release and $D$ is defects found by users after release. High DRE indicates strong QA.
+
+[bca-423e-u1-q37] (Unit 1) Which life cycle model is best described as a series of short mini-waterfalls where working software is produced in rapid increments?
+  A.     V-Model
+  B. (*) Agile / Iterative Development
+  C.     Big Bang Model
+  D.     Throwaway Prototyping
+Explanation: Iterative and agile methods decompose the macro development cycle into micro iterations delivering working software increments continuously.
+
+[bca-423e-u1-q38] (Unit 1) What does the V-Model of software development emphasize?
+  A.     Writing code without requirements
+  B. (*) Direct 1-to-1 correspondence between each development phase (on the left) and its associated verification/testing phase (on the right)
+  C.     Skipping unit testing
+  D.     Eliminating integration testing
+Explanation: The V-Model pairs Requirement Analysis with Acceptance Testing, System Design with System Testing, and Detailed Design with Unit Testing.
+
+[bca-423e-u1-q39] (Unit 1) In the V-Model, which testing level corresponds to Requirements Analysis?
+  A.     Unit Testing
+  B.     Integration Testing
+  C. (*) Acceptance Testing
+  D.     Module Testing
+Explanation: Acceptance testing validates that the delivered product fulfills the initial business requirements specified during requirements analysis.
+
+[bca-423e-u1-q40] (Unit 1) In the V-Model, which testing level corresponds to Detailed Component Design?
+  A.     System Testing
+  B. (*) Unit / Module Testing
+  C.     Integration Testing
+  D.     Beta Testing
+Explanation: Unit testing verifies the detailed internal logic, algorithms, and data structures of individual components.
+
+[bca-423e-u1-q41] (Unit 1) What is 'Pair Programming' in Extreme Programming?
+  A.     Two programmers coding the same program on two different computers in different rooms
+  B. (*) Two programmers working simultaneously at one workstation: one (the Driver) writes code while the other (the Navigator) reviews each line and strategizes
+  C.     Two software companies merging
+  D.     Programming with two keyboards at once
+Explanation: Pair programming pairs a Driver writing code with a Navigator continuously reviewing, identifying bugs, and improving design.
+
+[bca-423e-u1-q42] (Unit 1) What is Test-Driven Development (TDD)?
+  A.     Writing code first and testing it only when customers report bugs
+  B. (*) A software development cycle where automated unit test cases are written BEFORE writing the functional code (Red -> Green -> Refactor)
+  C.     Hiring external testers to manually click buttons
+  D.     Deleting failed test cases
+Explanation: In TDD, developers write a failing automated test first (Red), write minimal code to pass (Green), and clean up design (Refactor).
+
+[bca-423e-u1-q43] (Unit 1) What is a 'Spike' in Agile/XP methodologies?
+  A.     A surge in electricity that burns a server
+  B. (*) A quick, exploratory experiment or prototype conducted to research a technical challenge or resolve requirement uncertainty
+  C.     A steep drop in team velocity
+  D.     A cancellation of a sprint
+Explanation: A Spike is an architectural investigation or throwaway proof-of-concept aimed at eliminating technical risk.
+
+[bca-423e-u1-q44] (Unit 1) What is 'Continuous Integration' (CI)?
+  A.     Releasing software to clients once every five years
+  B. (*) A practice where developers merge code into a central repository multiple times a day, triggering automated builds and unit tests to catch defects immediately
+  C.     Writing code in continuous capital letters
+  D.     Eliminating source control repositories
+Explanation: CI ensures software works at all times by automatically compiling, integrating, and testing every developer commit.
+
+[bca-423e-u1-q45] (Unit 1) What does 'Velocity' mean in Agile Scrum?
+  A.     The clock speed of the development servers
+  B. (*) A metric measuring the amount of work (story points) a team successfully completes during a single sprint
+  C.     The speed at which bugs are filed
+  D.     The typing speed of developers
+Explanation: Team velocity measures the average story points delivered per sprint, enabling accurate forecasting for future releases.
+
+[bca-423e-u1-q46] (Unit 1) In CMMI, what does 'KPAs' stand for?
+  A.     Key Programmer Attributes
+  B. (*) Key Process Areas (clusters of related activities that achieve goals considered important for enhancing process capability)
+  C.     Kernel Protection Algorithms
+  D.     Key Performance Actions
+Explanation: Key Process Areas (KPAs) define specific practices and goals that an organization must institutionalize to achieve a maturity level.
+
+[bca-423e-u1-q47] (Unit 1) What is the primary purpose of Software Metrics?
+  A.     To rank developers and punish those who write fewer lines
+  B. (*) To provide quantitative measurements that enable managers to plan, schedule, estimate costs, evaluate quality, and improve development processes
+  C.     To increase code compile time
+  D.     To generate paper printouts
+Explanation: Tom DeMarco's axiom states: 'You cannot control what you cannot measure.' Metrics provide objective guidance for management.
+
+[bca-423e-u1-q48] (Unit 1) Which of the following is considered a Project Metric rather than a Product Metric?
+  A.     Cyclomatic complexity of a function
+  B. (*) Staff allocation, schedule slippage, and budget expenditure over time
+  C.     Defect density per KLOC
+  D.     Modularity coupling index
+Explanation: Project metrics evaluate project execution health (cost, effort, staffing, milestones), whereas product metrics evaluate software artifacts.
+
+[bca-423e-u1-q49] (Unit 1) What is 'Software Reliability' formally defined as?
+  A.     The speed at which software processes data
+  B. (*) The probability of failure-free software operation for a specified period of time in a specified environment
+  C.     The total size of the database
+  D.     The number of buttons on the UI
+Explanation: Software reliability is the probability that software will execute without failure over a given time interval in a stated operating environment.
+
+[bca-423e-u1-q50] (Unit 1) The 'Mythical Man-Month' principle articulated by Fred Brooks states that:
+  A. (*) Adding manpower to a late software project makes it later (due to increased communication overhead and ramp-up time)
+  B.     One programmer can finish any project in one month
+  C.     Men write better software than computers
+  D.     Software projects never finish
+Explanation: Brooks' Law states: 'Adding manpower to a late software project makes it later' because training new staff diverts senior talent and communication paths explode ($n(n-1)/2$).
+
+[bca-423e-u2-q51] (Unit 2) What is the primary output of the Requirements Analysis and Specification phase?
+  A.     Compiled executable code
+  B. (*) Software Requirements Specification (SRS) document
+  C.     Test case execution log
+  D.     User training certificate
+Explanation: The requirements phase produces a rigorous SRS document defining what the system must do without detailing how it will be implemented.
+
+[bca-423e-u2-q52] (Unit 2) According to IEEE 830 standard, which of the following is an essential characteristic of a well-written SRS?
+  A.     Ambiguous and flexible
+  B. (*) Correct, Unambiguous, Complete, Consistent, Verifiable, Modifiable, and Traceable
+  C.     Written strictly in binary
+  D.     At least 1,000 pages long
+Explanation: IEEE 830 specifies that SRS must be unambiguous (only one interpretation), complete, consistent, verifiable, and traceable.
+
+[bca-423e-u2-q53] (Unit 2) What is the difference between Functional and Non-Functional Requirements?
+  A. (*) Functional requirements define system behaviors and services (what it does); non-functional requirements define quality attributes, constraints, performance, and security (how well it performs)
+  B.     Functional requirements are optional; non-functional are mandatory
+  C.     Non-functional requirements are written in Python
+  D.     There is no difference
+Explanation: Functional requirements specify features and data transformations; non-functional requirements define constraints like throughput, security, and response time.
+
+[bca-423e-u2-q54] (Unit 2) Which of the following is a Non-Functional Requirement?
+  A.     The system shall allow users to deposit cash into their account
+  B. (*) The system shall process payment transactions within 1.5 seconds under a load of 10,000 concurrent users
+  C.     The system shall generate a PDF receipt
+  D.     The system shall send a password reset email
+Explanation: Response time under concurrent load is a performance constraint, making it a Non-Functional Requirement.
+
+[bca-423e-u2-q55] (Unit 2) What does 'Traceability' in an SRS document mean?
+  A.     Tracing lines with a pen
+  B. (*) The ability to track each software requirement backward to its origin (business need/stakeholder) and forward to corresponding design modules, code, and test cases
+  C.     Recording IP addresses of users
+  D.     Measuring physical cable length
+Explanation: Traceability allows developers to verify that every requirement is implemented in code and tested, and every piece of code traces to a genuine requirement.
+
+[bca-423e-u2-q56] (Unit 2) In requirements elicitation, what is FAST (Facilitated Application Specification Techniques)?
+  A.     Writing code quickly without documentation
+  B. (*) A collaborative, team-oriented meeting approach involving developers, customers, and business users to identify system scope and requirements
+  C.     A typing test for analysts
+  D.     An automated database query tool
+Explanation: FAST brings users and engineers together in structured workshop environments to negotiate and define system scope collaboratively.
+
+[bca-423e-u2-q57] (Unit 2) What is a Data Flow Diagram (DFD)?
+  A.     A flowchart of hardware wiring
+  B. (*) A graphical modeling tool that depicts the flow of data through a system, data transformations by processes, data stores, and external entities
+  C.     A class inheritance hierarchy
+  D.     A Gantt schedule
+Explanation: DFD models the functional transformations of information as data moves through processes, data stores, and external boundaries.
+
+[bca-423e-u2-q58] (Unit 2) In standard DeMarco & Yourdon DFD notation, what symbol represents a Process (transformation of data)?
+  A.     Open-ended rectangle
+  B. (*) Circle / Bubble
+  C.     Solid rectangle
+  D.     Arrow
+Explanation: A Circle (or bubble) denotes a process that transforms incoming data flows into outgoing data flows.
+
+[bca-423e-u2-q59] (Unit 2) In DFD notation, what does an open-ended rectangle (or two parallel lines) represent?
+  A.     External entity
+  B. (*) Data Store (file or database repository where data rests)
+  C.     Process
+  D.     Decision point
+Explanation: Two parallel horizontal lines (or open-ended rectangle) represent a passive Data Store.
+
+[bca-423e-u2-q60] (Unit 2) What does a solid rectangle represent in a Data Flow Diagram?
+  A.     Data Store
+  B. (*) External Entity (source or sink of data outside the system boundary)
+  C.     Process
+  D.     Data flow packet
+Explanation: A rectangle represents an External Entity (such as an external user, department, or external computer system).
+
+[bca-423e-u2-q61] (Unit 2) What is a Context Diagram (Level 0 DFD)?
+  A.     A detailed diagram showing all internal database tables
+  B. (*) The highest-level conceptual overview showing the entire system as a single process bubble interacting with external entities
+  C.     A physical layout of server hardware
+  D.     A diagram showing lines of code
+Explanation: A Level 0 (Context) DFD abstracts the entire application into a single central bubble, defining system scope and boundary.
+
+[bca-423e-u2-q62] (Unit 2) What does 'Balancing' of Data Flow Diagrams mean when decomposing from Level 0 to Level 1?
+  A.     Ensuring the diagram has equal circles on left and right
+  B. (*) Ensuring all input data flows entering and output data flows leaving a high-level process bubble are preserved in its child decomposition diagram
+  C.     Balancing the financial budget
+  D.     Making all processes run at equal CPU speed
+Explanation: DFD balancing requires conservation of data flows across levels; inputs and outputs of a parent bubble must match child diagrams.
+
+[bca-423e-u2-q63] (Unit 2) What is a 'Black Hole' error in Data Flow Diagrams?
+  A.     A deleted database table
+  B. (*) A process that has input data flows but generates NO output data flows
+  C.     A process with only outputs and no inputs
+  D.     An infinite loop in code
+Explanation: A Black Hole is an illegal DFD error where data enters a process but nothing ever exits.
+
+[bca-423e-u2-q64] (Unit 2) What is a 'Miracle' error in Data Flow Diagrams?
+  A.     A project finished ahead of time
+  B. (*) A process that generates output data flows without receiving ANY input data flows
+  C.     A bug that fixes itself
+  D.     A database that never crashes
+Explanation: A Miracle occurs when data magically emanates from a process that has no input data flows.
+
+[bca-423e-u2-q65] (Unit 2) What is a Data Dictionary in structured analysis?
+  A.     An English language dictionary for developers
+  B. (*) A centralized repository containing formal definitions, structures, and metadata for every data element, data flow, and data store in the system
+  C.     A database of programmer names
+  D.     An online glossary of terms
+Explanation: The Data Dictionary defines data composition: elementary items, ranges, aliases, and structure of all data flows.
+
+[bca-423e-u2-q66] (Unit 2) In Data Dictionary notation, what does the symbol `+` indicate?
+  A.     Mathematical addition
+  B. (*) Sequence (concatenation / combination of components)
+  C.     Iteration
+  D.     Selection
+Explanation: `+` denotes sequence (e.g., Address = Street + City + State + Pincode).
+
+[bca-423e-u2-q67] (Unit 2) In Data Dictionary notation, what do curly braces `{ }` denote?
+  A.     Optional component
+  B. (*) Iteration (repetition of components zero or more times)
+  C.     Selection between alternatives
+  D.     Comment
+Explanation: `{ }` represents iteration/repetition of an item.
+
+[bca-423e-u2-q68] (Unit 2) In Data Dictionary notation, what do square brackets `[ | ]` denote?
+  A.     Iteration
+  B. (*) Selection (choice between mutually exclusive alternatives)
+  C.     Sequence
+  D.     Optional item
+Explanation: `[ A | B ]` indicates selection: choose either component A or component B.
+
+[bca-423e-u2-q69] (Unit 2) In Data Dictionary notation, what do parentheses `( )` indicate?
+  A.     Mandatory item
+  B. (*) Optional component (may or may not be present)
+  C.     Repetition
+  D.     Comment
+Explanation: `( )` encloses optional data items (e.g., Middle_Name = (Initial)).
+
+[bca-423e-u2-q70] (Unit 2) What is a Decision Table?
+  A.     A physical conference table where directors sit
+  B. (*) A structured tabular format representing complex business logic showing conditions, condition stubs, action stubs, and decision rules
+  C.     A list of database indexes
+  D.     A Gantt schedule
+Explanation: Decision tables map complex combinations of conditions (inputs) to corresponding actions (outputs) systematically.
+
+[bca-423e-u2-q71] (Unit 2) What are the four quadrants of a standard Decision Table?
+  A.     Header, Footer, Left margin, Right margin
+  B. (*) Condition Stub (upper left), Condition Entry (upper right), Action Stub (lower left), Action Entry (lower right)
+  C.     Input, Process, Output, Error
+  D.     Rows, Columns, Cells, Formulas
+Explanation: A decision table divides into Condition Stub/Entries (top) and Action Stub/Entries (bottom).
+
+[bca-423e-u2-q72] (Unit 2) How many rules are in a complete decision table with $N$ binary (Yes/No) independent conditions?
+  A.     $N$
+  B.     $2N$
+  C. (*) $2^N$
+  D.     $N^2$
+Explanation: With $N$ binary conditions, the total number of distinct logical combinations is $2^N$.
+
+[bca-423e-u2-q73] (Unit 2) What is a Decision Tree?
+  A.     A botanical specimen
+  B. (*) A graphical, tree-structured diagram representing sequential decision logic where internal nodes represent conditions and branches represent decisions leading to terminal actions
+  C.     A directory tree on a hard disk
+  D.     A binary search tree
+Explanation: Decision trees provide an intuitive graphical view of sequential alternative conditions and resulting actions.
+
+[bca-423e-u2-q74] (Unit 2) What does an Entity-Relationship (ER) diagram model?
+  A.     Program execution speed
+  B. (*) The conceptual data model of a system, depicting entities, their attributes, and relationships between entities
+  C.     Network router connections
+  D.     Software budget flow
+Explanation: ER diagrams model static data structure, identifying real-world entities, attributes (keys), and cardinalities (1:1, 1:N, M:N).
+
+[bca-423e-u2-q75] (Unit 2) In UML (Unified Modeling Language), what is a Use Case Diagram used for?
+  A.     Modeling CPU instruction cycles
+  B. (*) Capturing functional requirements from the perspective of external actors (users or systems) interacting with the system
+  C.     Showing database foreign keys
+  D.     Measuring line of code complexity
+Explanation: Use case diagrams model interactions between actors (stick figures) and use cases (horizontal ellipses) to define system boundaries.
+
+[bca-423e-u2-q76] (Unit 2) In a UML Use Case diagram, what does an `<<include>>` relationship indicate?
+  A.     The base use case optionally calls the included use case under special conditions
+  B. (*) The base use case explicitly and unconditionally incorporates the behavior of another use case at a specified location
+  C.     The use case is written in C++
+  D.     The user is logged out
+Explanation: `<<include>>` denotes mandatory reuse: the base use case cannot complete without executing the included sub-task (e.g., Validate PIN).
+
+[bca-423e-u2-q77] (Unit 2) In a UML Use Case diagram, what does an `<<extend>>` relationship represent?
+  A.     Mandatory sub-task
+  B. (*) Optional or conditional behavior that augments the base use case only when certain extension points/conditions are met
+  C.     A database backup
+  D.     Inheritance between classes
+Explanation: `<<extend>>` models optional/exceptional behavior (e.g., 'Display Low Balance Warning' extends 'Withdraw Cash' conditionally).
+
+[bca-423e-u2-q78] (Unit 2) What is a formal specification language in software engineering?
+  A.     English with technical jargon
+  B. (*) A mathematically rigorous language based on set theory, first-order predicate logic, and formal semantics (e.g., Z, VDM) to specify requirements unambiguously
+  C.     Java source code
+  D.     HTML markup
+Explanation: Formal methods use mathematical syntax (like Z or VDM) to eliminate ambiguity and enable mathematical proof of correctness.
+
+[bca-423e-u2-q79] (Unit 2) What is the primary purpose of Requirements Validation?
+  A.     To ensure the developer gets paid on time
+  B. (*) To verify that the requirements specified in the SRS accurately reflect what the customer actually needs and wants
+  C.     To compile the source code
+  D.     To check printer ink
+Explanation: Requirements validation ensures correctness, completeness, realism, and customer alignment before design begins.
+
+[bca-423e-u2-q80] (Unit 2) What is a 'Requirements Review' (or Walkthrough)?
+  A.     A marathon run by developers
+  B. (*) A formal or informal peer examination of the SRS document by analysts, customers, and developers to detect defects, omissions, and ambiguities
+  C.     An automated script that spellchecks text
+  D.     A customer survey on the website
+Explanation: Requirements reviews systematically inspect specifications to catch misunderstandings before they propagate into expensive architecture.
+
+[bca-423e-u2-q81] (Unit 2) What is an Object-Oriented Analysis (OOA) model primarily focused on?
+  A.     Decomposing a system into procedural functions
+  B. (*) Identifying classes, objects, their responsibilities, attributes, relationships, and dynamic state transitions that model the problem domain
+  C.     Counting CPU registers
+  D.     Formatting disk drives
+Explanation: OOA builds real-world object abstractions representing problem domain entities, encapsulated with state and behavior.
+
+[bca-423e-u2-q82] (Unit 2) In UML class modeling, what is 'Generalization'?
+  A. (*) An inheritance relationship ('is-a') where a subclass inherits attributes and operations from a more general superclass
+  B.     Sharing global variables
+  C.     Passing data over a network
+  D.     Encrypting passwords
+Explanation: Generalization models object inheritance (e.g., SavingsAccount 'is-a' Account), depicted by an open hollow triangle pointing to superclass.
+
+[bca-423e-u2-q83] (Unit 2) In UML, what is 'Aggregation'?
+  A. (*) A weak 'has-a' whole-part relationship where parts can exist independently of the whole
+  B.     A strong ownership where parts die with the whole
+  C.     Writing code in multiple files
+  D.     An SQL join
+Explanation: Aggregation represents a loose 'part-of' relationship (hollow diamond) where components survive if the containing aggregate is destroyed.
+
+[bca-423e-u2-q84] (Unit 2) In UML, what is 'Composition'?
+  A.     A weak association
+  B. (*) A strong 'has-a' whole-part relationship where child parts have a lifetime strictly bound to the parent whole (if parent dies, parts die)
+  C.     Compiling multiple files into an executable
+  D.     Playing background music in an app
+Explanation: Composition (filled solid diamond) represents exclusive, non-shared ownership; parts cannot exist without the parent (e.g., House and Rooms).
+
+[bca-423e-u2-q85] (Unit 2) Which UML diagram models the chronological, time-ordered sequence of message exchanges between objects?
+  A.     Class Diagram
+  B. (*) Sequence Diagram
+  C.     Deployment Diagram
+  D.     Package Diagram
+Explanation: Sequence diagrams show object lifelines vertically and message passing horizontally in precise chronological time sequence.
+
+[bca-423e-u2-q86] (Unit 2) Which UML diagram shows the lifecycle and state transitions of an individual object in response to events?
+  A. (*) State Machine (Statechart) Diagram
+  B.     Component Diagram
+  C.     Use Case Diagram
+  D.     Object Diagram
+Explanation: Statechart diagrams model dynamic behavior: states, events, transitions, and guard conditions of a reactive object.
+
+[bca-423e-u2-q87] (Unit 2) Which UML diagram models concurrent workflow, business processes, and parallel control flows using fork and join nodes?
+  A. (*) Activity Diagram
+  B.     Class Diagram
+  C.     Composite Structure Diagram
+  D.     Timing Diagram
+Explanation: Activity diagrams model computational and organizational workflows, supporting parallel concurrent branches using fork/join bars.
+
+[bca-423e-u2-q88] (Unit 2) What is 'Scope Creep' in software requirements management?
+  A.     A computer virus crawling through RAM
+  B. (*) The uncontrolled, gradual addition of new features or requirements beyond the original project scope without adjusting budget or schedule
+  C.     Deleting source code accidentally
+  D.     A slow internet connection
+Explanation: Scope creep occurs when new requirements accumulate informally, causing projects to blow past deadlines and budgets.
+
+[bca-423e-u2-q89] (Unit 2) How is Requirement Traceability commonly documented and managed?
+  A. (*) Using a Traceability Matrix
+  B.     Using a calculator
+  C.     In the computer BIOS
+  D.     On a white chalkboard
+Explanation: A Requirements Traceability Matrix (RTM) cross-references requirements IDs against design components, code files, and test case IDs.
+
+[bca-423e-u2-q90] (Unit 2) What does a State Transition Table represent in dynamic modeling?
+  A.     A list of state governors
+  B. (*) A tabular matrix specifying for every state and possible event, the resulting next state and output action
+  C.     A list of CPU register states
+  D.     A network routing table
+Explanation: State transition tables represent finite state machine logic: Current State + Event $\implies$ Next State + Action.
+
+[bca-423e-u2-q91] (Unit 2) What is the main danger of ambiguous requirements in an SRS?
+  A.     The font will look ugly
+  B. (*) Developers, testers, and clients will interpret the requirement differently, leading to building software that fails customer expectations
+  C.     The hard disk will crash
+  D.     It prevents file saving
+Explanation: Ambiguity leads to costly rework because engineers build what they guessed, rather than what the user intended.
+
+[bca-423e-u2-q92] (Unit 2) Which of the following is considered a user requirement elicitation technique?
+  A. (*) Interviews and questionnaires
+  B.     Compiling code with GCC
+  C.     Running ping commands
+  D.     Installing RAM modules
+Explanation: Techniques include interviews, questionnaires, brainstorming, observation, FAST workshops, and prototyping.
+
+[bca-423e-u2-q93] (Unit 2) In DFDs, can two data stores be connected directly by a data flow arrow without an intermediate process?
+  A.     Yes, always
+  B. (*) No, data cannot move directly between two passive data stores without an intervening process transforming or transferring it
+  C.     Only in Level 2 DFDs
+  D.     Yes, if they use SQL
+Explanation: Data stores are passive storage. Data cannot spontaneously move between data stores without an active Process.
+
+[bca-423e-u2-q94] (Unit 2) Can an external entity communicate directly with a data store without passing through a process in a valid DFD?
+  A.     Yes, external users write directly to files
+  B. (*) No, an external entity can never directly read or write a data store; an intermediate process must mediate the transaction
+  C.     Only in financial systems
+  D.     Yes, if using FTP
+Explanation: External entities cannot directly touch internal data stores; access must be mediated by a process.
+
+[bca-423e-u2-q95] (Unit 2) What is a 'Functional Primitive' in DFD hierarchy?
+  A.     The Level 0 context bubble
+  B. (*) A lowest-level process bubble that is not decomposed further and is specified by a Process Specification (Mini-spec / P-Spec)
+  C.     An assembly instruction
+  D.     A primitive data type like int
+Explanation: Functional primitives are leaf-level processes described directly via structured English, decision tables, or pseudo-code.
+
+[bca-423e-u2-q96] (Unit 2) What does the 'Verifiability' of a requirement mean?
+  A.     The requirement is written in English
+  B. (*) There exists some cost-effective, objective method (test, inspection, analysis) by which a person or machine can verify that the delivered software fulfills it
+  C.     The requirement is approved by a judge
+  D.     The requirement costs zero money
+Explanation: A requirement like 'the system shall be user-friendly' is unverifiable. 'A trained clerk shall enter a record in 15 seconds' is verifiable.
+
+[bca-423e-u2-q97] (Unit 2) What is 'Requirements Scoping'?
+  A.     Looking at source code with a telescope
+  B. (*) Defining the boundaries of the system: explicitly deciding what functionality is included and what is excluded from the project
+  C.     Determining employee work hours
+  D.     Choosing hardware monitors
+Explanation: Scoping establishes clear boundaries to prevent over-promising and manage customer expectations.
+
+[bca-423e-u2-q98] (Unit 2) In UML use cases, what does an 'Actor' represent?
+  A.     A movie star
+  B. (*) An external role played by an entity (human user, external hardware, or external software system) that interacts directly with the system
+  C.     An internal C++ class
+  D.     A database administrator only
+Explanation: Actors represent external entities initiating or receiving interactions with the system.
+
+[bca-423e-u2-q99] (Unit 2) What is a 'Walkthrough' in requirements engineering?
+  A.     Walking around the office during meetings
+  B. (*) A peer review where the author of a specification document leads participants through the document step by step to solicit feedback and find defects
+  C.     A formal audit for legal courts
+  D.     An acceptance test with clients
+Explanation: In a walkthrough, the author guides peers through the document to find defects, verify logic, and build shared consensus.
+
+[bca-423e-u2-q100] (Unit 2) What is a 'System Feasibility Study' conducted prior to requirements engineering?
+  A.     A test of internet cable speed
+  B. (*) An investigation to determine whether the proposed project is technically feasible, economically viable, and operationally sound before committing major resources
+  C.     A tax audit of the firm
+  D.     A code review
+Explanation: Feasibility studies evaluate technical, economic (cost-benefit), legal, and operational viability to recommend go/no-go decisions.
+
+[bca-423e-u3-q101] (Unit 3) What does COCOMO stand for in software engineering?
+  A.     Continuous Component Model
+  B. (*) Constructive Cost Model
+  C.     Computer Cost Management Object
+  D.     Core Computing Optimization Model
+Explanation: COCOMO stands for Constructive Cost Model, developed by Dr. Barry Boehm in 1981.
+
+[bca-423e-u3-q102] (Unit 3) In Boehm's Basic COCOMO model, what are the three modes of software development projects?
+  A.     Fast, Medium, Slow
+  B. (*) Organic, Semi-Detached, and Embedded
+  C.     Alpha, Beta, Release
+  D.     Waterfall, Agile, Spiral
+Explanation: COCOMO classifies projects into: Organic (small, experienced team), Semi-detached (medium), and Embedded (tight hardware/regulatory constraints).
+
+[bca-423e-u3-q103] (Unit 3) Which COCOMO project mode represents small teams working in familiar, stable environments with loose constraints?
+  A.     Embedded Mode
+  B.     Semi-Detached Mode
+  C. (*) Organic Mode
+  D.     Complex Mode
+Explanation: Organic projects involve experienced, small teams working on well-understood problems in familiar environments.
+
+[bca-423e-u3-q104] (Unit 3) Which COCOMO mode characterizes complex projects with tight hardware constraints, unfamiliar environments, and stringent regulations (e.g., flight control software)?
+  A.     Organic Mode
+  B.     Semi-Detached Mode
+  C. (*) Embedded Mode
+  D.     Ad-hoc Mode
+Explanation: Embedded systems operate under severe hardware interfaces, real-time deadlines, and operational constraints.
+
+[bca-423e-u3-q105] (Unit 3) In Basic COCOMO, the general formula for estimating development effort (in person-months) is:
+  A. (*) $E = a \times (\text{KLOC})^b$
+  B.     $E = a + b \times \text{KLOC}$
+  C.     $E = \text{KLOC} / a^b$
+  D.     $E = a \times b \times \text{KLOC}$
+Explanation: Basic COCOMO estimates effort as $E = a \times (\text{KLOC})^b$ person-months, where $a$ and $b$ depend on project mode.
+
+[bca-423e-u3-q106] (Unit 3) For an Organic project in Basic COCOMO with $a = 2.4$ and $b = 1.05$, if size is estimated at 10 KLOC, what is the estimated effort?
+  A.     24 Person-Months
+  B. (*) Approximately 26.9 Person-Months
+  C.     100 Person-Months
+  D.     2.4 Person-Months
+Explanation: $E = 2.4 \times (10)^{1.05} = 2.4 \times 11.22 \approx 26.93 \text{ person-months}$.
+
+[bca-423e-u3-q107] (Unit 3) In COCOMO, what is Development Time (nominal schedule duration $T_{\text{dev}}$ in calendar months) calculated as?
+  A. (*) $T_{\text{dev}} = c \times E^d$
+  B.     $T_{\text{dev}} = E / 12$
+  C.     $T_{\text{dev}} = \text{KLOC} \times c$
+  D.     $T_{\text{dev}} = d \times \text{KLOC}^c$
+Explanation: Development time is calculated as $T_{\text{dev}} = c \times E^d$ months, reflecting schedule compression limits.
+
+[bca-423e-u3-q108] (Unit 3) How is the average recommended staffing size (number of developers) determined from COCOMO effort and schedule?
+  A. (*) $\text{Staff Size} = E / T_{\text{dev}}$
+  B.     $\text{Staff Size} = E \times T_{\text{dev}}$
+  C.     $\text{Staff Size} = \text{KLOC} / E$
+  D.     $\text{Staff Size} = T_{\text{dev}} / 2$
+Explanation: Average staff size is total Person-Months divided by development schedule months: $\text{Staff Size} = E / T_{\text{dev}}$.
+
+[bca-423e-u3-q109] (Unit 3) What additional factors does Intermediate COCOMO incorporate beyond KLOC to refine cost estimates?
+  A. (*) 15 Cost Drivers (Effort Multipliers covering Product, Hardware, Personnel, and Project attributes)
+  B.     The number of lines in SRS
+  C.     The price of office furniture
+  D.     Hourly contractor billing rates
+Explanation: Intermediate COCOMO multiplies basic effort by 15 Cost Drivers ($E = a \times (\text{KLOC})^b \times \prod EAF_i$).
+
+[bca-423e-u3-q110] (Unit 3) What is the Delphi Technique used for in software cost estimation?
+  A.     Automating code reviews
+  B. (*) An expert-judgment estimation method using structured anonymous iteration and statistical aggregation to reach group consensus
+  C.     Calculating cyclomatic complexity
+  D.     Testing database performance
+Explanation: The Delphi technique gathers anonymous independent estimates from experts, collating and re-sharing summaries iteratively until consensus converges.
+
+[bca-423e-u3-q111] (Unit 3) What does WBS stand for in software project management?
+  A.     Wide Bandwidth System
+  B. (*) Work Breakdown Structure
+  C.     Windows Build Script
+  D.     Web Based Service
+Explanation: WBS is a hierarchical decomposition of total project scope into smaller, manageable, and deliverable-oriented work packages.
+
+[bca-423e-u3-q112] (Unit 3) What is a Gantt Chart?
+  A.     A pie chart of employee salaries
+  B. (*) A horizontal bar chart illustrating project schedules, activity start and finish dates, and work progress against time
+  C.     A schematic of network switches
+  D.     A flowchart of algorithm steps
+Explanation: Henry Gantt's chart maps project tasks along a horizontal timeline, showing task durations, dependencies, and overlapping schedules.
+
+[bca-423e-u3-q113] (Unit 3) In CPM (Critical Path Method), what is the 'Critical Path'?
+  A.     The shortest path in the network diagram
+  B. (*) The sequence of dependent activities with zero total slack (float) that dictates the absolute minimum duration to complete the project
+  C.     The path with the highest cost
+  D.     The path that causes computer crashes
+Explanation: The Critical Path is the longest sequence of tasks through the project network; any delay on a critical path activity directly delays overall completion.
+
+[bca-423e-u3-q114] (Unit 3) What is 'Slack Time' (or Float) of an activity in a project network?
+  A.     The time workers spend taking coffee breaks
+  B. (*) The amount of time an activity can be delayed without delaying the subsequent activity or the overall project completion date
+  C.     The download time of dependencies
+  D.     The time taken to run unit tests
+Explanation: $\text{Total Float} = \text{Latest Start} - \text{Earliest Start} = \text{Latest Finish} - \text{Earliest Finish}$. Activities on critical path have zero float.
+
+[bca-423e-u3-q115] (Unit 3) In PERT (Program Evaluation and Review Technique), how is the expected activity duration ($T_e$) calculated from Optimistic ($a$), Most Likely ($m$), and Pessimistic ($b$) estimates?
+  A.     $T_e = (a + m + b) / 3$
+  B. (*) $T_e = (a + 4m + b) / 6$
+  C.     $T_e = (a + 2m + b) / 4$
+  D.     $T_e = a + b - m$
+Explanation: PERT uses a beta probability distribution weighted average: $T_e = (a + 4m + b) / 6$.
+
+[bca-423e-u3-q116] (Unit 3) If an activity has optimistic time $a = 2$ weeks, most likely $m = 5$ weeks, and pessimistic $b = 14$ weeks, what is PERT expected time $T_e$?
+  A.     5 weeks
+  B. (*) 6 weeks
+  C.     7 weeks
+  D.     8 weeks
+Explanation: $T_e = (2 + 4(5) + 14) / 6 = (2 + 20 + 14) / 6 = 36 / 6 = 6 \text{ weeks}$.
+
+[bca-423e-u3-q117] (Unit 3) In Earned Value Analysis (EVA), what is the Cost Variance (CV) formula?
+  A.     $\text{CV} = \text{Planned Value (PV)} - \text{Earned Value (EV)}$
+  B. (*) $\text{CV} = \text{Earned Value (EV)} - \text{Actual Cost (AC)}$
+  C.     $\text{CV} = \text{Actual Cost (AC)} - \text{Earned Value (EV)}$
+  D.     $\text{CV} = \text{PV} / \text{AC}$
+Explanation: $\text{Cost Variance} = \text{EV} - \text{AC}$. Positive CV indicates project is under budget; negative CV indicates budget overrun.
+
+[bca-423e-u3-q118] (Unit 3) In Earned Value Analysis, what is the Schedule Variance (SV) formula?
+  A. (*) $\text{SV} = \text{Earned Value (EV)} - \text{Planned Value (PV)}$
+  B.     $\text{SV} = \text{PV} - \text{EV}$
+  C.     $\text{SV} = \text{EV} / \text{AC}$
+  D.     $\text{SV} = \text{AC} - \text{PV}$
+Explanation: $\text{Schedule Variance} = \text{EV} - \text{PV}$. Positive SV indicates project is ahead of schedule; negative means behind schedule.
+
+[bca-423e-u3-q119] (Unit 3) What does a Cost Performance Index (CPI) of 0.85 indicate in Earned Value Management?
+  A.     Project is 15% under budget
+  B. (*) Project is getting only 85 cents worth of work for every dollar spent (cost overrun)
+  C.     Project is 85 days ahead of schedule
+  D.     Project is completed
+Explanation: $CPI = EV / AC$. A CPI < 1.0 indicates overspending relative to value delivered.
+
+[bca-423e-u3-q120] (Unit 3) What does a Schedule Performance Index (SPI) of 1.2 indicate?
+  A. (*) Project is progressing 20% faster than planned (ahead of schedule)
+  B.     Project is 20% delayed
+  C.     Project costs 20% more
+  D.     Project has 20 bugs remaining
+Explanation: $SPI = EV / PV$. An SPI > 1.0 indicates the team is accomplishing work faster than scheduled.
+
+[bca-423e-u3-q121] (Unit 3) In a Democratic Decentralized (DD) project team structure:
+  A.     One chief programmer dictates all architectural decisions
+  B. (*) Decisions are made by group consensus, communication is horizontal and all-to-all, and leadership is fluid
+  C.     Workers are prohibited from speaking
+  D.     External clients review every function
+Explanation: DD teams operate collegially with open horizontal communication, ideal for research problems but suffering high communication overhead ($n(n-1)/2$).
+
+[bca-423e-u3-q122] (Unit 3) In a Controlled Centralized (CC) Chief Programmer Team structure:
+  A.     Every developer has equal authority
+  B. (*) A highly skilled Chief Programmer directs architecture, programming, and team operations, supported by a backup programmer and program librarian
+  C.     Decisions require voting by users
+  D.     No manager exists
+Explanation: Harlan Mills' Chief Programmer team concentrates design/critical coding in a star engineer, freeing others for auxiliary support.
+
+[bca-423e-u3-q123] (Unit 3) What is the primary function of a Program Librarian in a Chief Programmer team?
+  A.     Loaning paperback books to programmers
+  B. (*) Maintaining project records, managing code libraries, handling documentation, compile scripts, and configuration baselines
+  C.     Writing all unit test code
+  D.     Managing employee salaries
+Explanation: The Librarian manages technical clerical overhead (configuration control, build scripts, run logs), allowing programmers to focus purely on coding.
+
+[bca-423e-u3-q124] (Unit 3) What is Software Configuration Management (SCM)?
+  A.     Configuring computer monitor settings
+  B. (*) A disciplined engineering process for tracking, managing, and controlling changes to all software work artifacts (code, docs, tests) throughout the life cycle
+  C.     Formatting hard drives
+  D.     Setting Wi-Fi passwords
+Explanation: SCM maintains system integrity across changes via configuration identification, version control, change control, and auditing.
+
+[bca-423e-u3-q125] (Unit 3) What is a 'Baseline' in Software Configuration Management?
+  A.     The first line of code in main()
+  B. (*) A formally reviewed and agreed-upon version of a configuration item that serves as the basis for further development, change only via formal change control procedures
+  C.     An unapproved draft
+  D.     A canceled project
+Explanation: Baselines (e.g., Functional Baseline, Design Baseline, Product Baseline) can only be altered through formal change board approval.
+
+[bca-423e-u3-q126] (Unit 3) What is the role of a Change Control Board (CCB)?
+  A.     To fix printer paper jams
+  B. (*) To formally review, evaluate the impact of, approve or reject requested engineering changes to baseline configuration items
+  C.     To write marketing brochures
+  D.     To negotiate office leases
+Explanation: The CCB (stakeholders, project leads, QA) assesses proposed change requests (CRs) for business necessity, risk, and impact before authorization.
+
+[bca-423e-u3-q127] (Unit 3) Which of the following is a modern distributed Version Control System (VCS)?
+  A. (*) Git
+  B.     Gantt
+  C.     COCOMO
+  D.     CMMI
+Explanation: Git is the premier distributed version control system tracking repository history and branching.
+
+[bca-423e-u3-q128] (Unit 3) What does 'Version Control' manage in SCM?
+  A.     Software prices in retail stores
+  B. (*) Tracking multiple revisions and versions of source code and documents, enabling branching, merging, and historical rollback
+  C.     Auditing employee internet history
+  D.     Calculating software depreciation
+Explanation: Version control tracks the delta history of codebases, allowing parallel branches, merges, and restoration of previous states.
+
+[bca-423e-u3-q129] (Unit 3) What is a Configuration Audit in SCM?
+  A.     Checking financial receipts of software purchase
+  B. (*) An independent inspection verifying that the software product meets all functional requirements and that all approved changes have been correctly implemented
+  C.     Running antivirus software
+  D.     Measuring CPU clock rate
+Explanation: Functional and Physical Configuration Audits confirm the product matches specifications and baselines reflect approved changes.
+
+[bca-423e-u3-q130] (Unit 3) What is 'Status Accounting' in SCM?
+  A.     Recording employee travel expenditures
+  B. (*) Reporting and recording the status of configuration items and pending change requests across the development lifecycle
+  C.     Calculating net profit
+  D.     Filing corporate tax forms
+Explanation: Configuration status accounting reports what happened, who did it, when change was made, and current baseline state.
+
+[bca-423e-u3-q131] (Unit 3) In software project risk management, what is a 'Reactive Risk Strategy'?
+  A.     Planning countermeasures for risks months in advance
+  B. (*) Ignoring potential risks until they materialize into active crises and scrambling to fix them ('firefighting')
+  C.     Canceling projects before they begin
+  D.     Insuring software with commercial insurance
+Explanation: Reactive risk management ('firefighting') takes no preventive action until a failure actually explodes into a crisis.
+
+[bca-423e-u3-q132] (Unit 3) In software risk management, what is a 'Proactive Risk Strategy'?
+  A.     Waiting for customer complaints
+  B. (*) Anticipating potential risks in advance, analyzing their likelihood and impact, and implementing formal mitigation and contingency plans
+  C.     Ignoring software bugs
+  D.     Refusing to accept new clients
+Explanation: Proactive risk management identifies vulnerabilities early and prepares RMMM plans to minimize impact.
+
+[bca-423e-u3-q133] (Unit 3) What are the two core dimensions used to quantify and prioritize a Software Risk?
+  A.     Risk Font Size and Color
+  B. (*) Risk Probability (Likelihood of occurrence) and Risk Impact (Severity of consequence)
+  C.     Developer Age and Experience
+  D.     Programming Language and Compiler
+Explanation: $\text{Risk Exposure (RE)} = \text{Probability} \times \text{Impact}$. High-probability, high-impact risks receive top mitigation priority.
+
+[bca-423e-u3-q134] (Unit 3) What does an RMMM Plan stand for in risk management?
+  A.     Random Model Management Method
+  B. (*) Risk Mitigation, Monitoring, and Management plan
+  C.     Rapid Machine Maintenance Module
+  D.     Requirements Modeling Measurement Metric
+Explanation: RMMM articulates how the team will mitigate risk (avoid it), monitor risk triggers, and manage consequences if it strikes.
+
+[bca-423e-u3-q135] (Unit 3) What is a 'Project Risk' versus a 'Technical Risk'?
+  A. (*) Project risks threaten project schedule and resources (budget, staffing); technical risks threaten product quality and timeliness of implementation (unproven architecture, complex algorithms)
+  B.     Technical risks affect hardware only
+  C.     Project risks are caused by users
+  D.     There is no distinction
+Explanation: Project risks jeopardize delivery dates and budgets; technical risks threaten correctness, performance, and feasibility.
+
+[bca-423e-u3-q136] (Unit 3) What is 'Risk Projection' (or Risk Estimation)?
+  A.     Projecting risk slides on a projector screen
+  B. (*) Rating each risk on its probability of occurrence and consequences/impact, creating a prioritized risk table
+  C.     Writing risk software
+  D.     Calculating server costs
+Explanation: Risk projection estimates likelihood and severity to rank risks into an actionable risk table.
+
+[bca-423e-u3-q137] (Unit 3) In software development, what does 'Brooks' Law' address?
+  A.     Software bugs increase with lines of code
+  B. (*) Adding manpower to a late software project makes it later
+  C.     Every project requires exactly 12 months
+  D.     Memory doubles every two years
+Explanation: Adding developers to a late project increases communication channels exponentially and drains veteran time to train newcomers.
+
+[bca-423e-u3-q138] (Unit 3) What is a Work Package in a Work Breakdown Structure (WBS)?
+  A.     A physical box shipped to clients
+  B. (*) The lowest-level deliverable or discrete task in a WBS that can be assigned, scheduled, and cost-budgeted independently
+  C.     An executable .zip file
+  D.     A bundle of USB cables
+Explanation: A work package represents an atomic terminal unit of work in a WBS suitable for assignment and tracking.
+
+[bca-423e-u3-q139] (Unit 3) In software scheduling, what is an 'Earliest Start Time' (ES)?
+  A.     The time developers arrive in the morning
+  B. (*) The earliest possible calendar date an activity can commence, assuming all predecessor activities finish at their earliest times
+  C.     The contract signing date
+  D.     The first day of the year
+Explanation: ES is calculated via Forward Pass through the project network: $ES_j = \max(EF_i)$ for all immediate predecessors.
+
+[bca-423e-u3-q140] (Unit 3) What is the 'Latest Finish Time' (LF) of an activity in project scheduling?
+  A.     The date the company goes out of business
+  B. (*) The latest time an activity can finish without delaying the overall project scheduled completion date
+  C.     The end of the work day
+  D.     The date software is uninstalled
+Explanation: LF is computed via Backward Pass through the project network: $LF_i = \min(LS_j)$ for all immediate successors.
+
+[bca-423e-u3-q141] (Unit 3) If an activity has Earliest Start = Day 5, Duration = 4 days, and Latest Finish = Day 11, what is its Total Slack (Float)?
+  A.     0 days
+  B. (*) 2 days
+  C.     6 days
+  D.     4 days
+Explanation: $\text{Earliest Finish} = 5 + 4 = 9$. $\text{Slack} = \text{Latest Finish} - \text{Earliest Finish} = 11 - 9 = 2 \text{ days}$.
+
+[bca-423e-u3-q142] (Unit 3) Which project estimation model is an empirical model derived from historical data of hundreds of completed projects?
+  A. (*) COCOMO
+  B.     Pure guessing
+  C.     Coin toss model
+  D.     User interview model
+Explanation: COCOMO is an empirical model whose coefficients were statistically regressed from a database of historical projects.
+
+[bca-423e-u3-q143] (Unit 3) In Function Point Analysis, what is an 'External Inquiry' (EQ)?
+  A.     An audit from tax authorities
+  B. (*) An elementary user transaction that retrieves and presents data to the user without altering any internal logical files
+  C.     A telephone call from a client
+  D.     A database backup command
+Explanation: EQs are simple input/output combinations that query database records without updating internal files.
+
+[bca-423e-u3-q144] (Unit 3) In Function Point Analysis, what is an 'External Input' (EI)?
+  A.     Electricity powering the server
+  B. (*) An input transaction that processes data or control information originating from outside application boundary that updates an Internal Logical File
+  C.     A keystroke on a keyboard
+  D.     A mouse movement
+Explanation: EIs add, change, or delete data maintained in internal logical files (e.g., submitting a customer registration form).
+
+[bca-423e-u3-q145] (Unit 3) What is the purpose of Risk Monitoring in an RMMM plan?
+  A.     Watching developers with CCTV cameras
+  B. (*) Tracking risk indicators and factors to determine whether risk likelihood is increasing or decreasing as development unfolds
+  C.     Counting lines of code daily
+  D.     Monitoring server CPU temperature
+Explanation: Risk monitoring observes early-warning indicators (e.g., turnover, defect rates) so contingency plans can activate promptly.
+
+[bca-423e-u3-q146] (Unit 3) What is a 'Contingency Plan' in risk management?
+  A. (*) A backup plan executed when an identified risk occurs and mitigation efforts fail to prevent it
+  B.     An illegal business plan
+  C.     A plan to cancel the company
+  D.     A hardware maintenance manual
+Explanation: Contingency plans outline actionable fallback steps executed if a risk event actually materializes.
+
+[bca-423e-u3-q147] (Unit 3) Which of the following is a major Software Configuration Item (SCI)?
+  A. (*) Source code files, Design documents, Test suites, and User manuals
+  B.     Developer coffee mugs
+  C.     Office chairs
+  D.     Physical paper invoices
+Explanation: SCIs are discrete artifacts produced across the life cycle (specifications, architectural designs, code, test cases, baselines).
+
+[bca-423e-u3-q148] (Unit 3) What is 'Fast-Tracking' in project scheduling?
+  A.     Typing code twice as fast
+  B. (*) Performing sequential activities in parallel to compress the overall project schedule
+  C.     Skipping unit testing
+  D.     Replacing senior staff with interns
+Explanation: Fast-tracking compresses schedules by running phases concurrently (e.g., starting coding before design finishes), increasing rework risk.
+
+[bca-423e-u3-q149] (Unit 3) What is 'Crashing' in project scheduling?
+  A.     Crashing the server operating system
+  B. (*) Adding extra resources (overtime, additional staff, equipment) to critical path activities to shorten overall project duration for minimal incremental cost
+  C.     Deleting half the requirements
+  D.     Canceling the project
+Explanation: Crashing shortens critical path duration by infusing additional funds or resources, balancing time compression against increased cost.
+
+[bca-423e-u3-q150] (Unit 3) A milestone in software project management represents:
+  A.     A physical milestone on a highway
+  B. (*) A significant, zero-duration event or checkpoint marking the completion of a major deliverable or phase
+  C.     One thousand lines of code
+  D.     A weekly project status report
+Explanation: Milestones have zero duration and signify unambiguous completion of key milestones (e.g., 'SRS Approved', 'Architecture Signed Off').
+
+[bca-423e-u4-q151] (Unit 4) What is the primary objective of the Software Design phase?
+  A.     To write binary machine instructions directly
+  B. (*) To transform software requirements specified in the SRS into an architectural and detailed blueprint suitable for coding
+  C.     To calculate employee payroll
+  D.     To print marketing manuals
+Explanation: Design bridges requirements (what the system must do) to implementation (how the system will be built).
+
+[bca-423e-u4-q152] (Unit 4) Who introduced the fundamental principle of 'Information Hiding' in software design in 1972?
+  A. (*) David Parnas
+  B.     Edsger Dijkstra
+  C.     Niklaus Wirth
+  D.     Bjarne Stroustrup
+Explanation: David L. Parnas formulated Information Hiding: modules should hide internal implementation secrets behind stable interfaces.
+
+[bca-423e-u4-q153] (Unit 4) What does the principle of 'Information Hiding' dictate?
+  A.     Hiding passwords from users
+  B. (*) Hiding internal module design details, algorithms, and data structures from other modules, exposing only necessary abstract interfaces
+  C.     Hiding software bugs from customers
+  D.     Hiding source code from compilers
+Explanation: Information hiding prevents cascading ripples of change; changes to a module's internal algorithms do not impact external modules.
+
+[bca-423e-u4-q154] (Unit 4) What is 'Abstraction' in software design?
+  A.     Writing code that cannot be understood
+  B. (*) Focusing on essential characteristics of an entity while hiding or suppressing non-essential implementation details
+  C.     Creating abstract art
+  D.     Writing programs without comments
+Explanation: Abstraction permits developers to reason about high-level behavior without drowning in operational trivia.
+
+[bca-423e-u4-q155] (Unit 4) What is 'Modularity'?
+  A.     Purchasing modular office furniture
+  B. (*) Decomposing a complex software system into distinct, independently manageable, and functionally cohesive components (modules)
+  C.     Writing all code in one massive 10,000-line file
+  D.     Running software on multiple monitors
+Explanation: Modularity breaks large programs into smaller, manageable chunks that can be developed, tested, and maintained independently.
+
+[bca-423e-u4-q156] (Unit 4) What is 'Cohesion' in software engineering?
+  A.     The degree of interdependence between two different modules
+  B. (*) The measure of functional relatedness and strength of elements within a single module (intra-module strength)
+  C.     The speed of message transmission over Ethernet
+  D.     The number of classes in a package
+Explanation: Cohesion measures how tightly focused the internal responsibilities of a single module are.
+
+[bca-423e-u4-q157] (Unit 4) What is 'Coupling' in software engineering?
+  A. (*) The measure of the degree of interdependence and interaction between different modules (inter-module connection)
+  B.     The number of functions inside a class
+  C.     Connecting two computers with a cable
+  D.     Compiling two source files
+Explanation: Coupling measures how strongly one module depends on, interacts with, or knows about another module.
+
+[bca-423e-u4-q158] (Unit 4) What is the golden rule of modular software design regarding Cohesion and Coupling?
+  A.     Low Cohesion and High Coupling
+  B. (*) High Cohesion and Low (Loose) Coupling
+  C.     High Coupling and High Cohesion
+  D.     Zero Cohesion and Zero Coupling
+Explanation: High cohesion ensures modules do one clear task; low coupling ensures changes in one module do not break others.
+
+[bca-423e-u4-q159] (Unit 4) Which of the following represents the HIGHEST (best and most desirable) level of Cohesion?
+  A.     Coincidental Cohesion
+  B.     Logical Cohesion
+  C.     Sequential Cohesion
+  D. (*) Functional Cohesion
+Explanation: Functional Cohesion is the gold standard: all elements within the module contribute to executing a single, well-defined mathematical or logical function.
+
+[bca-423e-u4-q160] (Unit 4) Which of the following represents the LOWEST (worst and least desirable) level of Cohesion?
+  A.     Functional Cohesion
+  B. (*) Coincidental Cohesion
+  C.     Communicational Cohesion
+  D.     Procedural Cohesion
+Explanation: Coincidental Cohesion occurs when parts are bundled together randomly with no meaningful relationship (e.g., 'MiscUtilities').
+
+[bca-423e-u4-q161] (Unit 4) What is 'Temporal Cohesion'?
+  A. (*) A module where elements are grouped because they must be executed around the same time during program startup or shutdown (e.g., InitializeSystem)
+  B.     A module that calculates calendar dates
+  C.     A module running on an atomic clock
+  D.     A module executing every millisecond
+Explanation: Temporal cohesion groups tasks that happen at the same time (e.g., opening logs, setting defaults, initializing sensors) rather than sharing logic.
+
+[bca-423e-u4-q162] (Unit 4) What is 'Communicational Cohesion'?
+  A.     A module that sends email
+  B. (*) A module whose functions operate on the exact same input data or produce the exact same output data repository
+  C.     A module communicating over a network
+  D.     A module with print statements
+Explanation: Communicational cohesion occurs when elements operate on the same data structure (e.g., 'UpdateStudentRecord' and 'PrintStudentReport').
+
+[bca-423e-u4-q163] (Unit 4) What is 'Sequential Cohesion'?
+  A. (*) A module where the output of one element serves as the input to the subsequent element (pipeline)
+  B.     A module written in numerical line order
+  C.     A module running on sequential disks
+  D.     A module with no loops
+Explanation: In sequential cohesion, tasks form an assembly pipeline: output of task A becomes direct input to task B.
+
+[bca-423e-u4-q164] (Unit 4) Which of the following represents the TIGHTEST (worst and most hazardous) level of Coupling?
+  A.     Data Coupling
+  B. (*) Content Coupling
+  C.     Common Coupling
+  D.     Control Coupling
+Explanation: Content Coupling occurs when one module directly modifies, accesses, or jumps into the internal code or private data of another module.
+
+[bca-423e-u4-q165] (Unit 4) Which of the following represents the LOOSEST (best and most desirable) level of Coupling?
+  A.     Content Coupling
+  B.     Common Coupling
+  C.     Control Coupling
+  D. (*) Data Coupling
+Explanation: Data Coupling is optimal: modules communicate strictly by passing atomic, primitive data arguments (e.g., integers, floats) through clean interfaces.
+
+[bca-423e-u4-q166] (Unit 4) What is 'Common Coupling'?
+  A.     Two programmers sharing a desk
+  B. (*) Two or more modules sharing access to the exact same global data structures or variables
+  C.     Modules written in C
+  D.     A common error in code
+Explanation: Common coupling creates severe maintenance headaches because changes to a global variable unpredictably corrupt multiple distant modules.
+
+[bca-423e-u4-q167] (Unit 4) What is 'Control Coupling'?
+  A.     One module controls hardware fans
+  B. (*) One module passes control flags, switches, or logic indicators to another module, explicitly directing what code path it executes
+  C.     A module controlling user access
+  D.     A supervisor watching workers
+Explanation: Control coupling forces one module to know the internal control flow of another, violating encapsulation.
+
+[bca-423e-u4-q168] (Unit 4) What is 'Stamp Coupling'?
+  A.     Sending letters through postal mail
+  B. (*) One module passing an entire composite data structure (e.g., whole Customer record) to another module that only requires a single field (e.g., ZipCode)
+  C.     Applying digital rubber stamps
+  D.     A graphic design term
+Explanation: Stamp coupling exposes unnecessary internal data fields, creating spurious dependencies on record structures.
+
+[bca-423e-u4-q169] (Unit 4) In structured design, what is a Structure Chart used for?
+  A.     Showing organization company hierarchy
+  B. (*) Representing software architecture hierarchically: module calls, data flows, and control flags
+  C.     Showing database indexes
+  D.     Illustrating network routers
+Explanation: Structure charts depict procedural module hierarchies, directed invocation arrows, and data/control communication bubbles.
+
+[bca-423e-u4-q170] (Unit 4) In a Structure Chart, what does an arrow with an open circle denote?
+  A.     Control Flag / Signal
+  B. (*) Data Couple (information passed between modules)
+  C.     Recursive call
+  D.     Interrupt
+Explanation: An arrow with an open circle ($-\circ\to$) denotes a Data Couple; a filled solid dot ($-\bullet\to$) denotes a Control Flag.
+
+[bca-423e-u4-q171] (Unit 4) In a Structure Chart, what does an arrow with a filled solid dot denote?
+  A.     Data Couple
+  B. (*) Control Couple / Flag (status indicator or branch direction)
+  C.     Memory address
+  D.     Database pointer
+Explanation: A filled dot indicates a Control Couple (flag or signal influencing execution flow).
+
+[bca-423e-u4-q172] (Unit 4) What is 'Transform Analysis' in structured design?
+  A.     Translating code from C to Python
+  B. (*) A design strategy that maps a DFD with clear input, transformation, and output streams into a balanced structure chart
+  C.     Converting analog signals to digital
+  D.     Refactoring database tables
+Explanation: Transform analysis identifies the central transform (most abstract data processing) and builds an input-process-output architecture.
+
+[bca-423e-u4-q173] (Unit 4) What is 'Transaction Analysis' in structured design?
+  A.     Auditing bank cash registers
+  B. (*) A design strategy used when a DFD has a transaction center that evaluates an input transaction and routes control to one of many action paths
+  C.     Processing credit cards
+  D.     Writing SQL commit statements
+Explanation: Transaction analysis maps a single input dispatcher into parallel action handlers based on transaction type.
+
+[bca-423e-u4-q174] (Unit 4) Who formulated the concept of Cyclomatic Complexity?
+  A. (*) Thomas McCabe
+  B.     Maurice Halstead
+  C.     Barry Boehm
+  D.     Niklaus Wirth
+Explanation: Thomas J. McCabe introduced Cyclomatic Complexity in 1976 as a quantitative graph-theoretic measure of code logical complexity.
+
+[bca-423e-u4-q175] (Unit 4) What is the formula for McCabe's Cyclomatic Complexity $V(G)$ of a Control Flow Graph with $E$ edges, $N$ nodes, and $P$ connected components?
+  A. (*) $V(G) = E - N + 2P$
+  B.     $V(G) = E + N - P$
+  C.     $V(G) = E \times N / P$
+  D.     $V(G) = N - E + 1$
+Explanation: $V(G) = E - N + 2P$. For a single program module ($P=1$), $V(G) = E - N + 2$.
+
+[bca-423e-u4-q176] (Unit 4) If a control flow graph has 14 edges and 10 nodes for a single component ($P=1$), what is its Cyclomatic Complexity?
+  A.     4
+  B. (*) 6
+  C.     8
+  D.     24
+Explanation: $V(G) = E - N + 2 = 14 - 10 + 2 = 6$.
+
+[bca-423e-u4-q177] (Unit 4) In a program with $P$ simple binary decision/predicate nodes (e.g., `if`, `while`), what is the Cyclomatic Complexity?
+  A.     $P$
+  B. (*) $P + 1$
+  C.     $2P$
+  D.     $P - 1$
+Explanation: Cyclomatic complexity equals the number of predicate/decision nodes plus 1: $V(G) = P + 1$.
+
+[bca-423e-u4-q178] (Unit 4) What does Cyclomatic Complexity quantitatively tell a software test engineer?
+  A.     The number of lines of source code
+  B. (*) The exact number of linearly independent paths through the program, establishing the minimum test cases needed for full path coverage
+  C.     The time to compile the code
+  D.     The RAM required
+Explanation: McCabe's metric establishes an upper bound on the number of test cases required for 100% basis path coverage.
+
+[bca-423e-u4-q179] (Unit 4) According to McCabe, what is the maximum recommended Cyclomatic Complexity for an individual function before it should be refactored?
+  A.     5
+  B. (*) 10
+  C.     50
+  D.     100
+Explanation: McCabe recommended that modules with $V(G) > 10$ should be decomposed into smaller functions due to exponential defect risk.
+
+[bca-423e-u4-q180] (Unit 4) Which architectural pattern organizes software into a unidirectional flow where output of each processing step serves as input to the next?
+  A.     Model-View-Controller (MVC)
+  B. (*) Pipe-and-Filter Architecture
+  C.     Client-Server
+  D.     Blackboard Architecture
+Explanation: Pipe-and-Filter (exemplified by Unix pipelines) transforms streams of data through independent filter processing components.
+
+[bca-423e-u4-q181] (Unit 4) In Model-View-Controller (MVC) architectural pattern, what is the role of the 'Model'?
+  A.     Renders the user interface and buttons
+  B. (*) Encapsulates core application state, business logic, data rules, and database entities
+  C.     Listens for user mouse clicks and routes requests
+  D.     Styles pages using CSS
+Explanation: The Model maintains business data and logic; the View presents UI; the Controller handles user input and updates Model/View.
+
+[bca-423e-u4-q182] (Unit 4) In MVC architecture, what does the 'Controller' do?
+  A.     Stores data on hard disk
+  B. (*) Accepts user input (clicks, keyboard strokes), translates it into commands, and updates the Model and/or View accordingly
+  C.     Displays graphics on screen
+  D.     Compiles source code
+Explanation: The Controller coordinates input, updating business entities in the model and selecting views for presentation.
+
+[bca-423e-u4-q183] (Unit 4) What characterizes a Layered (N-Tier) architectural style?
+  A.     All modules communicate randomly
+  B. (*) Components are organized into horizontal layers where each layer provides services only to the layer immediately above it and consumes services from the layer below
+  C.     Code is written in multiple languages
+  D.     A flat array of classes
+Explanation: Layered architectures (e.g., Presentation, Business, Data Access) isolate concerns and facilitate modular replacement.
+
+[bca-423e-u4-q184] (Unit 4) In Object-Oriented Metrics, what does WMC stand for?
+  A. (*) Weighted Methods per Class
+  B.     Window Management Control
+  C.     Wide Memory Cache
+  D.     Web Module Construction
+Explanation: WMC (Chidamber & Kemerer) sums the complexity of all methods defined in a class.
+
+[bca-423e-u4-q185] (Unit 4) In Chidamber & Kemerer (CK) metrics, what does DIT (Depth of Inheritance Tree) measure?
+  A.     The number of subclasses a class has
+  B. (*) The maximum length from the class node to the root of the class inheritance tree
+  C.     The number of methods in superclass
+  D.     The lines of code in inheritance
+Explanation: DIT measures inheritance depth. Deep trees increase design complexity and make fault diagnosis harder.
+
+[bca-423e-u4-q186] (Unit 4) In CK metrics, what does CBO (Coupling Between Object classes) measure?
+  A.     The number of lines in a class
+  B. (*) The number of other classes to which a given class is coupled (calls methods or accesses variables)
+  C.     The number of constructors
+  D.     The compilation time
+Explanation: High CBO indicates excessive interdependence, reducing reusability and complicating maintenance.
+
+[bca-423e-u4-q187] (Unit 4) In CK metrics, what does LCOM (Lack of Cohesion in Methods) measure?
+  A.     The number of lines of comments
+  B. (*) The dissimilarity and lack of shared instance variables among methods of a class
+  C.     The number of parameters in methods
+  D.     Memory leaks in methods
+Explanation: High LCOM signals that methods do not share instance variables, suggesting the class should be split into multiple smaller classes.
+
+[bca-423e-u4-q188] (Unit 4) What is 'Stepwise Refinement' proposed by Niklaus Wirth?
+  A.     Upgrading computer hardware annually
+  B. (*) A top-down design strategy where high-level abstract functional statements are progressively decomposed into lower-level operational and algorithmic details
+  C.     Writing code without compiling
+  D.     Refactoring variable names
+Explanation: Wirth's stepwise refinement iteratively unpacks macro specifications into progressively concrete algorithmic instructions.
+
+[bca-423e-u4-q189] (Unit 4) What is an 'Abstract Data Type' (ADT)?
+  A.     A variable with no name
+  B. (*) A data model defined by its behavioral operations (e.g., Stack with push/pop) rather than its internal memory representation
+  C.     A broken data structure
+  D.     A database query
+Explanation: ADTs encapsulate data structures and enforce access solely through defined operational interfaces.
+
+[bca-423e-u4-q190] (Unit 4) What is 'Fan-in' of a module in software design?
+  A.     The number of cooling fans in the server
+  B. (*) The number of supervisory modules that directly call/invoke that specific module
+  C.     The number of modules called by it
+  D.     The number of lines in the module
+Explanation: High Fan-in indicates a highly reusable utility module called from many places across the architecture.
+
+[bca-423e-u4-q191] (Unit 4) What is 'Fan-out' of a module?
+  A.     The number of monitors connected
+  B. (*) The number of subordinate modules directly invoked/called by that specific module
+  C.     The number of parameters returned
+  D.     The size of the source file
+Explanation: High Fan-out (> 7) signals excessive complexity and control span, suggesting the module should be refactored.
+
+[bca-423e-u4-q192] (Unit 4) What is a 'Design Pattern' in software engineering?
+  A.     A graphic design wallpaper
+  B. (*) A general reusable, battle-tested solution to a commonly occurring design problem in software architecture
+  C.     A code template generated by an IDE
+  D.     A mathematical equation
+Explanation: Design patterns (e.g., Gang of Four: Singleton, Factory, Observer) capture proven architectural solutions.
+
+[bca-423e-u4-q193] (Unit 4) Which design pattern ensures that a class has only one single instance and provides a global point of access to it?
+  A.     Factory Pattern
+  B. (*) Singleton Pattern
+  C.     Observer Pattern
+  D.     Adapter Pattern
+Explanation: The Singleton pattern restricts class instantiation to one sole instance throughout application runtime.
+
+[bca-423e-u4-q194] (Unit 4) Which design pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified automatically?
+  A. (*) Observer Pattern
+  B.     Singleton Pattern
+  C.     Decorator Pattern
+  D.     Strategy Pattern
+Explanation: The Observer pattern (publish-subscribe) decouples subject state updates from subscribing dependent views.
+
+[bca-423e-u4-q195] (Unit 4) What is the primary role of an 'Adapter' design pattern?
+  A.     Connecting physical power plugs
+  B. (*) Converting the incompatible interface of an existing class into another interface expected by client code
+  C.     Encrypting database connections
+  D.     Doubling network speed
+Explanation: Adapter lets classes work together that otherwise couldn't because of incompatible interfaces.
+
+[bca-423e-u4-q196] (Unit 4) What is 'Refactoring'?
+  A.     Rewriting software from scratch in a new language
+  B. (*) The disciplined process of restructuring existing computer code without changing its external behavior, improving readability and non-functional attributes
+  C.     Deleting unit test cases
+  D.     Adding new features to an app
+Explanation: Refactoring improves internal code architecture, cohesion, and maintainability while preserving external behavior intact.
+
+[bca-423e-u4-q197] (Unit 4) What does the 'Single Responsibility Principle' (SRP) in SOLID design dictate?
+  A.     Every developer should have only one project
+  B. (*) A class should have one, and only one, reason to change (meaning it performs only one cohesive responsibility)
+  C.     Every program must have only one class
+  D.     Functions can only have one parameter
+Explanation: SRP asserts that a class should encapsulate a single tightly focused responsibility, preventing multi-concern entanglements.
+
+[bca-423e-u4-q198] (Unit 4) What does the 'Open/Closed Principle' (OCP) in SOLID design state?
+  A.     Software source code must be open-source and free
+  B. (*) Software entities (classes, modules) should be open for extension, but closed for modification
+  C.     Software shops must close at 5 PM
+  D.     Databases should never be closed
+Explanation: OCP advocates designing modules so new behavior can be added (via inheritance or polymorphism) without hacking existing tested code.
+
+[bca-423e-u4-q199] (Unit 4) What does the 'Liskov Substitution Principle' (LSP) require?
+  A.     Subclasses must never inherit methods
+  B. (*) Subtypes must be substitutable for their base types without altering the correctness or properties of the program
+  C.     Classes cannot have private members
+  D.     Only interfaces can be instantiated
+Explanation: LSP ensures derived classes honor the contract and behavior established by base types.
+
+[bca-423e-u4-q200] (Unit 4) In software architecture, what is 'Repository / Blackboard' architectural style?
+  A.     A blackboard in a schoolroom
+  B. (*) A centralized data store accessed by multiple independent, specialized software components ('knowledge sources') to solve complex problems incrementally
+  C.     A Git repository
+  D.     A backup hard drive
+Explanation: Blackboard architecture centers around a shared global memory space where expert agents evaluate and update partial solutions.
+
+[bca-423e-u5-q201] (Unit 5) What is the formal difference between a Defect (Bug/Fault) and a Failure?
+  A.     There is no difference
+  B. (*) A defect/bug is an internal flaw or incorrect step in source code; a failure is the observable external deviation of software execution from specified requirements
+  C.     A failure happens before coding; a defect happens during running
+  D.     Failures are caused by hardware only
+Explanation: An error (human mistake) leads to a bug/fault in code. When the faulty code executes, it causes a software Failure.
+
+[bca-423e-u5-q202] (Unit 5) What is the difference between Verification and Validation (V&V)?
+  A. (*) Verification asks: 'Are we building the product right?'; Validation asks: 'Are we building the right product?'
+  B.     Validation is done by computers; Verification by humans
+  C.     Verification is testing; Validation is coding
+  D.     They are identical
+Explanation: Boehm's famous distinction: Verification checks adherence to specifications; Validation checks fulfillment of actual customer needs.
+
+[bca-423e-u5-q203] (Unit 5) What is Unit Testing?
+  A.     Testing all units of an army
+  B.     Testing individual hardware chips
+  C. (*) Testing the smallest testable units of software (functions, methods, classes) in isolation to verify internal logic
+  D.     Testing the entire system with users
+Explanation: Unit testing verifies the atomic components of a software program independently.
+
+[bca-423e-u5-q204] (Unit 5) What are 'Drivers' and 'Stubs' in software integration testing?
+  A.     Hardware screwdriver tools
+  B. (*) Test scaffolding: a Driver is a dummy calling module simulating higher-level parents; a Stub is a dummy called module simulating lower-level child routines
+  C.     Network adapters
+  D.     Keyboard drivers
+Explanation: Drivers invoke units under test from above; Stubs provide simulated responses to unit calls from below.
+
+[bca-423e-u5-q205] (Unit 5) What is 'Bottom-Up' Integration Testing?
+  A.     Testing start from user interface down
+  B. (*) Low-level atomic modules are tested first using drivers, progressively integrating upward toward main control modules
+  C.     Testing only database queries
+  D.     Running tests upside down
+Explanation: Bottom-up integration tests child leaves first with drivers, eliminating the need for complex stubs.
+
+[bca-423e-u5-q206] (Unit 5) What is 'Top-Down' Integration Testing?
+  A. (*) Testing main control module first using stubs to simulate unfinished lower modules, progressively integrating downwards
+  B.     Testing bottom modules with drivers
+  C.     Testing only cloud servers
+  D.     Testing documentation
+Explanation: Top-down starts from the executive root module downwards, requiring stubs for child modules.
+
+[bca-423e-u5-q207] (Unit 5) What is 'Big Bang' Integration Testing?
+  A.     Testing software in space
+  B. (*) All modules are combined simultaneously at once and tested together, making defect isolation and diagnosis extremely difficult
+  C.     Testing only when a bomb explodes
+  D.     Incremental testing every day
+Explanation: Big Bang integration defers integration until the end, leading to chaotic debugging when everything breaks at once.
+
+[bca-423e-u5-q208] (Unit 5) What is 'Black-Box Testing' (Functional / Behavioral Testing)?
+  A.     Testing software on black computer monitors
+  B. (*) Testing software functionality solely against specifications and inputs/outputs without any knowledge of internal code structure or implementation logic
+  C.     Testing software after breaking it
+  D.     Reading source code in dark rooms
+Explanation: Black-box testing tests functionality from the user perspective, ignoring internal code paths.
+
+[bca-423e-u5-q209] (Unit 5) What is 'White-Box Testing' (Glass-Box / Structural Testing)?
+  A.     Testing on white monitors
+  B. (*) Testing methodology that uses internal source code structure, control flow paths, and data logic to design test cases
+  C.     Testing by external users
+  D.     Testing without computers
+Explanation: White-box testing designs test cases based on statements, branches, conditions, and basis execution paths.
+
+[bca-423e-u5-q210] (Unit 5) What is Equivalence Class Partitioning (ECP) in black-box testing?
+  A.     Dividing developers into equal teams
+  B. (*) Dividing the input domain into distinct classes of data (valid and invalid) such that all members of a class are assumed to be processed similarly by the program
+  C.     Testing every single integer from 1 to 1 billion
+  D.     Sorting database records
+Explanation: ECP partitions inputs into equivalence subsets, assuming one test case per partition detects errors as effectively as testing all values.
+
+[bca-423e-u5-q211] (Unit 5) What is Boundary Value Analysis (BVA)?
+  A.     Testing national borders
+  B. (*) A black-box testing technique that selects test values at the extreme minimum, just above minimum, nominal, just below maximum, and maximum limits of input ranges
+  C.     Testing cable endpoints
+  D.     Measuring screen resolution
+Explanation: Experience demonstrates errors concentrate at boundary extremes rather than center values ($min, min+1, nom, max-1, max$).
+
+[bca-423e-u5-q212] (Unit 5) If an input field accepts integer exam marks between 0 and 100 inclusive, what are the primary boundary test values according to BVA?
+  A.     0 and 100 only
+  B. (*) -1, 0, 1, 99, 100, 101
+  C.     50 only
+  D.     10, 20, 30... 100
+Explanation: Boundary testing tests just below, on, and just above boundaries: $-1, 0, 1$ (lower edge) and $99, 100, 101$ (upper edge).
+
+[bca-423e-u5-q213] (Unit 5) What is Statement Coverage in white-box testing?
+  A.     Checking financial bank statements
+  B. (*) The metric measuring the percentage of executable source code statements traversed by the test suite ($Statements Tested / Total Statements \times 100$)
+  C.     Reading all comments in a file
+  D.     Counting printed pages
+Explanation: Statement coverage ensures every single line of executable code executes at least once.
+
+[bca-423e-u5-q214] (Unit 5) Why is 100% Statement Coverage considered insufficient to guarantee defect-free software?
+  A.     Because compilers do not read statements
+  B. (*) Because statement coverage can execute 100% of lines without ever evaluating empty `else` branches or both true/false decision conditions
+  C.     Because it is impossible to reach 100%
+  D.     Because statements have no logic
+Explanation: An unstated `else` branch can harbor critical defects while lines inside `if` achieve 100% statement coverage.
+
+[bca-423e-u5-q215] (Unit 5) What is Branch (Decision) Coverage in white-box testing?
+  A.     Testing tree branches
+  B. (*) Ensuring every decision branch (both TRUE and FALSE outcomes of every conditional jump) is executed at least once
+  C.     Counting functions
+  D.     Writing tests for branches of Git
+Explanation: Branch coverage verifies that every conditional edge in the control flow graph executes true and false outcomes.
+
+[bca-423e-u5-q216] (Unit 5) What is Basis Path Testing proposed by McCabe?
+  A.     Testing database paths
+  B. (*) A white-box testing technique that derives linearly independent execution paths from the control flow graph using Cyclomatic Complexity
+  C.     Testing fiber optic cables
+  D.     Checking file paths in Windows
+Explanation: Basis path testing guarantees every statement and branch is executed at least once along an orthogonal set of execution paths.
+
+[bca-423e-u5-q217] (Unit 5) What is Regression Testing?
+  A.     Testing backwards in time
+  B. (*) Re-running previously passed test suites after code modifications or bug fixes to ensure that changes did not introduce new defects into existing functionality
+  C.     Deleting failed test cases
+  D.     Testing only when software crashes
+Explanation: Regression testing verifies that bug fixes or updates haven't inadvertently broken existing features.
+
+[bca-423e-u5-q218] (Unit 5) What is Alpha Testing?
+  A.     Testing by military soldiers
+  B. (*) Acceptance testing conducted by prospective end-users or independent test teams at the developer's site in a controlled environment
+  C.     The first line of code written
+  D.     Testing without a UI
+Explanation: Alpha testing happens on-site in developer facilities before external public release.
+
+[bca-423e-u5-q219] (Unit 5) What is Beta Testing?
+  A.     Testing with robots
+  B. (*) Acceptance testing conducted by real end-users in their own live operational environments at external customer sites
+  C.     Testing in a laboratory
+  D.     Testing after software is discontinued
+Explanation: Beta testing gathers real-world feedback from actual users across diverse hardware and OS environments before final release.
+
+[bca-423e-u5-q220] (Unit 5) What is Stress Testing?
+  A.     Testing developers under extreme pressure
+  B. (*) Testing the system beyond its specified operational limits to determine its breaking point and graceful degradation behavior
+  C.     Testing typing speed
+  D.     Checking employee blood pressure
+Explanation: Stress testing subjects systems to extreme data volume, concurrency, or resource starvation to assess robustness and crash handling.
+
+[bca-423e-u5-q221] (Unit 5) What is Load Testing?
+  A.     Measuring weight of servers
+  B. (*) Testing system performance, response time, and throughput under anticipated peak concurrent user traffic workloads
+  C.     Testing file download size
+  D.     Running code on multiple disks
+Explanation: Load testing verifies the system satisfies response time and capacity SLAs under expected production loads.
+
+[bca-423e-u5-q222] (Unit 5) What is Mutation Testing in software engineering?
+  A.     Testing biological organisms
+  B. (*) A fault-based testing technique where deliberate syntactic faults (mutants) are injected into the source code to assess whether the test suite can detect and kill them
+  C.     A software virus
+  D.     Writing tests automatically
+Explanation: Mutation testing evaluates test suite quality: if injected mutant defects pass without test failures, the test suite is inadequate.
+
+[bca-423e-u5-q223] (Unit 5) What is 'Software Maintenance'?
+  A.     Cleaning dust off computer cases
+  B. (*) The modification of a software product after delivery to correct faults, improve performance, or adapt the product to a modified environment
+  C.     Replacing computer batteries
+  D.     Paying software subscriptions
+Explanation: Maintenance encompasses all post-release activities across operational life, often consuming 60%–80% of total life-cycle costs.
+
+[bca-423e-u5-q224] (Unit 5) What percentage of total software lifecycle expenditure is typically consumed by Software Maintenance?
+  A.     5% to 10%
+  B.     15% to 25%
+  C. (*) 60% to 80%
+  D.     Less than 1%
+Explanation: Empirical studies consistently demonstrate that maintenance represents the majority (60% to 80%) of total lifetime software cost.
+
+[bca-423e-u5-q225] (Unit 5) What are the four recognized categories of Software Maintenance?
+  A.     Fast, Slow, Medium, Emergency
+  B. (*) Corrective, Adaptive, Perfective, and Preventive
+  C.     Alpha, Beta, Delta, Gamma
+  D.     Hardware, Software, Firmware, Network
+Explanation: Maintenance is categorized into Corrective (bug fixes), Adaptive (environmental changes), Perfective (feature enhancements), and Preventive (refactoring).
+
+[bca-423e-u5-q226] (Unit 5) Which type of software maintenance deals with fixing reactive bugs, errors, and defects discovered after deployment?
+  A.     Adaptive Maintenance
+  B. (*) Corrective Maintenance
+  C.     Perfective Maintenance
+  D.     Preventive Maintenance
+Explanation: Corrective maintenance repairs residual faults, coding bugs, and logic errors reported in production.
+
+[bca-423e-u5-q227] (Unit 5) Modifying an application to run on a new operating system version or comply with new tax regulations is an example of:
+  A.     Corrective Maintenance
+  B. (*) Adaptive Maintenance
+  C.     Perfective Maintenance
+  D.     Preventive Maintenance
+Explanation: Adaptive maintenance accommodates changes in external operational environments, hardware, OS, or statutory laws.
+
+[bca-423e-u5-q228] (Unit 5) Adding new user-requested functional features, enhancing UI responsiveness, or optimizing database queries is classified as:
+  A.     Corrective Maintenance
+  B.     Adaptive Maintenance
+  C. (*) Perfective Maintenance
+  D.     Preventive Maintenance
+Explanation: Perfective maintenance enhances performance, adds enhancements, and improves user satisfaction (comprising over 50% of maintenance).
+
+[bca-423e-u5-q229] (Unit 5) What is 'Preventive Maintenance' (Software Reengineering)?
+  A.     Fixing bugs reported by angry clients
+  B. (*) Modifying software to improve future maintainability, readability, or reliability to prevent problems before they occur
+  C.     Replacing power cords
+  D.     Backing up databases
+Explanation: Preventive maintenance refactors complex code and updates documentation to forestall future rot and defects.
+
+[bca-423e-u5-q230] (Unit 5) Which category of maintenance accounts for the largest proportion of total maintenance effort in industry?
+  A.     Corrective Maintenance
+  B.     Adaptive Maintenance
+  C. (*) Perfective Maintenance (over 50%)
+  D.     Emergency Maintenance
+Explanation: Perfective maintenance accounts for more than 50% of maintenance effort because business demands for new features are unending.
+
+[bca-423e-u5-q231] (Unit 5) What is 'Mean Time To Failure' (MTTF)?
+  A.     The time to reboot a computer
+  B. (*) The expected mean operating duration of continuous failure-free operation of a system
+  C.     The time to write a bug fix
+  D.     The total project duration
+Explanation: MTTF measures average operating time between the start of service and failure manifestation.
+
+[bca-423e-u5-q232] (Unit 5) What is 'Mean Time To Repair' (MTTR)?
+  A.     The time to buy a new PC
+  B. (*) The average time required to diagnose, repair, and restore a failed system back to full operational capability
+  C.     The time to write an SRS
+  D.     The schedule delay in months
+Explanation: MTTR reflects serviceability: how quickly maintenance teams isolate bugs, apply fixes, and resume operations.
+
+[bca-423e-u5-q233] (Unit 5) What is Mean Time Between Failures (MTBF) formula?
+  A. (*) $\text{MTBF} = \text{MTTF} + \text{MTTR}$
+  B.     $\text{MTBF} = \text{MTTF} - \text{MTTR}$
+  C.     $\text{MTBF} = \text{MTTF} \times \text{MTTR}$
+  D.     $\text{MTBF} = \text{MTTR} / \text{MTTF}$
+Explanation: $\text{MTBF} = \text{MTTF} + \text{MTTR}$, representing the total cycle from one failure to the subsequent failure.
+
+[bca-423e-u5-q234] (Unit 5) What is the formula for Software Availability ($A$)?
+  A. (*) $A = \text{MTTF} / (\text{MTTF} + \text{MTTR}) \times 100\%$
+  B.     $A = \text{MTTR} / \text{MTTF}$
+  C.     $A = \text{MTBF} / 100$
+  D.     $A = \text{MTTR} / (\text{MTTF} - \text{MTTR})$
+Explanation: Availability measures uptime proportion: $A = \text{MTTF} / \text{MTBF} = \text{Uptime} / (\text{Uptime} + \text{Downtime}) \times 100\%$.
+
+[bca-423e-u5-q235] (Unit 5) If a system has MTTF of 990 hours and MTTR of 10 hours, what is its percentage Availability?
+  A.     90%
+  B.     95%
+  C. (*) 99%
+  D.     99.9%
+Explanation: $A = 990 / (990 + 10) = 990 / 1000 = 0.99 = 99\%$.
+
+[bca-423e-u5-q236] (Unit 5) What is 'Reverse Engineering' in software maintenance?
+  A.     Running code backwards
+  B. (*) The process of analyzing an existing software system to identify its components, recover design abstractions, and understand its architecture
+  C.     Writing malicious viruses
+  D.     Selling pirated copies
+Explanation: Reverse engineering extracts high-level specifications and design representations from legacy source code.
+
+[bca-423e-u5-q237] (Unit 5) What is 'Forward Engineering'?
+  A. (*) Traditional engineering process that moves from high-level abstractions and design models down to physical implementation and code
+  B.     Driving a car forward
+  C.     Reading code from line 1
+  D.     Planning next year's budget
+Explanation: Forward engineering moves top-down from architectural specifications to working code implementation.
+
+[bca-423e-u5-q238] (Unit 5) What does 'Software Reengineering' encompass?
+  A.     Throwing away software and buying off-the-shelf software
+  B. (*) The examination and alteration of a legacy subject system to reconstitute it in a new form (Reverse Engineering -> Restructuring/Refactoring -> Forward Engineering)
+  C.     Changing employee job titles
+  D.     Formatting the server
+Explanation: Reengineering modernizes legacy systems into maintainable architectures without losing historical business rules.
+
+[bca-423e-u5-q239] (Unit 5) What is the 'Cleanroom Software Engineering' approach?
+  A.     Cleaning dust in the server room with vacuum cleaners
+  B. (*) A software engineering philosophy emphasizing formal mathematical specification, box structure design, and statistical usage testing to certify correctness without unit debugging
+  C.     Writing code in sterile hospital environments
+  D.     Testing software under water
+Explanation: Harlan Mills' Cleanroom approach applies rigorous mathematical proofs of correctness and statistical quality control, avoiding traditional trial-and-error debugging.
+
+[bca-423e-u5-q240] (Unit 5) What is 'Software Reuse'?
+  A.     Recycling old floppy disks
+  B. (*) The process of creating software systems from existing software assets (components, modules, libraries, design patterns) rather than building from scratch
+  C.     Running software twice
+  D.     Using the same password everywhere
+Explanation: Software reuse increases productivity, reduces defect density, and accelerates time-to-market.
+
+[bca-423e-u5-q241] (Unit 5) What is an 'Inspection' in formal software quality assurance (Fagan Inspection)?
+  A.     A surprise police raid
+  B. (*) A formal, structured peer review process with designated roles (Moderator, Author, Reader, Inspector) to detect defects in artifacts without executing code
+  C.     An automated antivirus scan
+  D.     A client acceptance meeting
+Explanation: Michael Fagan's inspection is a formal, rigorous peer review process highly effective at catching defects early.
+
+[bca-423e-u5-q242] (Unit 5) Which of the following is a recognized IEEE standard for Software Test Documentation?
+  A. (*) IEEE 829
+  B.     IEEE 802.3
+  C.     IEEE 754
+  D.     IEEE 1394
+Explanation: IEEE 829 standardizes test documentation: Test Plan, Test Design Spec, Test Case Spec, Test Log, and Test Summary Report.
+
+[bca-423e-u5-q243] (Unit 5) What is a 'Test Stub' primarily used for?
+  A.     To record test grades
+  B. (*) To simulate the behavior of lower-level unwritten modules during top-down integration testing
+  C.     To replace physical keyboards
+  D.     To speed up network data
+Explanation: Stubs return hardcoded or simulated values to calling functions during top-down integration testing.
+
+[bca-423e-u5-q244] (Unit 5) What is a 'Test Driver'?
+  A.     A software device driver for hard disks
+  B. (*) A dummy test module written to invoke and pass test cases to a lower-level module under test during bottom-up testing
+  C.     A person who drives developers to work
+  D.     An operating system kernel component
+Explanation: Drivers act as temporary callers supplying parameters to test components during bottom-up integration.
+
+[bca-423e-u5-q245] (Unit 5) What is 'Sanity Testing' (or Smoke Testing)?
+  A.     Testing if developers are sane
+  B. (*) A quick initial preliminary test verifying that the critical basic functions of a new software build work before proceeding to deep rigorous testing
+  C.     Testing when computers catch fire
+  D.     A psychological survey
+Explanation: Smoke testing verifies whether a fresh build is stable enough to warrant full QA testing, saving time if critical components are broken.
+
+[bca-423e-u5-q246] (Unit 5) What is 'Defect Density' metric?
+  A.     The physical weight of hard drives
+  B. (*) The number of confirmed defects per unit size of software (e.g., Defects / KLOC)
+  C.     The number of bugs per developer
+  D.     The speed at which bugs are fixed
+Explanation: $\text{Defect Density} = \text{Total Confirmed Defects} / \text{Size in KLOC}$. It measures code quality.
+
+[bca-423e-u5-q247] (Unit 5) What is 'Code Refactoring'?
+  A.     Changing software features completely
+  B. (*) Restructuring existing code internally to enhance readability, reduce complexity, and improve maintainability without modifying observable external behavior
+  C.     Translating comments to German
+  D.     Compiling without optimizations
+Explanation: Refactoring removes code smells, enhances modularity, and cleans architectures without altering functionality.
+
+[bca-423e-u5-q248] (Unit 5) What is the primary role of a 'Moderator' in a Fagan Inspection meeting?
+  A.     To serve coffee to attendees
+  B. (*) To impartially lead, pace, and manage the inspection meeting, ensuring adherence to process rules and checklists
+  C.     To fix all the bugs identified
+  D.     To write all the test cases
+Explanation: The Moderator acts as the neutral process manager of the inspection team.
+
+[bca-423e-u5-q249] (Unit 5) Which reliability model assumes that each time a software defect is detected and repaired, the failure rate decreases by a constant amount?
+  A. (*) Jelinski-Moranda Model
+  B.     Halstead Volume Model
+  C.     Waterfall Model
+  D.     Fibonacci Model
+Explanation: The Jelinski-Moranda model is a foundational hazard-rate reliability growth model assuming constant hazard reduction per bug fix.
+
+[bca-423e-u5-q250] (Unit 5) What does a 'Software Reusability Index' evaluate?
+  A.     How many times software can be downloaded
+  B. (*) The degree to which a software component can be easily integrated into other systems without modification
+  C.     The price of open source licenses
+  D.     The number of RAM slots required
+Explanation: Reusability evaluates component modularity, self-containment, documentation, and loose coupling for reuse in new products.
+

@@ -69,7 +69,7 @@ export function ProgressRing({
       </svg>
       <div className="absolute inset-0 grid place-items-center text-center">
         {children ?? (
-          <span className="font-serif text-xl font-semibold tabular-nums text-foreground">
+          <span className="font-sans text-xl font-bold tabular-nums text-foreground">
             {pct}%
           </span>
         )}

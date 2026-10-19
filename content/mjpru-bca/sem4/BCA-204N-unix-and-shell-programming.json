@@ -1,0 +1,8402 @@
+[
+  {
+    "id": "bca-204n-u1-q01",
+    "unit": 1,
+    "prompt": "Where was the UNIX operating system originally developed in 1969?",
+    "options": [
+      {
+        "text": "Microsoft Corporation",
+        "is_correct": false
+      },
+      {
+        "text": "AT&T Bell Laboratories",
+        "is_correct": true
+      },
+      {
+        "text": "Xerox PARC",
+        "is_correct": false
+      },
+      {
+        "text": "Stanford University",
+        "is_correct": false
+      }
+    ],
+    "explanation": "UNIX was pioneered in 1969 at Bell Labs by Ken Thompson, Dennis Ritchie, Brian Kernighan, and colleagues.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q02",
+    "unit": 1,
+    "prompt": "What programming language was UNIX largely rewritten in during 1973, making it extraordinarily portable?",
+    "options": [
+      {
+        "text": "Assembly",
+        "is_correct": false
+      },
+      {
+        "text": "B language",
+        "is_correct": false
+      },
+      {
+        "text": "C language",
+        "is_correct": true
+      },
+      {
+        "text": "Pascal",
+        "is_correct": false
+      }
+    ],
+    "explanation": "In 1973, Dennis Ritchie and Ken Thompson rewrote UNIX in C, transforming operating system history by breaking hardware dependency.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q03",
+    "unit": 1,
+    "prompt": "Which of the following is NOT a core philosophy of the UNIX operating system?",
+    "options": [
+      {
+        "text": "Write programs that do one thing and do it well",
+        "is_correct": false
+      },
+      {
+        "text": "Write programs to work together via text streams",
+        "is_correct": false
+      },
+      {
+        "text": "Design massive, monolithic programs containing all user utilities in a single executable",
+        "is_correct": true
+      },
+      {
+        "text": "Store data in flat text files",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The UNIX philosophy emphasizes modular, small tools chained together via text streams, rather than bloated single monoliths.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q04",
+    "unit": 1,
+    "prompt": "Which layer in the UNIX architecture directly interacts with physical computer hardware?",
+    "options": [
+      {
+        "text": "Shell",
+        "is_correct": false
+      },
+      {
+        "text": "Kernel",
+        "is_correct": true
+      },
+      {
+        "text": "User Applications",
+        "is_correct": false
+      },
+      {
+        "text": "System Libraries",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The Kernel is the heart of UNIX residing in supervisor memory, directly controlling CPU, RAM, and hardware devices.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q05",
+    "unit": 1,
+    "prompt": "What is the function of the UNIX Shell?",
+    "options": [
+      {
+        "text": "A hardware chip",
+        "is_correct": false
+      },
+      {
+        "text": "A command-line interpreter that reads user commands, interprets them, and requests kernel services",
+        "is_correct": true
+      },
+      {
+        "text": "A memory partition",
+        "is_correct": false
+      },
+      {
+        "text": "A disk format",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The Shell is a user-level program providing an interactive interface between the user and the kernel.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q06",
+    "unit": 1,
+    "prompt": "What command reveals whether a command is a shell built-in or an external disk binary?",
+    "options": [
+      {
+        "text": "type",
+        "is_correct": true
+      },
+      {
+        "text": "where",
+        "is_correct": false
+      },
+      {
+        "text": "info",
+        "is_correct": false
+      },
+      {
+        "text": "find",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `type` command (e.g., `type cd`, `type ls`) identifies whether a command is a built-in or external executable.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q07",
+    "unit": 1,
+    "prompt": "Which command displays the manual page documentation for a UNIX utility?",
+    "options": [
+      {
+        "text": "help",
+        "is_correct": false
+      },
+      {
+        "text": "doc",
+        "is_correct": false
+      },
+      {
+        "text": "man",
+        "is_correct": true
+      },
+      {
+        "text": "guide",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `man` utility (e.g., `man ls`, `man grep`) formats and displays reference manual pages.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q08",
+    "unit": 1,
+    "prompt": "In UNIX man pages, which section specifically covers System Calls?",
+    "options": [
+      {
+        "text": "Section 1",
+        "is_correct": false
+      },
+      {
+        "text": "Section 2",
+        "is_correct": true
+      },
+      {
+        "text": "Section 3",
+        "is_correct": false
+      },
+      {
+        "text": "Section 8",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Section 1 covers User Commands; Section 2 covers System Calls; Section 3 covers C Library Functions; Section 8 covers System Admin Commands.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q09",
+    "unit": 1,
+    "prompt": "Which command displays a one-line description of a command from the whatis database?",
+    "options": [
+      {
+        "text": "whatis",
+        "is_correct": true
+      },
+      {
+        "text": "whois",
+        "is_correct": false
+      },
+      {
+        "text": "describe",
+        "is_correct": false
+      },
+      {
+        "text": "lookup",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`whatis command` displays short manual page descriptions.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q10",
+    "unit": 1,
+    "prompt": "Which command searches man page descriptions for keywords (equivalent to `man -k`)?",
+    "options": [
+      {
+        "text": "search",
+        "is_correct": false
+      },
+      {
+        "text": "apropos",
+        "is_correct": true
+      },
+      {
+        "text": "find",
+        "is_correct": false
+      },
+      {
+        "text": "locate",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`apropos keyword` searches description strings in manual pages.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q11",
+    "unit": 1,
+    "prompt": "Which command displays the current absolute working directory path?",
+    "options": [
+      {
+        "text": "dir",
+        "is_correct": false
+      },
+      {
+        "text": "cwd",
+        "is_correct": false
+      },
+      {
+        "text": "pwd",
+        "is_correct": true
+      },
+      {
+        "text": "path",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`pwd` (Print Working Directory) outputs the current directory hierarchy from root `/`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q12",
+    "unit": 1,
+    "prompt": "What does `cd ..` do?",
+    "options": [
+      {
+        "text": "Changes to root directory",
+        "is_correct": false
+      },
+      {
+        "text": "Changes to current user's home directory",
+        "is_correct": false
+      },
+      {
+        "text": "Moves up one level to parent directory",
+        "is_correct": true
+      },
+      {
+        "text": "Deletes directory",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`..` denotes the parent directory in hierarchical file path traversal.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q13",
+    "unit": 1,
+    "prompt": "What does `cd ~` or simply `cd` with no arguments do in UNIX?",
+    "options": [
+      {
+        "text": "Changes to root `/`",
+        "is_correct": false
+      },
+      {
+        "text": "Changes to current user's home directory (`$HOME`)",
+        "is_correct": true
+      },
+      {
+        "text": "Stays in current directory",
+        "is_correct": false
+      },
+      {
+        "text": "Raises error",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A bare `cd` or `cd ~` returns the user immediately to their login home directory.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q14",
+    "unit": 1,
+    "prompt": "Which option with `mkdir` automatically creates missing parent directories in a nested path?",
+    "options": [
+      {
+        "text": "-r",
+        "is_correct": false
+      },
+      {
+        "text": "-p",
+        "is_correct": true
+      },
+      {
+        "text": "-f",
+        "is_correct": false
+      },
+      {
+        "text": "-a",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mkdir -p /a/b/c` creates all missing parent directories without error.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q15",
+    "unit": 1,
+    "prompt": "Which command removes an empty directory?",
+    "options": [
+      {
+        "text": "rmdir",
+        "is_correct": true
+      },
+      {
+        "text": "del",
+        "is_correct": false
+      },
+      {
+        "text": "remove",
+        "is_correct": false
+      },
+      {
+        "text": "erase",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`rmdir` removes directories that contain no files or subdirectories.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q16",
+    "unit": 1,
+    "prompt": "Which command option with `ls` displays long-format detailed file information (permissions, links, owner, size, date)?",
+    "options": [
+      {
+        "text": "-a",
+        "is_correct": false
+      },
+      {
+        "text": "-l",
+        "is_correct": true
+      },
+      {
+        "text": "-h",
+        "is_correct": false
+      },
+      {
+        "text": "-R",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -l` outputs detailed file metadata columns.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q17",
+    "unit": 1,
+    "prompt": "Which option with `ls` displays all hidden files (files beginning with a dot `.`)?",
+    "options": [
+      {
+        "text": "-h",
+        "is_correct": false
+      },
+      {
+        "text": "-a",
+        "is_correct": true
+      },
+      {
+        "text": "-d",
+        "is_correct": false
+      },
+      {
+        "text": "-t",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -a` (all) lists all entries including dot files like `.bashrc` and `.profile`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q18",
+    "unit": 1,
+    "prompt": "Which option with `ls` recursively lists all subdirectories and their contents?",
+    "options": [
+      {
+        "text": "-r",
+        "is_correct": false
+      },
+      {
+        "text": "-R",
+        "is_correct": true
+      },
+      {
+        "text": "-s",
+        "is_correct": false
+      },
+      {
+        "text": "-x",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -R` performs recursive directory listing.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q19",
+    "unit": 1,
+    "prompt": "Which command creates an empty file or updates the access and modification timestamps of an existing file?",
+    "options": [
+      {
+        "text": "create",
+        "is_correct": false
+      },
+      {
+        "text": "touch",
+        "is_correct": true
+      },
+      {
+        "text": "new",
+        "is_correct": false
+      },
+      {
+        "text": "stamp",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`touch filename` creates a zero-byte file if it does not exist, or updates timestamps if it exists.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q20",
+    "unit": 1,
+    "prompt": "Which command copies files or directories from source to destination?",
+    "options": [
+      {
+        "text": "copy",
+        "is_correct": false
+      },
+      {
+        "text": "cp",
+        "is_correct": true
+      },
+      {
+        "text": "clone",
+        "is_correct": false
+      },
+      {
+        "text": "dup",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cp source dest` copies files (`cp -r` for recursive directory copy).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q21",
+    "unit": 1,
+    "prompt": "Which command moves or renames files and directories in UNIX?",
+    "options": [
+      {
+        "text": "ren",
+        "is_correct": false
+      },
+      {
+        "text": "move",
+        "is_correct": false
+      },
+      {
+        "text": "mv",
+        "is_correct": true
+      },
+      {
+        "text": "rn",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mv oldname newname` renames or relocates files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q22",
+    "unit": 1,
+    "prompt": "Which command deletes files in UNIX?",
+    "options": [
+      {
+        "text": "del",
+        "is_correct": false
+      },
+      {
+        "text": "rm",
+        "is_correct": true
+      },
+      {
+        "text": "erase",
+        "is_correct": false
+      },
+      {
+        "text": "unlink_all",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`rm` removes directory entries and deletes files (`rm -r` for recursive directory removal).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q23",
+    "unit": 1,
+    "prompt": "Which command concatenates and displays entire text file contents on terminal stdout?",
+    "options": [
+      {
+        "text": "type",
+        "is_correct": false
+      },
+      {
+        "text": "cat",
+        "is_correct": true
+      },
+      {
+        "text": "echo",
+        "is_correct": false
+      },
+      {
+        "text": "print",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cat file1 file2` concatenates and streams text to stdout.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q24",
+    "unit": 1,
+    "prompt": "Which command displays the first 10 lines of a file by default?",
+    "options": [
+      {
+        "text": "top",
+        "is_correct": false
+      },
+      {
+        "text": "head",
+        "is_correct": true
+      },
+      {
+        "text": "start",
+        "is_correct": false
+      },
+      {
+        "text": "first",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`head -n 10 file` displays the initial lines.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q25",
+    "unit": 1,
+    "prompt": "Which command continuously monitors and displays growing file lines in real time (e.g., log files)?",
+    "options": [
+      {
+        "text": "head -f",
+        "is_correct": false
+      },
+      {
+        "text": "tail -f",
+        "is_correct": true
+      },
+      {
+        "text": "watch",
+        "is_correct": false
+      },
+      {
+        "text": "cat -live",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`tail -f /var/log/syslog` follows appended data in real time.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q26",
+    "unit": 1,
+    "prompt": "Which command displays physical disk filesystem usage in human-readable units (GB, MB)?",
+    "options": [
+      {
+        "text": "du -h",
+        "is_correct": false
+      },
+      {
+        "text": "df -h",
+        "is_correct": true
+      },
+      {
+        "text": "disk -u",
+        "is_correct": false
+      },
+      {
+        "text": "fdisk -l",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`df -h` (Disk Free) reports filesystem capacity and available space.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q27",
+    "unit": 1,
+    "prompt": "Which command estimates file space usage for a directory and its subtrees?",
+    "options": [
+      {
+        "text": "df",
+        "is_correct": false
+      },
+      {
+        "text": "du",
+        "is_correct": true
+      },
+      {
+        "text": "free",
+        "is_correct": false
+      },
+      {
+        "text": "stat",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`du -sh directory` (Disk Usage) computes directory subtree consumption.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q28",
+    "unit": 1,
+    "prompt": "Which command reports snapshot information about currently active processes?",
+    "options": [
+      {
+        "text": "top",
+        "is_correct": false
+      },
+      {
+        "text": "ps",
+        "is_correct": true
+      },
+      {
+        "text": "proc",
+        "is_correct": false
+      },
+      {
+        "text": "tasks",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ps` lists current active processes.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q29",
+    "unit": 1,
+    "prompt": "What does `ps -ef` or `ps aux` display?",
+    "options": [
+      {
+        "text": "Only root processes",
+        "is_correct": false
+      },
+      {
+        "text": "Every active process running across all users on the system with full details",
+        "is_correct": true
+      },
+      {
+        "text": "Terminated processes",
+        "is_correct": false
+      },
+      {
+        "text": "Network ports",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ps -ef` and `ps aux` provide comprehensive process listings across all system terminals and daemons.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q30",
+    "unit": 1,
+    "prompt": "What is the unique numeric identification assigned to every process in UNIX called?",
+    "options": [
+      {
+        "text": "UID",
+        "is_correct": false
+      },
+      {
+        "text": "GID",
+        "is_correct": false
+      },
+      {
+        "text": "PID",
+        "is_correct": true
+      },
+      {
+        "text": "PPID",
+        "is_correct": false
+      }
+    ],
+    "explanation": "PID stands for Process IDentifier.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q31",
+    "unit": 1,
+    "prompt": "What is the Parent Process ID of a process called?",
+    "options": [
+      {
+        "text": "PPID",
+        "is_correct": true
+      },
+      {
+        "text": "ParentID",
+        "is_correct": false
+      },
+      {
+        "text": "MPID",
+        "is_correct": false
+      },
+      {
+        "text": "GPID",
+        "is_correct": false
+      }
+    ],
+    "explanation": "PPID stands for Parent Process IDentifier.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q32",
+    "unit": 1,
+    "prompt": "What is the special PID assigned to the system initialization daemon `init` / `systemd`?",
+    "options": [
+      {
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "is_correct": true
+      },
+      {
+        "text": "-1",
+        "is_correct": false
+      },
+      {
+        "text": "100",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Process 1 (`init` or `systemd`) is the ancestor of all user-space processes spawned after kernel boot.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q33",
+    "unit": 1,
+    "prompt": "What character placed at the end of a command instructs the shell to run it as a background job?",
+    "options": [
+      {
+        "text": "%",
+        "is_correct": false
+      },
+      {
+        "text": "&",
+        "is_correct": true
+      },
+      {
+        "text": "#",
+        "is_correct": false
+      },
+      {
+        "text": "@",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Appending `&` (e.g., `python script.py &`) detaches command execution to run in the background.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q34",
+    "unit": 1,
+    "prompt": "Which utility prevents a running command from receiving SIGHUP signals when the user logs out?",
+    "options": [
+      {
+        "text": "bg",
+        "is_correct": false
+      },
+      {
+        "text": "fg",
+        "is_correct": false
+      },
+      {
+        "text": "nohup",
+        "is_correct": true
+      },
+      {
+        "text": "disown_all",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`nohup command &` ensures jobs continue executing after terminal disconnection, logging output to `nohup.out`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q35",
+    "unit": 1,
+    "prompt": "Which command lists all background jobs managed by the current shell session?",
+    "options": [
+      {
+        "text": "ps",
+        "is_correct": false
+      },
+      {
+        "text": "jobs",
+        "is_correct": true
+      },
+      {
+        "text": "tasks",
+        "is_correct": false
+      },
+      {
+        "text": "bg_list",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The shell built-in `jobs` lists active job numbers and states (`[1]+ Running`).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q36",
+    "unit": 1,
+    "prompt": "How do you bring background job number 1 into the foreground?",
+    "options": [
+      {
+        "text": "fg %1",
+        "is_correct": true
+      },
+      {
+        "text": "bg %1",
+        "is_correct": false
+      },
+      {
+        "text": "bring 1",
+        "is_correct": false
+      },
+      {
+        "text": "run 1",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`fg %1` switches job 1 to the interactive foreground.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q37",
+    "unit": 1,
+    "prompt": "What command adjusts the scheduling priority of a new process before launching?",
+    "options": [
+      {
+        "text": "renice",
+        "is_correct": false
+      },
+      {
+        "text": "nice",
+        "is_correct": true
+      },
+      {
+        "text": "priority",
+        "is_correct": false
+      },
+      {
+        "text": "setpri",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`nice -n 10 command` starts a command with lower priority; `renice` alters running processes.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q38",
+    "unit": 1,
+    "prompt": "What is the numerical range of the 'nice' value in modern UNIX/Linux systems?",
+    "options": [
+      {
+        "text": "0 to 100",
+        "is_correct": false
+      },
+      {
+        "text": "-20 (highest priority) to +19 (lowest priority)",
+        "is_correct": true
+      },
+      {
+        "text": "1 to 10",
+        "is_correct": false
+      },
+      {
+        "text": "-100 to 100",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Nice values range from -20 (least nice to others, highest CPU share) to +19 (nicest, lowest CPU share).",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q39",
+    "unit": 1,
+    "prompt": "Which signal is the default signal sent by the `kill` command?",
+    "options": [
+      {
+        "text": "SIGKILL (9)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGTERM (15)",
+        "is_correct": true
+      },
+      {
+        "text": "SIGINT (2)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGHUP (1)",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`kill PID` sends `SIGTERM` (signal 15), requesting graceful process termination.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q40",
+    "unit": 1,
+    "prompt": "Which signal CANNOT be caught, blocked, or ignored by any process in UNIX?",
+    "options": [
+      {
+        "text": "SIGINT (2)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGTERM (15)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGKILL (9) and SIGSTOP",
+        "is_correct": true
+      },
+      {
+        "text": "SIGHUP (1)",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`SIGKILL` (signal 9) and `SIGSTOP` are intercepted directly by the kernel and cannot be handled or masked.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q41",
+    "unit": 1,
+    "prompt": "Which terminal keyboard combination generates the `SIGINT` (Interrupt) signal to terminate foreground jobs?",
+    "options": [
+      {
+        "text": "Ctrl + Z",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + C",
+        "is_correct": true
+      },
+      {
+        "text": "Ctrl + D",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + \\",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + C` sends `SIGINT` (signal 2) causing immediate interruption.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q42",
+    "unit": 1,
+    "prompt": "Which terminal keyboard combination generates `SIGTSTP` to suspend a foreground job?",
+    "options": [
+      {
+        "text": "Ctrl + C",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + Z",
+        "is_correct": true
+      },
+      {
+        "text": "Ctrl + D",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + X",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + Z` sends `SIGTSTP`, pausing execution and returning shell prompt.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q43",
+    "unit": 1,
+    "prompt": "What does `Ctrl + D` represent at the terminal console?",
+    "options": [
+      {
+        "text": "Abort signal",
+        "is_correct": false
+      },
+      {
+        "text": "End of File (EOF) / Logout signal",
+        "is_correct": true
+      },
+      {
+        "text": "Clear screen",
+        "is_correct": false
+      },
+      {
+        "text": "Break signal",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + D` signals EOF on standard input.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q44",
+    "unit": 1,
+    "prompt": "What is a Zombie Process in UNIX?",
+    "options": [
+      {
+        "text": "A process consuming 100% CPU",
+        "is_correct": false
+      },
+      {
+        "text": "A process that has finished execution (exited) but its exit status has not yet been read by its parent via `wait()`",
+        "is_correct": true
+      },
+      {
+        "text": "A virus program",
+        "is_correct": false
+      },
+      {
+        "text": "A background daemon",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A Zombie process holds no memory except its PCB entry in the process table awaiting parent reaping.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q45",
+    "unit": 1,
+    "prompt": "What is an Orphan Process in UNIX?",
+    "options": [
+      {
+        "text": "A process without a child",
+        "is_correct": false
+      },
+      {
+        "text": "A process whose parent terminated before it; it is immediately adopted by `init` (PID 1)",
+        "is_correct": true
+      },
+      {
+        "text": "A process with invalid permissions",
+        "is_correct": false
+      },
+      {
+        "text": "A suspended process",
+        "is_correct": false
+      }
+    ],
+    "explanation": "When a parent process dies, orphan children are reparented to PID 1 (`init`).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q46",
+    "unit": 1,
+    "prompt": "Which command displays dynamic, real-time interactive process CPU and memory utilization?",
+    "options": [
+      {
+        "text": "ps",
+        "is_correct": false
+      },
+      {
+        "text": "top (or htop)",
+        "is_correct": true
+      },
+      {
+        "text": "uptime",
+        "is_correct": false
+      },
+      {
+        "text": "free",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`top` provides a real-time updating view of system resource usage and active processes.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q47",
+    "unit": 1,
+    "prompt": "Which command displays who is currently logged into the UNIX system?",
+    "options": [
+      {
+        "text": "who",
+        "is_correct": false
+      },
+      {
+        "text": "w",
+        "is_correct": false
+      },
+      {
+        "text": "whoami",
+        "is_correct": false
+      },
+      {
+        "text": "All of the above provide user login details",
+        "is_correct": true
+      }
+    ],
+    "explanation": "`who`, `w`, and `whoami` all provide information regarding logged-in users.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q48",
+    "unit": 1,
+    "prompt": "What command displays the current system date and time?",
+    "options": [
+      {
+        "text": "time",
+        "is_correct": false
+      },
+      {
+        "text": "clock",
+        "is_correct": false
+      },
+      {
+        "text": "date",
+        "is_correct": true
+      },
+      {
+        "text": "now",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`date` outputs the system date, time, and timezone.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q49",
+    "unit": 1,
+    "prompt": "What command displays monthly or yearly calendars in UNIX?",
+    "options": [
+      {
+        "text": "calendar",
+        "is_correct": false
+      },
+      {
+        "text": "cal",
+        "is_correct": true
+      },
+      {
+        "text": "month",
+        "is_correct": false
+      },
+      {
+        "text": "date -c",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cal` prints formatted monthly text calendars.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u1-q50",
+    "unit": 1,
+    "prompt": "What does the `uname -a` command output?",
+    "options": [
+      {
+        "text": "User name",
+        "is_correct": false
+      },
+      {
+        "text": "Complete operating system name, hostname, kernel release, and hardware architecture",
+        "is_correct": true
+      },
+      {
+        "text": "Network address",
+        "is_correct": false
+      },
+      {
+        "text": "RAM capacity",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`uname -a` outputs operating system kernel and hardware architecture specifications.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-1",
+      "Unix-Architecture",
+      "Commands"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q51",
+    "unit": 2,
+    "prompt": "What is the top-level directory in the UNIX hierarchical file system called?",
+    "options": [
+      {
+        "text": "/home",
+        "is_correct": false
+      },
+      {
+        "text": "/root",
+        "is_correct": false
+      },
+      {
+        "text": "/ (Root directory)",
+        "is_correct": true
+      },
+      {
+        "text": "/bin",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The single slash `/` represents the absolute root directory of the entire filesystem.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q52",
+    "unit": 2,
+    "prompt": "Which standard UNIX directory contains essential user command binaries (e.g., `ls`, `cp`, `cat`)?",
+    "options": [
+      {
+        "text": "/etc",
+        "is_correct": false
+      },
+      {
+        "text": "/bin",
+        "is_correct": true
+      },
+      {
+        "text": "/dev",
+        "is_correct": false
+      },
+      {
+        "text": "/tmp",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/bin` holds fundamental user binary executables.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q53",
+    "unit": 2,
+    "prompt": "Which directory contains system administrative commands intended primarily for the superuser (root)?",
+    "options": [
+      {
+        "text": "/bin",
+        "is_correct": false
+      },
+      {
+        "text": "/sbin",
+        "is_correct": true
+      },
+      {
+        "text": "/usr",
+        "is_correct": false
+      },
+      {
+        "text": "/var",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/sbin` (System Binaries) holds admin tools like `fdisk`, `fsck`, `reboot`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q54",
+    "unit": 2,
+    "prompt": "Which directory contains host-specific system configuration files (e.g., `passwd`, `fstab`)?",
+    "options": [
+      {
+        "text": "/etc",
+        "is_correct": true
+      },
+      {
+        "text": "/conf",
+        "is_correct": false
+      },
+      {
+        "text": "/sys",
+        "is_correct": false
+      },
+      {
+        "text": "/var",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/etc` stores administrative configuration text files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q55",
+    "unit": 2,
+    "prompt": "Which directory contains special device files representing physical and virtual hardware?",
+    "options": [
+      {
+        "text": "/hard",
+        "is_correct": false
+      },
+      {
+        "text": "/dev",
+        "is_correct": true
+      },
+      {
+        "text": "/hw",
+        "is_correct": false
+      },
+      {
+        "text": "/devices",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/dev` contains device nodes (block and character devices like `/dev/sda`, `/dev/null`).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q56",
+    "unit": 2,
+    "prompt": "What is the special device file `/dev/null` commonly called?",
+    "options": [
+      {
+        "text": "The bit bucket (null sink that discards all data written to it and returns EOF on read)",
+        "is_correct": true
+      },
+      {
+        "text": "RAM drive",
+        "is_correct": false
+      },
+      {
+        "text": "System terminal",
+        "is_correct": false
+      },
+      {
+        "text": "Trash folder",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/dev/null` acts as a data black hole for discarding unwanted output (`2> /dev/null`).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q57",
+    "unit": 2,
+    "prompt": "Which directory is dedicated to variable, volatile runtime data like system logs and mail spools?",
+    "options": [
+      {
+        "text": "/tmp",
+        "is_correct": false
+      },
+      {
+        "text": "/var",
+        "is_correct": true
+      },
+      {
+        "text": "/usr",
+        "is_correct": false
+      },
+      {
+        "text": "/opt",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/var` (Variable) contains logs (`/var/log`), spool queues, and runtime caches.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q58",
+    "unit": 2,
+    "prompt": "Which leading character in the first column of `ls -l` designates a regular/ordinary file?",
+    "options": [
+      {
+        "text": "-",
+        "is_correct": true
+      },
+      {
+        "text": "d",
+        "is_correct": false
+      },
+      {
+        "text": "c",
+        "is_correct": false
+      },
+      {
+        "text": "l",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`-` indicates a regular file; `d` indicates directory; `l` indicates symlink; `c` indicates character device.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q59",
+    "unit": 2,
+    "prompt": "What does the letter `c` at the beginning of an `ls -l` line signify?",
+    "options": [
+      {
+        "text": "Compressed file",
+        "is_correct": false
+      },
+      {
+        "text": "Character special device file (transfers stream byte-by-byte)",
+        "is_correct": true
+      },
+      {
+        "text": "C source file",
+        "is_correct": false
+      },
+      {
+        "text": "Core dump",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`c` designates character special files like serial ports and terminal devices.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q60",
+    "unit": 2,
+    "prompt": "What does `b` at the beginning of an `ls -l` line signify?",
+    "options": [
+      {
+        "text": "Binary file",
+        "is_correct": false
+      },
+      {
+        "text": "Block special device file (transfers data in blocks, like hard disks)",
+        "is_correct": true
+      },
+      {
+        "text": "Backup file",
+        "is_correct": false
+      },
+      {
+        "text": "Boot sector",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`b` denotes block storage devices (e.g., `/dev/sda1`).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q61",
+    "unit": 2,
+    "prompt": "What is an Inode in the UNIX file system?",
+    "options": [
+      {
+        "text": "An input-output node on motherboard",
+        "is_correct": false
+      },
+      {
+        "text": "A data structure containing all metadata attributes of a file except its name",
+        "is_correct": true
+      },
+      {
+        "text": "A command shell",
+        "is_correct": false
+      },
+      {
+        "text": "A user account",
+        "is_correct": false
+      }
+    ],
+    "explanation": "An Inode (index node) stores permissions, owner UID, file size, timestamps, and block pointers.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q62",
+    "unit": 2,
+    "prompt": "Does an Inode store the actual filename of a file?",
+    "options": [
+      {
+        "text": "Yes, stored in the first 16 bytes",
+        "is_correct": false
+      },
+      {
+        "text": "No, filenames are stored inside directory files mapped to inode numbers",
+        "is_correct": true
+      },
+      {
+        "text": "Only for small files",
+        "is_correct": false
+      },
+      {
+        "text": "Yes, in the super block",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Filenames exist strictly as entries in directory files paired with inode numbers.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q63",
+    "unit": 2,
+    "prompt": "Which option with `ls` displays the inode number of files?",
+    "options": [
+      {
+        "text": "-l",
+        "is_correct": false
+      },
+      {
+        "text": "-i",
+        "is_correct": true
+      },
+      {
+        "text": "-n",
+        "is_correct": false
+      },
+      {
+        "text": "-s",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -i` prints the inode index number before each filename.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q64",
+    "unit": 2,
+    "prompt": "What are the four fundamental physical sections of a standard UNIX disk filesystem?",
+    "options": [
+      {
+        "text": "Boot Block, Super Block, Inode Table (I-list), Data Blocks",
+        "is_correct": true
+      },
+      {
+        "text": "Kernel, Shell, Users, Swap",
+        "is_correct": false
+      },
+      {
+        "text": "MBR, FAT, VBR, Data",
+        "is_correct": false
+      },
+      {
+        "text": "Root, Bin, Home, Dev",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Standard UNIX filesystems partition disks into Boot block, Super block, Inode table, and Data storage blocks.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q65",
+    "unit": 2,
+    "prompt": "What is stored inside the Super Block?",
+    "options": [
+      {
+        "text": "User passwords",
+        "is_correct": false
+      },
+      {
+        "text": "Filesystem metadata: total blocks, free block pointers, total inodes, filesystem status flags",
+        "is_correct": true
+      },
+      {
+        "text": "Individual filenames",
+        "is_correct": false
+      },
+      {
+        "text": "Bootloader code only",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The Super block holds overall filesystem geometry and free space allocation state.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q66",
+    "unit": 2,
+    "prompt": "What happens to an active UNIX filesystem if its Super Block gets corrupted?",
+    "options": [
+      {
+        "text": "Nothing, files are unaffected",
+        "is_correct": false
+      },
+      {
+        "text": "The filesystem cannot be mounted or accessed by the OS until repaired (using backup superblocks via fsck)",
+        "is_correct": true
+      },
+      {
+        "text": "Files become read-only automatically",
+        "is_correct": false
+      },
+      {
+        "text": "It converts to FAT32",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Superblock corruption renders the filesystem unmountable; secondary backup superblocks must be restored via `fsck`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q67",
+    "unit": 2,
+    "prompt": "How many direct block pointers does a standard UNIX Inode typically contain?",
+    "options": [
+      {
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "text": "8",
+        "is_correct": false
+      },
+      {
+        "text": "12",
+        "is_correct": true
+      },
+      {
+        "text": "64",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Standard UNIX inodes feature 12 direct block pointers (0 to 11), followed by single, double, and triple indirect pointers.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q68",
+    "unit": 2,
+    "prompt": "What is a Hard Link in UNIX?",
+    "options": [
+      {
+        "text": "A physical cable connection",
+        "is_correct": false
+      },
+      {
+        "text": "A directory entry pointing directly to an existing Inode number",
+        "is_correct": true
+      },
+      {
+        "text": "A shortcut file containing a path string",
+        "is_correct": false
+      },
+      {
+        "text": "A symbolic link",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A hard link creates a new directory entry sharing the identical inode and disk blocks.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q69",
+    "unit": 2,
+    "prompt": "What command creates a hard link between `file1` and `file2`?",
+    "options": [
+      {
+        "text": "ln file1 file2",
+        "is_correct": true
+      },
+      {
+        "text": "ln -s file1 file2",
+        "is_correct": false
+      },
+      {
+        "text": "link file1 file2",
+        "is_correct": false
+      },
+      {
+        "text": "cp -l file1 file2",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ln source target` creates a hard link.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q70",
+    "unit": 2,
+    "prompt": "What happens to data when you delete the original file of a Hard Link?",
+    "options": [
+      {
+        "text": "The data is deleted immediately and other link breaks",
+        "is_correct": false
+      },
+      {
+        "text": "The link count decrements by 1; data remains completely accessible through the other hard link",
+        "is_correct": true
+      },
+      {
+        "text": "The system crashes",
+        "is_correct": false
+      },
+      {
+        "text": "Both files are deleted",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Data blocks are deleted only when the inode's link count drops to zero and no active processes have it open.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q71",
+    "unit": 2,
+    "prompt": "Can Hard Links cross different disk filesystem partitions?",
+    "options": [
+      {
+        "text": "Yes, across all partitions",
+        "is_correct": false
+      },
+      {
+        "text": "No, hard links cannot cross filesystem boundaries because inode numbers are only unique per filesystem",
+        "is_correct": true
+      },
+      {
+        "text": "Only with root privileges",
+        "is_correct": false
+      },
+      {
+        "text": "Only on network drives",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Hard links are strictly constrained to the same local filesystem because inode numbers are partition-relative.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q72",
+    "unit": 2,
+    "prompt": "What is a Symbolic (Soft) Link in UNIX?",
+    "options": [
+      {
+        "text": "A file whose content is merely a pathname string pointing to another target file",
+        "is_correct": true
+      },
+      {
+        "text": "Another name for a hard link",
+        "is_correct": false
+      },
+      {
+        "text": "A compiled pointer",
+        "is_correct": false
+      },
+      {
+        "text": "A temporary RAM file",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A symbolic link (`ln -s`) contains a path reference to target file.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q73",
+    "unit": 2,
+    "prompt": "Can Symbolic Links cross different filesystems and point to directories?",
+    "options": [
+      {
+        "text": "No, soft links are restricted",
+        "is_correct": false
+      },
+      {
+        "text": "Yes, soft links can span multiple filesystems and link to directories",
+        "is_correct": true
+      },
+      {
+        "text": "Only across USB drives",
+        "is_correct": false
+      },
+      {
+        "text": "Only in read-only mode",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Symbolic links can freely cross filesystems and link to directories.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q74",
+    "unit": 2,
+    "prompt": "What happens to a Symbolic Link if the original target file is deleted or renamed?",
+    "options": [
+      {
+        "text": "The symlink updates automatically",
+        "is_correct": false
+      },
+      {
+        "text": "The symlink becomes a broken / dangling link pointing to a non-existent path",
+        "is_correct": true
+      },
+      {
+        "text": "The symlink is deleted automatically",
+        "is_correct": false
+      },
+      {
+        "text": "The original file is restored",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The symlink remains in the directory pointing to a dead path (dangling symlink).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q75",
+    "unit": 2,
+    "prompt": "Which command formats a disk partition with a new ext4 filesystem in Linux?",
+    "options": [
+      {
+        "text": "format /dev/sdb1",
+        "is_correct": false
+      },
+      {
+        "text": "mkfs.ext4 /dev/sdb1 (or mke2fs)",
+        "is_correct": true
+      },
+      {
+        "text": "newfs /dev/sdb1",
+        "is_correct": false
+      },
+      {
+        "text": "fdisk -f /dev/sdb1",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mkfs.ext4 /dev/sdb1` writes an ext4 filesystem onto the partition.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q76",
+    "unit": 2,
+    "prompt": "Which command is used to attach a disk filesystem to a directory mount point?",
+    "options": [
+      {
+        "text": "attach",
+        "is_correct": false
+      },
+      {
+        "text": "mount",
+        "is_correct": true
+      },
+      {
+        "text": "connect",
+        "is_correct": false
+      },
+      {
+        "text": "linkfs",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mount /dev/sdb1 /mnt/data` attaches the storage device to the directory tree.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q77",
+    "unit": 2,
+    "prompt": "Which command detaches a mounted filesystem?",
+    "options": [
+      {
+        "text": "unmount",
+        "is_correct": false
+      },
+      {
+        "text": "umount",
+        "is_correct": true
+      },
+      {
+        "text": "detach",
+        "is_correct": false
+      },
+      {
+        "text": "eject",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`umount /mnt/data` safely unmounts the filesystem.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q78",
+    "unit": 2,
+    "prompt": "Which system file contains static filesystem mount configurations executed at system boot?",
+    "options": [
+      {
+        "text": "/etc/filesystems",
+        "is_correct": false
+      },
+      {
+        "text": "/etc/fstab",
+        "is_correct": true
+      },
+      {
+        "text": "/etc/mtab",
+        "is_correct": false
+      },
+      {
+        "text": "/etc/bootfs",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/etc/fstab` (File Systems Table) specifies partitions and mount options loaded on boot.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q79",
+    "unit": 2,
+    "prompt": "Which utility checks and repairs UNIX file system consistency?",
+    "options": [
+      {
+        "text": "chkdsk",
+        "is_correct": false
+      },
+      {
+        "text": "fsck",
+        "is_correct": true
+      },
+      {
+        "text": "scandisk",
+        "is_correct": false
+      },
+      {
+        "text": "repairfs",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`fsck` (File System Consistency Check) inspects superblocks, inodes, and directory structures.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q80",
+    "unit": 2,
+    "prompt": "Which command creates an archive bundle of multiple files using the Tape Archive format?",
+    "options": [
+      {
+        "text": "zip",
+        "is_correct": false
+      },
+      {
+        "text": "tar",
+        "is_correct": true
+      },
+      {
+        "text": "gzip",
+        "is_correct": false
+      },
+      {
+        "text": "bundle",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`tar -cvf archive.tar files/` packages files into a single archive.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q81",
+    "unit": 2,
+    "prompt": "Which command extracts a `.tar.gz` compressed archive?",
+    "options": [
+      {
+        "text": "tar -xvf archive.tar.gz",
+        "is_correct": false
+      },
+      {
+        "text": "tar -xzvf archive.tar.gz",
+        "is_correct": true
+      },
+      {
+        "text": "gzip -d archive.tar.gz",
+        "is_correct": false
+      },
+      {
+        "text": "untar archive.tar.gz",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`tar -xzvf archive.tar.gz` decompresses (`z`) and extracts (`x`) archive files.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q82",
+    "unit": 2,
+    "prompt": "What does the `gzip` utility do?",
+    "options": [
+      {
+        "text": "Archives multiple directories into one file",
+        "is_correct": false
+      },
+      {
+        "text": "Compresses a single file using Lempel-Ziv coding, replacing it with a `.gz` file",
+        "is_correct": true
+      },
+      {
+        "text": "Splits files",
+        "is_correct": false
+      },
+      {
+        "text": "Encodes text in base64",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`gzip` compresses files individually; unlike `tar`, it does not bundle multi-file directories on its own.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q83",
+    "unit": 2,
+    "prompt": "What system call opens an existing file or creates a new file in UNIX C programming?",
+    "options": [
+      {
+        "text": "fopen()",
+        "is_correct": false
+      },
+      {
+        "text": "open()",
+        "is_correct": true
+      },
+      {
+        "text": "creat()",
+        "is_correct": false
+      },
+      {
+        "text": "sys_open()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`open(pathname, flags, mode)` is the fundamental low-level UNIX system call.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q84",
+    "unit": 2,
+    "prompt": "What does `open()` return on success in UNIX?",
+    "options": [
+      {
+        "text": "A file pointer FILE*",
+        "is_correct": false
+      },
+      {
+        "text": "A non-negative integer file descriptor (e.g., 3, 4)",
+        "is_correct": true
+      },
+      {
+        "text": "The file size",
+        "is_correct": false
+      },
+      {
+        "text": "True",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`open()` returns an integer index into the process's file descriptor table.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q85",
+    "unit": 2,
+    "prompt": "What is the integer file descriptor number assigned to Standard Input (`stdin`)?",
+    "options": [
+      {
+        "text": "0",
+        "is_correct": true
+      },
+      {
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "text": "-1",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Standard file descriptors: 0 = stdin, 1 = stdout, 2 = stderr.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q86",
+    "unit": 2,
+    "prompt": "What is the integer file descriptor number assigned to Standard Output (`stdout`)?",
+    "options": [
+      {
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "is_correct": true
+      },
+      {
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "text": "3",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Descriptor 1 represents standard output.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q87",
+    "unit": 2,
+    "prompt": "What is the integer file descriptor number assigned to Standard Error (`stderr`)?",
+    "options": [
+      {
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "text": "2",
+        "is_correct": true
+      },
+      {
+        "text": "3",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Descriptor 2 represents standard error output.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q88",
+    "unit": 2,
+    "prompt": "Which system call repositions the read/write file offset pointer in an open file?",
+    "options": [
+      {
+        "text": "fseek()",
+        "is_correct": false
+      },
+      {
+        "text": "seek()",
+        "is_correct": false
+      },
+      {
+        "text": "lseek()",
+        "is_correct": true
+      },
+      {
+        "text": "reposition()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`lseek(fd, offset, whence)` changes the byte offset position in the file.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q89",
+    "unit": 2,
+    "prompt": "What does `SEEK_SET` designate in the `lseek()` system call?",
+    "options": [
+      {
+        "text": "Relative to current position",
+        "is_correct": false
+      },
+      {
+        "text": "Relative to beginning of file",
+        "is_correct": true
+      },
+      {
+        "text": "Relative to end of file",
+        "is_correct": false
+      },
+      {
+        "text": "Seek backward",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`SEEK_SET` sets the file offset strictly relative to the start (byte 0).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q90",
+    "unit": 2,
+    "prompt": "What system call closes an open file descriptor, releasing kernel resources?",
+    "options": [
+      {
+        "text": "fclose()",
+        "is_correct": false
+      },
+      {
+        "text": "close()",
+        "is_correct": true
+      },
+      {
+        "text": "delete()",
+        "is_correct": false
+      },
+      {
+        "text": "free()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`close(fd)` closes the file descriptor.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q91",
+    "unit": 2,
+    "prompt": "What system call duplicates an exact running process image to create a child process?",
+    "options": [
+      {
+        "text": "clone()",
+        "is_correct": false
+      },
+      {
+        "text": "fork()",
+        "is_correct": true
+      },
+      {
+        "text": "spawn()",
+        "is_correct": false
+      },
+      {
+        "text": "exec()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`fork()` creates a child process duplicating the calling process's address space.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q92",
+    "unit": 2,
+    "prompt": "What return value does `fork()` deliver to the child process?",
+    "options": [
+      {
+        "text": "The child's PID",
+        "is_correct": false
+      },
+      {
+        "text": "The parent's PID",
+        "is_correct": false
+      },
+      {
+        "text": "0",
+        "is_correct": true
+      },
+      {
+        "text": "-1",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`fork()` returns 0 to the newly created child process, and returns the child's PID to the parent.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q93",
+    "unit": 2,
+    "prompt": "Which system call replaces the current process address space with a new executable program?",
+    "options": [
+      {
+        "text": "fork()",
+        "is_correct": false
+      },
+      {
+        "text": "exec() family (execve, execl, execp)",
+        "is_correct": true
+      },
+      {
+        "text": "load()",
+        "is_correct": false
+      },
+      {
+        "text": "system()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`exec` replaces text, data, heap, and stack segments with the new program binary.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q94",
+    "unit": 2,
+    "prompt": "Which system call suspends the calling parent process until one of its child processes terminates?",
+    "options": [
+      {
+        "text": "sleep()",
+        "is_correct": false
+      },
+      {
+        "text": "wait() or waitpid()",
+        "is_correct": true
+      },
+      {
+        "text": "pause()",
+        "is_correct": false
+      },
+      {
+        "text": "halt()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`wait(&status)` blocks until a child process terminates, retrieving its exit code.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q95",
+    "unit": 2,
+    "prompt": "What system call creates an anonymous unidirectional data communication channel between processes?",
+    "options": [
+      {
+        "text": "socket()",
+        "is_correct": false
+      },
+      {
+        "text": "pipe()",
+        "is_correct": true
+      },
+      {
+        "text": "shmget()",
+        "is_correct": false
+      },
+      {
+        "text": "channel()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`pipe(int pipefd[2])` creates a pipe where `pipefd[0]` is read-end and `pipefd[1]` is write-end.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q96",
+    "unit": 2,
+    "prompt": "What command changes file ownership to a new user?",
+    "options": [
+      {
+        "text": "chmod",
+        "is_correct": false
+      },
+      {
+        "text": "chown",
+        "is_correct": true
+      },
+      {
+        "text": "chgrp",
+        "is_correct": false
+      },
+      {
+        "text": "setowner",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`chown user:group file` changes file ownership.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q97",
+    "unit": 2,
+    "prompt": "What command changes the group ownership of a file?",
+    "options": [
+      {
+        "text": "chgroup",
+        "is_correct": false
+      },
+      {
+        "text": "chgrp",
+        "is_correct": true
+      },
+      {
+        "text": "chmod",
+        "is_correct": false
+      },
+      {
+        "text": "groupadd",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`chgrp groupname file` alters group ownership.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q98",
+    "unit": 2,
+    "prompt": "What does the `umask` command control?",
+    "options": [
+      {
+        "text": "User password length",
+        "is_correct": false
+      },
+      {
+        "text": "Default permission mask subtracted from 777 (for directories) or 666 (for files) upon creation",
+        "is_correct": true
+      },
+      {
+        "text": "Memory allocation bounds",
+        "is_correct": false
+      },
+      {
+        "text": "Network subnet mask",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`umask` sets file creation mask (e.g., umask 022 gives new files 644 permissions).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q99",
+    "unit": 2,
+    "prompt": "What are the default permissions of a file created with `umask 022`?",
+    "options": [
+      {
+        "text": "755 (rwxr-xr-x)",
+        "is_correct": false
+      },
+      {
+        "text": "644 (rw-r--r--)",
+        "is_correct": true
+      },
+      {
+        "text": "666 (rw-rw-rw-)",
+        "is_correct": false
+      },
+      {
+        "text": "777",
+        "is_correct": false
+      }
+    ],
+    "explanation": "$666 - 022 = 644$ (read/write for owner, read-only for group and others).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u2-q100",
+    "unit": 2,
+    "prompt": "What does `chmod 755 script.sh` set the permissions to?",
+    "options": [
+      {
+        "text": "rwxr-xr-x (Owner: read/write/exec; Group: read/exec; Others: read/exec)",
+        "is_correct": true
+      },
+      {
+        "text": "rw-r--r--",
+        "is_correct": false
+      },
+      {
+        "text": "rwxrwxrwx",
+        "is_correct": false
+      },
+      {
+        "text": "r-xr-xr-x",
+        "is_correct": false
+      }
+    ],
+    "explanation": "7 in binary is 111 (rwx), 5 is 101 (r-x). Thus 755 = `rwxr-xr-x`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-2",
+      "File-System",
+      "Inodes",
+      "Storage"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q101",
+    "unit": 3,
+    "prompt": "What does the redirection operator `>>` do in UNIX command line?",
+    "options": [
+      {
+        "text": "Overwrites the target file with standard output",
+        "is_correct": false
+      },
+      {
+        "text": "Appends standard output to the end of the target file without truncating it",
+        "is_correct": true
+      },
+      {
+        "text": "Redirects standard input",
+        "is_correct": false
+      },
+      {
+        "text": "Pipes output to next process",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`>` overwrites; `>>` appends data to the end of the file.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q102",
+    "unit": 3,
+    "prompt": "How do you redirect standard error (`stderr`) to a file in bash?",
+    "options": [
+      {
+        "text": "1> file.txt",
+        "is_correct": false
+      },
+      {
+        "text": "2> error.log",
+        "is_correct": true
+      },
+      {
+        "text": "e> error.log",
+        "is_correct": false
+      },
+      {
+        "text": ">& error.log",
+        "is_correct": false
+      }
+    ],
+    "explanation": "File descriptor 2 represents stderr, so `2> error.log` redirects error messages.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q103",
+    "unit": 3,
+    "prompt": "What does the construct `2>&1` mean in shell redirection?",
+    "options": [
+      {
+        "text": "Redirect descriptor 2 to descriptor 1 (combine stderr into stdout)",
+        "is_correct": true
+      },
+      {
+        "text": "Redirect stdout to stderr",
+        "is_correct": false
+      },
+      {
+        "text": "Run command twice",
+        "is_correct": false
+      },
+      {
+        "text": "Pipe stdout and stderr together",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cmd > out.log 2>&1` redirects both standard output and standard error into `out.log`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q104",
+    "unit": 3,
+    "prompt": "What does the pipeline operator `|` do in UNIX?",
+    "options": [
+      {
+        "text": "Runs commands conditionally",
+        "is_correct": false
+      },
+      {
+        "text": "Connects standard output of the left command directly to standard input of the right command",
+        "is_correct": true
+      },
+      {
+        "text": "Concatenates file contents",
+        "is_correct": false
+      },
+      {
+        "text": "Executes commands sequentially",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Pipelines connect commands through kernel memory buffers without creating temporary intermediate disk files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q105",
+    "unit": 3,
+    "prompt": "Which utility reads from standard input and simultaneously writes to standard output AND a file?",
+    "options": [
+      {
+        "text": "pipe",
+        "is_correct": false
+      },
+      {
+        "text": "split",
+        "is_correct": false
+      },
+      {
+        "text": "tee",
+        "is_correct": true
+      },
+      {
+        "text": "fork",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `tee` utility splits a stream into two paths, echoing to the terminal while saving to a file.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q106",
+    "unit": 3,
+    "prompt": "Which command sorts lines in text files?",
+    "options": [
+      {
+        "text": "order",
+        "is_correct": false
+      },
+      {
+        "text": "sort",
+        "is_correct": true
+      },
+      {
+        "text": "arrange",
+        "is_correct": false
+      },
+      {
+        "text": "index",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `sort` command sorts lines textually or numerically.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q107",
+    "unit": 3,
+    "prompt": "Which option with `sort` performs numeric sorting rather than default lexicographic sorting?",
+    "options": [
+      {
+        "text": "-n",
+        "is_correct": true
+      },
+      {
+        "text": "-r",
+        "is_correct": false
+      },
+      {
+        "text": "-u",
+        "is_correct": false
+      },
+      {
+        "text": "-k",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sort -n` treats field values as numerical integers/floats.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q108",
+    "unit": 3,
+    "prompt": "Which option with `sort` reverses the sort order (descending)?",
+    "options": [
+      {
+        "text": "-d",
+        "is_correct": false
+      },
+      {
+        "text": "-r",
+        "is_correct": true
+      },
+      {
+        "text": "-rev",
+        "is_correct": false
+      },
+      {
+        "text": "-desc",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sort -r` outputs lines in reverse descending order.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q109",
+    "unit": 3,
+    "prompt": "Which command removes adjacent duplicate lines from a sorted file?",
+    "options": [
+      {
+        "text": "dedup",
+        "is_correct": false
+      },
+      {
+        "text": "uniq",
+        "is_correct": true
+      },
+      {
+        "text": "clean",
+        "is_correct": false
+      },
+      {
+        "text": "distinct",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`uniq` filters adjacent duplicate lines (`uniq -c` counts occurrences).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q110",
+    "unit": 3,
+    "prompt": "Why must a file be sorted before running `uniq` on it?",
+    "options": [
+      {
+        "text": "uniq requires alphabetical inputs",
+        "is_correct": false
+      },
+      {
+        "text": "uniq only detects adjacent duplicate lines; non-consecutive duplicates are ignored",
+        "is_correct": true
+      },
+      {
+        "text": "uniq modifies the disk directly",
+        "is_correct": false
+      },
+      {
+        "text": "It is a requirement of UNIX",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`uniq` compares lines consecutively, so `sort file | uniq` is the standard pipeline.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q111",
+    "unit": 3,
+    "prompt": "Which command cuts out specified sections or columns from each line of a file?",
+    "options": [
+      {
+        "text": "paste",
+        "is_correct": false
+      },
+      {
+        "text": "cut",
+        "is_correct": true
+      },
+      {
+        "text": "split",
+        "is_correct": false
+      },
+      {
+        "text": "extract",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cut -d':' -f1 /etc/passwd` extracts the first colon-delimited field.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q112",
+    "unit": 3,
+    "prompt": "What do options `-d` and `-f` specify in the `cut` command?",
+    "options": [
+      {
+        "text": "Directory and File",
+        "is_correct": false
+      },
+      {
+        "text": "Delimiter character and Field number",
+        "is_correct": true
+      },
+      {
+        "text": "Date and Format",
+        "is_correct": false
+      },
+      {
+        "text": "Data and Filter",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`-d` defines field separator delimiter; `-f` specifies target field indices.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q113",
+    "unit": 3,
+    "prompt": "Which command merges lines of files side-by-side horizontally?",
+    "options": [
+      {
+        "text": "join",
+        "is_correct": false
+      },
+      {
+        "text": "paste",
+        "is_correct": true
+      },
+      {
+        "text": "cat",
+        "is_correct": false
+      },
+      {
+        "text": "merge",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`paste file1 file2` concatenates corresponding lines tab-separated.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q114",
+    "unit": 3,
+    "prompt": "Which command translates or deletes characters from standard input?",
+    "options": [
+      {
+        "text": "trans",
+        "is_correct": false
+      },
+      {
+        "text": "tr",
+        "is_correct": true
+      },
+      {
+        "text": "replace",
+        "is_correct": false
+      },
+      {
+        "text": "sub",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`tr 'a-z' 'A-Z'` translates lowercase letters to uppercase.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q115",
+    "unit": 3,
+    "prompt": "How can you delete all digits from standard input using `tr`?",
+    "options": [
+      {
+        "text": "tr -d '0-9'",
+        "is_correct": true
+      },
+      {
+        "text": "tr -del '0-9'",
+        "is_correct": false
+      },
+      {
+        "text": "tr -r '0-9'",
+        "is_correct": false
+      },
+      {
+        "text": "tr '0-9' ''",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `-d` flag in `tr -d '0-9'` deletes matching characters from input stream.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q116",
+    "unit": 3,
+    "prompt": "Which command counts lines, words, and byte/character counts in text files?",
+    "options": [
+      {
+        "text": "count",
+        "is_correct": false
+      },
+      {
+        "text": "wc",
+        "is_correct": true
+      },
+      {
+        "text": "size",
+        "is_correct": false
+      },
+      {
+        "text": "stat",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`wc` (Word Count) reports line (`-l`), word (`-w`), and byte (`-c`) counts.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q117",
+    "unit": 3,
+    "prompt": "How do you count only the total number of lines in a file with `wc`?",
+    "options": [
+      {
+        "text": "wc -w file",
+        "is_correct": false
+      },
+      {
+        "text": "wc -l file",
+        "is_correct": true
+      },
+      {
+        "text": "wc -c file",
+        "is_correct": false
+      },
+      {
+        "text": "wc -n file",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`wc -l file` prints line count.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q118",
+    "unit": 3,
+    "prompt": "Which command compares two files line-by-line and generates the difference instructions?",
+    "options": [
+      {
+        "text": "cmp",
+        "is_correct": false
+      },
+      {
+        "text": "diff",
+        "is_correct": true
+      },
+      {
+        "text": "comm",
+        "is_correct": false
+      },
+      {
+        "text": "compare",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`diff file1 file2` outputs line-by-line edits required to convert file1 into file2.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q119",
+    "unit": 3,
+    "prompt": "What does the `find` command do?",
+    "options": [
+      {
+        "text": "Searches for text strings inside a file",
+        "is_correct": false
+      },
+      {
+        "text": "Searches the directory hierarchy for files matching specific criteria (name, size, type, mtime)",
+        "is_correct": true
+      },
+      {
+        "text": "Searches man pages",
+        "is_correct": false
+      },
+      {
+        "text": "Finds user accounts",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`find /path -name '*.txt'` traverses the directory tree finding matching files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q120",
+    "unit": 3,
+    "prompt": "How do you find all files ending in `.log` modified in the last 7 days and delete them?",
+    "options": [
+      {
+        "text": "find /var/log -name '*.log' -mtime -7 -exec rm {} \\;",
+        "is_correct": true
+      },
+      {
+        "text": "find delete '*.log'",
+        "is_correct": false
+      },
+      {
+        "text": "rm -find '*.log'",
+        "is_correct": false
+      },
+      {
+        "text": "find / -del 7",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`-exec command {} \\;` executes the specified command on each found path.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q121",
+    "unit": 3,
+    "prompt": "What does `grep` stand for?",
+    "options": [
+      {
+        "text": "General Regular Expression Processor",
+        "is_correct": false
+      },
+      {
+        "text": "Globally search for a Regular Expression and Print",
+        "is_correct": true
+      },
+      {
+        "text": "Global Record Extraction Parser",
+        "is_correct": false
+      },
+      {
+        "text": "Generic Resource Pattern",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep` derives from the early ed editor command `g/re/p` (Globally search for Regular Expression and Print).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q122",
+    "unit": 3,
+    "prompt": "Which `grep` option inverts the match (prints lines that do NOT match the pattern)?",
+    "options": [
+      {
+        "text": "-i",
+        "is_correct": false
+      },
+      {
+        "text": "-v",
+        "is_correct": true
+      },
+      {
+        "text": "-n",
+        "is_correct": false
+      },
+      {
+        "text": "-c",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep -v pattern file` inverts matching.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q123",
+    "unit": 3,
+    "prompt": "Which `grep` option ignores case distinctions in both pattern and input data?",
+    "options": [
+      {
+        "text": "-c",
+        "is_correct": false
+      },
+      {
+        "text": "-i",
+        "is_correct": true
+      },
+      {
+        "text": "-v",
+        "is_correct": false
+      },
+      {
+        "text": "-l",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep -i pattern file` performs case-insensitive matching.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q124",
+    "unit": 3,
+    "prompt": "Which `grep` option prefixes each matching output line with its 1-based line number in the file?",
+    "options": [
+      {
+        "text": "-l",
+        "is_correct": false
+      },
+      {
+        "text": "-n",
+        "is_correct": true
+      },
+      {
+        "text": "-c",
+        "is_correct": false
+      },
+      {
+        "text": "-o",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep -n pattern file` prints line numbers.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q125",
+    "unit": 3,
+    "prompt": "Which `grep` option only prints the count of matching lines rather than the lines themselves?",
+    "options": [
+      {
+        "text": "-n",
+        "is_correct": false
+      },
+      {
+        "text": "-c",
+        "is_correct": true
+      },
+      {
+        "text": "-v",
+        "is_correct": false
+      },
+      {
+        "text": "-l",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep -c pattern file` outputs line match counts.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q126",
+    "unit": 3,
+    "prompt": "Which `grep` option prints only the names of files containing matching lines?",
+    "options": [
+      {
+        "text": "-f",
+        "is_correct": false
+      },
+      {
+        "text": "-l",
+        "is_correct": true
+      },
+      {
+        "text": "-L",
+        "is_correct": false
+      },
+      {
+        "text": "-h",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`grep -l pattern *.txt` lists matching filenames.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q127",
+    "unit": 3,
+    "prompt": "What does the regular expression anchor `^` signify?",
+    "options": [
+      {
+        "text": "Match end of line",
+        "is_correct": false
+      },
+      {
+        "text": "Match beginning of line",
+        "is_correct": true
+      },
+      {
+        "text": "Match any digit",
+        "is_correct": false
+      },
+      {
+        "text": "Match empty space",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`^` asserts position at the start of a line.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q128",
+    "unit": 3,
+    "prompt": "What does the regular expression anchor `$` signify?",
+    "options": [
+      {
+        "text": "Match end of line",
+        "is_correct": true
+      },
+      {
+        "text": "Match beginning of line",
+        "is_correct": false
+      },
+      {
+        "text": "Match dollar sign only",
+        "is_correct": false
+      },
+      {
+        "text": "Match non-printable character",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`$` asserts position at the end of a line.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q129",
+    "unit": 3,
+    "prompt": "What does the regular expression pattern `^$` match?",
+    "options": [
+      {
+        "text": "Lines containing dollar signs",
+        "is_correct": false
+      },
+      {
+        "text": "Completely empty (blank) lines",
+        "is_correct": true
+      },
+      {
+        "text": "Every line in the file",
+        "is_correct": false
+      },
+      {
+        "text": "No lines",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`^$` matches empty lines with zero characters between start and end.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q130",
+    "unit": 3,
+    "prompt": "What does the regex character class `[0-9]` match?",
+    "options": [
+      {
+        "text": "Any single digit from 0 through 9",
+        "is_correct": true
+      },
+      {
+        "text": "The string '0-9'",
+        "is_correct": false
+      },
+      {
+        "text": "Any letter",
+        "is_correct": false
+      },
+      {
+        "text": "Non-numeric characters",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`[0-9]` matches any single ASCII digit.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q131",
+    "unit": 3,
+    "prompt": "What does the negated character class `[^0-9]` match?",
+    "options": [
+      {
+        "text": "Any digit starting at beginning of line",
+        "is_correct": false
+      },
+      {
+        "text": "Any single character that is NOT a digit",
+        "is_correct": true
+      },
+      {
+        "text": "Numbers greater than 9",
+        "is_correct": false
+      },
+      {
+        "text": "Syntax error",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`[^...]` inverts the character set.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q132",
+    "unit": 3,
+    "prompt": "What does the quantifier `*` match in basic regular expressions?",
+    "options": [
+      {
+        "text": "At least one occurrence",
+        "is_correct": false
+      },
+      {
+        "text": "Zero or more occurrences of the preceding element",
+        "is_correct": true
+      },
+      {
+        "text": "Exactly one character",
+        "is_correct": false
+      },
+      {
+        "text": "Any word",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`*` matches 0 or more occurrences.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q133",
+    "unit": 3,
+    "prompt": "What does `egrep` (or `grep -E`) support that standard basic `grep` does not without backslashes?",
+    "options": [
+      {
+        "text": "Extended Regular Expressions (ERE) including +, ?, |, ()",
+        "is_correct": true
+      },
+      {
+        "text": "Only binary files",
+        "is_correct": false
+      },
+      {
+        "text": "Only C code",
+        "is_correct": false
+      },
+      {
+        "text": "Faster network reads",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`egrep` supports Extended Regular Expressions (+, ?, |, parenthesized grouping) natively.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q134",
+    "unit": 3,
+    "prompt": "What does `sed` stand for?",
+    "options": [
+      {
+        "text": "Stream Editor",
+        "is_correct": true
+      },
+      {
+        "text": "Serial Editor",
+        "is_correct": false
+      },
+      {
+        "text": "Standard Edit Daemon",
+        "is_correct": false
+      },
+      {
+        "text": "System Editor",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sed` is a stream editor for parsing and transforming text line-by-line.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q135",
+    "unit": 3,
+    "prompt": "How does `sed` process input text?",
+    "options": [
+      {
+        "text": "Loads entire file into memory and overwrites it",
+        "is_correct": false
+      },
+      {
+        "text": "Reads input line-by-line into the Pattern Space, applies editing commands, and outputs to stdout",
+        "is_correct": true
+      },
+      {
+        "text": "Executes an interactive GUI",
+        "is_correct": false
+      },
+      {
+        "text": "Compiles code",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sed` operates line-by-line using its internal Pattern Space buffer.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q136",
+    "unit": 3,
+    "prompt": "What does the `sed` command `sed 's/apple/orange/' fruits.txt` do?",
+    "options": [
+      {
+        "text": "Replaces all occurrences of apple in every line",
+        "is_correct": false
+      },
+      {
+        "text": "Replaces only the FIRST occurrence of 'apple' on each line with 'orange'",
+        "is_correct": true
+      },
+      {
+        "text": "Deletes apple",
+        "is_correct": false
+      },
+      {
+        "text": "Appends orange to file",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Without the global flag `g`, substitution `s/old/new/` replaces only the first occurrence per line.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q137",
+    "unit": 3,
+    "prompt": "What does the `g` flag appended to `s/old/new/g` do in `sed`?",
+    "options": [
+      {
+        "text": "Greedy match",
+        "is_correct": false
+      },
+      {
+        "text": "Global replacement across ALL occurrences on each line",
+        "is_correct": true
+      },
+      {
+        "text": "Group matching",
+        "is_correct": false
+      },
+      {
+        "text": "Ignore case",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`g` enables global replacement across the entire line.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q138",
+    "unit": 3,
+    "prompt": "What does `sed '/pattern/d' file.txt` do?",
+    "options": [
+      {
+        "text": "Duplicates lines matching pattern",
+        "is_correct": false
+      },
+      {
+        "text": "Deletes all lines matching pattern from the output stream",
+        "is_correct": true
+      },
+      {
+        "text": "Displays only matching lines",
+        "is_correct": false
+      },
+      {
+        "text": "Replaces pattern",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`d` deletes matching lines from Pattern Space.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q139",
+    "unit": 3,
+    "prompt": "What option in `sed` modifies files in-place directly on disk?",
+    "options": [
+      {
+        "text": "-p",
+        "is_correct": false
+      },
+      {
+        "text": "-i",
+        "is_correct": true
+      },
+      {
+        "text": "-f",
+        "is_correct": false
+      },
+      {
+        "text": "-e",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sed -i 's/foo/bar/g' file.txt` edits the file in place.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q140",
+    "unit": 3,
+    "prompt": "What does `awk` stand for?",
+    "options": [
+      {
+        "text": "Advanced Word Kernel",
+        "is_correct": false
+      },
+      {
+        "text": "Aho, Weinberger, and Kernighan (the authors' initials)",
+        "is_correct": true
+      },
+      {
+        "text": "Automated Word Keying",
+        "is_correct": false
+      },
+      {
+        "text": "Array Working Kit",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`awk` was designed by Alfred Aho, Peter Weinberger, and Brian Kernighan.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q141",
+    "unit": 3,
+    "prompt": "What is the fundamental structure of an AWK program?",
+    "options": [
+      {
+        "text": "function name() { ... }",
+        "is_correct": false
+      },
+      {
+        "text": "pattern { action }",
+        "is_correct": true
+      },
+      {
+        "text": "SELECT column FROM table",
+        "is_correct": false
+      },
+      {
+        "text": "if condition then statement",
+        "is_correct": false
+      }
+    ],
+    "explanation": "AWK programs consist of sequences of `pattern { action }` statements.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q142",
+    "unit": 3,
+    "prompt": "In AWK, what special variable refers to the ENTIRE current input line?",
+    "options": [
+      {
+        "text": "$1",
+        "is_correct": false
+      },
+      {
+        "text": "$0",
+        "is_correct": true
+      },
+      {
+        "text": "$LINE",
+        "is_correct": false
+      },
+      {
+        "text": "$ALL",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`$0` represents the complete unparsed input record.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q143",
+    "unit": 3,
+    "prompt": "In AWK, what variable refers to the first field of the current line?",
+    "options": [
+      {
+        "text": "$0",
+        "is_correct": false
+      },
+      {
+        "text": "$1",
+        "is_correct": true
+      },
+      {
+        "text": "$F1",
+        "is_correct": false
+      },
+      {
+        "text": "F[0]",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`$1` refers to field 1, `$2` to field 2, and so on.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q144",
+    "unit": 3,
+    "prompt": "What does the built-in AWK variable `NF` represent?",
+    "options": [
+      {
+        "text": "New File",
+        "is_correct": false
+      },
+      {
+        "text": "Number of Fields in the current record",
+        "is_correct": true
+      },
+      {
+        "text": "Next Function",
+        "is_correct": false
+      },
+      {
+        "text": "Number of Files",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`NF` holds the total count of whitespace-delimited fields in the current line.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q145",
+    "unit": 3,
+    "prompt": "What does the built-in AWK variable `NR` represent?",
+    "options": [
+      {
+        "text": "Name of Record",
+        "is_correct": false
+      },
+      {
+        "text": "Number of Records (current input line number) processed so far",
+        "is_correct": true
+      },
+      {
+        "text": "Next Record",
+        "is_correct": false
+      },
+      {
+        "text": "Number of Runs",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`NR` tracks the current ordinal record/line number.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q146",
+    "unit": 3,
+    "prompt": "What special block in AWK executes ONCE before any input records are read?",
+    "options": [
+      {
+        "text": "START",
+        "is_correct": false
+      },
+      {
+        "text": "BEGIN",
+        "is_correct": true
+      },
+      {
+        "text": "INIT",
+        "is_correct": false
+      },
+      {
+        "text": "PRE",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `BEGIN { ... }` block executes prior to reading input stream lines.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q147",
+    "unit": 3,
+    "prompt": "What special block in AWK executes ONCE after all input records have been read?",
+    "options": [
+      {
+        "text": "FINISH",
+        "is_correct": false
+      },
+      {
+        "text": "END",
+        "is_correct": true
+      },
+      {
+        "text": "CLOSE",
+        "is_correct": false
+      },
+      {
+        "text": "POST",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `END { ... }` block executes after end-of-file is reached.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q148",
+    "unit": 3,
+    "prompt": "What built-in AWK variable defines the Input Field Separator?",
+    "options": [
+      {
+        "text": "OFS",
+        "is_correct": false
+      },
+      {
+        "text": "FS",
+        "is_correct": true
+      },
+      {
+        "text": "IFS",
+        "is_correct": false
+      },
+      {
+        "text": "DELIM",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`FS` sets the input delimiter (e.g., `awk -F':' '{print $1}' /etc/passwd` sets `FS` to `:`).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q149",
+    "unit": 3,
+    "prompt": "What does the AWK script `awk '{sum += $1} END {print sum}' data.txt` do?",
+    "options": [
+      {
+        "text": "Counts total lines",
+        "is_correct": false
+      },
+      {
+        "text": "Calculates and prints the mathematical sum of all numbers in column 1",
+        "is_correct": true
+      },
+      {
+        "text": "Multiplies column 1",
+        "is_correct": false
+      },
+      {
+        "text": "Prints average",
+        "is_correct": false
+      }
+    ],
+    "explanation": "It accumulates the first field of each row into `sum` and prints the total in the `END` block.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u3-q150",
+    "unit": 3,
+    "prompt": "What command will print lines from line 5 to line 10 using `sed`?",
+    "options": [
+      {
+        "text": "sed -n '5,10p' file.txt",
+        "is_correct": true
+      },
+      {
+        "text": "sed '5 to 10' file.txt",
+        "is_correct": false
+      },
+      {
+        "text": "sed -l 5-10 file.txt",
+        "is_correct": false
+      },
+      {
+        "text": "sed 'lines 5,10' file.txt",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`sed -n '5,10p'` suppresses automatic printing (`-n`) and prints (`p`) lines 5 through 10.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-3",
+      "Filters",
+      "grep",
+      "sed",
+      "awk"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q151",
+    "unit": 4,
+    "prompt": "Where was the UNIX operating system originally developed in 1969?",
+    "options": [
+      {
+        "text": "Microsoft Corporation",
+        "is_correct": false
+      },
+      {
+        "text": "AT&T Bell Laboratories",
+        "is_correct": true
+      },
+      {
+        "text": "Xerox PARC",
+        "is_correct": false
+      },
+      {
+        "text": "Stanford University",
+        "is_correct": false
+      }
+    ],
+    "explanation": "UNIX was pioneered in 1969 at Bell Labs by Ken Thompson, Dennis Ritchie, Brian Kernighan, and colleagues.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q152",
+    "unit": 4,
+    "prompt": "What programming language was UNIX largely rewritten in during 1973, making it extraordinarily portable?",
+    "options": [
+      {
+        "text": "Assembly",
+        "is_correct": false
+      },
+      {
+        "text": "B language",
+        "is_correct": false
+      },
+      {
+        "text": "C language",
+        "is_correct": true
+      },
+      {
+        "text": "Pascal",
+        "is_correct": false
+      }
+    ],
+    "explanation": "In 1973, Dennis Ritchie and Ken Thompson rewrote UNIX in C, transforming operating system history by breaking hardware dependency.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q153",
+    "unit": 4,
+    "prompt": "Which of the following is NOT a core philosophy of the UNIX operating system?",
+    "options": [
+      {
+        "text": "Write programs that do one thing and do it well",
+        "is_correct": false
+      },
+      {
+        "text": "Write programs to work together via text streams",
+        "is_correct": false
+      },
+      {
+        "text": "Design massive, monolithic programs containing all user utilities in a single executable",
+        "is_correct": true
+      },
+      {
+        "text": "Store data in flat text files",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The UNIX philosophy emphasizes modular, small tools chained together via text streams, rather than bloated single monoliths.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q154",
+    "unit": 4,
+    "prompt": "Which layer in the UNIX architecture directly interacts with physical computer hardware?",
+    "options": [
+      {
+        "text": "Shell",
+        "is_correct": false
+      },
+      {
+        "text": "Kernel",
+        "is_correct": true
+      },
+      {
+        "text": "User Applications",
+        "is_correct": false
+      },
+      {
+        "text": "System Libraries",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The Kernel is the heart of UNIX residing in supervisor memory, directly controlling CPU, RAM, and hardware devices.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q155",
+    "unit": 4,
+    "prompt": "What is the function of the UNIX Shell?",
+    "options": [
+      {
+        "text": "A hardware chip",
+        "is_correct": false
+      },
+      {
+        "text": "A command-line interpreter that reads user commands, interprets them, and requests kernel services",
+        "is_correct": true
+      },
+      {
+        "text": "A memory partition",
+        "is_correct": false
+      },
+      {
+        "text": "A disk format",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The Shell is a user-level program providing an interactive interface between the user and the kernel.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q156",
+    "unit": 4,
+    "prompt": "What command reveals whether a command is a shell built-in or an external disk binary?",
+    "options": [
+      {
+        "text": "type",
+        "is_correct": true
+      },
+      {
+        "text": "where",
+        "is_correct": false
+      },
+      {
+        "text": "info",
+        "is_correct": false
+      },
+      {
+        "text": "find",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `type` command (e.g., `type cd`, `type ls`) identifies whether a command is a built-in or external executable.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q157",
+    "unit": 4,
+    "prompt": "Which command displays the manual page documentation for a UNIX utility?",
+    "options": [
+      {
+        "text": "help",
+        "is_correct": false
+      },
+      {
+        "text": "doc",
+        "is_correct": false
+      },
+      {
+        "text": "man",
+        "is_correct": true
+      },
+      {
+        "text": "guide",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `man` utility (e.g., `man ls`, `man grep`) formats and displays reference manual pages.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q158",
+    "unit": 4,
+    "prompt": "In UNIX man pages, which section specifically covers System Calls?",
+    "options": [
+      {
+        "text": "Section 1",
+        "is_correct": false
+      },
+      {
+        "text": "Section 2",
+        "is_correct": true
+      },
+      {
+        "text": "Section 3",
+        "is_correct": false
+      },
+      {
+        "text": "Section 8",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Section 1 covers User Commands; Section 2 covers System Calls; Section 3 covers C Library Functions; Section 8 covers System Admin Commands.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q159",
+    "unit": 4,
+    "prompt": "Which command displays a one-line description of a command from the whatis database?",
+    "options": [
+      {
+        "text": "whatis",
+        "is_correct": true
+      },
+      {
+        "text": "whois",
+        "is_correct": false
+      },
+      {
+        "text": "describe",
+        "is_correct": false
+      },
+      {
+        "text": "lookup",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`whatis command` displays short manual page descriptions.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q160",
+    "unit": 4,
+    "prompt": "Which command searches man page descriptions for keywords (equivalent to `man -k`)?",
+    "options": [
+      {
+        "text": "search",
+        "is_correct": false
+      },
+      {
+        "text": "apropos",
+        "is_correct": true
+      },
+      {
+        "text": "find",
+        "is_correct": false
+      },
+      {
+        "text": "locate",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`apropos keyword` searches description strings in manual pages.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q161",
+    "unit": 4,
+    "prompt": "Which command displays the current absolute working directory path?",
+    "options": [
+      {
+        "text": "dir",
+        "is_correct": false
+      },
+      {
+        "text": "cwd",
+        "is_correct": false
+      },
+      {
+        "text": "pwd",
+        "is_correct": true
+      },
+      {
+        "text": "path",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`pwd` (Print Working Directory) outputs the current directory hierarchy from root `/`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q162",
+    "unit": 4,
+    "prompt": "What does `cd ..` do?",
+    "options": [
+      {
+        "text": "Changes to root directory",
+        "is_correct": false
+      },
+      {
+        "text": "Changes to current user's home directory",
+        "is_correct": false
+      },
+      {
+        "text": "Moves up one level to parent directory",
+        "is_correct": true
+      },
+      {
+        "text": "Deletes directory",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`..` denotes the parent directory in hierarchical file path traversal.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q163",
+    "unit": 4,
+    "prompt": "What does `cd ~` or simply `cd` with no arguments do in UNIX?",
+    "options": [
+      {
+        "text": "Changes to root `/`",
+        "is_correct": false
+      },
+      {
+        "text": "Changes to current user's home directory (`$HOME`)",
+        "is_correct": true
+      },
+      {
+        "text": "Stays in current directory",
+        "is_correct": false
+      },
+      {
+        "text": "Raises error",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A bare `cd` or `cd ~` returns the user immediately to their login home directory.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q164",
+    "unit": 4,
+    "prompt": "Which option with `mkdir` automatically creates missing parent directories in a nested path?",
+    "options": [
+      {
+        "text": "-r",
+        "is_correct": false
+      },
+      {
+        "text": "-p",
+        "is_correct": true
+      },
+      {
+        "text": "-f",
+        "is_correct": false
+      },
+      {
+        "text": "-a",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mkdir -p /a/b/c` creates all missing parent directories without error.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q165",
+    "unit": 4,
+    "prompt": "Which command removes an empty directory?",
+    "options": [
+      {
+        "text": "rmdir",
+        "is_correct": true
+      },
+      {
+        "text": "del",
+        "is_correct": false
+      },
+      {
+        "text": "remove",
+        "is_correct": false
+      },
+      {
+        "text": "erase",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`rmdir` removes directories that contain no files or subdirectories.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q166",
+    "unit": 4,
+    "prompt": "Which command option with `ls` displays long-format detailed file information (permissions, links, owner, size, date)?",
+    "options": [
+      {
+        "text": "-a",
+        "is_correct": false
+      },
+      {
+        "text": "-l",
+        "is_correct": true
+      },
+      {
+        "text": "-h",
+        "is_correct": false
+      },
+      {
+        "text": "-R",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -l` outputs detailed file metadata columns.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q167",
+    "unit": 4,
+    "prompt": "Which option with `ls` displays all hidden files (files beginning with a dot `.`)?",
+    "options": [
+      {
+        "text": "-h",
+        "is_correct": false
+      },
+      {
+        "text": "-a",
+        "is_correct": true
+      },
+      {
+        "text": "-d",
+        "is_correct": false
+      },
+      {
+        "text": "-t",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -a` (all) lists all entries including dot files like `.bashrc` and `.profile`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q168",
+    "unit": 4,
+    "prompt": "Which option with `ls` recursively lists all subdirectories and their contents?",
+    "options": [
+      {
+        "text": "-r",
+        "is_correct": false
+      },
+      {
+        "text": "-R",
+        "is_correct": true
+      },
+      {
+        "text": "-s",
+        "is_correct": false
+      },
+      {
+        "text": "-x",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ls -R` performs recursive directory listing.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q169",
+    "unit": 4,
+    "prompt": "Which command creates an empty file or updates the access and modification timestamps of an existing file?",
+    "options": [
+      {
+        "text": "create",
+        "is_correct": false
+      },
+      {
+        "text": "touch",
+        "is_correct": true
+      },
+      {
+        "text": "new",
+        "is_correct": false
+      },
+      {
+        "text": "stamp",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`touch filename` creates a zero-byte file if it does not exist, or updates timestamps if it exists.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q170",
+    "unit": 4,
+    "prompt": "Which command copies files or directories from source to destination?",
+    "options": [
+      {
+        "text": "copy",
+        "is_correct": false
+      },
+      {
+        "text": "cp",
+        "is_correct": true
+      },
+      {
+        "text": "clone",
+        "is_correct": false
+      },
+      {
+        "text": "dup",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cp source dest` copies files (`cp -r` for recursive directory copy).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q171",
+    "unit": 4,
+    "prompt": "Which command moves or renames files and directories in UNIX?",
+    "options": [
+      {
+        "text": "ren",
+        "is_correct": false
+      },
+      {
+        "text": "move",
+        "is_correct": false
+      },
+      {
+        "text": "mv",
+        "is_correct": true
+      },
+      {
+        "text": "rn",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`mv oldname newname` renames or relocates files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q172",
+    "unit": 4,
+    "prompt": "Which command deletes files in UNIX?",
+    "options": [
+      {
+        "text": "del",
+        "is_correct": false
+      },
+      {
+        "text": "rm",
+        "is_correct": true
+      },
+      {
+        "text": "erase",
+        "is_correct": false
+      },
+      {
+        "text": "unlink_all",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`rm` removes directory entries and deletes files (`rm -r` for recursive directory removal).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q173",
+    "unit": 4,
+    "prompt": "Which command concatenates and displays entire text file contents on terminal stdout?",
+    "options": [
+      {
+        "text": "type",
+        "is_correct": false
+      },
+      {
+        "text": "cat",
+        "is_correct": true
+      },
+      {
+        "text": "echo",
+        "is_correct": false
+      },
+      {
+        "text": "print",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cat file1 file2` concatenates and streams text to stdout.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q174",
+    "unit": 4,
+    "prompt": "Which command displays the first 10 lines of a file by default?",
+    "options": [
+      {
+        "text": "top",
+        "is_correct": false
+      },
+      {
+        "text": "head",
+        "is_correct": true
+      },
+      {
+        "text": "start",
+        "is_correct": false
+      },
+      {
+        "text": "first",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`head -n 10 file` displays the initial lines.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q175",
+    "unit": 4,
+    "prompt": "Which command continuously monitors and displays growing file lines in real time (e.g., log files)?",
+    "options": [
+      {
+        "text": "head -f",
+        "is_correct": false
+      },
+      {
+        "text": "tail -f",
+        "is_correct": true
+      },
+      {
+        "text": "watch",
+        "is_correct": false
+      },
+      {
+        "text": "cat -live",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`tail -f /var/log/syslog` follows appended data in real time.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q176",
+    "unit": 4,
+    "prompt": "Which command displays physical disk filesystem usage in human-readable units (GB, MB)?",
+    "options": [
+      {
+        "text": "du -h",
+        "is_correct": false
+      },
+      {
+        "text": "df -h",
+        "is_correct": true
+      },
+      {
+        "text": "disk -u",
+        "is_correct": false
+      },
+      {
+        "text": "fdisk -l",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`df -h` (Disk Free) reports filesystem capacity and available space.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q177",
+    "unit": 4,
+    "prompt": "Which command estimates file space usage for a directory and its subtrees?",
+    "options": [
+      {
+        "text": "df",
+        "is_correct": false
+      },
+      {
+        "text": "du",
+        "is_correct": true
+      },
+      {
+        "text": "free",
+        "is_correct": false
+      },
+      {
+        "text": "stat",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`du -sh directory` (Disk Usage) computes directory subtree consumption.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q178",
+    "unit": 4,
+    "prompt": "Which command reports snapshot information about currently active processes?",
+    "options": [
+      {
+        "text": "top",
+        "is_correct": false
+      },
+      {
+        "text": "ps",
+        "is_correct": true
+      },
+      {
+        "text": "proc",
+        "is_correct": false
+      },
+      {
+        "text": "tasks",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ps` lists current active processes.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q179",
+    "unit": 4,
+    "prompt": "What does `ps -ef` or `ps aux` display?",
+    "options": [
+      {
+        "text": "Only root processes",
+        "is_correct": false
+      },
+      {
+        "text": "Every active process running across all users on the system with full details",
+        "is_correct": true
+      },
+      {
+        "text": "Terminated processes",
+        "is_correct": false
+      },
+      {
+        "text": "Network ports",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ps -ef` and `ps aux` provide comprehensive process listings across all system terminals and daemons.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q180",
+    "unit": 4,
+    "prompt": "What is the unique numeric identification assigned to every process in UNIX called?",
+    "options": [
+      {
+        "text": "UID",
+        "is_correct": false
+      },
+      {
+        "text": "GID",
+        "is_correct": false
+      },
+      {
+        "text": "PID",
+        "is_correct": true
+      },
+      {
+        "text": "PPID",
+        "is_correct": false
+      }
+    ],
+    "explanation": "PID stands for Process IDentifier.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q181",
+    "unit": 4,
+    "prompt": "What is the Parent Process ID of a process called?",
+    "options": [
+      {
+        "text": "PPID",
+        "is_correct": true
+      },
+      {
+        "text": "ParentID",
+        "is_correct": false
+      },
+      {
+        "text": "MPID",
+        "is_correct": false
+      },
+      {
+        "text": "GPID",
+        "is_correct": false
+      }
+    ],
+    "explanation": "PPID stands for Parent Process IDentifier.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q182",
+    "unit": 4,
+    "prompt": "What is the special PID assigned to the system initialization daemon `init` / `systemd`?",
+    "options": [
+      {
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "text": "1",
+        "is_correct": true
+      },
+      {
+        "text": "-1",
+        "is_correct": false
+      },
+      {
+        "text": "100",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Process 1 (`init` or `systemd`) is the ancestor of all user-space processes spawned after kernel boot.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q183",
+    "unit": 4,
+    "prompt": "What character placed at the end of a command instructs the shell to run it as a background job?",
+    "options": [
+      {
+        "text": "%",
+        "is_correct": false
+      },
+      {
+        "text": "&",
+        "is_correct": true
+      },
+      {
+        "text": "#",
+        "is_correct": false
+      },
+      {
+        "text": "@",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Appending `&` (e.g., `python script.py &`) detaches command execution to run in the background.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q184",
+    "unit": 4,
+    "prompt": "Which utility prevents a running command from receiving SIGHUP signals when the user logs out?",
+    "options": [
+      {
+        "text": "bg",
+        "is_correct": false
+      },
+      {
+        "text": "fg",
+        "is_correct": false
+      },
+      {
+        "text": "nohup",
+        "is_correct": true
+      },
+      {
+        "text": "disown_all",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`nohup command &` ensures jobs continue executing after terminal disconnection, logging output to `nohup.out`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q185",
+    "unit": 4,
+    "prompt": "Which command lists all background jobs managed by the current shell session?",
+    "options": [
+      {
+        "text": "ps",
+        "is_correct": false
+      },
+      {
+        "text": "jobs",
+        "is_correct": true
+      },
+      {
+        "text": "tasks",
+        "is_correct": false
+      },
+      {
+        "text": "bg_list",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The shell built-in `jobs` lists active job numbers and states (`[1]+ Running`).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q186",
+    "unit": 4,
+    "prompt": "How do you bring background job number 1 into the foreground?",
+    "options": [
+      {
+        "text": "fg %1",
+        "is_correct": true
+      },
+      {
+        "text": "bg %1",
+        "is_correct": false
+      },
+      {
+        "text": "bring 1",
+        "is_correct": false
+      },
+      {
+        "text": "run 1",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`fg %1` switches job 1 to the interactive foreground.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q187",
+    "unit": 4,
+    "prompt": "What command adjusts the scheduling priority of a new process before launching?",
+    "options": [
+      {
+        "text": "renice",
+        "is_correct": false
+      },
+      {
+        "text": "nice",
+        "is_correct": true
+      },
+      {
+        "text": "priority",
+        "is_correct": false
+      },
+      {
+        "text": "setpri",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`nice -n 10 command` starts a command with lower priority; `renice` alters running processes.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q188",
+    "unit": 4,
+    "prompt": "What is the numerical range of the 'nice' value in modern UNIX/Linux systems?",
+    "options": [
+      {
+        "text": "0 to 100",
+        "is_correct": false
+      },
+      {
+        "text": "-20 (highest priority) to +19 (lowest priority)",
+        "is_correct": true
+      },
+      {
+        "text": "1 to 10",
+        "is_correct": false
+      },
+      {
+        "text": "-100 to 100",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Nice values range from -20 (least nice to others, highest CPU share) to +19 (nicest, lowest CPU share).",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q189",
+    "unit": 4,
+    "prompt": "Which signal is the default signal sent by the `kill` command?",
+    "options": [
+      {
+        "text": "SIGKILL (9)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGTERM (15)",
+        "is_correct": true
+      },
+      {
+        "text": "SIGINT (2)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGHUP (1)",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`kill PID` sends `SIGTERM` (signal 15), requesting graceful process termination.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q190",
+    "unit": 4,
+    "prompt": "Which signal CANNOT be caught, blocked, or ignored by any process in UNIX?",
+    "options": [
+      {
+        "text": "SIGINT (2)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGTERM (15)",
+        "is_correct": false
+      },
+      {
+        "text": "SIGKILL (9) and SIGSTOP",
+        "is_correct": true
+      },
+      {
+        "text": "SIGHUP (1)",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`SIGKILL` (signal 9) and `SIGSTOP` are intercepted directly by the kernel and cannot be handled or masked.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q191",
+    "unit": 4,
+    "prompt": "Which terminal keyboard combination generates the `SIGINT` (Interrupt) signal to terminate foreground jobs?",
+    "options": [
+      {
+        "text": "Ctrl + Z",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + C",
+        "is_correct": true
+      },
+      {
+        "text": "Ctrl + D",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + \\",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + C` sends `SIGINT` (signal 2) causing immediate interruption.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q192",
+    "unit": 4,
+    "prompt": "Which terminal keyboard combination generates `SIGTSTP` to suspend a foreground job?",
+    "options": [
+      {
+        "text": "Ctrl + C",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + Z",
+        "is_correct": true
+      },
+      {
+        "text": "Ctrl + D",
+        "is_correct": false
+      },
+      {
+        "text": "Ctrl + X",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + Z` sends `SIGTSTP`, pausing execution and returning shell prompt.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q193",
+    "unit": 4,
+    "prompt": "What does `Ctrl + D` represent at the terminal console?",
+    "options": [
+      {
+        "text": "Abort signal",
+        "is_correct": false
+      },
+      {
+        "text": "End of File (EOF) / Logout signal",
+        "is_correct": true
+      },
+      {
+        "text": "Clear screen",
+        "is_correct": false
+      },
+      {
+        "text": "Break signal",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`Ctrl + D` signals EOF on standard input.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q194",
+    "unit": 4,
+    "prompt": "What is a Zombie Process in UNIX?",
+    "options": [
+      {
+        "text": "A process consuming 100% CPU",
+        "is_correct": false
+      },
+      {
+        "text": "A process that has finished execution (exited) but its exit status has not yet been read by its parent via `wait()`",
+        "is_correct": true
+      },
+      {
+        "text": "A virus program",
+        "is_correct": false
+      },
+      {
+        "text": "A background daemon",
+        "is_correct": false
+      }
+    ],
+    "explanation": "A Zombie process holds no memory except its PCB entry in the process table awaiting parent reaping.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q195",
+    "unit": 4,
+    "prompt": "What is an Orphan Process in UNIX?",
+    "options": [
+      {
+        "text": "A process without a child",
+        "is_correct": false
+      },
+      {
+        "text": "A process whose parent terminated before it; it is immediately adopted by `init` (PID 1)",
+        "is_correct": true
+      },
+      {
+        "text": "A process with invalid permissions",
+        "is_correct": false
+      },
+      {
+        "text": "A suspended process",
+        "is_correct": false
+      }
+    ],
+    "explanation": "When a parent process dies, orphan children are reparented to PID 1 (`init`).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q196",
+    "unit": 4,
+    "prompt": "Which command displays dynamic, real-time interactive process CPU and memory utilization?",
+    "options": [
+      {
+        "text": "ps",
+        "is_correct": false
+      },
+      {
+        "text": "top (or htop)",
+        "is_correct": true
+      },
+      {
+        "text": "uptime",
+        "is_correct": false
+      },
+      {
+        "text": "free",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`top` provides a real-time updating view of system resource usage and active processes.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q197",
+    "unit": 4,
+    "prompt": "Which command displays who is currently logged into the UNIX system?",
+    "options": [
+      {
+        "text": "who",
+        "is_correct": false
+      },
+      {
+        "text": "w",
+        "is_correct": false
+      },
+      {
+        "text": "whoami",
+        "is_correct": false
+      },
+      {
+        "text": "All of the above provide user login details",
+        "is_correct": true
+      }
+    ],
+    "explanation": "`who`, `w`, and `whoami` all provide information regarding logged-in users.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q198",
+    "unit": 4,
+    "prompt": "What command displays the current system date and time?",
+    "options": [
+      {
+        "text": "time",
+        "is_correct": false
+      },
+      {
+        "text": "clock",
+        "is_correct": false
+      },
+      {
+        "text": "date",
+        "is_correct": true
+      },
+      {
+        "text": "now",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`date` outputs the system date, time, and timezone.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q199",
+    "unit": 4,
+    "prompt": "What command displays monthly or yearly calendars in UNIX?",
+    "options": [
+      {
+        "text": "calendar",
+        "is_correct": false
+      },
+      {
+        "text": "cal",
+        "is_correct": true
+      },
+      {
+        "text": "month",
+        "is_correct": false
+      },
+      {
+        "text": "date -c",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`cal` prints formatted monthly text calendars.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u4-q200",
+    "unit": 4,
+    "prompt": "What does the `uname -a` command output?",
+    "options": [
+      {
+        "text": "User name",
+        "is_correct": false
+      },
+      {
+        "text": "Complete operating system name, hostname, kernel release, and hardware architecture",
+        "is_correct": true
+      },
+      {
+        "text": "Network address",
+        "is_correct": false
+      },
+      {
+        "text": "RAM capacity",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`uname -a` outputs operating system kernel and hardware architecture specifications.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-4",
+      "vi-Editor",
+      "Shell-Scripting"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q201",
+    "unit": 5,
+    "prompt": "What keyword terminates an `if` block in bash shell scripting?",
+    "options": [
+      {
+        "text": "endif",
+        "is_correct": false
+      },
+      {
+        "text": "fi",
+        "is_correct": true
+      },
+      {
+        "text": "end",
+        "is_correct": false
+      },
+      {
+        "text": "done",
+        "is_correct": false
+      }
+    ],
+    "explanation": "In bash, `if` statements are closed with the reverse keyword `fi`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q202",
+    "unit": 5,
+    "prompt": "What is the syntax for an `else-if` branch in a bash `if` statement?",
+    "options": [
+      {
+        "text": "elseif",
+        "is_correct": false
+      },
+      {
+        "text": "elif",
+        "is_correct": true
+      },
+      {
+        "text": "else if",
+        "is_correct": false
+      },
+      {
+        "text": "elsif",
+        "is_correct": false
+      }
+    ],
+    "explanation": "bash uses `elif condition; then` for intermediate conditional branches.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q203",
+    "unit": 5,
+    "prompt": "What keyword terminates a `case` selection structure in bash?",
+    "options": [
+      {
+        "text": "endcase",
+        "is_correct": false
+      },
+      {
+        "text": "esac",
+        "is_correct": true
+      },
+      {
+        "text": "fi",
+        "is_correct": false
+      },
+      {
+        "text": "done",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `case` statement is closed with the reverse keyword `esac`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q204",
+    "unit": 5,
+    "prompt": "What characters terminate each pattern action branch in a `case` statement?",
+    "options": [
+      {
+        "text": ";",
+        "is_correct": false
+      },
+      {
+        "text": ";;",
+        "is_correct": true
+      },
+      {
+        "text": ":",
+        "is_correct": false
+      },
+      {
+        "text": "break",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Double semicolons `;;` terminate each individual clause in a `case` block.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q205",
+    "unit": 5,
+    "prompt": "What keyword represents the default / catch-all pattern in a `case` statement?",
+    "options": [
+      {
+        "text": "default",
+        "is_correct": false
+      },
+      {
+        "text": "*",
+        "is_correct": true
+      },
+      {
+        "text": "else",
+        "is_correct": false
+      },
+      {
+        "text": "other",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The wildcard `*)` catches all unmatched options in a `case` block.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q206",
+    "unit": 5,
+    "prompt": "What keywords enclose the body of a `while` loop in shell scripting?",
+    "options": [
+      {
+        "text": "begin ... end",
+        "is_correct": false
+      },
+      {
+        "text": "do ... done",
+        "is_correct": true
+      },
+      {
+        "text": "{ ... }",
+        "is_correct": false
+      },
+      {
+        "text": "repeat ... end",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Loops in bash execute statements between `do` and `done`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q207",
+    "unit": 5,
+    "prompt": "How does a `while` loop behave compared to an `until` loop in bash?",
+    "options": [
+      {
+        "text": "while iterates while condition is True; until iterates while condition is False (until it becomes True)",
+        "is_correct": true
+      },
+      {
+        "text": "They are completely identical",
+        "is_correct": false
+      },
+      {
+        "text": "until iterates backward",
+        "is_correct": false
+      },
+      {
+        "text": "while does not support break",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`while` loops execute as long as the test succeeds (returns 0); `until` loops execute until the test succeeds.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q208",
+    "unit": 5,
+    "prompt": "What is the syntax for a C-style for loop in bash?",
+    "options": [
+      {
+        "text": "for i = 1 to 10 do ... done",
+        "is_correct": false
+      },
+      {
+        "text": "for (( i=0; i<n; i++ )); do ... done",
+        "is_correct": true
+      },
+      {
+        "text": "for i in (0..n):",
+        "is_correct": false
+      },
+      {
+        "text": "loop i = 1..n",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Modern bash supports double-parentheses C-style syntax: `for (( init; condition; step )); do ... done`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q209",
+    "unit": 5,
+    "prompt": "How do you iterate through all `.txt` files in the current directory using a `for` loop?",
+    "options": [
+      {
+        "text": "for f in *.txt; do ... done",
+        "is_correct": true
+      },
+      {
+        "text": "for each f in *.txt do",
+        "is_correct": false
+      },
+      {
+        "text": "loop *.txt into f",
+        "is_correct": false
+      },
+      {
+        "text": "for f: *.txt",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`for file in *.txt; do echo $file; done` iterates over file glob expansions.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q210",
+    "unit": 5,
+    "prompt": "What does `break` do inside a shell loop?",
+    "options": [
+      {
+        "text": "Terminates the script",
+        "is_correct": false
+      },
+      {
+        "text": "Exits the current enclosing loop immediately",
+        "is_correct": true
+      },
+      {
+        "text": "Skips to the next iteration",
+        "is_correct": false
+      },
+      {
+        "text": "Pauses execution",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`break` terminates the loop.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q211",
+    "unit": 5,
+    "prompt": "What does `break 2` do inside nested shell loops?",
+    "options": [
+      {
+        "text": "Pauses for 2 seconds",
+        "is_correct": false
+      },
+      {
+        "text": "Breaks out of 2 levels of nested loops simultaneously",
+        "is_correct": true
+      },
+      {
+        "text": "Breaks loop 2 only",
+        "is_correct": false
+      },
+      {
+        "text": "Skips 2 lines",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`break n` terminates $n$ levels of enclosing loops.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q212",
+    "unit": 5,
+    "prompt": "What does `continue` do inside a loop?",
+    "options": [
+      {
+        "text": "Exits the loop",
+        "is_correct": false
+      },
+      {
+        "text": "Skips the remainder of the current iteration and begins the next loop cycle",
+        "is_correct": true
+      },
+      {
+        "text": "Restarts script",
+        "is_correct": false
+      },
+      {
+        "text": "None",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`continue` jumps to the next iteration.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q213",
+    "unit": 5,
+    "prompt": "What command terminates execution of a shell script with an optional exit code?",
+    "options": [
+      {
+        "text": "stop",
+        "is_correct": false
+      },
+      {
+        "text": "exit",
+        "is_correct": true
+      },
+      {
+        "text": "quit",
+        "is_correct": false
+      },
+      {
+        "text": "abort",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`exit [status]` terminates the script and returns the status code to the parent shell.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q214",
+    "unit": 5,
+    "prompt": "How is a shell function defined in bash?",
+    "options": [
+      {
+        "text": "function name { ... } or name() { ... }",
+        "is_correct": true
+      },
+      {
+        "text": "def name():",
+        "is_correct": false
+      },
+      {
+        "text": "func name { ... }",
+        "is_correct": false
+      },
+      {
+        "text": "sub name()",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Functions are declared as `my_func() { ... }` or `function my_func { ... }`.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q215",
+    "unit": 5,
+    "prompt": "How are arguments passed to and accessed inside a shell function?",
+    "options": [
+      {
+        "text": "Accessed via func_args array",
+        "is_correct": false
+      },
+      {
+        "text": "Passed space-separated after function name (`my_func arg1 arg2`) and accessed via `$1, $2` inside the function",
+        "is_correct": true
+      },
+      {
+        "text": "Through global variables only",
+        "is_correct": false
+      },
+      {
+        "text": "Functions take no arguments",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Functions receive parameters as `$1`, `$2`, etc., shadowing the script's positional parameters locally.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q216",
+    "unit": 5,
+    "prompt": "What does the `return` statement inside a shell function do?",
+    "options": [
+      {
+        "text": "Returns a string value to caller",
+        "is_correct": false
+      },
+      {
+        "text": "Exits the function and returns an integer numeric exit status code (0-255)",
+        "is_correct": true
+      },
+      {
+        "text": "Prints to stdout",
+        "is_correct": false
+      },
+      {
+        "text": "Deletes the function",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`return [n]` returns an exit code accessible via `$?`. To return string data, functions use `echo`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q217",
+    "unit": 5,
+    "prompt": "How can a caller capture a string value produced by a shell function?",
+    "options": [
+      {
+        "text": "result=$(my_func)",
+        "is_correct": true
+      },
+      {
+        "text": "result=my_func()",
+        "is_correct": false
+      },
+      {
+        "text": "return result",
+        "is_correct": false
+      },
+      {
+        "text": "read result from my_func",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Capturing stdout via command substitution `result=$(my_func)` is the standard way to retrieve data from functions.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q218",
+    "unit": 5,
+    "prompt": "How do you declare a variable with local scope restricted strictly to a function in bash?",
+    "options": [
+      {
+        "text": "private var=val",
+        "is_correct": false
+      },
+      {
+        "text": "local var=val",
+        "is_correct": true
+      },
+      {
+        "text": "my var=val",
+        "is_correct": false
+      },
+      {
+        "text": "scoped var=val",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`local var=val` creates a function-scoped variable.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q219",
+    "unit": 5,
+    "prompt": "What is a Here Document (`<<EOF`) in shell scripting?",
+    "options": [
+      {
+        "text": "A file saved in current directory",
+        "is_correct": false
+      },
+      {
+        "text": "A multi-line text block redirected into a command until a delimiter word (like EOF) is encountered",
+        "is_correct": true
+      },
+      {
+        "text": "An archive file",
+        "is_correct": false
+      },
+      {
+        "text": "A script comment",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Here Documents stream multi-line literal blocks directly into stdin.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q220",
+    "unit": 5,
+    "prompt": "What does the `trap` command in a shell script do?",
+    "options": [
+      {
+        "text": "Catches file errors",
+        "is_correct": false
+      },
+      {
+        "text": "Catches specified signals (like SIGINT, SIGTERM) and executes a specified cleanup handler function",
+        "is_correct": true
+      },
+      {
+        "text": "Logs keystrokes",
+        "is_correct": false
+      },
+      {
+        "text": "Traps infinite loops",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`trap cleanup_func SIGINT SIGTERM` intercepts signals to ensure clean resource shutdown.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q221",
+    "unit": 5,
+    "prompt": "What cron scheduling expression runs a backup script every day at 2:30 AM?",
+    "options": [
+      {
+        "text": "30 2 * * * /backup.sh",
+        "is_correct": true
+      },
+      {
+        "text": "2 30 * * * /backup.sh",
+        "is_correct": false
+      },
+      {
+        "text": "* 2 30 * * /backup.sh",
+        "is_correct": false
+      },
+      {
+        "text": "30 2 1 * * /backup.sh",
+        "is_correct": false
+      }
+    ],
+    "explanation": "Crontab fields: `minute (30) hour (2) day (*) month (*) weekday (*) command`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q222",
+    "unit": 5,
+    "prompt": "What command is used to edit the current user's crontab scheduling file?",
+    "options": [
+      {
+        "text": "cron -e",
+        "is_correct": false
+      },
+      {
+        "text": "crontab -e",
+        "is_correct": true
+      },
+      {
+        "text": "edit cron",
+        "is_correct": false
+      },
+      {
+        "text": "crontab -edit",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`crontab -e` opens the user's cron schedule in the default editor.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q223",
+    "unit": 5,
+    "prompt": "What command schedules a task to run exactly once at a specified future time?",
+    "options": [
+      {
+        "text": "cron",
+        "is_correct": false
+      },
+      {
+        "text": "at",
+        "is_correct": true
+      },
+      {
+        "text": "batch",
+        "is_correct": false
+      },
+      {
+        "text": "once",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The `at` command (e.g., `at 10:00 PM`) schedules single execution jobs.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q224",
+    "unit": 5,
+    "prompt": "What tool securely transfers files between remote UNIX hosts over an SSH encrypted channel?",
+    "options": [
+      {
+        "text": "ftp",
+        "is_correct": false
+      },
+      {
+        "text": "scp (Secure Copy) or rsync",
+        "is_correct": true
+      },
+      {
+        "text": "telnet",
+        "is_correct": false
+      },
+      {
+        "text": "rcp",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`scp` and `rsync -avz` transfer files encrypted over SSH.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q225",
+    "unit": 5,
+    "prompt": "What does the command `alias ll='ls -la'` achieve in bash?",
+    "options": [
+      {
+        "text": "Renames the ls binary",
+        "is_correct": false
+      },
+      {
+        "text": "Creates a command shortcut `ll` that automatically expands to `ls -la`",
+        "is_correct": true
+      },
+      {
+        "text": "Creates a symbolic link",
+        "is_correct": false
+      },
+      {
+        "text": "Deletes files",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`alias` defines command shortcuts in the interactive shell.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q226",
+    "unit": 5,
+    "prompt": "Which startup configuration file is executed when an interactive non-login bash subshell starts?",
+    "options": [
+      {
+        "text": "/etc/hosts",
+        "is_correct": false
+      },
+      {
+        "text": "~/.bashrc",
+        "is_correct": true
+      },
+      {
+        "text": "/etc/passwd",
+        "is_correct": false
+      },
+      {
+        "text": "~/.bash_history",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`~/.bashrc` runs on every new interactive bash subshell instantiation.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q227",
+    "unit": 5,
+    "prompt": "Which file is executed once during initial login shell initialization?",
+    "options": [
+      {
+        "text": "~/.bashrc",
+        "is_correct": false
+      },
+      {
+        "text": "~/.bash_profile (or ~/.profile)",
+        "is_correct": true
+      },
+      {
+        "text": "~/.bash_logout",
+        "is_correct": false
+      },
+      {
+        "text": "/etc/profile.d",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`~/.bash_profile` or `~/.profile` runs once upon user authentication.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q228",
+    "unit": 5,
+    "prompt": "What does `set -e` placed at the start of a bash script do?",
+    "options": [
+      {
+        "text": "Enables echo debugging",
+        "is_correct": false
+      },
+      {
+        "text": "Instructs the shell to exit immediately if any command returns a non-zero exit status (error)",
+        "is_correct": true
+      },
+      {
+        "text": "Forces strict typing",
+        "is_correct": false
+      },
+      {
+        "text": "Enables encryption",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`set -e` halts script execution on any unhandled error, enhancing reliability.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q229",
+    "unit": 5,
+    "prompt": "What does `set -x` do in a bash script?",
+    "options": [
+      {
+        "text": "Executes script in background",
+        "is_correct": false
+      },
+      {
+        "text": "Prints each command and its expanded arguments to stdout before executing (execution trace for debugging)",
+        "is_correct": true
+      },
+      {
+        "text": "Runs script as root",
+        "is_correct": false
+      },
+      {
+        "text": "Ignores errors",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`set -x` provides verbose step-by-step trace debugging.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q230",
+    "unit": 5,
+    "prompt": "What does `set -u` do in a bash script?",
+    "options": [
+      {
+        "text": "Treats uninitialized/unset variables as errors and exits immediately",
+        "is_correct": true
+      },
+      {
+        "text": "Runs as unprivileged user",
+        "is_correct": false
+      },
+      {
+        "text": "Unsets all variables",
+        "is_correct": false
+      },
+      {
+        "text": "Updates shell",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`set -u` prevents bugs caused by referencing misspelled or uninitialized variable names.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q231",
+    "unit": 5,
+    "prompt": "What does `source script.sh` or `. script.sh` do differently from `./script.sh`?",
+    "options": [
+      {
+        "text": "It compiles the script",
+        "is_correct": false
+      },
+      {
+        "text": "It executes the script inside the CURRENT shell process, preserving variable assignments and environment changes",
+        "is_correct": true
+      },
+      {
+        "text": "It runs in background",
+        "is_correct": false
+      },
+      {
+        "text": "It skips permissions",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`source` (or `.`) executes within the calling process rather than spawning a subshell.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q232",
+    "unit": 5,
+    "prompt": "What command displays the current resource limits (stack size, open file descriptors, max processes) in shell?",
+    "options": [
+      {
+        "text": "limit",
+        "is_correct": false
+      },
+      {
+        "text": "ulimit -a",
+        "is_correct": true
+      },
+      {
+        "text": "sysctl",
+        "is_correct": false
+      },
+      {
+        "text": "resmon",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ulimit -a` displays user process resource constraints.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q233",
+    "unit": 5,
+    "prompt": "What command changes a user's login password in UNIX?",
+    "options": [
+      {
+        "text": "password",
+        "is_correct": false
+      },
+      {
+        "text": "passwd",
+        "is_correct": true
+      },
+      {
+        "text": "setpass",
+        "is_correct": false
+      },
+      {
+        "text": "userpass",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`passwd` updates authentication tokens.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q234",
+    "unit": 5,
+    "prompt": "Where are encrypted user password hashes stored on modern Linux systems?",
+    "options": [
+      {
+        "text": "/etc/passwd",
+        "is_correct": false
+      },
+      {
+        "text": "/etc/shadow",
+        "is_correct": true
+      },
+      {
+        "text": "/etc/security",
+        "is_correct": false
+      },
+      {
+        "text": "/var/passwords",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/etc/shadow` stores encrypted password hashes with restricted permissions (readable only by root).",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q235",
+    "unit": 5,
+    "prompt": "What does the second field in `/etc/passwd` historically represent (now typically `x`)?",
+    "options": [
+      {
+        "text": "Username",
+        "is_correct": false
+      },
+      {
+        "text": "Encrypted password placeholder (indicating hash is in /etc/shadow)",
+        "is_correct": true
+      },
+      {
+        "text": "User ID",
+        "is_correct": false
+      },
+      {
+        "text": "Home directory",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`x` indicates password hash is secured inside `/etc/shadow`.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q236",
+    "unit": 5,
+    "prompt": "What command creates a new user account in UNIX/Linux?",
+    "options": [
+      {
+        "text": "useradd (or adduser)",
+        "is_correct": true
+      },
+      {
+        "text": "newuser",
+        "is_correct": false
+      },
+      {
+        "text": "mkuser",
+        "is_correct": false
+      },
+      {
+        "text": "createuser",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`useradd` registers a new user account.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q237",
+    "unit": 5,
+    "prompt": "What command deletes an existing user account?",
+    "options": [
+      {
+        "text": "userdel",
+        "is_correct": true
+      },
+      {
+        "text": "deluser",
+        "is_correct": false
+      },
+      {
+        "text": "rmuser",
+        "is_correct": false
+      },
+      {
+        "text": "removeuser",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`userdel` removes user records from system files.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q238",
+    "unit": 5,
+    "prompt": "What command displays system uptime and load average?",
+    "options": [
+      {
+        "text": "time",
+        "is_correct": false
+      },
+      {
+        "text": "uptime",
+        "is_correct": true
+      },
+      {
+        "text": "top",
+        "is_correct": false
+      },
+      {
+        "text": "stat",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`uptime` prints system run duration, logged-in user count, and load averages (1, 5, 15 min).",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q239",
+    "unit": 5,
+    "prompt": "What does a load average of 2.0 mean on a dual-core (2 CPU) system?",
+    "options": [
+      {
+        "text": "100% capacity utilization with zero queued wait",
+        "is_correct": true
+      },
+      {
+        "text": "50% utilization",
+        "is_correct": false
+      },
+      {
+        "text": "System is thrashing",
+        "is_correct": false
+      },
+      {
+        "text": "Zero utilization",
+        "is_correct": false
+      }
+    ],
+    "explanation": "On a 2-core system, a load average of 2.0 indicates both cores are fully utilized with zero backlog.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q240",
+    "unit": 5,
+    "prompt": "What command reboots a UNIX system from command line with root privileges?",
+    "options": [
+      {
+        "text": "restart",
+        "is_correct": false
+      },
+      {
+        "text": "reboot (or shutdown -r now)",
+        "is_correct": true
+      },
+      {
+        "text": "boot -r",
+        "is_correct": false
+      },
+      {
+        "text": "sys_restart",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`reboot` or `shutdown -r now` initiates system restart.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q241",
+    "unit": 5,
+    "prompt": "How do you safely shut down and power off a UNIX machine immediately?",
+    "options": [
+      {
+        "text": "poweroff (or shutdown -h now)",
+        "is_correct": true
+      },
+      {
+        "text": "halt -fast",
+        "is_correct": false
+      },
+      {
+        "text": "kill -9 1",
+        "is_correct": false
+      },
+      {
+        "text": "exit",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`shutdown -h now` halts processes, flushes disk caches, and powers down.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q242",
+    "unit": 5,
+    "prompt": "What is the purpose of the `/tmp` directory?",
+    "options": [
+      {
+        "text": "Stores user pictures",
+        "is_correct": false
+      },
+      {
+        "text": "Stores temporary scratch files shared across processes, cleared on system reboot",
+        "is_correct": true
+      },
+      {
+        "text": "Stores permanent archives",
+        "is_correct": false
+      },
+      {
+        "text": "Stores network configurations",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`/tmp` provides volatile scratch storage accessible to all users.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q243",
+    "unit": 5,
+    "prompt": "What is the sticky bit permission (`chmod +t` or octal `1777`) on directory `/tmp`?",
+    "options": [
+      {
+        "text": "Prevents all writes",
+        "is_correct": false
+      },
+      {
+        "text": "Ensures users can only delete or rename files they personally own, even in a world-writable directory",
+        "is_correct": true
+      },
+      {
+        "text": "Forces encryption",
+        "is_correct": false
+      },
+      {
+        "text": "Runs executable as root",
+        "is_correct": false
+      }
+    ],
+    "explanation": "The sticky bit prevents users from deleting other users' files in shared directories.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q244",
+    "unit": 5,
+    "prompt": "What does the SUID (Set User ID) permission bit (`chmod u+s file`) achieve on an executable binary?",
+    "options": [
+      {
+        "text": "Encrypts the binary",
+        "is_correct": false
+      },
+      {
+        "text": "Causes the program to execute with the effective permissions of the FILE OWNER (e.g., root) rather than the invoking user",
+        "is_correct": true
+      },
+      {
+        "text": "Prevents deletion",
+        "is_correct": false
+      },
+      {
+        "text": "Makes binary static",
+        "is_correct": false
+      }
+    ],
+    "explanation": "SUID binaries (like `/usr/bin/passwd`) allow unprivileged users to execute privileged tasks safely.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q245",
+    "unit": 5,
+    "prompt": "What does the SGID (Set Group ID) bit on a directory achieve?",
+    "options": [
+      {
+        "text": "Prevents deletion",
+        "is_correct": false
+      },
+      {
+        "text": "Ensures newly created files inherit the group ownership of the parent directory rather than the user's primary group",
+        "is_correct": true
+      },
+      {
+        "text": "Deletes group files",
+        "is_correct": false
+      },
+      {
+        "text": "Forces read-only",
+        "is_correct": false
+      }
+    ],
+    "explanation": "SGID on directories facilitates shared group collaborative folders.",
+    "difficulty": "hard",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q246",
+    "unit": 5,
+    "prompt": "What command displays the current shell process tree hierarchy?",
+    "options": [
+      {
+        "text": "pstree",
+        "is_correct": true
+      },
+      {
+        "text": "tree",
+        "is_correct": false
+      },
+      {
+        "text": "proc_tree",
+        "is_correct": false
+      },
+      {
+        "text": "ps -tree",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`pstree` renders active processes as a visual hierarchical tree.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q247",
+    "unit": 5,
+    "prompt": "What does the `watch -n 2 command` utility do?",
+    "options": [
+      {
+        "text": "Watches video files",
+        "is_correct": false
+      },
+      {
+        "text": "Repeatedly executes `command` every 2 seconds, displaying its output in full screen",
+        "is_correct": true
+      },
+      {
+        "text": "Checks file integrity",
+        "is_correct": false
+      },
+      {
+        "text": "Monitors network packets",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`watch` runs commands periodically to track output changes.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q248",
+    "unit": 5,
+    "prompt": "What command tests network host reachability by sending ICMP Echo Request packets?",
+    "options": [
+      {
+        "text": "traceroute",
+        "is_correct": false
+      },
+      {
+        "text": "ping",
+        "is_correct": true
+      },
+      {
+        "text": "netstat",
+        "is_correct": false
+      },
+      {
+        "text": "ifconfig",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`ping hostname` verifies network latency and connectivity via ICMP.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q249",
+    "unit": 5,
+    "prompt": "What utility tracks the intermediate network router hops taken to reach a remote host?",
+    "options": [
+      {
+        "text": "ping",
+        "is_correct": false
+      },
+      {
+        "text": "traceroute (or tracepath)",
+        "is_correct": true
+      },
+      {
+        "text": "route",
+        "is_correct": false
+      },
+      {
+        "text": "arp",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`traceroute` displays each intermediate router IP address and round-trip time.",
+    "difficulty": "easy",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  },
+  {
+    "id": "bca-204n-u5-q250",
+    "unit": 5,
+    "prompt": "What command displays active network socket connections, listening ports, and routing tables?",
+    "options": [
+      {
+        "text": "netstat (or ss)",
+        "is_correct": true
+      },
+      {
+        "text": "ifconfig",
+        "is_correct": false
+      },
+      {
+        "text": "ping",
+        "is_correct": false
+      },
+      {
+        "text": "route -a",
+        "is_correct": false
+      }
+    ],
+    "explanation": "`netstat` and `ss` report active TCP/UDP sockets and network status.",
+    "difficulty": "medium",
+    "tags": [
+      "BCA-204N",
+      "Unit-5",
+      "Control-Structures",
+      "System-Administration"
+    ],
+    "year": 2024,
+    "exam_name": "MJPRU BCA"
+  }
+]

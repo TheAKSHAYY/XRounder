@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 4
+BCA-206N: ACCOUNTING AND FINANCIAL MANAGEMENT - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-206n-u1-q01] (Unit 1) Who is recognized as the father of modern double-entry bookkeeping?
+  A.     Adam Smith
+  B. (*) Luca Pacioli
+  C.     Alfred Marshall
+  D.     John Maynard Keynes
+Explanation: Fra Luca Pacioli, an Italian mathematician, published the first treatise on double-entry bookkeeping in 1494 in Venice.
+
+[bca-206n-u1-q02] (Unit 1) Which accounting concept assumes that a business will continue to operate indefinitely into the foreseeable future?
+  A.     Money Measurement Concept
+  B. (*) Going Concern Concept
+  C.     Accounting Period Concept
+  D.     Cost Concept
+Explanation: The Going Concern concept assumes that the enterprise has neither the intention nor the necessity of liquidation in the near future.
+
+[bca-206n-u1-q03] (Unit 1) According to the Business Entity concept, how is the owner treated with respect to the business?
+  A.     As the sole owner with no separation from the business
+  B. (*) As an external creditor/lender to the extent of capital invested
+  C.     As a permanent debtor of the firm
+  D.     As an employee without financial interest
+Explanation: The Business Entity concept treats business and owner as completely separate legal/accounting entities. Capital is viewed as an internal liability.
+
+[bca-206n-u1-q04] (Unit 1) Which convention dictates that 'anticipate no profit, but provide for all possible losses'?
+  A.     Convention of Consistency
+  B.     Convention of Materiality
+  C. (*) Convention of Conservatism (Prudence)
+  D.     Convention of Full Disclosure
+Explanation: Conservatism (or Prudence) ensures profits are not recorded until realized, whereas all foreseeable losses, risks, and liabilities are provided for.
+
+[bca-206n-u1-q05] (Unit 1) Valuation of stock at 'Cost or Net Realizable Value (Market Price), whichever is lower' is an application of which convention?
+  A. (*) Convention of Conservatism
+  B.     Convention of Consistency
+  C.     Convention of Materiality
+  D.     Dual Aspect Concept
+Explanation: Valuing inventory at lower of cost or market price reflects conservatism by not anticipating unrealized gains while absorbing potential drops in value.
+
+[bca-206n-u1-q06] (Unit 1) What is the fundamental Accounting Equation?
+  A.     Assets = Liabilities - Capital
+  B. (*) Assets = Liabilities + Capital (Owner's Equity)
+  C.     Liabilities = Assets + Capital
+  D.     Capital = Assets + Liabilities
+Explanation: Every transaction affects both sides equally, maintaining $Assets = Liabilities + Capital$.
+
+[bca-206n-u1-q07] (Unit 1) Under the Traditional (British) classification of accounts, which of the following is a Real Account?
+  A.     Salary Account
+  B.     Bank Account
+  C. (*) Machinery Account
+  D.     Ramesh's Account
+Explanation: Real accounts relate to tangible or intangible assets and properties owned by the firm (e.g., Cash, Machinery, Land, Building, Patents).
+
+[bca-206n-u1-q08] (Unit 1) What is the golden rule for Nominal Accounts?
+  A.     Debit what comes in, credit what goes out
+  B. (*) Debit all expenses and losses, credit all incomes and gains
+  C.     Debit the receiver, credit the giver
+  D.     Debit all assets, credit all liabilities
+Explanation: Nominal accounts represent expenses, losses, revenues, and gains. The rule is Debit all expenses/losses, Credit all incomes/gains.
+
+[bca-206n-u1-q09] (Unit 1) Under the Modern (American) approach, how are increases in Assets and Expenses recorded?
+  A.     By Crediting the account
+  B. (*) By Debiting the account
+  C.     By creating a suspense entry
+  D.     No entry is required
+Explanation: In modern accounting: Assets, Expenses, and Losses increase by DEBIT; Liabilities, Capital, and Revenues increase by CREDIT.
+
+[bca-206n-u1-q10] (Unit 1) Which of the following is considered a Representative Personal Account?
+  A.     State Bank of India Account
+  B. (*) Outstanding Rent Account
+  C.     Capital Account
+  D.     Furniture Account
+Explanation: Accounts representing a person or group (e.g., Outstanding Salary, Prepaid Insurance, Accrued Interest) are Representative Personal Accounts.
+
+[bca-206n-u1-q11] (Unit 1) What is the primary book of original entry where financial transactions are first recorded in chronological order?
+  A.     Ledger
+  B. (*) Journal
+  C.     Trial Balance
+  D.     Balance Sheet
+Explanation: The Journal is the book of prime/original entry where transactions are first recorded in date order with narration.
+
+[bca-206n-u1-q12] (Unit 1) What does the process of transferring debits and credits from the journal to ledger accounts called?
+  A.     Journalizing
+  B. (*) Posting
+  C.     Balancing
+  D.     Auditing
+Explanation: Posting is the process of transferring financial entries from journal folios to respective accounts in the ledger.
+
+[bca-206n-u1-q13] (Unit 1) What is a compound journal entry?
+  A.     An entry recorded only once a year
+  B. (*) An entry involving more than one debit and/or more than one credit
+  C.     An entry that cancels a previous mistake
+  D.     An entry with no narration
+Explanation: A compound (or composite) entry contains multiple debits, multiple credits, or both, sharing the same date or related transaction.
+
+[bca-206n-u1-q14] (Unit 1) What information does a 'Narration' in a journal entry provide?
+  A.     The arithmetic sum of debits
+  B. (*) A brief explanatory note of the transaction
+  C.     The ledger page index
+  D.     The bank account number
+Explanation: A narration is a concise statement appended beneath each journal entry describing the business event and supporting evidence.
+
+[bca-206n-u1-q15] (Unit 1) A three-column cash book contains columns on both debit and credit sides for which items?
+  A.     Cash, Bank, and Purchase
+  B. (*) Cash, Bank, and Discount
+  C.     Cash, Credit, and Sales
+  D.     Cash, Petty Cash, and Ledger
+Explanation: A three-column cash book has distinct columns for Cash, Bank transactions, and Discount allowed/received.
+
+[bca-206n-u1-q16] (Unit 1) What is a 'Contra Entry' in a double-column or three-column cash book?
+  A.     An entry that reverses an error
+  B. (*) A transaction affecting both Cash and Bank columns simultaneously
+  C.     A transaction that cannot be posted to ledger
+  D.     An uncollectible bad debt
+Explanation: Contra entries (marked with 'C') involve transferring money between Cash and Bank (e.g., cash deposited into bank or withdrawn for office use).
+
+[bca-206n-u1-q17] (Unit 1) How is the Discount Allowed column in the Cash Book balanced at the end of the period?
+  A.     It is balanced by carrying down a net balance
+  B. (*) It is simply totaled and posted to Discount Allowed Account in ledger as a debit
+  C.     It is deducted from Bank column
+  D.     It is transferred directly to Capital
+Explanation: Discount columns are not balanced against each other. The debit discount total is posted to Discount Allowed A/c and credit total to Discount Received A/c.
+
+[bca-206n-u1-q18] (Unit 1) What system is commonly used to maintain the Petty Cash Book?
+  A.     Single entry system
+  B. (*) Imprest System
+  C.     Accrual system
+  D.     Voucher reversal system
+Explanation: The Imprest System provides a fixed petty cash float at the start of a period, which is periodically reimbursed for exact expenses incurred.
+
+[bca-206n-u1-q19] (Unit 1) When goods costing Rs. 10,000 are sold for Rs. 12,000 in cash, what is the net effect on the accounting equation?
+  A. (*) Cash increases by 12,000, Stock decreases by 10,000, Capital increases by 2,000
+  B.     Cash increases by 10,000, Capital increases by 12,000
+  C.     Total assets remain unchanged
+  D.     Liabilities increase by 2,000
+Explanation: Assets: Cash (+12,000), Stock (-10,000) = Net Assets +2,000. Capital increases by profit of Rs. 2,000. Equation balances perfectly.
+
+[bca-206n-u1-q20] (Unit 1) Trade discount received on purchases is recorded in which account?
+  A.     Discount Received Account
+  B.     Trade Discount Account
+  C. (*) It is deducted from invoice price and NOT recorded in any ledger account
+  D.     Suspense Account
+Explanation: Trade discount is a price reduction given at the time of purchase; purchases are recorded at net invoice value, so trade discount has no ledger account.
+
+[bca-206n-u1-q21] (Unit 1) Cash discount allowed to a customer is recorded as what type of entry?
+  A.     Credit to Cash Account
+  B. (*) Debit to Discount Allowed Account (Expense/Loss)
+  C.     Debit to Customer Account
+  D.     Credit to Sales Account
+Explanation: Cash discount is an incentive for prompt payment. Discount Allowed is a nominal expense and is debited.
+
+[bca-206n-u1-q22] (Unit 1) If rent paid in cash is Rs. 5,000, what is the correct journal entry?
+  A.     Debit Cash A/c, Credit Rent A/c
+  B. (*) Debit Rent A/c, Credit Cash A/c
+  C.     Debit Landlord A/c, Credit Cash A/c
+  D.     Debit Outstanding Rent A/c, Credit Cash A/c
+Explanation: Rent is an expense (Debit Rent A/c) and Cash goes out (Credit Cash A/c).
+
+[bca-206n-u1-q23] (Unit 1) When proprietor withdraws cash from business for personal domestic use, which account is debited?
+  A.     Proprietor's Personal Account
+  B. (*) Drawings Account
+  C.     Cash Account
+  D.     Capital Account directly without Drawings
+Explanation: Withdrawals by the owner for personal use are recorded by debiting the Drawings Account and crediting Cash/Bank.
+
+[bca-206n-u1-q24] (Unit 1) Goods destroyed by fire of Rs. 8,000 should be credited to which account when recording the loss?
+  A.     Loss by Fire Account
+  B.     Insurance Company Account
+  C. (*) Purchases Account
+  D.     Sales Account
+Explanation: The entry is: Debit Loss by Fire A/c (nominal expense) and Credit Purchases A/c (reducing total goods purchased at cost).
+
+[bca-206n-u1-q25] (Unit 1) What does the credit balance in a Personal Account indicate?
+  A.     Amount receivable from debtor (Asset)
+  B. (*) Amount payable to creditor (Liability)
+  C.     Net profit earned
+  D.     Prepaid expense
+Explanation: A credit balance in a personal account signifies that the business owes money to that person (Creditor/Liability).
+
+[bca-206n-u1-q26] (Unit 1) What does a debit balance in the Cash Account signify?
+  A.     Overdraft
+  B. (*) Cash in hand (Asset)
+  C.     Loss on cash transactions
+  D.     Amount owed to bank
+Explanation: Real accounts like Cash can only have a debit balance or zero balance (since one cannot spend more physical cash than is held).
+
+[bca-206n-u1-q27] (Unit 1) Which of the following is NOT an advantage of financial accounting?
+  A.     Provides systematic permanent record of financial transactions
+  B.     Determines operating profit or loss
+  C. (*) Discloses non-monetary qualitative factors and staff morale
+  D.     Facilitates settlement of tax liabilities
+Explanation: Financial accounting only records transactions expressible in monetary terms (Money Measurement Concept); qualitative factors are ignored.
+
+[bca-206n-u1-q28] (Unit 1) What does the column 'J.F.' stand for in a Ledger page?
+  A. (*) Journal Folio (referencing page number of the journal where entry originated)
+  B.     Journal Frequency
+  C.     Joint Fund
+  D.     Judicial Form
+Explanation: J.F. stands for Journal Folio, linking the ledger entry back to the specific journal page.
+
+[bca-206n-u1-q29] (Unit 1) When machinery is purchased on credit from XYZ Ltd. for Rs. 50,000, what is the journal entry?
+  A.     Debit Purchases A/c, Credit XYZ Ltd.
+  B. (*) Debit Machinery A/c, Credit XYZ Ltd.
+  C.     Debit Machinery A/c, Credit Cash A/c
+  D.     Debit XYZ Ltd., Credit Machinery A/c
+Explanation: Purchases A/c is reserved exclusively for goods meant for resale. Fixed assets purchased are debited to their own asset account (Machinery A/c).
+
+[bca-206n-u1-q30] (Unit 1) The convention of Consistency implies that:
+  A.     All accounting data must be checked consistently by external auditors
+  B. (*) Accounting methods and practices should remain unchanged from one period to another
+  C.     Profits should remain constant every year
+  D.     Assets must always equal liabilities
+Explanation: Consistency requires that accounting policies (like depreciation methods or inventory valuation) remain consistent across periods for comparability.
+
+[bca-206n-u1-q31] (Unit 1) The convention of Materiality states that:
+  A.     All material objects in the factory must be insured
+  B. (*) Only items of significant financial consequence to users need strict accounting disclosure
+  C.     Every single rupee must be accounted for with equal detail
+  D.     Material purchased must match production exactly
+Explanation: Materiality allows small or insignificant items (e.g., buying a pencil or dustbin) to be expensed immediately rather than capitalized as fixed assets.
+
+[bca-206n-u1-q32] (Unit 1) Which of the following represents an Accounting Concept rather than an Accounting Convention?
+  A.     Conservatism
+  B.     Consistency
+  C.     Materiality
+  D. (*) Dual Aspect
+Explanation: Dual Aspect, Going Concern, Business Entity, and Money Measurement are fundamental concepts/assumptions. Conservatism, Consistency, Full Disclosure, and Materiality are conventions.
+
+[bca-206n-u1-q33] (Unit 1) Under the Dual Aspect concept, every financial transaction has:
+  A.     A single debit impact
+  B. (*) A two-fold effect: giving aspect and receiving aspect of equal amount
+  C.     A threefold impact across assets, liabilities, and income
+  D.     No impact unless authorized in cash
+Explanation: Double entry is predicated on the dual aspect: every debit has a corresponding and equal credit.
+
+[bca-206n-u1-q34] (Unit 1) Prepaid insurance of Rs. 3,000 paid during the year is an example of:
+  A.     Tangible Asset
+  B. (*) Representative Personal Account / Current Asset
+  C.     Nominal Loss
+  D.     Deferred Liability
+Explanation: Prepaid expenses represent future economic benefits and represent individuals/entities to whom advance payment was made, classified as Representative Personal.
+
+[bca-206n-u1-q35] (Unit 1) What is the effect on the accounting equation when a business borrows Rs. 50,000 from a bank?
+  A. (*) Assets increase by 50,000, Liabilities increase by 50,000
+  B.     Assets increase by 50,000, Capital increases by 50,000
+  C.     Assets decrease by 50,000, Liabilities increase by 50,000
+  D.     No change on equation
+Explanation: Cash/Bank (Asset) increases by 50,000 and Bank Loan (Liability) increases by 50,000.
+
+[bca-206n-u1-q36] (Unit 1) Interest charged on partner's capital is:
+  A. (*) An expense to the firm and income to the partner
+  B.     An income to the firm and expense to partner
+  C.     A capital receipt
+  D.     An operating loss
+Explanation: From the firm's perspective, Interest on Capital is an expense/appropriation of profit debited to P&L Appropriation.
+
+[bca-206n-u1-q37] (Unit 1) When a debt previously written off as bad debt is unexpectedly recovered, which account is credited?
+  A.     Debtor's Personal Account
+  B. (*) Bad Debts Recovered Account (Gain)
+  C.     Provision for Bad Debts Account
+  D.     Sales Account
+Explanation: Debtor's account was already closed. The entry is: Debit Cash A/c, Credit Bad Debts Recovered A/c (Nominal Account - Gain).
+
+[bca-206n-u1-q38] (Unit 1) Which of the following accounts will normally have a Debit balance?
+  A.     Capital Account
+  B.     Creditors Account
+  C. (*) Sales Return Account
+  D.     Discount Received Account
+Explanation: Sales returns reduce revenue and carry a debit balance. Capital, Creditors, and Discount Received normally carry credit balances.
+
+[bca-206n-u1-q39] (Unit 1) A ledger account that contains zero balance after posting and summing both sides is called:
+  A.     Open account
+  B. (*) Squarred-up / Closed account
+  C.     Suspense balance
+  D.     Contra balance
+Explanation: When total debits equal total credits, the account is said to be balanced or squared up.
+
+[bca-206n-u1-q40] (Unit 1) Why are ledger accounts termed 'Principal Books' of account?
+  A.     Because the school principal signs them
+  B. (*) Because they provide the final organized destination where transactions are permanently classified
+  C.     Because they contain only cash records
+  D.     Because they are written in pencil
+Explanation: The ledger is the principal book because financial statements (Trading, P&L, Balance Sheet) are compiled directly from ledger balances.
+
+[bca-206n-u1-q41] (Unit 1) How is the balance of a Nominal Account treated at the end of an accounting year?
+  A.     Carried forward to next year as Balance c/d
+  B. (*) Transferred to Trading or Profit & Loss Account to ascertain net results
+  C.     Transferred to Cash Book
+  D.     Written off to General Reserve
+Explanation: Nominal accounts do not carry balances forward; their balances are closed by transferring to Trading or P&L Account.
+
+[bca-206n-u1-q42] (Unit 1) Which document is prepared by the seller when goods are sold on credit?
+  A.     Debit Note
+  B.     Credit Note
+  C. (*) Sales Invoice / Bill
+  D.     Payment Receipt
+Explanation: A Sales Invoice is sent by seller to buyer containing quantity, rate, trade discount, and total payable.
+
+[bca-206n-u1-q43] (Unit 1) When a customer returns damaged goods, what document is issued to the customer by the seller?
+  A.     Debit Note
+  B. (*) Credit Note
+  C.     Voucher
+  D.     Cheque
+Explanation: The seller issues a Credit Note informing the customer that their account has been credited for the returned goods.
+
+[bca-206n-u1-q44] (Unit 1) What does an 'Opening Entry' accomplish at the start of a new accounting year?
+  A.     Opens a new bank current account
+  B. (*) Brings forward balances of all assets (debit) and liabilities & capital (credit) from previous year's balance sheet
+  C.     Records the first sales of the year
+  D.     Distributes dividends
+Explanation: Opening entry records: Debit Assets A/c (individually), Credit Liabilities A/c (individually), Credit Capital A/c.
+
+[bca-206n-u1-q45] (Unit 1) If total assets of a firm are Rs. 8,00,000 and total outside liabilities are Rs. 3,50,000, what is the Owner's Equity?
+  A.     Rs. 11,50,000
+  B. (*) Rs. 4,50,000
+  C.     Rs. 3,50,000
+  D.     Rs. 8,00,000
+Explanation: $Capital = Assets - Liabilities = 8,00,000 - 3,50,000 = Rs. 4,50,000$.
+
+[bca-206n-u1-q46] (Unit 1) A payment of Rs. 1,500 for installation of new machinery was debited to Wages Account. This is an error of:
+  A.     Omission
+  B.     Commission
+  C. (*) Principle
+  D.     Compensating
+Explanation: Treating a capital expenditure (installation of machinery) as a revenue expenditure (wages) violates accounting principles, making it an Error of Principle.
+
+[bca-206n-u1-q47] (Unit 1) Which of the following transactions will increase both an asset and a liability?
+  A. (*) Purchased inventory on credit for Rs. 20,000
+  B.     Paid Rs. 10,000 cash to creditors
+  C.     Owner withdrew Rs. 5,000 for personal use
+  D.     Collected Rs. 8,000 from debtors
+Explanation: Purchasing on credit increases Inventory (Asset) and Creditors (Liability) by Rs. 20,000 simultaneously.
+
+[bca-206n-u1-q48] (Unit 1) The concept of 'Accrual Accounting' requires that:
+  A.     Revenue is recognized only when cash is received
+  B.     Expenses are recorded only when cheques clear
+  C. (*) Revenues and expenses are recognized in the period they occur, regardless of cash receipt or payment
+  D.     Transactions are accounted every month on bank statements
+Explanation: Accrual accounting matches revenues earned and expenses incurred in that accounting period, irrespective of actual cash inflow or outflow.
+
+[bca-206n-u1-q49] (Unit 1) What is the primary objective of bookkeeping?
+  A.     To minimize corporate taxes illegally
+  B. (*) To maintain complete and systematic record of all financial transactions
+  C.     To predict future stock market movements
+  D.     To manage factory labor unions
+Explanation: Bookkeeping is the science and art of recording business transactions systematically in books of accounts.
+
+[bca-206n-u1-q50] (Unit 1) A bank reconciliation statement is prepared by:
+  A.     The Reserve Bank of India
+  B.     The Bank Manager
+  C. (*) The Account holder (Customer/Firm)
+  D.     The Income Tax Department
+Explanation: Bank Reconciliation Statement (BRS) is prepared periodically by the account holder to reconcile differences between cash book bank column and bank passbook.
+
+[bca-206n-u2-q51] (Unit 2) What is the primary objective of preparing a Trial Balance?
+  A.     To calculate net profit or net loss
+  B. (*) To verify the arithmetical accuracy of ledger postings
+  C.     To determine corporate valuation
+  D.     To file annual corporate tax returns
+Explanation: A Trial Balance is a statement of debit and credit ledger balances prepared to check arithmetical accuracy of postings.
+
+[bca-206n-u2-q52] (Unit 2) Which of the following errors is NOT disclosed by a Trial Balance?
+  A.     Posting an amount to the wrong side of an account
+  B.     Arithmetical error in balancing a ledger account
+  C. (*) Complete omission of a transaction from the books of original entry
+  D.     Omission of a balance while transferring to trial balance
+Explanation: If a transaction is completely omitted from the journal, both debit and credit are missing equally, so trial balance still agrees.
+
+[bca-206n-u2-q53] (Unit 2) What type of error occurs when a transaction is entered in the wrong account but on the correct side?
+  A.     Error of Principle
+  B. (*) Error of Commission
+  C.     Error of Omission
+  D.     Compensating Error
+Explanation: Posting to the wrong personal or nominal account (e.g., debiting Mohan instead of Sohan) is an Error of Commission.
+
+[bca-206n-u2-q54] (Unit 2) When two or more errors cancel out each other's numerical effect on the trial balance, they are called:
+  A.     Errors of Principle
+  B. (*) Compensating Errors
+  C.     Errors of Duplication
+  D.     Systemic Errors
+Explanation: Compensating errors occur when one error of under-debit or over-credit is counterbalanced by an equal error elsewhere.
+
+[bca-206n-u2-q55] (Unit 2) If the debit and credit sides of a Trial Balance do not match, the temporary difference is placed in:
+  A.     Reserve Fund Account
+  B. (*) Suspense Account
+  C.     Capital Account
+  D.     Profit & Loss Appropriation Account
+Explanation: A Suspense Account is opened temporarily to record the unexplained difference until errors are identified and rectified.
+
+[bca-206n-u2-q56] (Unit 2) Which financial statement shows the financial performance (profit or loss) over a specified accounting period?
+  A.     Balance Sheet
+  B. (*) Trading and Profit & Loss Account
+  C.     Cash Flow Statement
+  D.     Trial Balance
+Explanation: Trading and P&L Account measures operational performance (gross and net profit) over a defined accounting interval.
+
+[bca-206n-u2-q57] (Unit 2) What does the Trading Account primarily determine?
+  A.     Net Profit or Net Loss
+  B. (*) Gross Profit or Gross Loss
+  C.     Total Capital Employed
+  D.     Net Cash Flows
+Explanation: Trading Account matches net sales with Cost of Goods Sold to arrive at Gross Profit or Gross Loss.
+
+[bca-206n-u2-q58] (Unit 2) What is the formula for calculating Cost of Goods Sold (COGS)?
+  A.     Gross Sales - Net Profit
+  B. (*) Opening Stock + Net Purchases + Direct Expenses - Closing Stock
+  C.     Opening Stock + Indirect Expenses - Closing Stock
+  D.     Total Purchases + Administrative Overhead
+Explanation: $COGS = \text{Opening Stock} + \text{Net Purchases} + \text{Direct Factory Expenses} - \text{Closing Stock}$.
+
+[bca-206n-u2-q59] (Unit 2) Which of the following is considered a 'Direct Expense' chargeable to the Trading Account?
+  A.     Office Rent
+  B.     Salaries to Administrative Staff
+  C. (*) Wages & Carriage Inward
+  D.     Advertising Expenses
+Explanation: Wages paid to factory labor and carriage inward on raw materials are directly tied to production, debited to Trading A/c.
+
+[bca-206n-u2-q60] (Unit 2) Where is Closing Stock appearing in the Trial Balance recorded in final accounts?
+  A.     Both in Trading Account (Credit) and Balance Sheet (Assets)
+  B. (*) Only in Balance Sheet as Current Asset
+  C.     Only in Trading Account as Credit
+  D.     In Profit & Loss Account as Income
+Explanation: When Closing Stock already appears inside the trial balance, it has already been adjusted into Purchases; hence it appears ONLY in Balance Sheet.
+
+[bca-206n-u2-q61] (Unit 2) When Closing Stock is given outside the Trial Balance as an adjustment, where does it appear?
+  A.     Only in Trading Account
+  B.     Only in Balance Sheet
+  C. (*) Both on Credit side of Trading A/c and Asset side of Balance Sheet
+  D.     Credit side of P&L Account
+Explanation: Adjustments outside trial balance require dual-aspect recording: Credit in Trading Account and Asset in Balance Sheet.
+
+[bca-206n-u2-q62] (Unit 2) Outstanding Expenses at the end of the year are treated as:
+  A.     Current Asset
+  B. (*) Current Liability
+  C.     Fixed Asset
+  D.     Contingent Liability
+Explanation: Outstanding expenses are obligations due but unpaid, classified under Current Liabilities in the Balance Sheet.
+
+[bca-206n-u2-q63] (Unit 2) What is the adjusting entry for Prepaid Insurance of Rs. 2,000?
+  A.     Debit Insurance A/c, Credit Cash A/c
+  B. (*) Debit Prepaid Insurance A/c, Credit Insurance A/c
+  C.     Debit Insurance A/c, Credit Prepaid Insurance A/c
+  D.     Debit P&L A/c, Credit Prepaid Insurance A/c
+Explanation: Prepaid insurance is deducted from insurance expense (Credit Insurance A/c) and recognized as an asset (Debit Prepaid Insurance A/c).
+
+[bca-206n-u2-q64] (Unit 2) How is Accrued Income (earned but not received) treated in the final accounts?
+  A.     Deducted from income in P&L and shown as Liability
+  B. (*) Added to respective income in P&L Account and shown as Current Asset in Balance Sheet
+  C.     Credited to Trading Account
+  D.     Deducted from Capital in Balance Sheet
+Explanation: Accrued Income increases revenue for the period (Credit P&L) and represents an amount receivable (Current Asset in Balance Sheet).
+
+[bca-206n-u2-q65] (Unit 2) Income Received in Advance (Unearned Income) is presented in the Balance Sheet under:
+  A.     Current Assets
+  B. (*) Current Liabilities
+  C.     Capital
+  D.     Provisions
+Explanation: Advance income represents an obligation to deliver goods or services in the future; hence it is a Current Liability.
+
+[bca-206n-u2-q66] (Unit 2) What is Depreciation?
+  A.     Increase in asset value due to inflation
+  B. (*) Gradual and continuous reduction in book value of fixed tangible asset due to wear, tear, or obsolescence
+  C.     Fluctuation in market price of stock
+  D.     Total cost of raw material
+Explanation: Depreciation is the systematic allocation of depreciable amount of a fixed asset over its estimated useful life.
+
+[bca-206n-u2-q67] (Unit 2) Under the Straight Line Method (SLM), annual depreciation is:
+  A.     Calculated on written down reducing balance
+  B. (*) Constant every year calculated on original cost
+  C.     Increasing exponentially every year
+  D.     Dependent on annual net profit
+Explanation: Under SLM (Fixed Installment Method), a uniform depreciation charge is computed as $(Cost - Residual Value) / Useful Life$.
+
+[bca-206n-u2-q68] (Unit 2) Under the Written Down Value (WDV) method, depreciation charged each year:
+  A.     Remains fixed
+  B. (*) Gradually decreases year after year as book value reduces
+  C.     Gradually increases each year
+  D.     Becomes zero after 2 years
+Explanation: WDV (Reducing Balance Method) applies a fixed percentage to the decreasing written-down book value, causing annual depreciation to decline.
+
+[bca-206n-u2-q69] (Unit 2) If an asset cost Rs. 1,00,000, has scrap value of Rs. 10,000, and useful life of 5 years, what is annual depreciation under SLM?
+  A.     Rs. 20,000
+  B. (*) Rs. 18,000
+  C.     Rs. 15,000
+  D.     Rs. 22,000
+Explanation: $(1,00,000 - 10,000) / 5 = 90,000 / 5 = \text{Rs. } 18,000$.
+
+[bca-206n-u2-q70] (Unit 2) Where does Provision for Bad and Doubtful Debts appear in the financial statements?
+  A. (*) Debited to P&L Account and deducted from Sundry Debtors in Balance Sheet
+  B.     Credited to Trading Account
+  C.     Added to Sundry Debtors in Balance Sheet
+  D.     Shown as an item under Capital
+Explanation: Provision for doubtful debts is an expense charged to P&L (debit) and deducted from Debtors in Balance Sheet under conservatism.
+
+[bca-206n-u2-q71] (Unit 2) When calculating Provision for Discount on Debtors, on which amount is the percentage applied?
+  A.     Total Gross Debtors
+  B. (*) Gross Debtors minus Bad Debts minus Provision for Doubtful Debts
+  C.     Total Sales
+  D.     Gross Debtors plus Closing Stock
+Explanation: Discount is offered only to good debtors who are expected to pay; thus Provision for Doubtful Debts must be subtracted first.
+
+[bca-206n-u2-q72] (Unit 2) Interest on Capital is:
+  A. (*) An expense of the business debited to P&L Account and added to Capital in Balance Sheet
+  B.     An income to the firm credited to P&L Account
+  C.     Deducted from Debtors
+  D.     Treated as a non-operating cash inflow
+Explanation: Interest on capital compensates the owner for invested funds. Business expense: Debit P&L; added to proprietor's Capital in Balance Sheet.
+
+[bca-206n-u2-q73] (Unit 2) Interest on Drawings charged to the proprietor is:
+  A.     An expense to the firm
+  B. (*) An income to the firm credited to P&L Account and deducted from Capital in Balance Sheet
+  C.     Added to total assets
+  D.     Credited to Trading Account
+Explanation: Interest on drawings is earned by the business from owner: Credited to P&L Account and deducted from Capital in Balance Sheet.
+
+[bca-206n-u2-q74] (Unit 2) What does a Balance Sheet represent?
+  A.     Summary of cash payments over the year
+  B. (*) A snapshot statement of financial position (Assets, Liabilities, and Equity) on a specific date
+  C.     A record of daily sales transactions
+  D.     A list of factory labor hours
+Explanation: A Balance Sheet is a positional statement showing assets, liabilities, and capital on a specific date (e.g., As on 31st March).
+
+[bca-206n-u2-q75] (Unit 2) The arrangement of assets and liabilities in a particular logical order in the Balance Sheet is known as:
+  A.     Posting
+  B. (*) Marshalling
+  C.     Vouching
+  D.     Reconciliation
+Explanation: Marshalling refers to presenting assets and liabilities either in Order of Liquidity or in Order of Permanence.
+
+[bca-206n-u2-q76] (Unit 2) Under the Order of Liquidity, which asset appears first in the Balance Sheet?
+  A.     Goodwill
+  B.     Plant & Machinery
+  C. (*) Cash in Hand / Bank
+  D.     Furniture
+Explanation: In order of liquidity, most easily realizable assets (Cash in Hand, Cash at Bank) appear first, ending with fixed assets.
+
+[bca-206n-u2-q77] (Unit 2) Which of the following is an Intangible Fixed Asset?
+  A.     Stock in Trade
+  B. (*) Patents and Trademarks
+  C.     Plant and Machinery
+  D.     Sundry Debtors
+Explanation: Intangible assets are non-physical, long-term economic resources such as Goodwill, Patents, Trademarks, and Copyrights.
+
+[bca-206n-u2-q78] (Unit 2) What is a Contingent Liability?
+  A.     A confirmed debt payable immediately
+  B. (*) A potential liability that may arise in future depending on occurrence of an uncertain event
+  C.     Capital introduced during the year
+  D.     Total depreciation accumulated
+Explanation: A contingent liability (e.g., pending lawsuit, bills discounted not yet matured) is not recorded in balance sheet columns but disclosed in a footnote.
+
+[bca-206n-u2-q79] (Unit 2) Where are Contingent Liabilities disclosed in the financial statements?
+  A.     Inside the liabilities column of Balance Sheet
+  B. (*) As a Footnote to the Balance Sheet
+  C.     On the debit side of Trading Account
+  D.     In the Cash Book
+Explanation: Under the Convention of Full Disclosure, contingent liabilities are shown as explanatory footnotes below the Balance Sheet.
+
+[bca-206n-u2-q80] (Unit 2) Operating profit is calculated as:
+  A.     Gross Profit - Non-operating expenses
+  B. (*) Net Profit + Non-operating expenses - Non-operating incomes
+  C.     Gross Profit + Depreciation
+  D.     Net Sales - Cost of Goods Sold
+Explanation: $\text{Operating Profit} = \text{Net Profit} + \text{Non-operating Expenses} (\text{e.g., interest, loss on sale of assets}) - \text{Non-operating Incomes} (\text{e.g., dividend received})$.
+
+[bca-206n-u2-q81] (Unit 2) Which of the following is a non-operating income credited to Profit & Loss Account?
+  A.     Cash Sales
+  B. (*) Dividend received on external investments
+  C.     Service revenue
+  D.     Commission on regular trading
+Explanation: Dividend received from outside shares/investments is ancillary non-operating income.
+
+[bca-206n-u2-q82] (Unit 2) A debit balance in the Trading Account represents:
+  A.     Gross Profit
+  B. (*) Gross Loss
+  C.     Net Profit
+  D.     Net Loss
+Explanation: If the debit side (Opening Stock, Purchases, Direct Expenses) exceeds the credit side (Sales, Closing Stock), it is Gross Loss.
+
+[bca-206n-u2-q83] (Unit 2) If Sales = Rs. 5,00,000, Gross Profit is 20% on Cost, what is the Cost of Goods Sold?
+  A.     Rs. 4,00,000
+  B. (*) Rs. 4,16,667
+  C.     Rs. 3,80,000
+  D.     Rs. 4,20,000
+Explanation: Let Cost = 100. Then Sales = 120. $COGS = 5,00,000 \times (100 / 120) = Rs. 4,16,666.67$.
+
+[bca-206n-u2-q84] (Unit 2) If Sales = Rs. 6,00,000 and Gross Profit is 25% on Sales, what is the Cost of Goods Sold?
+  A. (*) Rs. 4,50,000
+  B.     Rs. 4,80,000
+  C.     Rs. 5,00,000
+  D.     Rs. 4,00,000
+Explanation: $Gross Profit = 25\% \text{ of } 6,00,000 = Rs. 1,50,000$. $COGS = Sales - GP = 6,00,000 - 1,50,000 = Rs. 4,50,000$.
+
+[bca-206n-u2-q85] (Unit 2) A business has debtors of Rs. 40,000. Bad debts during year are Rs. 2,000. Provision of 5% is to be created on remaining debtors. What is the provision amount?
+  A.     Rs. 2,000
+  B. (*) Rs. 1,900
+  C.     Rs. 1,800
+  D.     Rs. 2,100
+Explanation: Remaining debtors = $40,000 - 2,000 = 38,000$. Provision = $5\% \text{ of } 38,000 = Rs. 1,900$.
+
+[bca-206n-u2-q86] (Unit 2) Wages paid for constructing a factory building should be debited to which account?
+  A.     Wages Account
+  B. (*) Building Account
+  C.     Repairs Account
+  D.     Factory Overheads Account
+Explanation: Wages paid for asset construction are capital expenditure directly adding to the cost of the asset (Building Account).
+
+[bca-206n-u2-q87] (Unit 2) Carriage paid on purchase of new machinery is:
+  A.     Revenue expenditure debited to Carriage Inward A/c
+  B. (*) Capital expenditure debited to Machinery A/c
+  C.     Deferred revenue expenditure
+  D.     Current liability
+Explanation: All expenses incurred up to the point of making a fixed asset ready for intended use are capitalized into the asset's cost.
+
+[bca-206n-u2-q88] (Unit 2) If opening stock is Rs. 30,000, purchases Rs. 1,50,000, closing stock Rs. 40,000, carriage inward Rs. 5,000, what is COGS?
+  A. (*) Rs. 1,45,000
+  B.     Rs. 1,40,000
+  C.     Rs. 1,55,000
+  D.     Rs. 1,35,000
+Explanation: $COGS = 30,000 + 1,50,000 + 5,000 - 40,000 = Rs. 1,45,000$.
+
+[bca-206n-u2-q89] (Unit 2) An item of expense whose benefit extends across multiple accounting periods but creates no tangible asset is:
+  A.     Capital Expenditure
+  B. (*) Deferred Revenue Expenditure
+  C.     Operating Revenue Expenditure
+  D.     Current Liability
+Explanation: Deferred Revenue Expenditure (e.g., massive initial advertising campaign) is written off gradually over several years.
+
+[bca-206n-u2-q90] (Unit 2) How is Interest on Loan accrued but not yet paid treated in the final accounts?
+  A. (*) Debited to P&L Account and shown under Current Liabilities in Balance Sheet
+  B.     Credited to P&L Account
+  C.     Deducted from loan amount in Balance Sheet
+  D.     Treated as capital receipt
+Explanation: Accrued interest is an expense (Debit P&L) and an obligation (Current Liability in Balance Sheet).
+
+[bca-206n-u2-q91] (Unit 2) If a firm uses WDV method at 10% per annum, what will be the book value of a machine costing Rs. 1,00,000 after 2 years?
+  A.     Rs. 80,000
+  B. (*) Rs. 81,000
+  C.     Rs. 90,000
+  D.     Rs. 85,000
+Explanation: Year 1 dep = 10,000 (BV = 90,000). Year 2 dep = $10\% \text{ of } 90,000 = 9,000$. Remaining $BV = 90,000 - 9,000 = Rs. 81,000$.
+
+[bca-206n-u2-q92] (Unit 2) Which of the following is treated as a Fictitious Asset in the Balance Sheet?
+  A.     Goodwill
+  B. (*) Underwriting Commission / Preliminary Expenses not yet written off
+  C.     Short-term investment
+  D.     Bills Receivable
+Explanation: Fictitious assets (e.g., preliminary expenses, discount on issue of debentures) have no realizable market value and represent unwritten-off losses.
+
+[bca-206n-u2-q93] (Unit 2) What does the credit balance in Profit & Loss Account indicate?
+  A.     Gross Profit
+  B. (*) Net Profit
+  C.     Net Loss
+  D.     Bank Overdraft
+Explanation: When total revenues (credit side) exceed total expenses (debit side) in P&L, the balancing figure is Net Profit.
+
+[bca-206n-u2-q94] (Unit 2) Why is Trial Balance considered an inconclusive proof of accounting accuracy?
+  A. (*) Because it only checks if debits equal credits, failing to reveal errors of principle, compensating errors, and complete omission
+  B.     Because it is prepared in pencil
+  C.     Because only banks can verify accounts
+  D.     Because it does not include cash balances
+Explanation: A balanced trial balance proves only mathematical equilibrium, not complete absence of errors.
+
+[bca-206n-u2-q95] (Unit 2) A purchase of goods for Rs. 5,000 was entered in Sales Book. What is the rectification entry?
+  A. (*) Debit Purchases A/c 5,000, Debit Sales A/c 5,000, Credit Supplier 10,000
+  B.     Debit Supplier 10,000, Credit Cash 10,000
+  C.     Debit Purchases A/c 5,000, Credit Sales 5,000
+  D.     Debit Suspense A/c 10,000
+Explanation: To cancel wrongful credit to sales: Debit Sales 5,000. To record actual purchase: Debit Purchases 5,000. Total credit to Supplier: 10,000.
+
+[bca-206n-u2-q96] (Unit 2) Which of the following reserves is created out of normal trading profits and available for dividend distribution?
+  A.     Capital Redemption Reserve
+  B. (*) General Reserve / Revenue Reserve
+  C.     Securities Premium
+  D.     Revaluation Reserve
+Explanation: General reserve is an appropriation of divisible revenue profits, unlike capital reserves which arise from capital transactions.
+
+[bca-206n-u2-q97] (Unit 2) When is a Secret Reserve typically created?
+  A. (*) By understating assets or overstating liabilities/provisions
+  B.     By showing excessive net profit
+  C.     By revaluing fixed assets upwards
+  D.     By issuing bonus shares
+Explanation: Secret reserves exist when financial condition is stronger than depicted on balance sheet, often by charging excessive depreciation or excessive provisions.
+
+[bca-206n-u2-q98] (Unit 2) What is the effect of an understated closing stock on the current year's profit?
+  A.     Gross profit will be overstated
+  B. (*) Gross profit and net profit will be understated
+  C.     Profit remains unaffected
+  D.     Liabilities will double
+Explanation: Closing stock is on the credit side of Trading A/c. If closing stock is understated, Gross Profit and Net Profit are both understated.
+
+[bca-206n-u2-q99] (Unit 2) If rent paid in advance Rs. 1,000 appears inside the Trial Balance, where will it be shown?
+  A. (*) Only in Balance Sheet under Current Assets
+  B.     In Profit & Loss Account and Balance Sheet
+  C.     Trading Account
+  D.     Subtracted from Capital
+Explanation: Items inside trial balance require only single posting. Prepaid rent inside trial balance goes solely to Balance Sheet as Current Asset.
+
+[bca-206n-u2-q100] (Unit 2) Goodwill is classified as:
+  A.     Tangible fixed asset
+  B. (*) Intangible fixed asset
+  C.     Current asset
+  D.     Fictitious asset
+Explanation: Goodwill is a valuable intangible asset representing reputation and super-profit generating capacity of the enterprise.
+
+[bca-206n-u3-q101] (Unit 3) What is Ratio Analysis?
+  A.     A technique of predicting employee payroll
+  B. (*) A quantitative analysis of information contained in financial statements to evaluate liquidity, solvency, and profitability
+  C.     An audit method to detect physical theft
+  D.     A method to calculate tax depreciation
+Explanation: Ratio analysis expresses mathematical relationships between two financial figures to evaluate operational efficiency, solvency, and profitability.
+
+[bca-206n-u3-q102] (Unit 3) What is the generally accepted standard norm for Current Ratio?
+  A.     1:1
+  B. (*) 2:1
+  C.     3:1
+  D.     0.5:1
+Explanation: The benchmark standard current ratio for a healthy manufacturing/trading enterprise is 2:1 ($Current Assets / Current Liabilities$).
+
+[bca-206n-u3-q103] (Unit 3) How is the Quick Ratio (Acid-Test Ratio) calculated?
+  A.     Current Assets / Current Liabilities
+  B. (*) (Current Assets - Inventory - Prepaid Expenses) / Current Liabilities
+  C.     Total Assets / Long-term Debt
+  D.     Cash / Bank Overdraft
+Explanation: Quick ratio measures immediate solvency by excluding least liquid assets (Stock/Inventory and Prepaid Expenses) from Current Assets.
+
+[bca-206n-u3-q104] (Unit 3) What is the standard benchmark norm for the Quick (Acid-Test) Ratio?
+  A.     2:1
+  B. (*) 1:1
+  C.     0.5:1
+  D.     3:1
+Explanation: An acid-test ratio of 1:1 indicates that the firm has exactly Rs. 1 of liquid assets for every Rs. 1 of immediate current obligations.
+
+[bca-206n-u3-q105] (Unit 3) If Current Assets = Rs. 4,00,000, Inventories = Rs. 1,00,000, and Current Liabilities = Rs. 1,50,000, what is the Quick Ratio?
+  A.     2.67:1
+  B. (*) 2.0:1
+  C.     1.5:1
+  D.     1.0:1
+Explanation: $\text{Quick Assets} = 4,00,000 - 1,00,000 = 3,00,000$. $\text{Quick Ratio} = 3,00,000 / 1,50,000 = 2.0:1$.
+
+[bca-206n-u3-q106] (Unit 3) Which of the following items is EXCLUDED while computing Quick Assets?
+  A.     Marketable securities
+  B.     Cash and bank balance
+  C. (*) Closing Stock (Inventory)
+  D.     Sundry Debtors
+Explanation: Inventory cannot be converted to cash instantly without potential price concessions, so it is excluded from quick assets.
+
+[bca-206n-u3-q107] (Unit 3) How is Gross Profit Ratio computed?
+  A.     (Gross Profit / Cost of Goods Sold) * 100
+  B. (*) (Gross Profit / Net Revenue from Operations) * 100
+  C.     (Operating Profit / Total Assets) * 100
+  D.     (Net Profit / Capital Employed) * 100
+Explanation: $\text{Gross Profit Ratio} = (\text{Gross Profit} / \text{Net Sales}) \times 100$.
+
+[bca-206n-u3-q108] (Unit 3) If Net Sales = Rs. 8,00,000 and Gross Profit = Rs. 2,00,000, what is the Gross Profit Ratio?
+  A.     20%
+  B. (*) 25%
+  C.     30%
+  D.     33.33%
+Explanation: $(2,00,000 / 8,00,000) \times 100 = 25\%$.
+
+[bca-206n-u3-q109] (Unit 3) What does the Stock Turnover Ratio (Inventory Turnover Ratio) indicate?
+  A.     Total cash generated by stock sales
+  B. (*) Number of times average inventory is sold and replaced during an accounting period
+  C.     The ratio of raw materials to finished goods
+  D.     The warehouse storage rent per unit
+Explanation: Stock turnover ratio ($COGS / Average Inventory$) measures efficiency of inventory management and rapid movement of stock.
+
+[bca-206n-u3-q110] (Unit 3) What is the formula for Stock Turnover Ratio?
+  A.     Net Sales / Closing Inventory
+  B. (*) Cost of Goods Sold / Average Inventory
+  C.     Gross Profit / Opening Stock
+  D.     Average Inventory / Purchases
+Explanation: $\text{Stock Turnover Ratio} = \text{Cost of Goods Sold} / \text{Average Inventory}$.
+
+[bca-206n-u3-q111] (Unit 3) If Opening Stock = Rs. 40,000, Closing Stock = Rs. 60,000, and COGS = Rs. 3,00,000, what is the Stock Turnover Ratio?
+  A.     4 times
+  B.     5 times
+  C. (*) 6 times
+  D.     7.5 times
+Explanation: $\text{Average Stock} = (40,000 + 60,000) / 2 = 50,000$. $\text{Turnover} = 3,00,000 / 50,000 = 6 \text{ times}$.
+
+[bca-206n-u3-q112] (Unit 3) How is the Inventory Holding Period (in days) calculated?
+  A. (*) 365 / Stock Turnover Ratio
+  B.     Stock Turnover Ratio / 12
+  C.     Average Inventory * Net Sales
+  D.     COGS / 365
+Explanation: $\text{Holding Period (Days)} = 365 / \text{Stock Turnover Ratio}$.
+
+[bca-206n-u3-q113] (Unit 3) What does the Debt-to-Equity Ratio measure?
+  A.     Short-term solvency
+  B. (*) Long-term financial leverage and solvency (proportion of borrowed debt to shareholders' equity)
+  C.     Ability to pay supplier invoices in 30 days
+  D.     Dividend payout rate
+Explanation: Debt-Equity ratio ($Long\text{-}term Debt / Equity$) measures financial risk and capital structure cushion for creditors.
+
+[bca-206n-u3-q114] (Unit 3) What is considered the ideal benchmark for Debt-to-Equity Ratio?
+  A.     1:1
+  B. (*) 2:1
+  C.     3:1
+  D.     0.5:1
+Explanation: A debt-equity ratio of 2:1 is traditionally considered safe and standard for industrial companies.
+
+[bca-206n-u3-q115] (Unit 3) What does Debtors Turnover Ratio (Receivables Turnover Ratio) measure?
+  A.     Total bad debts written off
+  B. (*) Efficiency of credit sales and collection from trade receivables
+  C.     Total credit purchases
+  D.     Profit earned per customer
+Explanation: Debtors turnover ratio ($Net Credit Sales / Average Debtors$) tests how rapidly credit sales are collected into cash.
+
+[bca-206n-u3-q116] (Unit 3) What is the formula for Debtors Turnover Ratio?
+  A.     Total Sales / Total Debtors
+  B. (*) Net Credit Sales / Average Accounts Receivable (Debtors + Bills Receivable)
+  C.     Net Cash Sales / Closing Debtors
+  D.     Gross Profit / Debtors
+Explanation: $\text{Debtors Turnover Ratio} = \text{Net Credit Sales} / \text{Average Trade Receivables}$.
+
+[bca-206n-u3-q117] (Unit 3) If Net Credit Sales = Rs. 12,00,000 and Average Trade Receivables = Rs. 2,00,000, what is the Average Collection Period (in months)?
+  A.     6 months
+  B. (*) 2 months
+  C.     3 months
+  D.     4 months
+Explanation: $\text{Debtors Turnover} = 12,00,000 / 2,00,000 = 6 \text{ times}$. $\text{Collection Period} = 12 \text{ months} / 6 = 2 \text{ months}$.
+
+[bca-206n-u3-q118] (Unit 3) What is the formula for Net Profit Ratio?
+  A.     (Gross Profit / Net Sales) * 100
+  B. (*) (Net Profit after tax / Net Sales) * 100
+  C.     (Operating Profit / Total Assets) * 100
+  D.     (EBIT / Capital Employed) * 100
+Explanation: $\text{Net Profit Ratio} = (\text{Net Profit after Tax} / \text{Net Revenue from Operations}) \times 100$.
+
+[bca-206n-u3-q119] (Unit 3) What does Return on Capital Employed (ROCE) measure?
+  A. (*) Overall earning efficiency and profitability of total capital invested in the business
+  B.     Dividend distributed per share
+  C.     Current asset liquidation value
+  D.     Cost of raw materials consumed
+Explanation: ROCE ($EBIT / Capital Employed \times 100$) indicates how productively total long-term capital is utilized.
+
+[bca-206n-u3-q120] (Unit 3) What constitutes 'Capital Employed' in ROCE computation?
+  A.     Total Current Assets
+  B. (*) Shareholders' Funds + Long-term Debt (or Total Assets minus Current Liabilities)
+  C.     Fixed Assets only
+  D.     Net Working Capital
+Explanation: $\text{Capital Employed} = \text{Share Capital} + \text{Reserves} + \text{Long-term Debts} = \text{Total Assets} - \text{Current Liabilities}$.
+
+[bca-206n-u3-q121] (Unit 3) What is the formula for Working Capital?
+  A.     Fixed Assets - Long Term Debt
+  B. (*) Current Assets - Current Liabilities
+  C.     Total Assets - Total Liabilities
+  D.     Capital + Reserves
+Explanation: $\text{Working Capital} = \text{Current Assets} - \text{Current Liabilities}$.
+
+[bca-206n-u3-q122] (Unit 3) If Current Assets = Rs. 5,00,000 and Working Capital = Rs. 2,00,000, what is the Current Ratio?
+  A.     2.5:1
+  B. (*) 1.67:1
+  C.     1.5:1
+  D.     2.0:1
+Explanation: $\text{Current Liabilities} = \text{CA} - \text{WC} = 5,00,000 - 2,00,000 = 3,00,000$. $\text{Current Ratio} = 5,00,000 / 3,00,000 = 1.67:1$.
+
+[bca-206n-u3-q123] (Unit 3) What does the Proprietary Ratio show?
+  A. (*) Relationship between Shareholders' Funds and Total Assets
+  B.     Ratio of proprietors to managers
+  C.     Gross Profit to Capital
+  D.     Inventory to Debt
+Explanation: Proprietary Ratio ($Shareholders' Funds / Total Assets$) indicates what portion of total assets is funded by owners' equity.
+
+[bca-206n-u3-q124] (Unit 3) Which ratio measures a firm's ability to pay interest charges on debt out of operating earnings?
+  A.     Debt-Equity Ratio
+  B. (*) Interest Coverage Ratio (Debt Service Ratio)
+  C.     Operating Ratio
+  D.     Dividend Payout Ratio
+Explanation: $\text{Interest Coverage Ratio} = \text{EBIT} / \text{Interest Charges}$. Higher ratio means greater safety margin for lenders.
+
+[bca-206n-u3-q125] (Unit 3) If EBIT = Rs. 6,00,000 and Interest on debentures = Rs. 1,00,000, what is the Interest Coverage Ratio?
+  A.     4 times
+  B.     5 times
+  C. (*) 6 times
+  D.     7 times
+Explanation: $6,00,000 / 1,00,000 = 6 \text{ times}$.
+
+[bca-206n-u3-q126] (Unit 3) What does the Operating Ratio calculate?
+  A.     (Operating Expenses / Gross Profit) * 100
+  B. (*) (Cost of Goods Sold + Operating Expenses) / Net Sales * 100
+  C.     (Net Profit / Operating Expenses) * 100
+  D.     (Sales / Total Assets) * 100
+Explanation: $\text{Operating Ratio} = [(\text{COGS} + \text{Operating Expenses}) / \text{Net Sales}] \times 100$. Lower operating ratio means higher operational profitability.
+
+[bca-206n-u3-q127] (Unit 3) If Operating Ratio of a firm is 78%, what is its Operating Profit Ratio?
+  A.     78%
+  B. (*) 22%
+  C.     12%
+  D.     32%
+Explanation: $\text{Operating Ratio} + \text{Operating Profit Ratio} = 100\%$. Therefore, $100\% - 78\% = 22\%$.
+
+[bca-206n-u3-q128] (Unit 3) Which of the following is considered an Efficiency / Activity Ratio?
+  A.     Debt-Equity Ratio
+  B. (*) Creditors Turnover Ratio
+  C.     Current Ratio
+  D.     Return on Equity
+Explanation: Creditors turnover, debtors turnover, and inventory turnover are activity/efficiency ratios measuring operational speed.
+
+[bca-206n-u3-q129] (Unit 3) Creditors Turnover Ratio evaluates:
+  A. (*) The speed with which the firm pays its trade suppliers for credit purchases
+  B.     The profit earned on credit sales
+  C.     Total discount allowed to customers
+  D.     Stock spoilage rate
+Explanation: $\text{Creditors Turnover} = \text{Net Credit Purchases} / \text{Average Creditors}$.
+
+[bca-206n-u3-q130] (Unit 3) What does a very high Current Ratio (e.g., 6:1) typically imply?
+  A.     Extremely efficient investment strategy
+  B. (*) Excessive liquidity, idle cash, or overstocking, leading to low profitability
+  C.     Near bankruptcy
+  D.     Severe shortage of working capital
+Explanation: An abnormally high current ratio signals underutilized resources, locked up inventory, or uncollected receivables.
+
+[bca-206n-u3-q131] (Unit 3) Purchasing goods for cash will have what effect on the Current Ratio (assuming existing ratio is 2:1)?
+  A.     Increase the ratio
+  B.     Decrease the ratio
+  C. (*) No change on the ratio
+  D.     Double the ratio
+Explanation: Purchasing goods for cash increases Inventory (CA) and decreases Cash (CA) by the exact same amount. Total CA is unchanged; ratio remains unchanged.
+
+[bca-206n-u3-q132] (Unit 3) Paying Rs. 20,000 to creditors in cash will have what effect on a Current Ratio of 2:1?
+  A. (*) Increase the current ratio
+  B.     Decrease the current ratio
+  C.     Leave it unaffected
+  D.     Reduce it to 1:1
+Explanation: Equal reduction in both numerator and denominator when numerator > denominator increases the ratio (e.g., $200/100 = 2.0 \to (200-20)/(100-20) = 180/80 = 2.25$).
+
+[bca-206n-u3-q133] (Unit 3) What is the formula for Earnings Per Share (EPS)?
+  A. (*) Net Profit after Tax and Preference Dividend / Number of Equity Shares
+  B.     Operating Profit / Total Shares
+  C.     Dividend Paid / Equity Shares
+  D.     Market Price / Net Worth
+Explanation: $\text{EPS} = (\text{Net Profit after Tax} - \text{Preference Dividend}) / \text{Number of Equity Shares}$.
+
+[bca-206n-u3-q134] (Unit 3) What does Price-to-Earnings (P/E) Ratio indicate?
+  A. (*) The market price of a share relative to its earnings per share
+  B.     Dividend yield per rupee of debt
+  C.     Book value divided by par value
+  D.     Total debt divided by earnings
+Explanation: $\text{P/E Ratio} = \text{Market Price per Share (MPS)} / \text{Earnings Per Share (EPS)}$.
+
+[bca-206n-u3-q135] (Unit 3) Which ratio measures the proportion of earnings distributed to shareholders as dividends?
+  A.     Dividend Yield Ratio
+  B. (*) Dividend Payout Ratio
+  C.     Retention Ratio
+  D.     Capital Gearing Ratio
+Explanation: $\text{Dividend Payout Ratio} = \text{Dividend Per Share (DPS)} / \text{Earnings Per Share (EPS)} \times 100$.
+
+[bca-206n-u3-q136] (Unit 3) Which of the following is a major limitation of Ratio Analysis?
+  A. (*) Ratios ignore qualitative factors and can be distorted by historical cost price-level changes
+  B.     Ratios require computers to calculate
+  C.     Ratios can only be used by banks
+  D.     Ratios do not use balance sheet figures
+Explanation: Ratio analysis is constrained by historical cost accounting, ignoring price inflation and qualitative managerial factors.
+
+[bca-206n-u3-q137] (Unit 3) What is Capital Gearing Ratio?
+  A. (*) Ratio of fixed cost bearing capital (Debentures, Preference Shares) to equity funds
+  B.     Ratio of working capital to sales
+  C.     Total assets divided by machinery
+  D.     Turnover divided by fixed costs
+Explanation: Capital gearing analyzes the proportion of fixed income-bearing securities to equity shareholders' funds.
+
+[bca-206n-u3-q138] (Unit 3) If Equity Share Capital is Rs. 4,00,000, 10% Debentures are Rs. 6,00,000, and Reserves are Rs. 2,00,000, the firm is:
+  A.     Low geared
+  B. (*) Highly geared
+  C.     Evenly geared
+  D.     Zero geared
+Explanation: Fixed interest debt (Rs. 6,00,000) equals equity funds ($4,00,000 + 2,00,000 = 6,00,000$). Significant reliance on fixed debt represents high gearing.
+
+[bca-206n-u3-q139] (Unit 3) What is the DuPont Analysis formula for Return on Equity (ROE)?
+  A. (*) Profit Margin * Asset Turnover * Financial Leverage
+  B.     Gross Profit * Net Profit * Operating Profit
+  C.     Current Assets * Current Liabilities * Debt
+  D.     EBIT / Net Worth
+Explanation: $\text{ROE} = (\text{Net Profit} / \text{Sales}) \times (\text{Sales} / \text{Assets}) \times (\text{Assets} / \text{Equity})$.
+
+[bca-206n-u3-q140] (Unit 3) Which ratio is the best indicator of a firm's long-term survival and ability to meet fixed obligations?
+  A.     Current Ratio
+  B. (*) Solvency / Debt Service Ratios
+  C.     Quick Ratio
+  D.     Cash Turnover Ratio
+Explanation: Solvency and interest coverage ratios evaluate long-term financial health and debt servicing capability.
+
+[bca-206n-u3-q141] (Unit 3) If Net Sales = Rs. 10,00,000, Average Debtors = Rs. 1,00,000, and Cash Sales are 20% of Net Sales, what is Debtors Turnover?
+  A.     10 times
+  B. (*) 8 times
+  C.     6 times
+  D.     12 times
+Explanation: $\text{Credit Sales} = 10,00,000 - 2,00,000 = 8,00,000$. $\text{Turnover} = 8,00,000 / 1,00,000 = 8 \text{ times}$.
+
+[bca-206n-u3-q142] (Unit 3) What does Total Assets to Debt Ratio measure?
+  A. (*) The safety cushion provided by total assets to long-term lenders
+  B.     The return on inventory
+  C.     Depreciation percentage
+  D.     Daily sales volume
+Explanation: $\text{Total Assets to Debt Ratio} = \text{Total Assets} / \text{Long-term Debt}$.
+
+[bca-206n-u3-q143] (Unit 3) Window dressing in financial statements refers to:
+  A.     Cleaning office display windows
+  B. (*) Manipulating accounts to present a rosier financial picture than reality
+  C.     Changing the accounting year from April to January
+  D.     Auditing computer networks
+Explanation: Window dressing involves superficial manipulations (like delaying payment recordings or inflating closing stock) to show artificial health.
+
+[bca-206n-u3-q144] (Unit 3) Working Capital Turnover Ratio measures:
+  A. (*) The efficiency with which working capital is employed to generate sales
+  B.     The number of days debtors take to pay
+  C.     Bank interest rate on overdrafts
+  D.     Factory worker efficiency
+Explanation: $\text{Working Capital Turnover} = \text{Net Revenue from Operations (or COGS)} / \text{Net Working Capital}$.
+
+[bca-206n-u3-q145] (Unit 3) If Net Sales = Rs. 12,00,000 and Working Capital = Rs. 3,00,000, what is Working Capital Turnover?
+  A.     2 times
+  B. (*) 4 times
+  C.     6 times
+  D.     3 times
+Explanation: $12,00,000 / 3,00,000 = 4 \text{ times}$.
+
+[bca-206n-u3-q146] (Unit 3) What is the primary user group interested in Liquidity Ratios?
+  A. (*) Short-term creditors, commercial banks, and suppliers
+  B.     Long-term bondholders
+  C.     Equity shareholders for dividends
+  D.     Tax authorities for GST
+Explanation: Short-term suppliers and trade creditors focus on current and quick ratios to ensure immediate bill payments.
+
+[bca-206n-u3-q147] (Unit 3) Which of the following is considered an Absolute Liquid Asset?
+  A.     Sundry Debtors
+  B.     Inventory
+  C. (*) Cash in Hand and Cash at Bank
+  D.     Prepaid Rent
+Explanation: Cash, bank balances, and short-term treasury bills are instantly available without price change, termed Absolute Liquid Assets.
+
+[bca-206n-u3-q148] (Unit 3) What is the formula for Absolute Liquid Ratio?
+  A. (*) (Cash + Bank + Marketable Securities) / Current Liabilities
+  B.     Total Assets / Quick Liabilities
+  C.     Working Capital / Current Assets
+  D.     Net Profit / Cash
+Explanation: $\text{Absolute Liquid Ratio} = (\text{Cash} + \text{Bank} + \text{Current Investments}) / \text{Current Liabilities}$. Ideal is 0.5:1.
+
+[bca-206n-u3-q149] (Unit 3) If Cost of Goods Sold is Rs. 6,00,000 and Net Sales is Rs. 7,50,000, what is the Gross Profit percentage on Sales?
+  A.     15%
+  B. (*) 20%
+  C.     25%
+  D.     30%
+Explanation: $\text{Gross Profit} = 7,50,000 - 6,00,000 = 1,50,000$. $\text{GP Ratio} = (1,50,000 / 7,50,000) \times 100 = 20\%$.
+
+[bca-206n-u3-q150] (Unit 3) A company has an Interest Coverage Ratio of 0.8 times. What does this indicate?
+  A.     Company has abundant earnings to cover interest 5 times over
+  B. (*) Operating earnings are insufficient to cover even contractual interest charges, signaling default risk
+  C.     Company has no debt
+  D.     Company will pay double dividend
+Explanation: A ratio below 1.0 means operating earnings fail to cover contractual interest, posing extreme financial insolvency risk.
+
+[bca-206n-u4-q151] (Unit 4) What is Management Accounting primarily designed for?
+  A.     External reporting to tax authorities and banks
+  B. (*) Providing financial and operational information to internal management for planning, decision-making, and control
+  C.     Filing corporate statutory returns
+  D.     Publishing newspapers
+Explanation: Management accounting is internal accounting customized to help managers plan, execute, evaluate, and control business operations.
+
+[bca-206n-u4-q152] (Unit 4) Which of the following is a key difference between Financial Accounting and Management Accounting?
+  A.     Financial accounting is forward-looking; management accounting is historical
+  B. (*) Financial accounting is mandatory and follows GAAP/IFRS; management accounting is optional and tailored for internal use
+  C.     Management accounting only records monetary data
+  D.     Financial accounting produces weekly factory reports
+Explanation: Financial accounting is statutory, historical, and standardized; management accounting is internal, future-oriented, and flexible.
+
+[bca-206n-u4-q153] (Unit 4) Cost Accounting is concerned with:
+  A. (*) Ascertainment, allocation, accumulation, and control of costs of products and services
+  B.     Auditing personal income tax
+  C.     Managing bank interest rates
+  D.     Writing corporate bylaws
+Explanation: Cost accounting captures cost data at each stage of manufacturing to establish unit cost and enable cost control.
+
+[bca-206n-u4-q154] (Unit 4) What is a 'Cost Center'?
+  A.     A central warehouse where raw materials are stored
+  B. (*) A location, person, or item of equipment for which costs may be ascertained and used for cost control
+  C.     The head office of a bank
+  D.     A retail showroom
+Explanation: A cost center is a convenient unit of the organization (department, machine, process) to which costs are allocated.
+
+[bca-206n-u4-q155] (Unit 4) Which of the following represents an Indirect Material cost?
+  A.     Leather used in shoe manufacturing
+  B. (*) Lubricating oil and cotton waste used for maintaining factory machines
+  C.     Wood used in furniture making
+  D.     Cloth used in garment fabrication
+Explanation: Direct materials become an integral part of the finished good. Lubricating oil aids operations but does not physically form part of product, hence indirect.
+
+[bca-206n-u4-q156] (Unit 4) Prime Cost is the aggregate of:
+  A. (*) Direct Material + Direct Labor + Direct Expenses
+  B.     Works Cost + Factory Overhead
+  C.     Cost of Production + Selling Expenses
+  D.     Direct Labor + Factory Overhead
+Explanation: $\text{Prime Cost} = \text{Direct Materials} + \text{Direct Wages} + \text{Direct Chargeable Expenses}$.
+
+[bca-206n-u4-q157] (Unit 4) Conversion Cost is defined as:
+  A.     Prime Cost + Selling Expenses
+  B. (*) Direct Labor + Direct Expenses + Factory (Works) Overheads
+  C.     Total Cost - Material Cost
+  D.     Direct Material + Administrative Overheads
+Explanation: Conversion cost is the expenditure required to convert raw materials into finished products (Direct Labor + Factory Overheads).
+
+[bca-206n-u4-q158] (Unit 4) Factory / Works Overheads include:
+  A.     Showroom rent and salesmen commissions
+  B.     Office manager salary and stationery
+  C. (*) Factory rent, power, supervisor salaries, and factory machinery depreciation
+  D.     Director's fees
+Explanation: Factory overheads comprise all indirect material, indirect labor, and indirect expenses incurred inside the factory premises.
+
+[bca-206n-u4-q159] (Unit 4) What is Standard Costing?
+  A.     A method of preparing statutory financial statements
+  B. (*) A control technique comparing predetermined standard costs with actual costs to identify and analyze variances for corrective action
+  C.     Calculating historical averages of expenses
+  D.     Setting prices based on competitors
+Explanation: Standard costing establishes predetermined target costs under efficient conditions and measures variances against actual performance.
+
+[bca-206n-u4-q160] (Unit 4) What is a 'Variance' in standard costing?
+  A.     The difference between budgeted units and actual units sold
+  B. (*) The difference between standard cost and actual cost incurred
+  C.     The depreciation of factory plant
+  D.     The margin of safety in sales
+Explanation: $\text{Variance} = \text{Standard Cost} - \text{Actual Cost}$. When actual is less than standard, it is Favorable (F); if more, it is Adverse (A).
+
+[bca-206n-u4-q161] (Unit 4) If Actual Cost is LESS than Standard Cost, the variance is termed:
+  A.     Adverse (Unfavorable)
+  B. (*) Favorable (Credit)
+  C.     Neutral
+  D.     Deficit
+Explanation: Lower actual cost than standard indicates higher efficiency or savings, classified as Favorable (F).
+
+[bca-206n-u4-q162] (Unit 4) If Actual Cost exceeds Standard Cost, the variance is termed:
+  A.     Favorable
+  B. (*) Adverse / Unfavorable (Debit)
+  C.     Abnormal Gain
+  D.     Surplus
+Explanation: Exceeding standard cost represents overspending or inefficiency, designated as Adverse (A) or Unfavorable (U).
+
+[bca-206n-u4-q163] (Unit 4) What is the formula for Direct Material Cost Variance (DMCV)?
+  A.     Standard Cost of Material - Actual Cost of Material
+  B.     (Standard Quantity * Standard Price) - (Actual Quantity * Actual Price)
+  C. (*) Both A and B
+  D.     Standard Price * (Standard Quantity - Actual Quantity)
+Explanation: $\text{DMCV} = (SQ \times SP) - (AQ \times AP)$. It breaks down into Price Variance and Usage Variance.
+
+[bca-206n-u4-q164] (Unit 4) Direct Material Price Variance (DMPV) is calculated as:
+  A. (*) Actual Quantity * (Standard Price - Actual Price)
+  B.     Standard Quantity * (Standard Price - Actual Price)
+  C.     Standard Price * (Standard Quantity - Actual Quantity)
+  D.     Actual Price * (Standard Quantity - Actual Quantity)
+Explanation: $\text{DMPV} = AQ \times (SP - AP)$. It isolates price differences based on actual quantity purchased/used.
+
+[bca-206n-u4-q165] (Unit 4) Direct Material Usage (Quantity) Variance (DMUV) is calculated as:
+  A. (*) Standard Price * (Standard Quantity - Actual Quantity)
+  B.     Actual Price * (Standard Quantity - Actual Quantity)
+  C.     Standard Quantity * (Standard Price - Actual Price)
+  D.     Actual Quantity * (Standard Price - Actual Price)
+Explanation: $\text{DMUV} = SP \times (SQ - AQ)$. It measures efficiency in consumption valued at standard price.
+
+[bca-206n-u4-q166] (Unit 4) If Standard Quantity = 500 kg at Standard Price Rs. 10/kg, and Actual Quantity = 520 kg at Actual Price Rs. 11/kg, what is Material Cost Variance?
+  A. (*) Rs. 720 (A)
+  B.     Rs. 720 (F)
+  C.     Rs. 200 (A)
+  D.     Rs. 520 (A)
+Explanation: $SC = 500 \times 10 = 5,000$. $AC = 520 \times 11 = 5,720$. $DMCV = 5,000 - 5,720 = -720$ (Rs. 720 Adverse).
+
+[bca-206n-u4-q167] (Unit 4) Using the data above ($SQ=500, SP=10, AQ=520, AP=11$), what is Material Price Variance?
+  A. (*) Rs. 520 (Adverse)
+  B.     Rs. 500 (Favorable)
+  C.     Rs. 200 (Adverse)
+  D.     Rs. 520 (Favorable)
+Explanation: $DMPV = AQ \times (SP - AP) = 520 \times (10 - 11) = -520$ (Rs. 520 Adverse).
+
+[bca-206n-u4-q168] (Unit 4) Using the data above ($SQ=500, SP=10, AQ=520, AP=11$), what is Material Usage Variance?
+  A. (*) Rs. 200 (Adverse)
+  B.     Rs. 200 (Favorable)
+  C.     Rs. 500 (Adverse)
+  D.     Rs. 720 (Adverse)
+Explanation: $DMUV = SP \times (SQ - AQ) = 10 \times (500 - 520) = -200$ (Rs. 200 Adverse). Check: $DMCV = DMPV + DMUV = -520 + (-200) = -720$.
+
+[bca-206n-u4-q169] (Unit 4) Direct Labor Cost Variance (DLCV) equals:
+  A. (*) Labor Rate Variance + Labor Efficiency Variance
+  B.     Material Price Variance + Overhead Variance
+  C.     Standard Hours * Actual Rate
+  D.     Idle Time * Standard Rate
+Explanation: $\text{DLCV} = \text{Labor Rate Variance (LRV)} + \text{Labor Efficiency Variance (LEV)}$.
+
+[bca-206n-u4-q170] (Unit 4) What is the formula for Direct Labor Rate Variance (LRV)?
+  A. (*) Actual Hours * (Standard Rate - Actual Rate)
+  B.     Standard Hours * (Standard Rate - Actual Rate)
+  C.     Standard Rate * (Standard Hours - Actual Hours)
+  D.     Actual Rate * (Standard Hours - Actual Hours)
+Explanation: $\text{LRV} = AH \times (SR - AR)$.
+
+[bca-206n-u4-q171] (Unit 4) What is the formula for Direct Labor Efficiency Variance (LEV)?
+  A. (*) Standard Rate * (Standard Hours - Actual Hours)
+  B.     Actual Rate * (Standard Hours - Actual Hours)
+  C.     Standard Hours * (Standard Rate - Actual Rate)
+  D.     Actual Hours * (Standard Rate - Actual Rate)
+Explanation: $\text{LEV} = SR \times (SH - AH)$.
+
+[bca-206n-u4-q172] (Unit 4) If machine breakdown occurs causing workers to remain idle, the resulting variance is:
+  A.     Labor Rate Variance
+  B. (*) Idle Time Variance (always Adverse)
+  C.     Labor Mix Variance
+  D.     Calendar Variance
+Explanation: $\text{Idle Time Variance} = \text{Abnormal Idle Hours} \times \text{Standard Rate}$. It is always an Adverse (unproductive loss) variance.
+
+[bca-206n-u4-q173] (Unit 4) Which of the following is an advantage of Standard Costing?
+  A. (*) Provides benchmark for performance measurement and cost consciousness
+  B.     Eliminates need for managers
+  C.     Guarantees company profit regardless of market
+  D.     Removes fixed expenses completely
+Explanation: Standard costing sets target norms, instills cost discipline, and facilitates management by exception.
+
+[bca-206n-u4-q174] (Unit 4) What is 'Management by Exception' (MBE)?
+  A.     Management reviewing every routine transaction every day
+  B. (*) Management focusing attention primarily on significant deviations (variances) from planned standards
+  C.     Allowing all employees to set their own salaries
+  D.     Managing business without standard costs
+Explanation: MBE dictates that managers should not waste time on operations proceeding according to plan, but focus on significant adverse or abnormal variances.
+
+[bca-206n-u4-q175] (Unit 4) What is an 'Ideal Standard'?
+  A.     A standard based on normal expected operating conditions
+  B. (*) A theoretical standard attainable only under perfect operating conditions with zero waste, zero machine breakdown, and maximum efficiency
+  C.     A past historical average
+  D.     A standard set by government
+Explanation: Ideal standards assume 100% perfection without downtime; they are rarely achievable in practice and may demotivate staff.
+
+[bca-206n-u4-q176] (Unit 4) What is an 'Attainable Standard' (Currently Attainable Standard)?
+  A.     A standard set so low that everyone passes easily
+  B. (*) A realistic standard based on efficient working conditions allowing for normal machine downtime and routine rest breaks
+  C.     A standard that never changes
+  D.     An imaginary benchmark
+Explanation: Attainable standards provide challenging yet achievable targets under normal operating efficiency.
+
+[bca-206n-u4-q177] (Unit 4) Who is responsible for an unfavorable Material Price Variance?
+  A.     Production Supervisor
+  B. (*) Purchase Manager / Procurement Department
+  C.     Factory Workers
+  D.     Sales Manager
+Explanation: The Purchase Manager is generally accountable for prices paid for raw materials, though market-wide price spikes may be external.
+
+[bca-206n-u4-q178] (Unit 4) Who is responsible for an unfavorable Material Usage Variance?
+  A.     Purchase Department
+  B. (*) Production Supervisor / Works Manager
+  C.     Company Secretary
+  D.     Customer Support
+Explanation: The Production Manager is accountable for scrap, wastage, defective handling, or improper material utilization in the workshop.
+
+[bca-206n-u4-q179] (Unit 4) Cost of Production in a cost sheet is calculated as:
+  A. (*) Works Cost + Office and Administrative Overheads
+  B.     Prime Cost + Direct Expenses
+  C.     Total Cost + Profit
+  D.     Factory Cost - Work in Progress
+Explanation: $\text{Cost of Production} = \text{Works (Factory) Cost} + \text{Administrative Overheads}$.
+
+[bca-206n-u4-q180] (Unit 4) Which of the following items is EXCLUDED from a Cost Sheet?
+  A.     Direct Wages
+  B.     Factory Power
+  C. (*) Income Tax, Interest on Debentures, and Dividend Paid
+  D.     Office Stationery
+Explanation: Cost sheets include operational manufacturing costs; purely financial items (income tax, interest, dividends, goodwill write-off) are excluded.
+
+[bca-206n-u4-q181] (Unit 4) What is the primary role of a Management Accountant in a corporate organization?
+  A.     Line manager with direct factory command
+  B. (*) Staff advisory role providing analytical intelligence, budgets, forecasts, and strategic financial reports to executive management
+  C.     Clerical bookkeeper
+  D.     External auditor
+Explanation: The management accountant occupies a staff/advisory position, guiding line executives with actionable cost and decision metrics.
+
+[bca-206n-u4-q182] (Unit 4) Which of the following is NOT a tool or technique of Management Accounting?
+  A.     Ratio Analysis
+  B.     Standard Costing and Variance Analysis
+  C. (*) Double-entry journal posting verification
+  D.     Budgetary Control and Cash Flow Analysis
+Explanation: Mechanical journal posting is routine bookkeeping; management accounting focuses on analytical tools like budgetary control, standard costing, and CVP analysis.
+
+[bca-206n-u4-q183] (Unit 4) Opportunity Cost is defined as:
+  A.     The explicit cash paid for an asset
+  B. (*) The cost of the next best alternative foregone by choosing a particular action
+  C.     The sunk cost already incurred in the past
+  D.     The statutory audit fee
+Explanation: Opportunity cost represents the potential benefit sacrificed when selecting one alternative over another.
+
+[bca-206n-u4-q184] (Unit 4) What is a 'Sunk Cost'?
+  A.     A future avoidable cost
+  B. (*) A past historical cost that has already been incurred and cannot be altered by any present or future decision
+  C.     The cost of shipping goods by sea
+  D.     Variable cost of raw materials
+Explanation: Sunk costs (e.g., spent R&D on an abandoned project) are irrelevant to forward-looking decision making.
+
+[bca-206n-u4-q185] (Unit 4) Marginal Cost is equivalent to:
+  A.     Total Fixed Cost
+  B. (*) Variable Cost (Direct Material + Direct Labor + Direct Expenses + Variable Overheads)
+  C.     Total Cost + Profit
+  D.     Average Historical Cost
+Explanation: Marginal cost is the additional cost incurred in producing one extra unit, which equals variable cost.
+
+[bca-206n-u4-q186] (Unit 4) Contribution is calculated as:
+  A.     Sales - Total Cost
+  B. (*) Sales - Variable Cost
+  C.     Fixed Cost - Profit
+  D.     Gross Profit + Net Profit
+Explanation: $\text{Contribution} = \text{Sales} - \text{Variable Cost} = \text{Fixed Cost} + \text{Profit}$.
+
+[bca-206n-u4-q187] (Unit 4) Break-Even Point (BEP) in units is calculated as:
+  A. (*) Total Fixed Cost / Contribution per unit
+  B.     Total Fixed Cost / Sales per unit
+  C.     Variable Cost / Selling Price
+  D.     Total Cost / Units Produced
+Explanation: $\text{BEP (Units)} = \text{Fixed Cost} / (\text{Selling Price per unit} - \text{Variable Cost per unit})$.
+
+[bca-206n-u4-q188] (Unit 4) What is the Margin of Safety?
+  A. (*) The difference between Actual Sales and Break-Even Sales
+  B.     The maximum cash in bank
+  C.     Total fixed assets
+  D.     Insurance coverage of warehouse
+Explanation: $\text{Margin of Safety} = \text{Actual Sales} - \text{Break-even Sales}$. It represents the drop in sales the firm can absorb before incurring losses.
+
+[bca-206n-u4-q189] (Unit 4) Profit-Volume (P/V) Ratio is expressed as:
+  A. (*) (Contribution / Sales) * 100
+  B.     (Profit / Volume) * 100
+  C.     (Variable Cost / Fixed Cost) * 100
+  D.     (Sales / Total Cost) * 100
+Explanation: $\text{P/V Ratio} = (\text{Contribution} / \text{Sales}) \times 100$. It reflects the rate of contribution growth per rupee of sales.
+
+[bca-206n-u4-q190] (Unit 4) If Selling Price = Rs. 20/unit, Variable Cost = Rs. 12/unit, and Fixed Cost = Rs. 80,000, what is the BEP in units?
+  A.     8,000 units
+  B. (*) 10,000 units
+  C.     12,000 units
+  D.     6,000 units
+Explanation: $\text{Contribution per unit} = 20 - 12 = Rs. 8$. $\text{BEP} = 80,000 / 8 = 10,000 \text{ units}$.
+
+[bca-206n-u4-q191] (Unit 4) Using the data above, what is the P/V Ratio?
+  A.     30%
+  B. (*) 40%
+  C.     50%
+  D.     60%
+Explanation: $\text{P/V Ratio} = (8 / 20) \times 100 = 40\%$.
+
+[bca-206n-u4-q192] (Unit 4) If fixed costs increase while selling price and variable cost remain constant, the Break-Even Point will:
+  A.     Decrease
+  B. (*) Increase
+  C.     Remain unchanged
+  D.     Drop to zero
+Explanation: Since $\text{BEP} = \text{Fixed Cost} / \text{CPU}$, higher fixed costs necessitate selling more units to break even.
+
+[bca-206n-u4-q193] (Unit 4) A limitation of Standard Costing is that:
+  A.     It cannot be used in repetitive manufacturing
+  B. (*) Setting accurate standards is difficult in volatile, fluctuating economic environments and involves high initial cost
+  C.     It provides too much information
+  D.     It lowers product quality automatically
+Explanation: Standard costing can be expensive, difficult to calibrate under rapid technological/price shifts, and resist organizational change.
+
+[bca-206n-u4-q194] (Unit 4) When actual hours worked are fewer than standard hours allowed for the output, the Labor Efficiency Variance is:
+  A.     Adverse
+  B. (*) Favorable
+  C.     Zero
+  D.     Negative
+Explanation: Completing the required production in fewer hours than standard signifies superior efficiency, yielding a Favorable variance.
+
+[bca-206n-u4-q195] (Unit 4) Which of the following is a component of 'Overhead Cost Variance'?
+  A. (*) Expenditure Variance and Volume Variance
+  B.     Material Price Variance
+  C.     Labor Rate Variance
+  D.     Debtors Variance
+Explanation: Overhead variance is divided into Budget/Expenditure Variance (spending) and Volume Variance (capacity/efficiency utilization).
+
+[bca-206n-u4-q196] (Unit 4) Standard Costing differs from Historical Costing because Standard Costing is:
+  A.     Post-mortem analysis after production
+  B. (*) Predetermined prospective cost calculated prior to manufacturing
+  C.     Based strictly on market auction rates
+  D.     Applicable only to retail traders
+Explanation: Historical costing records costs after they occur; standard costing establishes predetermined targets before production begins.
+
+[bca-206n-u4-q197] (Unit 4) What does a Sales Value Variance measure?
+  A. (*) The difference between budgeted sales value and actual sales value achieved
+  B.     The change in factory rent
+  C.     Cost of raw materials consumed
+  D.     Credit discount granted
+Explanation: $\text{Sales Value Variance} = \text{Actual Sales} - \text{Budgeted Sales}$.
+
+[bca-206n-u4-q198] (Unit 4) If actual sales price per unit is higher than standard selling price, the Sales Price Variance is:
+  A.     Adverse
+  B. (*) Favorable
+  C.     Neutral
+  D.     Uncontrolled
+Explanation: Selling products at higher prices than planned generates higher revenue, representing a Favorable variance.
+
+[bca-206n-u4-q199] (Unit 4) Cost audit is conducted primarily to:
+  A.     Verify that statutory taxes are minimized
+  B. (*) Verify the correctness of cost accounts and ensure adherence to cost accounting principles
+  C.     Audit director bonuses
+  D.     Manage supplier relationships
+Explanation: Cost audit examines cost accounting records to ensure accuracy, propriety, and compliance with cost standards.
+
+[bca-206n-u4-q200] (Unit 4) The process of grouping costs according to their common characteristics is known as:
+  A.     Cost allocation
+  B. (*) Cost classification
+  C.     Cost apportionment
+  D.     Cost absorption
+Explanation: Cost classification categorizes expenses by nature (material, labor), function (production, selling), or behavior (fixed, variable).
+
+[bca-206n-u5-q201] (Unit 5) What is a Budget?
+  A.     A vague hope of earning money
+  B. (*) A comprehensive financial and/or quantitative statement prepared prior to a defined period of time to pursue specific policies
+  C.     An audit report of last year's operations
+  D.     A bank statement of deposits
+Explanation: A budget is a formalized quantitative plan for allocating resources and guiding organizational activities for an upcoming period.
+
+[bca-206n-u5-q202] (Unit 5) What is the primary difference between a Budget and a Forecast?
+  A.     There is no difference
+  B. (*) A forecast is a probabilistic estimate of what is likely to happen; a budget is a committed target management intends to achieve
+  C.     A forecast is prepared after the year ends
+  D.     Budgets are prepared only by governments
+Explanation: A forecast is an assessment of future conditions; a budget represents management's formal commitment to specific targets and policies.
+
+[bca-206n-u5-q203] (Unit 5) What is Budgetary Control?
+  A.     A legal process of freezing corporate bank accounts
+  B. (*) The process of establishing budgets, continuously comparing actual performance against budgeted targets, and taking corrective actions
+  C.     Controlling factory machinery via computer
+  D.     Minimizing employee salaries
+Explanation: Budgetary control uses budgets as planning instruments and control benchmarks to ensure operational goals are realized.
+
+[bca-206n-u5-q204] (Unit 5) Which of the following is usually the starting point for preparing functional budgets?
+  A.     Cash Budget
+  B.     Production Budget
+  C. (*) Sales Budget (Principal / Key Factor)
+  D.     Administrative Budget
+Explanation: In most commercial businesses, sales demand is the primary limiting key factor; all production and procurement depend on expected sales volume.
+
+[bca-206n-u5-q205] (Unit 5) What is a 'Key Factor' (or Limiting / Principal Factor) in budgeting?
+  A.     The software used to create spreadsheets
+  B. (*) A critical resource or constraint (e.g., market demand, raw material shortage, machine capacity) that limits the scale of operations
+  C.     The CEO's signature
+  D.     The bank interest rate
+Explanation: The key budget factor is whatever constraint dictates the ceiling of operations (e.g., scarce material, plant capacity, or sales demand).
+
+[bca-206n-u5-q206] (Unit 5) What is a Master Budget?
+  A.     A budget prepared by the school master
+  B. (*) A consolidated summary budget incorporating all functional budgets into a projected Income Statement and projected Balance Sheet
+  C.     A budget for purchasing factory machinery
+  D.     A petty cash voucher summary
+Explanation: The master budget integrates all operational budgets (Sales, Production, Materials, Overheads) into an overarching projected financial picture.
+
+[bca-206n-u5-q207] (Unit 5) What is a Fixed Budget?
+  A. (*) A budget designed to remain unchanged regardless of the volume of output or activity actually achieved
+  B.     A budget that cannot be viewed by employees
+  C.     A budget fixed by statutory tax authorities
+  D.     A budget where all costs are zero
+Explanation: A fixed budget remains rigid at one planned capacity level and does not adjust when actual activity deviates.
+
+[bca-206n-u5-q208] (Unit 5) What is a Flexible Budget?
+  A.     A budget written in pencil
+  B. (*) A dynamic budget that recognizes cost behavior patterns and automatically adjusts cost allowances to any achieved level of activity
+  C.     A budget that allows managers to spend whatever they want
+  D.     A budget that ignores fixed costs
+Explanation: A flexible budget differentiates between fixed, variable, and semi-variable costs, providing realistic targets for varying capacity levels (e.g., 60%, 80%, 100%).
+
+[bca-206n-u5-q209] (Unit 5) Semi-variable costs in a flexible budget are costs that:
+  A.     Change in direct proportion to production volume
+  B.     Remain totally unchanged at all production levels
+  C. (*) Contain both a fixed component and a variable component depending on output
+  D.     Are incurred only during holidays
+Explanation: Semi-variable costs (like telephone, maintenance, power) have a fixed standing charge plus a variable charge per unit used.
+
+[bca-206n-u5-q210] (Unit 5) What is Zero-Based Budgeting (ZBB)?
+  A.     A budgeting system where total expenditure must equal zero
+  B. (*) A method of budgeting where every activity must be justified from scratch (zero base) for each new period without assuming past historical base
+  C.     A budget prepared with zero employees
+  D.     A system that budgets only in zero decimal places
+Explanation: ZBB, developed by Peter Pyhrr, rejects historical incrementalism; managers must justify every proposed expenditure from a clean slate.
+
+[bca-206n-u5-q211] (Unit 5) Who is credited with introducing Zero-Based Budgeting (ZBB) in management literature?
+  A.     Peter Drucker
+  B. (*) Peter Pyhrr
+  C.     F.W. Taylor
+  D.     Henry Fayol
+Explanation: Peter Pyhrr developed and implemented Zero-Based Budgeting at Texas Instruments in the late 1960s.
+
+[bca-206n-u5-q212] (Unit 5) What is a 'Decision Package' in Zero-Based Budgeting?
+  A.     A physical box of products
+  B. (*) A document that identifies a discrete activity, evaluates alternatives, assesses consequences of non-funding, and requests resources
+  C.     A computer algorithm for payroll
+  D.     A contract signed with suppliers
+Explanation: In ZBB, programs and activities are formulated into distinct 'Decision Packages' which are evaluated and ranked against organizational priorities.
+
+[bca-206n-u5-q213] (Unit 5) What is the primary advantage of Zero-Based Budgeting over traditional incremental budgeting?
+  A.     It takes less time and paperwork
+  B. (*) It eliminates obsolete or wasteful legacy expenditures by forcing critical re-evaluation of every program
+  C.     It requires no accounting expertise
+  D.     It eliminates the need for an audit
+Explanation: ZBB prevents historical budgetary slack and forces resource allocation strictly according to present strategic value.
+
+[bca-206n-u5-q214] (Unit 5) A Cash Budget is prepared to:
+  A.     Calculate taxable net income
+  B. (*) Forecast periodic cash receipts, cash disbursements, and anticipate future cash surpluses or cash deficits
+  C.     Count physical currency notes in the safe
+  D.     Determine factory machine life
+Explanation: A cash budget ensures liquidity by projecting cash inflows and outflows and signaling borrowing requirements or investment opportunities.
+
+[bca-206n-u5-q215] (Unit 5) Which of the following is EXCLUDED while preparing a Cash Budget?
+  A. (*) Depreciation on machinery
+  B.     Payment to creditors for credit purchases
+  C.     Cash sales received
+  D.     Wages paid in cash
+Explanation: Depreciation is a non-cash accounting allocation; cash budgets record strictly cash inflows and cash outflows.
+
+[bca-206n-u5-q216] (Unit 5) If opening cash balance is Rs. 20,000, estimated cash receipts are Rs. 1,50,000, and estimated cash payments are Rs. 1,40,000, what is the closing cash balance?
+  A.     Rs. 10,000
+  B. (*) Rs. 30,000
+  C.     Rs. 20,000
+  D.     Rs. 40,000
+Explanation: $\text{Closing Balance} = 20,000 + 1,50,000 - 1,40,000 = Rs. 30,000$.
+
+[bca-206n-u5-q217] (Unit 5) What is a 'Budget Manual'?
+  A.     A book containing company history
+  B. (*) A written document detailing the objectives, procedures, responsibilities, forms, and timetable for budget preparation and administration
+  C.     An instruction guide for factory equipment
+  D.     A directory of company employees
+Explanation: The Budget Manual standardizes the budgeting process, outlining roles, timelines, formats, and reporting hierarchies.
+
+[bca-206n-u5-q218] (Unit 5) What is the role of a 'Budget Committee'?
+  A.     To approve travel expenses for directors
+  B. (*) To coordinate, review, harmonize, and recommend final budgets from various functional heads for executive approval
+  C.     To conduct legal proceedings against debtors
+  D.     To manage the company website
+Explanation: The Budget Committee (comprising CEO, department heads, and budget officer) harmonizes functional budgets into a cohesive plan.
+
+[bca-206n-u5-q219] (Unit 5) In a production budget, how are budgeted production units calculated?
+  A. (*) Budgeted Sales + Closing Stock of Finished Goods - Opening Stock of Finished Goods
+  B.     Budgeted Sales - Closing Stock + Opening Stock
+  C.     Purchases + Raw Materials Consumed
+  D.     Sales * 1.25
+Explanation: $\text{Production Units} = \text{Budgeted Sales Units} + \text{Desired Closing Finished Goods} - \text{Opening Finished Goods}$.
+
+[bca-206n-u5-q220] (Unit 5) If budgeted sales are 10,000 units, desired closing stock is 2,000 units, and opening stock is 1,500 units, what is budgeted production?
+  A.     10,000 units
+  B. (*) 10,500 units
+  C.     9,500 units
+  D.     12,000 units
+Explanation: $\text{Budgeted Production} = 10,000 + 2,000 - 1,500 = 10,500 \text{ units}$.
+
+[bca-206n-u5-q221] (Unit 5) Unit Costing (or Output Costing) is most appropriately applied in which type of industry?
+  A.     Shipbuilding and aircraft construction
+  B. (*) Standardized mass production of identical units like brick making, cement, coal mining, or sugar mills
+  C.     Custom interior design consultancies
+  D.     Automobile repair garages
+Explanation: Unit costing applies where a single standard product is manufactured on a continuous large-scale basis, so cost per unit can be easily averaged.
+
+[bca-206n-u5-q222] (Unit 5) What is the primary document used in Unit Costing to ascertain total cost and cost per unit?
+  A.     Journal
+  B. (*) Cost Sheet
+  C.     Trial Balance
+  D.     Bank Statement
+Explanation: A Cost Sheet is a statement that assembles detailed cost elements (Prime Cost, Works Cost, Cost of Production, Total Cost) and per-unit costs.
+
+[bca-206n-u5-q223] (Unit 5) What is Prime Cost?
+  A. (*) Direct Materials Consumed + Direct Labor + Direct Expenses
+  B.     Factory Overhead + Administrative Overhead
+  C.     Cost of Goods Sold + Profit
+  D.     Total sales divided by units
+Explanation: Prime Cost represents all direct manufacturing costs incurred directly on the product.
+
+[bca-206n-u5-q224] (Unit 5) How is Raw Materials Consumed calculated in a Cost Sheet?
+  A.     Purchases + Closing Stock - Opening Stock
+  B. (*) Opening Stock of Raw Materials + Purchases + Carriage Inward - Closing Stock of Raw Materials
+  C.     Total Materials Purchased * Unit Cost
+  D.     Raw Materials in transit
+Explanation: $\text{Materials Consumed} = \text{Opening Stock} + \text{Purchases} + \text{Direct Freight/Carriage Inward} - \text{Closing Stock of Raw Materials}$.
+
+[bca-206n-u5-q225] (Unit 5) Works (Factory) Cost is computed as:
+  A. (*) Prime Cost + Factory (Works) Overheads + Opening WIP - Closing WIP
+  B.     Cost of Production + Selling Expenses
+  C.     Materials Consumed + Profit
+  D.     Sales - Administrative Expense
+Explanation: Works Cost adds factory overheads and adjusts for work-in-progress (WIP) inventories to prime cost.
+
+[bca-206n-u5-q226] (Unit 5) Cost of Production equals:
+  A. (*) Works Cost + Office and Administrative Overheads
+  B.     Total Cost + Profit
+  C.     Prime Cost - Factory Overhead
+  D.     Net Sales - Selling Expenses
+Explanation: Cost of Production reflects factory cost plus administrative overheads required to manage the enterprise.
+
+[bca-206n-u5-q227] (Unit 5) Cost of Goods Sold (COGS) in a Cost Sheet is calculated as:
+  A. (*) Cost of Production + Opening Stock of Finished Goods - Closing Stock of Finished Goods
+  B.     Works Cost + Purchases
+  C.     Prime Cost * 2
+  D.     Total Sales - Net Profit
+Explanation: COGS adjusts Cost of Production for finished goods stock fluctuations: $+\text{Opening Finished Goods} - \text{Closing Finished Goods}$.
+
+[bca-206n-u5-q228] (Unit 5) Cost of Sales (Total Cost) is computed as:
+  A. (*) Cost of Goods Sold + Selling and Distribution Overheads
+  B.     Prime Cost + Factory Rent
+  C.     Works Cost + Net Profit
+  D.     Cost of Production + Raw Materials
+Explanation: $\text{Total Cost / Cost of Sales} = \text{COGS} + \text{Selling and Distribution Overheads}$.
+
+[bca-206n-u5-q229] (Unit 5) Selling and Distribution Overheads include which of the following?
+  A.     Factory supervisor wages and lubricant oil
+  B. (*) Salesmen salaries, showroom rent, advertising, and carriage outward
+  C.     Managing director's salary and legal charges
+  D.     Machine depreciation
+Explanation: Selling and distribution overheads encompass all expenses related to marketing, promoting, delivering, and collecting sales.
+
+[bca-206n-u5-q230] (Unit 5) Profit in a Cost Sheet is determined as the difference between:
+  A. (*) Sales and Cost of Sales (Total Cost)
+  B.     Cost of Production and Works Cost
+  C.     Gross Profit and Carriage Outward
+  D.     Prime Cost and Direct Labor
+Explanation: $\text{Profit} = \text{Selling Price (Total Sales)} - \text{Cost of Sales (Total Cost)}$.
+
+[bca-206n-u5-q231] (Unit 5) What is a 'Tender' or 'Quotation Price Statement'?
+  A.     A tax audit document
+  B. (*) A price estimate submitted to a prospective customer detailing estimated cost plus desired profit margin for supplying goods or services
+  C.     A bank guarantee form
+  D.     A factory labor roster
+Explanation: A tender/quotation calculates expected cost of a proposed contract using overhead recovery rates derived from past cost sheets, adding desired profit.
+
+[bca-206n-u5-q232] (Unit 5) In preparing a Tender, how are Factory Overheads typically absorbed when no specific data is given?
+  A. (*) As a percentage of Direct Wages
+  B.     As a percentage of Selling Price
+  C.     As a percentage of Administrative Overheads
+  D.     As an equal flat rate per day
+Explanation: Standard convention absorbs Factory Overheads as a percentage of Direct Wages: $(\text{Factory Overheads} / \text{Direct Wages}) \times 100$.
+
+[bca-206n-u5-q233] (Unit 5) In preparing a Tender, how are Office and Administrative Overheads usually absorbed?
+  A. (*) As a percentage of Works Cost
+  B.     As a percentage of Direct Material
+  C.     As a percentage of Sales
+  D.     As a flat per unit cost
+Explanation: Office & Admin overheads are conventionally absorbed as a percentage of Works Cost: $(\text{Office Overheads} / \text{Works Cost}) \times 100$.
+
+[bca-206n-u5-q234] (Unit 5) If Prime Cost is Rs. 1,00,000 and Factory Overhead is 40% of Direct Wages (which are Rs. 40,000), what is the Works Cost?
+  A. (*) Rs. 1,16,000
+  B.     Rs. 1,40,000
+  C.     Rs. 1,24,000
+  D.     Rs. 1,10,000
+Explanation: $\text{Factory Overhead} = 40\% \text{ of } 40,000 = 16,000$. $\text{Works Cost} = 1,00,000 + 16,00,0 = Rs. 1,16,000$.
+
+[bca-206n-u5-q235] (Unit 5) If Works Cost is Rs. 2,00,000 and Administrative Overhead is 20% of Works Cost, what is the Cost of Production?
+  A. (*) Rs. 2,40,000
+  B.     Rs. 2,20,000
+  C.     Rs. 2,50,000
+  D.     Rs. 2,10,000
+Explanation: $\text{Admin Overhead} = 20\% \text{ of } 2,00,000 = 40,000$. $\text{Cost of Production} = 2,00,000 + 40,000 = Rs. 2,40,000$.
+
+[bca-206n-u5-q236] (Unit 5) If Cost of Sales is Rs. 80,000 and profit is desired at 20% on Selling Price, what is the Selling Price?
+  A.     Rs. 96,000
+  B. (*) Rs. 1,00,000
+  C.     Rs. 1,05,000
+  D.     Rs. 92,000
+Explanation: Profit = 20% on Sales $\implies$ Cost is 80% of Sales. $\text{Selling Price} = 80,000 / 0.80 = Rs. 1,00,000$. (Profit = 20,000).
+
+[bca-206n-u5-q237] (Unit 5) If Cost of Sales is Rs. 90,000 and profit is 25% on Cost, what is the Selling Price?
+  A. (*) Rs. 1,12,500
+  B.     Rs. 1,20,000
+  C.     Rs. 1,15,000
+  D.     Rs. 1,10,000
+Explanation: $\text{Profit} = 25\% \text{ of } 90,000 = 22,500$. $\text{Selling Price} = 90,000 + 22,500 = Rs. 1,12,500$.
+
+[bca-206n-u5-q238] (Unit 5) Which of the following is considered a Functional Budget?
+  A.     Master Budget
+  B. (*) Sales Budget
+  C.     Zero-Based Budget
+  D.     Operating Ratio
+Explanation: Functional budgets relate to individual business functions (Sales, Production, Purchase, Personnel, R&D).
+
+[bca-206n-u5-q239] (Unit 5) What is the primary purpose of a Flexible Budget compared to a Fixed Budget?
+  A. (*) To allow cost comparison at the actual output level attained, preventing misleading volume variance distortions
+  B.     To eliminate the need for supervisory staff
+  C.     To satisfy tax authorities only
+  D.     To avoid calculating overheads
+Explanation: A flexible budget recalculates targets at actual activity levels, enabling meaningful 'like-with-like' performance evaluation.
+
+[bca-206n-u5-q240] (Unit 5) In a factory operating at 60% capacity (producing 600 units), fixed overhead is Rs. 30,000. At 80% capacity, what will be the fixed overhead?
+  A.     Rs. 40,000
+  B. (*) Rs. 30,000
+  C.     Rs. 35,000
+  D.     Rs. 24,000
+Explanation: Fixed overheads remain constant in total irrespective of output changes within the relevant range.
+
+[bca-206n-u5-q241] (Unit 5) In a factory operating at 60% capacity, variable cost is Rs. 12,000 (for 600 units). At 80% capacity (800 units), what will be the variable cost?
+  A.     Rs. 12,000
+  B. (*) Rs. 16,000
+  C.     Rs. 15,000
+  D.     Rs. 18,000
+Explanation: $\text{Variable cost per unit} = 12,000 / 600 = Rs. 20$. At 800 units: $800 \times 20 = Rs. 16,000$.
+
+[bca-206n-u5-q242] (Unit 5) What happens to Fixed Cost per unit when production volume increases?
+  A.     Fixed cost per unit increases
+  B. (*) Fixed cost per unit decreases
+  C.     Fixed cost per unit remains constant
+  D.     Becomes zero
+Explanation: Total fixed costs remain unchanged, so spreading them over a larger volume reduces fixed cost per unit ($TFC / Units$).
+
+[bca-206n-u5-q243] (Unit 5) What happens to Variable Cost per unit when production volume increases?
+  A. (*) Variable cost per unit remains constant within the relevant range
+  B.     Variable cost per unit increases rapidly
+  C.     Variable cost per unit drops to zero
+  D.     Fluctuates inversely with volume
+Explanation: Variable cost per unit is constant; total variable cost varies directly with production volume.
+
+[bca-206n-u5-q244] (Unit 5) Which of the following is a symptom of poor budgetary control?
+  A. (*) Frequent unanalyzed adverse variances and regular emergency supplementary budgets
+  B.     Consistently high labor productivity
+  C.     High stock turnover ratio
+  D.     Favorable cash flow
+Explanation: Frequent unexplained variance overruns signal inaccurate standards, lack of accountability, and weak budgetary control.
+
+[bca-206n-u5-q245] (Unit 5) Budgetary slack (or padding) refers to:
+  A.     A budget surplus resulting from excellent performance
+  B. (*) The deliberate practice of underestimating revenues and overestimating expenses to make targets easily achievable
+  C.     Tight budgets set by top management
+  D.     A shortage of stationery in the budget office
+Explanation: Budgetary slack is introduced by managers to build cushions, ensuring bonuses or favorable reviews with minimal effort.
+
+[bca-206n-u5-q246] (Unit 5) What is Program Budgeting (PPBS)?
+  A. (*) Planning-Programming-Budgeting System linking organizational objectives and long-range programs to budgetary allocations
+  B.     Budgeting only for computer programs
+  C.     A private payroll software
+  D.     Writing checks every month
+Explanation: PPBS focuses on multi-year program outcomes and policy objectives rather than annual incremental inputs.
+
+[bca-206n-u5-q247] (Unit 5) Which of the following is a financial expense that should NOT appear in a Cost Sheet?
+  A.     Carriage Inward
+  B.     Depreciation of factory plant
+  C. (*) Interest on borrowed capital and debentures
+  D.     Factory electric power
+Explanation: Interest on loans/debentures is a pure financial cost related to capital structure, not an operational manufacturing cost.
+
+[bca-206n-u5-q248] (Unit 5) Under absorption costing, total factory cost per unit includes:
+  A.     Only direct material and labor
+  B. (*) Direct material, direct labor, direct expenses, and both variable and fixed factory overheads
+  C.     Only variable expenses
+  D.     Administrative overheads exclusively
+Explanation: Absorption costing allocates all manufacturing costs (variable and fixed factory overheads) to the units produced.
+
+[bca-206n-u5-q249] (Unit 5) A tender price is formulated by adding:
+  A. (*) Estimated Total Cost + Desired Profit Margin
+  B.     Direct Material + Selling Price
+  C.     Gross Profit + Factory Overhead
+  D.     Prime Cost - Scrap Value
+Explanation: $\text{Tender Price} = \text{Estimated Cost of Sales} + \text{Required Profit Margin}$.
+
+[bca-206n-u5-q250] (Unit 5) Continuous Budgeting (or Rolling Budget) refers to:
+  A.     A budget prepared once every ten years
+  B. (*) A budget continually updated by adding a new period (month or quarter) as the current period expires, keeping a rolling 12-month horizon
+  C.     Budgeting on a conveyor belt
+  D.     An unapproved informal budget
+Explanation: Rolling/continuous budgets provide an ongoing, up-to-date 12-month forward horizon by dropping elapsed months and adding future months.
+

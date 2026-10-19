@@ -1,0 +1,2273 @@
+MJPRU BAREILLY - BCA SEMESTER 2
+COURSE CODE: BCA-401E - MATHEMATICS II
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is a Set in mathematics?
+     (A) An ambiguous group of numbers
+     (B) A well-defined collection of distinct objects
+     (C) A list of ordered pairs
+     (D) A function with real values
+     Answer: (B)
+     Explanation: A set is a well-defined collection of distinct objects, meaning it is unambiguously clear whether any given element belongs to the set.
+
+Q2. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     Which set notation defines a set by listing a rule or property satisfied by all its members (e.g., A = {x : x is an even prime})?
+     (A) Roster (Tabular) Form
+     (B) Set-Builder (Rule) Form
+     (C) Venn Diagram
+     (D) Interval Notation
+     Answer: (B)
+     Explanation: Set-builder form describes elements by their characteristic mathematical property: {x : P(x)}.
+
+Q3. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Null Set (Empty Set, denoted ∅ or {})?
+     (A) A set containing the single number 0
+     (B) A set that contains zero elements (cardinality 0)
+     (C) A set with infinite elements
+     (D) A negative set
+     Answer: (B)
+     Explanation: The empty set ∅ contains no elements whatsoever, so |∅| = 0. Note that {0} is not empty.
+
+Q4. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If set A has N distinct elements, how many subsets does its Power Set P(A) contain?
+     (A) N
+     (B) 2N
+     (C) 2^N
+     (D) N^2
+     Answer: (C)
+     Explanation: Every element can either be included or excluded from a subset, yielding 2 * 2 * ... * 2 = 2^N total subsets.
+
+Q5. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     How many PROPER subsets does a finite set with N elements possess?
+     (A) 2^N
+     (B) 2^N - 1
+     (C) 2^(N - 1)
+     (D) N - 1
+     Answer: (B)
+     Explanation: A proper subset must be strictly smaller than the set itself; excluding set A itself leaves 2^N - 1 proper subsets.
+
+Q6. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     For any set A, which statement regarding the empty set ∅ is universally TRUE?
+     (A) ∅ is a subset of A (∅ ⊆ A)
+     (B) A is a subset of ∅
+     (C) ∅ ∈ A always
+     (D) ∅ has 1 element
+     Answer: (A)
+     Explanation: The empty set ∅ is a subset of every set without exception.
+
+Q7. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What does the Union of two sets A and B (A ∪ B) represent?
+     (A) The set of elements belonging to both A and B simultaneously
+     (B) The set of all elements that belong to A, or to B, or to both
+     (C) Elements in A that are not in B
+     (D) The product of elements
+     Answer: (B)
+     Explanation: A ∪ B = {x : x ∈ A or x ∈ B}.
+
+Q8. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What does the Intersection of two sets A and B (A ∩ B) represent?
+     (A) The set of all elements belonging to both A and B simultaneously
+     (B) Elements in A plus elements in B
+     (C) All elements in the universe
+     (D) Elements in neither set
+     Answer: (A)
+     Explanation: A ∩ B = {x : x ∈ A and x ∈ B}.
+
+Q9. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     Two sets A and B are called Disjoint Sets if:
+     (A) A ∪ B = Universal Set
+     (B) A ∩ B = ∅ (their intersection is empty)
+     (C) A = B
+     (D) Both are infinite
+     Answer: (B)
+     Explanation: Disjoint sets share no common elements: A ∩ B = ∅.
+
+Q10. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What does the Difference of two sets A - B (or A \ B) represent?
+     (A) The set of elements that belong to A but DO NOT belong to B
+     (B) Elements in B not in A
+     (C) A ∩ B
+     (D) A ∪ B
+     Answer: (A)
+     Explanation: A - B = {x : x ∈ A and x ∉ B} = A ∩ B'.
+
+Q11. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What is the Symmetric Difference of two sets A and B (denoted A Δ B)?
+     (A) (A - B) ∪ (B - A) = (A ∪ B) - (A ∩ B)
+     (B) A ∩ B
+     (C) A' ∪ B'
+     (D) Universal set
+     Answer: (A)
+     Explanation: Symmetric difference contains elements belonging to exactly one of the sets, but not to both.
+
+Q12. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Complement of a set A with respect to universal set U (denoted A' or A^c)?
+     (A) U - A = {x : x ∈ U and x ∉ A}
+     (B) U ∩ A
+     (C) A - U
+     (D) ∅
+     Answer: (A)
+     Explanation: The complement A' consists of all elements in the universal set that do not belong to A.
+
+Q13. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is De Morgan's First Law for set complements?
+     (A) (A ∪ B)' = A' ∩ B'
+     (B) (A ∩ B)' = A' ∪ B'
+     (C) (A')' = A
+     (D) A ∪ A' = U
+     Answer: (A)
+     Explanation: The complement of a union is the intersection of the complements: (A ∪ B)' = A' ∩ B'.
+
+Q14. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is De Morgan's Second Law for set complements?
+     (A) (A ∩ B)' = A' ∪ B'
+     (B) (A ∪ B)' = A' ∩ B'
+     (C) A ∩ A' = ∅
+     (D) A - B = B - A
+     Answer: (A)
+     Explanation: The complement of an intersection is the union of the complements: (A ∩ B)' = A' ∪ B'.
+
+Q15. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Cardinality Principle (Inclusion-Exclusion Principle) for two finite sets A and B?
+     (A) n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
+     (B) n(A ∪ B) = n(A) + n(B)
+     (C) n(A ∪ B) = n(A) * n(B)
+     (D) n(A ∪ B) = n(A) - n(B)
+     Answer: (A)
+     Explanation: To avoid double-counting elements in the intersection: |A ∪ B| = |A| + |B| - |A ∩ B|.
+
+Q16. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If n(A) = 30, n(B) = 20, and n(A ∩ B) = 10, what is n(A ∪ B)?
+     (A) 40
+     (B) 50
+     (C) 60
+     (D) 30
+     Answer: (A)
+     Explanation: n(A ∪ B) = 30 + 20 - 10 = 40.
+
+Q17. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Cartesian Product of two sets A and B (A x B)?
+     (A) The set of all ordered pairs (a, b) such that a ∈ A and b ∈ B
+     (B) The arithmetic product of their numbers
+     (C) A ∪ B
+     (D) The power set of A
+     Answer: (A)
+     Explanation: A x B = {(a, b) : a ∈ A and b ∈ B}.
+
+Q18. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If set A has 3 elements and set B has 4 elements, how many ordered pairs are in A x B?
+     (A) 7
+     (B) 12
+     (C) 64
+     (D) 81
+     Answer: (B)
+     Explanation: n(A x B) = n(A) * n(B) = 3 * 4 = 12 ordered pairs.
+
+Q19. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     Is Cartesian Product commutative (i.e., does A x B = B x A for any non-empty unequal sets)?
+     (A) Yes, always commutative
+     (B) No, (a, b) != (b, a) when a != b, so A x B != B x A
+     (C) Only for infinite sets
+     (D) Only if A has 0 elements
+     Answer: (B)
+     Explanation: Because ordered pairs depend on coordinate order, A x B != B x A unless A = B or one set is empty.
+
+Q20. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     Two finite sets A and B are called Equivalent Sets (denoted A ~ B) if:
+     (A) They contain the exact same identical elements
+     (B) They have the exact same cardinality (number of elements): n(A) = n(B)
+     (C) Both are subsets of each other
+     (D) Their union is empty
+     Answer: (B)
+     Explanation: Equivalent sets have equal cardinality (there exists a bijection between them), whereas Equal sets have identical elements.
+
+Q21. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If A = {1, 2, 3}, how many elements does the Power Set P(A) contain?
+     (A) 3
+     (B) 6
+     (C) 8
+     (D) 9
+     Answer: (C)
+     Explanation: 2^3 = 8 subsets: {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}.
+
+Q22. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A ∩ A' equal to?
+     (A) Universal Set U
+     (B) Empty Set ∅
+     (C) Set A
+     (D) 1
+     Answer: (B)
+     Explanation: An element cannot simultaneously belong to a set and its complement, so A ∩ A' = ∅.
+
+Q23. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A ∪ A' equal to?
+     (A) Universal Set U
+     (B) Empty Set ∅
+     (C) Set A
+     (D) A'
+     Answer: (A)
+     Explanation: Combining a set and all elements outside it forms the entire universal set U.
+
+Q24. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is (A')' equal to?
+     (A) A
+     (B) A'
+     (C) ∅
+     (D) U
+     Answer: (A)
+     Explanation: The involution law: complementing twice returns the original set.
+
+Q25. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A ∩ (B ∪ C) equal to by the Distributive Law?
+     (A) (A ∩ B) ∪ (A ∩ C)
+     (B) (A ∪ B) ∩ (A ∪ C)
+     (C) A ∩ B ∩ C
+     (D) (A - B) ∪ C
+     Answer: (A)
+     Explanation: Intersection distributes over union: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C).
+
+Q26. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A ∪ (B ∩ C) equal to?
+     (A) (A ∪ B) ∩ (A ∪ C)
+     (B) (A ∩ B) ∪ (A ∩ C)
+     (C) A ∪ B ∪ C
+     (D) (A - B) ∩ C
+     Answer: (A)
+     Explanation: Union distributes over intersection: A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C).
+
+Q27. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A - B expressed in terms of intersection and complement?
+     (A) A ∩ B'
+     (B) A' ∩ B
+     (C) A ∪ B'
+     (D) A' ∪ B
+     Answer: (A)
+     Explanation: A - B consists of elements in A that are NOT in B: A ∩ B'.
+
+Q28. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If A ⊆ B, then what is A ∩ B equal to?
+     (A) A
+     (B) B
+     (C) ∅
+     (D) U
+     Answer: (A)
+     Explanation: If A is entirely contained in B, their shared common part is A itself.
+
+Q29. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If A ⊆ B, then what is A ∪ B equal to?
+     (A) A
+     (B) B
+     (C) ∅
+     (D) A ∩ B
+     Answer: (B)
+     Explanation: If A is inside B, their combined union is simply B.
+
+Q30. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What is the cardinality of the empty set P(∅)?
+     (A) 0
+     (B) 1
+     (C) 2
+     (D) Undefined
+     Answer: (B)
+     Explanation: The power set of the empty set contains one subset: P(∅) = {∅}, so |P(∅)| = 2^0 = 1.
+
+Q31. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What is the cardinality of P(P(∅))?
+     (A) 1
+     (B) 2
+     (C) 4
+     (D) 8
+     Answer: (B)
+     Explanation: Since |P(∅)| = 1, |P(P(∅))| = 2^1 = 2.
+
+Q32. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What is the cardinality of P(P(P(∅)))?
+     (A) 2
+     (B) 4
+     (C) 8
+     (D) 16
+     Answer: (B)
+     Explanation: Since previous set has 2 elements, 2^2 = 4.
+
+Q33. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     In a survey of 100 students, 60 study C++, 40 study Java, and 20 study both. How many study NEITHER?
+     (A) 10
+     (B) 20
+     (C) 30
+     (D) 0
+     Answer: (B)
+     Explanation: n(C ∪ J) = 60 + 40 - 20 = 80. Neither = 100 - 80 = 20.
+
+Q34. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     For three finite sets A, B, and C, what is n(A ∪ B ∪ C)?
+     (A) n(A)+n(B)+n(C) - n(AB)-n(BC)-n(AC) + n(ABC)
+     (B) n(A)+n(B)+n(C)
+     (C) n(A)*n(B)*n(C)
+     (D) n(A)+n(B)+n(C) - n(ABC)
+     Answer: (A)
+     Explanation: The 3-set inclusion-exclusion formula alternates signs: sum singles, subtract pairs, add triple intersection.
+
+Q35. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     A set is called Countably Infinite (Denumerable) if:
+     (A) Its elements can be put into one-to-one correspondence with the set of Natural Numbers N
+     (B) It has 100 elements
+     (C) It is uncountable like the real numbers
+     (D) It is empty
+     Answer: (A)
+     Explanation: A countably infinite set has cardinality ℵ0 (aleph-null), bijective with natural numbers.
+
+Q36. [Unit 1: Set Theory, Set Operations & Applications] (HARD)
+     Which of the following sets is Countably Infinite?
+     (A) The set of all Integers Z
+     (B) The set of all Real Numbers R in [0, 1]
+     (C) The set of complex numbers
+     (D) Empty set
+     Answer: (A)
+     Explanation: Integers Z and Rationals Q are countably infinite; Real numbers R are uncountably infinite (Cantor's diagonal argument).
+
+Q37. [Unit 1: Set Theory, Set Operations & Applications] (HARD)
+     Which of the following sets is UNCOUNTABLY Infinite?
+     (A) The set of Real Numbers R
+     (B) The set of Natural Numbers N
+     (C) The set of Rational Numbers Q
+     (D) The set of Integers Z
+     Answer: (A)
+     Explanation: By Cantor's theorem, real numbers cannot be enumerated in a list, making R uncountably infinite.
+
+Q38. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is an Idempotent Law in set theory?
+     (A) A ∪ A = A and A ∩ A = A
+     (B) A ∪ ∅ = A
+     (C) A ∩ U = A
+     (D) A ∪ B = B ∪ A
+     Answer: (A)
+     Explanation: Union or intersection of any set with itself produces the set itself.
+
+Q39. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Identity Law for set union?
+     (A) A ∪ ∅ = A
+     (B) A ∩ U = A
+     (C) A ∪ U = U
+     (D) A ∩ ∅ = ∅
+     Answer: (A)
+     Explanation: The empty set ∅ acts as the identity element for set union: A ∪ ∅ = A.
+
+Q40. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the Identity Law for set intersection?
+     (A) A ∩ U = A
+     (B) A ∪ ∅ = A
+     (C) A ∩ ∅ = ∅
+     (D) A ∪ U = U
+     Answer: (A)
+     Explanation: The universal set U acts as the identity element for set intersection: A ∩ U = A.
+
+Q41. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What does the Boundedness (Domination) Law state for set union?
+     (A) A ∪ U = U
+     (B) A ∩ ∅ = ∅
+     (C) Both A ∪ U = U and A ∩ ∅ = ∅
+     (D) A ∪ A = A
+     Answer: (C)
+     Explanation: Union with the universal set dominates (yields U); intersection with empty set yields ∅.
+
+Q42. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If A x B = ∅, what can be concluded?
+     (A) Either set A is empty or set B is empty (or both are empty)
+     (B) A and B are equal
+     (C) A and B have 10 elements
+     (D) A is an infinite set
+     Answer: (A)
+     Explanation: A Cartesian product contains ordered pairs; if no pairs can be formed, at least one constituent set is empty.
+
+Q43. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is the set A Δ A (Symmetric difference of A with itself)?
+     (A) ∅
+     (B) A
+     (C) U
+     (D) A'
+     Answer: (A)
+     Explanation: A Δ A = (A - A) ∪ (A - A) = ∅ ∪ ∅ = ∅.
+
+Q44. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     What is A Δ ∅ equal to?
+     (A) A
+     (B) ∅
+     (C) U
+     (D) A'
+     Answer: (A)
+     Explanation: A Δ ∅ = (A - ∅) ∪ (∅ - A) = A ∪ ∅ = A.
+
+Q45. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What is the Cardinality of the set {x ∈ R : x^2 + 1 = 0}?
+     (A) 0 (empty set over real numbers)
+     (B) 1
+     (C) 2
+     (D) Infinite
+     Answer: (A)
+     Explanation: x^2 = -1 has no real solutions (only imaginary ±i), so the set of real numbers satisfying it is empty: cardinality 0.
+
+Q46. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     If A = {a, b} and B = {1, 2}, how many elements are in A x B x A?
+     (A) 6
+     (B) 8
+     (C) 12
+     (D) 16
+     Answer: (B)
+     Explanation: n(A x B x A) = 2 * 2 * 2 = 8 ordered triplets.
+
+Q47. [Unit 1: Set Theory, Set Operations & Applications] (EASY)
+     Which diagram represents sets and their logical relationships using overlapping circles inside a bounding rectangle?
+     (A) Venn Diagram
+     (B) Scatter Plot
+     (C) Pie Chart
+     (D) Histogram
+     Answer: (A)
+     Explanation: John Venn introduced Venn diagrams to illustrate set relations graphically.
+
+Q48. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     What does a Partition of a set S mean?
+     (A) A collection of non-empty, pairwise disjoint subsets of S whose union equals S
+     (B) Dividing numbers by two
+     (C) A computer disk drive
+     (D) Deleting elements
+     Answer: (A)
+     Explanation: A partition divides S into non-overlapping blocks covering the entire set without omissions.
+
+Q49. [Unit 1: Set Theory, Set Operations & Applications] (HARD)
+     If set S has 3 elements {1, 2, 3}, how many partitions does it have (Bell Number B3)?
+     (A) 3
+     (B) 4
+     (C) 5
+     (D) 8
+     Answer: (C)
+     Explanation: The Bell number B3 = 5 partitions: 1 block of 3, 3 blocks of (2+1), and 1 block of (1+1+1).
+
+Q50. [Unit 1: Set Theory, Set Operations & Applications] (MEDIUM)
+     Is the operation of set difference (A - B) associative: (A - B) - C = A - (B - C)?
+     (A) Yes, always associative
+     (B) No, set difference is generally NOT associative
+     (C) Only if C is empty
+     (D) Only for equal sets
+     Answer: (B)
+     Explanation: Set difference is not associative. Counterexample: A={1,2}, B={2}, C={1}. (A-B)-C = {1}-{1}=∅; A-(B-C) = {1,2}-{2}={1}.
+
+Q51. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A binary relation R from set A to set B is formally defined as:
+     (A) Any subset of the Cartesian Product A x B (R ⊆ A x B)
+     (B) A function that maps numbers
+     (C) An algorithm in C
+     (D) A single ordered pair
+     Answer: (A)
+     Explanation: A relation R is any subset of A x B: if (a, b) ∈ R, we write a R b.
+
+Q52. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is the total number of distinct relations that can be defined on a set A containing N elements?
+     (A) 2^N
+     (B) 2^(N^2)
+     (C) N^2
+     (D) 2N
+     Answer: (B)
+     Explanation: A x A has N^2 elements; its power set has 2^(N^2) subsets, so there are 2^(N^2) possible binary relations.
+
+Q53. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A relation R on a set A is REFLEXIVE if:
+     (A) For every a ∈ A, (a, a) ∈ R
+     (B) If (a, b) ∈ R then (b, a) ∈ R
+     (C) If (a, b) ∈ R and (b, c) ∈ R then (a, c) ∈ R
+     (D) (a, a) ∉ R
+     Answer: (A)
+     Explanation: Reflexivity requires every element to be related to itself: a R a for all a in A.
+
+Q54. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A relation R on set A is SYMMETRIC if:
+     (A) Whenever (a, b) ∈ R, then (b, a) ∈ R as well
+     (B) (a, a) ∈ R for all a
+     (C) If (a, b) ∈ R then (b, a) ∉ R
+     (D) a R b always
+     Answer: (A)
+     Explanation: Symmetry means two-way relation: a R b implies b R a.
+
+Q55. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A relation R on set A is TRANSITIVE if:
+     (A) Whenever (a, b) ∈ R and (b, c) ∈ R, then (a, c) ∈ R
+     (B) (a, b) ∈ R implies (b, a) ∈ R
+     (C) (a, a) ∈ R
+     (D) a != b
+     Answer: (A)
+     Explanation: Transitivity allows chaining: a related to b and b related to c guarantees a related to c.
+
+Q56. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A relation R on set A is an EQUIVALENCE RELATION if it is:
+     (A) Reflexive, Symmetric, and Transitive simultaneously
+     (B) Reflexive, Anti-symmetric, and Transitive
+     (C) Symmetric and Transitive only
+     (D) Reflexive only
+     Answer: (A)
+     Explanation: An equivalence relation satisfies all three properties: Reflexive, Symmetric, and Transitive.
+
+Q57. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is the relation 'is congruent modulo m' (a ≡ b mod m) on integers?
+     (A) An Equivalence Relation
+     (B) A Partial Order Relation
+     (C) Reflexive but not symmetric
+     (D) Anti-symmetric
+     Answer: (A)
+     Explanation: Congruence modulo m is reflexive (a-a=0 is divisible by m), symmetric, and transitive, forming an equivalence relation.
+
+Q58. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     An equivalence relation R on set A partitions A into mutually disjoint subsets called:
+     (A) Equivalence Classes
+     (B) Power Sets
+     (C) Cartesian Products
+     (D) Matrix Rows
+     Answer: (A)
+     Explanation: Equivalence classes [a] = {x ∈ A : x R a} partition the set into exhaustive non-overlapping subsets.
+
+Q59. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     A relation R on set A is ANTI-SYMMETRIC if:
+     (A) Whenever (a, b) ∈ R and (b, a) ∈ R, then a must equal b (a = b)
+     (B) (a, b) ∈ R implies (b, a) ∈ R
+     (C) (a, a) ∉ R
+     (D) a R b is impossible
+     Answer: (A)
+     Explanation: Anti-symmetry prevents reciprocal relations between distinct elements: a R b and b R a can only occur when a = b.
+
+Q60. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A relation R on set A is a PARTIAL ORDER RELATION (Poset) if it is:
+     (A) Reflexive, Anti-symmetric, and Transitive simultaneously
+     (B) Reflexive, Symmetric, and Transitive
+     (C) Anti-symmetric only
+     (D) Irreflexive
+     Answer: (A)
+     Explanation: A partially ordered set (Poset) satisfies Reflexivity, Anti-symmetry, and Transitivity (e.g., 'less than or equal to' <=, or subset inclusion ⊆).
+
+Q61. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     Which relation on the set of positive integers is a Partial Order?
+     (A) Divisibility (a | b: a divides b)
+     (B) Equality only
+     (C) 'is greater than' (>)
+     (D) Congruence modulo 5
+     Answer: (A)
+     Explanation: Divisibility is reflexive (a|a), anti-symmetric (a|b and b|a implies a=b), and transitive (a|b and b|c implies a|c).
+
+Q62. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is a Hasse Diagram in order theory?
+     (A) A simplified directed graph of a finite poset that omits self-loops (reflexivity) and transitive edges, drawing edges upwards
+     (B) A circuit schematic
+     (C) A Venn diagram
+     (D) A tree traversal
+     Answer: (A)
+     Explanation: Hasse diagrams visualize partial orders cleanly by eliminating redundant reflexive loops and transitive edges.
+
+Q63. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is a Function (Mapping) f: A -> B?
+     (A) Any relation from A to B
+     (B) A special relation that assigns each element x ∈ A to EXACTLY ONE element y ∈ B
+     (C) A relation with 2 outputs per input
+     (D) A set of numbers
+     Answer: (B)
+     Explanation: A function requires that every domain element has a unique image in the co-domain.
+
+Q64. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A function f: A -> B is ONE-TO-ONE (Injective) if:
+     (A) Distinct domain elements map to distinct co-domain elements: f(x1) = f(x2) implies x1 = x2
+     (B) Every element in B is mapped
+     (C) All elements map to 1
+     (D) The range is empty
+     Answer: (A)
+     Explanation: Injectivity guarantees no two distinct inputs share the same output image.
+
+Q65. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A function f: A -> B is ONTO (Surjective) if:
+     (A) The Range of f equals the entire Co-domain B (every y ∈ B has at least one pre-image x ∈ A)
+     (B) f is one-to-one
+     (C) Range has 1 element
+     (D) Domain is empty
+     Answer: (A)
+     Explanation: Surjectivity means the function hits every element in target set B: f(A) = B.
+
+Q66. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     A function f: A -> B is a BIJECTION (One-to-One and Onto) if it is:
+     (A) Both Injective and Surjective simultaneously
+     (B) Injective only
+     (C) Surjective only
+     (D) Neither
+     Answer: (A)
+     Explanation: A bijective function is both one-to-one and onto, establishing an exact pairing between domain and co-domain.
+
+Q67. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     When does a function f: A -> B possess an Inverse Function f^(-1): B -> A?
+     (A) If and only if f is a BIJECTION
+     (B) Whenever f is injective
+     (C) Whenever f is onto
+     (D) Every function has an inverse
+     Answer: (A)
+     Explanation: An inverse function exists if and only if f is bijective (invertible).
+
+Q68. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Composite Function (g ∘ f)(x) of f: A -> B and g: B -> C?
+     (A) g(f(x))
+     (B) f(g(x))
+     (C) f(x) * g(x)
+     (D) f(x) / g(x)
+     Answer: (A)
+     Explanation: (g ∘ f)(x) applies f first and then applies g to the result: g(f(x)).
+
+Q69. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     Is function composition associative: h ∘ (g ∘ f) = (h ∘ g) ∘ f?
+     (A) Yes, function composition is ALWAYS associative
+     (B) No, it is never associative
+     (C) Only for linear functions
+     (D) Only if sets are finite
+     Answer: (A)
+     Explanation: Function composition is always associative whenever the domain-range chain is compatible.
+
+Q70. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What are the two fundamental steps in the Principle of Mathematical Induction?
+     (A) Base Step (verify for n = 1) and Inductive Step (assume true for k, prove true for k + 1)
+     (B) Addition and Subtraction
+     (C) Differentiation and Integration
+     (D) Guessing and Checking
+     Answer: (A)
+     Explanation: Induction proves statements P(n) for all natural numbers by proving P(1) and showing P(k) implies P(k+1).
+
+Q71. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the identity function I_A on set A?
+     (A) A function that maps every element to itself: I_A(x) = x
+     (B) f(x) = 0
+     (C) f(x) = 1
+     (D) f(x) = x^2
+     Answer: (A)
+     Explanation: The identity function maps every element x back to x.
+
+Q72. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     If f: A -> B is bijective, what is (f^(-1) ∘ f)(x) equal to?
+     (A) x (Identity function on A)
+     (B) f(x)
+     (C) 0
+     (D) 1
+     Answer: (A)
+     Explanation: Composing a function with its inverse yields the identity mapping.
+
+Q73. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is a Constant Function?
+     (A) A function that maps all domain elements to a single fixed element in the co-domain
+     (B) A function that changes
+     (C) f(x) = x
+     (D) An undefined function
+     Answer: (A)
+     Explanation: Constant functions have a range consisting of exactly one element.
+
+Q74. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Horizontal Line Test used for?
+     (A) Testing whether a function graphed on the Cartesian plane is ONE-TO-ONE (injective)
+     (B) Testing if it is a function
+     (C) Testing derivative
+     (D) Finding roots
+     Answer: (A)
+     Explanation: If any horizontal line intersects the graph at most once, the function is injective.
+
+Q75. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Vertical Line Test used for?
+     (A) Testing whether a curve represents a valid FUNCTION (each x has at most one y)
+     (B) Testing injectivity
+     (C) Testing surjectivity
+     (D) Finding slope
+     Answer: (A)
+     Explanation: If every vertical line intersects the curve at most once, y is a valid single-valued function of x.
+
+Q76. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     How many functions can be formed from a finite set A with m elements to set B with n elements?
+     (A) n^m
+     (B) m^n
+     (C) m * n
+     (D) m!
+     Answer: (A)
+     Explanation: Each of the m elements in A has n independent choices in B: n * n * ... * n = n^m functions.
+
+Q77. [Unit 2: Relations, Equivalence & Types of Functions] (HARD)
+     How many one-to-one (injective) functions can be formed from set A (m elements) to set B (n elements) where n >= m?
+     (A) n! / (n - m)!
+     (B) n^m
+     (C) m^n
+     (D) n!
+     Answer: (A)
+     Explanation: The number of injections is the permutation P(n, m) = n! / (n - m)!.
+
+Q78. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     How many bijections exist from a set with N elements to itself?
+     (A) N!
+     (B) 2^N
+     (C) N^N
+     (D) N^2
+     Answer: (A)
+     Explanation: The number of permutations/bijections on an N-element set is N!.
+
+Q79. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is an Irreflexive Relation?
+     (A) A relation where (a, a) ∉ R for EVERY element a in the set
+     (B) A relation where some are reflexive
+     (C) A symmetric relation
+     (D) An empty set
+     Answer: (A)
+     Explanation: Irreflexivity means no element is related to itself (e.g., 'strictly less than' <).
+
+Q80. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is an Asymmetric Relation?
+     (A) A relation where if (a, b) ∈ R, then (b, a) ∉ R under all circumstances
+     (B) A relation with no symmetry
+     (C) An equivalence relation
+     (D) A matrix
+     Answer: (A)
+     Explanation: Asymmetry is irreflexive anti-symmetry: if a R b holds, b R a can never hold.
+
+Q81. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Inverse of a relation R (denoted R^(-1))?
+     (A) {(b, a) : (a, b) ∈ R}
+     (B) R with negative values
+     (C) The complement of R
+     (D) R x R
+     Answer: (A)
+     Explanation: The inverse relation reverses the order of every pair in R.
+
+Q82. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     If R is an equivalence relation, what is R^(-1)?
+     (A) Also an equivalence relation, identical to R
+     (B) An anti-symmetric relation
+     (C) Empty
+     (D) A partial order
+     Answer: (A)
+     Explanation: Because R is symmetric, (a, b) ∈ R iff (b, a) ∈ R, so R^(-1) = R.
+
+Q83. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is a Total Order (Linear Order / Chain)?
+     (A) A partial order where EVERY pair of elements is comparable (for all a, b: either a <= b or b <= a)
+     (B) A poset with loops
+     (C) A tree with 10 nodes
+     (D) An unordered set
+     Answer: (A)
+     Explanation: A total order leaves no incomparable pairs (e.g., standard <= on real numbers).
+
+Q84. [Unit 2: Relations, Equivalence & Types of Functions] (HARD)
+     What is a Well-Ordered Set?
+     (A) A totally ordered set where EVERY non-empty subset has a least (minimum) element
+     (B) A set sorted in descending order
+     (C) A finite set only
+     (D) A set with no zero
+     Answer: (A)
+     Explanation: The natural numbers N under <= is well-ordered; the integers Z is not well-ordered because negative integers have no least element.
+
+Q85. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Domain of a relation R ⊆ A x B?
+     (A) The set of all first coordinates: {a ∈ A : (a, b) ∈ R for some b ∈ B}
+     (B) Set B
+     (C) Set A x B
+     (D) Empty set
+     Answer: (A)
+     Explanation: The domain is the collection of all starting points involved in pairs of R.
+
+Q86. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is the Range of a relation R ⊆ A x B?
+     (A) The set of all second coordinates: {b ∈ B : (a, b) ∈ R for some a ∈ A}
+     (B) Set A
+     (C) All real numbers
+     (D) Zero
+     Answer: (A)
+     Explanation: The range is the set of all target coordinates actually mapped by R.
+
+Q87. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     If R1 and R2 are equivalence relations on set A, is their INTERSECTION R1 ∩ R2 an equivalence relation?
+     (A) Yes, the intersection of two equivalence relations is always an equivalence relation
+     (B) No, never
+     (C) Only if both have 1 element
+     (D) Only for integers
+     Answer: (A)
+     Explanation: Intersection preserves reflexivity, symmetry, and transitivity.
+
+Q88. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     Is the UNION of two equivalence relations R1 ∪ R2 always an equivalence relation?
+     (A) No, transitivity generally fails for the union
+     (B) Yes, always
+     (C) Only if sets are infinite
+     (D) Never
+     Answer: (A)
+     Explanation: The union of equivalence relations often violates transitivity.
+
+Q89. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is the Transitive Closure of a relation R (denoted R+)?
+     (A) The smallest transitive relation containing R
+     (B) The inverse of R
+     (C) R with all elements deleted
+     (D) A reflexive relation
+     Answer: (A)
+     Explanation: Transitive closure connects all indirect paths: a R+ c if there is a sequence of hops from a to c.
+
+Q90. [Unit 2: Relations, Equivalence & Types of Functions] (HARD)
+     Which algorithm computes the Transitive Closure of a binary relation represented as an adjacency matrix?
+     (A) Warshall's Algorithm
+     (B) Binary Search
+     (C) Kruskal's Algorithm
+     (D) Euclid's Algorithm
+     Answer: (A)
+     Explanation: Warshall's algorithm computes transitive closure in O(N^3) time using boolean dynamic programming.
+
+Q91. [Unit 2: Relations, Equivalence & Types of Functions] (HARD)
+     In a Poset (S, <=), an element m ∈ S is a MAXIMAL element if:
+     (A) There is no element x ∈ S such that m < x
+     (B) It is greater than every element in S
+     (C) It is the smallest element
+     (D) It has value 100
+     Answer: (A)
+     Explanation: A maximal element has no elements above it; a Greatest element must be greater than every other element.
+
+Q92. [Unit 2: Relations, Equivalence & Types of Functions] (HARD)
+     What is a Lattice in discrete mathematics?
+     (A) A poset in which every pair of elements has a unique Least Upper Bound (LUB / Join) and Greatest Lower Bound (GLB / Meet)
+     (B) A garden fence
+     (C) A matrix of numbers
+     (D) A graph without edges
+     Answer: (A)
+     Explanation: In a lattice, any two elements x, y have an infimum x ∧ y and a supremum x ∨ y.
+
+Q93. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     What is the Strong Form of Mathematical Induction (Complete Induction)?
+     (A) Assuming the statement is true for ALL integers from base case up to k, and proving it for k + 1
+     (B) Induction with two variables
+     (C) Induction on real numbers
+     (D) Induction without a base case
+     Answer: (A)
+     Explanation: Strong induction assumes P(1), P(2), ..., P(k) are all true to prove P(k+1).
+
+Q94. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     Using induction, what is the formula for the sum of first N natural numbers: 1 + 2 + ... + N?
+     (A) N(N + 1) / 2
+     (B) N^2
+     (C) N(N - 1) / 2
+     (D) 2^N
+     Answer: (A)
+     Explanation: 1 + 2 + ... + N = N(N + 1) / 2, readily verified by induction.
+
+Q95. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     Using induction, what is the sum of the first N odd natural numbers: 1 + 3 + 5 + ... + (2N - 1)?
+     (A) N^2
+     (B) N(N + 1)
+     (C) 2N - 1
+     (D) N^3
+     Answer: (A)
+     Explanation: The sum of the first N odd integers is always N^2.
+
+Q96. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     Using induction, what is the sum of squares: 1^2 + 2^2 + ... + N^2?
+     (A) N(N + 1)(2N + 1) / 6
+     (B) N^2(N + 1)^2 / 4
+     (C) N^3 / 3
+     (D) N(N + 1) / 2
+     Answer: (A)
+     Explanation: Sum of squares = N(N + 1)(2N + 1) / 6.
+
+Q97. [Unit 2: Relations, Equivalence & Types of Functions] (MEDIUM)
+     Using induction, what is the sum of cubes: 1^3 + 2^3 + ... + N^3?
+     (A) [N(N + 1) / 2]^2
+     (B) N^3(N + 1) / 4
+     (C) N^4 / 4
+     (D) N(N + 1)(2N + 1) / 6
+     Answer: (A)
+     Explanation: The sum of cubes equals the square of the sum of natural numbers: [N(N+1)/2]^2.
+
+Q98. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What does the Pigeonhole Principle state?
+     (A) If k + 1 or more pigeons are placed into k pigeonholes, at least one pigeonhole must contain two or more pigeons
+     (B) Pigeons fly in groups
+     (C) Birds build nests
+     (D) A mathematical theorem about flight
+     Answer: (A)
+     Explanation: The Dirichlet box principle: if N items are distributed into k containers with N > k, at least one container holds >= ceil(N/k) items.
+
+Q99. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     In any group of 13 people, at least two must have their birthdays in:
+     (A) The exact same month of the year
+     (B) The exact same day
+     (C) The winter
+     (D) The summer
+     Answer: (A)
+     Explanation: By the pigeonhole principle: 13 people (pigeons) across 12 months (holes) forces at least 2 in the same month.
+
+Q100. [Unit 2: Relations, Equivalence & Types of Functions] (EASY)
+     What is an Onto function also called in algebraic literature?
+     (A) Surjection
+     (B) Injection
+     (C) Bijection
+     (D) Permutation
+     Answer: (A)
+     Explanation: Onto is synonymous with Surjective; One-to-One is Injective; One-to-One and Onto is Bijective.
+
+Q101. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is a function of two independent variables z = f(x, y)?
+     (A) A mapping that assigns a unique real number z to each ordered pair of real numbers (x, y) in its domain
+     (B) A relation with two outputs for one input
+     (C) A single-variable function plotted twice
+     (D) A matrix
+     Answer: (A)
+     Explanation: A real-valued function of two variables f: D ⊆ R^2 -> R maps each point (x, y) in the domain D to a unique real value z.
+
+Q102. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     For the limit lim_{(x,y)->(0,0)} f(x, y) to exist and equal L:
+     (A) f(x, y) must approach L along EVERY possible path or trajectory approaching (0, 0)
+     (B) Approaching along y = mx is sufficient
+     (C) Only limits along the axes (x=0 and y=0) must agree
+     (D) f(0,0) must equal 0
+     Answer: (A)
+     Explanation: In several variables, a limit exists if and only if f(x, y) approaches the exact same value along all infinitely many linear and non-linear paths.
+
+Q103. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is the value of lim_{(x,y)->(0,0)} (xy) / (x^2 + y^2)?
+     (A) Limit does not exist because approaching along y = mx yields m / (1 + m^2), which depends on slope m
+     (B) 0
+     (C) 1
+     (D) 1/2
+     Answer: (A)
+     Explanation: Setting y = mx gives (m*x^2) / (x^2 + m^2*x^2) = m / (1 + m^2). Since this depends on m, the limit does not exist.
+
+Q104. [Unit 3: Functions of Several Variables & Partial Differentiation] (HARD)
+     Evaluate lim_{(x,y)->(0,0)} (x^2 * y) / (x^4 + y^2):
+     (A) Does not exist (along y = mx^2 it gives m / (1 + m^2), while along y = mx it gives 0)
+     (B) 0
+     (C) 1
+     (D) Infinity
+     Answer: (A)
+     Explanation: Along parabolic paths y = mx^2, the ratio becomes m/(1+m^2), proving path dependence and non-existence.
+
+Q105. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     A function f(x, y) is continuous at a point (a, b) if:
+     (A) f(a, b) is defined, lim_{(x,y)->(a,b)} f(x,y) exists, and lim_{(x,y)->(a,b)} f(x,y) = f(a,b)
+     (B) f(a, b) is positive
+     (C) The partial derivatives are zero
+     (D) The limit along y = mx exists
+     Answer: (A)
+     Explanation: Continuity requires defined value, existence of limit, and exact equality between the two.
+
+Q106. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     How is the first-order partial derivative ∂f/∂x defined from first principles?
+     (A) lim_{h->0} [f(x + h, y) - f(x, y)] / h, treating y as a constant
+     (B) lim_{h->0} [f(x + h, y + h) - f(x, y)] / h
+     (C) df/dx + df/dy
+     (D) [f(x, y) - f(0, 0)] / x
+     Answer: (A)
+     Explanation: The partial derivative with respect to x differentiates with respect to x while holding y strictly constant.
+
+Q107. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If z = x^3 + y^3 - 3axy, what is ∂z/∂x?
+     (A) 3x^2 - 3ay
+     (B) 3x^2
+     (C) 3x^2 + 3y^2
+     (D) 3x^2 - 3ax
+     Answer: (A)
+     Explanation: Differentiating x^3 + y^3 - 3axy with respect to x (holding y constant): d(x^3)/dx = 3x^2, d(y^3)/dx = 0, d(-3axy)/dx = -3ay.
+
+Q108. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If z = x^3 + y^3 - 3axy, what is ∂z/∂y?
+     (A) 3y^2 - 3ax
+     (B) 3y^2
+     (C) 3y^2 - 3ay
+     (D) 3x^2 - 3ay
+     Answer: (A)
+     Explanation: Differentiating with respect to y (holding x constant): 3y^2 - 3ax.
+
+Q109. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is Clairaut's / Schwarz's Theorem on mixed second-order partial derivatives?
+     (A) If f_xy and f_yx are continuous on an open region containing (a, b), then ∂^2f/∂x∂y = ∂^2f/∂y∂x
+     (B) f_xx is always equal to f_yy
+     (C) Mixed derivatives are always zero
+     (D) f_xy = -f_yx
+     Answer: (A)
+     Explanation: Continuity of mixed partial derivatives guarantees that the order of partial differentiation does not matter.
+
+Q110. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     If u = log(x^2 + y^2), what is ∂^2u/∂x^2 + ∂^2u/∂y^2 (Laplace equation in 2D)?
+     (A) 0 (u is a harmonic function)
+     (B) 1 / (x^2 + y^2)
+     (C) 2 / (x^2 + y^2)
+     (D) 4
+     Answer: (A)
+     Explanation: ∂u/∂x = 2x/(x^2+y^2). ∂^2u/∂x^2 = 2(y^2-x^2)/(x^2+y^2)^2. Adding ∂^2u/∂y^2 gives 0.
+
+Q111. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     A function f(x, y) is called a Homogeneous Function of degree n if for any scalar t > 0:
+     (A) f(tx, ty) = t^n * f(x, y)
+     (B) f(tx, ty) = n * t * f(x, y)
+     (C) f(tx, ty) = f(x, y) + t^n
+     (D) f(x + t, y + t) = t^n
+     Answer: (A)
+     Explanation: By definition, scaling all independent variables by t scales the entire function by t^n.
+
+Q112. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the degree of homogeneity n of the function f(x, y) = (x^3 + y^3) / (x + y)?
+     (A) 2
+     (B) 3
+     (C) 1
+     (D) 0
+     Answer: (A)
+     Explanation: f(tx, ty) = (t^3 x^3 + t^3 y^3) / (tx + ty) = t^2 (x^3 + y^3) / (x + y) = t^2 f(x, y). Degree n = 3 - 1 = 2.
+
+Q113. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the statement of Euler's Theorem for a homogeneous function u = f(x, y) of degree n?
+     (A) x * (∂u/∂x) + y * (∂u/∂y) = n * u
+     (B) x * (∂u/∂x) - y * (∂u/∂y) = 0
+     (C) ∂u/∂x + ∂u/∂y = n * u
+     (D) x^2 (∂u/∂x) + y^2 (∂u/∂y) = n(n-1)u
+     Answer: (A)
+     Explanation: Euler's theorem states: for any homogeneous function u of degree n, x(∂u/∂x) + y(∂u/∂y) = nu.
+
+Q114. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is the second-order extension of Euler's Theorem for a homogeneous function u of degree n?
+     (A) x^2 (∂^2u/∂x^2) + 2xy (∂^2u/∂x∂y) + y^2 (∂^2u/∂y^2) = n(n - 1)u
+     (B) x^2 (∂^2u/∂x^2) + y^2 (∂^2u/∂y^2) = n^2 u
+     (C) x^2 u_xx + 2xy u_xy + y^2 u_yy = n u
+     (D) u_xx + u_yy = 0
+     Answer: (A)
+     Explanation: The second-order Euler identity is x^2 u_xx + 2xy u_xy + y^2 u_yy = n(n - 1)u.
+
+Q115. [Unit 3: Functions of Several Variables & Partial Differentiation] (HARD)
+     If u = sin^(-1)[(x + y) / (sqrt(x) + sqrt(y))], what is x(∂u/∂x) + y(∂u/∂y)?
+     (A) (1/2) tan(u)
+     (B) (1/2) sin(u)
+     (C) tan(u)
+     (D) 2 tan(u)
+     Answer: (A)
+     Explanation: Let z = sin(u) = (x+y)/(sqrt(x)+sqrt(y)), which is homogeneous of degree 1 - 1/2 = 1/2. By Euler: x(∂z/∂x) + y(∂z/∂y) = (1/2)z => cos(u)[x(∂u/∂x) + y(∂u/∂y)] = (1/2)sin(u) => x(∂u/∂x) + y(∂u/∂y) = (1/2)tan(u).
+
+Q116. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     If u = log[(x^4 + y^4) / (x + y)], find x(∂u/∂x) + y(∂u/∂y):
+     (A) 3
+     (B) 3u
+     (C) e^(3u)
+     (D) 1/3
+     Answer: (A)
+     Explanation: Let z = e^u = (x^4 + y^4)/(x + y), degree n = 4 - 1 = 3. x(∂z/∂x) + y(∂z/∂y) = 3z => e^u [x(∂u/∂x) + y(∂u/∂y)] = 3 e^u => x(∂u/∂x) + y(∂u/∂y) = 3.
+
+Q117. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Total Differential dz of a function z = f(x, y)?
+     (A) dz = (∂z/∂x) dx + (∂z/∂y) dy
+     (B) dz = (∂z/∂x) + (∂z/∂y)
+     (C) dz = dx dy
+     (D) dz = (∂^2z/∂x∂y) dx dy
+     Answer: (A)
+     Explanation: The total differential dz is the linear approximation given by (∂z/∂x)dx + (∂z/∂y)dy.
+
+Q118. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If z = f(x, y), where x = g(t) and y = h(t), what is the Chain Rule for dz/dt?
+     (A) dz/dt = (∂z/∂x)(dx/dt) + (∂z/∂y)(dy/dt)
+     (B) dz/dt = (∂z/∂x) + (∂z/∂y)
+     (C) dz/dt = (dx/dt)(dy/dt)
+     (D) dz/dt = (∂z/∂x)(dy/dt) + (∂z/∂y)(dx/dt)
+     Answer: (A)
+     Explanation: By the multivariable chain rule, dz/dt = (∂z/∂x)(dx/dt) + (∂z/∂y)(dy/dt).
+
+Q119. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If z = f(x, y) where x = u + v and y = u - v, what is ∂z/∂u?
+     (A) ∂z/∂x + ∂z/∂y
+     (B) ∂z/∂x - ∂z/∂y
+     (C) (∂z/∂x)(∂z/∂y)
+     (D) 0
+     Answer: (A)
+     Explanation: ∂z/∂u = (∂z/∂x)(∂x/∂u) + (∂z/∂y)(∂y/∂u) = (∂z/∂x)(1) + (∂z/∂y)(1) = ∂z/∂x + ∂z/∂y.
+
+Q120. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If z = f(x, y) where x = u + v and y = u - v, what is ∂z/∂v?
+     (A) ∂z/∂x - ∂z/∂y
+     (B) ∂z/∂x + ∂z/∂y
+     (C) -∂z/∂x + ∂z/∂y
+     (D) 1
+     Answer: (A)
+     Explanation: ∂z/∂v = (∂z/∂x)(∂x/∂v) + (∂z/∂y)(∂y/∂v) = (∂z/∂x)(1) + (∂z/∂y)(-1) = ∂z/∂x - ∂z/∂y.
+
+Q121. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Jacobian of u and v with respect to x and y, denoted J = ∂(u, v) / ∂(x, y)?
+     (A) The determinant of the matrix [[∂u/∂x, ∂u/∂y], [∂v/∂x, ∂v/∂y]]
+     (B) The sum (∂u/∂x) + (∂v/∂y)
+     (C) The product (∂u/∂x)(∂v/∂y)
+     (D) A vector cross product
+     Answer: (A)
+     Explanation: The Jacobian determinant is defined as det([[u_x, u_y], [v_x, v_y]]) = (∂u/∂x)(∂v/∂y) - (∂u/∂y)(∂v/∂x).
+
+Q122. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Inverse Property of Jacobians: if J = ∂(u, v)/∂(x, y) and J' = ∂(x, y)/∂(u, v)?
+     (A) J * J' = 1
+     (B) J + J' = 0
+     (C) J * J' = -1
+     (D) J = J'
+     Answer: (A)
+     Explanation: Similar to single variable dy/dx * dx/dy = 1, for Jacobians J * J' = 1 (provided J != 0).
+
+Q123. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is the Chain Rule for Jacobians if u, v are functions of r, s and r, s are functions of x, y?
+     (A) ∂(u, v)/∂(x, y) = [∂(u, v)/∂(r, s)] * [∂(r, s)/∂(x, y)]
+     (B) ∂(u, v)/∂(x, y) = [∂(u, v)/∂(r, s)] + [∂(r, s)/∂(x, y)]
+     (C) ∂(u, v)/∂(x, y) = [∂(u, v)/∂(r, s)] / [∂(r, s)/∂(x, y)]
+     (D) Zero
+     Answer: (A)
+     Explanation: The Jacobian of composite transformations is the product of individual Jacobians (matrix multiplication of Jacobians).
+
+Q124. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is the Jacobian ∂(x, y)/∂(r, θ) for Cartesian coordinates in terms of polar coordinates (x = r cos θ, y = r sin θ)?
+     (A) r
+     (B) 1
+     (C) r^2
+     (D) 1/r
+     Answer: (A)
+     Explanation: det([[cos θ, -r sin θ], [sin θ, r cos θ]]) = r cos^2 θ + r sin^2 θ = r.
+
+Q125. [Unit 3: Functions of Several Variables & Partial Differentiation] (HARD)
+     What is the Jacobian ∂(x, y, z)/∂(r, θ, φ) for spherical polar coordinates (x = r sin θ cos φ, y = r sin θ sin φ, z = r cos θ)?
+     (A) r^2 sin θ
+     (B) r sin θ
+     (C) r^2 cos θ
+     (D) r^3 sin^2 θ
+     Answer: (A)
+     Explanation: The spherical coordinate transformation volume element has Jacobian determinant r^2 sin θ.
+
+Q126. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What is the condition for two functions u(x, y) and v(x, y) to be Functionally Dependent (i.e., related by some relation F(u, v) = 0)?
+     (A) The Jacobian J = ∂(u, v)/∂(x, y) must vanish identically (J = 0)
+     (B) u + v = 0
+     (C) ∂u/∂x = ∂v/∂y
+     (D) J = 1
+     Answer: (A)
+     Explanation: Functions u, v are functionally dependent if and only if their Jacobian ∂(u, v)/∂(x, y) is identically equal to 0.
+
+Q127. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     At a Stationary (Critical) Point (a, b) of a function f(x, y), what must hold?
+     (A) f_x(a, b) = 0 and f_y(a, b) = 0 simultaneously
+     (B) f(a, b) = 0
+     (C) f_xx(a, b) = 0
+     (D) f_x(a, b) > 0
+     Answer: (A)
+     Explanation: The necessary condition for an interior extremum is that both first partial derivatives vanish: ∂f/∂x = 0 and ∂f/∂y = 0.
+
+Q128. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     Let r = ∂^2f/∂x^2, s = ∂^2f/∂x∂y, and t = ∂^2f/∂y^2 at a critical point (a, b). What does rt - s^2 > 0 and r < 0 indicate?
+     (A) f(a, b) is a local MAXIMUM
+     (B) f(a, b) is a local minimum
+     (C) A saddle point
+     (D) Inconclusive test
+     Answer: (A)
+     Explanation: When the discriminant rt - s^2 > 0 and r < 0 (concave down), f has a local maximum at (a, b).
+
+Q129. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     Let r = f_xx, s = f_xy, and t = f_yy at a critical point. What does rt - s^2 > 0 and r > 0 indicate?
+     (A) f(a, b) is a local MINIMUM
+     (B) f(a, b) is a local maximum
+     (C) A saddle point
+     (D) A constant function
+     Answer: (A)
+     Explanation: When rt - s^2 > 0 and r > 0 (concave up), f has a local minimum at (a, b).
+
+Q130. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If rt - s^2 < 0 at a critical point (a, b), what is the nature of the point?
+     (A) A SADDLE POINT (neither maximum nor minimum)
+     (B) A strict local maximum
+     (C) A strict local minimum
+     (D) A point of inflexion
+     Answer: (A)
+     Explanation: If rt - s^2 < 0, the Hessian matrix has eigenvalues of opposite signs, creating a saddle point.
+
+Q131. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     If rt - s^2 = 0 at a critical point, what conclusion can be drawn from the test?
+     (A) The test is INCONCLUSIVE (further higher-order investigation is required)
+     (B) It is definitely a maximum
+     (C) It is definitely a minimum
+     (D) f is constant
+     Answer: (A)
+     Explanation: When rt - s^2 = 0, the discriminant is zero and the second derivative test yields no information.
+
+Q132. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     What type of critical point is the origin (0, 0) for the function f(x, y) = x^2 - y^2?
+     (A) A Saddle Point
+     (B) Local Minimum
+     (C) Local Maximum
+     (D) Not a critical point
+     Answer: (A)
+     Explanation: f_x = 2x, f_y = -2y -> (0,0) is critical. r = 2, s = 0, t = -2. rt - s^2 = (2)(-2) - 0 = -4 < 0 => Saddle point.
+
+Q133. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     Find the stationary point of f(x, y) = x^2 + y^2 + 6x + 12:
+     (A) (-3, 0), which is a local minimum
+     (B) (3, 0), which is a maximum
+     (C) (0, 0)
+     (D) (-3, 0), which is a saddle point
+     Answer: (A)
+     Explanation: f_x = 2x + 6 = 0 => x = -3. f_y = 2y = 0 => y = 0. r = 2 > 0, s = 0, t = 2. rt - s^2 = 4 > 0 and r > 0 => local minimum.
+
+Q134. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the purpose of the Method of Lagrange Multipliers?
+     (A) Finding the local extrema of a multivariable function subject to equality constraints g(x, y) = 0
+     (B) Solving differential equations
+     (C) Integrating vector fields
+     (D) Finding matrix eigenvalues
+     Answer: (A)
+     Explanation: Lagrange multipliers optimize f(x, y, z) subject to constraint equations g(x, y, z) = c by solving ∇f = λ∇g.
+
+Q135. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     In the method of Lagrange Multipliers, what vector condition must hold at the constrained extremum?
+     (A) ∇f = λ ∇g (the gradients of f and g are parallel)
+     (B) ∇f . ∇g = 0 (gradients are orthogonal)
+     (C) ∇f + ∇g = 0
+     (D) |∇f| = |∇g|
+     Answer: (A)
+     Explanation: At a constrained extremum, the contour curve of f is tangent to the constraint curve g = 0, so their gradient vectors are parallel: ∇f = λ∇g.
+
+Q136. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Del (Nabla) Operator ∇ in three dimensions?
+     (A) ∇ = i (∂/∂x) + j (∂/∂y) + k (∂/∂z)
+     (B) ∇ = i dx + j dy + k dz
+     (C) ∇ = (∂^3 / ∂x∂y∂z)
+     (D) ∇ = i + j + k
+     Answer: (A)
+     Explanation: The del operator ∇ is the vector differential operator i(∂/∂x) + j(∂/∂y) + k(∂/∂z).
+
+Q137. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Gradient of a scalar field φ(x, y, z), denoted grad φ or ∇φ?
+     (A) A VECTOR field: ∇φ = i (∂φ/∂x) + j (∂φ/∂y) + k (∂φ/∂z)
+     (B) A scalar field
+     (C) A matrix
+     (D) A constant number
+     Answer: (A)
+     Explanation: The gradient converts a scalar field into a vector field pointing in the direction of maximum rate of increase.
+
+Q138. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What does the Magnitude |∇φ| of the gradient represent physically?
+     (A) The MAXIMUM rate of increase of φ with respect to distance
+     (B) The minimum rate of change
+     (C) The average value of φ
+     (D) Zero always
+     Answer: (A)
+     Explanation: |∇φ| is the maximum directional derivative of the scalar field φ.
+
+Q139. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     In which direction is the Directional Derivative of a scalar field φ maximum?
+     (A) In the direction of the gradient vector ∇φ
+     (B) Perpendicular to ∇φ
+     (C) Along the z-axis
+     (D) Opposite to ∇φ
+     Answer: (A)
+     Explanation: The directional derivative D_u φ = ∇φ . u is maximized when unit vector u points in the exact direction of ∇φ.
+
+Q140. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Directional Derivative of φ in the direction of a unit vector a?
+     (A) ∇φ . a (the dot product of ∇φ and unit vector a)
+     (B) ∇φ x a
+     (C) ∇φ / |a|
+     (D) |∇φ| + |a|
+     Answer: (A)
+     Explanation: The directional derivative is the scalar projection of ∇φ along unit vector a: D_a φ = ∇φ . a.
+
+Q141. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     The gradient vector ∇φ at any point on the level surface φ(x, y, z) = C is:
+     (A) NORMAL (perpendicular) to the level surface at that point
+     (B) Tangent to the surface
+     (C) Parallel to the x-axis
+     (D) Zero
+     Answer: (A)
+     Explanation: ∇φ is orthogonal to the tangent plane of the level surface φ(x, y, z) = C at every point.
+
+Q142. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Divergence of a vector field V = V1 i + V2 j + V3 k, denoted div V or ∇ . V?
+     (A) A SCALAR field: (∂V1/∂x) + (∂V2/∂y) + (∂V3/∂z)
+     (B) A vector field
+     (C) A matrix
+     (D) A line integral
+     Answer: (A)
+     Explanation: Divergence is the dot product of ∇ with vector V, yielding the scalar flux per unit volume: ∇ . V.
+
+Q143. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     A vector field V is called SOLENOIDAL (incompressible) if:
+     (A) div V = ∇ . V = 0
+     (B) curl V = 0
+     (C) ∇φ = 0
+     (D) |V| = 0
+     Answer: (A)
+     Explanation: A solenoidal field has zero divergence everywhere, meaning fluid flows without net source or sink.
+
+Q144. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Curl of a vector field V = V1 i + V2 j + V3 k, denoted curl V or ∇ x V?
+     (A) A VECTOR field: det([[i, j, k], [∂/∂x, ∂/∂y, ∂/∂z], [V1, V2, V3]])
+     (B) A scalar quantity
+     (C) ∇ . V
+     (D) V1 + V2 + V3
+     Answer: (A)
+     Explanation: Curl is the cross product ∇ x V, measuring the rotational circulation or vorticity of the vector field.
+
+Q145. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     A vector field V is called IRROTATIONAL (Conservative) if:
+     (A) curl V = ∇ x V = 0
+     (B) div V = 0
+     (C) ∇ . V = 1
+     (D) |V| = 1
+     Answer: (A)
+     Explanation: An irrotational vector field has zero curl, which implies it can be expressed as the gradient of a scalar potential: V = ∇φ.
+
+Q146. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     If a vector field V is irrotational (curl V = 0), there exists a scalar potential function φ such that:
+     (A) V = ∇φ
+     (B) V = ∇ x φ
+     (C) div V = φ
+     (D) φ = |V|^2
+     Answer: (A)
+     Explanation: Every curl-free vector field in a simply connected domain is conservative, so V = ∇φ.
+
+Q147. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the divergence of the curl of ANY vector field V: div(curl V) = ∇ . (∇ x V)?
+     (A) 0 (identically zero)
+     (B) 1
+     (C) ∇^2 V
+     (D) -1
+     Answer: (A)
+     Explanation: The divergence of any curl is identically zero: ∇ . (∇ x V) = 0.
+
+Q148. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the curl of the gradient of ANY scalar field φ: curl(grad φ) = ∇ x (∇φ)?
+     (A) 0 (null vector 0)
+     (B) 1
+     (C) ∇^2 φ
+     (D) grad(div φ)
+     Answer: (A)
+     Explanation: The curl of any gradient is identically zero: ∇ x (∇φ) = 0.
+
+Q149. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the Laplacian of a scalar field φ, denoted ∇^2 φ or div(grad φ)?
+     (A) (∂^2φ/∂x^2) + (∂^2φ/∂y^2) + (∂^2φ/∂z^2)
+     (B) (∂φ/∂x) + (∂φ/∂y) + (∂φ/∂z)
+     (C) 0
+     (D) |∇φ|^2
+     Answer: (A)
+     Explanation: The Laplacian operator ∇^2 = ∇ . ∇ = ∂^2/∂x^2 + ∂^2/∂y^2 + ∂^2/∂z^2.
+
+Q150. [Unit 3: Functions of Several Variables & Partial Differentiation] (MEDIUM)
+     If the position vector is r = x i + y j + z k and r = |r| = sqrt(x^2 + y^2 + z^2), what is ∇r (grad r)?
+     (A) r / |r| (unit vector in the direction of r)
+     (B) r
+     (C) 0
+     (D) 3
+     Answer: (A)
+     Explanation: ∂r/∂x = x/r, ∂r/∂y = y/r, ∂r/∂z = z/r => ∇r = (x i + y j + z k)/r = r/r.
+
+Q151. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the divergence of the position vector r = x i + y j + z k: div r = ∇ . r?
+     (A) 3
+     (B) 0
+     (C) 1
+     (D) r
+     Answer: (A)
+     Explanation: div r = ∂x/∂x + ∂y/∂y + ∂z/∂z = 1 + 1 + 1 = 3.
+
+Q152. [Unit 3: Functions of Several Variables & Partial Differentiation] (EASY)
+     What is the curl of the position vector r = x i + y j + z k: curl r = ∇ x r?
+     (A) 0 (null vector)
+     (B) 3
+     (C) 1
+     (D) r
+     Answer: (A)
+     Explanation: curl r = det([[i, j, k], [∂/∂x, ∂/∂y, ∂/∂z], [x, y, z]]) = i(0 - 0) - j(0 - 0) + k(0 - 0) = 0.
+
+Q153. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is an Infinite Series Σ u_n = u1 + u2 + u3 + ...?
+     (A) The indicated sum of the terms of an infinite sequence {u_n}
+     (B) A sequence with a finite number of elements
+     (C) A polynomial equation
+     (D) A function with no limit
+     Answer: (A)
+     Explanation: An infinite series is the sum of terms of an infinite sequence u1 + u2 + u3 + ...
+
+Q154. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the Sequence of Partial Sums {S_n} of a series Σ u_n?
+     (A) S_n = u1 + u2 + ... + u_n (the sum of the first n terms)
+     (B) S_n = u_n
+     (C) S_n = u_(n+1) - u_n
+     (D) S_n = n * u_n
+     Answer: (A)
+     Explanation: The n-th partial sum S_n is the cumulative sum of the first n terms of the series.
+
+Q155. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     When is an infinite series Σ u_n said to be CONVERGENT with sum S?
+     (A) If the sequence of partial sums {S_n} has a finite unique limit S as n -> infinity
+     (B) If each term u_n is positive
+     (C) If u_n approaches infinity
+     (D) If S_n alternates signs
+     Answer: (A)
+     Explanation: A series converges to S if lim_{n->inf} S_n = S.
+
+Q156. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     When is an infinite series said to be DIVERGENT?
+     (A) If its sequence of partial sums {S_n} tends to +infinity, -infinity, or does not tend to a finite limit
+     (B) If all terms are fractions
+     (C) If lim u_n = 0
+     (D) If it has positive and negative terms
+     Answer: (A)
+     Explanation: A divergent series fails to produce a finite limit for S_n as n -> infinity.
+
+Q157. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is an Oscillatory Series?
+     (A) A series whose sequence of partial sums {S_n} oscillates between two or more finite or infinite values without approaching a unique limit
+     (B) A series that strictly increases
+     (C) A series whose sum is 0
+     (D) A convergent geometric series
+     Answer: (A)
+     Explanation: For example, 1 - 1 + 1 - 1 + ... has S_n alternating between 1 and 0, oscillating finitely.
+
+Q158. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What are the convergence conditions for the Geometric Series Σ a r^(n-1) = a + ar + ar^2 + ... (a != 0)?
+     (A) Converges if |r| < 1, diverges if |r| >= 1
+     (B) Converges for all r
+     (C) Converges only if r = 1
+     (D) Diverges for |r| < 1
+     Answer: (A)
+     Explanation: A geometric series converges if and only if the common ratio |r| < 1, with sum S = a / (1 - r).
+
+Q159. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the sum of the convergent geometric series 1 + 1/2 + 1/4 + 1/8 + ...?
+     (A) 2
+     (B) 1
+     (C) 3/2
+     (D) Infinity
+     Answer: (A)
+     Explanation: Here a = 1, r = 1/2 < 1. Sum S = a / (1 - r) = 1 / (1 - 1/2) = 2.
+
+Q160. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the fundamental NECESSARY condition for convergence of any series Σ u_n?
+     (A) lim_{n->infinity} u_n = 0
+     (B) lim_{n->infinity} u_n = 1
+     (C) lim_{n->infinity} S_n = 0
+     (D) u_n must be negative
+     Answer: (A)
+     Explanation: If Σ u_n converges, then lim_{n->inf} u_n must equal 0. However, this condition is NOT sufficient.
+
+Q161. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     If lim_{n->infinity} u_n != 0, what can be definitively concluded about the series Σ u_n?
+     (A) The series is DIVERGENT (Nth Term Divergence Test)
+     (B) The series converges
+     (C) The series is oscillatory
+     (D) The test is inconclusive
+     Answer: (A)
+     Explanation: If the n-th term does not approach 0, the series definitely diverges.
+
+Q162. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Is lim_{n->infinity} u_n = 0 a SUFFICIENT condition for convergence of a series?
+     (A) No, the Harmonic Series Σ 1/n has lim u_n = 0 but is divergent
+     (B) Yes, it always guarantees convergence
+     (C) Only for alternating series
+     (D) Only for powers of 2
+     Answer: (A)
+     Explanation: The harmonic series 1 + 1/2 + 1/3 + ... has u_n -> 0, yet it diverges to infinity, showing sufficiency fails.
+
+Q163. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the p-Series (Hyper-harmonic series) Σ 1 / n^p = 1/1^p + 1/2^p + 1/3^p + ...?
+     (A) A benchmark series that converges if p > 1, and diverges if p <= 1
+     (B) Converges for all real p
+     (C) Diverges for all p > 0
+     (D) Converges only if p is even
+     Answer: (A)
+     Explanation: The p-series test: converges strictly when p > 1, and diverges when p <= 1.
+
+Q164. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Does the series Σ 1 / n^2 converge or diverge?
+     (A) Converges (since p = 2 > 1 by p-series test)
+     (B) Diverges
+     (C) Oscillates
+     (D) Cannot be determined
+     Answer: (A)
+     Explanation: By the p-series test with p = 2 > 1, Σ 1/n^2 converges (its sum is π^2 / 6).
+
+Q165. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Does the series Σ 1 / sqrt(n) converge or diverge?
+     (A) Diverges (since p = 1/2 <= 1 by p-series test)
+     (B) Converges
+     (C) Oscillates
+     (D) Approaches 0
+     Answer: (A)
+     Explanation: p = 1/2 <= 1, so the series diverges by the p-series test.
+
+Q166. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the Direct Comparison Test for positive term series Σ u_n and Σ v_n with u_n <= v_n for all n?
+     (A) If the larger series Σ v_n converges, then Σ u_n also CONVERGES; if Σ u_n diverges, then Σ v_n also DIVERGES
+     (B) If Σ v_n converges, Σ u_n diverges
+     (C) Both always diverge
+     (D) No conclusion can be drawn
+     Answer: (A)
+     Explanation: A series bounded above by a convergent series converges; a series bounded below by a divergent series diverges.
+
+Q167. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the Limit Comparison Test for positive term series Σ u_n and Σ v_n?
+     (A) If lim_{n->infinity} (u_n / v_n) = L (where 0 < L < infinity), then both series either converge together or diverge together
+     (B) If L = 0, both diverge
+     (C) If L = 1, both oscillate
+     (D) It only applies to alternating series
+     Answer: (A)
+     Explanation: If the limit of the ratio is a non-zero finite number L, both series share the exact same convergence behavior.
+
+Q168. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Determine the convergence of Σ 1 / (n^2 + 5):
+     (A) Convergent (by comparison with convergent p-series Σ 1/n^2, p = 2 > 1)
+     (B) Divergent
+     (C) Oscillatory
+     (D) Unbounded
+     Answer: (A)
+     Explanation: 1/(n^2 + 5) < 1/n^2. Since Σ 1/n^2 converges, Σ 1/(n^2 + 5) converges by comparison.
+
+Q169. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Determine the convergence of Σ (n + 1) / (n^3 - 2):
+     (A) Convergent (by Limit Comparison with v_n = 1/n^2, p = 2 > 1)
+     (B) Divergent
+     (C) Oscillatory
+     (D) Inconclusive
+     Answer: (A)
+     Explanation: u_n / v_n = [(n+1)/(n^3-2)] / [1/n^2] = (n^3+n^2)/(n^3-2) -> 1 as n -> inf. Since Σ 1/n^2 converges, Σ u_n converges.
+
+Q170. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is D'Alembert's Ratio Test for a positive term series Σ u_n with lim_{n->infinity} (u_(n+1) / u_n) = L?
+     (A) Converges if L < 1, diverges if L > 1, and test fails (inconclusive) if L = 1
+     (B) Converges if L > 1, diverges if L < 1
+     (C) Converges if L = 1
+     (D) Diverges for all L
+     Answer: (A)
+     Explanation: D'Alembert's ratio test: L < 1 => converges; L > 1 => diverges; L = 1 => test is inconclusive.
+
+Q171. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Test the convergence of the series Σ n / 2^n using D'Alembert's ratio test:
+     (A) Convergent (L = 1/2 < 1)
+     (B) Divergent (L = 2 > 1)
+     (C) Test fails (L = 1)
+     (D) Oscillatory
+     Answer: (A)
+     Explanation: u_(n+1)/u_n = [(n+1)/2^(n+1)] * [2^n / n] = [(n+1)/(2n)] -> 1/2. Since L = 1/2 < 1, the series converges.
+
+Q172. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Test the convergence of the series Σ x^n / n! (for any real x > 0):
+     (A) Converges for all x > 0 (since L = lim x / (n+1) = 0 < 1)
+     (B) Diverges for x > 1
+     (C) Converges only if x < 1
+     (D) Diverges for all x
+     Answer: (A)
+     Explanation: u_(n+1)/u_n = [x^(n+1) / (n+1)!] * [n! / x^n] = x / (n+1) -> 0 as n -> inf. L = 0 < 1 for all x, so it converges universally.
+
+Q173. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Why does D'Alembert's Ratio Test fail for all p-series Σ 1 / n^p?
+     (A) Because lim (u_(n+1) / u_n) = lim [n / (n+1)]^p = 1^p = 1 for all values of p
+     (B) Because p-series terms are negative
+     (C) Because p cannot be fractional
+     (D) Because n! is absent
+     Answer: (A)
+     Explanation: For rational/algebraic terms, the ratio test limit is identically 1, requiring higher-order tests like Raabe's test.
+
+Q174. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is Cauchy's Root Test (nth Root Test) for a positive term series Σ u_n with lim_{n->infinity} (u_n)^(1/n) = L?
+     (A) Converges if L < 1, diverges if L > 1, and test fails if L = 1
+     (B) Converges if L > 1, diverges if L < 1
+     (C) Converges if L = 1
+     (D) Never fails
+     Answer: (A)
+     Explanation: Cauchy's root test: L = lim (u_n)^(1/n). L < 1 => convergence; L > 1 => divergence; L = 1 => test fails.
+
+Q175. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Test the convergence of Σ [n / (2n + 1)]^n using Cauchy's root test:
+     (A) Convergent (L = 1/2 < 1)
+     (B) Divergent (L = 2 > 1)
+     (C) Test fails (L = 1)
+     (D) Oscillatory
+     Answer: (A)
+     Explanation: (u_n)^(1/n) = n / (2n + 1) -> 1/2 as n -> inf. Since L = 1/2 < 1, the series converges.
+
+Q176. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     Test the convergence of Σ [1 + 1/n]^(-n^2):
+     (A) Convergent (since L = lim [1 + 1/n]^(-n) = 1/e < 1)
+     (B) Divergent
+     (C) Test fails
+     (D) Sum is 0
+     Answer: (A)
+     Explanation: (u_n)^(1/n) = (1 + 1/n)^(-n) -> e^(-1) = 1/e ≈ 0.368 < 1. By Cauchy's root test, the series converges.
+
+Q177. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     When is Raabe's Test invoked in series convergence analysis?
+     (A) When D'Alembert's ratio test yields L = 1 (test fails)
+     (B) When terms are alternating
+     (C) When the series has factorials
+     (D) When terms are negative
+     Answer: (A)
+     Explanation: Raabe's test is a second-order test applied specifically when the ratio test limit u_(n+1)/u_n approaches 1.
+
+Q178. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     What is the statement of Raabe's Test: let lim_{n->infinity} n * [ (u_n / u_(n+1)) - 1 ] = R?
+     (A) Converges if R > 1, diverges if R < 1, and fails if R = 1
+     (B) Converges if R < 1, diverges if R > 1
+     (C) Converges if R = 1
+     (D) Diverges for all R
+     Answer: (A)
+     Explanation: Raabe's test: note the inversion (u_n / u_(n+1))! If R > 1, converges; if R < 1, diverges; if R = 1, test fails.
+
+Q179. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     When is the Logarithmic Ratio Test used?
+     (A) When D'Alembert's test gives L = 1 and evaluating n[(u_n/u_(n+1)) - 1] in Raabe's test is difficult, especially involving powers of e
+     (B) For geometric series
+     (C) Only for series with negative terms
+     (D) For polynomials only
+     Answer: (A)
+     Explanation: The logarithmic test evaluates lim_{n->inf} [n * log(u_n / u_(n+1))]; converges if > 1, diverges if < 1.
+
+Q180. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     What is Cauchy's Integral Test for a series Σ u_n where u_n = f(n) and f(x) is a continuous, positive, decreasing function?
+     (A) The series Σ f(n) and the improper integral ∫_1^infinity f(x) dx either both converge or both diverge
+     (B) The series sum equals the integral
+     (C) The integral is always 0
+     (D) Only applies to alternating functions
+     Answer: (A)
+     Explanation: Cauchy's integral test links the convergence of Σ f(n) to the convergence of ∫_1^inf f(x) dx.
+
+Q181. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     Using Cauchy's Integral Test, what does ∫_2^infinity [1 / (x log x)] dx show about Σ 1 / (n log n)?
+     (A) Diverges (since the integral ∫ dt/t = log(log x) -> infinity as x -> infinity)
+     (B) Converges
+     (C) Oscillates
+     (D) Sum is 1
+     Answer: (A)
+     Explanation: ∫ dx / (x ln x) = ln(ln x)|_2^inf = inf - ln(ln 2) = inf. Since the integral diverges, Σ 1/(n ln n) diverges.
+
+Q182. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is an Alternating Series?
+     (A) A series whose terms are alternately positive and negative: u1 - u2 + u3 - u4 + ... (u_n > 0)
+     (B) A series with terms sorted in ascending order
+     (C) A series whose sum is always 0
+     (D) A trigonometric series
+     Answer: (A)
+     Explanation: An alternating series takes the form Σ (-1)^(n-1) u_n where each u_n > 0.
+
+Q183. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What are the two conditions of Leibniz's Test for the convergence of an alternating series Σ (-1)^(n-1) u_n?
+     (A) (1) u_(n+1) <= u_n for all n (terms decrease monotonically), and (2) lim_{n->infinity} u_n = 0
+     (B) (1) u_n is negative, and (2) u_n -> 1
+     (C) (1) Terms increase, and (2) sum is positive
+     (D) (1) u_n = 2n, and (2) ratio is 1
+     Answer: (A)
+     Explanation: Leibniz's theorem: if positive terms u_n decrease monotonically to 0, the alternating series converges.
+
+Q184. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Does the alternating harmonic series 1 - 1/2 + 1/3 - 1/4 + ... converge?
+     (A) Yes, it converges by Leibniz's test (its sum is log 2)
+     (B) No, it diverges
+     (C) It oscillates infinitely
+     (D) It is divergent by p-series
+     Answer: (A)
+     Explanation: u_n = 1/n is monotonically decreasing and lim 1/n = 0. By Leibniz's test, it converges (to ln 2).
+
+Q185. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     When is a series Σ u_n said to be ABSOLUTELY CONVERGENT?
+     (A) If the series of its absolute values Σ |u_n| is convergent
+     (B) If all terms are strictly positive
+     (C) If its sum is an absolute integer
+     (D) If it diverges conditionally
+     Answer: (A)
+     Explanation: Absolute convergence means the series converges even when all terms are replaced by their positive magnitudes.
+
+Q186. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     When is a series said to be CONDITIONALLY CONVERGENT?
+     (A) If Σ u_n converges, but the series of absolute values Σ |u_n| diverges
+     (B) If it converges only under a condition on x
+     (C) If both Σ u_n and Σ |u_n| diverge
+     (D) If its terms are all zero
+     Answer: (A)
+     Explanation: A series is conditionally convergent if it converges in its alternating form, but diverges when made all positive.
+
+Q187. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     The alternating harmonic series 1 - 1/2 + 1/3 - 1/4 + ... is an example of:
+     (A) A Conditionally Convergent series (it converges to ln 2, but Σ 1/n diverges)
+     (B) An Absolutely Convergent series
+     (C) A Divergent series
+     (D) An Oscillatory series
+     Answer: (A)
+     Explanation: Σ (-1)^(n-1)/n converges, but Σ 1/n diverges (harmonic series, p=1). Thus it is conditionally convergent.
+
+Q188. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Which theorem relates Absolute Convergence to ordinary convergence?
+     (A) Every absolutely convergent series is convergent (Absolute convergence implies convergence)
+     (B) Every convergent series is absolutely convergent
+     (C) Convergence implies divergence of absolute values
+     (D) No relation exists
+     Answer: (A)
+     Explanation: Theorem: If Σ |u_n| converges, then Σ u_n must also converge.
+
+Q189. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     Can the terms of a conditionally convergent series be rearranged to equal ANY real number (Riemann's Rearrangement Theorem)?
+     (A) Yes, Riemann's theorem proves a conditionally convergent series can be rearranged to sum to any desired value or diverge
+     (B) No, the sum is fixed
+     (C) Only for geometric series
+     (D) Only for powers of 10
+     Answer: (A)
+     Explanation: Riemann Rearrangement Theorem: by conditionally reordering positive and negative terms, any sum can be obtained.
+
+Q190. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Is an absolutely convergent series invariant under rearrangement of its terms?
+     (A) Yes, any rearrangement of an absolutely convergent series converges to the exact same sum
+     (B) No, the sum changes
+     (C) Only if terms are integers
+     (D) Never
+     Answer: (A)
+     Explanation: Dirichlet's theorem: absolutely convergent series can be rearranged in any arbitrary order without altering their sum.
+
+Q191. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is a Power Series centered at x = 0?
+     (A) A series of the form Σ a_n x^n = a0 + a1 x + a2 x^2 + ...
+     (B) A series where all terms are powers of 2
+     (C) A trigonometric series
+     (D) An integral
+     Answer: (A)
+     Explanation: A power series is an infinite polynomial in powers of (x - c).
+
+Q192. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the Radius of Convergence R of a power series Σ a_n x^n?
+     (A) A non-negative number R such that the series converges absolutely for |x| < R and diverges for |x| > R
+     (B) The perimeter of the circle
+     (C) The number of terms
+     (D) The maximum coefficient
+     Answer: (A)
+     Explanation: Inside the interval of convergence (-R, R), the series converges absolutely; outside, it diverges.
+
+Q193. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     How is the Radius of Convergence R calculated using Cauchy-Hadamard formula?
+     (A) 1 / R = limsup_{n->infinity} |a_n|^(1/n)
+     (B) R = lim |a_n|
+     (C) R = a_n / a_(n+1)
+     (D) 1 / R = a0
+     Answer: (A)
+     Explanation: The Cauchy-Hadamard formula states 1/R = limsup |a_n|^(1/n).
+
+Q194. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     How is the Radius of Convergence R calculated using the ratio of coefficients?
+     (A) R = lim_{n->infinity} |a_n / a_(n+1)|
+     (B) R = lim |a_(n+1) / a_n|
+     (C) R = a_n * a_(n+1)
+     (D) R = a1 / a0
+     Answer: (A)
+     Explanation: By the ratio test: |x| lim |a_(n+1)/a_n| < 1 => |x| < lim |a_n / a_(n+1)| = R.
+
+Q195. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     What is the radius of convergence R of the exponential power series Σ x^n / n!?
+     (A) R = infinity (converges for all real and complex x)
+     (B) R = 1
+     (C) R = 0
+     (D) R = e
+     Answer: (A)
+     Explanation: a_n = 1/n!. |a_n / a_(n+1)| = (n+1)! / n! = n + 1 -> infinity. Thus R = infinity.
+
+Q196. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     What is the radius of convergence R of the geometric power series Σ x^n = 1 + x + x^2 + ...?
+     (A) R = 1 (converges for |x| < 1)
+     (B) R = infinity
+     (C) R = 0
+     (D) R = 2
+     Answer: (A)
+     Explanation: a_n = 1 for all n. |a_n / a_(n+1)| = 1/1 = 1. R = 1.
+
+Q197. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     What is the radius of convergence R of the series Σ n! x^n?
+     (A) R = 0 (converges ONLY at x = 0)
+     (B) R = infinity
+     (C) R = 1
+     (D) R = 1/2
+     Answer: (A)
+     Explanation: a_n / a_(n+1) = n! / (n+1)! = 1 / (n+1) -> 0. Therefore R = 0; it diverges for all x != 0.
+
+Q198. [Unit 4: Infinite Series & Tests of Convergence] (MEDIUM)
+     Can a convergent power series be differentiated term-by-term within its interval of convergence (-R, R)?
+     (A) Yes, term-by-term differentiation is always valid and preserves the exact same radius of convergence R
+     (B) No, differentiation is forbidden
+     (C) Only once
+     (D) The radius becomes 0
+     Answer: (A)
+     Explanation: Within its open interval of convergence, a power series represents an infinitely differentiable smooth function.
+
+Q199. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Can a convergent power series be integrated term-by-term within (-R, R)?
+     (A) Yes, term-by-term integration is valid and preserves the exact same radius of convergence R
+     (B) No
+     (C) Only for finite polynomials
+     (D) It changes R to R^2
+     Answer: (A)
+     Explanation: Term-by-term integration is fully justified for any power series inside |x| < R.
+
+Q200. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     Test the convergence of Σ 1 / [n (log n)^p] for p > 1:
+     (A) Convergent (by Cauchy's Integral Test)
+     (B) Divergent for all p
+     (C) Oscillatory
+     (D) Test fails
+     Answer: (A)
+     Explanation: ∫ dx / [x (ln x)^p] = ∫ dt / t^p converges if and only if p > 1.
+
+Q201. [Unit 4: Infinite Series & Tests of Convergence] (HARD)
+     What is the Cauchy Convergence Criterion for an infinite series Σ u_n?
+     (A) For every ε > 0, there exists an integer N such that for all n >= N and all p >= 1, |u_(n+1) + u_(n+2) + ... + u_(n+p)| < ε
+     (B) u_n < ε for all n
+     (C) S_n < ε
+     (D) u_n must be rational
+     Answer: (A)
+     Explanation: The Cauchy criterion states a series converges if and only if the tail sum beyond N can be made arbitrarily small.
+
+Q202. [Unit 4: Infinite Series & Tests of Convergence] (EASY)
+     Does the series 1 - 2 + 3 - 4 + 5 - 6 + ... converge?
+     (A) No, it oscillates infinitely (diverges because lim u_n != 0)
+     (B) Converges to 1/4
+     (C) Converges to 0
+     (D) Converges by Leibniz's test
+     Answer: (A)
+     Explanation: lim_{n->inf} u_n = lim n = inf != 0. Leibniz's test does not apply, and the series diverges by oscillation.
+
+Q203. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the three conditions required for Rolle's Theorem to hold on an interval [a, b]?
+     (A) f is continuous on [a, b], differentiable on (a, b), and f(a) = f(b)
+     (B) f is continuous, f'(a) = 0, and f(b) = 0
+     (C) f is an odd function on [a, b]
+     (D) f(a) != f(b) and f is constant
+     Answer: (A)
+     Explanation: Rolle's theorem requires: (1) continuous on closed [a, b], (2) differentiable on open (a, b), (3) f(a) = f(b).
+
+Q204. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the conclusion of Rolle's Theorem if all three conditions are satisfied?
+     (A) There exists at least one point c ∈ (a, b) such that f'(c) = 0 (horizontal tangent)
+     (B) f'(c) = 1
+     (C) f(c) = 0
+     (D) f''(c) = 0
+     Answer: (A)
+     Explanation: Rolle's theorem guarantees a point c in (a, b) where the tangent is horizontal: f'(c) = 0.
+
+Q205. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Geometric Interpretation of Rolle's Theorem?
+     (A) At least one point on the curve between a and b has a tangent parallel to the x-axis
+     (B) The curve passes through the origin
+     (C) The area under the curve is zero
+     (D) The tangent is vertical
+     Answer: (A)
+     Explanation: Geometrically, if the endpoints have equal heights, the curve must turn around at least once with a slope of zero.
+
+Q206. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Verify Rolle's Theorem for f(x) = x^2 - 4x + 3 on [1, 3]. What is the value of c?
+     (A) c = 2 (since f'(x) = 2x - 4 = 0 => x = 2 ∈ (1, 3))
+     (B) c = 1.5
+     (C) c = 2.5
+     (D) c = 0
+     Answer: (A)
+     Explanation: f(1) = 0, f(3) = 0. f is a polynomial (continuous and differentiable). f'(c) = 2c - 4 = 0 => c = 2 ∈ (1, 3).
+
+Q207. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     Why does Rolle's Theorem NOT apply to f(x) = |x| on [-1, 1]?
+     (A) f(x) is not differentiable at x = 0 ∈ (-1, 1)
+     (B) f(-1) != f(1)
+     (C) f(x) is discontinuous
+     (D) f(0) does not exist
+     Answer: (A)
+     Explanation: f(-1) = 1 = f(1) and f is continuous, but the sharp corner at x = 0 means f'(0) does not exist.
+
+Q208. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the two conditions for Lagrange's Mean Value Theorem (LMVT) on [a, b]?
+     (A) (1) f(x) is continuous on [a, b], and (2) f(x) is differentiable on (a, b)
+     (B) f(a) must equal f(b)
+     (C) f must be positive
+     (D) f must be a straight line
+     Answer: (A)
+     Explanation: LMVT requires only continuity on [a, b] and differentiability on (a, b); f(a) does not need to equal f(b).
+
+Q209. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the mathematical conclusion of Lagrange's Mean Value Theorem?
+     (A) There exists at least one c ∈ (a, b) such that f'(c) = [f(b) - f(a)] / (b - a)
+     (B) f'(c) = 0
+     (C) f(c) = [f(a) + f(b)] / 2
+     (D) f'(c) = f(b) - f(a)
+     Answer: (A)
+     Explanation: LMVT states the instantaneous rate of change f'(c) equals the average rate of change [f(b) - f(a)] / (b - a).
+
+Q210. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Geometric Interpretation of Lagrange's Mean Value Theorem?
+     (A) There is at least one point c on the curve where the tangent line is PARALLEL to the secant chord joining (a, f(a)) and (b, f(b))
+     (B) The tangent is horizontal
+     (C) The tangent passes through the origin
+     (D) The secant line is perpendicular to the tangent
+     Answer: (A)
+     Explanation: Geometrically, the slope of the tangent at c equals the slope of the chord connecting the endpoints.
+
+Q211. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Find the value of c guaranteed by LMVT for f(x) = x^2 on [1, 2]:
+     (A) c = 1.5
+     (B) c = 1.414
+     (C) c = 1.25
+     (D) c = 1.75
+     Answer: (A)
+     Explanation: f'(c) = 2c. [f(2) - f(1)] / (2 - 1) = (4 - 1) / 1 = 3. 2c = 3 => c = 1.5 ∈ (1, 2).
+
+Q212. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What is the alternative form of LMVT using step length h: f(a + h) = ?
+     (A) f(a + h) = f(a) + h * f'(a + θh), where 0 < θ < 1
+     (B) f(a + h) = f(a) + h * f'(a)
+     (C) f(a + h) = f(a) + f'(h)
+     (D) f(a + h) = h * f(a)
+     Answer: (A)
+     Explanation: Setting b = a + h and c = a + θh (with 0 < θ < 1) yields the fractional increment form of LMVT.
+
+Q213. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     How is Rolle's Theorem related to Lagrange's Mean Value Theorem?
+     (A) Rolle's Theorem is a special case of LMVT where f(a) = f(b)
+     (B) LMVT is a special case of Rolle's
+     (C) They are completely unrelated
+     (D) Rolle's applies to integration
+     Answer: (A)
+     Explanation: If f(a) = f(b), then [f(b) - f(a)] / (b - a) = 0, directly reducing LMVT to Rolle's f'(c) = 0.
+
+Q214. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What are the conditions for Cauchy's Mean Value Theorem for two functions f(x) and g(x) on [a, b]?
+     (A) f and g are continuous on [a, b], differentiable on (a, b), and g'(x) != 0 for all x ∈ (a, b)
+     (B) f(a) = g(a) and f(b) = g(b)
+     (C) f and g are polynomials
+     (D) g(x) = 0
+     Answer: (A)
+     Explanation: Cauchy's MVT generalizes LMVT to two functions simultaneously, requiring g'(x) != 0 to avoid division by zero.
+
+Q215. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What is the mathematical conclusion of Cauchy's Mean Value Theorem?
+     (A) There exists c ∈ (a, b) such that [f(b) - f(a)] / [g(b) - g(a)] = f'(c) / g'(c)
+     (B) f'(c) = g'(c)
+     (C) f(c) g(c) = 1
+     (D) [f(b) - f(a)] * [g(b) - g(a)] = 0
+     Answer: (A)
+     Explanation: The ratio of increments equals the ratio of instantaneous derivatives at some intermediate point c.
+
+Q216. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     If g(x) = x in Cauchy's Mean Value Theorem, what does it reduce to?
+     (A) Lagrange's Mean Value Theorem
+     (B) Rolle's Theorem
+     (C) Taylor's Theorem
+     (D) Euler's Theorem
+     Answer: (A)
+     Explanation: When g(x) = x, g'(x) = 1 and g(b) - g(a) = b - a, yielding [f(b) - f(a)] / (b - a) = f'(c), which is LMVT.
+
+Q217. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What is Taylor's Theorem with Lagrange's Remainder for f(x) expanded about x = a?
+     (A) f(x) = f(a) + (x - a)f'(a) + [(x - a)^2 / 2!]f''(a) + ... + [(x - a)^n / n!]f^(n)(c), where c lies between a and x
+     (B) f(x) = f(a) + x f'(a) + x^2 f''(a)
+     (C) f(x) = f(0) + x f'(0)
+     (D) f(x) = Σ f(n) x^n
+     Answer: (A)
+     Explanation: Taylor's theorem approximates f(x) by a polynomial of degree n-1 plus the Lagrange remainder term R_n.
+
+Q218. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What is the Lagrange Form of the Remainder R_n in Taylor's Theorem?
+     (A) R_n = [(x - a)^n / n!] * f^(n)(a + θ(x - a)), where 0 < θ < 1
+     (B) R_n = (x - a)^n / n!
+     (C) R_n = [(x - a)^n / (n - 1)!] (1 - θ)^(n-1) f^(n)(c)
+     (D) R_n = 0
+     Answer: (A)
+     Explanation: The Lagrange remainder evaluates the n-th derivative at an intermediate point c = a + θ(x - a).
+
+Q219. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (HARD)
+     What is the Cauchy Form of the Remainder R_n in Taylor's Theorem?
+     (A) R_n = [(x - a)^n / (n - 1)!] * (1 - θ)^(n - 1) * f^(n)(a + θ(x - a))
+     (B) R_n = [(x - a)^n / n!] f^(n)(c)
+     (C) R_n = (x - a) f'(c)
+     (D) R_n = 1 / n!
+     Answer: (A)
+     Explanation: The Cauchy form of remainder has the factor (1 - θ)^(n - 1) / (n - 1)!.
+
+Q220. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is Maclaurin's Theorem?
+     (A) The special case of Taylor's Theorem when the expansion is centered at a = 0
+     (B) An expansion about a = 1
+     (C) An expansion for multivariable functions only
+     (D) A Fourier series
+     Answer: (A)
+     Explanation: Maclaurin series is simply Taylor series evaluated at the origin: a = 0.
+
+Q221. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the general formula for the Maclaurin Series of f(x)?
+     (A) f(x) = f(0) + x f'(0) + (x^2 / 2!) f''(0) + (x^3 / 3!) f'''(0) + ... + (x^n / n!) f^(n)(0) + ...
+     (B) f(x) = f(1) + x f'(1) + x^2 f''(1)
+     (C) f(x) = f'(0) + f''(0) + f'''(0)
+     (D) f(x) = Σ f(n) / n!
+     Answer: (A)
+     Explanation: The Maclaurin expansion expresses f(x) as an infinite polynomial in powers of x using derivatives at x = 0.
+
+Q222. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin series expansion for e^x?
+     (A) 1 + x + x^2/2! + x^3/3! + x^4/4! + ... for all x
+     (B) x - x^2/2 + x^3/3 - ...
+     (C) 1 - x + x^2/2! - x^3/3! + ...
+     (D) x + x^3/3! + x^5/5! + ...
+     Answer: (A)
+     Explanation: d^n(e^x)/dx^n = e^x => f^(n)(0) = 1 for all n. Thus e^x = Σ x^n / n!.
+
+Q223. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin series expansion for sin(x)?
+     (A) x - x^3/3! + x^5/5! - x^7/7! + ... for all x
+     (B) 1 - x^2/2! + x^4/4! - ...
+     (C) x + x^3/3! + x^5/5! + ...
+     (D) x - x^2/2 + x^3/3 - ...
+     Answer: (A)
+     Explanation: sin(x) is an odd function, so its expansion contains only odd powers of x with alternating signs.
+
+Q224. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin series expansion for cos(x)?
+     (A) 1 - x^2/2! + x^4/4! - x^6/6! + ... for all x
+     (B) x - x^3/3! + x^5/5! - ...
+     (C) 1 + x^2/2! + x^4/4! + ...
+     (D) 1 - x + x^2 - x^3 + ...
+     Answer: (A)
+     Explanation: cos(x) is an even function, so its expansion contains only even powers of x with alternating signs.
+
+Q225. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin series expansion for log(1 + x) for -1 < x <= 1?
+     (A) x - x^2/2 + x^3/3 - x^4/4 + ...
+     (B) x + x^2/2 + x^3/3 + ...
+     (C) 1 + x + x^2/2! + ...
+     (D) -x - x^2/2 - x^3/3 - ...
+     Answer: (A)
+     Explanation: log(1 + x) has no factorials in its denominators: x - x^2/2 + x^3/3 - x^4/4 + ... (valid for -1 < x <= 1).
+
+Q226. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin series expansion for log(1 - x) for -1 <= x < 1?
+     (A) - [x + x^2/2 + x^3/3 + x^4/4 + ...]
+     (B) x - x^2/2 + x^3/3 - ...
+     (C) 1 - x + x^2 - x^3 + ...
+     (D) x + x^2 + x^3 + ...
+     Answer: (A)
+     Explanation: Replacing x with -x in log(1 + x) gives all negative terms: -(x + x^2/2 + x^3/3 + ...).
+
+Q227. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin expansion for (1 - x)^(-1) for |x| < 1?
+     (A) 1 + x + x^2 + x^3 + x^4 + ...
+     (B) 1 - x + x^2 - x^3 + ...
+     (C) 1 + 2x + 3x^2 + ...
+     (D) -1 - x - x^2 - ...
+     Answer: (A)
+     Explanation: This is the classic geometric series expansion 1 / (1 - x) = 1 + x + x^2 + x^3 + ... for |x| < 1.
+
+Q228. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the Maclaurin expansion for (1 + x)^(-1) for |x| < 1?
+     (A) 1 - x + x^2 - x^3 + x^4 - ...
+     (B) 1 + x + x^2 + x^3 + ...
+     (C) 1 - 2x + 3x^2 - ...
+     (D) x - x^2 + x^3 - ...
+     Answer: (A)
+     Explanation: 1 / (1 + x) = 1 - x + x^2 - x^3 + ... for |x| < 1.
+
+Q229. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     What is the first non-zero term in the Maclaurin expansion of tan(x)?
+     (A) x + x^3/3 + (2/15)x^5 + ...
+     (B) x - x^3/3 + x^5/5
+     (C) 1 + x + x^2
+     (D) x^2/2
+     Answer: (A)
+     Explanation: tan(0) = 0, tan'(0) = sec^2(0) = 1, tan'''(0) = 2. Thus tan(x) = x + x^3/3 + (2/15)x^5 + ...
+
+Q230. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the two basic indeterminate forms to which L'Hospital's Rule directly applies?
+     (A) 0 / 0 and infinity / infinity
+     (B) 0 * infinity and 1^infinity
+     (C) infinity - infinity
+     (D) 0^0
+     Answer: (A)
+     Explanation: L'Hospital's rule applies directly and exclusively to the quotients 0/0 and inf/inf.
+
+Q231. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the procedure of L'Hospital's Rule for lim_{x->a} [f(x) / g(x)] when in 0/0 form?
+     (A) lim_{x->a} [f(x) / g(x)] = lim_{x->a} [f'(x) / g'(x)], differentiating numerator and denominator separately
+     (B) Differentiating using quotient rule [g f' - f g'] / g^2
+     (C) Integrating f(x) and g(x)
+     (D) Multiplying by x
+     Answer: (A)
+     Explanation: L'Hospital's rule differentiates numerator f'(x) and denominator g'(x) individually (NOT quotient rule).
+
+Q232. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Evaluate lim_{x->0} [sin(x) / x] using L'Hospital's Rule:
+     (A) 1 (since 0/0 -> lim cos(x) / 1 = cos(0) / 1 = 1)
+     (B) 0
+     (C) Infinity
+     (D) Does not exist
+     Answer: (A)
+     Explanation: Form 0/0. Differentiating: lim cos(x) / 1 = 1.
+
+Q233. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Evaluate lim_{x->0} [(e^x - 1) / x]:
+     (A) 1 (form 0/0 -> lim e^x / 1 = e^0 = 1)
+     (B) 0
+     (C) e
+     (D) Infinity
+     Answer: (A)
+     Explanation: Form 0/0. Differentiating gives lim e^x / 1 = 1.
+
+Q234. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     Evaluate lim_{x->0} [(1 - cos x) / x^2]:
+     (A) 1/2 (applying L'Hospital twice: 0/0 -> sin x / 2x -> cos x / 2 = 1/2)
+     (B) 1
+     (C) 0
+     (D) Infinity
+     Answer: (A)
+     Explanation: First application: sin x / 2x (0/0). Second application: cos x / 2 -> 1/2.
+
+Q235. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     How is the indeterminate form 0 * infinity converted into a form suitable for L'Hospital's Rule?
+     (A) By rewriting f(x) * g(x) as f(x) / [1 / g(x)] or g(x) / [1 / f(x)] to obtain 0/0 or inf/inf
+     (B) By adding 1 to both sides
+     (C) By multiplying by 0
+     (D) By differentiation directly
+     Answer: (A)
+     Explanation: Rewriting a product as a quotient transforms 0 * inf into 0/0 or inf/inf.
+
+Q236. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     Evaluate lim_{x->0+} [x * log(x)] (form 0 * -infinity):
+     (A) 0 (rewriting as log(x) / (1/x) -> (1/x) / (-1/x^2) = -x -> 0)
+     (B) -1
+     (C) 1
+     (D) -Infinity
+     Answer: (A)
+     Explanation: lim (ln x)/(1/x) [inf/inf]. Derivative: (1/x) / (-1/x^2) = -x -> 0.
+
+Q237. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     How is the indeterminate form infinity - infinity typically evaluated?
+     (A) By taking a common denominator or rationalizing to convert into 0/0 or inf/inf
+     (B) It is always equal to 0
+     (C) By subtracting derivatives
+     (D) By setting to 1
+     Answer: (A)
+     Explanation: Algebraic manipulation (common denominator or conjugate multiplication) converts inf - inf to 0/0.
+
+Q238. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     Evaluate lim_{x->0} [1/x - 1/sin(x)] (form infinity - infinity):
+     (A) 0
+     (B) 1
+     (C) 1/2
+     (D) Infinity
+     Answer: (A)
+     Explanation: lim (sin x - x) / (x sin x) [0/0]. Derivative: (cos x - 1) / (sin x + x cos x) [0/0] -> -sin x / (2 cos x - x sin x) -> 0 / 2 = 0.
+
+Q239. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     How are exponential indeterminate forms 1^infinity, 0^0, and infinity^0 evaluated?
+     (A) By taking natural logarithm: let y = f(x)^g(x), then ln y = g(x) ln f(x), evaluating the limit, and taking e^(limit)
+     (B) By direct substitution
+     (C) They are all always equal to 1
+     (D) By using binomial theorem
+     Answer: (A)
+     Explanation: Taking natural log reduces exponential indeterminate forms to the product form 0 * inf.
+
+Q240. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Evaluate lim_{x->0} (1 + x)^(1/x) (form 1^infinity):
+     (A) e
+     (B) 1
+     (C) 0
+     (D) Infinity
+     Answer: (A)
+     Explanation: Let y = (1+x)^(1/x). ln y = ln(1+x)/x -> 1/1 = 1 as x -> 0. Therefore, y -> e^1 = e.
+
+Q241. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Evaluate lim_{x->infinity} (1 + 1/x)^x (form 1^infinity):
+     (A) e
+     (B) 1
+     (C) Infinity
+     (D) 0
+     Answer: (A)
+     Explanation: Standard definition of Euler's number e: lim_{x->inf} (1 + 1/x)^x = e.
+
+Q242. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     Evaluate lim_{x->0+} x^x (form 0^0):
+     (A) 1 (since ln y = x ln x -> 0, so y -> e^0 = 1)
+     (B) 0
+     (C) e
+     (D) Does not exist
+     Answer: (A)
+     Explanation: ln y = x ln x -> 0 as x -> 0+. Thus y -> e^0 = 1.
+
+Q243. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is Fermat's Theorem on local extrema of a differentiable function f(x)?
+     (A) If f has a local extremum at x = c and f'(c) exists, then f'(c) = 0
+     (B) f''(c) must be zero
+     (C) f(c) must be zero
+     (D) f'(c) must be positive
+     Answer: (A)
+     Explanation: Fermat's interior extremum theorem: the derivative of a differentiable function must vanish at local extrema.
+
+Q244. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the conditions for a local MAXIMUM of f(x) using the second derivative test at a stationary point c (f'(c) = 0)?
+     (A) f''(c) < 0 (concave down)
+     (B) f''(c) > 0
+     (C) f''(c) = 0
+     (D) f'''(c) > 0
+     Answer: (A)
+     Explanation: If f'(c) = 0 and f''(c) < 0, the curve curves downward, establishing a local maximum.
+
+Q245. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the conditions for a local MINIMUM of f(x) using the second derivative test at c?
+     (A) f''(c) > 0 (concave up)
+     (B) f''(c) < 0
+     (C) f''(c) = 0
+     (D) f(c) = 0
+     Answer: (A)
+     Explanation: If f'(c) = 0 and f''(c) > 0, the curve curves upward, establishing a local minimum.
+
+Q246. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is a Point of Inflexion on a curve y = f(x)?
+     (A) A point where the curve changes its concavity from concave up to concave down (or vice versa), where f''(x) = 0 and changes sign
+     (B) A point where f'(x) = 0
+     (C) A local maximum
+     (D) An asymptote
+     Answer: (A)
+     Explanation: At a point of inflexion, the tangent line crosses through the curve as concavity changes sign.
+
+Q247. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What is the point of inflexion for the cubic curve f(x) = x^3?
+     (A) (0, 0), since f''(x) = 6x = 0 at x = 0 and changes sign from negative to positive
+     (B) (1, 1)
+     (C) (-1, -1)
+     (D) No point of inflexion exists
+     Answer: (A)
+     Explanation: f'(0) = 0, f''(0) = 0, f'''(0) = 6 != 0. Concavity switches from negative (for x < 0) to positive (for x > 0).
+
+Q248. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What are the dimensions of a rectangle with a fixed perimeter P that maximizes its area?
+     (A) A SQUARE with side length P / 4
+     (B) A rectangle with length twice the width
+     (C) An infinitely thin rectangle
+     (D) A circle
+     Answer: (A)
+     Explanation: Area A = x(P/2 - x). dA/dx = P/2 - 2x = 0 => x = P/4, y = P/4 (a square).
+
+Q249. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     Divide a positive number S into two parts x and y such that their product x * y is maximized:
+     (A) x = S / 2 and y = S / 2 (two equal parts)
+     (B) x = S/3 and y = 2S/3
+     (C) x = 1 and y = S - 1
+     (D) x = 0 and y = S
+     Answer: (A)
+     Explanation: P(x) = x(S - x) = Sx - x^2. P'(x) = S - 2x = 0 => x = S/2, y = S/2.
+
+Q250. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (MEDIUM)
+     A rectangular box with an open top is to be formed from a square cardboard of side a by cutting equal squares of side x from each corner. What value of x maximizes the volume?
+     (A) x = a / 6
+     (B) x = a / 4
+     (C) x = a / 3
+     (D) x = a / 2
+     Answer: (A)
+     Explanation: Volume V = x(a - 2x)^2. dV/dx = (a - 2x)(a - 6x) = 0. Since x < a/2, x = a/6 maximizes volume.
+
+Q251. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     In economics, at what output level Q is total profit maximized for a firm?
+     (A) Where Marginal Revenue equals Marginal Cost (MR = MC) and MC is rising
+     (B) Where Total Revenue is zero
+     (C) Where Marginal Revenue is maximum
+     (D) Where Average Cost is zero
+     Answer: (A)
+     Explanation: Profit Π = TR - TC. dΠ/dQ = MR - MC = 0 => MR = MC, with second-order condition d(MR)/dQ < d(MC)/dQ.
+
+Q252. [Unit 5: Mean Value Theorems, Taylor/Maclaurin Series & Extrema] (EASY)
+     What does the Mean Value Theorem guarantee about the speed of a car that travels 120 km in exactly 2 hours?
+     (A) The speedometer must have read EXACTLY 60 km/h at least once during the trip
+     (B) The car never exceeded 60 km/h
+     (C) The car was always travelling at 60 km/h
+     (D) The car broke down
+     Answer: (A)
+     Explanation: Average speed = 120 km / 2 h = 60 km/h. By LMVT, instantaneous speed f'(c) = 60 km/h at some instant.
+

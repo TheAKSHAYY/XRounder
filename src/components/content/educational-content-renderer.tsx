@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { slugify } from "@/lib/slug";
 import { parseMarkdownToBlocks, ContentBlockItem } from "@/components/admin/visual-article-editor";
 import { playCorrectSound } from "@/lib/sound-fx";
+import { sanitizeEducationalMarkdown } from "@/lib/content-sanitizer";
 
 /* ═══════════════════════════════════════════════════════════════════
    INLINE FORMATTING COMPONENT (Bold, Italic, Inline Code, Links)
@@ -29,11 +30,13 @@ export function FormattedText({ text }: { text: string | null | undefined }) {
 
   // Tokenize text into inline elements:
   // 1. `code`
-  // 2. **bold**
-  // 3. *italic* or _italic_
-  // 4. [label](url)
-  // 5. Bare URLs (https?://...)
-  const regex = /(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s]+)/g;
+  // 2. $math$
+  // 3. **bold**
+  // 4. *italic* or _italic_
+  // 5. [label](url)
+  // 6. Bare URLs (https?://...)
+  const regex =
+    /(`[^`]+`|\$[^$]+\$|\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s]+)/g;
 
   const parts = text.split(regex);
 
@@ -52,6 +55,28 @@ export function FormattedText({ text }: { text: string | null | undefined }) {
             >
               {codeContent}
             </code>
+          );
+        }
+
+        // Inline Math $...$
+        if (part.startsWith("$") && part.endsWith("$") && part.length >= 2) {
+          const mathContent = part
+            .slice(1, -1)
+            .replace(/\\text\{([^}]+)\}/g, "$1")
+            .replace(/\\mu/g, "µ")
+            .replace(/\\times/g, "×")
+            .replace(/\\approx/g, "≈")
+            .replace(/\\rightarrow/g, "→")
+            .replace(/\\leftarrow/g, "←")
+            .replace(/\\le/g, "≤")
+            .replace(/\\ge/g, "≥");
+          return (
+            <span
+              key={idx}
+              className="mx-0.5 inline-block font-mono text-[0.9em] font-semibold text-primary/95 bg-primary/8 dark:bg-primary/12 px-1 py-0.2 rounded"
+            >
+              {mathContent}
+            </span>
           );
         }
 
@@ -528,7 +553,7 @@ export function FormattedTable({
               {headers.map((h, hIdx) => (
                 <th
                   key={hIdx}
-                  className="p-3.5 font-bold font-display text-foreground tracking-tight select-none"
+                  className="p-3.5 font-semibold font-sans text-xs sm:text-sm text-foreground/90 tracking-wider uppercase select-none"
                 >
                   <FormattedText text={h} />
                 </th>
@@ -573,37 +598,59 @@ export function EducationalContentRenderer({
 }: EducationalContentRendererProps) {
   const [copied, setCopied] = useState(false);
 
-  const blocks = useMemo(() => parseMarkdownToBlocks(content || ""), [content]);
+  // Sanitize content from report headers, UUIDs, target examination, and checklists
+  const cleanContent = useMemo(() => sanitizeEducationalMarkdown(content || ""), [content]);
+
+  // Clean title if passed
+  const cleanTitle = useMemo(() => {
+    if (!title) return undefined;
+    const stripped = title
+      .replace(/^[A-Z0-9-]{3,10}:\s*/i, "")
+      .replace(/^Unit \d+ Master Exam Revision Notes:\s*/i, "")
+      .replace(/^#+\s*/, "")
+      .trim();
+    return stripped || undefined;
+  }, [title]);
+
+  const blocks = useMemo(() => parseMarkdownToBlocks(cleanContent), [cleanContent]);
 
   const handleCopy = useCallback(async () => {
     if (onCopyAll) {
       onCopyAll();
       return;
     }
-    if (!content) return;
+    if (!cleanContent) return;
     try {
-      await navigator.clipboard.writeText(content);
+      await navigator.clipboard.writeText(cleanContent);
       setCopied(true);
       playCorrectSound();
       setTimeout(() => setCopied(false), 1800);
     } catch {
       /* ignore */
     }
-  }, [content, onCopyAll]);
+  }, [cleanContent, onCopyAll]);
+
+  // Determine if the first block is an H1 that duplicates cleanTitle
+  const firstBlockIsDuplicateH1 = useMemo(() => {
+    if (!cleanTitle || blocks.length === 0) return false;
+    const first = blocks[0];
+    return first.type === "heading1" && first.content.toLowerCase().trim() === cleanTitle.toLowerCase().trim();
+  }, [cleanTitle, blocks]);
 
   return (
     <section id={anchorId} className={cn("scroll-mt-28 min-w-0 max-w-full", className)}>
-      {/* Top Header Card if title provided */}
-      {title && (
+      {/* Top Header Card if title provided and not duplicating first H1 */}
+      {cleanTitle && !firstBlockIsDuplicateH1 && (
         <div className="flex items-center justify-between gap-4 mb-4">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-            {title}
+            {cleanTitle}
           </h2>
           <Button
             variant="ghost"
             size="sm"
+            data-tts-ignore="true"
             onClick={handleCopy}
-            className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground shrink-0 transition-colors"
+            className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground shrink-0 transition-colors cursor-pointer"
           >
             {copied ? (
               <>
@@ -619,88 +666,109 @@ export function EducationalContentRenderer({
       )}
 
       {/* Main Educational Article Body Card — publication-grade reading */}
-      <div className="rounded-2xl sm:rounded-3xl border border-border/60 bg-card px-4 py-7 sm:px-10 sm:py-10 shadow-soft min-w-0 max-w-full overflow-hidden">
-        {(() => {
-          let h2Count = 0;
-          return blocks.map((b) => {
-            const headingId = `heading-${slugify(b.content)}-${b.id}`;
+      <div
+        data-tts="article"
+        className="rounded-2xl sm:rounded-3xl border border-border/60 bg-card px-5 py-7 sm:px-10 sm:py-10 shadow-soft min-w-0 max-w-full overflow-hidden font-editorial"
+      >
+        {blocks.map((b, idx) => {
+          const headingId = `heading-${slugify(b.content)}-${b.id}`;
 
-            // Diagram detection
-            const isDiagram =
-              b.type === "code" &&
-              (b.language === "diagram" ||
-                b.language === "ascii" ||
-                /┌|└|│|─|\+---|\||->|INPUT|OUTPUT|CPU|MEMORY|ALU|CU/.test(b.content));
+          // Diagram detection
+          const isDiagram =
+            b.type === "code" &&
+            (b.language === "diagram" ||
+              b.language === "ascii" ||
+              /┌|└|│|─|\+---|\||->|INPUT|OUTPUT|CPU|MEMORY|ALU|CU/.test(b.content));
 
-            // Output block detection
-            const isOutput =
-              b.type === "code" &&
-              (b.language === "output" ||
-                b.language === "terminal" ||
-                b.language === "console" ||
-                /^output\b/i.test(b.language || ""));
+          // Output block detection
+          const isOutput =
+            b.type === "code" &&
+            (b.language === "output" ||
+              b.language === "terminal" ||
+              b.language === "console" ||
+              /^output\b/i.test(b.language || ""));
 
-            const isQuickRevision =
-              (b.type === "heading2" || b.type === "heading3") &&
-              /revision|summary|takeaways|key points/i.test(b.content);
+          const isQuickRevision =
+            (b.type === "heading2" || b.type === "heading3") &&
+            /revision|summary|takeaways|key points|exam tips/i.test(b.content);
 
-            if (b.type === "heading2") {
-              h2Count++;
-            }
-
-            return (
-              <div key={b.id} className="min-w-0">
-                {/* Major Section Heading (H2) */}
-                {b.type === "heading2" && (
-                  <div
+          return (
+            <div key={b.id} className="min-w-0">
+              {/* Primary Topic Heading (H1) */}
+              {b.type === "heading1" && (
+                <div className="flex items-center justify-between gap-4 mb-6 first:mt-0 mt-8 border-b border-border/40 pb-4">
+                  <h1
                     id={headingId}
-                    className="scroll-mt-28 mt-12 mb-5 border-t border-border/50 pt-8"
+                    className="font-editorial text-2xl sm:text-3xl font-bold text-foreground tracking-tight leading-tight"
                   >
-                    <div className="flex items-start gap-3.5">
-                      <span className="flex h-6 w-6 mt-1 items-center justify-center rounded-md bg-primary/12 font-mono text-[10px] font-extrabold text-primary shrink-0 select-none">
-                        {String(h2Count).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-display text-[1.35rem] sm:text-[1.6rem] font-bold text-foreground tracking-tight leading-snug">
-                        <FormattedText text={b.content} />
-                      </h3>
-                    </div>
-                  </div>
-                )}
-
-                {/* Subsection Heading (H3) */}
-                {b.type === "heading3" && (
-                  <h4
-                    id={headingId}
-                    className={cn(
-                      "font-display text-[1.05rem] sm:text-[1.15rem] font-semibold mt-9 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2 leading-snug",
-                      isQuickRevision
-                        ? "text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wide"
-                        : "text-foreground",
-                    )}
-                  >
-                    {isQuickRevision && <Zap className="h-3.5 w-3.5 shrink-0" />}
                     <FormattedText text={b.content} />
-                  </h4>
-                )}
+                  </h1>
+                  {!cleanTitle && idx === 0 && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      data-tts-ignore="true"
+                      onClick={handleCopy}
+                      className="h-8 px-2.5 rounded-xl text-xs text-muted-foreground hover:text-foreground shrink-0 transition-colors cursor-pointer"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="h-3.5 w-3.5 mr-1 text-emerald-500" /> Copied
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5 mr-1" /> Copy
+                        </>
+                      )}
+                    </Button>
+                  )}
+                </div>
+              )}
 
-                {/* Sub-subsection Heading (H4) */}
-                {b.type === "heading4" && (
-                  <h5
-                    id={headingId}
-                    className="font-display text-[0.95rem] font-semibold text-muted-foreground mt-6 mb-2 tracking-wide uppercase text-xs scroll-mt-28 flex items-center gap-2"
-                  >
-                    <span className="inline-block h-px flex-1 bg-border/60" />
+              {/* Major Section Heading (H2) — Clean textbook typography without artificial number badges */}
+              {b.type === "heading2" && (
+                <div
+                  id={headingId}
+                  className="scroll-mt-28 mt-10 mb-4 border-t border-border/50 pt-7 first:mt-0 first:border-t-0 first:pt-0"
+                >
+                  <h2 className="font-editorial text-xl sm:text-[1.4rem] font-semibold text-foreground tracking-tight leading-snug">
                     <FormattedText text={b.content} />
-                    <span className="inline-block h-px flex-1 bg-border/60" />
-                  </h5>
-                )}
+                  </h2>
+                </div>
+              )}
 
-                {/* Paragraph — Fraunces serif for warm, readable prose */}
-                {b.type === "paragraph" && (
-                  <p className="font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 leading-[1.85] mb-5 dark:text-foreground/85">
-                    <FormattedText text={b.content} />
-                  </p>
-                )}
+              {/* Subsection Heading (H3) */}
+              {b.type === "heading3" && (
+                <h3
+                  id={headingId}
+                  className={cn(
+                    "font-editorial text-base sm:text-lg font-semibold mt-7 mb-3 tracking-tight scroll-mt-28 flex items-center gap-2 leading-snug",
+                    isQuickRevision
+                      ? "text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wide"
+                      : "text-foreground",
+                  )}
+                >
+                  {isQuickRevision && <Zap className="h-3.5 w-3.5 shrink-0" />}
+                  <FormattedText text={b.content} />
+                </h3>
+              )}
+
+              {/* Sub-subsection Heading (H4) — Clean sans-serif */}
+              {b.type === "heading4" && (
+                <h4
+                  id={headingId}
+                  className="font-sans text-xs sm:text-sm font-bold text-primary mt-5 mb-2 tracking-wider uppercase scroll-mt-28"
+                >
+                  <FormattedText text={b.content} />
+                </h4>
+              )}
+
+              {/* Paragraph — Clean, comfortable line height for sustained reading */}
+              {b.type === "paragraph" && (
+                <p className="text-[15px] sm:text-[1.03rem] text-foreground/88 leading-[1.8] mb-4 dark:text-foreground/85 font-normal">
+                  <FormattedText text={b.content} />
+                </p>
+              )}
 
                 {/* Callout */}
                 {b.type === "callout" && <CalloutCard type={b.calloutType} content={b.content} />}
@@ -721,9 +789,9 @@ export function EducationalContentRenderer({
                   <FormattedTable headers={b.tableHeaders} rows={b.tableRows || []} />
                 )}
 
-                {/* Bullet List */}
+                {/* Bullet List — Clean sans body typography, no jarring serif switch */}
                 {b.type === "bullet_list" && (
-                  <ul className="my-5 space-y-2 font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 dark:text-foreground/85 pl-5 list-disc marker:text-primary/70 leading-[1.8]">
+                  <ul className="my-5 space-y-2 text-[15px] sm:text-[1.03rem] text-foreground/90 dark:text-foreground/85 pl-5 list-disc marker:text-primary/70 leading-[1.8]">
                     {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
                       .filter((item) => item.trim())
                       .map((item, itemIdx) => (
@@ -734,9 +802,9 @@ export function EducationalContentRenderer({
                   </ul>
                 )}
 
-                {/* Numbered List */}
+                {/* Numbered List — Clean sans body typography */}
                 {b.type === "numbered_list" && (
-                  <ol className="my-5 space-y-2 font-serif text-[1rem] sm:text-[1.0625rem] text-foreground/88 dark:text-foreground/85 pl-5 list-decimal marker:font-display marker:font-bold marker:text-primary leading-[1.8]">
+                  <ol className="my-5 space-y-2 text-[15px] sm:text-[1.03rem] text-foreground/90 dark:text-foreground/85 pl-5 list-decimal marker:font-semibold marker:text-primary leading-[1.8]">
                     {(b.listItems && b.listItems.length ? b.listItems : b.content.split("\n"))
                       .filter((item) => item.trim())
                       .map((item, itemIdx) => (
@@ -748,8 +816,7 @@ export function EducationalContentRenderer({
                 )}
               </div>
             );
-          });
-        })()}
+          })}
       </div>
     </section>
   );

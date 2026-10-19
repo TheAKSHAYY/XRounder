@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 2
+COURSE CODE: BCA-108N - DIGITAL ELECTRONICS
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What are the two discrete voltage states utilized in binary digital electronic circuits?
+     (A) High (Logic 1) and Low (Logic 0)
+     (B) Positive and Negative AC voltage
+     (C) 12V and 240V
+     (D) Analog continuous wave
+     Answer: (A)
+     Explanation: Binary digital logic represents signals as discrete binary states: Logic 1 (High, ~5V in TTL) and Logic 0 (Low, ~0V).
+
+Q2. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Which Boolean algebra law states that A + A = A and A * A = A?
+     (A) Commutative Law
+     (B) Idempotent Law
+     (C) Associative Law
+     (D) Distributive Law
+     Answer: (B)
+     Explanation: The Idempotent law states that combining a variable with itself under AND or OR yields the original variable.
+
+Q3. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is De Morgan's First Theorem for two Boolean variables?
+     (A) (A + B)' = A' * B'
+     (B) (A * B)' = A' + B'
+     (C) A + A' = 1
+     (D) (A')' = A
+     Answer: (A)
+     Explanation: De Morgan's first law states: the complement of a sum equals the product of the individual complements: (A + B)' = A'B'.
+
+Q4. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is De Morgan's Second Theorem for two Boolean variables?
+     (A) (A * B)' = A' + B'
+     (B) (A + B)' = A' * B'
+     (C) A * A' = 0
+     (D) A + 1 = 1
+     Answer: (A)
+     Explanation: De Morgan's second law states: the complement of a product equals the sum of the individual complements: (A * B)' = A' + B'.
+
+Q5. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     Which Boolean algebra law states that A + (B * C) = (A + B) * (A + C)?
+     (A) Distributive Law of OR over AND
+     (B) Associative Law
+     (C) Absorption Law
+     (D) Involution Law
+     Answer: (A)
+     Explanation: Unlike ordinary algebra, Boolean algebra allows OR to distribute over AND: A + BC = (A + B)(A + C).
+
+Q6. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the Absorption Law in Boolean algebra?
+     (A) A + (A * B) = A
+     (B) A + B = B + A
+     (C) A * 1 = A
+     (D) A + A' = 1
+     Answer: (A)
+     Explanation: Absorption simplifies expressions: A + AB = A(1 + B) = A(1) = A.
+
+Q7. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Which basic logic gate produces an output that is the logical INVERSION of its input?
+     (A) AND Gate
+     (B) OR Gate
+     (C) NOT Gate (Inverter)
+     (D) NAND Gate
+     Answer: (C)
+     Explanation: The NOT gate produces Logic 0 when input is 1, and Logic 1 when input is 0: Y = A'.
+
+Q8. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     An AND gate with inputs A and B produces a HIGH (Logic 1) output only when:
+     (A) At least one input is 1
+     (B) Both inputs A and B are 1 simultaneously
+     (C) Both inputs are 0
+     (D) Input A is 1 and B is 0
+     Answer: (B)
+     Explanation: The AND gate performs logical multiplication: output Y = A * B is 1 only when all inputs are 1.
+
+Q9. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     An OR gate produces a LOW (Logic 0) output only when:
+     (A) Both inputs A and B are 0 simultaneously
+     (B) At least one input is 1
+     (C) Both inputs are 1
+     (D) Input A is 0 and B is 1
+     Answer: (A)
+     Explanation: The OR gate performs logical addition: output Y = A + B is 0 only when all inputs are 0.
+
+Q10. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Which logic gates are classified as UNIVERSAL GATES because any digital circuit can be built exclusively from them?
+     (A) AND and OR
+     (B) NAND and NOR
+     (C) EX-OR and EX-NOR
+     (D) NOT and AND
+     Answer: (B)
+     Explanation: NAND and NOR gates are universal gates because combinations of either gate alone can synthesize NOT, AND, OR, and any complex logic function.
+
+Q11. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the Boolean expression for a 2-input NAND gate?
+     (A) Y = A * B
+     (B) Y = (A * B)'
+     (C) Y = A + B
+     (D) Y = (A + B)'
+     Answer: (B)
+     Explanation: NAND is an AND gate followed by an inverter: Y = (A * B)' = A' + B'.
+
+Q12. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the Boolean expression for a 2-input NOR gate?
+     (A) Y = (A + B)'
+     (B) Y = A + B
+     (C) Y = (A * B)'
+     (D) Y = A' * B
+     Answer: (A)
+     Explanation: NOR is an OR gate followed by an inverter: Y = (A + B)' = A' * B'.
+
+Q13. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     An Exclusive-OR (EX-OR / XOR) gate produces a HIGH (Logic 1) output when:
+     (A) Both inputs are identical (both 0 or both 1)
+     (B) The inputs are different (one is 0 and the other is 1)
+     (C) Both inputs are 0 only
+     (D) Both inputs are 1 only
+     Answer: (B)
+     Explanation: An XOR gate is an inequality detector: Y = A ⊕ B = A'B + AB' outputs 1 when inputs differ.
+
+Q14. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is the Boolean expression for a 2-input EX-NOR (XNOR) gate?
+     (A) Y = A'B + AB'
+     (B) Y = AB + A'B'
+     (C) Y = A + B
+     (D) Y = (AB)'
+     Answer: (B)
+     Explanation: The XNOR gate acts as an equality (coincidence) detector: Y = (A ⊕ B)' = AB + A'B'.
+
+Q15. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     How many 2-input NAND gates are required to construct a basic NOT gate (inverter)?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) 4
+     Answer: (A)
+     Explanation: Tying both inputs of a NAND gate together (or pulling one input to Vcc) forms an inverter using exactly 1 NAND gate.
+
+Q16. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     How many 2-input NAND gates are required to implement a 2-input AND gate?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) 4
+     Answer: (B)
+     Explanation: Two NAND gates: the first produces (AB)', and the second acts as an inverter to produce ((AB)')' = AB.
+
+Q17. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     How many 2-input NAND gates are required to implement a 2-input OR gate?
+     (A) 2
+     (B) 3
+     (C) 4
+     (D) 5
+     Answer: (B)
+     Explanation: Three NAND gates: two invert inputs to A' and B', and the third computes (A' * B')' = A + B by De Morgan's law.
+
+Q18. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     How many 2-input NAND gates are required to implement a 2-input XOR gate?
+     (A) 3
+     (B) 4
+     (C) 5
+     (D) 6
+     Answer: (B)
+     Explanation: Four 2-input NAND gates are arranged symmetrically to synthesize Y = A ⊕ B.
+
+Q19. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (HARD)
+     How many 2-input NOR gates are required to implement a 2-input XOR gate?
+     (A) 4
+     (B) 5
+     (C) 3
+     (D) 6
+     Answer: (B)
+     Explanation: Five 2-input NOR gates are required to synthesize a 2-input XOR gate.
+
+Q20. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is a Minterm in Boolean algebra?
+     (A) A sum term containing all variables in complemented or uncomplemented form
+     (B) A product term containing all variables of the function in either complemented or uncomplemented form
+     (C) A term with zero variables
+     (D) A constant 0
+     Answer: (B)
+     Explanation: A minterm is an AND product term where each variable appears once; it evaluates to 1 for exactly one input combination.
+
+Q21. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is a Maxterm in Boolean algebra?
+     (A) A sum term containing all variables in either complemented or uncomplemented form
+     (B) A product term
+     (C) A number greater than 100
+     (D) A NAND output
+     Answer: (A)
+     Explanation: A maxterm is an OR sum term that evaluates to 0 for exactly one input combination.
+
+Q22. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Sum of Products (SOP) canonical form is expressed as:
+     (A) A logical OR of minterms: Σm(0, 1, ...)
+     (B) A logical AND of maxterms: ΠM(0, 1, ...)
+     (C) A division of terms
+     (D) A single inverter
+     Answer: (A)
+     Explanation: Canonical SOP sums (ORs) the fundamental minterms for which the Boolean function output is 1.
+
+Q23. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Product of Sums (POS) canonical form is expressed as:
+     (A) ΠM(0, 1, ...) - a logical AND of maxterms
+     (B) Σm(0, 1, ...) - a sum of minterms
+     (C) A truth table column
+     (D) An XOR expression
+     Answer: (A)
+     Explanation: Canonical POS multiplies (ANDs) the maxterms for which the function output is 0.
+
+Q24. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     How many cells does a Karnaugh Map (K-Map) for N Boolean variables contain?
+     (A) 2N
+     (B) 2^N
+     (C) N^2
+     (D) N!
+     Answer: (B)
+     Explanation: An N-variable K-map contains 2^N cells, each corresponding to one unique minterm.
+
+Q25. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     How many cells does a 4-variable K-Map contain?
+     (A) 4
+     (B) 8
+     (C) 16
+     (D) 32
+     Answer: (C)
+     Explanation: A 4-variable K-map contains 2^4 = 16 cells arranged in a 4x4 grid.
+
+Q26. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     In a K-Map, why are adjacent cells arranged using Gray Code sequence (00, 01, 11, 10)?
+     (A) It looks symmetrical
+     (B) To ensure that adjacent cells differ by only ONE single bit change, allowing algebraic reduction via A + A' = 1
+     (C) To save ink
+     (D) To represent octal numbers
+     Answer: (B)
+     Explanation: Gray code ordering ensures Hamming distance of 1 between adjacent cells, enabling elimination of complemented literals.
+
+Q27. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     In K-map grouping, what is the valid size of a group of adjacent 1s (an implicant group)?
+     (A) Any even number
+     (B) Must strictly be a power of 2 (1, 2, 4, 8, 16, ...)
+     (C) Any prime number
+     (D) Multiples of 3
+     Answer: (B)
+     Explanation: Valid groupings must contain 2^k cells (1=single, 2=pair, 4=quad, 8=octet) to eliminate k literals.
+
+Q28. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Grouping a 'Pair' of two adjacent 1s in an N-variable K-map eliminates how many literals?
+     (A) 1 literal
+     (B) 2 literals
+     (C) 3 literals
+     (D) 0 literals
+     Answer: (A)
+     Explanation: A pair (2 cells = 2^1) eliminates 1 variable whose state changes between the adjacent cells.
+
+Q29. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Grouping a 'Quad' of four adjacent 1s in a K-map eliminates how many literals?
+     (A) 1 literal
+     (B) 2 literals
+     (C) 4 literals
+     (D) 3 literals
+     Answer: (B)
+     Explanation: A quad (4 cells = 2^2) eliminates 2 variables from the resulting product term.
+
+Q30. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Grouping an 'Octet' of eight adjacent 1s in a K-map eliminates how many literals?
+     (A) 1 literal
+     (B) 2 literals
+     (C) 3 literals
+     (D) 4 literals
+     Answer: (C)
+     Explanation: An octet (8 cells = 2^3) eliminates 3 variables, producing a very concise term.
+
+Q31. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is a 'Don't Care' condition in Boolean logic (denoted by X or d)?
+     (A) An input combination that is corrupted
+     (B) An input combination that cannot occur physically or whose output result has no practical significance to the system
+     (C) An illegal binary number
+     (D) A ground wire
+     Answer: (B)
+     Explanation: Don't care combinations can be assumed as 1 or 0 in K-maps, whichever yields larger groupings and simpler logic.
+
+Q32. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     In K-Map minimization, should Don't Care (X) cells be grouped if they do not help enlarge groups of 1s?
+     (A) Yes, all X cells must always be grouped
+     (B) No, X cells should only be included if they help enlarge a group of 1s; otherwise they are left as 0
+     (C) X cells are never grouped
+     (D) X cells delete adjacent 1s
+     Answer: (B)
+     Explanation: Don't care cells are optional: include them only to form larger quads/octets to simplify equations.
+
+Q33. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is a Prime Implicant in K-map minimization?
+     (A) A group of minterms that cannot be combined with any other adjacent group to form a larger group
+     (B) A group containing prime numbers
+     (C) A single 1 cell
+     (D) A minterm covered twice
+     Answer: (A)
+     Explanation: A prime implicant represents a maximal rectangular grouping of 1s that cannot be enlarged.
+
+Q34. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is an Essential Prime Implicant (EPI)?
+     (A) A prime implicant that covers at least one minterm (1) that is NOT covered by any other prime implicant
+     (B) The first group found in the map
+     (C) An XOR gate
+     (D) A term with 4 variables
+     Answer: (A)
+     Explanation: Essential prime implicants MUST be included in the final minimal sum-of-products expression.
+
+Q35. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     Can the four corner cells of a 4-variable K-map (cells 0, 2, 8, 10) be grouped together as a quad?
+     (A) No, they are not touching
+     (B) Yes, because K-maps are logically toroidal (wrap around both horizontally and vertically)
+     (C) Only if don't cares are present
+     (D) Only in 5-variable maps
+     Answer: (B)
+     Explanation: K-maps wrap around edges: the 4 outer corners form a valid adjacent quad of 4 cells.
+
+Q36. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the simplified Boolean expression for F(A, B) = A'B + AB' + AB?
+     (A) A + B
+     (B) A * B
+     (C) A'B'
+     (D) 1
+     Answer: (A)
+     Explanation: A'B + AB' + AB = A'B + A(B' + B) = A'B + A = A + B (by Boolean absorption).
+
+Q37. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Simplify the expression: A + A'B:
+     (A) A + B
+     (B) A * B
+     (C) A'
+     (D) B
+     Answer: (A)
+     Explanation: A + A'B = (A + A')(A + B) = 1 * (A + B) = A + B.
+
+Q38. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is the dual of the Boolean expression: A * (B + C) = A*B + A*C?
+     (A) A + (B * C) = (A + B) * (A + C)
+     (B) A' * (B' + C') = A'*B'
+     (C) A + B + C = 0
+     (D) 1 * 0 = 0
+     Answer: (A)
+     Explanation: The principle of duality swaps AND with OR, and 0 with 1, yielding A + (B * C) = (A + B) * (A + C).
+
+Q39. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     In positive logic convention, Logic 1 represents _____ voltage and Logic 0 represents _____ voltage.
+     (A) Higher, Lower
+     (B) Lower, Higher
+     (C) Negative, Positive
+     (D) Zero, Infinite
+     Answer: (A)
+     Explanation: Positive logic maps the more positive (higher) potential to 1 and the more negative (lower) potential to 0.
+
+Q40. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What happens to gate functions when switching from Positive Logic to Negative Logic?
+     (A) AND becomes OR, and OR becomes AND (dual relationship)
+     (B) Gates stop working
+     (C) Outputs invert twice
+     (D) Circuits burn out
+     Answer: (A)
+     Explanation: By De Morgan's laws, an active-high positive-logic AND gate functions as an active-low negative-logic OR gate.
+
+Q41. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (HARD)
+     What is the Consensus Theorem in Boolean algebra: AB + A'C + BC = ?
+     (A) AB + A'C
+     (B) BC only
+     (C) A + B + C
+     (D) 1
+     Answer: (A)
+     Explanation: The consensus term BC is redundant because A and A' cover all possible conditions: AB + A'C + BC = AB + A'C.
+
+Q42. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the propagation delay of a logic gate?
+     (A) The time delay between applying an input signal and the resulting change in output voltage
+     (B) The wire resistance
+     (C) The clock frequency
+     (D) The power dissipation in milliwatts
+     Answer: (A)
+     Explanation: Propagation delay (tpd) measures gate switching speed, typically in nanoseconds (ns).
+
+Q43. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is Fan-Out of a logic gate?
+     (A) A cooling fan installed inside the IC
+     (B) The maximum number of standard logic inputs of the same family that the gate output can reliably drive without signal degradation
+     (C) The number of output pins
+     (D) The speed of the circuit
+     Answer: (B)
+     Explanation: Fan-out specifies load driving capability (e.g., a standard TTL NAND gate has a fan-out of 10).
+
+Q44. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is Fan-In of a logic gate?
+     (A) The number of input terminals available on the gate
+     (B) The air entering the chassis
+     (C) The power supply current
+     (D) The clock speed
+     Answer: (A)
+     Explanation: Fan-in designates the number of independent input signals a single gate can receive.
+
+Q45. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is Noise Margin in digital logic circuits?
+     (A) The maximum unwanted voltage noise that can be added to an input signal without causing an erroneous output state transition
+     (B) The sound of cooling fans
+     (C) Radio interference
+     (D) Power supply ripple
+     Answer: (A)
+     Explanation: Noise margin quantifies an IC family's immunity to electrical noise and voltage fluctuations.
+
+Q46. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     Which logic family has the lowest power consumption?
+     (A) TTL (Transistor-Transistor Logic)
+     (B) CMOS (Complementary Metal-Oxide-Semiconductor)
+     (C) ECL (Emitter-Coupled Logic)
+     (D) NMOS
+     Answer: (B)
+     Explanation: CMOS draws near-zero static power because complementary P-MOS and N-MOS transistors are never on simultaneously in steady state.
+
+Q47. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     Which logic family is the fastest, used in ultra-high-speed supercomputer applications?
+     (A) ECL (Emitter-Coupled Logic)
+     (B) CMOS
+     (C) TTL
+     (D) PMOS
+     Answer: (A)
+     Explanation: ECL operates transistors in non-saturated mode, eliminating storage time delays to achieve sub-nanosecond switching.
+
+Q48. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (EASY)
+     What is the typical supply voltage (Vcc) for standard 74-series TTL logic ICs?
+     (A) +5.0 Volts
+     (B) +12.0 Volts
+     (C) +1.8 Volts
+     (D) +24.0 Volts
+     Answer: (A)
+     Explanation: Standard 7400 TTL devices operate strictly on a regulated +5V ± 5% power supply.
+
+Q49. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (MEDIUM)
+     What is the Boolean function of an open input (floating pin) in standard TTL logic?
+     (A) Treated internally as Logic 1 (HIGH)
+     (B) Treated as Logic 0 (LOW)
+     (C) Causes immediate chip burnout
+     (D) Treated as clock pulse
+     Answer: (A)
+     Explanation: In bipolar TTL circuits, an unconnected floating input acts as an internal HIGH (Logic 1).
+
+Q50. [Unit 1: Boolean Algebra Basics, Logic Gates & K-Maps] (HARD)
+     What is the Quine-McCluskey (Tabular) method used for?
+     (A) Algorithmic minimization of Boolean functions with large numbers of variables (> 5 or 6) suitable for computer implementation
+     (B) Drawing K-maps
+     (C) Designing PCB tracks
+     (D) Testing resistor values
+     Answer: (A)
+     Explanation: The Quine-McCluskey method systematically tabulates prime implicants to minimize complex functions beyond human K-map limits.
+
+Q51. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the Base (Radix) of the Binary, Octal, Decimal, and Hexadecimal number systems respectively?
+     (A) 2, 8, 10, 16
+     (B) 1, 2, 8, 16
+     (C) 2, 4, 8, 16
+     (D) 10, 8, 16, 2
+     Answer: (A)
+     Explanation: The radix denotes unique digit symbols: Binary (2: 0,1), Octal (8: 0..7), Decimal (10: 0..9), Hexadecimal (16: 0..9, A..F).
+
+Q52. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the decimal equivalent of the binary number (1101)2?
+     (A) 11
+     (B) 12
+     (C) 13
+     (D) 14
+     Answer: (C)
+     Explanation: 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0 = 8 + 4 + 0 + 1 = 13.
+
+Q53. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the binary equivalent of the decimal number (25)10?
+     (A) (11001)2
+     (B) (10011)2
+     (C) (11100)2
+     (D) (10101)2
+     Answer: (A)
+     Explanation: 25 = 16 + 8 + 1 = 2^4 + 2^3 + 2^0 = (11001)2.
+
+Q54. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How many binary bits are required to represent one Octal digit?
+     (A) 2 bits
+     (B) 3 bits
+     (C) 4 bits
+     (D) 8 bits
+     Answer: (B)
+     Explanation: Since 2^3 = 8, each octal digit corresponds exactly to a 3-bit binary group (000 to 111).
+
+Q55. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How many binary bits are required to represent one Hexadecimal digit?
+     (A) 3 bits
+     (B) 4 bits (one nibble)
+     (C) 8 bits
+     (D) 16 bits
+     Answer: (B)
+     Explanation: Since 2^4 = 16, each hex digit maps to a 4-bit binary group (0000 to 1111).
+
+Q56. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     Convert the binary number (10110111)2 to Hexadecimal:
+     (A) (B7)16
+     (B) (A7)16
+     (C) (C7)16
+     (D) (B3)16
+     Answer: (A)
+     Explanation: Group into 4-bit nibbles from right: 1011 = B (11), 0111 = 7. Result = (B7)16.
+
+Q57. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     In hexadecimal, what decimal value does the letter 'F' represent?
+     (A) 10
+     (B) 12
+     (C) 14
+     (D) 15
+     Answer: (D)
+     Explanation: In hex: A=10, B=11, C=12, D=13, E=14, F=15.
+
+Q58. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How is the 1's complement of a binary number obtained?
+     (A) By adding 1 to the number
+     (B) By inverting every bit (replacing 0 with 1, and 1 with 0)
+     (C) By shifting bits left
+     (D) By multiplying by 2
+     Answer: (B)
+     Explanation: The 1's complement is obtained by bitwise inversion of all binary digits.
+
+Q59. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How is the 2's complement of a binary number calculated?
+     (A) 1's complement minus 1
+     (B) 1's complement plus 1 (or inverting bits and adding 1 to LSB)
+     (C) Bitwise AND with 1
+     (D) Reversing the bit string
+     Answer: (B)
+     Explanation: 2's Complement = 1's Complement + 1.
+
+Q60. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the 2's complement of the 4-bit binary number 0110 (decimal +6)?
+     (A) 1001
+     (B) 1010
+     (C) 1100
+     (D) 0111
+     Answer: (B)
+     Explanation: 1's complement of 0110 = 1001. Adding 1: 1001 + 1 = 1010 (representing -6 in 2's complement).
+
+Q61. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     Why is 2's complement universally preferred in digital computer arithmetic over 1's complement?
+     (A) It eliminates the ambiguity of having two representations for zero (+0 and -0) and simplifies adder hardware
+     (B) It uses fewer bits
+     (C) It is compatible with octal numbers
+     (D) It prevents memory leaks
+     Answer: (A)
+     Explanation: 2's complement has a unique zero (0000) and allows subtraction to be performed directly using existing adder circuits.
+
+Q62. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is the range of signed integers that can be represented using N bits in 2's complement notation?
+     (A) -2^(N-1) to +(2^(N-1) - 1)
+     (B) -(2^(N-1) - 1) to +(2^(N-1) - 1)
+     (C) 0 to 2^N - 1
+     (D) -2^N to +2^N
+     Answer: (A)
+     Explanation: An 8-bit signed integer in 2's complement represents numbers from -2^7 (-128) to +2^7 - 1 (+127).
+
+Q63. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     In an 8-bit signed 2's complement system, what does the Most Significant Bit (MSB = 1) indicate?
+     (A) The number is Positive
+     (B) The number is Negative
+     (C) The number is an Overflow error
+     (D) The number is zero
+     Answer: (B)
+     Explanation: The sign bit (MSB) is 0 for positive numbers and 1 for negative numbers.
+
+Q64. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What does BCD stand for in digital electronics?
+     (A) Binary Coded Decimal
+     (B) Basic Computer Data
+     (C) Bitwise Control Device
+     (D) Binary Coded Divider
+     Answer: (A)
+     Explanation: BCD (specifically natural BCD or 8421 code) encodes each decimal digit (0-9) as a separate 4-bit binary nibble.
+
+Q65. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How is the decimal number (49)10 represented in standard 8421 BCD?
+     (A) (0100 1001)BCD
+     (B) (110001)BCD
+     (C) (0010 0101)BCD
+     (D) (1001 0100)BCD
+     Answer: (A)
+     Explanation: 4 = 0100, 9 = 1001. Concatenating yields (0100 1001)BCD.
+
+Q66. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     How many invalid states exist in 4-bit BCD code?
+     (A) 4 invalid states
+     (B) 6 invalid states (1010 through 1111)
+     (C) 8 invalid states
+     (D) Zero invalid states
+     Answer: (B)
+     Explanation: A 4-bit nibble has 16 states (0-15); BCD uses only 0-9 (10 states). The 6 states from 10 (1010) to 15 (1111) are invalid.
+
+Q67. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     When adding two BCD numbers, if the sum produces an invalid BCD result (> 9) or a carry, what correction is applied?
+     (A) Subtract 6 (0110)
+     (B) Add 6 (0110) to that nibble
+     (C) Add 1 (0001)
+     (D) Invert all bits
+     Answer: (B)
+     Explanation: Adding 6 (0110) skips the 6 invalid states, generating the proper BCD carry to the next digit.
+
+Q68. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is a Gray Code (Unit-Distance Code)?
+     (A) A weighted numeric code
+     (B) An unweighted non-arithmetic code where successive numbers differ by only ONE single bit change
+     (C) An ASCII character code
+     (D) A compressed code
+     Answer: (B)
+     Explanation: Gray code ensures single-bit transitions between consecutive values, preventing spurious glitches in rotary optical encoders.
+
+Q69. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     How is a Binary number converted to Gray Code?
+     (A) MSB remains unchanged; each subsequent Gray bit is obtained by XORing adjacent binary bits: G[i] = B[i] ⊕ B[i+1]
+     (B) Add 3 to each digit
+     (C) Invert all bits
+     (D) Multiply by 2
+     Answer: (A)
+     Explanation: Gray MSB = Binary MSB. For other bits, G_i = B_i ⊕ B_{i-1}.
+
+Q70. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     Convert the binary number 1011 to Gray Code:
+     (A) 1110
+     (B) 1101
+     (C) 1001
+     (D) 1111
+     Answer: (A)
+     Explanation: G3 = 1. G2 = 1 ⊕ 0 = 1. G1 = 0 ⊕ 1 = 1. G0 = 1 ⊕ 1 = 0. Result = 1110.
+
+Q71. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     Convert Gray Code 1110 back to Binary:
+     (A) 1011
+     (B) 1101
+     (C) 1001
+     (D) 1111
+     Answer: (A)
+     Explanation: B3 = 1. B2 = 1 ⊕ 1 = 0. B1 = 0 ⊕ 1 = 1. B0 = 1 ⊕ 0 = 1. Result = 1011.
+
+Q72. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is an Excess-3 Code (XS-3)?
+     (A) An unweighted code derived by adding 3 (0011) to each BCD digit
+     (B) Adding 3 bits to memory
+     (C) Multiplying BCD by 3
+     (D) A 3-variable code
+     Answer: (A)
+     Explanation: Excess-3 adds 3 (0011) to the natural 8421 BCD code of each decimal digit.
+
+Q73. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     Why is Excess-3 Code described as 'Self-Complementing'?
+     (A) The 1's complement of an Excess-3 code word directly produces the Excess-3 code of the 9's complement of the decimal digit
+     (B) It complements itself automatically
+     (C) It is symmetric around zero
+     (D) It contains equal 1s and 0s
+     Answer: (A)
+     Explanation: Self-complementing codes simplify subtraction in arithmetic logic units.
+
+Q74. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is ASCII code?
+     (A) American Standard Code for Information Interchange (7-bit alphanumeric code representing 128 characters)
+     (B) Automated Serial Interface
+     (C) A binary encryption code
+     (D) A 16-bit sound codec
+     Answer: (A)
+     Explanation: ASCII is standard 7-bit character encoding representing letters, numbers, punctuation, and control codes.
+
+Q75. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How many unique characters can standard 7-bit ASCII represent?
+     (A) 64
+     (B) 128
+     (C) 256
+     (D) 512
+     Answer: (B)
+     Explanation: 7 bits can encode 2^7 = 128 distinct characters.
+
+Q76. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is Extended ASCII?
+     (A) An 8-bit character code capable of encoding 256 unique symbols
+     (B) A 32-bit Unicode
+     (C) A military secret code
+     (D) A graphic font
+     Answer: (A)
+     Explanation: Extended ASCII uses 8 bits (2^8 = 256 characters) to include European accented letters and symbols.
+
+Q77. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is a Parity Bit in digital data transmission?
+     (A) An extra bit appended to a binary data word to make the total number of 1s always even (Even Parity) or odd (Odd Parity)
+     (B) A bit that speeds up transmission
+     (C) The sign bit
+     (D) A clock pulse
+     Answer: (A)
+     Explanation: Parity bits detect single-bit errors introduced during communication transmission.
+
+Q78. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     If a system uses EVEN PARITY, what parity bit is appended to the 7-bit data word 1010110?
+     (A) 1
+     (B) 0
+     (C) Either 1 or 0
+     (D) Cannot be determined
+     Answer: (A)
+     Explanation: The data word has four 1s (already even). To keep total 1s even, the parity bit is 0... wait: 1+0+1+0+1+1+0 = four 1s. To keep it even, parity bit is 0. If it had three 1s, it would be 1.
+
+Q79. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     Can a single parity bit detect two simultaneous bit errors in a word?
+     (A) Yes, always
+     (B) No, an even number of bit errors cancels the parity check, leaving the error undetected
+     (C) Only in odd parity
+     (D) Parity never fails
+     Answer: (B)
+     Explanation: Simple parity can only detect odd numbers of bit flips; it fails when an even number of bits error.
+
+Q80. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     Who invented the Error-Detecting and Error-Correcting Code in 1950?
+     (A) Richard W. Hamming (Hamming Code)
+     (B) Claude Shannon
+     (C) Alan Turing
+     (D) George Boole
+     Answer: (A)
+     Explanation: Richard Hamming developed Hamming codes capable of single-bit error correction and double-bit detection (SEC-DED).
+
+Q81. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is Hamming Distance between two binary code words of equal length?
+     (A) The number of bit positions in which the corresponding bits differ
+     (B) The physical length of wire between servers
+     (C) The transmission baud rate
+     (D) The sum of all bits
+     Answer: (A)
+     Explanation: Hamming distance measures differences: e.g., distance between 10101 and 10011 is 2 (at positions 3 and 4).
+
+Q82. [Unit 2: Number Systems, Binary Codes & Error Detection] (HARD)
+     To detect d single-bit errors, the minimum Hamming distance of the code must be at least:
+     (A) d
+     (B) d + 1
+     (C) 2d + 1
+     (D) 2d
+     Answer: (B)
+     Explanation: A code with minimum distance d_min >= d + 1 guarantees detection of up to d errors.
+
+Q83. [Unit 2: Number Systems, Binary Codes & Error Detection] (HARD)
+     To correct t single-bit errors, the minimum Hamming distance must be at least:
+     (A) t + 1
+     (B) 2t + 1
+     (C) 2t
+     (D) t^2
+     Answer: (B)
+     Explanation: To correct t errors, spheres of radius t around code words must not overlap: d_min >= 2t + 1.
+
+Q84. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     In 2's complement arithmetic, how is Arithmetic Overflow detected when adding two signed numbers?
+     (A) If two positive numbers produce a negative sum, or two negative numbers produce a positive sum
+     (B) If the result is zero
+     (C) If carry into MSB is 0
+     (D) Whenever addition occurs
+     Answer: (A)
+     Explanation: Overflow occurs when the sign of the result contradicts the signs of two identical-sign operands.
+
+Q85. [Unit 2: Number Systems, Binary Codes & Error Detection] (HARD)
+     In 2's complement hardware, overflow is detected by:
+     (A) XORing the carry-in to the sign bit with the carry-out from the sign bit: V = C_in ⊕ C_out
+     (B) ANDing all carries
+     (C) Adding all bits
+     (D) Ignoring carry
+     Answer: (A)
+     Explanation: When C_in != C_out at the MSB stage, the XOR gate outputs 1, signaling arithmetic overflow.
+
+Q86. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the decimal value of the binary fraction (0.101)2?
+     (A) 0.5
+     (B) 0.625
+     (C) 0.75
+     (D) 0.375
+     Answer: (B)
+     Explanation: 1*(2^-1) + 0*(2^-2) + 1*(2^-3) = 0.5 + 0 + 0.125 = 0.625.
+
+Q87. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is the binary equivalent of the decimal fraction (0.6875)10?
+     (A) (0.1011)2
+     (B) (0.1101)2
+     (C) (0.0111)2
+     (D) (0.1110)2
+     Answer: (A)
+     Explanation: 0.6875 * 2 = 1.375 (1); 0.375 * 2 = 0.75 (0); 0.75 * 2 = 1.5 (1); 0.5 * 2 = 1.0 (1) -> (0.1011)2.
+
+Q88. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the 9's complement of the decimal number 346?
+     (A) 653
+     (B) 654
+     (C) 700
+     (D) 555
+     Answer: (A)
+     Explanation: 999 - 346 = 653.
+
+Q89. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the 10's complement of the decimal number 346?
+     (A) 653
+     (B) 654
+     (C) 655
+     (D) 700
+     Answer: (B)
+     Explanation: 10's Complement = 9's Complement + 1 = 653 + 1 = 654.
+
+Q90. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is the 7's complement of the octal number (562)8?
+     (A) (215)8
+     (B) (216)8
+     (C) (777)8
+     (D) (123)8
+     Answer: (A)
+     Explanation: 777 - 562 = (215)8.
+
+Q91. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is the 15's complement of the hex number (2B7)16?
+     (A) (D48)16
+     (B) (D49)16
+     (C) (FFF)16
+     (D) (C48)16
+     Answer: (A)
+     Explanation: FFF - 2B7: (15-2=D), (15-11=4), (15-7=8) -> (D48)16.
+
+Q92. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is Unicode?
+     (A) A universal character encoding standard (like UTF-8, UTF-16) designed to represent text in all written world languages
+     (B) An optical scanner
+     (C) A font style in Word
+     (D) A microprocessor
+     Answer: (A)
+     Explanation: Unicode supports over 140,000 characters covering every human script and emoji set.
+
+Q93. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is a Nibble in computer memory?
+     (A) A group of 4 binary bits (half a byte)
+     (B) 8 bits
+     (C) 16 bits
+     (D) 32 bits
+     Answer: (A)
+     Explanation: A nibble consists of 4 bits, exactly corresponding to one hexadecimal digit.
+
+Q94. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is a Byte?
+     (A) A group of 8 binary bits
+     (B) 4 bits
+     (C) 16 bits
+     (D) 1024 bits
+     Answer: (A)
+     Explanation: A byte is the fundamental addressable storage unit of 8 bits.
+
+Q95. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     How many bytes are in a Kilobyte (KB) in standard binary computing (IEC standard)?
+     (A) 1000 bytes
+     (B) 1024 bytes (2^10)
+     (C) 1048576 bytes
+     (D) 512 bytes
+     Answer: (B)
+     Explanation: In binary computing, 1 KB = 2^10 = 1024 bytes.
+
+Q96. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     In unsigned binary, what is the maximum decimal number representable with 8 bits?
+     (A) 127
+     (B) 128
+     (C) 255
+     (D) 256
+     Answer: (C)
+     Explanation: 2^8 - 1 = 256 - 1 = 255 (binary 11111111).
+
+Q97. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     What is the result of binary addition: 1 + 1 + 1?
+     (A) Sum = 1, Carry = 1 (binary 11 = decimal 3)
+     (B) Sum = 0, Carry = 1
+     (C) Sum = 1, Carry = 0
+     (D) Sum = 3, Carry = 0
+     Answer: (A)
+     Explanation: 1 + 1 + 1 = 3 in decimal, which is binary 11 (Sum = 1, Carry = 1).
+
+Q98. [Unit 2: Number Systems, Binary Codes & Error Detection] (MEDIUM)
+     What is the result of binary subtraction: 0 - 1 with a borrow of 1?
+     (A) 1 with Borrow 1
+     (B) 0 with Borrow 0
+     (C) 1 with Borrow 0
+     (D) 0 with Borrow 1
+     Answer: (A)
+     Explanation: 0 - 1 in binary requires borrowing 1 from the next higher position (value 2), leaving Difference = 1 and Borrow = 1.
+
+Q99. [Unit 2: Number Systems, Binary Codes & Error Detection] (HARD)
+     Which weighted code uses weights 2, 4, 2, 1 and is self-complementing?
+     (A) 2421 Code (Aiken Code)
+     (B) 8421 BCD
+     (C) Excess-3
+     (D) Gray code
+     Answer: (A)
+     Explanation: The 2421 code assigns weights 2,4,2,1 whose sum is 9, making it a self-complementing weighted code.
+
+Q100. [Unit 2: Number Systems, Binary Codes & Error Detection] (EASY)
+     Which of the following binary codes is UNWEIGHTED (digits do not possess positional positional values)?
+     (A) 8421 BCD
+     (B) Excess-3 Code and Gray Code
+     (C) 2421 Code
+     (D) Binary number system
+     Answer: (B)
+     Explanation: Neither Excess-3 nor Gray code assigns fixed positional mathematical weights to bit positions.
+
+Q101. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Combinational Logic Circuit?
+     (A) A circuit whose output at any instant depends only on the present input combination (without memory)
+     (B) A circuit with internal memory flip-flops
+     (C) A circuit that depends on past clock pulses
+     (D) An analog amplifier
+     Answer: (A)
+     Explanation: Combinational circuits have no memory or feedback loops; output is strictly a function of current inputs.
+
+Q102. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What are the Boolean equations for the Sum (S) and Carry (C) of a Half Adder?
+     (A) S = A ⊕ B, C = A * B
+     (B) S = A + B, C = A ⊕ B
+     (C) S = A * B, C = A + B
+     (D) S = (A ⊕ B)', C = A'B
+     Answer: (A)
+     Explanation: A half adder adds two single bits: Sum S = A ⊕ B (XOR), and Carry C = AB (AND).
+
+Q103. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many basic logic gates are needed to construct a minimal Half Adder?
+     (A) One XOR gate and one AND gate
+     (B) Two OR gates
+     (C) Three NOT gates
+     (D) Four NAND gates
+     Answer: (A)
+     Explanation: A minimal half adder consists of 1 XOR gate (for Sum) and 1 AND gate (for Carry).
+
+Q104. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     How many 2-input NAND gates are required to construct a Half Adder?
+     (A) 3
+     (B) 4
+     (C) 5
+     (D) 6
+     Answer: (C)
+     Explanation: Five 2-input NAND gates can implement both the Sum (4 NANDs) and Carry outputs.
+
+Q105. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Full Adder?
+     (A) An adder that adds two numbers of 8 bits each
+     (B) A combinational circuit that adds three single binary bits (two input bits A, B and a Carry-in Cin)
+     (C) A circuit that subtracts numbers
+     (D) A sequential circuit with clock
+     Answer: (B)
+     Explanation: A full adder computes the arithmetic sum of three 1-bit inputs: A, B, and Cin.
+
+Q106. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What are the Boolean equations for the Sum (S) and Carry-out (Cout) of a Full Adder?
+     (A) S = A ⊕ B ⊕ Cin, Cout = AB + Cin(A ⊕ B)
+     (B) S = A + B + Cin, Cout = ABCin
+     (C) S = AB + Cin, Cout = A ⊕ B ⊕ Cin
+     (D) S = A'B'Cin, Cout = A + B
+     Answer: (A)
+     Explanation: Sum is the 3-input XOR parity: S = A ⊕ B ⊕ Cin; Carry-out Cout = AB + BCin + ACin = AB + Cin(A ⊕ B).
+
+Q107. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many Half Adders and OR gates are required to construct a single Full Adder?
+     (A) Two Half Adders and one OR gate
+     (B) Three Half Adders and two OR gates
+     (C) One Half Adder and two OR gates
+     (D) Four Half Adders
+     Answer: (A)
+     Explanation: A full adder is constructed using two half adders and one OR gate (to combine their carries).
+
+Q108. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     How many 2-input NAND gates are required to construct a Full Adder?
+     (A) 7
+     (B) 8
+     (C) 9
+     (D) 10
+     Answer: (C)
+     Explanation: Nine 2-input NAND gates are required to build a complete full adder.
+
+Q109. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What are the Boolean equations for the Difference (D) and Borrow (B) of a Half Subtractor?
+     (A) D = A ⊕ B, B = A' * B
+     (B) D = A * B, B = A ⊕ B
+     (C) D = A + B, B = AB'
+     (D) D = A ⊕ B, B = AB
+     Answer: (A)
+     Explanation: For inputs A (minuend) and B (subtrahend): Difference D = A ⊕ B, Borrow B = A'B.
+
+Q110. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Parallel Binary Adder (Ripple Carry Adder)?
+     (A) A circuit that adds multi-bit numbers by chaining N Full Adders, with the carry rippling from LSB to MSB
+     (B) An adder that uses only software
+     (C) A single-bit adder
+     (D) An adder without carries
+     Answer: (A)
+     Explanation: An N-bit ripple carry adder connects N full adders in cascade, where Cout of each stage becomes Cin of the next.
+
+Q111. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What is the primary speed limitation of an N-bit Ripple Carry Adder?
+     (A) Large silicon area
+     (B) Carry propagation delay: higher-order bit stages must wait for carries to ripple through all lower stages
+     (C) High static power
+     (D) Memory overflow
+     Answer: (B)
+     Explanation: The carry propagation delay scales linearly with N: t_total = N * t_carry, limiting high-speed arithmetic.
+
+Q112. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     Which advanced adder circuit overcomes carry propagation delay by computing all carries in parallel in constant time?
+     (A) Carry Look-Ahead Adder (CLA)
+     (B) Serial Adder
+     (C) Half Adder
+     (D) BCD Adder
+     Answer: (A)
+     Explanation: Carry Look-Ahead adders calculate generate (Gi = AiBi) and propagate (Pi = Ai ⊕ Bi) signals to compute carries in O(1) gate delays.
+
+Q113. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Which standard TTL IC is a popular 4-bit parallel binary full adder with lookahead carry?
+     (A) IC 7400
+     (B) IC 7483 / 74283
+     (C) IC 74138
+     (D) IC 74151
+     Answer: (B)
+     Explanation: The 7483 (or 74LS283) is a standard 4-bit binary full adder IC with fast internal lookahead carry.
+
+Q114. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     How can a 4-bit parallel binary adder be converted into an Adder-Subtractor circuit?
+     (A) By placing inverters on all inputs
+     (B) By XORing each B input with a Mode control bit (M) and connecting M to the initial carry-in (Cin)
+     (C) By using 4 half adders
+     (D) By doubling the clock frequency
+     Answer: (B)
+     Explanation: When M=0, XOR leaves B unchanged and Cin=0 (Addition: A + B). When M=1, XOR inverts B (1's complement) and Cin=1, producing 2's complement subtraction: A + B' + 1 = A - B.
+
+Q115. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Multiplexer (MUX / Data Selector)?
+     (A) A circuit that converts analog to digital
+     (B) A combinational circuit that selects binary information from one of 2^n input lines and directs it to a single output line based on n select lines
+     (C) A circuit with one input and many outputs
+     (D) A memory chip
+     Answer: (B)
+     Explanation: A MUX has 2^n data inputs, n selection lines, and 1 output, acting as a digitally controlled rotary switch.
+
+Q116. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many SELECT (control) lines are required for an 8-to-1 Multiplexer (8:1 MUX)?
+     (A) 2
+     (B) 3
+     (C) 4
+     (D) 8
+     Answer: (B)
+     Explanation: Since 2^n = 8 inputs, n = log2(8) = 3 select lines are required.
+
+Q117. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many select lines are required for a 16:1 Multiplexer?
+     (A) 2
+     (B) 3
+     (C) 4
+     (D) 16
+     Answer: (C)
+     Explanation: 2^n = 16 implies n = log2(16) = 4 select lines.
+
+Q118. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     Why is a Multiplexer described as a 'Universal Function Generator'?
+     (A) It can synthesize ANY Boolean function of n+1 variables using an 2^n:1 MUX without external logic gates
+     (B) It can generate clock pulses
+     (C) It produces sine waves
+     (D) It stores files
+     Answer: (A)
+     Explanation: Connecting n variables to select lines and connecting the remaining variable (or 0/1) to data inputs implements any truth table directly.
+
+Q119. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a De-multiplexer (DEMUX / Data Distributor)?
+     (A) A circuit that takes data from a single input line and routes it to one of 2^n output lines based on n select lines
+     (B) A circuit that adds numbers
+     (C) A priority encoder
+     (D) A parallel adder
+     Answer: (A)
+     Explanation: A DEMUX is the exact reverse of a MUX: 1 data input is steered to one of 2^n outputs using n select lines.
+
+Q120. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What is the structural equivalence between a Decoder with an Enable input and a De-multiplexer?
+     (A) They are completely unrelated
+     (B) A 1-to-2^n DEMUX is functionally identical to an n-to-2^n Decoder where the data input serves as the Enable line
+     (C) A decoder is sequential; a DEMUX is analog
+     (D) A DEMUX has no select lines
+     Answer: (B)
+     Explanation: When the data input of a 1:2^n DEMUX is connected to the active-low/high Enable pin of an n:2^n decoder, their logic is identical.
+
+Q121. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Binary Decoder (n-to-2^n Decoder)?
+     (A) A combinational circuit that converts an n-bit binary code into at most 2^n unique output lines (activating one line per input code)
+     (B) A circuit that encrypts passwords
+     (C) A sequential counter
+     (D) A digital-to-analog converter
+     Answer: (A)
+     Explanation: A decoder identifies which binary input pattern is present, asserting the corresponding minterm output line.
+
+Q122. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many output lines does a 3-to-8 Decoder (e.g., IC 74138) possess?
+     (A) 3
+     (B) 6
+     (C) 8
+     (D) 16
+     Answer: (C)
+     Explanation: 3 input lines decode into 2^3 = 8 individual output lines (Y0 through Y7).
+
+Q123. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Which popular 74-series TTL IC is a 3-to-8 Line Decoder / De-multiplexer with active-LOW outputs?
+     (A) IC 7404
+     (B) IC 74138
+     (C) IC 74153
+     (D) IC 7474
+     Answer: (B)
+     Explanation: The 74LS138 is a widely used 3:8 decoder with three enable inputs, ideal for memory address decoding.
+
+Q124. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a BCD-to-7-Segment Decoder (e.g., IC 7447)?
+     (A) A decoder that takes a 4-bit BCD input and activates appropriate segments (a,b,c,d,e,f,g) to display decimal digits 0-9 on a 7-segment LED display
+     (B) An audio speaker driver
+     (C) A binary multiplier
+     (D) A serial bus interface
+     Answer: (A)
+     Explanation: It decodes 4-bit BCD into illumination patterns for standard 7-segment numeric LED/LCD readouts.
+
+Q125. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     In a Common Anode 7-segment display, the segments are illuminated by applying:
+     (A) Logic 1 (HIGH, +5V)
+     (B) Logic 0 (LOW, Ground / Active-LOW driving)
+     (C) AC voltage
+     (D) Disconnecting the pin
+     Answer: (B)
+     Explanation: Common anode ties all LED anodes to +Vcc; applying Logic 0 (Ground) turns a segment on (used by 7447).
+
+Q126. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     In a Common Cathode 7-segment display, segments are illuminated by applying:
+     (A) Logic 1 (HIGH, Active-HIGH driving via IC 7448)
+     (B) Logic 0 (LOW)
+     (C) Negative voltage
+     (D) A magnetic field
+     Answer: (A)
+     Explanation: Common cathode ties all cathodes to ground; applying Logic 1 (+V) illuminates the LED segments.
+
+Q127. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is an Encoder?
+     (A) A combinational circuit that performs the inverse operation of a decoder, converting an active input line among 2^n inputs into an n-bit binary code
+     (B) A video camera
+     (C) A circuit that adds binary numbers
+     (D) A memory latch
+     Answer: (A)
+     Explanation: An encoder takes 2^n (or fewer) input signals and generates an n-bit binary code representing which input is active.
+
+Q128. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     How many input and output lines does a Decimal-to-BCD Encoder possess?
+     (A) 10 input lines (0-9) and 4 output lines (BCD)
+     (B) 4 inputs and 10 outputs
+     (C) 8 inputs and 3 outputs
+     (D) 16 inputs and 4 outputs
+     Answer: (A)
+     Explanation: It translates 10 decimal key presses (e.g., on a numeric keypad) into 4-bit BCD code.
+
+Q129. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Priority Encoder?
+     (A) An encoder where if two or more inputs are active simultaneously, the output code reflects the input having the highest assigned priority
+     (B) An encoder that costs more
+     (C) A sequential counter
+     (D) A circuit with no clock
+     Answer: (A)
+     Explanation: Priority encoders resolve multiple simultaneous input activations (e.g., interrupt requests) by prioritizing highest-ranked pins.
+
+Q130. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     Which TTL IC is an 8-input Priority Encoder (producing a 3-bit binary code for the highest-order active input)?
+     (A) IC 74148
+     (B) IC 7400
+     (C) IC 7408
+     (D) IC 7432
+     Answer: (A)
+     Explanation: The 74LS148 is an 8-to-3 line priority encoder with active-low inputs and outputs.
+
+Q131. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Digital Comparator (Magnitude Comparator)?
+     (A) A combinational circuit that compares two binary numbers (A and B) and produces outputs indicating whether A > B, A = B, or A < B
+     (B) A voltage amplifier
+     (C) A digital clock
+     (D) A flip-flop circuit
+     Answer: (A)
+     Explanation: Magnitude comparators evaluate binary words bit-by-bit to determine numerical equality and magnitude inequality.
+
+Q132. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Which TTL IC is a popular 4-bit Magnitude Comparator?
+     (A) IC 7485
+     (B) IC 7400
+     (C) IC 7474
+     (D) IC 74138
+     Answer: (A)
+     Explanation: The 74LS85 compares two 4-bit words (A3..A0 and B3..B0) and provides cascading inputs for expansion.
+
+Q133. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is the Boolean expression for checking if two 1-bit inputs A and B are EQUAL (A = B)?
+     (A) A ⊕ B
+     (B) (A ⊕ B)' = AB + A'B' (XNOR)
+     (C) A * B
+     (D) A + B
+     Answer: (B)
+     Explanation: The XNOR gate outputs 1 exclusively when both inputs are equal (00 or 11).
+
+Q134. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What is a Parity Generator and Checker circuit?
+     (A) A circuit built from cascading XOR gates to create and verify parity bits for error detection in transmitted data words
+     (B) A power supply regulator
+     (C) A clock generator
+     (D) A digital memory cell
+     Answer: (A)
+     Explanation: XOR gates compute modulo-2 sum (odd parity indicator), making them ideal for parity generation and verification.
+
+Q135. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     Which TTL IC is an 8-bit Odd/Even Parity Generator / Checker?
+     (A) IC 74180
+     (B) IC 7404
+     (C) IC 7432
+     (D) IC 7486
+     Answer: (A)
+     Explanation: The 74180 accepts 8 data bits plus an odd/even control input to generate or check parity.
+
+Q136. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     How many 4:1 Multiplexers are needed to construct an 8:1 Multiplexer?
+     (A) Two 4:1 MUX and one 2:1 MUX (or an OR gate with inverters)
+     (B) Four 4:1 MUX
+     (C) Three 4:1 MUX
+     (D) One MUX only
+     Answer: (A)
+     Explanation: Two 4:1 MUX handle the lower 2 select bits, and a 2:1 MUX selects between their outputs using the MSB select bit.
+
+Q137. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     How many 3:8 Decoders are needed to construct a 4:16 Decoder?
+     (A) Two 3:8 decoders and one inverter (using the 4th bit to enable one decoder at a time)
+     (B) Four 3:8 decoders
+     (C) Three 3:8 decoders
+     (D) One 3:8 decoder
+     Answer: (A)
+     Explanation: The MSB (A3) enables the first decoder when A3=0, and enables the second decoder when A3=1 via an inverter.
+
+Q138. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What is a Binary Multiplier?
+     (A) A combinational circuit that multiplies two binary numbers using arrays of AND gates (for partial products) and Full Adders (for summation)
+     (B) An amplifier
+     (C) A counter
+     (D) A frequency clock
+     Answer: (A)
+     Explanation: Binary multiplication mimics paper math: bit-level AND produces partial products, added via carry-save adder arrays.
+
+Q139. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Multiplying a binary number by 2 (e.g., 0011 * 2 = 0110) corresponds in hardware to:
+     (A) A 1-bit arithmetic left shift
+     (B) A 1-bit right shift
+     (C) Inverting all bits
+     (D) Adding 1
+     Answer: (A)
+     Explanation: Shifting binary digits left by 1 position doubles the number's magnitude (multiplies by 2).
+
+Q140. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Dividing an unsigned binary integer by 2 corresponds in hardware to:
+     (A) A 1-bit logical right shift
+     (B) A 1-bit left shift
+     (C) Complementing the bits
+     (D) Zero operation
+     Answer: (A)
+     Explanation: Shifting bits right by 1 position halves the numerical value (integer division by 2).
+
+Q141. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     What is a Tri-State Buffer (Three-State Buffer)?
+     (A) A digital buffer with three output states: Logic HIGH (1), Logic LOW (0), and High-Impedance (Hi-Z / disconnected)
+     (B) A buffer with three inputs
+     (C) A buffer with analog voltage
+     (D) A broken wire
+     Answer: (A)
+     Explanation: The Hi-Z state electrically disconnects the output, allowing multiple ICs to share a common bus wire without conflicts.
+
+Q142. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     Why are Tri-State outputs essential in microprocessor and memory bus design?
+     (A) They allow multiple chips to connect to the same shared address/data bus lines without short-circuiting each other
+     (B) They speed up electrons
+     (C) They eliminate power supplies
+     (D) They cool down the CPU
+     Answer: (A)
+     Explanation: By enabling only one device's tri-state driver at a time (leaving all others in Hi-Z), bus contention is eliminated.
+
+Q143. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is a Code Converter in digital electronics?
+     (A) A combinational circuit that translates input data represented in one code (e.g., BCD) into an equivalent representation in another code (e.g., Binary or Gray)
+     (B) A compiler program
+     (C) A language translator
+     (D) A network modem
+     Answer: (A)
+     Explanation: Code converters re-map bit patterns between differing representations using combinational logic gates.
+
+Q144. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     In designing a BCD Adder, what detection logic identifies sums greater than 9?
+     (A) Cout + S3*S2 + S3*S1
+     (B) S3 * S0
+     (C) S2 + S1
+     (D) S0 only
+     Answer: (A)
+     Explanation: In a 4-bit sum S3..S0, values 10-15 satisfy S3*S2 (12-15) or S3*S1 (10,11,14,15), or final carry Cout: F = Cout + S3S2 + S3S1.
+
+Q145. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     What is an Arithmetic Logic Unit (ALU)?
+     (A) The central digital combinational/sequential block inside a CPU that executes arithmetic (+, -, *) and logical (AND, OR, XOR) operations
+     (B) A display screen
+     (C) A hard disk controller
+     (D) A RAM chip
+     Answer: (A)
+     Explanation: The ALU performs all basic math and logic operations directed by micro-operation instruction opcodes.
+
+Q146. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     Which TTL IC is a classical 4-bit Arithmetic Logic Unit capable of performing 16 arithmetic and 16 logic operations?
+     (A) IC 74181
+     (B) IC 7400
+     (C) IC 7474
+     (D) IC 74138
+     Answer: (A)
+     Explanation: The 74181 was the first complete 4-bit ALU on a single chip, forming the core of historic minicomputer CPUs.
+
+Q147. [Unit 3: Arithmetic & Combinational Circuits] (MEDIUM)
+     In combinational circuits, what is a Hazard (Glitch)?
+     (A) A temporary unwanted pulse or spike appearing at the output due to unequal propagation delays along converging signal paths
+     (B) A fire in the circuit
+     (C) A broken power supply
+     (D) A software bug
+     Answer: (A)
+     Explanation: Unequal gate delays can cause a momentary glitch (static or dynamic hazard) before the circuit settles to steady state.
+
+Q148. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     What is a Static 1-Hazard?
+     (A) An output momentarily drops to 0 when it was supposed to remain steady at 1 during an input transition
+     (B) An output that is always 1
+     (C) A high voltage spike
+     (D) A permanent short circuit
+     Answer: (A)
+     Explanation: Static 1-hazards occur when adjacent 1s in a K-map are covered by separate prime implicants without an overlapping consensus term.
+
+Q149. [Unit 3: Arithmetic & Combinational Circuits] (HARD)
+     How can Static 1-Hazards be eliminated in combinational logic design?
+     (A) By adding redundant prime implicants (consensus terms) that bridge adjacent 1s across group boundaries
+     (B) By removing gates
+     (C) By lowering clock frequency
+     (D) By using only inverters
+     Answer: (A)
+     Explanation: Adding consensus terms covers the boundary transition, ensuring the output never drops to 0 during input switching.
+
+Q150. [Unit 3: Arithmetic & Combinational Circuits] (EASY)
+     Can a combinational circuit store information or remember past inputs?
+     (A) No, combinational circuits have zero memory; output is strictly dependent on current inputs
+     (B) Yes, using internal registers
+     (C) Yes, if capacitors are large
+     (D) Only when clocked
+     Answer: (A)
+     Explanation: Absence of feedback loops means combinational circuits cannot store history or retain states.
+
+Q151. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Sequential Logic Circuit?
+     (A) A circuit whose output depends only on present inputs
+     (B) A digital circuit whose output at any instant depends on both present inputs AND the past history (stored internal state) of the system
+     (C) A circuit that sorts numbers sequentially
+     (D) An analog oscillator
+     Answer: (B)
+     Explanation: Sequential circuits incorporate memory elements (latches/flip-flops) and feedback loops, allowing internal state retention.
+
+Q152. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is the key difference between a Latch and a Flip-Flop?
+     (A) Latches are level-triggered (transparent while clock is active); Flip-flops are edge-triggered (changing state only on clock rising/falling edges)
+     (B) Latches store 8 bits; flip-flops store 1 bit
+     (C) Latches use software; flip-flops use hardware
+     (D) They are identical
+     Answer: (A)
+     Explanation: Latches are level-sensitive; flip-flops incorporate edge-detectors or master-slave structures triggered strictly by clock edges.
+
+Q153. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is the basic 1-bit memory building block in digital electronics?
+     (A) An OR gate
+     (B) A Bistable Multivibrator (Flip-Flop / Latch)
+     (C) An AND gate
+     (D) A resistor-capacitor pair
+     Answer: (B)
+     Explanation: A bistable multivibrator has two stable states (0 and 1) that can store a single binary digit indefinitely until reset.
+
+Q154. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     In a basic S-R Latch built with NOR gates, what input condition is FORBIDDEN (Invalid / Indeterminate)?
+     (A) S = 0, R = 0
+     (B) S = 1, R = 0
+     (C) S = 0, R = 1
+     (D) S = 1, R = 1
+     Answer: (D)
+     Explanation: Setting both S=1 and R=1 forces both Q and Q' to 0 simultaneously, violating complementation and causing a race condition upon release.
+
+Q155. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     In a basic S-R Latch built with NAND gates, what input condition is FORBIDDEN?
+     (A) S' = 1, R' = 1
+     (B) S' = 0, R' = 0
+     (C) S' = 0, R' = 1
+     (D) S' = 1, R' = 0
+     Answer: (B)
+     Explanation: For active-low NAND latches, S'=0 and R'=0 is the forbidden invalid condition.
+
+Q156. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a D (Data / Delay) Flip-Flop?
+     (A) A flip-flop with two inputs
+     (B) A single-input flip-flop where output Q next state tracks input D at the clock edge (Q_next = D)
+     (C) A decimal flip-flop
+     (D) A disconnected flip-flop
+     Answer: (B)
+     Explanation: The D flip-flop transfers input D to output Q on the clock trigger, eliminating the invalid condition of S-R latches.
+
+Q157. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     How is a D Flip-Flop constructed from an S-R Flip-Flop?
+     (A) By connecting D directly to S and through a NOT gate (inverter) to R
+     (B) By shorting S and R together
+     (C) By tying S to ground
+     (D) By removing the clock
+     Answer: (A)
+     Explanation: Connecting D to S and D' to R guarantees that S and R are always complementary, preventing the S=1, R=1 invalid state.
+
+Q158. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a J-K Flip-Flop?
+     (A) A flip-flop named after Jack Kilby that resolves the S-R invalid state by TOGGLING output Q when J = 1 and K = 1
+     (B) A junction diode
+     (C) A Japanese keyboard flip-flop
+     (D) A 4-bit memory cell
+     Answer: (A)
+     Explanation: The J-K flip-flop improves on S-R: when J=1 and K=1, the output toggles (inverts state: Q_next = Q').
+
+Q159. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What happens in a J-K Flip-Flop when J = 0 and K = 0 upon a clock pulse?
+     (A) Output resets to 0
+     (B) Output sets to 1
+     (C) No Change (Memory State: Q_next = Q)
+     (D) Output toggles
+     Answer: (C)
+     Explanation: J=0, K=0 retains the existing stored state unchanged.
+
+Q160. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What happens in a J-K Flip-Flop when J = 1 and K = 0 upon a clock pulse?
+     (A) Set state (Q_next = 1)
+     (B) Reset state (Q_next = 0)
+     (C) Toggle state
+     (D) Invalid state
+     Answer: (A)
+     Explanation: J acts like Set: J=1, K=0 forces output Q to 1.
+
+Q161. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What happens in a J-K Flip-Flop when J = 0 and K = 1 upon a clock pulse?
+     (A) Set state (Q = 1)
+     (B) Reset state (Q_next = 0)
+     (C) Toggle state
+     (D) Indeterminate state
+     Answer: (B)
+     Explanation: K acts like Reset: J=0, K=1 forces output Q to 0.
+
+Q162. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is the Race-Around Condition in a level-triggered J-K Flip-Flop?
+     (A) A short circuit in the power rails
+     (B) When J = 1, K = 1 and clock pulse width (tp) is greater than propagation delay (tpd), causing the output to toggle repeatedly and uncontrollably between 0 and 1 during a single clock pulse
+     (C) A memory erase operation
+     (D) When two flip-flops race on a circuit board
+     Answer: (B)
+     Explanation: If the clock stays HIGH longer than gate delay, the toggled output feeds back and toggles again repeatedly, leaving an unpredictable state at clock fall.
+
+Q163. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What condition MUST be met to prevent the Race-Around Condition in a J-K flip-flop?
+     (A) Clock pulse width tp must be strictly less than propagation delay tpd (tp < tpd)
+     (B) Clock frequency must be zero
+     (C) Supply voltage must be doubled
+     (D) J and K must be grounded
+     Answer: (A)
+     Explanation: Ensuring the clock pulse is narrower than the flip-flop propagation delay prevents repeated toggling.
+
+Q164. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     Which circuit architecture completely eliminates the Race-Around Condition in flip-flops?
+     (A) Master-Slave J-K Flip-Flop (or edge-triggered flip-flop)
+     (B) Simple NOR latch
+     (C) Using bigger wires
+     (D) Adding an inverter on Vcc
+     Answer: (A)
+     Explanation: The Master-Slave flip-flop isolates input from output: the master responds on clock HIGH, and transfers data to the slave on clock LOW.
+
+Q165. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     In a Master-Slave J-K Flip-Flop, when does the output Q of the Slave stage actually update?
+     (A) On the positive level of the clock pulse
+     (B) On the trailing (falling / negative) edge of the clock pulse
+     (C) Continuously at all times
+     (D) Only when J=0 and K=0
+     Answer: (B)
+     Explanation: The master is enabled on clock HIGH; on the falling edge (clock LOW), the inverted clock triggers the slave to output the master's state.
+
+Q166. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a T (Toggle) Flip-Flop?
+     (A) A flip-flop with two inputs
+     (B) A single-input flip-flop that inverts its state (Q_next = Q') on every clock pulse when T = 1, and holds its state when T = 0
+     (C) A temporary register
+     (D) A thermal flip-flop
+     Answer: (B)
+     Explanation: A T flip-flop divides frequency by 2: when T=1, output toggles on every clock pulse; when T=0, it holds its value.
+
+Q167. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     How is a T Flip-Flop constructed from a J-K Flip-Flop?
+     (A) By connecting J and K inputs together to form a single input T
+     (B) By connecting J to ground and K to clock
+     (C) By using a NOT gate on J
+     (D) By connecting Q to J
+     Answer: (A)
+     Explanation: Tying J and K together creates a T flip-flop: T=0 gives J=0,K=0 (Hold); T=1 gives J=1,K=1 (Toggle).
+
+Q168. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is the Characteristic Equation of a J-K Flip-Flop?
+     (A) Q_next = J*Q' + K'*Q
+     (B) Q_next = J*Q + K*Q'
+     (C) Q_next = J + K
+     (D) Q_next = D
+     Answer: (A)
+     Explanation: The next state algebraic expression for J-K flip-flop is Q(t+1) = J*Q' + K'*Q.
+
+Q169. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is the Characteristic Equation of a D Flip-Flop?
+     (A) Q_next = D
+     (B) Q_next = D'
+     (C) Q_next = D*Q
+     (D) Q_next = D + Q
+     Answer: (A)
+     Explanation: For a D flip-flop, the next state is unconditionally equal to the current data input: Q(t+1) = D.
+
+Q170. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is the Characteristic Equation of a T Flip-Flop?
+     (A) Q_next = T ⊕ Q = T*Q' + T'*Q
+     (B) Q_next = T*Q
+     (C) Q_next = T + Q
+     (D) Q_next = T'
+     Answer: (A)
+     Explanation: For a T flip-flop, the next state is the XOR of T and current state: Q(t+1) = T ⊕ Q.
+
+Q171. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is an Excitation Table in sequential circuit design?
+     (A) A table listing the required flip-flop input values (e.g., J, K) to achieve a desired state transition from present state Q(t) to next state Q(t+1)
+     (B) A table of power voltages
+     (C) A marketing schedule
+     (D) A truth table for AND gates
+     Answer: (A)
+     Explanation: Excitation tables specify what inputs must be applied to force a transition from present state Q to next state Q+.
+
+Q172. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     What are the required J,K excitation inputs to transition from Q=0 to Q=1?
+     (A) J = 1, K = X (Don't Care)
+     (B) J = 0, K = 0
+     (C) J = X, K = 1
+     (D) J = 1, K = 1 strictly
+     Answer: (A)
+     Explanation: Transition 0 -> 1 occurs when J=1, K=0 (Set) or J=1, K=1 (Toggle). Thus, J=1 and K is Don't Care (X).
+
+Q173. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     What are the required J,K excitation inputs to transition from Q=1 to Q=0?
+     (A) J = X, K = 1
+     (B) J = 0, K = 1
+     (C) J = 1, K = 0
+     (D) J = X, K = 0
+     Answer: (A)
+     Explanation: Transition 1 -> 0 occurs when J=0,K=1 (Reset) or J=1,K=1 (Toggle). Thus, J=X and K=1.
+
+Q174. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     What are the required J,K excitation inputs to transition from Q=0 to Q=0 (Hold 0)?
+     (A) J = 0, K = X
+     (B) J = 1, K = X
+     (C) J = X, K = 0
+     (D) J = 0, K = 0
+     Answer: (A)
+     Explanation: Transition 0 -> 0 occurs for J=0,K=0 (Hold) or J=0,K=1 (Reset). Thus, J=0, K=X.
+
+Q175. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     What are the required J,K excitation inputs to transition from Q=1 to Q=1 (Hold 1)?
+     (A) J = X, K = 0
+     (B) J = 1, K = 0
+     (C) J = 0, K = X
+     (D) J = X, K = 1
+     Answer: (A)
+     Explanation: Transition 1 -> 1 occurs for J=0,K=0 (Hold) or J=1,K=0 (Set). Thus, J=X, K=0.
+
+Q176. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Register in digital electronics?
+     (A) A group of flip-flops used to store a multi-bit binary word, sharing a common clock
+     (B) A variable resistor
+     (C) A log book
+     (D) An analog transistor
+     Answer: (A)
+     Explanation: An N-bit register contains N flip-flops capable of storing an N-bit binary word.
+
+Q177. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Shift Register?
+     (A) A register capable of shifting its binary data bits laterally from one flip-flop stage to an adjacent stage on each clock pulse
+     (B) A gear shift
+     (C) A register without a clock
+     (D) A variable capacitor
+     Answer: (A)
+     Explanation: Shift registers move binary patterns left or right, essential for serial communication and arithmetic.
+
+Q178. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What does SISO stand for in shift registers?
+     (A) Serial-In Serial-Out
+     (B) Single-Input Single-Output
+     (C) Synchronous-In Synchronous-Out
+     (D) Static-In Static-Out
+     Answer: (A)
+     Explanation: SISO receives data serially bit-by-bit and outputs data serially on a single wire.
+
+Q179. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     How many clock pulses are required to load a 4-bit binary word into a 4-bit SISO Shift Register?
+     (A) 1 clock pulse
+     (B) 4 clock pulses
+     (C) 8 clock pulses
+     (D) Zero clock pulses
+     Answer: (B)
+     Explanation: Loading 4 bits serially requires 4 sequential clock pulses (one bit shifted in per clock cycle).
+
+Q180. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     How many clock pulses are required to completely read out (retrieve) a 4-bit word from a SISO Shift Register?
+     (A) 1 clock pulse
+     (B) 4 clock pulses (or 3 additional pulses after the first bit appears)
+     (C) 16 clock pulses
+     (D) Zero
+     Answer: (B)
+     Explanation: Reading out all 4 bits serially requires 4 clock shift operations.
+
+Q181. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What does SIPO stand for in shift registers?
+     (A) Serial-In Parallel-Out
+     (B) Synchronous-In Parallel-Out
+     (C) Serial-Interfaced Port
+     (D) Static Input Port
+     Answer: (A)
+     Explanation: SIPO loads data serially bit-by-bit and presents all stored bits simultaneously on parallel output pins.
+
+Q182. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What does PISO stand for in shift registers?
+     (A) Parallel-In Serial-Out
+     (B) Primary-In Secondary-Out
+     (C) Phase-Invert Signal-Out
+     (D) Parallel-Integrated Serial-Out
+     Answer: (A)
+     Explanation: PISO loads an entire multi-bit word in parallel in 1 clock pulse, then shifts bits out sequentially on a serial line.
+
+Q183. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What does PIPO stand for in shift registers?
+     (A) Parallel-In Parallel-Out
+     (B) Primary-Interface Port
+     (C) Phase-In Phase-Out
+     (D) Programmable Integrated Port
+     Answer: (A)
+     Explanation: PIPO loads all bits simultaneously and presents all outputs simultaneously, taking 1 clock pulse.
+
+Q184. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     Which shift register mode is the fastest for transferring data internally inside a CPU?
+     (A) PIPO (Parallel-In Parallel-Out)
+     (B) SISO
+     (C) SIPO
+     (D) PISO
+     Answer: (A)
+     Explanation: PIPO requires only 1 clock cycle to store and read out data across parallel data bus lines.
+
+Q185. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Bi-Directional Shift Register?
+     (A) A shift register that can shift data either to the left or to the right depending on a mode control input
+     (B) A register that shifts data vertically
+     (C) A register with two clocks
+     (D) A circular tape
+     Answer: (A)
+     Explanation: Mode control lines select internal multiplexer logic to shift bits left or right as commanded.
+
+Q186. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Universal Shift Register?
+     (A) A register capable of parallel loading, serial shifting left, serial shifting right, and holding data unchanged
+     (B) A register sold worldwide
+     (C) A register with infinite bits
+     (D) A software emulator
+     Answer: (A)
+     Explanation: A universal shift register supports all 4 operations: Parallel Load, Shift Left, Shift Right, and Inactive/Hold.
+
+Q187. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     Which standard TTL IC is a 4-bit Universal Bidirectional Shift Register?
+     (A) IC 74194
+     (B) IC 7400
+     (C) IC 7408
+     (D) IC 74138
+     Answer: (A)
+     Explanation: The 74LS194 is an industry-standard 4-bit bidirectional universal shift register.
+
+Q188. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Ring Counter?
+     (A) A circular shift register where the output of the last flip-flop is fed back directly into the input of the first flip-flop
+     (B) A counter that counts rings on trees
+     (C) A telephone ringer circuit
+     (D) An analog coil
+     Answer: (A)
+     Explanation: A single Logic 1 circulates through the N flip-flops in a circular loop.
+
+Q189. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     How many distinct states does an N-bit Ring Counter have?
+     (A) N states
+     (B) 2^N states
+     (C) 2N states
+     (D) N^2 states
+     Answer: (A)
+     Explanation: An N-bit ring counter has only N valid unique states (e.g., 1000, 0100, 0010, 0001 for N=4).
+
+Q190. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is a Johnson Counter (Twisted Ring Counter / Mobius Counter)?
+     (A) A circular shift register where the INVERTED output (Q') of the last stage is fed back into the input of the first stage
+     (B) A counter named after a president
+     (C) A ripple counter
+     (D) A binary adder
+     Answer: (A)
+     Explanation: Feeding back Q' doubles the state sequence compared to a ring counter.
+
+Q191. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     How many distinct states does an N-bit Johnson (Twisted Ring) Counter have?
+     (A) N states
+     (B) 2N states
+     (C) 2^N states
+     (D) N / 2 states
+     Answer: (B)
+     Explanation: An N-bit Johnson counter cycles through 2N states (e.g., a 4-bit Johnson counter has 8 states: 0000, 1000, 1100, 1110, 1111, 0111, 0011, 0001).
+
+Q192. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is Setup Time (t_su) of a flip-flop?
+     (A) The minimum time interval that data input must remain stable and valid BEFORE the triggering clock edge arrives
+     (B) The time to turn on the power supply
+     (C) The time to assemble the chip
+     (D) The duration of the clock pulse
+     Answer: (A)
+     Explanation: Violating setup time causes metastability and unpredictable state storage.
+
+Q193. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is Hold Time (t_h) of a flip-flop?
+     (A) The minimum time interval that data input must remain stable and unchanged AFTER the triggering clock edge has occurred
+     (B) The time an employee holds a wire
+     (C) The duration between two clock pulses
+     (D) The factory warranty period
+     Answer: (A)
+     Explanation: Data must persist for at least t_h after the clock transition to guarantee latching.
+
+Q194. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     What is Metastability in digital flip-flops?
+     (A) An unstable, indeterminate voltage state hovering between 0 and 1 caused by violating setup or hold times
+     (B) A chemical reaction in silicon
+     (C) A radio antenna signal
+     (D) A burned transistor
+     Answer: (A)
+     Explanation: Metastable states can linger unpredictably before settling randomly to 0 or 1, causing system crashes.
+
+Q195. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What are Preset and Clear (Asynchronous Reset) inputs on flip-flops?
+     (A) Inputs that immediately force output to 1 (Preset) or 0 (Clear) independently of the clock signal
+     (B) Inputs that set the clock speed
+     (C) Audio inputs
+     (D) Power supply pins
+     Answer: (A)
+     Explanation: Asynchronous Preset and Clear override clock pulses, enabling instantaneous system initialization.
+
+Q196. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is a Dynamic Hazard in digital sequential circuits?
+     (A) An output transition that glitches and bounces multiple times before settling to its final state (e.g., 0 -> 1 -> 0 -> 1)
+     (B) A physical explosion
+     (C) A lightning strike on power lines
+     (D) A dynamic RAM error
+     Answer: (A)
+     Explanation: Dynamic hazards occur in multi-level circuits when signals traverse multiple paths with differing propagation times.
+
+Q197. [Unit 4: Flip-Flops & Shift Registers] (EASY)
+     What is the state diagram of a sequential circuit?
+     (A) A directed graph whose nodes represent internal states and whose directed arcs indicate state transitions labeled with input/output values
+     (B) A circuit schematic
+     (C) A flowchart of software
+     (D) An organization chart
+     Answer: (A)
+     Explanation: State diagrams model the finite state machine (FSM) behavior of sequential systems visually.
+
+Q198. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is a Mealy Machine FSM model?
+     (A) A sequential circuit where outputs depend on BOTH current state AND current primary inputs
+     (B) An analog machine
+     (C) A machine where outputs depend only on state
+     (D) A computer printer
+     Answer: (A)
+     Explanation: In a Mealy machine, outputs can change asynchronously whenever inputs change between clock ticks.
+
+Q199. [Unit 4: Flip-Flops & Shift Registers] (MEDIUM)
+     What is a Moore Machine FSM model?
+     (A) A sequential circuit where outputs depend EXCLUSIVELY on the current internal state
+     (B) A machine with no clock
+     (C) A machine where outputs depend only on inputs
+     (D) A magnetic tape drive
+     Answer: (A)
+     Explanation: In a Moore machine, outputs are synchronous and strictly associated with state vertices.
+
+Q200. [Unit 4: Flip-Flops & Shift Registers] (HARD)
+     Which FSM model generally requires fewer states for a given sequential behavior?
+     (A) Mealy Machine
+     (B) Moore Machine
+     (C) Both require identical states always
+     (D) Neither requires states
+     Answer: (A)
+     Explanation: Mealy machines can encode output variations across input arcs, often requiring fewer states than Moore machines.
+
+Q201. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Digital Counter?
+     (A) A sequential circuit that steps through a predetermined sequence of binary states upon receiving clock pulses
+     (B) A desk for store cashiers
+     (C) An analog clock hands motor
+     (D) A circuit that adds two numbers once
+     Answer: (A)
+     Explanation: Counters are registers configured to cycle through a sequence of numerical states upon each clock trigger.
+
+Q202. [Unit 5: Counters & Memory Devices] (EASY)
+     What is an Asynchronous Counter (Ripple Counter)?
+     (A) A counter where every flip-flop is clocked simultaneously by the same master clock
+     (B) A counter where only the first flip-flop is triggered by the external clock, and subsequent flip-flops are clocked by outputs of preceding stages
+     (C) A counter without flip-flops
+     (D) A counter that operates backwards only
+     Answer: (B)
+     Explanation: In ripple counters, clock pulses propagate sequentially from stage to stage like ripples on water, causing cumulative delay.
+
+Q203. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Synchronous Counter?
+     (A) A counter where ALL flip-flops are triggered simultaneously by a common shared master clock signal
+     (B) A counter that runs without electricity
+     (C) A counter where flip-flops clock each other
+     (D) An unclocked latch
+     Answer: (A)
+     Explanation: Synchronous counters apply the clock to all stages in parallel, eliminating cumulative ripple delays.
+
+Q204. [Unit 5: Counters & Memory Devices] (EASY)
+     What is the Modulus (MOD number) of a counter?
+     (A) The frequency of the clock in Megahertz
+     (B) The total number of unique states through which the counter cycles before repeating its sequence
+     (C) The number of flip-flops in the circuit
+     (D) The voltage level of Logic 1
+     Answer: (B)
+     Explanation: A Mod-N counter has N distinct binary states (0 to N-1) and divides input clock frequency by N.
+
+Q205. [Unit 5: Counters & Memory Devices] (EASY)
+     How many flip-flops are required to construct a counter with modulus N?
+     (A) N flip-flops
+     (B) Minimum integer n such that 2^n >= N
+     (C) N / 2 flip-flops
+     (D) 2^N flip-flops
+     Answer: (B)
+     Explanation: n flip-flops provide 2^n states; to count to N, n must satisfy 2^n >= N (i.e., n = ceil(log2 N)).
+
+Q206. [Unit 5: Counters & Memory Devices] (EASY)
+     How many flip-flops are required to construct a MOD-10 (Decade / BCD) Counter?
+     (A) 3 flip-flops
+     (B) 4 flip-flops
+     (C) 10 flip-flops
+     (D) 5 flip-flops
+     Answer: (B)
+     Explanation: Since 2^3 = 8 < 10 <= 2^4 = 16, exactly 4 flip-flops are required.
+
+Q207. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Decade (BCD) Counter?
+     (A) A counter that counts from binary 0000 (0) to 1001 (9) and resets back to 0000 on the 10th clock pulse
+     (B) A counter that counts to 100
+     (C) A 10-bit shift register
+     (D) A binary counter with 10 flip-flops
+     Answer: (A)
+     Explanation: A decade counter cycles through the 10 BCD states (0-9) and resets on count 10 (1010).
+
+Q208. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     In a MOD-10 ripple counter using 4 J-K flip-flops, how is the reset on count 10 achieved?
+     (A) By using a NAND gate connected to outputs Q1 and Q3 (binary 1010) to trigger the asynchronous CLEAR pins
+     (B) By turning off the power supply
+     (C) By reversing the clock
+     (D) By grounding the J inputs
+     Answer: (A)
+     Explanation: When the counter reaches 1010 (Q3=1, Q1=1), the NAND gate outputs 0, instantly resetting all flip-flops to 0000.
+
+Q209. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is the output frequency of the last stage of a 4-bit binary ripple counter driven by a 16 MHz clock?
+     (A) 16 MHz
+     (B) 8 MHz
+     (C) 2 MHz
+     (D) 1 MHz
+     Answer: (D)
+     Explanation: A 4-bit counter divides frequency by 2^4 = 16. Output frequency = 16 MHz / 16 = 1 MHz.
+
+Q210. [Unit 5: Counters & Memory Devices] (EASY)
+     What is an Up/Down Counter?
+     (A) A counter that can count in either ascending or descending numerical order depending on a direction control signal
+     (B) A counter that moves physically up and down
+     (C) An analog voltmeter
+     (D) A counter with two power supplies
+     Answer: (A)
+     Explanation: When Up/Down=1, it increments counts; when Up/Down=0, it decrements counts.
+
+Q211. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     Which TTL IC is a popular 4-bit synchronous presettable binary Up/Down counter?
+     (A) IC 74193
+     (B) IC 7400
+     (C) IC 7408
+     (D) IC 74138
+     Answer: (A)
+     Explanation: The 74LS193 is a widely used 4-bit synchronous reversible up/down binary counter.
+
+Q212. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Semiconductor RAM (Random Access Memory)?
+     (A) Read-only memory that cannot be modified
+     (B) Volatile read/write semiconductor memory where any storage location can be accessed in constant time regardless of physical address
+     (C) A magnetic hard drive
+     (D) An optical CD-ROM
+     Answer: (B)
+     Explanation: RAM provides fast read and write access; it is volatile, losing stored contents when power is removed.
+
+Q213. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Static RAM (SRAM)?
+     (A) RAM made of flip-flop latches (typically 6 transistors per bit) that retains data as long as power is maintained without needing refresh cycles
+     (B) RAM that cannot be written to
+     (C) RAM made of single capacitors
+     (D) Slow disk memory
+     Answer: (A)
+     Explanation: SRAM uses cross-coupled inverters (flip-flops); it is fast, expensive, and used for CPU cache memory.
+
+Q214. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Dynamic RAM (DRAM)?
+     (A) RAM that stores each bit as an electric charge in a tiny capacitor paired with a single MOS transistor
+     (B) RAM that changes its data dynamically by itself
+     (C) An analog disk
+     (D) A non-volatile ROM
+     Answer: (A)
+     Explanation: DRAM achieves massive density (1 transistor + 1 capacitor per cell), making it the standard choice for main system memory.
+
+Q215. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     Why does Dynamic RAM (DRAM) require periodic REFRESH cycles thousands of times per second?
+     (A) To keep the memory cool
+     (B) Because the stored capacitor charge gradually leaks away over time through the silicon substrate
+     (C) To prevent static electricity
+     (D) To reset all bits to zero
+     Answer: (B)
+     Explanation: Substrate leakage drains capacitor charge within milliseconds, requiring periodic read-and-rewrite refresh operations.
+
+Q216. [Unit 5: Counters & Memory Devices] (EASY)
+     Comparing SRAM and DRAM, which statement is completely TRUE?
+     (A) SRAM is faster and more expensive, used for CPU caches; DRAM is slower, denser, cheaper, and used for main memory
+     (B) DRAM is faster than SRAM
+     (C) SRAM requires periodic refresh cycles
+     (D) DRAM uses 6 transistors per cell
+     Answer: (A)
+     Explanation: SRAM provides sub-nanosecond speeds for caches; DRAM offers high gigabyte density at low cost for main memory.
+
+Q217. [Unit 5: Counters & Memory Devices] (EASY)
+     What is ROM (Read-Only Memory)?
+     (A) Volatile cache memory
+     (B) Non-volatile semiconductor memory that permanently retains stored program instructions (like BIOS/firmware) even when power is turned off
+     (C) A rewritable hard disk
+     (D) A temporary register
+     Answer: (B)
+     Explanation: ROM stores permanent system boot firmware (BIOS/UEFI) that persists indefinitely without power.
+
+Q218. [Unit 5: Counters & Memory Devices] (EASY)
+     What is PROM (Programmable ROM)?
+     (A) ROM programmed once by the user in the field by blowing microscopic fusible links using high voltage pulses
+     (B) ROM that can be reprogrammed daily
+     (C) Volatile RAM
+     (D) A disk file
+     Answer: (A)
+     Explanation: PROM (One-Time Programmable / OTP) starts with all links intact and is permanently written once by burning fuses.
+
+Q219. [Unit 5: Counters & Memory Devices] (EASY)
+     How is data erased in an EPROM (Erasable Programmable ROM)?
+     (A) By applying electrical voltage pulses to pins
+     (B) By exposing the silicon die to intense Ultraviolet (UV) light through a transparent quartz window for 15-20 minutes
+     (C) By heating the chip with a lighter
+     (D) By submersing in water
+     Answer: (B)
+     Explanation: UV radiation excites trapped electrons on floating gates, neutralizing stored charges and resetting all bits to 1.
+
+Q220. [Unit 5: Counters & Memory Devices] (EASY)
+     What is an EEPROM (Electrically Erasable Programmable ROM)?
+     (A) ROM that can be erased and reprogrammed in-circuit electrically byte-by-byte without removing the chip
+     (B) ROM requiring UV light
+     (C) A mechanical hard drive
+     (D) Volatile SRAM
+     Answer: (A)
+     Explanation: EEPROM uses electric field tunneling to erase and rewrite data bytes in-circuit without UV light.
+
+Q221. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Flash Memory?
+     (A) A high-density variation of EEPROM that erases and writes data in whole blocks/sectors rather than single bytes
+     (B) Memory that glows in the dark
+     (C) A camera flash battery
+     (D) Volatile DRAM
+     Answer: (A)
+     Explanation: Flash memory (NAND/NOR flash) powers SSDs, USB drives, and smartphones through fast block-level electrical erasure.
+
+Q222. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is the primary difference between NOR Flash and NAND Flash?
+     (A) NOR flash supports random byte access ideal for code execution; NAND flash has higher density and faster block writes ideal for mass storage (SSDs)
+     (B) NOR is mechanical; NAND is electronic
+     (C) NAND is volatile; NOR is permanent
+     (D) They are identical
+     Answer: (A)
+     Explanation: NOR flash enables execute-in-place (XIP) for firmware; NAND flash provides high-density mass storage in SSDs.
+
+Q223. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Programmable Logic Device (PLD)?
+     (A) An integrated circuit with uncommitted logic gates and flip-flops whose internal connections can be configured by the designer to implement custom logic
+     (B) A fixed 7400 gate
+     (C) A pre-built CPU
+     (D) A printed circuit board
+     Answer: (A)
+     Explanation: PLDs allow digital designers to implement custom hardware functions rapidly using CAD programming tools.
+
+Q224. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is a PLA (Programmable Logic Array)?
+     (A) A PLD with BOTH a programmable AND array and a programmable OR array
+     (B) A PLD with fixed AND and programmable OR
+     (C) A memory chip without gates
+     (D) A microcontroller
+     Answer: (A)
+     Explanation: PLA provides maximum flexibility: both the input AND matrix (generating product terms) and the output OR matrix are programmable.
+
+Q225. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is a PAL (Programmable Array Logic)?
+     (A) A PLD with a PROGRAMMABLE AND array and a FIXED OR array
+     (B) A PLD with fixed AND and programmable OR
+     (C) A circuit with no AND gates
+     (D) A programmable microprocessor
+     Answer: (A)
+     Explanation: PAL simplifies manufacturing and reduces propagation delays by fixing the OR gates and programming only the AND matrix.
+
+Q226. [Unit 5: Counters & Memory Devices] (EASY)
+     Comparing PAL and PLA, which is easier to program and fabricate?
+     (A) PAL (due to fixed OR gates)
+     (B) PLA (due to dual programmable matrices)
+     (C) Both are identical
+     (D) Neither can be programmed
+     Answer: (A)
+     Explanation: PAL devices are simpler, cheaper, and faster because only the AND array contains programmable fuses.
+
+Q227. [Unit 5: Counters & Memory Devices] (HARD)
+     What is a PROM viewed as a programmable logic device?
+     (A) A device with a FIXED (fully decoded) AND array and a PROGRAMMABLE OR array
+     (B) A device with programmable AND and fixed OR
+     (C) A device with zero gates
+     (D) A sequential counter
+     Answer: (A)
+     Explanation: A PROM decodes all n inputs into all 2^n minterms (fixed AND array), allowing the user to program which minterms are ORed together.
+
+Q228. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is a CPLD (Complex Programmable Logic Device)?
+     (A) An IC integrating multiple PAL-like logic blocks interconnected by a programmable global routing matrix on a single chip
+     (B) A single AND gate
+     (C) A computer motherboard
+     (D) An analog transistor array
+     Answer: (A)
+     Explanation: CPLDs bridge simple PALs and advanced FPGAs, providing predictable timing for medium-density logic.
+
+Q229. [Unit 5: Counters & Memory Devices] (EASY)
+     What is an FPGA (Field-Programmable Gate Array)?
+     (A) A high-density semiconductor IC based on an array of configurable logic blocks (CLBs), programmable interconnects, and embedded memory blocks
+     (B) A pre-etched CPU
+     (C) A hard disk
+     (D) A read-only memory chip
+     Answer: (A)
+     Explanation: FPGAs enable implementation of complex digital systems, microprocessors, and neural accelerators in reconfigurable hardware.
+
+Q230. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is a Glitch in an asynchronous counter?
+     (A) A transient erroneous output state caused by unequal propagation delays in cascading flip-flops before settling to the final count
+     (B) A lightning strike
+     (C) A clock failure
+     (D) A permanent short
+     Answer: (A)
+     Explanation: Ripple counters pass through brief intermediate invalid states as carries ripple through the flip-flop chain.
+
+Q231. [Unit 5: Counters & Memory Devices] (EASY)
+     How does a Synchronous Counter eliminate ripple glitches?
+     (A) By applying the clock pulse to all flip-flops simultaneously and using logic gates to determine next states in advance
+     (B) By removing power
+     (C) By slowing down the clock
+     (D) By using only one flip-flop
+     Answer: (A)
+     Explanation: Simultaneous clocking ensures all state transitions occur in unison within a single flip-flop propagation delay.
+
+Q232. [Unit 5: Counters & Memory Devices] (EASY)
+     A 3-bit binary asynchronous counter counts through how many states?
+     (A) 8 states (000 to 111)
+     (B) 3 states
+     (C) 6 states
+     (D) 16 states
+     Answer: (A)
+     Explanation: 2^3 = 8 states, counting from decimal 0 to 7 before wrapping to 0.
+
+Q233. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Mod-6 Counter?
+     (A) A counter that counts through 6 states (0, 1, 2, 3, 4, 5) and resets to 0 on the 6th pulse
+     (B) A counter with 6 flip-flops
+     (C) A counter that counts by 6s
+     (D) A 6-volt counter
+     Answer: (A)
+     Explanation: A Mod-6 counter divides input clock frequency by 6, cycling through 6 binary states.
+
+Q234. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     To build a Mod-6 counter, an asynchronous reset is triggered when the counter reaches binary:
+     (A) 0110 (decimal 6)
+     (B) 0101 (decimal 5)
+     (C) 0111 (decimal 7)
+     (D) 1000 (decimal 8)
+     Answer: (A)
+     Explanation: A NAND gate decodes count 6 (Q2=1, Q1=1) to pulse the CLEAR pins and return the counter to 000.
+
+Q235. [Unit 5: Counters & Memory Devices] (EASY)
+     What is the maximum count of an N-bit binary counter?
+     (A) 2^N - 1
+     (B) 2^N
+     (C) N^2
+     (D) N - 1
+     Answer: (A)
+     Explanation: An N-bit counter reaches a maximum binary value of 2^N - 1 (all 1s) before overflowing back to 0.
+
+Q236. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Presettable Counter?
+     (A) A counter that can be loaded with any arbitrary starting binary value before counting begins
+     (B) A broken counter
+     (C) A counter fixed at zero
+     (D) An analog stopwatch
+     Answer: (A)
+     Explanation: Presettable counters use parallel load inputs to initiate counting from any preset value.
+
+Q237. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a Cascaded Counter?
+     (A) Connecting multiple counter ICs together so the carry-out of one counter clocks the next higher counter
+     (B) Dropping a counter in water
+     (C) A software loop
+     (D) A counter with 2 clocks
+     Answer: (A)
+     Explanation: Cascading counters allows building counters of arbitrarily large modulus (e.g., cascading two Mod-10 counters creates a Mod-100 counter).
+
+Q238. [Unit 5: Counters & Memory Devices] (EASY)
+     What is memory Access Time (t_acc)?
+     (A) The time elapsed between the presentation of a valid memory address and the moment valid data is available at the output lines
+     (B) The time to write a letter
+     (C) The time to boot the OS
+     (D) The clock cycle time
+     Answer: (A)
+     Explanation: Access time measures memory reading speed, typically ranging from <1 ns for SRAM to ~10-15 ns for DRAM.
+
+Q239. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is Memory Cycle Time?
+     (A) The minimum time interval required between the start of two successive memory read or write operations
+     (B) The lifetime of a RAM stick
+     (C) The CPU fan rotation period
+     (D) The reboot time
+     Answer: (A)
+     Explanation: Cycle time includes access time plus recovery/precharge time needed before the next operation can start.
+
+Q240. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Volatile Memory?
+     (A) Memory that loses its stored contents immediately when electrical power is switched off
+     (B) Memory that catches fire
+     (C) Memory that cannot be erased
+     (D) Permanent memory
+     Answer: (A)
+     Explanation: SRAM and DRAM are volatile: continuous electrical power is mandatory to maintain data integrity.
+
+Q241. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Non-Volatile Memory?
+     (A) Memory that retains its stored data permanently even when system power is completely removed
+     (B) Memory without wires
+     (C) Fast cache
+     (D) A broken register
+     Answer: (A)
+     Explanation: ROM, Flash, magnetic disks, and optical media are non-volatile storage technologies.
+
+Q242. [Unit 5: Counters & Memory Devices] (EASY)
+     What is Memory Capacity specified as 1K x 8?
+     (A) 1024 words, where each word is 8 bits (1 byte) wide
+     (B) 8000 bytes
+     (C) 1000 words of 8 bits
+     (D) 8 kilobytes
+     Answer: (A)
+     Explanation: 1K = 1024 memory locations, each holding an 8-bit data byte (total capacity = 1024 bytes = 1 KB).
+
+Q243. [Unit 5: Counters & Memory Devices] (EASY)
+     How many ADDRESS lines are required to address a memory chip of capacity 1K x 8?
+     (A) 10 address lines (since 2^10 = 1024)
+     (B) 8 address lines
+     (C) 1 address line
+     (D) 16 address lines
+     Answer: (A)
+     Explanation: Addressing 2^k locations requires k address lines: 2^10 = 1024 implies 10 address lines (A0 to A9).
+
+Q244. [Unit 5: Counters & Memory Devices] (EASY)
+     How many DATA lines does a 1K x 8 memory chip possess?
+     (A) 8 bidirectional data lines (D0 to D7)
+     (B) 10 data lines
+     (C) 1 data line
+     (D) 1024 data lines
+     Answer: (A)
+     Explanation: The word width determines the data bus width: 8 bits per word requires 8 data lines.
+
+Q245. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     How many address lines are required to address a 64K x 8 memory module?
+     (A) 16 address lines
+     (B) 8 address lines
+     (C) 64 address lines
+     (D) 12 address lines
+     Answer: (A)
+     Explanation: 64K = 64 * 1024 = 65,536 locations = 2^16. Therefore, 16 address lines (A0 to A15) are required.
+
+Q246. [Unit 5: Counters & Memory Devices] (EASY)
+     What does the Chip Select (CS) or Chip Enable (CE) pin do on a memory chip?
+     (A) Activates the memory chip when asserted, enabling its read/write operations and tri-state data bus buffers
+     (B) Changes the chip color
+     (C) Selects the power supply
+     (D) Turns on the cooling fan
+     Answer: (A)
+     Explanation: Chip select pins allow microprocessors to address one specific memory IC out of many connected to the shared system bus.
+
+Q247. [Unit 5: Counters & Memory Devices] (EASY)
+     What does the Write Enable (WE) control pin specify on a RAM chip?
+     (A) When asserted (Logic 0 or 1 depending on active level), data on the data bus is written into the addressed location; when deasserted, a read operation occurs
+     (B) Erases all memory
+     (C) Powers down the chip
+     (D) Locks the keyboard
+     Answer: (A)
+     Explanation: The WE pin toggles the memory module between Read (output data) and Write (store incoming data) modes.
+
+Q248. [Unit 5: Counters & Memory Devices] (MEDIUM)
+     What is Magnetic Core Memory historically used in second-generation computers?
+     (A) Tiny ferrite rings threaded on grid wires storing binary data via direction of magnetic flux (clockwise vs counterclockwise)
+     (B) A modern optical disc
+     (C) A silicon transistor
+     (D) A floppy disk
+     Answer: (A)
+     Explanation: Magnetic cores provided non-volatile random access memory for computers in the 1950s and 1960s before silicon RAM.
+
+Q249. [Unit 5: Counters & Memory Devices] (EASY)
+     What is a State Table in sequential logic design?
+     (A) A tabular representation of current states, inputs, resulting next states, and circuit outputs
+     (B) A list of US states
+     (C) A government register
+     (D) A database table
+     Answer: (A)
+     Explanation: The state table provides the complete operational truth table for sequential state machine synthesis.
+
+Q250. [Unit 5: Counters & Memory Devices] (EASY)
+     In digital electronics, what is the main purpose of building synchronous counters rather than ripple counters for high-frequency systems?
+     (A) Synchronous counters operate at dramatically higher clock frequencies because they avoid accumulating propagation delays across stages
+     (B) They consume zero power
+     (C) They use fewer gates
+     (D) They are cheaper
+     Answer: (A)
+     Explanation: Synchronous counters enable GHz operations by clocking all flip-flops concurrently and computing transitions in parallel.
+

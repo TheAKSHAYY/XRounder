@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 3
+COURSE CODE: BCA-205N - OPERATING SYSTEM
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What are the two primary viewpoints or definitions of an Operating System?
+     (A) As an Extended Machine (providing clean abstractions) and as a Resource Manager (allocating CPU, memory, I/O) [CORRECT]
+     (B) As a compiler and as a hardware assembler
+     (C) As an application software and as a database management system
+     (D) As a networking protocol and as a web server
+     Explanation: From top-down, an OS is an Extended Machine (virtual machine) shielding users from raw hardware complexity. From bottom-up, it is a Resource Manager arbitrating competing requests for CPU, memory, and devices.
+     Tags: BCA-205N, Unit-1, OS-Definition, Extended-Machine
+
+Q2. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the primary operational goal of a general-purpose Operating System for personal computers?
+     (A) User convenience and ease of use, with good performance [CORRECT]
+     (B) Maximizing CPU utilization to 100% at the cost of responsiveness
+     (C) Eliminating all user interaction
+     (D) Running only one single task indefinitely
+     Explanation: For personal computers, the primary goal is user convenience. For mainframes and supercomputers, the primary goal is efficient hardware utilization.
+     Tags: BCA-205N, Unit-1, OS-Goals, User-Convenience
+
+Q3. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What was a major disadvantage of early 'Serial Processing' systems (1940s-1950s)?
+     (A) Substantial setup time and idle CPU while operators mounted tapes, cards, and printed outputs [CORRECT]
+     (B) Too many background threads running simultaneously
+     (C) Complex virtual memory page faults
+     (D) Excessive internet bandwidth consumption
+     Explanation: In early serial processing, users signed up for machine slots. Setup times for loading compilers, source tapes, and punch cards kept the expensive CPU idle for most of the session.
+     Tags: BCA-205N, Unit-1, Evolution, Serial-Processing
+
+Q4. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What does SPOOLing stand for in operating systems?
+     (A) Simultaneous Peripheral Operations On-Line [CORRECT]
+     (B) Serial Peripheral Output Oriented Line
+     (C) Synchronous Program Over Operating Link
+     (D) System Process Optimization Online Log
+     Explanation: SPOOLing (Simultaneous Peripheral Operations On-Line) uses high-speed disk storage as a buffer between slow I/O devices (like card readers and printers) and the high-speed CPU.
+     Tags: BCA-205N, Unit-1, Spooling, Definition
+
+Q5. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the core difference between a Batch Operating System and a Multiprogrammed Operating System?
+     (A) Multiprogramming keeps multiple jobs in memory simultaneously to keep the CPU busy during I/O delays [CORRECT]
+     (B) Batch systems can switch tasks in milliseconds interactively
+     (C) Multiprogramming only works on single-core 8-bit CPUs
+     (D) Batch systems require no storage devices
+     Explanation: In a batch system, only one job executes at a time. In multiprogramming, multiple jobs reside in memory; whenever the active job waits for I/O, the OS switches the CPU to another job, maximizing CPU utilization.
+     Tags: BCA-205N, Unit-1, Multiprogramming, CPU-Utilization
+
+Q6. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the defining characteristic of a 'Time-Sharing' (Multitasking) Operating System?
+     (A) Rapid switching of the CPU among multiple interactive users using small time slices (quanta) [CORRECT]
+     (B) Running jobs strictly one after another in batches
+     (C) Elimination of scheduling queues
+     (D) Dedicated CPU for each individual user on separate motherboards
+     Explanation: Time-sharing allocates small slices of CPU time (e.g., 10-100 ms) to each user or process, providing the illusion of simultaneous, interactive execution.
+     Tags: BCA-205N, Unit-1, Time-Sharing, Characteristics
+
+Q7. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the primary constraint that characterizes a 'Hard Real-Time' Operating System?
+     (A) Strict deadlines that must be guaranteed without fail, where missing a deadline causes catastrophic failure [CORRECT]
+     (B) Pleasant user graphics with high frame rates
+     (C) High throughput over hours
+     (D) Low cost hardware compatibility
+     Explanation: In hard real-time systems (e.g., automotive ABS, pacemakers, avionics), missing a deadline constitutes total system failure. In soft real-time (e.g., video streaming), missing a deadline degrades quality without catastrophe.
+     Tags: BCA-205N, Unit-1, Real-Time-OS, Hard-vs-Soft
+
+Q8. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     How does modern hardware enforce protection between the Operating System and user programs?
+     (A) Through dual-mode CPU operation: User Mode (restricted) and Kernel / Supervisor Mode (privileged) [CORRECT]
+     (B) By encrypting user source code with AES-256
+     (C) By physically disconnecting memory chips
+     (D) By disabling the system clock interrupt
+     Explanation: CPUs include a mode bit (0 = kernel mode, 1 = user mode). Privileged instructions (I/O, halt, interrupt control, memory register modification) can only execute in kernel mode.
+     Tags: BCA-205N, Unit-1, Dual-Mode, Protection
+
+Q9. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which of the following operations is classified as a 'privileged instruction' executable ONLY in Kernel Mode?
+     (A) Direct hardware I/O instructions (in/out) and modifying memory limit registers [CORRECT]
+     (B) Adding two integer registers
+     (C) Performing a conditional jump (jump if zero)
+     (D) Calling a user-defined function
+     Explanation: Hardware I/O, altering memory management registers, disabling interrupts, and clearing the CPU halt flag are privileged instructions to prevent user programs from compromising system integrity.
+     Tags: BCA-205N, Unit-1, Privileged-Instructions, Dual-Mode
+
+Q10. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What hardware mechanism is used by a user application to request a service from the operating system kernel?
+     (A) A System Call executed via a software interrupt or trap instruction [CORRECT]
+     (B) A direct jump to physical address 0x000000
+     (C) A hardware reset button press
+     (D) A compiler optimization directive
+     Explanation: A system call executes a software interrupt or special CPU instruction (e.g., 'syscall' or 'int 0x80'), which safely switches the CPU from User Mode to Kernel Mode via the interrupt vector.
+     Tags: BCA-205N, Unit-1, System-Calls, Mechanism
+
+Q11. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is a 'trap' (or exception) in computer architecture?
+     (A) A software-generated interrupt caused either by an error (divide by zero, invalid memory access) or a user system call request [CORRECT]
+     (B) A hardware failure in the power supply
+     (C) An infinite loop in user code
+     (D) A network packet drop
+     Explanation: A trap is a synchronous software interrupt triggered by the executing CPU instruction itself, transferring control immediately to the kernel handler.
+     Tags: BCA-205N, Unit-1, Traps-Exceptions, Interrupts
+
+Q12. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the fundamental architectural philosophy of a 'Microkernel' Operating System (e.g., Mach, QNX)?
+     (A) Moving as many non-essential OS services as possible (file system, device drivers) out of the kernel into user-space servers [CORRECT]
+     (B) Putting all OS services, networking, and graphics into a single massive kernel binary
+     (C) Eliminating all inter-process communication
+     (D) Using only assembly language for the entire OS
+     Explanation: A microkernel implements only bare minimum mechanisms (low-level memory, thread scheduling, and IPC) in kernel space. All other services run as isolated user-mode daemons, enhancing modularity and fault isolation.
+     Tags: BCA-205N, Unit-1, Microkernel, Architecture
+
+Q13. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the major performance trade-off associated with Microkernel architectures compared to Monolithic kernels?
+     (A) Increased context switching and IPC message-passing overhead between user-space servers and the kernel [CORRECT]
+     (B) Lack of memory protection
+     (C) Inability to run on 64-bit processors
+     (D) Complete absence of device drivers
+     Explanation: Because services like file systems and drivers run as separate user processes, every service request involves multiple user-to-kernel mode switches and IPC messages, introducing performance latency.
+     Tags: BCA-205N, Unit-1, Microkernel, Overhead
+
+Q14. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is a 'Monolithic Kernel' architecture (e.g., traditional UNIX, Linux)?
+     (A) An architecture where all core OS components (virtual memory, file systems, network stack, drivers) run together in a single kernel address space [CORRECT]
+     (B) An architecture with no kernel at all
+     (C) An architecture designed exclusively for single-user microcomputers
+     (D) An OS running entirely in BIOS ROM
+     Explanation: In a monolithic kernel, all subsystems share the same kernel address space, enabling ultra-fast direct function calls between subsystems without IPC overhead.
+     Tags: BCA-205N, Unit-1, Monolithic-Kernel, Architecture
+
+Q15. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the 'Layered Approach' to operating system design (e.g., THE multiprogramming system by Dijkstra)?
+     (A) Structuring the OS as a hierarchy of layers (Layer 0 to N), where each layer is built solely on top of lower layers and provides services only to higher layers [CORRECT]
+     (B) Writing the OS in multiple programming languages
+     (C) Splitting the hard drive into physical strata
+     (D) Running multiple operating systems inside each other
+     Explanation: The layered approach modularizes the OS into strictly ordered abstraction tiers: Layer 0 handles hardware, and Layer N provides user interfaces. Layer i can only invoke routines of Layer i-1.
+     Tags: BCA-205N, Unit-1, Layered-OS, Design
+
+Q16. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which system call is used in UNIX/Linux to create an exact duplicate clone of the calling process?
+     (A) fork() [CORRECT]
+     (B) exec()
+     (C) clone_thread()
+     (D) spawn()
+     Explanation: The fork() system call creates a new child process that is an exact duplicate of the parent process, sharing identical code, data, and environment up to the point of invocation.
+     Tags: BCA-205N, Unit-1, System-Calls, fork
+
+Q17. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What integer value does the fork() system call return to the newly created child process upon success?
+     (A) 0 [CORRECT]
+     (B) The child's PID
+     (C) The parent's PID
+     (D) -1
+     Explanation: fork() returns 0 to the child process, returns the child's positive PID to the parent process, and returns -1 if the fork fails.
+     Tags: BCA-205N, Unit-1, System-Calls, fork-Return-Values
+
+Q18. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which system call family replaces the current process memory image, code segment, and stack with a new program executable?
+     (A) exec() (execl, execv, execvp) [CORRECT]
+     (B) fork()
+     (C) wait()
+     (D) exit()
+     Explanation: The exec() family of system calls loads a new binary executable into the calling process address space, overwriting its text and data segments while retaining the same PID.
+     Tags: BCA-205N, Unit-1, System-Calls, exec
+
+Q19. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the purpose of the wait() system call in UNIX process management?
+     (A) Suspends the parent process until one of its child processes terminates and collects its exit status [CORRECT]
+     (B) Pauses execution for a specified number of milliseconds
+     (C) Waits for a network packet to arrive
+     (D) Halts the CPU to save power
+     Explanation: wait() blocks the calling parent until a child process changes state or finishes, retrieving the child's termination status code and allowing the OS to deallocate the child's PCB.
+     Tags: BCA-205N, Unit-1, System-Calls, wait
+
+Q20. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is an 'interrupt vector' in operating system architecture?
+     (A) An array of memory addresses where interrupt handler service routines (ISRs) are stored [CORRECT]
+     (B) A 3D coordinate vector for GPU rendering
+     (C) A hardware wire connecting the keyboard to the monitor
+     (D) A linked list of currently active process IDs
+     Explanation: The interrupt vector table (IVT) contains pointers to specific Interrupt Service Routines (ISRs) indexed by the interrupt request (IRQ) number.
+     Tags: BCA-205N, Unit-1, Interrupt-Vector, Hardware-Architecture
+
+Q21. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the purpose of the Timer Interrupt in a modern preemptive multitasking operating system?
+     (A) To periodically regain CPU control for the kernel to enforce time quantum slices and prevent infinite user loops [CORRECT]
+     (B) To display the digital clock on the desktop taskbar
+     (C) To synchronize system RAM with CPU clock frequency
+     (D) To calculate the temperature of the CPU core
+     Explanation: Hardware timers trigger periodic interrupts (e.g., every 10 ms), guaranteeing that the OS scheduler regains control to evaluate process priorities and enforce time-slicing.
+     Tags: BCA-205N, Unit-1, Timer-Interrupt, Preemption
+
+Q22. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which of the following is NOT an operating system component?
+     (A) Web Browser Application (Google Chrome, Firefox) [CORRECT]
+     (B) Process Scheduler
+     (C) Virtual Memory Manager
+     (D) File System Driver
+     Explanation: Web browsers, text editors, and video players are user-level application software, distinct from the core operating system kernel.
+     Tags: BCA-205N, Unit-1, OS-Components, Classification
+
+Q23. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is a 'Bootstrap Loader' in computer initialization?
+     (A) A small firmware program stored in ROM/UEFI that locates the OS kernel, loads it into RAM, and initiates system boot [CORRECT]
+     (B) A hardware tool used to assemble motherboard components
+     (C) A compiler that converts C code to machine code
+     (D) A user utility to clean cache files
+     Explanation: The bootstrap program (BIOS/UEFI/GRUB) initializes hardware registers, memory controllers, and loads the kernel image from storage into main memory.
+     Tags: BCA-205N, Unit-1, Booting, Bootstrap-Loader
+
+Q24. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the state of the mode bit when an interrupt occurs while user code is executing?
+     (A) Hardware hardware switches the mode bit from 1 (User) to 0 (Kernel) automatically [CORRECT]
+     (B) The mode bit remains 1 throughout
+     (C) The mode bit is deleted
+     (D) The CPU powers off
+     Explanation: Hardware architecture automatically clears the mode bit to 0 (Kernel mode) upon receiving any interrupt or trap, ensuring the ISR runs with full privileges.
+     Tags: BCA-205N, Unit-1, Interrupt-Architecture, Mode-Bit
+
+Q25. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What does the exit() system call do?
+     (A) Terminates the calling process, releasing its allocated memory, open file descriptors, and leaving an exit code for the parent [CORRECT]
+     (B) Suspends the process to disk
+     (C) Restarts the computer immediately
+     (D) Closes only the terminal window
+     Explanation: exit() performs graceful process termination, deallocates resources, and notifies the parent process.
+     Tags: BCA-205N, Unit-1, System-Calls, exit
+
+Q26. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the primary benefit of Command Line Interpreters (Shells) like Bash or PowerShell?
+     (A) Direct, scriptable, and expressive control over operating system operations and automation [CORRECT]
+     (B) They provide high-definition graphical animations
+     (C) They eliminate the need for an operating system kernel
+     (D) They make typing on keyboards unnecessary
+     Explanation: Shells provide a command language interface enabling system administrators and developers to execute programs, pipe outputs, and automate workflows via scripts.
+     Tags: BCA-205N, Unit-1, User-Interfaces, Shell
+
+Q27. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is a 'hybrid kernel' (such as Windows NT and macOS XNU)?
+     (A) A design combining monolithic performance (running drivers/GUI in kernel space) with microkernel modularity concepts [CORRECT]
+     (B) A kernel that runs without an electric power supply
+     (C) A kernel written partially in Python and partially in HTML
+     (D) A system that has no kernel space
+     Explanation: Hybrid kernels maintain monolithic execution speed for performance-critical subsystems (graphics, networking) while adopting microkernel-like message structures and layered abstraction.
+     Tags: BCA-205N, Unit-1, Hybrid-Kernel, Architecture
+
+Q28. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which system call is used to read data from an open file descriptor in POSIX/UNIX?
+     (A) read(fd, buffer, count) [CORRECT]
+     (B) write(fd, buffer, count)
+     (C) open(filename, flags)
+     (D) seek(fd, offset)
+     Explanation: The read() system call reads up to 'count' bytes from file descriptor 'fd' into memory buffer 'buffer'.
+     Tags: BCA-205N, Unit-1, System-Calls, I-O
+
+Q29. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is 'graceful degradation' (fault tolerance) in distributed or multiprocessor operating systems?
+     (A) The ability of the system to continue functioning proportionally even when one or more hardware components fail [CORRECT]
+     (B) A system crash where all data is immediately erased
+     (C) Slowing down CPU speed to prevent overheating
+     (D) Gradual fading of screen brightness on low battery
+     Explanation: Fault-tolerant systems gracefully degrade performance when a failure occurs rather than experiencing total system shutdown.
+     Tags: BCA-205N, Unit-1, Fault-Tolerance, Distributed-OS
+
+Q30. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is an 'Asymmetric Multiprocessing' (AMP) system?
+     (A) A multiprocessor architecture where a master CPU controls the operating system and delegates tasks to slave processors [CORRECT]
+     (B) A system where all CPUs are completely equal and share the same kernel code concurrently
+     (C) A computer with one CPU and two monitors
+     (D) A system that uses analog and digital circuits together
+     Explanation: In AMP, a master-slave relationship exists: one master processor schedules tasks and runs OS code, while subordinate processors execute assigned user workloads.
+     Tags: BCA-205N, Unit-1, Multiprocessing, AMP-vs-SMP
+
+Q31. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is 'Symmetric Multiprocessing' (SMP)?
+     (A) An architecture where all processors are peers, and each processor runs a copy of the operating system kernel concurrently [CORRECT]
+     (B) A system where one CPU controls all other CPUs
+     (C) A system where CPUs are located in different cities
+     (D) A computer that only has graphics processors
+     Explanation: In SMP, multiple identical CPUs share common physical memory and I/O buses, with any CPU capable of executing kernel code and user tasks concurrently.
+     Tags: BCA-205N, Unit-1, SMP, Multiprocessing
+
+Q32. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is a 'Clustered System' in operating systems?
+     (A) A group of independent, interconnected computers (nodes) working together and sharing storage via a storage-area network (SAN) [CORRECT]
+     (B) A single CPU with multiple internal ALUs
+     (C) A hard drive divided into multiple partitions
+     (D) A set of user folders on a desktop
+     Explanation: Clustering links separate server nodes over high-speed networks to provide high availability and load-balanced computational power.
+     Tags: BCA-205N, Unit-1, Clustered-Systems, Architecture
+
+Q33. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the role of the 'Device Driver' in an operating system?
+     (A) To provide a standardized software interface between the OS kernel and specific hardware peripheral controller registers [CORRECT]
+     (B) To design computer hardware chips
+     (C) To clean physical dust from disk drives
+     (D) To replace motherboard firmware
+     Explanation: Device drivers bridge the hardware-specific command set of peripheral controllers with the standardized uniform I/O subsystem of the OS.
+     Tags: BCA-205N, Unit-1, Device-Drivers, I-O
+
+Q34. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which register in the CPU points to the memory address of the next instruction to be fetched and executed?
+     (A) Program Counter (PC) / Instruction Pointer (IP) [CORRECT]
+     (B) Accumulator (ACC)
+     (C) Stack Pointer (SP)
+     (D) Status / Flags Register
+     Explanation: The Program Counter holds the memory address of the next instruction in sequence to be executed.
+     Tags: BCA-205N, Unit-1, CPU-Registers, Architecture
+
+Q35. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What happens during a 'Cold Boot' vs a 'Warm Boot'?
+     (A) Cold boot starts a computer from a completely powered-off state; warm boot restarts the system without cutting main power [CORRECT]
+     (B) Cold boot uses liquid nitrogen; warm boot uses fans
+     (C) Cold boot only tests RAM; warm boot loads the BIOS
+     (D) There is no technical difference
+     Explanation: A cold boot executes full Power-On Self-Test (POST) from zero power, whereas a warm (soft) boot skips power cycling and hardware self-checks, simply reloading the OS.
+     Tags: BCA-205N, Unit-1, Booting, Cold-vs-Warm
+
+Q36. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the primary role of the BIOS/UEFI firmware during computer startup?
+     (A) Performs POST (Power-On Self-Test), initializes basic hardware interfaces, and locates the bootable boot sector [CORRECT]
+     (B) Compiles C programs into assembly code
+     (C) Runs antivirus scans on the hard drive
+     (D) Acts as the desktop window manager
+     Explanation: Firmware checks system hardware integrity (POST) and transfers control to the bootloader found on the designated boot drive.
+     Tags: BCA-205N, Unit-1, Firmware, BIOS-UEFI
+
+Q37. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is 'Memory Protection' enforced by the operating system using Base and Limit registers?
+     (A) Ensures that a user process can only access physical memory within its designated range (Base <= Address < Base + Limit) [CORRECT]
+     (B) Locks RAM with physical security keys
+     (C) Encrypts all memory contents with passwords
+     (D) Prevents memory chips from overheating
+     Explanation: Hardware base and limit registers define the legal physical address boundaries for a process. Any access outside these registers raises a hardware trap (segmentation violation).
+     Tags: BCA-205N, Unit-1, Memory-Protection, Hardware
+
+Q38. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is an 'Operating System Service' for Information Maintenance?
+     (A) System calls that retrieve or set system time, date, process attributes, and hardware configuration metadata [CORRECT]
+     (B) Formatting the hard drive to factory settings
+     (C) Running spreadsheet calculations
+     (D) Installing user video games
+     Explanation: Information maintenance system calls include getpid(), time(), date(), and sysinfo() to inspect system state.
+     Tags: BCA-205N, Unit-1, System-Calls, Categories
+
+Q39. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     Which system call is used to create a new, empty file or rewrite an existing file in UNIX?
+     (A) creat() / open() with O_CREAT flag [CORRECT]
+     (B) delete()
+     (C) truncate()
+     (D) copy()
+     Explanation: creat() or open(path, O_CREAT | O_WRONLY | O_TRUNC, mode) creates a new file entry in the directory system.
+     Tags: BCA-205N, Unit-1, System-Calls, File-Creation
+
+Q40. [Unit 1: Operating System Foundations, Architecture & Evolution] (HARD)
+     Why does the OS kernel reside in the upper portion of virtual address space in modern operating systems?
+     (A) To allow seamless context switching into kernel mode without having to swap page directory tables [CORRECT]
+     (B) Because kernel code must always be stored on CD-ROMs
+     (C) To prevent physical RAM from being filled up
+     (D) Because lower addresses cannot execute machine code
+     Explanation: Mapping the kernel into the upper virtual address space of every user process allows system calls and interrupts to transition to kernel code instantly without requiring costly TLB flushes.
+     Tags: BCA-205N, Unit-1, Kernel-Mapping, Virtual-Address-Space
+
+Q41. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the POSIX standard in operating systems?
+     (A) Portable Operating System Interface: an IEEE standard defining APIs for software compatibility across UNIX variants [CORRECT]
+     (B) A proprietary Microsoft programming language
+     (C) A hardware protocol for serial mice
+     (D) An open-source graphics editor
+     Explanation: POSIX (Portable Operating System Interface) ensures that source code written for one compliant operating system (e.g., Linux) compiles and runs on others (e.g., macOS, BSD).
+     Tags: BCA-205N, Unit-1, POSIX, Standards
+
+Q42. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is a 'Virtual Machine' (VM) managed by a Hypervisor (Type-1 or Type-2)?
+     (A) An isolated software emulation of a complete physical computer system capable of running its own guest operating system [CORRECT]
+     (B) A web browser running an online game
+     (C) A video card benchmark tool
+     (D) A compressed zip folder containing code
+     Explanation: A hypervisor virtualizes underlying hardware, allowing multiple guest operating systems to execute simultaneously in isolated virtual environments.
+     Tags: BCA-205N, Unit-1, Virtualization, Hypervisor
+
+Q43. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the difference between a Type-1 (Bare-Metal) Hypervisor and a Type-2 (Hosted) Hypervisor?
+     (A) Type-1 runs directly on raw physical hardware; Type-2 runs as an application on top of an existing host operating system [CORRECT]
+     (B) Type-1 runs only on smartphones; Type-2 runs on supercomputers
+     (C) Type-1 is written in Java; Type-2 is written in C
+     (D) Type-1 has no virtual machines
+     Explanation: Type-1 hypervisors (e.g., VMware ESXi, Xen, KVM) execute directly on server hardware. Type-2 hypervisors (e.g., VirtualBox, VMware Workstation) run within a conventional host OS.
+     Tags: BCA-205N, Unit-1, Virtualization, Hypervisor-Types
+
+Q44. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is Containerization (e.g., Docker, LXC) compared to traditional Virtual Machines?
+     (A) OS-level virtualization that shares the host OS kernel and isolates processes, offering much lower overhead than full VMs [CORRECT]
+     (B) Emulation of hardware using software ALUs
+     (C) Compressing files into containerized archives
+     (D) Running code inside physical metal containers
+     Explanation: Containers isolate user spaces using kernel namespaces and cgroups while sharing the single underlying host kernel, avoiding the heavy memory overhead of running separate guest OS kernels.
+     Tags: BCA-205N, Unit-1, Containers, Virtualization
+
+Q45. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is a 'Message Passing' IPC model in operating system design?
+     (A) Processes exchange information by sending packets/messages through the OS kernel via system calls (send, receive) [CORRECT]
+     (B) Processes directly read and write to the same shared physical memory RAM addresses
+     (C) Users print documents and read them manually
+     (D) Programs execute sequentially on a single thread
+     Explanation: In message passing, communicating processes rely on kernel-mediated primitives (send, receive) without requiring shared address space, which is especially useful in distributed systems.
+     Tags: BCA-205N, Unit-1, IPC, Message-Passing
+
+Q46. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is the primary advantage of the 'Shared Memory' IPC model over Message Passing?
+     (A) High speed: once the shared segment is mapped, communication occurs at memory hardware speeds without kernel intervention [CORRECT]
+     (B) No synchronization is ever required between processes
+     (C) It works automatically across separate networked computers without network cards
+     (D) It prevents race conditions automatically
+     Explanation: Shared memory allows processes to communicate directly by reading and writing to shared RAM, bypassing system call overhead during data transfer.
+     Tags: BCA-205N, Unit-1, IPC, Shared-Memory
+
+Q47. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     Which file format is the standard executable binary format used by Linux operating systems?
+     (A) ELF (Executable and Linkable Format) [CORRECT]
+     (B) PE (Portable Executable)
+     (C) COFF (Common Object File Format)
+     (D) Mach-O
+     Explanation: Linux uses ELF for object files, shared libraries, and executables. Windows uses PE (Portable Executable), and macOS uses Mach-O.
+     Tags: BCA-205N, Unit-1, Binary-Formats, ELF
+
+Q48. [Unit 1: Operating System Foundations, Architecture & Evolution] (EASY)
+     What is the 'init' (or systemd) process in UNIX/Linux systems?
+     (A) The ancestor (PID 1) of all processes, spawned directly by the kernel at the end of the boot sequence [CORRECT]
+     (B) The text editor used to write scripts
+     (C) The compiler for kernel modules
+     (D) The background garbage collector for RAM
+     Explanation: PID 1 (traditionally 'init', now 'systemd' in modern Linux) is the first user-space process initialized by the kernel, responsible for launching all daemons and user sessions.
+     Tags: BCA-205N, Unit-1, Linux-Architecture, PID-1
+
+Q49. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is an 'orphan process' in operating systems?
+     (A) A running process whose parent process has terminated without waiting for it [CORRECT]
+     (B) A process that has no lines of code
+     (C) A process that cannot be killed by SIGKILL
+     (D) A process that has finished execution but remains in the process table
+     Explanation: When a parent terminates before its child, the child becomes an orphan and is automatically adopted by PID 1 (init/systemd), which periodically reaps its exit status.
+     Tags: BCA-205N, Unit-1, Process-Management, Orphan-Process
+
+Q50. [Unit 1: Operating System Foundations, Architecture & Evolution] (MEDIUM)
+     What is a 'zombie process' (defunct process)?
+     (A) A process that has completed execution via exit(), but whose entry remains in the process table until its parent reads its exit status via wait() [CORRECT]
+     (B) A malicious virus that attacks the bootloader
+     (C) A process that consumes 100% of CPU time indefinitely
+     (D) A process running on a detached monitor
+     Explanation: A zombie process has released its memory and open files but retains an entry in the process table with its termination code until its parent invokes wait().
+     Tags: BCA-205N, Unit-1, Process-Management, Zombie-Process
+
+Q51. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the fundamental distinction between a 'Program' and a 'Process'?
+     (A) A program is a passive entity (stored executable file on disk); a process is an active entity (a program in execution with PC, stack, and data) [CORRECT]
+     (B) A program can run on multiple computers; a process cannot
+     (C) A program is stored in RAM; a process is stored in ROM
+     (D) There is no distinction in computer science
+     Explanation: A program is passive code stored on storage media. A process is an active executing instance possessing a program counter, memory segments, CPU registers, and resource handles.
+     Tags: BCA-205N, Unit-2, Process-vs-Program, Fundamentals
+
+Q52. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What are the standard memory segments of an active process in virtual memory?
+     (A) Text (Code), Data (Initialized globals), BSS (Uninitialized globals), Heap (Dynamic memory), Stack (Local variables, call frames) [CORRECT]
+     (B) Only RAM and Cache
+     (C) Only BIOS and ROM
+     (D) Only CPU registers and disk swap
+     Explanation: A process memory layout comprises: Text (machine code), Data/BSS (global/static variables), Heap (dynamically allocated via malloc/new, growing upward), and Stack (function activation frames, growing downward).
+     Tags: BCA-205N, Unit-2, Process-Memory-Layout, Segments
+
+Q53. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What are the five states in the classic 5-State Process Model?
+     (A) New, Ready, Running, Waiting (Blocked), Terminated [CORRECT]
+     (B) Start, Execute, Stop, Pause, Delete
+     (C) Idle, Active, Sleeping, Suspended, Dead
+     (D) Created, Swapped, Paged, Cached, Cleared
+     Explanation: The 5-state lifecycle consists of: New (being created), Ready (waiting in ready queue for CPU), Running (instructions executing on CPU), Waiting (blocked waiting for I/O or event), and Terminated (finished).
+     Tags: BCA-205N, Unit-2, Process-States, 5-State-Model
+
+Q54. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What transition occurs when a running process requires an I/O operation?
+     (A) Running -> Waiting (Blocked) [CORRECT]
+     (B) Running -> Ready
+     (C) Running -> Terminated
+     (D) Waiting -> Running
+     Explanation: When an active process issues an I/O request or waits for an event, it voluntarily relinquishes the CPU and transitions from Running to Waiting.
+     Tags: BCA-205N, Unit-2, Process-Transitions, I-O-Wait
+
+Q55. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What transition occurs when an operating system timer interrupt expires on a running process in preemptive scheduling?
+     (A) Running -> Ready [CORRECT]
+     (B) Running -> Waiting
+     (C) Running -> Terminated
+     (D) Ready -> Running
+     Explanation: When a running process exhausts its time slice, the OS timer interrupt preempts it, transitioning it back to the Ready queue to await its next turn.
+     Tags: BCA-205N, Unit-2, Process-Transitions, Preemption
+
+Q56. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What data structure does the Operating System maintain to track all state and accounting information for each individual process?
+     (A) Process Control Block (PCB) / Task Struct [CORRECT]
+     (B) Interrupt Vector Table
+     (C) File Allocation Table
+     (D) Page Directory Pointer Table
+     Explanation: The PCB (Task Descriptor) stores Process ID (PID), program counter, CPU registers, scheduling priority, memory management pointers, accounting data, and I/O status info.
+     Tags: BCA-205N, Unit-2, PCB, Data-Structures
+
+Q57. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is a 'Context Switch' in operating systems?
+     (A) Saving the CPU hardware state (registers, PC) of the currently running process and restoring the saved state of another process to resume execution [CORRECT]
+     (B) Switching from light mode to dark mode in the UI
+     (C) Changing the network IP address of the system
+     (D) Replacing physical RAM with virtual memory
+     Explanation: Context switching saves the execution context of the active process into its PCB and loads the context of the newly scheduled process from its PCB.
+     Tags: BCA-205N, Unit-2, Context-Switching, Mechanism
+
+Q58. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     Why is Context Switching considered pure computational overhead?
+     (A) Because the CPU performs no productive user work while switching between processes [CORRECT]
+     (B) Because it permanently deletes CPU cache data
+     (C) Because it causes hardware damage to transistors
+     (D) Because it slows down typing speed
+     Explanation: During a context switch, the OS consumes CPU cycles saving registers, updating pointers, and invalidating memory caches, during which no user instructions advance.
+     Tags: BCA-205N, Unit-2, Context-Switching, Overhead
+
+Q59. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the primary role of the 'Short-Term Scheduler' (CPU Scheduler)?
+     (A) Selects which process from the Ready Queue should be allocated the CPU next for execution [CORRECT]
+     (B) Selects which jobs should be brought from disk into memory
+     (C) Swaps processes between RAM and disk
+     (D) Controls the screen refresh rate
+     Explanation: The Short-Term Scheduler executes very frequently (e.g., every 10-100 ms), picking the next process from the ready queue to dispatch to the CPU.
+     Tags: BCA-205N, Unit-2, Schedulers, Short-Term
+
+Q60. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the primary role of the 'Long-Term Scheduler' (Job Scheduler)?
+     (A) Controls the degree of multiprogramming by selecting which batch jobs from disk are admitted into main memory [CORRECT]
+     (B) Selects which thread runs on the ALU next
+     (C) Handles keyboard button press interrupts
+     (D) Manages page replacements in cache
+     Explanation: The Long-Term Scheduler determines which submitted jobs enter the system, regulating the total number of processes residing in main memory (degree of multiprogramming).
+     Tags: BCA-205N, Unit-2, Schedulers, Long-Term
+
+Q61. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the role of the 'Medium-Term Scheduler'?
+     (A) Swaps processes out of main memory to disk (backing store) to reduce the degree of multiprogramming and free RAM [CORRECT]
+     (B) Schedules disk head movements
+     (C) Controls mouse cursor acceleration
+     (D) Cleans cache files on shutdown
+     Explanation: The Medium-Term Scheduler implements swapping: when memory becomes congested, it swaps suspended processes out to disk and later swaps them back in when resources free up.
+     Tags: BCA-205N, Unit-2, Schedulers, Medium-Term
+
+Q62. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the difference between an 'I/O-Bound' process and a 'CPU-Bound' process?
+     (A) An I/O-bound process spends more time doing I/O than computations, having many short CPU bursts; a CPU-bound process generates few long CPU bursts [CORRECT]
+     (B) An I/O-bound process never uses the CPU
+     (C) A CPU-bound process cannot access the hard drive
+     (D) An I/O-bound process runs only on GPUs
+     Explanation: I/O-bound processes execute brief CPU computations before blocking for I/O. CPU-bound processes spend the vast majority of their lifespan executing intensive arithmetic calculations.
+     Tags: BCA-205N, Unit-2, Process-Characteristics, I-O-vs-CPU
+
+Q63. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is a 'Thread' (Light-Weight Process)?
+     (A) A basic unit of CPU execution within a process, having its own program counter, register set, and stack, but sharing the text and data segments with sibling threads [CORRECT]
+     (B) A separate standalone operating system running inside a window
+     (C) A physical cable connecting CPU to RAM
+     (D) A hardware timer circuit
+     Explanation: A thread is the smallest schedulable entity. All threads of a process share the same address space (code, global data, open files) while maintaining independent stacks and execution contexts.
+     Tags: BCA-205N, Unit-2, Threads, Definition
+
+Q64. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     Which of the following resources is NOT shared among threads of the same process?
+     (A) Stack and CPU Registers (Program Counter) [CORRECT]
+     (B) Heap Memory
+     (C) Global Variables and Data Segment
+     (D) Open File Descriptors
+     Explanation: Each thread has its own private execution stack (local variables, return addresses) and register state. The heap, data, text, and file descriptors are shared by all threads of that process.
+     Tags: BCA-205N, Unit-2, Threads, Private-vs-Shared
+
+Q65. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the 'Many-to-One' multithreading model?
+     (A) Multiple user-level threads are mapped to a single kernel thread [CORRECT]
+     (B) Multiple kernel threads run on a single CPU core
+     (C) One user thread controls multiple hardware monitors
+     (D) A thread with multiple return statements
+     Explanation: In Many-to-One (user-level threading), thread management is done in user space without kernel awareness. If one thread makes a blocking system call, the entire process blocks.
+     Tags: BCA-205N, Unit-2, Threading-Models, Many-to-One
+
+Q66. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the 'One-to-One' multithreading model (standard in Linux and Windows)?
+     (A) Each user-level thread maps directly to an independent kernel thread [CORRECT]
+     (B) One process can only contain one thread
+     (C) One CPU can only execute one instruction per second
+     (D) Threads cannot access shared memory
+     Explanation: In One-to-One model, the OS kernel manages each thread directly. If one thread blocks, other threads continue executing concurrently on multi-core CPUs.
+     Tags: BCA-205N, Unit-2, Threading-Models, One-to-One
+
+Q67. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the definition of 'Throughput' in CPU scheduling?
+     (A) The number of processes completed per unit of time [CORRECT]
+     (B) The total time a process spends waiting in the ready queue
+     (C) The time from process submission to its complete termination
+     (D) The percentage of time the CPU is busy
+     Explanation: Throughput measures the overall productivity of the scheduling system: count of completed processes per hour or minute.
+     Tags: BCA-205N, Unit-2, Scheduling-Criteria, Throughput
+
+Q68. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Turnaround Time' in CPU scheduling?
+     (A) The total elapsed time interval from the instant a process is submitted to its complete termination [CORRECT]
+     (B) The time the process spends executing on the CPU only
+     (C) The time taken to switch context between two threads
+     (D) The time spent waiting for the first response
+     Explanation: Turnaround Time = Completion Time - Arrival Time. It includes time spent waiting for memory admission, ready queue waiting, CPU execution, and I/O operations.
+     Tags: BCA-205N, Unit-2, Scheduling-Criteria, Turnaround-Time
+
+Q69. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Waiting Time' in CPU scheduling?
+     (A) The total time a process spends waiting in the Ready Queue to gain access to the CPU [CORRECT]
+     (B) The time the process spends sleeping on disk
+     (C) The time taken for a printer to output paper
+     (D) The duration of the CPU burst
+     Explanation: Waiting Time = Turnaround Time - Burst Time. It reflects how long the process sat idle in the ready queue.
+     Tags: BCA-205N, Unit-2, Scheduling-Criteria, Waiting-Time
+
+Q70. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Response Time' in CPU scheduling?
+     (A) The time elapsed from the submission of a request until the first output response is produced [CORRECT]
+     (B) The time taken to shut down the operating system
+     (C) The total execution time of the entire batch
+     (D) The time between two consecutive keypresses
+     Explanation: Response time is crucial in interactive systems: it measures the latency before the user receives the first sign of system reaction to an input.
+     Tags: BCA-205N, Unit-2, Scheduling-Criteria, Response-Time
+
+Q71. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the 'Convoy Effect' observed in First-Come, First-Served (FCFS) scheduling?
+     (A) Short processes get stuck waiting behind a long, CPU-intensive process, causing overall device utilization and average waiting time to suffer [CORRECT]
+     (B) Multiple threads competing for the same lock
+     (C) A network packet storm saturating the ethernet card
+     (D) Context switches occurring too quickly in Round Robin
+     Explanation: In non-preemptive FCFS, if a large CPU-burst job arrives first, all subsequent short I/O-bound jobs queue behind it, resulting in poor average wait times (the Convoy Effect).
+     Tags: BCA-205N, Unit-2, FCFS, Convoy-Effect
+
+Q72. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     Which CPU scheduling algorithm gives the mathematically minimum theoretical average waiting time for a given set of stationary processes?
+     (A) Shortest Job First (SJF) Scheduling [CORRECT]
+     (B) First-Come, First-Served (FCFS)
+     (C) Round Robin (RR)
+     (D) Priority Scheduling without aging
+     Explanation: SJF is provably optimal in terms of minimizing average waiting time because moving short jobs to the front reduces waiting time for all subsequent jobs.
+     Tags: BCA-205N, Unit-2, SJF, Optimality
+
+Q73. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the preemptive version of Shortest Job First (SJF) scheduling called?
+     (A) Shortest Remaining Time First (SRTF) [CORRECT]
+     (B) First In First Out (FIFO)
+     (C) Round Robin (RR)
+     (D) Multilevel Queue
+     Explanation: In SRTF, if a new process arrives with a remaining CPU burst shorter than the remaining burst of the currently running process, the running process is preempted.
+     Tags: BCA-205N, Unit-2, SRTF, Preemptive-SJF
+
+Q74. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the primary practical difficulty in implementing Shortest Job First (SJF) scheduling in general-purpose OS kernels?
+     (A) It is impossible to know the exact length of the next CPU burst of a process in advance [CORRECT]
+     (B) Modern CPUs do not support sorting algorithms
+     (C) SJF requires infinite memory
+     (D) SJF only works with single-character process names
+     Explanation: The exact future CPU burst duration cannot be known a priori; general OSs must estimate it using exponential smoothing of past history: tau_{n+1} = alpha * t_n + (1 - alpha) * tau_n.
+     Tags: BCA-205N, Unit-2, SJF, Predicting-Burst
+
+Q75. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Starvation' (Indefinite Blocking) in priority-based CPU scheduling?
+     (A) Low-priority processes wait indefinitely in the ready queue because high-priority processes continually arrive and monopolize the CPU [CORRECT]
+     (B) A process running out of RAM memory
+     (C) A CPU overheating due to excessive calculations
+     (D) A process that cannot find its files on disk
+     Explanation: In strict priority scheduling, a continuous stream of higher-priority processes can prevent lower-priority processes from ever gaining CPU time.
+     Tags: BCA-205N, Unit-2, Starvation, Priority-Scheduling
+
+Q76. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What technique is used to prevent starvation in priority scheduling systems?
+     (A) Aging: gradually increasing the priority of processes that wait in the system for long periods [CORRECT]
+     (B) Killing all low-priority processes immediately
+     (C) Disabling timer interrupts
+     (D) Doubling the CPU clock speed
+     Explanation: Aging incrementally boosts the priority of long-waiting processes (e.g., 1 priority level every 15 minutes) until they inevitably become the highest priority and execute.
+     Tags: BCA-205N, Unit-2, Aging, Solution-to-Starvation
+
+Q77. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     In Round Robin (RR) scheduling, what happens if the Time Quantum (q) is set extremely large (q -> infinity)?
+     (A) Round Robin degenerates into First-Come, First-Served (FCFS) scheduling [CORRECT]
+     (B) Context switching overhead explodes
+     (C) The system crashes with stack overflow
+     (D) All processes terminate simultaneously
+     Explanation: If the time quantum exceeds the longest process burst time, no process is ever preempted by the timer, behaving exactly like FCFS.
+     Tags: BCA-205N, Unit-2, Round-Robin, Quantum-Selection
+
+Q78. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     In Round Robin scheduling, what happens if the Time Quantum is set extremely small (e.g., 1 microsecond)?
+     (A) The system spends most of its time performing context switches (thrashing CPU with overhead), drastically reducing useful throughput [CORRECT]
+     (B) The system achieves 100% computational efficiency
+     (C) Response time becomes infinite
+     (D) All processes become CPU-bound
+     Explanation: A tiny quantum causes the dispatcher to execute thousands of context switches per second, wasting the vast majority of CPU cycles on scheduler overhead.
+     Tags: BCA-205N, Unit-2, Round-Robin, Small-Quantum
+
+Q79. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     As a rule of thumb in Round Robin scheduler design, what percentage of CPU bursts should be shorter than the chosen time quantum?
+     (A) Approximately 80% [CORRECT]
+     (B) Less than 10%
+     (C) Exactly 100%
+     (D) 50%
+     Explanation: Empirical systems guidelines recommend that ~80% of CPU bursts should finish within a single time quantum, allowing interactive jobs to complete without preemption.
+     Tags: BCA-205N, Unit-2, Round-Robin, Heuristics
+
+Q80. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is 'Multilevel Feedback Queue' (MLFQ) scheduling?
+     (A) A scheduling system with multiple priority queues where processes can dynamically migrate between queues based on their past CPU burst behavior [CORRECT]
+     (B) A queue that sends email feedback to developers
+     (C) A queue with only one process at a time
+     (D) A hardware buffer inside the graphics card
+     Explanation: MLFQ separates processes into tiers: CPU-bound processes that use full quanta are demoted to lower-priority queues with larger quanta, while I/O-bound interactive processes stay in high-priority queues.
+     Tags: BCA-205N, Unit-2, MLFQ, Adaptive-Scheduling
+
+Q81. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     Given three processes arriving at time 0 with burst times P1 = 24, P2 = 3, P3 = 3. What is the average waiting time under FCFS (order P1, P2, P3)?
+     (A) 17 ms [CORRECT]
+     (B) 6 ms
+     (C) 27 ms
+     (D) 12 ms
+     Explanation: P1 waits 0 ms. P2 waits 24 ms. P3 waits 24 + 3 = 27 ms. Average Waiting Time = (0 + 24 + 27) / 3 = 51 / 3 = 17 ms.
+     Tags: BCA-205N, Unit-2, FCFS, Calculation
+
+Q82. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     For the same processes P1 = 24, P2 = 3, P3 = 3 arriving at time 0, what is the average waiting time under non-preemptive SJF (order P2, P3, P1)?
+     (A) 3 ms [CORRECT]
+     (B) 6 ms
+     (C) 17 ms
+     (D) 9 ms
+     Explanation: Order: P2 (burst 3), P3 (burst 3), P1 (burst 24). P2 waits 0 ms. P3 waits 3 ms. P1 waits 3 + 3 = 6 ms. Average Waiting Time = (0 + 3 + 6) / 3 = 9 / 3 = 3 ms! (Dramatic reduction from 17 ms).
+     Tags: BCA-205N, Unit-2, SJF, Calculation
+
+Q83. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is the 'Dispatcher' module in the operating system kernel?
+     (A) The module that actually gives control of the CPU to the process selected by the short-term scheduler (performing context switch, switching to user mode, jumping to PC) [CORRECT]
+     (B) The module that compiles code
+     (C) The network card driver
+     (D) The disk defragmenter
+     Explanation: While the scheduler decides *which* process runs, the dispatcher *executes* the mechanism to start it (context switch, mode switch to user mode, and jump to restart location).
+     Tags: BCA-205N, Unit-2, Dispatcher, Role
+
+Q84. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Dispatch Latency'?
+     (A) The time taken for the dispatcher to stop one process and start another running process [CORRECT]
+     (B) The time to download a file from the internet
+     (C) The latency of the SATA hard disk controller
+     (D) The duration of an entire time slice
+     Explanation: Dispatch latency is the overhead interval required to stop the current process, save its state, load the new process state, and execute the mode switch.
+     Tags: BCA-205N, Unit-2, Dispatch-Latency, Definition
+
+Q85. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is a 'Race Condition' in concurrent programming?
+     (A) A bug where the final outcome of execution depends on the exact non-deterministic order or timing of thread execution [CORRECT]
+     (B) Two programs competing for internet speed
+     (C) A CPU running faster than the system clock
+     (D) An infinite loop in a sorting algorithm
+     Explanation: A race condition occurs when multiple threads concurrently read and write shared data without synchronization, and the final result depends on which thread finishes first.
+     Tags: BCA-205N, Unit-2, Concurrency, Race-Condition
+
+Q86. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is a 'Critical Section'?
+     (A) A code segment that accesses shared resources (shared variables, files, memory) that must not be concurrently accessed by more than one process at a time [CORRECT]
+     (B) A damaged sector on a hard drive
+     (C) A part of the OS that cannot be upgraded
+     (D) A section of code written in assembly
+     Explanation: The critical section is the block of code where shared resources are manipulated; improper concurrent entry causes race conditions.
+     Tags: BCA-205N, Unit-2, Critical-Section, Definition
+
+Q87. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What three fundamental requirements must any valid solution to the Critical Section problem satisfy?
+     (A) Mutual Exclusion, Progress, and Bounded Waiting [CORRECT]
+     (B) Speed, Compactness, and Low Power
+     (C) Linearity, Continuity, and Differentiability
+     (D) Authentication, Authorization, and Accounting
+     Explanation: 1. Mutual Exclusion: only one process in CS at a time. 2. Progress: if CS is free, only waiting processes decide who enters next. 3. Bounded Waiting: a limit exists on how many times others enter before a waiting process gets turn.
+     Tags: BCA-205N, Unit-2, Critical-Section, Three-Requirements
+
+Q88. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What does the 'Mutual Exclusion' requirement mean?
+     (A) If process P_i is executing in its critical section, no other processes can be executing in their critical sections simultaneously [CORRECT]
+     (B) All processes must execute at the same speed
+     (C) Processes can only run on odd-numbered CPU cores
+     (D) Processes cannot communicate with each other
+     Explanation: Mutual exclusion is the foundational safety rule preventing overlapping critical section execution.
+     Tags: BCA-205N, Unit-2, Mutual-Exclusion, Definition
+
+Q89. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What does the 'Progress' requirement mean for the critical section problem?
+     (A) If no process is in its critical section and some processes wish to enter, only those processes not in their remainder section can participate in deciding who enters next [CORRECT]
+     (B) The CPU must never idle
+     (C) Every process must finish within 1 hour
+     (D) Variables must increase monotonically
+     Explanation: Progress ensures that processes outside the critical section (in remainder code) cannot block processes that actually need to enter the critical section.
+     Tags: BCA-205N, Unit-2, Progress, Critical-Section
+
+Q90. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What does the 'Bounded Waiting' requirement mean?
+     (A) There exists a bound on the number of times other processes are allowed to enter their critical sections after a process has requested entry, before that request is granted [CORRECT]
+     (B) The wait() system call cannot sleep for more than 5 seconds
+     (C) A process must finish within its quantum
+     (D) Hard drives must respond in bounded time
+     Explanation: Bounded waiting guarantees that no process is starved or made to wait indefinitely to enter its critical section.
+     Tags: BCA-205N, Unit-2, Bounded-Waiting, Definition
+
+Q91. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is Peterson's Solution for the critical section problem?
+     (A) A classic software-based solution for two concurrent processes using shared variables 'turn' and 'flag[2]' [CORRECT]
+     (B) A hardware CPU instruction for multi-core processors
+     (C) A specialized Unix shell command
+     (D) A disk scheduling algorithm
+     Explanation: Peterson's algorithm is a provably correct software solution ensuring Mutual Exclusion, Progress, and Bounded Waiting for two cooperating processes without hardware assistance.
+     Tags: BCA-205N, Unit-2, Peterson-Algorithm, Critical-Section
+
+Q92. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     In Peterson's solution for process P_i, how does it indicate its desire to enter the critical section?
+     (A) By setting flag[i] = true, and setting turn = j (yielding turn to the other process) [CORRECT]
+     (B) By setting flag[i] = false
+     (C) By deleting variable turn
+     (D) By executing fork()
+     Explanation: Process P_i announces its intent by raising its flag (flag[i] = true) and graciously offering the turn to the rival (turn = j). It waits while flag[j] == true and turn == j.
+     Tags: BCA-205N, Unit-2, Peterson-Algorithm, Logic
+
+Q93. [Unit 2: Process Management, CPU Scheduling & Threads] (HARD)
+     Why does Peterson's solution fail on modern out-of-order superscalar multi-core processors without memory barriers?
+     (A) Modern hardware and optimizing compilers reorder memory read and write operations to improve pipelined performance [CORRECT]
+     (B) Modern CPUs have no boolean variables
+     (C) Modern processors only support Python
+     (D) Modern computers do not have shared memory
+     Explanation: Modern CPUs employ weak memory models where non-dependent reads and writes are reordered, breaking the strict sequential consistency assumed by Peterson's algorithm unless explicit memory fences/barriers are inserted.
+     Tags: BCA-205N, Unit-2, Memory-Barriers, Hardware-Synchronization
+
+Q94. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the 'Test-and-Set' hardware atomic instruction?
+     (A) An instruction that reads the current memory value and sets it to true in a single, indivisible hardware memory bus cycle [CORRECT]
+     (B) A command to benchmark CPU speed
+     (C) A compiler diagnostic flag
+     (D) A tool to test RAM for hardware defects
+     Explanation: Atomic instructions like TestAndSet or CompareAndSwap execute indivisibly at the hardware bus level, enabling the construction of spinlocks and mutexes without race conditions.
+     Tags: BCA-205N, Unit-2, Atomic-Instructions, Hardware-Synchronization
+
+Q95. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is a 'Spinlock' in synchronization?
+     (A) A lock where a thread waiting for access loops continuously in a CPU busy-wait loop testing the lock condition [CORRECT]
+     (B) A hard drive spindle controller
+     (C) A circular linked list of processes
+     (D) A lock that rotates between memory channels
+     Explanation: Spinlocks busy-wait in a loop until the lock becomes available. They are ideal for short durations on multi-core systems because they avoid the high latency of a full context switch.
+     Tags: BCA-205N, Unit-2, Spinlocks, Synchronization
+
+Q96. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is the primary drawback of using a spinlock on a single-core uniprocessor system?
+     (A) The spinning thread wastes 100% of the CPU core in a useless loop, preventing the lock-holding thread from running until preempted [CORRECT]
+     (B) It burns out the CPU fan
+     (C) It causes hard disk fragmentation
+     (D) It disables interrupts permanently
+     Explanation: On a uniprocessor, a spinning thread prevents the lock-holding thread from executing, wasting an entire time quantum doing nothing useful.
+     Tags: BCA-205N, Unit-2, Spinlocks, Drawbacks
+
+Q97. [Unit 2: Process Management, CPU Scheduling & Threads] (MEDIUM)
+     What is 'Processor Affinity' in multi-core CPU scheduling?
+     (A) The tendency of an operating system to schedule a process on the same CPU core to preserve warm CPU cache contents [CORRECT]
+     (B) The emotional connection of a programmer to a CPU brand
+     (C) The clock speed ratio between two chips
+     (D) The motherboard bus width
+     Explanation: Soft and Hard Processor Affinity keeps a thread on the same core to exploit cached data (L1/L2 caches) and avoid the cache invalidation penalty of migrating across cores.
+     Tags: BCA-205N, Unit-2, Processor-Affinity, Multi-Core
+
+Q98. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What is 'Load Balancing' in multi-core/multiprocessor operating systems?
+     (A) Evenly distributing the computational workload across all available CPU cores using push and pull migration strategies [CORRECT]
+     (B) Balancing the physical weight of computer cases
+     (C) Dividing electric power among USB ports
+     (D) Ensuring equal numbers of files in every directory
+     Explanation: Load balancing prevents situations where one CPU core is overloaded with a long ready queue while other cores remain idle.
+     Tags: BCA-205N, Unit-2, Load-Balancing, Multi-Core
+
+Q99. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     In POSIX systems, which library provides the standardized API for creating and managing threads in C/C++?
+     (A) pthreads (pthread_create, pthread_join, pthread_mutex_lock) [CORRECT]
+     (B) stdio.h
+     (C) math.h
+     (D) conio.h
+     Explanation: The IEEE POSIX 1003.1c standard defines the pthreads API for thread creation, synchronization, and lifecycle management.
+     Tags: BCA-205N, Unit-2, pthreads, POSIX
+
+Q100. [Unit 2: Process Management, CPU Scheduling & Threads] (EASY)
+     What does pthread_join() do?
+     (A) Suspends the calling thread until the target thread terminates, similar to wait() for processes [CORRECT]
+     (B) Merges two threads into a single executable
+     (C) Splits a thread into two halves
+     (D) Destroys the thread immediately
+     Explanation: pthread_join() blocks the caller until the specified thread completes, collecting any return value and releasing thread resources.
+     Tags: BCA-205N, Unit-2, pthreads, API
+
+Q101. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     When does 'Compile-Time' address binding generate physical addresses?
+     (A) When it is known at compile time exactly where the process will reside in physical memory (absolute code generation) [CORRECT]
+     (B) When the program is executed by the user
+     (C) When the operating system loads the file into RAM
+     (D) During compiler optimization passes only
+     Explanation: If memory locations are known at compile time, the compiler generates absolute addresses (e.g., MS-DOS .COM programs). If starting location changes, re-compilation is mandatory.
+     Tags: BCA-205N, Unit-3, Address-Binding, Compile-Time
+
+Q102. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Execution-Time (Run-Time)' dynamic address binding?
+     (A) The process can be moved during its execution from one memory segment to another, resolved by hardware MMU relocation registers [CORRECT]
+     (B) The compiler generates binary code on the fly
+     (C) Addresses are resolved when the file is copied to disk
+     (D) Binding that occurs only in interpreted languages
+     Explanation: Execution-time binding maps logical addresses to physical addresses dynamically on each memory reference using hardware relocation registers, enabling virtual memory and swapping.
+     Tags: BCA-205N, Unit-3, Address-Binding, Execution-Time
+
+Q103. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What hardware component is responsible for translating logical (virtual) addresses to physical memory addresses at runtime?
+     (A) Memory Management Unit (MMU) [CORRECT]
+     (B) Arithmetic Logic Unit (ALU)
+     (C) Direct Memory Access (DMA) Controller
+     (D) Interrupt Service Controller
+     Explanation: The MMU is a hardware device on the CPU that intercepts virtual addresses generated by the processor and translates them into physical memory addresses.
+     Tags: BCA-205N, Unit-3, MMU, Hardware
+
+Q104. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is the difference between 'Dynamic Loading' and 'Dynamic Linking'?
+     (A) Dynamic loading loads routines into memory only when they are called; dynamic linking postpones linking of library stubs until execution time [CORRECT]
+     (B) Dynamic loading requires no memory
+     (C) Dynamic linking compiles source code at runtime
+     (D) They are identical terms
+     Explanation: Dynamic loading delays loading uncalled functions to save RAM footprint. Dynamic linking shares a single physical copy of library code (e.g., .so, .dll) across multiple running processes.
+     Tags: BCA-205N, Unit-3, Dynamic-Loading-Linking, Concepts
+
+Q105. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Internal Fragmentation' in memory management?
+     (A) Memory that is internal to an allocated partition but is unused because the requested payload is smaller than the fixed block size [CORRECT]
+     (B) Free memory holes scattered across physical RAM that are individually too small to satisfy requests
+     (C) Memory corrupted by faulty RAM chips
+     (D) Fragmentation inside the CPU registers
+     Explanation: Internal fragmentation occurs in fixed-partition or page-based systems when allocated memory blocks exceed the process's requested memory, leaving wasted slack space inside the partition.
+     Tags: BCA-205N, Unit-3, Internal-Fragmentation, Definitions
+
+Q106. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'External Fragmentation'?
+     (A) Total free memory space exists to satisfy a request, but it is fragmented into small non-contiguous holes scattered across RAM [CORRECT]
+     (B) Unused memory inside an allocated page frame
+     (C) Hard drive sector failures
+     (D) Memory lost to network buffers
+     Explanation: External fragmentation arises in variable-partition schemes when memory is allocated and freed over time, leaving fragmented holes between allocated blocks.
+     Tags: BCA-205N, Unit-3, External-Fragmentation, Definitions
+
+Q107. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     Which dynamic storage allocation strategy allocates the FIRST free memory hole that is large enough to accommodate the process?
+     (A) First-Fit Algorithm [CORRECT]
+     (B) Best-Fit Algorithm
+     (C) Worst-Fit Algorithm
+     (D) Next-Fit Algorithm
+     Explanation: First-Fit scans memory from the beginning and allocates the first hole of sufficient size, making it fast and computationally efficient.
+     Tags: BCA-205N, Unit-3, Allocation-Algorithms, First-Fit
+
+Q108. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     Which dynamic storage allocation strategy searches the entire list to allocate the SMALLEST hole that is large enough?
+     (A) Best-Fit Algorithm [CORRECT]
+     (B) First-Fit Algorithm
+     (C) Worst-Fit Algorithm
+     (D) Buddy System
+     Explanation: Best-Fit searches all holes to find the smallest hole that can accommodate the request, minimizing wasted slack per allocation but producing tiny, unusable leftover fragments.
+     Tags: BCA-205N, Unit-3, Allocation-Algorithms, Best-Fit
+
+Q109. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     Which allocation strategy allocates the LARGEST available hole, leaving the largest leftover fragment?
+     (A) Worst-Fit Algorithm [CORRECT]
+     (B) Best-Fit Algorithm
+     (C) First-Fit Algorithm
+     (D) Quick-Fit Algorithm
+     Explanation: Worst-Fit picks the largest hole, with the reasoning that the leftover space will still be large enough to hold another process.
+     Tags: BCA-205N, Unit-3, Allocation-Algorithms, Worst-Fit
+
+Q110. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What technique is used to eliminate External Fragmentation in contiguous memory allocation?
+     (A) Compaction (shuffling memory contents to place all free memory together in one large contiguous block) [CORRECT]
+     (B) Paging with infinite page sizes
+     (C) Increasing the CPU clock frequency
+     (D) Disabling virtual memory
+     Explanation: Compaction relocates active processes towards one end of memory, consolidating all scattered holes into a single continuous block (only feasible if relocation is dynamic at runtime).
+     Tags: BCA-205N, Unit-3, Compaction, Fragmentation-Remedy
+
+Q111. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Paging' in operating systems?
+     (A) A non-contiguous memory management scheme where logical address space is divided into fixed-size Pages and physical memory into equal-sized Frames [CORRECT]
+     (B) Dividing disk space into circular sectors
+     (C) Printing memory dumps to paper
+     (D) Swapping CPU cores dynamically
+     Explanation: Paging eliminates external fragmentation by mapping fixed-size logical pages (e.g., 4 KB) into any available physical frames throughout physical RAM via a Page Table.
+     Tags: BCA-205N, Unit-3, Paging, Foundations
+
+Q112. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     In paging, what are the two components of a logical address generated by the CPU?
+     (A) Page Number (p) and Page Offset / Displacement (d) [CORRECT]
+     (B) Frame Number and Segment Limit
+     (C) Base Register and Limit Register
+     (D) Track Number and Sector Number
+     Explanation: A logical address is split into: high-order bits representing Page Number (p) used as index into the page table, and low-order bits representing Page Offset (d).
+     Tags: BCA-205N, Unit-3, Paging, Address-Structure
+
+Q113. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     If a logical address space uses 32 bits and the page size is 4 KB (2^12 bytes), how many bits are used for the page offset (d) and page number (p) respectively?
+     (A) 12 bits for offset (d), 20 bits for page number (p) [CORRECT]
+     (B) 16 bits for offset, 16 bits for page number
+     (C) 10 bits for offset, 22 bits for page number
+     (D) 8 bits for offset, 24 bits for page number
+     Explanation: Page size 4 KB = 2^12 bytes requires 12 bits for displacement d. The remaining 32 - 12 = 20 bits define the page number p (indexing up to 2^20 ≈ 1 million pages).
+     Tags: BCA-205N, Unit-3, Paging, Address-Calculation
+
+Q114. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is the primary function of the Page Table in a paging system?
+     (A) Maps each logical page number (p) of a process to the corresponding physical frame number (f) in main RAM [CORRECT]
+     (B) Stores the process source code
+     (C) Tracks CPU clock cycles
+     (D) Manages printer spool queues
+     Explanation: The Page Table provides the translation lookup: physical address = (Frame Number f * Page Size) + Offset d.
+     Tags: BCA-205N, Unit-3, Page-Table, Role
+
+Q115. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What hardware cache is used inside the CPU to accelerate page table address translation?
+     (A) Translation Lookaside Buffer (TLB) [CORRECT]
+     (B) Instruction Cache (L1i)
+     (C) Branch Target Buffer
+     (D) Disk Cache
+     Explanation: The TLB is a fast associative hardware cache storing the most recently translated page-to-frame mappings, avoiding a secondary RAM access for the page table on every memory cycle.
+     Tags: BCA-205N, Unit-3, TLB, Hardware-Acceleration
+
+Q116. [Unit 3: Memory Management & Virtual Memory Architecture] (HARD)
+     What is 'Effective Memory Access Time' (EMAT) if memory access time is 100 ns, TLB access time is 20 ns, and TLB hit ratio is 90% (single-level page table)?
+     (A) 130 ns [CORRECT]
+     (B) 120 ns
+     (C) 200 ns
+     (D) 100 ns
+     Explanation: On TLB hit (90%): TLB lookup (20ns) + RAM access (100ns) = 120ns. On TLB miss (10%): TLB lookup (20ns) + Page Table RAM access (100ns) + Data RAM access (100ns) = 220ns. EMAT = 0.90*(120) + 0.10*(220) = 108 + 22 = 130 ns.
+     Tags: BCA-205N, Unit-3, EMAT, Calculation
+
+Q117. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     Does standard Paging suffer from External Fragmentation or Internal Fragmentation?
+     (A) It suffers from Internal Fragmentation (on average half a page on the final page of a process), but ZERO External Fragmentation [CORRECT]
+     (B) It suffers from severe External Fragmentation
+     (C) It suffers from both equally
+     (D) It suffers from neither
+     Explanation: Because any free frame can be allocated to any page, there is no external fragmentation. Internal fragmentation is limited to the last allocated page.
+     Tags: BCA-205N, Unit-3, Paging, Fragmentation
+
+Q118. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is 'Segmentation' in memory management?
+     (A) A memory management scheme that supports the user's view of memory as a collection of variable-length logical units (main program, functions, stack, arrays) [CORRECT]
+     (B) Dividing memory into equal 4KB chunks
+     (C) Splitting the CPU into multiple ALUs
+     (D) Partitioning hard disks into RAID arrays
+     Explanation: Segmentation views memory as variable-sized modular blocks reflecting program logic (code segment, data segment, stack segment), referenced as <Segment-number, Offset>.
+     Tags: BCA-205N, Unit-3, Segmentation, User-View
+
+Q119. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What two attributes are stored for each entry in a Segment Table?
+     (A) Base Address (starting physical address) and Limit (length of the segment) [CORRECT]
+     (B) Frame number and Offset
+     (C) Valid bit and Dirty bit only
+     (D) PID and Priority
+     Explanation: The Segment Table entry contains: Limit (the maximum allowed offset) and Base (the starting physical memory location). If offset >= limit, a trap occurs.
+     Tags: BCA-205N, Unit-3, Segmentation, Segment-Table
+
+Q120. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Virtual Memory'?
+     (A) A technique that allows the execution of processes that may not be completely located in physical RAM, separating user logical memory from physical memory [CORRECT]
+     (B) A physical stick of high-speed RAM
+     (C) Memory stored on USB flash drives
+     (D) RAM allocated exclusively to video cards
+     Explanation: Virtual memory creates an illusion of vast contiguous memory, allowing programs larger than physical RAM to execute by swapping pages on demand.
+     Tags: BCA-205N, Unit-3, Virtual-Memory, Concept
+
+Q121. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Demand Paging'?
+     (A) Pages are loaded into physical RAM only when they are referenced (demanded) during program execution [CORRECT]
+     (B) Loading the entire program into RAM before execution begins
+     (C) Swapping all processes to disk at once
+     (D) Allocating RAM based on CPU temperature
+     Explanation: Demand paging uses a lazy swapper (pager) that never brings a page into memory until an executing instruction attempts to access it.
+     Tags: BCA-205N, Unit-3, Demand-Paging, Concept
+
+Q122. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What indicates in the Page Table that a requested page is currently on disk and NOT in physical RAM?
+     (A) The Valid-Invalid bit is set to 'Invalid' (0) [CORRECT]
+     (B) The Frame number is negative
+     (C) The Page offset is zero
+     (D) The process PID is changed to -1
+     Explanation: A valid-invalid bit in the page table entry flags whether the page is resident in physical memory (Valid = 1) or on disk / illegal (Invalid = 0).
+     Tags: BCA-205N, Unit-3, Page-Table, Valid-Invalid-Bit
+
+Q123. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What hardware event occurs when a process attempts to access a page marked 'Invalid' in the page table?
+     (A) Page Fault Trap [CORRECT]
+     (B) General Protection Fault Crash
+     (C) Arithmetic Overflow Exception
+     (D) Hardware Reset
+     Explanation: Accessing an invalid page raises a hardware trap known as a Page Fault, passing execution to the OS page fault handler.
+     Tags: BCA-205N, Unit-3, Page-Fault, Mechanism
+
+Q124. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What are the sequential steps executed by the OS when a Page Fault occurs?
+     (A) Trap to OS -> Check if legal address -> Find free frame -> Read page from disk into frame -> Update page table (set valid bit) -> Restart interrupted instruction [CORRECT]
+     (B) Terminate process immediately
+     (C) Reboot operating system -> Clear disk
+     (D) Increase CPU time quantum -> Ignore trap
+     Explanation: The OS verifies reference legality, allocates a free frame, issues disk I/O to fetch the page, updates the page table to valid, and restarts the instruction transparently.
+     Tags: BCA-205N, Unit-3, Page-Fault-Handling, Steps
+
+Q125. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Page Replacement'?
+     (A) Selecting a resident page in physical memory to be evicted (swapped to disk) when a page fault occurs and no free frames exist [CORRECT]
+     (B) Upgrading physical RAM sticks
+     (C) Renaming files on disk
+     (D) Clearing the CPU instruction cache
+     Explanation: When physical RAM is exhausted, page replacement algorithms choose a 'victim frame' to write to swap space to make room for the newly requested page.
+     Tags: BCA-205N, Unit-3, Page-Replacement, Concept
+
+Q126. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is 'Belady's Anomaly' in page replacement algorithms?
+     (A) The phenomenon where increasing the number of allocated page frames results in an INCREASE in the number of page faults [CORRECT]
+     (B) A process consuming 100% of memory
+     (C) Page replacement occurring in constant time
+     (D) A hard drive failing prematurely
+     Explanation: Belady discovered that under certain replacement algorithms (notably FIFO), giving a process more memory frames can paradoxically trigger more page faults on specific reference strings.
+     Tags: BCA-205N, Unit-3, Beladys-Anomaly, Definition
+
+Q127. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     Which page replacement algorithm suffers from Belady's Anomaly?
+     (A) First-In, First-Out (FIFO) [CORRECT]
+     (B) Least Recently Used (LRU)
+     (C) Optimal (OPT)
+     (D) Stack Algorithms
+     Explanation: FIFO is not a stack algorithm and can exhibit Belady's Anomaly. LRU and OPT are proven stack algorithms that never exhibit Belady's Anomaly.
+     Tags: BCA-205N, Unit-3, Beladys-Anomaly, FIFO
+
+Q128. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is the Optimal (OPT / MIN) Page Replacement algorithm?
+     (A) Replaces the page that will not be used for the longest period of time in the future [CORRECT]
+     (B) Replaces the oldest page in memory
+     (C) Replaces the page with the lowest PID
+     (D) Replaces pages at random
+     Explanation: OPT is provably optimal (lowest possible page fault rate), but requires future knowledge of memory references, serving as a theoretical benchmark for evaluation.
+     Tags: BCA-205N, Unit-3, OPT-Algorithm, Definition
+
+Q129. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is the Least Recently Used (LRU) Page Replacement algorithm?
+     (A) Replaces the page that has not been referenced for the longest period of past time [CORRECT]
+     (B) Replaces the page with the highest memory address
+     (C) Replaces the newest page brought into RAM
+     (D) Replaces pages based on alphabetical name
+     Explanation: LRU uses the recent past as an approximation of the near future, replacing the page that has sat idle the longest.
+     Tags: BCA-205N, Unit-3, LRU-Algorithm, Definition
+
+Q130. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     How is the Second-Chance (Clock) page replacement algorithm implemented?
+     (A) A circular queue of pages with a reference bit inspected by a clock hand pointer (giving pages with bit 1 a second chance by resetting to 0) [CORRECT]
+     (B) A hardware timer attached to each frame
+     (C) Sorting pages by timestamp
+     (D) Two stacks running in parallel
+     Explanation: The clock algorithm scans frames cyclically: if reference bit is 0, it chooses that frame as victim; if reference bit is 1, it clears the bit to 0 and advances, giving it a second chance.
+     Tags: BCA-205N, Unit-3, Clock-Algorithm, Second-Chance
+
+Q131. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Thrashing' in virtual memory systems?
+     (A) A catastrophic state where the OS spends almost all its time swapping pages in and out of disk rather than executing useful instructions [CORRECT]
+     (B) Physical vibration of the hard drive platters
+     (C) CPU overheating from intense multiplication
+     (D) A bug in keyboard input buffering
+     Explanation: Thrashing occurs when a process does not have enough frames to hold its working set, causing continuous page faults, low CPU utilization, and system paralysis.
+     Tags: BCA-205N, Unit-3, Thrashing, Definition
+
+Q132. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What causes the Operating System to initiate thrashing?
+     (A) When the sum of the working sets of all processes exceeds total physical RAM, while the OS tries to increase multiprogramming due to low CPU utilization [CORRECT]
+     (B) A power surge in the wall outlet
+     (C) Too many USB devices plugged in
+     (D) A low screen resolution
+     Explanation: Low CPU utilization causes the long-term scheduler to admit more processes, worsening memory congestion until the system collapses into constant page-fault thrashing.
+     Tags: BCA-205N, Unit-3, Thrashing, Cause
+
+Q133. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is Peter Denning's 'Working-Set Model' designed to prevent?
+     (A) Thrashing [CORRECT]
+     (B) Internal fragmentation
+     (C) Deadlocks in semaphores
+     (D) Disk seek latency
+     Explanation: Denning's working-set model tracks the set of pages referenced by a process during the most recent working-set window (Delta), guaranteeing that a process only runs if its working set fits in RAM.
+     Tags: BCA-205N, Unit-3, Working-Set-Model, Thrashing-Prevention
+
+Q134. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is the 'Dirty Bit' (Modify Bit) in a page table entry used for?
+     (A) Indicates whether the page has been modified in RAM since it was read from disk, avoiding redundant disk writes during page eviction [CORRECT]
+     (B) Marks a page containing malicious virus code
+     (C) Indicates memory hardware errors
+     (D) Marks read-only pages
+     Explanation: If the dirty bit is 0 (unmodified), the victim page can simply be overwritten without writing back to disk, cutting page replacement I/O overhead in half.
+     Tags: BCA-205N, Unit-3, Dirty-Bit, Page-Replacement
+
+Q135. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is 'Copy-on-Write' (COW) in process creation?
+     (A) A technique where parent and child processes initially share the same memory pages; pages are duplicated only when either process modifies them [CORRECT]
+     (B) Copying entire RAM contents to disk on every write
+     (C) Writing data to two hard drives simultaneously
+     (D) A backup utility in Linux
+     Explanation: COW allows fork() to be near-instantaneous by sharing memory read-only until a write occurs, at which point an isolated copy of that specific page is created.
+     Tags: BCA-205N, Unit-3, Copy-on-Write, Virtual-Memory
+
+Q136. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is a 'Hierarchical (Multi-Level) Page Table'?
+     (A) Paging the page table itself (e.g., Two-Level, Three-Level) to avoid storing massive contiguous page tables in physical RAM [CORRECT]
+     (B) A page table stored on floppy disks
+     (C) A tree directory for video files
+     (D) A sorting algorithm for RAM addresses
+     Explanation: Multi-level paging breaks the page table into smaller pages, allowing large portions of the page table to remain unallocated or swapped out to disk.
+     Tags: BCA-205N, Unit-3, Multi-Level-Paging, Structure
+
+Q137. [Unit 3: Memory Management & Virtual Memory Architecture] (HARD)
+     What is an 'Inverted Page Table'?
+     (A) A table with one entry for each physical frame of memory rather than for each logical page, indexed by frame number [CORRECT]
+     (B) A page table sorted backwards
+     (C) A table stored in ROM BIOS
+     (D) A table used only for write operations
+     Explanation: An inverted page table reduces memory overhead on 64-bit systems by tracking physical frames: entry contains <PID, Page Number>, indexed by Frame Number.
+     Tags: BCA-205N, Unit-3, Inverted-Page-Table, Architecture
+
+Q138. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     For reference string 7, 0, 1, 2, 0, 3, 0, 4, 2, 3 with 3 frames initially empty, how many page faults occur under FIFO?
+     (A) FIFO triggers page replacements systematically for incoming misses [CORRECT]
+     (B) Zero page faults
+     (C) 1 page fault
+     (D) 50 page faults
+     Explanation: Simulating FIFO step-by-step through the classic reference string demonstrates sequential queue eviction, illustrating early cache misses and replacement dynamics.
+     Tags: BCA-205N, Unit-3, FIFO, Trace
+
+Q139. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Memory Swapping'?
+     (A) Moving an entire process temporarily from main RAM to a secondary backing store (swap space on disk) [CORRECT]
+     (B) Replacing bad RAM sticks
+     (C) Exchanging registers between two CPUs
+     (D) Renaming variables in code
+     Explanation: Swapping rolls entire suspended process images out to swap partition/file to reclaim memory for active jobs.
+     Tags: BCA-205N, Unit-3, Swapping, Memory-Management
+
+Q140. [Unit 3: Memory Management & Virtual Memory Architecture] (HARD)
+     In segmentation with paging (e.g., Intel x86 architecture), how is address translation performed?
+     (A) Logical address is first translated into a linear (virtual) address via Segment Table, and then into physical address via Page Table [CORRECT]
+     (B) Direct lookup in L1 cache only
+     (C) Paging is done first, then segmentation
+     (D) Addresses are translated by software compilers only
+     Explanation: Segmented paging combines user modularity with paging efficiency: segment registers produce a linear address, which the paging MMU maps to physical frames.
+     Tags: BCA-205N, Unit-3, Segmented-Paging, x86-Architecture
+
+Q141. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is 'Pure Demand Paging'?
+     (A) Executing a process starting with ZERO pages in physical RAM, causing a page fault on the very first instruction [CORRECT]
+     (B) Loading all pages before starting
+     (C) Loading 50% of pages into cache
+     (D) Using no virtual memory
+     Explanation: In pure demand paging, a process is scheduled with no resident pages; its very first instruction fetch faults, bringing in pages strictly on demand.
+     Tags: BCA-205N, Unit-3, Pure-Demand-Paging, Concept
+
+Q142. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is the 'Locality of Reference' principle?
+     (A) Programs tend to access memory near recently accessed locations (Spatial) and reuse recently accessed items (Temporal) [CORRECT]
+     (B) Memory addresses are distributed randomly
+     (C) Programs only execute in local timezones
+     (D) Variables are always stored in sequential alphabetical order
+     Explanation: Temporal locality (loops, repeated variables) and spatial locality (arrays, sequential instructions) explain why small cache and working-set sizes achieve high hit ratios (>95%).
+     Tags: BCA-205N, Unit-3, Locality-of-Reference, Foundations
+
+Q143. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Spatial Locality' specifically?
+     (A) If a memory location is referenced, nearby memory locations are likely to be referenced in the near future [CORRECT]
+     (B) Referencing data stored on nearby servers
+     (C) Data accessed repeatedly at the same time
+     (D) Memory placed physically near the CPU socket
+     Explanation: Spatial locality is demonstrated by array traversals and sequential instruction execution.
+     Tags: BCA-205N, Unit-3, Spatial-Locality, Definition
+
+Q144. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Temporal Locality' specifically?
+     (A) A resource or memory address accessed now is likely to be accessed again in the immediate future [CORRECT]
+     (B) Memory that expires after 10 minutes
+     (C) Accessing memory during daylight hours
+     (D) Data stored in temporary registers
+     Explanation: Temporal locality is exhibited by loop counters, subroutine calls, and frequently updated accumulators.
+     Tags: BCA-205N, Unit-3, Temporal-Locality, Definition
+
+Q145. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What is 'Prepaging' in operating systems?
+     (A) Loading all pages of a process's working set into memory simultaneously when resuming from a swap to prevent initial page-fault burst [CORRECT]
+     (B) Compiling code before saving
+     (C) Allocating RAM before power on
+     (D) Formatting hard drives before use
+     Explanation: Prepaging attempts to avoid the flurry of initial page faults when a swapped-out process is restarted by bringing in all working-set pages at once.
+     Tags: BCA-205N, Unit-3, Prepaging, Optimization
+
+Q146. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is the typical page size in standard modern x86/x64 general-purpose computing systems?
+     (A) 4 KB (4096 bytes) [CORRECT]
+     (B) 64 bytes
+     (C) 1 MB
+     (D) 1 GB
+     Explanation: Standard base page size in modern computing architectures (Intel, AMD, ARM) is 4 KB, with support for Huge Pages (2 MB or 1 GB).
+     Tags: BCA-205N, Unit-3, Page-Size, x86-Standard
+
+Q147. [Unit 3: Memory Management & Virtual Memory Architecture] (HARD)
+     What is the benefit of using 'Huge Pages' (e.g., 2 MB or 1 GB) in large database management systems?
+     (A) Significantly reduces TLB misses by covering vastly larger memory regions with a single TLB entry [CORRECT]
+     (B) Eliminates hard disk read latency
+     (C) Prevents SQL injection attacks
+     (D) Reduces CPU clock speed
+     Explanation: For multi-gigabyte memory footprints (like Oracle or PostgreSQL databases), Huge Pages drastically reduce page table overhead and prevent TLB cache thrashing.
+     Tags: BCA-205N, Unit-3, Huge-Pages, Databases
+
+Q148. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is a 'Memory Leak' in software development?
+     (A) A bug where dynamically allocated heap memory (via malloc or new) is not freed when no longer needed, gradually consuming all available RAM [CORRECT]
+     (B) Physical liquid leaking from cooling tubes onto memory chips
+     (C) Data leaking over an unencrypted Wi-Fi network
+     (D) Hardware failure in memory bus transistors
+     Explanation: Failing to release heap allocations causes available RAM to dwindle over time, eventually triggering OS Out-Of-Memory (OOM) process termination.
+     Tags: BCA-205N, Unit-3, Memory-Leak, Concepts
+
+Q149. [Unit 3: Memory Management & Virtual Memory Architecture] (MEDIUM)
+     What does the Linux 'OOM Killer' (Out-Of-Memory Killer) do when physical RAM and swap space are completely exhausted?
+     (A) Selects and forcefully terminates low-priority or memory-hungry processes (using oom_score) to prevent kernel panic [CORRECT]
+     (B) Powers off the server immediately
+     (C) Deletes user data files
+     (D) Overclocks the motherboard memory
+     Explanation: The Linux kernel OOM Killer algorithm computes an oom_badness score and issues SIGKILL to high-impact sacrifice processes to reclaim free memory.
+     Tags: BCA-205N, Unit-3, OOM-Killer, Linux
+
+Q150. [Unit 3: Memory Management & Virtual Memory Architecture] (EASY)
+     What is 'Shared Memory Architecture' using Paging?
+     (A) Two or more processes map the same physical frame into their respective page tables, allowing instant zero-copy data exchange [CORRECT]
+     (B) Connecting two PCs with a LAN cable
+     (C) Using two monitors on one computer
+     (D) Writing data to a shared DVD
+     Explanation: By pointing entries in different process page tables to the same physical frame, both processes share the underlying physical RAM without duplication.
+     Tags: BCA-205N, Unit-3, Shared-Memory, Paging
+
+Q151. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is a 'Semaphore' as defined by Edsger Dijkstra?
+     (A) A protected integer variable S accessed only through two standard atomic operations: wait() [P] and signal() [V] [CORRECT]
+     (B) A hardware switch on the front panel of mainframes
+     (C) A network routing protocol
+     (D) A data encryption key
+     Explanation: A semaphore is a synchronization primitive consisting of an integer counter manipulated exclusively by atomic operations wait() (decrement) and signal() (increment).
+     Tags: BCA-205N, Unit-4, Semaphores, Definition
+
+Q152. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is the atomic definition of the wait() [or P()] operation on semaphore S?
+     (A) wait(S): while (S <= 0) { busy wait or block }; S--; [CORRECT]
+     (B) wait(S): S++;
+     (C) wait(S): S = 0;
+     (D) wait(S): return S;
+     Explanation: wait(S) tests if S > 0; if not, the calling process waits or sleeps. Once S > 0, it decrements S atomically.
+     Tags: BCA-205N, Unit-4, Semaphores, wait-Operation
+
+Q153. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is the atomic definition of the signal() [or V()] operation on semaphore S?
+     (A) signal(S): S++; (and wakes up a waiting process, if any) [CORRECT]
+     (B) signal(S): S--;
+     (C) signal(S): while (S > 0) sleep;
+     (D) signal(S): S = -1;
+     Explanation: signal(S) atomically increments the semaphore value S and unblocks any waiting thread suspended in the semaphore queue.
+     Tags: BCA-205N, Unit-4, Semaphores, signal-Operation
+
+Q154. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is a 'Binary Semaphore'?
+     (A) A semaphore whose integer value can only range between 0 and 1, used as a Mutual Exclusion Lock (Mutex) [CORRECT]
+     (B) A semaphore that can only take powers of 2
+     (C) A semaphore stored in binary file format
+     (D) A semaphore for 2-bit microcontrollers
+     Explanation: A binary semaphore is restricted to values 0 and 1, functioning identically to a mutex lock.
+     Tags: BCA-205N, Unit-4, Binary-Semaphore, Mutex
+
+Q155. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is a 'Counting Semaphore'?
+     (A) A semaphore whose value can span an unrestricted integer domain, used to manage access to a finite pool of identical resource instances [CORRECT]
+     (B) A timer that counts seconds
+     (C) A process counter in the taskbar
+     (D) A counter for network packets
+     Explanation: Counting semaphores are initialized to the number of available resource instances; each allocation decrements the count, and release increments it.
+     Tags: BCA-205N, Unit-4, Counting-Semaphore, Definition
+
+Q156. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In the classic Producer-Consumer Problem with a bounded buffer of size N, which semaphores are typically used?
+     (A) mutex (initialized to 1), empty (initialized to N), and full (initialized to 0) [CORRECT]
+     (B) Only a single boolean flag
+     (C) Three integer arrays
+     (D) No semaphores are needed
+     Explanation: Standard solution: 'mutex' provides mutual exclusion for buffer insertion/removal; 'empty' counts vacant slots (init N); 'full' counts occupied slots (init 0).
+     Tags: BCA-205N, Unit-4, Producer-Consumer, Semaphores
+
+Q157. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     In the Readers-Writers problem, what is the primary concurrency rule?
+     (A) Multiple readers can read concurrently, but a writer requires exclusive access (no other readers or writers) [CORRECT]
+     (B) Only one reader can read at a time
+     (C) Writers can write concurrently without locks
+     (D) Readers and writers execute simultaneously
+     Explanation: Shared data can safely be read by any number of concurrent readers, but writing requires exclusive mutual exclusion to prevent data corruption.
+     Tags: BCA-205N, Unit-4, Readers-Writers, Rules
+
+Q158. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In the Dining Philosophers Problem, how can deadlock among 5 philosophers seated at a round table be prevented?
+     (A) Allow at most 4 philosophers to sit at the table simultaneously, or make odd philosophers pick left fork first and even philosophers pick right fork first [CORRECT]
+     (B) Remove all forks from the table
+     (C) Let all philosophers eat at the exact same second
+     (D) Increase the number of philosophers to 10
+     Explanation: Asymmetric chopstick acquisition (odd/even ordering) or limiting seating capacity to N-1 breaks the circular wait condition, guaranteeing deadlock-free execution.
+     Tags: BCA-205N, Unit-4, Dining-Philosophers, Deadlock-Prevention
+
+Q159. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is a 'Monitor' in concurrent programming (e.g., in Java synchronized methods)?
+     (A) A high-level language synchronization construct encapsulating shared variables, functions, and condition variables, guaranteeing that only one thread executes inside the monitor at any time [CORRECT]
+     (B) A physical display screen
+     (C) A background thread that watches CPU temperatures
+     (D) A hardware logic analyzer
+     Explanation: Monitors provide automated compiler-enforced mutual exclusion: only one active thread can execute within a monitor procedure at any given instant.
+     Tags: BCA-205N, Unit-4, Monitors, High-Level-Construct
+
+Q160. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What are the two primitive operations supported on a 'Condition Variable' inside a Monitor?
+     (A) wait() and signal() [CORRECT]
+     (B) lock() and unlock()
+     (C) push() and pop()
+     (D) start() and stop()
+     Explanation: Condition variables provide signaling mechanisms inside monitors: x.wait() suspends the invoking thread until another thread calls x.signal().
+     Tags: BCA-205N, Unit-4, Condition-Variables, Monitors
+
+Q161. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is a 'Deadlock' in an operating system?
+     (A) A situation where every process in a set is waiting for an event (resource release) that can only be caused by another process in the same set, resulting in permanent stagnation [CORRECT]
+     (B) A computer that cannot boot due to dead battery
+     (C) A process that terminates with error code 1
+     (D) An encrypted file with lost password
+     Explanation: Deadlock is a circular freeze where multiple processes hold resources while waiting for resources held by others in the loop, bringing all of them to an indefinite halt.
+     Tags: BCA-205N, Unit-4, Deadlock, Definition
+
+Q162. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What are the FOUR necessary conditions that must hold simultaneously for a Deadlock to occur (Coffman Conditions)?
+     (A) Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait [CORRECT]
+     (B) Speed, Priority, Capacity, Quantum
+     (C) Read, Write, Execute, Delete
+     (D) CPU, RAM, Disk, Network
+     Explanation: E. G. Coffman proved in 1971 that deadlock requires all 4 conditions: 1. Mutual Exclusion, 2. Hold and Wait, 3. No Preemption, and 4. Circular Wait.
+     Tags: BCA-205N, Unit-4, Coffman-Conditions, Deadlock
+
+Q163. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does the 'Hold and Wait' condition mean in deadlock theory?
+     (A) A process currently holding at least one allocated resource is actively waiting to acquire additional resources held by other processes [CORRECT]
+     (B) A process is paused by the user
+     (C) The CPU holds instructions in cache
+     (D) A printer holds paper in tray
+     Explanation: Hold and wait means processes do not release their currently held resources while blocking to request more resources.
+     Tags: BCA-205N, Unit-4, Coffman-Conditions, Hold-and-Wait
+
+Q164. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does the 'No Preemption' condition mean?
+     (A) Resources cannot be forcibly confiscated from a process; they can only be released voluntarily by the process holding them after task completion [CORRECT]
+     (B) Processes cannot be interrupted by the timer
+     (C) The CPU cannot run threads
+     (D) Memory cannot be expanded
+     Explanation: No preemption means allocated resources are sacrosanct and cannot be preempted by the OS kernel without the owner's cooperation.
+     Tags: BCA-205N, Unit-4, Coffman-Conditions, No-Preemption
+
+Q165. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does the 'Circular Wait' condition mean?
+     (A) A closed chain of processes exists: P0 waits for P1, P1 waits for P2, ..., Pn waits for P0 [CORRECT]
+     (B) A thread executing a while(true) loop
+     (C) A circular hard drive platter rotating
+     (D) A round-robin ready queue
+     Explanation: Circular wait is the definitive topological loop of dependency where each process in the chain waits for a resource held by the next member.
+     Tags: BCA-205N, Unit-4, Coffman-Conditions, Circular-Wait
+
+Q166. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     In a Resource Allocation Graph (RAG), what does a directed edge from Process P_i to Resource R_j (P_i -> R_j) signify?
+     (A) Request Edge (Process P_i has requested an instance of resource R_j and is waiting) [CORRECT]
+     (B) Assignment Edge (Resource R_j is allocated to P_i)
+     (C) Process creation edge
+     (D) Data transfer edge
+     Explanation: P_i -> R_j is a Request Edge. Conversely, R_j -> P_i is an Assignment Edge indicating that an instance of R_j is held by P_i.
+     Tags: BCA-205N, Unit-4, RAG, Request-Edge
+
+Q167. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In a Resource Allocation Graph, what does a cycle indicate if each resource type has ONLY ONE single instance?
+     (A) A cycle is necessary and sufficient condition for Deadlock (Deadlock definitely exists) [CORRECT]
+     (B) Deadlock may or may not exist
+     (C) The system is guaranteed safe
+     (D) The computer will reboot
+     Explanation: If all resources have single instances, a graph cycle is both necessary and sufficient for deadlock: a cycle implies an active deadlock.
+     Tags: BCA-205N, Unit-4, RAG, Single-Instance-Cycle
+
+Q168. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In a Resource Allocation Graph, what does a cycle indicate if resource types have MULTIPLE instances?
+     (A) A cycle is a necessary condition, but NOT a sufficient condition for deadlock (Deadlock MAY exist) [CORRECT]
+     (B) Deadlock is guaranteed to exist
+     (C) No deadlock can ever exist
+     (D) The graph is invalid
+     Explanation: With multi-instance resources, a cycle does not guarantee deadlock because processes outside the cycle could release instances to break the wait.
+     Tags: BCA-205N, Unit-4, RAG, Multi-Instance-Cycle
+
+Q169. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What are the three general strategies for handling Deadlocks in operating systems?
+     (A) Deadlock Prevention, Deadlock Avoidance, and Deadlock Detection & Recovery (plus the Ostrich algorithm) [CORRECT]
+     (B) Rebooting every 5 minutes
+     (C) Disabling multi-threading
+     (D) Allocating infinite memory
+     Explanation: The 3 formal strategies are Prevention (structural elimination of Coffman conditions), Avoidance (dynamic safety checking like Banker's), and Detection/Recovery (letting it happen, detecting it, and rolling back).
+     Tags: BCA-205N, Unit-4, Deadlock-Handling, Strategies
+
+Q170. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is the 'Ostrich Algorithm' for handling deadlocks (used by general-purpose OSs like Linux and Windows)?
+     (A) Stick your head in the sand and pretend deadlocks never occur; if one happens, rely on the user or admin to kill the frozen process [CORRECT]
+     (B) An algorithm developed in Australia
+     (C) A machine learning neural network
+     (D) A fast disk sorting algorithm
+     Explanation: Because formal deadlock handling incurs heavy runtime overhead, general-purpose OSs ignore deadlocks under the economic trade-off that they occur rarely.
+     Tags: BCA-205N, Unit-4, Ostrich-Algorithm, Philosophy
+
+Q171. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     How does Deadlock Prevention eliminate the 'Circular Wait' condition?
+     (A) Impose a strict global linear ordering (enumeration) on all resource types, requiring processes to request resources only in strictly increasing order [CORRECT]
+     (B) Allow all processes to run in parallel
+     (C) Disable all locks
+     (D) Make all resources infinite
+     Explanation: By Havender's protocol, if resources are numbered 1..K and every process must request resources in strictly monotonically increasing numerical order, a cyclic dependency chain is mathematically impossible.
+     Tags: BCA-205N, Unit-4, Deadlock-Prevention, Linear-Ordering
+
+Q172. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     How does Deadlock Prevention eliminate the 'Hold and Wait' condition?
+     (A) Require a process to request and receive ALL required resources at once before beginning execution, or release all held resources before requesting more [CORRECT]
+     (B) Kill all processes after 10 seconds
+     (C) Give CPU to only one process forever
+     (D) Make all processes hold zero variables
+     Explanation: Protocol requires atomic upfront allocation of all resources, preventing a process from holding some while waiting for others (sacrifices resource utilization).
+     Tags: BCA-205N, Unit-4, Deadlock-Prevention, Hold-and-Wait
+
+Q173. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is a 'Safe State' in Deadlock Avoidance theory?
+     (A) A state where there exists at least one Safe Sequence <P1, P2, ..., Pn> such that every process can finish using currently available resources plus resources held by prior processes [CORRECT]
+     (B) A state where the computer is turned off
+     (C) A state where all files are encrypted
+     (D) A state with no network connection
+     Explanation: A safe state guarantees that the OS can allocate resources to satisfy maximum claims without deadlocking.
+     Tags: BCA-205N, Unit-4, Safe-State, Deadlock-Avoidance
+
+Q174. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is the fundamental relationship between a Safe State, an Unsafe State, and a Deadlock?
+     (A) A safe state is NOT deadlock; an unsafe state MAY lead to deadlock; deadlock is a subset of unsafe states [CORRECT]
+     (B) Unsafe state and deadlock are identical
+     (C) All safe states are deadlocked
+     (D) Deadlock has no relation to safe states
+     Explanation: An unsafe state is not necessarily deadlocked; rather, it is a vulnerable state where unfavorable process claims can force the system into deadlock.
+     Tags: BCA-205N, Unit-4, Safe-vs-Unsafe, Venn-Diagram
+
+Q175. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     Who invented the famous 'Banker's Algorithm' for Deadlock Avoidance?
+     (A) Edsger W. Dijkstra [CORRECT]
+     (B) Alan Turing
+     (C) John von Neumann
+     (D) Dennis Ritchie
+     Explanation: Dijkstra designed the Banker's Algorithm in 1965, modeled after a small-town banker managing lines of cash credit.
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Dijkstra
+
+Q176. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What are the primary data structures maintained by the Banker's Algorithm for n processes and m resource types?
+     (A) Available[m], Max[n, m], Allocation[n, m], and Need[n, m] [CORRECT]
+     (B) Queue, Stack, Linked List, Tree
+     (C) PID, PC, Registers, Stack Pointer
+     (D) Rows, Columns, Cells, Formulas
+     Explanation: Available tracks free instances; Max tracks maximum declared demand; Allocation tracks currently held instances; Need = Max - Allocation tracks remaining claims.
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Data-Structures
+
+Q177. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is the formula to calculate the Need matrix in the Banker's Algorithm?
+     (A) Need[i, j] = Max[i, j] - Allocation[i, j] [CORRECT]
+     (B) Need[i, j] = Max[i, j] + Allocation[i, j]
+     (C) Need[i, j] = Available[j] - Allocation[i, j]
+     (D) Need[i, j] = Allocation[i, j] / Max[i, j]
+     Explanation: Remaining Need for process i of resource j is its peak demand minus what it already holds: Need = Max - Allocation.
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Need-Matrix
+
+Q178. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     Under the Resource-Request Algorithm of the Banker's method, what check must pass before a request from P_i can even be evaluated for safety?
+     (A) Request_i <= Need_i AND Request_i <= Available [CORRECT]
+     (B) Request_i > Max_i
+     (C) Request_i == 0
+     (D) Allocation_i == Max_i
+     Explanation: If Request > Need, an error is raised (exceeding maximum declared claim). If Request > Available, the process must wait due to lack of resources.
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Request-Evaluation
+
+Q179. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In Deadlock Detection with single-instance resource types, what graph reduction structure is used?
+     (A) Wait-For Graph (WFG) obtained by removing resource nodes and collapsing edges directly between processes [CORRECT]
+     (B) Binary Search Tree
+     (C) Spanning Forest
+     (D) B-Tree
+     Explanation: A Wait-For Graph contains only process nodes: edge P_i -> P_j means P_i is waiting for P_j to release a resource. A cycle in WFG indicates deadlock.
+     Tags: BCA-205N, Unit-4, Wait-For-Graph, Deadlock-Detection
+
+Q180. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What are the standard recovery techniques when an OS Deadlock Detection algorithm discovers a deadlock?
+     (A) Process Termination (abort all or abort one-by-one) or Resource Preemption with Process Rollback to a safe checkpoint [CORRECT]
+     (B) Deleting the hard drive partition
+     (C) Disabling CPU interrupts
+     (D) Running an antivirus scan
+     Explanation: The OS recovers by terminating deadlocked processes until the cycle breaks, or preempting resources from victim processes and rolling them back to saved checkpoints.
+     Tags: BCA-205N, Unit-4, Deadlock-Recovery, Techniques
+
+Q181. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What factor is critical when selecting a 'victim' process for preemption during deadlock recovery?
+     (A) Minimizing cost (process priority, CPU time consumed so far, resources held, and whether interactive or batch) [CORRECT]
+     (B) Killing the oldest process always
+     (C) Killing the process with the shortest name
+     (D) Random selection
+     Explanation: Victim selection weighs: CPU time already spent, resources held, remaining completion time, and process priority to minimize wasted compute.
+     Tags: BCA-205N, Unit-4, Victim-Selection, Deadlock-Recovery
+
+Q182. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is 'Starvation' in the context of Deadlock Recovery via preemption?
+     (A) The same unfortunate process is repeatedly chosen as the preemption victim and never gets to complete its work [CORRECT]
+     (B) The CPU runs out of electrical power
+     (C) A file system running out of disk inodes
+     (D) A process with no variables
+     Explanation: If cost metrics are static, the same process may be preempted repeatedly. Solutions include factoring the number of past preemptions into the cost function.
+     Tags: BCA-205N, Unit-4, Starvation, Recovery
+
+Q183. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is a 'Livelock'?
+     (A) Two or more processes continuously change their states in response to each other without making any forward progress (active busy-waiting stalemate) [CORRECT]
+     (B) A permanent hardware lockup
+     (C) A process that cannot be killed by task manager
+     (D) A deadlocked thread that has finished
+     Explanation: Unlike deadlock where threads sleep, livelocked threads are actively running and consuming CPU, but repeatedly react to each other in an infinite dance without advancing.
+     Tags: BCA-205N, Unit-4, Livelock, Concurrency
+
+Q184. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (HARD)
+     What is 'Priority Inversion' in concurrent real-time operating systems?
+     (A) A high-priority process is indirectly blocked by a low-priority process holding a shared lock, because a medium-priority process preempts the low-priority process [CORRECT]
+     (B) A bug where high priority is treated as zero
+     (C) A priority queue sorted in reverse
+     (D) A thread that refuses to yield the CPU
+     Explanation: Priority inversion occurred famously on the Mars Pathfinder spacecraft: low-priority task held a mutex, medium tasks starved it from finishing, indirectly blocking the urgent high-priority task.
+     Tags: BCA-205N, Unit-4, Priority-Inversion, Real-Time
+
+Q185. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (HARD)
+     What classic protocol solves the Priority Inversion problem in real-time operating systems?
+     (A) Priority Inheritance Protocol (the low-priority process holding the lock temporarily inherits the high priority of the blocked process) [CORRECT]
+     (B) Round Robin scheduling with 1 ms quantum
+     (C) Disabling all priority queues
+     (D) Terminating all medium tasks immediately
+     Explanation: Under priority inheritance, whichever task holds a lock needed by a higher-priority task temporarily runs at that higher priority until it releases the lock.
+     Tags: BCA-205N, Unit-4, Priority-Inheritance, Protocol
+
+Q186. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     In the Banker's Algorithm, if System State has Available = [3, 3, 2], and P0 needs [0, 0, 0], can P0 be added to the safe sequence?
+     (A) Yes, because Need <= Available, so P0 can finish and release its allocated resources to Available [CORRECT]
+     (B) No, P0 must wait
+     (C) Only if P0 is the only process
+     (D) Cannot be determined
+     Explanation: If Need <= Available, the process can safely obtain its peak resources, complete execution, and return its entire allocation back to the available pool.
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Safe-Sequence-Step
+
+Q187. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (HARD)
+     What is a 'Spinlock with Backoff' designed to alleviate?
+     (A) Memory bus contention and cache coherence traffic caused by multiple CPU cores hammering the same atomic memory address [CORRECT]
+     (B) Hard drive head seek delays
+     (C) Network bandwidth throttling
+     (D) Keyboard typing latency
+     Explanation: Exponential backoff delays successive spinlock checks when contention is high, reducing memory bus saturation across CPU sockets.
+     Tags: BCA-205N, Unit-4, Spinlocks, Backoff
+
+Q188. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is the difference between a 'Recursive Mutex' (Reentrant Lock) and a standard Mutex?
+     (A) A recursive mutex allows the thread currently holding the lock to acquire it multiple times without deadlocking itself [CORRECT]
+     (B) A recursive mutex can be unlocked by any thread
+     (C) A recursive mutex only works inside recursive functions
+     (D) A recursive mutex is written in C++
+     Explanation: A reentrant lock tracks acquisition depth; the owning thread can re-lock it without self-deadlock, provided it unlocks an equal number of times.
+     Tags: BCA-205N, Unit-4, Reentrant-Lock, Mutex
+
+Q189. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does POSIX pthread_mutex_lock() do if the mutex is already locked by another thread?
+     (A) Puts the calling thread to sleep (blocks) until the mutex is released and the thread is awakened [CORRECT]
+     (B) Returns immediately with an error code
+     (C) Terminates the calling thread
+     (D) Spins at 100% CPU forever
+     Explanation: pthread_mutex_lock blocks the calling thread, placing it in a wait queue so no CPU cycles are wasted while waiting.
+     Tags: BCA-205N, Unit-4, POSIX-Mutex, Blocking
+
+Q190. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What does POSIX pthread_mutex_trylock() do?
+     (A) Attempts to acquire the lock; if already held, it returns immediately with EBUSY without blocking [CORRECT]
+     (B) Blocks indefinitely until lock is acquired
+     (C) Forces the other thread to release the lock
+     (D) Destroys the mutex
+     Explanation: trylock() provides a non-blocking poll mechanism, allowing threads to avoid deadlock by performing other work if the lock is contested.
+     Tags: BCA-205N, Unit-4, POSIX-Mutex, trylock
+
+Q191. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What are the ACID properties guaranteed by transaction processing in database and OS storage systems?
+     (A) Atomicity, Consistency, Isolation, and Durability [CORRECT]
+     (B) Authentication, Compression, Indexing, and Deletion
+     (C) Asynchronous, Concurrent, Iterative, and Distributed
+     (D) Allocation, Compaction, Interleaving, and Defragmentation
+     Explanation: ACID guarantees transactional reliability: Atomicity (all or nothing), Consistency (preserves invariants), Isolation (concurrent transactions don't interfere), Durability (committed writes persist across crashes).
+     Tags: BCA-205N, Unit-4, Transactions, ACID
+
+Q192. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does the 'Atomicity' property of an operation mean?
+     (A) The operation executes completely as a single indivisible unit, or if any part fails, the entire operation is rolled back with no partial effects [CORRECT]
+     (B) The operation runs on atomic particles
+     (C) The operation takes 1 nanosecond
+     (D) The operation cannot be logged
+     Explanation: Atomicity ensures operations are 'all-or-nothing', preventing partially completed corrupt states.
+     Tags: BCA-205N, Unit-4, Atomicity, Concurrency
+
+Q193. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     How do blocking semaphores eliminate the 'Busy Waiting' (CPU spinning) present in spinlocks?
+     (A) When a process finds S <= 0, it places itself on the semaphore's waiting queue and invokes block() to yield the CPU to other processes [CORRECT]
+     (B) By increasing the clock speed
+     (C) By terminating the process immediately
+     (D) By converting the semaphore to a float
+     Explanation: Blocking semaphores suspend the waiting process in a sleep queue, letting the scheduler run other productive tasks until signal() invokes wakeup().
+     Tags: BCA-205N, Unit-4, Semaphores, Blocking-Implementation
+
+Q194. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     In UNIX System V IPC, which family of system calls is used to create and operate on semaphore sets?
+     (A) semget(), semop(), and semctl() [CORRECT]
+     (B) fork(), exec(), wait()
+     (C) pipe(), dup(), read()
+     (D) socket(), bind(), listen()
+     Explanation: System V semaphore API uses semget() to create/access a semaphore set, semop() to perform atomic increment/decrement operations, and semctl() for control and initialization.
+     Tags: BCA-205N, Unit-4, System-V-IPC, Semaphores
+
+Q195. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is the fundamental difference between 'Deadlock' and 'Starvation'?
+     (A) In deadlock, every involved process is blocked indefinitely and none can proceed; in starvation, some processes make continuous progress while one or more unfortunate processes are starved [CORRECT]
+     (B) Deadlock only occurs on single-core CPUs; starvation occurs on multi-core
+     (C) Deadlock resolves itself automatically; starvation never resolves
+     (D) There is no difference
+     Explanation: In starvation, the system as a whole advances, but an individual process is unfairly bypassed. In deadlock, the entire set of processes is completely frozen with zero system progress.
+     Tags: BCA-205N, Unit-4, Deadlock-vs-Starvation, Comparison
+
+Q196. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (MEDIUM)
+     What is the computational time complexity of running the Banker's Algorithm Safety Check for n processes and m resource types?
+     (A) O(m * n^2) [CORRECT]
+     (B) O(n + m)
+     (C) O(m^n)
+     (D) O(1)
+     Explanation: Finding a safe sequence requires checking at most n processes across n iterations, where each step tests m resource instances, giving a time complexity of O(m * n^2).
+     Tags: BCA-205N, Unit-4, Bankers-Algorithm, Complexity
+
+Q197. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What is 'Checkpointing' in system fault tolerance and deadlock recovery?
+     (A) Periodically saving the complete execution state (registers, memory) of a process to non-volatile storage to allow rollback to that known safe state [CORRECT]
+     (B) Checking the hard drive for viruses
+     (C) Marking code lines with comments
+     (D) Pausing a process during debugging
+     Explanation: Checkpoints provide recovery milestones, ensuring that if resource preemption is required, a victim process does not need to restart from the very beginning.
+     Tags: BCA-205N, Unit-4, Checkpointing, Recovery
+
+Q198. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (HARD)
+     What is 'False Sharing' in concurrent multi-threaded programming on multi-core CPUs?
+     (A) Threads on different cores modify independent variables that reside on the exact same 64-byte hardware cache line, causing unnecessary cache invalidation traffic [CORRECT]
+     (B) Sharing passwords across users
+     (C) Threads reading wrong memory addresses
+     (D) Using shared memory without permissions
+     Explanation: False sharing occurs when independent variables share a single cache line; modifying one variable causes the cache hardware to invalidate the entire line on all other cores, degrading performance.
+     Tags: BCA-205N, Unit-4, False-Sharing, Cache-Coherence
+
+Q199. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (EASY)
+     What does the 'Circular Wait' condition require in terms of resource types?
+     (A) Each process in the chain must be waiting for a resource that is held by the subsequent process in the cycle [CORRECT]
+     (B) All resources must be of the same type
+     (C) Resources must be allocated in alphabetical order
+     (D) Processes must be running in Round Robin order
+     Explanation: Circular wait is the definitive topological loop of dependency where each process in the chain waits for a resource held by the next member.
+     Tags: BCA-205N, Unit-4, Circular-Wait, Condition
+
+Q200. [Unit 4: Process Synchronization, Concurrency & Deadlocks] (HARD)
+     What is a 'Futex' (Fast Userspace Mutex) in the Linux kernel?
+     (A) A synchronization construct that attempts lock acquisition in user space via atomic instructions and calls into the kernel only if contention occurs [CORRECT]
+     (B) A lock for flash drives
+     (C) A fast thread scheduling queue
+     (D) A future execution promise
+     Explanation: Futex optimizes lock performance by executing uncontended lock/unlock operations in user space with zero system call overhead, falling back to kernel sleeping only when contested.
+     Tags: BCA-205N, Unit-4, Futex, Linux-Kernel
+
+Q201. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is a 'File' from an operating system perspective?
+     (A) A named, contiguous logical address space abstraction of non-volatile secondary storage [CORRECT]
+     (B) A physical sector on a magnetic disk
+     (C) A hardware buffer in RAM
+     (D) A folder on the desktop
+     Explanation: A file is a logical storage abstraction mapped by the OS onto physical devices, shielding users from cylinder and sector geometry.
+     Tags: BCA-205N, Unit-5, File-Concept, Abstraction
+
+Q202. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     Which of the following is considered a standard File Attribute maintained by file systems?
+     (A) Name, Identifier, Type, Location, Size, Protection, and Timestamps [CORRECT]
+     (B) Monitor refresh rate
+     (C) CPU register count
+     (D) Motherboard serial number
+     Explanation: File attributes metadata includes name, unique inode/ID, file type, location pointer on storage, file size in bytes, access permissions, and date created/modified.
+     Tags: BCA-205N, Unit-5, File-Attributes, Metadata
+
+Q203. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the 'Sequential Access' method for files?
+     (A) Information in the file is processed in order, one record after the other from start to finish (like tape storage) [CORRECT]
+     (B) Records are accessed in random arbitrary order by index
+     (C) Only the first byte of a file can be read
+     (D) All bytes are read simultaneously
+     Explanation: Sequential access reads records sequentially: read_next() advances a file pointer implicitly through the data stream.
+     Tags: BCA-205N, Unit-5, File-Access, Sequential
+
+Q204. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the 'Direct (Random) Access' method for files?
+     (A) Programs can read or write records rapidly in any arbitrary order using fixed-size blocks (read record n) [CORRECT]
+     (B) Files can only be read backwards
+     (C) Files can only be accessed via internet
+     (D) Files are erased after reading
+     Explanation: Direct access allows immediate seeking to any logical block address (e.g., lseek() to block 500) without reading intermediate data.
+     Tags: BCA-205N, Unit-5, File-Access, Direct-Random
+
+Q205. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is a 'Single-Level Directory' structure and what is its major limitation?
+     (A) All files reside in a single directory; name collision occurs because no two files can share the same name, and multiple users cannot isolate work [CORRECT]
+     (B) A directory with only one subfolder
+     (C) A directory that only holds text files
+     (D) A directory stored in RAM
+     Explanation: In single-level directories, every file shares one namespace, creating naming conflicts as file count and user count increase.
+     Tags: BCA-205N, Unit-5, Directory-Structures, Single-Level
+
+Q206. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the standard directory structure used by modern general-purpose operating systems (Windows, Linux, macOS)?
+     (A) Tree-Structured (Hierarchical) Directory [CORRECT]
+     (B) Single-Level Flat Directory
+     (C) Two-Level User Directory
+     (D) Acyclic Graph with no folders
+     Explanation: The tree structure provides a root directory containing files and subdirectories, supporting pathnames and modular organizational hierarchies.
+     Tags: BCA-205N, Unit-5, Directory-Structures, Tree-Structure
+
+Q207. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the difference between an 'Absolute Pathname' and a 'Relative Pathname'?
+     (A) An absolute path begins at the root directory (e.g., /home/user/doc.txt); a relative path defines a path from the current working directory [CORRECT]
+     (B) An absolute path cannot be changed; a relative path changes on reboot
+     (C) Absolute paths only work in Windows; relative paths only in Linux
+     (D) There is no difference
+     Explanation: Absolute paths start from root ('/' or 'C:\'); relative paths start from the process's current directory (cwd).
+     Tags: BCA-205N, Unit-5, Pathnames, Absolute-vs-Relative
+
+Q208. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is a 'Hard Link' in UNIX file systems?
+     (A) A direct directory entry pointing to the same underlying inode number as the original file [CORRECT]
+     (B) A shortcut file containing the path string of another file
+     (C) A physical cable connecting two drives
+     (D) A permanent read-only lock
+     Explanation: A hard link creates a new directory entry pointing directly to the target's inode; deleting the original name leaves the inode intact until link count drops to zero.
+     Tags: BCA-205N, Unit-5, Links, Hard-Link
+
+Q209. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is a 'Symbolic (Soft) Link'?
+     (A) A special small file whose content is simply a text string containing the pathname of the target file [CORRECT]
+     (B) An inode shared by two files
+     (C) A hardware link between SATA cables
+     (D) A duplicate copy of the entire file content
+     Explanation: A symbolic link contains the path to another file. If the original file is deleted, the symlink becomes a 'dangling pointer'.
+     Tags: BCA-205N, Unit-5, Links, Soft-Link
+
+Q210. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is an 'Access Control List' (ACL) in file protection?
+     (A) A list associated with each file specifying exactly which user accounts or groups have which permissions (read, write, execute) [CORRECT]
+     (B) A list of recently opened files
+     (C) A list of broken sectors on disk
+     (D) A password manager
+     Explanation: ACLs grant fine-grained security permissions on a per-user and per-group basis.
+     Tags: BCA-205N, Unit-5, File-Protection, ACL
+
+Q211. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     In UNIX file systems, what permissions are represented by the octal mode 754 (rwxr-xr--)?
+     (A) Owner: Read/Write/Execute (7); Group: Read/Execute (5); Others: Read only (4) [CORRECT]
+     (B) Owner: Read only; Group: Write; Others: Execute
+     (C) All users have full permissions
+     (D) File is locked for editing
+     Explanation: r=4, w=2, x=1. 7 = 4+2+1 (rwx). 5 = 4+0+1 (r-x). 4 = 4+0+0 (r--).
+     Tags: BCA-205N, Unit-5, Unix-Permissions, Octal-Mode
+
+Q212. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'Contiguous Allocation' of disk blocks for files?
+     (A) Each file occupies a contiguous set of consecutive physical blocks on the disk [CORRECT]
+     (B) Blocks are scattered randomly and linked by pointers
+     (C) Files are stored in CPU cache
+     (D) Each file has its own hard drive
+     Explanation: Contiguous allocation yields excellent sequential and random read speed, but suffers from severe external fragmentation and difficulty in expanding file sizes.
+     Tags: BCA-205N, Unit-5, File-Allocation, Contiguous
+
+Q213. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'Linked Allocation' of disk blocks?
+     (A) Each file is a linked list of disk blocks; each block contains a pointer to the next block [CORRECT]
+     (B) All files share the same pointer
+     (C) Files are stored in contiguous sectors
+     (D) Pointers are stored only in RAM
+     Explanation: Linked allocation eliminates external fragmentation completely, but suffers from slow random access (must traverse links sequentially) and pointer reliability overhead.
+     Tags: BCA-205N, Unit-5, File-Allocation, Linked
+
+Q214. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is the File Allocation Table (FAT) used in MS-DOS and Windows FAT32 file systems?
+     (A) A table stored at the start of the disk volume containing a linked list of block pointers for every cluster on the drive [CORRECT]
+     (B) A table of user passwords
+     (C) A table containing file icons
+     (D) A list of bad sectors
+     Explanation: FAT caches the linked list pointers into a single compact table, eliminating the overhead of reading block-embedded pointers from physical sectors.
+     Tags: BCA-205N, Unit-5, FAT, File-Allocation
+
+Q215. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'Indexed Allocation' in file systems?
+     (A) Each file has its own Index Block containing an array of disk block addresses allocated to that file [CORRECT]
+     (B) Files are sorted alphabetically in memory
+     (C) Files can only be indexed by numbers
+     (D) All files share one index block
+     Explanation: Indexed allocation supports direct access without external fragmentation by storing all block pointers in dedicated index blocks.
+     Tags: BCA-205N, Unit-5, Indexed-Allocation, Index-Block
+
+Q216. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is an 'Inode' (Index Node) in UNIX/Linux file systems?
+     (A) A data structure representing a filesystem object, storing file attributes, size, permissions, and direct/indirect block pointers [CORRECT]
+     (B) The user's desktop folder
+     (C) A software compiler for scripts
+     (D) A network interface controller
+     Explanation: An inode stores all file metadata and pointer tables (direct, indirect, double-indirect, triple-indirect blocks) except the file name itself (stored in directory).
+     Tags: BCA-205N, Unit-5, Inode, UNIX-Architecture
+
+Q217. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     In a classic UNIX inode with 12 direct pointers, 1 single indirect pointer, 1 double indirect pointer, and 1 triple indirect pointer, what is the role of 'Direct Pointers'?
+     (A) They point directly to disk blocks containing the actual file data, providing fast access for small files [CORRECT]
+     (B) They point to user home directories
+     (C) They point to other inodes
+     (D) They point to USB devices
+     Explanation: The 12 direct pointers allow files under ~48 KB to access data blocks directly with zero intermediate pointer lookups.
+     Tags: BCA-205N, Unit-5, Inode, Direct-Pointers
+
+Q218. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the 'Bit Vector' (Bitmap) method for free space management?
+     (A) A bit array where each bit represents one disk block (0 = allocated block, 1 = free block) [CORRECT]
+     (B) A list of deleted files
+     (C) A vector drawing file format
+     (D) A method for encrypting disk sectors
+     Explanation: A bitmap uses 1 bit per disk block, allowing high-speed hardware bit-scanning instructions (find-first-set) to locate contiguous free blocks quickly.
+     Tags: BCA-205N, Unit-5, Free-Space, Bitmap
+
+Q219. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'Disk Formatting' (High-Level Formatting)?
+     (A) Creating the file system data structures (boot sector, superblock, inode tables, free space bitmap) on a disk partition [CORRECT]
+     (B) Cleaning the metal surface with cloth
+     (C) Setting the motor rotation speed
+     (D) Installing new magnetic heads
+     Explanation: High-level formatting initializes OS file system metadata onto a logical volume, making it ready to store files.
+     Tags: BCA-205N, Unit-5, Formatting, High-Level
+
+Q220. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is the 'Superblock' in a UNIX/Linux file system?
+     (A) A critical filesystem block containing volume-wide metadata: filesystem size, block size, total inodes, free block counts, and status flags [CORRECT]
+     (B) A block containing the root password
+     (C) A block used only for movie files
+     (D) A hardware fuse in the disk controller
+     Explanation: The superblock holds vital architectural parameters for the entire filesystem. If corrupted, the filesystem cannot be mounted.
+     Tags: BCA-205N, Unit-5, Superblock, Filesystem-Metadata
+
+Q221. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What are the two primary components of physical disk access latency in traditional magnetic Hard Disk Drives (HDD)?
+     (A) Seek Time (moving the R/W head to the target cylinder) and Rotational Latency (waiting for the target sector to rotate under the head) [CORRECT]
+     (B) Download speed and upload speed
+     (C) CPU clock speed and bus speed
+     (D) RAM refresh time and cache latency
+     Explanation: Total disk latency is dominated by Seek Time (mechanical arm movement, 3-10 ms) and Rotational Delay (spinning platters, 2-6 ms).
+     Tags: BCA-205N, Unit-5, Disk-Geometry, Seek-Time-Rotational-Latency
+
+Q222. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     Why do Solid State Drives (SSDs) NOT require traditional disk head scheduling algorithms like SCAN or LOOK?
+     (A) SSDs have no moving mechanical parts, providing uniform random access latency across all flash memory blocks [CORRECT]
+     (B) SSDs cannot store files
+     (C) SSDs run in RAM only
+     (D) SSDs use magnetic tapes
+     Explanation: Because flash memory has zero mechanical seek time or rotational latency, algorithms designed to minimize head travel distance are irrelevant for SSDs.
+     Tags: BCA-205N, Unit-5, SSDs-vs-HDDs, Disk-Scheduling
+
+Q223. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the primary operational goal of Disk Head Scheduling algorithms in HDDs?
+     (A) To minimize total head movement (seek distance) and average seek time across all I/O cylinder requests [CORRECT]
+     (B) To make the disk spin faster
+     (C) To compress video files on the fly
+     (D) To increase the sector size
+     Explanation: Minimizing mechanical head travel distance maximizes throughput and minimizes request queue wait time.
+     Tags: BCA-205N, Unit-5, Disk-Scheduling, Goal
+
+Q224. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     How does the First-Come, First-Served (FCFS) disk scheduling algorithm operate?
+     (A) Services requests strictly in the chronological order they arrive in the I/O queue, without considering head location [CORRECT]
+     (B) Services the closest cylinder first
+     (C) Services requests in alphabetical order
+     (D) Sweeps back and forth across platters
+     Explanation: FCFS is intrinsically fair with no starvation risk, but can cause wild head oscillations across the disk surface, resulting in poor performance.
+     Tags: BCA-205N, Unit-5, FCFS-Disk, Algorithm
+
+Q225. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the Shortest Seek Time First (SSTF) disk scheduling algorithm?
+     (A) Selects the pending request that requires the least head movement from the current cylinder position [CORRECT]
+     (B) Services the shortest file first
+     (C) Services the request with the highest PID
+     (D) Moves head to cylinder 0 first
+     Explanation: SSTF picks the geometrically closest track to the current head, substantially reducing total seek distance compared to FCFS.
+     Tags: BCA-205N, Unit-5, SSTF-Disk, Algorithm
+
+Q226. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What major drawback does SSTF disk scheduling suffer from?
+     (A) Starvation of outlying requests if a steady stream of requests keeps arriving near the current head position [CORRECT]
+     (B) It requires infinite memory
+     (C) It causes mechanical arm collisions
+     (D) It can only handle 10 requests at a time
+     Explanation: Just like SJF in CPU scheduling, SSTF can permanently starve requests for distant inner or outer cylinders if local requests continuously arrive.
+     Tags: BCA-205N, Unit-5, SSTF-Disk, Starvation
+
+Q227. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     How does the SCAN (Elevator) disk scheduling algorithm operate?
+     (A) The disk arm starts at one end and moves toward the other end, servicing requests along the way, until it reaches the edge, where it reverses direction [CORRECT]
+     (B) It moves directly to the center and stops
+     (C) It jumps randomly between requests
+     (D) It services requests based on file size
+     Explanation: Like a building elevator, SCAN sweeps in one direction until it hits the physical disk boundary, then reverses direction, guaranteeing bounded wait times.
+     Tags: BCA-205N, Unit-5, SCAN-Disk, Elevator-Algorithm
+
+Q228. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     How does C-SCAN (Circular SCAN) disk scheduling improve upon standard SCAN?
+     (A) It moves in one direction only servicing requests; when it reaches the edge, it immediately returns to the beginning WITHOUT servicing requests on the return trip [CORRECT]
+     (B) It spins the disk platters backwards
+     (C) It services requests in a circular spiral
+     (D) It doubles the disk head speed
+     Explanation: C-SCAN provides a more uniform waiting time distribution because requests at the far end do not wait twice as long as requests in the middle.
+     Tags: BCA-205N, Unit-5, C-SCAN, Uniform-Wait-Time
+
+Q229. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     How does the LOOK disk scheduling algorithm optimize the standard SCAN algorithm?
+     (A) The arm goes only as far as the final pending request in each direction, reversing direction immediately without traveling to the physical end of the disk [CORRECT]
+     (B) It checks file contents before moving
+     (C) It predicts future user requests using AI
+     (D) It looks at CPU temperature
+     Explanation: LOOK checks ahead ('looks') and reverses direction as soon as no further requests exist in the current direction, avoiding unnecessary travel to platter edges.
+     Tags: BCA-205N, Unit-5, LOOK-Disk, Optimization
+
+Q230. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     How does C-LOOK optimize C-SCAN?
+     (A) The arm sweeps in one direction only as far as the last active request, then returns directly to the earliest pending request without going to the physical edges [CORRECT]
+     (B) It reads disk tracks circularly
+     (C) It uses two read heads simultaneously
+     (D) It writes data only to sector 0
+     Explanation: C-LOOK restricts circular sweeps strictly between the lowest and highest active pending cylinder requests.
+     Tags: BCA-205N, Unit-5, C-LOOK, Optimization
+
+Q231. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     Given a disk queue with requests for cylinders: 98, 183, 37, 122, 14, 124, 65, 67 with initial head at 53. If SSTF is used, which cylinder is serviced first?
+     (A) 65 (distance |65 - 53| = 12) [CORRECT]
+     (B) 37 (distance |37 - 53| = 16)
+     (C) 98
+     (D) 14
+     Explanation: Distances from 53: |65-53|=12, |37-53|=16, |67-53|=14. The minimum seek distance is 12, so cylinder 65 is serviced first.
+     Tags: BCA-205N, Unit-5, SSTF-Disk, Calculation
+
+Q232. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'RAID' in secondary storage architecture?
+     (A) Redundant Array of Independent (Inexpensive) Disks: organizing multiple physical disks to improve reliability, data redundancy, and I/O performance [CORRECT]
+     (B) A type of virus scanner
+     (C) A disk partition format for games
+     (D) A CPU instruction pipeline
+     Explanation: RAID combines multiple physical hard drives into a single logical volume using striping, mirroring, or parity to boost throughput and fault tolerance.
+     Tags: BCA-205N, Unit-5, RAID, Definition
+
+Q233. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'RAID 0' (Disk Striping)?
+     (A) Data is split across multiple drives in blocks (stripes) with ZERO redundancy or parity; offers high performance but failure of any drive destroys all data [CORRECT]
+     (B) Data is mirrored across two drives
+     (C) Parity is stored on a dedicated drive
+     (D) Only one drive is used
+     Explanation: RAID 0 offers non-redundant striping: peak read/write throughput, but zero fault tolerance.
+     Tags: BCA-205N, Unit-5, RAID-0, Striping
+
+Q234. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is 'RAID 1' (Disk Mirroring)?
+     (A) Every block of data written to one disk is simultaneously duplicated (mirrored) onto a second identical disk, providing 100% data redundancy [CORRECT]
+     (B) Striping with parity
+     (C) Storing data on tape backups
+     (D) Compressing files to half size
+     Explanation: RAID 1 mirrors every sector onto a clone drive; if one disk crashes, the system continues seamlessly from the mirror.
+     Tags: BCA-205N, Unit-5, RAID-1, Mirroring
+
+Q235. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'RAID 5' (Block-Interleaved Distributed Parity)?
+     (A) Data and parity information are striped across three or more disks; can survive the complete loss of any single drive without data loss [CORRECT]
+     (B) Two disks mirrored together
+     (C) All parity stored on a single drive
+     (D) Ten disks running with no parity
+     Explanation: RAID 5 requires at least 3 drives, distributing parity evenly across all drives so any single drive failure can be reconstructed via XOR parity.
+     Tags: BCA-205N, Unit-5, RAID-5, Distributed-Parity
+
+Q236. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'Journaling' in modern file systems (e.g., ext4, NTFS, XFS)?
+     (A) Writing file system metadata changes to a circular log (journal) before committing them to the main file system structures, ensuring fast crash recovery [CORRECT]
+     (B) Keeping a diary of user logins
+     (C) Writing text files with timestamps
+     (D) Printing disk logs to paper
+     Explanation: Journaling prevents file system inconsistency after power failure by replaying or rolling back unfinished operations from the journal on reboot, avoiding lengthy fsck scans.
+     Tags: BCA-205N, Unit-5, Journaling, Crash-Recovery
+
+Q237. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the 'Mounting' of a file system?
+     (A) Attaching a file system on a storage device to a specified directory location (mount point) in the existing directory hierarchy [CORRECT]
+     (B) Physically screwing a hard drive into a computer chassis
+     (C) Installing a cooling fan
+     (D) Formatting a partition
+     Explanation: Mounting links an external volume or partition into the unified OS directory tree at an accessible directory known as the mount point.
+     Tags: BCA-205N, Unit-5, Mounting, Filesystem
+
+Q238. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is a 'VFS' (Virtual File System) switch in the operating system kernel?
+     (A) An abstraction layer that defines a common file interface (open, read, write) allowing the OS to access heterogeneous file systems (ext4, NTFS, NFS) uniformly [CORRECT]
+     (B) A virtual reality viewer
+     (C) A hardware switch on SSDs
+     (D) A tool for compressing folders
+     Explanation: The VFS enables system calls like read() to function transparently whether the underlying target is on ext4, FAT32, Btrfs, or a network NFS drive.
+     Tags: BCA-205N, Unit-5, VFS, Kernel-Architecture
+
+Q239. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'Bad Block Management' in disk controllers?
+     (A) The disk controller detects damaged physical sectors and automatically remaps them to spare reserved sectors (sector sparing / forwarding) [CORRECT]
+     (B) Deleting all damaged files automatically
+     (C) Disabling the entire hard drive
+     (D) Turning off disk caching
+     Explanation: Low-level controller firmware maintains a spare pool of sectors and transparently redirects reads and writes away from defective sectors.
+     Tags: BCA-205N, Unit-5, Bad-Blocks, Controller-Management
+
+Q240. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is a 'Swap Space' on secondary storage?
+     (A) A dedicated disk partition or file used by the virtual memory manager to hold pages that exceed physical RAM capacity [CORRECT]
+     (B) A folder for sharing files between users
+     (C) A folder for temporary downloads
+     (D) A recycle bin for deleted files
+     Explanation: Swap space extends physical memory into non-volatile storage, holding evicted pages and hibernated system state.
+     Tags: BCA-205N, Unit-5, Swap-Space, Virtual-Memory
+
+Q241. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the difference between synchronous I/O and asynchronous I/O?
+     (A) In synchronous I/O, the calling thread blocks until the I/O transfer completes; in asynchronous I/O, the thread continues executing while I/O proceeds in background [CORRECT]
+     (B) Synchronous I/O uses no wires
+     (C) Asynchronous I/O can only write, never read
+     (D) There is no difference
+     Explanation: Asynchronous I/O invokes a signal or callback upon completion, allowing high-performance event-driven servers to service thousands of connections concurrently.
+     Tags: BCA-205N, Unit-5, I-O-Models, Sync-vs-Async
+
+Q242. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is Direct Memory Access (DMA)?
+     (A) A specialized hardware controller that transfers blocks of data directly between I/O devices and main RAM without passing through the CPU [CORRECT]
+     (B) A CPU instruction that deletes RAM
+     (C) A cable connecting two memory slots
+     (D) A software tool to speed up typing
+     Explanation: DMA relieves the CPU from byte-by-byte transfer chores; the CPU initiates the transfer and receives a single interrupt only when the entire multi-kilobyte block has moved.
+     Tags: BCA-205N, Unit-5, DMA, Hardware-Architecture
+
+Q243. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'Double Buffering' in I/O management?
+     (A) Using two memory buffers so the operating system can read from one buffer while an I/O device is writing into the other [CORRECT]
+     (B) Using two monitors at the same time
+     (C) Backing up a file twice
+     (D) Compressing data with two passwords
+     Explanation: Double buffering decouples device speed from processing speed, allowing continuous data pipelining without stalling.
+     Tags: BCA-205N, Unit-5, Buffering, Double-Buffering
+
+Q244. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     What is the primary difference between Character-Stream devices and Block devices?
+     (A) Character devices transfer data byte-by-byte in streams (e.g., keyboard, serial port); Block devices transfer fixed-size blocks with random seek capability (e.g., HDD, SSD) [CORRECT]
+     (B) Character devices are faster than block devices
+     (C) Block devices cannot store binary data
+     (D) Character devices use no drivers
+     Explanation: UNIX categorizes hardware drivers into block devices (random-access, buffered) and character devices (stream-oriented, unbuffered).
+     Tags: BCA-205N, Unit-5, Device-Categories, Block-vs-Character
+
+Q245. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (HARD)
+     What does the 'fsync()' system call do in UNIX/Linux?
+     (A) Forces all modified in-core file buffers (dirty cache blocks) for a file descriptor to be flushed and written to physical storage media immediately [CORRECT]
+     (B) Synchronizes the system clock with GPS
+     (C) Deletes temporary backup files
+     (D) Synchronizes two git repositories
+     Explanation: fsync() ensures database write-ahead logging (WAL) durability by blocking until all cached data is physically committed to non-volatile disk platters or flash cells.
+     Tags: BCA-205N, Unit-5, fsync, Durability
+
+Q246. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'Page Cache' in Linux kernel memory management?
+     (A) A unified kernel cache in RAM that buffers disk blocks and file pages, serving file reads and writes at RAM speed [CORRECT]
+     (B) A cache for web browser HTML pages
+     (C) A hardware chip on hard drives
+     (D) A table of deleted files
+     Explanation: Linux uses all otherwise-free RAM as a Page Cache to accelerate disk I/O; cache pages are evicted automatically when user applications request more memory.
+     Tags: BCA-205N, Unit-5, Page-Cache, Linux-Kernel
+
+Q247. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (HARD)
+     What is 'Copy-on-Write' snapshotting in modern filesystems like ZFS and Btrfs?
+     (A) Instead of overwriting existing data, new modifications are written to new free blocks, allowing instant, space-efficient filesystem snapshots [CORRECT]
+     (B) Copying files to external thumb drives
+     (C) A copyright protection system
+     (D) A printer spooling technique
+     Explanation: CoW filesystems preserve historical tree roots, allowing zero-latency point-in-time snapshots that consume storage only when blocks diverge.
+     Tags: BCA-205N, Unit-5, ZFS-Btrfs, Copy-on-Write
+
+Q248. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is 'Wear Leveling' in Solid State Drives (SSDs)?
+     (A) An internal controller algorithm that distributes flash writes and erasures evenly across all physical flash memory blocks to prevent premature block burnout [CORRECT]
+     (B) A tool to measure battery degradation
+     (C) A fan control system to reduce wear
+     (D) A mechanical alignment for SATA plugs
+     Explanation: NAND flash cells endure a finite number of Program/Erase (P/E) cycles; wear leveling prevents specific sectors from burning out ahead of the rest.
+     Tags: BCA-205N, Unit-5, SSDs, Wear-Leveling
+
+Q249. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (MEDIUM)
+     What is the TRIM command in SSD management?
+     (A) An OS ATA/NVMe command informing the SSD which data blocks are no longer considered in use by the filesystem and can be wiped internally [CORRECT]
+     (B) A command to delete empty directories
+     (C) A tool to truncate long filenames
+     (D) A power saving sleep mode
+     Explanation: TRIM enables the SSD garbage collection engine to pre-erase freed flash blocks in the background, preserving high sustained write performance.
+     Tags: BCA-205N, Unit-5, TRIM, SSD-Optimization
+
+Q250. [Unit 5: File Systems, Secondary Storage Management & Disk Scheduling] (EASY)
+     Why are Operating Systems considered the cornerstone of modern computer science and software development?
+     (A) They bridge the gap between abstract user algorithms and chaotic physical hardware, orchestrating concurrency, security, memory, and devices seamlessly [CORRECT]
+     (B) Because without an OS, computers cannot be sold in stores
+     (C) Because programming languages cannot run on bare electricity
+     (D) Because monitors require an operating system to display colors
+     Explanation: Operating systems provide the core infrastructure of computing: resource virtualization, process orchestration, memory protection, persistent storage, and fault-tolerant security.
+     Tags: BCA-205N, Unit-5, OS-Overview, Conclusion
+

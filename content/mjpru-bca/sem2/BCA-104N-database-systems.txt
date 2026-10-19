@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 2
+COURSE CODE: BCA-104N - INTRODUCTION TO DATABASE SYSTEM
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is a Database?
+     (A) A collection of unorganized files
+     (B) An organized collection of logically interrelated data
+     (C) A software program that writes C code
+     (D) A computer monitor interface
+     Answer: (B)
+     Explanation: A database is an organized, integrated collection of logically related data models designed to meet the information needs of an organization.
+
+Q2. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is the primary drawback of traditional File Processing Systems compared to a DBMS?
+     (A) High memory speed
+     (B) Data redundancy, data inconsistency, and data isolation
+     (C) Inability to print files
+     (D) Lack of graphical colors
+     Answer: (B)
+     Explanation: File systems suffer from redundant data storage across multiple files, leading to update anomalies and inconsistent data.
+
+Q3. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is the Three-Schema Architecture also known as?
+     (A) OSI 7-Layer Architecture
+     (B) ANSI-SPARC Three-Level Architecture
+     (C) Von Neumann Architecture
+     (D) TCP/IP Architecture
+     Answer: (B)
+     Explanation: The ANSI/SPARC 3-tier architecture divides database descriptions into External, Conceptual, and Internal levels to achieve data independence.
+
+Q4. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which level of the ANSI-SPARC architecture describes how data is physically stored on hardware storage media?
+     (A) External Level (View Level)
+     (B) Conceptual Level (Logical Level)
+     (C) Internal Level (Physical Level)
+     (D) User Interface Level
+     Answer: (C)
+     Explanation: The Internal (Physical) level describes the physical storage structure, access paths, block organizations, and indexing techniques.
+
+Q5. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which level of the ANSI-SPARC architecture describes what data is stored and the relationships among data for the entire community of users?
+     (A) External Level
+     (B) Conceptual Level
+     (C) Internal Level
+     (D) Physical Level
+     Answer: (B)
+     Explanation: The Conceptual (logical) level provides a unified global representation of all entities, data types, relationships, and constraints.
+
+Q6. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which level of the ANSI-SPARC architecture provides customized views tailored for individual user groups?
+     (A) External Level (View Level)
+     (B) Conceptual Level
+     (C) Internal Level
+     (D) Physical Level
+     Answer: (A)
+     Explanation: The External level describes the individual views of different end-users, hiding irrelevant portions of the database.
+
+Q7. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is Physical Data Independence?
+     (A) The ability to modify the conceptual schema without altering external views
+     (B) The ability to modify the physical storage structures or access paths without altering the conceptual schema
+     (C) Running software without hard disks
+     (D) Encrypting database files
+     Answer: (B)
+     Explanation: Physical data independence insulates the conceptual schema from changes in disk storage, indexing, or physical file reorganization.
+
+Q8. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is Logical Data Independence?
+     (A) The ability to alter the physical disk format
+     (B) The ability to modify the conceptual schema without having to rewrite external schemas and application programs
+     (C) Running queries on the CPU cache
+     (D) Eliminating primary keys
+     Answer: (B)
+     Explanation: Logical data independence allows adding new entities or expanding attributes at the conceptual level without breaking existing user views.
+
+Q9. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     Which type of data independence is generally more difficult to achieve?
+     (A) Physical Data Independence
+     (B) Logical Data Independence
+     (C) Both are equally easy
+     (D) Neither exists in relational databases
+     Answer: (B)
+     Explanation: Logical data independence is harder because application programs are tightly coupled to the logical structure of the data they access.
+
+Q10. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Who is the Database Administrator (DBA)?
+     (A) An end-user who enters daily data
+     (B) A person/team with central control over data, schema definition, security policies, and performance tuning
+     (C) A programmer who writes web CSS
+     (D) The computer repair technician
+     Answer: (B)
+     Explanation: The DBA coordinates and manages the database, schema definitions, access privileges, backup/recovery, and performance optimization.
+
+Q11. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which of the following is a core responsibility of a DBA?
+     (A) Writing marketing brochures
+     (B) Authorizing database access privileges and establishing backup/recovery procedures
+     (C) Designing computer monitors
+     (D) Selling database software licenses
+     Answer: (B)
+     Explanation: DBA duties include schema definition, user authorization/security, backup, crash recovery, and storage monitoring.
+
+Q12. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which class of database users interacts with the system solely through canned, pre-written application interfaces (e.g., bank tellers, ticket booking agents)?
+     (A) Sophisticated Users
+     (B) Naive / Parametric End Users
+     (C) Database Administrators
+     (D) System Analysts
+     Answer: (B)
+     Explanation: Naive (parametric) users access the database through menu-driven graphical applications without knowing SQL or database structure.
+
+Q13. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which class of database users writes ad-hoc queries directly in query languages (like SQL) to analyze data?
+     (A) Sophisticated Users (Data Analysts)
+     (B) Naive Users
+     (C) Clerical Assistants
+     (D) Hardware Engineers
+     Answer: (A)
+     Explanation: Sophisticated users (engineers, analysts, scientists) interact with the DBMS using interactive query tools without written programs.
+
+Q14. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the Data Dictionary (System Catalog)?
+     (A) A standard English dictionary for spelling checks
+     (B) A special database containing metadata (data about data), schemas, constraints, and user authorizations
+     (C) A collection of temporary log files
+     (D) An external SQL tutorial manual
+     Answer: (B)
+     Explanation: The data dictionary stores metadata including table definitions, column types, integrity constraints, indexes, and user permissions.
+
+Q15. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     In a Hierarchical Data Model, how are data relationships organized?
+     (A) As a collection of tables and relations
+     (B) As a tree-like parent-child structure
+     (C) As an arbitrary graph with many-to-many pointers
+     (D) As key-value JSON objects
+     Answer: (B)
+     Explanation: The hierarchical model represents data as tree structures where each child record has exactly one parent record.
+
+Q16. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     In a Network Data Model, how are records related?
+     (A) A child record can have multiple parent records (many-to-many graph)
+     (B) Strictly one parent per child
+     (C) Only using relational tables
+     (D) No relationships are allowed
+     Answer: (A)
+     Explanation: The network model (CODASYL) allows a child node (member) to have multiple parent nodes (owners), forming complex graphs.
+
+Q17. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Who proposed the Relational Data Model in 1970?
+     (A) Charles Bachman
+     (B) Dr. Edgar F. Codd (E.F. Codd)
+     (C) Peter Chen
+     (D) James Gosling
+     Answer: (B)
+     Explanation: Dr. E.F. Codd published the relational model in 1970 at IBM, representing data as mathematical relations (tables).
+
+Q18. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is a Front-End tool in database applications?
+     (A) The physical SATA hard drive controller
+     (B) An application software or graphical interface that enables users to query, display, and manipulate data
+     (C) The SQL compiler engine
+     (D) The backup tape drive
+     Answer: (B)
+     Explanation: Front-end tools (e.g., web portals, reporting tools, forms) interact with end-users and communicate with the back-end DBMS engine.
+
+Q19. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     Which component of the DBMS engine is responsible for executing disk reads and managing memory buffers?
+     (A) Query Optimizer
+     (B) Storage Manager (Buffer Manager)
+     (C) DDL Compiler
+     (D) Security Manager
+     Answer: (B)
+     Explanation: The Storage Manager interfaces with the operating system file system to allocate disk space and manage memory caching buffers.
+
+Q20. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is Metadata?
+     (A) Data that contains confidential financial secrets
+     (B) Data about data describing structure, types, and constraints
+     (C) Deleted historical data
+     (D) Corrupted memory blocks
+     Answer: (B)
+     Explanation: Metadata describes the schema, structure, data types, constraints, and access rights of the underlying stored data.
+
+Q21. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is Data Redundancy?
+     (A) Storing duplicate copies of the same data across multiple files
+     (B) Encrypting passwords
+     (C) Sorting numbers in descending order
+     (D) Using cloud storage
+     Answer: (A)
+     Explanation: Redundancy refers to unnecessary duplication of identical data across several storage locations.
+
+Q22. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is Data Inconsistency?
+     (A) When different copies of the same data show conflicting values due to partial updates
+     (B) When data types match perfectly
+     (C) When primary keys are unique
+     (D) When hard disks are full
+     Answer: (A)
+     Explanation: Inconsistency arises when redundant data is updated in one location but not in another.
+
+Q23. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which language is used by the DBA to define database schema structures and tables?
+     (A) DDL (Data Definition Language)
+     (B) DML (Data Manipulation Language)
+     (C) HTML
+     (D) Assembly Language
+     Answer: (A)
+     Explanation: DDL statements (CREATE, ALTER, DROP) define and modify database structures.
+
+Q24. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which language is used to retrieve and update data in database relations?
+     (A) DML (Data Manipulation Language)
+     (B) DDL
+     (C) CSS
+     (D) BIOS commands
+     Answer: (A)
+     Explanation: DML statements (SELECT, INSERT, UPDATE, DELETE) query and manipulate data records.
+
+Q25. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     A database schema is defined as:
+     (A) The overall logical design and structure of the database
+     (B) The collection of actual data stored at a particular moment
+     (C) A single row in a table
+     (D) The monitor screen resolution
+     Answer: (A)
+     Explanation: The schema is the invariant structural blueprint of the database.
+
+Q26. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is a Database Instance (or State)?
+     (A) The structural definition of tables
+     (B) The collection of actual data stored in the database at a specific point in time
+     (C) A software bug
+     (D) A printed user manual
+     Answer: (B)
+     Explanation: The database state or instance represents the snapshot of actual data at any given moment.
+
+Q27. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the mapping between the External and Conceptual schemas responsible for?
+     (A) Logical Data Independence
+     (B) Physical Data Independence
+     (C) Hardware cooling
+     (D) Clock synchronization
+     Answer: (A)
+     Explanation: External-Conceptual mapping maps individual user views to global logical tables, providing logical data independence.
+
+Q28. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the mapping between the Conceptual and Internal schemas responsible for?
+     (A) Logical Data Independence
+     (B) Physical Data Independence
+     (C) Power saving
+     (D) Network encryption
+     Answer: (B)
+     Explanation: Conceptual-Internal mapping maps global tables to physical storage blocks and files, ensuring physical data independence.
+
+Q29. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which of the following is an example of an open-source Relational DBMS?
+     (A) Oracle Database
+     (B) MySQL / PostgreSQL
+     (C) Microsoft Access
+     (D) IBM DB2
+     Answer: (B)
+     Explanation: MySQL and PostgreSQL are prominent open-source relational database management systems.
+
+Q30. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     In client-server database architecture, where does the DBMS database engine reside?
+     (A) On the client PC
+     (B) On the database server machine
+     (C) Inside the web browser
+     (D) On the network router
+     Answer: (B)
+     Explanation: The database engine runs on the central server machine, processing queries submitted by client applications.
+
+Q31. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is Query Optimization?
+     (A) Choosing the most efficient physical execution plan for an incoming SQL query
+     (B) Compressing tables into ZIP files
+     (C) Formatting text with italics
+     (D) Encrypting columns
+     Answer: (A)
+     Explanation: The query optimizer evaluates alternative execution strategies to minimize disk I/O and processing time.
+
+Q32. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which of the following is NOT a relational DBMS?
+     (A) Oracle
+     (B) PostgreSQL
+     (C) MongoDB
+     (D) MySQL
+     Answer: (C)
+     Explanation: MongoDB is a document-oriented NoSQL database, not a traditional relational DBMS.
+
+Q33. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the primary role of the Transaction Manager in a DBMS?
+     (A) Generating marketing invoices
+     (B) Ensuring transactions preserve ACID properties and handling commits/rollbacks
+     (C) Printing report pages
+     (D) Managing CSS styles
+     Answer: (B)
+     Explanation: The transaction manager coordinates transaction states, guarantees ACID properties, and maintains data consistency.
+
+Q34. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the Concurrency Control Manager responsible for?
+     (A) Controlling multiple users updating the database simultaneously to prevent conflicts
+     (B) Managing mouse clicks
+     (C) Running antivirus software
+     (D) Increasing CPU clock speed
+     Answer: (A)
+     Explanation: Concurrency control ensures multiple interleaved transactions do not leave the database in an inconsistent state.
+
+Q35. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What does the DDL Compiler produce?
+     (A) Machine code binaries
+     (B) A set of metadata tables stored in the Data Dictionary
+     (C) Graphics drivers
+     (D) Formatted HTML web pages
+     Answer: (B)
+     Explanation: The DDL compiler processes schema declarations and writes corresponding schema metadata into the system catalog.
+
+Q36. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which of the following describes an Application Programmer user class?
+     (A) End users who browse products
+     (B) Developers who write application programs that interact with the DBMS using embedded SQL or APIs
+     (C) Hardware technicians
+     (D) Company CEOs
+     Answer: (B)
+     Explanation: Application programmers develop software interfaces and write business logic using database APIs.
+
+Q37. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     In a distributed DBMS, where is data located?
+     (A) On a single central server exclusively
+     (B) Across multiple interconnected network nodes/servers
+     (C) Only in CPU cache
+     (D) On local DVD media
+     Answer: (B)
+     Explanation: A distributed DBMS manages data physically distributed across multiple interconnected computer nodes.
+
+Q38. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which model represents data as entities, attributes, and relationships?
+     (A) E-R Model (Entity-Relationship Model)
+     (B) Hierarchical Model
+     (C) Network Model
+     (D) Flat File Model
+     Answer: (A)
+     Explanation: The Entity-Relationship model conceptualizes data as real-world entities having attributes and interrelationships.
+
+Q39. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is a View in a database?
+     (A) A physical copy of table records on disk
+     (B) A virtual table derived from the result of an underlying SQL query
+     (C) A computer monitor display setting
+     (D) A foreign key index
+     Answer: (B)
+     Explanation: A view contains no physical stored rows; it dynamically computes data from underlying base tables upon query execution.
+
+Q40. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is Data Integrity?
+     (A) The accuracy, consistency, and correctness of stored data enforced by constraints
+     (B) The physical weight of the storage disk
+     (C) The speed of the network router
+     (D) The visual design of forms
+     Answer: (A)
+     Explanation: Data integrity guarantees that data conforms to all defined business rules and structural constraints.
+
+Q41. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     Which integrity rule states that no component of a primary key can be NULL?
+     (A) Entity Integrity Constraint
+     (B) Referential Integrity Constraint
+     (C) Domain Constraint
+     (D) Foreign Key Constraint
+     Answer: (A)
+     Explanation: Entity integrity ensures that every tuple has a distinct, fully defined identity via its non-null primary key.
+
+Q42. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which constraint ensures values in a column belong to a permitted set of valid atomic values?
+     (A) Domain Constraint
+     (B) Referential Constraint
+     (C) Key Constraint
+     (D) Null Constraint
+     Answer: (A)
+     Explanation: Domain constraints enforce valid data types, formats, ranges, and allowed values for an attribute.
+
+Q43. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What does the term 'Enterprise' refer to in database context?
+     (A) A commercial organization whose operational information is modeled in a database
+     (B) A specific database vendor
+     (C) A network cable
+     (D) A computer operating system
+     Answer: (A)
+     Explanation: In database engineering, enterprise refers to the business, university, hospital, or company whose data is managed.
+
+Q44. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Why is centralized database control beneficial for an organization?
+     (A) It increases paper printouts
+     (B) It enforces standards, minimizes redundancy, ensures security, and maintains consistent data
+     (C) It eliminates the need for software
+     (D) It prevents network connections
+     Answer: (B)
+     Explanation: Centralized control enables consistent policy enforcement, uniform data naming, coordinated backups, and security.
+
+Q45. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     Which language level is SQL classified as?
+     (A) Procedural / Imperative language
+     (B) Declarative / Non-procedural language
+     (C) Machine code
+     (D) Assembly language
+     Answer: (B)
+     Explanation: SQL is a declarative language: users specify *what* data to retrieve rather than *how* algorithms step through files.
+
+Q46. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     What is an ad-hoc query?
+     (A) A pre-programmed scheduled report
+     (B) A spontaneous, unplanned query created on the spot by a user to answer a specific question
+     (C) An infinite loop
+     (D) A corrupted database file
+     Answer: (B)
+     Explanation: Ad-hoc queries are dynamically typed queries created as-needed by analysts to inspect data.
+
+Q47. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What happens during a Database Crash Recovery process?
+     (A) All historical data is deleted
+     (B) The recovery manager uses transaction log files to REDO committed changes and UNDO uncommitted operations
+     (C) Hardware is replaced
+     (D) The database is converted to Excel
+     Answer: (B)
+     Explanation: Crash recovery brings the database to a consistent state by replaying committed transactions and rolling back incomplete ones.
+
+Q48. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is an Access Path in physical DBMS design?
+     (A) The physical URL of a web server
+     (B) The physical data structure (e.g., B-Tree index or hash index) used to efficiently locate records on disk
+     (C) A user password
+     (D) The office hallway
+     Answer: (B)
+     Explanation: An access path specifies indexing structures and disk organization utilized by the query engine to read tuples.
+
+Q49. [Unit 1: Database Concepts, Architecture & DBA] (MEDIUM)
+     What is the primary role of the Buffer Pool in a DBMS?
+     (A) Temporary RAM area caching disk pages to avoid slow physical disk reads
+     (B) A graphic design tool
+     (C) An external printer buffer
+     (D) A security scanner
+     Answer: (A)
+     Explanation: Buffer pools cache frequently accessed table blocks in fast RAM, minimizing expensive disk I/O.
+
+Q50. [Unit 1: Database Concepts, Architecture & DBA] (EASY)
+     Which ANSI-SPARC level is completely hidden from ordinary application end-users?
+     (A) External Level
+     (B) Physical / Internal Level
+     (C) Conceptual Level
+     (D) View Level
+     Answer: (B)
+     Explanation: The physical internal level (block layouts, byte offsets, indexing structures) is completely hidden from application users.
+
+Q51. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     Who introduced the Entity-Relationship (E-R) model in 1976?
+     (A) E.F. Codd
+     (B) Peter Pin-Shan Chen
+     (C) Alan Turing
+     (D) John von Neumann
+     Answer: (B)
+     Explanation: Dr. Peter Chen introduced the E-R model in his seminal 1976 paper 'The Entity-Relationship Model: Toward a Unified View of Data'.
+
+Q52. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is an Entity in the E-R model?
+     (A) A database software package
+     (B) A real-world object or concept that is distinguishable from other objects
+     (C) A column data type
+     (D) A cable connector
+     Answer: (B)
+     Explanation: An entity is an independent thing or object in the real world (e.g., an employee, a student, a car) that has identity.
+
+Q53. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     In an E-R diagram, which geometric symbol represents an Entity Set?
+     (A) Diamond
+     (B) Rectangle
+     (C) Ellipse
+     (D) Double Rectangle
+     Answer: (B)
+     Explanation: Rectangles represent strong entity sets in standard Chen notation.
+
+Q54. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     In an E-R diagram, which geometric symbol represents a Relationship Set?
+     (A) Rectangle
+     (B) Diamond
+     (C) Ellipse
+     (D) Circle
+     Answer: (B)
+     Explanation: Diamonds denote relationships that connect two or more participating entity sets.
+
+Q55. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     In an E-R diagram, which geometric symbol represents an Attribute?
+     (A) Ellipse / Oval
+     (B) Square
+     (C) Diamond
+     (D) Triangle
+     Answer: (A)
+     Explanation: Attributes are depicted as ovals (ellipses) connected to their respective entity rectangle.
+
+Q56. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is a Key Attribute (Primary Key) represented in an E-R diagram?
+     (A) An ellipse with dashed underline
+     (B) An ellipse with its attribute name underlined with a solid line
+     (C) A double ellipse
+     (D) A shaded diamond
+     Answer: (B)
+     Explanation: A primary key attribute is denoted by underlining its text inside the attribute ellipse.
+
+Q57. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is a Multivalued Attribute?
+     (A) An attribute that has only one value for an entity
+     (B) An attribute that can take multiple values for a single entity instance (e.g., PhoneNumbers, Skills)
+     (C) An attribute that cannot be null
+     (D) An attribute composed of other attributes
+     Answer: (B)
+     Explanation: Multivalued attributes can store a set of values for a single entity, such as multiple phone numbers or degrees.
+
+Q58. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is a Multivalued Attribute represented in an E-R diagram?
+     (A) Double Ellipse
+     (B) Dashed Ellipse
+     (C) Double Rectangle
+     (D) Hexagon
+     Answer: (A)
+     Explanation: A double oval (concentric ellipses) denotes a multivalued attribute.
+
+Q59. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is a Composite Attribute?
+     (A) An attribute that can be divided into smaller sub-components (e.g., Name into FirstName and LastName)
+     (B) An attribute that holds binary numbers
+     (C) An attribute with zero characters
+     (D) A primary key with two words
+     Answer: (A)
+     Explanation: Composite attributes (like Address = Street, City, State, Pin) are composed of simpler, independent sub-attributes.
+
+Q60. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is a Derived Attribute?
+     (A) An attribute physically stored on hard disk
+     (B) An attribute whose value is computed dynamically from other related attributes (e.g., Age derived from DateOfBirth)
+     (C) An attribute with foreign keys
+     (D) A constant value
+     Answer: (B)
+     Explanation: Derived attributes are not physically stored; they are calculated on demand from stored attributes.
+
+Q61. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is a Derived Attribute represented in an E-R diagram?
+     (A) Double Ellipse
+     (B) Dashed (Dotted) Ellipse
+     (C) Shaded Rectangle
+     (D) Double Diamond
+     Answer: (B)
+     Explanation: Dashed or dotted ovals represent derived attributes in Chen notation.
+
+Q62. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is a Weak Entity in the E-R model?
+     (A) An entity that cannot be stored on disk
+     (B) An entity that does not possess sufficient attributes to form its own primary key and depends on an identifying owner entity
+     (C) An entity with only one attribute
+     (D) A deleted entity
+     Answer: (B)
+     Explanation: A weak entity cannot be uniquely identified by its own attributes alone and relies on an identifying relationship with an owner entity.
+
+Q63. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is a Weak Entity Set represented in an E-R diagram?
+     (A) Single Rectangle
+     (B) Double Rectangle
+     (C) Double Diamond
+     (D) Dashed Rectangle
+     Answer: (B)
+     Explanation: Double rectangles depict weak entity sets, emphasizing their dependency on an identifying strong entity.
+
+Q64. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is an Identifying Relationship Set (connecting weak entity to owner) represented?
+     (A) Single Diamond
+     (B) Double Diamond
+     (C) Double Circle
+     (D) Dashed Line
+     Answer: (B)
+     Explanation: Double diamonds represent identifying relationships associated with weak entity sets.
+
+Q65. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is the discriminator (partial key) of a weak entity set?
+     (A) The foreign key of the database
+     (B) A set of attributes that distinguishes among all entities of the weak entity set belonging to the same owner entity
+     (C) A master password
+     (D) An index column
+     Answer: (B)
+     Explanation: The partial key uniquely distinguishes weak entity instances associated with the same parent owner entity.
+
+Q66. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     How is the Partial Key of a weak entity represented in an E-R diagram?
+     (A) Solid underline
+     (B) Dashed (broken) underline inside the ellipse
+     (C) Double oval
+     (D) Bold font
+     Answer: (B)
+     Explanation: A dashed (dotted) underline under the attribute name denotes a partial key.
+
+Q67. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is Cardinality Ratio (Mapping Cardinality) in a binary relationship?
+     (A) The number of bytes in each record
+     (B) The number of entity instances to which another entity instance can be associated via a relationship set
+     (C) The number of tables in the database
+     (D) The network baud rate
+     Answer: (B)
+     Explanation: Mapping cardinalities express whether a relationship is One-to-One (1:1), One-to-Many (1:N), Many-to-One (N:1), or Many-to-Many (M:N).
+
+Q68. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     A department has one manager, and each manager manages one department. This relationship is an example of:
+     (A) One-to-Many (1:N)
+     (B) One-to-One (1:1)
+     (C) Many-to-Many (M:N)
+     (D) Recursive ternary
+     Answer: (B)
+     Explanation: Since each department pairs with at most one manager and vice-versa, this is a 1:1 relationship.
+
+Q69. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     One teacher teaches multiple courses, and each course is taught by only one teacher. This is a:
+     (A) One-to-One (1:1) relationship
+     (B) One-to-Many (1:N) relationship
+     (C) Many-to-Many (M:N) relationship
+     (D) Reflexive relationship
+     Answer: (B)
+     Explanation: From teacher to courses, the mapping is One-to-Many (1:N).
+
+Q70. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     A student can enroll in multiple courses, and a course can have multiple students enrolled. This is a:
+     (A) One-to-One (1:1)
+     (B) One-to-Many (1:N)
+     (C) Many-to-Many (M:N)
+     (D) Unary relationship
+     Answer: (C)
+     Explanation: Since students and courses share multi-way associations, the relationship is Many-to-Many (M:N).
+
+Q71. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is Total Participation (Existence Dependency) in an E-R relationship?
+     (A) Every entity in the entity set must participate in at least one relationship instance
+     (B) Only some entities participate
+     (C) Entities are deleted when queried
+     (D) Participation is optional
+     Answer: (A)
+     Explanation: Total participation requires that every entity in the set exists in the relationship (indicated by double lines).
+
+Q72. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     How is Total Participation represented in an E-R diagram?
+     (A) Double line connecting entity to relationship
+     (B) Single line
+     (C) Dashed line
+     (D) Arrow pointing left
+     Answer: (A)
+     Explanation: Double lines signify total participation; single lines indicate partial participation.
+
+Q73. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is Partial Participation?
+     (A) Only some entities in the entity set participate in the relationship instances
+     (B) All entities participate
+     (C) Entities can only participate once
+     (D) Entities are locked
+     Answer: (A)
+     Explanation: In partial participation, some entities in the set may not participate in the relationship.
+
+Q74. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is a Recursive (Unary) Relationship?
+     (A) A relationship where the same entity set participates more than once in different roles (e.g., Employee MANAGES Employee)
+     (B) A relationship between three different tables
+     (C) An infinite loop in SQL
+     (D) A primary key constraint
+     Answer: (A)
+     Explanation: In a recursive relationship, entities of the same entity set relate to each other under distinct roles.
+
+Q75. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     When mapping a Many-to-Many (M:N) relationship to relational tables, what is required?
+     (A) Adding a foreign key column to one table
+     (B) Creating a new distinct junction (bridge) table containing foreign keys from both participating tables
+     (C) Combining both tables into a single column
+     (D) No table is needed
+     Answer: (B)
+     Explanation: An M:N relationship cannot be represented inside either base table; it requires a new junction relation.
+
+Q76. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What forms the Primary Key of the junction table created from an M:N relationship without attributes?
+     (A) The primary key of entity 1 only
+     (B) The combination (composite key) of the primary keys of both participating entity sets
+     (C) A random integer
+     (D) The table name
+     Answer: (B)
+     Explanation: The composite combination of the foreign keys of both entities forms the primary key of the junction table.
+
+Q77. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     When mapping a 1:N relationship from Entity A (1) to Entity B (N), how is the relationship represented?
+     (A) By adding the primary key of A as a Foreign Key in table B
+     (B) By adding the primary key of B as a Foreign Key in table A
+     (C) By deleting table B
+     (D) By creating two extra tables
+     Answer: (A)
+     Explanation: In 1:N relationships, the primary key of the 'one' side is embedded as a foreign key on the 'many' side (table B).
+
+Q78. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     When mapping a Weak Entity Set to a relational table, what constitutes its primary key?
+     (A) Its partial key alone
+     (B) The partial key combined with the primary key of the identifying owner entity
+     (C) A newly generated string
+     (D) It cannot have a primary key
+     Answer: (B)
+     Explanation: The primary key of a weak entity table consists of the owner entity's primary key plus the weak entity's partial key.
+
+Q79. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is Specialization in Extended E-R (EER) modeling?
+     (A) Top-down process of designing sub-groupings within an entity set based on distinguishing features
+     (B) Bottom-up synthesis of entities
+     (C) Deleting columns
+     (D) Renaming attributes
+     Answer: (A)
+     Explanation: Specialization defines sub-classes from a generalized super-class using a top-down design strategy.
+
+Q80. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What is Generalization in EER modeling?
+     (A) Top-down breakdown of entities
+     (B) Bottom-up process of extracting common attributes among multiple entities into a higher-level super-class
+     (C) Adding indexes to tables
+     (D) Encrypting passwords
+     Answer: (B)
+     Explanation: Generalization synthesizes multiple entity types that share common features into a single generalized entity.
+
+Q81. [Unit 2: Entity-Relationship (E-R) Modeling] (HARD)
+     What is Aggregation in EER modeling?
+     (A) An abstraction through which relationships are treated as higher-level entities to participate in further relationships
+     (B) Summing numbers in SQL
+     (C) Creating views
+     (D) Merging two databases
+     Answer: (A)
+     Explanation: Aggregation allows treating an existing relationship between entities as an abstract entity for higher-order relationships.
+
+Q82. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     In an E-R diagram, what does an arrow from a relationship to an entity set represent?
+     (A) A cardinality constraint of at most 1 (one-side)
+     (B) Many side
+     (C) Inheritance
+     (D) Deletion
+     Answer: (A)
+     Explanation: An arrow directed toward an entity set indicates that an entity participates at most once (mapping cardinality 1).
+
+Q83. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is the degree of a Ternary relationship?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) 4
+     Answer: (C)
+     Explanation: A ternary relationship involves three distinct participating entity sets.
+
+Q84. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is an Entity Set?
+     (A) A collection of entities of the same type that share the same attributes
+     (B) A group of SQL statements
+     (C) A list of table views
+     (D) A hard drive partition
+     Answer: (A)
+     Explanation: An entity set is a collection (set) of all entities sharing identical attribute structures (e.g., all Students).
+
+Q85. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     Can an entity set have more than one candidate key?
+     (A) No, only one key is allowed
+     (B) Yes, an entity set can have multiple candidate keys from which one is chosen as primary
+     (C) Only in NoSQL systems
+     (D) Only if it is a weak entity
+     Answer: (B)
+     Explanation: An entity set may possess multiple candidate keys (e.g., RollNo, AadharNo, Email), one of which becomes the primary key.
+
+Q86. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is an Atomic Attribute?
+     (A) An attribute that cannot be divided into sub-parts
+     (B) An attribute composed of radioactive data
+     (C) A composite attribute
+     (D) A multivalued attribute
+     Answer: (A)
+     Explanation: Atomic (simple) attributes represent indivisible scalar values like age, salary, or percentage.
+
+Q87. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is a Stored Attribute?
+     (A) An attribute whose value is physically saved in the database
+     (B) An attribute computed at runtime
+     (C) A temporary variable
+     (D) A forgotten column
+     Answer: (A)
+     Explanation: Stored attributes are persisted directly on storage media, unlike derived attributes.
+
+Q88. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     In an E-R diagram for a hospital, 'Patient HAS Doctor' is an example of:
+     (A) An entity
+     (B) A relationship set
+     (C) An attribute
+     (D) A schema
+     Answer: (B)
+     Explanation: 'HAS' connects the Patient entity set and Doctor entity set as a relationship set.
+
+Q89. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What happens to weak entity records when their identifying owner entity instance is deleted?
+     (A) They become independent
+     (B) They are cascade deleted (or orphaned violation occurs)
+     (C) They become primary keys
+     (D) They are moved to RAM
+     Answer: (B)
+     Explanation: Because weak entities depend on owner existence, deleting the owner entity deletes associated weak entities (ON DELETE CASCADE).
+
+Q90. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     Can a relationship set possess attributes of its own (descriptive attributes)?
+     (A) No, relationships cannot have attributes
+     (B) Yes, descriptive attributes can record information specific to the association (e.g., DateOfAppointment)
+     (C) Only in 1:1 relationships
+     (D) Only for weak entities
+     Answer: (B)
+     Explanation: Descriptive attributes belong to the relationship itself (e.g., Grade in a Student TAKES Course relationship).
+
+Q91. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     When mapping a 1:1 relationship where both sides have total participation, what is the best strategy?
+     (A) Merge both entity sets into a single unified relational table
+     (B) Create three separate tables
+     (C) Ignore all attributes
+     (D) Use separate databases
+     Answer: (A)
+     Explanation: When both sides have total participation, combining them into one table avoids nulls and optimizes joins.
+
+Q92. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     Which notation depicts roles played by entities in a recursive relationship?
+     (A) Labeling the connecting lines with role names (e.g., 'manager', 'worker')
+     (B) Using different colored diamonds
+     (C) Drawing dashed squares
+     (D) Adding exclamation marks
+     Answer: (A)
+     Explanation: Role indicators label the relationship lines to clarify roles played by members of the same entity set.
+
+Q93. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is the primary goal of conceptual database design using E-R modeling?
+     (A) Writing optimized C programs
+     (B) Creating a high-level, implementation-independent semantic representation of organizational data
+     (C) Configuring network switches
+     (D) Creating disk partitions
+     Answer: (B)
+     Explanation: Conceptual design produces an enterprise-wide model of data requirements free of DBMS software constraints.
+
+Q94. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     A composite attribute is mapped to a relational table by:
+     (A) Creating an array column
+     (B) Flattening it by including only its individual atomic sub-attributes as separate columns
+     (C) Ignoring the attribute entirely
+     (D) Storing it in a text file
+     Answer: (B)
+     Explanation: Relational 1NF requires atomic values; composite attributes are flattened into their leaf sub-attributes.
+
+Q95. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     A multivalued attribute is mapped to a relational table by:
+     (A) Creating a new separate table containing the attribute value and the parent entity's primary key
+     (B) Embedding comma-separated strings in 1NF
+     (C) Ignoring it
+     (D) Converting it into an integer
+     Answer: (A)
+     Explanation: Multivalued attributes violate 1NF if stored in the parent table, requiring a separate table with a composite key.
+
+Q96. [Unit 2: Entity-Relationship (E-R) Modeling] (HARD)
+     In an E-R diagram, how is disjoint constraint in specialization represented?
+     (A) Writing 'd' inside the specialization circle
+     (B) Writing 'o' inside the circle
+     (C) Using double triangles
+     (D) Using a dashed square
+     Answer: (A)
+     Explanation: The letter 'd' indicates disjoint specialization (an entity can belong to at most one sub-class).
+
+Q97. [Unit 2: Entity-Relationship (E-R) Modeling] (HARD)
+     In EER modeling, what does overlapping specialization ('o') mean?
+     (A) An entity can simultaneously belong to multiple sub-classes
+     (B) An entity belongs to zero sub-classes
+     (C) Classes are identical
+     (D) Data is corrupted
+     Answer: (A)
+     Explanation: Overlapping ('o') permits an entity instance (e.g., an Employee who is both an Author and a Reviewer) to be in multiple subclasses.
+
+Q98. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     What is an Identifying Entity in weak entity terminology?
+     (A) The owner entity whose primary key identifies the weak entity
+     (B) The database user
+     (C) The network server
+     (D) The primary key index
+     Answer: (A)
+     Explanation: The identifying entity (owner entity) provides identity to the dependent weak entity.
+
+Q99. [Unit 2: Entity-Relationship (E-R) Modeling] (MEDIUM)
+     What type of relationship exists between an Invoice and its LineItems?
+     (A) Strong entity to Weak entity identifying relationship (1:N)
+     (B) Independent M:N
+     (C) Ternary relationship
+     (D) Zero relationship
+     Answer: (A)
+     Explanation: LineItems cannot exist without the parent Invoice and use ItemNumber as a partial key, making it a weak entity.
+
+Q100. [Unit 2: Entity-Relationship (E-R) Modeling] (EASY)
+     Which phase of database design immediately follows requirements analysis?
+     (A) Physical database design
+     (B) Conceptual database design (E-R modeling)
+     (C) Database tuning
+     (D) Hardware purchasing
+     Answer: (B)
+     Explanation: Requirements analysis leads directly to conceptual schema design via E-R modeling.
+
+Q101. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     In relational database terminology, a row in a table is formally known as a:
+     (A) Relation
+     (B) Tuple
+     (C) Attribute
+     (D) Domain
+     Answer: (B)
+     Explanation: In formal relational algebra, a row is called a Tuple, representing a single record.
+
+Q102. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     In relational database terminology, a column in a table is formally known as an:
+     (A) Attribute
+     (B) Tuple
+     (C) Degree
+     (D) Cardinality
+     Answer: (A)
+     Explanation: A column corresponds to an Attribute, representing a specific property or field of the entity.
+
+Q103. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is the Degree of a relation in relational algebra?
+     (A) The total number of rows (tuples) in the relation
+     (B) The total number of columns (attributes) in the relation
+     (C) The number of primary keys
+     (D) The table memory size
+     Answer: (B)
+     Explanation: The degree (or arity) of a relation is the number of attributes (columns) it possesses.
+
+Q104. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is the Cardinality of a relation?
+     (A) The total number of attributes (columns)
+     (B) The total number of tuples (rows) currently in the relation
+     (C) The maximum integer value stored
+     (D) The count of foreign keys
+     Answer: (B)
+     Explanation: Cardinality is the total count of tuples (rows) currently stored in the relation.
+
+Q105. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Domain in relational model?
+     (A) A website URL
+     (B) The set of all permissible atomic values for an attribute
+     (C) The physical hard disk block
+     (D) The database user group
+     Answer: (B)
+     Explanation: A domain is the pool of legal, atomic values that an attribute is allowed to take.
+
+Q106. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What does the Entity Integrity Constraint state?
+     (A) A foreign key cannot be null
+     (B) No primary key attribute (or component of a composite primary key) can have a NULL value
+     (C) Every table must have at least 10 rows
+     (D) Tuples must be sorted alphabetically
+     Answer: (B)
+     Explanation: Entity integrity ensures every tuple has a distinct identity; hence, primary key components cannot be NULL.
+
+Q107. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What does the Referential Integrity Constraint state?
+     (A) Every column must be unique
+     (B) A foreign key value in a referencing relation must either match a valid primary key value in the referenced relation, or be NULL
+     (C) Tables cannot reference other tables
+     (D) Primary keys must be integers
+     Answer: (B)
+     Explanation: Referential integrity prevents orphaned records by enforcing valid relationships between referencing and referenced tables.
+
+Q108. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     In a Foreign Key constraint, what does ON DELETE CASCADE specify?
+     (A) Deletion of the parent row is blocked if matching child rows exist
+     (B) When a parent row in the referenced table is deleted, all matching child rows in the referencing table are automatically deleted
+     (C) Child foreign keys are set to NULL
+     (D) Child foreign keys are set to 0
+     Answer: (B)
+     Explanation: CASCADE automatically propagates deletions from the primary key table to all dependent foreign key rows.
+
+Q109. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     In a Foreign Key constraint, what does ON DELETE RESTRICT (or NO ACTION) specify?
+     (A) All child rows are deleted
+     (B) The DBMS rejects and aborts the deletion of the parent row if any child rows reference it
+     (C) Child keys become null
+     (D) The database shuts down
+     Answer: (B)
+     Explanation: RESTRICT prevents parent deletion as long as active referencing rows exist, preserving integrity.
+
+Q110. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is a Functional Dependency X -> Y?
+     (A) A mathematical formula in calculus
+     (B) A constraint stating that if two tuples agree on attribute set X, they must also agree on attribute set Y
+     (C) A foreign key between X and Y
+     (D) A C programming function
+     Answer: (B)
+     Explanation: X -> Y means X uniquely determines Y: identical X values across two tuples guarantee identical Y values.
+
+Q111. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     A Functional Dependency X -> Y is called Trivial if:
+     (A) Y is a subset of X (Y ⊆ X)
+     (B) X and Y are completely disjoint
+     (C) Y is an integer
+     (D) X is NULL
+     Answer: (A)
+     Explanation: A trivial functional dependency is one that always holds automatically because the right-hand side is already contained in the left-hand side (e.g., {RollNo, Name} -> RollNo).
+
+Q112. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     Which set of inference rules is sound and complete for deriving all functional dependencies implied by a set of FDs?
+     (A) De Morgan's Laws
+     (B) Armstrong's Axioms
+     (C) Euler's Formulas
+     (D) Newton's Laws
+     Answer: (B)
+     Explanation: Armstrong's Axioms (Reflexivity, Augmentation, Transitivity) form a sound and complete basis for reasoning about functional dependencies.
+
+Q113. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     Armstrong's Transitivity Rule states that:
+     (A) If X -> Y and Y -> Z, then X -> Z
+     (B) If X -> Y, then XZ -> YZ
+     (C) If Y ⊆ X, then X -> Y
+     (D) If X -> Y and X -> Z, then X -> YZ
+     Answer: (A)
+     Explanation: Transitivity allows chaining functional dependencies: X uniquely determining Y and Y uniquely determining Z implies X determines Z.
+
+Q114. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is the Closure of an attribute set X (denoted X+)?
+     (A) The number of characters in X
+     (B) The set of all attributes that are functionally determined by X under a given set of FDs
+     (C) The primary key of X
+     (D) The inverse of X
+     Answer: (B)
+     Explanation: The attribute closure X+ includes all attributes whose values can be uniquely deduced from X using known FDs.
+
+Q115. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     An attribute set K is a Candidate Key for relation R if:
+     (A) K+ contains all attributes of R, and no proper subset of K has this property (minimal superkey)
+     (B) K has only one column
+     (C) K contains all foreign keys
+     (D) K has zero null values
+     Answer: (A)
+     Explanation: A candidate key is a minimal superkey: it uniquely determines every attribute in R without redundant columns.
+
+Q116. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is an Update (Modification) Anomaly?
+     (A) When inserting data takes more than 1 second
+     (B) When updating data in one place leaves conflicting, inconsistent values in un-updated redundant copies
+     (C) When a computer updates its OS
+     (D) When columns are renamed
+     Answer: (B)
+     Explanation: Update anomalies occur when redundant data requires updating multiple rows; missing any row causes data inconsistency.
+
+Q117. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Deletion Anomaly?
+     (A) Deleting a row accidentally causes unintended loss of entirely different, valuable information
+     (B) Deleting a row takes too long
+     (C) Hard disk runs out of space
+     (D) Primary key becomes null
+     Answer: (A)
+     Explanation: A deletion anomaly occurs when deleting one fact inadvertently deletes other distinct, unrelated information (e.g., deleting the last student enrolled deletes course info).
+
+Q118. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is an Insertion Anomaly?
+     (A) Inserting duplicate primary keys
+     (B) The inability to record certain facts without artificially adding unrelated dummy data
+     (C) Inserting negative numbers
+     (D) Memory overflow
+     Answer: (B)
+     Explanation: An insertion anomaly happens when new data cannot be recorded unless unrelated data is also present (e.g., cannot add a new course without enrolling a student).
+
+Q119. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is the requirement for a relation to be in First Normal Form (1NF)?
+     (A) All attributes must contain only atomic (indivisible) values, and there are no repeating groups or multivalued attributes
+     (B) Every non-prime attribute is fully dependent on the primary key
+     (C) There are no transitive dependencies
+     (D) All columns are integers
+     Answer: (A)
+     Explanation: 1NF mandates flat, atomic domain values in every cell, prohibiting arrays, lists, or repeating attribute groups.
+
+Q120. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is the requirement for a relation to be in Second Normal Form (2NF)?
+     (A) It is in 1NF and contains no transitive dependencies
+     (B) It is in 1NF and contains NO Partial Dependencies (every non-prime attribute is fully functionally dependent on the whole candidate key)
+     (C) Every determinant is a candidate key
+     (D) It has no foreign keys
+     Answer: (B)
+     Explanation: 2NF eliminates partial dependencies: no non-prime attribute can be determined by a proper subset of a composite candidate key.
+
+Q121. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is a Partial Functional Dependency?
+     (A) A dependency where a non-prime attribute is determined by only a part of a composite candidate key
+     (B) A dependency where the key is half empty
+     (C) A foreign key that is null
+     (D) A dependency between two numbers
+     Answer: (A)
+     Explanation: Partial dependency occurs when A -> B, where A is a proper subset of a candidate key and B is non-prime.
+
+Q122. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is the requirement for a relation to be in Third Normal Form (3NF)?
+     (A) It is in 2NF and contains NO Transitive Dependencies for non-prime attributes
+     (B) It has no composite keys
+     (C) All columns are unique
+     (D) It is in 4NF
+     Answer: (A)
+     Explanation: 3NF requires that for every non-trivial FD X -> Y, either X is a superkey or Y is a prime attribute (eliminating transitive dependencies).
+
+Q123. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is a Transitive Dependency?
+     (A) When X -> Y and Y -> Z (where Y is not a candidate key), resulting in indirect dependency X -> Z
+     (B) A dependency that transfers across network cables
+     (C) A circular dependency
+     (D) A foreign key to another server
+     Answer: (A)
+     Explanation: A transitive dependency occurs when non-key attribute X determines non-key attribute Y, which in turn determines non-key attribute Z.
+
+Q124. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     What is Boyce-Codd Normal Form (BCNF)?
+     (A) A stricter version of 3NF where for EVERY non-trivial functional dependency X -> Y, X MUST be a Superkey
+     (B) A form that allows repeating groups
+     (C) A normal form for binary trees
+     (D) A form with 2 candidate keys
+     Answer: (A)
+     Explanation: BCNF is stricter than 3NF: it requires the left-hand determinant of every non-trivial FD to be a superkey, with no exceptions.
+
+Q125. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     Can a relation in 3NF violate BCNF?
+     (A) No, 3NF and BCNF are identical
+     (B) Yes, when a relation has multiple overlapping composite candidate keys
+     (C) Never
+     (D) Only if it has zero rows
+     Answer: (B)
+     Explanation: A relation with overlapping candidate keys can satisfy 3NF (because Y is prime) while violating BCNF (because X is not a superkey).
+
+Q126. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Prime Attribute?
+     (A) An attribute that is an odd prime number
+     (B) An attribute that is a member of ANY candidate key of the relation
+     (C) The first column of a table
+     (D) An encrypted column
+     Answer: (B)
+     Explanation: A prime attribute is any attribute that belongs to at least one candidate key of the relation.
+
+Q127. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Non-Prime Attribute?
+     (A) An attribute that is not a member of any candidate key
+     (B) A negative integer attribute
+     (C) A column with letters
+     (D) A foreign key
+     Answer: (A)
+     Explanation: Non-prime attributes are those attributes that do not belong to any candidate key.
+
+Q128. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     If a relation has only simple (single-attribute) candidate keys and is in 1NF, is it automatically in 2NF?
+     (A) Yes, because partial dependencies can only exist with composite keys
+     (B) No, it must be normalized further
+     (C) Only if it has 3 columns
+     (D) Never
+     Answer: (A)
+     Explanation: Partial dependencies require a proper subset of a candidate key; single-attribute keys have no proper non-empty subsets, so 2NF holds automatically.
+
+Q129. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is the primary objective of Database Normalization?
+     (A) Maximizing database file size
+     (B) Minimizing data redundancy and avoiding update, insertion, and deletion anomalies
+     (C) Increasing the number of foreign keys
+     (D) Creating colorful graphical forms
+     Answer: (B)
+     Explanation: Normalization decomposes relations systematically to reduce redundancy and maintain data integrity without losing information.
+
+Q130. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is a Lossless-Join Decomposition?
+     (A) A decomposition where joining the decomposed relations guarantees recovering the exact original relation without spurious tuples
+     (B) A decomposition that loses half the rows
+     (C) A join between two databases
+     (D) Deleting duplicate records
+     Answer: (A)
+     Explanation: Lossless join decomposition ensures R1 ⨝ R2 = R, preventing false (spurious) data from being introduced.
+
+Q131. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     For a decomposition of R into R1 and R2 to be lossless, what condition must hold?
+     (A) R1 ∩ R2 must be a superkey of R1 or a superkey of R2
+     (B) R1 and R2 must have zero attributes in common
+     (C) R1 must have more rows than R2
+     (D) R2 must be empty
+     Answer: (A)
+     Explanation: The common attributes between R1 and R2 must form a superkey of at least one of the decomposed relations.
+
+Q132. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     What is Dependency Preservation in relational decomposition?
+     (A) All functional dependencies in original relation R can be checked by inspecting individual decomposed relations without performing joins
+     (B) Preserving deleted foreign keys
+     (C) Keeping all tables in 1NF
+     (D) Saving passwords
+     Answer: (A)
+     Explanation: Dependency preservation guarantees that enforcing FDs on individual tables enforces all original constraints without costly cross-table joins.
+
+Q133. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     Which normal form guarantees both Lossless-Join and Dependency Preservation always?
+     (A) 3NF
+     (B) BCNF
+     (C) 4NF
+     (D) 5NF
+     Answer: (A)
+     Explanation: 3NF decompositions can always achieve both lossless-join and dependency preservation; BCNF cannot always preserve dependencies.
+
+Q134. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     Consider R(A, B, C) with FD: A -> B, B -> C. Primary key is A. What normal form is R in?
+     (A) 1NF only (violates 2NF)
+     (B) 2NF (violates 3NF due to transitive dependency B -> C)
+     (C) 3NF
+     (D) BCNF
+     Answer: (B)
+     Explanation: Candidate key is A. All non-prime attributes (B, C) depend on full key A (satisfies 2NF). But B -> C is a transitive dependency, violating 3NF.
+
+Q135. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     To convert R(A, B, C) with A -> B, B -> C into 3NF, how should it be decomposed?
+     (A) R1(A, B) and R2(B, C)
+     (B) R1(A, C) and R2(B, C)
+     (C) R1(A) and R2(B, C)
+     (D) Cannot be decomposed
+     Answer: (A)
+     Explanation: Decomposing into R1(A, B) with key A and R2(B, C) with key B eliminates the transitive dependency and satisfies 3NF.
+
+Q136. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     In relation R(A, B, C, D) with FDs {AB -> C, C -> D, D -> A}, what are the candidate keys?
+     (A) AB, BC, CD
+     (B) AB, BC, BD
+     (C) AB, BC, CD, AD
+     (D) Only AB
+     Answer: (B)
+     Explanation: Computing closures: (AB)+ = ABCD; (BC)+ = BC->D->A = ABCD; (BD)+ = BD->A->C = ABCD. Candidate keys are AB, BC, BD.
+
+Q137. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is Multi-Valued Dependency (MVD) associated with?
+     (A) Second Normal Form (2NF)
+     (B) Fourth Normal Form (4NF)
+     (C) First Normal Form (1NF)
+     (D) BCNF
+     Answer: (B)
+     Explanation: 4NF addresses multi-valued dependencies (X ->-> Y) where independent multi-valued facts are mixed in a single relation.
+
+Q138. [Unit 3: Relational Model, Constraints & Normalization] (HARD)
+     What does Fifth Normal Form (5NF / Project-Join Normal Form) deal with?
+     (A) Join Dependencies (JD)
+     (B) Functional dependencies only
+     (C) Primary keys
+     (D) Foreign keys
+     Answer: (A)
+     Explanation: 5NF decomposes relations that cannot be reconstructed without loss from fewer than three projections (Join Dependencies).
+
+Q139. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     Can a NULL value be compared to another NULL value using the equality operator (=) in SQL?
+     (A) Yes, NULL = NULL returns TRUE
+     (B) No, comparisons with NULL evaluate to UNKNOWN (Three-Valued Logic)
+     (C) Yes, it returns FALSE
+     (D) It causes a compiler syntax error
+     Answer: (B)
+     Explanation: In SQL three-valued logic, NULL = NULL evaluates to UNKNOWN, requiring the IS NULL operator for comparison.
+
+Q140. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What does the SQL predicate 'IS NOT NULL' test for?
+     (A) Whether a column contains a non-missing, defined value
+     (B) Whether a table exists
+     (C) Whether a row is a primary key
+     (D) Whether a number is positive
+     Answer: (A)
+     Explanation: IS NOT NULL checks that a column contains a valid value rather than an unknown/missing NULL indicator.
+
+Q141. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Surrogate Key?
+     (A) A natural key derived from real-world data like Social Security Number
+     (B) An artificial, system-generated unique identifier (e.g., auto-increment integer or UUID) with no business meaning
+     (C) A foreign key to an external database
+     (D) An encrypted password
+     Answer: (B)
+     Explanation: Surrogate keys are synthetic primary keys created by the DBMS to uniquely identify records without relying on business attributes.
+
+Q142. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Natural Key?
+     (A) An artificial sequential ID
+     (B) A candidate key composed of attributes that already exist naturally in the real-world domain (e.g., PassportNumber, ISBN)
+     (C) A random hash value
+     (D) A database timestamp
+     Answer: (B)
+     Explanation: Natural keys exist in the real world and inherently carry business meaning.
+
+Q143. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Composite Primary Key?
+     (A) A primary key composed of two or more attributes
+     (B) A primary key with multiple data types
+     (C) A primary key linked to two databases
+     (D) A foreign key
+     Answer: (A)
+     Explanation: A composite primary key requires combining multiple columns to uniquely identify each tuple in a relation.
+
+Q144. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is Denormalization?
+     (A) A mistake made during database creation
+     (B) The deliberate introduction of redundancy into a normalized database to optimize read performance and reduce expensive joins
+     (C) Deleting indexes
+     (D) Converting SQL to NoSQL
+     Answer: (B)
+     Explanation: Denormalization intentionally adds redundant data to high-traffic tables to improve read query performance in analytical systems.
+
+Q145. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     Under which scenario is denormalization most commonly practiced?
+     (A) Online Analytical Processing (OLAP) / Data Warehouses
+     (B) High-frequency OLTP banking systems
+     (C) Medical record creation
+     (D) Password storage
+     Answer: (A)
+     Explanation: Data warehouses and reporting systems denormalize schemas into star/snowflake schemas to accelerate complex analytical queries.
+
+Q146. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is an orphaned record?
+     (A) A child table row whose foreign key references a non-existent parent primary key
+     (B) A record with no columns
+     (C) A deleted table
+     (D) A record stored in cache
+     Answer: (A)
+     Explanation: Orphaned records occur when referential integrity is violated, leaving foreign key values pointing to deleted parent entities.
+
+Q147. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     What is a Superkey?
+     (A) A set of one or more attributes that collectively uniquely identify a tuple in a relation
+     (B) A key with superuser rights
+     (C) A password hash
+     (D) An index column
+     Answer: (A)
+     Explanation: A superkey uniquely identifies every row; a candidate key is a minimal superkey.
+
+Q148. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     Every candidate key is a superkey, but every superkey is NOT necessarily a candidate key. This statement is:
+     (A) TRUE
+     (B) FALSE
+     (C) Partially true
+     (D) Valid only in 1NF
+     Answer: (A)
+     Explanation: True: a superkey may contain extraneous attributes, whereas candidate keys must be strictly minimal.
+
+Q149. [Unit 3: Relational Model, Constraints & Normalization] (MEDIUM)
+     What is the closure of F (denoted F+) in relational design?
+     (A) The set of all original FDs plus all FDs logically implied by F under Armstrong's Axioms
+     (B) The closing of the database
+     (C) The number of tables
+     (D) The backup of the schema
+     Answer: (A)
+     Explanation: F+ is the complete set of all functional dependencies logically entailed by F.
+
+Q150. [Unit 3: Relational Model, Constraints & Normalization] (EASY)
+     Which of the following is a direct consequence of good normalization?
+     (A) Smaller individual tables with focused responsibilities and clear integrity constraints
+     (B) Gigantic single-table schemas
+     (C) Slower queries always
+     (D) Zero need for SQL
+     Answer: (A)
+     Explanation: Normalization decomposes messy monolithic tables into clean, modular, coherent relational structures.
+
+Q151. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What does SQL stand for?
+     (A) Structured Question Language
+     (B) Structured Query Language
+     (C) Sequential Query Language
+     (D) Standard Quantum Logic
+     Answer: (B)
+     Explanation: SQL stands for Structured Query Language, the ANSI/ISO standard declarative language for relational databases.
+
+Q152. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL command category includes CREATE, ALTER, DROP, and TRUNCATE?
+     (A) DML (Data Manipulation Language)
+     (B) DDL (Data Definition Language)
+     (C) DCL (Data Control Language)
+     (D) TCL (Transaction Control Language)
+     Answer: (B)
+     Explanation: DDL commands define, modify, and drop database structures and schemas.
+
+Q153. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL command category includes SELECT, INSERT, UPDATE, and DELETE?
+     (A) DDL
+     (B) DML (Data Manipulation Language)
+     (C) DCL
+     (D) TCL
+     Answer: (B)
+     Explanation: DML commands manage, query, and manipulate data records within existing tables.
+
+Q154. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL command category includes GRANT and REVOKE?
+     (A) DCL (Data Control Language)
+     (B) DDL
+     (C) DML
+     (D) TCL
+     Answer: (A)
+     Explanation: DCL commands administer user permissions and access control privileges.
+
+Q155. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL command category includes COMMIT, ROLLBACK, and SAVEPOINT?
+     (A) TCL (Transaction Control Language)
+     (B) DDL
+     (C) DML
+     (D) DCL
+     Answer: (A)
+     Explanation: TCL commands manage transactional boundaries, committing or undoing changes.
+
+Q156. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is the key difference between DROP TABLE and TRUNCATE TABLE in SQL?
+     (A) DROP removes both data and table structure; TRUNCATE deletes all rows while preserving table structure
+     (B) TRUNCATE deletes the database; DROP deletes one row
+     (C) They are 100% identical
+     (D) DROP is a DML command; TRUNCATE is DCL
+     Answer: (A)
+     Explanation: DROP TABLE completely destroys table structure and metadata from the catalog; TRUNCATE quickly empties all rows while retaining table structure.
+
+Q157. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is the key difference between TRUNCATE and DELETE FROM in SQL?
+     (A) DELETE is a DML operation that can be filtered with WHERE and rolled back; TRUNCATE is a DDL operation that deallocates data pages quickly
+     (B) DELETE is faster than TRUNCATE
+     (C) TRUNCATE can use a WHERE clause
+     (D) DELETE cannot be logged
+     Answer: (A)
+     Explanation: DELETE scans rows and logs individual deletions (allowing WHERE filters); TRUNCATE deallocates entire data pages as a fast DDL command.
+
+Q158. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause is used to filter rows returned by a query based on specific conditions?
+     (A) ORDER BY
+     (B) WHERE
+     (C) GROUP BY
+     (D) HAVING
+     Answer: (B)
+     Explanation: The WHERE clause specifies conditional criteria that candidate tuples must satisfy to be selected.
+
+Q159. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause is used to eliminate duplicate rows from the query output?
+     (A) UNIQUE
+     (B) DISTINCT
+     (C) DIFFERENT
+     (D) FILTER
+     Answer: (B)
+     Explanation: SELECT DISTINCT column_name returns only unique, deduplicated attribute values in the result set.
+
+Q160. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause sorts the returned records in ascending or descending order?
+     (A) GROUP BY
+     (B) ORDER BY
+     (C) SORT BY
+     (D) ALIGN BY
+     Answer: (B)
+     Explanation: ORDER BY column_name ASC|DESC sorts the result set (defaulting to ascending order).
+
+Q161. [Unit 4: Structured Query Language (SQL)] (EASY)
+     In SQL pattern matching using the LIKE operator, which wildcard character matches any sequence of zero or more characters?
+     (A) Underscore (_)
+     (B) Percent sign (%)
+     (C) Asterisk (*)
+     (D) Question mark (?)
+     Answer: (B)
+     Explanation: In standard SQL LIKE expressions, '%' matches any sequence of zero or more characters, while '_' matches exactly one character.
+
+Q162. [Unit 4: Structured Query Language (SQL)] (EASY)
+     In SQL pattern matching, which wildcard matches exactly ONE single character?
+     (A) Percent sign (%)
+     (B) Underscore (_)
+     (C) Hash (#)
+     (D) Dollar sign ($)
+     Answer: (B)
+     Explanation: The underscore '_' wildcard matches precisely one single character in SQL LIKE clauses.
+
+Q163. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL aggregate function counts the total number of rows matching query criteria?
+     (A) SUM()
+     (B) COUNT()
+     (C) TOTAL()
+     (D) ROWS()
+     Answer: (B)
+     Explanation: COUNT(*) counts all rows matching the query condition, including rows containing NULLs.
+
+Q164. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What does COUNT(column_name) do when some values in that column are NULL?
+     (A) It counts NULLs as 0
+     (B) It ignores and excludes NULL values from the count
+     (C) It generates a runtime error
+     (D) It sets the count to 0
+     Answer: (B)
+     Explanation: COUNT(column_name) counts only non-null values in the specified column.
+
+Q165. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause groups rows that have the same values into summary rows (e.g., finding average salary per department)?
+     (A) ORDER BY
+     (B) GROUP BY
+     (C) HAVING
+     (D) PARTITION
+     Answer: (B)
+     Explanation: GROUP BY groups rows sharing attribute values to enable aggregate calculations per group.
+
+Q166. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is the key difference between the WHERE clause and the HAVING clause in SQL?
+     (A) WHERE filters individual rows before grouping; HAVING filters aggregated groups after GROUP BY
+     (B) WHERE is used for numbers; HAVING is used for text
+     (C) HAVING is DDL; WHERE is DML
+     (D) They are interchangeable
+     Answer: (A)
+     Explanation: WHERE filters base table tuples prior to aggregation; HAVING applies conditions to summary groups produced by GROUP BY.
+
+Q167. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL join returns only rows where matching values exist in BOTH joined tables?
+     (A) LEFT OUTER JOIN
+     (B) INNER JOIN
+     (C) RIGHT OUTER JOIN
+     (D) FULL OUTER JOIN
+     Answer: (B)
+     Explanation: INNER JOIN outputs exclusively matching rows that satisfy the join predicate in both tables.
+
+Q168. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL join returns all rows from the left table and matched rows from the right table (filling non-matches with NULL)?
+     (A) INNER JOIN
+     (B) LEFT OUTER JOIN (or LEFT JOIN)
+     (C) CROSS JOIN
+     (D) RIGHT JOIN
+     Answer: (B)
+     Explanation: A LEFT JOIN preserves every row from the left relation, padding right attributes with NULL when no match exists.
+
+Q169. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What is a CROSS JOIN in SQL?
+     (A) A join that deletes matching rows
+     (B) A Cartesian Product producing all possible combinations of rows from both tables (N * M rows)
+     (C) An inner join on primary keys
+     (D) A join between views
+     Answer: (B)
+     Explanation: CROSS JOIN computes the full Cartesian product, producing rows_table1 * rows_table2 total rows.
+
+Q170. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What is a Subquery (Nested Query) in SQL?
+     (A) A query embedded inside another SQL query (e.g., inside WHERE, FROM, or HAVING clause)
+     (B) A corrupted SQL statement
+     (C) A stored procedure in C
+     (D) A query that executes on a different database
+     Answer: (A)
+     Explanation: A subquery is an inner query nested within an outer SQL statement to supply intermediate data.
+
+Q171. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is a Correlated Subquery?
+     (A) A subquery that references columns from the outer query and executes once for each candidate row evaluated by the outer query
+     (B) A subquery that runs once before the outer query
+     (C) A syntax error
+     (D) A query with two SELECT clauses in parallel
+     Answer: (A)
+     Explanation: Correlated subqueries depend on outer query values, re-evaluating for every candidate tuple of the outer query.
+
+Q172. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL operator checks if a subquery returns at least one row?
+     (A) EXISTS
+     (B) IN
+     (C) ANY
+     (D) ALL
+     Answer: (A)
+     Explanation: EXISTS returns TRUE if the subquery result contains one or more tuples.
+
+Q173. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause is used to rename a column or table temporarily in a query?
+     (A) RENAME
+     (B) AS (Aliasing)
+     (C) SET
+     (D) MODIFY
+     Answer: (B)
+     Explanation: The AS keyword creates an alias (e.g., SELECT salary * 12 AS AnnualSalary).
+
+Q174. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL constraint prevents duplicate values in a column while allowing NULL values?
+     (A) PRIMARY KEY
+     (B) UNIQUE
+     (C) NOT NULL
+     (D) CHECK
+     Answer: (B)
+     Explanation: UNIQUE enforces distinct non-null values across rows while permitting NULL entries (unlike PRIMARY KEY).
+
+Q175. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL constraint validates that all values in a column satisfy a boolean condition (e.g., Age >= 18)?
+     (A) CHECK Constraint
+     (B) UNIQUE
+     (C) DEFAULT
+     (D) FOREIGN KEY
+     Answer: (A)
+     Explanation: CHECK constraints enforce domain rules on column values using boolean expressions.
+
+Q176. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL constraint automatically inserts a pre-defined value into a column when no value is provided on INSERT?
+     (A) DEFAULT
+     (B) AUTO
+     (C) PRIMARY
+     (D) CONSTANT
+     Answer: (A)
+     Explanation: DEFAULT sets a fallback value (e.g., status DEFAULT 'active') when omitted in INSERT.
+
+Q177. [Unit 4: Structured Query Language (SQL)] (EASY)
+     How do you modify an existing table to add a new column in SQL?
+     (A) ALTER TABLE table_name ADD column_name datatype;
+     (B) MODIFY TABLE table_name INSERT column_name;
+     (C) UPDATE TABLE table_name ADD column_name;
+     (D) CHANGE TABLE table_name;
+     Answer: (A)
+     Explanation: ALTER TABLE ... ADD column_name data_type adds new columns to existing tables.
+
+Q178. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What does the SQL command: DROP VIEW view_name; do?
+     (A) Deletes the underlying base table data
+     (B) Removes the virtual view definition from the database catalog without touching base tables
+     (C) Deletes all user accounts
+     (D) Encrypts the view
+     Answer: (B)
+     Explanation: Dropping a view removes only the stored query definition; physical base table rows remain completely intact.
+
+Q179. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL statement is used to insert new records into a table?
+     (A) INSERT INTO table_name VALUES (...);
+     (B) ADD RECORD table_name (...);
+     (C) NEW ROW table_name (...);
+     (D) PUT INTO table_name (...);
+     Answer: (A)
+     Explanation: INSERT INTO table_name (columns) VALUES (values) inserts new tuples.
+
+Q180. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL statement updates existing records in a table?
+     (A) UPDATE table_name SET column = value WHERE condition;
+     (B) MODIFY table_name VALUES (...);
+     (C) CHANGE table_name SET column = value;
+     (D) REWRITE table_name;
+     Answer: (A)
+     Explanation: UPDATE table_name SET col = val WHERE condition alters existing table rows.
+
+Q181. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What happens if you execute an UPDATE statement without a WHERE clause?
+     (A) Only the first row is updated
+     (B) All rows in the table are updated with the new value
+     (C) The DBMS refuses to execute
+     (D) The table is deleted
+     Answer: (B)
+     Explanation: Omitting the WHERE clause applies the update to every single record in the entire table.
+
+Q182. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What happens if you execute a DELETE FROM table_name statement without a WHERE clause?
+     (A) Only the last row is deleted
+     (B) All rows in the table are deleted, leaving an empty table structure
+     (C) The database crashes
+     (D) A syntax error is thrown
+     Answer: (B)
+     Explanation: DELETE FROM table without a WHERE filter removes all rows sequentially, leaving an empty table.
+
+Q183. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL set operator combines the results of two SELECT queries, eliminating duplicate rows?
+     (A) UNION
+     (B) UNION ALL
+     (C) INTERSECT
+     (D) MINUS
+     Answer: (A)
+     Explanation: UNION combines result sets from two queries and automatically strips out duplicate tuples.
+
+Q184. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL set operator combines the results of two queries while PRESERVING all duplicate rows?
+     (A) UNION
+     (B) UNION ALL
+     (C) INTERSECT
+     (D) EXCEPT
+     Answer: (B)
+     Explanation: UNION ALL retains all records from both queries without filtering duplicates, executing faster than UNION.
+
+Q185. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL operator returns only common rows present in BOTH query results?
+     (A) INTERSECT
+     (B) UNION
+     (C) EXCEPT
+     (D) CROSS
+     Answer: (A)
+     Explanation: INTERSECT returns the mathematical intersection of two compatible result sets.
+
+Q186. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL operator returns rows from the first query that do NOT appear in the second query?
+     (A) MINUS (or EXCEPT in ANSI SQL)
+     (B) INTERSECT
+     (C) UNION
+     (D) NOT IN
+     Answer: (A)
+     Explanation: EXCEPT (or MINUS in Oracle) performs set subtraction between two queries.
+
+Q187. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     To use set operations (UNION, INTERSECT, EXCEPT), both queries must be:
+     (A) Union-compatible (having identical column counts and compatible data types in corresponding columns)
+     (B) On the exact same physical disk
+     (C) Run by the DBA
+     (D) Containing primary keys only
+     Answer: (A)
+     Explanation: Union compatibility mandates identical attribute numbers and compatible data types.
+
+Q188. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What does the SQL BETWEEN operator do?
+     (A) Selects values within an inclusive range (low <= val <= high)
+     (B) Selects values strictly outside a range
+     (C) Divides a number by two
+     (D) Compares text strings by length
+     Answer: (A)
+     Explanation: BETWEEN val1 AND val2 is inclusive: val >= val1 AND val <= val2.
+
+Q189. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What does the SQL IN operator do?
+     (A) Checks if a value matches any value in a specified list or subquery result
+     (B) Increments a number by 1
+     (C) Inserts a record
+     (D) Indexes a column
+     Answer: (A)
+     Explanation: The IN operator tests whether an attribute value equals any member in a given list of values.
+
+Q190. [Unit 4: Structured Query Language (SQL)] (EASY)
+     In SQL, string literals and date constants must be enclosed in:
+     (A) Double quotes exclusively
+     (B) Single quotes (e.g., 'Bareilly', '2024-05-15')
+     (C) Square brackets
+     (D) Curly braces
+     Answer: (B)
+     Explanation: ANSI standard SQL requires single quotation marks for character strings and date literals.
+
+Q191. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is the result of the SQL expression: SELECT 10 + NULL;?
+     (A) 10
+     (B) NULL
+     (C) 0
+     (D) Syntax error
+     Answer: (B)
+     Explanation: Any arithmetic calculation involving a NULL operand yields NULL in relational DBMS engines.
+
+Q192. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which function returns the length of a string in SQL?
+     (A) LENGTH() (or LEN() depending on dialect)
+     (B) COUNT()
+     (C) SIZE()
+     (D) STRLEN()
+     Answer: (A)
+     Explanation: LENGTH(str) returns the character count of a string expression.
+
+Q193. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL function converts text to uppercase letters?
+     (A) UPPER() (or UCASE())
+     (B) CAPITAL()
+     (C) TO_UPPER()
+     (D) BIG()
+     Answer: (A)
+     Explanation: UPPER('text') transforms characters to capital uppercase.
+
+Q194. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL command removes an existing database table permanently?
+     (A) DROP TABLE table_name;
+     (B) DELETE TABLE table_name;
+     (C) REMOVE TABLE table_name;
+     (D) CLEAR TABLE table_name;
+     Answer: (A)
+     Explanation: DROP TABLE deletes the table, its schema definition, and all associated indexes.
+
+Q195. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What is a Self-Join in SQL?
+     (A) A table joined with itself using aliases to compare rows within the same table
+     (B) A join without foreign keys
+     (C) A join between views
+     (D) A circular reference error
+     Answer: (A)
+     Explanation: A self-join joins a table to itself (e.g., matching employees with their managers from the same Emp table).
+
+Q196. [Unit 4: Structured Query Language (SQL)] (MEDIUM)
+     What is a Natural Join in SQL?
+     (A) A join that automatically equates columns sharing the exact same name and data type in both tables
+     (B) A join with zero WHERE clause
+     (C) A join between natural numbers
+     (D) A join without primary keys
+     Answer: (A)
+     Explanation: NATURAL JOIN matches all columns with identical names across both participating tables.
+
+Q197. [Unit 4: Structured Query Language (SQL)] (HARD)
+     Can a View be updated using DML statements (INSERT, UPDATE, DELETE)?
+     (A) Never, views are read-only under all circumstances
+     (B) Yes, provided the view is updatable (derived from a single base table without aggregations, GROUP BY, or DISTINCT)
+     (C) Yes, all views are updatable
+     (D) Only by the root admin
+     Answer: (B)
+     Explanation: Simple single-table views meeting criteria (no aggregation, grouping, or distinct) can propagate updates to base tables.
+
+Q198. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL clause specifies the tables involved in a query?
+     (A) FROM
+     (B) SELECT
+     (C) WHERE
+     (D) SOURCE
+     Answer: (A)
+     Explanation: The FROM clause declares the source relations or views queried by the statement.
+
+Q199. [Unit 4: Structured Query Language (SQL)] (EASY)
+     Which SQL operator checks for null values?
+     (A) IS NULL
+     (B) = NULL
+     (C) == NULL
+     (D) EQUALS NULL
+     Answer: (A)
+     Explanation: Because NULL represents missing data, equality '=' fails; 'IS NULL' must be used.
+
+Q200. [Unit 4: Structured Query Language (SQL)] (EASY)
+     What is the default sort direction of an ORDER BY clause in SQL?
+     (A) ASC (Ascending)
+     (B) DESC (Descending)
+     (C) Random
+     (D) Numerical only
+     Answer: (A)
+     Explanation: ORDER BY defaults to ASC (ascending from lowest to highest) if no direction is specified.
+
+Q201. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What are the ACID properties of database transactions?
+     (A) Accuracy, Consistency, Integrity, Durability
+     (B) Atomicity, Consistency, Isolation, Durability
+     (C) Authentication, Control, Identification, Delegation
+     (D) Access, Concurrency, Isolation, Deletion
+     Answer: (B)
+     Explanation: ACID stands for Atomicity, Consistency, Isolation, and Durability - the cornerstone principles of reliable transaction processing.
+
+Q202. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What does the Atomicity property of a transaction ensure?
+     (A) All operations of a transaction execute completely to completion, or none take effect (All-or-Nothing)
+     (B) Transactions execute in complete isolation from others
+     (C) Data is encrypted with atomic ciphers
+     (D) Transactions run in zero seconds
+     Answer: (A)
+     Explanation: Atomicity guarantees that if any step of a transaction fails, all previously completed steps are rolled back completely.
+
+Q203. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What does the Consistency property of a transaction guarantee?
+     (A) The transaction takes the database from one valid consistent state satisfying all integrity constraints to another valid state
+     (B) All tables have equal row counts
+     (C) Transactions run at consistent clock speeds
+     (D) Passwords are never changed
+     Answer: (A)
+     Explanation: Consistency ensures that execution preserves all schema constraints, foreign keys, and invariants.
+
+Q204. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What does the Isolation property of a transaction ensure?
+     (A) Concurrent execution of transactions leaves the database in the same state as if they were executed sequentially one by one
+     (B) Transactions execute on separate physical computers
+     (C) Data cannot be seen by users
+     (D) Transactions are deleted after execution
+     Answer: (A)
+     Explanation: Isolation prevents intermediate, uncommitted states of one transaction from being visible to concurrent transactions.
+
+Q205. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What does the Durability property of a transaction ensure?
+     (A) Once a transaction commits, its updates persist permanently in non-volatile storage, even in the event of a system crash
+     (B) The hard disk is made of durable metal
+     (C) Transactions can never be deleted
+     (D) Passwords never expire
+     Answer: (A)
+     Explanation: Durability guarantees that committed data survives crashes and power outages via non-volatile write-ahead logging.
+
+Q206. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is a Transaction in DBMS?
+     (A) A financial payment in cash
+     (B) A logical unit of database processing that includes one or more database access operations (read, write)
+     (C) A single SQL SELECT statement
+     (D) A database backup file
+     Answer: (B)
+     Explanation: A transaction is an atomic sequence of read and write operations representing a logical business operation.
+
+Q207. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which SQL command makes all changes made during the current transaction permanent on disk?
+     (A) ROLLBACK
+     (B) COMMIT
+     (C) SAVE
+     (D) STORE
+     Answer: (B)
+     Explanation: COMMIT finalizes transaction changes, writes them permanently, and releases transactional locks.
+
+Q208. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which SQL command cancels and undoes all changes made during an incomplete transaction?
+     (A) COMMIT
+     (B) ROLLBACK
+     (C) RESET
+     (D) ABORT TABLE
+     Answer: (B)
+     Explanation: ROLLBACK reverts the database to its state prior to the transaction's commencement using log records.
+
+Q209. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is SQL Injection?
+     (A) A software optimization technique
+     (B) A code injection attack where malicious SQL statements are inserted into entry fields to execute unauthorized commands
+     (C) A hardware memory repair tool
+     (D) A method to speed up joins
+     Answer: (B)
+     Explanation: SQL injection exploits improper input sanitization, allowing attackers to execute arbitrary SQL commands against the database.
+
+Q210. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is the primary defense against SQL Injection attacks?
+     (A) Using Parameterized Queries (Prepared Statements) and input validation
+     (B) Disabling the database server
+     (C) Using simple passwords
+     (D) Writing all SQL in uppercase
+     Answer: (A)
+     Explanation: Prepared statements treat user input strictly as literal parameters rather than executable SQL code, preventing injection.
+
+Q211. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which SQL statement is used by the DBA to assign permissions (e.g., SELECT, INSERT) to database users?
+     (A) PERMIT
+     (B) GRANT
+     (C) ALLOW
+     (D) AUTHORIZE
+     Answer: (B)
+     Explanation: GRANT privilege_name ON object TO user_name assigns specific permissions.
+
+Q212. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which SQL statement is used to revoke previously granted access permissions from a user?
+     (A) REVOKE
+     (B) REMOVE
+     (C) DENY
+     (D) CANCEL
+     Answer: (A)
+     Explanation: REVOKE privilege_name ON object FROM user_name strips granted permissions.
+
+Q213. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Role-Based Access Control (RBAC)?
+     (A) Assigning access permissions to roles rather than individual users, and then assigning users to appropriate roles
+     (B) Controlling database access by user age
+     (C) Giving everyone administrative rights
+     (D) Encrypting database roles
+     Answer: (A)
+     Explanation: RBAC simplifies administration by bundling privileges into logical roles (e.g., 'Accountant', 'Doctor', 'Manager').
+
+Q214. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Authentication in database security?
+     (A) Determining what actions a user is allowed to perform
+     (B) Verifying the identity of a user attempting to connect (e.g., via username and password)
+     (C) Encrypting the database backup
+     (D) Sorting table rows
+     Answer: (B)
+     Explanation: Authentication verifies identity ('Who are you?'); Authorization determines allowed privileges ('What are you permitted to do?').
+
+Q215. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Authorization in database security?
+     (A) Verifying passwords
+     (B) Determining the access rights and privileges granted to an authenticated user
+     (C) Connecting network cables
+     (D) Installing database patches
+     Answer: (B)
+     Explanation: Authorization enforces permissions, controlling which tables, views, and commands a verified user can execute.
+
+Q216. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is a Deadlock in concurrent transaction processing?
+     (A) A situation where two or more transactions are waiting indefinitely for locks held by each other
+     (B) A corrupted hard drive
+     (C) A deleted database table
+     (D) An uncommitted transaction
+     Answer: (A)
+     Explanation: A deadlock occurs when transaction T1 holds lock A waiting for lock B, while transaction T2 holds lock B waiting for lock A.
+
+Q217. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     In Two-Phase Locking (2PL) protocol, what are the two phases?
+     (A) Growing Phase (locks are acquired) and Shrinking Phase (locks are released)
+     (B) Input Phase and Output Phase
+     (C) Read Phase and Write Phase
+     (D) Commit Phase and Abort Phase
+     Answer: (A)
+     Explanation: 2PL ensures serializability: in the growing phase a transaction only acquires locks; in the shrinking phase it only releases locks.
+
+Q218. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Data Encryption in database security?
+     (A) Encoding plain data into unreadable ciphertext using cryptographic keys to prevent unauthorized snooping
+     (B) Compressing tables into ZIP files
+     (C) Deleting sensitive columns
+     (D) Sorting text alphabetically
+     Answer: (A)
+     Explanation: Encryption safeguards data-at-rest on disk and data-in-transit across network sockets from eavesdropping.
+
+Q219. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is a Distributed Database System (DDBMS)?
+     (A) A single database copied to a thumb drive
+     (B) A collection of multiple, logically interrelated databases distributed across different geographic sites over a network
+     (C) A database without tables
+     (D) A database with only one user
+     Answer: (B)
+     Explanation: A DDBMS provides transparent access to data stored physically across distinct network locations.
+
+Q220. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     In distributed databases, what is Data Fragmentation?
+     (A) Breaking a relation into logical subsets (horizontal, vertical, or hybrid) stored at different sites
+     (B) Damaged disk sectors
+     (C) Deleting old records
+     (D) Sorting numbers
+     Answer: (A)
+     Explanation: Fragmentation partitions tables horizontally (by rows/predicates) or vertically (by columns) across distributed sites.
+
+Q221. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Horizontal Fragmentation in distributed databases?
+     (A) Splitting a relation by rows such that each fragment contains a subset of tuples
+     (B) Splitting by columns
+     (C) Deleting rows
+     (D) Merging tables
+     Answer: (A)
+     Explanation: Horizontal fragmentation partitions tuples according to a condition (e.g., records by region/city).
+
+Q222. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Vertical Fragmentation in distributed databases?
+     (A) Splitting a relation by columns such that each fragment contains a subset of attributes along with the primary key
+     (B) Splitting by rows
+     (C) Deleting columns
+     (D) Renaming attributes
+     Answer: (A)
+     Explanation: Vertical fragmentation splits attributes into distinct fragments, retaining the primary key in each for reconstruction.
+
+Q223. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is Data Replication in distributed databases?
+     (A) Storing multiple identical copies of data items across different distributed sites to enhance availability and read performance
+     (B) Deleting duplicate records
+     (C) Encrypting data
+     (D) Translating SQL
+     Answer: (A)
+     Explanation: Replication improves fault tolerance and local read speeds by maintaining redundant data copies at multiple sites.
+
+Q224. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is a Deductive Database?
+     (A) A database that can deduce (infer) new facts from stored base facts using a set of logical deduction rules
+     (B) A database that subtracts numbers
+     (C) A database without rules
+     (D) A corrupted file
+     Answer: (A)
+     Explanation: Deductive databases combine relational concepts with logic programming (Datalog) to infer implicit facts via rules.
+
+Q225. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     Which logic programming language is commonly used in Deductive Databases?
+     (A) Datalog
+     (B) Java
+     (C) Python
+     (D) Assembly
+     Answer: (A)
+     Explanation: Datalog is a declarative query language designed specifically for deductive and recursive database systems.
+
+Q226. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What does NoSQL stand for?
+     (A) No SQL at all
+     (B) Not Only SQL
+     (C) New Online SQL
+     (D) Non-Operational SQL
+     Answer: (B)
+     Explanation: NoSQL stands for 'Not Only SQL', referring to non-relational, highly scalable distributed data stores.
+
+Q227. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which of the following is a Document-Oriented NoSQL database?
+     (A) MongoDB / CouchDB
+     (B) Oracle
+     (C) MySQL
+     (D) PostgreSQL
+     Answer: (A)
+     Explanation: MongoDB and CouchDB store data as semi-structured JSON/BSON documents.
+
+Q228. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which of the following is a Key-Value NoSQL store?
+     (A) Redis / DynamoDB
+     (B) SQLite
+     (C) DB2
+     (D) MariaDB
+     Answer: (A)
+     Explanation: Redis and Amazon DynamoDB are high-performance key-value databases.
+
+Q229. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which of the following is a Column-Family (Wide-Column) NoSQL database?
+     (A) Apache Cassandra / HBase
+     (B) Neo4j
+     (C) MySQL
+     (D) Access
+     Answer: (A)
+     Explanation: Cassandra and HBase organize data into sparse multidimensional column families.
+
+Q230. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which NoSQL database category is optimized for storing highly interconnected data and social network graphs?
+     (A) Graph Database (e.g., Neo4j)
+     (B) Key-value store
+     (C) Document store
+     (D) Flat file
+     Answer: (A)
+     Explanation: Graph databases like Neo4j model nodes, edges, and properties for efficient graph traversal.
+
+Q231. [Unit 5: Database Security, Integrity, Control & Trends] (HARD)
+     What is the CAP Theorem in distributed data systems?
+     (A) A distributed system can guarantee at most TWO out of three: Consistency, Availability, and Partition Tolerance
+     (B) Computers Always Perform
+     (C) Cost, Access, Performance rule
+     (D) Crash And Prevent theorem
+     Answer: (A)
+     Explanation: Eric Brewer's CAP theorem states that a distributed network cannot simultaneously achieve C, A, and P.
+
+Q232. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is BASE philosophy in NoSQL databases?
+     (A) Basically Available, Soft state, Eventual consistency
+     (B) Binary Access Secure Engine
+     (C) Base Table Architecture
+     (D) Basic Algorithm Selection Engine
+     Answer: (A)
+     Explanation: BASE trades strict ACID consistency for high availability and eventual consistency in massive web architectures.
+
+Q233. [Unit 5: Database Security, Integrity, Control & Trends] (HARD)
+     What is Write-Ahead Logging (WAL) in DBMS recovery?
+     (A) Log records describing data modifications must be written to stable storage BEFORE the actual data pages are updated on disk
+     (B) Writing logs after the user logs out
+     (C) Logging all mouse movements
+     (D) Writing code in advance
+     Answer: (A)
+     Explanation: WAL ensures that if a crash occurs during a disk write, the system has persistent log records to undo or redo the operation.
+
+Q234. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is a Checkpoint in database recovery?
+     (A) A point in the transaction log where all modified memory buffer pages are guaranteed to have been flushed to disk
+     (B) A password prompt
+     (C) A syntax error check
+     (D) A physical printer test
+     Answer: (A)
+     Explanation: Checkpoints limit how far back the recovery engine must scan the log during crash restart.
+
+Q235. [Unit 5: Database Security, Integrity, Control & Trends] (HARD)
+     What is a Shadow Paging recovery technique?
+     (A) Maintaining two page tables: a current page table and a shadow page table on disk to provide atomic updates without logs
+     (B) Copying shadows in CSS
+     (C) Hiding passwords
+     (D) Dimming the screen
+     Answer: (A)
+     Explanation: Shadow paging updates page copies and swaps root pointers on commit, providing atomicity without undo/redo logging.
+
+Q236. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is the Lost Update problem in concurrency?
+     (A) When two transactions read the same data and update it concurrently, one update overwrites and obliterates the other
+     (B) When a hard drive is lost
+     (C) When a file is deleted accidentally
+     (D) When passwords expire
+     Answer: (A)
+     Explanation: The lost update anomaly occurs when concurrent writes overwrite each other without serial isolation.
+
+Q237. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is the Dirty Read (Temporary Update) problem in concurrency?
+     (A) A transaction reads uncommitted data written by another transaction that later rolls back
+     (B) Reading dusty optical media
+     (C) A syntax error
+     (D) Reading encrypted data
+     Answer: (A)
+     Explanation: A dirty read occurs when T1 reads intermediate modifications from T2, which then aborts and rolls back.
+
+Q238. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is the Unrepeatable Read problem in concurrency?
+     (A) A transaction reads a row, another transaction modifies or deletes that row and commits, and re-reading yields different values
+     (B) A query that cannot be typed again
+     (C) A printer jam
+     (D) A deleted view
+     Answer: (A)
+     Explanation: Unrepeatable read occurs when data values change between consecutive reads within the same transaction.
+
+Q239. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is a Phantom Read in concurrency?
+     (A) A transaction queries a range of rows, another transaction inserts a new row matching that range and commits, causing subsequent reads to see new rows
+     (B) A ghostly bug
+     (C) A deleted database
+     (D) A hardware glitch
+     Answer: (A)
+     Explanation: Phantom reads occur when newly inserted rows satisfy an active query's filter predicate upon re-execution.
+
+Q240. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is the highest transaction isolation level defined by SQL standard?
+     (A) SERIALIZABLE
+     (B) REPEATABLE READ
+     (C) READ COMMITTED
+     (D) READ UNCOMMITTED
+     Answer: (A)
+     Explanation: SERIALIZABLE prevents dirty reads, unrepeatable reads, and phantom reads, guaranteeing strict serial equivalence.
+
+Q241. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is the lowest transaction isolation level, which permits dirty reads?
+     (A) READ UNCOMMITTED
+     (B) READ COMMITTED
+     (C) REPEATABLE READ
+     (D) SERIALIZABLE
+     Answer: (A)
+     Explanation: READ UNCOMMITTED allows transactions to read uncommitted changes of other transactions.
+
+Q242. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is a Shared Lock (S-Lock)?
+     (A) A lock allowing multiple transactions to read a data item concurrently, but preventing write access
+     (B) A lock shared across company departments
+     (C) An open table
+     (D) A password shared by all users
+     Answer: (A)
+     Explanation: Shared locks (read locks) permit concurrent readers while preventing exclusive writes.
+
+Q243. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is an Exclusive Lock (X-Lock)?
+     (A) A lock granting a single transaction exclusive rights to both read and write a data item, blocking all other locks
+     (B) A lock for administrators only
+     (C) A permanent table lock
+     (D) A hardware lock
+     Answer: (A)
+     Explanation: An exclusive lock (write lock) reserves the data item exclusively for one transaction.
+
+Q244. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Privileged Software Audit Trail in database security?
+     (A) A chronological record of database security events, logins, user actions, and administrative changes maintained for forensic inspection
+     (B) A paper receipt
+     (C) A browser history tab
+     (D) A network ping test
+     Answer: (A)
+     Explanation: Audit trails enable compliance, security monitoring, and detection of suspicious activities.
+
+Q245. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     What is Data Masking (or Anonymization)?
+     (A) Hiding sensitive real data (like credit card numbers) with scrambled dummy characters in non-production environments
+     (B) Drawing masks on diagrams
+     (C) Deleting database columns
+     (D) Setting table font color to black
+     Answer: (A)
+     Explanation: Data masking protects confidential records from exposure to developers, testers, and third parties.
+
+Q246. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     In distributed databases, what is Location Transparency?
+     (A) Users can query data without knowing the physical geographic site where data is stored
+     (B) Knowing the GPS coordinates of the server
+     (C) Displaying a world map
+     (D) Using Wi-Fi
+     Answer: (A)
+     Explanation: Location transparency allows users to submit queries as if all data resided on their local machine.
+
+Q247. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     In distributed databases, what is Replication Transparency?
+     (A) Users are unaware that multiple duplicate copies of data items exist across network sites
+     (B) Copying files to desktop
+     (C) Showing replica counts
+     (D) Printing double copies
+     Answer: (A)
+     Explanation: Replication transparency handles reading and updating multiple physical copies under the hood.
+
+Q248. [Unit 5: Database Security, Integrity, Control & Trends] (HARD)
+     What is a Distributed Commit Protocol used to ensure all sites commit or abort together?
+     (A) Two-Phase Commit (2PC) Protocol
+     (B) Binary Search
+     (C) Master Theorem
+     (D) Bubble Sort
+     Answer: (A)
+     Explanation: The 2PC protocol coordinates distributed participants across Prepare and Commit phases to guarantee atomic transactions.
+
+Q249. [Unit 5: Database Security, Integrity, Control & Trends] (MEDIUM)
+     What is Eventual Consistency in distributed data stores?
+     (A) Data updates will eventually propagate to all replicas if no further updates occur, but temporary inconsistencies may be visible
+     (B) Data is never consistent
+     (C) Data commits immediately
+     (D) Tables are always locked
+     Answer: (A)
+     Explanation: Eventual consistency guarantees that all replica copies will converge on identical values over time.
+
+Q250. [Unit 5: Database Security, Integrity, Control & Trends] (EASY)
+     Which of the following database trends represents storing relational tables entirely in fast system RAM rather than slow magnetic disks?
+     (A) In-Memory Database (e.g., SAP HANA, Redis)
+     (B) Cloud object storage
+     (C) Tape drives
+     (D) Floppy disks
+     Answer: (A)
+     Explanation: In-Memory databases eliminate disk I/O bottlenecks by maintaining all operational datasets in main RAM memory.
+

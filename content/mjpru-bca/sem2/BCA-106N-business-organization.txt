@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 2
+COURSE CODE: BCA-106N - BUSINESS ORGANIZATION & MANAGEMENT
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is the primary defining characteristic of Business as an economic activity?
+     (A) Social welfare exclusively
+     (B) Production and exchange of goods/services with the motive of earning profit under uncertainty
+     (C) Government regulation
+     (D) Volunteer charity work
+     Answer: (B)
+     Explanation: Business is an organized economic activity involving continuous production or procurement and distribution of goods and services aimed at earning profit.
+
+Q2. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which of the following is classified as an Aid to Trade (Auxiliary to Trade)?
+     (A) Manufacturing raw iron
+     (B) Banking, Insurance, Transportation, and Warehousing
+     (C) Agricultural harvesting
+     (D) Software coding
+     Answer: (B)
+     Explanation: Aids to trade facilitate smooth commercial transactions by overcoming hindrances of place, time, risk, and finance.
+
+Q3. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is the key difference between Trade and Commerce?
+     (A) Trade is a broader term than Commerce
+     (B) Trade involves the actual buying and selling of goods, whereas Commerce includes trade plus all auxiliaries to trade
+     (C) Commerce is only for international transactions
+     (D) Trade produces goods; commerce consumes them
+     Answer: (B)
+     Explanation: Commerce encompasses Trade (buying and selling) plus Auxiliaries to Trade (banking, insurance, warehousing, transportation, communication).
+
+Q4. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Mining, fishing, and agriculture belong to which industry sector?
+     (A) Secondary Industry
+     (B) Primary (Extractive/Genetic) Industry
+     (C) Tertiary Industry
+     (D) Quaternary Industry
+     Answer: (B)
+     Explanation: Primary industries extract raw materials directly from natural resources or reproduce living species.
+
+Q5. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Industries that transform raw materials into finished consumer goods (e.g., steel manufacturing, textile weaving) are:
+     (A) Primary Industries
+     (B) Secondary (Manufacturing/Construction) Industries
+     (C) Tertiary Industries
+     (D) Service Industries
+     Answer: (B)
+     Explanation: Secondary industries process materials extracted by the primary sector into finished or semi-finished goods.
+
+Q6. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is Entrepôt Trade (Re-export Trade)?
+     (A) Importing goods solely for the purpose of re-exporting them to other foreign countries
+     (B) Smuggling goods across borders
+     (C) Selling goods within the same domestic town
+     (D) Trading without money
+     Answer: (A)
+     Explanation: Entrepôt trade involves importing commodities from one foreign nation to process or store and subsequently export them to another.
+
+Q7. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Sole Proprietorship?
+     (A) A business owned, managed, and controlled by a single individual who bears all risks and receives all profits
+     (B) A company owned by shareholders
+     (C) A state-owned corporation
+     (D) A partnership of two people
+     Answer: (A)
+     Explanation: A sole proprietorship is the simplest organizational form where one owner possesses total authority and unlimited liability.
+
+Q8. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is the biggest operational disadvantage of a Sole Proprietorship?
+     (A) Excessive government interference
+     (B) Unlimited personal liability and limited financial/managerial resources
+     (C) High corporate tax rates
+     (D) Difficulty in decision making
+     Answer: (B)
+     Explanation: The sole owner is personally liable for all business debts; personal assets can be seized to settle business liabilities.
+
+Q9. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     According to the Indian Partnership Act, 1932, how is a Partnership defined?
+     (A) A registered corporation with perpetual succession
+     (B) The relation between persons who have agreed to share the profits of a business carried on by all or any of them acting for all
+     (C) A group of volunteers
+     (D) A state monopoly
+     Answer: (B)
+     Explanation: Section 4 of the Indian Partnership Act 1932 defines partnership as mutual agency for shared business profits.
+
+Q10. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What does the principle of Mutual Agency mean in a partnership firm?
+     (A) Each partner is both a principal (bound by others' acts) and an agent (capable of binding all other partners in ordinary business)
+     (B) Partners cannot talk to clients
+     (C) Only government agents can run the firm
+     (D) Partners have zero liability
+     Answer: (A)
+     Explanation: Mutual agency is the cardinal test of partnership: every partner can bind the firm, and is bound by acts of other partners.
+
+Q11. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Sleeping (Dormant) Partner in a partnership firm?
+     (A) A partner who manages daily office operations
+     (B) A partner who contributes capital and shares profits/losses but does not actively participate in management
+     (C) A partner who is legally a minor
+     (D) A partner who receives fixed salary only
+     Answer: (B)
+     Explanation: A sleeping partner invests capital and bears liability without taking part in everyday managerial activities.
+
+Q12. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is a Nominal Partner?
+     (A) A partner who lends their name and reputation to the firm without contributing capital or sharing profits, but remains liable to third parties
+     (B) The managing director
+     (C) A partner with unlimited shares
+     (D) A foreign investor
+     Answer: (A)
+     Explanation: A nominal partner allows the business to use their prestigious name to gain goodwill, incurring third-party liabilities.
+
+Q13. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Partnership Deed?
+     (A) A land registration paper
+     (B) A written document containing the terms, conditions, profit-sharing ratios, and operational rules agreed among partners
+     (C) A bank loan contract
+     (D) A government tax bill
+     Answer: (B)
+     Explanation: The partnership deed (articles of partnership) is the formal written agreement governing the partnership relationship.
+
+Q14. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Is registration of a partnership firm mandatory under the Indian Partnership Act, 1932?
+     (A) Yes, strictly mandatory before trading
+     (B) No, it is voluntary, but an unregistered firm cannot file suits against third parties or co-partners
+     (C) Mandatory only for software firms
+     (D) Mandatory only for foreign firms
+     Answer: (B)
+     Explanation: Registration is optional, but non-registration imposes severe legal disabilities, including inability to sue to enforce contractual rights.
+
+Q15. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Limited Liability Partnership (LLP)?
+     (A) A traditional sole trade business
+     (B) A hybrid corporate form combining the flexibility of a partnership with the limited liability shield of a company
+     (C) A cooperative society
+     (D) A non-profit trust
+     Answer: (B)
+     Explanation: Governed by the LLP Act 2008, an LLP gives partners limited liability while allowing flexible internal contractual management.
+
+Q16. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     In an LLP, the liability of each partner is limited to:
+     (A) Their personal ancestral property
+     (B) Their agreed capital contribution in the LLP
+     (C) Unlimited amounts
+     (D) Zero under all circumstances
+     Answer: (B)
+     Explanation: Unlike general partnerships, an LLP partner's personal wealth is protected against firm debts beyond their capital investment.
+
+Q17. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Does an LLP have Perpetual Succession and a distinct legal identity separate from its partners?
+     (A) No, it dissolves upon death of any partner
+     (B) Yes, an LLP is a body corporate with perpetual succession independent of changes in partners
+     (C) Only if approved by the bank
+     (D) Only in the first year
+     Answer: (B)
+     Explanation: An LLP has separate legal entity status and perpetual existence; partners may come and go, but the LLP continues.
+
+Q18. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is the minimum number of partners required to incorporate an LLP in India?
+     (A) 1
+     (B) 2
+     (C) 7
+     (D) 10
+     Answer: (B)
+     Explanation: Under the LLP Act 2008, an LLP must have at least two partners (and at least two designated partners).
+
+Q19. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is the maximum number of partners permitted in an LLP?
+     (A) 20
+     (B) 50
+     (C) 100
+     (D) No statutory upper limit
+     Answer: (D)
+     Explanation: The LLP Act 2008 specifies no upper limit on the maximum number of partners in an LLP.
+
+Q20. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Which document governs the internal mutual rights and duties between partners in an LLP?
+     (A) Partnership Act 1932 deed
+     (B) LLP Agreement filed with the Registrar of Companies (RoC)
+     (C) Company Prospectus
+     (D) Memorandum of Association
+     Answer: (B)
+     Explanation: The LLP Agreement defines mutual rights, duties, profit ratios, and obligations of partners.
+
+Q21. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is Wholesale Trade?
+     (A) Selling goods in large quantities to retailers or industrial users rather than final consumers
+     (B) Selling directly to consumers on the street
+     (C) Importing goods from abroad
+     (D) Manufacturing raw parts
+     Answer: (A)
+     Explanation: Wholesale trade acts as an intermediary link between manufacturers and retail stores.
+
+Q22. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is Retail Trade?
+     (A) Selling goods in small quantities directly to ultimate consumers for personal consumption
+     (B) Exporting goods across oceans
+     (C) Extracting ores
+     (D) Banking operations
+     Answer: (A)
+     Explanation: Retail trade represents the final link in distribution channels, directly serving end-users.
+
+Q23. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which auxiliary to trade removes the hindrance of RISK in business?
+     (A) Transportation
+     (B) Insurance
+     (C) Warehousing
+     (D) Advertising
+     Answer: (B)
+     Explanation: Insurance protects businesses against risks of fire, theft, transit damage, and natural disasters.
+
+Q24. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which auxiliary to trade removes the hindrance of TIME in business?
+     (A) Banking
+     (B) Warehousing / Storage
+     (C) Communication
+     (D) Insurance
+     Answer: (B)
+     Explanation: Warehousing holds goods between the time of production and time of consumption, stabilizing supply.
+
+Q25. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which auxiliary to trade removes the hindrance of PLACE in business?
+     (A) Transportation
+     (B) Advertising
+     (C) Banking
+     (D) Insurance
+     Answer: (A)
+     Explanation: Transportation bridges the geographical distance between production centers and dispersed consumer markets.
+
+Q26. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which auxiliary to trade removes the hindrance of INFORMATION in business?
+     (A) Advertising and Public Relations
+     (B) Warehousing
+     (C) Banking
+     (D) Insurance
+     Answer: (A)
+     Explanation: Advertising informs consumers regarding product features, availability, pricing, and utility.
+
+Q27. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which business objective involves fulfilling expectations of employees, customers, and community?
+     (A) Pure Profit Maximization
+     (B) Social Objective (Corporate Social Responsibility)
+     (C) Tax Evasion
+     (D) Internal Competition
+     Answer: (B)
+     Explanation: Social objectives demand ethical practices, customer fair pricing, employee welfare, and environmental stewardship.
+
+Q28. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     A partner who is entitled to share profits only, without bearing losses, is termed a:
+     (A) Partner in profits only
+     (B) Secret partner
+     (C) Sub-partner
+     (D) Dormant partner
+     Answer: (A)
+     Explanation: A partner in profits only contracts to share positive profits while being exempt from losses (though still liable to third parties).
+
+Q29. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Can a minor (under 18 years) be admitted as a full partner under Indian law?
+     (A) Yes, with court permission
+     (B) No, a minor cannot be a full partner, but may be admitted to the benefits of an existing partnership with mutual consent
+     (C) Yes, in software companies
+     (D) Never under any circumstances
+     Answer: (B)
+     Explanation: Section 30 of Partnership Act allows minors to share profits/benefits without personal liability for firm debts.
+
+Q30. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Secret Partner?
+     (A) A partner whose membership in the firm is concealed from the general public
+     (B) An illegal hacker
+     (C) A spy in business
+     (D) A partner who does not invest money
+     Answer: (A)
+     Explanation: A secret partner invests capital and participates in management, but their association is not disclosed to third parties.
+
+Q31. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Partnership at Will?
+     (A) A partnership formed for an indefinite duration, dissolvable by any partner giving written notice
+     (B) A partnership for a fixed 2-year project
+     (C) A partnership created by government order
+     (D) An illegal partnership
+     Answer: (A)
+     Explanation: Partnership at will has no predetermined fixed term; any partner can dissolve it by giving written notice.
+
+Q32. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is a Particular Partnership?
+     (A) A partnership formed for a single specific venture or continuous project (e.g., building a bridge)
+     (B) A partnership of doctors only
+     (C) An LLP
+     (D) A sole proprietorship
+     Answer: (A)
+     Explanation: A particular partnership automatically dissolves upon completion of the specific undertaking or contract.
+
+Q33. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is Joint and Several Liability of partners in a general partnership?
+     (A) Creditors can sue all partners together or any individual partner separately for the firm's total debt
+     (B) Liability is shared with the bank
+     (C) Liability is limited to 10%
+     (D) Only the oldest partner is liable
+     Answer: (A)
+     Explanation: Every partner is personally liable for the entirety of obligations incurred by the partnership.
+
+Q34. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is the consequence of non-registration of a partnership firm under Section 69 of Partnership Act?
+     (A) The firm cannot enforce contractual rights against third parties in court
+     (B) The firm is declared criminal
+     (C) All partners are jailed
+     (D) The business cannot open a bank account
+     Answer: (A)
+     Explanation: An unregistered firm cannot institute suits in civil court to enforce rights arising from contracts against third parties.
+
+Q35. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is an Artificial Person in corporate law?
+     (A) A robot
+     (B) A legal entity created by law that has rights, duties, and identity distinct from its human members
+     (C) A fake company
+     (D) An unregistered shop
+     Answer: (B)
+     Explanation: A corporation or LLP is an artificial legal person that can sue, be sued, hold property, and enter contracts.
+
+Q36. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which of the following business forms enjoys the greatest secrecy and confidentiality of operational affairs?
+     (A) Public Limited Company
+     (B) Sole Proprietorship
+     (C) Listed Corporation
+     (D) Cooperative Society
+     Answer: (B)
+     Explanation: A sole proprietor does not publish balance sheets or financial reports, keeping all trade secrets confidential.
+
+Q37. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Genetic industries include:
+     (A) Nurseries, cattle breeding farms, and fish hatcheries
+     (B) Coal mining
+     (C) Oil refineries
+     (D) Shipbuilding
+     Answer: (A)
+     Explanation: Genetic industries involve breeding and multiplying plants and animals for commercial sale.
+
+Q38. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Extractive industries include:
+     (A) Mining, lumbering, hunting, and fishing
+     (B) Cotton textile manufacturing
+     (C) Bridge construction
+     (D) Banking
+     Answer: (A)
+     Explanation: Extractive industries draw out wealth directly from natural sources like soil, air, and water.
+
+Q39. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Analytical manufacturing industry involves:
+     (A) Breaking down a basic raw material into multiple distinct products (e.g., crude oil refining)
+     (B) Assembling television parts
+     (C) Mixing chemicals into paint
+     (D) Knitting yarn
+     Answer: (A)
+     Explanation: An analytical industry separates a single material into diverse end-products (petrol, diesel, kerosene from crude oil).
+
+Q40. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Synthetical manufacturing industry involves:
+     (A) Combining two or more ingredients together to create a new product (e.g., cement, soap)
+     (B) Refining petroleum
+     (C) Harvesting wheat
+     (D) Mining iron ore
+     Answer: (A)
+     Explanation: A synthetical industry mixes various raw components to synthesize a new product (e.g., limestone and gypsum in cement).
+
+Q41. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Assembly manufacturing industry involves:
+     (A) Combining prefabricated components into a finished product (e.g., computers, cars, smartphones)
+     (B) Refining crude oil
+     (C) Spinning yarn
+     (D) Planting seeds
+     Answer: (A)
+     Explanation: Assembly lines put together prefabricated parts into functional finished machinery.
+
+Q42. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is Trade Credit?
+     (A) Credit extended by a seller to a buyer allowing payment after 30 to 90 days of goods delivery
+     (B) Bank overdraft
+     (C) Equity share
+     (D) Government subsidy
+     Answer: (A)
+     Explanation: Trade credit is short-term operational credit between businesses to finance everyday merchandise purchases.
+
+Q43. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Which document must be signed by designated partners of an LLP regarding annual accounts and solvency?
+     (A) Statement of Account & Solvency (Form 8)
+     (B) Income tax return only
+     (C) Promissory note
+     (D) Bill of lading
+     Answer: (A)
+     Explanation: Form 8 (Statement of Account and Solvency) must be filed annually with the RoC certifying firm solvency.
+
+Q44. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What is the main advantage of an LLP over a Private Limited Company?
+     (A) Simpler statutory compliance, no mandatory dividend distribution tax, and no cap on max partners
+     (B) LLPs pay zero taxes
+     (C) LLP partners cannot be sued
+     (D) LLPs do not need accounts
+     Answer: (A)
+     Explanation: LLPs feature lower compliance burdens, flexible internal governance, and absence of rigid board meetings.
+
+Q45. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is Corporate Social Responsibility (CSR)?
+     (A) A corporation's commitment to operate economically, socially, and environmentally responsibly toward all stakeholders
+     (B) Paying corporate income tax
+     (C) A marketing advertising campaign
+     (D) Donating old computers
+     Answer: (A)
+     Explanation: CSR integrates ethical, environmental, and social concerns into core corporate strategy and societal development.
+
+Q46. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is the primary function of marketing in business?
+     (A) Identifying consumer needs and delivering satisfying goods/services at a mutually beneficial price
+     (B) Warehousing crates
+     (C) Auditing tax receipts
+     (D) Typing letters
+     Answer: (A)
+     Explanation: Marketing creates exchange value by identifying, anticipating, and fulfilling customer requirements profitably.
+
+Q47. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     Which form of business organization is most suitable for a small neighborhood grocery store?
+     (A) Public Limited Corporation
+     (B) Sole Proprietorship
+     (C) Joint Hindu Family Business
+     (D) Multinational Enterprise
+     Answer: (B)
+     Explanation: Sole proprietorship offers low capital requirements, direct personal customer interaction, and easy formation for retail shops.
+
+Q48. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     What does 'Dissolution of Partnership' mean compared to 'Dissolution of Firm'?
+     (A) Dissolution of partnership terminates relations among some partners, but firm business may continue; dissolution of firm closes business completely
+     (B) They mean the exact same thing
+     (C) Dissolution of firm is voluntary; partnership is criminal
+     (D) Neither closes the firm
+     Answer: (A)
+     Explanation: Dissolution of partnership reconstitutes the firm (e.g., retirement/admission); dissolution of firm liquidates all operations.
+
+Q49. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (EASY)
+     What is Goodwill in business valuation?
+     (A) The monetary value of an enterprise's favorable reputation, customer loyalty, and competitive advantage
+     (B) Charity donations given to temples
+     (C) Employee health insurance
+     (D) Unused office stationery
+     Answer: (A)
+     Explanation: Goodwill is an intangible asset reflecting established brand reputation that drives above-average earnings.
+
+Q50. [Unit 1: Business Concepts, Trade, Industry & Forms of Organization] (MEDIUM)
+     Can an LLP be formed for charitable or non-profit purposes?
+     (A) Yes, any purpose is allowed
+     (B) No, an LLP must strictly be formed for carrying on a lawful business with a view to profit
+     (C) Only with special President approval
+     (D) Yes, if registered as a society
+     Answer: (B)
+     Explanation: The LLP Act mandates that an LLP must have a profit motive; non-profit entities cannot register as LLPs.
+
+Q51. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Who is widely acknowledged as the 'Father of Modern Administrative Management'?
+     (A) F.W. Taylor
+     (B) Henri Fayol
+     (C) Max Weber
+     (D) Peter Drucker
+     Answer: (B)
+     Explanation: Henri Fayol formulated the universal functional approach to management and published the 14 Principles of Management.
+
+Q52. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Who is widely acknowledged as the 'Father of Scientific Management'?
+     (A) Henri Fayol
+     (B) Frederick Winslow Taylor (F.W. Taylor)
+     (C) Elton Mayo
+     (D) Chester Barnard
+     Answer: (B)
+     Explanation: F.W. Taylor pioneered scientific management, applying engineering and scientific time-motion studies to industrial shop-floor operations.
+
+Q53. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     According to Robert L. Katz, what are the three essential skills required of an effective manager?
+     (A) Mathematical, Physical, and Coding Skills
+     (B) Technical, Human (Interpersonal), and Conceptual Skills
+     (C) Financial, Marketing, and Legal Skills
+     (D) Writing, Speaking, and Reading Skills
+     Answer: (B)
+     Explanation: Katz identified Technical skills (specialized knowledge), Human skills (working with people), and Conceptual skills (big-picture holistic thinking).
+
+Q54. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which level of management requires the highest proportion of Conceptual Skills?
+     (A) Top Management (Board of Directors, CEO)
+     (B) Middle Management
+     (C) First-Line / Lower Supervisory Management
+     (D) Shop-Floor Workers
+     Answer: (A)
+     Explanation: Top executives focus on strategic vision, long-range planning, and organizational environment, demanding high conceptual skills.
+
+Q55. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which level of management relies most heavily on Technical Skills?
+     (A) Top Management
+     (B) Middle Management
+     (C) First-Line (Lower / Operational) Management
+     (D) Corporate Consultants
+     Answer: (C)
+     Explanation: Front-line supervisors directly oversee physical operations, machines, and software, requiring direct technical proficiency.
+
+Q56. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is the key difference between a Manager and a Leader?
+     (A) Managers focus on administration, systems, and executing plans; Leaders inspire, innovate, and align people with a vision
+     (B) Managers make more money than leaders
+     (C) Leaders write code while managers do accounting
+     (D) They are identical in every way
+     Answer: (A)
+     Explanation: Warren Bennis noted: 'The manager administers; the leader innovates. The manager maintains; the leader develops. The manager relies on control; the leader inspires trust.'
+
+Q57. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which of Henri Fayol's 14 principles states that an employee should receive orders from ONE superior only?
+     (A) Unity of Direction
+     (B) Unity of Command
+     (C) Scalar Chain
+     (D) Division of Work
+     Answer: (B)
+     Explanation: Unity of Command mandates that each subordinate reports directly to and receives orders from only one boss, preventing conflicting instructions.
+
+Q58. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What does Fayol's principle of 'Unity of Direction' state?
+     (A) Each person has one boss
+     (B) One head and one plan for a group of activities having the same objective
+     (C) All employees must walk in one direction
+     (D) Salaries must be paid on one day
+     Answer: (B)
+     Explanation: Unity of Direction ensures organizational coordination: activities with a common goal must follow a single unified plan under one head.
+
+Q59. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of the 'Scalar Chain' represent?
+     (A) The chain of command from top authority to the lowest ranks along which communications should flow
+     (B) The salary scale table
+     (C) The ladder used to clean the office
+     (D) The manufacturing assembly chain
+     Answer: (A)
+     Explanation: The scalar chain is the formal line of authority running from top management down to the operational front line.
+
+Q60. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is a 'Gang Plank' in Fayol's scalar chain concept?
+     (A) A punishment for disobedient workers
+     (B) A direct horizontal communication bridge between employees at the same hierarchical level during emergencies to avoid communication delays
+     (C) A wooden walkway in a factory
+     (D) A board of directors meeting
+     Answer: (B)
+     Explanation: A gang plank allows peers to communicate directly across scalar lines in urgent situations with superior authorization.
+
+Q61. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which of Fayol's principles means 'Union is Strength' and emphasizes team spirit and harmony?
+     (A) Esprit de Corps
+     (B) Remuneration
+     (C) Equity
+     (D) Centralization
+     Answer: (A)
+     Explanation: 'Esprit de Corps' emphasizes fostering team morale, mutual trust, and collective pride within an organization.
+
+Q62. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What was the purpose of Taylor's 'Time and Motion Study'?
+     (A) To spy on workers secretly
+     (B) To determine the standard time and eliminate unnecessary, wasteful physical movements to find the 'one best way' of doing a job
+     (C) To calculate employee commute times
+     (D) To test new machines
+     Answer: (B)
+     Explanation: Time and motion studies scientifically standardize work methods and establish realistic, fair daily production quotas.
+
+Q63. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What wage incentive system did F.W. Taylor introduce to reward efficient workers and penalize inefficient ones?
+     (A) Fixed Monthly Salary
+     (B) Differential Piece-Rate System
+     (C) Profit Sharing Trust
+     (D) Employee Stock Options
+     Answer: (B)
+     Explanation: Under Taylor's differential piece-rate system, workers producing at or above the standard receive a higher rate per piece than below-standard workers.
+
+Q64. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What did F.W. Taylor mean by 'Mental Revolution'?
+     (A) A complete change of outlook and attitude on the part of both workers and management from mutual hostility to active cooperation
+     (B) A political worker strike
+     (C) Brain surgery on employees
+     (D) An IQ test
+     Answer: (A)
+     Explanation: Taylor's mental revolution calls for workers and owners to focus jointly on increasing the total surplus rather than quarreling over how to divide it.
+
+Q65. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Who formulated the Theory of Bureaucracy as an ideal, rational-legal organizational model?
+     (A) Max Weber
+     (B) Karl Marx
+     (C) Henri Fayol
+     (D) Chester Barnard
+     Answer: (A)
+     Explanation: German sociologist Max Weber conceptualized bureaucracy characterized by clear hierarchy, division of labor, formal rules, and impersonality.
+
+Q66. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     Which type of authority in Weber's classification is based on formal laws, codified rules, and officially defined positions?
+     (A) Traditional Authority
+     (B) Charismatic Authority
+     (C) Rational-Legal Authority
+     (D) Authoritarian Authority
+     Answer: (C)
+     Explanation: Rational-legal authority underpins modern bureaucracies: obedience is owed to the legal office or rank, not to the personal occupant.
+
+Q67. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is a major criticism / dysfunction of Bureaucracy in practice?
+     (A) Lack of records
+     (B) Red tape, excessive paperwork, procedural delays, and rigid inflexibility to change
+     (C) Absence of rules
+     (D) High turnover of staff
+     Answer: (B)
+     Explanation: Bureaucracy often leads to goal displacement, procedural rigidity ('red tape'), and impersonality that frustrates agility.
+
+Q68. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Is Management considered an Art, a Science, or a Profession?
+     (A) Pure Art only
+     (B) Pure Physical Science only
+     (C) It has elements of both Art and Science, and is increasingly acquiring the characteristics of a Profession
+     (D) It is none of these
+     Answer: (C)
+     Explanation: Management is a social science (systematized knowledge) and an art (practical application of personal skills), evolving into an accredited profession.
+
+Q69. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which management function is considered the 'Primacy Function' that precedes all other functions?
+     (A) Controlling
+     (B) Directing
+     (C) Planning
+     (D) Staffing
+     Answer: (C)
+     Explanation: Planning is the foundational primary function: organizing, staffing, directing, and controlling can only proceed once goals are planned.
+
+Q70. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Luther Gulick coined which famous acronym to summarize the core functions of management?
+     (A) SMART
+     (B) POSDCORB
+     (C) SWOT
+     (D) PESTLE
+     Answer: (B)
+     Explanation: POSDCORB stands for Planning, Organizing, Staffing, Directing, Coordinating, Reporting, and Budgeting.
+
+Q71. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Division of Work' state?
+     (A) Workers should specialize in one task to increase efficiency and output
+     (B) Work should be randomized daily
+     (C) Management should do all physical work
+     (D) Employees should work in pairs
+     Answer: (A)
+     Explanation: Specialization produces more and better work with the same effort by refining individual expertise.
+
+Q72. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What does Fayol's principle of 'Authority and Responsibility' emphasize?
+     (A) Authority without responsibility causes abuse; responsibility without authority causes frustration (they must be balanced)
+     (B) Authority is only for CEOs
+     (C) Responsibility has no connection to power
+     (D) Subordinates hold all authority
+     Answer: (A)
+     Explanation: Authority and responsibility must be co-extensive parity: authority confers the right to command, bounded by accountability for results.
+
+Q73. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Discipline' require?
+     (A) Obedience, application, energy, and outward marks of respect in accordance with agreements
+     (B) Physical punishment of workers
+     (C) Working 18 hours daily
+     (D) Zero coffee breaks
+     Answer: (A)
+     Explanation: Discipline requires clear agreements, fair supervision, and judicious enforcement of penalties.
+
+Q74. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Subordination of Individual Interest to General Interest' mean?
+     (A) The goals of the organization must take precedence over the personal interests of any individual employee
+     (B) Individuals must leave the company
+     (C) Personal hobbies are forbidden
+     (D) Profits belong to the state
+     Answer: (A)
+     Explanation: Organizational objectives must always outweigh individual or sectional interests.
+
+Q75. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Remuneration of Personnel' require?
+     (A) Payment should be fair, reasonable, and afford maximum satisfaction to both employees and employers
+     (B) Paying minimum possible wages
+     (C) Paying only in merchandise
+     (D) Paying top managers 1000x of workers
+     Answer: (A)
+     Explanation: Fair remuneration motivates workers and rewards productivity while remaining viable for the business.
+
+Q76. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What does Fayol's principle of 'Centralization and Decentralization' advocate?
+     (A) Finding the optimum balance between centralized authority and dispersed delegation appropriate for each firm
+     (B) Total 100% centralization always
+     (C) Total complete anarchy
+     (D) Centralizing all typing tasks
+     Answer: (A)
+     Explanation: The degree of centralization should vary to achieve the best overall utilization of employee talents.
+
+Q77. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Order' (Social and Material Order) dictate?
+     (A) A place for everything/everyone, and everything/everyone in its/their place
+     (B) Giving military commands
+     (C) Ordering pizza for lunch
+     (D) Alphabetical file storage
+     Answer: (A)
+     Explanation: Material and social order eliminates waste of time and misplacement of human and physical resources.
+
+Q78. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Equity' signify?
+     (A) Combination of fairness, kindness, and justice in dealing with subordinates to inspire loyalty
+     (B) Equal salary for all employees
+     (C) Buying company stocks
+     (D) Equal physical height
+     Answer: (A)
+     Explanation: Equity demands treating employees with impartiality, warmth, and justice to ensure devotion.
+
+Q79. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Stability of Tenure of Personnel' highlight?
+     (A) Preventing unnecessary employee turnover by providing job security and adequate time to learn duties
+     (B) Tenure must be fixed at 1 year
+     (C) Firing 10% of workers yearly
+     (D) Promoting workers daily
+     Answer: (A)
+     Explanation: High turnover is both the cause and effect of bad management; stability fosters competence and loyalty.
+
+Q80. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does Fayol's principle of 'Initiative' encourage?
+     (A) Allowing subordinates the freedom to conceive and carry out plans to boost enthusiasm
+     (B) Managers doing everything themselves
+     (C) Strict obedience without speaking
+     (D) Starting work late
+     Answer: (A)
+     Explanation: Initiative harnesses creative human power, providing deep satisfaction to personnel.
+
+Q81. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is Functional Foremanship developed by F.W. Taylor?
+     (A) Separating planning from execution by deploying 8 specialized foremen (4 for planning, 4 for execution)
+     (B) A single foreman supervising 1000 workers
+     (C) Automated robotic factory
+     (D) A board of directors
+     Answer: (A)
+     Explanation: Functional foremanship replaced the single gang boss with 8 specialized supervisors.
+
+Q82. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (HARD)
+     Which of the following was a Planning Boss in Taylor's Functional Foremanship?
+     (A) Instruction Card Clerk, Route Clerk, Time & Cost Clerk, Disciplinarian
+     (B) Gang Boss
+     (C) Speed Boss
+     (D) Repair Boss
+     Answer: (A)
+     Explanation: Planning room specialists handled route, instruction cards, timing/costing, and discipline.
+
+Q83. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (HARD)
+     Which of the following was an Execution / Shop-Floor Boss in Taylor's Functional Foremanship?
+     (A) Gang Boss, Speed Boss, Repair Boss, Inspector
+     (B) Route Clerk
+     (C) Instruction Card Clerk
+     (D) Time Clerk
+     Answer: (A)
+     Explanation: Execution specialists ensured machinery speed, tooling readiness, maintenance repairs, and quality inspection.
+
+Q84. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is Fatigue Study in Scientific Management?
+     (A) Determining the amount and frequency of rest intervals required to recover mental and physical stamina during work
+     (B) Testing tired machines
+     (C) Cutting down sleep hours
+     (D) Working overnight
+     Answer: (A)
+     Explanation: Fatigue studies ensure workers maintain peak stamina without burnout through planned rest pauses.
+
+Q85. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is Method Study in Scientific Management?
+     (A) Finding the 'one best way' to perform a job to minimize cost and maximize efficiency
+     (B) Writing research papers
+     (C) Choosing office colors
+     (D) Accounting auditing
+     Answer: (A)
+     Explanation: Method study analyses the entire operational workflow to identify the optimal technique.
+
+Q86. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is Motion Study in Scientific Management?
+     (A) Observing and eliminating unnecessary, non-productive bodily movements of workers
+     (B) Moving office chairs
+     (C) Exercising in the morning
+     (D) Walking between buildings
+     Answer: (A)
+     Explanation: Pioneered by Frank and Lillian Gilbreth, motion study eliminates wasted hand and body motions.
+
+Q87. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (HARD)
+     Who developed the famous Therbligs (18 basic elemental hand motions)?
+     (A) Frank and Lillian Gilbreth
+     (B) F.W. Taylor
+     (C) Max Weber
+     (D) Elton Mayo
+     Answer: (A)
+     Explanation: The Gilbreths classified human work motions into 18 micro-units termed 'Therbligs' (Gilbreth spelled backward).
+
+Q88. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is the primary objective of the Hawthorne Studies conducted by Elton Mayo (1924-1932)?
+     (A) Examining the effect of social, informal, and human factors on worker productivity (Human Relations Movement)
+     (B) Testing electric light bulb durability
+     (C) Calculating assembly line conveyor speeds
+     (D) Cutting wages
+     Answer: (A)
+     Explanation: The Hawthorne studies demonstrated that social relationships and group dynamics matter more than physical working conditions.
+
+Q89. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is the Hawthorne Effect?
+     (A) The alteration of behavior by subjects of a study due to their awareness of being observed and appreciated
+     (B) A lighting malfunction
+     (C) A stock market crash
+     (D) An optical illusion
+     Answer: (A)
+     Explanation: Workers improved productivity simply because management showed genuine interest in their well-being.
+
+Q90. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     In Weber's bureaucracy, appointments and promotions must be made based on:
+     (A) Family connections and favoritism
+     (B) Technical competence, objective qualifications, and merit
+     (C) Political affiliations
+     (D) Physical strength
+     Answer: (B)
+     Explanation: Merit-based selection protects the organization from nepotism and ensures professional standards.
+
+Q91. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What does 'Impersonality' in Weber's bureaucracy mean?
+     (A) Decisions and rules are applied uniformly without personal bias, favoritism, or emotional prejudice
+     (B) Cold office air conditioning
+     (C) Using automated answering machines
+     (D) Ignoring employee medical leave
+     Answer: (A)
+     Explanation: Impersonal detachment ensures that all clients and subordinates receive equal, rule-based treatment.
+
+Q92. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is Traditional Authority according to Max Weber?
+     (A) Authority grounded in established customs, hereditary succession, and ancestral sanctity (e.g., monarchies)
+     (B) Authority granted by passing an exam
+     (C) Authority based on heroic personality
+     (D) Corporate legal power
+     Answer: (A)
+     Explanation: Traditional authority derives its legitimacy from long-standing cultural norms and hereditary lineage.
+
+Q93. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     What is Charismatic Authority according to Max Weber?
+     (A) Authority stemming from exceptional personal devotion, heroism, or magnetic magnetism of an individual leader (e.g., Gandhi, Martin Luther King)
+     (B) Authority from a court decree
+     (C) Authority from age
+     (D) Corporate CEO position
+     Answer: (A)
+     Explanation: Charismatic leaders inspire followers through extraordinary personal traits and vision.
+
+Q94. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Who proposed Theory X and Theory Y assumptions regarding human nature at work?
+     (A) Douglas McGregor
+     (B) Abraham Maslow
+     (C) Frederick Herzberg
+     (D) David McClelland
+     Answer: (A)
+     Explanation: Douglas McGregor presented Theory X (pessimistic, authoritarian view) and Theory Y (optimistic, participative view) in 1960.
+
+Q95. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Theory X assumes that workers:
+     (A) Naturally dislike work, avoid responsibility, and must be coerced, controlled, and threatened with punishment
+     (B) Enjoy work as natural as play
+     (C) Seek responsibility proactively
+     (D) Are highly creative
+     Answer: (A)
+     Explanation: Theory X views workers as inherently lazy, needing direct supervision and external incentives.
+
+Q96. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Theory Y assumes that workers:
+     (A) View work as natural as rest or play, exercise self-direction, and seek responsibility when committed to objectives
+     (B) Hate working
+     (C) Must be threatened with job loss
+     (D) Lack ambition
+     Answer: (A)
+     Explanation: Theory Y views workers as self-motivated, imaginative, and capable of constructive self-control.
+
+Q97. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Which level of management acts as the crucial transmission bridge between Top executives and First-line supervisors?
+     (A) Middle Management (Departmental / Functional Heads)
+     (B) Board of Directors
+     (C) Non-Executive Directors
+     (D) Shop-Floor Trainees
+     Answer: (A)
+     Explanation: Middle managers interpret top strategies, set divisional targets, and guide front-line operational managers.
+
+Q98. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     First-line management includes which of the following designations?
+     (A) CEO, President, Chairman
+     (B) Foreman, Supervisor, Section Head
+     (C) General Manager, Vice President
+     (D) Venture Capitalist
+     Answer: (B)
+     Explanation: First-line supervisors directly oversee day-to-day work on the factory floor or operational desk.
+
+Q99. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (EASY)
+     Top management includes which of the following designations?
+     (A) Board of Directors, CEO, Managing Director
+     (B) Supervisors, Team Leaders
+     (C) Machine Operators
+     (D) Clerks
+     Answer: (A)
+     Explanation: Top management is responsible for strategic organizational direction, survival, and long-term policies.
+
+Q100. [Unit 2: Management Foundations, Thoughts & Bureaucracy] (MEDIUM)
+     What is the Systems Approach to management?
+     (A) Viewing the organization as a unified, purposeful system of interrelated, interdependent sub-systems interacting with the external environment
+     (B) A computer operating system manual
+     (C) Working without management
+     (D) Ignoring external factors
+     Answer: (A)
+     Explanation: The systems approach emphasizes that changes in one departmental subsystem impact the entire organization.
+
+Q101. [Unit 3: Planning & Decision Making] (EASY)
+     What is Planning in management?
+     (A) Looking back at past financial losses
+     (B) Deciding in advance what is to be done, how, when, and by whom to bridge the gap between where we are and where we want to be
+     (C) Printing receipts
+     (D) Disciplining workers
+     Answer: (B)
+     Explanation: Planning is forward-looking decision making that predetermines organizational goals and courses of action.
+
+Q102. [Unit 3: Planning & Decision Making] (EASY)
+     What is the first step in the formal Planning Process?
+     (A) Formulating derivative plans
+     (B) Setting organizational Objectives and Goals
+     (C) Evaluating alternative courses of action
+     (D) Measuring actual results
+     Answer: (B)
+     Explanation: Without establishing clear, measurable objectives, no plan can be developed or evaluated.
+
+Q103. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What are Planning Premises?
+     (A) The physical building where planners sit
+     (B) Assumptions and forecasts about future environmental conditions, market trends, and economic factors on which plans are based
+     (C) Office desks
+     (D) Printed forms
+     Answer: (B)
+     Explanation: Premises are the projected environmental assumptions (inflation, demand, regulations) that anchor future plans.
+
+Q104. [Unit 3: Planning & Decision Making] (EASY)
+     What is the difference between Strategic Plans and Operational Plans?
+     (A) Strategic plans are long-term organization-wide plans developed by top management; Operational plans are short-term tactical plans for day-to-day execution
+     (B) Strategic plans are for 1 day; operational plans are for 10 years
+     (C) Strategic plans have no budget
+     (D) They are identical
+     Answer: (A)
+     Explanation: Strategic planning charts broad long-range direction (3-5+ years); operational plans detail daily and weekly departmental tasks.
+
+Q105. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Standing Plan?
+     (A) A plan used once and then discarded
+     (B) An ongoing, recurring plan providing guidance for repeatedly encountered organizational situations (e.g., Policies, Procedures, Rules)
+     (C) A plan created while standing up
+     (D) A cancelled plan
+     Answer: (B)
+     Explanation: Standing plans establish standardized procedures, policies, and rules for recurring operations over long periods.
+
+Q106. [Unit 3: Planning & Decision Making] (EASY)
+     Which of the following is an example of a Single-Use Plan?
+     (A) Standard Operating Procedure (SOP)
+     (B) Organizational Code of Conduct
+     (C) A Project Budget for Fiscal Year 2024
+     (D) Company Leave Policy
+     Answer: (C)
+     Explanation: Budgets and programs are single-use plans created for specific non-recurring periods or projects.
+
+Q107. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is a Policy in managerial planning?
+     (A) A strict, inflexible command
+     (B) A general statement or broad guideline that channels thinking and decision-making within specified boundaries
+     (C) An arithmetic calculation
+     (D) A marketing logo
+     Answer: (B)
+     Explanation: Policies provide flexible guideposts for decision makers (e.g., 'Promotions shall be based on merit and seniority').
+
+Q108. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Procedure?
+     (A) A chronological sequence of mandatory operational steps to execute a particular routine activity (e.g., procedure for ordering supplies)
+     (B) A broad company philosophy
+     (C) A one-time event
+     (D) A penalty rule
+     Answer: (A)
+     Explanation: Procedures specify the exact temporal sequence of actions required to carry out a standard process.
+
+Q109. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Rule?
+     (A) A rigid, specific guide to action that explicitly mandates what MUST or MUST NOT be done, leaving no discretion
+     (B) A flexible suggestion
+     (C) A five-year strategy
+     (D) A budget forecast
+     Answer: (A)
+     Explanation: Rules permit zero managerial discretion (e.g., 'No smoking in chemical storage areas').
+
+Q110. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Budget?
+     (A) A statement of expected future results expressed in quantitative numerical terms (financial, labor hours, or material units)
+     (B) A letter to the CEO
+     (C) A list of employee names
+     (D) A website domain
+     Answer: (A)
+     Explanation: Budgets quantify operational targets into numerical and financial commitments against which actual progress is controlled.
+
+Q111. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is the primary psychological limitation of planning?
+     (A) Increases creativity
+     (B) Creates a false sense of security and rigidity that discourages swift adaptation in volatile crises
+     (C) Reduces paperwork
+     (D) Makes managers too happy
+     Answer: (B)
+     Explanation: Detailed plans often foster psychological inflexibility and adherence to outdated procedures when external realities change.
+
+Q112. [Unit 3: Planning & Decision Making] (EASY)
+     What is Decision Making?
+     (A) Typing memos
+     (B) The cognitive process of identifying problems and selecting the best course of action among feasible alternatives
+     (C) Guessing randomly
+     (D) Waiting for orders
+     Answer: (B)
+     Explanation: Decision making involves conscious choice among competing alternatives to resolve issues or capture opportunities.
+
+Q113. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Programmed Decision?
+     (A) A routine, repetitive decision handled through established rules, policies, or standard operating procedures
+     (B) A decision made by a computer without humans
+     (C) A decision made only once in 50 years
+     (D) A chaotic decision
+     Answer: (A)
+     Explanation: Programmed decisions handle structured, recurring problems (e.g., calculating employee overtime pay) via fixed criteria.
+
+Q114. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Non-Programmed Decision?
+     (A) A decision made using Excel
+     (B) A unique, poorly structured, and non-recurring decision requiring customized managerial judgment and creativity
+     (C) A routine daily task
+     (D) A decision made by clerks
+     Answer: (B)
+     Explanation: Non-programmed decisions resolve novel, complex challenges (e.g., entering an overseas market, launching a new product).
+
+Q115. [Unit 3: Planning & Decision Making] (EASY)
+     Which level of management makes the majority of Non-Programmed, Strategic Decisions?
+     (A) First-line Supervisors
+     (B) Top-level Executives
+     (C) Clerical Assistants
+     (D) Factory Assembly Technicians
+     Answer: (B)
+     Explanation: Top executives face unstructured external complexities requiring strategic, non-programmed judgments.
+
+Q116. [Unit 3: Planning & Decision Making] (HARD)
+     Herbert Simon proposed that human decision makers operate under:
+     (A) Absolute Infinite Rationality
+     (B) Bounded Rationality and Satisficing
+     (C) Complete Randomness
+     (D) Zero Information
+     Answer: (B)
+     Explanation: Simon showed that humans face cognitive limits, incomplete information, and time pressures, settling for 'satisficing' (good enough) decisions.
+
+Q117. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What does 'Satisficing' mean in decision-making theory?
+     (A) Choosing the first alternative that meets minimum acceptable aspiration criteria rather than searching endlessly for the optimal solution
+     (B) Satisfying all shareholders completely
+     (C) Eliminating all costs
+     (D) Getting 100% test scores
+     Answer: (A)
+     Explanation: Satisficing combines 'satisfy' and 'suffice': stopping search once an adequately satisfactory option is located.
+
+Q118. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Major Decision compared to a Minor Decision?
+     (A) Major decisions involve huge capital investments, long-term impact, and high risk; minor decisions are routine with low financial impact
+     (B) Major decisions are made by clerks
+     (C) Minor decisions are illegal
+     (D) They are identical
+     Answer: (A)
+     Explanation: Buying a manufacturing plant is a major decision; purchasing printer paper is a minor decision.
+
+Q119. [Unit 3: Planning & Decision Making] (EASY)
+     What is an advantage of Group (Team) Decision Making over Individual Decision Making?
+     (A) Faster decision speed
+     (B) Greater diversity of perspectives, higher information pool, and broader acceptance by team members
+     (C) Zero conflict
+     (D) Absolute anonymity
+     Answer: (B)
+     Explanation: Group synergy yields wider insights and strengthens commitment to implementing the resulting choice.
+
+Q120. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is 'Groupthink' in group decision making?
+     (A) A brilliant team idea
+     (B) A dysfunctional phenomenon where group members prioritize consensus and harmony over realistic appraisal of alternatives
+     (C) A software network tool
+     (D) A group brainstorming session
+     Answer: (B)
+     Explanation: Groupthink suppresses critical dissent, leading to flawed decisions due to excessive pressure for conformity.
+
+Q121. [Unit 3: Planning & Decision Making] (HARD)
+     What is the Delphi Technique in decision making?
+     (A) A structured forecasting method where experts provide opinions anonymously across multiple iterative rounds with aggregate feedback
+     (B) An ancient Greek war tactic
+     (C) A face-to-face shouting match
+     (D) An automated spreadsheet
+     Answer: (A)
+     Explanation: Delphi prevents dominance by vocal individuals through anonymous iterative expert surveys.
+
+Q122. [Unit 3: Planning & Decision Making] (EASY)
+     What is Brainstorming in creative decision making?
+     (A) An open group session encouraging wild idea generation while strictly suspending all criticism during ideation
+     (B) A medical condition
+     (C) A formal debate with voting
+     (D) Criticizing bad ideas
+     Answer: (A)
+     Explanation: Brainstorming separates idea generation from idea evaluation to maximize novel solutions.
+
+Q123. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is the Nominal Group Technique (NGT)?
+     (A) A structured decision process where members write ideas silently before sequential discussion and independent private ranking
+     (B) Voting by name only
+     (C) A group of nominal partners
+     (D) A chaotic meeting
+     Answer: (A)
+     Explanation: NGT ensures equal participation by alternating silent individual reflection with systematic group voting.
+
+Q124. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is Management by Objectives (MBO) popularized by Peter Drucker?
+     (A) A collaborative process where managers and subordinates jointly define goals, set performance metrics, and review contributions
+     (B) Managing without any goals
+     (C) Directing employees through threats
+     (D) A financial software tool
+     Answer: (A)
+     Explanation: MBO aligns individual performance targets with broader organizational milestones through mutual goal-setting.
+
+Q125. [Unit 3: Planning & Decision Making] (EASY)
+     What does the SMART criteria for goal setting stand for?
+     (A) Specific, Measurable, Achievable, Relevant, Time-bound
+     (B) Simple, Monetary, Accessible, Real, Tested
+     (C) Standard, Modern, Advanced, Rapid, Technical
+     (D) Strategic, Multi-level, Active, Robust, Tough
+     Answer: (A)
+     Explanation: SMART ensures goals are clear, trackable, realistic, aligned with mission, and anchored to deadlines.
+
+Q126. [Unit 3: Planning & Decision Making] (EASY)
+     What is Environmental Scanning in planning?
+     (A) Conducting surveillance on competitors secretly
+     (B) Monitoring, evaluating, and disseminating information from external and internal environments to strategic planners
+     (C) Cleaning factory floors
+     (D) Checking the weather report
+     Answer: (B)
+     Explanation: Environmental scanning detects emerging threats, market shifts, technological changes, and competitive moves.
+
+Q127. [Unit 3: Planning & Decision Making] (EASY)
+     What does a SWOT Analysis evaluate?
+     (A) Software, Wireless, Output, Technology
+     (B) Strengths, Weaknesses, Opportunities, Threats
+     (C) Sales, Warehousing, Operations, Transport
+     (D) Strategy, Workforce, Ownership, Time
+     Answer: (B)
+     Explanation: SWOT juxtaposes internal capabilities (Strengths/Weaknesses) against external environmental realities (Opportunities/Threats).
+
+Q128. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Strategy in corporate planning?
+     (A) A comprehensive master plan detailing how the organization will achieve its mission and competitive advantage
+     (B) A daily checklist
+     (C) An office rule
+     (D) A tax form
+     Answer: (A)
+     Explanation: Strategy defines long-term resource deployment to secure a differentiated competitive position.
+
+Q129. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Contingency Plan (Plan B)?
+     (A) A backup plan formulated to respond swiftly if unexpected external events or crises derail the primary plan
+     (B) An illegal plan
+     (C) A plan for vacations
+     (D) A discarded budget
+     Answer: (A)
+     Explanation: Contingency planning prepares predefined responses to alternative plausible futures and sudden emergencies.
+
+Q130. [Unit 3: Planning & Decision Making] (MEDIUM)
+     Which of the following is an internal limitation of planning?
+     (A) Government policy changes
+     (B) Capital investment inflexibility and rigid organizational routines
+     (C) Natural disasters
+     (D) Global pandemics
+     Answer: (B)
+     Explanation: Sunk capital in fixed assets and bureaucratic procedures constrain internal operational adaptability.
+
+Q131. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is a Decision Tree in quantitative decision analysis?
+     (A) A graphical branching representation of decisions, uncertainty outcomes, resource costs, and utility/payoffs
+     (B) A tree planted in the office
+     (C) A binary search tree code
+     (D) An organizational chart
+     Answer: (A)
+     Explanation: Decision trees calculate expected monetary values (EMV) across probabilistic decision paths.
+
+Q132. [Unit 3: Planning & Decision Making] (EASY)
+     In decision theory, a 'Decision under Certainty' is one where:
+     (A) The decision maker knows with 100% precision the exact outcome of every alternative
+     (B) Outcomes are completely unknown
+     (C) Probabilities are 50-50
+     (D) The decision maker guesses
+     Answer: (A)
+     Explanation: Under certainty, deterministic knowledge guarantees the specific consequence of each action.
+
+Q133. [Unit 3: Planning & Decision Making] (MEDIUM)
+     A 'Decision under Risk' is one where:
+     (A) The decision maker has zero data
+     (B) The decision maker knows the alternative outcomes and can assign objective mathematical probabilities to their occurrence
+     (C) Every outcome is catastrophic
+     (D) The police are involved
+     Answer: (B)
+     Explanation: Under risk, future states are probabilistic (e.g., historical probability of rain is 30%).
+
+Q134. [Unit 3: Planning & Decision Making] (MEDIUM)
+     A 'Decision under Uncertainty' is one where:
+     (A) Future outcomes are possible but no mathematical probabilities can be assigned to them
+     (B) Outcomes are 100% known
+     (C) All paths yield profit
+     (D) There is zero risk
+     Answer: (A)
+     Explanation: Under true uncertainty, lack of historical precedents prevents assigning reliable numerical probabilities.
+
+Q135. [Unit 3: Planning & Decision Making] (HARD)
+     What is the Maximax criterion (Optimistic Criterion) in decision making under uncertainty?
+     (A) Selecting the alternative that maximizes the maximum possible payoff ('best of the best')
+     (B) Selecting the worst option
+     (C) Minimizing profit
+     (D) Choosing the average
+     Answer: (A)
+     Explanation: Maximax represents an aggressive, optimistic risk-seeker seeking the highest potential ceiling reward.
+
+Q136. [Unit 3: Planning & Decision Making] (HARD)
+     What is the Maximin criterion (Wald's Pessimistic Criterion) under uncertainty?
+     (A) Selecting the alternative that maximizes the minimum possible payoff ('best of the worst')
+     (B) Seeking the biggest loss
+     (C) Gambling everything
+     (D) Choosing randomly
+     Answer: (A)
+     Explanation: Maximin is a risk-averse, conservative strategy protecting against worst-case disaster scenarios.
+
+Q137. [Unit 3: Planning & Decision Making] (HARD)
+     What is the Laplace Criterion under uncertainty?
+     (A) Assuming all future states of nature have equal probability and maximizing the average payoff
+     (B) Multiplying by zero
+     (C) Ignoring all alternatives
+     (D) Selecting the quickest plan
+     Answer: (A)
+     Explanation: The principle of insufficient reason assumes equal likelihood across all future environmental states.
+
+Q138. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is Linear Programming in operational decision making?
+     (A) A mathematical optimization technique used to allocate limited resources optimally among competing demands
+     (B) Writing linear C programs
+     (C) Drawing straight lines on plans
+     (D) A computer monitor setting
+     Answer: (A)
+     Explanation: Linear programming optimizes a linear objective function subject to linear equality/inequality constraints.
+
+Q139. [Unit 3: Planning & Decision Making] (EASY)
+     What is Payback Period in capital investment decisions?
+     (A) The time required for an investment project's cumulative cash inflows to equal its initial cash outflow
+     (B) The employee retirement age
+     (C) The loan interest rate
+     (D) The legal duration of a patent
+     Answer: (A)
+     Explanation: Payback period measures how quickly initial invested capital is recouped.
+
+Q140. [Unit 3: Planning & Decision Making] (EASY)
+     What is Cost-Benefit Analysis (CBA)?
+     (A) A systematic approach comparing the total anticipated costs of an action against its expected benefits
+     (B) An accounting tax audit
+     (C) A pricing calculator
+     (D) A salary negotiation
+     Answer: (A)
+     Explanation: CBA quantifies financial and social trade-offs to determine whether a project creates net positive utility.
+
+Q141. [Unit 3: Planning & Decision Making] (EASY)
+     Who should be involved in setting operational targets under participative management?
+     (A) Both the supervising manager and the performing subordinate employee
+     (B) Only the board of directors
+     (C) External audit agencies only
+     (D) Government officials
+     Answer: (A)
+     Explanation: Involving employees in goal formulation increases ownership, clarity, and motivation.
+
+Q142. [Unit 3: Planning & Decision Making] (EASY)
+     What is an Action Plan?
+     (A) A detailed roadmap listing specific action items, responsible owners, milestones, and resource allocations needed to execute a goal
+     (B) A movie script
+     (C) A disciplinary warning
+     (D) A military command
+     Answer: (A)
+     Explanation: Action plans operationalize broad strategic goals into concrete steps with deadlines and accountability.
+
+Q143. [Unit 3: Planning & Decision Making] (EASY)
+     What is Forecasting in planning?
+     (A) Guessing magic numbers
+     (B) A systematic attempt to predict future environmental trends, customer demand, and business events based on historical data and models
+     (C) Reading horoscopes
+     (D) Reviewing last week's invoices
+     Answer: (B)
+     Explanation: Forecasting leverages quantitative data and qualitative judgment to anticipate future conditions.
+
+Q144. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Mission Statement?
+     (A) A broad declaration of an organization's fundamental purpose, scope of operations, and core reason for existence
+     (B) A one-year financial target
+     (C) A secret password
+     (D) A list of office rules
+     Answer: (A)
+     Explanation: The mission statement answers: 'Who are we, what do we do, and why do we exist?'
+
+Q145. [Unit 3: Planning & Decision Making] (EASY)
+     What is a Vision Statement?
+     (A) A forward-looking statement describing what the organization aspires to become in the distant future
+     (B) An eye test report
+     (C) A technical specification
+     (D) An income statement
+     Answer: (A)
+     Explanation: The vision articulates the inspirational long-term destination of the enterprise.
+
+Q146. [Unit 3: Planning & Decision Making] (EASY)
+     Which of the following is a barrier to effective planning?
+     (A) Dynamic, turbulent external environment and rapid technological obsolescence
+     (B) Clear communication
+     (C) Adequate budgets
+     (D) Accurate data
+     Answer: (A)
+     Explanation: Volatile market conditions and disruptive innovations can render rigid static plans obsolete overnight.
+
+Q147. [Unit 3: Planning & Decision Making] (EASY)
+     What is Strategic Control?
+     (A) Monitoring ongoing execution of strategic plans to ensure milestones are met and adapting strategies when assumptions fail
+     (B) Spying on workers
+     (C) Auditing petty cash
+     (D) Setting computer passwords
+     Answer: (A)
+     Explanation: Strategic control ensures the organization remains on course toward its strategic intent despite environmental changes.
+
+Q148. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is Intuitive Decision Making?
+     (A) An unconscious decision process based on distilled experience, tacit knowledge, gut feeling, and pattern recognition
+     (B) Guessing randomly without any experience
+     (C) Using an automated algorithm
+     (D) Flipping a coin
+     Answer: (A)
+     Explanation: Intuition synthesizes years of managerial experience into swift, holistic judgment calls.
+
+Q149. [Unit 3: Planning & Decision Making] (MEDIUM)
+     What is Heuristics in human decision making?
+     (A) Mental shortcuts or 'rules of thumb' used to simplify complex problem-solving and make quick decisions
+     (B) Complex calculus equations
+     (C) Computer networking protocols
+     (D) Legal statutes
+     Answer: (A)
+     Explanation: Heuristics reduce cognitive load during decision making, though they may introduce systematic biases.
+
+Q150. [Unit 3: Planning & Decision Making] (HARD)
+     What is Sunk Cost Fallacy in managerial decision making?
+     (A) Continuing an underperforming project merely because of significant non-recoverable resources already invested in it
+     (B) Buying sinking ships
+     (C) Underestimating project profits
+     (D) Investing in cloud backups
+     Answer: (A)
+     Explanation: Rational decision making ignores past unrecoverable sunk costs and evaluates solely future prospective costs and benefits.
+
+Q151. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Organization Structure?
+     (A) The physical architecture of the office building
+     (B) The formal framework defining how jobs and tasks are divided, coordinated, grouped, and reported within an enterprise
+     (C) The company website design
+     (D) The computer network layout
+     Answer: (B)
+     Explanation: Organization structure clarifies roles, authority relationships, departmental groupings, and communication channels.
+
+Q152. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is an Organization Chart?
+     (A) A flowchart showing manufacturing operations
+     (B) A graphical diagram representing the formal structural relationships, hierarchical levels, and lines of authority within an enterprise
+     (C) A financial graph of profits
+     (D) A map of retail branches
+     Answer: (B)
+     Explanation: An organogram visually outlines supervisory relationships, divisions, spans of control, and chains of command.
+
+Q153. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is a Formal Organization?
+     (A) An organization created accidentally through workplace friendships
+     (B) The officially designated, deliberately planned structure of roles, responsibilities, and authority relationships established by management
+     (C) A social party committee
+     (D) A trade union
+     Answer: (B)
+     Explanation: Formal organization is designed by executive management to coordinate tasks rationally toward official goals.
+
+Q154. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is an Informal Organization?
+     (A) An illegal unregistered company
+     (B) The spontaneous network of social connections, personal relationships, and informal groups that naturally emerge among coworkers
+     (C) A computer virus
+     (D) A secret accounting system
+     Answer: (B)
+     Explanation: Informal organization arises spontaneously from human social interactions, companionship, and shared interests.
+
+Q155. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is the primary communication channel of the Informal Organization?
+     (A) Formal executive memorandums
+     (B) The 'Grapevine' (word-of-mouth informal communication network)
+     (C) Company press releases
+     (D) Annual audit reports
+     Answer: (B)
+     Explanation: The grapevine carries informal information, workplace gossip, and social sentiment rapidly throughout an organization.
+
+Q156. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Span of Management (Span of Control)?
+     (A) The physical width of the executive desk
+     (B) The number of subordinates who report directly to a single manager or supervisor
+     (C) The total lifespan of a company
+     (D) The number of computers in a department
+     Answer: (B)
+     Explanation: Span of control determines the number of direct reports managed effectively by a supervisor, defining tall vs flat structures.
+
+Q157. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What type of organization structure results from a NARROW Span of Control?
+     (A) Flat Organization Structure
+     (B) Tall Organization Structure (with many hierarchical levels)
+     (C) Decentralized Network Structure
+     (D) Circular Structure
+     Answer: (B)
+     Explanation: A narrow span requires multiple supervisory tiers, resulting in a tall vertical hierarchy with longer communication chains.
+
+Q158. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What type of organization structure results from a WIDE Span of Control?
+     (A) Tall Structure with many managers
+     (B) Flat Organization Structure (with few hierarchical levels)
+     (C) Bureaucratic hierarchy
+     (D) Matrix structure
+     Answer: (B)
+     Explanation: A wide span means a manager oversees many subordinates, creating a flat structure with fewer managerial layers.
+
+Q159. [Unit 4: Organization Structure, Delegation & Decentralization] (HARD)
+     Who developed the mathematical formula analyzing direct single, direct group, and cross relationships in Span of Control?
+     (A) V.A. Graicunas
+     (B) Henri Fayol
+     (C) F.W. Taylor
+     (D) Elton Mayo
+     Answer: (A)
+     Explanation: French management consultant V.A. Graicunas demonstrated that as direct subordinates increase arithmetically, potential relationships multiply geometrically.
+
+Q160. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Line Authority in an organization?
+     (A) Advisory authority without enforcement power
+     (B) Direct command authority that flows downwards through the scalar chain, granting managers the right to direct subordinates' work
+     (C) Financial auditing rights
+     (D) Legal counsel power
+     Answer: (B)
+     Explanation: Line authority entitles managers to command direct subordinates along the core chain of production/operations.
+
+Q161. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is Staff Authority in an organization?
+     (A) Direct command over factory workers
+     (B) Advisory, specialized, and supportive authority granted to specialists to advise, assist, and counsel line managers
+     (C) Legal ownership of shares
+     (D) Secretarial typing
+     Answer: (B)
+     Explanation: Staff officers (e.g., legal counsel, HR specialists, PR advisors) offer specialized expertise without direct operational command.
+
+Q162. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is the primary cause of Line-Staff Conflict in organizations?
+     (A) Line managers feeling staff specialists undermine their authority or offer impractical advice; Staff feeling line managers resist new ideas
+     (B) Salaries being identical
+     (C) Working in different buildings
+     (D) Using different computers
+     Answer: (A)
+     Explanation: Conflict stems from differing perspectives: operational line managers value practical feasibility; staff specialists emphasize theoretical optimization.
+
+Q163. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Delegation of Authority?
+     (A) Resigning from a managerial post
+     (B) The downward transfer of formal authority and task assignments from a superior to a subordinate
+     (C) Firing an employee
+     (D) Hiring external consultants
+     Answer: (B)
+     Explanation: Delegation entrusts operational responsibilities and requisite authority to subordinates to multiply managerial capacity.
+
+Q164. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What are the three fundamental, interrelated elements of Delegation?
+     (A) Power, Money, and Office
+     (B) Authority, Responsibility, and Accountability
+     (C) Planning, Staffing, and Control
+     (D) Selection, Promotion, and Tenure
+     Answer: (B)
+     Explanation: The delegation triad consists of assigning Responsibility (duty), granting Authority (power), and creating Accountability (answerability).
+
+Q165. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Can a manager delegate Accountability to a subordinate?
+     (A) Yes, completely; the manager is no longer responsible
+     (B) No, absolute accountability cannot be delegated; the superior remains ultimately answerable to their own boss for results
+     (C) Only with written court approval
+     (D) Yes, if the subordinate agrees
+     Answer: (B)
+     Explanation: Accountability is non-delegable: passing tasks downwards does not relieve the delegating manager of ultimate responsibility for outcomes.
+
+Q166. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Decentralization?
+     (A) Moving the office to a rural village
+     (B) The systematic, enterprise-wide dispersal of decision-making authority down to lower and operational levels of the organization
+     (C) Eliminating all managers
+     (D) A computer network crash
+     Answer: (B)
+     Explanation: Decentralization is a deliberate policy dispersal of authority throughout the management hierarchy.
+
+Q167. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is the key difference between Delegation and Decentralization?
+     (A) Delegation is a bilateral process between two individuals (superior and subordinate); Decentralization is an organization-wide structural policy
+     (B) Delegation is permanent; decentralization is temporary
+     (C) Delegation requires government permission
+     (D) They are identical
+     Answer: (A)
+     Explanation: Delegation occurs from one manager to an immediate employee; decentralization is an enterprise-wide structural philosophy.
+
+Q168. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     Which organization structure groups employees based on specialized functional activities (e.g., Marketing, Finance, Production, HR)?
+     (A) Functional Structure
+     (B) Divisional Structure
+     (C) Matrix Structure
+     (D) Project Structure
+     Answer: (A)
+     Explanation: Functional departmentalization groups activities by specialized business functions, maximizing technical efficiency.
+
+Q169. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     Which organization structure groups activities around specific self-contained product lines, geographical territories, or customer segments?
+     (A) Functional Structure
+     (B) Divisional Structure
+     (C) Flat Structure
+     (D) Line Structure
+     Answer: (B)
+     Explanation: Divisional structures create semi-autonomous business units centered on distinct product lines or geographic regions.
+
+Q170. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is a Matrix Organization Structure?
+     (A) An organization with zero hierarchy
+     (B) A hybrid structure that overlays a project/product management team across a functional hierarchy, resulting in a dual chain of command
+     (C) A single-owner business
+     (D) A circular diagram
+     Answer: (B)
+     Explanation: Matrix organizations assign employees to both a functional manager and a project manager, creating a dual reporting structure.
+
+Q171. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is the primary violation inherent in a Matrix Organization Structure?
+     (A) It violates Fayol's Unity of Command principle (employees have two bosses)
+     (B) It violates Division of Work
+     (C) It violates Remuneration rules
+     (D) It has zero managers
+     Answer: (A)
+     Explanation: Matrix structures deliberately introduce dual reporting (functional boss + project boss), requiring negotiation.
+
+Q172. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Departmentalization?
+     (A) The process of grouping individual jobs and activities into logical organizational units or departments
+     (B) Closing down branch offices
+     (C) Painting office walls
+     (D) Auditing tax records
+     Answer: (A)
+     Explanation: Departmentalization groups activities logically by function, product, geography, process, or customer.
+
+Q173. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     Which departmentalization basis is ideal for an enterprise operating across multiple global regions?
+     (A) Geographical (Territorial) Departmentalization
+     (B) Functional Departmentalization
+     (C) Alphabetical Departmentalization
+     (D) Single department
+     Answer: (A)
+     Explanation: Territorial departmentalization tailors marketing and operations to distinct regional cultural and regulatory environments.
+
+Q174. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is a Project Organization Structure?
+     (A) A temporary organizational structure created specifically to achieve a unique, non-routine mission, dissolving upon project completion
+     (B) A permanent government office
+     (C) A school classroom
+     (D) A retail shop
+     Answer: (A)
+     Explanation: Project structures bring specialists together temporarily to deliver complex deliverables (e.g., aerospace launches).
+
+Q175. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is a Virtual Organization (Modular / Network Organization)?
+     (A) A small core organization that outsources major business functions (manufacturing, marketing, distribution) to independent external partners
+     (B) An organization existing only in video games
+     (C) A non-registered business
+     (D) A computer monitor company
+     Answer: (A)
+     Explanation: Virtual organizations coordinate a dynamic network of specialized independent suppliers and agencies via digital networks.
+
+Q176. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which of the following factors favors a WIDE Span of Control?
+     (A) Subordinates are highly competent, well-trained, and perform standardized, routine tasks
+     (B) Tasks are highly complex and ambiguous
+     (C) Managers are inexperienced
+     (D) Subordinates work in remote locations with zero communication
+     Answer: (A)
+     Explanation: Capable personnel and routine standardized work minimize supervisory hand-holding, allowing managers to oversee many employees.
+
+Q177. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     Which factor necessitates a NARROW Span of Control?
+     (A) Tasks are highly complex, non-routine, and require close continuous supervision and coaching
+     (B) Subordinates have PhDs in simple tasks
+     (C) Work is 100% automated
+     (D) Jobs never change
+     Answer: (A)
+     Explanation: Complex, novel, or hazardous tasks demand intimate guidance, limiting the number of subordinates a manager can handle.
+
+Q178. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Centralization?
+     (A) The systematic retention and concentration of decision-making authority at the apex (top level) of management
+     (B) Moving money to a bank
+     (C) Deleting lower departments
+     (D) Locating the factory in the city center
+     Answer: (A)
+     Explanation: Centralization concentrates all significant strategic and operational decisions in top executive hands.
+
+Q179. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which factor favors greater Decentralization in an enterprise?
+     (A) Large organizational size, geographically dispersed branches, and dynamic diversified product lines
+     (B) A small corner grocery store
+     (C) A financial crisis requiring immediate survival decisions
+     (D) Completely uneducated workers
+     Answer: (A)
+     Explanation: Large diversified firms decentralize to avoid administrative bottlenecks and respond quickly to local market shifts.
+
+Q180. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is the psychological benefit of Delegation to subordinate employees?
+     (A) Fosters professional growth, develops leadership skills, increases job satisfaction, and demonstrates managerial trust
+     (B) Allows employees to sleep on duty
+     (C) Gives employees ownership of company shares
+     (D) Eliminates all work
+     Answer: (A)
+     Explanation: Delegation empowers subordinates, acting as a powerful motivator and preparing them for future promotions.
+
+Q181. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which of the following is a major obstacle to delegation on the part of MANAGERS?
+     (A) 'I can do it better myself' fallacy, fear of being eclipsed by subordinates, and reluctance to give up authority
+     (B) Subordinates having too much time
+     (C) Offices being too large
+     (D) Having too much money
+     Answer: (A)
+     Explanation: Reluctance to part with power, lack of trust in subordinates, and perfectionism hinder effective delegation.
+
+Q182. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which of the following is a barrier to delegation on the part of SUBORDINATES?
+     (A) Fear of criticism for mistakes, lack of self-confidence, and absence of adequate incentives
+     (B) Eagerness to take more work
+     (C) Subordinates being overpaid
+     (D) Having too many computers
+     Answer: (A)
+     Explanation: Subordinates often shun delegated authority when they fear punitive blame for errors or lack resources.
+
+Q183. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is Parity of Authority and Responsibility in organizational design?
+     (A) The authority granted to a subordinate must match the responsibility assigned to them (neither more nor less)
+     (B) Responsibility should be 10x authority
+     (C) Authority should have zero responsibility
+     (D) Both must be zero
+     Answer: (A)
+     Explanation: Giving responsibility without authority produces paralysis; granting authority without responsibility breeds recklessness.
+
+Q184. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is an Organogram?
+     (A) A visual diagram of an organization's formal structure, hierarchy, and roles
+     (B) A musical instrument
+     (C) A medical organ scan
+     (D) An accounting journal
+     Answer: (A)
+     Explanation: Organogram is a widely used synonym for Organization Chart.
+
+Q185. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which type of organization chart displays the chief executive at the center with concentric rings radiating outwards for subordinates?
+     (A) Circular (Concentric) Organization Chart
+     (B) Vertical Organization Chart
+     (C) Horizontal Chart
+     (D) Tree Diagram
+     Answer: (A)
+     Explanation: Circular charts emphasize that top management supports and coordinates the enterprise rather than dominating from above.
+
+Q186. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is the traditional, most commonly used organization chart layout?
+     (A) Vertical (Top-to-Bottom) Chart
+     (B) Horizontal Chart
+     (C) Circular Chart
+     (D) Inverted Pyramid
+     Answer: (A)
+     Explanation: Vertical charts place highest authority at the top, branching downward to lower operational ranks.
+
+Q187. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Downsizing (Rightsizing)?
+     (A) Deliberate reduction in workforce and elimination of redundant management layers to cut costs and streamline operations
+     (B) Making office chairs smaller
+     (C) Reducing font sizes on letters
+     (D) Selling office desks
+     Answer: (A)
+     Explanation: Downsizing eliminates bureaucratic overhead to improve lean operational efficiency.
+
+Q188. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is Delayering in organizational restructuring?
+     (A) Removing intermediate layers of middle management to flatten the hierarchy and accelerate communication
+     (B) Removing coats in winter
+     (C) Deleting table rows in SQL
+     (D) Splitting shifts
+     Answer: (A)
+     Explanation: Delayering transforms tall hierarchies into flat, agile organizations.
+
+Q189. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is a Boundaryless Organization conceptualized by Jack Welch at GE?
+     (A) An organization that seeks to eliminate vertical boundaries (hierarchy) and horizontal boundaries (departmental silos) to foster seamless sharing
+     (B) An office without walls or roof
+     (C) An illegal offshore company
+     (D) A company without customers
+     Answer: (A)
+     Explanation: Boundaryless organizations remove artificial internal barriers to foster cross-functional synergy and external collaboration.
+
+Q190. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Job Specialization (Division of Labor)?
+     (A) Breaking a complex process into small, simple, repetitive tasks assigned to specialized workers
+     (B) Working on multiple jobs simultaneously
+     (C) Changing jobs every hour
+     (D) Employing generalists only
+     Answer: (A)
+     Explanation: Job specialization builds mastery, reduces training time, and increases operational speed.
+
+Q191. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is Job Enrichment developed by Frederick Herzberg?
+     (A) Adding higher-level responsibilities, autonomy, and challenging tasks to a job to make it intrinsically rewarding
+     (B) Paying higher monetary bonuses only
+     (C) Increasing work hours
+     (D) Giving free snacks
+     Answer: (A)
+     Explanation: Job enrichment vertically expands a role by incorporating planning and evaluation responsibilities.
+
+Q192. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Job Enlargement?
+     (A) Horizontally expanding the scope of a job by adding more tasks of the same complexity level to reduce boredom
+     (B) Promoting a worker to manager
+     (C) Paying overtime salary
+     (D) Doubling factory size
+     Answer: (A)
+     Explanation: Job enlargement increases task variety at the same structural level without changing authority.
+
+Q193. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Job Rotation?
+     (A) Periodically shifting employees between different roles or departments to broaden their experience and prevent monotony
+     (B) Spinning office chairs
+     (C) Rotating shifts from day to night only
+     (D) Changing bosses daily
+     Answer: (A)
+     Explanation: Job rotation builds versatile multi-skilled personnel while alleviating routine boredom.
+
+Q194. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     What is the principle of Absoluteness of Accountability?
+     (A) Superiors cannot escape ultimate responsibility for activities performed under delegated authority
+     (B) Accountability expires in 24 hours
+     (C) Only CEOs can be sued
+     (D) Subordinates carry 100% of blame
+     Answer: (A)
+     Explanation: A manager remains irrevocably accountable to their superior for performance of delegated duties.
+
+Q195. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     Which of the following is a positive contribution of the Informal Organization?
+     (A) Satisfies human social needs, provides an emotional safety valve, and accelerates communication across formal silos
+     (B) Spreads destructive rumors
+     (C) Resists changes
+     (D) Creates conflict
+     Answer: (A)
+     Explanation: Informal networks provide social belonging, emotional support, and flexible collaboration that grease formal gears.
+
+Q196. [Unit 4: Organization Structure, Delegation & Decentralization] (MEDIUM)
+     Which of the following is a potential risk or dysfunction of the Informal Organization?
+     (A) Spreading inaccurate rumors via grapevine, group conformity pressure, and collective resistance to management changes
+     (B) Improving company morale
+     (C) Fostering teamwork
+     (D) Lowering employee turnover
+     Answer: (A)
+     Explanation: Unmanaged informal groups can subvert management directives, spread misinformation, and resist modernization.
+
+Q197. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Committee Organization?
+     (A) A group of individuals appointed to deliberate, coordinate, and make collective decisions on specific institutional issues
+     (B) A single-person business
+     (C) A political party
+     (D) An assembly line team
+     Answer: (A)
+     Explanation: Committees synthesize diverse functional viewpoints for high-level coordination and policy decisions.
+
+Q198. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is a Task Force in management?
+     (A) A temporary, cross-functional ad-hoc team formed to resolve an urgent specific problem and disbanded once solved
+     (B) A military police squad
+     (C) A permanent security team
+     (D) A union committee
+     Answer: (A)
+     Explanation: Task forces tackle multi-disciplinary crises requiring rapid, dedicated expertise across departments.
+
+Q199. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     What is Chain of Command?
+     (A) The unbroken line of authority connecting all persons in an organization and specifying who reports to whom
+     (B) A metal security chain
+     (C) A computer network bus
+     (D) The factory conveyor belt
+     Answer: (A)
+     Explanation: The chain of command establishes formal reporting relationships from top executives to operational workers.
+
+Q200. [Unit 4: Organization Structure, Delegation & Decentralization] (EASY)
+     In organizational design, Decentralization is fundamentally:
+     (A) An extension and broader institutionalization of Delegation across the entire enterprise
+     (B) The opposite of management
+     (C) A failure of leadership
+     (D) An illegal practice
+     Answer: (A)
+     Explanation: Decentralization expands the philosophy of delegation throughout the entire corporate architecture.
+
+Q201. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Motivation in managerial psychology?
+     (A) Forcing employees through fear of dismissal
+     (B) The internal psychological force that energizes, directs, and sustains goal-oriented human behavior
+     (C) Paying minimum wage
+     (D) Assigning overtime tasks
+     Answer: (B)
+     Explanation: Motivation channels internal human drives and needs toward achieving organizational objectives enthusiastically.
+
+Q202. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Who formulated the famous Need Hierarchy Theory of Motivation?
+     (A) Frederick Herzberg
+     (B) Abraham Maslow
+     (C) Douglas McGregor
+     (D) David McClelland
+     Answer: (B)
+     Explanation: Abraham Maslow published 'A Theory of Human Motivation' in 1943, organizing human needs into a 5-level hierarchy.
+
+Q203. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is the lowest, most fundamental level of needs in Maslow's hierarchy?
+     (A) Safety / Security Needs
+     (B) Physiological Needs (Food, Water, Shelter, Sleep)
+     (C) Social / Affiliation Needs
+     (D) Self-Actualization Needs
+     Answer: (B)
+     Explanation: Physiological needs are biological necessities for human survival that dominate motivation until reasonably satisfied.
+
+Q204. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is the highest, apex level of needs in Maslow's hierarchy?
+     (A) Esteem / Ego Needs
+     (B) Social Needs
+     (C) Self-Actualization Needs (realizing one's fullest potential and self-fulfillment)
+     (D) Financial Wealth
+     Answer: (C)
+     Explanation: Self-actualization represents the desire to achieve everything that one is capable of becoming.
+
+Q205. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     In Maslow's hierarchy, which needs emerge immediately after physiological needs are reasonably met?
+     (A) Safety and Security Needs (protection from physical harm, economic stability, job security)
+     (B) Esteem Needs
+     (C) Self-Actualization Needs
+     (D) Social Needs
+     Answer: (A)
+     Explanation: Once survival needs are satisfied, individuals seek emotional, physical, and financial security.
+
+Q206. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Who developed the Two-Factor (Motivation-Hygiene) Theory of Motivation?
+     (A) Abraham Maslow
+     (B) Frederick Herzberg
+     (C) William Ouchi
+     (D) Robert House
+     Answer: (B)
+     Explanation: Frederick Herzberg proposed that job satisfaction and job dissatisfaction are driven by two distinct sets of factors.
+
+Q207. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     According to Herzberg, what are Hygiene Factors (Maintenance Factors)?
+     (A) Factors that directly inspire exceptional performance
+     (B) Extrinsic factors (e.g., salary, company policies, working conditions, job security) whose absence causes dissatisfaction, but whose presence does not motivate
+     (C) Washing hands before lunch
+     (D) Office air filters
+     Answer: (B)
+     Explanation: Hygiene factors prevent dissatisfaction when present, but their fulfillment merely creates neutral satisfaction without active motivation.
+
+Q208. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     According to Herzberg, which of the following is an intrinsic Motivator (Satisfier)?
+     (A) Company policy and administration
+     (B) Challenging work, achievement, recognition, responsibility, and personal advancement
+     (C) Air conditioning quality
+     (D) Salary and wages
+     Answer: (B)
+     Explanation: Motivators are intrinsic to the work itself, providing genuine personal satisfaction and driving superior effort.
+
+Q209. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Leadership in management?
+     (A) Commanding people using punitive power
+     (B) The interpersonal process of influencing, guiding, and inspiring individuals and groups toward willing, enthusiastic goal achievement
+     (C) Holding a title in an office
+     (D) Signing payroll checks
+     Answer: (B)
+     Explanation: Leadership relies on influence and personal inspiration rather than coercion or formal rank alone.
+
+Q210. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Which leadership style is characterized by centralized authority, unilateral decision making, and close downward supervision with zero subordinate input?
+     (A) Democratic / Participative Leadership
+     (B) Autocratic / Authoritarian Leadership
+     (C) Laissez-Faire / Free-Rein Leadership
+     (D) Transformational Leadership
+     Answer: (B)
+     Explanation: Autocratic leaders make decisions unilaterally and expect strict obedience from subordinates.
+
+Q211. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Which leadership style actively encourages employee participation, team consultations, and shared decision making?
+     (A) Autocratic Leadership
+     (B) Democratic / Participative Leadership
+     (C) Bureaucratic Leadership
+     (D) Laissez-Faire Leadership
+     Answer: (B)
+     Explanation: Democratic leaders consult subordinates, encourage feedback, and foster participative decision making.
+
+Q212. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Which leadership style gives complete freedom and autonomy to subordinates to set goals and make decisions with minimal managerial intervention?
+     (A) Laissez-Faire / Free-Rein Leadership
+     (B) Autocratic Leadership
+     (C) Paternalistic Leadership
+     (D) Directive Leadership
+     Answer: (A)
+     Explanation: Laissez-faire ('let do') grants high autonomy, functioning well only with highly trained, independent professionals.
+
+Q213. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Who developed the Managerial Grid model of leadership?
+     (A) Robert Blake and Jane Mouton
+     (B) Henri Fayol and F.W. Taylor
+     (C) Paul Hersey and Ken Blanchard
+     (D) Kurt Lewin
+     Answer: (A)
+     Explanation: Blake and Mouton created the Managerial Grid, evaluating leadership across Concern for Production and Concern for People.
+
+Q214. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     In Blake and Mouton's Managerial Grid, which coordinates represent the ideal 'Team Management' leadership style?
+     (A) (1, 1)
+     (B) (9, 1)
+     (C) (1, 9)
+     (D) (9, 9)
+     Answer: (D)
+     Explanation: Style (9, 9) represents maximum concern for both people and production, fostering high commitment, trust, and output.
+
+Q215. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     In the Managerial Grid, what does Style (1, 9) represent?
+     (A) Task Management
+     (B) Country Club Management (high concern for people, low concern for production)
+     (C) Impoverished Management
+     (D) Middle-of-the-Road Management
+     Answer: (B)
+     Explanation: (1, 9) Country Club leaders focus on comfortable, friendly workplace atmospheres at the expense of output.
+
+Q216. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     In the Managerial Grid, what does Style (9, 1) represent?
+     (A) Country Club Management
+     (B) Authority-Compliance / Task Management (high concern for production, low concern for people)
+     (C) Team Management
+     (D) Impoverished Management
+     Answer: (B)
+     Explanation: (9, 1) Task managers treat humans as mere cogs in the production machine to achieve maximum quotas.
+
+Q217. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     In the Managerial Grid, what does Style (1, 1) represent?
+     (A) Team Management
+     (B) Impoverished Management (minimum effort exerted on both production and people)
+     (C) Country Club Management
+     (D) Organization Man
+     Answer: (B)
+     Explanation: (1, 1) Impoverished leaders exert minimal effort required to sustain organizational membership, resulting in stagnation.
+
+Q218. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Coordination in management?
+     (A) Commanding employees strictly
+     (B) The orderly synchronization and harmonization of individual and group efforts to provide unity of action in pursuing common objectives
+     (C) A software program
+     (D) Auditing tax receipts
+     Answer: (B)
+     Explanation: Coordination is often called the 'essence of management', harmonizing diverse departmental activities into a unified whole.
+
+Q219. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     Why is Coordination termed the 'Essence of Management' rather than a separate function?
+     (A) It is required in every management function (planning, organizing, staffing, directing, and controlling)
+     (B) It was invented by Fayol
+     (C) It costs zero money
+     (D) It eliminates the need for managers
+     Answer: (A)
+     Explanation: Coordination permeates all managerial functions; without coordination, planning, organizing, and controlling collapse into chaos.
+
+Q220. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What are the four core steps in the managerial Control Process?
+     (A) Budgeting, Spending, Auditing, Borrowing
+     (B) Establishing Standards -> Measuring Actual Performance -> Comparing Performance with Standards -> Taking Corrective Action
+     (C) Hiring, Training, Promoting, Firing
+     (D) Planning, Directing, Leading, Selling
+     Answer: (B)
+     Explanation: The feedback control loop: establish targets, measure execution, identify variances, and execute remedial adjustments.
+
+Q221. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is Management by Exception (MBE) in controlling?
+     (A) Managers should only attend to significant, exceptional deviations from standards, leaving routine matters to subordinates
+     (B) Handling every single detail personally
+     (C) Operating without rules
+     (D) Managing without reports
+     Answer: (A)
+     Explanation: MBE focuses executive attention exclusively on critical operational variances, preventing information overload.
+
+Q222. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What are Critical Point Controls?
+     (A) Focusing control monitoring on vital strategic factors (key result areas) that decisively dictate success or failure
+     (B) Checking every light switch
+     (C) Monitoring employee keystrokes
+     (D) Daily financial meetings
+     Answer: (A)
+     Explanation: Critical point control monitors bottleneck activities where failures inflict disproportionate organizational damage.
+
+Q223. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is a Feedforward Control (Preliminary / Preventive Control)?
+     (A) Control implemented BEFORE an activity takes place to anticipate and prevent potential problems (e.g., pre-employment screening, raw material testing)
+     (B) Control implemented after a disaster
+     (C) Evaluating annual balance sheets
+     (D) Disciplining workers
+     Answer: (A)
+     Explanation: Feedforward controls proactively stop deviations before operational processes begin.
+
+Q224. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is a Concurrent Control (Real-Time Control)?
+     (A) Control exercised WHILE an activity is in progress (e.g., automated computer monitoring, direct supervisory observation on the line)
+     (B) Control executed 10 years later
+     (C) Planning future budgets
+     (D) Pre-ordering supplies
+     Answer: (A)
+     Explanation: Concurrent controls correct operational errors in real-time before defective output multiplies.
+
+Q225. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is a Feedback Control (Post-Action Control)?
+     (A) Control implemented AFTER an activity has concluded to analyze performance deviations and adjust future planning (e.g., financial audit, customer feedback surveys)
+     (B) Preventing future activities
+     (C) Canceling work
+     (D) Real-time monitoring
+     Answer: (A)
+     Explanation: Feedback controls analyze completed performance data to refine future standards and procedures.
+
+Q226. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Budgetary Control?
+     (A) A system of controlling operations by establishing planned budgets for departments and continuously comparing actual expenditures against allocations
+     (B) Borrowing bank funds
+     (C) Cutting salaries randomly
+     (D) Printing invoices
+     Answer: (A)
+     Explanation: Budgetary control holds department heads accountable for staying within planned financial allocations.
+
+Q227. [Unit 5: Motivation, Leadership, Coordination & Control] (HARD)
+     What is Zero-Based Budgeting (ZBB) pioneered by Peter Pyhrr?
+     (A) Starting the budget from scratch (base zero) every year, requiring every expenditure to be justified anew regardless of past allocations
+     (B) A budget with zero money
+     (C) A budget that spends zero rupees
+     (D) An automated spreadsheet formula
+     Answer: (A)
+     Explanation: ZBB eliminates incremental budget bloat by forcing managers to justify every program and rupee annually.
+
+Q228. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is Management Audit?
+     (A) A comprehensive, systematic review and appraisal of the overall performance and effectiveness of the management team and managerial processes
+     (B) Auditing income tax returns
+     (C) Checking employee attendance registers
+     (D) A security guard inspection
+     Answer: (A)
+     Explanation: Management audits evaluate managerial vision, efficiency of leadership, and strategic execution.
+
+Q229. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Return on Investment (ROI) control metric?
+     (A) (Net Profit / Total Capital Employed) * 100
+     (B) Total sales revenue minus tax
+     (C) Total inventory count
+     (D) Employee headcount ratio
+     Answer: (A)
+     Explanation: ROI measures the efficiency with which invested capital generates net operating earnings.
+
+Q230. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Quality Control (QC)?
+     (A) Techniques and operational activities used to fulfill quality requirements and ensure products conform to standard specifications
+     (B) Pricing products high
+     (C) Marketing slogans
+     (D) Hiring inspectors only
+     Answer: (A)
+     Explanation: Quality control utilizes statistical sampling and testing to eliminate defects and ensure consistency.
+
+Q231. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is Total Quality Management (TQM)?
+     (A) An organization-wide management approach focused on continuous, relentless improvement of quality across all processes, products, and customer services
+     (B) Inspecting only the final product
+     (C) An ISO sticker on the door
+     (D) A software program
+     Answer: (A)
+     Explanation: TQM engages all employees from shop floor to boardroom in continuous quality optimization.
+
+Q232. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Social Need in Maslow's hierarchy?
+     (A) Need for love, affection, friendship, acceptance, and a sense of belonging in social groups
+     (B) Need for expensive jewelry
+     (C) Need for water
+     (D) Need for promotions
+     Answer: (A)
+     Explanation: Social needs encompass belonging, companionship, and meaningful relationships with peers.
+
+Q233. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Esteem Need in Maslow's hierarchy?
+     (A) Desire for self-respect, confidence, reputation, status, recognition, and appreciation from others
+     (B) Need for food and sleep
+     (C) Physical safety
+     (D) Charity work
+     Answer: (A)
+     Explanation: Esteem needs include both internal self-respect and external social recognition and prestige.
+
+Q234. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Which of the following is a non-financial incentive for motivation?
+     (A) Job enrichment, recognition, status, and opportunities for career advancement
+     (B) Direct cash bonus
+     (C) Overtime hourly pay
+     (D) Profit sharing commission
+     Answer: (A)
+     Explanation: Non-financial incentives appeal to psychological, social, and ego needs rather than immediate monetary gain.
+
+Q235. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     Which theory of motivation states that behavior is a function of its consequences, reinforced by rewards or extinguished by punishments?
+     (A) B.F. Skinner's Reinforcement Theory
+     (B) Maslow's Need Theory
+     (C) Fayol's Administrative Theory
+     (D) Weber's Bureaucracy
+     Answer: (A)
+     Explanation: Reinforcement theory posits that rewarded behaviors recur, while unrewarded or penalized behaviors diminish.
+
+Q236. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     Which leadership theory asserts that great leaders are born, possessing innate heroic traits that cannot be learned?
+     (A) Great Man Theory / Early Trait Theory
+     (B) Situational Leadership
+     (C) Path-Goal Theory
+     (D) Managerial Grid
+     Answer: (A)
+     Explanation: Early trait theories posited that inherent charismatic and physical traits predispose certain men to lead.
+
+Q237. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is the Situational (Contingency) Leadership Theory developed by Hersey and Blanchard?
+     (A) The most effective leadership style depends on the 'readiness' (maturity and competence) of the subordinates
+     (B) Leaders must change clothing daily
+     (C) Autocratic leadership is always best
+     (D) Leaders have zero influence
+     Answer: (A)
+     Explanation: Hersey-Blanchard situational theory matches leadership styles (telling, selling, participating, delegating) to follower maturity.
+
+Q238. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Transformational Leadership?
+     (A) A leadership approach that inspires, energizes, and transforms followers to achieve extraordinary outcomes by appealing to higher ideals and shared vision
+     (B) A leader who changes companies often
+     (C) A manager who strictly audits time
+     (D) A software transition tool
+     Answer: (A)
+     Explanation: Transformational leaders stimulate intellect, provide inspirational motivation, and build shared commitment.
+
+Q239. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Transactional Leadership?
+     (A) Leadership based on an exchange relationship of contingent rewards and corrective discipline for meeting agreed-upon targets
+     (B) Buying and selling companies
+     (C) Banking leadership
+     (D) A temporary leadership role
+     Answer: (A)
+     Explanation: Transactional leaders operate within existing systems, managing day-to-day work through reward-and-punishment exchanges.
+
+Q240. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Paternalistic Leadership?
+     (A) The leader acts as a caring father figure, nurturing, guiding, and protecting subordinates in return for loyalty and obedience
+     (B) A leader who has many children
+     (C) Strict military discipline
+     (D) A committee of elders
+     Answer: (A)
+     Explanation: Paternalistic leaders foster family-like loyalty and protective guidance, common in family-owned businesses.
+
+Q241. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     Which of the following is a fundamental prerequisite for effective coordination?
+     (A) Clear goals, direct interpersonal contact, early start in planning, and reciprocal communication
+     (B) Keeping secrets between departments
+     (C) Having 20 management layers
+     (D) Eliminating meetings
+     Answer: (A)
+     Explanation: Mary Parker Follett emphasized that coordination must be direct, reciprocal, and initiated at the earliest planning phases.
+
+Q242. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Horizontal Coordination?
+     (A) Coordination between departments, managers, or peers operating at the same hierarchical level (e.g., Marketing and Production heads)
+     (B) Coordination between CEO and worker
+     (C) Coordination with banks
+     (D) Writing horizontal reports
+     Answer: (A)
+     Explanation: Horizontal coordination synchronizes peer functional divisions across the enterprise.
+
+Q243. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Vertical Coordination?
+     (A) Coordination up and down the chain of command between superiors and subordinates across different levels
+     (B) Coordination between two suppliers
+     (C) Writing vertical charts
+     (D) Auditing factories
+     Answer: (A)
+     Explanation: Vertical coordination aligns activities along the hierarchical line of authority.
+
+Q244. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is an Essential Feature of a Good Control System?
+     (A) It must be economical, understandable, forward-looking, flexible, and report critical variances quickly
+     (B) It must cost more than the savings it creates
+     (C) It must be incomprehensible to workers
+     (D) It must be completely rigid
+     Answer: (A)
+     Explanation: Effective controls must provide timely, actionable insight at reasonable cost without creating paralysis.
+
+Q245. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is the 'Halo Effect' in performance appraisal and managerial control?
+     (A) Allowing a single prominent favorable or unfavorable trait to color the overall evaluation of an individual's performance
+     (B) An angelic reward
+     (C) A computer display glow
+     (D) A statistical curve
+     Answer: (A)
+     Explanation: The halo effect introduces subjective bias by judging an employee's total worth based on one isolated characteristic.
+
+Q246. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is the 'Contrast Effect' in evaluating employees?
+     (A) Evaluating an employee's performance by comparing them against recently observed persons rather than against objective standards
+     (B) Contrasting colors on charts
+     (C) A visual display setting
+     (D) Paying contrasting salaries
+     Answer: (A)
+     Explanation: Contrast effects occur when the rating of an employee is distorted by comparison with previous outstanding or poor performers.
+
+Q247. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is Benchmarking in operational control?
+     (A) Measuring a company's products, services, and operational practices against industry leaders and world-class competitors to identify areas for improvement
+     (B) Making wooden benches for workers
+     (C) Sitting on the bench during work
+     (D) Setting basic legal requirements
+     Answer: (A)
+     Explanation: Benchmarking systematically compares internal performance metrics with industry best practices.
+
+Q248. [Unit 5: Motivation, Leadership, Coordination & Control] (HARD)
+     What is Six Sigma quality control methodology?
+     (A) A data-driven methodology aimed at eliminating defects in any process, striving for no more than 3.4 defects per million opportunities
+     (B) A six-person team
+     (C) A 6-hour workday
+     (D) A martial arts technique
+     Answer: (A)
+     Explanation: Pioneered by Motorola, Six Sigma applies statistical tools (DMAIC: Define, Measure, Analyze, Improve, Control) to drive near-perfection.
+
+Q249. [Unit 5: Motivation, Leadership, Coordination & Control] (MEDIUM)
+     What is Kaizen in quality management?
+     (A) A Japanese philosophy of continuous, incremental improvement involving all employees from executive to assembly line
+     (B) A Japanese dish
+     (C) A type of martial art
+     (D) A factory machine
+     Answer: (A)
+     Explanation: Kaizen fosters small, ongoing positive changes across every business process every single day.
+
+Q250. [Unit 5: Motivation, Leadership, Coordination & Control] (EASY)
+     What is the primary psychological purpose of Positive Reinforcement?
+     (A) Strengthening and increasing the probability of a desired behavior by presenting an immediate positive reward (e.g., praise, bonus)
+     (B) Punishing bad behavior
+     (C) Ignoring workers
+     (D) Demoting employees
+     Answer: (A)
+     Explanation: Positive reinforcement encourages repeat performance of constructive, goal-oriented workplace actions.
+

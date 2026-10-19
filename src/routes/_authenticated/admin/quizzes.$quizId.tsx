@@ -4,6 +4,9 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { ArrowLeft, Plus, Trash2, Save, CheckCircle2, Sparkles } from "lucide-react";
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
+import { PageContainer } from "@/components/admin/ui/page-container";
+import { PageHeader } from "@/components/admin/ui/page-header";
+import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -49,6 +52,7 @@ function QuizEditor() {
   const { quizId } = Route.useParams();
   const qc = useQueryClient();
   const [bulkOpen, setBulkOpen] = useState(false);
+  const [questionToDelete, setQuestionToDelete] = useState<string | null>(null);
 
   const quizQ = useQuery({
     queryKey: ["admin-quiz", quizId],
@@ -123,114 +127,96 @@ function QuizEditor() {
 
   if (quizQ.isLoading) {
     return (
-      <div className="min-h-screen bg-background">
-        <header className="border-b border-border/60">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-            <Link
-              to="/admin/quizzes"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to quizzes
-            </Link>
-          </div>
-        </header>
-        <main className="mx-auto max-w-5xl px-6 py-10">
-          <div className="rounded-2xl border border-border bg-surface p-8 text-sm text-muted-foreground">
-            Loading quiz…
-          </div>
-        </main>
-      </div>
+      <PageContainer>
+        <PageHeader
+          breadcrumbs={[{ label: "Quizzes", to: "/admin/quizzes" }, { label: "Loading…" }]}
+          title="Loading quiz…"
+        />
+        <div className="mt-6 rounded-2xl border border-border bg-surface p-8 text-sm text-muted-foreground">
+          Loading quiz data…
+        </div>
+      </PageContainer>
     );
   }
 
   if (!quizQ.data) {
     return (
-      <div className="min-h-screen bg-background">
-        <header className="border-b border-border/60">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-            <Link
-              to="/admin/quizzes"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-            >
-              <ArrowLeft className="h-4 w-4" /> Back to quizzes
-            </Link>
-          </div>
-        </header>
-        <main className="mx-auto max-w-5xl px-6 py-10">
-          <div className="rounded-2xl border border-destructive bg-destructive/5 p-8 text-sm text-destructive">
-            Quiz not found. Return to the quiz list and pick a valid quiz to upload MCQs.
-          </div>
-        </main>
-      </div>
+      <PageContainer>
+        <PageHeader
+          breadcrumbs={[{ label: "Quizzes", to: "/admin/quizzes" }, { label: "Not found" }]}
+          title="Quiz not found"
+        />
+        <div className="mt-6 rounded-2xl border border-destructive bg-destructive/5 p-8 text-sm text-destructive">
+          Quiz not found. Return to the quiz directory to pick a valid quiz.
+        </div>
+      </PageContainer>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/60">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <Link
-            to="/admin/quizzes"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to quizzes
-          </Link>
-          {quizQ.data && (
-            <Link
-              to="/quizzes/$quizId"
-              params={{ quizId }}
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Open student view →
-            </Link>
-          )}
-        </div>
-      </header>
-      <main className="mx-auto max-w-5xl px-6 py-10">
-        {quizQ.data && (
-          <>
-            <h1 className="font-display text-3xl font-semibold text-foreground">
-              {quizQ.data.title}
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              <Badge variant={quizQ.data.status === "published" ? "default" : "secondary"}>
-                {quizQ.data.status}
-              </Badge>{" "}
-              · Pass {quizQ.data.passing_pct}% ·{" "}
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={[
+          { label: "Quizzes", to: "/admin/quizzes" },
+          { label: quizQ.data.title },
+        ]}
+        title={quizQ.data.title}
+        description={
+          <span className="flex items-center gap-2">
+            <Badge variant={quizQ.data.status === "published" ? "default" : "secondary"}>
+              {quizQ.data.status}
+            </Badge>
+            <span>·</span>
+            <span>Pass: {quizQ.data.passing_pct}%</span>
+            <span>·</span>
+            <span>
               {quizQ.data.time_limit_minutes
                 ? `${quizQ.data.time_limit_minutes} min`
-                : "no time limit"}
-            </p>
-          </>
+                : "No time limit"}
+            </span>
+          </span>
+        }
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/quizzes/$quizId" params={{ quizId }} target="_blank">
+                Student view ↗
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => setBulkOpen(true)}>
+              <Sparkles className="mr-1.5 h-4 w-4" /> Bulk import
+            </Button>
+            <Button size="sm" onClick={() => addQuestion.mutate()}>
+              <Plus className="mr-1.5 h-4 w-4" /> Add question
+            </Button>
+          </div>
+        }
+      />
+
+      <div className="mt-8 space-y-5">
+        {(questionsQ.data ?? []).map((q, idx) => (
+          <QuestionCard
+            key={q.id}
+            index={idx + 1}
+            question={q}
+            onDelete={() => setQuestionToDelete(q.id)}
+          />
+        ))}
+        {(questionsQ.data ?? []).length === 0 && (
+          <p className="rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
+            No questions yet. Click "Add question" or "Bulk import" to create items.
+          </p>
         )}
+      </div>
 
-        <div className="mt-8 space-y-5">
-          {(questionsQ.data ?? []).map((q, idx) => (
-            <QuestionCard
-              key={q.id}
-              index={idx + 1}
-              question={q}
-              onDelete={() => {
-                if (confirm("Delete question?")) delQuestion.mutate(q.id);
-              }}
-            />
-          ))}
-          {(questionsQ.data ?? []).length === 0 && (
-            <p className="rounded-xl border border-dashed border-border bg-surface p-6 text-sm text-muted-foreground">
-              No questions yet.
-            </p>
-          )}
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          <Button onClick={() => addQuestion.mutate()}>
-            <Plus className="mr-2 h-4 w-4" /> Add question
-          </Button>
-          <Button variant="outline" onClick={() => setBulkOpen(true)}>
-            <Sparkles className="mr-2 h-4 w-4" /> Bulk import
-          </Button>
-        </div>
-      </main>
+      <div className="mt-6 flex flex-wrap gap-2">
+        <Button onClick={() => addQuestion.mutate()}>
+          <Plus className="mr-2 h-4 w-4" /> Add question
+        </Button>
+        <Button variant="outline" onClick={() => setBulkOpen(true)}>
+          <Sparkles className="mr-2 h-4 w-4" /> Bulk import
+        </Button>
+      </div>
 
       <BulkImportDialog
         open={bulkOpen}
@@ -238,7 +224,22 @@ function QuizEditor() {
         quizId={quizId}
         onImported={() => qc.invalidateQueries({ queryKey: ["admin-quiz-questions", quizId] })}
       />
-    </div>
+
+      <ConfirmDialog
+        open={!!questionToDelete}
+        onOpenChange={(open) => !open && setQuestionToDelete(null)}
+        title="Delete question?"
+        description="This question and its options will be permanently removed from this quiz. This action cannot be undone."
+        destructive
+        confirmLabel="Delete question"
+        onConfirm={() => {
+          if (questionToDelete) {
+            delQuestion.mutate(questionToDelete);
+            setQuestionToDelete(null);
+          }
+        }}
+      />
+    </PageContainer>
   );
 }
 

@@ -1,0 +1,2655 @@
+{
+  "semester": 6,
+  "semester_id": "bcf332d5-de47-4d5a-8dbe-ec52f8239539",
+  "syllabus_title": "MJPRU Bareilly BCA Syllabus (w.e.f. 2024-25) - Semester VI",
+  "subjects": [
+    {
+      "id": "552b2f6b-3a20-51cd-a38f-74c5c1dd264f",
+      "code": "BCA-302N",
+      "title": "Introduction to Data Science",
+      "slug": "bca-302n-introduction-to-data-science",
+      "credits": 4,
+      "sort_order": 1,
+      "units": [
+        {
+          "id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+          "number": 1,
+          "title": "Introduction to Data Science and Foundations",
+          "summary": "Evolution of Data Science, Data Science Roles, Stages in a Data Science Project, Applications, and Data Security Issues.",
+          "sort_order": 1,
+          "topics": [
+            {
+              "id": "e7939376-53ad-5f39-ac7f-db9ba71cafb3",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Introduction to Data Science & Multidisciplinary Nature",
+              "slug": "bca-302n-u1-t1-introduction-to-data-science-and-multidi",
+              "sort_order": 1
+            },
+            {
+              "id": "18b0245a-8ff8-5328-b249-5e5c34e4eeac",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Evolution of Data Science & Big Data Revolution",
+              "slug": "bca-302n-u1-t2-evolution-of-data-science-and-big-data-r",
+              "sort_order": 2
+            },
+            {
+              "id": "61aa1d97-90c0-5717-ab52-f7be74b06a07",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Data Science Roles: Data Scientist, Analyst, Engineer & ML Engineer",
+              "slug": "bca-302n-u1-t3-data-science-roles-data-scientist,-analy",
+              "sort_order": 3
+            },
+            {
+              "id": "d23da8a1-7229-56a0-a709-6603e1a3eb25",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Stages in a Data Science Project: Problem Formulation & Data Pipeline",
+              "slug": "bca-302n-u1-t4-stages-in-a-data-science-project-problem",
+              "sort_order": 4
+            },
+            {
+              "id": "081f6a06-6cad-5470-a8fe-59b034d9898a",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Data Collection, Exploration, Modeling, Validation & Deployment Stages",
+              "slug": "bca-302n-u1-t5-data-collection,-exploration,-modeling,-",
+              "sort_order": 5
+            },
+            {
+              "id": "a26a29ad-d7df-5b65-8d54-5839ad04ae2e",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Applications of Data Science in Healthcare, Finance, E-commerce & Logistics",
+              "slug": "bca-302n-u1-t6-applications-of-data-science-in-healthca",
+              "sort_order": 6
+            },
+            {
+              "id": "829839d8-d479-5d13-9b25-0ee2973ddfc0",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Data Security Issues: Privacy, Anonymization & Data Governance Regulations",
+              "slug": "bca-302n-u1-t7-data-security-issues-privacy,-anonymizat",
+              "sort_order": 7
+            },
+            {
+              "id": "7da2105a-49fe-5a78-adda-9b4a82ed4ad3",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Ethical Considerations & Algorithmic Bias in Data Science",
+              "slug": "bca-302n-u1-t8-ethical-considerations-and-algorithmic-b",
+              "sort_order": 8
+            },
+            {
+              "id": "68976a9a-4073-59e3-95bd-5c89bfda928a",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Data Science Tools Ecosystem: Python, R, Jupyter, SQL & Cloud Platforms",
+              "slug": "bca-302n-u1-t9-data-science-tools-ecosystem-python,-r,-",
+              "sort_order": 9
+            },
+            {
+              "id": "c083c61f-5be5-5dd6-86c3-4e592acdbd66",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Comparison: Data Science vs Data Analytics vs Business Intelligence vs AI",
+              "slug": "bca-302n-u1-t10-comparison-data-science-vs-data-analytic",
+              "sort_order": 10
+            },
+            {
+              "id": "68f3dc2e-3bec-5496-a56f-0d5db2b11e01",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Types of Data: Structured, Semi-Structured & Unstructured Big Data",
+              "slug": "bca-302n-u1-t11-types-of-data-structured,-semi-structure",
+              "sort_order": 11
+            },
+            {
+              "id": "3ef94e8c-661e-5aa1-983e-3c7be4406f88",
+              "unit_id": "fb8b37f9-6fc2-589b-a7de-4c3b4c6f3a83",
+              "title": "Data Literacy & Communication of Insights to Stakeholders",
+              "slug": "bca-302n-u1-t12-data-literacy-and-communication-of-insig",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+          "number": 2,
+          "title": "Data Collection and Data Pre-Processing",
+          "summary": "Data Collection Strategies, Data Pre-Processing Overview, Data Cleaning, Data Integration and Transformation, Data Reduction, and Discretization.",
+          "sort_order": 2,
+          "topics": [
+            {
+              "id": "ed3bc7c5-23e5-5828-816d-e3af0354c2c9",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Collection Strategies: Primary vs Secondary Sources, APIs & Web Scraping",
+              "slug": "bca-302n-u2-t1-data-collection-strategies-primary-vs-se",
+              "sort_order": 1
+            },
+            {
+              "id": "5b9d2cd1-996c-5025-ae42-80b2071a2155",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Pre-Processing Overview & The Garbage-In Garbage-Out Principle",
+              "slug": "bca-302n-u2-t2-data-pre-processing-overview-and-the-gar",
+              "sort_order": 2
+            },
+            {
+              "id": "2aa55831-a2cf-5186-9d38-644c0f5d151b",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Cleaning: Handling Missing Data (Mean/Median Imputation, Dropping, KNN)",
+              "slug": "bca-302n-u2-t3-data-cleaning-handling-missing-data-mean",
+              "sort_order": 3
+            },
+            {
+              "id": "a6a47813-73f4-5bda-afb2-e0df632328e9",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Noisy Data Smoothing: Binning Methods, Clustering & Regression Smoothing",
+              "slug": "bca-302n-u2-t4-noisy-data-smoothing-binning-methods,-cl",
+              "sort_order": 4
+            },
+            {
+              "id": "0e921cfb-1c6a-5064-bf97-ff3b24362f33",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Outlier Detection: Z-Score, Interquartile Range (IQR) & Isolation Forests",
+              "slug": "bca-302n-u2-t5-outlier-detection-z-score,-interquartile",
+              "sort_order": 5
+            },
+            {
+              "id": "6e5ee924-9929-5216-8ef3-b300c1d2022a",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Integration: Handling Redundancy, Correlation Analysis & Chi-Square Tests",
+              "slug": "bca-302n-u2-t6-data-integration-handling-redundancy,-co",
+              "sort_order": 6
+            },
+            {
+              "id": "a99e025e-ca9f-50eb-a435-90aa9c6c7f13",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Transformation: Normalization (Min-Max Scaling) & Standardization (Z-Score)",
+              "slug": "bca-302n-u2-t7-data-transformation-normalization-min-ma",
+              "sort_order": 7
+            },
+            {
+              "id": "c4324847-afa9-50ff-82e4-699518e740a9",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Transformation: Log Transforms, Box-Cox & Categorical Encoding (One-Hot, Label)",
+              "slug": "bca-302n-u2-t8-data-transformation-log-transforms,-box-",
+              "sort_order": 8
+            },
+            {
+              "id": "aabdb79b-db8c-50a2-a687-d00f61f00b10",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Reduction Strategies: Dimensionality Reduction Concepts & Feature Selection",
+              "slug": "bca-302n-u2-t9-data-reduction-strategies-dimensionality",
+              "sort_order": 9
+            },
+            {
+              "id": "5004de6c-b56a-580a-b1d0-c31f00c262fb",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Principal Component Analysis (PCA) Fundamentals & Eigenvector Decomposition",
+              "slug": "bca-302n-u2-t10-principal-component-analysis-pca-fundame",
+              "sort_order": 10
+            },
+            {
+              "id": "06aff4ab-8ab1-52f5-847a-a76884fb60a7",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Numerosity Reduction: Sampling Strategies, Clustering & Aggregation",
+              "slug": "bca-302n-u2-t11-numerosity-reduction-sampling-strategies",
+              "sort_order": 11
+            },
+            {
+              "id": "d8ef4703-94fe-5dcb-852b-f4345bdd2b07",
+              "unit_id": "2a7f47ac-c05c-5763-9251-f8d90031747f",
+              "title": "Data Discretization: Equal-Width, Equal-Frequency Binning & Concept Hierarchy",
+              "slug": "bca-302n-u2-t12-data-discretization-equal-width,-equal-f",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+          "number": 3,
+          "title": "Exploratory Data Analytics (EDA)",
+          "summary": "Descriptive Statistics, Mean, Standard Deviation, Skewness and Kurtosis, Box Plots, Pivot Table, Heat Map, Correlation Statistics, and ANOVA.",
+          "sort_order": 3,
+          "topics": [
+            {
+              "id": "9b2daecf-958c-5935-9c22-97aa9825a29b",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Exploratory Data Analysis (EDA) Philosophy, Objectives & Workflow",
+              "slug": "bca-302n-u3-t1-exploratory-data-analysis-eda-philosophy",
+              "sort_order": 1
+            },
+            {
+              "id": "c644c52c-43d7-5222-846f-188f22bbe05d",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Descriptive Statistics: Measures of Central Tendency (Mean, Median, Mode)",
+              "slug": "bca-302n-u3-t2-descriptive-statistics-measures-of-centr",
+              "sort_order": 2
+            },
+            {
+              "id": "3b064edb-64c2-548b-8f70-13fcb07045c2",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Measures of Dispersion: Variance, Standard Deviation, Range & Interquartile Range",
+              "slug": "bca-302n-u3-t3-measures-of-dispersion-variance,-standar",
+              "sort_order": 3
+            },
+            {
+              "id": "6baf6d6b-997a-52ba-8690-6d29b83a51b8",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Shape of Data Distribution: Skewness (Positive vs Negative) & Kurtosis (Peakedness)",
+              "slug": "bca-302n-u3-t4-shape-of-data-distribution-skewness-posi",
+              "sort_order": 4
+            },
+            {
+              "id": "49cd0daf-88ef-5fcb-b2fb-018cd17b6343",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Visualizing Five-Number Summary using Box Plots (Whiskers, Medians & Outliers)",
+              "slug": "bca-302n-u3-t5-visualizing-five-number-summary-using-bo",
+              "sort_order": 5
+            },
+            {
+              "id": "0bf01749-9f5c-5639-a615-f9b4d47c80f9",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Pivot Tables: Multi-Dimensional Cross-Tabulation & Aggregation in Python/Pandas",
+              "slug": "bca-302n-u3-t6-pivot-tables-multi-dimensional-cross-tab",
+              "sort_order": 6
+            },
+            {
+              "id": "1ae6700b-7281-5540-bd1f-1c686b1e5ac4",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Heat Maps: Correlation Matrices & Density Heatmaps with Seaborn/Matplotlib",
+              "slug": "bca-302n-u3-t7-heat-maps-correlation-matrices-and-densi",
+              "sort_order": 7
+            },
+            {
+              "id": "38d21804-dec9-5f62-b87c-65187bb32ead",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Correlation Statistics: Covariance vs Pearson Linear Correlation Coefficient",
+              "slug": "bca-302n-u3-t8-correlation-statistics-covariance-vs-pea",
+              "sort_order": 8
+            },
+            {
+              "id": "e37af319-6309-514f-99bd-492b00f31855",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Non-Parametric Correlation: Spearman's Rank Correlation & Kendall's Tau",
+              "slug": "bca-302n-u3-t9-non-parametric-correlation-spearman's-ra",
+              "sort_order": 9
+            },
+            {
+              "id": "43ab3f73-6eef-5ffe-a644-83c33ded03a9",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Hypothesis Testing Foundations: Null vs Alternative Hypothesis & p-Values",
+              "slug": "bca-302n-u3-t10-hypothesis-testing-foundations-null-vs-a",
+              "sort_order": 10
+            },
+            {
+              "id": "8a8c5408-711f-5945-a118-ab573d83c590",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Analysis of Variance (ANOVA): One-Way ANOVA, F-Statistic & Between-Group Variance",
+              "slug": "bca-302n-u3-t11-analysis-of-variance-anova-one-way-anova",
+              "sort_order": 11
+            },
+            {
+              "id": "e8b27913-686f-5a19-8065-9b02cb672f2e",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Two-Way ANOVA & Post-Hoc Tests for Group Comparisons",
+              "slug": "bca-302n-u3-t12-two-way-anova-and-post-hoc-tests-for-gro",
+              "sort_order": 12
+            },
+            {
+              "id": "7130e4c4-7600-50d7-8ee3-7cb62b82cbf1",
+              "unit_id": "ea2cd1a5-282d-50fb-9140-85eaa10d8ecd",
+              "title": "Visual EDA Tools: Histograms, KDE Density Plots, Pairplots & Scatter Plots",
+              "slug": "bca-302n-u3-t13-visual-eda-tools-histograms,-kde-density",
+              "sort_order": 13
+            }
+          ]
+        },
+        {
+          "id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+          "number": 4,
+          "title": "Model Development",
+          "summary": "Simple and Multiple Regression, Model Evaluation using Visualization, Residual Plot, Distribution Plot, Polynomial Regression and Pipelines, In-sample Evaluation, Prediction.",
+          "sort_order": 4,
+          "topics": [
+            {
+              "id": "d2a05cea-13d3-521b-a190-55de542a12a2",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Model Development Fundamentals: Supervised Learning & Regression Paradigm",
+              "slug": "bca-302n-u4-t1-model-development-fundamentals-supervise",
+              "sort_order": 1
+            },
+            {
+              "id": "552dd485-b831-5bb8-8663-22ff8c1188be",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Simple Linear Regression: Mathematical Formulation, Slope (Beta-1) & Intercept (Beta-0)",
+              "slug": "bca-302n-u4-t2-simple-linear-regression-mathematical-fo",
+              "sort_order": 2
+            },
+            {
+              "id": "e30505ce-226f-587c-82a0-5dd76695a9dd",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Ordinary Least Squares (OLS) Method & Loss Function Minimization",
+              "slug": "bca-302n-u4-t3-ordinary-least-squares-ols-method-and-lo",
+              "sort_order": 3
+            },
+            {
+              "id": "26f96909-1d32-5b17-87bc-20036acdcdd9",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Multiple Linear Regression: Formulation, Matrix Notation & Multi-Feature Relationships",
+              "slug": "bca-302n-u4-t4-multiple-linear-regression-formulation,-",
+              "sort_order": 4
+            },
+            {
+              "id": "82a50b8a-c795-5772-a9ba-8acb99a23d8d",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Multicollinearity in Multiple Regression & Variance Inflation Factor (VIF)",
+              "slug": "bca-302n-u4-t5-multicollinearity-in-multiple-regression",
+              "sort_order": 5
+            },
+            {
+              "id": "cdff7160-6b69-5cb1-b0b3-45ab3202d90e",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Model Evaluation using Visualization: Scatter Plots with Regression Lines",
+              "slug": "bca-302n-u4-t6-model-evaluation-using-visualization-sca",
+              "sort_order": 6
+            },
+            {
+              "id": "aaa239cc-4268-5a9d-bf6e-8d44be0d5908",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Residual Plots: Detecting Non-Linearity, Heteroscedasticity & Residual Normality",
+              "slug": "bca-302n-u4-t7-residual-plots-detecting-non-linearity,-",
+              "sort_order": 7
+            },
+            {
+              "id": "c5ec377e-4c97-5750-8d61-f80b4592a1f0",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Distribution Plots: Actual vs Predicted Value Distribution Comparisons",
+              "slug": "bca-302n-u4-t8-distribution-plots-actual-vs-predicted-v",
+              "sort_order": 8
+            },
+            {
+              "id": "608ba979-b8d9-5c90-8ed9-50c06a09d60e",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Polynomial Regression: Higher-Degree Features & Modeling Non-Linear Phenomena",
+              "slug": "bca-302n-u4-t9-polynomial-regression-higher-degree-feat",
+              "sort_order": 9
+            },
+            {
+              "id": "601bdadb-48e3-5a89-812b-f53a86463749",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Scikit-Learn Pipelines: Combining Transformers, Scalers & Regression Models",
+              "slug": "bca-302n-u4-t10-scikit-learn-pipelines-combining-transfo",
+              "sort_order": 10
+            },
+            {
+              "id": "55215356-4b97-5a9e-9e06-44ffe65397d5",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Measures for In-Sample Evaluation: Mean Squared Error (MSE) & Root MSE (RMSE)",
+              "slug": "bca-302n-u4-t11-measures-for-in-sample-evaluation-mean-s",
+              "sort_order": 11
+            },
+            {
+              "id": "eadb7c56-ba0d-5b44-bb79-1d4c281eb6b0",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "R-Squared (Coefficient of Determination) vs Adjusted R-Squared",
+              "slug": "bca-302n-u4-t12-r-squared-coefficient-of-determination-v",
+              "sort_order": 12
+            },
+            {
+              "id": "495d323f-f45d-50e0-911d-f5d5125e8fdc",
+              "unit_id": "cf4515e9-da99-5068-b6e1-a4b80c235dc6",
+              "title": "Prediction and Decision Making: Confidence Intervals & Prediction Thresholds",
+              "slug": "bca-302n-u4-t13-prediction-and-decision-making-confidenc",
+              "sort_order": 13
+            }
+          ]
+        },
+        {
+          "id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+          "number": 5,
+          "title": "Model Evaluation and Optimization",
+          "summary": "Generalization Error, Out-of-Sample Evaluation Metrics, Cross Validation, Overfitting, Under Fitting and Model Selection, Ridge Regression, and Grid Search.",
+          "sort_order": 5,
+          "topics": [
+            {
+              "id": "687f826c-0068-54b4-8108-bdb32d066731",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Generalization Error: In-Sample vs Out-of-Sample Performance",
+              "slug": "bca-302n-u5-t1-generalization-error-in-sample-vs-out-of",
+              "sort_order": 1
+            },
+            {
+              "id": "06230c1f-a57b-5944-bd74-a3cf6c7fd27b",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Out-of-Sample Evaluation Metrics: RMSE, MAE, Mean Absolute Percentage Error (MAPE)",
+              "slug": "bca-302n-u5-t2-out-of-sample-evaluation-metrics-rmse,-m",
+              "sort_order": 2
+            },
+            {
+              "id": "2f63dcdb-6fd4-59a4-b27e-8ba4829b105c",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Classification vs Regression Metrics: Precision, Recall, F1-Score & ROC-AUC Overview",
+              "slug": "bca-302n-u5-t3-classification-vs-regression-metrics-pre",
+              "sort_order": 3
+            },
+            {
+              "id": "ac01d913-303c-5ea4-aa20-3ec7ba3c1f91",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "The Problem of Overfitting: High Variance, Memorization & Complexity Hazards",
+              "slug": "bca-302n-u5-t4-the-problem-of-overfitting-high-variance",
+              "sort_order": 4
+            },
+            {
+              "id": "c7606758-1cef-577b-ac11-cb4db6ab0214",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "The Problem of Underfitting: High Bias, Inadequate Features & Model Simplicity",
+              "slug": "bca-302n-u5-t5-the-problem-of-underfitting-high-bias,-i",
+              "sort_order": 5
+            },
+            {
+              "id": "e4d0c804-4051-5c86-9f66-d5b0c09a9a39",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "The Bias-Variance Tradeoff: Mathematical Balance for Optimal Performance",
+              "slug": "bca-302n-u5-t6-the-bias-variance-tradeoff-mathematical-",
+              "sort_order": 6
+            },
+            {
+              "id": "ef035ff3-d624-573a-b9e7-dd29619e2c74",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Train-Test Split vs Validation Set Architecture",
+              "slug": "bca-302n-u5-t7-train-test-split-vs-validation-set-archi",
+              "sort_order": 7
+            },
+            {
+              "id": "3f6d10bc-694c-550f-a80b-415d58221b57",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Cross-Validation Techniques: K-Fold Cross Validation, Stratified K-Fold & Leave-One-Out",
+              "slug": "bca-302n-u5-t8-cross-validation-techniques-k-fold-cross",
+              "sort_order": 8
+            },
+            {
+              "id": "43b46d01-7b6a-5350-b2ee-738ea26e3d52",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Regularization Principles: Shrinkage Methods to Combat Overfitting",
+              "slug": "bca-302n-u5-t9-regularization-principles-shrinkage-meth",
+              "sort_order": 9
+            },
+            {
+              "id": "239db8ed-1177-5359-8333-30a72e0003dc",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Ridge Regression (L2 Regularization): Penalty Term, Loss Function & Coefficient Shrinkage",
+              "slug": "bca-302n-u5-t10-ridge-regression-l2-regularization-penal",
+              "sort_order": 10
+            },
+            {
+              "id": "13b95209-7cbd-5235-97ba-7ae719eadf83",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Lasso Regression (L1 Regularization): Feature Selection & Sparse Solutions",
+              "slug": "bca-302n-u5-t11-lasso-regression-l1-regularization-featu",
+              "sort_order": 11
+            },
+            {
+              "id": "beb8c617-12ef-5060-80ec-991ee531edb6",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Hyperparameter Optimization: Grid Search Cross-Validation (GridSearchCV)",
+              "slug": "bca-302n-u5-t12-hyperparameter-optimization-grid-search-",
+              "sort_order": 12
+            },
+            {
+              "id": "0863a3b8-3e4c-55ee-bcfd-ddf135b33489",
+              "unit_id": "63a3f6ef-6aff-5c2b-89ea-9b9288fa1a67",
+              "title": "Randomized Search Cross-Validation (RandomizedSearchCV) & Automated Model Selection",
+              "slug": "bca-302n-u5-t13-randomized-search-cross-validation-rando",
+              "sort_order": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2472ea21-6f22-58ca-be95-4e69358584d8",
+      "code": "BCA-304N",
+      "title": "Cloud Computing",
+      "slug": "bca-304n-cloud-computing",
+      "credits": 4,
+      "sort_order": 2,
+      "units": [
+        {
+          "id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+          "number": 1,
+          "title": "Introduction to Parallel, Distributed and Cloud Computing",
+          "summary": "Parallel and Distributed Computing, Cloud Characteristics and Benefits, Historical Developments, Distributed Systems, Virtualization, Web 2.0, SOA, Utility Computing, Reference Model.",
+          "sort_order": 1,
+          "topics": [
+            {
+              "id": "c4ff7d4f-4348-53f9-853b-e07afd916034",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Parallel Computing Foundations: Multiprocessors, Pipelining & Flynn's Taxonomy",
+              "slug": "bca-304n-u1-t1-parallel-computing-foundations-multiproc",
+              "sort_order": 1
+            },
+            {
+              "id": "aa693fb6-7ec0-5e48-923e-89c70bab49af",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Distributed Computing: Architecture, Network Latency, Scalability & Fault Tolerance",
+              "slug": "bca-304n-u1-t2-distributed-computing-architecture,-netw",
+              "sort_order": 2
+            },
+            {
+              "id": "f43ffddb-349e-5a5d-bca1-765d96318622",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Cloud Computing: NIST Definition, Five Essential Characteristics & Benefits",
+              "slug": "bca-304n-u1-t3-cloud-computing-nist-definition,-five-es",
+              "sort_order": 3
+            },
+            {
+              "id": "5cf2e6ad-f899-51ed-927b-bb971f6b673a",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "On-Demand Self-Service, Broad Network Access, Resource Pooling & Rapid Elasticity",
+              "slug": "bca-304n-u1-t4-on-demand-self-service,-broad-network-ac",
+              "sort_order": 4
+            },
+            {
+              "id": "27831e21-84ac-562b-a90f-a1ff5de766a2",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Measured Service: Pay-per-Use Accounting & Cost Economics",
+              "slug": "bca-304n-u1-t5-measured-service-pay-per-use-accounting-",
+              "sort_order": 5
+            },
+            {
+              "id": "a5fba9d9-43ce-5ee0-ac04-ad3cc41e028b",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Evolutionary Milestones: Mainframes, Clusters, Grids, Virtualization & Cloud",
+              "slug": "bca-304n-u1-t6-evolutionary-milestones-mainframes,-clus",
+              "sort_order": 6
+            },
+            {
+              "id": "66db0961-75cc-5214-8a66-e647fb53e863",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Distributed Systems & Grid Computing: Transition to Service-Centric Cloud",
+              "slug": "bca-304n-u1-t7-distributed-systems-and-grid-computing-t",
+              "sort_order": 7
+            },
+            {
+              "id": "4cb339ea-05b7-5132-b244-928c475f67d9",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Web 2.0 Technologies, Rich Internet Applications & RESTful Architectures",
+              "slug": "bca-304n-u1-t8-web-2.0-technologies,-rich-internet-appl",
+              "sort_order": 8
+            },
+            {
+              "id": "871a463c-8b12-5896-ba47-7d3295132ebc",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Service-Oriented Computing (SOA): Loose Coupling, XML, SOAP & Microservices",
+              "slug": "bca-304n-u1-t9-service-oriented-computing-soa-loose-cou",
+              "sort_order": 9
+            },
+            {
+              "id": "9e4efe73-cf0d-55e6-9c3d-c8c0183d4eeb",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Utility Computing Paradigm: Computing as the 5th Public Utility",
+              "slug": "bca-304n-u1-t10-utility-computing-paradigm-computing-as-",
+              "sort_order": 10
+            },
+            {
+              "id": "45316732-b616-5c3a-bff5-01ed198fd78c",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Cloud Computing Reference Model: Infrastructure, Platform, Application & User Layers",
+              "slug": "bca-304n-u1-t11-cloud-computing-reference-model-infrastr",
+              "sort_order": 11
+            },
+            {
+              "id": "67212f61-e10b-5652-b3e3-6ede2f44ec06",
+              "unit_id": "a6006172-65c5-5e2f-b3e6-d4c227abf563",
+              "title": "Public vs Private vs Hybrid Foundations in the Cloud Computing Ecosystem",
+              "slug": "bca-304n-u1-t12-public-vs-private-vs-hybrid-foundations-",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+          "number": 2,
+          "title": "Virtualization Technologies and Architectures",
+          "summary": "Characteristics of Virtualized Environments, Taxonomy of Virtualization, Virtualization and Cloud, Pros and Cons, Xen, VMware, Hyper-V.",
+          "sort_order": 2,
+          "topics": [
+            {
+              "id": "fcc9fa41-3856-5234-86b8-9f07fee3c75e",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Introduction to Virtualization: Core Principles, Abstraction & Decoupling",
+              "slug": "bca-304n-u2-t1-introduction-to-virtualization-core-prin",
+              "sort_order": 1
+            },
+            {
+              "id": "5e3199b9-9d3d-5cfc-a0fc-a8a96a8e2c42",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Characteristics of Virtualized Environments: Partitioning, Isolation & Encapsulation",
+              "slug": "bca-304n-u2-t2-characteristics-of-virtualized-environme",
+              "sort_order": 2
+            },
+            {
+              "id": "33d59610-3809-57a8-9c1a-e6eb03f3cd0f",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Taxonomy of Virtualization Techniques: Machine-Level vs OS-Level Virtualization",
+              "slug": "bca-304n-u2-t3-taxonomy-of-virtualization-techniques-ma",
+              "sort_order": 3
+            },
+            {
+              "id": "cb7d90c8-220c-5674-b156-0e01e1b080d4",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Hardware-Assisted Virtualization (Intel VT-x, AMD-V) & Popek-Goldberg Theorem",
+              "slug": "bca-304n-u2-t4-hardware-assisted-virtualization-intel-v",
+              "sort_order": 4
+            },
+            {
+              "id": "e8b8f0a4-9483-57e2-ae74-c0bc8d925bb5",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Full Virtualization: Architecture, Binary Translation & Emulation",
+              "slug": "bca-304n-u2-t5-full-virtualization-architecture,-binary",
+              "sort_order": 5
+            },
+            {
+              "id": "a3ad3fd4-7dd1-541a-9e73-9ca17f752b90",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Paravirtualization: Hypercalls, Modified Guest OS & Kernel Interfacing",
+              "slug": "bca-304n-u2-t6-paravirtualization-hypercalls,-modified-",
+              "sort_order": 6
+            },
+            {
+              "id": "331a4824-3b53-5cbe-8649-194e54927ab9",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Operating System-Level Virtualization: Containers, Namespaces, Cgroups & Docker",
+              "slug": "bca-304n-u2-t7-operating-system-level-virtualization-co",
+              "sort_order": 7
+            },
+            {
+              "id": "04232997-dab5-5734-8417-51227bbb1f50",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Virtualization and Cloud Computing: Role in Resource Pooling & Dynamic Provisioning",
+              "slug": "bca-304n-u2-t8-virtualization-and-cloud-computing-role-",
+              "sort_order": 8
+            },
+            {
+              "id": "a1ffa84b-940d-512e-aa6d-01b032425d54",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Pros and Cons of Virtualization: Server Consolidation, Agility vs Overhead & VM Sprawl",
+              "slug": "bca-304n-u2-t9-pros-and-cons-of-virtualization-server-c",
+              "sort_order": 9
+            },
+            {
+              "id": "186b6f5e-42f8-5d0a-b732-3ed8f6a07588",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Hypervisor Architecture: Type 1 Bare-Metal Hypervisors vs Type 2 Hosted Hypervisors",
+              "slug": "bca-304n-u2-t10-hypervisor-architecture-type-1-bare-meta",
+              "sort_order": 10
+            },
+            {
+              "id": "8f02bf69-3dcc-508d-be89-0aa98845c92a",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Technology Example: Xen Hypervisor Architecture & Dom0/DomU Paravirtualization",
+              "slug": "bca-304n-u2-t11-technology-example-xen-hypervisor-archit",
+              "sort_order": 11
+            },
+            {
+              "id": "988bd8c9-49d7-596d-9a2d-bc63f5043301",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Technology Example: VMware ESXi Architecture & Full Virtualization Mechanics",
+              "slug": "bca-304n-u2-t12-technology-example-vmware-esxi-architect",
+              "sort_order": 12
+            },
+            {
+              "id": "3a02e177-4e00-5a92-bcec-8c755b0d6405",
+              "unit_id": "3d0e7a69-a6e2-5e28-b1fb-3dc0a0ef9719",
+              "title": "Technology Example: Microsoft Hyper-V Architecture, Parent Partition & Enclave VHDs",
+              "slug": "bca-304n-u2-t13-technology-example-microsoft-hyper-v-arc",
+              "sort_order": 13
+            }
+          ]
+        },
+        {
+          "id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+          "number": 3,
+          "title": "Cloud Computing Architecture and Infrastructure (IaaS)",
+          "summary": "Cloud Architecture, Service Models (IaaS, PaaS, SaaS), Deployment Models (Public, Private, Hybrid, Community), IaaS Details, Server, Storage and Network Virtualization.",
+          "sort_order": 3,
+          "topics": [
+            {
+              "id": "dc94f9a8-d02c-52e9-9aed-7b9d767a28b9",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Cloud Computing Architecture: Logical Layers, Management Core & Client Interfaces",
+              "slug": "bca-304n-u3-t1-cloud-computing-architecture-logical-lay",
+              "sort_order": 1
+            },
+            {
+              "id": "9f21ebf0-aa78-5028-a39a-d8d749962bec",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Service Models Overview: The SPI Tier Model (SaaS, PaaS, IaaS)",
+              "slug": "bca-304n-u3-t2-service-models-overview-the-spi-tier-mod",
+              "sort_order": 2
+            },
+            {
+              "id": "fe8720d8-68f6-571f-9ea5-7986dc434935",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Shared Responsibility Model: Customer vs Cloud Service Provider (CSP) Roles",
+              "slug": "bca-304n-u3-t3-shared-responsibility-model-customer-vs-",
+              "sort_order": 3
+            },
+            {
+              "id": "3b35aece-ad5d-5401-b32a-58059d4f4651",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Cloud Deployment Models: Public Cloud Architecture, Multitenancy & Scalability",
+              "slug": "bca-304n-u3-t4-cloud-deployment-models-public-cloud-arc",
+              "sort_order": 4
+            },
+            {
+              "id": "42102334-6e12-5cc1-aefe-de12c5f58cbd",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Private Cloud: On-Premise, Hosted Private Clouds & Security Governance",
+              "slug": "bca-304n-u3-t5-private-cloud-on-premise,-hosted-private",
+              "sort_order": 5
+            },
+            {
+              "id": "c86e5b5c-dcea-5e0d-b587-74cfae6c1485",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Hybrid Cloud Architecture: Cloud Bursting, Workload Portability & Hybrid Integration",
+              "slug": "bca-304n-u3-t6-hybrid-cloud-architecture-cloud-bursting",
+              "sort_order": 6
+            },
+            {
+              "id": "52bb3b2c-8775-5518-8038-0c97519fcecd",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Community Cloud: Shared Infrastructure for Specific Industry Verticals",
+              "slug": "bca-304n-u3-t7-community-cloud-shared-infrastructure-fo",
+              "sort_order": 7
+            },
+            {
+              "id": "6df69fbf-43ad-5391-91d6-f9913d6ae4d4",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Infrastructure as a Service (IaaS): Architecture, Provisioning & Billing",
+              "slug": "bca-304n-u3-t8-infrastructure-as-a-service-iaas-archite",
+              "sort_order": 8
+            },
+            {
+              "id": "0dc24887-b4c0-5533-9331-0ace065e864e",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Server Virtualization in IaaS: Dynamic Resource Allocation, VCPU & Live VM Migration",
+              "slug": "bca-304n-u3-t9-server-virtualization-in-iaas-dynamic-re",
+              "sort_order": 9
+            },
+            {
+              "id": "c6583a0c-754e-5f9c-929b-da506d634f81",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Storage Virtualization: Storage Area Networks (SAN), NAS, Block vs Object Storage",
+              "slug": "bca-304n-u3-t10-storage-virtualization-storage-area-netw",
+              "sort_order": 10
+            },
+            {
+              "id": "93f5536e-9ffa-5e59-aced-add94c91cb8f",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Network Virtualization: Software-Defined Networking (SDN), Virtual Switches & OpenFlow",
+              "slug": "bca-304n-u3-t11-network-virtualization-software-defined-",
+              "sort_order": 11
+            },
+            {
+              "id": "278cee6b-ea9b-5162-b6a8-e0c4b4f699d2",
+              "unit_id": "21e7349c-a1d3-5efc-8961-c0ffa8227c4d",
+              "title": "Virtual Private Clouds (VPC), Subnets, Route Tables & Network Security Groups (NSGs)",
+              "slug": "bca-304n-u3-t12-virtual-private-clouds-vpc,-subnets,-rou",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+          "number": 4,
+          "title": "Platform as a Service (PaaS) and Software as a Service (SaaS)",
+          "summary": "PaaS Introduction, Computation and Storage Management, SaaS Introduction, Cloud Services, Web Services, Web 2.0, Web OS, and Case Studies of IaaS, PaaS, SaaS.",
+          "sort_order": 4,
+          "topics": [
+            {
+              "id": "48b1bac5-8c9f-589a-bd2e-466e29f56fd6",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Platform as a Service (PaaS): Architecture, Development Environment & Middleware",
+              "slug": "bca-304n-u4-t1-platform-as-a-service-paas-architecture,",
+              "sort_order": 1
+            },
+            {
+              "id": "f07887fe-e6e9-5fe8-a20b-45d483173350",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "PaaS Management of Computation: Automated Container Orchestration & Autoscaling",
+              "slug": "bca-304n-u4-t2-paas-management-of-computation-automated",
+              "sort_order": 2
+            },
+            {
+              "id": "787b8c18-66c6-5f74-8e15-4a5f562046c0",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "PaaS Storage Management: Cloud Databases, Managed Relational & NoSQL Services",
+              "slug": "bca-304n-u4-t3-paas-storage-management-cloud-databases,",
+              "sort_order": 3
+            },
+            {
+              "id": "ef84b4c3-6042-55ee-9ae6-cc7ab8851b4e",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Software as a Service (SaaS): Multitenant Architecture, Feature Toggling & Subscriptions",
+              "slug": "bca-304n-u4-t4-software-as-a-service-saas-multitenant-a",
+              "sort_order": 4
+            },
+            {
+              "id": "966e24b6-f6fe-5d79-9d16-acda8ba8ad8c",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Cloud Services: Microservices Architecture, API Gateways & Event-Driven Functions",
+              "slug": "bca-304n-u4-t5-cloud-services-microservices-architectur",
+              "sort_order": 5
+            },
+            {
+              "id": "dd4d2ee8-7e87-524e-8081-7f41e836be81",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Web Services in Cloud: REST vs SOAP Protocols, JSON Payloads & Service Registries",
+              "slug": "bca-304n-u4-t6-web-services-in-cloud-rest-vs-soap-proto",
+              "sort_order": 6
+            },
+            {
+              "id": "a2184f09-3ab0-5003-964d-59b7bbc3c626",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Web 2.0 Principles in Cloud Platforms: Social Collaboration, Asynchrony & Rich Interfaces",
+              "slug": "bca-304n-u4-t7-web-2.0-principles-in-cloud-platforms-so",
+              "sort_order": 7
+            },
+            {
+              "id": "a562f6c4-6565-58c2-b212-e555995d28a0",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Web OS (Web Operating System) Concepts: Browser-Based Desktops & Cloud Workspaces",
+              "slug": "bca-304n-u4-t8-web-os-web-operating-system-concepts-bro",
+              "sort_order": 8
+            },
+            {
+              "id": "52f51f3f-a8d6-52ca-b375-a5b39680d8c6",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "IaaS Case Study: Amazon Web Services (AWS EC2, S3, EBS, VPC Architecture)",
+              "slug": "bca-304n-u4-t9-iaas-case-study-amazon-web-services-aws-",
+              "sort_order": 9
+            },
+            {
+              "id": "8ad478a5-68b0-56ca-93b5-34b94c293c6e",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "PaaS Case Study: Google App Engine, Microsoft Azure App Services & Heroku",
+              "slug": "bca-304n-u4-t10-paas-case-study-google-app-engine,-micro",
+              "sort_order": 10
+            },
+            {
+              "id": "303865a5-9670-5339-8102-f58e88c53317",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "SaaS Case Study: Salesforce CRM, Google Workspace & Microsoft 365 Architecture",
+              "slug": "bca-304n-u4-t11-saas-case-study-salesforce-crm,-google-w",
+              "sort_order": 11
+            },
+            {
+              "id": "7eb7bae9-5b61-5c46-9892-fe25d03ca8fa",
+              "unit_id": "874914b5-12e1-5f49-982a-a54c625d20f0",
+              "title": "Enterprise Migration to Cloud: Lift-and-Shift, Re-Platforming & Cloud-Native Refactoring",
+              "slug": "bca-304n-u4-t12-enterprise-migration-to-cloud-lift-and-s",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+          "number": 5,
+          "title": "Cloud Economics, Open Challenges and Emerging Paradigms",
+          "summary": "Economics of the Cloud, Open Challenges, Emerging Computing Paradigms (Edge, Mobile Cloud, Fog Computing), IoT Cloud, and Cloud Simulators.",
+          "sort_order": 5,
+          "topics": [
+            {
+              "id": "cadedb6b-04fa-5d22-92de-b1faecb6ec3a",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Economics of Cloud Computing: Capital Expenditure (CapEx) vs Operational (OpEx)",
+              "slug": "bca-304n-u5-t1-economics-of-cloud-computing-capital-exp",
+              "sort_order": 1
+            },
+            {
+              "id": "9712254c-9523-5f66-b05d-6b4f16054b4a",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Total Cost of Ownership (TCO) & Return on Investment (ROI) Calculations",
+              "slug": "bca-304n-u5-t2-total-cost-of-ownership-tco-and-return-o",
+              "sort_order": 2
+            },
+            {
+              "id": "baf8eaac-b515-5a27-b733-1311af2501af",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Cloud Pricing Models: On-Demand, Reserved Instances, Spot Instances & Dynamic Bidding",
+              "slug": "bca-304n-u5-t3-cloud-pricing-models-on-demand,-reserved",
+              "sort_order": 3
+            },
+            {
+              "id": "25b4fe9f-ee4c-5db4-b8be-2213a2ea4351",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Service Level Agreements (SLAs), Availability Metrics (99.999% Five Nines) & Penalties",
+              "slug": "bca-304n-u5-t4-service-level-agreements-slas,-availabil",
+              "sort_order": 4
+            },
+            {
+              "id": "c9c3cbfa-ef9a-5410-9832-68e0de82d10c",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Open Challenges in Cloud: Multi-Tenancy Security, Data Privacy & Confidential Computing",
+              "slug": "bca-304n-u5-t5-open-challenges-in-cloud-multi-tenancy-s",
+              "sort_order": 5
+            },
+            {
+              "id": "4e0de62b-1e89-53ab-b453-e2fc781ade69",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Vendor Lock-in, Interoperability, Cloud Portability & Cloud Standards (Oasis, DMTF)",
+              "slug": "bca-304n-u5-t6-vendor-lock-in,-interoperability,-cloud-",
+              "sort_order": 6
+            },
+            {
+              "id": "d2497ae4-e4b1-5991-8dd8-2c9f5c93619b",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Emerging Computing Paradigms: Edge Computing Architecture & Ultra-Low Latency",
+              "slug": "bca-304n-u5-t7-emerging-computing-paradigms-edge-comput",
+              "sort_order": 7
+            },
+            {
+              "id": "7e6187f4-0a39-53b7-b2ec-688e3825b8d6",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Fog Computing: Decentralized Computing Nodes between Edge Devices and Cloud Core",
+              "slug": "bca-304n-u5-t8-fog-computing-decentralized-computing-no",
+              "sort_order": 8
+            },
+            {
+              "id": "06150a82-e65f-54a3-8cf3-4d9ddb794287",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Mobile Cloud Computing (MCC): Offloading Mobile Computation & Energy Optimization",
+              "slug": "bca-304n-u5-t9-mobile-cloud-computing-mcc-offloading-mo",
+              "sort_order": 9
+            },
+            {
+              "id": "57e69089-1276-55d3-af8a-6ffd832a88c9",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Introduction to IoT Cloud: Ingestion Pipelines, Telemetry Processing & Digital Twins",
+              "slug": "bca-304n-u5-t10-introduction-to-iot-cloud-ingestion-pipe",
+              "sort_order": 10
+            },
+            {
+              "id": "fb6600f8-467c-51f5-bf97-6135dd35dc3c",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Cloud Simulators: Introduction to CloudSim Architecture & Discrete-Event Simulation",
+              "slug": "bca-304n-u5-t11-cloud-simulators-introduction-to-cloudsi",
+              "sort_order": 11
+            },
+            {
+              "id": "7a81b624-c766-5444-ab2a-5224f49ea679",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Advanced Simulators: GreenCloud for Energy Consumption & SimGrid for Grids/Clouds",
+              "slug": "bca-304n-u5-t12-advanced-simulators-greencloud-for-energ",
+              "sort_order": 12
+            },
+            {
+              "id": "f6522c7b-6966-56f4-ab1a-e048d1a97425",
+              "unit_id": "fdf96420-371c-58b9-bcb7-92e6977e01f6",
+              "title": "Green Cloud Computing: Data Center Energy Efficiency, PUE & Carbon Footprint Reduction",
+              "slug": "bca-304n-u5-t13-green-cloud-computing-data-center-energy",
+              "sort_order": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a7abc181-9ab8-5f55-84ba-2f618850b0f4",
+      "code": "BCA-306N",
+      "title": "Internet of Things",
+      "slug": "bca-306n-internet-of-things",
+      "credits": 4,
+      "sort_order": 3,
+      "units": [
+        {
+          "id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+          "number": 1,
+          "title": "Introduction to IoT and Architectures",
+          "summary": "Genesis of IoT, Digitization, IoT Challenges, Comparing IoT Architectures, Simplified IoT Architecture, Core IoT Functional Stack, Data Management and Compute Stack.",
+          "sort_order": 1,
+          "topics": [
+            {
+              "id": "e9961e56-df36-5536-aefa-8c3c02982ea0",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "Genesis of the Internet of Things (IoT) & Evolution from M2M Communications",
+              "slug": "bca-306n-u1-t1-genesis-of-the-internet-of-things-iot-an",
+              "sort_order": 1
+            },
+            {
+              "id": "2aac2071-0674-5faf-9aa4-5c515f961de1",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "IoT and Digitization: Transforming Physical Assets into Connected Data Endpoints",
+              "slug": "bca-306n-u1-t2-iot-and-digitization-transforming-physic",
+              "sort_order": 2
+            },
+            {
+              "id": "52297b9a-5418-5c07-b17e-f2ac8ad30375",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "IoT Challenges: Scale, Heterogeneity, Energy Constraints, Interoperability & Security",
+              "slug": "bca-306n-u1-t3-iot-challenges-scale,-heterogeneity,-ene",
+              "sort_order": 3
+            },
+            {
+              "id": "415066e1-3866-53da-8688-c5c67e82a2d1",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "Comparing IoT Architectures: Three-Layer, Four-Layer, Five-Layer & ITU-T Reference Models",
+              "slug": "bca-306n-u1-t4-comparing-iot-architectures-three-layer,",
+              "sort_order": 4
+            },
+            {
+              "id": "e12b5257-4edf-512c-8bd1-8151ca34d5d0",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "A Simplified IoT Architecture: Things, Network, Edge, Fog, Cloud & Applications",
+              "slug": "bca-306n-u1-t5-a-simplified-iot-architecture-things,-ne",
+              "sort_order": 5
+            },
+            {
+              "id": "125c85c3-ab4e-5976-a3e8-9b9392b7d00f",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "The Core IoT Functional Stack: Sensors/Actuators, Communications, Data Accumulation",
+              "slug": "bca-306n-u1-t6-the-core-iot-functional-stack-sensors-ac",
+              "sort_order": 6
+            },
+            {
+              "id": "954cdb8d-2046-5688-9186-364bd7ce0b60",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "Core Functional Stack: Data Abstraction, Application Logic & Business Integrations",
+              "slug": "bca-306n-u1-t7-core-functional-stack-data-abstraction,-",
+              "sort_order": 7
+            },
+            {
+              "id": "7be56387-2a02-54d4-97e5-2edf974e450c",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "IoT Data Management Stack: Ingestion, Storage, Filtering & Processing Pipelines",
+              "slug": "bca-306n-u1-t8-iot-data-management-stack-ingestion,-sto",
+              "sort_order": 8
+            },
+            {
+              "id": "0106fa34-b6c0-532e-b655-55cecad3d784",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "IoT Compute Stack: Edge Computing vs Fog Nodes vs Centralized Cloud Infrastructure",
+              "slug": "bca-306n-u1-t9-iot-compute-stack-edge-computing-vs-fog-",
+              "sort_order": 9
+            },
+            {
+              "id": "51bf9b78-97fe-5c61-8dec-931280d46a18",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "Data Velocity, Volume & Variety in IoT Ecosystems (Real-Time vs Batch)",
+              "slug": "bca-306n-u1-t10-data-velocity,-volume-and-variety-in-iot",
+              "sort_order": 10
+            },
+            {
+              "id": "4b6068e5-8a49-5756-b502-0882ec1d3b28",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "IoT Enabling Technologies: RFID, WSN, Barcodes, Embedded Systems & Microcontrollers",
+              "slug": "bca-306n-u1-t11-iot-enabling-technologies-rfid,-wsn,-bar",
+              "sort_order": 11
+            },
+            {
+              "id": "fdb580b6-de3a-5e9a-8175-5b12abc87037",
+              "unit_id": "9bec8258-17ab-5753-8fb5-d49d02bc82d9",
+              "title": "Comparison: IoT vs M2M vs Cyber-Physical Systems (CPS) vs SCADA",
+              "slug": "bca-306n-u1-t12-comparison-iot-vs-m2m-vs-cyber-physical-",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+          "number": 2,
+          "title": "Engineering for IoT Networks and Protocols",
+          "summary": "Sensors, Actuators, Smart Objects, Sensor Networks, IoT Access Technologies, IP as Network Layer, Application Protocols for IoT.",
+          "sort_order": 2,
+          "topics": [
+            {
+              "id": "e5c308f6-1c1e-5742-97be-6810c9075006",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Sensors: Working Principles, Transducers, Analog vs Digital Sensors & Classifications",
+              "slug": "bca-306n-u2-t1-sensors-working-principles,-transducers,",
+              "sort_order": 1
+            },
+            {
+              "id": "2533abc8-c3de-5793-97d9-3d37dbf4648f",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Actuators: Relays, Servomotors, Solenoids, Stepper Motors & Electro-Pneumatics",
+              "slug": "bca-306n-u2-t2-actuators-relays,-servomotors,-solenoids",
+              "sort_order": 2
+            },
+            {
+              "id": "783d0603-4d56-5b86-88ce-b8f3c8f05b66",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Smart Objects: Architecture, Processing Power, Memory & Power Management",
+              "slug": "bca-306n-u2-t3-smart-objects-architecture,-processing-p",
+              "sort_order": 3
+            },
+            {
+              "id": "121e7fcb-2efb-59e6-a515-1615b8988d8e",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Wireless Sensor Networks (WSN): Node Architecture, Topologies (Star, Mesh, Cluster)",
+              "slug": "bca-306n-u2-t4-wireless-sensor-networks-wsn-node-archit",
+              "sort_order": 4
+            },
+            {
+              "id": "10fa6cfc-c25e-55d7-bc13-3569cbde3e6d",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "IoT Access Technologies: IEEE 802.15.4 Physical and MAC Layer Specifications",
+              "slug": "bca-306n-u2-t5-iot-access-technologies-ieee-802.15.4-ph",
+              "sort_order": 5
+            },
+            {
+              "id": "350fab4d-aefb-5ad1-ba78-248b3e80d200",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Short-Range Wireless: Zigbee, Z-Wave, Bluetooth Low Energy (BLE 5.0) & NFC",
+              "slug": "bca-306n-u2-t6-short-range-wireless-zigbee,-z-wave,-blu",
+              "sort_order": 6
+            },
+            {
+              "id": "afc20a76-5265-5df4-b246-ebfc10b4285b",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Long-Range Low-Power Technologies: LoRaWAN Architecture, Chirp Spread Spectrum & Sigfox",
+              "slug": "bca-306n-u2-t7-long-range-low-power-technologies-lorawa",
+              "sort_order": 7
+            },
+            {
+              "id": "7e018ea1-d403-52df-b75f-d8e8eb83f5b7",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Cellular IoT: NB-IoT (Narrowband IoT), LTE-M & 5G Massive Machine-Type Communications",
+              "slug": "bca-306n-u2-t8-cellular-iot-nb-iot-narrowband-iot,-lte-",
+              "sort_order": 8
+            },
+            {
+              "id": "0a8bfe17-1a53-55a2-b29b-bbb367e77fb9",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "IP as the IoT Network Layer: Challenges of IPv4 & The Inevitability of IPv6",
+              "slug": "bca-306n-u2-t9-ip-as-the-iot-network-layer-challenges-o",
+              "sort_order": 9
+            },
+            {
+              "id": "73ce3302-1bd7-5ab1-af25-956ea8c65b4e",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "6LoWPAN: Adaptation Layer, Header Compression, Fragmentation & Mesh Routing",
+              "slug": "bca-306n-u2-t10-6lowpan-adaptation-layer,-header-compres",
+              "sort_order": 10
+            },
+            {
+              "id": "2d827592-4460-500e-8be7-476036ff4270",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "RPL (Routing Protocol for Low-Power and Lossy Networks) & Objective Functions",
+              "slug": "bca-306n-u2-t11-rpl-routing-protocol-for-low-power-and-l",
+              "sort_order": 11
+            },
+            {
+              "id": "2d0d7539-67c6-596e-93bd-a5984307ed00",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "IoT Application Protocol: MQTT (Message Queuing Telemetry Transport, Pub/Sub, QoS 0/1/2)",
+              "slug": "bca-306n-u2-t12-iot-application-protocol-mqtt-message-qu",
+              "sort_order": 12
+            },
+            {
+              "id": "1d85048d-9cd7-58c5-8c48-4618d6cab33f",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "IoT Application Protocol: CoAP (Constrained Application Protocol, RESTful, UDP, Observe)",
+              "slug": "bca-306n-u2-t13-iot-application-protocol-coap-constraine",
+              "sort_order": 13
+            },
+            {
+              "id": "382e761d-3436-52c5-9a16-5fde078e1556",
+              "unit_id": "68abe907-5dc7-555e-8a8a-306b1b00ea60",
+              "title": "Comparison: MQTT vs CoAP vs AMQP vs HTTP vs WebSockets for Constrained Devices",
+              "slug": "bca-306n-u2-t14-comparison-mqtt-vs-coap-vs-amqp-vs-http-",
+              "sort_order": 14
+            }
+          ]
+        },
+        {
+          "id": "89bfb023-b67d-5187-b82f-664f1885c743",
+          "number": 3,
+          "title": "Data and Analytics for IoT",
+          "summary": "Data Analytics for IoT, Machine Learning, Big Data Analytics Tools, Edge Streaming Analytics, Network Analytics.",
+          "sort_order": 3,
+          "topics": [
+            {
+              "id": "afcab588-914a-5a88-98f8-29e5fd1b31b7",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Introduction to Data Analytics for IoT: Ingestion, Pre-Processing & Value Extraction",
+              "slug": "bca-306n-u3-t1-introduction-to-data-analytics-for-iot-i",
+              "sort_order": 1
+            },
+            {
+              "id": "c8a281be-3e89-5fab-a482-fa2b51693311",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Characteristics of IoT Data: Time-Series, Geospatial, High-Volume & Streaming Noise",
+              "slug": "bca-306n-u3-t2-characteristics-of-iot-data-time-series,",
+              "sort_order": 2
+            },
+            {
+              "id": "8ebe5a1c-264d-5080-aeb5-fbbb7d2b38ea",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Role of Machine Learning in IoT: Supervised, Unsupervised & Reinforcement Paradigms",
+              "slug": "bca-306n-u3-t3-role-of-machine-learning-in-iot-supervis",
+              "sort_order": 3
+            },
+            {
+              "id": "8e68d674-911c-5637-8bf9-dfb7b1102c03",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Anomaly Detection in IoT Sensor Streams: Thresholding, Isolation Forests & Autoencoders",
+              "slug": "bca-306n-u3-t4-anomaly-detection-in-iot-sensor-streams-",
+              "sort_order": 4
+            },
+            {
+              "id": "b3439d43-d2f4-5f53-ad05-bac858418448",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Predictive Maintenance: Degradation Modeling, RUL (Remaining Useful Life) Estimation",
+              "slug": "bca-306n-u3-t5-predictive-maintenance-degradation-model",
+              "sort_order": 5
+            },
+            {
+              "id": "646acd76-24e4-540f-bf61-71f000541cda",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Big Data Analytics Tools for IoT: Apache Kafka for High-Throughput Event Streaming",
+              "slug": "bca-306n-u3-t6-big-data-analytics-tools-for-iot-apache-",
+              "sort_order": 6
+            },
+            {
+              "id": "0c2f3aae-62f9-5ea0-ab8c-3d1a3e7283db",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Distributed Processing Engines: Apache Spark Streaming, Apache Flink & Hadoop Ecosystem",
+              "slug": "bca-306n-u3-t7-distributed-processing-engines-apache-sp",
+              "sort_order": 7
+            },
+            {
+              "id": "1faa3ce3-8115-564d-afa7-45f73aa404f9",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Edge Streaming Analytics: Real-Time Complex Event Processing (CEP) at the Sensor Edge",
+              "slug": "bca-306n-u3-t8-edge-streaming-analytics-real-time-compl",
+              "sort_order": 8
+            },
+            {
+              "id": "5a5d3dda-38f4-5803-ad0f-5b3889bafdda",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Edge AI: TinyML, Model Quantization, Pruning & TensorFlow Lite for Microcontrollers",
+              "slug": "bca-306n-u3-t9-edge-ai-tinyml,-model-quantization,-prun",
+              "sort_order": 9
+            },
+            {
+              "id": "5e8d1147-a1c6-5605-a571-bbeeb826f9e1",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Network Analytics: Bandwidth Consumption, Latency Monitoring & Packet Loss Analysis",
+              "slug": "bca-306n-u3-t10-network-analytics-bandwidth-consumption,",
+              "sort_order": 10
+            },
+            {
+              "id": "5ddf5472-5081-5702-8321-2d4afd343b9d",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Data Fusion in IoT: Multi-Sensor Data Aggregation, Kalman Filtering & Weighting",
+              "slug": "bca-306n-u3-t11-data-fusion-in-iot-multi-sensor-data-agg",
+              "sort_order": 11
+            },
+            {
+              "id": "bd0537d9-c9d8-5341-8749-ee57b94e41e1",
+              "unit_id": "89bfb023-b67d-5187-b82f-664f1885c743",
+              "title": "Visualization Dashboards for IoT: Grafana, ThingsBoard & PowerBI Stream Ingestion",
+              "slug": "bca-306n-u3-t12-visualization-dashboards-for-iot-grafana",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+          "number": 4,
+          "title": "Cloud Storage Models and IoT Security",
+          "summary": "Cloud Storage Models, Communication APIs, IoT Security Challenges, and IoT System Security Practices.",
+          "sort_order": 4,
+          "topics": [
+            {
+              "id": "b4a63615-b989-52e2-9e57-629fcea235c6",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Cloud Storage Models for IoT: Time-Series Databases (InfluxDB, TimescaleDB, Prometheus)",
+              "slug": "bca-306n-u4-t1-cloud-storage-models-for-iot-time-series",
+              "sort_order": 1
+            },
+            {
+              "id": "525336d9-5128-5dd5-a4dc-2c99e5df523b",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "NoSQL Document & Wide-Column Stores for IoT: MongoDB, Cassandra & DynamoDB",
+              "slug": "bca-306n-u4-t2-nosql-document-and-wide-column-stores-fo",
+              "sort_order": 2
+            },
+            {
+              "id": "06c3e750-d88c-5683-ba3a-f980fa4775eb",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Object Storage for Telemetry Blobs & Firmware Images: AWS S3, MinIO & Azure Blob",
+              "slug": "bca-306n-u4-t3-object-storage-for-telemetry-blobs-and-f",
+              "sort_order": 3
+            },
+            {
+              "id": "d7decefc-62a4-5e08-bc1c-eae68545b294",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Communication APIs of IoT Systems: RESTful Web APIs, JSON/CBOR Payloads",
+              "slug": "bca-306n-u4-t4-communication-apis-of-iot-systems-restfu",
+              "sort_order": 4
+            },
+            {
+              "id": "577d82e7-a2cd-56b2-881a-af599bdabbcc",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Bidirectional Communication APIs: WebSockets & gRPC Protocol Buffers",
+              "slug": "bca-306n-u4-t5-bidirectional-communication-apis-websock",
+              "sort_order": 5
+            },
+            {
+              "id": "443b5058-2781-5ab1-a6bf-7d46c8802bd1",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "IoT Security Challenges: Limited Hardware Resources, Default Passwords & Attack Surfaces",
+              "slug": "bca-306n-u4-t6-iot-security-challenges-limited-hardware",
+              "sort_order": 6
+            },
+            {
+              "id": "bea266f1-6d61-549a-8f3c-dafb3809992b",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Threat Taxonomy: Device-Level Attacks, Firmware Tampering, Side-Channel & Physical Attacks",
+              "slug": "bca-306n-u4-t7-threat-taxonomy-device-level-attacks,-fi",
+              "sort_order": 7
+            },
+            {
+              "id": "901e7a30-c1b4-5b19-8f96-f3310215b6f8",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Network-Level Attacks in IoT: Man-in-the-Middle (MitM), Sybil, Sinkhole & DDoS (Mirai Botnet)",
+              "slug": "bca-306n-u4-t8-network-level-attacks-in-iot-man-in-the-",
+              "sort_order": 8
+            },
+            {
+              "id": "e9553623-f389-5fc4-97c6-cc9118d93904",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Cloud & Application Attacks: API Vulnerabilities, SQL/NoSQL Injections & Data Breaches",
+              "slug": "bca-306n-u4-t9-cloud-and-application-attacks-api-vulner",
+              "sort_order": 9
+            },
+            {
+              "id": "c2aeef59-47ed-5976-adeb-7da798573f51",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "IoT Security Best Practices: Hardware Root of Trust, Secure Boot & Cryptographic Enclaves",
+              "slug": "bca-306n-u4-t10-iot-security-best-practices-hardware-roo",
+              "sort_order": 10
+            },
+            {
+              "id": "e01d1a09-bec6-5c6b-b668-aa68b9fc7e07",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Secure Firmware Over-The-Air (FOTA) Updates: Code Signing, Rollback Protection & Hashes",
+              "slug": "bca-306n-u4-t11-secure-firmware-over-the-air-fota-update",
+              "sort_order": 11
+            },
+            {
+              "id": "5ccea763-af39-5483-8380-236e2868797f",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Identity and Access Management (IAM), Mutual TLS (mTLS) & X.509 Device Certificates",
+              "slug": "bca-306n-u4-t12-identity-and-access-management-iam,-mutu",
+              "sort_order": 12
+            },
+            {
+              "id": "4e35da21-7b58-52b7-9a5d-a2acb693fa40",
+              "unit_id": "99464cfb-1c1d-560f-908f-548a6bc5911a",
+              "title": "Zero Trust Architecture for IoT Endpoints & Network Microsegmentation",
+              "slug": "bca-306n-u4-t13-zero-trust-architecture-for-iot-endpoint",
+              "sort_order": 13
+            }
+          ]
+        },
+        {
+          "id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+          "number": 5,
+          "title": "IoT in Industry and Vertical Applications",
+          "summary": "Industrial IoT (IIoT), Manufacturing, Oil and Gas, Utilities, Smart Cities, Transportation, Mining, and Public Safety.",
+          "sort_order": 5,
+          "topics": [
+            {
+              "id": "fcc52c31-093c-55d4-b50c-7c19b4682485",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Industrial IoT (IIoT) & Industry 4.0: Cyber-Physical Production Systems (CPPS)",
+              "slug": "bca-306n-u5-t1-industrial-iot-iiot-and-industry-4.0-cyb",
+              "sort_order": 1
+            },
+            {
+              "id": "e1a68bb6-0203-5cbf-a9ee-4cf62f7454aa",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Smart Manufacturing: Digital Twins, Automated Quality Inspection & Robotic Automation",
+              "slug": "bca-306n-u5-t2-smart-manufacturing-digital-twins,-autom",
+              "sort_order": 2
+            },
+            {
+              "id": "3bf85519-280d-5e39-937a-9e09819a7513",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "IoT in Oil and Gas: Remote Pipeline Telemetry, Leak Detection, Valve Monitoring & Safety",
+              "slug": "bca-306n-u5-t3-iot-in-oil-and-gas-remote-pipeline-telem",
+              "sort_order": 3
+            },
+            {
+              "id": "c893f033-bbc6-5072-890c-26c47f248ab2",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "IoT in Utilities: Smart Grids, Advanced Metering Infrastructure (AMI) & Water Distribution",
+              "slug": "bca-306n-u5-t4-iot-in-utilities-smart-grids,-advanced-m",
+              "sort_order": 4
+            },
+            {
+              "id": "68f78797-f2f4-5a66-b607-d3340a7991a5",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Smart and Connected Cities: Architecture, Urban Sensors, Smart Lighting & Waste Management",
+              "slug": "bca-306n-u5-t5-smart-and-connected-cities-architecture,",
+              "sort_order": 5
+            },
+            {
+              "id": "e2aa3d81-db87-5cd3-97e7-d1d94d0f2b95",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Intelligent Transportation Systems (ITS): Connected Vehicles (V2X), Fleet Tracking & Telematics",
+              "slug": "bca-306n-u5-t6-intelligent-transportation-systems-its-c",
+              "sort_order": 6
+            },
+            {
+              "id": "5144c457-7501-5859-9c4e-c43716fe4957",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Smart Parking & Traffic Congestion Mitigation using Real-time Vision/Magnetic Sensors",
+              "slug": "bca-306n-u5-t7-smart-parking-and-traffic-congestion-mit",
+              "sort_order": 7
+            },
+            {
+              "id": "530ca9f4-b766-5dcd-81de-0d43b2cc8a67",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "IoT in Mining: Underground Gas Telemetry, Geotechnical Stability & Autonomous Haulers",
+              "slug": "bca-306n-u5-t8-iot-in-mining-underground-gas-telemetry,",
+              "sort_order": 8
+            },
+            {
+              "id": "b2baf07c-2ab4-5ad1-a460-889ff2bf939b",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "IoT in Agriculture (Smart Farming): Soil Moisture Telemetry, Automated Drip & Drone Sprayers",
+              "slug": "bca-306n-u5-t9-iot-in-agriculture-smart-farming-soil-mo",
+              "sort_order": 9
+            },
+            {
+              "id": "43bd73e3-ad89-5df4-945e-67a578d33116",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "IoT in Healthcare (IoMT): Remote Patient Monitoring, Wearables & Smart Infusion Pumps",
+              "slug": "bca-306n-u5-t10-iot-in-healthcare-iomt-remote-patient-mo",
+              "sort_order": 10
+            },
+            {
+              "id": "5b55b0bc-842f-52f9-bb20-023322bffcc9",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Public Safety & Disaster Response: Wildfire Detection, Flood Warnings & First Responder IoT",
+              "slug": "bca-306n-u5-t11-public-safety-and-disaster-response-wild",
+              "sort_order": 11
+            },
+            {
+              "id": "5420d516-75a2-53e8-85ab-dcd54019a2b9",
+              "unit_id": "f7a3784b-d0ca-524b-9616-5f643fe4acfb",
+              "title": "Future Trends in IoT: 6G Integration, Swarm Intelligence, Ambient Backscatter & Green IoT",
+              "slug": "bca-306n-u5-t12-future-trends-in-iot-6g-integration,-swa",
+              "sort_order": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e0ab16d7-4783-5b2a-b54a-248ae304f19f",
+      "code": "BCA-441E",
+      "title": "Software Testing",
+      "slug": "bca-441e-software-testing",
+      "credits": 4,
+      "sort_order": 4,
+      "units": [
+        {
+          "id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+          "number": 1,
+          "title": "Software Testing Fundamentals and Debugging",
+          "summary": "Introduction to Software Testing, Nature of Errors, Faults, and Failures, Testing Principles, Testing Fundamentals, STLC, and Debugging.",
+          "sort_order": 1,
+          "topics": [
+            {
+              "id": "b287ea4a-5384-53a1-9d74-af0883bf3845",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Introduction to Software Testing: Definition, Objectives & Purpose in SDLC",
+              "slug": "bca-441e-u1-t1-introduction-to-software-testing-definit",
+              "sort_order": 1
+            },
+            {
+              "id": "0186b402-c029-5e76-b9c8-33ae100b43c3",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Software Quality Assurance (SQA) vs Software Testing vs Quality Control (QC)",
+              "slug": "bca-441e-u1-t2-software-quality-assurance-sqa-vs-softwa",
+              "sort_order": 2
+            },
+            {
+              "id": "31b2541c-b918-5a20-b33f-179d4bc705c2",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Nature of Errors: Human Errors (Mistakes), Faults (Defects/Bugs) & System Failures",
+              "slug": "bca-441e-u1-t3-nature-of-errors-human-errors-mistakes,-",
+              "sort_order": 3
+            },
+            {
+              "id": "fa7ef24b-b97b-546c-8a70-672bbfd6d2b6",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "The Cost of Defects: Defect Amplification Model & Cost of Late Bug Detection",
+              "slug": "bca-441e-u1-t4-the-cost-of-defects-defect-amplification",
+              "sort_order": 4
+            },
+            {
+              "id": "100abb90-8b2e-5d4e-9795-4397a4fad126",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Seven Fundamental Principles of Software Testing (ISTQB Standard Axioms)",
+              "slug": "bca-441e-u1-t5-seven-fundamental-principles-of-software",
+              "sort_order": 5
+            },
+            {
+              "id": "6937c5b2-51fd-5f74-88ff-a19dfcc028d4",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Testing Fundamentals: Verification vs Validation (V-Model Architecture)",
+              "slug": "bca-441e-u1-t6-testing-fundamentals-verification-vs-val",
+              "sort_order": 6
+            },
+            {
+              "id": "3790bc4e-0efe-5ee2-89e8-0d373aa05dbb",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Software Testing Life Cycle (STLC): Requirement Analysis, Test Planning & Strategy",
+              "slug": "bca-441e-u1-t7-software-testing-life-cycle-stlc-require",
+              "sort_order": 7
+            },
+            {
+              "id": "2101c3f7-d718-57b3-a33c-ec4ecce64579",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Test Design, Test Environment Setup, Test Execution & Defect Reporting",
+              "slug": "bca-441e-u1-t8-test-design,-test-environment-setup,-tes",
+              "sort_order": 8
+            },
+            {
+              "id": "4eb0c3c3-3381-5902-934b-b974e0478a3d",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Test Artifacts: Test Plan Document, Test Scenarios, Test Cases & Traceability Matrix (RTM)",
+              "slug": "bca-441e-u1-t9-test-artifacts-test-plan-document,-test-",
+              "sort_order": 9
+            },
+            {
+              "id": "26bfd879-22d7-53f3-9af8-80cc97ac0752",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Debugging Fundamentals: Differences between Testing and Debugging",
+              "slug": "bca-441e-u1-t10-debugging-fundamentals-differences-betwe",
+              "sort_order": 10
+            },
+            {
+              "id": "e8738b07-cab8-5fab-a4b2-381b5fae382f",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Debugging Techniques: Brute Force, Backtracking, Cause Elimination & Slicing",
+              "slug": "bca-441e-u1-t11-debugging-techniques-brute-force,-backtr",
+              "sort_order": 11
+            },
+            {
+              "id": "dce01f4a-c762-5c93-adeb-5a8ae6fad67f",
+              "unit_id": "7387ca29-487c-5de1-be94-087257a4c1ae",
+              "title": "Defect Life Cycle: Bug States (New, Open, Assigned, Fixed, Retest, Closed, Deferred)",
+              "slug": "bca-441e-u1-t12-defect-life-cycle-bug-states-new,-open,-",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+          "number": 2,
+          "title": "Approaches to Testing (White Box, Black Box, Gray Box and Integration)",
+          "summary": "White Box Testing, Black Box Testing, Gray Box Testing, Unit Testing, Integration Testing (Top-down, Bottom-up, Big-bang, Sandwich).",
+          "sort_order": 2,
+          "topics": [
+            {
+              "id": "d16af295-57ac-599d-95c0-31de3297e163",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Taxonomy of Testing Approaches: White Box vs Black Box vs Gray Box Testing",
+              "slug": "bca-441e-u2-t1-taxonomy-of-testing-approaches-white-box",
+              "sort_order": 1
+            },
+            {
+              "id": "64e1c2b6-ea58-52ac-a3fc-90f8fb68fd16",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "White Box Testing: Structural Testing, Code Visibility & Internal Logic Verification",
+              "slug": "bca-441e-u2-t2-white-box-testing-structural-testing,-co",
+              "sort_order": 2
+            },
+            {
+              "id": "66f9d8ca-219b-58b2-b858-3a9f49849a0a",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Control Flow Testing: Statement Coverage, Decision/Branch Coverage & Condition Coverage",
+              "slug": "bca-441e-u2-t3-control-flow-testing-statement-coverage,",
+              "sort_order": 3
+            },
+            {
+              "id": "0972ba2b-16ec-5892-8dd7-31165f8d2fe5",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Path Coverage: Independent Execution Paths & Flow Graph Notation",
+              "slug": "bca-441e-u2-t4-path-coverage-independent-execution-path",
+              "sort_order": 4
+            },
+            {
+              "id": "c7d7eaf7-645f-5079-8093-b2bdd28c3991",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Cyclomatic Complexity: McCabe's Formula (V(G) = E - N + 2P) & Test Case Derivation",
+              "slug": "bca-441e-u2-t5-cyclomatic-complexity-mccabe's-formula-v",
+              "sort_order": 5
+            },
+            {
+              "id": "9f5cb0ec-e47b-5c16-94eb-d6b84a91ff60",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Data Flow Testing: Definition-Use (DU) Chains, Variable Anomalies (UR, DD, DU)",
+              "slug": "bca-441e-u2-t6-data-flow-testing-definition-use-du-chai",
+              "sort_order": 6
+            },
+            {
+              "id": "5469044e-e345-52cb-8e41-1027828f4378",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Black Box Testing: Functional Testing, Specifications-Driven Without Code Access",
+              "slug": "bca-441e-u2-t7-black-box-testing-functional-testing,-sp",
+              "sort_order": 7
+            },
+            {
+              "id": "de5c4005-2918-5191-b9eb-b221314e0428",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Equivalence Class Partitioning (ECP): Valid and Invalid Input Equivalence Classes",
+              "slug": "bca-441e-u2-t8-equivalence-class-partitioning-ecp-valid",
+              "sort_order": 8
+            },
+            {
+              "id": "4504b7af-6053-59c4-b41f-fc4711c49c05",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Boundary Value Analysis (BVA): Normal, Robust, Extreme Boundary Testing (Min, Min+, Nom, Max-, Max)",
+              "slug": "bca-441e-u2-t9-boundary-value-analysis-bva-normal,-robu",
+              "sort_order": 9
+            },
+            {
+              "id": "1b6f0996-bfbc-590a-aa32-966dfae8424a",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Decision Table Testing & Cause-Effect Graphing for Complex Logical Business Rules",
+              "slug": "bca-441e-u2-t10-decision-table-testing-and-cause-effect-",
+              "sort_order": 10
+            },
+            {
+              "id": "f2bcb36a-cce9-5628-994c-cdf8a7fc07d0",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "State Transition Testing & Use Case-Based Testing Techniques",
+              "slug": "bca-441e-u2-t11-state-transition-testing-and-use-case-ba",
+              "sort_order": 11
+            },
+            {
+              "id": "19ad7f27-93d9-5d7a-95f5-216aaa28ffca",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Gray Box Testing: Combining Functional Understanding with Database/Architecture Insights",
+              "slug": "bca-441e-u2-t12-gray-box-testing-combining-functional-un",
+              "sort_order": 12
+            },
+            {
+              "id": "b4f8d4b5-c3b6-523d-85be-36f2e64b6989",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Unit Testing: Driver Modules, Stub Modules & Test Isolation",
+              "slug": "bca-441e-u2-t13-unit-testing-driver-modules,-stub-module",
+              "sort_order": 13
+            },
+            {
+              "id": "cd30afa2-cd57-5a51-a333-254de386b187",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Integration Testing: Top-Down Approach with Stubs (Depth-First vs Breadth-First)",
+              "slug": "bca-441e-u2-t14-integration-testing-top-down-approach-wi",
+              "sort_order": 14
+            },
+            {
+              "id": "7de321d9-b610-5304-bd8b-f0b242841bea",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Integration Testing: Bottom-Up Approach with Drivers & Sandwich (Hybrid) Strategy",
+              "slug": "bca-441e-u2-t15-integration-testing-bottom-up-approach-w",
+              "sort_order": 15
+            },
+            {
+              "id": "354b08f6-33b3-5c0d-a73d-6e6e0134f633",
+              "unit_id": "8741448e-79a6-5f6f-8305-88fc28150f12",
+              "title": "Big-Bang Integration: Limitations, Fault Isolation Hazards & Anti-Patterns",
+              "slug": "bca-441e-u2-t16-big-bang-integration-limitations,-fault-",
+              "sort_order": 16
+            }
+          ]
+        },
+        {
+          "id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+          "number": 3,
+          "title": "Testing for Specialized Environments",
+          "summary": "Testing GUIs, Testing Client/Server Architectures, Testing Documentation and Help Facilities, Testing for Real-Time Systems.",
+          "sort_order": 3,
+          "topics": [
+            {
+              "id": "b728f0bc-2e49-547b-a757-5cc39749a791",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Testing Graphical User Interfaces (GUIs): Principles, Visual Consistency & Layouts",
+              "slug": "bca-441e-u3-t1-testing-graphical-user-interfaces-guis-p",
+              "sort_order": 1
+            },
+            {
+              "id": "d6caed33-35c2-5262-8b24-579043366fe3",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "GUI Testing Challenges: Event-Driven Nature, Asynchrony & Dynamic Visual Components",
+              "slug": "bca-441e-u3-t2-gui-testing-challenges-event-driven-natu",
+              "sort_order": 2
+            },
+            {
+              "id": "f80022a0-5770-505a-aae9-46cb31c547bb",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Usability Testing, Responsiveness, Cross-Browser Compatibility & Accessibility (WCAG)",
+              "slug": "bca-441e-u3-t3-usability-testing,-responsiveness,-cross",
+              "sort_order": 3
+            },
+            {
+              "id": "03bcd6b1-1dac-5018-a842-cd62c04c4ee9",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Testing Client/Server Architectures: Multi-Tier Architectures (Presentation, Logic, DB)",
+              "slug": "bca-441e-u3-t4-testing-client-server-architectures-mult",
+              "sort_order": 4
+            },
+            {
+              "id": "019d0f98-8847-5463-bf43-5d6595a43130",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Client-Side Testing: Form Validations, Caching, Session Handling & Local Storage",
+              "slug": "bca-441e-u3-t5-client-side-testing-form-validations,-ca",
+              "sort_order": 5
+            },
+            {
+              "id": "97daee7e-dac2-5c60-a9d1-1f157c27ceb5",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Server-Side Testing: Concurrency, API Endpoints, Request-Response Latency & Throughput",
+              "slug": "bca-441e-u3-t6-server-side-testing-concurrency,-api-end",
+              "sort_order": 6
+            },
+            {
+              "id": "e833fabe-1a72-54b3-89ee-0be59676e28e",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Database Integrity Testing: SQL Triggers, ACID Properties, Data Corruption & Rollbacks",
+              "slug": "bca-441e-u3-t7-database-integrity-testing-sql-triggers,",
+              "sort_order": 7
+            },
+            {
+              "id": "c6e5d488-048d-5b19-a9f0-c6a2fa0f7ebb",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Testing Documentation and Help Facilities: User Guides, Installation Manuals & Tooltips",
+              "slug": "bca-441e-u3-t8-testing-documentation-and-help-facilitie",
+              "sort_order": 8
+            },
+            {
+              "id": "2e7ab868-2bb2-56b5-a295-64bf1706abd6",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Documentation Accuracy, Completeness, Clarity & Readability Metrics",
+              "slug": "bca-441e-u3-t9-documentation-accuracy,-completeness,-cl",
+              "sort_order": 9
+            },
+            {
+              "id": "c0e20649-1a72-5fcd-8eb5-548bc160b689",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Testing for Real-Time Systems: Determinism, Deadlines, Hard vs Soft Real-Time Constraints",
+              "slug": "bca-441e-u3-t10-testing-for-real-time-systems-determinis",
+              "sort_order": 10
+            },
+            {
+              "id": "4f1540b3-26f8-5a74-80f7-e7a3a6696395",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Interrupt Handling, Clock Synchronization, Race Conditions & Timing Analysis",
+              "slug": "bca-441e-u3-t11-interrupt-handling,-clock-synchronizatio",
+              "sort_order": 11
+            },
+            {
+              "id": "9c563e53-7341-5510-8729-09869f2841ef",
+              "unit_id": "71b054ef-8ae4-5b17-ac66-87638111c841",
+              "title": "Hardware-in-the-Loop (HIL) Simulation & Fault Injection in Embedded Systems",
+              "slug": "bca-441e-u3-t12-hardware-in-the-loop-hil-simulation-and-",
+              "sort_order": 12
+            }
+          ]
+        },
+        {
+          "id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+          "number": 4,
+          "title": "Software Testing Strategies and Software Metrics",
+          "summary": "Validation Testing, System Testing, Verification, Performance Testing, Regression Testing, Agile Testing, Acceptance Testing, Smoke/Load Testing, Basic Metrics, Complexity Metrics.",
+          "sort_order": 4,
+          "topics": [
+            {
+              "id": "294b5fb2-99bd-5941-b3c7-f491fd5b14d3",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Software Testing Strategies: Phased Approach from Unit to System Deployment",
+              "slug": "bca-441e-u4-t1-software-testing-strategies-phased-appro",
+              "sort_order": 1
+            },
+            {
+              "id": "cda00b88-c6bb-52a9-bb44-a13e6c004ced",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Verification vs Validation: Static Testing Techniques (Reviews, Walkthroughs, Inspections)",
+              "slug": "bca-441e-u4-t2-verification-vs-validation-static-testin",
+              "sort_order": 2
+            },
+            {
+              "id": "2a34fcdb-5300-5cb5-82f7-67c6300f5d1b",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "System Testing: Validating Fully Integrated Software against System Requirements (SRS)",
+              "slug": "bca-441e-u4-t3-system-testing-validating-fully-integrat",
+              "sort_order": 3
+            },
+            {
+              "id": "78cacb0d-79f4-5543-9aaf-1e346b71d66f",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Performance Testing Overview: Speed, Scalability, Stability & Resource Utilization",
+              "slug": "bca-441e-u4-t4-performance-testing-overview-speed,-scal",
+              "sort_order": 4
+            },
+            {
+              "id": "ece1938e-096e-59af-a7bf-c703e349387e",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Stress Testing (Breaking Points), Volume Testing (Data Flooding) & Spike Testing",
+              "slug": "bca-441e-u4-t5-stress-testing-breaking-points,-volume-t",
+              "sort_order": 5
+            },
+            {
+              "id": "7f563f00-8f67-5bef-ac27-cabae5e79091",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Endurance/Soak Testing: Memory Leaks, Resource Depletion over Prolonged Usage",
+              "slug": "bca-441e-u4-t6-endurance-soak-testing-memory-leaks,-res",
+              "sort_order": 6
+            },
+            {
+              "id": "cffba18d-e1bf-575a-89c5-74a1e2062b2a",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Regression Testing: Objectives, Selective Retesting vs Retest All, Ripple Effect Analysis",
+              "slug": "bca-441e-u4-t7-regression-testing-objectives,-selective",
+              "sort_order": 7
+            },
+            {
+              "id": "7e0c0585-d00a-50f6-8e80-8184c0e0c6c1",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Regression Test Suite Optimization: Test Case Prioritization & Minimization Strategies",
+              "slug": "bca-441e-u4-t8-regression-test-suite-optimization-test-",
+              "sort_order": 8
+            },
+            {
+              "id": "1e9513b0-de18-518e-bc31-1f61ecfffa2b",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Agile Testing Principles: Whole-Team Approach, Testing in Sprints, Continuous Feedback",
+              "slug": "bca-441e-u4-t9-agile-testing-principles-whole-team-appr",
+              "sort_order": 9
+            },
+            {
+              "id": "bc9b8b63-ce6e-517f-8b3b-a16c081f5ebd",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Test-Driven Development (TDD: Red-Green-Refactor) & Behavior-Driven Development (BDD)",
+              "slug": "bca-441e-u4-t10-test-driven-development-tdd-red-green-re",
+              "sort_order": 10
+            },
+            {
+              "id": "39775268-92ea-5117-900c-80b7bd23c44d",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Acceptance Testing: User Acceptance Testing (UAT), Alpha Testing & Beta Testing in Field",
+              "slug": "bca-441e-u4-t11-acceptance-testing-user-acceptance-testi",
+              "sort_order": 11
+            },
+            {
+              "id": "0b7b7155-aff1-5976-99cd-7e4ddcb91c0f",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Smoke Testing (Build Verification) vs Sanity Testing (Targeted Health Check)",
+              "slug": "bca-441e-u4-t12-smoke-testing-build-verification-vs-sani",
+              "sort_order": 12
+            },
+            {
+              "id": "f163a762-0af6-518e-9c5c-e97ae5c5c582",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Load Testing: Simulating Concurrent Users & Measuring Response Time vs Load Curves",
+              "slug": "bca-441e-u4-t13-load-testing-simulating-concurrent-users",
+              "sort_order": 13
+            },
+            {
+              "id": "519ce5b6-bc29-5d9e-9977-e8517beef98a",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Software Quality Metrics: Defect Density, Defect Removal Efficiency (DRE), MTTF & MTBF",
+              "slug": "bca-441e-u4-t14-software-quality-metrics-defect-density,",
+              "sort_order": 14
+            },
+            {
+              "id": "57303314-20fd-5458-990c-a21147b23419",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Complexity Metrics: Halstead's Software Science (Program Length, Volume, Effort, Difficulty)",
+              "slug": "bca-441e-u4-t15-complexity-metrics-halstead's-software-s",
+              "sort_order": 15
+            },
+            {
+              "id": "0b6b0e19-abdf-5566-9b4f-5d19e591c179",
+              "unit_id": "8befecdd-89c6-528b-91eb-ea637a8bb03a",
+              "title": "Cyclomatic Complexity Applied: Identifying Refactoring Candidates & Risk Hotspots",
+              "slug": "bca-441e-u4-t16-cyclomatic-complexity-applied-identifyin",
+              "sort_order": 16
+            }
+          ]
+        },
+        {
+          "id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+          "number": 5,
+          "title": "Specialized Testing and Automated Testing Tools",
+          "summary": "Test Case Design, IEEE Test Documentation, JUnit, Apache JMeter, WinRunner, LoadRunner, Rational Robot.",
+          "sort_order": 5,
+          "topics": [
+            {
+              "id": "43d4c7d4-5d97-5413-ae89-f811240d8715",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Test Case Design Methodologies: Negative Testing, Boundary Conditions & Edge Cases",
+              "slug": "bca-441e-u5-t1-test-case-design-methodologies-negative-",
+              "sort_order": 1
+            },
+            {
+              "id": "fa513621-4810-531d-b5a2-7ad8dd0fe98b",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "IEEE 829 Standard for Software Test Documentation: Test Plan, Test Log, Incident Report",
+              "slug": "bca-441e-u5-t2-ieee-829-standard-for-software-test-docu",
+              "sort_order": 2
+            },
+            {
+              "id": "c6bebd81-1d91-5f12-8539-17f628bb995a",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Introduction to Automated Testing: Test Automation Pyramid, ROI & Feasibility Analysis",
+              "slug": "bca-441e-u5-t3-introduction-to-automated-testing-test-a",
+              "sort_order": 3
+            },
+            {
+              "id": "4718267c-fe5f-5414-b1c8-9bd1a36e97b1",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Unit Testing with JUnit: Test Architecture, Assertions, Fixtures (@Before, @After, @Test)",
+              "slug": "bca-441e-u5-t4-unit-testing-with-junit-test-architectur",
+              "sort_order": 4
+            },
+            {
+              "id": "f6a1c7ac-a112-5c39-9405-2a336538246e",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Parametric Testing, Mocking Dependencies & Test Runners in JUnit 5",
+              "slug": "bca-441e-u5-t5-parametric-testing,-mocking-dependencies",
+              "sort_order": 5
+            },
+            {
+              "id": "326b9725-7fa2-5507-ba0d-826999a44562",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Performance and Load Testing with Apache JMeter: Architecture & Thread Groups",
+              "slug": "bca-441e-u5-t6-performance-and-load-testing-with-apache",
+              "sort_order": 6
+            },
+            {
+              "id": "8a8c2e76-a54d-585f-81f3-c46dc2f1dd75",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "JMeter Components: Samplers (HTTP, JDBC), Timers, Listeners (Graph Results, Tree View)",
+              "slug": "bca-441e-u5-t7-jmeter-components-samplers-http,-jdbc,-t",
+              "sort_order": 7
+            },
+            {
+              "id": "cb2c32d1-cb74-5a10-83e5-0cbca5412897",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Building and Analyzing JMeter Test Plans for Scalability & Concurrency Bottlenecks",
+              "slug": "bca-441e-u5-t8-building-and-analyzing-jmeter-test-plans",
+              "sort_order": 8
+            },
+            {
+              "id": "ee0518eb-9248-5545-a85b-3190b9e88d0b",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Legacy and Enterprise Automation Tools: Mercury/HP WinRunner Architecture",
+              "slug": "bca-441e-u5-t9-legacy-and-enterprise-automation-tools-m",
+              "sort_order": 9
+            },
+            {
+              "id": "76e5c228-d208-591a-8fc2-efecd45b2453",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Record and Playback Mechanisms, GUI Checkpoints & Object Repositories in WinRunner",
+              "slug": "bca-441e-u5-t10-record-and-playback-mechanisms,-gui-chec",
+              "sort_order": 10
+            },
+            {
+              "id": "4998f841-9243-5621-84e9-c4f08e1b76b5",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Enterprise Performance Testing with HP/Micro Focus LoadRunner (VuGen, Controller, Analysis)",
+              "slug": "bca-441e-u5-t11-enterprise-performance-testing-with-hp-m",
+              "sort_order": 11
+            },
+            {
+              "id": "c5e8d0e3-782d-5504-a6fa-3ece44616f1b",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Automated Functional Testing with IBM Rational Robot: Object-Oriented Recording & SQA Basic",
+              "slug": "bca-441e-u5-t12-automated-functional-testing-with-ibm-ra",
+              "sort_order": 12
+            },
+            {
+              "id": "a1f54432-5405-524e-aec6-152e716567a8",
+              "unit_id": "2b5a3994-7e81-569b-a568-9ff7d969c933",
+              "title": "Modern Automation Overview: Selenium WebDriver, Cypress, Playwright & Postman APIs",
+              "slug": "bca-441e-u5-t13-modern-automation-overview-selenium-webd",
+              "sort_order": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "48778a47-9585-56ea-b9e4-fcd8f2d82622",
+      "code": "BCA-442E",
+      "title": "Advanced Web Development Technologies",
+      "slug": "bca-442e-advanced-web-development-technologies",
+      "credits": 4,
+      "sort_order": 5,
+      "units": [
+        {
+          "id": "304ea51d-c15d-587f-beb4-a82087b80385",
+          "number": 1,
+          "title": "JavaScript Fundamentals and Modern ECMAScript",
+          "summary": "JavaScript Syntax, Internal/External JS, DOM & Window Object, Variables, Types, Math/String, Objects, Arrays, Dates, Conditionals, Loops, and Functions.",
+          "sort_order": 1,
+          "topics": [
+            {
+              "id": "b5dbbc40-a1b5-5332-a33b-6a2b7ac2950d",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Introduction to JavaScript: Client-Side Scripting, V8 Engine & Execution Context",
+              "slug": "bca-442e-u1-t1-introduction-to-javascript-client-side-s",
+              "sort_order": 1
+            },
+            {
+              "id": "9927adb3-c689-5a68-b32b-d7e5164d6f40",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Applying JavaScript: Inline, Internal (<script>) & External JS (.js), Module Scripts",
+              "slug": "bca-442e-u1-t2-applying-javascript-inline,-internal-<sc",
+              "sort_order": 2
+            },
+            {
+              "id": "cc00c2e4-ac69-5ad4-965e-0a9b81ea7647",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Understanding JS Syntax: Strict Mode ('use strict'), Lexical Grammar & ASI",
+              "slug": "bca-442e-u1-t3-understanding-js-syntax-strict-mode-'use",
+              "sort_order": 3
+            },
+            {
+              "id": "51a4a070-ce32-5fc1-b6e2-aaed6269acce",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Introduction to Browser Object Model (Window Object, Screen, History, Location, Navigator)",
+              "slug": "bca-442e-u1-t4-introduction-to-browser-object-model-win",
+              "sort_order": 4
+            },
+            {
+              "id": "f0d35a87-fad2-5b3d-b812-9e4428054e53",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Document Object Model (DOM): Document Object, DOM Tree, Node Types & Element Selection",
+              "slug": "bca-442e-u1-t5-document-object-model-dom-document-objec",
+              "sort_order": 5
+            },
+            {
+              "id": "d379e2ad-c50f-5917-86be-3af5cd4c552a",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "DOM Manipulation: Manipulating Text, HTML, Styles, Attributes & Creating Elements",
+              "slug": "bca-442e-u1-t6-dom-manipulation-manipulating-text,-html",
+              "sort_order": 6
+            },
+            {
+              "id": "c1a6756c-08a6-50bb-a3bb-c83ee6310726",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Event Handling: Event Listeners, Event Object, Event Bubbling & Capturing, Delegation",
+              "slug": "bca-442e-u1-t7-event-handling-event-listeners,-event-ob",
+              "sort_order": 7
+            },
+            {
+              "id": "de526d27-3a52-5c52-a24c-186cbac6aca7",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Variables and Scoping: var (Function Scope, Hoisting) vs let & const (Block Scope, TDZ)",
+              "slug": "bca-442e-u1-t8-variables-and-scoping-var-function-scope",
+              "sort_order": 8
+            },
+            {
+              "id": "5fc8c726-542a-5953-b9ea-415cc9b45ca0",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Data Types and Type Conversion: Primitives vs Reference Types, Coercion vs Explicit Casting",
+              "slug": "bca-442e-u1-t9-data-types-and-type-conversion-primitive",
+              "sort_order": 9
+            },
+            {
+              "id": "ea5531b7-8553-5a44-a544-bc3e0ee7be15",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Math Object & Methods (Math.round, floor, ceil, random) & Number Operations",
+              "slug": "bca-442e-u1-t10-math-object-and-methods-math.round,-floo",
+              "sort_order": 10
+            },
+            {
+              "id": "157c16dd-7384-5ea3-9bf6-d18cdf28d896",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "String Manipulation: String Methods, Concatenation, Template Literals & Regular Expressions",
+              "slug": "bca-442e-u1-t11-string-manipulation-string-methods,-conc",
+              "sort_order": 11
+            },
+            {
+              "id": "6cf38ad4-7931-5381-9f41-76269424366e",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Objects and Arrays: Object Literals, Methods, Object Destructuring, Array Methods (map, filter, reduce)",
+              "slug": "bca-442e-u1-t12-objects-and-arrays-object-literals,-meth",
+              "sort_order": 12
+            },
+            {
+              "id": "8bc631a7-221c-5368-bd84-8132b6251628",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Date and Time: Date Object, Timestamps, Formatting & Epoch Computations",
+              "slug": "bca-442e-u1-t13-date-and-time-date-object,-timestamps,-f",
+              "sort_order": 13
+            },
+            {
+              "id": "d2149cba-e880-5fbd-ad42-5ee447be0d0e",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Conditional Statements & Switch Case: Truthy/Falsy Values, Ternary Operator, Nullish Coalescing",
+              "slug": "bca-442e-u1-t14-conditional-statements-and-switch-case-t",
+              "sort_order": 14
+            },
+            {
+              "id": "be604d57-bdc9-5bcc-a093-02b7d6055701",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Looping Structures: for, while, do-while, for...in (Keys) & for...of (Iterables)",
+              "slug": "bca-442e-u1-t15-looping-structures-for,-while,-do-while,",
+              "sort_order": 15
+            },
+            {
+              "id": "29b53f20-88b3-56d2-952c-6f393aa9a23a",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Functions: Declarations, Expressions, Arrow Functions, Default Parameters, Rest/Spread",
+              "slug": "bca-442e-u1-t16-functions-declarations,-expressions,-arr",
+              "sort_order": 16
+            },
+            {
+              "id": "9af6ae59-5e82-596e-b57b-791a23413bd9",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Advanced JavaScript Concepts: Closures, Lexical Environment, Currying & IIFE",
+              "slug": "bca-442e-u1-t17-advanced-javascript-concepts-closures,-l",
+              "sort_order": 17
+            },
+            {
+              "id": "04ad3724-a64a-5f9d-88f9-e62b7939743e",
+              "unit_id": "304ea51d-c15d-587f-beb4-a82087b80385",
+              "title": "Asynchronous JavaScript Foundations: Callbacks, Promises, async/await & Microtask Queue",
+              "slug": "bca-442e-u1-t18-asynchronous-javascript-foundations-call",
+              "sort_order": 18
+            }
+          ]
+        },
+        {
+          "id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+          "number": 2,
+          "title": "React.js Framework, State Management and Tooling",
+          "summary": "JSX, Components, State and Props, Lifecycle, Rendering Lists, Portals, Error Handling, Routers, Redux, Redux Saga, Immutable.js, SSR, Unit Testing, Webpack.",
+          "sort_order": 2,
+          "topics": [
+            {
+              "id": "eba442f2-1117-5327-8cc2-bbe63e8d03da",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Introduction to React.js: Component-Based Architecture, Declarative UI & Virtual DOM",
+              "slug": "bca-442e-u2-t1-introduction-to-react.js-component-based",
+              "sort_order": 1
+            },
+            {
+              "id": "b3748f5e-f186-508a-aba9-183254843a0b",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Reconciliation and Diffing Algorithm: Fiber Architecture & Performance Optimization",
+              "slug": "bca-442e-u2-t2-reconciliation-and-diffing-algorithm-fib",
+              "sort_order": 2
+            },
+            {
+              "id": "b947ebd1-54f1-570a-9a3f-f7e45ae65a50",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Templating using JSX: Syntax Rules, Expressions in JSX, JSX to React.createElement Compilation",
+              "slug": "bca-442e-u2-t3-templating-using-jsx-syntax-rules,-expre",
+              "sort_order": 3
+            },
+            {
+              "id": "71453abe-72fd-563a-9d77-aaa5665be51c",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "React Components: Functional Components vs Class Components",
+              "slug": "bca-442e-u2-t4-react-components-functional-components-v",
+              "sort_order": 4
+            },
+            {
+              "id": "8de576cc-7f28-5964-afcd-33ea55c1c549",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "State and Props: Unidirectional Data Flow, Immutability & Passing Data Down Hierarchies",
+              "slug": "bca-442e-u2-t5-state-and-props-unidirectional-data-flow",
+              "sort_order": 5
+            },
+            {
+              "id": "79ea4878-8676-574c-9c34-46d16da5314e",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "React Hooks: useState, useEffect, useContext, useRef, useMemo & useCallback",
+              "slug": "bca-442e-u2-t6-react-hooks-usestate,-useeffect,-usecont",
+              "sort_order": 6
+            },
+            {
+              "id": "0a4ede8a-9052-53ed-8453-6644bd2256d7",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Component Lifecycle: Mounting, Updating & Unmounting Phases (Class vs Hook Parity)",
+              "slug": "bca-442e-u2-t7-component-lifecycle-mounting,-updating-a",
+              "sort_order": 7
+            },
+            {
+              "id": "b1f427ba-e9a7-5d60-9754-f4a6fca406dc",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Rendering Lists and Keys: Why Keys Matter in Virtual DOM Reconciliation",
+              "slug": "bca-442e-u2-t8-rendering-lists-and-keys-why-keys-matter",
+              "sort_order": 8
+            },
+            {
+              "id": "856e1601-2e52-5f62-80db-b51a634bc723",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "React Portals: Rendering Outside the Parent DOM Hierarchy (Modals, Tooltips)",
+              "slug": "bca-442e-u2-t9-react-portals-rendering-outside-the-pare",
+              "sort_order": 9
+            },
+            {
+              "id": "e67b6b9e-b39e-5072-8fa4-2a58169d2e75",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Error Handling in React: Error Boundaries (componentDidCatch, getDerivedStateFromError)",
+              "slug": "bca-442e-u2-t10-error-handling-in-react-error-boundaries",
+              "sort_order": 10
+            },
+            {
+              "id": "d0a879f4-4120-5f82-8635-9e8af980a983",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Client-Side Routing with React Router: BrowserRouter, Routes, Route, Link & useParams",
+              "slug": "bca-442e-u2-t11-client-side-routing-with-react-router-br",
+              "sort_order": 11
+            },
+            {
+              "id": "a250f64c-9385-5c5d-ba26-24701ffcc88d",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "State Management with Redux: Core Principles, Single Source of Truth & Pure Reducers",
+              "slug": "bca-442e-u2-t12-state-management-with-redux-core-princip",
+              "sort_order": 12
+            },
+            {
+              "id": "5dc92986-7b99-5b80-a7ae-c388073b2224",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Redux Architecture: Store, Actions, Action Creators, Dispatch & useSelector/useDispatch",
+              "slug": "bca-442e-u2-t13-redux-architecture-store,-actions,-actio",
+              "sort_order": 13
+            },
+            {
+              "id": "395d8a3c-59cd-5d8c-87de-5e641f326828",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Asynchronous Side Effects with Redux Saga: Generator Functions, Call/Put/TakeEffects",
+              "slug": "bca-442e-u2-t14-asynchronous-side-effects-with-redux-sag",
+              "sort_order": 14
+            },
+            {
+              "id": "2c598c1c-abed-5f07-a8d7-4d34cc465074",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Immutable.js: Persistent Data Structures, List, Map & Structural Sharing Benefits",
+              "slug": "bca-442e-u2-t15-immutable.js-persistent-data-structures,",
+              "sort_order": 15
+            },
+            {
+              "id": "a63e7139-ed2e-5409-a744-10b397118e62",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Server-Side Rendering (SSR) Concepts: Hydration, SEO Advantages & Next.js Overview",
+              "slug": "bca-442e-u2-t16-server-side-rendering-ssr-concepts-hydra",
+              "sort_order": 16
+            },
+            {
+              "id": "5e010a24-ed16-55d3-b887-0d0259d4c7b7",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Unit Testing React Components: Jest Testing Framework & React Testing Library (RTL)",
+              "slug": "bca-442e-u2-t17-unit-testing-react-components-jest-testi",
+              "sort_order": 17
+            },
+            {
+              "id": "f05ed9fe-6d58-5cf7-8fb7-65ae61b40be9",
+              "unit_id": "9ede825c-c2bb-5edd-8258-c240dd59905f",
+              "title": "Module Bundling with Webpack: Entry, Output, Loaders (Babel), Plugins & Code Splitting",
+              "slug": "bca-442e-u2-t18-module-bundling-with-webpack-entry,-outp",
+              "sort_order": 18
+            }
+          ]
+        },
+        {
+          "id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+          "number": 3,
+          "title": "Node.js and Express.js Server-Side Engineering",
+          "summary": "Node.js Overview, Setup, Console, Command Utilities, Modules, Concepts, Events, Express.js, and Database Access.",
+          "sort_order": 3,
+          "topics": [
+            {
+              "id": "5dcbdaab-2d41-590e-969f-c4ebfc9c4ae9",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Overview: Chrome V8 Engine, Architecture & Single-Threaded Event Loop",
+              "slug": "bca-442e-u3-t1-node.js-overview-chrome-v8-engine,-archi",
+              "sort_order": 1
+            },
+            {
+              "id": "99f20841-edec-5600-8e85-9a8b83ed1e8e",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Setup, Environment Configuration, Package.json & NPM/NPX Command Utilities",
+              "slug": "bca-442e-u3-t2-node.js-setup,-environment-configuration",
+              "sort_order": 2
+            },
+            {
+              "id": "10942268-55c3-5a79-9d2c-9e8551d3dbc3",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Console, Debugging Tools, REPL & Environment Variables (dotenv)",
+              "slug": "bca-442e-u3-t3-node.js-console,-debugging-tools,-repl-a",
+              "sort_order": 3
+            },
+            {
+              "id": "b1658095-8c73-586d-91da-0fa1ca315680",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Module System: CommonJS (require, module.exports) vs ES Modules (import, export)",
+              "slug": "bca-442e-u3-t4-node.js-module-system-commonjs-require,-",
+              "sort_order": 4
+            },
+            {
+              "id": "ab78ceb8-aba7-5dad-8ba4-5b430c579961",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Built-in Node.js Modules: fs (File System, sync vs async), path, os, http & url",
+              "slug": "bca-442e-u3-t5-built-in-node.js-modules-fs-file-system,",
+              "sort_order": 5
+            },
+            {
+              "id": "921093c9-d169-54a2-9029-962505e2dec9",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Core Concepts: Non-blocking I/O, Libuv Thread Pool & Asynchronous Execution",
+              "slug": "bca-442e-u3-t6-node.js-core-concepts-non-blocking-i-o,-",
+              "sort_order": 6
+            },
+            {
+              "id": "31ca66f8-aa48-5443-93a0-b9c38ca21e0b",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Streams and Buffers in Node.js: Readable, Writable, Duplex & Transform Streams, Piping",
+              "slug": "bca-442e-u3-t7-streams-and-buffers-in-node.js-readable,",
+              "sort_order": 7
+            },
+            {
+              "id": "6161b66b-a3dc-552a-956c-c23e6a9a962e",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Events: EventEmitter Class, Emitting Events, on(), once() & Custom Event Handlers",
+              "slug": "bca-442e-u3-t8-node.js-events-eventemitter-class,-emitt",
+              "sort_order": 8
+            },
+            {
+              "id": "1285955a-161f-5986-bc94-5e5adc64cb7d",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Building Web Servers with Node.js http Module: Request & Response Pipeline",
+              "slug": "bca-442e-u3-t9-building-web-servers-with-node.js-http-m",
+              "sort_order": 9
+            },
+            {
+              "id": "34af6267-c1fe-5c3c-90cf-fc51483d6add",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Introduction to Express.js: Minimalist Web Framework Architecture",
+              "slug": "bca-442e-u3-t10-introduction-to-express.js-minimalist-we",
+              "sort_order": 10
+            },
+            {
+              "id": "e9cc9a9b-7e26-544b-8638-a5986f565c99",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Express.js Routing: Route Parameters, Query Strings & Modular Routers (express.Router)",
+              "slug": "bca-442e-u3-t11-express.js-routing-route-parameters,-que",
+              "sort_order": 11
+            },
+            {
+              "id": "b0fc39cb-a9b7-544f-9215-734cf48a63e5",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Express.js Middleware Architecture: Application-Level, Router-Level, Built-in & Error Middleware",
+              "slug": "bca-442e-u3-t12-express.js-middleware-architecture-appli",
+              "sort_order": 12
+            },
+            {
+              "id": "a31f7d81-21c7-5557-b825-73d5cf5ec89f",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Handling Forms and JSON: body-parser, express.json() & express.urlencoded()",
+              "slug": "bca-442e-u3-t13-handling-forms-and-json-body-parser,-exp",
+              "sort_order": 13
+            },
+            {
+              "id": "81f888b9-9a03-5a8e-892a-9ed2831e8e15",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "Node.js Database Access: Connection Pools, CRUD Operations with Relational & NoSQL Stores",
+              "slug": "bca-442e-u3-t14-node.js-database-access-connection-pools",
+              "sort_order": 14
+            },
+            {
+              "id": "a9e2e808-1aec-58b6-adfe-1d6582c98912",
+              "unit_id": "627b394e-7e9b-5c99-809f-0f3412bf114e",
+              "title": "RESTful API Development with Express: REST Principles, Status Codes & Error Handling",
+              "slug": "bca-442e-u3-t15-restful-api-development-with-express-res",
+              "sort_order": 15
+            }
+          ]
+        },
+        {
+          "id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+          "number": 4,
+          "title": "SQL vs NoSQL and MongoDB Database Architecture",
+          "summary": "SQL and NoSQL Concepts, Create and Manage MongoDB, Data Migration, MongoDB with PHP, MongoDB with NodeJS, Services Offered by MongoDB.",
+          "sort_order": 4,
+          "topics": [
+            {
+              "id": "d0da0477-543f-59b2-a9c5-ecdc2380c14b",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "SQL vs NoSQL Paradigms: Relational vs Document-Oriented vs Key-Value vs Graph Stores",
+              "slug": "bca-442e-u4-t1-sql-vs-nosql-paradigms-relational-vs-doc",
+              "sort_order": 1
+            },
+            {
+              "id": "4fc09395-e4e2-59b9-8b0b-268fe6de1d65",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "ACID vs BASE Properties: CAP Theorem (Consistency, Availability, Partition Tolerance)",
+              "slug": "bca-442e-u4-t2-acid-vs-base-properties-cap-theorem-cons",
+              "sort_order": 2
+            },
+            {
+              "id": "7b7806e3-85cb-528e-b65b-bc8ea1b098c1",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Introduction to MongoDB: BSON Format, Collections, Documents & Dynamic Schemas",
+              "slug": "bca-442e-u4-t3-introduction-to-mongodb-bson-format,-col",
+              "sort_order": 3
+            },
+            {
+              "id": "98c66350-47cc-5b66-a742-11d8835d7ddb",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Installing and Configuring MongoDB: mongod Daemon, mongosh Shell & GUI (Compass)",
+              "slug": "bca-442e-u4-t4-installing-and-configuring-mongodb-mongo",
+              "sort_order": 4
+            },
+            {
+              "id": "0a94ab83-b393-5387-857c-f9021a6043fb",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Creating and Managing MongoDB: Database Creation, Collections, Capped Collections",
+              "slug": "bca-442e-u4-t5-creating-and-managing-mongodb-database-c",
+              "sort_order": 5
+            },
+            {
+              "id": "f1a25288-e526-5866-87b4-572a681418f6",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "MongoDB CRUD Operations: insertOne/insertMany, find/findOne with Query Operators",
+              "slug": "bca-442e-u4-t6-mongodb-crud-operations-insertone-insert",
+              "sort_order": 6
+            },
+            {
+              "id": "8d42f9ca-c134-512f-a456-13c0be50de83",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Advanced Querying in MongoDB: Comparison ($gt, $lt), Logical ($and, $or), Array ($elemMatch)",
+              "slug": "bca-442e-u4-t7-advanced-querying-in-mongodb-comparison-",
+              "sort_order": 7
+            },
+            {
+              "id": "9307e2f7-af4f-5866-99ad-e2c7f50cebf2",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Update Operations: updateOne/updateMany, $set, $unset, $inc, $push, $pull, upsert",
+              "slug": "bca-442e-u4-t8-update-operations-updateone-updatemany,-",
+              "sort_order": 8
+            },
+            {
+              "id": "a02fab30-8a79-5ea3-9335-22d4461511ce",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Delete Operations: deleteOne/deleteMany & Drop Collections",
+              "slug": "bca-442e-u4-t9-delete-operations-deleteone-deletemany-a",
+              "sort_order": 9
+            },
+            {
+              "id": "bfdcb1a5-a0b5-537b-8fd8-ed75e4c80486",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "MongoDB Indexing: Single Field, Compound, Multikey, Text & Unique Indexes, Performance",
+              "slug": "bca-442e-u4-t10-mongodb-indexing-single-field,-compound,",
+              "sort_order": 10
+            },
+            {
+              "id": "dda50f2a-1ff4-519d-a7aa-2171f986251d",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Aggregation Framework in MongoDB: Pipeline Stages ($match, $group, $project, $sort, $lookup)",
+              "slug": "bca-442e-u4-t11-aggregation-framework-in-mongodb-pipelin",
+              "sort_order": 11
+            },
+            {
+              "id": "8215ebb9-e1f4-5d05-9a76-035405ddd7dd",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Migration of Data into MongoDB: Importing JSON/CSV via mongoimport, ETL Strategies",
+              "slug": "bca-442e-u4-t12-migration-of-data-into-mongodb-importing",
+              "sort_order": 12
+            },
+            {
+              "id": "7ab2c826-9c81-5ad4-81dc-5acdff410211",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Connecting MongoDB with PHP: MongoDB Driver for PHP, BSON Classes & Performing Queries",
+              "slug": "bca-442e-u4-t13-connecting-mongodb-with-php-mongodb-driv",
+              "sort_order": 13
+            },
+            {
+              "id": "eead972e-8487-5c3e-9209-bc3dcf2c4194",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Connecting MongoDB with Node.js: Official MongoDB Driver & Mongoose ODM",
+              "slug": "bca-442e-u4-t14-connecting-mongodb-with-node.js-official",
+              "sort_order": 14
+            },
+            {
+              "id": "a4b04f2e-7c6a-5c55-bcab-acfbbef11aa5",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Mongoose ODM Architecture: Schemas, Models, Validation, Middleware (Pre/Post Hooks)",
+              "slug": "bca-442e-u4-t15-mongoose-odm-architecture-schemas,-model",
+              "sort_order": 15
+            },
+            {
+              "id": "60c87413-02cb-5357-b9b5-1b382984638c",
+              "unit_id": "96f26227-188c-54dc-ac74-7e6c92c66ffd",
+              "title": "Services Offered by MongoDB: MongoDB Atlas Cloud, Atlas Search, Triggers & Vector Search",
+              "slug": "bca-442e-u4-t16-services-offered-by-mongodb-mongodb-atla",
+              "sort_order": 16
+            }
+          ]
+        },
+        {
+          "id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+          "number": 5,
+          "title": "Python Web Integration and Full-Stack MongoDB Connectivity",
+          "summary": "Python Installation and Configuration, Developing Python Applications, Connecting MongoDB with Python (PyMongo), and Full-Stack Integration.",
+          "sort_order": 5,
+          "topics": [
+            {
+              "id": "dd66a7af-b528-5659-b9c5-7c80b9b7733b",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Python Installation, Setup & Environment Variables on Windows and Linux",
+              "slug": "bca-442e-u5-t1-python-installation,-setup-and-environme",
+              "sort_order": 1
+            },
+            {
+              "id": "297b6a26-a10a-580f-a40a-22b1738a6154",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Python Virtual Environments (venv), PIP Package Management & requirements.txt",
+              "slug": "bca-442e-u5-t2-python-virtual-environments-venv,-pip-pa",
+              "sort_order": 2
+            },
+            {
+              "id": "2b6925c4-8518-50f7-8ef2-450133546752",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Python Core Features for Web Engineers: Datatypes, Dictionaries, Lists & Comprehensions",
+              "slug": "bca-442e-u5-t3-python-core-features-for-web-engineers-d",
+              "sort_order": 3
+            },
+            {
+              "id": "e645f235-3e6a-5413-b3dc-5503909e0bb9",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Object-Oriented Programming in Python: Classes, Methods, Inheritance & Modules",
+              "slug": "bca-442e-u5-t4-object-oriented-programming-in-python-cl",
+              "sort_order": 4
+            },
+            {
+              "id": "24b00132-f9df-5420-978d-4571b699600b",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Developing a Python Application: Overview of Web Frameworks (Flask, FastAPI, Django)",
+              "slug": "bca-442e-u5-t5-developing-a-python-application-overview",
+              "sort_order": 5
+            },
+            {
+              "id": "f0dd497d-04e3-5496-afd9-abdb0f3aded7",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Building Lightweight REST APIs with Flask: Routes, Request Objects & jsonify Responses",
+              "slug": "bca-442e-u5-t6-building-lightweight-rest-apis-with-flas",
+              "sort_order": 6
+            },
+            {
+              "id": "4a50c77b-9a30-5836-90c8-ae5aca6fd5b9",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Introduction to PyMongo: Installation, MongoClient Connection & Database Handles",
+              "slug": "bca-442e-u5-t7-introduction-to-pymongo-installation,-mo",
+              "sort_order": 7
+            },
+            {
+              "id": "5d1b79b3-c9a4-5317-a8d9-a8d13020bcc8",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Connecting MongoDB with Python: Connection Strings, Atlas Cloud Connections & Auth",
+              "slug": "bca-442e-u5-t8-connecting-mongodb-with-python-connectio",
+              "sort_order": 8
+            },
+            {
+              "id": "029912a0-6a96-5f48-9048-6c0387a462ae",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Performing CRUD Operations from Python: insert_one, insert_many, find, update_one, delete",
+              "slug": "bca-442e-u5-t9-performing-crud-operations-from-python-i",
+              "sort_order": 9
+            },
+            {
+              "id": "c1f51493-59ee-5059-bc0e-cab7f4813cd5",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Advanced PyMongo Queries: Filtering, Sorting, Limiting & Regular Expression Queries",
+              "slug": "bca-442e-u5-t10-advanced-pymongo-queries-filtering,-sort",
+              "sort_order": 10
+            },
+            {
+              "id": "0ce67f51-182a-50ca-95f5-eef6e7e35c81",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "PyMongo Aggregation: Executing Multi-Stage Aggregation Pipelines in Python",
+              "slug": "bca-442e-u5-t11-pymongo-aggregation-executing-multi-stag",
+              "sort_order": 11
+            },
+            {
+              "id": "9ae791bd-f6ba-514b-97fe-73f95d2fd3c5",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Handling MongoDB ObjectId & BSON to JSON Serialization in Python Web Services",
+              "slug": "bca-442e-u5-t12-handling-mongodb-objectid-and-bson-to-js",
+              "sort_order": 12
+            },
+            {
+              "id": "b4422acf-404e-5344-94a0-b13d98c80ca2",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Integrating Python Backend with Frontend Applications: CORS, JSON Endpoints & Fetch API",
+              "slug": "bca-442e-u5-t13-integrating-python-backend-with-frontend",
+              "sort_order": 13
+            },
+            {
+              "id": "7dfeaa92-07af-5bfa-bcc1-248b1d6174ef",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Full-Stack Architecture Synthesis: React Frontend, Python/Node Backend & MongoDB Database",
+              "slug": "bca-442e-u5-t14-full-stack-architecture-synthesis-react-",
+              "sort_order": 14
+            },
+            {
+              "id": "10bedf93-c042-5e19-b45f-3a1cb96e3e67",
+              "unit_id": "8b70b91b-b66b-546c-9e8f-151f6592c49d",
+              "title": "Deployment and Security Considerations: Environment Secrets, Production WSGI/ASGI Servers",
+              "slug": "bca-442e-u5-t15-deployment-and-security-considerations-e",
+              "sort_order": 15
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

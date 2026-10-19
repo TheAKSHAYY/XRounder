@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
   LayoutDashboard,
@@ -25,6 +25,7 @@ import {
   Globe,
   SlidersHorizontal,
   ArrowLeftRight,
+  Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -60,27 +61,37 @@ type NavItem = {
   badgeKey?: "inbox" | "drafts";
 };
 
-// Primary operational sections
-const NAV_CONTENT: NavItem[] = [
+// 1. Overview
+const NAV_OVERVIEW: NavItem[] = [
   { label: "Dashboard", to: "/admin", icon: LayoutDashboard, exact: true },
-  { label: "Courses", to: "/admin/courses", icon: BookOpen },
-  { label: "Subjects", to: "/admin/subjects", icon: Library },
-  { label: "Notes & Articles", to: "/admin/content", icon: FileText, badgeKey: "drafts" },
-  { label: "MCQs & Quizzes", to: "/admin/quizzes", icon: FlaskConical },
+];
+
+// 2. Learning Content
+const NAV_CONTENT: NavItem[] = [
+  { label: "Courses & Semesters", to: "/admin/courses", icon: BookOpen },
+  { label: "Subjects & Units", to: "/admin/subjects", icon: Library },
+  { label: "Notes & Materials", to: "/admin/content", icon: FileText, badgeKey: "drafts" },
   { label: "Previous Papers", to: "/admin/papers", icon: FileStack },
+  { label: "Curriculum Tree", to: "/admin/explorer", icon: FolderTree },
 ];
 
-const NAV_PUBLISHING: NavItem[] = [
-  { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
-  { label: "Media Library", to: "/admin/media", icon: ImageIcon },
-  { label: "Content Tree", to: "/admin/explorer", icon: FolderTree },
-  { label: "Tags", to: "/admin/tags", icon: Tag },
+// 3. Assessments
+const NAV_ASSESSMENTS: NavItem[] = [
+  { label: "Quizzes & MCQs", to: "/admin/quizzes", icon: FlaskConical },
 ];
 
+// 4. Students & Community
 const NAV_COMMUNITY: NavItem[] = [
-  { label: "Student Directory", to: "/admin/users", icon: Library },
+  { label: "Student Directory", to: "/admin/users", icon: Users },
+  { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
   { label: "Inbox Messages", to: "/admin/inbox", icon: Inbox, badgeKey: "inbox" },
-  { label: "Settings", to: "/admin/settings", icon: Settings },
+];
+
+// 5. Assets & System
+const NAV_ASSETS: NavItem[] = [
+  { label: "Media Library", to: "/admin/media", icon: ImageIcon },
+  { label: "Tags Taxonomy", to: "/admin/tags", icon: Tag },
+  { label: "Admin Settings", to: "/admin/settings", icon: Settings },
 ];
 
 export function AdminShell() {
@@ -102,6 +113,30 @@ export function AdminShell() {
     return undefined;
   };
 
+  const routeTitle = useMemo(() => {
+    if (pathname === "/admin") return "Overview";
+    if (pathname.startsWith("/admin/courses")) return "Courses & Semesters";
+    if (pathname.startsWith("/admin/subjects")) return "Subjects & Units";
+    if (pathname.startsWith("/admin/units")) return "Unit Workspace";
+    if (pathname.startsWith("/admin/content")) return "Learning Content";
+    if (pathname.startsWith("/admin/quizzes")) return "Assessments & MCQs";
+    if (pathname.startsWith("/admin/papers")) return "Previous Papers";
+    if (pathname.startsWith("/admin/explorer")) return "Curriculum Tree";
+    if (pathname.startsWith("/admin/users")) return "Student Directory";
+    if (pathname.startsWith("/admin/announcements")) return "Announcements";
+    if (pathname.startsWith("/admin/inbox")) return "Inbox Messages";
+    if (pathname.startsWith("/admin/media")) return "Media Library";
+    if (pathname.startsWith("/admin/tags")) return "Tags Taxonomy";
+    if (pathname.startsWith("/admin/settings")) return "Administrative Settings";
+    if (pathname.startsWith("/admin/superadmin/users")) return "Staff & Access";
+    if (pathname.startsWith("/admin/superadmin/audit")) return "Audit Logs";
+    if (pathname.startsWith("/admin/superadmin/flags")) return "Feature Flags";
+    if (pathname.startsWith("/admin/superadmin/branding")) return "Platform Branding";
+    if (pathname.startsWith("/admin/superadmin/seo")) return "SEO Manager";
+    if (pathname.startsWith("/admin/superadmin")) return "Platform Governance";
+    return "Control Center";
+  }, [pathname]);
+
   return (
     <SidebarProvider>
       <div className="flex min-h-dvh w-full bg-background">
@@ -116,10 +151,29 @@ export function AdminShell() {
               </div>
             </div>
 
-            {/* 1. Core Content Operations */}
+            {/* 1. Overview */}
             <SidebarGroup>
               <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
-                Content Operations
+                Overview
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {NAV_OVERVIEW.map((item) => (
+                    <NavRow
+                      key={item.to}
+                      item={item}
+                      active={isActive(item.to, item.exact)}
+                      badge={getBadge(item)}
+                    />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+
+            {/* 2. Learning Content */}
+            <SidebarGroup>
+              <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                Learning Content
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
@@ -135,14 +189,14 @@ export function AdminShell() {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            {/* 2. Publishing & Media */}
+            {/* 3. Assessments */}
             <SidebarGroup>
               <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
-                Publishing &amp; Library
+                Assessments
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {NAV_PUBLISHING.map((item) => (
+                  {NAV_ASSESSMENTS.map((item) => (
                     <NavRow
                       key={item.to}
                       item={item}
@@ -154,10 +208,10 @@ export function AdminShell() {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            {/* 3. Community & Users */}
+            {/* 4. Students & Community */}
             <SidebarGroup>
               <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
-                Students &amp; Support
+                Students &amp; Notice
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
@@ -173,7 +227,26 @@ export function AdminShell() {
               </SidebarGroupContent>
             </SidebarGroup>
 
-            {/* 4. Super Admin / Platform Controls */}
+            {/* 5. Assets & Taxonomy */}
+            <SidebarGroup>
+              <SidebarGroupLabel className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">
+                Assets &amp; Settings
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {NAV_ASSETS.map((item) => (
+                    <NavRow
+                      key={item.to}
+                      item={item}
+                      active={isActive(item.to, item.exact)}
+                      badge={getBadge(item)}
+                    />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+
+            {/* 6. Super Admin / Platform Controls */}
             {isSuperAdmin && (
               <SidebarGroup>
                 <SidebarGroupLabel className="flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-destructive font-bold">
@@ -260,38 +333,43 @@ export function AdminShell() {
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-border/70 bg-background/85 px-3 backdrop-blur sm:px-4">
             <SidebarTrigger aria-label="Toggle sidebar" />
-            {inPlatform ? (
-              <div className="flex items-center gap-2">
-                <span
-                  className="inline-flex items-center gap-1.5 rounded-full border border-destructive/30 bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-destructive"
-                  title="You are in Platform (Super Admin) mode"
-                >
-                  <ShieldCheck className="h-3 w-3" />
-                  Platform Governance
-                </span>
+            <div className="flex items-center gap-2">
+              <span className="font-sans text-sm font-semibold tracking-tight text-foreground hidden sm:inline">
+                {routeTitle}
+              </span>
+              {inPlatform ? (
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className="inline-flex items-center gap-1.5 rounded-full border border-destructive/30 bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-destructive"
+                    title="Platform Governance mode"
+                  >
+                    <ShieldCheck className="h-3 w-3" />
+                    Platform
+                  </span>
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 text-xs text-muted-foreground hover:text-foreground hidden md:inline-flex"
+                  >
+                    <Link to="/admin">
+                      <ArrowLeftRight className="mr-1 h-3 w-3" /> Content
+                    </Link>
+                  </Button>
+                </div>
+              ) : isSuperAdmin ? (
                 <Button
                   asChild
-                  variant="ghost"
+                  variant="outline"
                   size="sm"
-                  className="h-7 text-xs text-muted-foreground hover:text-foreground hidden sm:inline-flex"
+                  className="h-7 text-xs border-destructive/30 text-destructive hover:bg-destructive/10 hidden md:inline-flex"
                 >
-                  <Link to="/admin">
-                    <ArrowLeftRight className="mr-1 h-3 w-3" /> Content Operations
+                  <Link to="/admin/superadmin">
+                    <ShieldCheck className="mr-1 h-3 w-3" /> Platform
                   </Link>
                 </Button>
-              </div>
-            ) : isSuperAdmin ? (
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="h-7 text-xs border-destructive/30 text-destructive hover:bg-destructive/10 hidden sm:inline-flex"
-              >
-                <Link to="/admin/superadmin">
-                  <ShieldCheck className="mr-1 h-3 w-3" /> Platform Governance
-                </Link>
-              </Button>
-            ) : null}
+              ) : null}
+            </div>
             <button
               type="button"
               onClick={() =>

@@ -25,7 +25,7 @@ export function FormSection({
       )}
     >
       <div className="min-w-0">
-        <h3 className="font-serif text-sm font-semibold text-foreground">{title}</h3>
+        <h3 className="font-sans text-sm font-semibold text-foreground">{title}</h3>
         {description && <p className="mt-1 text-xs text-muted-foreground">{description}</p>}
       </div>
       <div className="space-y-4">{children}</div>

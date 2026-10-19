@@ -1,0 +1,2005 @@
+MJPRU BAREILLY BCA SEMESTER 6 - ACADEMIC EXAM QUESTION BANK
+SUBJECT: BCA-442E Advanced Web Development Technologies
+TOTAL QUESTIONS: 250 (50 MCQs per Unit)
+================================================================================
+
+Q_1 [Unit 1] [EASY]: What is the primary role of JavaScript in web development?
+  (A) A lightweight, interpreted, object-oriented programming language with first-class functions used to create dynamic, interactive web pages and server applications
+  (B) A styling language used to color text
+  (C) A markup language for defining headings and paragraphs
+  (D) A database management system like Oracle
+Correct Answer: (A)
+Explanation: JavaScript provides programmatic logic, DOM manipulation, asynchronous network calls, and application state control.
+
+Q_2 [Unit 1] [EASY]: Who invented JavaScript in 1995 while working at Netscape Communications?
+  (A) Brendan Eich
+  (B) James Gosling
+  (C) Guido van Rossum
+  (D) Bjarne Stroustrup
+Correct Answer: (A)
+Explanation: Brendan Eich developed JavaScript in just 10 days in May 1995 under the initial name Mocha, later renamed LiveScript and finally JavaScript.
+
+Q_3 [Unit 1] [EASY]: What is the formal international standard specification for the JavaScript language?
+  (A) ECMAScript (ECMA-262)
+  (B) W3C HTML5
+  (C) ISO C++20
+  (D) IEEE 802.11
+Correct Answer: (A)
+Explanation: ECMAScript defines the core language syntax, types, and semantics governed by Ecma International Technical Committee 39 (TC39).
+
+Q_4 [Unit 1] [EASY]: What is the difference between `var`, `let`, and `const` regarding variable scoping?
+  (A) `var` is function-scoped; `let` and `const` are block-scoped (`{ ... }`)
+  (B) `var` is block-scoped; `let` is function-scoped
+  (C) All three have identical global scope
+  (D) `const` can only be used inside loops
+Correct Answer: (A)
+Explanation: Variables declared with `var` escape `if`/`for` blocks to the enclosing function; `let` and `const` are strictly bound to their enclosing `{}` block.
+
+Q_5 [Unit 1] [MEDIUM]: What is the 'Temporal Dead Zone' (TDZ) in ES6 JavaScript?
+  (A) The zone from the start of a block until a `let` or `const` declaration is evaluated, during which accessing the variable throws a `ReferenceError`
+  (B) The time it takes for a web page to download
+  (C) A zone where computer monitors turn black
+  (D) The time taken by garbage collection
+Correct Answer: (A)
+Explanation: Unlike `var` (which is hoisted and initialized to `undefined`), `let`/`const` are hoisted uninitialized into the TDZ.
+
+Q_6 [Unit 1] [EASY]: What occurs if you attempt to reassign a variable declared with `const`?
+  (A) A `TypeError: Assignment to constant variable` is thrown at runtime
+  (B) The variable silently accepts the new value
+  (C) The computer restarts automatically
+  (D) The variable becomes `null`
+Correct Answer: (A)
+Explanation: `const` creates an immutable variable binding: once assigned, the identifier cannot be reassigned to a new memory reference.
+
+Q_7 [Unit 1] [MEDIUM]: Does `const obj = { a: 1 }; obj.a = 2;` throw a TypeError?
+  (A) No, because `const` protects the object reference pointer, not the internal properties of the object itself
+  (B) Yes, because properties cannot be modified
+  (C) Yes, in strict mode only
+  (D) It deletes the object
+Correct Answer: (A)
+Explanation: Mutating properties of a `const` object is completely valid; only reassigning the variable itself (`obj = {}`) is prohibited.
+
+Q_8 [Unit 1] [MEDIUM]: How can you make an object completely immutable in JavaScript so properties cannot be added, deleted, or modified?
+  (A) `Object.freeze(obj)`
+  (B) `Object.seal(obj)`
+  (C) `Object.preventExtensions(obj)`
+  (D) `const obj`
+Correct Answer: (A)
+Explanation: `Object.freeze()` shallowly freezes an object, preventing adding, removing, or changing property values.
+
+Q_9 [Unit 1] [MEDIUM]: What are the 7 primitive data types in modern ECMAScript?
+  (A) Number, BigInt, String, Boolean, Symbol, Undefined, Null
+  (B) Integer, Float, Double, Char, Boolean, Array, Object
+  (C) Byte, Short, Int, Long, Float, Double, Boolean
+  (D) Text, Number, Date, Time, Currency, Blob, Null
+Correct Answer: (A)
+Explanation: All primitive values are immutable; everything else in JavaScript (including Arrays and Functions) is an Object.
+
+Q_10 [Unit 1] [MEDIUM]: What does `typeof null` evaluate to in JavaScript, and why is this famous?
+  (A) `"object"` - a legacy bug dating back to JavaScript's first 1995 implementation that was never fixed for backwards compatibility
+  (B) `"null"`
+  (C) `"undefined"`
+  (D) `"boolean"`
+Correct Answer: (A)
+Explanation: In early JS, values were tagged with a 3-bit type tag; objects had tag `000`, and `null` was represented as null pointer `0x00`, resulting in `typeof null === 'object'`.
+
+Q_11 [Unit 1] [EASY]: What is the difference between `null` and `undefined` in JavaScript?
+  (A) `undefined` means a variable has been declared but not assigned a value; `null` is an intentional assignment representing empty value
+  (B) `undefined` is an object; `null` is a string
+  (C) `null` is thrown by compilers; `undefined` is user input
+  (D) They are exact synonyms
+Correct Answer: (A)
+Explanation: `undefined` is the default system state of uninitialized variables; `null` is explicitly assigned by developers to signify absence.
+
+Q_12 [Unit 1] [MEDIUM]: What is the output of `0.1 + 0.2 === 0.3` in JavaScript?
+  (A) `false`, because IEEE 754 double-precision floating-point arithmetic introduces tiny binary rounding inaccuracies ($0.30000000000000004$)
+  (B) `true`
+  (C) `TypeError`
+  (D) `NaN`
+Correct Answer: (A)
+Explanation: Binary computers cannot accurately represent decimal fractions like 0.1 and 0.2, yielding $0.30000000000000004$.
+
+Q_13 [Unit 1] [MEDIUM]: What is `NaN` in JavaScript and what is unique about `NaN === NaN`?
+  (A) `NaN` stands for 'Not a Number'; it is the only value in JavaScript that is NOT equal to itself (`NaN === NaN` evaluates to `false`)
+  (B) `NaN` is a string; it equals itself
+  (C) `NaN` represents infinity
+  (D) `NaN` is equal to `0`
+Correct Answer: (A)
+Explanation: Because `NaN === NaN` is `false`, developers must use `Number.isNaN(val)` to reliably test for Not-a-Number.
+
+Q_14 [Unit 1] [EASY]: What is Type Coercion in JavaScript?
+  (A) The automatic or implicit conversion of values from one data type to another during operations (e.g., `'5' + 2 === '52'`)
+  (B) A technique for forcing programmers to write strict code
+  (C) Encrypting text strings into numbers
+  (D) Deleting variables from memory
+Correct Answer: (A)
+Explanation: JavaScript coercively converts types when using loose operators: `'5' - 2 === 3` converts string to number, but `'5' + 2 === '52'` converts to string concatenation.
+
+Q_15 [Unit 1] [EASY]: What is the difference between `==` and `===`?
+  (A) `==` (Loose Equality) performs implicit type coercion; `===` (Strict Equality) compares value and type without coercion
+  (B) `==` is for numbers; `===` is for strings
+  (C) `===` is obsolete in ES6
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: `'5' == 5` is `true` because string is coerced to number; `'5' === 5` is `false` because types differ (string vs number).
+
+Q_16 [Unit 1] [EASY]: What is a JavaScript Closure?
+  (A) A function bundled together with references to its surrounding lexical scope, allowing access to outer variables even after the outer function has returned
+  (B) Closing a web browser window
+  (C) A syntax error that terminates script execution
+  (D) A method for encrypting code
+Correct Answer: (A)
+Explanation: Closures allow functions to maintain stateful private variables across multiple execution calls.
+
+Q_17 [Unit 1] [MEDIUM]: What is Variable Hoisting in JavaScript?
+  (A) The behavior where variable and function declarations are moved to the top of their containing scope during compilation before execution
+  (B) Uploading code to a remote server
+  (C) Increasing the font size of text in code
+  (D) A tool for debugging memory leaks
+Correct Answer: (A)
+Explanation: Function declarations and `var` bindings are hoisted to the top of the function/global scope during the creation phase of the Execution Context.
+
+Q_18 [Unit 1] [MEDIUM]: What is an Immediately Invoked Function Expression (IIFE)?
+  (A) A JavaScript function that runs as soon as it is defined: `(function() { ... })();`, traditionally used to create private scope
+  (B) A function that runs once a year
+  (C) A function that has no name
+  (D) A function that takes zero parameters
+Correct Answer: (A)
+Explanation: Prior to ES6 block scoping, IIFEs were the primary mechanism for preventing variable pollution of the global `window` object.
+
+Q_19 [Unit 1] [MEDIUM]: What is the `this` keyword in JavaScript?
+  (A) A special keyword whose value refers to the current execution context object that called or invoked the function
+  (B) A keyword pointing strictly to the current line of code
+  (C) A variable holding the computer's IP address
+  (D) A keyword that imports external libraries
+Correct Answer: (A)
+Explanation: `this` is dynamically bound at call-time depending on invocation: method call (`obj.fn()`), standalone function, `call()`/`apply()`, or constructor (`new`).
+
+Q_20 [Unit 1] [EASY]: How do Arrow Functions (`() => {}`) handle the `this` binding?
+  (A) Arrow functions do NOT possess their own `this`; they lexically inherit `this` from the enclosing outer scope where they were defined
+  (B) Arrow functions set `this` to `null`
+  (C) Arrow functions create a brand new global `this`
+  (D) Arrow functions cannot access `this`
+Correct Answer: (A)
+Explanation: Lexical `this` makes arrow functions ideal for callbacks, eliminating `var self = this;` and `.bind(this)` boilerplate.
+
+Q_21 [Unit 1] [MEDIUM]: What is the difference between `call()`, `apply()`, and `bind()`?
+  (A) `call()` invokes function with comma arguments; `apply()` invokes with an array of arguments; `bind()` returns a new function with bound `this`
+  (B) They are identical in every way
+  (C) `call()` is synchronous; `apply()` is asynchronous
+  (D) `bind()` deletes the function
+Correct Answer: (A)
+Explanation: `fn.call(ctx, 1, 2)`; `fn.apply(ctx, [1, 2])`; `const bound = fn.bind(ctx); bound(1, 2)`.
+
+Q_22 [Unit 1] [MEDIUM]: What is Prototypal Inheritance in JavaScript?
+  (A) An inheritance model where objects inherit properties and methods directly from other objects linked via an internal prototype chain (`[[Prototype]]`)
+  (B) An inheritance model identical to Java class compilation
+  (C) A method for inheriting physical computer hardware
+  (D) A tool for backing up source code
+Correct Answer: (A)
+Explanation: Unlike classical class-based languages (Java/C++), JavaScript uses dynamic object prototypes; ES6 `class` syntax is merely syntactic sugar over prototypes.
+
+Q_23 [Unit 1] [MEDIUM]: What is the top of the JavaScript Prototype Chain?
+  (A) `Object.prototype`, whose prototype is `null`
+  (B) `Function.prototype`
+  (C) `window`
+  (D) `null.prototype`
+Correct Answer: (A)
+Explanation: Traversing the prototype chain ends when `Object.getPrototypeOf(Object.prototype)` returns `null`.
+
+Q_24 [Unit 1] [EASY]: What is the Event Loop in the JavaScript runtime environment?
+  (A) The single-threaded concurrency mechanism that orchestrates execution between the Call Stack, Microtask Queue, and Callback Queue
+  (B) A while loop that never terminates
+  (C) A loop that plays audio files continuously
+  (D) A hardware timer inside the CPU
+Correct Answer: (A)
+Explanation: The Event Loop continuously checks if the Call Stack is empty; when empty, it processes pending microtasks, then pushes waiting callbacks from the queue.
+
+Q_25 [Unit 1] [HARD]: In what order does the Event Loop process tasks when the Call Stack becomes empty?
+  (A) Microtasks (Promise callbacks, `queueMicrotask`) first until drained, then Render updates, then One Macrotask (`setTimeout`, I/O)
+  (B) Macrotasks first, then Microtasks
+  (C) Randomly depending on operating system load
+  (D) It alternates one microtask and one macrotask
+Correct Answer: (A)
+Explanation: Microtasks have absolute priority: if a microtask schedules another microtask, both execute before any `setTimeout` macrotask runs.
+
+Q_26 [Unit 1] [MEDIUM]: What is the output order of: `console.log(1); setTimeout(() => console.log(2), 0); Promise.resolve().then(() => console.log(3)); console.log(4);`?
+  (A) `1, 4, 3, 2`
+  (B) `1, 2, 3, 4`
+  (C) `1, 3, 4, 2`
+  (D) `4, 3, 2, 1`
+Correct Answer: (A)
+Explanation: Synchronous code (1, 4) executes immediately on stack; Promise microtask (3) runs next; `setTimeout` macrotask (2) runs last.
+
+Q_27 [Unit 1] [EASY]: What is 'Callback Hell' (The Pyramid of Doom)?
+  (A) Deeply nested asynchronous callbacks making code unreadable, difficult to maintain, and prone to error-handling bugs
+  (B) A computer virus that infects JavaScript files
+  (C) An infinite loop that crashes web browsers
+  (D) A program that makes thousands of telephone calls
+Correct Answer: (A)
+Explanation: Solved by ES6 Promises and ES8 `async`/`await`, which flatten nested callbacks into sequential linear code structures.
+
+Q_28 [Unit 1] [EASY]: What are the three possible states of an ES6 Promise?
+  (A) Pending, Fulfilled (Resolved), and Rejected
+  (B) Start, Running, and Stopped
+  (C) Open, Processing, and Closed
+  (D) Input, Output, and Error
+Correct Answer: (A)
+Explanation: A Promise begins in the `Pending` state and transitions irreversibly to either `Fulfilled` with a value or `Rejected` with an error.
+
+Q_29 [Unit 1] [MEDIUM]: What does `Promise.all([p1, p2, p3])` do?
+  (A) Fulfills when all input promises resolve successfully; rejects immediately if ANY single promise rejects ('fail-fast')
+  (B) Runs only the first promise that finishes
+  (C) Runs promises one after another sequentially
+  (D) Deletes all failed promises
+Correct Answer: (A)
+Explanation: Used when multiple concurrent requests must all succeed before proceeding (e.g., loading user profile, courses, and notifications).
+
+Q_30 [Unit 1] [MEDIUM]: What does `Promise.allSettled([p1, p2, p3])` introduced in ES2020 do?
+  (A) Waits for all input promises to settle (either resolve OR reject) and returns an array of outcome objects with statuses
+  (B) Rejects if any promise rejects
+  (C) Settles the legal debts of a company
+  (D) Runs only resolved promises
+Correct Answer: (A)
+Explanation: Unlike `Promise.all()`, `allSettled()` never short-circuits on rejection, allowing developers to see which specific requests succeeded or failed.
+
+Q_31 [Unit 1] [MEDIUM]: What does `Promise.race([p1, p2])` do?
+  (A) Resolves or rejects as soon as the first promise in the iterable settles, adopting its value or error
+  (B) Runs a car racing video game
+  (C) Tests which promise uses less memory
+  (D) Rejects all promises
+Correct Answer: (A)
+Explanation: Ideal for implementing network timeouts: racing a `fetch(url)` against a `timeout(5000)` promise.
+
+Q_32 [Unit 1] [EASY]: What does the `async` keyword placed before a function declaration guarantee?
+  (A) The function automatically returns a Promise (wrapping non-promise returns in `Promise.resolve()`)
+  (B) The function executes in another thread
+  (C) The function executes twice as fast
+  (D) The function cannot use variables
+Correct Answer: (A)
+Explanation: `async` functions enable using the `await` expression inside their body, pausing execution until the awaited Promise resolves.
+
+Q_33 [Unit 1] [EASY]: What does the `await` operator do inside an `async` function?
+  (A) Pauses execution of the async function until the Promise resolves or rejects, unwrapping the resolved value
+  (B) Pauses the entire operating system
+  (C) Blocks the main browser UI thread from scrolling
+  (D) Deletes the promise
+Correct Answer: (A)
+Explanation: `await` pauses only the local async function execution context non-blockingly, allowing the rest of the page to handle other events.
+
+Q_34 [Unit 1] [MEDIUM]: What is Event Bubbling in the browser Document Object Model (DOM)?
+  (A) When an event triggers on a DOM element, it executes on that element, then bubbles upwards through ancestor parents to `document` and `window`
+  (B) Creating soap bubbles on the screen using CSS
+  (C) An event deleting elements from the DOM
+  (D) An event that only runs on mobile phones
+Correct Answer: (A)
+Explanation: Enables the **Event Delegation** pattern: attaching a single event listener to a parent `<ul>` rather than dozens of child `<li>` items.
+
+Q_35 [Unit 1] [MEDIUM]: What does `event.stopPropagation()` do?
+  (A) Prevents the event from traversing further up (or down) the DOM tree during bubbling or capturing phases
+  (B) Prevents the default browser action (like following a link)
+  (C) Closes the web browser window
+  (D) Deletes the target HTML element
+Correct Answer: (A)
+Explanation: Stops the event from triggering listeners registered on parent ancestor elements.
+
+Q_36 [Unit 1] [EASY]: What does `event.preventDefault()` do?
+  (A) Cancels the default browser action associated with the event (e.g., stops a form from submitting or a link from navigating)
+  (B) Stops the event from bubbling
+  (C) Disables the computer mouse
+  (D) Closes the current webpage tab
+Correct Answer: (A)
+Explanation: Allows JavaScript SPA frameworks to intercept form submit events or anchor tag clicks without full page reloads.
+
+Q_37 [Unit 1] [EASY]: What is the Spread Operator (`...`) in modern JavaScript?
+  (A) Expands an iterable (array, string, object) into individual elements or key-value pairs (e.g., `[...arr1, ...arr2]`)
+  (B) A mathematical division operator
+  (C) A tool for deleting items from arrays
+  (D) An operator that multiplies numbers by three
+Correct Answer: (A)
+Explanation: Used for shallow cloning (`const clone = { ...original };`) and concatenating arrays without mutation.
+
+Q_38 [Unit 1] [EASY]: What is the Rest Parameter (`...`) in a function signature?
+  (A) Collects an indefinite number of trailing arguments into a single formal Array: `function fn(a, b, ...rest) {}`
+  (B) Pauses a function for five seconds
+  (C) Deletes all arguments passed to a function
+  (D) A parameter that is optional
+Correct Answer: (A)
+Explanation: Replaces the legacy, non-array `arguments` object with a genuine JavaScript array that supports `map()`, `filter()`, etc.
+
+Q_39 [Unit 1] [EASY]: What is Destructuring Assignment in ES6?
+  (A) A syntax expression that unpacks values from arrays, or properties from objects, into distinct variables: `const { name, age } = user;`
+  (B) Deleting an object from memory
+  (C) Decompiling JavaScript code into machine code
+  (D) A tool for destroying computer hardware
+Correct Answer: (A)
+Explanation: Drastically reduces boilerplate code when accessing multiple properties from API response objects.
+
+Q_40 [Unit 1] [EASY]: What are Template Literals in ES6?
+  (A) String literals delimited with backticks (`` ` ``) allowing multi-line strings and embedded expressions via `${expression}`
+  (B) HTML templates stored on a server
+  (C) Text files stored in a database
+  (D) Strings that can only contain capital letters
+Correct Answer: (A)
+Explanation: Supports string interpolation: `` `Hello, ${user.name}! You have ${items.length} items.` `` without messy string concatenation.
+
+Q_41 [Unit 1] [EASY]: What is Optional Chaining (`?.`) introduced in ES2020?
+  (A) An operator that accesses nested object properties safely, returning `undefined` instead of throwing a TypeError if a reference is nullish
+  (B) A tool for chaining multiple mathematical operations
+  (C) A method for linking multiple web pages together
+  (D) An operator that deletes missing properties
+Correct Answer: (A)
+Explanation: `user?.address?.city` safely evaluates to `undefined` if `user.address` is `null` or `undefined`, preventing crashes.
+
+Q_42 [Unit 1] [MEDIUM]: What is the Nullish Coalescing Operator (`??`) in ES2020?
+  (A) A logical operator that returns its right-hand operand when its left-hand operand is `null` or `undefined`, and otherwise returns its left operand
+  (B) An operator that checks whether two numbers are equal
+  (C) A tool for deleting null values from databases
+  (D) An operator that turns text into null
+Correct Answer: (A)
+Explanation: Unlike `||` (which treats `0`, `""`, and `false` as falsy), `??` treats `0` and `""` as valid values, replacing only `null` and `undefined`.
+
+Q_43 [Unit 1] [MEDIUM]: What is a JavaScript Map object?
+  (A) A keyed collection of key-value pairs where keys can be of ANY type (including objects, functions, and primitives)
+  (B) A geographical map displayed in a web browser
+  (C) A method that iterates over arrays
+  (D) A tool for locating lost computer files
+Correct Answer: (A)
+Explanation: Unlike plain objects (which coerce all keys to strings or symbols), `Map` preserves key types, remembers insertion order, and has an $O(1)$ `.size` property.
+
+Q_44 [Unit 1] [EASY]: What is a JavaScript Set object?
+  (A) A collection of values where each value must be unique; duplicate values are automatically ignored and discarded
+  (B) A mathematical equation
+  (C) A tool for setting computer dates and times
+  (D) A list of employee phone numbers
+Correct Answer: (A)
+Explanation: Useful for rapid deduplication of arrays: `const unique = [...new Set(array)];`.
+
+Q_45 [Unit 1] [HARD]: What is a WeakMap in JavaScript?
+  (A) A collection of key-value pairs where keys must be objects and are held weakly, allowing unreferenced objects to be garbage collected
+  (B) A map that has very few items stored in it
+  (C) A map that is slow to query
+  (D) A map that can only be accessed on weekends
+Correct Answer: (A)
+Explanation: Prevents memory leaks when associating metadata with DOM nodes; when the DOM node is removed, its WeakMap entry is collected automatically.
+
+Q_46 [Unit 1] [HARD]: What are JavaScript Generator Functions (`function*`) and `yield`?
+  (A) Functions that can be paused at `yield` statements and resumed later by calling `.next()`, maintaining execution state across pauses
+  (B) Functions that generate electricity inside computers
+  (C) Functions that generate random numbers
+  (D) Functions that compile code into machine language
+Correct Answer: (A)
+Explanation: Used in Redux Saga and streaming pipelines to produce iterable sequences on demand without loading all data into memory at once.
+
+Q_47 [Unit 1] [EASY]: What is Strict Mode (`"use strict";`) in JavaScript?
+  (A) A feature that opts into a restricted variant of JavaScript, eliminating silent errors, preventing accidental globals, and throwing errors on bad syntax
+  (B) A mode that makes programmers type very carefully
+  (C) A setting that turns off computer monitors
+  (D) A tool for checking employee attendance
+Correct Answer: (A)
+Explanation: Disallows creating undeclared variables (`foo = 1;` throws `ReferenceError`), prohibits duplicate parameter names, and secures `this`.
+
+Q_48 [Unit 1] [EASY]: What is the difference between `Array.prototype.map()` and `Array.prototype.forEach()`?
+  (A) `map()` returns a brand new transformed array without mutating the original; `forEach()` executes a callback for side-effects and returns `undefined`
+  (B) `map()` is for numbers; `forEach()` is for strings
+  (C) `forEach()` is faster than `map()` in every case
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: `map()` is a pure functional transformation; `forEach()` is an imperative iteration loop.
+
+Q_49 [Unit 1] [MEDIUM]: What does `Array.prototype.reduce()` do?
+  (A) Executes a user-supplied reducer callback function on each element of the array, resulting in a single composite output value
+  (B) Reduces the font size of text in arrays
+  (C) Deletes half of the elements in an array
+  (D) Compresses an array into a zip file
+Correct Answer: (A)
+Explanation: Used to sum numbers, group objects by category, or flatten arrays: `arr.reduce((acc, val) => acc + val, 0)`.
+
+Q_50 [Unit 1] [MEDIUM]: What are Symbols in JavaScript (`Symbol('desc')`)?
+  (A) A unique and immutable primitive data type often used to add hidden, non-enumerable private object property keys that never collide
+  (B) Graphic icons displayed on websites
+  (C) Mathematical punctuation marks
+  (D) Letters in foreign alphabets
+Correct Answer: (A)
+Explanation: Every `Symbol()` call returns a completely unique token: `Symbol('id') !== Symbol('id')`, preventing property key collision in libraries.
+
+Q_51 [Unit 2] [EASY]: What is React.js and who created it?
+  (A) An open-source frontend JavaScript library for building user interfaces, developed by Jordan Walke at Facebook in 2013
+  (B) A relational database management system developed by Oracle
+  (C) An operating system developed by Microsoft
+  (D) A web browser developed by Google
+Correct Answer: (A)
+Explanation: React popularized component-based architecture, declarative state rendering, and the Virtual DOM.
+
+Q_52 [Unit 2] [EASY]: What is JSX (JavaScript XML) in React?
+  (A) A syntax extension to JavaScript that allows writing HTML-like markup directly inside JavaScript files
+  (B) A new version of XML developed by the W3C
+  (C) A tool for compressing JavaScript files
+  (D) A database query language like SQL
+Correct Answer: (A)
+Explanation: JSX is transpiled by Babel or Vite into standard `React.createElement()` JavaScript function calls.
+
+Q_53 [Unit 2] [EASY]: What is the Virtual DOM in React architecture?
+  (A) A lightweight, in-memory representation of the real DOM tree kept in memory and synced with real DOM via reconciliation
+  (B) A virtual reality computer monitor
+  (C) A backup copy of an HTML page saved on disk
+  (D) A simulated operating system
+Correct Answer: (A)
+Explanation: Manipulating real browser DOM is slow; React modifies the fast in-memory Virtual DOM, calculates minimal diffs, and batches real DOM updates.
+
+Q_54 [Unit 2] [MEDIUM]: What is the Reconciliation algorithm in React?
+  (A) The diffing algorithm that compares two Virtual DOM trees and determines the minimal set of real DOM mutations required to update the screen
+  (B) A legal mediation process between software companies
+  (C) A method for reconciling financial bank statements
+  (D) A tool for formatting hard drives
+Correct Answer: (A)
+Explanation: React's Fiber reconciliation uses heuristics (element types and unique `key` props) to achieve linear $O(N)$ tree updates.
+
+Q_55 [Unit 2] [MEDIUM]: Why must every item in a dynamically rendered list in React have a unique `key` prop?
+  (A) To give React a stable identity for each element, allowing it to determine which items were added, removed, or reordered during diffing
+  (B) Because HTML requires keys to display text
+  (C) To sort the list in alphabetical order
+  (D) To encrypt the list items with AES
+Correct Answer: (A)
+Explanation: Without stable keys, React must re-render the entire list from scratch on every update, causing severe performance degradation and state bugs.
+
+Q_56 [Unit 2] [HARD]: Why should array index (`index`) NOT be used as a `key` prop if the list can be reordered, sorted, or filtered?
+  (A) Because reordering items causes array indices to change, confusing React's diffing algorithm and leading to corrupted component state
+  (B) Because array indices are illegal in JSX
+  (C) Because array indices only work for numbers
+  (D) Because index keys crash the web browser
+Correct Answer: (A)
+Explanation: Using `key={index}` causes input field state or checkboxes to stay bound to the wrong items when items are deleted or rearranged.
+
+Q_57 [Unit 2] [EASY]: What is the primary difference between Props and State in React?
+  (A) Props are immutable data passed downward from parent to child; State is mutable data managed locally within the component
+  (B) Props are mutable; State is immutable
+  (C) Props are for functions; State is for classes
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Props are like function parameters (read-only); State is like local variables that trigger re-rendering when updated.
+
+Q_58 [Unit 2] [MEDIUM]: What is 'Props Drilling' in React component hierarchies?
+  (A) The cumbersome process of passing props down through multiple layers of intermediate components that do not need the data themselves
+  (B) Drilling physical holes into computer motherboards
+  (C) Writing props using a very small font size
+  (D) A tool for finding errors in props
+Correct Answer: (A)
+Explanation: Mitigated using the React Context API, Redux, or Zustand to provide global state access without manual intermediate forwarding.
+
+Q_59 [Unit 2] [EASY]: What are React Hooks introduced in React 16.8?
+  (A) Functions that allow functional components to use state and other React features without writing ES6 class components
+  (B) Hardware hooks used to mount computers on walls
+  (C) Tools for intercepting network packets
+  (D) Functions that delete components from memory
+Correct Answer: (A)
+Explanation: Hooks (`useState`, `useEffect`, `useContext`) revolutionized React by eliminating the verbose ceremony and `this` bugs of class components.
+
+Q_60 [Unit 2] [EASY]: What does the `useState` hook return in React?
+  (A) An array containing exactly two elements: the current state value and a state updater function: `[state, setState]`
+  (B) A single object with all state variables
+  (C) A boolean indicating if state changed
+  (D) A Promise that resolves to state
+Correct Answer: (A)
+Explanation: Destructured as: `const [count, setCount] = useState(0);`.
+
+Q_61 [Unit 2] [EASY]: What happens when you call `setState(newValue)` in a React component?
+  (A) React schedules a re-render of the component with the new state value, batches updates, and diffs the Virtual DOM
+  (B) The component is deleted immediately
+  (C) The browser reloads the entire HTML page from the server
+  (D) The state variable is deleted
+Correct Answer: (A)
+Explanation: State updates are asynchronous and batched; React queues the update and re-renders the component during the next render cycle.
+
+Q_62 [Unit 2] [EASY]: What is the purpose of the `useEffect` Hook in React?
+  (A) To perform side-effects (data fetching, DOM subscriptions, manual timers) in functional components
+  (B) To style HTML elements with CSS
+  (C) To create new HTML tags
+  (D) To encrypt user passwords
+Correct Answer: (A)
+Explanation: Unifies `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle operations into a declarative API.
+
+Q_63 [Unit 2] [MEDIUM]: How does the dependency array `[deps]` affect `useEffect` execution?
+  (A) No array: runs on every render; Empty array `[]`: runs once on mount; Array with variables: runs only when those specific variables change
+  (B) Empty array makes the effect run forever in an infinite loop
+  (C) The dependency array is optional and has zero effect
+  (D) It determines the font size of the component
+Correct Answer: (A)
+Explanation: Providing an empty dependency array `[]` ensures API fetching effects run strictly once when the component initially mounts.
+
+Q_64 [Unit 2] [MEDIUM]: How do you clean up a timer or subscription in a `useEffect` hook to prevent memory leaks?
+  (A) Return a cleanup function from the `useEffect` callback: `return () => clearInterval(timer);`
+  (B) Call `delete useEffect;`
+  (C) Call `useEffect.stop()`
+  (D) Turn off the computer
+Correct Answer: (A)
+Explanation: React invokes the returned cleanup function before re-running the effect and when the component unmounts from the DOM.
+
+Q_65 [Unit 2] [MEDIUM]: What is the `useMemo` Hook used for in React performance optimization?
+  (A) Memoizes the result of an expensive calculation, recomputing it only when specified dependencies change
+  (B) Memorizes text typed by users
+  (C) A tool for saving files to hard drives
+  (D) A hook that measures computer memory
+Correct Answer: (A)
+Explanation: `const sortedList = useMemo(() => expensiveSort(list), [list]);` prevents heavy calculations on every unrelated render.
+
+Q_66 [Unit 2] [MEDIUM]: What is the `useCallback` Hook used for?
+  (A) Returns a memoized version of a callback function that only changes if one of the dependencies has changed
+  (B) Calls a telephone number automatically
+  (C) A hook that calls another hook
+  (D) A tool for deleting functions
+Correct Answer: (A)
+Explanation: Used to pass stable function references to memoized child components (`React.memo`) to prevent unnecessary child re-renders.
+
+Q_67 [Unit 2] [MEDIUM]: What is the `useRef` Hook in React?
+  (A) Returns a mutable ref object whose `.current` property persists across renders without causing a re-render when mutated
+  (B) A hook that refers users to external websites
+  (C) A tool for checking academic references
+  (D) A hook that deletes variables
+Correct Answer: (A)
+Explanation: Used for accessing real DOM elements directly (`inputRef.current.focus()`) and storing timer IDs or mutable values that don't need to trigger re-renders.
+
+Q_68 [Unit 2] [MEDIUM]: What is an Error Boundary in React?
+  (A) A class component that catches JavaScript errors anywhere in its child component tree, logs errors, and renders a fallback UI
+  (B) A boundary drawn around a computer screen with CSS
+  (C) A firewall that blocks invalid web requests
+  (D) An error that occurs when a hard drive is full
+Correct Answer: (A)
+Explanation: Implemented via `componentDidCatch` or `getDerivedStateFromError`; prevents an unhandled UI error from crashing the entire application.
+
+Q_69 [Unit 2] [MEDIUM]: What are React Portals (`ReactDOM.createPortal`)?
+  (A) A mechanism to render children into a DOM node that exists outside the DOM hierarchy of the parent component
+  (B) A science-fiction teleportation device
+  (C) A doorway into a server data center
+  (D) A tool for transferring files across networks
+Correct Answer: (A)
+Explanation: Essential for modal dialogs, tooltips, and hover cards that need to escape parent CSS `overflow: hidden` or `z-index` stacking contexts.
+
+Q_70 [Unit 2] [EASY]: What is the React Context API?
+  (A) A built-in feature designed to share data that can be considered 'global' for a tree of React components (e.g., current authenticated user, UI theme, language)
+  (B) A tool for analyzing the context of text articles
+  (C) A database management system built into React
+  (D) A dictionary of computer terms
+Correct Answer: (A)
+Explanation: Comprises `createContext()`, `<Provider value={data}>`, and `useContext(MyContext)` to avoid props drilling.
+
+Q_71 [Unit 2] [EASY]: What is Redux in frontend state management?
+  (A) A predictable state container for JavaScript apps based on a centralized global store, unidirectional data flow, and pure reducer functions
+  (B) A new version of React developed by Facebook
+  (C) A tool for styling web pages with CSS
+  (D) A database engine like MongoDB
+Correct Answer: (A)
+Explanation: Redux manages complex, frequently changing application state with strict unidirectional data flow and powerful time-travel debugging.
+
+Q_72 [Unit 2] [MEDIUM]: What are the Three Core Principles of Redux?
+  (A) 1. Single source of truth (one global store); 2. State is read-only (mutated only via actions); 3. Changes are made with pure functions (reducers)
+  (B) 1. Fast; 2. Cheap; 3. Easy
+  (C) 1. Input; 2. Output; 3. Storage
+  (D) 1. Model; 2. View; 3. Controller
+Correct Answer: (A)
+Explanation: Guarantees that state mutations are deterministic, traceable, and easily serializable across the application lifecycle.
+
+Q_73 [Unit 2] [EASY]: What is an 'Action' in Redux architecture?
+  (A) A plain JavaScript object that describes what happened, containing a mandatory `type` property and an optional `payload`
+  (B) A physical movement of a computer mouse
+  (C) A video file playing on a website
+  (D) A function that deletes state
+Correct Answer: (A)
+Explanation: Example: `{ type: 'courses/add', payload: { id: 1, title: 'Data Science' } }`.
+
+Q_74 [Unit 2] [MEDIUM]: What is a 'Reducer' in Redux?
+  (A) A pure function that takes the previous state and an action as arguments, and returns the next state: `(state, action) => newState`
+  (B) A tool that reduces file sizes on disk
+  (C) A component that makes fonts smaller
+  (D) A function that deletes old state
+Correct Answer: (A)
+Explanation: Reducers must be pure: zero side-effects, zero API calls, and zero in-place mutations (must return a newly copied state object).
+
+Q_75 [Unit 2] [EASY]: What is the Redux Store?
+  (A) The single centralized JavaScript object that holds the complete global application state tree
+  (B) A physical retail store selling computers
+  (C) An online app store where plugins are bought
+  (D) A database installed on a server
+Correct Answer: (A)
+Explanation: Exposes `getState()`, `dispatch(action)`, and `subscribe(listener)` methods.
+
+Q_76 [Unit 2] [EASY]: What is Redux Toolkit (RTK)?
+  (A) The official, opinionated, batteries-included standard toolset for efficient Redux development, simplifying store setup and reducers
+  (B) A hardware toolkit for opening computer cases
+  (C) A separate programming language from JavaScript
+  (D) A visual graphics design software
+Correct Answer: (A)
+Explanation: RTK introduces `createSlice()`, `createAsyncThunk()`, and integrates Immer to eliminate 80% of legacy Redux boilerplate code.
+
+Q_77 [Unit 2] [MEDIUM]: How does Immer library work inside Redux Toolkit `createSlice`?
+  (A) Allows developers to write mutating syntax (e.g., `state.items.push(x)`), while internally producing a safe immutable copy using JavaScript Proxies
+  (B) Deletes all duplicate state records
+  (C) Compresses state memory using gzip
+  (D) Encrypts state variables with AES
+Correct Answer: (A)
+Explanation: Eliminates cumbersome manual object spreading (`{ ...state, nested: { ...state.nested } }`) while preserving immutability guarantees.
+
+Q_78 [Unit 2] [MEDIUM]: What is Redux Thunk in asynchronous state management?
+  (A) A middleware that allows action creators to return a function instead of a plain action object, enabling delayed dispatch and async API calls
+  (B) A sound effect played when a test fails
+  (C) A tool for compressing Redux code
+  (D) A database developed for Redux
+Correct Answer: (A)
+Explanation: Thunk functions receive `(dispatch, getState)`, allowing them to dispatch a 'loading' action, fetch an API, and dispatch a 'success' action.
+
+Q_79 [Unit 2] [HARD]: What is Redux Saga?
+  (A) A middleware library that uses ES6 Generator functions (`yield`, `takeEvery`, `put`) to manage complex, concurrent asynchronous side-effects
+  (B) A historical documentary about computer science
+  (C) A video game developed with Redux
+  (D) A database management system
+Correct Answer: (A)
+Explanation: Provides sophisticated asynchronous orchestration (race conditions, task cancellation, debounce) using declarative generator effects.
+
+Q_80 [Unit 2] [MEDIUM]: What is Server-Side Rendering (SSR) in modern React (e.g., Next.js)?
+  (A) Rendering React components into static HTML strings on the server on each request and sending complete HTML to the browser
+  (B) Rendering web pages on the client's graphic card
+  (C) Printing web pages on a laser printer
+  (D) Running React without an internet connection
+Correct Answer: (A)
+Explanation: Delivers instantaneous First Contentful Paint (FCP) and superior SEO because search engine web crawlers receive fully rendered HTML text.
+
+Q_81 [Unit 2] [MEDIUM]: What is Static Site Generation (SSG) in React?
+  (A) Compiling all web pages into static HTML, CSS, and JS files ahead of time at build-time, served instantly from global edge CDNs
+  (B) Generating static electricity with computer hardware
+  (C) A website that cannot be modified
+  (D) Writing HTML by hand without using React
+Correct Answer: (A)
+Explanation: Offers ultra-fast performance and near-zero server hosting costs, ideal for blogs, documentation, and academic course catalogs.
+
+Q_82 [Unit 2] [MEDIUM]: What is Hydration in React SSR?
+  (A) The process where client-side React attaches event listeners, boots hooks, and takes over static HTML sent by the server to make it interactive
+  (B) Pouring water over computer processors to cool them
+  (C) Downloading images on a web page
+  (D) Compressing HTML files with gzip
+Correct Answer: (A)
+Explanation: The browser displays the HTML immediately; React's bundle downloads in the background and 'hydrates' the DOM, turning it into a dynamic SPA.
+
+Q_83 [Unit 2] [EASY]: What is Webpack in frontend web tooling?
+  (A) A static module bundler for modern JavaScript applications that analyzes dependency graphs and packages assets into bundles
+  (B) A package delivery truck for software
+  (C) A web browser developed by Netscape
+  (D) A database query engine
+Correct Answer: (A)
+Explanation: Webpack uses Loaders (Babel, CSS loader) and Plugins to transpile, bundle, and optimize modern front-end assets for production.
+
+Q_84 [Unit 2] [EASY]: What is Vite in modern frontend engineering?
+  (A) A next-generation frontend build tool providing near-instantaneous dev server startup using native browser ES Modules (ESM) and Rollup bundling
+  (B) A video editing software application
+  (C) A brand of computer monitors
+  (D) A relational database like PostgreSQL
+Correct Answer: (A)
+Explanation: Replaces legacy slow Webpack dev servers: launches in $< 300\,\text{ms}$ by serving unbundled ESM directly to the browser on demand.
+
+Q_85 [Unit 2] [EASY]: What is Hot Module Replacement (HMR)?
+  (A) A dev server capability that exchanges, adds, or removes individual modules while an application is running without reloading the entire page
+  (B) Replacing computer hardware parts while the machine is on
+  (C) A tool that cools down hot computer processors
+  (D) Restarting a server when it overheats
+Correct Answer: (A)
+Explanation: Retains component state in memory while instantly reflecting source code edits in the browser, accelerating UI development.
+
+Q_86 [Unit 2] [EASY]: What is React Router?
+  (A) The standard routing library for React, enabling dynamic, client-side routing without triggering full browser page reloads
+  (B) A physical Wi-Fi router manufactured by Cisco
+  (C) A hardware cable connecting two computers
+  (D) A tool for measuring internet speeds
+Correct Answer: (A)
+Explanation: Uses the HTML5 History API (`pushState`) to dynamically swap out component views matching the current URL path.
+
+Q_87 [Unit 2] [MEDIUM]: In React Router v6, what does the `<Outlet />` component do?
+  (A) Renders the child route component matched in nested routing layouts
+  (B) An electrical wall socket in an office
+  (C) An exit door on a building floorplan
+  (D) A component that terminates the application
+Correct Answer: (A)
+Explanation: Enables nested persistent layouts (e.g., persistent navigation bar and sidebar) while rendering child page views inside the `<Outlet />`.
+
+Q_88 [Unit 2] [MEDIUM]: What is `React.memo` (Higher-Order Component)?
+  (A) A performance optimization wrapper that shallowly compares props and skips re-rendering a component if its props have not changed
+  (B) A tool for writing sticky notes on the screen
+  (C) A function that saves components to local storage
+  (D) A hook that measures computer memory
+Correct Answer: (A)
+Explanation: Prevents unnecessary re-rendering of pure child components when a parent component's unrelated state changes.
+
+Q_89 [Unit 2] [EASY]: What is a Controlled Component in React form handling?
+  (A) A form input element whose value is strictly bound to and controlled by React component state (`value={state}` and `onChange={e => setState(...)}`)
+  (B) A component controlled by a remote manager
+  (C) A component that has a physical remote control
+  (D) A component that cannot be edited by users
+Correct Answer: (A)
+Explanation: React state acts as the single source of truth for the input; the UI always mirrors current state.
+
+Q_90 [Unit 2] [MEDIUM]: What is an Uncontrolled Component in React?
+  (A) A form element that maintains its own internal DOM state, where values are accessed on-demand using a `useRef` reference
+  (B) A component that runs out of control and crashes the page
+  (C) A component written by an unauthorized developer
+  (D) A component with zero CSS styling
+Correct Answer: (A)
+Explanation: Resembles traditional HTML inputs: `<input type="text" ref={inputRef} />`, reading `inputRef.current.value` only upon form submission.
+
+Q_91 [Unit 2] [MEDIUM]: What is Code Splitting in React applications?
+  (A) Dividing the monolithic application bundle into smaller chunks loaded on-demand via `React.lazy()` and dynamic `import()` to improve load times
+  (B) Splitting a code file into two halves with a text editor
+  (C) Deleting half of the code in a software project
+  (D) Allowing two programmers to work on the same file
+Correct Answer: (A)
+Explanation: Prevents users from having to download the entire multi-megabyte admin portal bundle just to view the public landing page.
+
+Q_92 [Unit 2] [MEDIUM]: What does the `<Suspense>` component do in React?
+  (A) Wraps dynamically loaded lazy components and specifies a fallback UI (like a loading spinner) while child components are downloading
+  (B) Suspends an employee from working
+  (C) Pauses the operating system indefinitely
+  (D) A tool for catching fatal crashes
+Correct Answer: (A)
+Explanation: `<Suspense fallback={<Spinner />}> <LazyAdminDashboard /> </Suspense>` provides clean declarative loading states.
+
+Q_93 [Unit 2] [EASY]: What is TanStack Query (React Query)?
+  (A) An asynchronous state management library for managing, fetching, caching, and synchronizing server state in React applications
+  (B) A database query engine like SQL
+  (C) A tool for querying network DNS servers
+  (D) A search engine developed by TanStack
+Correct Answer: (A)
+Explanation: Eliminates boilerplate `useEffect` data fetching; automates background refetching, caching, pagination, and optimistic updates.
+
+Q_94 [Unit 2] [MEDIUM]: What is SyntheticEvent in React?
+  (A) A cross-browser wrapper around the browser’s native DOM event, ensuring identical event property behavior across all web browsers
+  (B) A fake event created by computer hackers
+  (C) A musical synthesizer program in JavaScript
+  (D) An event generated by artificial intelligence
+Correct Answer: (A)
+Explanation: React normalizes differences between Chrome, Firefox, and Safari event architectures using a consistent `SyntheticEvent` interface.
+
+Q_95 [Unit 2] [MEDIUM]: What is the difference between Shallow Copy and Deep Copy of an object in JavaScript?
+  (A) Shallow copy duplicates top-level properties but copies references to nested objects; Deep copy recursively duplicates all nested objects
+  (B) Shallow copy is for numbers; Deep copy is for strings
+  (C) Shallow copy creates smaller files on disk
+  (D) There is no difference between them
+Correct Answer: (A)
+Explanation: `{ ...obj }` is shallow; `structuredClone(obj)` produces a true independent deep clone.
+
+Q_96 [Unit 2] [MEDIUM]: What is the purpose of the `dangerouslySetInnerHTML` attribute in React?
+  (A) React's replacement for using `innerHTML` in the browser DOM, deliberately named to warn developers of Cross-Site Scripting (XSS) hazards
+  (B) An attribute that sets dangerous computer viruses
+  (C) An attribute that damages the monitor screen
+  (D) An attribute that makes text appear red
+Correct Answer: (A)
+Explanation: Bypasses React's automatic string escaping: should only be used with sanitized HTML to prevent arbitrary script injection.
+
+Q_97 [Unit 2] [EASY]: What is CSS Modules in React component styling?
+  (A) A CSS file where all class names and animation names are scoped locally to the component by default at build time
+  (B) A tool for writing CSS using JavaScript
+  (C) A module that adds colors to HTML
+  (D) A library developed by Facebook for CSS
+Correct Answer: (A)
+Explanation: Generates unique hashed class names (e.g., `button_btn__3x7k2`), completely preventing global CSS namespace collision bugs.
+
+Q_98 [Unit 2] [MEDIUM]: What is Styled Components (CSS-in-JS)?
+  (A) A library that utilizes ES6 tagged template literals to write actual CSS code scoped directly inside React component definitions
+  (B) A physical component made of stylish metal
+  (C) A tool for editing CSS files in an IDE
+  (D) A fashion magazine for software engineers
+Correct Answer: (A)
+Explanation: Enables dynamic prop-driven CSS styling: `const Button = styled.button` `background: ${props => props.primary ? 'blue' : 'gray'};` ``.
+
+Q_99 [Unit 2] [EASY]: What is the difference between Client-Side Routing and Server-Side Routing?
+  (A) Client-side routing updates views dynamically via JS without full page reload; Server-side routing makes a full HTTP request for a new HTML page on every URL change
+  (B) Client-side routing is for mobile; Server-side is for desktop
+  (C) Client-side routing does not use URLs
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Client-side routing gives SPAs instant page transitions and native-app feel, fetching only raw JSON data in the background.
+
+Q_100 [Unit 2] [EASY]: What is Progressive Web App (PWA) in modern web development?
+  (A) Web applications that use service workers, manifests, and responsive design to deliver native app-like capabilities (offline access, push notifications, home screen installation)
+  (B) A software application that works on progressive political websites
+  (C) A web page that downloads very slowly
+  (D) An application written strictly in Python
+Correct Answer: (A)
+Explanation: Combines the reach of the open web with the offline resilience and engagement of native smartphone apps.
+
+Q_101 [Unit 3] [EASY]: What is Node.js and who created it in 2009?
+  (A) An open-source, cross-platform JavaScript runtime built on Chrome's V8 engine, created by Ryan Dahl
+  (B) A relational database created by Oracle
+  (C) A web browser developed by Apple
+  (D) An operating system developed by Microsoft
+Correct Answer: (A)
+Explanation: Ryan Dahl created Node.js to bring event-driven, non-blocking asynchronous I/O to server-side web development.
+
+Q_102 [Unit 3] [MEDIUM]: What is libuv in Node.js architecture?
+  (A) A multi-platform C library that handles the event loop, non-blocking asynchronous I/O, and thread pool management
+  (B) A graphics library for drawing buttons
+  (C) A database connector for PostgreSQL
+  (D) A sound library for playing audio
+Correct Answer: (A)
+Explanation: libuv abstracts operating system asynchronous I/O primitives (epoll on Linux, kqueue on macOS, IOCP on Windows) into a unified loop.
+
+Q_103 [Unit 3] [EASY]: How does Node.js achieve high concurrency despite running on a single main JavaScript thread?
+  (A) By delegating blocking operations (file I/O, crypto, network requests) to the libuv thread pool and OS kernel, handling results asynchronously via callbacks
+  (B) By cloning the CPU into multiple physical chips
+  (C) By running code twice as fast as other languages
+  (D) By using quantum computing processors
+Correct Answer: (A)
+Explanation: Non-blocking asynchronous I/O ensures the main execution thread never sits idle waiting for network or disk operations.
+
+Q_104 [Unit 3] [MEDIUM]: What are the default number of worker threads in the libuv thread pool?
+  (A) 4 threads (configurable via `UV_THREADPOOL_SIZE` up to 1024)
+  (B) 1 thread
+  (C) 64 threads
+  (D) 1000 threads
+Correct Answer: (A)
+Explanation: libuv allocates 4 background C worker threads by default to handle blocking file operations, DNS lookups, and crypto hashing.
+
+Q_105 [Unit 3] [HARD]: What is the difference between `process.nextTick()` and `setImmediate()` in Node.js?
+  (A) `process.nextTick()` executes immediately after the current operation finishes before any event loop phase transitions; `setImmediate()` executes in the Check phase
+  (B) `setImmediate()` runs before `process.nextTick()`
+  (C) They are identical in every way
+  (D) `process.nextTick()` runs on the next day
+Correct Answer: (A)
+Explanation: `process.nextTick()` drains microtasks aggressively; excessive recursive calls can starve the event loop entirely.
+
+Q_106 [Unit 3] [EASY]: What is the purpose of `package.json` in a Node.js project?
+  (A) The manifest file that holds project metadata, dependency package lists, script commands, and configuration settings
+  (B) A file that stores all user passwords
+  (C) A compiled binary machine code file
+  (D) A temporary cache file deleted daily
+Correct Answer: (A)
+Explanation: Defines dependencies (`dependencies`, `devDependencies`), entry point (`main`), and executable tasks (`npm start`, `npm test`).
+
+Q_107 [Unit 3] [EASY]: What is the difference between `dependencies` and `devDependencies` in `package.json`?
+  (A) `dependencies` are required for production runtime; `devDependencies` are only required during development and testing (e.g., nodemon, jest)
+  (B) `dependencies` are free; `devDependencies` cost money
+  (C) `devDependencies` are for hardware only
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Running `npm install --production` skips `devDependencies`, keeping production server deployment images small and secure.
+
+Q_108 [Unit 3] [MEDIUM]: What is the purpose of `package-lock.json`?
+  (A) Locks the exact resolved versions and cryptographic integrity hashes of every installed dependency to guarantee reproducible builds across environments
+  (B) A file that locks the computer keyboard
+  (C) A password manager for developers
+  (D) A file that prevents anyone from editing code
+Correct Answer: (A)
+Explanation: Guarantees that deploying the project on a server tomorrow installs the exact identical dependency tree as on the developer's laptop today.
+
+Q_109 [Unit 3] [MEDIUM]: What is the difference between CommonJS (`require`) and ES Modules (`import`) in Node.js?
+  (A) CommonJS is synchronous and uses `require()` / `module.exports`; ES Modules is asynchronous, static, and uses `import` / `export`
+  (B) CommonJS is for Python; ES Modules is for Java
+  (C) CommonJS was invented in 2024
+  (D) They are identical in every way
+Correct Answer: (A)
+Explanation: Modern Node.js supports native ES Modules by setting `"type": "module"` in `package.json` or using the `.mjs` file extension.
+
+Q_110 [Unit 3] [MEDIUM]: What is the `EventEmitter` class in Node.js (`events` module)?
+  (A) A core class that enables event-driven architecture by providing `.on()` to register listeners and `.emit()` to fire named events
+  (B) A tool for broadcasting radio signals
+  (C) A hardware sensor that detects heat
+  (D) A method for sending marketing emails
+Correct Answer: (A)
+Explanation: Streams, HTTP servers, and sockets in Node.js inherit from `EventEmitter` to signal lifecycle milestones asynchronously.
+
+Q_111 [Unit 3] [MEDIUM]: What is a Buffer in Node.js?
+  (A) A global class that handles raw binary data directly allocated outside the V8 JavaScript heap in native memory
+  (B) A tool for polishing computer screens
+  (C) A temporary folder on a hard drive
+  (D) An error message displayed on monitors
+Correct Answer: (A)
+Explanation: Essential for reading binary files, image streams, TCP network sockets, and cryptographic ciphertext.
+
+Q_112 [Unit 3] [MEDIUM]: What are the 4 fundamental stream types in Node.js?
+  (A) Readable, Writable, Duplex (both readable & writable), and Transform (modifies data as it is written/read)
+  (B) Input, Output, Storage, and Processing
+  (C) Fast, Normal, Slow, and Paused
+  (D) Text, Binary, Image, and Audio
+Correct Answer: (A)
+Explanation: Streams process large datasets chunk-by-chunk without loading entire multi-gigabyte files into RAM.
+
+Q_113 [Unit 3] [HARD]: What is Backpressure in Node.js Streams?
+  (A) A condition where data is read or written faster than the downstream consumer can process, handled automatically by `.pipe()`
+  (B) Air pressure inside computer cooling fans
+  (C) A physical blockage inside network cables
+  (D) A programming error that crashes databases
+Correct Answer: (A)
+Explanation: When a consumer's internal buffer fills up, `.pipe()` pauses the incoming stream until the buffer drains, preventing Out-Of-Memory crashes.
+
+Q_114 [Unit 3] [EASY]: What is Express.js?
+  (A) A minimalist, flexible, and unopinionated web application framework for Node.js that simplifies routing and middleware handling
+  (B) A delivery service for physical computer hardware
+  (C) A database management system like MongoDB
+  (D) A web browser developed by Mozilla
+Correct Answer: (A)
+Explanation: The dominant backend Node.js framework for developing RESTful APIs and server-side web applications.
+
+Q_115 [Unit 3] [EASY]: What is Middleware in Express.js?
+  (A) A function that has access to the request (`req`), response (`res`), and next middleware function (`next`) in the application’s request-response cycle
+  (B) Hardware cables located in the middle of a server rack
+  (C) Software that connects a keyboard to a computer
+  (D) A database table storing middle names
+Correct Answer: (A)
+Explanation: Middleware can execute code, modify `req` and `res` objects, end the request cycle, or pass control to `next()`.
+
+Q_116 [Unit 3] [EASY]: What happens if an Express middleware function does NOT call `next()` and does NOT send a response (`res.send()`)?
+  (A) The client request will hang indefinitely until the browser or network gateway times out with an error
+  (B) The server automatically restarts
+  (C) The code throws a syntax error
+  (D) The database is deleted
+Correct Answer: (A)
+Explanation: Every middleware must either terminate the cycle by sending a response or call `next()` to pass execution along.
+
+Q_117 [Unit 3] [EASY]: What is the difference between `app.use()` and `app.get()` in Express?
+  (A) `app.use()` mounts middleware for all HTTP methods on matching paths; `app.get()` handles strictly HTTP GET requests
+  (B) `app.use()` is for databases; `app.get()` is for HTML
+  (C) `app.get()` is obsolete in modern Express
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: `app.use('/api', authMiddleware)` executes for GET, POST, PUT, DELETE requests starting with `/api`.
+
+Q_118 [Unit 3] [EASY]: How do you extract URL route parameters in Express (e.g., from `/courses/:courseId`)?
+  (A) `req.params.courseId`
+  (B) `req.query.courseId`
+  (C) `req.body.courseId`
+  (D) `req.headers.courseId`
+Correct Answer: (A)
+Explanation: `req.params` parses colon route parameters; `req.query` parses URL query strings (`?sort=asc`); `req.body` parses POST payloads.
+
+Q_119 [Unit 3] [EASY]: How do you extract URL query string parameters in Express (e.g., `/search?query=bca&limit=10`)?
+  (A) `req.query.query` and `req.query.limit`
+  (B) `req.params.query`
+  (C) `req.body.query`
+  (D) `req.headers.query`
+Correct Answer: (A)
+Explanation: Express automatically parses URL query strings into a key-value object accessible on `req.query`.
+
+Q_120 [Unit 3] [EASY]: What middleware is required in Express to parse incoming JSON request payloads in `req.body`?
+  (A) `app.use(express.json());`
+  (B) `app.use(express.text());`
+  (C) `app.use(express.static());`
+  (D) `app.use(express.formData());`
+Correct Answer: (A)
+Explanation: Built directly into Express (replaces the older external `body-parser` library) to parse incoming `Content-Type: application/json` payloads.
+
+Q_121 [Unit 3] [MEDIUM]: What is the signature of an Error-Handling Middleware in Express.js?
+  (A) A function that takes exactly four arguments: `(err, req, res, next) => {}`
+  (B) A function with two arguments: `(err, req) => {}`
+  (C) A function with zero arguments
+  (D) A function that has `try` and `catch` in its name
+Correct Answer: (A)
+Explanation: Express specifically checks the function's `length === 4` property to identify it as an error-handling middleware.
+
+Q_122 [Unit 3] [EASY]: What is CORS (Cross-Origin Resource Sharing) in web API development?
+  (A) A security mechanism that allows or restricts web applications running on one origin domain from requesting resources from a different origin domain
+  (B) A tool for sharing passwords between developers
+  (C) A method for increasing internet speeds
+  (D) A protocol for connecting monitors to computers
+Correct Answer: (A)
+Explanation: Configured in Express using the `cors` middleware to set `Access-Control-Allow-Origin` headers for frontend SPAs.
+
+Q_123 [Unit 3] [MEDIUM]: What is Helmet in Express.js security?
+  (A) A middleware package that sets various HTTP security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options) to secure Express apps
+  (B) A physical helmet worn in server data centers
+  (C) A tool for preventing computers from falling
+  (D) An encryption algorithm developed by IBM
+Correct Answer: (A)
+Explanation: `app.use(helmet())` automatically protects against common web vulnerabilities like clickjacking and MIME sniffing.
+
+Q_124 [Unit 3] [EASY]: What is Nodemon in Node.js development?
+  (A) A development utility that automatically restarts the Node.js application whenever source code files in the project directory are edited and saved
+  (B) A database management system like MongoDB
+  (C) A testing framework for Java
+  (D) A software program for drawing graphics
+Correct Answer: (A)
+Explanation: Eliminates the tedious need to manually stop (`Ctrl+C`) and restart (`node server.js`) the server after every code modification.
+
+Q_125 [Unit 3] [EASY]: What is the purpose of `express.static()` middleware?
+  (A) To serve static files (HTML, CSS, client JavaScript, images) directly from a specified directory
+  (B) To prevent a server from moving physically
+  (C) To freeze an application so it cannot be updated
+  (D) To encrypt files with AES-256
+Correct Answer: (A)
+Explanation: `app.use(express.static('public'));` serves files located in the `public` folder directly over HTTP.
+
+Q_126 [Unit 3] [MEDIUM]: What is the difference between `res.send()`, `res.json()`, and `res.end()`?
+  (A) `res.json()` explicitly formats and sends JSON with `Content-Type: application/json`; `res.send()` sends general responses; `res.end()` ends without data
+  (B) They are identical in every way
+  (C) `res.json()` only works with Python
+  (D) `res.end()` turns off the server
+Correct Answer: (A)
+Explanation: `res.json()` converts non-object values (null, undefined) to valid JSON and sets proper headers automatically.
+
+Q_127 [Unit 3] [MEDIUM]: What is the Cluster module in Node.js?
+  (A) A built-in module that enables creating child processes (workers) that run simultaneously and share the same server port to utilize all CPU cores
+  (B) A cluster of computer monitors on a desk
+  (C) A tool for clustering data in machine learning
+  (D) A physical rack holding multiple computers
+Correct Answer: (A)
+Explanation: Allows single-threaded Node.js to scale horizontally across multi-core server processors (e.g., spawning 8 workers on an 8-core CPU).
+
+Q_128 [Unit 3] [MEDIUM]: What is PM2 in Node.js production deployment?
+  (A) A production process manager for Node.js applications with a built-in load balancer, automated restarts on crash, and zero-downtime reloads
+  (B) A text editor like Notepad
+  (C) A web browser developed by Google
+  (D) A tool for testing network bandwidth
+Correct Answer: (A)
+Explanation: The standard production CLI manager: `pm2 start server.js -i max` runs instances across all available CPU cores with auto-restart on crashes.
+
+Q_129 [Unit 3] [EASY]: What is an Environment Variable (`process.env`) in Node.js?
+  (A) Global variables provided by the execution environment used to store configuration secrets (database URLs, API keys, ports) outside source code
+  (B) Variables that control office air conditioning
+  (C) Variables that change colors on computer screens
+  (D) Variables that delete temporary files
+Correct Answer: (A)
+Explanation: Managed in development using the `dotenv` package (`import 'dotenv/config'`), keeping secret credentials out of Git repositories.
+
+Q_130 [Unit 3] [MEDIUM]: What is JWT (JSON Web Token) authentication architecture in Express REST APIs?
+  (A) A stateless token-based authentication mechanism where the server issues a signed JWT to the client upon login, which the client transmits in headers
+  (B) A method for saving passwords in plain text
+  (C) A tool for encrypting hard drives
+  (D) An operating system user account
+Correct Answer: (A)
+Explanation: The server verifies the digital signature of incoming `Authorization: Bearer <token>` headers without querying a session database on every request.
+
+Q_131 [Unit 3] [EASY]: What are the three parts of a JSON Web Token (JWT)?
+  (A) Header (algorithm & token type), Payload (claims/user data), and Signature (HMAC/RSA hash)
+  (B) Username, Password, and Email
+  (C) Input, Output, and Processing
+  (D) First Name, Middle Name, and Last Name
+Correct Answer: (A)
+Explanation: Formatted as three Base64URL-encoded strings separated by dots: `header.payload.signature`.
+
+Q_132 [Unit 3] [MEDIUM]: What is Bcrypt in Node.js authentication?
+  (A) A password-hashing function based on the Blowfish cipher incorporating salt and adaptive work factor cost to resist brute-force attacks
+  (B) A tool for compressing video files
+  (C) A database query language
+  (D) A web server framework like Express
+Correct Answer: (A)
+Explanation: `bcrypt.hash(password, 12)` generates a slow, salt-protected hash that thwarts rainbow table and GPU dictionary attacks.
+
+Q_133 [Unit 3] [EASY]: What is the purpose of `express-rate-limit` middleware?
+  (A) To limit repeated requests to public APIs and endpoints (like login forms) to prevent brute-force attacks and Denial of Service (DoS)
+  (B) To increase internet download speeds
+  (C) To limit employee work hours
+  (D) To measure computer processor speed
+Correct Answer: (A)
+Explanation: Restricts IP addresses to a maximum number of requests within a sliding time window (e.g., max 5 login attempts per 15 minutes).
+
+Q_134 [Unit 3] [MEDIUM]: What is a Memory Leak in Node.js and what tool is used to detect it?
+  (A) Unintended accumulation of memory in the V8 heap caused by uncleaned global caches, closures, or listeners, diagnosed using heap snapshots in Chrome DevTools
+  (B) A physical crack on a RAM stick
+  (C) A program deleting files from disk
+  (D) An error caused by unplugging a server
+Correct Answer: (A)
+Explanation: Taking heap snapshots and comparing memory diffs identifies objects that retain references and escape garbage collection.
+
+Q_135 [Unit 3] [EASY]: What is the `fs` (File System) module in Node.js?
+  (A) A built-in module providing both synchronous and asynchronous APIs to interact with the file system (reading, writing, deleting files)
+  (B) A module for creating fonts
+  (C) A database engine developed by Node.js
+  (D) A tool for formatting hard drives
+Correct Answer: (A)
+Explanation: Offers asynchronous callback, promise-based (`fs/promises`), and synchronous (`fs.readFileSync()`) file manipulation methods.
+
+Q_136 [Unit 3] [MEDIUM]: Why should synchronous file methods (e.g., `fs.readFileSync`) be AVOIDED in production Express web servers?
+  (A) Because synchronous methods block the single Node.js event loop thread, freezing the server and delaying all concurrent user requests until file I/O finishes
+  (B) Because synchronous methods are illegal in JavaScript
+  (C) Because synchronous methods delete the file
+  (D) Because they only work on Windows
+Correct Answer: (A)
+Explanation: Blocking the event loop for even 50ms degrades latency for hundreds of other concurrent incoming HTTP requests.
+
+Q_137 [Unit 3] [MEDIUM]: What is Path Traversal vulnerability (Directory Traversal) in Node.js file serving?
+  (A) An exploit where an attacker inputs `../` sequences into file download endpoints to read sensitive system files (e.g., `/etc/passwd`) outside the web root
+  (B) A software program that walks through computer directories
+  (C) A physical path inside a computer data center
+  (D) A tool for organizing music files
+Correct Answer: (A)
+Explanation: Mitigated using `path.normalize()` and verifying that the resolved absolute path starts strictly within the designated public directory.
+
+Q_138 [Unit 3] [EASY]: What is the `path` module in Node.js?
+  (A) A built-in module providing utilities for working with and resolving file and directory paths across different operating systems (Windows `\` vs POSIX `/`)
+  (B) A tool for drawing lines on computer monitors
+  (C) A program that tracks mouse movements
+  (D) A database for storing URL links
+Correct Answer: (A)
+Explanation: `path.join(__dirname, 'uploads', filename)` automatically formats correct directory slash separators across Windows, Linux, and macOS.
+
+Q_139 [Unit 3] [EASY]: What is `__dirname` in CommonJS Node.js modules?
+  (A) A global variable representing the absolute directory path of the currently executing JavaScript source file
+  (B) The name of the user who logged into the computer
+  (C) The name of the operating system
+  (D) A function that deletes folders
+Correct Answer: (A)
+Explanation: Provides reliable absolute path resolution regardless of what directory the node command was executed from.
+
+Q_140 [Unit 3] [MEDIUM]: In ES Modules (ESM) where `__dirname` is not defined, how is the current file directory resolved?
+  (A) `import.meta.dirname` (in modern Node) or `path.dirname(fileURLToPath(import.meta.url))`
+  (B) `process.cwd()`
+  (C) `window.location`
+  (D) `document.baseURI`
+Correct Answer: (A)
+Explanation: Node.js 20.11+ natively introduced `import.meta.dirname` and `import.meta.filename` for ES Modules.
+
+Q_141 [Unit 3] [MEDIUM]: What is an Asynchronous Middleware Wrapper in Express.js?
+  (A) A utility function that wraps async route handlers to automatically catch rejected promises and forward errors to `next(err)`
+  (B) A tool for wrapping physical computer wires with tape
+  (C) A program that converts JavaScript into Python
+  (D) An encryption algorithm
+Correct Answer: (A)
+Explanation: Prevents unhandled promise rejections: `const asyncHandler = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);`.
+
+Q_142 [Unit 3] [MEDIUM]: What is the difference between `npm install` and `npm ci`?
+  (A) `npm install` can update `package-lock.json`; `npm ci` installs strictly the exact dependencies from `package-lock.json` and is faster for CI/CD pipelines
+  (B) They are identical in every way
+  (C) `npm ci` is only for Windows
+  (D) `npm ci` deletes all project source code
+Correct Answer: (A)
+Explanation: `npm ci` (Clean Install) removes `node_modules` and builds the exact locked dependency tree, guaranteeing 100% build reproducibility in CI pipelines.
+
+Q_143 [Unit 3] [EASY]: What is Semantic Versioning (SemVer) used by NPM (`major.minor.patch`)?
+  (A) A versioning format where: `major` = breaking API changes; `minor` = backwards-compatible new features; `patch` = backwards-compatible bug fixes
+  (B) A way to grade software developers
+  (C) A tool for counting words in source code
+  (D) A method for pricing commercial software
+Correct Answer: (A)
+Explanation: Example: `^1.2.3` permits minor and patch updates ($< 2.0.0$); `~1.2.3` permits only patch updates ($< 1.3.0$).
+
+Q_144 [Unit 3] [EASY]: What is the `http` module in Node.js?
+  (A) A core module providing classes and methods for creating low-level HTTP web servers and making client HTTP requests: `http.createServer()`
+  (B) A web browser developed by Google
+  (C) A tool for formatting hard drives
+  (D) A protocol for sending email messages
+Correct Answer: (A)
+Explanation: Express is built directly on top of Node's native `http.createServer()` architecture.
+
+Q_145 [Unit 3] [EASY]: What is WebSockets in Node.js (e.g., `ws` or `Socket.io`)?
+  (A) A protocol providing full-duplex, bidirectional communication channels over a single persistent TCP connection between client and server
+  (B) A socket where computers are plugged into electrical walls
+  (C) A tool for designing website layouts
+  (D) A database management system like MySQL
+Correct Answer: (A)
+Explanation: Enables real-time applications (chat apps, live sports scores, collaborative document editing) without continuous HTTP polling.
+
+Q_146 [Unit 3] [MEDIUM]: What is Socket.io and how does it differ from raw WebSockets?
+  (A) A library that provides WebSocket communication along with automated fallbacks (HTTP long-polling), reconnection logic, and room/namespace abstractions
+  (B) A hardware chip installed inside routers
+  (C) A programming language developed by Apple
+  (D) An operating system for gaming consoles
+Correct Answer: (A)
+Explanation: Raw WebSockets is a protocol; Socket.io is an enterprise library that falls back to long-polling if corporate firewalls block WebSockets.
+
+Q_147 [Unit 3] [MEDIUM]: What is Server-Sent Events (SSE) compared to WebSockets?
+  (A) A unidirectional technology where a client receives continuous automatic updates from a server via standard HTTP without client-to-server messaging
+  (B) A video conferencing software application
+  (C) A tool for sending email newsletters
+  (D) A database query language
+Correct Answer: (A)
+Explanation: SSE uses standard HTTP (`text/event-stream`), reconnects automatically, and is lighter than WebSockets when communication is purely server-to-client.
+
+Q_148 [Unit 3] [HARD]: What is Content-Security-Policy (CSP) in web application security?
+  (A) An HTTP response header that restricts the resources (scripts, images, stylesheets) that the browser is allowed to load for a given page
+  (B) A security policy for computer company employees
+  (C) A firewall that blocks email attachments
+  (D) A password manager built into web browsers
+Correct Answer: (A)
+Explanation: The most potent defense against Cross-Site Scripting (XSS), restricting executable scripts strictly to whitelisted domains or cryptographic nonces.
+
+Q_149 [Unit 3] [EASY]: What is Morgan in Express.js application development?
+  (A) An HTTP request logger middleware for Node.js that formats and prints incoming request logs (method, URL, status code, response time) to the console
+  (B) A software program that plays music in offices
+  (C) A database management engine developed by IBM
+  (D) A text editor like Visual Studio Code
+Correct Answer: (A)
+Explanation: `app.use(morgan('dev'))` provides developers with real-time colored request traces during debugging.
+
+Q_150 [Unit 3] [EASY]: What is the `node_modules` directory in a Node.js project?
+  (A) The directory where NPM downloads, extracts, and stores third-party libraries and their transitive dependencies
+  (B) A directory that stores user passwords
+  (C) A temporary folder deleted automatically every hour
+  (D) A folder that contains the computer's operating system
+Correct Answer: (A)
+Explanation: Often contains hundreds of megabytes of nested dependencies; should always be added to `.gitignore` to prevent repository bloat.
+
+Q_151 [Unit 4] [EASY]: What is the fundamental difference between Relational (SQL) and NoSQL databases?
+  (A) SQL databases use rigid tabular schemas with relations and ACID transactions; NoSQL databases use flexible, schema-less models optimized for horizontal scaling
+  (B) SQL is for software; NoSQL is for hardware
+  (C) SQL databases cannot store text
+  (D) There is no difference between them
+Correct Answer: (A)
+Explanation: SQL (PostgreSQL, MySQL) enforces structured schemas; NoSQL (MongoDB, Cassandra) supports document, key-value, column-family, and graph data models.
+
+Q_152 [Unit 4] [EASY]: What does the acronym NoSQL stand for in modern database terminology?
+  (A) Not Only SQL
+  (B) No SQL Ever
+  (C) New Operating System Query Language
+  (D) Non-Sequential Query Language
+Correct Answer: (A)
+Explanation: Reflects that modern systems frequently employ polyglot persistence, combining SQL for transactional data with NoSQL for high-velocity or unstructured data.
+
+Q_153 [Unit 4] [MEDIUM]: What are the 4 primary categories of NoSQL databases?
+  (A) Document stores, Key-Value stores, Wide-Column stores, and Graph databases
+  (B) Relational, Hierarchical, Network, and Flat file
+  (C) Memory, Disk, Tape, and Cloud
+  (D) Input, Output, Processing, and Storage
+Correct Answer: (A)
+Explanation: Document (MongoDB), Key-Value (Redis), Wide-Column (Cassandra), Graph (Neo4j).
+
+Q_154 [Unit 4] [EASY]: What is the CAP Theorem (Brewer's Theorem) in distributed database theory?
+  (A) A distributed data store can simultaneously provide at most two out of: Consistency, Availability, and Partition Tolerance
+  (B) A theorem stating that all computers become obsolete in two years
+  (C) A formula for calculating database licensing costs
+  (D) A rule defining how many hard drives are required in servers
+Correct Answer: (A)
+Explanation: Since network partitions (P) are inevitable in real-world distributed networks, distributed databases must choose between CP (Consistency) or AP (Availability).
+
+Q_155 [Unit 4] [MEDIUM]: What is the difference between ACID and BASE database properties?
+  (A) ACID guarantees strict immediate consistency (Atomicity, Consistency, Isolation, Durability); BASE prioritizes availability and eventual consistency (Basically Available, Soft state, Eventual consistency)
+  (B) ACID is for chemistry; BASE is for biology
+  (C) ACID is obsolete; BASE is modern
+  (D) They are exact synonyms
+Correct Answer: (A)
+Explanation: Traditional RDBMSes adhere to ACID; distributed NoSQL databases trade immediate consistency for high availability and partition tolerance (BASE).
+
+Q_156 [Unit 4] [EASY]: What is MongoDB?
+  (A) An open-source, high-performance, document-oriented NoSQL database that stores data as JSON-like documents with dynamic schemas
+  (B) A relational database management system like Oracle
+  (C) A programming language developed by Google
+  (D) A web browser developed by Mozilla
+Correct Answer: (A)
+Explanation: MongoDB replaces relational rows with BSON documents, providing rich nested document structures and horizontal sharding.
+
+Q_157 [Unit 4] [EASY]: What format does MongoDB use internally to store and transmit documents?
+  (A) BSON (Binary JSON)
+  (B) Plain XML
+  (C) CSV text
+  (D) YAML
+Correct Answer: (A)
+Explanation: BSON extends JSON with additional data types (Date, ObjectId, Binary, Decimal128) and is optimized for fast binary traversal on disk.
+
+Q_158 [Unit 4] [EASY]: What is a Collection in MongoDB equivalent to in a relational SQL database?
+  (A) A Table
+  (B) A Row
+  (C) A Column
+  (D) A Primary Key
+Correct Answer: (A)
+Explanation: In mapping terminology: Database $\to$ Database, Table $\to$ Collection, Row $\to$ Document, Column $\to$ Field.
+
+Q_159 [Unit 4] [EASY]: What is a Document in MongoDB equivalent to in an RDBMS?
+  (A) A Row (or Tuple)
+  (B) A Table
+  (C) A Database
+  (D) A Foreign Key
+Correct Answer: (A)
+Explanation: A document is an individual record composed of field-value pairs stored in BSON format inside a collection.
+
+Q_160 [Unit 4] [EASY]: What is the `_id` field in every MongoDB document?
+  (A) A mandatory primary key field that uniquely identifies the document within a collection (defaults to a 12-byte `ObjectId`)
+  (B) The name of the user who created the document
+  (C) The date when the document was deleted
+  (D) A foreign key pointing to another database
+Correct Answer: (A)
+Explanation: Every document must have an immutable `_id`. If omitted during insertion, MongoDB automatically assigns a unique 12-byte `ObjectId`.
+
+Q_161 [Unit 4] [HARD]: What does the 12-byte MongoDB `ObjectId` consist of?
+  (A) A 4-byte timestamp, a 5-byte random value (machine/process identifier), and a 3-byte incrementing counter
+  (B) A 12-letter English word
+  (C) A random number generated by a computer
+  (D) A 12-digit credit card number
+Correct Answer: (A)
+Explanation: Because the first 4 bytes encode a Unix timestamp, `ObjectId` instances are naturally roughly sorted in chronological creation order.
+
+Q_162 [Unit 4] [MEDIUM]: What is the maximum allowed size of a single BSON document in MongoDB?
+  (A) 16 Megabytes (MB)
+  (B) 1 Megabyte
+  (C) 1 Gigabyte
+  (D) Unlimited
+Correct Answer: (A)
+Explanation: The 16MB document limit prevents memory bloat and ensures high-speed network transmission; larger files (videos, PDFs) use **GridFS**.
+
+Q_163 [Unit 4] [MEDIUM]: What is GridFS in MongoDB?
+  (A) A specification for storing and retrieving files that exceed the 16MB BSON document size limit by dividing files into chunks
+  (B) A high-speed fiber optic networking cable
+  (C) A tool for formatting hard drives
+  (D) A graphical user interface layout manager
+Correct Answer: (A)
+Explanation: GridFS splits large files into 255KB chunks stored in two collections: `fs.chunks` (binary binary chunks) and `fs.files` (metadata).
+
+Q_164 [Unit 4] [EASY]: How do you insert a single document into a MongoDB collection using the mongo shell or driver?
+  (A) `db.collection.insertOne({ name: 'Akshay', sem: 6 })`
+  (B) `db.collection.add({ name: 'Akshay' })`
+  (C) `INSERT INTO collection VALUES ('Akshay')`
+  (D) `db.collection.put({ name: 'Akshay' })`
+Correct Answer: (A)
+Explanation: `insertOne()` inserts a single document; `insertMany([doc1, doc2])` inserts an array of documents.
+
+Q_165 [Unit 4] [EASY]: How do you query all documents where `semester` equals 6 in MongoDB?
+  (A) `db.students.find({ semester: 6 })`
+  (B) `db.students.select({ semester: 6 })`
+  (C) `db.students.get(semester == 6)`
+  (D) `db.students.search(6)`
+Correct Answer: (A)
+Explanation: `find(query, projection)` queries documents matching the filter criteria.
+
+Q_166 [Unit 4] [EASY]: What is the difference between `find()` and `findOne()` in MongoDB?
+  (A) `find()` returns a cursor pointing to all matching documents; `findOne()` returns the single first matching document directly
+  (B) `find()` is for numbers; `findOne()` is for strings
+  (C) `find()` deletes the documents
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: `findOne()` reads only the first matching document and immediately releases the cursor, making it faster for unique queries.
+
+Q_167 [Unit 4] [EASY]: Which operator is used in MongoDB to update specific fields without overwriting the entire document?
+  (A) `$set`
+  (B) `$update`
+  (C) `$modify`
+  (D) `$change`
+Correct Answer: (A)
+Explanation: `db.users.updateOne({ _id: 1 }, { $set: { status: 'active' } })` updates only the `status` field, preserving all other fields.
+
+Q_168 [Unit 4] [MEDIUM]: What happens if you update a document in MongoDB without using update operators like `$set`?
+  (A) The entire document is replaced with the new object, wiping out all previous fields except `_id`
+  (B) The database throws a syntax error
+  (C) Nothing happens
+  (D) The document is deleted
+Correct Answer: (A)
+Explanation: In older MongoDB versions, executing `update({ _id: 1 }, { status: 'active' })` replaced the entire document with just `{ status: 'active' }`.
+
+Q_169 [Unit 4] [EASY]: Which update operator increments the value of a numeric field by a specified amount in MongoDB?
+  (A) `$inc`
+  (B) `$add`
+  (C) `$plus`
+  (D) `$sum`
+Correct Answer: (A)
+Explanation: Example: `db.quizzes.updateOne({ _id: id }, { $inc: { attempts: 1 } })` atomically increments the counter by 1.
+
+Q_170 [Unit 4] [EASY]: Which array update operator adds an element to an array field in MongoDB?
+  (A) `$push`
+  (B) `$append`
+  (C) `$insert`
+  (D) `$add`
+Correct Answer: (A)
+Explanation: Example: `db.students.updateOne({ _id: id }, { $push: { tags: 'BCA' } })` appends `'BCA'` to the `tags` array.
+
+Q_171 [Unit 4] [MEDIUM]: Which array operator adds an element to an array ONLY if it does not already exist (preventing duplicates)?
+  (A) `$addToSet`
+  (B) `$pushUnique`
+  (C) `$insertSet`
+  (D) `$set`
+Correct Answer: (A)
+Explanation: `$addToSet` treats the array like a mathematical set, ensuring uniqueness.
+
+Q_172 [Unit 4] [MEDIUM]: Which operator deletes a specific field from a MongoDB document?
+  (A) `$unset`
+  (B) `$delete`
+  (C) `$remove`
+  (D) `$drop`
+Correct Answer: (A)
+Explanation: Example: `db.users.updateOne({ _id: id }, { $unset: { temporaryToken: "" } })` deletes the `temporaryToken` field.
+
+Q_173 [Unit 4] [EASY]: How do you delete all documents matching a condition in MongoDB?
+  (A) `db.collection.deleteMany({ status: 'inactive' })`
+  (B) `db.collection.drop({ status: 'inactive' })`
+  (C) `DELETE FROM collection WHERE status = 'inactive'`
+  (D) `db.collection.removeMany()`
+Correct Answer: (A)
+Explanation: `deleteMany()` removes all matching documents; `deleteOne()` removes only the first matching document.
+
+Q_174 [Unit 4] [EASY]: What does `db.collection.drop()` do in MongoDB?
+  (A) Completely deletes the entire collection, including all documents and all associated indexes, from the database
+  (B) Deletes a single document
+  (C) Clears the screen in the mongo shell
+  (D) Removes temporary files from memory
+Correct Answer: (A)
+Explanation: Equivalent to `DROP TABLE` in SQL: drops the entire collection and indexes from storage.
+
+Q_175 [Unit 4] [MEDIUM]: What is the difference between Embedded Documents and Document References in MongoDB data modeling?
+  (A) Embedded documents store child objects directly inside the parent document; References store child objects in separate collections linked via `_id`
+  (B) Embedded is for text; References is for numbers
+  (C) Embedded is slower than References
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Embedding provides fast single-query retrieval for bounded 1-to-few relations; Referencing prevents data duplication for large or many-to-many relations.
+
+Q_176 [Unit 4] [EASY]: What is the MongoDB Aggregation Pipeline?
+  (A) A framework for data modeling and transformation where documents pass through a multi-stage pipeline to produce aggregated results
+  (B) A physical pipeline carrying water to servers
+  (C) A tool for compressing database files
+  (D) A database backup utility
+Correct Answer: (A)
+Explanation: Analogous to SQL `GROUP BY` and joins: documents flow through stages like `$match`, `$group`, `$sort`, and `$project`.
+
+Q_177 [Unit 4] [MEDIUM]: What does the `$match` stage do in an aggregation pipeline?
+  (A) Filters documents to allow only those that match specified condition criteria to pass into the next pipeline stage (like SQL `WHERE`)
+  (B) Matches passwords with usernames
+  (C) Compares two database tables
+  (D) Finds matching strings in text
+Correct Answer: (A)
+Explanation: Placing `$match` at the very beginning of a pipeline leverages indexes to minimize the number of documents processed downstream.
+
+Q_178 [Unit 4] [MEDIUM]: What does the `$group` stage do in an aggregation pipeline?
+  (A) Groups input documents by a specified `_id` expression and applies accumulator expressions (e.g., `$sum`, `$avg`, `$max`)
+  (B) Groups users into chat rooms
+  (C) Organizes files into folders on disk
+  (D) A team of developers working together
+Correct Answer: (A)
+Explanation: Equivalent to SQL `GROUP BY`: `db.orders.aggregate([{ $group: { _id: '$customer', total: { $sum: '$amount' } } }])`.
+
+Q_179 [Unit 4] [MEDIUM]: What does the `$project` stage do in an aggregation pipeline?
+  (A) Reshapes documents by specifying which fields to include, exclude, rename, or compute as new synthetic fields (like SQL `SELECT`)
+  (B) Projects video onto a wall
+  (C) Creates a new software project
+  (D) Estimates the completion date of a project
+Correct Answer: (A)
+Explanation: Used to reduce payload bandwidth by filtering out unnecessary heavy fields before sending results to the client.
+
+Q_180 [Unit 4] [HARD]: What does the `$unwind` stage do in an aggregation pipeline?
+  (A) Deconstructs an array field from the input documents to output a document for each element in the array
+  (B) Rewinds an audio recording
+  (C) Cancels a database transaction
+  (D) Deletes an array from memory
+Correct Answer: (A)
+Explanation: If a document has an array of 3 tags, `$unwind: '$tags'` outputs 3 distinct documents, each containing one of the individual tags.
+
+Q_181 [Unit 4] [HARD]: What does the `$lookup` stage do in an aggregation pipeline?
+  (A) Performs a left outer equijoin to another collection in the same database to filter in documents from the joined collection
+  (B) Looks up a word in an English dictionary
+  (C) Searches for files on a computer hard drive
+  (D) A tool for checking employee attendance
+Correct Answer: (A)
+Explanation: Brings relational join capability to MongoDB: `$lookup: { from: 'authors', localField: 'authorId', foreignField: '_id', as: 'authorDetails' }`.
+
+Q_182 [Unit 4] [EASY]: What is an Index in MongoDB and why is it used?
+  (A) A special data structure (B-Tree) that stores a small portion of the collection's data in an easy-to-traverse form to drastically speed up queries
+  (B) A table of contents in a textbook
+  (C) The first page of a website
+  (D) A list of employee phone numbers
+Correct Answer: (A)
+Explanation: Without indexes, MongoDB must perform a full collection scan (COLLSCAN) scanning every single document on disk.
+
+Q_183 [Unit 4] [EASY]: How do you create an ascending index on the `email` field in MongoDB?
+  (A) `db.users.createIndex({ email: 1 })`
+  (B) `db.users.addIndex('email')`
+  (C) `CREATE INDEX email ON users`
+  (D) `db.users.index({ email: true })`
+Correct Answer: (A)
+Explanation: `1` specifies ascending index order; `-1` specifies descending index order.
+
+Q_184 [Unit 4] [MEDIUM]: What is a Compound Index in MongoDB?
+  (A) An index where a single index structure holds references to multiple fields within a collection: `createIndex({ semester: 1, gpa: -1 })`
+  (B) An index that accrues compound financial interest
+  (C) An index made of multiple databases
+  (D) A temporary index deleted daily
+Correct Answer: (A)
+Explanation: Supports queries that filter and sort on multiple fields simultaneously, adhering to the Equality-Sort-Range (ESR) rule.
+
+Q_185 [Unit 4] [EASY]: What is a Unique Index in MongoDB?
+  (A) An index that causes MongoDB to reject duplicate values for the indexed field: `createIndex({ email: 1 }, { unique: true })`
+  (B) An index that has a unique name
+  (C) An index that is only used once
+  (D) An index that cannot be deleted
+Correct Answer: (A)
+Explanation: Enforces database-level uniqueness constraints (e.g., preventing two users from registering with the same email).
+
+Q_186 [Unit 4] [HARD]: What is a Covered Query in MongoDB?
+  (A) A query that can be satisfied entirely from index keys without having to examine or read any actual documents from disk
+  (B) A query that is hidden from hackers
+  (C) A query covered by a software warranty
+  (D) A query written inside comments
+Correct Answer: (A)
+Explanation: The ultimate high-performance query: when all queried fields and all projected return fields are inside the index, execution latency is sub-millisecond in RAM.
+
+Q_187 [Unit 4] [MEDIUM]: What does the `.explain('executionStats')` method do in MongoDB?
+  (A) Returns detailed execution statistics about a query plan (e.g., COLLSCAN vs IXSCAN, total documents examined, execution time in ms)
+  (B) Explains the source code in plain English
+  (C) A tool for teaching students how to write queries
+  (D) Generates user documentation automatically
+Correct Answer: (A)
+Explanation: Essential for query optimization: allows developers to verify whether a query is using an index (IXSCAN) or performing a slow full scan (COLLSCAN).
+
+Q_188 [Unit 4] [EASY]: What is a Replica Set in MongoDB architecture?
+  (A) A cluster of MongoDB servers that maintain the same data set, providing high availability, redundancy, and automated failover
+  (B) A set of duplicate backup tapes
+  (C) A group of identical software developers
+  (D) A database that only stores copies of images
+Correct Answer: (A)
+Explanation: Consists of one Primary node (handles writes) and multiple Secondary nodes (replicate oplog for automated failover).
+
+Q_189 [Unit 4] [MEDIUM]: What is the Oplog (Operations Log) in MongoDB replica sets?
+  (A) A special capped collection (`local.oplog.rs`) that records a rolling historical log of all operations that modify database state
+  (B) A list of employee login passwords
+  (C) A log tracking computer processor temperature
+  (D) A file recording network errors
+Correct Answer: (A)
+Explanation: Secondary nodes continuously read and apply the Primary's oplog entries to maintain exact synchronization.
+
+Q_190 [Unit 4] [MEDIUM]: What is Sharding in MongoDB?
+  (A) The method for distributing data horizontally across multiple physical machines (shards) to support massive data sets and high throughput
+  (B) Cutting a hard drive into pieces
+  (C) Sharing database passwords with colleagues
+  (D) A tool for compressing database files
+Correct Answer: (A)
+Explanation: Provides horizontal scaling beyond the hardware limits of any single physical server using a chosen Shard Key.
+
+Q_191 [Unit 4] [HARD]: What are the three core components of a MongoDB Sharded Cluster?
+  (A) Shard nodes, Query Routers (`mongos`), and Config Servers
+  (B) Input, Output, and Processing
+  (C) Client, Server, and Database
+  (D) Master, Worker, and Task
+Correct Answer: (A)
+Explanation: Clients talk to `mongos` routers; `mongos` queries Config Servers to determine which Shards hold the requested data chunks.
+
+Q_192 [Unit 4] [HARD]: What is a Shard Key in MongoDB?
+  (A) The indexed field or fields that determine the distribution of the collection's documents across the cluster's shards
+  (B) A physical metal key used to unlock a server room
+  (C) A secret encryption key used for passwords
+  (D) A license key required to install MongoDB
+Correct Answer: (A)
+Explanation: Choosing an effective shard key (high cardinality, low frequency, non-monotonically increasing) is vital to avoid hotspotting a single shard.
+
+Q_193 [Unit 4] [EASY]: What is MongoDB Atlas?
+  (A) A fully managed cloud database service developed by MongoDB, automating provisioning, scaling, backups, and security across AWS, GCP, and Azure
+  (B) A physical geography map book
+  (C) A satellite navigation system
+  (D) A programming language developed by MongoDB
+Correct Answer: (A)
+Explanation: Eliminates database administrative overhead by providing multi-cloud clusters, automated security patching, and automated scaling in minutes.
+
+Q_194 [Unit 4] [EASY]: What is Mongoose in Node.js application development?
+  (A) An Object Data Modeling (ODM) library for MongoDB and Node.js that provides schema validation, middleware hooks, and model casting
+  (B) A small carnivore animal that eats snakes
+  (C) A database engine developed by Apache
+  (D) A web browser developed by Google
+Correct Answer: (A)
+Explanation: Enforces schema discipline over MongoDB's native schema-less flexibility, providing type validation and lifecycle hooks (`pre('save')`).
+
+Q_195 [Unit 4] [MEDIUM]: In Mongoose, what is a Schema vs a Model?
+  (A) A Schema defines the structure and validation rules for documents; a Model is a compiled constructor compiled from the Schema used to query and create documents
+  (B) A Schema is software; a Model is hardware
+  (C) They are identical in every way
+  (D) A Schema is for SQL; a Model is for NoSQL
+Correct Answer: (A)
+Explanation: `const userSchema = new mongoose.Schema({...}); const User = mongoose.model('User', userSchema);`.
+
+Q_196 [Unit 4] [MEDIUM]: What is a Mongoose Middleware (Hook)?
+  (A) Functions that execute control during the execution of asynchronous Mongoose actions (e.g., pre-save hooks to hash passwords before database storage)
+  (B) Hardware cables in a server room
+  (C) A tool for connecting two computers together
+  (D) A database table storing passwords
+Correct Answer: (A)
+Explanation: `userSchema.pre('save', async function() { this.password = await bcrypt.hash(this.password, 10); });`.
+
+Q_197 [Unit 4] [HARD]: What is the difference between Write Concern `w: 1` and `w: 'majority'` in MongoDB?
+  (A) `w: 1` confirms write after only the Primary acknowledges; `w: 'majority'` confirms write only after a majority of replica nodes commit to disk/memory
+  (B) `w: 1` is for one user; `majority` is for two users
+  (C) `w: 1` is slower than `majority`
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: `w: 'majority'` guarantees durability against failovers, ensuring committed writes will never be rolled back if the primary crashes.
+
+Q_198 [Unit 4] [MEDIUM]: What is a Capped Collection in MongoDB?
+  (A) A fixed-size collection that supports high-throughput operations that insert and retrieve documents based on insertion order (acts like a circular buffer)
+  (B) A collection with a physical plastic cap
+  (C) A collection that costs money to use
+  (D) A collection that can only store 10 documents
+Correct Answer: (A)
+Explanation: Once the allocated disk size is filled, newly inserted documents automatically overwrite the oldest documents (used for logging and caching).
+
+Q_199 [Unit 4] [MEDIUM]: What is Change Streams in MongoDB?
+  (A) A feature that allows applications to access real-time data changes without the complexity and risk of tailing the oplog
+  (B) A river flowing through a data center
+  (C) A tool for changing database passwords
+  (D) A feature that renames database collections
+Correct Answer: (A)
+Explanation: Applications subscribe to collections and receive instant real-time notifications via WebSockets whenever documents are created, updated, or deleted.
+
+Q_200 [Unit 4] [EASY]: What is TTL (Time-To-Live) Index in MongoDB?
+  (A) A special single-field index that MongoDB uses to automatically delete documents from a collection after a specified amount of time
+  (B) A tool for measuring the lifespan of batteries
+  (C) A software license that expires in 30 days
+  (D) An index that speeds up time in video games
+Correct Answer: (A)
+Explanation: Used for ephemeral data (session tokens, password reset links, log entries): `createIndex({ createdAt: 1 }, { expireAfterSeconds: 3600 })`.
+
+Q_201 [Unit 5] [EASY]: What is Python's role in modern full-stack web and data engineering?
+  (A) A high-level, interpreted programming language known for readability, rapid development, rich web frameworks, and seamless data science integration
+  (B) A physical snake kept in computer laboratories
+  (C) A database management system like Oracle
+  (D) An operating system developed for supercomputers
+Correct Answer: (A)
+Explanation: Python is widely used for web backends (Django, Flask, FastAPI), data pipelines, machine learning, and automation scripting.
+
+Q_202 [Unit 5] [EASY]: What is a Python Virtual Environment (`venv` / `virtualenv`) and why is it essential?
+  (A) An isolated directory tree containing a specific Python interpreter and third-party packages, preventing dependency version conflicts between projects
+  (B) A virtual reality video game developed in Python
+  (C) A simulated computer hardware motherboard
+  (D) A tool for running Python code without an operating system
+Correct Answer: (A)
+Explanation: Isolating dependencies ensures Project A requiring Django 3.2 does not break when Project B upgrades to Django 5.0 on the same machine.
+
+Q_203 [Unit 5] [EASY]: How do you create a Python virtual environment in modern Python 3?
+  (A) `python -m venv myenv`
+  (B) `pip install venv`
+  (C) `python create environment`
+  (D) `make venv`
+Correct Answer: (A)
+Explanation: The standard built-in command `python -m venv <dir>` creates an isolated environment containing private `bin/Scripts` and `site-packages`.
+
+Q_204 [Unit 5] [EASY]: How do you activate a virtual environment on Windows PowerShell vs Linux/macOS?
+  (A) Windows: `.\myenv\Scripts\Activate.ps1`; Linux/macOS: `source myenv/bin/activate`
+  (B) Windows: `start python`; Linux: `run python`
+  (C) Windows: `activate.exe`; Linux: `activate.sh`
+  (D) Virtual environments do not require activation
+Correct Answer: (A)
+Explanation: Activating the environment modifies the system `PATH` to point to the local environment's Python interpreter and pip binaries.
+
+Q_205 [Unit 5] [EASY]: What is `pip` in the Python ecosystem?
+  (A) The standard package manager for Python used to install and manage third-party software packages from the Python Package Index (PyPI)
+  (B) A computer sound effect played on errors
+  (C) A tool for compressing image files
+  (D) A database query language like SQL
+Correct Answer: (A)
+Explanation: `pip install <package>` downloads and installs libraries and their dependencies from PyPI into the active environment.
+
+Q_206 [Unit 5] [EASY]: What is the purpose of a `requirements.txt` file in Python projects?
+  (A) To specify all external third-party package dependencies and their exact versions, allowing other developers to install them via `pip install -r requirements.txt`
+  (B) A list of employee requirements for getting hired
+  (C) A document containing customer feature requests
+  (D) A file listing computer hardware specifications
+Correct Answer: (A)
+Explanation: Guarantees that developers and CI/CD server pipelines install identical package versions across all machines.
+
+Q_207 [Unit 5] [EASY]: What is PyMongo?
+  (A) The official Python distribution library containing tools for interacting with MongoDB databases from Python applications
+  (B) A programming language developed by MongoDB
+  (C) A web browser developed in Python
+  (D) A tool for formatting hard drives
+Correct Answer: (A)
+Explanation: PyMongo provides idiomatic Python APIs (`MongoClient`) to execute BSON document CRUD operations and aggregation pipelines.
+
+Q_208 [Unit 5] [EASY]: How do you connect to a local MongoDB instance using PyMongo in Python?
+  (A) `from pymongo import MongoClient; client = MongoClient('mongodb://localhost:27017/')`
+  (B) `import mongo; db = mongo.connect()`
+  (C) `client = pymongo.start('localhost')`
+  (D) `open('mongodb://localhost')`
+Correct Answer: (A)
+Explanation: `MongoClient` opens a connection pool to the specified MongoDB connection string URI.
+
+Q_209 [Unit 5] [EASY]: In PyMongo, how do you select a database named `university_db` and a collection named `courses`?
+  (A) `db = client['university_db']; courses = db['courses']`
+  (B) `db = client.open('university_db'); courses = db.open('courses')`
+  (C) `db = select database university_db;`
+  (D) `courses = client.get('courses')`
+Correct Answer: (A)
+Explanation: PyMongo supports both dictionary-style lookup (`client['db_name']`) and attribute-style lookup (`client.db_name`).
+
+Q_210 [Unit 5] [EASY]: How do you insert a document into a collection in PyMongo?
+  (A) `collection.insert_one({'course_code': 'BCA-306N', 'credits': 4})`
+  (B) `collection.add({'course_code': 'BCA-306N'})`
+  (C) `collection.save({'course_code': 'BCA-306N'})`
+  (D) `collection.write({'course_code': 'BCA-306N'})`
+Correct Answer: (A)
+Explanation: `insert_one()` returns an `InsertOneResult` object whose `.inserted_id` property contains the generated `ObjectId`.
+
+Q_211 [Unit 5] [EASY]: How do you query documents matching a filter in PyMongo?
+  (A) `cursor = collection.find({'credits': 4})`
+  (B) `result = collection.search({'credits': 4})`
+  (C) `data = collection.query({'credits': 4})`
+  (D) `cursor = collection.get(credits=4)`
+Correct Answer: (A)
+Explanation: `find()` returns an iterable PyMongo `Cursor` object that yields native Python dictionary representations of BSON documents.
+
+Q_212 [Unit 5] [EASY]: How do you update a document in PyMongo using update operators?
+  (A) `collection.update_one({'course_code': 'BCA-306N'}, {'$set': {'status': 'published'}})`
+  (B) `collection.update({'course_code': 'BCA-306N'}, {'status': 'published'})`
+  (C) `collection.modify({'status': 'published'})`
+  (D) `collection.change({'course_code': 'BCA-306N'})`
+Correct Answer: (A)
+Explanation: Requires explicit MongoDB atomic update operators like `$set` to prevent overwriting other fields in the document.
+
+Q_213 [Unit 5] [EASY]: What does `collection.delete_one({'_id': target_id})` do in PyMongo?
+  (A) Deletes the single first document matching the specified filter criteria from the collection
+  (B) Deletes the entire collection
+  (C) Deletes the Python script from disk
+  (D) Deletes the database
+Correct Answer: (A)
+Explanation: `delete_one()` deletes at most one document; `delete_many()` deletes all documents matching the filter.
+
+Q_214 [Unit 5] [MEDIUM]: What is BSON `ObjectId` in Python and how do you query a document by its string ID?
+  (A) `from bson import ObjectId; collection.find_one({'_id': ObjectId('60c72b2f...')})`
+  (B) `collection.find_one({'_id': '60c72b2f...'})`
+  (C) `collection.find_by_id('60c72b2f...')`
+  (D) `collection.get_id('60c72b2f...')`
+Correct Answer: (A)
+Explanation: Because `_id` is stored as binary `ObjectId`, querying with a plain Python string fails unless converted to `bson.ObjectId`.
+
+Q_215 [Unit 5] [MEDIUM]: Why does passing a PyMongo document directly to `json.dumps(doc)` throw a `TypeError`?
+  (A) Because standard Python `json.dumps` does not know how to serialize native BSON `ObjectId` and `datetime` objects
+  (B) Because PyMongo documents are encrypted
+  (C) Because JSON does not support Python dictionaries
+  (D) Because MongoDB documents are too large
+Correct Answer: (A)
+Explanation: `TypeError: Object of type ObjectId is not JSON serializable`; solved using `bson.json_util` or custom Pydantic serializers.
+
+Q_216 [Unit 5] [MEDIUM]: How does `bson.json_util` solve the BSON-to-JSON serialization issue in Python?
+  (A) It provides `dumps()` and `loads()` functions that serialize BSON objects (ObjectId, dates) into Extended JSON format
+  (B) It deletes all ObjectId fields from documents
+  (C) It converts all numbers into strings
+  (D) It translates Python into JavaScript
+Correct Answer: (A)
+Explanation: `from bson import json_util; json_str = json_util.dumps(mongo_document)` produces valid JSON strings.
+
+Q_217 [Unit 5] [MEDIUM]: What is Motor in the Python MongoDB ecosystem?
+  (A) An asynchronous Python driver for MongoDB designed for use with `asyncio` and async frameworks like FastAPI or Tornado
+  (B) An electric motor used in robotics
+  (C) A tool for making Python code run faster
+  (D) A database engine developed by Apache
+Correct Answer: (A)
+Explanation: Unlike blocking PyMongo, Motor integrates non-blockingly with Python's `asyncio` event loop: `await collection.find_one(...)`.
+
+Q_218 [Unit 5] [MEDIUM]: What is WSGI (Web Server Gateway Interface) in Python web architecture?
+  (A) The universal synchronous specification for communication between web servers and Python web applications (Flask, Django)
+  (B) An asynchronous web framework developed by Google
+  (C) A tool for styling web pages with CSS
+  (D) A database connector for PostgreSQL
+Correct Answer: (A)
+Explanation: PEP 3333 standardized WSGI, allowing any WSGI-compliant application (Flask) to run on any WSGI-compliant server (Gunicorn, uWSGI).
+
+Q_219 [Unit 5] [MEDIUM]: What is ASGI (Asynchronous Server Gateway Interface) in modern Python?
+  (A) The modern asynchronous successor to WSGI, providing support for async/await, WebSockets, HTTP/2, and background tasks (FastAPI, Starlette)
+  (B) A synchronous web framework like Flask
+  (C) A database management system
+  (D) A protocol for sending email messages
+Correct Answer: (A)
+Explanation: ASGI allows Python servers (Uvicorn) to handle thousands of concurrent open WebSocket connections and async request streams.
+
+Q_220 [Unit 5] [EASY]: What is Flask in Python web development?
+  (A) A lightweight, flexible, and unopinionated micro-framework based on Werkzeug and Jinja2, giving developers freedom in choosing components
+  (B) A heavy monolithic framework with built-in ORM
+  (C) A database engine developed by Oracle
+  (D) A programming language developed by Microsoft
+Correct Answer: (A)
+Explanation: Flask provides only core routing, request handling, and templating, allowing developers to plug in PyMongo, SQLAlchemy, etc.
+
+Q_221 [Unit 5] [EASY]: What is FastAPI?
+  (A) A modern, high-performance web framework for building APIs with Python 3.8+ based on standard Python type hints, Starlette, and Pydantic
+  (B) A fast web browser developed in Python
+  (C) A tool for making computer processors run faster
+  (D) A software program for editing video files
+Correct Answer: (A)
+Explanation: FastAPI is one of the fastest Python frameworks available, offering native async support, automatic OpenAPI docs, and data validation.
+
+Q_222 [Unit 5] [EASY]: What is Pydantic in Python and FastAPI?
+  (A) A data validation and settings management library that enforces type hints at runtime and provides user-friendly error messages
+  (B) A database management engine like MySQL
+  (C) A tool for drawing computer graphics
+  (D) A Python package for playing audio
+Correct Answer: (A)
+Explanation: Defines typed data models (`class User(BaseModel): name: str; age: int`); invalid input payloads are rejected automatically with HTTP 422.
+
+Q_223 [Unit 5] [EASY]: What is Django in Python web development?
+  (A) A high-level, 'batteries-included' web framework that encourages rapid development and clean design, including built-in ORM, admin panel, and auth
+  (B) A lightweight micro-framework like Flask
+  (C) A database query language like SQL
+  (D) A web browser developed by Apple
+Correct Answer: (A)
+Explanation: Django provides everything out of the box (ORM, admin UI, authentication, CSRF defense), following the 'Don't Repeat Yourself' (DRY) principle.
+
+Q_224 [Unit 5] [EASY]: What is Gunicorn (Green Unicorn)?
+  (A) A Python WSGI HTTP server for UNIX, based on a pre-fork worker model widely used to run production Flask and Django apps
+  (B) A mythological green horse with a horn
+  (C) A database management engine developed by IBM
+  (D) A text editor like Visual Studio Code
+Correct Answer: (A)
+Explanation: Gunicorn forks master/worker processes to handle concurrent requests in production behind reverse proxies like Nginx.
+
+Q_225 [Unit 5] [MEDIUM]: What is Uvicorn in modern Python deployment?
+  (A) A lightning-fast ASGI web server implementation for Python, powered by `uvloop` and `httptools` used to run FastAPI applications
+  (B) A single-threaded development server
+  (C) A database developed by Microsoft
+  (D) A web browser developed by Google
+Correct Answer: (A)
+Explanation: Uvicorn is the standard production server for ASGI apps: `gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app`.
+
+Q_226 [Unit 5] [MEDIUM]: What is an Object-Document Mapper (ODM) like MongoEngine or Beanie?
+  (A) A library that maps MongoDB BSON documents to native Python classes, providing schema definition, validation, and helper methods
+  (B) A tool for converting Python into JavaScript
+  (C) A hardware component inside computer processors
+  (D) A database query language like SQL
+Correct Answer: (A)
+Explanation: Analogous to ORMs (SQLAlchemy) for SQL: ODMs define schemas as Python classes and provide methods like `student.save()`.
+
+Q_227 [Unit 5] [HARD]: What is Beanie in the modern Python async ecosystem?
+  (A) An asynchronous Object Document Mapper (ODM) for MongoDB and Python built on top of Motor and Pydantic
+  (B) A warm hat worn by software developers
+  (C) A database engine developed by Oracle
+  (D) A tool for editing video files
+Correct Answer: (A)
+Explanation: Beanie integrates seamlessly with FastAPI: models inherit from Pydantic `BaseModel` and `Document`, providing native typing and async CRUD.
+
+Q_228 [Unit 5] [EASY]: What is Jinja2 in Flask web development?
+  (A) A fast, secure, and widely used templating engine for Python that renders dynamic HTML pages using template tags like `{{ variable }}` and `{% for %}`
+  (B) A programming language developed by Sun Microsystems
+  (C) A database connector for MySQL
+  (D) A software program for editing photographs
+Correct Answer: (A)
+Explanation: Jinja2 compiles HTML templates with embedded Python expressions into optimized bytecode on the server.
+
+Q_229 [Unit 5] [MEDIUM]: What is the difference between Server-Side Templating (Jinja2) and a Decoupled Single-Page App (React + FastAPI)?
+  (A) Jinja2 generates complete HTML pages on the server on every request; Decoupled SPAs render UI in the browser and exchange raw JSON with the API
+  (B) Jinja2 is for mobile; React is for desktop
+  (C) Jinja2 does not use HTML
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Decoupled architectures provide superior user experience, offline support, and allow the same backend API to serve web, mobile, and IoT clients.
+
+Q_230 [Unit 5] [EASY]: What is a Route Decorator in Flask or FastAPI (e.g., `@app.get('/courses')`)?
+  (A) A Python decorator that binds a URL path and HTTP method to a specific Python view function
+  (B) A tool for decorating websites with holiday graphics
+  (C) A comment written in Python code
+  (D) A function that deletes routes
+Correct Answer: (A)
+Explanation: When an HTTP request arrives matching the URL pattern, the framework invokes the decorated function to process the request.
+
+Q_231 [Unit 5] [EASY]: How does FastAPI generate interactive API documentation automatically?
+  (A) By inspecting Pydantic models and type hints to generate an OpenAPI (Swagger) JSON specification served at `/docs` and `/redoc`
+  (B) By hiring technical writers to write documents
+  (C) By scanning text comments in files
+  (D) FastAPI does not generate documentation
+Correct Answer: (A)
+Explanation: Navigating to `http://localhost:8000/docs` displays an interactive Swagger UI where developers can test endpoints directly in the browser.
+
+Q_232 [Unit 5] [MEDIUM]: What is Dependency Injection in FastAPI?
+  (A) A design pattern implemented via `Depends()` that allows declaring reusable dependencies (database sessions, authentication checks) in route signatures
+  (B) Injecting computer viruses into databases
+  (C) A hardware failure in computer memory
+  (D) A tool for updating software packages
+Correct Answer: (A)
+Explanation: FastAPI automatically resolves dependencies (e.g., validating JWT tokens or opening DB connections) before executing the route handler.
+
+Q_233 [Unit 5] [HARD]: What is a NoSQL Injection vulnerability in Python-MongoDB applications?
+  (A) An attack where untrusted user input containing MongoDB operator dictionaries (e.g., `{"$gt": ""}`) is passed directly into queries, bypassing authentication
+  (B) A syringe used to clean computer hardware
+  (C) A syntax error that crashes the database
+  (D) A tool for deleting duplicate database rows
+Correct Answer: (A)
+Explanation: A query `db.users.find({'user': u, 'pass': p})` evaluates to true for all users if an attacker inputs `p = {'$gt': ''}`; prevented by strict Pydantic typing.
+
+Q_234 [Unit 5] [MEDIUM]: How does Pydantic prevent NoSQL Injection in FastAPI applications?
+  (A) By strictly enforcing that input fields conform to primitive types (e.g., `password: str`), rejecting any incoming dictionary or operator objects with HTTP 422
+  (B) By encrypting all database records with AES
+  (C) By turning off the database
+  (D) By deleting user inputs
+Correct Answer: (A)
+Explanation: Because Pydantic rejects non-string inputs before they reach the database driver, attackers cannot inject MongoDB query operators.
+
+Q_235 [Unit 5] [MEDIUM]: What is Connection Pooling in PyMongo and why is it essential?
+  (A) Maintaining an internal pool of active, reusable TCP socket connections to the database to eliminate the latency of re-authenticating on every request
+  (B) A swimming pool located in a computer company office
+  (C) Connecting multiple computers with copper cables
+  (D) A tool for sharing internet connections
+Correct Answer: (A)
+Explanation: Opening a new TCP/TLS connection to MongoDB takes 10–50ms; connection pooling reuses established sockets, handling thousands of queries per second.
+
+Q_236 [Unit 5] [MEDIUM]: Why should `MongoClient` be instantiated ONCE globally per application process rather than inside each request handler?
+  (A) Because creating a new `MongoClient` on every request spawns new connection pools, exhausting server sockets and causing memory leaks
+  (B) Because MongoDB only allows one client per year
+  (C) Because `MongoClient` deletes files on creation
+  (D) It makes no difference
+Correct Answer: (A)
+Explanation: `MongoClient` is thread-safe and manages its own internal pool; instantiating it once per process is best practice.
+
+Q_237 [Unit 5] [HARD]: What is an Asynchronous Generator in Python (`async def` with `yield`)?
+  (A) A coroutine that yields values asynchronously over time, iterated using `async for item in async_gen():`
+  (B) A machine that generates electricity asynchronously
+  (C) A tool for generating random numbers in Python
+  (D) A function that compiles code into machine language
+Correct Answer: (A)
+Explanation: Used in Motor to stream cursor documents from MongoDB without buffering millions of documents into memory at once.
+
+Q_238 [Unit 5] [EASY]: What is CORS Middleware in FastAPI?
+  (A) `app.add_middleware(CORSMiddleware, allow_origins=['http://localhost:3000'], ...)` allowing browser SPAs to communicate with the API
+  (B) A middleware that speeds up Python code
+  (C) A tool for compressing JSON responses
+  (D) A database connection pool manager
+Correct Answer: (A)
+Explanation: Permits frontend applications running on different ports or domains to make secure cross-origin AJAX requests.
+
+Q_239 [Unit 5] [EASY]: What is Docker Containerization in full-stack Python web deployment?
+  (A) Packaging the Python application code, runtime, system libraries, and configuration into an immutable, portable Docker container image
+  (B) Placing computers inside shipping containers on cargo ships
+  (C) Compressing files into a zip archive
+  (D) A method for deleting outdated software
+Correct Answer: (A)
+Explanation: Guarantees that the software runs identically across local developer laptops, testing environments, and production Kubernetes clusters.
+
+Q_240 [Unit 5] [EASY]: What is `docker-compose` in a full-stack Python + React + MongoDB application?
+  (A) A tool for defining and running multi-container Docker applications using a single YAML configuration file (`docker-compose.yml`)
+  (B) A music composition software written in Python
+  (C) A tool for writing Docker source code
+  (D) A web browser developed by Docker
+Correct Answer: (A)
+Explanation: Launches the React frontend container, FastAPI backend container, and MongoDB database container with unified networking in a single command (`docker-compose up`).
+
+Q_241 [Unit 5] [MEDIUM]: What is Environment Isolation in 12-Factor App methodology?
+  (A) Strictly separating development, staging, and production environments using environment variables rather than hardcoded configuration files
+  (B) Keeping developers in separate office rooms
+  (C) Using computers that are not connected to the internet
+  (D) A method for recycling computer hardware
+Correct Answer: (A)
+Explanation: The exact same container image is deployed across dev, staging, and prod, varying only in environment variable bindings.
+
+Q_242 [Unit 5] [MEDIUM]: What is Celery in the Python web ecosystem?
+  (A) An open-source asynchronous distributed task queue / job queue based on distributed message passing (using Redis or RabbitMQ as broker)
+  (B) A green vegetable eaten by software engineers
+  (C) A database management engine developed by IBM
+  (D) A text editor like Visual Studio Code
+Correct Answer: (A)
+Explanation: Offloads time-consuming tasks (sending batch emails, generating heavy PDF reports, training ML models) to background worker processes.
+
+Q_243 [Unit 5] [EASY]: What is Redis used for in a full-stack Python web architecture?
+  (A) An in-memory data structure store used as a distributed cache, session store, message broker, and rate limiter
+  (B) A relational database management system like MySQL
+  (C) A software program for editing photographs
+  (D) A web browser developed by Google
+Correct Answer: (A)
+Explanation: Provides sub-millisecond read/write latency in RAM, caching database query results to take load off primary MongoDB or PostgreSQL clusters.
+
+Q_244 [Unit 5] [EASY]: What is Blueprints in Flask?
+  (A) A way to organize a Flask application into modular, reusable components and sub-routes (e.g., auth blueprint, courses blueprint)
+  (B) An architectural drawing of a building floorplan
+  (C) A tool for designing website graphics
+  (D) A database schema migration file
+Correct Answer: (A)
+Explanation: Prevents sprawling monolithic `app.py` files by separating route controllers into distinct modular packages.
+
+Q_245 [Unit 5] [MEDIUM]: What is Alembic in Python database migrations?
+  (A) A lightweight database migration tool for usage with the SQLAlchemy Database Toolkit for Python
+  (B) A tool for distilling chemicals in laboratories
+  (C) A database query language like SQL
+  (D) A software program for compressing video
+Correct Answer: (A)
+Explanation: Tracks and applies relational database schema alterations over time, allowing teams to roll forward or roll back table structures.
+
+Q_246 [Unit 5] [MEDIUM]: What is a Reverse Proxy (e.g., Nginx) in Python web application architectures?
+  (A) A web server positioned in front of Python application servers (Gunicorn/Uvicorn) to handle SSL/TLS termination, static file serving, and load balancing
+  (B) A proxy server that runs backwards
+  (C) A tool for hiding computer IP addresses illegally
+  (D) A broken network router
+Correct Answer: (A)
+Explanation: Nginx absorbs internet traffic at high concurrency, buffers slow client connections, and passes clean requests to backend Python workers.
+
+Q_247 [Unit 5] [MEDIUM]: What is SSL/TLS Termination at a reverse proxy?
+  (A) Decrypting incoming HTTPS traffic at the reverse proxy (Nginx) and forwarding unencrypted HTTP traffic to backend internal application servers
+  (B) Deleting SSL certificates from a computer
+  (C) Terminating an employee for security violations
+  (D) A hardware failure in network cables
+Correct Answer: (A)
+Explanation: Unburdens application servers from expensive cryptographic SSL handshakes, centralizing certificate renewal (Let's Encrypt).
+
+Q_248 [Unit 5] [EASY]: What is Gzip / Brotli compression in web API response delivery?
+  (A) Compressing HTTP response payloads on-the-fly before transmission over the network, reducing bandwidth by up to 70%
+  (B) Deleting unnecessary letters from words
+  (C) A tool for compressing video files
+  (D) A method for encrypting passwords with AES
+Correct Answer: (A)
+Explanation: The browser sends `Accept-Encoding: gzip, br`; the server compresses the JSON payload and sends `Content-Encoding: gzip`, accelerating page load.
+
+Q_249 [Unit 5] [MEDIUM]: What is Stateless Session Architecture in full-stack web applications?
+  (A) An architecture where server instances retain no client session state in memory; session state is stored in signed client JWT tokens or distributed Redis caches
+  (B) A computer network with zero servers
+  (C) A web application that has no users
+  (D) A software program that forgets user data immediately
+Correct Answer: (A)
+Explanation: Enables true horizontal auto-scaling: any incoming request can be routed to any backend server instance without session stickiness issues.
+
+Q_250 [Unit 5] [EASY]: What is Health Check Endpoint (`/health` or `/ready`) in cloud container deployments?
+  (A) A dedicated HTTP endpoint that returns status 200 OK if the application and its dependent database connections are healthy, used by Kubernetes and load balancers
+  (B) A medical examination given to software engineers
+  (C) A tool for measuring computer battery health
+  (D) A software program that exercises computers
+Correct Answer: (A)
+Explanation: If the health check fails (e.g., database connection drops), the load balancer stops routing traffic to the unhealthy container pod and restarts it.
+

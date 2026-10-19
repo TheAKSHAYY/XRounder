@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 2
+COURSE CODE: BCA-102N - DATA STRUCTURES USING C
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which of the following is defined as a collection of elements where each element is accessed in a sequential order?
+     (A) Linear Data Structure
+     (B) Non-Linear Data Structure
+     (C) Hierarchical Data Structure
+     (D) Graph Data Structure
+     Answer: (A)
+     Explanation: In linear data structures (arrays, linked lists, stacks, queues), elements form a sequence and each member has a unique predecessor and successor.
+
+Q2. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which data structure is inherently non-linear?
+     (A) Queue
+     (B) Stack
+     (C) Tree
+     (D) Array
+     Answer: (C)
+     Explanation: Trees and graphs are non-linear data structures because elements are arranged hierarchically or interconnected arbitrarily.
+
+Q3. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What is an Abstract Data Type (ADT)?
+     (A) A physical hardware architecture
+     (B) A mathematical model of data objects together with operations defined on them
+     (C) A built-in C compiler primitive
+     (D) A machine-language memory layout
+     Answer: (B)
+     Explanation: An ADT specifies what operations can be performed on data and what values it can hold, without dictating how they are implemented.
+
+Q4. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which operation involves processing every element in a data structure exactly once?
+     (A) Searching
+     (B) Sorting
+     (C) Traversing
+     (D) Merging
+     Answer: (C)
+     Explanation: Traversing (visiting) visits each element of a data structure systematically to read or process its value.
+
+Q5. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which asymptotic notation describes the tightest upper bound of an algorithm's running time?
+     (A) Big-Oh (O)
+     (B) Big-Omega (Ω)
+     (C) Big-Theta (θ)
+     (D) Little-oh (o)
+     Answer: (A)
+     Explanation: Big-O notation denotes the upper bound or worst-case running time of an algorithm.
+
+Q6. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Big-Omega (Ω) notation is primarily used to represent:
+     (A) Average-case running time
+     (B) Worst-case running time
+     (C) Best-case (lower bound) running time
+     (D) Amortized constant time
+     Answer: (C)
+     Explanation: Big-Omega notation defines a lower bound that guarantees an algorithm will take at least that amount of time.
+
+Q7. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     Big-Theta (θ) notation represents:
+     (A) Upper bound only
+     (B) Lower bound only
+     (C) Asymptotically tight bound (both upper and lower bound)
+     (D) Exponential growth only
+     Answer: (C)
+     Explanation: Big-Theta binds an algorithm from above and below, representing an exact asymptotic behavior.
+
+Q8. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     What is the space complexity of an algorithm that allocates a 1D array of size N?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (C)
+     Explanation: Storing N elements in memory requires memory proportional to N, giving O(N) space complexity.
+
+Q9. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which term describes the compromise where an algorithm consumes more memory to run faster?
+     (A) Time-Space Trade-off
+     (B) Recursive Splitting
+     (C) Cache Thrashing
+     (D) Paging
+     Answer: (A)
+     Explanation: The time-space trade-off occurs when an algorithm uses extra storage (like hash tables or lookup tables) to reduce processing time.
+
+Q10. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     In C, which property is TRUE regarding standard arrays?
+     (A) Arrays are dynamic by default
+     (B) Arrays allocate contiguous blocks of memory
+     (C) Array elements can hold different data types
+     (D) Array bounds are automatically checked at runtime
+     Answer: (B)
+     Explanation: Arrays in C store homogeneous elements sequentially in contiguous physical memory addresses.
+
+Q11. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     If a 1D array A[0..N-1] has base address B and element size w, the address of A[i] is calculated as:
+     (A) B + (i * w)
+     (B) B + ((i - 1) * w)
+     (C) B + (i / w)
+     (D) B + (w * N) + i
+     Answer: (A)
+     Explanation: For a zero-indexed 1D array, Address(A[i]) = Base_Address + (i * element_size).
+
+Q12. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In row-major order for a 2D array A[1..M, 1..N] with base address B and element size w, the address of A[i, j] is:
+     (A) B + w * ((i - 1) * N + (j - 1))
+     (B) B + w * ((j - 1) * M + (i - 1))
+     (C) B + w * (i * N + j)
+     (D) B + w * (i + j * N)
+     Answer: (A)
+     Explanation: In row-major order, all elements of previous rows ((i-1)*N) are skipped before reaching column (j-1).
+
+Q13. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In column-major order for a 2D array A[1..M, 1..N] with base address B and element size w, the address of A[i, j] is:
+     (A) B + w * ((i - 1) * N + (j - 1))
+     (B) B + w * ((j - 1) * M + (i - 1))
+     (C) B + w * (j * M + i)
+     (D) B + w * (i * M + j)
+     Answer: (B)
+     Explanation: In column-major order, elements are stored column by column. Address = B + w * ((j - 1) * M + (i - 1)).
+
+Q14. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which programming language stores 2D arrays in row-major order?
+     (A) FORTRAN
+     (B) MATLAB
+     (C) C / C++
+     (D) Julia
+     Answer: (C)
+     Explanation: C, C++, and Python store multi-dimensional arrays in row-major order, whereas FORTRAN and MATLAB use column-major.
+
+Q15. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     A 2D array A[10][20] in C has base address 2000. Each element takes 2 bytes. What is the address of A[3][5] in row-major order?
+     (A) 2130
+     (B) 2070
+     (C) 2130
+     (D) 2130
+     Answer: (A)
+     Explanation: Address = Base + 2 * (3 * 20 + 5) = 2000 + 2 * (60 + 5) = 2000 + 2 * 65 = 2000 + 130 = 2130.
+
+Q16. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     What is a Sparse Matrix?
+     (A) A matrix where all elements are prime numbers
+     (B) A matrix where a majority of elements are zero
+     (C) A matrix whose determinant is strictly negative
+     (D) A matrix with odd number of rows
+     Answer: (B)
+     Explanation: A sparse matrix is a matrix populated primarily with zeros, where storing all elements wastes memory.
+
+Q17. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     In 3-tuple representation of a sparse matrix, what do the three columns represent?
+     (A) Row index, Column index, Non-zero Value
+     (B) Row index, Column index, Determinant
+     (C) Block number, Row count, Column count
+     (D) Node address, Next pointer, Data value
+     Answer: (A)
+     Explanation: A 3-tuple (triplet) stores (Row, Column, Value) exclusively for each non-zero element.
+
+Q18. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In an N x N Lower Triangular Matrix, which elements are guaranteed to be zero?
+     (A) Elements A[i][j] where i > j
+     (B) Elements A[i][j] where i < j
+     (C) Elements on the main diagonal (i == j)
+     (D) All non-zero elements
+     Answer: (B)
+     Explanation: In a lower triangular matrix, all elements strictly above the main diagonal (where row index i < column index j) are zero.
+
+Q19. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     How many non-zero elements can an N x N lower triangular matrix have at most?
+     (A) N^2
+     (B) N * (N + 1) / 2
+     (C) N * (N - 1) / 2
+     (D) 2N - 1
+     Answer: (B)
+     Explanation: Row 1 has 1 element, row 2 has 2, ..., row N has N elements. Total = sum(1..N) = N*(N+1)/2.
+
+Q20. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What is a Tri-diagonal Matrix?
+     (A) A matrix where non-zero elements exist only on the main diagonal and the adjacent diagonals immediately above and below it
+     (B) A matrix with exactly three rows
+     (C) A matrix with zero diagonal elements
+     (D) A 3D array of order 3
+     Answer: (A)
+     Explanation: In an N x N tri-diagonal matrix, elements A[i][j] can be non-zero only if |i - j| <= 1.
+
+Q21. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (HARD)
+     What is the maximum number of non-zero elements in an N x N tri-diagonal matrix?
+     (A) 3N
+     (B) 3N - 2
+     (C) 2N + 1
+     (D) N^2 - 3
+     Answer: (B)
+     Explanation: Main diagonal has N elements, upper sub-diagonal has N-1, and lower sub-diagonal has N-1 elements. Total = N + (N-1) + (N-1) = 3N - 2.
+
+Q22. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     When adding two sparse matrices represented as 3-tuples, the time complexity is proportional to:
+     (A) Product of their total entries (M * N)
+     (B) Sum of their non-zero elements (k1 + k2)
+     (C) O(1)
+     (D) O(N^3)
+     Answer: (B)
+     Explanation: Addition scans both sorted triplet lists once using a merge-like process taking O(k1 + k2) time.
+
+Q23. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In a 3D array A[P][M][N] stored in row-major order, which dimension varies fastest in memory?
+     (A) The first dimension (P)
+     (B) The second dimension (M)
+     (C) The third dimension (N)
+     (D) All dimensions vary simultaneously
+     Answer: (C)
+     Explanation: In row-major order, the rightmost index (last dimension N) varies fastest in contiguous memory.
+
+Q24. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which data structure is the most efficient for frequent insertions and deletions at arbitrary positions?
+     (A) Fixed Array
+     (B) Doubly Linked List
+     (C) Static String
+     (D) Sorted Array
+     Answer: (B)
+     Explanation: Linked lists avoid shifting elements because insertion/deletion merely involves pointer updates, taking O(1) once position is located.
+
+Q25. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     What is the worst-case time complexity of accessing an element in an array by its index?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (A)
+     Explanation: Array indexing computes the exact memory address via base address arithmetic in constant O(1) time.
+
+Q26. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What happens if a program attempts to write beyond the allocated bounds of an array in C?
+     (A) The compiler generates a syntax error
+     (B) The array automatically expands dynamically
+     (C) Undefined behavior (possible memory corruption or segmentation fault)
+     (D) C throws an ArrayIndexOutOfBoundsException
+     Answer: (C)
+     Explanation: C does not perform runtime array bound checking, resulting in undefined behavior or memory violations.
+
+Q27. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     If an algorithm's time complexity is T(N) = 3N^3 + 5N^2 + 100, its Big-O notation is:
+     (A) O(N^2)
+     (B) O(N^3)
+     (C) O(3N^3)
+     (D) O(N)
+     Answer: (B)
+     Explanation: In asymptotic analysis, constant factors and lower-order terms are dropped, leaving O(N^3).
+
+Q28. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     Which algorithm complexity class grows the fastest as N increases?
+     (A) O(N log N)
+     (B) O(N^2)
+     (C) O(2^N)
+     (D) O(N!)
+     Answer: (D)
+     Explanation: Factorial time O(N!) grows faster than exponential O(2^N), polynomial O(N^2), and linearithmic O(N log N).
+
+Q29. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (HARD)
+     Which notation represents the function f(N) such that there exist positive constants c and n0 with 0 <= c*g(N) <= f(N) for all N >= n0?
+     (A) f(N) = O(g(N))
+     (B) f(N) = Ω(g(N))
+     (C) f(N) = θ(g(N))
+     (D) f(N) = o(g(N))
+     Answer: (B)
+     Explanation: This is the formal mathematical definition of Big-Omega (Ω) notation for asymptotic lower bounds.
+
+Q30. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     For an upper triangular matrix of size N x N, elements A[i][j] are zero when:
+     (A) i < j
+     (B) i > j
+     (C) i == j
+     (D) i + j = N
+     Answer: (B)
+     Explanation: In an upper triangular matrix, all elements strictly below the main diagonal (where row index i > column index j) are zero.
+
+Q31. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In a sparse matrix representation, the header triplet (row 0) typically stores:
+     (A) Total rows, Total columns, Total non-zero count
+     (B) Determinant, Rank, Trace
+     (C) Base address, Pointer size, Data type
+     (D) Null terminator, First index, Last index
+     Answer: (A)
+     Explanation: The first record of a triplet sparse matrix denotes the matrix dimensions (rows, cols) and total non-zero entries.
+
+Q32. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What is the memory saved by storing an N x N symmetric matrix as a 1D array compared to a full 2D array?
+     (A) Approximately 50%
+     (B) Approximately 25%
+     (C) Approximately 75%
+     (D) No memory is saved
+     Answer: (A)
+     Explanation: Since A[i][j] == A[j][i], only N*(N+1)/2 elements need to be stored instead of N^2, saving roughly half the space.
+
+Q33. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     In an algorithm with two sequential independent loops, one running N times and another M times, the overall time complexity is:
+     (A) O(N * M)
+     (B) O(N + M)
+     (C) O(max(N, M)^2)
+     (D) O(min(N, M))
+     Answer: (B)
+     Explanation: For independent sequential loops, their execution times add up: O(N) + O(M) = O(N + M).
+
+Q34. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     What is the time complexity of transposing an N x N matrix stored as a conventional 2D array?
+     (A) O(N)
+     (B) O(N^2)
+     (C) O(N log N)
+     (D) O(1)
+     Answer: (B)
+     Explanation: Transposing visits all N*N matrix cells, leading to O(N^2) time complexity.
+
+Q35. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (HARD)
+     The fast transpose algorithm for a sparse matrix in 3-tuple format achieves a time complexity of:
+     (A) O(cols * non_zero)
+     (B) O(cols + non_zero)
+     (C) O(non_zero^2)
+     (D) O(1)
+     Answer: (B)
+     Explanation: Fast transpose counts elements per column and computes starting positions, transposing in O(Columns + Non_Zero) time.
+
+Q36. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which of the following functions exhibits logarithmic growth?
+     (A) Binary search
+     (B) Linear search
+     (C) Bubble sort
+     (D) Matrix multiplication
+     Answer: (A)
+     Explanation: Binary search repeatedly divides the search range by half, yielding O(log N) time complexity.
+
+Q37. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     An algorithm that takes time proportional to 2^N is classified as having:
+     (A) Polynomial complexity
+     (B) Exponential complexity
+     (C) Linearithmic complexity
+     (D) Constant complexity
+     Answer: (B)
+     Explanation: O(2^N) represents exponential time, common in brute-force recursive solutions to combinatorial problems.
+
+Q38. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which data structure provides constant O(1) time insertion and deletion at both ends?
+     (A) Single-ended Queue
+     (B) Double-ended Queue (Deque)
+     (C) Array-based Stack
+     (D) Binary Search Tree
+     Answer: (B)
+     Explanation: A Deque supports push_front, push_back, pop_front, and pop_back in O(1) constant time.
+
+Q39. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (HARD)
+     The recurrence relation T(N) = T(N/2) + O(1) corresponds to which time complexity?
+     (A) O(N)
+     (B) O(N^2)
+     (C) O(log N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: By the Master Theorem (Case 2 with a=1, b=2, d=0), T(N) = O(log N), typical of binary search.
+
+Q40. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What is the primary drawback of using contiguous arrays for dynamic data collections?
+     (A) Accessing elements by index is slow
+     (B) Fixed size requiring expensive reallocation and copying when capacity is exceeded
+     (C) Cache memory misses
+     (D) Inability to hold integer data types
+     Answer: (B)
+     Explanation: Arrays have a static capacity; resizing requires creating a new memory block and copying elements, costing O(N) time.
+
+Q41. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Consider an array int A[5][10][20] in C. How many total integer elements are allocated?
+     (A) 1000
+     (B) 500
+     (C) 200
+     (D) 2500
+     Answer: (A)
+     Explanation: Total elements = 5 * 10 * 20 = 1000 integers.
+
+Q42. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     In a sparse matrix with 1000 rows, 1000 columns, and only 500 non-zero entries, the 3-tuple array requires how many rows?
+     (A) 500
+     (B) 501
+     (C) 1000
+     (D) 1500
+     Answer: (B)
+     Explanation: The 3-tuple requires 500 rows for the non-zero elements plus 1 header row storing (1000, 1000, 500), totaling 501 rows.
+
+Q43. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     What is the worst-case space complexity of recursive algorithms that recurse to depth N without extra dynamic allocations?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (C)
+     Explanation: Each recursive call pushes an activation record onto the system call stack, consuming O(N) call stack space.
+
+Q44. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     If an algorithm requires O(1) auxiliary space, it is known as:
+     (A) In-place algorithm
+     (B) Out-of-place algorithm
+     (C) Static algorithm
+     (D) Deterministic algorithm
+     Answer: (A)
+     Explanation: An in-place algorithm transforms input using no more than a constant O(1) amount of extra storage space.
+
+Q45. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     In C, the expression *(A + i) is mathematically equivalent to:
+     (A) &A[i]
+     (B) A[i]
+     (C) A + (i * sizeof(int))
+     (D) *A + i
+     Answer: (B)
+     Explanation: In C, array subscript notation A[i] is defined precisely as syntactic sugar for *(A + i).
+
+Q46. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     When two matrices of sizes M x K and K x N are multiplied using standard nested loops, the time complexity is:
+     (A) O(M + K + N)
+     (B) O(M * K * N)
+     (C) O((M * N)^2)
+     (D) O(M * K)
+     Answer: (B)
+     Explanation: Standard matrix multiplication uses three nested loops running M, N, and K times, yielding O(M * K * N) operations.
+
+Q47. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (HARD)
+     Which asymptotic notation is used when an algorithm's running time is strictly less than a bound (non-tight upper bound)?
+     (A) Little-oh (o)
+     (B) Big-Oh (O)
+     (C) Big-Omega (Ω)
+     (D) Little-omega (ω)
+     Answer: (A)
+     Explanation: Little-oh (o) defines a non-tight upper bound, meaning f(N) becomes insignificant compared to g(N) as N approaches infinity.
+
+Q48. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     Which data organization allows direct random access to any element using an offset calculation?
+     (A) Linear Array
+     (B) Singly Linked List
+     (C) Queue
+     (D) Stack
+     Answer: (A)
+     Explanation: Arrays store items contiguously, enabling O(1) direct memory access using base + index * size.
+
+Q49. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (MEDIUM)
+     A band matrix with bandwidth k has non-zero elements located:
+     (A) Only along the border rows and columns
+     (B) Within a diagonal band of width k centered around the main diagonal
+     (C) Only in the four corners
+     (D) Evenly distributed across prime indexes
+     Answer: (B)
+     Explanation: A band matrix has all non-zero entries confined within diagonal bands around the main diagonal.
+
+Q50. [Unit 1: Introduction to Data Structures, Complexity & Arrays] (EASY)
+     The worst-case time complexity of finding the maximum element in an unsorted array of size N is:
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: In an unsorted array, every single element must be checked at least once, requiring N-1 comparisons, which is O(N).
+
+Q51. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the mandatory prerequisite before executing a Binary Search on an array?
+     (A) The array must contain only positive integers
+     (B) The array elements must be sorted in order
+     (C) The array must be implemented as a linked list
+     (D) The array size must be an exact power of 2
+     Answer: (B)
+     Explanation: Binary search relies on divide-and-conquer and requires elements to be sorted in ascending or descending order.
+
+Q52. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the worst-case number of comparisons in Binary Search for an array of size N?
+     (A) N
+     (B) N/2
+     (C) floor(log2 N) + 1
+     (D) N^2
+     Answer: (C)
+     Explanation: Binary search cuts the remaining search space in half at each step, taking at most floor(log2 N) + 1 comparisons.
+
+Q53. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     In Linear Search, what is the average number of comparisons required to search for an item present in an array of size N?
+     (A) N
+     (B) (N + 1) / 2
+     (C) log2 N
+     (D) N / 4
+     Answer: (B)
+     Explanation: Assuming uniform probability of element position, the average comparisons are (1 + 2 + ... + N) / N = (N + 1) / 2.
+
+Q54. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     If an element is present at the first index of an array, what is the best-case time complexity of Linear Search?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N/2)
+     Answer: (A)
+     Explanation: When the target item is at index 0, linear search completes on the first comparison in O(1) time.
+
+Q55. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the worst-case time complexity of Binary Search?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (B)
+     Explanation: Even in the worst case (element absent or at the last comparison), binary search runs in O(log N) time.
+
+Q56. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Which searching algorithm is suitable for searching an item in an unsorted linked list?
+     (A) Binary Search
+     (B) Linear Search
+     (C) Interpolation Search
+     (D) Fibonacci Search
+     Answer: (B)
+     Explanation: Linked lists do not permit O(1) random middle access, so binary search cannot be applied efficiently; linear search must be used.
+
+Q57. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is Hashing?
+     (A) A sorting technique based on binary trees
+     (B) A technique that maps keys to indices in a hash table using a mathematical function
+     (C) A compression algorithm for text files
+     (D) A method to balance AVL trees
+     Answer: (B)
+     Explanation: Hashing transforms search keys into table array slots via a hash function, aiming for O(1) average lookup time.
+
+Q58. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is a Hash Collision?
+     (A) When two identical keys are inserted into different tables
+     (B) When a hash function maps two distinct keys to the same table index
+     (C) When the hash table runs out of memory
+     (D) When a key is negative
+     Answer: (B)
+     Explanation: A collision occurs when h(k1) == h(k2) for two different keys k1 != k2.
+
+Q59. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     In the division hash function h(k) = k mod m, what is the recommended choice for table size m?
+     (A) An even number
+     (B) A power of 2
+     (C) A prime number not close to a power of 2
+     (D) Any arbitrary negative integer
+     Answer: (C)
+     Explanation: Selecting a prime number m minimizes common factors with keys, distributing hash values more uniformly.
+
+Q60. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Which hash function squares the key and extracts a specified number of middle digits?
+     (A) Division Method
+     (B) Mid-Square Method
+     (C) Folding Method
+     (D) Multiplication Method
+     Answer: (B)
+     Explanation: The mid-square method squares the key (k^2) and takes the middle digits as the hash address.
+
+Q61. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     In the folding method of hashing, how is the hash address generated?
+     (A) The key is divided into parts, which are then combined (added) together
+     (B) The key is multiplied by a floating-point constant
+     (C) The key is repeatedly shifted left
+     (D) The square root of the key is computed
+     Answer: (A)
+     Explanation: Folding partitions the key into parts equal in size to the address length and adds them up to obtain the hash address.
+
+Q62. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Which collision resolution technique stores all colliding keys in an external linked list at each table index?
+     (A) Linear Probing
+     (B) Quadratic Probing
+     (C) Separate Chaining (Open Hashing)
+     (D) Double Hashing
+     Answer: (C)
+     Explanation: Separate chaining maintains a linked list of records that hash to the same bucket index.
+
+Q63. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is Open Addressing in hashing?
+     (A) All elements are stored directly inside the hash table array without linked lists
+     (B) Hash keys are visible to external users
+     (C) The hash function is public domain
+     (D) Collisions are simply ignored
+     Answer: (A)
+     Explanation: In open addressing (closed hashing), all elements occupy slots within the table array itself.
+
+Q64. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     In Linear Probing, if a collision occurs at index h, which slot is inspected next?
+     (A) (h + 1) mod Table_Size
+     (B) (h + 2^2) mod Table_Size
+     (C) h / 2
+     (D) h * 2
+     Answer: (A)
+     Explanation: Linear probing scans sequentially: slot (h + i) mod m for probe sequence i = 0, 1, 2, ...
+
+Q65. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What major phenomenon degrades the performance of Linear Probing as table load factor increases?
+     (A) Primary Clustering
+     (B) Secondary Clustering
+     (C) Thrashing
+     (D) Memory fragmentation
+     Answer: (A)
+     Explanation: Primary clustering occurs when long continuous runs of occupied slots build up, drastically increasing average probe lengths.
+
+Q66. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     In Quadratic Probing, the probe sequence for collision resolution is defined by:
+     (A) (h(k) + c1*i + c2*i^2) mod m
+     (B) (h(k) + i) mod m
+     (C) (h1(k) + i * h2(k)) mod m
+     (D) (h(k) * i) mod m
+     Answer: (A)
+     Explanation: Quadratic probing uses a quadratic polynomial in i (typically i^2) to space out probes and prevent primary clustering.
+
+Q67. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Which open addressing method uses a second independent hash function to compute probe intervals?
+     (A) Linear Probing
+     (B) Double Hashing
+     (C) Separate Chaining
+     (D) Rehashing
+     Answer: (B)
+     Explanation: Double hashing uses interval = h2(k), probing slots at (h1(k) + i * h2(k)) mod m.
+
+Q68. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the Load Factor (α) of a hash table with N stored keys and M total buckets?
+     (A) α = M / N
+     (B) α = N / M
+     (C) α = N * M
+     (D) α = N + M
+     Answer: (B)
+     Explanation: Load factor α = N / M measures table fullness and dictates when resizing/rehashing is needed.
+
+Q69. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the ideal average-case search time complexity in a well-designed hash table?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (A)
+     Explanation: With a uniform hash function and low load factor, search and insertion take O(1) expected time.
+
+Q70. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is the worst-case time complexity of searching in a hash table using separate chaining when all N keys collide?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: If all keys hash to the same bucket, the linked list degenerates into an O(N) linear search.
+
+Q71. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     How does Insertion Sort build the sorted array?
+     (A) By repeatedly finding the minimum element and placing it at the start
+     (B) By repeatedly taking the next element and inserting it into its correct position in the already sorted sub-array
+     (C) By dividing the array into halves and merging
+     (D) By swapping adjacent elements that are out of order
+     Answer: (B)
+     Explanation: Insertion sort maintains a sorted prefix and inserts the current element into its proper position among sorted items.
+
+Q72. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the best-case time complexity of Insertion Sort when the input array is already sorted?
+     (A) O(1)
+     (B) O(N)
+     (C) O(N log N)
+     (D) O(N^2)
+     Answer: (B)
+     Explanation: When the array is already sorted, each element requires only 1 comparison and 0 shifts, taking O(N) time.
+
+Q73. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the worst-case time complexity of Insertion Sort (e.g., when array is reverse sorted)?
+     (A) O(N)
+     (B) O(N log N)
+     (C) O(N^2)
+     (D) O(2^N)
+     Answer: (C)
+     Explanation: For reverse-sorted arrays, the k-th element requires k comparisons and shifts, totaling N*(N-1)/2 = O(N^2) operations.
+
+Q74. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Which sorting algorithm performs the minimum number of memory swaps (at most N - 1 swaps)?
+     (A) Insertion Sort
+     (B) Selection Sort
+     (C) Bubble Sort
+     (D) Merge Sort
+     Answer: (B)
+     Explanation: Selection sort makes at most 1 swap per pass (N - 1 swaps in total), making it ideal when write operations are expensive.
+
+Q75. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is the time complexity of Selection Sort in the best, average, and worst cases?
+     (A) O(N) in all cases
+     (B) O(N log N) in all cases
+     (C) O(N^2) in all cases
+     (D) O(N) best case, O(N^2) worst case
+     Answer: (C)
+     Explanation: Selection sort scans the unsorted portion regardless of array order, making N*(N-1)/2 comparisons in every case: O(N^2).
+
+Q76. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Which algorithmic paradigm does Merge Sort utilize?
+     (A) Greedy Strategy
+     (B) Dynamic Programming
+     (C) Divide and Conquer
+     (D) Backtracking
+     Answer: (C)
+     Explanation: Merge sort divides the array into two halves, recursively sorts them, and merges the sorted halves.
+
+Q77. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the time complexity of Merge Sort in the worst case?
+     (A) O(N)
+     (B) O(N log N)
+     (C) O(N^2)
+     (D) O(log N)
+     Answer: (B)
+     Explanation: Merge sort always divides input evenly into 2 halves and takes O(N) to merge, running in O(N log N) in all cases.
+
+Q78. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is the auxiliary space complexity of standard Merge Sort on an array of size N?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (C)
+     Explanation: Standard merge sort requires a temporary auxiliary array of size N to merge elements.
+
+Q79. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What does it mean for a sorting algorithm to be 'Stable'?
+     (A) It uses constant extra memory O(1)
+     (B) It preserves the relative order of records with equal keys
+     (C) It has O(N log N) worst-case time
+     (D) It cannot be implemented recursively
+     Answer: (B)
+     Explanation: Stability ensures duplicate key elements retain their original relative positions after sorting.
+
+Q80. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Which of the following sorting algorithms is inherently stable?
+     (A) Selection Sort
+     (B) Standard Merge Sort
+     (C) Heap Sort
+     (D) Quick Sort
+     Answer: (B)
+     Explanation: Standard merge sort preserves relative order during the merge step (using <= comparison), making it stable.
+
+Q81. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Trace Insertion Sort: What is the array state after inserting 2 into sorted sub-array [3, 7, 9]?
+     (A) [2, 3, 7, 9]
+     (B) [3, 2, 7, 9]
+     (C) [3, 7, 2, 9]
+     (D) [3, 7, 9, 2]
+     Answer: (A)
+     Explanation: Elements 9, 7, and 3 shift right by one slot, and 2 is placed at index 0.
+
+Q82. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     After the first pass of Selection Sort (ascending order) on [29, 10, 14, 37, 13], what is the array state?
+     (A) [10, 29, 14, 37, 13]
+     (B) [10, 14, 29, 37, 13]
+     (C) [10, 13, 14, 29, 37]
+     (D) [29, 10, 14, 13, 37]
+     Answer: (A)
+     Explanation: The minimum element 10 is found and swapped with the first element 29.
+
+Q83. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is the recurrence relation for Merge Sort?
+     (A) T(N) = 2T(N/2) + O(N)
+     (B) T(N) = T(N-1) + O(1)
+     (C) T(N) = 2T(N/2) + O(1)
+     (D) T(N) = T(N/2) + O(N)
+     Answer: (A)
+     Explanation: Merge sort divides into 2 subproblems of size N/2 and performs an O(N) linear merge: T(N) = 2T(N/2) + O(N).
+
+Q84. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     How many passes are required in Selection Sort to sort an array of N elements?
+     (A) N
+     (B) N - 1
+     (C) N / 2
+     (D) log2 N
+     Answer: (B)
+     Explanation: After placing the first N - 1 elements into their correct positions, the last element is automatically in place.
+
+Q85. [Unit 2: Searching, Sorting Techniques & Hashing] (HARD)
+     Which searching technique is the most efficient when elements are uniformly distributed in a sorted array?
+     (A) Linear Search
+     (B) Binary Search
+     (C) Interpolation Search
+     (D) Hashing
+     Answer: (C)
+     Explanation: Interpolation search estimates target position based on key value, achieving O(log log N) average time for uniformly distributed data.
+
+Q86. [Unit 2: Searching, Sorting Techniques & Hashing] (HARD)
+     What is Secondary Clustering in open addressing hashing?
+     (A) Clustering that occurs when keys hash to different initial positions but follow the same probe sequence
+     (B) Clustering of duplicate records in separate chaining
+     (C) Clustering caused by poor hardware RAM
+     (D) Collision occurring in 2D arrays
+     Answer: (A)
+     Explanation: Secondary clustering happens in quadratic probing because all keys hashing to the same initial slot follow the exact same probe sequence.
+
+Q87. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     What is the maximum number of comparisons needed to merge two sorted arrays of sizes M and N?
+     (A) M * N
+     (B) M + N - 1
+     (C) max(M, N)
+     (D) log(M + N)
+     Answer: (B)
+     Explanation: At each comparison, one element is output. The last remaining element does not need comparison, giving at most M + N - 1 comparisons.
+
+Q88. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Under what scenario is Insertion Sort preferred over Merge Sort?
+     (A) When the array has billions of random elements
+     (B) When the array is very small or nearly already sorted
+     (C) When minimizing memory is not important
+     (D) When worst-case guarantee of O(N log N) is strictly required
+     Answer: (B)
+     Explanation: For small arrays (N < 20) or nearly sorted data, insertion sort has low overhead and runs in O(N) time with O(1) space.
+
+Q89. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Rehashing in a hash table involves:
+     (A) Encrypting all stored keys with a secret cipher
+     (B) Allocating a larger table (often double size) and re-inserting all keys using a new hash function
+     (C) Converting the hash table into a binary search tree
+     (D) Deleting all collided entries
+     Answer: (B)
+     Explanation: When load factor exceeds a threshold (e.g., 0.75), rehashing creates a bigger table and re-maps all existing entries.
+
+Q90. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Which sorting algorithm is typically used for external sorting when data exceeds available RAM?
+     (A) Insertion Sort
+     (B) External Merge Sort (Multi-way Merge Sort)
+     (C) Bubble Sort
+     (D) Binary Search
+     Answer: (B)
+     Explanation: External merge sort chunks data into memory-sized runs, sorts them, and merges them sequentially from disk.
+
+Q91. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     Given hash table size 7 and hash function h(k) = k mod 7, keys 10, 17, 24 all hash to index:
+     (A) 2
+     (B) 3
+     (C) 4
+     (D) 5
+     Answer: (B)
+     Explanation: 10 mod 7 = 3, 17 mod 7 = 3, and 24 mod 7 = 3. All three collide at slot 3.
+
+Q92. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Using Linear Probing on a table of size 7 with h(k) = k mod 7, where is key 24 placed after inserting 10 and 17?
+     (A) Slot 3
+     (B) Slot 4
+     (C) Slot 5
+     (D) Slot 6
+     Answer: (C)
+     Explanation: 10 goes to slot 3. 17 collides at 3, probes (3+1) mod 7 = slot 4. 24 collides at 3 and 4, probes (3+2) mod 7 = slot 5.
+
+Q93. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     What is the time complexity of searching an element in a sorted array of size 1,000,000 using Binary Search?
+     (A) Approximately 20 comparisons
+     (B) Approximately 1,000,000 comparisons
+     (C) Approximately 500,000 comparisons
+     (D) Exactly 1 comparison
+     Answer: (A)
+     Explanation: log2(1,000,000) is approximately 19.93, so at most 20 comparisons are needed.
+
+Q94. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     Which hash collision resolution method is least affected by high load factors (load factor > 1)?
+     (A) Linear Probing
+     (B) Quadratic Probing
+     (C) Separate Chaining
+     (D) Double Hashing
+     Answer: (C)
+     Explanation: Separate chaining dynamically extends linked lists outside the table array, so it functions even when N > M.
+
+Q95. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     If an algorithm compares every adjacent pair and swaps them if out of order, it is:
+     (A) Selection Sort
+     (B) Bubble Sort
+     (C) Merge Sort
+     (D) Insertion Sort
+     Answer: (B)
+     Explanation: Bubble sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+
+Q96. [Unit 2: Searching, Sorting Techniques & Hashing] (EASY)
+     How many comparisons does Selection Sort make on an array of 5 elements?
+     (A) 10
+     (B) 25
+     (C) 5
+     (D) 15
+     Answer: (A)
+     Explanation: Comparisons = N*(N-1)/2 = 5*4/2 = 10 comparisons.
+
+Q97. [Unit 2: Searching, Sorting Techniques & Hashing] (HARD)
+     What is the lower bound of comparison-based sorting algorithms in the worst case?
+     (A) Ω(N)
+     (B) Ω(N log N)
+     (C) Ω(N^2)
+     (D) Ω(log N)
+     Answer: (B)
+     Explanation: Decision tree analysis proves that any comparison-based sort must make at least Ω(N log N) comparisons in the worst case.
+
+Q98. [Unit 2: Searching, Sorting Techniques & Hashing] (MEDIUM)
+     A hash function that distributes keys evenly and independently across all slots satisfies:
+     (A) Uniform Hashing assumption
+     (B) Perfect Hashing guarantee
+     (C) Deterministic hashing rule
+     (D) Open addressing protocol
+     Answer: (A)
+     Explanation: The simple uniform hashing assumption states that any given key is equally likely to hash into any of the m slots.
+
+Q99. [Unit 2: Searching, Sorting Techniques & Hashing] (HARD)
+     When is a hash table search guaranteed to be O(1) in the worst case?
+     (A) When linear probing is used with load factor 0.9
+     (B) When using Perfect Hashing (with static key sets)
+     (C) When separate chaining has 10 elements
+     (D) When table size is a power of 2
+     Answer: (B)
+     Explanation: Perfect hashing designs a two-level hash table tailored for a known static key set, providing O(1) worst-case lookup.
+
+Q100. [Unit 2: Searching, Sorting Techniques & Hashing] (HARD)
+     Which property of Merge Sort makes it the preferred sorting algorithm for linked lists?
+     (A) It requires zero extra memory when implemented on linked lists (O(1) auxiliary space)
+     (B) It uses quadratic probing
+     (C) It executes in O(N) time for linked lists
+     (D) It eliminates recursion
+     Answer: (A)
+     Explanation: Merging linked lists involves only pointer manipulation without allocating new array blocks, making Merge Sort O(1) extra space for linked lists.
+
+Q101. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What operational principle governs a Stack data structure?
+     (A) FIFO (First In First Out)
+     (B) LIFO (Last In First Out)
+     (C) Random Access
+     (D) LILO (Last In Last Out)
+     Answer: (B)
+     Explanation: A Stack follows the Last In, First Out (LIFO) discipline, where the most recently inserted element is removed first.
+
+Q102. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which pointer variable tracks the top element in an array-based stack implementation?
+     (A) front
+     (B) rear
+     (C) top
+     (D) head
+     Answer: (C)
+     Explanation: The 'top' pointer holds the array index of the most recently inserted element in a stack.
+
+Q103. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In a stack of capacity MAX, what condition indicates a Stack Overflow during a push operation?
+     (A) top == -1
+     (B) top == MAX - 1
+     (C) top == 0
+     (D) top == NULL
+     Answer: (B)
+     Explanation: For a 0-indexed array of size MAX, when top == MAX - 1, the stack is completely full and cannot accept new items.
+
+Q104. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What condition signals a Stack Underflow during a pop operation in an empty stack?
+     (A) top == -1
+     (B) top == 0
+     (C) top == MAX
+     (D) top == NULL
+     Answer: (A)
+     Explanation: When the stack contains no elements, top is initialized to -1. Attempting to pop causes stack underflow.
+
+Q105. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What does the Peek() or Top() stack operation do?
+     (A) Inserts an element into the stack
+     (B) Removes the top element and decreases top pointer
+     (C) Returns the value of the top element without removing it
+     (D) Clears all elements in the stack
+     Answer: (C)
+     Explanation: Peek returns the top element's value while keeping the stack state and top index unchanged.
+
+Q106. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which computer architecture component utilizes the stack mechanism extensively?
+     (A) ALU register files
+     (B) Function call / Activation record call stack
+     (C) Hard disk controller
+     (D) DMA controller
+     Answer: (B)
+     Explanation: Program execution uses the runtime call stack to store return addresses, local variables, and parameters during function invocations.
+
+Q107. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What is the time complexity of Push and Pop operations in a standard stack?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (A)
+     Explanation: Pushing and popping require only incrementing/decrementing the top pointer and one array assignment, taking O(1) time.
+
+Q108. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which notation places the operator before its operands (e.g., + A B)?
+     (A) Infix Notation
+     (B) Postfix (Reverse Polish) Notation
+     (C) Prefix (Polish) Notation
+     (D) Ternary Notation
+     Answer: (C)
+     Explanation: In Prefix notation (invented by Jan Lukasiewicz), the operator precedes its operands: + A B.
+
+Q109. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which notation places the operator after its operands (e.g., A B +)?
+     (A) Infix Notation
+     (B) Postfix (Reverse Polish) Notation
+     (C) Prefix Notation
+     (D) Parenthesized Notation
+     Answer: (B)
+     Explanation: Postfix notation (Reverse Polish Notation) places the operator directly after its operands: A B +.
+
+Q110. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     Why are Postfix and Prefix expressions advantageous for compiler evaluation?
+     (A) They look aesthetically cleaner
+     (B) They eliminate the need for parentheses and operator precedence rules
+     (C) They take half the memory of infix expressions
+     (D) They execute in parallel automatically
+     Answer: (B)
+     Explanation: Postfix and prefix expressions are unambiguous without parentheses, allowing straightforward single-pass evaluation via a stack.
+
+Q111. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What is the postfix form of the infix expression: (A + B) * C?
+     (A) A B + C *
+     (B) A B C + *
+     (C) * + A B C
+     (D) A + B C *
+     Answer: (A)
+     Explanation: Due to parentheses, (A + B) becomes AB+. Then multiplying by C yields AB+ C *.
+
+Q112. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Convert the infix expression: A + B * C to postfix notation:
+     (A) A B C * +
+     (B) A B + C *
+     (C) + A * B C
+     (D) A B * C +
+     Answer: (A)
+     Explanation: Multiplication has higher precedence than addition: B * C becomes BC*. Then A + BC* yields A BC* +.
+
+Q113. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What is the postfix evaluation algorithm's response when an operand (number) is encountered in the expression?
+     (A) Pop the top two operators
+     (B) Push the operand onto the operand stack
+     (C) Multiply it by the top value
+     (D) Discard the operand
+     Answer: (B)
+     Explanation: When scanning a postfix expression, every encountered operand is immediately pushed onto the stack.
+
+Q114. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     When an operator is encountered during postfix evaluation, what action is taken?
+     (A) Push the operator onto the stack
+     (B) Pop the top two operands, apply the operator, and push the result back
+     (C) Clear the stack
+     (D) Halt the program
+     Answer: (B)
+     Explanation: The operator pops operand 2 (top) and operand 1 (second from top), calculates (op1 <operator> op2), and pushes the result.
+
+Q115. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     Evaluate the postfix expression: 6 3 2 + * 5 -
+     (A) 25
+     (B) 30
+     (C) 15
+     (D) 35
+     Answer: (A)
+     Explanation: Trace: 3 2 + = 5. Then 6 * 5 = 30. Then 30 - 5 = 25.
+
+Q116. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the prefix form of the infix expression: (A + B) / (C - D)?
+     (A) / + A B - C D
+     (B) + A B / - C D
+     (C) A B + C D - /
+     (D) / A B + C D -
+     Answer: (A)
+     Explanation: (A + B) -> +AB; (C - D) -> -CD. Applying division: / (+AB) (-CD) = / + A B - C D.
+
+Q117. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which operator has the highest precedence in standard arithmetic expression evaluation?
+     (A) Addition (+)
+     (B) Multiplication (*)
+     (C) Exponentiation (^)
+     (D) Modulus (%)
+     Answer: (C)
+     Explanation: Exponentiation (^) has the highest precedence among basic arithmetic operators and associates from right to left.
+
+Q118. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the associativity of the exponentiation (^) operator in C / mathematical conventions?
+     (A) Left to right
+     (B) Right to left
+     (C) Non-associative
+     (D) Random
+     Answer: (B)
+     Explanation: Exponentiation evaluates right-to-left: 2 ^ 3 ^ 2 evaluates as 2 ^ (3 ^ 2) = 2 ^ 9 = 512.
+
+Q119. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In infix to postfix conversion, what happens when a left parenthesis '(' is encountered?
+     (A) It is immediately output to the postfix string
+     (B) It is pushed onto the operator stack
+     (C) It pops all operators from the stack
+     (D) It causes an error
+     Answer: (B)
+     Explanation: A left parenthesis '(' acts as an operator with high incoming priority and is pushed onto the stack.
+
+Q120. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     In infix to postfix conversion, what happens when a right parenthesis ')' is encountered?
+     (A) It is pushed onto the stack
+     (B) Operators are popped from the stack and output until a '(' is popped and discarded
+     (C) The stack is cleared completely
+     (D) It is printed directly to the output
+     Answer: (B)
+     Explanation: Encountering ')' triggers popping all operators within that parenthesized block until the matching '(' is removed.
+
+Q121. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What discipline governs a standard Queue data structure?
+     (A) LIFO (Last In First Out)
+     (B) FIFO (First In First Out)
+     (C) LILO (Last In Last Out)
+     (D) Priority First Out
+     Answer: (B)
+     Explanation: A Queue follows First In, First Out (FIFO): the first item inserted at the rear is the first item removed from the front.
+
+Q122. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In a linear queue, insertions take place at the _____ and deletions take place at the _____.
+     (A) Front, Rear
+     (B) Rear, Front
+     (C) Top, Bottom
+     (D) Center, Ends
+     Answer: (B)
+     Explanation: Insertions (enqueue) occur at the REAR end, while deletions (dequeue) occur at the FRONT end.
+
+Q123. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In a standard 0-indexed linear queue of size MAX, what condition indicates that the queue is empty?
+     (A) front == -1 and rear == -1
+     (B) front == MAX
+     (C) rear == MAX - 1
+     (D) front > rear (after deletions)
+     Answer: (A)
+     Explanation: Initially, an empty queue is represented by front = -1 and rear = -1.
+
+Q124. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the primary limitation of a standard Linear Queue implemented with a fixed array?
+     (A) Insertion is O(N)
+     (B) False Overflow: elements cannot be inserted even when free space exists at the front after deletions
+     (C) It cannot store integers
+     (D) Deletion requires shifting all elements every time
+     Answer: (B)
+     Explanation: As rear reaches MAX-1, no new item can be enqueued even if previous slots were freed by dequeue operations.
+
+Q125. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     How does a Circular Queue resolve the false overflow issue of linear queues?
+     (A) By doubling the array size dynamically
+     (B) By wrapping rear and front pointers back to index 0 using modulo arithmetic
+     (C) By shifting all elements forward on every deletion
+     (D) By using a second stack
+     Answer: (B)
+     Explanation: In a circular queue, rear = (rear + 1) % MAX wraps around to index 0 when reaching the end, reusing freed front slots.
+
+Q126. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     In a circular queue of capacity MAX, what condition indicates that the queue is completely FULL?
+     (A) (rear + 1) % MAX == front
+     (B) front == -1
+     (C) rear == MAX - 1
+     (D) front == rear
+     Answer: (A)
+     Explanation: A circular queue is full when advancing rear by one modulo MAX lands exactly on the front pointer.
+
+Q127. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What does Deque stand for?
+     (A) Decreased Queue
+     (B) Double-Ended Queue
+     (C) Dynamic Entry Queue
+     (D) Direct Execution Queue
+     Answer: (B)
+     Explanation: A Deque (Double-Ended Queue) allows insertions and deletions at both the front and rear ends.
+
+Q128. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     An Input-Restricted Deque is one where:
+     (A) Insertion is allowed at only one end, while deletion is allowed at both ends
+     (B) Deletion is allowed at only one end, while insertion is allowed at both ends
+     (C) No deletions are permitted
+     (D) Input can only be integers
+     Answer: (A)
+     Explanation: Input-restricted deques restrict insertion to a single end (e.g. rear) while permitting deletion from both front and rear.
+
+Q129. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     An Output-Restricted Deque is one where:
+     (A) Insertion is allowed at only one end
+     (B) Deletion is allowed at only one end, while insertion is allowed at both ends
+     (C) No insertions are allowed
+     (D) Both ends are locked
+     Answer: (B)
+     Explanation: Output-restricted deques restrict deletions to one end while allowing insertions at both ends.
+
+Q130. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What is a Priority Queue?
+     (A) A queue where elements are arranged in strictly FIFO order
+     (B) A queue where each element has an assigned priority and higher priority items are served before lower priority ones
+     (C) A queue stored on top of a stack
+     (D) A queue with unlimited memory capacity
+     Answer: (B)
+     Explanation: In a priority queue, elements are processed based on priority values rather than strictly their arrival order.
+
+Q131. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     Which underlying data structure provides the most efficient implementation of a Priority Queue?
+     (A) Unsorted Array
+     (B) Sorted Array
+     (C) Binary Heap
+     (D) Singly Linked List
+     Answer: (C)
+     Explanation: A Binary Heap (Min-Heap or Max-Heap) implements priority queue insertion and deletion in O(log N) time.
+
+Q132. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which application relies primarily on a Queue data structure?
+     (A) Undo operation in a text editor
+     (B) Printer spooling and CPU job scheduling
+     (C) Syntax parsing in compilers
+     (D) Backtracking algorithms (like maze solving)
+     Answer: (B)
+     Explanation: Printer spooling and round-robin CPU scheduling process requests in first-come, first-served (FIFO) order via queues.
+
+Q133. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     How many standard single-ended queues are required to implement a Stack?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) 4
+     Answer: (B)
+     Explanation: A stack can be simulated using two queues by making either the push operation costly (O(N)) or the pop operation costly (O(N)).
+
+Q134. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     How many standard stacks are required to implement a FIFO Queue?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) None
+     Answer: (B)
+     Explanation: A FIFO queue can be implemented using two stacks (one for enqueue and one for dequeue), giving amortized O(1) operations.
+
+Q135. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which data structure is used to check for balanced parentheses in an expression like '{[()]} '?
+     (A) Queue
+     (B) Stack
+     (C) Binary Tree
+     (D) Hash Table
+     Answer: (B)
+     Explanation: A stack pushes opening brackets and pops them upon encountering closing brackets, checking for matching pairs.
+
+Q136. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     In Tower of Hanoi puzzle with N disks, the minimum number of moves required is:
+     (A) 2N - 1
+     (B) 2^N - 1
+     (C) N^2
+     (D) N!
+     Answer: (B)
+     Explanation: The recurrence relation M(N) = 2*M(N-1) + 1 yields 2^N - 1 total moves, solved using the system call stack.
+
+Q137. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the result of converting the infix expression 'A + B * (C - D)' to prefix?
+     (A) + A * B - C D
+     (B) * + A B - C D
+     (C) + A B * - C D
+     (D) - * + A B C D
+     Answer: (A)
+     Explanation: (C - D) -> -CD; then B * -CD -> *B-CD; then A + (*B-CD) -> + A * B - C D.
+
+Q138. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     When front == rear in a circular queue containing elements, what does it mean?
+     (A) The queue is empty
+     (B) The queue contains exactly one element
+     (C) The queue is overflowing
+     (D) The queue is half full
+     Answer: (B)
+     Explanation: In a 1-indexed or initialized circular queue, front == rear indicates that exactly one element remains.
+
+Q139. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     What happens if you dequeue from an empty queue?
+     (A) Queue Overflow
+     (B) Queue Underflow
+     (C) The front pointer is reset to 0
+     (D) The system allocates more memory
+     Answer: (B)
+     Explanation: Attempting to remove an item from an empty queue triggers Queue Underflow.
+
+Q140. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which traversal technique on a graph uses a Queue?
+     (A) Depth First Search (DFS)
+     (B) Breadth First Search (BFS)
+     (C) Topological Sort
+     (D) Eulerian Walk
+     Answer: (B)
+     Explanation: BFS explores vertices level by level using a FIFO queue, while DFS uses a LIFO stack.
+
+Q141. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which traversal technique on a graph uses a Stack?
+     (A) Breadth First Search (BFS)
+     (B) Depth First Search (DFS)
+     (C) Kruskal's Algorithm
+     (D) Dijkstra's Algorithm
+     Answer: (B)
+     Explanation: DFS explores branches as deeply as possible before backtracking, relying on a stack (or recursive call stack).
+
+Q142. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the value of the prefix expression '+ * 2 3 4'?
+     (A) 14
+     (B) 10
+     (C) 20
+     (D) 24
+     Answer: (B)
+     Explanation: Evaluating prefix from right to left: * 2 3 = 6. Then + 6 4 = 10.
+
+Q143. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In C, which header file provides dynamic memory allocation functions (malloc/free) used to implement linked stacks?
+     (A) <stdio.h>
+     (B) <stdlib.h>
+     (C) <string.h>
+     (D) <math.h>
+     Answer: (B)
+     Explanation: <stdlib.h> declares malloc(), calloc(), realloc(), and free() needed for dynamic linked data structures.
+
+Q144. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the space complexity of converting an infix string of length N to postfix using a stack?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (C)
+     Explanation: In the worst case (e.g. deeply nested parentheses), the operator stack stores up to O(N) operators.
+
+Q145. [Unit 3: Stacks, Queues & Expression Conversions] (HARD)
+     A circular queue of capacity 6 currently has front = 4 and rear = 2. How many elements are in the queue?
+     (A) 4
+     (B) 5
+     (C) 3
+     (D) 2
+     Answer: (B)
+     Explanation: Elements are stored at indices 4, 5, 0, 1, 2. Count = (rear - front + MAX) % MAX + 1 = (2 - 4 + 6) % 6 + 1 = 4 + 1 = 5 elements.
+
+Q146. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Which data structure is ideal for implementing an 'Undo' and 'Redo' mechanism in software?
+     (A) Single Queue
+     (B) Two Stacks (Undo stack and Redo stack)
+     (C) Binary Search Tree
+     (D) Circular Queue
+     Answer: (B)
+     Explanation: Actions are pushed onto an Undo stack; undoing pops the action and pushes it onto a Redo stack.
+
+Q147. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     Can an array-based stack grow indefinitely without reallocation?
+     (A) Yes, arrays in C are unbounded
+     (B) No, fixed-size arrays have a static upper bound defined at creation
+     (C) Yes, using the peek operation
+     (D) Yes, if pointers are avoided
+     Answer: (B)
+     Explanation: Static arrays have a fixed size; once top reaches MAX - 1, no further items can be stored without manual resizing.
+
+Q148. [Unit 3: Stacks, Queues & Expression Conversions] (EASY)
+     In a min-priority queue, which element is removed first?
+     (A) The element with the largest numerical key
+     (B) The element with the smallest numerical key
+     (C) The element inserted most recently
+     (D) The element inserted first
+     Answer: (B)
+     Explanation: In a min-priority queue, the item with the minimum key (highest logical priority) is dequeued first.
+
+Q149. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     What is the time complexity of finding the maximum element in a standard LIFO stack of N elements?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N^2)
+     Answer: (C)
+     Explanation: A standard stack only exposes its top element; inspecting all elements requires popping all N items in O(N) time.
+
+Q150. [Unit 3: Stacks, Queues & Expression Conversions] (MEDIUM)
+     Which stack application evaluates recursive functions non-recursively?
+     (A) Recursion elimination via an explicit user stack
+     (B) Dynamic memory fragmentation
+     (C) Garbage collection
+     (D) Static linking
+     Answer: (A)
+     Explanation: Any recursive function can be transformed into an iterative algorithm by explicitly managing state on a user-defined stack.
+
+Q151. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What are the two essential fields of a node in a Singly Linked List?
+     (A) Key and Value
+     (B) Data and Next Pointer
+     (C) Prev and Next Pointers
+     (D) Left and Right Child
+     Answer: (B)
+     Explanation: Each node in a singly linked list contains a data element and a pointer ('next') referencing the subsequent node.
+
+Q152. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What value does the 'next' pointer of the last node in a linear singly linked list hold?
+     (A) 0
+     (B) NULL
+     (C) Address of the head node
+     (D) Undefined address
+     Answer: (B)
+     Explanation: The last node's next pointer points to NULL, marking the termination of the linked list.
+
+Q153. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of inserting a new node at the beginning (head) of a singly linked list?
+     (A) O(1)
+     (B) O(N)
+     (C) O(log N)
+     (D) O(N^2)
+     Answer: (A)
+     Explanation: Inserting at head requires updating the new node's next pointer and reassigning head, taking O(1) constant time.
+
+Q154. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of inserting a node at the end of a singly linked list with only a head pointer?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: Without a tail pointer, the entire list must be traversed from head to the last node in O(N) time.
+
+Q155. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In a Doubly Linked List (Two-Way List), each node contains:
+     (A) Data, Next pointer, and Random pointer
+     (B) Data, Previous pointer, and Next pointer
+     (C) Two data fields and one pointer
+     (D) Only parent and child pointers
+     Answer: (B)
+     Explanation: A doubly linked list node holds data, a pointer to the previous node ('prev'), and a pointer to the next node ('next').
+
+Q156. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the primary advantage of a Doubly Linked List over a Singly Linked List?
+     (A) It uses less memory per node
+     (B) It allows bidirectional traversal (both forward and backward)
+     (C) It enables O(1) binary search
+     (D) It stores elements in contiguous memory
+     Answer: (B)
+     Explanation: The 'prev' pointer permits backward navigation and O(1) node deletion when a direct node pointer is provided.
+
+Q157. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In a Circular Singly Linked List, where does the last node point to?
+     (A) NULL
+     (B) The head (first) node
+     (C) The middle node
+     (D) Itself
+     Answer: (B)
+     Explanation: In a circular singly linked list, the final node's next pointer points back to the first node instead of NULL.
+
+Q158. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is a Header Linked List?
+     (A) A list stored in the program header
+     (B) A linked list that contains a special header node at the beginning that stores metadata
+     (C) A list containing only header files
+     (D) A doubly linked list without data
+     Answer: (B)
+     Explanation: A header linked list begins with a header node storing global list properties (e.g., node count, max/min values).
+
+Q159. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     In a Grounded Header List, the last node points to:
+     (A) The header node
+     (B) NULL
+     (C) The second node
+     (D) An invalid address
+     Answer: (B)
+     Explanation: In a grounded header list, the header node begins the list and the last node's link is set to NULL.
+
+Q160. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of searching for an element in a singly linked list of N nodes?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: Because nodes are linked sequentially without indexed addressing, search requires O(N) linear traversal.
+
+Q161. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In tree data structures, what is a Leaf Node (Terminal Node)?
+     (A) A node with no parent
+     (B) A node with no children (degree 0)
+     (C) The topmost node in the hierarchy
+     (D) A node with exactly two children
+     Answer: (B)
+     Explanation: A leaf node is a node with zero child nodes (out-degree 0).
+
+Q162. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the Degree of a tree node?
+     (A) The distance from the root to the node
+     (B) The number of subtrees (children) attached to the node
+     (C) The total number of nodes in the tree
+     (D) The memory size in bytes
+     Answer: (B)
+     Explanation: The degree of a node is the total number of its direct children.
+
+Q163. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In a Binary Tree, what is the maximum degree of any node?
+     (A) 1
+     (B) 2
+     (C) 3
+     (D) Unlimited
+     Answer: (B)
+     Explanation: By definition, every node in a binary tree has at most two children, typically termed left child and right child.
+
+Q164. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the maximum number of nodes at level L of a binary tree (assuming the root is at level 0)?
+     (A) 2L
+     (B) 2^L
+     (C) 2^(L + 1) - 1
+     (D) L^2
+     Answer: (B)
+     Explanation: Level 0 has 2^0 = 1 node; level 1 has 2^1 = 2; level 2 has 2^2 = 4; level L has 2^L nodes.
+
+Q165. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is the maximum number of nodes in a binary tree of height H (where height of single node tree is 0)?
+     (A) 2^(H + 1) - 1
+     (B) 2^H
+     (C) 2H + 1
+     (D) H^2
+     Answer: (A)
+     Explanation: A full binary tree of height H has sum(2^0 + 2^1 + ... + 2^H) = 2^(H + 1) - 1 total nodes.
+
+Q166. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is a Full (Strict / Proper) Binary Tree?
+     (A) A tree where all leaves are at the exact same depth
+     (B) A binary tree where every node has either 0 or 2 children
+     (C) A tree where all nodes have 1 child
+     (D) A complete graph
+     Answer: (B)
+     Explanation: In a strict (full) binary tree, no node has exactly 1 child; every node has either 0 or 2 children.
+
+Q167. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is a Complete Binary Tree?
+     (A) A binary tree where every level except possibly the last is completely full, and all nodes in the last level are as far left as possible
+     (B) A tree where all nodes have 2 children
+     (C) A tree that has no leaves
+     (D) A degenerate linked list
+     Answer: (A)
+     Explanation: A complete binary tree fills all levels completely except possibly the last, where leaves fill from left to right.
+
+Q168. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     What is the relationship between the number of leaf nodes (L) and nodes with two children (N2) in any binary tree?
+     (A) L = N2 + 1
+     (B) L = N2 - 1
+     (C) L = 2 * N2
+     (D) L = N2 / 2
+     Answer: (A)
+     Explanation: In any non-empty binary tree, the number of leaf nodes L is always exactly one greater than the number of internal nodes with degree two: L = N2 + 1.
+
+Q169. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is the minimum height of a binary tree containing N nodes?
+     (A) N - 1
+     (B) floor(log2 N)
+     (C) N / 2
+     (D) sqrt(N)
+     Answer: (B)
+     Explanation: The minimum height occurs when the tree is completely balanced, yielding height = floor(log2 N).
+
+Q170. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the maximum height of a degenerate (skewed) binary tree containing N nodes?
+     (A) log2 N
+     (B) N - 1
+     (C) N / 2
+     (D) 2N
+     Answer: (B)
+     Explanation: In a skewed binary tree where every node has only 1 child, the tree degenerates into a linked list of height N - 1.
+
+Q171. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In which traversal order is a binary tree visited as: Left Subtree -> Root -> Right Subtree?
+     (A) Preorder (NLR)
+     (B) Inorder (LNR)
+     (C) Postorder (LRN)
+     (D) Level-order
+     Answer: (B)
+     Explanation: Inorder traversal visits the left subtree, processes the root node, and then visits the right subtree (LNR).
+
+Q172. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In which traversal order is a binary tree visited as: Root -> Left Subtree -> Right Subtree?
+     (A) Preorder (NLR)
+     (B) Inorder (LNR)
+     (C) Postorder (LRN)
+     (D) Breadth First
+     Answer: (A)
+     Explanation: Preorder traversal visits the root node first, followed by the left and right subtrees (NLR).
+
+Q173. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In which traversal order is a binary tree visited as: Left Subtree -> Right Subtree -> Root?
+     (A) Preorder (NLR)
+     (B) Inorder (LNR)
+     (C) Postorder (LRN)
+     (D) Eulerian
+     Answer: (C)
+     Explanation: Postorder traversal visits both child subtrees before processing the root node (LRN).
+
+Q174. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     Which traversal of a Binary Search Tree (BST) produces elements in strictly ascending sorted order?
+     (A) Preorder
+     (B) Inorder
+     (C) Postorder
+     (D) Level-order
+     Answer: (B)
+     Explanation: Since BST enforces Left < Root < Right, inorder traversal (LNR) naturally yields elements in non-decreasing sorted order.
+
+Q175. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     Given a binary tree with root A, left child B, and right child C, what is the Preorder traversal?
+     (A) B A C
+     (B) A B C
+     (C) B C A
+     (D) C B A
+     Answer: (B)
+     Explanation: Preorder = Root, Left, Right = A, B, C.
+
+Q176. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     Given a binary tree with root A, left child B, and right child C, what is the Postorder traversal?
+     (A) B C A
+     (B) A B C
+     (C) B A C
+     (D) C B A
+     Answer: (A)
+     Explanation: Postorder = Left, Right, Root = B, C, A.
+
+Q177. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     Can a binary tree be uniquely reconstructed given its Inorder and Preorder traversals?
+     (A) No, it is impossible
+     (B) Yes, uniquely reconstructed
+     (C) Only if it is a complete binary tree
+     (D) Only if all keys are negative
+     Answer: (B)
+     Explanation: Preorder identifies root nodes, while Inorder splits elements into left and right subtrees, allowing unique reconstruction.
+
+Q178. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     Can a binary tree be uniquely reconstructed using only Preorder and Postorder traversals?
+     (A) Yes, always
+     (B) No, not in general (unless the tree is strictly full)
+     (C) Only if the tree is skewed
+     (D) Yes, for any binary tree
+     Answer: (B)
+     Explanation: Without Inorder traversal, Preorder + Postorder cannot uniquely distinguish between a left-child-only node and a right-child-only node.
+
+Q179. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of traversing a binary tree with N nodes using recursive inorder traversal?
+     (A) O(log N)
+     (B) O(N)
+     (C) O(N log N)
+     (D) O(N^2)
+     Answer: (B)
+     Explanation: Every node is visited exactly once, requiring O(N) time.
+
+Q180. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is the auxiliary space complexity of recursive binary tree traversal on a balanced tree?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (B)
+     Explanation: The recursion stack depth is equal to tree height; for a balanced tree, height is O(log N).
+
+Q181. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     To delete the first node of a non-empty singly linked list, which pointer assignment is executed?
+     (A) head = head->next; free(temp);
+     (B) head = NULL;
+     (C) head->next = head;
+     (D) free(head->next);
+     Answer: (A)
+     Explanation: Save head in temp, advance head = head->next, and release memory with free(temp).
+
+Q182. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     How can a cycle (loop) in a singly linked list be detected in O(N) time and O(1) space?
+     (A) By sorting the linked list
+     (B) Floyd's Cycle-Finding Algorithm (Tortoise and Hare with two pointers)
+     (C) By counting nodes twice
+     (D) By using a 2D array
+     Answer: (B)
+     Explanation: Floyd's algorithm uses a slow pointer (1 step) and fast pointer (2 steps); if they meet, a cycle exists.
+
+Q183. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of reversing a singly linked list in-place?
+     (A) O(1)
+     (B) O(N)
+     (C) O(N^2)
+     (D) O(log N)
+     Answer: (B)
+     Explanation: Reversing pointers using three tracking pointers (prev, curr, next) visits each node once in O(N) time and O(1) space.
+
+Q184. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     In a circular doubly linked list with head pointer, what does head->prev point to?
+     (A) NULL
+     (B) The last node in the list
+     (C) The second node in the list
+     (D) Itself always
+     Answer: (B)
+     Explanation: In a circular doubly linked list, head->prev points directly to the tail node, and tail->next points to head.
+
+Q185. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     What is an Extended Binary Tree (2-Tree)?
+     (A) A binary tree with 4 children per node
+     (B) A binary tree where every null subtree is replaced by an external special node
+     (C) A tree with duplicate roots
+     (D) A B-Tree of order 2
+     Answer: (B)
+     Explanation: An extended binary tree replaces all empty subtrees with special square external nodes, transforming it into a strict binary tree.
+
+Q186. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     In an extended binary tree with E external nodes and I internal nodes, what is the relation?
+     (A) E = I + 1
+     (B) E = I - 1
+     (C) E = 2 * I
+     (D) E = I / 2
+     Answer: (A)
+     Explanation: Since external nodes are leaf nodes and all internal nodes have degree 2: E = I + 1.
+
+Q187. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     Which traversal visits binary tree nodes level by level from top to bottom and left to right?
+     (A) Inorder
+     (B) Preorder
+     (C) Postorder
+     (D) Level-order (Breadth-First) Traversal
+     Answer: (D)
+     Explanation: Level-order traversal uses a FIFO queue to visit nodes horizontally across each depth level.
+
+Q188. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     How many null pointers exist in a binary tree with N nodes implemented with left and right child pointers?
+     (A) N
+     (B) N + 1
+     (C) 2N
+     (D) N - 1
+     Answer: (B)
+     Explanation: Total pointers = 2N. Each node except root has 1 incoming edge (N - 1 edges). Null pointers = 2N - (N - 1) = N + 1.
+
+Q189. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     What is a Threaded Binary Tree?
+     (A) A tree executing on multi-core CPU threads
+     (B) A binary tree that utilizes null pointers to store in-order predecessor or successor references
+     (C) A tree with string data types
+     (D) A binary tree without a root node
+     Answer: (B)
+     Explanation: Threaded binary trees replace NULL pointers with direct threads to inorder predecessors/successors, enabling stackless traversal.
+
+Q190. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the time complexity of finding the middle element of a singly linked list in a single pass?
+     (A) O(N)
+     (B) O(N^2)
+     (C) O(log N)
+     (D) O(1)
+     Answer: (A)
+     Explanation: Using two pointers where fast advances 2 nodes and slow advances 1 node reaches the middle in N/2 iterations = O(N).
+
+Q191. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the base case in a recursive algorithm to compute the height of a binary tree?
+     (A) if (root == NULL) return -1; (or 0 depending on convention)
+     (B) if (root->left == NULL) return 1;
+     (C) if (root->data == 0) return 0;
+     (D) if (root == leaf) return 10;
+     Answer: (A)
+     Explanation: When root is NULL, recursion terminates and returns -1 (for height in edges) or 0 (for height in nodes).
+
+Q192. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     The recursive function: int count(Node* root) { if(!root) return 0; return 1 + count(root->left) + count(root->right); } computes:
+     (A) The height of the tree
+     (B) The total number of nodes in the binary tree
+     (C) The number of leaf nodes only
+     (D) The sum of all key values
+     Answer: (B)
+     Explanation: This recursive algorithm counts the current node (1) plus all nodes in left and right subtrees.
+
+Q193. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In a complete binary tree stored as an array with 1-based indexing, the left child of node at index i is at:
+     (A) 2 * i
+     (B) 2 * i + 1
+     (C) i / 2
+     (D) i + 1
+     Answer: (A)
+     Explanation: In 1-based array representation: Left_Child(i) = 2*i, Right_Child(i) = 2*i + 1, Parent(i) = floor(i / 2).
+
+Q194. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     In a complete binary tree stored as an array with 1-based indexing, the parent of node at index i is at:
+     (A) 2 * i
+     (B) floor(i / 2)
+     (C) i - 1
+     (D) 2 * i - 1
+     Answer: (B)
+     Explanation: For any node at index i > 1, its parent resides at index floor(i / 2).
+
+Q195. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is an Inorder Predecessor in a binary tree?
+     (A) The parent node
+     (B) The node that precedes the current node in an inorder traversal sequence
+     (C) The root node
+     (D) The leftmost leaf
+     Answer: (B)
+     Explanation: The inorder predecessor is the node visited immediately before the given node in inorder (LNR) order.
+
+Q196. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     In a Binary Search Tree, where is the Inorder Predecessor of a node with a left child located?
+     (A) The leftmost node in the right subtree
+     (B) The rightmost node in the left subtree
+     (C) The parent node
+     (D) The root node always
+     Answer: (B)
+     Explanation: In a BST, the largest value smaller than the node resides at the rightmost position of its left subtree.
+
+Q197. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     What is the expression tree representation of '(A + B) * C'?
+     (A) A binary tree with root '*', left child as a subtree with root '+' and leaves A, B, and right child C
+     (B) A single linked list with 5 nodes
+     (C) A tree with root A
+     (D) A graph with 3 cycles
+     Answer: (A)
+     Explanation: An expression tree places operators at internal nodes and operands at leaf nodes; '*' is the top operator.
+
+Q198. [Unit 4: Linked Lists & Binary Trees] (MEDIUM)
+     In a doubly linked list, what is required to delete node 'curr' given its direct pointer?
+     (A) curr->prev->next = curr->next; curr->next->prev = curr->prev; free(curr);
+     (B) curr = NULL;
+     (C) head = curr->next;
+     (D) free(curr->next);
+     Answer: (A)
+     Explanation: Updating surrounding pointers bypasses 'curr' in O(1) time without traversing the list from head.
+
+Q199. [Unit 4: Linked Lists & Binary Trees] (EASY)
+     What is the maximum number of leaves in a binary tree of height H?
+     (A) 2^H
+     (B) 2^(H - 1)
+     (C) H
+     (D) 2H
+     Answer: (A)
+     Explanation: At maximum depth H, the tree can have at most 2^H leaves.
+
+Q200. [Unit 4: Linked Lists & Binary Trees] (HARD)
+     Which traversal is suitable for deleting/freeing all nodes of a binary tree in C without dangling pointers?
+     (A) Preorder Traversal
+     (B) Inorder Traversal
+     (C) Postorder Traversal
+     (D) Level-order Traversal
+     Answer: (C)
+     Explanation: Postorder deletes both children subtrees first before freeing the root node, preventing memory access errors.
+
+Q201. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What property characterizes a Binary Search Tree (BST)?
+     (A) Left subtree keys <= Root key <= Right subtree keys
+     (B) Left subtree keys > Root key
+     (C) All keys must be prime numbers
+     (D) A node can have three children
+     Answer: (A)
+     Explanation: In a BST, every key in the left subtree is strictly less than the root, and every key in the right subtree is strictly greater.
+
+Q202. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the worst-case search time complexity in a skewed Binary Search Tree of N nodes?
+     (A) O(1)
+     (B) O(log N)
+     (C) O(N)
+     (D) O(N log N)
+     Answer: (C)
+     Explanation: When keys are inserted in sorted order, the BST degenerates into a linear chain of height N, taking O(N) search time.
+
+Q203. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     Who invented the AVL Tree in 1962?
+     (A) Adelson-Velsky and Landis
+     (B) Aho, Hopcroft, and Ullman
+     (C) Dijkstra and Knuth
+     (D) Dennis Ritchie and Ken Thompson
+     Answer: (A)
+     Explanation: Georgy Adelson-Velsky and Evgenii Landis published the first self-balancing binary search tree in 1962.
+
+Q204. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the definition of the Balance Factor of a node in an AVL Tree?
+     (A) Height(Left Subtree) - Height(Right Subtree)
+     (B) Number of left nodes + Number of right nodes
+     (C) Depth of the node / Total nodes
+     (D) Balance Factor is always 0
+     Answer: (A)
+     Explanation: Balance Factor (BF) = Height(Left_Subtree) - Height(Right_Subtree).
+
+Q205. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What are the only permitted Balance Factor values for any node in an AVL tree?
+     (A) -1, 0, +1
+     (B) -2, 0, +2
+     (C) 0 only
+     (D) Any integer
+     Answer: (A)
+     Explanation: To maintain height balance, every node in an AVL tree must strictly satisfy BF in {-1, 0, +1}.
+
+Q206. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the worst-case time complexity of searching, insertion, and deletion in an AVL tree of N nodes?
+     (A) O(N)
+     (B) O(log N)
+     (C) O(N log N)
+     (D) O(1)
+     Answer: (B)
+     Explanation: Because AVL trees strictly maintain a height of O(log N), search, insert, and delete all run in guaranteed O(log N) worst-case time.
+
+Q207. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Which rotation is performed when an insertion is made into the Left subtree of the Left child of node A (LL case)?
+     (A) Left Rotation (Single RR)
+     (B) Right Rotation (Single LL)
+     (C) Left-Right Double Rotation
+     (D) Right-Left Double Rotation
+     Answer: (B)
+     Explanation: An LL imbalance is resolved with a single Right Rotation around the pivot node.
+
+Q208. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Which rotation is performed when an insertion is made into the Right subtree of the Right child of node A (RR case)?
+     (A) Right Rotation
+     (B) Left Rotation (Single RR)
+     (C) Double LR Rotation
+     (D) Double RL Rotation
+     Answer: (B)
+     Explanation: An RR imbalance is resolved with a single Left Rotation around the pivot node.
+
+Q209. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Which combination of rotations resolves an LR imbalance in an AVL tree?
+     (A) Left rotation on left child, then Right rotation on root node
+     (B) Right rotation on right child, then Left rotation on root
+     (C) Two consecutive right rotations
+     (D) No rotation needed
+     Answer: (A)
+     Explanation: An LR imbalance requires a double rotation: first Left-rotate the left child, then Right-rotate the critical node.
+
+Q210. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Which combination of rotations resolves an RL imbalance in an AVL tree?
+     (A) Right rotation on right child, then Left rotation on root node
+     (B) Left rotation on left child, then Right rotation on root
+     (C) Two left rotations
+     (D) A single right rotation
+     Answer: (A)
+     Explanation: An RL imbalance requires a double rotation: first Right-rotate the right child, then Left-rotate the critical node.
+
+Q211. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the minimum number of nodes in an AVL tree of height 0 (single node)?
+     (A) 0
+     (B) 1
+     (C) 2
+     (D) 3
+     Answer: (B)
+     Explanation: Height 0 requires 1 node.
+
+Q212. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (HARD)
+     What is the recurrence relation for the minimum number of nodes N(h) in an AVL tree of height h?
+     (A) N(h) = N(h - 1) + N(h - 2) + 1
+     (B) N(h) = 2 * N(h - 1)
+     (C) N(h) = N(h - 1) + 1
+     (D) N(h) = 2^h - 1
+     Answer: (A)
+     Explanation: Minimum nodes N(h) = N(h - 1) + N(h - 2) + 1 (Fibonacci-like growth), ensuring height never exceeds 1.44 * log2 N.
+
+Q213. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is the minimum number of nodes in an AVL tree of height 3?
+     (A) 4
+     (B) 7
+     (C) 15
+     (D) 8
+     Answer: (B)
+     Explanation: N(0)=1, N(1)=2, N(2)=N(1)+N(0)+1=4, N(3)=N(2)+N(1)+1 = 4+2+1 = 7 nodes.
+
+Q214. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is an M-Way Search Tree?
+     (A) A tree where each node can have at most M children and M - 1 keys
+     (B) A binary tree with M roots
+     (C) A tree with depth M
+     (D) A graph with M edges
+     Answer: (A)
+     Explanation: An M-way search tree of order M allows up to M children and M - 1 sorted keys per node.
+
+Q215. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     In an M-way search tree node containing k keys, how many subtrees can it point to?
+     (A) k
+     (B) k - 1
+     (C) k + 1
+     (D) 2k
+     Answer: (C)
+     Explanation: k keys partition the key space into k + 1 distinct subtrees.
+
+Q216. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Why are multi-way trees (like B-Trees) preferred over binary search trees for disk-based storage?
+     (A) They use zero RAM
+     (B) Their high branching factor (fan-out) drastically reduces tree height, minimizing expensive disk I/O operations
+     (C) Disks cannot store binary numbers
+     (D) They sort data in reverse order
+     Answer: (B)
+     Explanation: Disk I/O is millions of times slower than RAM; a shallow multi-way tree minimizes block reads to 3 or 4 levels.
+
+Q217. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is a B-Tree of order M?
+     (A) A self-balancing M-way search tree optimized for external storage systems
+     (B) A binary tree with balance factor M
+     (C) A tree where each node has exactly M keys
+     (D) A tree that stores only booleans
+     Answer: (A)
+     Explanation: Invented by Rudolf Bayer and Edward McCreight, a B-tree is a balanced multi-way search tree with guaranteed balance properties.
+
+Q218. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     In a B-Tree of order M, what is the maximum number of children any internal node can have?
+     (A) M
+     (B) M - 1
+     (C) 2M
+     (D) M / 2
+     Answer: (A)
+     Explanation: By definition of order M, no node can have more than M children.
+
+Q219. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     In a B-Tree of order M, what is the maximum number of keys an internal node can store?
+     (A) M
+     (B) M - 1
+     (C) M / 2
+     (D) 2M - 1
+     Answer: (B)
+     Explanation: A node with at most M children can store at most M - 1 keys.
+
+Q220. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In a B-Tree of order M, what is the minimum number of children for any internal node (other than root)?
+     (A) 2
+     (B) ceil(M / 2)
+     (C) floor(M / 2)
+     (D) M - 1
+     Answer: (B)
+     Explanation: All non-root internal nodes must be at least half full, possessing at least ceil(M / 2) children.
+
+Q221. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In a B-Tree of order M, what is the minimum number of keys in any non-root node?
+     (A) ceil(M / 2) - 1
+     (B) floor(M / 2)
+     (C) 1
+     (D) M / 2
+     Answer: (A)
+     Explanation: Since an internal node has at least ceil(M / 2) children, it must contain at least ceil(M / 2) - 1 keys.
+
+Q222. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     In a B-Tree of order 5, what is the maximum number of keys a node can hold before splitting?
+     (A) 3
+     (B) 4
+     (C) 5
+     (D) 6
+     Answer: (B)
+     Explanation: Maximum keys = M - 1 = 5 - 1 = 4 keys.
+
+Q223. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In a B-Tree of order 5, what is the minimum number of keys for a non-root node?
+     (A) ceil(5/2) - 1 = 3 - 1 = 2
+     (B) 1
+     (C) 4
+     (D) 3
+     Answer: (A)
+     Explanation: ceil(5/2) = 3 children minimum, requiring at least 3 - 1 = 2 keys.
+
+Q224. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     Where are all leaf nodes located in a B-Tree?
+     (A) At random levels
+     (B) All leaves are strictly at the exact same depth/level
+     (C) At depth 0 only
+     (D) Leaves alternate between even and odd levels
+     Answer: (B)
+     Explanation: A fundamental structural invariant of B-Trees is that all leaves are at the exact same bottom level.
+
+Q225. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     When inserting a key into a full B-Tree node, what operation occurs?
+     (A) Node deletion
+     (B) Node Splitting: the median key moves up to the parent, and remaining keys form two sibling nodes
+     (C) Tree rotation
+     (D) Rehashing
+     Answer: (B)
+     Explanation: Node overflow causes splitting: the median key promotes to the parent, dividing left and right halves into distinct nodes.
+
+Q226. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (HARD)
+     How does a B-Tree grow in height?
+     (A) Downward by adding leaves
+     (B) Upward from the root when the root splits
+     (C) Horizontally across siblings
+     (D) B-Trees never grow in height
+     Answer: (B)
+     Explanation: Unlike binary trees which grow downward, a B-Tree grows upward when its root splits, creating a new root.
+
+Q227. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is the key difference between a B-Tree and a B+ Tree?
+     (A) B+ trees store all actual data records/pointers in leaf nodes, and leaf nodes are linked sequentially
+     (B) B-trees cannot hold numbers
+     (C) B+ trees have no roots
+     (D) B-trees are always binary
+     Answer: (A)
+     Explanation: In B+ trees, internal nodes store only index guide keys, all records reside in leaves, and leaves are linked for fast range queries.
+
+Q228. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Why are B+ Trees overwhelmingly preferred over B-Trees for relational database indexes (like MySQL InnoDB)?
+     (A) They eliminate sorting
+     (B) Sequential range scans are O(K) fast by traversing the linked leaf list without tree traversals
+     (C) They consume zero disk memory
+     (D) They prevent SQL injection
+     Answer: (B)
+     Explanation: Linked leaves allow range queries (e.g., WHERE age BETWEEN 20 AND 30) to perform contiguous sequential reads.
+
+Q229. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is Multilevel Indexing?
+     (A) Creating an index on an index to reduce searching within large index files
+     (B) Using multiple tables
+     (C) Applying 3NF normalization
+     (D) Sorting an array multiple times
+     Answer: (A)
+     Explanation: When an index file grows too large to fit in memory, a primary index is created over the secondary index file.
+
+Q230. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is a Dense Index?
+     (A) An index entry appears for every search key value in the data file
+     (B) An index with zero entries
+     (C) An index stored on optical media
+     (D) An index with duplicate keys omitted
+     Answer: (A)
+     Explanation: In a dense index, an index record exists for every single search key value in the database file.
+
+Q231. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is a Sparse Index (in database indexing)?
+     (A) An index with only zero keys
+     (B) An index record appears for only some of the search keys (typically one per data block)
+     (C) A corrupted index
+     (D) An unindexed hash table
+     Answer: (B)
+     Explanation: A sparse index creates one index entry per disk block, requiring less memory than a dense index.
+
+Q232. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the minimum number of keys a root node in a B-Tree can hold?
+     (A) 1
+     (B) 2
+     (C) ceil(M/2)
+     (D) M - 1
+     Answer: (A)
+     Explanation: The root is exempt from the half-full rule and can contain as few as 1 key (and 2 children).
+
+Q233. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     During deletion from a B-Tree, if a node falls below the minimum key count, what happens?
+     (A) The tree crashes
+     (B) Borrowing a key from a sibling node (redistribution) or merging with a sibling
+     (C) The node is left empty
+     (D) All keys are deleted
+     Answer: (B)
+     Explanation: Underflow is resolved by borrowing a key from an immediate sibling or merging with a sibling through the parent.
+
+Q234. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In an AVL tree, after inserting keys 10, 20, 30 in order, what rotation is required?
+     (A) Right rotation on 10 (LL)
+     (B) Left rotation on 10 (RR)
+     (C) LR rotation on 20
+     (D) No rotation needed
+     Answer: (B)
+     Explanation: Inserting 10, 20, 30 produces a right-skewed chain with BF(10) = -2 (RR case), resolved by a Left rotation on 10.
+
+Q235. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     After left-rotating 10 in the sequence 10, 20, 30, which node becomes the new root?
+     (A) 10
+     (B) 20
+     (C) 30
+     (D) NULL
+     Answer: (B)
+     Explanation: 20 becomes the root with 10 as its left child and 30 as its right child (both with BF = 0).
+
+Q236. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In an AVL tree, after inserting keys 30, 10, 20 in order, which rotation is needed?
+     (A) Single Left rotation
+     (B) Single Right rotation
+     (C) Left-Right (LR) Double rotation
+     (D) Right-Left (RL) Double rotation
+     Answer: (C)
+     Explanation: 10 is left child of 30, and 20 is right child of 10. This is an LR imbalance requiring an LR double rotation.
+
+Q237. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is the height of an AVL tree with 7 nodes in the worst case?
+     (A) 3
+     (B) 2
+     (C) 4
+     (D) 5
+     Answer: (A)
+     Explanation: Since N(3) = 7, 7 nodes can achieve a maximum height of 3.
+
+Q238. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (HARD)
+     What is the maximum number of keys in a B-Tree of order 4 and height 2 (root at height 0)?
+     (A) 3 + 4*3 + 16*3 = 63 keys
+     (B) 15 keys
+     (C) 31 keys
+     (D) 27 keys
+     Answer: (A)
+     Explanation: Level 0: 3 keys. Level 1: 4*3=12 keys. Level 2: 16*3=48 keys. Total = 3 + 12 + 48 = 63 keys.
+
+Q239. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     Which self-balancing binary search tree uses color bits (Red and Black) instead of explicit balance factors?
+     (A) AVL Tree
+     (B) Red-Black Tree
+     (C) Splay Tree
+     (D) B-Tree
+     Answer: (B)
+     Explanation: Red-Black trees use a color bit per node to ensure no path is more than twice as long as any other path.
+
+Q240. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     In a 2-3 Tree (which is a B-Tree of order 3), every internal node contains:
+     (A) Either 1 or 2 keys, and either 2 or 3 children
+     (B) Always 3 keys
+     (C) Only 1 key
+     (D) Up to 5 children
+     Answer: (A)
+     Explanation: A 2-3 tree is a B-tree of order 3: a 2-node has 1 key & 2 children; a 3-node has 2 keys & 3 children.
+
+Q241. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is a 2-3-4 Tree?
+     (A) A B-Tree of order 4 where nodes have 2, 3, or 4 children
+     (B) A tree with 24 leaves
+     (C) A binary tree with 4 roots
+     (D) A graph with 3 cycles
+     Answer: (A)
+     Explanation: A 2-3-4 tree is a B-tree of order 4, capable of holding up to 3 keys and 4 children per node.
+
+Q242. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the balance factor of a leaf node in an AVL tree?
+     (A) -1
+     (B) +1
+     (C) 0
+     (D) Undefined
+     Answer: (C)
+     Explanation: A leaf node has left height 0 and right height 0 (or -1 and -1), so BF = 0 - 0 = 0.
+
+Q243. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     What is the time complexity of a B-Tree search on disk if the tree has height h?
+     (A) O(h)
+     (B) O(h * log M)
+     (C) O(M^h)
+     (D) O(1)
+     Answer: (B)
+     Explanation: Disk accesses = O(h); within each node, binary search takes O(log M). Total time = O(h * log M).
+
+Q244. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (HARD)
+     In an AVL tree, insertion requires at most how many rotations to restore balance?
+     (A) At most 1 single or double rotation
+     (B) O(log N) rotations
+     (C) N rotations
+     (D) Zero rotations
+     Answer: (A)
+     Explanation: Inserting into an AVL tree requires at most one single or double rotation to restore balance globally.
+
+Q245. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (HARD)
+     In an AVL tree, deletion may require at most how many rotations to restore balance?
+     (A) At most 1 rotation
+     (B) O(log N) rotations (rebalancing may propagate up to the root)
+     (C) Zero rotations
+     (D) N rotations
+     Answer: (B)
+     Explanation: Unlike insertion, an AVL deletion can reduce a subtree height, potentially triggering up to O(log N) rotations along the path to the root.
+
+Q246. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (MEDIUM)
+     Which index type is clustered in a database?
+     (A) An index whose search key specifies the physical sequential order of records in the data file
+     (B) A non-sequential hash index
+     (C) An unorganized index
+     (D) A primary key index stored offsite
+     Answer: (A)
+     Explanation: A clustered index physically orders table data pages on disk matching the index key sequence.
+
+Q247. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     Can a table have multiple clustered indexes?
+     (A) Yes, unlimited
+     (B) No, at most one clustered index per table because data rows can only be physically sorted one way
+     (C) Yes, up to 16
+     (D) Only if columns are foreign keys
+     Answer: (B)
+     Explanation: Because data records can only be stored in one physical sequence on disk, only one clustered index can exist per table.
+
+Q248. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     In a B+ tree, internal nodes act purely as:
+     (A) Data storage
+     (B) A routing / index search guide to direct searches to the correct leaf node
+     (C) Free memory lists
+     (D) Stack memory
+     Answer: (B)
+     Explanation: Internal nodes in a B+ tree contain router keys that direct traversals to data blocks residing in leaves.
+
+Q249. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     What is the primary benefit of maintaining sequential leaf links in a B+ tree?
+     (A) Enables fast sequential and range scanning without re-traversing the tree hierarchy
+     (B) Reduces disk file size to zero
+     (C) Eliminates duplicate keys automatically
+     (D) Prevents buffer overflow
+     Answer: (A)
+     Explanation: Leaves form a doubly or singly linked list, allowing fast O(K) sequential scanning once the start key is found.
+
+Q250. [Unit 5: AVL Trees, M-way Search Trees & B-Trees] (EASY)
+     Which data structure is best suited for implementing a database indexing system where fast range queries are crucial?
+     (A) Hash Table
+     (B) Binary Search Tree
+     (C) B+ Tree
+     (D) Array-based Stack
+     Answer: (C)
+     Explanation: B+ Trees provide both logarithmic point lookups and high-speed linear range scans, making them the industry standard for database indexing.
+

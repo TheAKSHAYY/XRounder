@@ -158,6 +158,7 @@ function SettingsPage() {
   return (
     <PageContainer width="narrow">
       <PageHeader
+        breadcrumbs={[{ label: "Settings" }]}
         title="Settings"
         description="Configure your site, taxonomy, appearance, and access."
       />

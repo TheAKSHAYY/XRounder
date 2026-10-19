@@ -22,6 +22,7 @@ import { RouteProgress } from "@/components/route-progress";
 import { EnvErrorScreen } from "@/components/env-error-screen";
 import { formatEnvError, validateSupabaseEnv } from "@/lib/env";
 import { StudyMascot } from "@/components/gamification/study-mascot";
+import { cn } from "@/lib/utils";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -57,11 +58,13 @@ function ErrorComponent({ error: rawError, reset }: ErrorComponentProps) {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
+  const errObj = error as unknown as Record<string, unknown> | null;
   const isNotFoundErr =
-    (error as any)?.isNotFound ||
-    (error as any)?.status === 404 ||
-    (error as any)?.name === "NotFoundError" ||
-    (error as any)?.constructor?.name === "NotFoundError" ||
+    Boolean(errObj?.isNotFound) ||
+    errObj?.status === 404 ||
+    errObj?.name === "NotFoundError" ||
+    (error as unknown as { constructor?: { name?: string } })?.constructor?.name ===
+      "NotFoundError" ||
     error?.message?.toLowerCase().includes("not found");
 
   if (isNotFoundErr) {
@@ -150,7 +153,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,600&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap",
       },
     ],
   }),
@@ -185,6 +188,17 @@ function RootComponent() {
 
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const isAppPage = pathname !== "/";
+      if (isAppPage) {
+        document.body.setAttribute("data-app-page", "true");
+      } else {
+        document.body.removeAttribute("data-app-page");
+      }
+    }
+  }, [pathname]);
 
   useEffect(() => {
     // Keep the configuration screen usable without touching the lazy client.
@@ -222,7 +236,10 @@ function RootComponent() {
             id="main-content"
             tabIndex={-1}
             key={pathname}
-            className="outline-none animate-fade-in-up"
+            className={cn(
+              "outline-none animate-fade-in-up min-h-screen",
+              pathname !== "/" && "app-grid-bg",
+            )}
           >
             <Outlet />
           </div>

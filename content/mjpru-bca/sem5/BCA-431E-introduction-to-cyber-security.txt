@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 5
+BCA-431E: INTRODUCTION TO CYBER SECURITY - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-431e-u1-q01] (Unit 1) What is Cyber Security?
+  A.     The physical construction of computer cases
+  B. (*) The practice of protecting systems, networks, programs, devices, and data from digital attacks, damage, or unauthorized access
+  C.     A computer game genre
+  D.     The process of overclocking microprocessors
+Explanation: Cyber security protects digital assets, networks, systems, and data from unauthorized access, modification, or destruction.
+
+[bca-431e-u1-q02] (Unit 1) What does the concept of 'Cyberspace' encompass?
+  A.     Only physical copper ethernet cables
+  B. (*) The global, virtual, interconnected domain of digital information, telecommunications networks, computer systems, and internet infrastructure
+  C.     A fictional universe in video games
+  D.     The internal cache memory of a CPU
+Explanation: Cyberspace is the complex virtual environment encompassing networks, servers, workstations, software, and electronic communications.
+
+[bca-431e-u1-q03] (Unit 1) What are the three pillars of the foundational 'CIA Triad' in information security?
+  A.     Centralization, Intelligence, Automation
+  B. (*) Confidentiality, Integrity, and Availability
+  C.     Control, Identification, Authentication
+  D.     Communication, Internet, Access
+Explanation: Confidentiality, Integrity, and Availability represent the core triad of information security.
+
+[bca-431e-u1-q04] (Unit 1) In the CIA triad, 'Confidentiality' guarantees that:
+  A.     Information is delivered within 1 millisecond
+  B. (*) Information is accessible only to authorized entities and kept secret from unauthorized disclosure
+  C.     Data can never be modified even by its owner
+  D.     Hardware never overheats
+Explanation: Confidentiality ensures privacy, preventing unauthorized access through encryption, access control, and classification.
+
+[bca-431e-u1-q05] (Unit 1) In the CIA triad, 'Integrity' guarantees that:
+  A.     Systems run 24 hours a day without downtime
+  B. (*) Information and systems remain accurate, complete, and protected against unauthorized modification or tampering
+  C.     All passwords contain at least 20 symbols
+  D.     Network bandwidth is unlimited
+Explanation: Integrity safeguards data accuracy and trustworthiness, ensuring it is not maliciously or accidentally altered.
+
+[bca-431e-u1-q06] (Unit 1) In the CIA triad, 'Availability' guarantees that:
+  A.     Only administrators have user accounts
+  B. (*) Authorized users have timely and reliable access to systems, networks, and data when needed
+  C.     Data is published openly on the public web
+  D.     All software is open-source
+Explanation: Availability ensures that authorized parties can access computational services without disruption or denial of service.
+
+[bca-431e-u1-q07] (Unit 1) In cyber security terminology, what is a 'Vulnerability'?
+  A.     A piece of malware downloaded from an email
+  B. (*) A flaw, weakness, or loophole in a system's design, implementation, configuration, or human operation that can be exploited
+  C.     The financial cost of a computer system
+  D.     A strong administrative password
+Explanation: A vulnerability is an inherent weakness or flaw that makes an asset susceptible to attack.
+
+[bca-431e-u1-q08] (Unit 1) In cyber security, what is a 'Threat'?
+  A.     A mathematical algorithm
+  B. (*) Any circumstance, event, or entity with the potential to adversely impact an asset through unauthorized access, destruction, or disruption
+  C.     A firewall hardware appliance
+  D.     An encrypted data packet
+Explanation: A threat is a potential danger or adversary capable of exploiting a vulnerability.
+
+[bca-431e-u1-q09] (Unit 1) In cyber security, what is an 'Exploit'?
+  A.     An antivirus program that removes malware
+  B. (*) A specific piece of software, script, payload, or technique that takes active advantage of a vulnerability to compromise a target
+  C.     A network routing protocol
+  D.     A user manual for software
+Explanation: An exploit weaponizes a vulnerability to execute an attack against a target.
+
+[bca-431e-u1-q10] (Unit 1) How is 'Risk' classically defined in information security risk management equations?
+  A.     Risk = Hardware Cost / Bandwidth
+  B. (*) Risk = Threat × Vulnerability × Impact (or Likelihood × Consequence)
+  C.     Risk = Total number of network users
+  D.     Risk = Number of lines of source code
+Explanation: Risk measures the expected probability and severity of adverse consequences resulting from a threat exploiting a vulnerability.
+
+[bca-431e-u1-q11] (Unit 1) What does the STRIDE threat modeling framework developed by Microsoft stand for?
+  A.     Security, Trust, Reliability, Integrity, Defense, Encryption
+  B. (*) Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege
+  C.     Scanning, Tracing, Routing, Intercepting, Decoding, Erasing
+  D.     Software, Testing, Review, Implementation, Deployment, Evaluation
+Explanation: STRIDE classifies threat vectors: Spoofing (identity), Tampering (data), Repudiation, Information Disclosure, DoS, Elevation of privilege.
+
+[bca-431e-u1-q12] (Unit 1) What is 'Non-Repudiation' in secure communication?
+  A.     Refusing to pay network bills
+  B. (*) The assurance that the sender of a message cannot later deny having sent the message, and the recipient cannot deny having received it
+  C.     The ability to delete sent emails
+  D.     A firewall feature
+Explanation: Non-repudiation provides indisputable cryptographic proof (via digital signatures) of the authorship and integrity of a transmission.
+
+[bca-431e-u1-q13] (Unit 1) What does the Principle of 'Least Privilege' dictate in access control?
+  A.     Every user should be given administrator privileges to save time
+  B. (*) Users and processes should be granted only the minimum necessary privileges and access required to perform their specific operational duties
+  C.     Privileges should be randomly assigned
+  D.     Guest accounts should have full write access
+Explanation: Least privilege restricts permissions to the bare operational minimum, limiting damage from compromised accounts.
+
+[bca-431e-u1-q14] (Unit 1) What does 'Defense in Depth' (Layered Defense) mean in security architecture?
+  A.     Digging physical moats around data centers
+  B. (*) Implementing multiple independent, overlapping layers of security controls (perimeter, network, host, application, data) so that if one fails, others continue protection
+  C.     Using passwords that are 50 characters deep
+  D.     Relying strictly on a single impenetrable firewall
+Explanation: Defense in depth deploys multi-layered defensive controls across every tier of the enterprise ecosystem.
+
+[bca-431e-u1-q15] (Unit 1) What is a 'Zero-Day Vulnerability'?
+  A.     A vulnerability that causes no damage
+  B. (*) A software security flaw that is unknown to the vendor, has no existing vendor patch, and is actively vulnerable to immediate zero-day exploitation
+  C.     A bug that was discovered exactly on a Sunday
+  D.     A vulnerability that resolves itself in zero days
+Explanation: Zero-day flaws have zero days of public patch availability, leaving systems exposed until developers produce fixes.
+
+[bca-431e-u1-q16] (Unit 1) What is the Common Vulnerabilities and Exposures (CVE) system maintained by MITRE?
+  A.     A commercial antivirus software
+  B. (*) A standardized, publicly accessible catalog of unique identifiers (e.g., CVE-2024-1234) for publicly known cybersecurity vulnerabilities
+  C.     A hacker discussion forum
+  D.     An operating system distribution
+Explanation: CVE provides standardized dictionary identifiers for cataloging discovered software vulnerabilities worldwide.
+
+[bca-431e-u1-q17] (Unit 1) What does CVSS stand for in vulnerability management?
+  A.     Central Virus Scanning Service
+  B. (*) Common Vulnerability Scoring System (measuring vulnerability severity from 0.0 to 10.0)
+  C.     Cyber Vector Security Standard
+  D.     Computer Virus Signature Scheme
+Explanation: CVSS assigns an objective numerical severity score (0.0 to 10.0) reflecting exploitability and impact.
+
+[bca-431e-u1-q18] (Unit 1) What is 'Malware'?
+  A.     Damaged computer hardware
+  B. (*) Malicious software intentionally designed to disrupt, damage, gain unauthorized access to, or covertly spy on computer systems
+  C.     Free trial software
+  D.     Slow internet connections
+Explanation: Malware is a broad umbrella term encompassing viruses, worms, Trojans, ransomware, spyware, and rootkits.
+
+[bca-431e-u1-q19] (Unit 1) What is the defining biological characteristic of a computer 'Virus' compared to a 'Worm'?
+  A.     A virus spreads over networks automatically without any host program; a worm cannot spread
+  B. (*) A virus requires a host program or file and human execution to replicate and spread; a worm is self-replicating and spreads across networks autonomously without user intervention
+  C.     A virus only affects Apple computers
+  D.     A virus is hardware-based
+Explanation: Viruses attach to host files and need execution; worms are autonomous, self-propagating network programs.
+
+[bca-431e-u1-q20] (Unit 1) What is a 'Trojan Horse' in malware taxonomy?
+  A.     A mechanical wooden horse sculpture
+  B. (*) Malware that disguises itself as legitimate, benign, or useful software to trick the user into installing and running it, while covertly executing malicious payloads
+  C.     A virus that only infects games
+  D.     A worm that travels through email attachments only
+Explanation: Trojans disguise their malicious payload behind a seemingly innocent facade (e.g., utility program, game crack).
+
+[bca-431e-u1-q21] (Unit 1) What is 'Ransomware'?
+  A.     Software that demands payment to upgrade features
+  B. (*) Malicious software that encrypts a victim's files or locks their operating system, demanding a ransom payment (typically in cryptocurrency) to restore access
+  C.     Software used by police to track hackers
+  D.     A free backup utility
+Explanation: Ransomware denies access to victim data through strong cryptography, extorting financial payments for decryption keys.
+
+[bca-431e-u1-q22] (Unit 1) What is 'Spyware'?
+  A.     Software used by government spies exclusively
+  B. (*) Malware secretly installed on a device that monitors, collects, and transmits sensitive user activity, keystrokes, and credentials without consent
+  C.     An open-source browser plugin
+  D.     A utility that cleans temp files
+Explanation: Spyware covertly tracks user behaviors, searches, passwords, and browsing habits.
+
+[bca-431e-u1-q23] (Unit 1) What is a 'Keylogger'?
+  A.     A mechanical device that locks keyboard switches
+  B. (*) Software or hardware designed to covertly record every keystroke pressed by a user to steal passwords, credit card numbers, and confidential messages
+  C.     A typing speed test program
+  D.     A password generator
+Explanation: Keyloggers intercept physical or virtual keystrokes to harvest unencrypted credentials at the point of input.
+
+[bca-431e-u1-q24] (Unit 1) What is a 'Rootkit'?
+  A.     A tool used by administrators to plant trees
+  B. (*) Stealthy malicious software designed to gain privileged root/administrator access while actively concealing its presence and running processes from the OS and antivirus tools
+  C.     An operating system installer
+  D.     A database root index
+Explanation: Rootkits subvert operating system kernel structures to hide their malicious files, network sockets, and processes.
+
+[bca-431e-u1-q25] (Unit 1) What is 'Social Engineering' in the context of cyber attacks?
+  A.     Writing code to simulate social media algorithms
+  B. (*) The psychological manipulation and deception of individuals into divulging confidential information, bypassing security controls, or executing malicious files
+  C.     Engineering bridge structures for public parks
+  D.     Fixing computers for friends
+Explanation: Social engineering exploits the human element ('the weakest link') through psychological manipulation.
+
+[bca-431e-u1-q26] (Unit 1) What is 'Phishing'?
+  A.     Catching fish using electronic fishing rods
+  B. (*) A fraudulent attempt to steal sensitive information (passwords, banking details) by impersonating a trustworthy entity in electronic communications like email
+  C.     A network routing protocol
+  D.     An encryption algorithm
+Explanation: Phishing tricks users into clicking malicious links or submitting credentials to counterfeit websites.
+
+[bca-431e-u1-q27] (Unit 1) What is 'Spear Phishing' compared to mass generic phishing?
+  A.     Phishing conducted using harpoons
+  B. (*) A highly targeted, customized attack aimed at a specific individual or organization, using gathered personal intelligence to make the deception highly convincing
+  C.     Phishing sent to millions of random email addresses
+  D.     Phishing executed via SMS text messages
+Explanation: Spear phishing targets specific individuals with tailored reconnaissance data (e.g., impersonating a CEO or vendor).
+
+[bca-431e-u1-q28] (Unit 1) What is 'Whaling' in cyber attacks?
+  A.     Hunting marine mammals on the internet
+  B. (*) A targeted spear-phishing attack specifically aimed at high-profile corporate executives (CEOs, CFOs, Board Members) to authorize fraudulent wire transfers or leak trade secrets
+  C.     Attacking underwater fiber optic cables
+  D.     Spamming whole corporations
+Explanation: Whaling targets the 'biggest fish' in an enterprise hierarchy (C-suite executives).
+
+[bca-431e-u1-q29] (Unit 1) What is 'Vishing'?
+  A. (*) Phishing conducted via Voice phone calls
+  B.     Phishing using Virtual reality headsets
+  C.     Video-based phishing
+  D.     Vector phishing
+Explanation: Vishing (Voice Phishing) uses phone calls and social engineering to elicit banking details or two-factor tokens.
+
+[bca-431e-u1-q30] (Unit 1) What is 'Smishing'?
+  A. (*) Phishing conducted via SMS text messages
+  B.     Small phishing campaigns
+  C.     Secure message phishing
+  D.     Smart TV phishing
+Explanation: Smishing utilizes SMS cellular text messages containing deceptive links or phone numbers.
+
+[bca-431e-u1-q31] (Unit 1) What is 'Pretexting' in social engineering?
+  A.     Writing text messages before sending
+  B. (*) An attack where the adversary invents an elaborate false scenario (pretext) to establish trust and manipulate the victim into disclosing sensitive information
+  C.     Reading an email preview
+  D.     Designing a website template
+Explanation: Pretexting creates a believable fictitious context (e.g., impersonating an auditor or IT support) to extract data.
+
+[bca-431e-u1-q32] (Unit 1) What is 'Baiting' in social engineering?
+  A.     Using fishing hooks in computer labs
+  B. (*) Enticing a victim with a deceptive promise (e.g., leaving infected USB drives labeled 'Confidential Salaries' in public parking lots) to trick them into running malware
+  C.     Offering free online coding lessons
+  D.     Encrypting database backups
+Explanation: Baiting relies on human curiosity or greed by offering tangible bait (e.g., malicious USBs, free downloads).
+
+[bca-431e-u1-q33] (Unit 1) What is 'Tailgating' (or Piggybacking) in physical cyber security?
+  A.     Following a car too closely in traffic
+  B. (*) An unauthorized person following closely behind an authorized employee through a secure physical badge-access door or turnstile
+  C.     Connecting two computers with a crossover cable
+  D.     Running two programs simultaneously
+Explanation: Tailgating bypasses physical access barriers by exploiting social courtesy (holding doors open).
+
+[bca-431e-u1-q34] (Unit 1) What is a 'Botnet' in distributed cyber attacks?
+  A.     A network of helpful chat robots
+  B. (*) A coordinated network of compromised, malware-infected internet-connected devices (zombies) controlled remotely by a central 'botmaster' through command-and-control (C2) servers
+  C.     A robot assembly line in robotics factories
+  D.     A high-speed fiber optic connection
+Explanation: Botnets aggregate computing and bandwidth power from thousands of compromised hosts to launch DDoS attacks or spam campaigns.
+
+[bca-431e-u1-q35] (Unit 1) What is an 'Advanced Persistent Threat' (APT)?
+  A.     A sudden one-second power outage
+  B. (*) A prolonged, stealthy, highly sophisticated cyber attack conducted by well-funded adversaries (often nation-states) targeting specific high-value intelligence
+  C.     An old computer running Windows 95
+  D.     An automated antivirus scanner
+Explanation: APTs operate with long-term strategic objectives, remaining undetected within enterprise networks for months or years.
+
+[bca-431e-u1-q36] (Unit 1) In hacker taxonomy, what is a 'White Hat' hacker?
+  A.     A hacker who wears white clothes
+  B. (*) An ethical security professional who uses hacking skills legally and with explicit authorization to discover and fix security vulnerabilities
+  C.     A cyber criminal who extorts money
+  D.     A novice programmer who cannot write code
+Explanation: White hat hackers perform authorized defensive assessments and penetration testing.
+
+[bca-431e-u1-q37] (Unit 1) In hacker taxonomy, what is a 'Black Hat' hacker?
+  A.     A hacker who only codes at night
+  B. (*) A malicious adversary who breaks into computer networks illegally with malicious intent, financial extortion, or data theft
+  C.     An ethical researcher
+  D.     A security teacher
+Explanation: Black hat hackers violate laws and security controls for personal gain, destruction, or illicit espionage.
+
+[bca-431e-u1-q38] (Unit 1) What is a 'Gray Hat' hacker?
+  A.     An elderly programmer
+  B. (*) A hacker who may violate laws or ethics by breaching systems without prior authorization, but without malicious intent (often disclosing the flaw to the vendor or demanding a reward)
+  C.     A software engineer who writes documentation
+  D.     A network administrator
+Explanation: Gray hats operate in the legal/ethical boundary: breaking into systems without permission, but often reporting flaws rather than causing damage.
+
+[bca-431e-u1-q39] (Unit 1) What is a 'Script Kiddie' in cybersecurity terminology?
+  A.     A child who writes scripts for cartoons
+  B. (*) An unskilled novice attacker who runs pre-written, automated exploitation scripts and hacking tools created by others, without understanding how they work
+  C.     A programmer who specializes in Bash scripts
+  D.     A certified penetration tester
+Explanation: Script kiddies lack technical depth, relying on downloaded automated attack utilities.
+
+[bca-431e-u1-q40] (Unit 1) What is 'Hacktivism'?
+  A.     Hacking for commercial software development
+  B. (*) Using cyber attacks (defacements, DoS, data leaks) to promote a political, social, environmental, or ideological agenda
+  C.     Hacking that takes place on social media only
+  D.     A competitive coding marathon
+Explanation: Hacktivists use hacking as a form of civil disobedience or political protest (e.g., Anonymous).
+
+[bca-431e-u1-q41] (Unit 1) What is an 'Insider Threat' in organizational cyber security?
+  A.     A virus that attacks from inside a virtual machine
+  B. (*) The security risk posed by current or former employees, contractors, or business associates who have legitimate authorized access to systems and abuse it maliciously or negligently
+  C.     An external hacker breaking in through the firewall
+  D.     A hardware component with a physical short circuit
+Explanation: Insider threats are dangerous because insiders already possess authorized credentials, access, and institutional knowledge.
+
+[bca-431e-u1-q42] (Unit 1) What is 'Attack Surface' in cyber security architecture?
+  A.     The physical glass screen of a monitor
+  B. (*) The total sum of all possible points, vulnerabilities, open ports, interfaces, and entry vectors where an unauthorized attacker can attempt to compromise a system
+  C.     The surface area of a server rack in square feet
+  D.     The speed of the network router
+Explanation: Minimizing the attack surface (closing unused ports, disabling services) is a foundational hardening rule.
+
+[bca-431e-u1-q43] (Unit 1) What is 'Data Exfiltration' in a cyber breach?
+  A.     Formatting a hard drive to erase data
+  B. (*) The unauthorized, clandestine copying, transfer, or retrieval of sensitive data from a victim's network to an attacker-controlled external destination
+  C.     Compressing files into a ZIP archive
+  D.     Translating code into machine language
+Explanation: Data exfiltration is the theft of confidential data during or after a network breach.
+
+[bca-431e-u1-q44] (Unit 1) What is a 'Honeypot' in network defense?
+  A.     A reward given to ethical hackers
+  B. (*) A decoy, deliberately vulnerable computer system designed to lure, detect, deflect, and study the tactics of malicious cyber adversaries while protecting production systems
+  C.     A software tool for organizing passwords
+  D.     An encrypted USB drive
+Explanation: Honeypots act as monitored tripwires and intelligence gathering tools against attackers.
+
+[bca-431e-u1-q45] (Unit 1) What does the 'Security Perimeter' refer to in enterprise networking?
+  A.     The physical brick fence surrounding a company's office
+  B. (*) The logical boundary separating a trusted internal corporate network from an untrusted external network (such as the public internet)
+  C.     The length of network cables
+  D.     The diameter of a satellite dish
+Explanation: The perimeter is the boundary where firewalls, border routers, and gateways enforce security policy.
+
+[bca-431e-u1-q46] (Unit 1) What is 'Privilege Escalation' in an attack lifecycle?
+  A.     Promoting an employee to manager
+  B. (*) The technique where an attacker exploits a bug, design flaw, or configuration error to gain higher access levels (e.g., user to root/administrator) than initially authorized
+  C.     Speeding up CPU clock frequencies
+  D.     Increasing network bandwidth
+Explanation: Privilege escalation (vertical or horizontal) grants adversaries administrative control over the target OS.
+
+[bca-431e-u1-q47] (Unit 1) What is 'Credential Stuffing' in cyber attack methodology?
+  A.     Typing passwords very quickly
+  B. (*) An automated attack where lists of compromised username/password pairs leaked from past data breaches are tested against unrelated websites, exploiting user password reuse
+  C.     Generating random characters to guess passwords
+  D.     Cracking passwords using supercomputers
+Explanation: Credential stuffing exploits the human habit of reusing identical passwords across different services.
+
+[bca-431e-u1-q48] (Unit 1) What does 'Brute-Force Attack' mean in password cracking?
+  A.     Physically breaking the computer keyboard
+  B. (*) An exhaustive systematic trial-and-error search attempting every possible combination of characters until the correct password is found
+  C.     Using a social engineering pretext
+  D.     Sending phishing emails
+Explanation: Brute-force testing systematically exhausts the complete combinatorial character keyspace.
+
+[bca-431e-u1-q49] (Unit 1) What is a 'Dictionary Attack' compared to an exhaustive brute-force attack?
+  A.     An attack on a book publishing company
+  B. (*) A cracking technique that tests words from a pre-compiled wordlist (dictionary) of commonly used passwords and phrases, which is drastically faster than exhaustive character permutations
+  C.     Translating foreign language words into English
+  D.     Looking up acronyms in an encyclopedia
+Explanation: Dictionary attacks test common words and leaked password lists rather than searching all random permutations.
+
+[bca-431e-u1-q50] (Unit 1) Why is Multi-Factor Authentication (MFA) vastly superior to single-factor password authentication?
+  A.     It eliminates the need for computer monitors
+  B. (*) It requires two or more independent authentication factors from different categories (Something you know, Something you have, Something you are), preventing compromise even if a password is stolen
+  C.     It makes internet connections 10 times faster
+  D.     It is only required for bank managers
+Explanation: MFA requires multiple disparate proof categories (e.g., password + mobile authenticator OTP + fingerprint), blocking automated password-based attacks.
+
+[bca-431e-u2-q51] (Unit 2) What is the fundamental distinction between a 'Passive Attack' and an 'Active Attack'?
+  A.     Passive attacks only occur on Sundays; active attacks occur on weekdays
+  B. (*) Passive attacks monitor and eavesdrop on network transmissions without altering data; Active attacks modify data, disrupt services, or forge unauthorized system commands
+  C.     Passive attacks use viruses; active attacks use firewalls
+  D.     Passive attacks are legal; active attacks are illegal
+Explanation: Passive attacks (eavesdropping, traffic analysis) compromise confidentiality; active attacks (masquerade, replay, modification, DoS) alter state or availability.
+
+[bca-431e-u2-q52] (Unit 2) Which of the following is an example of a Passive Attack?
+  A.     Man-in-the-Middle data modification
+  B. (*) Network Packet Sniffing / Traffic Eavesdropping
+  C.     Denial of Service (DoS)
+  D.     SQL Injection
+Explanation: Packet sniffing passively monitors packets in transit without injecting or altering any data.
+
+[bca-431e-u2-q53] (Unit 2) What is 'Traffic Analysis' in passive network attacks?
+  A.     Measuring vehicle speeds on a highway
+  B. (*) Observing network packet frequency, timing, size, and communication endpoints to infer sensitive intelligence even when payloads are encrypted
+  C.     Analyzing web server log files for SEO
+  D.     Testing network router cables
+Explanation: Even with encrypted content, traffic patterns (packet volume, bursts, source/destination IPs) reveal confidential operational relationships.
+
+[bca-431e-u2-q54] (Unit 2) In an Active attack, what is a 'Replay Attack'?
+  A.     Playing an audio file repeatedly
+  B. (*) An attack where valid data transmission is fraudulently or maliciously captured and then retransmitted/repeated to produce an unauthorized effect (e.g., repeating a fund transfer transaction)
+  C.     A video recording of a computer screen
+  D.     A feature in video game software
+Explanation: Replay attacks re-inject previously captured legitimate authenticated packets (countered with nonces and timestamps).
+
+[bca-431e-u2-q55] (Unit 2) What is a 'Man-in-the-Middle' (MitM) attack?
+  A.     A mediator resolving a workplace dispute
+  B. (*) An attack where an adversary secretly relays and potentially alters the communications between two parties who believe they are communicating directly with each other
+  C.     A server positioned in the physical center of a room
+  D.     A network routing protocol
+Explanation: MitM intercepts traffic between client and server, eavesdropping or injecting forged payloads.
+
+[bca-431e-u2-q56] (Unit 2) What network layer protocol vulnerability is exploited by 'ARP Spoofing' (ARP Poisoning)?
+  A. (*) Lack of authentication in the Address Resolution Protocol on local area networks, allowing an attacker to map their own MAC address to the IP of the default gateway
+  B.     Bugs in DNS domain names
+  C.     Weak passwords on FTP servers
+  D.     Buffer overflows in web browsers
+Explanation: ARP lacks authentication; malicious gratuitous ARP replies redirect LAN traffic through the attacker's machine.
+
+[bca-431e-u2-q57] (Unit 2) What is 'DNS Cache Poisoning' (DNS Spoofing)?
+  A.     Pouring liquid on a DNS server
+  B. (*) Injecting corrupt, fraudulent IP address records into a DNS resolver's cache so that users requesting a legitimate domain (e.g., bank.com) are routed to a malicious IP
+  C.     Deleting domain names from the internet
+  D.     A virus that infects domain registrars
+Explanation: DNS cache poisoning tricks resolvers into caching fake IP resolutions, redirecting users to counterfeit phishing servers.
+
+[bca-431e-u2-q58] (Unit 2) What is 'IP Spoofing'?
+  A.     Hiding an IP address in a database
+  B. (*) Creating IP packets with a forged source IP address to conceal the identity of the sender or impersonate another legitimate computing system
+  C.     Purchasing an IP address from an ISP
+  D.     Configuring a static IP on a printer
+Explanation: IP spoofing falsifies the source IP in packet headers, standardly used in DoS amplification attacks.
+
+[bca-431e-u2-q59] (Unit 2) What is a Denial of Service (DoS) attack?
+  A.     Denying a user permission to open a file
+  B. (*) An attack that attempts to make a machine, network resource, or service unavailable to its intended legitimate users by overwhelming it with spurious traffic or triggering a crash
+  C.     Shutting down a computer using the operating system power menu
+  D.     A slow internet connection
+Explanation: DoS floods computational resources (bandwidth, CPU, memory), denying access to authentic users.
+
+[bca-431e-u2-q60] (Unit 2) What is the difference between a DoS attack and a Distributed Denial of Service (DDoS) attack?
+  A.     DoS uses multiple machines; DDoS uses one single laptop
+  B. (*) DoS originates from a single attacking source machine; DDoS coordinates hundreds of thousands of geographically distributed infected machines (botnets) to flood the target simultaneously
+  C.     DoS targets websites; DDoS targets printers
+  D.     They are identical
+Explanation: DDoS leverages distributed botnet power, making traffic volume massive and IP filtering extraordinarily difficult.
+
+[bca-431e-u2-q61] (Unit 2) What is a 'SYN Flood' attack in TCP/IP networking?
+  A.     A flood of rain damaging a data center
+  B. (*) Exploiting the TCP 3-way handshake by sending a massive flood of TCP SYN packets with forged source IPs, leaving semi-open connections that exhaust the target's connection backlog queue
+  C.     Sending too many emails in one minute
+  D.     Flooding optical fiber cables with laser light
+Explanation: SYN flood exhausts the server's TCP half-open connection table (mitigated by SYN cookies).
+
+[bca-431e-u2-q62] (Unit 2) What is an 'Amplification Attack' in network DDoS?
+  A.     Using expensive audio speakers
+  B. (*) An attack where an adversary sends small requests with a spoofed victim IP to third-party public servers (e.g., DNS, NTP), which respond with dramatically larger payloads directed at the victim
+  C.     Boosting the electrical voltage of a router
+  D.     Multiplying the size of hard drives
+Explanation: Amplification exploits protocols (DNS, NTP, Memcached) where small request packets trigger huge response streams toward a spoofed target.
+
+[bca-431e-u2-q63] (Unit 2) What is 'SQL Injection' (SQLi)?
+  A.     Injecting physical medicine into a hard drive
+  B. (*) An attack technique where malicious SQL statements are inserted into entry fields (web forms, URL parameters) to manipulate the backend database directly
+  C.     A method to optimize database queries
+  D.     A database backup command
+Explanation: SQLi exploits unsanitized input to execute unauthorized queries, bypassing authentication or exfiltrating data.
+
+[bca-431e-u2-q64] (Unit 2) What is 'Cross-Site Scripting' (XSS)?
+  A.     A styling error in CSS sheets
+  B. (*) An attack where malicious client-side executable scripts (typically JavaScript) are injected into trusted web pages viewed by other users
+  C.     Cross-compiling C code for Linux
+  D.     Sharing files across different websites
+Explanation: XSS executes arbitrary scripts in victims' browsers, hijacking session cookies and defacing pages.
+
+[bca-431e-u2-q65] (Unit 2) What are the three recognized primary types of Cross-Site Scripting (XSS)?
+  A.     Alpha, Beta, and Gamma XSS
+  B. (*) Stored (Persistent) XSS, Reflected (Non-Persistent) XSS, and DOM-Based XSS
+  C.     Internal, External, and Hybrid XSS
+  D.     Client, Server, and Database XSS
+Explanation: Stored XSS resides in the database; Reflected XSS reflects off an immediate request; DOM XSS modifies client-side DOM directly.
+
+[bca-431e-u2-q66] (Unit 2) What is 'Cross-Site Request Forgery' (CSRF)?
+  A.     Forging an email signature
+  B. (*) An attack that tricks an authenticated user's browser into executing unwanted actions (e.g., transferring funds, changing password) on a trusted web application without their knowledge
+  C.     Creating fake website domains
+  D.     A type of denial of service
+Explanation: CSRF tricks a logged-in victim into executing unintended state-changing requests using their active session cookies (mitigated by CSRF tokens).
+
+[bca-431e-u2-q67] (Unit 2) What is a 'Buffer Overflow' vulnerability?
+  A.     A printer running out of paper
+  B. (*) A condition where a program writes more data into a memory buffer than the buffer is allocated to hold, overflowing adjacent memory and overwriting return addresses to execute arbitrary code
+  C.     A computer screen freezing
+  D.     An overflow of internet traffic on a router
+Explanation: Buffer overflows overwrite call stacks or heaps, enabling execution of injected shellcode.
+
+[bca-431e-u2-q68] (Unit 2) What defensive operating system technologies are standardly deployed to mitigate Buffer Overflow attacks?
+  A.     Screen savers and dark mode
+  B. (*) Address Space Layout Randomization (ASLR), Data Execution Prevention (DEP / W^X), and Stack Canaries
+  C.     Using only SSD drives
+  D.     Restarting the computer daily
+Explanation: ASLR randomizes memory layouts; DEP prevents code execution in data stacks; Stack canaries detect boundary corruption.
+
+[bca-431e-u2-q69] (Unit 2) What was the famous historic 1988 internet worm created by Robert Tappan Morris that crashed thousands of UNIX mainframes?
+  A.     ILOVEYOU Worm
+  B. (*) The Morris Worm
+  C.     Stuxnet
+  D.     Conficker
+Explanation: The Morris Worm was the first widely recognized internet worm, exploiting fingerd buffer overflows and sendmail debug holes.
+
+[bca-431e-u2-q70] (Unit 2) What was 'Stuxnet' discovered in 2010?
+  A.     A ransomware that demanded Bitcoin from home users
+  B. (*) An extremely sophisticated, highly targeted state-sponsored cyberweapon designed to sabotage programmable logic controllers (PLCs) in Iranian uranium enrichment centrifuges
+  C.     A virus that infected smartphones
+  D.     A harmless open-source security tool
+Explanation: Stuxnet was the first weaponized cyber warfare worm engineered to physically destroy industrial centrifuges.
+
+[bca-431e-u2-q71] (Unit 2) In security models, what does the 'Bell-LaPadula Model' primarily enforce?
+  A.     Commercial data integrity in banking
+  B. (*) Confidentiality and Mandatory Access Control (MAC) in military multilevel security environments
+  C.     Availability in cloud computing
+  D.     Open source software licenses
+Explanation: The Bell-LaPadula model is formal security state-machine focused exclusively on preserving confidentiality.
+
+[bca-431e-u2-q72] (Unit 2) What are the two core axioms of the Bell-LaPadula confidentiality model?
+  A. (*) Simple Security Property (No Read Up) and the *-Property / Star Property (No Write Down)
+  B.     No Read Down and No Write Up
+  C.     Read All and Write All
+  D.     Least Privilege and Separation of Duties
+Explanation: Bell-LaPadula rules: A subject at security clearance L can only read objects at clearance <= L (No Read Up), and write to objects at clearance >= L (No Write Down).
+
+[bca-431e-u2-q73] (Unit 2) In contrast to Bell-LaPadula, what does the 'Biba Model' primarily enforce?
+  A.     Confidentiality
+  B. (*) Data Integrity and Prevention of Unauthorized Modification
+  C.     High-speed network throughput
+  D.     Password complexity
+Explanation: The Biba model prevents data corruption by enforcing strict integrity classifications.
+
+[bca-431e-u2-q74] (Unit 2) What are the two core rules of the Biba Integrity Model?
+  A. (*) Simple Integrity Property (No Read Down) and the *-Integrity Property (No Write Up)
+  B.     No Read Up and No Write Down
+  C.     Read Anywhere and Write Nowhere
+  D.     No Access without Passwords
+Explanation: Biba rules: Subjects cannot read lower-integrity data (No Read Down) to avoid corruption, and cannot write to higher-integrity objects (No Write Up).
+
+[bca-431e-u2-q75] (Unit 2) What commercial security model introduced by David Clark and David Wilson (1987) focuses on commercial integrity through 'Well-Formed Transactions' and 'Separation of Duties'?
+  A.     Bell-LaPadula Model
+  B. (*) Clark-Wilson Model
+  C.     Take-Grant Model
+  D.     Graham-Denning Model
+Explanation: Clark-Wilson enforces commercial accounting integrity using Transformation Procedures (TPs) and Constrained Data Items (CDIs).
+
+[bca-431e-u2-q76] (Unit 2) What does the 'Chinese Wall Model' (Brewer-Nash Model) prevent in financial and consulting organizations?
+  A.     Physical access by international tourists
+  B. (*) Conflicts of Interest by dynamically restricting information flow based on the consulting assignments an employee has previously accessed
+  C.     SQL injection attacks
+  D.     Buffer overflow exceptions
+Explanation: The Chinese Wall model dynamically enforces conflict-of-interest firewalls (e.g., consultants working with competing banks).
+
+[bca-431e-u2-q77] (Unit 2) What is the 'Parkerian Hexad' formulated by Donn B. Parker in 1998?
+  A.     A six-sided firewall hardware unit
+  B. (*) An expansion of the classic CIA triad into six fundamental security attributes: Confidentiality, Integrity, Availability, Possession/Control, Authenticity, and Utility
+  C.     A 6-layer neural network
+  D.     A six-digit pin code
+Explanation: The Parkerian Hexad adds Authenticity, Possession/Control, and Utility to the classic CIA triad.
+
+[bca-431e-u2-q78] (Unit 2) In the Parkerian Hexad, how does 'Possession/Control' differ from 'Confidentiality'?
+  A.     They are identical in all cases
+  B. (*) Possession refers to physical or logical custody of the data medium: if an encrypted laptop is stolen, Possession is lost even if strong encryption maintains Confidentiality
+  C.     Possession only applies to paper documents
+  D.     Confidentiality cannot be measured
+Explanation: Stealing an encrypted hard drive causes loss of Possession/Control, even though data Confidentiality remains uncompromised.
+
+[bca-431e-u2-q79] (Unit 2) In the Parkerian Hexad, what does 'Utility' mean?
+  A.     How fast a computer runs
+  B. (*) The usefulness or accessibility of the data for its intended purpose (e.g., if data is encrypted but the decryption key is permanently lost, Utility is zero)
+  C.     The monetary price of software
+  D.     The electricity consumption of a server
+Explanation: Utility reflects data usefulness; uncorrupted data that is rendered unusable (lost key) has suffered a loss of Utility.
+
+[bca-431e-u2-q80] (Unit 2) In the Parkerian Hexad, what does 'Authenticity' mean?
+  A.     The software has a valid brand label
+  B. (*) Verification of the genuine origin, identity, and authorship of data or human communications (confirming it is not forged)
+  C.     The speed of mouse movements
+  D.     A certificate signed by Microsoft only
+Explanation: Authenticity guarantees that an assertion or message originates from its stated source without forgery.
+
+[bca-431e-u2-q81] (Unit 2) What does the 'Star Model' in cyber security strategy represent?
+  A.     A star network topology with a central hub
+  B. (*) A multi-dimensional interlocking governance framework aligning Strategy, Structure, Processes, People, and Technology rewards in security operations
+  C.     A model of astronomical stars
+  D.     A star rating for passwords
+Explanation: Galbraith's Star Model applied to security balances human, technical, structural, and procedural dimensions.
+
+[bca-431e-u2-q82] (Unit 2) What is 'Session Hijacking' in web application attacks?
+  A.     Stealing a physical laptop while a user is typing
+  B. (*) An attack where an adversary steals, guesses, or sniffs a victim's active session token (such as JSESSIONID or session cookie) to impersonate the authenticated victim
+  C.     Logging out of a web application
+  D.     Closing the web browser tab
+Explanation: Session hijacking assumes the authorized identity of a victim by presenting their valid session identifier.
+
+[bca-431e-u2-q83] (Unit 2) What is a 'Zero-Day Exploit'?
+  A.     An attack executed in zero seconds
+  B. (*) An exploit that targets a vulnerability before the software vendor has released an official patch or defense
+  C.     A retired software exploit
+  D.     An exploit that causes zero damage
+Explanation: Zero-day attacks strike when defenses do not yet exist, giving victims zero days of mitigation time.
+
+[bca-431e-u2-q84] (Unit 2) What is 'Ransomware-as-a-Service' (RaaS)?
+  A.     A legal subscription backup service
+  B. (*) A cybercrime business model where malware developers lease ransomware variants and payment infrastructure to criminal affiliates for a percentage of ransoms paid
+  C.     A cloud antivirus tool
+  D.     A free file encryption software
+Explanation: RaaS democratizes cyber extortion by providing turn-key ransomware kits to non-technical criminals.
+
+[bca-431e-u2-q85] (Unit 2) What is 'Drive-By Download' in web security?
+  A.     Downloading files while driving a car
+  B. (*) The unintended, covert download and execution of malicious software onto a user's computer simply by visiting a compromised web page, without any explicit clicking
+  C.     Downloading files using Bluetooth
+  D.     Updating software in the background
+Explanation: Drive-by downloads exploit browser zero-days or plugin bugs when a malicious webpage is rendered.
+
+[bca-431e-u2-q86] (Unit 2) What is 'Typosquatting' (URL Hijacking)?
+  A.     Spelling errors in code comments
+  B. (*) Registering common typographical errors of popular domain names (e.g., gooogle.com instead of google.com) to catch errant user traffic and deliver malware or phishing
+  C.     Typing passwords incorrectly 3 times
+  D.     A typing test software
+Explanation: Typosquatting exploits keyboard typos to direct users to counterfeit websites.
+
+[bca-431e-u2-q87] (Unit 2) What is 'Clickjacking' (UI Redress Attack)?
+  A.     Breaking a computer mouse
+  B. (*) A malicious technique that tricks a user into clicking on an invisible or disguised UI element (e.g., hidden iframe) floating over a legitimate button
+  C.     Clicking advertisements repeatedly
+  D.     Hovering a mouse over links
+Explanation: Clickjacking frames legitimate sites transparently to hijack user clicks (mitigated by X-Frame-Options: DENY).
+
+[bca-431e-u2-q88] (Unit 2) What is 'Watering Hole Attack' in targeted cyber espionage?
+  A.     Poisoning drinking water at corporate headquarters
+  B. (*) Compromising a specific legitimate third-party website known to be visited frequently by a target organization or demographic to infect members of that group
+  C.     A DDoS attack on water utilities
+  D.     Flooding an office with network cables
+Explanation: Adversaries identify and infect websites their intended targets routinely visit (like watering holes in nature).
+
+[bca-431e-u2-q89] (Unit 2) What is a 'Logic Bomb' in malicious code?
+  A.     An explosive device inside a computer case
+  B. (*) A piece of malicious code deliberately embedded into software that remains dormant until triggered by a specific predefined event, date, or condition (e.g., Friday the 13th, or employee termination)
+  C.     A syntax error in boolean logic
+  D.     A type of database trigger
+Explanation: Logic bombs execute destructive payloads when triggered by specific operational thresholds (time, deleted accounts).
+
+[bca-431e-u2-q90] (Unit 2) What is 'Cryptojacking'?
+  A.     Decrypting passwords on a supercomputer
+  B. (*) The unauthorized, covert use of a victim's computing hardware (CPU, GPU) to mine cryptocurrencies without their knowledge or consent
+  C.     Stealing physical cryptocurrency hardware wallets
+  D.     Encrypting files for ransom
+Explanation: Cryptojacking drains victim computational cycles and electricity to mine Monero or Bitcoin.
+
+[bca-431e-u2-q91] (Unit 2) What is 'DNS Tunneling' in data exfiltration?
+  A.     Digging tunnels for fiber optic internet
+  B. (*) A technique that abuses the DNS protocol to encode non-DNS data or shell commands inside DNS query and response packets, bypassing restrictive firewalls
+  C.     A secure VPN protocol
+  D.     Fast DNS caching
+Explanation: DNS tunneling encapsulates arbitrary data within DNS queries (e.g., data.attacker.com) to sneak past firewalls that permit port 53.
+
+[bca-431e-u2-q92] (Unit 2) In access control architecture, what is Mandatory Access Control (MAC)?
+  A.     Access control where file owners have full discretion to share files
+  B. (*) A central authority grants access strictly based on fixed security clearances of subjects and classification labels of objects (used in military systems)
+  C.     Access control using Apple Macintosh computers only
+  D.     Access determined by hardware MAC addresses
+Explanation: In MAC, security policy is centrally mandated; individual users cannot alter permissions or share classified objects.
+
+[bca-431e-u2-q93] (Unit 2) What is Discretionary Access Control (DAC)?
+  A.     Access control enforced by police officers
+  B. (*) An access model where the individual owner/creator of a file has the discretion to grant or revoke access permissions to other users (standard in Windows/Linux file systems)
+  C.     Access control that changes randomly
+  D.     Access requiring retina scans
+Explanation: In DAC (e.g., chmod in Unix), the resource owner decides who has read/write permissions.
+
+[bca-431e-u2-q94] (Unit 2) What is Role-Based Access Control (RBAC)?
+  A.     Access granted based on user astrological signs
+  B. (*) Access permissions are assigned to specific organizational roles (e.g., Nurse, Doctor, Billing Clerk), and individual users are assigned to roles
+  C.     Access that requires acting in theatrical roles
+  D.     Access restricted to root users only
+Explanation: RBAC simplifies administration by binding permissions to job roles rather than managing individual users directly.
+
+[bca-431e-u2-q95] (Unit 2) What is an 'Evil Twin' attack in wireless Wi-Fi security?
+  A.     Two identical hacker computers
+  B. (*) A fraudulent, rogue Wi-Fi access point that masquerades as a legitimate trusted network (using the identical SSID name) to eavesdrop on connected victims' traffic
+  C.     A computer clone backup
+  D.     A double password protection scheme
+Explanation: Evil Twins spoof public Wi-Fi networks (e.g., 'Starbucks_WiFi') to intercept passwords and cookies.
+
+[bca-431e-u2-q96] (Unit 2) What is 'Bluejacking' versus 'Bluesnarfing' in Bluetooth security?
+  A. (*) Bluejacking sends unsolicited spam messages to Bluetooth devices; Bluesnarfing is unauthorized theft of data (contacts, photos, calendar) from a Bluetooth device
+  B.     Bluejacking steals data; Bluesnarfing is harmless
+  C.     They are identical terms
+  D.     Bluejacking only works on cars
+Explanation: Bluejacking sends unsolicited messages; Bluesnarfing exfiltrates private data via Bluetooth vulnerabilities.
+
+[bca-431e-u2-q97] (Unit 2) What is a 'Reconnaissance' attack in penetration testing and cyber attack lifecycles?
+  A.     The final destruction of a database
+  B. (*) The preliminary information-gathering phase where an adversary maps network architectures, IP ranges, open ports, software versions, and employee details
+  C.     Encrypting a hard drive
+  D.     Purchasing antivirus software
+Explanation: Reconnaissance (passive OSINT and active scanning) maps targets before attempting exploits.
+
+[bca-431e-u2-q98] (Unit 2) In MITRE ATT&CK framework, what is the purpose of documenting Adversarial Tactics, Techniques, and Common Knowledge?
+  A.     To teach people how to become cybercriminals
+  B. (*) To provide a comprehensive, standardized public matrix of real-world adversary behaviors, enabling organizations to model threats and evaluate detection coverage
+  C.     To sell security hardware
+  D.     To file patents on attacks
+Explanation: MITRE ATT&CK is the global knowledge base of adversary behaviors used for threat modeling and defensive posture evaluation.
+
+[bca-431e-u2-q99] (Unit 2) What is 'Payload' in computer exploit terminology?
+  A.     The total weight of a server in kilograms
+  B. (*) The actual malicious code or action executed on the victim machine once an exploit successfully achieves initial penetration (e.g., installing a backdoor, ransomware)
+  C.     The cost of a cyber insurance policy
+  D.     The size of an email header
+Explanation: The exploit creates the vulnerability breach; the payload is the cargo delivered (shell, malware, ransomware).
+
+[bca-431e-u2-q100] (Unit 2) What is 'Privilege Abuse'?
+  A.     When a user forgets their password
+  B. (*) When an authorized employee uses their legitimate elevated credentials to access or steal confidential data outside their authorized business need
+  C.     Writing code without comments
+  D.     Using personal laptops at home
+Explanation: Privilege abuse occurs when authorized users deliberately misuse legitimate rights for illicit purposes.
+
+[bca-431e-u3-q101] (Unit 3) What is an organizational Cyber Security Policy?
+  A.     A technical user manual for Microsoft Word
+  B. (*) A formal, high-level executive directive that establishes an organization's security goals, acceptable behaviors, rules, and responsibilities for protecting information assets
+  C.     A list of software license keys
+  D.     An insurance policy for office furniture
+Explanation: A security policy is a high-level management document outlining rules and requirements for protecting organizational data.
+
+[bca-431e-u3-q102] (Unit 3) In security documentation hierarchy, what is the difference between Policies, Standards, Guidelines, and Procedures?
+  A. (*) Policies are mandatory high-level directives; Standards are mandatory technical requirements; Procedures are step-by-step instructions; Guidelines are non-mandatory best-practice recommendations
+  B.     Guidelines are strictly mandatory, while policies are optional suggestions
+  C.     They are identical terms
+  D.     Procedures are written by marketing teams
+Explanation: Hierarchy: Policy (mandatory executive vision) -> Standard (mandatory specifications) -> Procedure (step-by-step steps) -> Guideline (recommended advice).
+
+[bca-431e-u3-q103] (Unit 3) What is an Acceptable Use Policy (AUP)?
+  A.     A policy on acceptable office dress codes
+  B. (*) A formal document stipulating what employees and users may and may not do when accessing corporate computers, networks, email, and the internet
+  C.     A guide for accepting incoming deliveries
+  D.     A database query specification
+Explanation: The AUP defines permissible and prohibited uses of organizational computational hardware and networks.
+
+[bca-431e-u3-q104] (Unit 3) What is the primary objective of a 'Clean Desk Policy' in corporate security?
+  A.     To keep the office smelling fresh
+  B. (*) To ensure that sensitive documents, passwords, removable media, and notes are not left exposed on desks when employees leave their workstations
+  C.     To clean computer screens with glass cleaner
+  D.     To restrict the number of pens on a desk
+Explanation: Clean desk policies prevent physical data leakage and opportunistic visual snooping by visitors or contractors.
+
+[bca-431e-u3-q105] (Unit 3) What does a 'Clear Screen Policy' dictate?
+  A.     Screen brightness must be set to 100%
+  B. (*) Workstations must automatically lock or be manually locked with a password-protected screensaver whenever an employee steps away from their desk
+  C.     Screens must be wiped daily
+  D.     Monitors must be turned off at noon
+Explanation: Clear screen rules ensure computers are locked when unattended, preventing unauthorized physical access to active sessions.
+
+[bca-431e-u3-q106] (Unit 3) What is the primary executive role of a Chief Information Security Officer (CISO)?
+  A.     Fixing physical printer paper jams
+  B. (*) Leading and managing an enterprise's overall information security strategy, risk governance, regulatory compliance, and security operations
+  C.     Managing the company's advertising budget
+  D.     Writing frontend CSS styles
+Explanation: The CISO directs enterprise security strategy, balancing operational needs with cyber risk and compliance.
+
+[bca-431e-u3-q107] (Unit 3) What is a Security Operations Center (SOC)?
+  A.     A data center where web pages are designed
+  B. (*) A centralized unit within an organization that continuously monitors, detects, analyzes, and responds to cybersecurity incidents in real-time 24/7
+  C.     A room where computer chips are manufactured
+  D.     A customer service call center
+Explanation: The SOC operates continuous telemetry monitoring (SIEM, EDR) to defend organizational infrastructure.
+
+[bca-431e-u3-q108] (Unit 3) What is a Computer Security Incident Response Team (CSIRT / CIRT)?
+  A.     A team that replaces broken hard drives
+  B. (*) A dedicated team of security professionals responsible for investigating, containing, remediating, and recovering from cybersecurity incidents and data breaches
+  C.     A marketing team that writes press releases
+  D.     A network installation crew
+Explanation: CSIRTs execute organized containment and forensic eradication protocols during security incidents.
+
+[bca-431e-u3-q109] (Unit 3) According to NIST, what are the primary sequential phases of an Incident Response lifecycle?
+  A.     Ignore, Panic, Blame, Restart
+  B. (*) Preparation -> Detection & Analysis -> Containment, Eradication & Recovery -> Post-Incident Activity (Lessons Learned)
+  C.     Design, Code, Test, Deploy
+  D.     Scan, Attack, Exfiltrate, Delete
+Explanation: NIST SP 800-61 defines: 1) Preparation; 2) Detection & Analysis; 3) Containment, Eradication & Recovery; 4) Post-Incident Activity.
+
+[bca-431e-u3-q110] (Unit 3) In Incident Response, what is the crucial objective of the 'Containment' phase?
+  A.     To publicly announce the breach in newspapers
+  B. (*) To stop the spread of an active attack, isolate infected systems from the network, and prevent further operational damage or data exfiltration
+  C.     To reinstall operating systems immediately
+  D.     To delete all system logs
+Explanation: Containment isolates compromised nodes to prevent lateral movement while preserving forensic evidence.
+
+[bca-431e-u3-q111] (Unit 3) What occurs in the 'Lessons Learned' (Post-Incident Review) phase of Incident Response?
+  A.     Firing all junior employees
+  B. (*) Analyzing what occurred, how effectively the team responded, identifying procedural gaps, and updating policies and technical controls to prevent recurrence
+  C.     Closing all company bank accounts
+  D.     Erasing the incident from corporate records
+Explanation: Post-incident analysis examines root causes and response deficiencies to mature security defenses.
+
+[bca-431e-u3-q112] (Unit 3) What is a Business Continuity Plan (BCP)?
+  A.     A plan to expand business sales into foreign countries
+  B. (*) A strategic blueprint outlining how an organization will maintain critical operations during and immediately following an emergency, disaster, or major cyber incident
+  C.     An employee training manual
+  D.     A software testing protocol
+Explanation: BCP ensures essential business functions continue operating during disruptive events.
+
+[bca-431e-u3-q113] (Unit 3) What is Disaster Recovery (DR) in enterprise resilience?
+  A.     Recovering deleted text files from the recycle bin
+  B. (*) The technical policies and procedures for restoring IT systems, networks, data backups, and computational infrastructure to normalcy after a catastrophic event
+  C.     Applying first aid to employees
+  D.     Reinstalling video games
+Explanation: Disaster Recovery focuses specifically on technical IT restoration following catastrophic failures.
+
+[bca-431e-u3-q114] (Unit 3) What does Recovery Time Objective (RTO) measure in Disaster Recovery planning?
+  A.     The total financial cost of a backup server
+  B. (*) The maximum acceptable duration of time that a system or business process can be down before unacceptable consequences occur
+  C.     The time it takes to reboot a PC
+  D.     The warranty length of hardware
+Explanation: RTO is the targeted timeframe within which systems must be restored to operation.
+
+[bca-431e-u3-q115] (Unit 3) What does Recovery Point Objective (RPO) measure in Disaster Recovery?
+  A.     The physical GPS location of the backup data center
+  B. (*) The maximum acceptable age of data files that can be lost (measured in time, e.g., 1 hour of lost transactions) in the event of a disaster
+  C.     The monetary price per gigabyte of backup
+  D.     The number of employees in the IT department
+Explanation: RPO defines allowable data loss tolerance: an RPO of 1 hour requires backups at least hourly.
+
+[bca-431e-u3-q116] (Unit 3) What is the industry-standard '3-2-1 Backup Rule'?
+  A.     Backup once every 3 days, 2 times a day, on 1 machine
+  B. (*) Maintain at least 3 copies of data, across 2 different media types, with at least 1 copy stored securely offsite or in immutable cloud storage
+  C.     Use 3 passwords with 2 digits and 1 special symbol
+  D.     Restart servers 3 times, wait 2 minutes, check 1 port
+Explanation: 3-2-1 rule: 3 copies, 2 media formats (e.g., disk and tape/cloud), 1 offsite/isolated copy.
+
+[bca-431e-u3-q117] (Unit 3) What international standard defines requirements for an Information Security Management System (ISMS)?
+  A.     ISO 9001
+  B. (*) ISO/IEC 27001
+  C.     ISO 14001
+  D.     IEEE 802.11
+Explanation: ISO/IEC 27001 is the global benchmark standard for establishing, certifying, and maintaining an enterprise ISMS.
+
+[bca-431e-u3-q118] (Unit 3) What does the PCI-DSS standard regulate?
+  A.     Personal Computer Interconnect Direct Security Standard
+  B. (*) Payment Card Industry Data Security Standard (regulating the secure handling, storage, and processing of credit/debit card information)
+  C.     Public Cloud Internet Defense Standard
+  D.     Private Cryptography Identification Standard
+Explanation: PCI-DSS mandates technical requirements for any organization processing cardholder data.
+
+[bca-431e-u3-q119] (Unit 3) What is the Health Insurance Portability and Accountability Act (HIPAA)?
+  A.     A car insurance policy standard
+  B. (*) US legislation enforcing security and privacy safeguards for Protected Health Information (PHI) held by medical and healthcare entities
+  C.     A physical gym fitness policy
+  D.     An international hospital accreditation
+Explanation: HIPAA regulates the confidentiality and security of electronic protected health information (ePHI).
+
+[bca-431e-u3-q120] (Unit 3) What is the General Data Protection Regulation (GDPR)?
+  A.     A software framework for database queries
+  B. (*) Comprehensive European Union privacy legislation granting citizens strict rights over personal data collection, processing, and mandatory 72-hour breach notification
+  C.     A router configuration rule
+  D.     A web design guideline
+Explanation: GDPR enforces strict consumer privacy protections, data minimization, right to erasure, and major non-compliance penalties.
+
+[bca-431e-u3-q121] (Unit 3) In India, which foundational cyber statute governs cyber offenses, electronic governance, and electronic commerce?
+  A.     The Indian Penal Code 1860 only
+  B. (*) The Information Technology Act 2000 (IT Act 2000) and its Amendments
+  C.     The Digital Security Ordinance 1995
+  D.     The Telecommunications Act 1885
+Explanation: The Information Technology Act 2000 provides legal recognition to electronic records and establishes penalties for cyber crimes.
+
+[bca-431e-u3-q122] (Unit 3) Under Section 43 of the Indian IT Act 2000, what offense is penalized?
+  A.     Refusing to buy computer software
+  B. (*) Unauthorized access, downloading, copying, introduction of computer contaminants (viruses), or damaging computer systems, punishable by civil damages
+  C.     Writing slow code
+  D.     Losing internet connection
+Explanation: Section 43 imposes civil compensation penalties for unauthorized computer hacking, data theft, and virus introduction.
+
+[bca-431e-u3-q123] (Unit 3) Under Section 66 of the Indian IT Act 2000, what is the criminal penalty for computer-related offenses (hacking)?
+  A.     A small administrative warning
+  B. (*) Imprisonment for a term which may extend to three years, or a fine up to five lakh rupees, or both
+  C.     Lifetime ban from using smartphones
+  D.     Community service for one week
+Explanation: Section 66 criminalizes dishonest or fraudulent hacking with up to 3 years imprisonment and/or fines.
+
+[bca-431e-u3-q124] (Unit 3) Which agency acts as the national nodal agency for responding to cybersecurity incidents in India?
+  A.     ISRO
+  B. (*) CERT-In (Indian Computer Emergency Response Team)
+  C.     NASSCOM
+  D.     TRAI
+Explanation: CERT-In is designated under the IT Act as the national agency for cyber incident response and cybersecurity directives.
+
+[bca-431e-u3-q125] (Unit 3) What recent mandatory cybersecurity directive was issued by CERT-In regarding cybersecurity incidents?
+  A.     All incidents must be kept completely secret forever
+  B. (*) Mandatory reporting of specified cybersecurity incidents to CERT-In within 6 hours of noticing
+  C.     Companies must turn off all computers on Sundays
+  D.     Antivirus software must be disabled
+Explanation: CERT-In guidelines mandate that organizations report specified cybersecurity incidents within 6 hours of discovery.
+
+[bca-431e-u3-q126] (Unit 3) What is a 'Non-Disclosure Agreement' (NDA) in cybersecurity governance?
+  A.     A promise to never use computers
+  B. (*) A legally binding contract where parties agree not to disclose confidential information shared during employment or business engagements
+  C.     A document for deleting software licenses
+  D.     A password reset form
+Explanation: NDAs protect intellectual property, trade secrets, and proprietary security architecture from disclosure.
+
+[bca-431e-u3-q127] (Unit 3) What does 'BYOD' stand for in corporate security policies, and what challenge does it present?
+  A. (*) Bring Your Own Device; creates risk when employee personal smartphones/laptops access corporate data without enterprise security controls
+  B.     Backup Your Own Data; saves server memory
+  C.     Build Your Own Database; complicates SQL
+  D.     Block Your Own Domain; stops phishing
+Explanation: BYOD permits personal devices on corporate networks, introducing endpoint visibility, malware, and data leakage challenges.
+
+[bca-431e-u3-q128] (Unit 3) What is Mobile Device Management (MDM)?
+  A.     A mobile phone repair shop
+  B. (*) Software that allows IT administrators to monitor, manage, enforce security policies on, and remotely wipe smartphones and tablets used for business
+  C.     An app for playing mobile games
+  D.     A telephone billing system
+Explanation: MDM secures corporate data on mobile devices with remote wipe, containerization, and passcode enforcement.
+
+[bca-431e-u3-q129] (Unit 3) What is 'Security Awareness Training' for corporate employees?
+  A.     Teaching employees how to assemble computer hardware
+  B. (*) Regular training programs designed to educate staff on recognizing phishing, practicing password hygiene, reporting anomalies, and adhering to security policies
+  C.     Training employees to code in C++
+  D.     Teaching keyboard typing speed
+Explanation: Security awareness training strengthens the human defensive perimeter against social engineering.
+
+[bca-431e-u3-q130] (Unit 3) What is 'Third-Party Vendor Risk Management' in cybersecurity?
+  A.     Purchasing computers from foreign vendors
+  B. (*) Assessing, monitoring, and managing the cyber risks introduced by external suppliers, SaaS providers, and contractors who connect to enterprise networks
+  C.     Refusing to hire outside contractors
+  D.     Paying vendor bills on time
+Explanation: Supply chain and third-party vendor breaches (e.g., SolarWinds, Target) require rigorous vendor risk vetting.
+
+[bca-431e-u3-q131] (Unit 3) What is a 'Service Level Agreement' (SLA) in cloud security contracts?
+  A.     A manual for setting up routers
+  B. (*) A formal contract defining expected service performance, availability uptime (e.g., 99.99%), security commitments, and penalties for outages between provider and customer
+  C.     A software copyright license
+  D.     A credit card receipt
+Explanation: SLAs contractually establish availability uptime, response times, and disaster recovery thresholds.
+
+[bca-431e-u3-q132] (Unit 3) In security risk management, what is 'Risk Acceptance'?
+  A.     Pretending risks do not exist
+  B. (*) A conscious management decision to acknowledge and accept a identified risk without implementing controls because the cost of mitigation outweighs potential impact
+  C.     Eliminating all computer systems
+  D.     Purchasing cyber insurance
+Explanation: Risk acceptance is a formal governance choice when residual risk falls within organizational risk tolerance.
+
+[bca-431e-u3-q133] (Unit 3) What is 'Risk Mitigation' (Risk Reduction)?
+  A.     Accepting all potential losses
+  B. (*) Implementing security countermeasures (firewalls, encryption, patching, training) to reduce the likelihood and/or impact of an identified risk
+  C.     Transferring liability to insurance
+  D.     Erasing risk assessment reports
+Explanation: Mitigation deploys defensive controls to reduce residual risk to an acceptable baseline.
+
+[bca-431e-u3-q134] (Unit 3) What is 'Risk Transfer' in cybersecurity risk management?
+  A. (*) Shifting responsibility to external parties, typically by purchasing Cyber Insurance or outsourcing operations to a specialized provider
+  B.     Moving a server from one room to another
+  C.     Passing passwords to colleagues
+  D.     Copying files to an external drive
+Explanation: Risk transfer shares or transfers financial liability (e.g., commercial cyber insurance policies).
+
+[bca-431e-u3-q135] (Unit 3) What is 'Risk Avoidance' in risk strategy?
+  A. (*) Completely eliminating the risk by deciding not to engage in the vulnerable activity (e.g., shutting down a high-risk service entirely)
+  B.     Ignoring security alerts
+  C.     Purchasing more computers
+  D.     Running antivirus scans twice
+Explanation: Avoidance exits the risk-generating activity altogether (e.g., canceling a product launch in an insecure region).
+
+[bca-431e-u3-q136] (Unit 3) What is a 'Gap Analysis' in security auditing?
+  A.     Measuring physical gaps between desks
+  B. (*) Comparing an organization's current security posture against an established security standard or baseline (like ISO 27001) to identify missing controls and deficiencies
+  C.     Checking gaps in Wi-Fi signal coverage
+  D.     Searching for missing code comments
+Explanation: Gap analysis identifies discrepancies between actual implementation and compliance targets.
+
+[bca-431e-u3-q137] (Unit 3) What is a 'Vulnerability Disclosure Policy' (or Responsible Disclosure)?
+  A.     Publishing zero-day exploit code on social media immediately
+  B. (*) A framework giving ethical security researchers a safe, legal channel to privately report discovered security flaws to an organization, allowing them time to patch before public release
+  C.     A rule that forbids talking about security
+  D.     A marketing press release
+Explanation: Responsible disclosure establishes safe harbor guidelines for ethical hackers to report vulnerabilities without fear of prosecution.
+
+[bca-431e-u3-q138] (Unit 3) What is a 'Bug Bounty' program?
+  A.     An extermination program for physical insects in offices
+  B. (*) A crowd-sourced initiative offering monetary rewards and recognition to ethical researchers for finding and reporting valid security vulnerabilities
+  C.     A software testing penalty for developers
+  D.     An operating system subscription
+Explanation: Bug bounty programs incentivize global white-hat researchers to identify vulnerabilities proactively.
+
+[bca-431e-u3-q139] (Unit 3) What is 'Data Classification' in corporate governance?
+  A.     Sorting files alphabetically by name
+  B. (*) Categorizing data according to its sensitivity and critical business value (e.g., Public, Internal, Confidential, Restricted) to apply appropriate handling controls
+  C.     Arranging database records by date
+  D.     Converting data from JSON to XML
+Explanation: Classification levels dictate encryption, access restrictions, and retention rules based on sensitivity.
+
+[bca-431e-u3-q140] (Unit 3) In information governance, what is the role of a 'Data Owner'?
+  A.     The cloud hosting provider
+  B. (*) An executive or department head accountable for defining data classification, access rights, and security requirements for a specific dataset
+  C.     The employee who entered the data into a form
+  D.     The database administrator
+Explanation: The Data Owner holds ultimate business accountability for data governance and access authorization.
+
+[bca-431e-u3-q141] (Unit 3) In information governance, what is the role of a 'Data Custodian'?
+  A.     The person who owns the company
+  B. (*) Technical staff (e.g., Database Administrators, System Admins) responsible for implementing and maintaining the technical security controls, backups, and storage mandated by the Data Owner
+  C.     An external auditor
+  D.     A legal counsel
+Explanation: Data Custodians handle operational implementation (backups, access lists, patch maintenance) on behalf of Owners.
+
+[bca-431e-u3-q142] (Unit 3) What is 'Data Loss Prevention' (DLP) software?
+  A.     A backup tool that recovers lost files
+  B. (*) Software that detects and prevents sensitive, classified data (e.g., credit card numbers, SSNs, source code) from being leaked, exfiltrated, or transferred outside authorized corporate boundaries
+  C.     An antivirus scanner that cleans temp files
+  D.     A disk defragmentation utility
+Explanation: DLP inspects endpoint and network traffic to block unauthorized transmission of sensitive data.
+
+[bca-431e-u3-q143] (Unit 3) What is 'Change Management' in secure IT operations?
+  A.     Changing passwords every week
+  B. (*) A formal, structured process for reviewing, testing, approving, and logging all modifications to production IT systems and networks to prevent outages and vulnerabilities
+  C.     Changing employee job titles
+  D.     Reorganizing office desks
+Explanation: Change management ensures configuration modifications are vetted, tested, and documented to avoid introducing security holes.
+
+[bca-431e-u3-q144] (Unit 3) Why is 'Separation of Duties' (Dual Control) implemented in financial and security operations?
+  A.     To require hiring twice as many staff members
+  B. (*) To prevent fraud and catastrophic errors by ensuring that no single individual has total unilateral control over completing a critical high-risk task from start to finish
+  C.     To eliminate the need for computer passwords
+  D.     To speed up data entry
+Explanation: Separation of duties requires multiple authorized individuals to execute sensitive transactions, preventing internal collusion.
+
+[bca-431e-u3-q145] (Unit 3) What is a 'Security Baseline'?
+  A.     The bottom border of a computer monitor
+  B. (*) The minimum acceptable level of security controls, configurations, and hardening standards required across all organizational systems and devices
+  C.     A test score achieved by junior engineers
+  D.     The physical ground floor of a data center
+Explanation: Baselines provide standardized configuration templates ensuring consistent security across the enterprise.
+
+[bca-431e-u3-q146] (Unit 3) What is 'Audit Trail' (or Audit Log)?
+  A.     A walking path outside a corporate building
+  B. (*) A chronological, tamper-evident record of system activities, user logins, data access, and administrative actions that provides documentary evidence of transaction sequences
+  C.     A backup archive of video files
+  D.     A marketing analytics chart
+Explanation: Audit trails provide objective forensic proof of user actions for investigations and regulatory compliance.
+
+[bca-431e-u3-q147] (Unit 3) What is the primary danger of keeping default vendor credentials (e.g., admin/admin, root/12345) on newly installed network devices?
+  A.     Default credentials consume too much RAM
+  B. (*) Adversaries and automated malware scanners constantly scan internet IP ranges using dictionaries of known default credentials, gaining instant administrative control
+  C.     The router will run at half bandwidth
+  D.     Default credentials expire in 24 hours
+Explanation: Default passwords are publicized in online manuals; failing to change them grants instant unauthorized root access.
+
+[bca-431e-u3-q148] (Unit 3) What is 'Shadow IT' in corporate enterprise governance?
+  A.     IT equipment operating in dark rooms
+  B. (*) Hardware, software, cloud services, and applications used by employees for work without formal approval or oversight from the corporate IT/security department
+  C.     A secret hacker division inside a company
+  D.     Computers used for physical surveillance
+Explanation: Shadow IT introduces unmonitored attack surfaces, compliance violations, and uncontrolled data storage.
+
+[bca-431e-u3-q149] (Unit 3) What is 'Cyber Resilience'?
+  A.     Building servers that can survive physical earthquakes
+  B. (*) An organization's ability to anticipate, resist, withstand, recover from, and adapt to adverse cyber attacks, incidents, and operational stress without catastrophic mission failure
+  C.     Using antivirus software
+  D.     Encrypting email messages
+Explanation: Cyber resilience merges defense, business continuity, and incident response into systemic operational survival.
+
+[bca-431e-u3-q150] (Unit 3) Why should regular Penetration Testing and Vulnerability Scanning be mandated by corporate security policy?
+  A.     To generate extra paperwork for management
+  B. (*) To proactively identify, test, and remediate technical security flaws before malicious adversaries discover and exploit them in live attacks
+  C.     To test employee typing speed
+  D.     To comply with hardware warranty agreements
+Explanation: Regular proactive testing provides empirical verification of defensive posture against real-world adversarial tactics.
+
+[bca-431e-u4-q151] (Unit 4) What is a 'Firewall' in network security architecture?
+  A.     A physical wall coated with fire-retardant foam
+  B. (*) A network security device or software that monitors and filters incoming and outgoing network traffic based on predefined security rules
+  C.     An antivirus tool that deletes corrupted files
+  D.     A power surge protector for computer racks
+Explanation: Firewalls establish an inspection barrier between trusted internal networks and untrusted external networks.
+
+[bca-431e-u4-q152] (Unit 4) What is the primary operational mechanism of a 'Stateless Packet Filtering Firewall'?
+  A.     It inspects deep application payloads
+  B. (*) It inspects each individual packet in isolation based solely on static header fields (Source/Destination IP, Source/Destination Port, Protocol) without tracking connection state
+  C.     It decrypts SSL traffic
+  D.     It runs antivirus scans on incoming files
+Explanation: Stateless filters examine packets independently without tracking whether packets belong to an established flow.
+
+[bca-431e-u4-q153] (Unit 4) What is a 'Stateful Inspection Firewall' (Dynamic Packet Filter)?
+  A.     A firewall that tracks national political states
+  B. (*) A firewall that maintains a state table tracking active TCP/UDP communication sessions, validating that incoming packets correspond to legitimately established outbound requests
+  C.     A firewall that runs only on Linux
+  D.     A firewall that deletes all packets
+Explanation: Stateful firewalls maintain connection context, permitting returning traffic only if it matches an existing entry in the state table.
+
+[bca-431e-u4-q154] (Unit 4) What is an 'Application-Level Gateway' (Proxy Firewall)?
+  A.     A router that forwards packets without inspection
+  B. (*) A firewall that operates at the Application layer (Layer 7), acting as an intermediary that completely terminates and reconstructs connections, performing deep protocol-specific inspection
+  C.     A physical cable switch
+  D.     A firewall for mobile phones only
+Explanation: Proxy firewalls inspect Layer 7 traffic (HTTP, FTP), verifying full protocol compliance and sanitizing payloads.
+
+[bca-431e-u4-q155] (Unit 4) What is a 'Next-Generation Firewall' (NGFW)?
+  A.     A firewall released next year
+  B. (*) A modern firewall integrating traditional stateful inspection with Deep Packet Inspection (DPI), Application Awareness, Intrusion Prevention (IPS), and Threat Intelligence
+  C.     A cloud-only storage system
+  D.     An encrypted USB device
+Explanation: NGFWs inspect application-level traffic (e.g., identifying Skype inside port 80), combining firewall and IPS engines.
+
+[bca-431e-u4-q156] (Unit 4) In firewall topology, what is a 'Demilitarized Zone' (DMZ)?
+  A.     An abandoned military zone
+  B. (*) A perimeter network segment that hosts public-facing external services (Web servers, Mail servers, DNS) isolated between internal private networks and the public internet
+  C.     A room where servers are locked
+  D.     An encrypted folder on a hard drive
+Explanation: The DMZ exposes public services while preventing external attackers from reaching private internal intranets if a web server is breached.
+
+[bca-431e-u4-q157] (Unit 4) What is 'System Hardening' in cybersecurity operations?
+  A.     Placing computers inside steel cases
+  B. (*) The systematic process of securing a system by reducing its attack surface (disabling unused services, closing ports, removing defaults, applying patches, enforcing baselines)
+  C.     Overclocking the system processor
+  D.     Adding more RAM to a workstation
+Explanation: Hardening eliminates vulnerabilities by stripping unnecessary software, ports, and weak configurations.
+
+[bca-431e-u4-q158] (Unit 4) What fundamental rule in cryptography is known as 'Kerckhoffs's Principle'?
+  A.     A cryptosystem must be kept completely secret to remain secure
+  B. (*) A cryptosystem should be secure even if everything about the system (including the algorithm) is public knowledge, with only the cryptographic KEY kept secret
+  C.     Keys must never be longer than 8 bits
+  D.     Only military organizations may use encryption
+Explanation: Kerckhoffs's Principle states that security must depend solely on the secrecy of the key, not on security through obscurity.
+
+[bca-431e-u4-q159] (Unit 4) What is the primary difference between 'Symmetric' and 'Asymmetric' Cryptography?
+  A. (*) Symmetric uses the SAME shared secret key for both encryption and decryption; Asymmetric uses a MATHEMATICALLY LINKED KEY PAIR (Public key and Private key)
+  B.     Symmetric is unbreakable; Asymmetric is easily broken
+  C.     Symmetric works only on text; Asymmetric works on images
+  D.     There is no difference
+Explanation: Symmetric (secret-key) uses one shared key; Asymmetric (public-key) uses a public key to encrypt and a private key to decrypt.
+
+[bca-431e-u4-q160] (Unit 4) What is the primary operational advantage of Symmetric encryption over Asymmetric encryption?
+  A.     Symmetric encryption does not require keys
+  B. (*) Symmetric algorithms are computationally fast and highly efficient, capable of encrypting gigabytes of data per second with minimal CPU load
+  C.     Symmetric keys can be published on the web
+  D.     Symmetric keys never expire
+Explanation: Symmetric ciphers (AES) execute orders of magnitude faster than asymmetric algorithms (RSA), making them ideal for bulk data.
+
+[bca-431e-u4-q161] (Unit 4) What is the primary challenge in Symmetric Cryptography when scaling across large numbers of participants?
+  A.     High CPU temperature
+  B. (*) Secure Key Distribution: sharing secret keys safely without interception, requiring n*(n-1)/2 distinct keys for 'n' communicating users
+  C.     Algorithms are too complex to implement
+  D.     Passwords must be typed backwards
+Explanation: Key distribution is symmetric crypto's classic bottleneck: sharing keys across untrusted networks securely is difficult.
+
+[bca-431e-u4-q162] (Unit 4) What is the difference between a 'Block Cipher' and a 'Stream Cipher'?
+  A. (*) Block ciphers encrypt fixed-size chunks of data (e.g., 128 bits) at a time; Stream ciphers encrypt continuous data streams bit-by-bit or byte-by-byte using a pseudorandom keystream
+  B.     Block ciphers only work on databases; Stream ciphers work on web pages
+  C.     Block ciphers are asymmetric; Stream ciphers are symmetric
+  D.     They are identical
+Explanation: Block ciphers process discrete blocks (e.g., AES 128-bit blocks); stream ciphers XOR bits continuously with a keystream (e.g., RC4, ChaCha20).
+
+[bca-431e-u4-q163] (Unit 4) What is the Feistel Cipher structure in symmetric block cipher design?
+  A. (*) A symmetric structure that splits data blocks into two halves (Left and Right) and uses repeated rounds of substitution and permutation functions (used in DES)
+  B.     A circular encryption ring
+  C.     An asymmetric key exchange protocol
+  D.     A hardware processor architecture
+Explanation: Feistel ciphers divide blocks into halves and iterate round functions, allowing encryption and decryption to use identical hardware.
+
+[bca-431e-u4-q164] (Unit 4) What was the Data Encryption Standard (DES)?
+  A.     An asymmetric cipher developed by RSA
+  B. (*) A symmetric block cipher developed in 1977 by IBM and NIST, using a 64-bit block size and a 56-bit effective key length
+  C.     A hashing algorithm used in Linux
+  D.     A web browser protocol
+Explanation: DES was the global standard for decades until its small 56-bit key became vulnerable to brute-force cracking.
+
+[bca-431e-u4-q165] (Unit 4) Why is standard single DES (56-bit key) considered completely INSECURE for modern computing applications?
+  A.     It was proven mathematically invalid
+  B. (*) Its 56-bit key space (2^56 keys) is small enough to be cracked via exhaustive brute-force search in a few hours using modern computational hardware
+  C.     It can only encrypt letters A to Z
+  D.     It runs too slowly on modern CPUs
+Explanation: A 56-bit key space offers only ~7.2 x 10^16 permutations, easily brute-forced by distributed computers in hours.
+
+[bca-431e-u4-q166] (Unit 4) What is Triple-DES (3DES), and how does it improve upon standard DES?
+  A.     It encrypts files 3 times faster
+  B. (*) It applies the standard DES algorithm three successive times (Encrypt-Decrypt-Encrypt) using two or three distinct 56-bit keys, effectively increasing key length to 112 or 168 bits
+  C.     It uses three computer processors
+  D.     It converts DES into an asymmetric cipher
+Explanation: 3DES applies EDE (Encrypt with K1, Decrypt with K2, Encrypt with K3), expanding key length to counter brute-force attacks.
+
+[bca-431e-u4-q167] (Unit 4) What symmetric encryption standard was selected by NIST in 2001 to replace DES worldwide?
+  A.     Blowfish
+  B. (*) Advanced Encryption Standard (AES / Rijndael)
+  C.     RSA
+  D.     RC4
+Explanation: NIST selected the Rijndael cipher (designed by Daemen and Rijmen) as the official Advanced Encryption Standard (AES) in 2001.
+
+[bca-431e-u4-q168] (Unit 4) What is the block size of the Advanced Encryption Standard (AES)?
+  A.     56 bits
+  B.     64 bits
+  C. (*) 128 bits strictly
+  D.     256 bits strictly
+Explanation: AES has a fixed block size of 128 bits (4x4 byte matrix) for all key variants.
+
+[bca-431e-u4-q169] (Unit 4) What are the three authorized key lengths supported by the Advanced Encryption Standard (AES)?
+  A.     64, 128, and 256 bits
+  B. (*) 128, 192, and 256 bits (with 10, 12, and 14 transformation rounds respectively)
+  C.     56, 112, and 168 bits
+  D.     512, 1024, and 2048 bits
+Explanation: AES supports 128-bit (10 rounds), 192-bit (12 rounds), and 256-bit (14 rounds) keys.
+
+[bca-431e-u4-q170] (Unit 4) In AES encryption, what mathematical operations are performed in each transformation round?
+  A.     Add, Subtract, Multiply, Divide
+  B. (*) SubBytes (non-linear S-Box), ShiftRows (byte permutation), MixColumns (matrix algebraic mixing), and AddRoundKey (XOR with subkey)
+  C.     Bitwise NOT operations only
+  D.     Sine and Cosine transformations
+Explanation: AES rounds combine 4 steps: SubBytes (substitution), ShiftRows (permutation), MixColumns (linear mixing), AddRoundKey (key XOR).
+
+[bca-431e-u4-q171] (Unit 4) In symmetric block cipher modes, what is Electronic Codebook (ECB) mode, and why is it considered insecure for image/document encryption?
+  A.     It is the most secure mode known
+  B. (*) It encrypts identical plaintext blocks into identical ciphertext blocks, preserving visual structural patterns and data distributions (the 'ECB Penguin' vulnerability)
+  C.     It can only encrypt numbers
+  D.     It does not use keys
+Explanation: ECB encrypts each block independently: identical plaintext produces identical ciphertext, leaking structural patterns.
+
+[bca-431e-u4-q172] (Unit 4) Which block cipher mode introduces an Initialization Vector (IV) and XORs each plaintext block with the preceding ciphertext block before encryption?
+  A.     Electronic Codebook (ECB)
+  B. (*) Cipher Block Chaining (CBC)
+  C.     Direct Mode
+  D.     Pass-Through Mode
+Explanation: CBC mode chains blocks: C_i = Encrypt(P_i ⊕ C_{i-1}), ensuring identical plaintext blocks yield completely different ciphertext.
+
+[bca-431e-u4-q173] (Unit 4) In Asymmetric Cryptography, if Alice wants to send an ENCRYPTED confidential message to Bob, which key does she use to encrypt it?
+  A.     Alice's own Private key
+  B.     Alice's own Public key
+  C. (*) Bob's Public key
+  D.     Bob's Private key
+Explanation: To ensure confidentiality, data is encrypted with the RECIPIENT'S PUBLIC key; only the recipient's private key can decrypt it.
+
+[bca-431e-u4-q174] (Unit 4) In Asymmetric Cryptography, what mathematical key decrypts a message that was encrypted using Bob's Public Key?
+  A.     Alice's Private Key
+  B. (*) Bob's Private Key strictly
+  C.     Bob's Public Key
+  D.     Any public key
+Explanation: Public-key encryption is one-way: only the matching private key in the pair can invert the transformation.
+
+[bca-431e-u4-q175] (Unit 4) Who invented the famous RSA asymmetric cryptosystem in 1977 at MIT?
+  A. (*) Ron Rivest, Adi Shamir, and Leonard Adleman
+  B.     Alan Turing, John von Neumann, and Claude Shannon
+  C.     Whitfield Diffie and Martin Hellman
+  D.     Ralph Merkle and Peter Shor
+Explanation: Rivest, Shamir, and Adleman (RSA) published the foundational public-key cryptosystem in 1977.
+
+[bca-431e-u4-q176] (Unit 4) What mathematical problem forms the computational hardness basis of the RSA algorithm?
+  A.     The difficulty of solving quadratic equations
+  B. (*) The difficulty of factoring large integers that are the product of two very large prime numbers (Prime Factorization Problem)
+  C.     Calculating square roots of integers
+  D.     Traveling Salesperson Problem
+Explanation: RSA relies on the one-way trapdoor difficulty of factoring N = p * q when p and q are large primes.
+
+[bca-431e-u4-q177] (Unit 4) What mathematical hardness problem underpins Elliptic Curve Cryptography (ECC)?
+  A.     Matrix inversion
+  B. (*) The Elliptic Curve Discrete Logarithm Problem (ECDLP)
+  C.     Factoring prime numbers
+  D.     Boolean satisfiability
+Explanation: ECC security relies on the discrete logarithm problem over points on elliptic curves over finite fields.
+
+[bca-431e-u4-q178] (Unit 4) What is the primary operational advantage of Elliptic Curve Cryptography (ECC) over RSA?
+  A.     ECC does not require mathematical formulas
+  B. (*) ECC provides equivalent cryptographic security with dramatically shorter key lengths (e.g., 256-bit ECC key equals ~3072-bit RSA key), reducing computation and bandwidth
+  C.     ECC is an open-source tool
+  D.     ECC is completely immune to quantum computers
+Explanation: Shorter key lengths in ECC mean faster operations, lower power consumption, and smaller network packet payloads.
+
+[bca-431e-u4-q179] (Unit 4) What was the historic Diffie-Hellman algorithm (1976) designed to achieve?
+  A.     Bulk encryption of disk drives
+  B. (*) A protocol that allows two parties with no prior mutual knowledge to securely establish a shared secret key over an insecure, eavesdropped public communication channel
+  C.     Digital signing of contracts
+  D.     Antivirus scanning
+Explanation: Diffie-Hellman key exchange solved the key distribution problem without transmitting the shared key itself.
+
+[bca-431e-u4-q180] (Unit 4) What is a 'Cryptographic Hash Function'?
+  A.     An encryption algorithm that uses two keys
+  B. (*) A mathematical one-way function that maps arbitrary-length input data into a fixed-length deterministic bit string (digest)
+  C.     A database table indexing tool
+  D.     A method to compress videos
+Explanation: Cryptographic hashes produce a fixed-size deterministic fingerprint of arbitrary input data.
+
+[bca-431e-u4-q181] (Unit 4) What is the 'Pre-Image Resistance' (One-Way Property) of a secure cryptographic hash function?
+  A.     It is easy to compute the hash
+  B. (*) Given a hash output 'h', it is computationally infeasible to reverse-engineer or find any original input 'x' such that Hash(x) = h
+  C.     Hashes must have fixed lengths
+  D.     Hashes must contain both letters and numbers
+Explanation: Pre-image resistance guarantees one-way irreversibility: you cannot compute the input from the hash.
+
+[bca-431e-u4-q182] (Unit 4) What is 'Collision Resistance' in cryptographic hash functions?
+  A.     Data packets do not collide on Ethernet cables
+  B. (*) It is computationally infeasible to find any two distinct, different inputs x1 and x2 such that Hash(x1) == Hash(x2)
+  C.     The hash must fit into a 32-bit register
+  D.     The algorithm cannot run on dual-core CPUs
+Explanation: Collision resistance guarantees no two distinct inputs produce identical output digests.
+
+[bca-431e-u4-q183] (Unit 4) What is the 'Avalanche Effect' in cryptographic hash functions and ciphers?
+  A.     A physical avalanche in computer rooms
+  B. (*) A property where a tiny, single-bit alteration in the input data produces a drastic, unpredictable transformation in more than 50% of the output hash bits
+  C.     A continuous loop in the algorithm
+  D.     A memory overflow error
+Explanation: The avalanche effect ensures that output hashes appear entirely random and uncorrelated with input perturbations.
+
+[bca-431e-u4-q184] (Unit 4) Why is the MD5 (Message Digest 5) hashing algorithm considered BROKEN and unsafe for digital certificates and security applications?
+  A.     It takes too long to calculate
+  B. (*) Cryptanalytic collision attacks can generate practical MD5 hash collisions (two different files with identical hashes) in seconds
+  C.     It only outputs 8 bits
+  D.     It was never approved by NIST
+Explanation: Wang et al. demonstrated practical collision attacks on MD5, making it obsolete for security verification.
+
+[bca-431e-u4-q185] (Unit 4) What is the digest output length of the SHA-256 (Secure Hash Algorithm 256-bit) algorithm?
+  A.     128 bits (16 bytes)
+  B.     160 bits (20 bytes)
+  C. (*) 256 bits (32 bytes / 64 hexadecimal characters)
+  D.     512 bits
+Explanation: SHA-256 produces a fixed 256-bit digest, widely used in TLS certificates, blockchain, and digital signatures.
+
+[bca-431e-u4-q186] (Unit 4) How is a 'Digital Signature' created to guarantee message integrity and non-repudiation?
+  A.     Typing your name at the bottom of an email
+  B. (*) The sender hashes the document to create a digest, encrypts the digest with the SENDER'S PRIVATE KEY, and attaches the resulting signature to the message
+  C.     Encrypting the entire document with the recipient's public key
+  D.     Scanning a physical handwritten signature into a JPEG
+Explanation: Digital signatures encrypt a document hash with the sender's private key; anyone can verify using the sender's public key.
+
+[bca-431e-u4-q187] (Unit 4) How does a recipient VERIFY a Digital Signature?
+  A.     By guessing the sender's password
+  B. (*) The recipient decrypts the signature using the SENDER'S PUBLIC KEY to reveal the original digest, independently computes the hash of the received document, and compares the two digests for a match
+  C.     By asking the ISP
+  D.     By replying to the email
+Explanation: Signature verification: Decrypt(Signature, Public_Key) == Hash(Received_Document).
+
+[bca-431e-u4-q188] (Unit 4) What is a 'Digital Certificate' (Public Key Certificate)?
+  A.     A university graduation diploma
+  B. (*) An electronic credential, standardly formatted under X.509, that binds an entity's identity (name, domain) to their public key, cryptographically signed by a trusted Certificate Authority (CA)
+  C.     A password stored on a USB key
+  D.     An antivirus license key
+Explanation: Digital certificates solve the public-key authenticity problem by having a trusted CA sign the binding between domain and public key.
+
+[bca-431e-u4-q189] (Unit 4) What is a 'Certificate Authority' (CA) in Public Key Infrastructure (PKI)?
+  A.     A police department for cyber crimes
+  B. (*) A trusted third-party organization (such as DigiCert, Let's Encrypt) that verifies the identity of certificate applicants and issues cryptographically signed digital certificates
+  C.     A computer manufacturer
+  D.     A browser development team
+Explanation: CAs act as trusted identity arbiters in PKI, signing public keys to validate server identities.
+
+[bca-431e-u4-q190] (Unit 4) What protocol establishes an encrypted, authenticated transport channel over TCP, powering HTTPS on port 443?
+  A.     FTP
+  B. (*) TLS (Transport Layer Security, formerly SSL)
+  C.     Telnet
+  D.     SNMP
+Explanation: TLS secures web browsing (HTTPS), encrypting traffic using asymmetric key exchange and symmetric session ciphers.
+
+[bca-431e-u4-q191] (Unit 4) In a TLS Handshake, what is negotiated during the initial exchange?
+  A.     The price of the website domain
+  B. (*) Supported cipher suites, TLS protocol version, server authentication via X.509 certificate, and a shared pre-master secret to generate symmetric session keys
+  C.     The operating system to boot
+  D.     The HTML font size
+Explanation: The TLS handshake authenticates the server and establishes ephemeral symmetric keys for high-speed session encryption.
+
+[bca-431e-u4-q192] (Unit 4) What is 'Forward Secrecy' (Perfect Forward Secrecy - PFS) in modern TLS cryptography?
+  A.     Encrypting data into the future
+  B. (*) A property of cryptographic key exchange (such as Ephemeral Diffie-Hellman - ECDHE) ensuring that even if a server's long-term private key is compromised in the future, past recorded session traffic cannot be decrypted
+  C.     Never changing passwords
+  D.     Predicting future cyber attacks
+Explanation: PFS generates unique, throwaway session keys for every connection; compromising long-term server keys does not compromise past sessions.
+
+[bca-431e-u4-q193] (Unit 4) What is a 'Virtual Private Network' (VPN)?
+  A.     A fictional computer network
+  B. (*) A technology that extends a private network across a public network by establishing an encrypted, authenticated tunnel for all data traffic
+  C.     A high-speed broadband cable
+  D.     A type of local Wi-Fi router
+Explanation: VPNs encapsulate and encrypt packets, routing traffic through secure virtual tunnels across untrusted networks.
+
+[bca-431e-u4-q194] (Unit 4) What IPsec protocol mode encrypts the ENTIRE original IP packet (both payload and original IP header), wrapping it inside a new IP packet?
+  A.     Transport Mode
+  B. (*) Tunnel Mode
+  C.     Pass-Through Mode
+  D.     Broadcast Mode
+Explanation: IPsec Tunnel Mode encapsulates the entire packet (header + payload), standard for site-to-site gateway VPNs.
+
+[bca-431e-u4-q195] (Unit 4) What IPsec protocol mode encrypts only the payload of the IP packet, leaving the original IP header visible for routing?
+  A.     Tunnel Mode
+  B. (*) Transport Mode
+  C.     Direct Mode
+  D.     Virtual Mode
+Explanation: IPsec Transport Mode protects the payload while preserving original routing headers, typically used for end-to-end host communication.
+
+[bca-431e-u4-q196] (Unit 4) What is a 'Message Authentication Code' (MAC / HMAC)?
+  A.     The physical hardware address of an ethernet card
+  B. (*) A cryptographic authentication checksum generated by hashing a message combined with a shared secret key, verifying both message integrity and authenticity
+  C.     A machine language opcode
+  D.     An operating system command
+Explanation: HMAC (Hash-based Message Authentication Code) ensures data has not been modified and was generated by a party possessing the secret key.
+
+[bca-431e-u4-q197] (Unit 4) In Antivirus scanning engines, what is 'Signature-Based Detection'?
+  A.     Recognizing an author's handwriting
+  B. (*) Scanning files for known, pre-compiled static byte sequences, hashes, or patterns characteristic of previously identified malware variants
+  C.     Monitoring CPU temperatures
+  D.     Testing internet bandwidth
+Explanation: Signature scanning compares file binary sequences against a database of known malware fingerprints.
+
+[bca-431e-u4-q198] (Unit 4) What is 'Heuristic Detection' in modern Antivirus and EDR software?
+  A.     Searching only for specific file names
+  B. (*) Analyzing code structure, API call sequences, and behavior patterns to identify suspicious or characteristic malware traits, detecting previously unseen zero-day variants without existing signatures
+  C.     Deleting files randomly
+  D.     Running files on old operating systems
+Explanation: Heuristics evaluate suspicious behaviors and code rules to detect brand-new, unknown malware variants.
+
+[bca-431e-u4-q199] (Unit 4) What is 'Sandboxing' in malware defense?
+  A.     A physical box of sand used to extinguish fires
+  B. (*) Executing suspicious, untrusted files inside an isolated, tightly restricted virtual environment to observe their behavior safely without risking production systems
+  C.     A programming style in Java
+  D.     An encryption algorithm
+Explanation: Sandboxing isolates potentially malicious executables in quarantined virtual containers to observe runtime behavior.
+
+[bca-431e-u4-q200] (Unit 4) What is 'Air-Gapping' in high-security critical infrastructure?
+  A.     Leaving computer cases open for cooling
+  B. (*) Physically isolating a secure computer network entirely from the internet and all external untrusted networks, with zero physical or wireless connectivity
+  C.     Connecting computers with satellite dishes
+  D.     A type of Wi-Fi router
+Explanation: Air-gapped systems have no physical or wireless network connection to outside networks (used in nuclear plants, military command).
+
+[bca-431e-u5-q201] (Unit 5) What is the primary difference between a 'Vulnerability Assessment' (VA) and a 'Penetration Test' (PT)?
+  A.     VA uses software; PT uses hardware
+  B. (*) A Vulnerability Assessment identifies and catalogs known vulnerabilities without exploiting them; A Penetration Test actively exploits vulnerabilities to determine the real-world impact and depth of a potential breach
+  C.     VA is illegal; PT is legal
+  D.     They are identical in scope and execution
+Explanation: VA identifies and ranks potential weaknesses; Penetration Testing actively simulates an attack by exploiting flaws to validate risk.
+
+[bca-431e-u5-q202] (Unit 5) What are the standard sequential phases of a professional Penetration Testing engagement?
+  A. (*) Planning/Reconnaissance -> Scanning/Enumeration -> Exploitation -> Post-Exploitation -> Reporting/Remediation
+  B.     Attack, Deface, Ransom, Delete
+  C.     Install, Run, Crash, Reboot
+  D.     Code, Compile, Debug, Deploy
+Explanation: Penetration testing methodology: Reconnaissance -> Scanning -> Gaining Access (Exploitation) -> Maintaining Access -> Reporting.
+
+[bca-431e-u5-q203] (Unit 5) What is 'Black Box' Penetration Testing?
+  A.     Testing conducted in a dark room
+  B. (*) Testing where the penetration tester is provided with ZERO prior knowledge or documentation about the target internal network, simulating an external unprivileged attacker
+  C.     Testing with source code provided
+  D.     Testing without a computer
+Explanation: Black box testing evaluates the system from an outsider's blind perspective.
+
+[bca-431e-u5-q204] (Unit 5) What is 'White Box' (Clear Box) Penetration Testing?
+  A.     Testing only white-colored computers
+  B. (*) Testing where the assessment team has full, complete internal knowledge, network architecture diagrams, credentials, and source code access
+  C.     Testing without permission
+  D.     Testing that causes no network traffic
+Explanation: White box testing provides comprehensive internal access to evaluate architecture and code comprehensively.
+
+[bca-431e-u5-q205] (Unit 5) What is 'Gray Box' Penetration Testing?
+  A.     Testing that is of low quality
+  B. (*) Testing where the assessor is given partial internal knowledge or typical user-level credentials, simulating an insider threat or compromised employee account
+  C.     Testing on old operating systems
+  D.     A test conducted at dusk
+Explanation: Gray box testing balances efficiency and realism by providing typical user-level access and partial documentation.
+
+[bca-431e-u5-q206] (Unit 5) What is an 'Intrusion Detection System' (IDS)?
+  A.     A physical burglar alarm on a data center door
+  B. (*) A hardware device or software application that passively monitors network traffic or system activities for malicious policy violations, generating alerts for administrators
+  C.     A firewall that blocks all traffic
+  D.     An encryption algorithm
+Explanation: An IDS monitors and alerts on suspicious activity, operating passively without altering in-flight traffic directly.
+
+[bca-431e-u5-q207] (Unit 5) What is the fundamental difference between an IDS (Intrusion Detection System) and an IPS (Intrusion Prevention System)?
+  A. (*) An IDS only detects and generates alerts on malicious activity; An IPS sits in-line with network traffic and actively blocks, drops, or terminates malicious packets in real time
+  B.     An IDS blocks attacks; an IPS only monitors
+  C.     An IDS is hardware; an IPS is software
+  D.     They are identical
+Explanation: IDS detects and warns (passive); IPS detects and intercepts/drops packets (active in-line prevention).
+
+[bca-431e-u5-q208] (Unit 5) What is a 'Network-Based IDS' (NIDS)?
+  A.     An IDS installed on an individual smartphone
+  B. (*) An intrusion detection sensor placed at strategic network choke points (e.g., span ports, taps) to analyze traffic traversing entire network subnets
+  C.     A virus scanner for email only
+  D.     A physical network cable tester
+Explanation: NIDS inspects packets across the subnet; HIDS inspects local operating system logs, file integrity, and system calls on an individual host.
+
+[bca-431e-u5-q209] (Unit 5) What is a 'Host-Based IDS' (HIDS)?
+  A.     An IDS that monitors internet routing tables
+  B. (*) An agent installed directly on an individual host/server that monitors internal operating system audit logs, file system integrity, running processes, and registry modifications
+  C.     A physical server rack
+  D.     A database management system
+Explanation: HIDS monitors local system behavior and file modifications on a single endpoint.
+
+[bca-431e-u5-q210] (Unit 5) What is the difference between 'Signature-Based' and 'Anomaly-Based' intrusion detection?
+  A. (*) Signature-based compares traffic against known attack patterns; Anomaly-based builds a baseline of normal behavior and flags statistically significant deviations
+  B.     Signature-based only detects zero-days; Anomaly-based only detects known viruses
+  C.     Signature-based uses AI; Anomaly-based uses text files
+  D.     They are identical
+Explanation: Signature matching detects known exploits accurately; anomaly detection flags novel or baseline deviations (zero-days).
+
+[bca-431e-u5-q211] (Unit 5) In intrusion detection, what is a 'False Positive'?
+  A.     A real attack that was correctly blocked
+  B. (*) An alert generated on benign, legitimate network traffic that was incorrectly classified as malicious by the detection engine
+  C.     A real attack that passed through completely undetected
+  D.     A computer hardware failure
+Explanation: False positives flag benign behavior as malicious, causing alert fatigue for security analysts.
+
+[bca-431e-u5-q212] (Unit 5) In intrusion detection, what is a 'False Negative'?
+  A.     An alert generated on normal traffic
+  B. (*) A malicious cyber attack that slips past the detection engine completely undetected and unflagged
+  C.     An unhandled exception in software
+  D.     A successful backup operation
+Explanation: False negatives represent undetected compromises, the most dangerous failure mode.
+
+[bca-431e-u5-q213] (Unit 5) What is 'Security Information and Event Management' (SIEM)?
+  A.     A brand of network switch
+  B. (*) A centralized software solution that aggregates, normalizes, correlates, and analyzes security log data from across thousands of enterprise endpoints, firewalls, and servers in real time
+  C.     A customer relationship management tool
+  D.     An antivirus update service
+Explanation: SIEM aggregates distributed event logs, providing real-time correlation and incident detection for SOC teams.
+
+[bca-431e-u5-q214] (Unit 5) What is 'Ethical Hacking'?
+  A.     Hacking conducted without any rules
+  B. (*) The legally authorized practice of using hacking techniques to identify and remediate security vulnerabilities in a target system with explicit written permission from the system owner
+  C.     Writing viruses for educational curiosity
+  D.     Breaching systems and promising not to steal data
+Explanation: Ethical hacking requires explicit written authorization (Rules of Engagement) to discover vulnerabilities defensively.
+
+[bca-431e-u5-q215] (Unit 5) What document defines the legal boundaries, authorized targets, test schedules, and forbidden techniques for a penetration test?
+  A.     The Privacy Policy
+  B. (*) The Rules of Engagement (RoE) or Scope of Work (SOW)
+  C.     The Terms of Service
+  D.     An employee resume
+Explanation: The Rules of Engagement contractually bounds what IP ranges, systems, and methods may be legally tested.
+
+[bca-431e-u5-q216] (Unit 5) What industry-standard open-source network scanner created by Gordon Lyon is widely used for network discovery and port scanning?
+  A. (*) Nmap (Network Mapper)
+  B.     Notepad++
+  C.     VLC Media Player
+  D.     PuTTY
+Explanation: Nmap is the premier tool for network discovery, host detection, port scanning, and OS fingerprinting.
+
+[bca-431e-u5-q217] (Unit 5) What open-source network packet analyzer tool is standardly used for deep packet inspection, traffic sniffing, and protocol analysis?
+  A. (*) Wireshark
+  B.     Photoshop
+  C.     Apache Tomcat
+  D.     GIMP
+Explanation: Wireshark captures and decodes packets interactively, allowing granular Layer 2 to Layer 7 inspection.
+
+[bca-431e-u5-q218] (Unit 5) What world-renowned open-source penetration testing framework provides a vast database of verified exploits and payloads?
+  A. (*) Metasploit Framework
+  B.     Bootstrap
+  C.     React
+  D.     WordPress
+Explanation: Metasploit automates exploit delivery, payload generation, and post-exploitation testing.
+
+[bca-431e-u5-q219] (Unit 5) What leading proxy-based security testing tool is standardly used for intercepting, modifying, and attacking web applications?
+  A. (*) Burp Suite (or OWASP ZAP)
+  B.     MS Paint
+  C.     FileZilla
+  D.     Docker
+Explanation: Burp Suite acts as an intercepting HTTP proxy for analyzing and testing web application vulnerabilities.
+
+[bca-431e-u5-q220] (Unit 5) In port scanning, what does an 'Open' port report signify?
+  A.     The physical computer case is open
+  B. (*) A server application or service is actively listening on that port number and accepting connections
+  C.     The port is broken
+  D.     The computer has no internet access
+Explanation: An open port indicates an active network service responding to incoming connection attempts.
+
+[bca-431e-u5-q221] (Unit 5) What is 'OS Fingerprinting' in network reconnaissance?
+  A.     Scanning a user's biological fingerprint
+  B. (*) Analyzing specific nuances in TCP/IP packet responses (TTL values, TCP window sizes, TCP flags) to accurately deduce the target's operating system version
+  C.     Reading operating system serial numbers
+  D.     Inspecting computer labels
+Explanation: TCP/IP stack implementations vary across OS kernels; analyzing subtle response behaviors fingerprints the target OS.
+
+[bca-431e-u5-q222] (Unit 5) What is 'Banner Grabbing'?
+  A.     Stealing physical marketing banners
+  B. (*) Connecting to a network service port (e.g., HTTP, SSH, FTP) to read the software name, version, and server information displayed in the service welcome banner
+  C.     Downloading website logos
+  D.     A graphic design technique
+Explanation: Service banners expose exact software versions (e.g., Apache/2.4.41), revealing known unpatched CVEs.
+
+[bca-431e-u5-q223] (Unit 5) What is 'Identity Theft'?
+  A.     Losing a physical passport
+  B. (*) The deliberate acquisition and fraudulent use of another person's personal identifying data (name, SSN/Aadhaar, date of birth, financial credentials) to commit fraud or obtain illegal credit
+  C.     Changing your name legally
+  D.     Using a pseudonym online
+Explanation: Identity theft exploits stolen credentials to open fraudulent accounts, obtain loans, or impersonate victims.
+
+[bca-431e-u5-q224] (Unit 5) What is 'Synthetic Identity Theft'?
+  A.     Stealing identities in virtual reality
+  B. (*) Fabricating a completely new, fictitious identity by combining real stolen data (such as a child's SSN) with fictitious names and addresses to defraud credit systems
+  C.     Using artificial intelligence voice clones
+  D.     Impersonating an actor
+Explanation: Synthetic identity theft constructs hybrid identities, making detection difficult for credit bureaus.
+
+[bca-431e-u5-q225] (Unit 5) What is 'Cyber Stalking'?
+  A.     Viewing public websites
+  B. (*) The repeated use of the internet, email, or digital messaging to harass, intimidate, surveil, or threaten a targeted individual
+  C.     Playing competitive multiplayer games
+  D.     Searching for recipes on Google
+Explanation: Cyber stalking constitutes systematic digital harassment, surveillance, and intimidation.
+
+[bca-431e-u5-q226] (Unit 5) What is 'Doxxing' (or Doxing)?
+  A.     Editing a text document
+  B. (*) Maliciously searching for and publicly publishing private personal information (home address, phone number, workplace) about an individual online without consent to invite harassment
+  C.     Documenting software code
+  D.     Backing up documents to Google Drive
+Explanation: Doxxing weaponizes private personal data, publishing it publicly to incite harassment against the victim.
+
+[bca-431e-u5-q227] (Unit 5) What is 'Investment Fraud' in online cyber crime?
+  A.     Trading stocks legally on a stock exchange
+  B. (*) Deceptive online schemes, fake cryptocurrency platforms, and fraudulent high-yield investment programs (HYIP) that trick victims into depositing money with promises of guaranteed exorbitant returns
+  C.     Borrowing money from a bank
+  D.     Buying real estate online
+Explanation: Online investment fraud uses fake trading dashboards and social engineering to swindle victims.
+
+[bca-431e-u5-q228] (Unit 5) What is a 'Ponzi Scheme' in financial cyber fraud?
+  A.     A legal investment fund
+  B. (*) A fraudulent investment operation where returns to earlier investors are paid using the capital contributed by newer investors, rather than from legitimate profits, until the scheme collapses
+  C.     A bank loan
+  D.     A tax preparation software
+Explanation: Ponzi schemes collapse when recruitment of new investor capital slows below withdrawal demands.
+
+[bca-431e-u5-q229] (Unit 5) What is an 'Advance Fee Fraud' (commonly known as the 419 Scam)?
+  A.     Paying software license fees in advance
+  B. (*) A confidence scam where the victim is promised a massive windfall of money (e.g., lottery, royal inheritance) on the condition that they pay small upfront processing fees
+  C.     An airline baggage fee
+  D.     A hospital deposit
+Explanation: 419 scams promise massive riches in exchange for small preliminary processing/customs bribes.
+
+[bca-431e-u5-q230] (Unit 5) What is 'SIM Swapping' (SIM Jacking)?
+  A.     Upgrading a cellphone battery
+  B. (*) A social engineering attack where an adversary tricks a cellular carrier into transferring a victim's phone number to a SIM card controlled by the attacker, intercepting SMS-based 2FA codes
+  C.     Swapping SIM cards between two personal phones
+  D.     Buying a SIM card at an airport
+Explanation: SIM swapping hijacks the victim's phone number, intercepting SMS verification codes to breach bank and crypto accounts.
+
+[bca-431e-u5-q231] (Unit 5) Why is SMS-based Two-Factor Authentication (2FA) considered less secure than Authenticator Apps (TOTP) or Hardware Security Keys (FIDO2)?
+  A.     SMS text messages are encrypted with quantum ciphers
+  B. (*) SMS messages are vulnerable to SIM swapping, SS7 telecommunications eavesdropping, and cellular interception
+  C.     SMS is too expensive
+  D.     SMS only works on desktop computers
+Explanation: SMS uses insecure SS7 infrastructure and is susceptible to carrier social engineering; TOTP apps generate tokens locally.
+
+[bca-431e-u5-q232] (Unit 5) What is 'Ransomware Negotiation' in incident response?
+  A.     Paying a hacker to write code
+  B. (*) The delicate process where an organization, often through specialized crisis negotiators, communicates with cyber extortionists to verify file decryption proof and reduce ransom demands
+  C.     Filing an insurance claim
+  D.     Buying computers at a discount
+Explanation: Incident response teams evaluate attacker credibility and verify decryption keys via controlled negotiation.
+
+[bca-431e-u5-q233] (Unit 5) What is 'Cyber Hygiene'?
+  A.     Washing hands before using a keyboard
+  B. (*) The regular, routine practices and proactive steps users and organizations perform to maintain system health and security (patching, strong passwords, MFA, backups)
+  C.     Cleaning computer fans with compressed air
+  D.     Using blue light filters
+Explanation: Cyber hygiene encompasses baseline maintenance practices that defeat the vast majority of opportunistic cyber threats.
+
+[bca-431e-u5-q234] (Unit 5) What is the primary password recommendation issued by NIST Special Publication 800-63B?
+  A.     Mandating password resets every 30 days and requiring complex symbols
+  B. (*) Using long, memorable passphrases (e.g., 16+ characters), checking against lists of breached passwords, and eliminating mandatory periodic resets unless compromise is suspected
+  C.     Using only numbers for passwords
+  D.     Writing passwords on sticky notes
+Explanation: NIST shifted modern guidance: prioritize length (passphrases) and eliminate arbitrary 30-day resets that encourage weak variations.
+
+[bca-431e-u5-q235] (Unit 5) What is a 'Password Manager'?
+  A.     An employee who resets passwords
+  B. (*) An encrypted software vault that generates, securely stores, and automatically fills unique, cryptographically strong passwords for all user accounts, protected by a master key
+  C.     A spreadsheet where passwords are typed
+  D.     A feature in Windows Notepad
+Explanation: Password managers solve credential reuse by generating unique high-entropy passwords per service.
+
+[bca-431e-u5-q236] (Unit 5) What is 'Open Source Intelligence' (OSINT) in cybersecurity reconnaissance?
+  A.     Intelligence gathered by military satellites only
+  B. (*) The legal collection and analysis of publicly accessible information (social media, public databases, WHOIS, code repositories) about a target organization
+  C.     Stolen intelligence bought on the dark web
+  D.     Classified government documents
+Explanation: OSINT aggregates publicly available data to build profiles of targets without active probing.
+
+[bca-431e-u5-q237] (Unit 5) In web security testing, what does the HTTP header `X-Frame-Options: DENY` prevent?
+  A.     SQL Injection attacks
+  B. (*) Clickjacking attacks (by preventing the website from being rendered inside an iframe on malicious sites)
+  C.     Cross-Site Scripting
+  D.     Buffer Overflows
+Explanation: X-Frame-Options: DENY instructs browsers not to render the page inside frames, defeating clickjacking.
+
+[bca-431e-u5-q238] (Unit 5) What does the HTTP header `Strict-Transport-Security` (HSTS) enforce?
+  A.     It prevents database corruption
+  B. (*) It forces the browser to communicate with the website strictly over secure HTTPS connections, preventing SSL-stripping MitM attacks
+  C.     It speeds up image downloads
+  D.     It blocks cookies
+Explanation: HSTS prevents downgrade attacks by mandating HTTPS for all communications.
+
+[bca-431e-u5-q239] (Unit 5) What is 'Port Scanning'?
+  A.     Inspecting shipping containers at sea ports
+  B. (*) A surveillance technique that sends packets to a range of sequential port numbers on a host to determine which network ports are open, closed, or filtered
+  C.     Cleaning dust out of USB ports
+  D.     Connecting multiple monitors to a computer
+Explanation: Port scanning probes target ports to discover running network services and software entry points.
+
+[bca-431e-u5-q240] (Unit 5) What is a 'TCP SYN Scan' (Half-Open Scan) in Nmap?
+  A.     An aggressive scan that crashes servers
+  B. (*) A stealthy scanning technique that sends SYN packets and records SYN-ACK responses, but sends an RST packet instead of completing the 3-way handshake, avoiding application-layer logging
+  C.     A scan that completes full TCP connections
+  D.     A scan that uses UDP only
+Explanation: SYN scan (nmap -sS) terminates connections with an RST before completion, reducing footprint in standard application logs.
+
+[bca-431e-u5-q241] (Unit 5) What is a 'Fin Scan' or 'Null Scan' in network port scanning?
+  A.     Scanning only finished computers
+  B. (*) Advanced scanning techniques that send packets with unusual TCP flag combinations (FIN flag set, or zero flags) to exploit RFC 793 subtleties, bypassing simple packet filters
+  C.     A scan that tests internet speeds
+  D.     A method to delete network interfaces
+Explanation: Null, FIN, and Xmas scans send non-standard TCP flags to infer port status based on RFC 793 closed-port RST responses.
+
+[bca-431e-u5-q242] (Unit 5) What is 'OWASP' in application security?
+  A. (*) Open Web Application Security Project (a global non-profit community dedicated to improving software security)
+  B.     Official Web Antivirus Software Provider
+  C.     Organization for World Armed Security Protection
+  D.     Online Windows Application Security Protocol
+Explanation: OWASP provides vendor-neutral application security guidance, including the renowned OWASP Top 10.
+
+[bca-431e-u5-q243] (Unit 5) What is the 'OWASP Top 10'?
+  A.     The ten richest cybersecurity companies
+  B. (*) A regularly updated awareness document representing the broad consensus on the ten most critical security risks facing web applications worldwide
+  C.     Ten tips for buying a laptop
+  D.     The ten fastest internet routers
+Explanation: The OWASP Top 10 is the international gold standard cataloging top web application vulnerabilities (Injection, Broken Access Control, etc.).
+
+[bca-431e-u5-q244] (Unit 5) What is a 'Cisco IOS' or router Access Control List (ACL)?
+  A.     A list of users who can physically enter the server room
+  B. (*) A sequential collection of permit or deny statements applied to router interfaces to filter packets based on addresses and protocols
+  C.     A software license document
+  D.     A spreadsheet of router prices
+Explanation: Router ACLs filter traffic passing through network interfaces based on matching rules.
+
+[bca-431e-u5-q245] (Unit 5) What is 'Digital Forensics' in cybersecurity?
+  A.     Rebuilding broken hard drives with glue
+  B. (*) The scientific identification, preservation, collection, validation, analysis, and presentation of digital evidence derived from digital devices for legal investigations
+  C.     Designing 3D animations of crime scenes
+  D.     A medical examination of computer users
+Explanation: Digital forensics uncovers and preserves admissible evidence of electronic crimes and unauthorized activities.
+
+[bca-431e-u5-q246] (Unit 5) What is the 'Chain of Custody' in digital forensics and evidence handling?
+  A.     A metal chain locking a server rack
+  B. (*) The meticulous chronological documentation showing the seizure, custody, control, transfer, analysis, and disposition of digital evidence, ensuring evidence integrity in court
+  C.     A type of blockchain cryptocurrency
+  D.     A list of computer passwords
+Explanation: Chain of custody proves evidence was not altered, substituted, or tampered with between collection and trial.
+
+[bca-431e-u5-q247] (Unit 5) What is a 'Write Blocker' in forensic evidence collection?
+  A.     A software bug that prevents saving documents
+  B. (*) A hardware or software tool that intercepts write commands to a storage drive, ensuring that forensic examination of the drive cannot alter or contaminate its original evidentiary contents
+  C.     A firewall that blocks email writing
+  D.     A keyboard locking utility
+Explanation: Write blockers guarantee read-only access to evidence media, preserving forensic bitstream integrity.
+
+[bca-431e-u5-q248] (Unit 5) What is a 'Bitstream Image' (Forensic Clone) of a storage drive?
+  A.     A standard copy-paste of user folders in File Explorer
+  B. (*) A sector-by-sector, exact physical bit-level duplicate of the entire drive, capturing unallocated space, deleted files, slack space, and swap partitions
+  C.     A compressed screenshot of the desktop
+  D.     A quick backup of the My Documents directory
+Explanation: Forensic bitstream clones duplicate every physical sector (including deleted data in unallocated clusters).
+
+[bca-431e-u5-q249] (Unit 5) In password hashing, what is a 'Salt'?
+  A.     A chemical added to circuit boards
+  B. (*) A unique, cryptographically random string appended to a plaintext password before hashing to ensure that identical passwords yield completely different hashes, defeating pre-computed Rainbow Tables
+  C.     A technique to make passwords shorter
+  D.     An encryption key shared with all users
+Explanation: Salts defeat pre-computed lookup tables (Rainbow Tables) and prevent attackers from identifying shared passwords across users.
+
+[bca-431e-u5-q250] (Unit 5) What is 'Rainbow Table Attack'?
+  A.     A colorful computer monitor effect
+  B. (*) A password cracking attack that uses massive pre-computed tables of reverse cryptographic hash values to crack unsalted password hashes almost instantaneously
+  C.     A social engineering attack
+  D.     A type of distributed denial of service
+Explanation: Rainbow tables trade storage space for time, rapidly cracking unsalted hashes via pre-computed chains.
+

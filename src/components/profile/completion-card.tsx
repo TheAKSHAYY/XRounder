@@ -30,7 +30,7 @@ export function CompletionCard({
         Profile completion
       </h2>
       <div className="mt-3 flex items-baseline gap-2">
-        <span className="font-serif text-3xl font-semibold tabular-nums text-foreground">
+        <span className="font-sans text-3xl font-bold tabular-nums text-foreground">
           {pct}%
         </span>
         <span className="text-xs text-muted-foreground tabular-nums">

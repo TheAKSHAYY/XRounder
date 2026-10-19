@@ -1,0 +1,2005 @@
+MJPRU BAREILLY BCA SEMESTER 6 - ACADEMIC EXAM QUESTION BANK
+SUBJECT: BCA-302N Introduction to Data Science
+TOTAL QUESTIONS: 250 (50 MCQs per Unit)
+================================================================================
+
+Q1 [Unit 1] [EASY]: What is the primary definition of Data Science in modern computer science?
+  (A) A discipline that solely focuses on writing relational database queries
+  (B) An interdisciplinary field combining statistics, domain expertise, and computer science to extract actionable insights from data
+  (C) The process of manufacturing physical silicon storage drives
+  (D) The graphic design of scientific infographics
+Correct Answer: (B)
+Explanation: Data Science is an interdisciplinary field integrating domain knowledge, mathematics/statistics, and computing to extract knowledge from structured and unstructured data.
+
+Q2 [Unit 1] [EASY]: In Drew Conway's famous Data Science Venn Diagram, what are the three foundational pillars?
+  (A) Hardware, Networking, and Operating Systems
+  (B) Computer Science / Hacking Skills, Math & Statistics Knowledge, and Substantive Domain Expertise
+  (C) SQL, Java, and C++ Programming
+  (D) Accounting, Finance, and Public Relations
+Correct Answer: (B)
+Explanation: Conway's Data Science Venn diagram illustrates Data Science at the intersection of Hacking Skills, Math & Stats Knowledge, and Substantive Expertise.
+
+Q3 [Unit 1] [MEDIUM]: Which historical term was proposed by statistician John Tukey in 1962, laying the theoretical groundwork for modern data science?
+  (A) Data Analysis
+  (B) Artificial General Intelligence
+  (C) Cybernetics
+  (D) Cloud Warehousing
+Correct Answer: (A)
+Explanation: In 1962, John Tukey published 'The Future of Data Analysis', redefining statistics towards computational exploratory analysis.
+
+Q4 [Unit 1] [MEDIUM]: What is the primary difference between Data Science and Business Intelligence (BI)?
+  (A) BI focuses on historical descriptive reporting ('what happened'), whereas Data Science emphasizes predictive and prescriptive modeling ('what will happen')
+  (B) BI uses machine learning, while Data Science only uses spreadsheets
+  (C) BI is strictly open-source, whereas Data Science is closed-source
+  (D) There is no difference; they are exact synonyms
+Correct Answer: (A)
+Explanation: BI typically inspects historical data to diagnose past performance, whereas Data Science leverages predictive modeling, ML, and statistical inference to forecast and optimize future outcomes.
+
+Q5 [Unit 1] [EASY]: Which role in a data organization is primarily responsible for designing, building, and maintaining scalable data ingestion pipelines and ETL infrastructure?
+  (A) Data Analyst
+  (B) Data Engineer
+  (C) Machine Learning Product Manager
+  (D) Business Analyst
+Correct Answer: (B)
+Explanation: Data Engineers build data pipelines, architectures, and data warehouses (ETL/ELT) ensuring reliable data flow for scientists and analysts.
+
+Q6 [Unit 1] [EASY]: What is the primary focus of a Machine Learning (ML) Engineer?
+  (A) Creating marketing campaigns
+  (B) Deploying, scaling, and operationalizing machine learning models into production systems (MLOps)
+  (C) Writing legal contracts for data ownership
+  (D) Manually entering survey responses into databases
+Correct Answer: (B)
+Explanation: ML Engineers bridge data science research and production engineering by building scalable model inference pipelines and MLOps workflows.
+
+Q7 [Unit 1] [EASY]: What does the industry standard methodology CRISP-DM stand for?
+  (A) Cross-Industry Standard Process for Data Mining
+  (B) Corporate Research Information System Platform - Data Management
+  (C) Computational Reasoning and Intelligent Signal Processing - Data Method
+  (D) Centralized Real-Time Integration for Statistical Prediction
+Correct Answer: (A)
+Explanation: CRISP-DM stands for Cross-Industry Standard Process for Data Mining, the most widely adopted methodology for data analytics projects.
+
+Q8 [Unit 1] [EASY]: How many primary phases are defined in the CRISP-DM lifecycle?
+  (A) Three
+  (B) Four
+  (C) Six
+  (D) Ten
+Correct Answer: (C)
+Explanation: CRISP-DM comprises six iterative phases: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, and Deployment.
+
+Q9 [Unit 1] [MEDIUM]: What is the first and most critical phase of the CRISP-DM process?
+  (A) Model Training
+  (B) Data Cleaning
+  (C) Business Understanding
+  (D) Data Visualization
+Correct Answer: (C)
+Explanation: Business Understanding defines project objectives and requirements from a business perspective, translating them into a data science problem definition.
+
+Q10 [Unit 1] [MEDIUM]: In the CRISP-DM methodology, which phase typically consumes the largest percentage (often 70-80%) of project time?
+  (A) Deployment
+  (B) Data Preparation
+  (C) Model Evaluation
+  (D) Business Understanding
+Correct Answer: (B)
+Explanation: Data Preparation (collecting, cleaning, transforming, and formatting raw data) empirically accounts for 70-80% of project effort.
+
+Q11 [Unit 1] [EASY]: Which of the following is considered 'structured data'?
+  (A) Video stream from surveillance cameras
+  (B) Audio recordings of customer service calls
+  (C) A relational database table containing employee records with fixed schemas
+  (D) Scanned PDF invoices with hand-written notes
+Correct Answer: (C)
+Explanation: Structured data resides in fixed fields within a record or file, such as relational databases and CSV spreadsheets with predefined schemas.
+
+Q12 [Unit 1] [EASY]: Unstructured data is characterized by:
+  (A) Strict adherence to relational database tables with foreign keys
+  (B) Lack of a predefined conceptual schema or organized data model
+  (C) Being stored exclusively in memory arrays
+  (D) Having zero binary representations
+Correct Answer: (B)
+Explanation: Unstructured data (text, images, video, audio) lacks a formal relational data model or schema.
+
+Q13 [Unit 1] [EASY]: Which format is classified as semi-structured data?
+  (A) JSON (JavaScript Object Notation)
+  (B) MP3 Audio
+  (C) Raw uncompressed video stream
+  (D) Solid-state memory registers
+Correct Answer: (A)
+Explanation: JSON, XML, and YAML are semi-structured data formats that use internal tags and markers to separate data elements without rigid tabular constraints.
+
+Q14 [Unit 1] [HARD]: What is the primary ethical issue associated with training an automated loan approval algorithm on historical banking records?
+  (A) The model might execute in sub-millisecond time
+  (B) Historical biases in loan decisions may be learned and propagated by the model, discriminating against protected demographics
+  (C) Relational databases cannot handle numerical floats
+  (D) The model will require too much electrical power
+Correct Answer: (B)
+Explanation: Algorithmic bias occurs when machine learning models inadvertently codify and amplify systemic historical prejudices present in training datasets.
+
+Q15 [Unit 1] [MEDIUM]: What is the 'Right to Explanation' enshrined in major data privacy regulations like the GDPR (General Data Protection Regulation)?
+  (A) The requirement that users explain how their computers work
+  (B) The entitlement of individuals to obtain meaningful information about the logic involved in automated decisions affecting them
+  (C) The requirement that all algorithms be programmed in C
+  (D) The rule that companies must explain how they price products
+Correct Answer: (B)
+Explanation: Under GDPR, data subjects have the right to receive meaningful human-comprehensible explanations regarding automated algorithmic decisions.
+
+Q16 [Unit 1] [HARD]: In the context of data security, what is 'Differential Privacy'?
+  (A) Encrypting hard drives with two different symmetric keys
+  (B) A mathematical framework that allows querying aggregate datasets while guaranteeing that individual records cannot be identified
+  (C) Deleting half of the database randomly
+  (D) Using different passwords for different users
+Correct Answer: (B)
+Explanation: Differential privacy adds calibrated mathematical noise to query results, providing formal probabilistic bounds against re-identification of individuals.
+
+Q17 [Unit 1] [EASY]: What does Data Anonymization entail?
+  (A) Changing the font size of customer names
+  (B) Permanently altering or removing personally identifiable information (PII) so that data subjects cannot be identified
+  (C) Restricting data access to weekends only
+  (D) Translating text into foreign languages
+Correct Answer: (B)
+Explanation: Data anonymization strips, masks, or hashes personal identifiers, preventing linkage back to specific real-world individuals.
+
+Q18 [Unit 1] [MEDIUM]: How does Data Science transform the healthcare industry?
+  (A) By eliminating the need for all medical staff
+  (B) Through predictive patient diagnostics, genomic analysis, personalized medicine, and medical imaging analysis
+  (C) By replacing all physical hospitals with cloud servers
+  (D) By solely automating invoice printing
+Correct Answer: (B)
+Explanation: In healthcare, data science enables early pathology detection through computer vision, disease outbreak forecasting, and targeted drug discovery.
+
+Q19 [Unit 1] [EASY]: Which of the following is a classic application of predictive data science in e-commerce?
+  (A) Collaborative filtering recommendation engines
+  (B) Physical barcode laser printing
+  (C) Warehouse air conditioning control
+  (D) Cash register mechanical levers
+Correct Answer: (A)
+Explanation: E-commerce platforms utilize collaborative filtering and matrix factorization to recommend relevant products based on historical user browsing and purchasing patterns.
+
+Q20 [Unit 1] [MEDIUM]: What is the role of Exploratory Data Analysis (EDA) in the data science lifecycle?
+  (A) Writing the final executive legal contract
+  (B) Investigating datasets to discover underlying patterns, spot anomalies, test hypotheses, and verify assumptions using summary statistics and visualizations
+  (C) Formatting hard drives for cloud clusters
+  (D) Deleting unlabelled records without review
+Correct Answer: (B)
+Explanation: John Tukey's EDA philosophy emphasizes graphical and statistical inspection of raw data prior to any formal modeling.
+
+Q21 [Unit 1] [EASY]: Which Python library is the foundational standard for numerical computing, multidimensional arrays, and linear algebra in Data Science?
+  (A) NumPy
+  (B) Django
+  (C) Pygame
+  (D) BeautifulSoup
+Correct Answer: (A)
+Explanation: NumPy (Numerical Python) provides the N-dimensional array object (ndarray), mathematical functions, and linear algebra routines fundamental to scientific computing.
+
+Q22 [Unit 1] [EASY]: What is the primary purpose of the Pandas library in Python?
+  (A) Rendering 3D video game characters
+  (B) Data manipulation and analysis using high-performance DataFrame and Series data structures
+  (C) Handling low-level TCP/IP network sockets
+  (D) Managing operating system kernel threads
+Correct Answer: (B)
+Explanation: Pandas provides DataFrame objects for tabular, heterogeneous, labeled data manipulation, merging, reshaping, and statistical aggregation.
+
+Q23 [Unit 1] [MEDIUM]: What is a Data Lake?
+  (A) A physical water cooling pond for data centers
+  (B) A centralized repository that allows storing vast amounts of raw data in its native format (structured, semi-structured, and unstructured)
+  (C) A relational database with only 10 tables
+  (D) A backup tape drive kept in an underground vault
+Correct Answer: (B)
+Explanation: A Data Lake ingests raw structured and unstructured data at scale without requiring upfront schema enforcement (schema-on-read).
+
+Q24 [Unit 1] [MEDIUM]: How does a Data Warehouse differ from a Data Lake?
+  (A) A Data Warehouse stores only uncompressed audio files
+  (B) A Data Warehouse stores clean, curated, highly structured data with a predefined relational schema optimized for querying (schema-on-write)
+  (C) A Data Warehouse is always cheaper than a Data Lake
+  (D) Data Warehouses cannot connect to SQL tools
+Correct Answer: (B)
+Explanation: Data warehouses enforce strict schema-on-write architectures tailored for high-speed SQL analytics and business intelligence.
+
+Q25 [Unit 1] [MEDIUM]: In CRISP-DM, if model evaluation reveals that the predictive model fails to meet business objectives, what should the team do?
+  (A) Immediately deploy the model to production anyway
+  (B) Iterate back to Business Understanding or Data Preparation to re-scope features or refine objectives
+  (C) Delete the entire codebase and cancel the contract
+  (D) Switch to manual paper ledgers
+Correct Answer: (B)
+Explanation: CRISP-DM is intrinsically cyclical; failure at the evaluation phase triggers iterative loops back to earlier phases (problem formulation or feature engineering).
+
+Q26 [Unit 1] [MEDIUM]: What is Data Governance?
+  (A) Electing political leaders using computer voting
+  (B) The holistic framework of policies, processes, roles, and metrics that ensure effective and secure data management throughout an organization
+  (C) The physical security guard patrolling a server room
+  (D) Writing firmware for network routers
+Correct Answer: (B)
+Explanation: Data governance establishes policies for data quality, stewardship, provenance, compliance, and lifecycle management.
+
+Q27 [Unit 1] [EASY]: What does PII stand for in data privacy and data science ethics?
+  (A) Public Information Interface
+  (B) Personally Identifiable Information
+  (C) Predictive Inference Indicator
+  (D) Private Internet Index
+Correct Answer: (B)
+Explanation: PII refers to any information that can be used to distinguish or trace an individual's identity (e.g., name, Social Security Number, biometric records).
+
+Q28 [Unit 1] [HARD]: What is the primary danger of 'Data Snooping' or 'P-Hacking' in data science research?
+  (A) It slows down network download speeds
+  (B) Repeatedly searching through data until an accidental statistically significant relationship is found, leading to false discoveries
+  (C) It damages solid state drives
+  (D) It makes plots appear in black and white
+Correct Answer: (B)
+Explanation: P-hacking or data snooping tests numerous hypotheses on the same dataset until an artificial correlation crosses the alpha threshold, generating non-reproducible models.
+
+Q29 [Unit 1] [HARD]: What is 'Concept Drift' in deployed machine learning systems?
+  (A) A software bug where variable names are renamed automatically
+  (B) The statistical degradation of model predictive accuracy over time due to changes in the underlying distribution and real-world relationships of target variables
+  (C) The physical overheating of graphics processing units
+  (D) Users forgetting their system login credentials
+Correct Answer: (B)
+Explanation: Concept drift occurs when the statistical properties of the target variable and its relationship to input features change over time in production.
+
+Q30 [Unit 1] [MEDIUM]: Which of the following describes 'Data Provenance' (or Data Lineage)?
+  (A) The retail market value of raw hard disk drives
+  (B) A documented record tracing the origins, transformations, and movements of data across its lifecycle
+  (C) The speed at which data travels through optical cables
+  (D) The compression ratio of a zip file
+Correct Answer: (B)
+Explanation: Data provenance/lineage tracks the lifecycle journey of data from source extraction through transformations to consumption.
+
+Q31 [Unit 1] [EASY]: In financial data science, what is 'Algorithmic Fraud Detection'?
+  (A) Manually printing and auditing paper checks
+  (B) Real-time classification models scanning transaction streams to identify anomalous or suspicious behavioral patterns indicating fraud
+  (C) Selling stolen credit card data on dark web forums
+  (D) Calculating simple bank branch interest rates annually
+Correct Answer: (B)
+Explanation: Machine learning models identify fraudulent credit card transactions by evaluating millisecond deviation scores against baseline spending profiles.
+
+Q32 [Unit 1] [EASY]: Which data visualization library in Python is built on top of Matplotlib and integrates closely with Pandas data structures?
+  (A) Seaborn
+  (B) Pygame
+  (C) Flask
+  (D) Scrapy
+Correct Answer: (A)
+Explanation: Seaborn provides a high-level statistical visualization interface built on Matplotlib, featuring rich built-in themes and color palettes.
+
+Q33 [Unit 1] [EASY]: What is the primary purpose of an API (Application Programming Interface) in data science data acquisition?
+  (A) To visually design interactive presentations
+  (B) To allow programmatic, standardized retrieval of structured data from web services and servers
+  (C) To cool server hardware with liquid nitrogen
+  (D) To manually format CSV strings in a text editor
+Correct Answer: (B)
+Explanation: Web APIs (RESTful endpoints) enable automated data collection by providing structured JSON/XML payloads on HTTP requests.
+
+Q34 [Unit 1] [MEDIUM]: Which cloud service model provides serverless compute environments for executing data science preprocessing scripts without provisioning VMs?
+  (A) FaaS (Function as a Service, e.g., AWS Lambda, Google Cloud Functions)
+  (B) IaaS (Infrastructure as a Service)
+  (C) SaaS (Software as a Service)
+  (D) DaaS (Desktop as a Service)
+Correct Answer: (A)
+Explanation: FaaS enables running event-driven data parsing pipelines on demand without server administration overhead.
+
+Q35 [Unit 1] [EASY]: What is meant by the 'Volume' dimension of Big Data?
+  (A) The loudness of cooling fans in a server rack
+  (B) The sheer physical and logical scale and quantity of generated data (terabytes to petabytes)
+  (C) The speed of streaming data arrival
+  (D) The diversity of unstructured file formats
+Correct Answer: (B)
+Explanation: Volume represents the colossal magnitude of data generated continuously from IoT, transactions, and user activity.
+
+Q36 [Unit 1] [EASY]: What does the 'Velocity' dimension of Big Data signify?
+  (A) The speed of CPU clock cycles in gigahertz
+  (B) The rate at which new data is generated, ingested, and required to be processed in real time
+  (C) The physical speed of hard disk read heads
+  (D) The speed of an analyst typing SQL queries
+Correct Answer: (B)
+Explanation: Velocity describes the frequency and speed of incoming data streams requiring instantaneous ingestion and real-time processing.
+
+Q37 [Unit 1] [EASY]: What does the 'Variety' dimension of Big Data highlight?
+  (A) Different price tiers of cloud subscription plans
+  (B) The diverse structural forms of data, spanning tabular, audio, video, sensor signals, and text
+  (C) The variety of colors used in dashboard charts
+  (D) The different brands of server hardware
+Correct Answer: (B)
+Explanation: Variety refers to heterogeneous data types ranging from traditional relational tables to unstructured multimedia and logs.
+
+Q38 [Unit 1] [EASY]: What is the fourth classic 'V' of Big Data that addresses data trustworthiness and accuracy?
+  (A) Vagueness
+  (B) Veracity
+  (C) Volatility
+  (D) Voltage
+Correct Answer: (B)
+Explanation: Veracity denotes the trustworthiness, accuracy, data quality, and reliability of collected datasets.
+
+Q39 [Unit 1] [MEDIUM]: In predictive modeling, what is the 'Ground Truth'?
+  (A) The physical soil composition beneath a data center
+  (B) The verified, empirical real-world target outcome (labels) against which model predictions are measured
+  (C) The theoretical maximum storage capacity of a hard drive
+  (D) The legal terms of service agreed to by web users
+Correct Answer: (B)
+Explanation: Ground truth refers to the empirically observed, validated target values used to train and assess supervised learning models.
+
+Q40 [Unit 1] [MEDIUM]: What is 'Synthetic Data' in modern data science?
+  (A) Data stored on artificial plastic memory disks
+  (B) Artificially generated data that mimics the statistical properties of real data without containing real individuals' private records
+  (C) Faulty data corrupted by computer viruses
+  (D) Data manually guessed by software developers
+Correct Answer: (B)
+Explanation: Synthetic data is generated algorithmically (using GANs or statistical sampling) to train models while preserving privacy and expanding scarce datasets.
+
+Q41 [Unit 1] [MEDIUM]: Which ethical framework principle mandates that algorithms must not inflict unnecessary harm or injustice upon human subjects?
+  (A) Principle of Non-Maleficence
+  (B) Principle of Maximum Profitability
+  (C) Law of Diminishing Returns
+  (D) Moore's Law
+Correct Answer: (A)
+Explanation: The bioethical and algorithmic principle of non-maleficence requires that data systems avoid harm, exploitation, or discrimination.
+
+Q42 [Unit 1] [MEDIUM]: What is an 'Unbalanced Dataset' (or Class Imbalance) in classification problems?
+  (A) A dataset where numerical floats do not sum to 100
+  (B) A situation where one target class significantly outnumbers other classes (e.g., 99.9% non-fraud vs 0.1% fraud)
+  (C) A CSV file with unequal column widths
+  (D) A database distributed across unequal hard drive partitions
+Correct Answer: (B)
+Explanation: Class imbalance occurs when instances of one class dominate the training distribution, requiring specialized sampling techniques.
+
+Q43 [Unit 1] [EASY]: What is the primary role of a 'Data Dictionary' (Metadata Catalog)?
+  (A) To translate Python code into spoken English
+  (B) To provide standardized metadata descriptions including column definitions, data types, allowed values, and business rules
+  (C) To list the names of all employees who have access to the office
+  (D) To store dictionary objects in Python memory
+Correct Answer: (B)
+Explanation: A data dictionary documents schema definitions, attributes, data types, constraints, and semantic meanings across datasets.
+
+Q44 [Unit 1] [EASY]: In CRISP-DM, what is the output of the 'Data Preparation' phase?
+  (A) The final trained deep neural network model
+  (B) The clean, transformed, feature-engineered dataset ready for consumption by machine learning algorithms
+  (C) A printed invoice for client billing
+  (D) The initial project charter document
+Correct Answer: (B)
+Explanation: Data Preparation produces the final modeled tabular dataset (features and target matrices) ready for algorithm ingestion.
+
+Q45 [Unit 1] [MEDIUM]: Why is 'Reproducibility' considered a cornerstone of rigorous scientific data analysis?
+  (A) It guarantees that cloud compute costs remain zero
+  (B) It ensures that another researcher using the same data and analytical code can achieve identical empirical results
+  (C) It prevents computers from crashing during training
+  (D) It allows multiple developers to edit code simultaneously
+Correct Answer: (B)
+Explanation: Reproducibility ensures findings can be independently validated, audited, and verified using version-controlled code and deterministic data pipelines.
+
+Q46 [Unit 1] [HARD]: What is 'Data Drift' as compared to 'Concept Drift'?
+  (A) Data Drift occurs when input feature distributions P(X) change over time, even if the underlying conditional relationship P(Y|X) remains unchanged
+  (B) Data Drift refers to hard drives drifting off their server mounts
+  (C) Data Drift is an intentional feature of relational databases
+  (D) There is no difference between Data Drift and Concept Drift
+Correct Answer: (A)
+Explanation: Data drift (covariate shift) refers to statistical shifts in the input feature space P(X), whereas concept drift refers to changes in the target relationship P(Y|X).
+
+Q47 [Unit 1] [EASY]: Which of the following is a key metric in evaluating business value generated by a data science deployment?
+  (A) Return on Investment (ROI) and cost reduction
+  (B) The total number of semicolons in the Python code
+  (C) The color theme selected in the code editor
+  (D) The physical weight of the server racks
+Correct Answer: (A)
+Explanation: Data science projects are ultimately evaluated on measurable business impact, such as revenue uplift, customer churn reduction, or operational cost savings.
+
+Q48 [Unit 1] [HARD]: What is 'Federated Learning' in privacy-preserving data science?
+  (A) Centralizing all worldwide data into a single supercomputer
+  (B) A decentralized machine learning approach where models are trained locally on edge devices/servers without exchanging raw private user data
+  (C) Teaching government officials how to code in Python
+  (D) Connecting multiple SQL databases with standard foreign keys
+Correct Answer: (B)
+Explanation: Federated learning trains algorithms across decentralized edge nodes holding local data samples without exchanging the underlying raw data.
+
+Q49 [Unit 1] [EASY]: Which open-source standard is commonly used for reproducible data science notebooks combining executable code, narrative prose, and visualizations?
+  (A) Jupyter Notebooks
+  (B) Adobe Photoshop
+  (C) Microsoft Word
+  (D) VLC Media Player
+Correct Answer: (A)
+Explanation: Project Jupyter provides interactive web-based computational environments combining live code, LaTeX, equations, and interactive charts.
+
+Q50 [Unit 1] [EASY]: What constitutes 'Data Extraction' in an ETL pipeline?
+  (A) Compressing files into .tar.gz archives
+  (B) Retrieving raw data from heterogeneous sources (databases, CRM, APIs, flat files) for staging
+  (C) Permanently deleting redundant database indexes
+  (D) Plotting line charts on an executive dashboard
+Correct Answer: (B)
+Explanation: Data extraction is the initial stage of ETL where data is ingested from disparate transactional sources into an analytical staging area.
+
+Q51 [Unit 2] [EASY]: What is the primary objective of data pre-processing in machine learning workflows?
+  (A) To increase file sizes for cloud billing
+  (B) To transform raw, noisy, incomplete real-world data into a clean, consistent format suitable for algorithm training
+  (C) To compile Python scripts into binary machine code
+  (D) To encrypt hard drive partitions
+Correct Answer: (B)
+Explanation: Real-world data is typically dirty, incomplete, and inconsistently scaled; preprocessing cleans and structures it for reliable mathematical modeling.
+
+Q52 [Unit 2] [HARD]: Which missing data mechanism describes a scenario where the probability of missingness depends entirely on observed variables and not the missing value itself?
+  (A) Missing Completely at Random (MCAR)
+  (B) Missing at Random (MAR)
+  (C) Missing Not at Random (MNAR)
+  (D) Deterministic Data Erasure
+Correct Answer: (B)
+Explanation: Missing at Random (MAR) means the propensity for a data point to be missing is related to other observed data, but not the missing data itself.
+
+Q53 [Unit 2] [MEDIUM]: What does 'Missing Completely at Random' (MCAR) signify?
+  (A) The missing values depend strongly on the unobserved variable itself
+  (B) The probability of missingness is entirely independent of both observed and unobserved data
+  (C) The entire column was dropped intentionally by the database administrator
+  (D) The missing data occurs only on odd-numbered rows
+Correct Answer: (B)
+Explanation: Under MCAR, missingness is completely random and unbiased by any variable in the dataset.
+
+Q54 [Unit 2] [EASY]: Which technique handles missing numerical values by substituting the arithmetic mean of observed values?
+  (A) Mean Imputation
+  (B) Listwise Deletion
+  (C) Hot-Deck Sampling
+  (D) One-Hot Encoding
+Correct Answer: (A)
+Explanation: Mean imputation replaces missing values in a numerical column with the mean of available observations.
+
+Q55 [Unit 2] [MEDIUM]: What is a major mathematical drawback of using Mean Imputation for missing values?
+  (A) It changes the column data type to a string
+  (B) It artificially reduces the variance of the variable and distorts covariance with other features
+  (C) It causes infinite loops in CPU processing
+  (D) It converts negative numbers into positive numbers
+Correct Answer: (B)
+Explanation: Mean imputation concentrates probability density at the mean, artificially deflating variance and attenuating standard errors.
+
+Q56 [Unit 2] [EASY]: What is 'Listwise Deletion' (Complete Case Analysis)?
+  (A) Deleting the first ten rows of every table
+  (B) Excluding any record (entire row) that has one or more missing values across analyzed variables
+  (C) Removing the list data structure in Python memory
+  (D) Renaming column headers to remove spaces
+Correct Answer: (B)
+Explanation: Listwise deletion discards every observation that contains at least one missing entry.
+
+Q57 [Unit 2] [MEDIUM]: Under which condition can Listwise Deletion introduce severe bias into a model?
+  (A) When data is Missing Completely at Random (MCAR)
+  (B) When missingness is not random (MAR or MNAR), leading to systemic exclusion of specific population subgroups
+  (C) When the dataset has fewer than 10 columns
+  (D) When using a Linux operating system
+Correct Answer: (B)
+Explanation: If data is not MCAR, listwise deletion distorts the sample distribution, biasing model parameter estimates.
+
+Q58 [Unit 2] [MEDIUM]: What is 'K-Nearest Neighbors (KNN) Imputation'?
+  (A) Imputing missing values using the average or mode of the K most similar data instances in the feature space
+  (B) Replacing missing values with random numbers between 1 and K
+  (C) Deleting K rows whenever a null is encountered
+  (D) Assigning the alphabet letter K to missing cells
+Correct Answer: (A)
+Explanation: KNN imputation calculates Euclidean or Gower distances between instances to borrow values from the K nearest neighbors.
+
+Q59 [Unit 2] [EASY]: What is an 'Outlier' in statistical data analysis?
+  (A) A data point that lies outside the boundary of the computer screen
+  (B) An observation that deviates markedly from the overall pattern of distribution of the remaining data
+  (C) A software engineer who works outside the office
+  (D) A variable stored in an external file
+Correct Answer: (B)
+Explanation: An outlier is an extreme data point whose divergence from the rest of the sample suggests abnormal variation or measurement error.
+
+Q60 [Unit 2] [EASY]: In box plot analysis, an observation is considered an outlier if it falls below:
+  (A) Q1 - 1.5 * IQR
+  (B) Q1 + 1.5 * IQR
+  (C) Median - 2 * IQR
+  (D) Mean - Standard Deviation
+Correct Answer: (A)
+Explanation: Tukey's box plot rule identifies lower outliers as points falling below Q1 - 1.5 * IQR (where IQR = Q3 - Q1).
+
+Q61 [Unit 2] [EASY]: In box plot analysis, what defines an upper outlier?
+  (A) A value greater than Q3 + 1.5 * IQR
+  (B) A value greater than Q2 * 1.5
+  (C) A value greater than Maximum * 2
+  (D) A value equal to the mean
+Correct Answer: (A)
+Explanation: Tukey's rule defines upper outliers as observations exceeding Q3 + 1.5 * IQR.
+
+Q62 [Unit 2] [EASY]: What is the Z-Score of a data point x in a distribution with mean μ and standard deviation σ?
+  (A) Z = (x - μ) / σ
+  (B) Z = (x + μ) * σ
+  (C) Z = (x * σ) / μ
+  (D) Z = σ / (x - μ)
+Correct Answer: (A)
+Explanation: The standard Z-score formula is Z = (x - mean) / standard_deviation.
+
+Q63 [Unit 2] [MEDIUM]: In a standard normal distribution, observations with an absolute Z-Score exceeding which threshold are conventionally flagged as outliers?
+  (A) |Z| > 0.5
+  (B) |Z| > 1.0
+  (C) |Z| > 3.0
+  (D) |Z| > 100.0
+Correct Answer: (C)
+Explanation: In standard Gaussian distributions, 99.7% of data lies within 3 standard deviations; values with |Z| > 3 are rare and typically treated as outliers.
+
+Q64 [Unit 2] [MEDIUM]: What is 'Winsorization' (or Capping) of outliers?
+  (A) Deleting all outlier rows from the dataset permanently
+  (B) Replacing extreme outlier values with the nearest non-outlier percentile limit (e.g., 1st or 99th percentile)
+  (C) Converting outliers into imaginary numbers
+  (D) Multiplying outliers by zero
+Correct Answer: (B)
+Explanation: Winsorizing caps extreme values at a designated percentile threshold rather than dropping the records entirely.
+
+Q65 [Unit 2] [EASY]: What is the formula for Min-Max Feature Scaling (Normalization) to rescale values into the interval [0, 1]?
+  (A) x_scaled = (x - x_min) / (x_max - x_min)
+  (B) x_scaled = (x - x_mean) / x_std
+  (C) x_scaled = x * (x_max - x_min)
+  (D) x_scaled = (x_max - x) / x_min
+Correct Answer: (A)
+Explanation: Min-Max Normalization rescales a feature to [0, 1] using (x - x_min) / (x_max - x_min).
+
+Q66 [Unit 2] [MEDIUM]: What is the primary difference between Normalization (Min-Max) and Standardization (Z-score scaling)?
+  (A) Normalization bounds data strictly between [0, 1], while Standardization centers data at mean 0 with unit variance without bounding the extremes
+  (B) Normalization handles strings, while Standardization handles floats
+  (C) Standardization eliminates all outliers automatically
+  (D) There is no difference; they are identical formulas
+Correct Answer: (A)
+Explanation: Standardization centers features at mean 0 and standard deviation 1, accommodating outliers better than Min-Max scaling which compresses distribution ranges.
+
+Q67 [Unit 2] [MEDIUM]: Why is feature scaling essential before training algorithms like K-Means Clustering and Support Vector Machines (SVM)?
+  (A) Because these algorithms rely on geometric distance metrics (e.g., Euclidean distance) that are dominated by features with arbitrarily larger numerical ranges
+  (B) Because Python cannot multiply unscaled numbers
+  (C) Because scaling speeds up hard disk read operations
+  (D) Because unscaled numbers cause syntax errors in compilers
+Correct Answer: (A)
+Explanation: Distance-based algorithms weigh attributes disproportionately if one feature has an order of magnitude larger scale (e.g., salary vs age).
+
+Q68 [Unit 2] [MEDIUM]: Which machine learning models are inherently invariant to monotonic feature scaling?
+  (A) K-Nearest Neighbors (KNN)
+  (B) Decision Trees and Random Forests
+  (C) Support Vector Machines with RBF kernel
+  (D) Principal Component Analysis (PCA)
+Correct Answer: (B)
+Explanation: Tree-based algorithms split nodes based on order inequalities and thresholds, making them completely invariant to monotonic numerical scaling.
+
+Q69 [Unit 2] [EASY]: What is 'One-Hot Encoding' in categorical feature preprocessing?
+  (A) Converting categorical strings into a single running integer column (1, 2, 3...)
+  (B) Creating a new binary (0 or 1) indicator column for each unique category in a categorical feature
+  (C) Hashing the column values using MD5 checksums
+  (D) Capitalizing all string characters
+Correct Answer: (B)
+Explanation: One-Hot Encoding transforms categorical levels into binary columns where exactly one bit is 'hot' (1) and all others are 0.
+
+Q70 [Unit 2] [HARD]: What critical mathematical problem arises if all N binary columns from One-Hot Encoding are included in a linear regression model with an intercept?
+  (A) The Dummy Variable Trap (Perfect Multicollinearity)
+  (B) Catastrophic Floating Point Overflow
+  (C) Infinite Variance Inflation
+  (D) Zero Division Error
+Correct Answer: (A)
+Explanation: The Dummy Variable Trap occurs because the sum of all dummy columns equals 1 (a linear combination of the intercept), causing multicollinearity; N-1 dummies must be used.
+
+Q71 [Unit 2] [EASY]: When should 'Ordinal Encoding' be preferred over 'One-Hot Encoding'?
+  (A) When the categorical feature has no natural ordering (e.g., colors: Red, Blue, Green)
+  (B) When the categorical feature possesses a distinct, meaningful inherent rank or hierarchy (e.g., Low, Medium, High)
+  (C) When the dataset contains more than one million rows
+  (D) When training deep neural networks exclusively
+Correct Answer: (B)
+Explanation: Ordinal encoding maps ordered levels to integers (e.g., Poor=0, Average=1, Excellent=2), preserving the ordinal relationships.
+
+Q72 [Unit 2] [HARD]: What is 'Target Encoding' (Mean Encoding)?
+  (A) Replacing each categorical value with the average target variable value for that category
+  (B) Replacing every feature with the target variable column directly
+  (C) Sorting the dataset according to the target column
+  (D) Deleting the target column before training
+Correct Answer: (A)
+Explanation: Target encoding maps each categorical level to the posterior expected value of the target variable within that category.
+
+Q73 [Unit 2] [HARD]: What is the primary risk associated with Target Encoding?
+  (A) High computational latency during testing
+  (B) Severe Target Leakage and Overfitting, especially for rare categorical levels
+  (C) Creating negative numbers in positive distributions
+  (D) Corrupting the database index schema
+Correct Answer: (B)
+Explanation: Target encoding directly exposes target information to feature columns; without cross-validation smoothing, it causes severe overfitting.
+
+Q74 [Unit 2] [EASY]: What is 'Data Integration' in the data preparation phase?
+  (A) Combining data from multiple heterogeneous sources into a unified, coherent data store
+  (B) Dividing a single CSV file into multiple small files
+  (C) Encrypting database tables before transmission
+  (D) Translating SQL queries into Java functions
+Correct Answer: (A)
+Explanation: Data integration reconciles disparate schemas, naming conventions, and data formats from multiple sources into a consistent consolidated store.
+
+Q75 [Unit 2] [MEDIUM]: What is the 'Entity Identification Problem' in data integration?
+  (A) Identifying which company manufactures a server
+  (B) Recognizing that real-world entities are referred to by different identifiers across databases (e.g., 'Cust_ID' vs 'Client_Num')
+  (C) Determining the MAC address of a network router
+  (D) Locating the power button on an edge gateway
+Correct Answer: (B)
+Explanation: Entity identification matches real-world entities across disparate datasets where schemas, keys, or naming conventions differ.
+
+Q76 [Unit 2] [EASY]: What is 'Data Redundancy' in database integration?
+  (A) Having zero backup copies of a database
+  (B) The unnecessary duplication of data fields across multiple tables, which can cause update anomalies and inconsistency
+  (C) Compressing tables using gzip algorithms
+  (D) Running two queries in parallel
+Correct Answer: (B)
+Explanation: Redundancy occurs when the same attribute is stored in multiple locations, consuming unnecessary storage and risking inconsistency.
+
+Q77 [Unit 2] [MEDIUM]: Which statistical test is used during data integration to detect correlation between categorical attributes and eliminate redundant features?
+  (A) Chi-Square (χ²) Test of Independence
+  (B) T-Test of Means
+  (C) Euclidean Vector Metric
+  (D) Mann-Whitney U Test
+Correct Answer: (A)
+Explanation: The Chi-Square test determines whether there is a statistically significant association between two categorical variables.
+
+Q78 [Unit 2] [EASY]: What is 'Data Transformation'?
+  (A) Moving physical hard drives to another facility
+  (B) The process of converting data from one format, structure, or scale into another suitable for analytical modeling
+  (C) Deleting old log files automatically
+  (D) Rewriting Python code into C++ code
+Correct Answer: (B)
+Explanation: Data transformation encompasses aggregation, scaling, normalization, attribute construction, and discretization.
+
+Q79 [Unit 2] [MEDIUM]: What is 'Log Transformation' commonly used for in data preprocessing?
+  (A) To convert numbers into Roman numerals
+  (B) To stabilize variance, reduce positive (right) skewness, and make heavy-tailed distributions more Gaussian-like
+  (C) To multiply all values by 10
+  (D) To delete zero values
+Correct Answer: (B)
+Explanation: Taking the natural log (log(x) or log(1+x)) compresses extreme right-tail values, reducing skewness and conforming closer to normal assumptions.
+
+Q80 [Unit 2] [HARD]: What is the Box-Cox Transformation?
+  (A) A physical packaging technique for hard disks
+  (B) A parametric power transformation technique that transforms non-normal dependent variables into approximately normal shapes
+  (C) A method for drawing 3D box plots
+  (D) A technique for converting integers to booleans
+Correct Answer: (B)
+Explanation: Box-Cox finds an optimal power parameter λ to transform non-normal positive data into an approximately normal distribution.
+
+Q81 [Unit 2] [EASY]: What is 'Data Reduction' in data preprocessing?
+  (A) Erasing half of the database to save cloud storage fees
+  (B) Techniques that reduce the volume or dimensionality of a dataset while producing identical or substantially similar analytical results
+  (C) Running algorithms at lower CPU frequencies
+  (D) Reducing font sizes in terminal logs
+Correct Answer: (B)
+Explanation: Data reduction decreases representation size through dimensionality reduction, numerosity reduction, or compression without losing analytical fidelity.
+
+Q82 [Unit 2] [EASY]: What is 'Dimensionality Reduction'?
+  (A) Reducing the physical dimensions of a server rack
+  (B) The process of reducing the number of random variables (features/columns) under consideration in a dataset
+  (C) Changing 3D plots into 2D plots
+  (D) Limiting the number of users connected to a database
+Correct Answer: (B)
+Explanation: Dimensionality reduction condenses high-dimensional feature spaces into lower-dimensional representations while retaining essential information.
+
+Q83 [Unit 2] [MEDIUM]: What is the 'Curse of Dimensionality'?
+  (A) A computer hardware virus affecting high-end GPUs
+  (B) The exponential increase in volume and computational sparsity that occurs when adding features, causing distance metrics to lose discriminative power
+  (C) A limit on the maximum number of rows in Excel
+  (D) The difficulty of naming database tables
+Correct Answer: (B)
+Explanation: As dimensionality increases, data points become exponentially equidistant in feature space, severely degrading distance-based algorithms.
+
+Q84 [Unit 2] [MEDIUM]: Which unsupervised linear transformation technique is most widely used for dimensionality reduction by projecting data onto orthogonal axes of maximum variance?
+  (A) Principal Component Analysis (PCA)
+  (B) Linear Discriminant Analysis (LDA)
+  (C) One-Hot Encoding
+  (D) K-Means Clustering
+Correct Answer: (A)
+Explanation: PCA identifies orthogonal principal component vectors that maximize variance in descending order, reducing dimensionality.
+
+Q85 [Unit 2] [HARD]: In Principal Component Analysis (PCA), what do the Eigenvalues of the covariance matrix represent?
+  (A) The number of rows in the dataset
+  (B) The amount of variance explained by each corresponding Principal Component (Eigenvector)
+  (C) The error rate of the classification model
+  (D) The execution time of the matrix algorithm in seconds
+Correct Answer: (B)
+Explanation: Eigenvalues quantify the variance captured along their associated eigenvector directions.
+
+Q86 [Unit 2] [MEDIUM]: What is 'Numerosity Reduction'?
+  (A) Replacing Roman numerals with Arabic numerals
+  (B) Techniques that reduce the number of data instances (rows) by replacing data with alternative, smaller representations (e.g., clustering, sampling, histograms)
+  (C) Deleting all prime numbers from a column
+  (D) Converting 64-bit floats to 32-bit floats
+Correct Answer: (B)
+Explanation: Numerosity reduction replaces raw data points with parametric models (regression) or non-parametric summaries (clustering, sampling).
+
+Q87 [Unit 2] [MEDIUM]: What is 'Stratified Random Sampling'?
+  (A) Sampling data points completely at random without replacement
+  (B) Dividing the population into mutually exclusive subgroups (strata) and sampling randomly from each stratum in proportion to its representation
+  (C) Selecting every 10th row from a CSV file
+  (D) Sampling only the top 100 rows
+Correct Answer: (B)
+Explanation: Stratified sampling preserves subgroup proportions (e.g., class balances) in representative sample subsets.
+
+Q88 [Unit 2] [EASY]: What is 'Data Discretization'?
+  (A) Hiding data from unauthorized users
+  (B) The process of converting continuous numerical attributes into discrete intervals, categories, or bins
+  (C) Replacing text with emojis
+  (D) Compressing files using zip archives
+Correct Answer: (B)
+Explanation: Discretization transforms continuous variables into discrete categorical bands (e.g., age into age brackets: <18, 18-35, 36-60, 60+).
+
+Q89 [Unit 2] [EASY]: Which discretization technique divides the range of a continuous variable into N intervals of equal numerical width?
+  (A) Equal-Frequency Binning
+  (B) Equal-Width Binning
+  (C) K-Means Discretization
+  (D) Decision Tree Splitting
+Correct Answer: (B)
+Explanation: Equal-width binning divides the range (max - min) into N intervals of equal size: width = (max - min) / N.
+
+Q90 [Unit 2] [EASY]: What is 'Equal-Frequency Binning' (Quantile Binning)?
+  (A) Dividing the continuous variable such that each resulting bin contains approximately the same number of data samples
+  (B) Setting the frequency of the CPU clock to an equal value across cores
+  (C) Dividing the dataset into bins of identical numerical widths
+  (D) Creating bins based solely on user birth dates
+Correct Answer: (A)
+Explanation: Equal-frequency binning uses quantiles (e.g., quartiles, deciles) so each bin contains an equal count of observations.
+
+Q91 [Unit 2] [MEDIUM]: What is a major limitation of Equal-Width Binning when dealing with skewed distributions containing severe outliers?
+  (A) It cannot handle floating point numbers
+  (B) Outliers can dominate the min-max range, causing most data points to fall into a single bin while other bins remain empty
+  (C) It changes the order of rows in the database
+  (D) It requires GPU hardware
+Correct Answer: (B)
+Explanation: Extreme outliers inflate the range, resulting in sparse or empty bins across most of the interval.
+
+Q92 [Unit 2] [MEDIUM]: What is a 'Concept Hierarchy' in data discretization?
+  (A) The hierarchy of employees in a software company
+  (B) A sequence of mappings from a set of low-level concepts to higher-level, more general concepts (e.g., Street -> City -> State -> Country)
+  (C) The directory structure of an operating system
+  (D) The order of function calls in a stack frame
+Correct Answer: (B)
+Explanation: Concept hierarchies organize discrete attributes into hierarchical abstraction levels for multi-level data cube aggregation.
+
+Q93 [Unit 2] [MEDIUM]: What is 'Feature Extraction' as opposed to 'Feature Selection'?
+  (A) Feature selection creates brand new attributes, while feature extraction deletes columns
+  (B) Feature Selection chooses a subset of original features without altering them, while Feature Extraction transforms original features into a new, lower-dimensional feature space
+  (C) There is no difference; they are exact synonyms
+  (D) Feature extraction only works on image files
+Correct Answer: (B)
+Explanation: Selection retains a subset of existing variables; extraction projects the original attributes into a novel latent coordinate space (e.g., PCA).
+
+Q94 [Unit 2] [MEDIUM]: Which technique is an example of a 'Filter Method' for Feature Selection?
+  (A) Forward Stepwise Selection
+  (B) Pearson Correlation Coefficient ranking against the target
+  (C) Recursive Feature Elimination (RFE)
+  (D) Lasso L1 Regularization
+Correct Answer: (B)
+Explanation: Filter methods evaluate intrinsic statistical properties (correlation, mutual information, ANOVA F-value) independently of any machine learning model.
+
+Q95 [Unit 2] [HARD]: How do 'Wrapper Methods' for feature selection operate?
+  (A) They wrap CSV files in encrypted archives
+  (B) They use a predictive model as an evaluation engine to search and score different feature subsets iteratively (e.g., RFE, genetic algorithms)
+  (C) They wrap Python code in C++ libraries
+  (D) They plot features on wrapping circle diagrams
+Correct Answer: (B)
+Explanation: Wrapper methods evaluate candidate subsets by training a learning algorithm and measuring predictive accuracy.
+
+Q96 [Unit 2] [MEDIUM]: What is 'Embedded Feature Selection'?
+  (A) Installing hardware sensors inside computer chips
+  (B) Feature selection performed internally as an integral part of the model training process (e.g., Lasso regression coefficients, Decision Tree feature importances)
+  (C) Embedding SQL queries into HTML web pages
+  (D) Selecting features using cloud APIs
+Correct Answer: (B)
+Explanation: Embedded methods incorporate variable selection directly inside the algorithm objective function during optimization.
+
+Q97 [Unit 2] [EASY]: What is 'Data Scrubbing' (or Data Cleansing)?
+  (A) Washing hard drive platters with soap and water
+  (B) The process of identifying, correcting, or removing corrupt, inaccurate, duplicate, or irrelevant records from a dataset
+  (C) Overwriting random bits on an SSD
+  (D) Renaming database files on disk
+Correct Answer: (B)
+Explanation: Data scrubbing audits datasets to correct syntax errors, strip whitespace, unify formats, and eliminate contradictory values.
+
+Q98 [Unit 2] [EASY]: When merging two datasets based on a common key, what is a 'Cross Join' (Cartesian Product)?
+  (A) A join that matches records where keys are identical
+  (B) A join that combines every row of the first dataset with every row of the second dataset, producing N * M rows
+  (C) A join that deletes non-matching rows
+  (D) A join that only selects the first row of each table
+Correct Answer: (B)
+Explanation: A Cartesian product pairs every row of table A with every row of table B, expanding row counts geometrically.
+
+Q99 [Unit 2] [EASY]: What is 'Data Imputation'?
+  (A) Filing a legal lawsuit over stolen intellectual property
+  (B) The statistical practice of replacing missing or null data values with substituted estimates
+  (C) Encrypting database transactions
+  (D) Converting databases into JSON files
+Correct Answer: (B)
+Explanation: Imputation replaces missing values with estimated values derived from observed distributions.
+
+Q100 [Unit 2] [EASY]: What does the Scikit-Learn `SimpleImputer` class do in Python?
+  (A) It trains deep neural networks on image data
+  (B) It provides basic strategies for imputing missing values using the mean, median, most frequent, or a constant value
+  (C) It downloads datasets from the internet
+  (D) It formats tables into HTML
+Correct Answer: (B)
+Explanation: `SimpleImputer` in Scikit-Learn replaces null values in arrays using standard statistical strategies (mean, median, most_frequent, constant).
+
+Q101 [Unit 3] [EASY]: What is the primary philosophical objective of Exploratory Data Analysis (EDA)?
+  (A) To immediately prove a preconceived theory at all costs
+  (B) To understand data distributions, detect anomalies, discover patterns, and validate assumptions without imposing rigid modeling assumptions
+  (C) To deploy machine learning models to production servers
+  (D) To generate automatic invoices for data storage
+Correct Answer: (B)
+Explanation: EDA emphasizes data discovery, visual diagnostics, and statistical summaries before formulating formal parametric models.
+
+Q102 [Unit 3] [EASY]: Which measure of central tendency is most sensitive to extreme outliers in a skewed numerical dataset?
+  (A) Arithmetic Mean
+  (B) Median
+  (C) Mode
+  (D) Trimmed Median
+Correct Answer: (A)
+Explanation: The arithmetic mean sums all values and divides by N, pulling heavily in the direction of extreme outlier values.
+
+Q103 [Unit 3] [EASY]: Why is the Median considered a 'robust' statistic for skewed distributions?
+  (A) Because it requires supercomputers to calculate
+  (B) Because it represents the 50th percentile (middle value), remaining unaffected by the magnitude of extreme values in the tails
+  (C) Because it is always equal to the standard deviation
+  (D) Because it can only be calculated on prime numbers
+Correct Answer: (B)
+Explanation: The median is positional (50th percentile); shifting extreme values does not alter the center rank.
+
+Q104 [Unit 3] [EASY]: What is the Mode of a dataset?
+  (A) The arithmetic difference between maximum and minimum
+  (B) The value that appears with the highest frequency in a data collection
+  (C) The square root of the variance
+  (D) The average of the first and third quartiles
+Correct Answer: (B)
+Explanation: The mode is the most frequently occurring value in a discrete distribution or categorical column.
+
+Q105 [Unit 3] [EASY]: What is the relationship between Mean, Median, and Mode in a perfectly symmetrical, unimodal Gaussian distribution?
+  (A) Mean > Median > Mode
+  (B) Mode > Median > Mean
+  (C) Mean = Median = Mode
+  (D) Median = (Mean + Mode) / 2
+Correct Answer: (C)
+Explanation: In a perfectly symmetrical unimodal distribution, the center of gravity (mean), the middle rank (median), and peak frequency (mode) coincide.
+
+Q106 [Unit 3] [MEDIUM]: In a Positively (Right) Skewed distribution, what is the typical ordering of the three central tendency measures?
+  (A) Mode < Median < Mean
+  (B) Mean < Median < Mode
+  (C) Median < Mode < Mean
+  (D) Mean = Median = Mode
+Correct Answer: (A)
+Explanation: In positive skew, extreme values in the right tail pull the mean upward, resulting in Mode < Median < Mean.
+
+Q107 [Unit 3] [MEDIUM]: In a Negatively (Left) Skewed distribution, what is the typical ordering?
+  (A) Mean < Median < Mode
+  (B) Mode < Median < Mean
+  (C) Median < Mean < Mode
+  (D) Mean = Mode > Median
+Correct Answer: (A)
+Explanation: In negative skew, extreme low values in the left tail drag the mean downward, yielding Mean < Median < Mode.
+
+Q108 [Unit 3] [EASY]: What does the Sample Variance (s²) measure?
+  (A) The average distance of points from the origin (zero)
+  (B) The average squared deviation of each data point from the sample mean, divided by (n - 1)
+  (C) The square of the maximum value minus the minimum value
+  (D) The ratio of mean to median
+Correct Answer: (B)
+Explanation: Sample variance s² = Σ(x_i - mean)² / (n - 1), quantifying dispersion around the mean.
+
+Q109 [Unit 3] [MEDIUM]: Why is Bessel's Correction (dividing by n - 1 instead of n) applied when calculating sample variance?
+  (A) To prevent division by zero when n is zero
+  (B) To correct for downward bias and produce an unbiased estimator of the true population variance
+  (C) To make numbers integers rather than floats
+  (D) To match the formulas used in Python 2
+Correct Answer: (B)
+Explanation: Dividing by n underestimates population variance because deviations are calculated from the sample mean; n-1 yields an unbiased estimator.
+
+Q110 [Unit 3] [EASY]: What is the Standard Deviation (σ)?
+  (A) The square of the variance
+  (B) The positive square root of the variance, expressed in the same physical units as the original data
+  (C) The difference between Q3 and Q1
+  (D) The ratio of mode to mean
+Correct Answer: (B)
+Explanation: Standard deviation is the square root of variance, restoring the scale back to the original unit of measurement.
+
+Q111 [Unit 3] [MEDIUM]: What does Skewness mathematically quantify?
+  (A) The degree of asymmetry of a distribution around its mean
+  (B) The peakedness and tail weight of a probability distribution
+  (C) The linear correlation between two distinct columns
+  (D) The total number of rows in a dataset
+Correct Answer: (A)
+Explanation: Skewness is the third standardized moment measuring distribution asymmetry (left-tail vs right-tail imbalance).
+
+Q112 [Unit 3] [EASY]: A distribution with Skewness equal to zero is:
+  (A) Completely flat across all values
+  (B) Perfectly symmetric around its central location
+  (C) Bimodal with two equal peaks
+  (D) Exponentially growing
+Correct Answer: (B)
+Explanation: A skewness of zero indicates statistical symmetry around the mean.
+
+Q113 [Unit 3] [MEDIUM]: What does Kurtosis measure in statistical exploratory data analytics?
+  (A) The linear slope of a regression line
+  (B) The 'tailedness' (propensity to produce outliers) and peakedness of a probability distribution relative to a normal distribution
+  (C) The median absolute deviation
+  (D) The number of categorical unique values
+Correct Answer: (B)
+Explanation: Kurtosis is the fourth standardized moment, capturing tail weight and the likelihood of extreme deviations.
+
+Q114 [Unit 3] [MEDIUM]: A standard normal distribution has an excess kurtosis of:
+  (A) Zero (0)
+  (B) Three (3)
+  (C) One (1)
+  (D) Minus three (-3)
+Correct Answer: (A)
+Explanation: The normal distribution has a kurtosis of 3; 'Excess Kurtosis' subtracts 3, yielding 0 for standard normal distributions.
+
+Q115 [Unit 3] [MEDIUM]: A distribution described as 'Leptokurtic' has:
+  (A) Excess kurtosis > 0, characterized by heavy tails and a higher probability of extreme outliers compared to a normal distribution
+  (B) Excess kurtosis < 0, with thin tails and a flat top
+  (C) Zero variance
+  (D) Negative standard deviation
+Correct Answer: (A)
+Explanation: Leptokurtic distributions have positive excess kurtosis (>0), exhibiting fat tails and frequent outlier occurrence.
+
+Q116 [Unit 3] [MEDIUM]: A 'Platykurtic' distribution is characterized by:
+  (A) Excess kurtosis < 0, featuring light tails and a flatter peak than a Gaussian distribution
+  (B) Excess kurtosis > 3, with sharp spikes
+  (C) Infinite variance
+  (D) A single categorical value
+Correct Answer: (A)
+Explanation: Platykurtic distributions (excess kurtosis < 0) produce fewer extreme outliers and flatter central profiles (e.g., uniform distribution).
+
+Q117 [Unit 3] [EASY]: Which five values constitute Tukey's 'Five-Number Summary' in Exploratory Data Analytics?
+  (A) Mean, Mode, Median, Variance, Standard Deviation
+  (B) Minimum, First Quartile (Q1), Median (Q2), Third Quartile (Q3), and Maximum
+  (C) Z-Score, T-Score, P-Value, F-Score, Chi-Square
+  (D) 0%, 10%, 50%, 90%, 100% percentiles
+Correct Answer: (B)
+Explanation: Tukey's Five-Number Summary consists of Min, Q1 (25th%), Q2/Median (50th%), Q3 (75th%), and Max.
+
+Q118 [Unit 3] [EASY]: What is the Interquartile Range (IQR)?
+  (A) IQR = Q3 - Q1
+  (B) IQR = Max - Min
+  (C) IQR = Q2 - Q1
+  (D) IQR = (Q3 + Q1) / 2
+Correct Answer: (A)
+Explanation: The Interquartile Range represents the spread of the middle 50% of the distribution: IQR = Q3 - Q1.
+
+Q119 [Unit 3] [EASY]: In a standard Box Plot (Box-and-Whisker Plot), what does the central rectangular box represent?
+  (A) The entire range of all data points from Min to Max
+  (B) The interquartile range containing the middle 50% of data, spanning from Q1 to Q3
+  (C) The confidence interval of the sample mean
+  (D) The standard deviation multiplied by two
+Correct Answer: (B)
+Explanation: The box boundaries mark the 25th percentile (Q1) and 75th percentile (Q3), with a line inside marking the 50th percentile (median).
+
+Q120 [Unit 3] [MEDIUM]: In a Box Plot, where do the 'whiskers' extend to by standard convention?
+  (A) To positive and negative infinity
+  (B) To the lowest and highest data points within 1.5 * IQR from Q1 and Q3 respectively
+  (C) To exactly three standard deviations above and below the mean
+  (D) To the 10th and 90th percentiles
+Correct Answer: (B)
+Explanation: Whiskers extend to the most extreme data points within [Q1 - 1.5*IQR, Q3 + 1.5*IQR]; points beyond are plotted as individual outlier points.
+
+Q121 [Unit 3] [EASY]: What is a 'Pivot Table' in data analysis?
+  (A) A table that rotates 90 degrees when printed
+  (B) An analytical data summarization tool that aggregates, sorts, reorganizes, and groups multidimensional data along row and column axes
+  (C) A physical revolving table in a hardware laboratory
+  (D) A relational table with only two columns
+Correct Answer: (B)
+Explanation: Pivot tables aggregate transactional records into multidimensional matrices using grouping functions (sum, mean, count).
+
+Q122 [Unit 3] [MEDIUM]: What is a 'Cross-Tabulation' (Contingency Table)?
+  (A) A table showing the frequency distribution of the variables at the intersection of two or more categorical factors
+  (B) A SQL query that deletes crossed records
+  (C) A table comparing two different database management systems
+  (D) A table with encrypted cross-site scripting tags
+Correct Answer: (A)
+Explanation: Contingency tables display the joint bivariate frequency distribution of categorical variables.
+
+Q123 [Unit 3] [EASY]: What is a 'Heat Map' in exploratory data visualization?
+  (A) A weather radar map showing temperatures across cities
+  (B) A graphical representation of data where individual values contained in a 2D matrix are represented as colors
+  (C) A thermal sensor reading of server CPUs
+  (D) A line plot with red and orange line colors
+Correct Answer: (B)
+Explanation: Heat maps display tabular matrices (such as correlation matrices) using color gradients to depict magnitude.
+
+Q124 [Unit 3] [EASY]: In a Heat Map displaying a Correlation Matrix, what does a cell with a value of +1.0 indicate?
+  (A) Complete independence between the two variables
+  (B) Perfect positive linear correlation between the two variables
+  (C) An error in matrix calculation
+  (D) Negative correlation
+Correct Answer: (B)
+Explanation: A correlation coefficient of +1.0 indicates that as variable X increases, variable Y increases in exact linear proportion.
+
+Q125 [Unit 3] [EASY]: What does Pearson's Correlation Coefficient (r) measure?
+  (A) The non-linear monotonic relationship between two variables
+  (B) The strength and direction of the linear relationship between two continuous variables
+  (C) The difference between two population medians
+  (D) The categorical independence of attributes
+Correct Answer: (B)
+Explanation: Pearson's r measures the linear co-variation between two continuous variables on a scale from -1.0 to +1.0.
+
+Q126 [Unit 3] [EASY]: What is the valid mathematical range of Pearson's Correlation Coefficient (r)?
+  (A) From 0 to infinity
+  (B) From -1.0 to +1.0
+  (C) From -100 to +100
+  (D) From 0 to 1.0
+Correct Answer: (B)
+Explanation: Pearson's r is bounded strictly between -1.0 (perfect negative linear correlation) and +1.0 (perfect positive linear correlation).
+
+Q127 [Unit 3] [MEDIUM]: If Pearson's r between feature X and target Y is 0.0, what does this mathematically prove?
+  (A) There is zero linear relationship between X and Y (though a non-linear relationship may still exist)
+  (B) X and Y are completely independent in every possible way
+  (C) X and Y are identical variables
+  (D) The model will have 100% predictive accuracy
+Correct Answer: (A)
+Explanation: Pearson's r evaluates only linear association; variables with r = 0 can have strong non-linear relationships (e.g., Y = X²).
+
+Q128 [Unit 3] [MEDIUM]: How does Spearman's Rank Correlation Coefficient differ from Pearson's Correlation Coefficient?
+  (A) Spearman evaluates monotonic relationships based on the ranked values of data rather than linear relationships on raw numerical values
+  (B) Spearman only works on text strings
+  (C) Spearman produces values from -10 to +10
+  (D) Spearman requires normal distributions while Pearson does not
+Correct Answer: (A)
+Explanation: Spearman's rho calculates Pearson's correlation on ranked data, making it non-parametric and sensitive to monotonic curves.
+
+Q129 [Unit 3] [MEDIUM]: When is Spearman's Rank Correlation preferred over Pearson's Correlation?
+  (A) When the data violates normality assumptions, contains significant outliers, or exhibits monotonic non-linear relationships
+  (B) When the data is perfectly Gaussian and linear
+  (C) When working with only two data points
+  (D) When using deep learning models
+Correct Answer: (A)
+Explanation: Spearman is robust against outliers and detects non-linear monotonic trends where Pearson's r underperforms.
+
+Q130 [Unit 3] [EASY]: What does the adage 'Correlation does not imply Causation' mean in data science?
+  (A) Correlation is completely useless and should never be calculated
+  (B) A statistical association between two variables does not prove that one variable causes the change in the other (confounding variables may exist)
+  (C) Causation can never be proven by any scientific experiment
+  (D) Correlation formulas are mathematically flawed
+Correct Answer: (B)
+Explanation: Two variables may correlate due to coincidence or a shared third confounding factor (spurious correlation) rather than direct causality.
+
+Q131 [Unit 3] [EASY]: What does ANOVA stand for in statistical data analysis?
+  (A) Analysis of Variance
+  (B) Automated Numerical Operations for Vector Analysis
+  (C) Association Network of Variables and Attributes
+  (D) Algorithmic Number Organization and Validation
+Correct Answer: (A)
+Explanation: ANOVA stands for Analysis of Variance, a statistical test comparing means across multiple groups.
+
+Q132 [Unit 3] [MEDIUM]: What is the primary purpose of a One-Way ANOVA test?
+  (A) To determine whether the means of three or more independent groups are statistically significantly different from each other
+  (B) To test if two categorical columns have the same mode
+  (C) To calculate the correlation between two continuous floats
+  (D) To reduce the dimensions of a matrix to one
+Correct Answer: (A)
+Explanation: One-way ANOVA compares variance between groups against variance within groups to test if group means differ significantly.
+
+Q133 [Unit 3] [MEDIUM]: What is the test statistic calculated in an ANOVA test?
+  (A) Z-statistic
+  (B) Student's t-statistic
+  (C) F-statistic (Fisher-Snedecor F-ratio)
+  (D) Chi-Square statistic
+Correct Answer: (C)
+Explanation: ANOVA calculates the F-ratio: F = (Between-Group Variance / Within-Group Variance).
+
+Q134 [Unit 3] [MEDIUM]: In an ANOVA F-test, what does a large F-statistic accompanied by a p-value < 0.05 indicate?
+  (A) The null hypothesis is retained; all group means are identical
+  (B) The null hypothesis is rejected; at least one group mean is statistically significantly different from the others
+  (C) The data has zero variance
+  (D) The test was mathematically invalid
+Correct Answer: (B)
+Explanation: A high F-statistic indicates between-group variance dominates within-group noise, rejecting H0 of equal group means.
+
+Q135 [Unit 3] [EASY]: What is the Null Hypothesis (H₀) in a One-Way ANOVA test?
+  (A) All group population means are equal (μ₁ = μ₂ = ... = μₖ)
+  (B) All group standard deviations are unequal
+  (C) The correlation between features is 1.0
+  (D) At least one group mean is different
+Correct Answer: (A)
+Explanation: The null hypothesis states that all tested group population means are equal.
+
+Q136 [Unit 3] [HARD]: What post-hoc statistical test is commonly run after an ANOVA test rejects the null hypothesis to identify which specific pairs of groups differ?
+  (A) Tukey's Honestly Significant Difference (HSD) test
+  (B) Min-Max Normalization
+  (C) Pearson correlation matrix
+  (D) K-Means Clustering
+Correct Answer: (A)
+Explanation: Tukey's HSD test performs pairwise comparisons while controlling family-wise error rates.
+
+Q137 [Unit 3] [MEDIUM]: What does a Scatter Plot Matrix (Pairplot) visualize in Exploratory Data Analytics?
+  (A) The CPU usage over time during model training
+  (B) Pairwise bivariate scatter plots for all feature combinations alongside univariate distribution histograms on the diagonal
+  (C) A 3D rendering of cloud servers
+  (D) A list of database table foreign keys
+Correct Answer: (B)
+Explanation: A Pairplot renders an N x N matrix of scatterplots showing bivariate interactions between every pair of features.
+
+Q138 [Unit 3] [MEDIUM]: What is a 'Kernel Density Estimation' (KDE) plot?
+  (A) A low-level plot of Linux operating system kernel logs
+  (B) A smoothed continuous probability density curve representing the underlying distribution of a continuous variable
+  (C) A 2D scatter plot with circular kernels
+  (D) A bar chart showing disk sector health
+Correct Answer: (B)
+Explanation: KDE convolves kernel functions (Gaussian) over sample points to estimate non-parametric probability density functions.
+
+Q139 [Unit 3] [HARD]: What does a Q-Q (Quantile-Quantile) Plot evaluate?
+  (A) Whether two database tables have identical row counts
+  (B) Whether a sample dataset follows a specified theoretical probability distribution (such as a normal distribution)
+  (C) The execution time of SQL queries
+  (D) The number of questions answered in a quiz
+Correct Answer: (B)
+Explanation: A Q-Q plot compares empirical sample quantiles against theoretical distribution quantiles; points on a 45-degree line confirm distributional fit.
+
+Q140 [Unit 3] [HARD]: If points on a Normal Q-Q Plot curve upwards away from the reference line at both ends, this signifies:
+  (A) Heavy tails (a leptokurtic distribution with more extreme outliers than normal)
+  (B) Light tails with zero variance
+  (C) Perfect Gaussian normality
+  (D) The dataset contains only zeros
+Correct Answer: (A)
+Explanation: Deviations in the tails of Q-Q plots diagnose kurtosis and heavy-tailed non-Gaussian behavior.
+
+Q141 [Unit 3] [EASY]: What is the 'Empirical Rule' (68-95-99.7 Rule) for normal distributions?
+  (A) 68% of data falls within 1σ, 95% within 2σ, and 99.7% within 3σ of the mean
+  (B) 68% of data is positive, 95% is integer, 99.7% is float
+  (C) 68% of queries pass, 95% cache, 99.7% fail
+  (D) All numbers equal 100%
+Correct Answer: (A)
+Explanation: In Gaussian distributions, exactly ~68.27% of observations lie within μ ± 1σ, ~95.45% within μ ± 2σ, and ~99.73% within μ ± 3σ.
+
+Q142 [Unit 3] [HARD]: What is the Median Absolute Deviation (MAD)?
+  (A) The distance of the median from zero
+  (B) A robust measure of statistical dispersion calculated as the median of absolute deviations from the data median
+  (C) The square of the standard deviation
+  (D) The difference between mean and mode
+Correct Answer: (B)
+Explanation: MAD = median(|X_i - median(X)|), providing an outlier-resistant dispersion metric superior to standard deviation for skewed data.
+
+Q143 [Unit 3] [EASY]: What is a 'Bar Chart' primarily used for as opposed to a 'Histogram'?
+  (A) Bar charts display discrete categorical frequencies with spaces between bars, whereas Histograms display continuous numerical frequency distributions across binned intervals
+  (B) Bar charts only display numbers, while histograms only display words
+  (C) Bar charts are always 3D, while histograms are 2D
+  (D) There is no difference; they are identical
+Correct Answer: (A)
+Explanation: Histograms plot continuous quantitative variables into adjacent bins; bar charts compare distinct categorical groups.
+
+Q144 [Unit 3] [MEDIUM]: What is 'Multicollinearity' detected during Exploratory Data Analytics?
+  (A) A situation where two or more independent predictor features are highly linearly correlated with each other
+  (B) A bug in Python where columns are duplicated on disk
+  (C) A database containing multiple primary keys
+  (D) A chart rendered in more than three colors
+Correct Answer: (A)
+Explanation: Multicollinearity occurs when predictor variables are collinear, inflating variance of regression coefficients.
+
+Q145 [Unit 3] [HARD]: Which metric is commonly calculated to quantify the severity of Multicollinearity in a feature set?
+  (A) Variance Inflation Factor (VIF)
+  (B) Root Mean Squared Error (RMSE)
+  (C) Adjusted R-Squared
+  (D) Standard Normal Quantile
+Correct Answer: (A)
+Explanation: VIF measures how much the variance of an estimated regression coefficient increases due to collinearity; VIF > 5 or 10 indicates high multicollinearity.
+
+Q146 [Unit 3] [MEDIUM]: What does a VIF equal to 1.0 indicate for a predictor variable?
+  (A) Severe perfect multicollinearity
+  (B) Zero correlation between that predictor and all other independent features in the model
+  (C) The predictor is an exact duplicate of the target
+  (D) An error occurred during calculation
+Correct Answer: (B)
+Explanation: A VIF of 1 indicates the variable is completely orthogonal (uncorrelated) to other predictors.
+
+Q147 [Unit 3] [EASY]: In Pandas, which method returns summary statistics (count, mean, std, min, 25%, 50%, 75%, max) for numerical columns?
+  (A) df.describe()
+  (B) df.info()
+  (C) df.summary()
+  (D) df.head()
+Correct Answer: (A)
+Explanation: The `describe()` method generates descriptive statistics summarizing central tendency, dispersion, and shape of a dataset's distribution.
+
+Q148 [Unit 3] [EASY]: In Pandas, which method displays column data types, non-null counts, and memory usage?
+  (A) df.info()
+  (B) df.describe()
+  (C) df.tail()
+  (D) df.shape()
+Correct Answer: (A)
+Explanation: `df.info()` provides a concise technical summary of DataFrame columns, non-null counts, and memory consumption.
+
+Q149 [Unit 3] [EASY]: What type of plot is best suited to visualize changes in a continuous metric over chronological time intervals?
+  (A) Line Chart (Time Series Plot)
+  (B) Pie Chart
+  (C) Histogram
+  (D) Box Plot
+Correct Answer: (A)
+Explanation: Time series line plots show continuous trends, seasonality, and temporal dynamics over sequential time points.
+
+Q150 [Unit 3] [MEDIUM]: What does a Violin Plot combine in statistical data visualization?
+  (A) A line plot and a scatter plot
+  (B) A Box Plot and a Kernel Density Estimation (KDE) plot showing the probability density of the data at different values
+  (C) A bar chart and a pie chart
+  (D) A 3D surface plot and a heatmap
+Correct Answer: (B)
+Explanation: Violin plots merge the five-number summary of box plots with the mirrored density traces of KDE.
+
+Q151 [Unit 4] [EASY]: What is the fundamental goal of Simple Linear Regression?
+  (A) To group unlabeled data into K clusters
+  (B) To model the linear relationship between a single independent predictor variable X and a continuous target variable Y: Y = β₀ + β₁X + ε
+  (C) To classify images into dog or cat categories
+  (D) To sort database rows alphabetically
+Correct Answer: (B)
+Explanation: Simple linear regression models the dependent variable Y as a linear function of an explanatory variable X, intercept β₀, and slope β₁.
+
+Q152 [Unit 4] [EASY]: In the simple linear regression equation Y = β₀ + β₁X, what does β₁ represent geometrically?
+  (A) The Y-intercept (value of Y when X = 0)
+  (B) The slope of the regression line, indicating the change in Y for a one-unit change in X
+  (C) The random error term
+  (D) The coefficient of determination
+Correct Answer: (B)
+Explanation: The slope β₁ dictates the rate of change and direction of the predicted target per unit increase in X.
+
+Q153 [Unit 4] [EASY]: What does the parameter β₀ represent in the linear regression line Y = β₀ + β₁X?
+  (A) The Y-intercept, which is the expected value of Y when X is equal to zero
+  (B) The correlation coefficient
+  (C) The standard error of the estimate
+  (D) The maximum possible value of Y
+Correct Answer: (A)
+Explanation: The intercept β₀ is where the fitted hyperplane crosses the vertical Y-axis (X = 0).
+
+Q154 [Unit 4] [EASY]: What mathematical optimization criterion is minimized by the Ordinary Least Squares (OLS) estimator?
+  (A) The sum of absolute differences |Y - Ŷ|
+  (B) The Residual Sum of Squares (RSS): Σ(y_i - ŷ_i)²
+  (C) The product of all error terms
+  (D) The maximum outlier error
+Correct Answer: (B)
+Explanation: OLS minimizes the sum of squared vertical differences (residuals) between observed values and fitted values.
+
+Q155 [Unit 4] [EASY]: What is a 'Residual' (e_i) in regression analysis?
+  (A) The difference between the observed true target value and the model predicted value: e_i = y_i - ŷ_i
+  (B) The execution time of the regression script
+  (C) The ratio of the slope to the intercept
+  (D) The number of features deleted during preprocessing
+Correct Answer: (A)
+Explanation: The residual is the vertical prediction error e_i = y_i - ŷ_i for observation i.
+
+Q156 [Unit 4] [HARD]: Which of the following is a fundamental assumption of the Classical Linear Regression Model (Gauss-Markov)?
+  (A) Features must be non-linear polynomials
+  (B) Homoscedasticity: the variance of the error terms ε_i must be constant across all levels of X
+  (C) The target variable must be a discrete integer
+  (D) Residuals must have a non-zero mean
+Correct Answer: (B)
+Explanation: The Gauss-Markov assumptions require linearity, zero conditional mean of errors, homoscedasticity, no autocorrelation, and no perfect multicollinearity.
+
+Q157 [Unit 4] [MEDIUM]: What does 'Homoscedasticity' mean in regression residuals analysis?
+  (A) The variance of residual errors is constant across all predicted values
+  (B) The residuals increase exponentially as predictions grow
+  (C) The errors follow a uniform distribution from 0 to 1
+  (D) The data has zero missing values
+Correct Answer: (A)
+Explanation: Homoscedasticity signifies constant error variance; violations are termed heteroscedasticity.
+
+Q158 [Unit 4] [MEDIUM]: What is 'Heteroscedasticity' in regression diagnostics?
+  (A) Constant variance across all observations
+  (B) A condition where the variance of the error terms is systematic and non-constant (e.g., funnel-shaped residuals)
+  (C) A situation where all residuals are exactly zero
+  (D) A dataset with equal numbers of rows and columns
+Correct Answer: (B)
+Explanation: Heteroscedasticity occurs when residual spread fans out or varies systematically across fitted values.
+
+Q159 [Unit 4] [MEDIUM]: How is Heteroscedasticity typically detected visually in regression diagnostics?
+  (A) Using a Residual vs Fitted Plot, observing a distinct fan or cone-shaped pattern of scatter
+  (B) Using a pie chart of categorical counts
+  (C) By checking if the code compiles without errors
+  (D) By viewing a bar chart of student grades
+Correct Answer: (A)
+Explanation: A fan-shaped or funnel pattern in residual vs fitted plots indicates non-constant variance.
+
+Q160 [Unit 4] [HARD]: What does the Gauss-Markov Theorem state regarding the OLS estimator when classical assumptions hold?
+  (A) OLS is BLUE: Best Linear Unbiased Estimator (it has the minimum variance among all linear unbiased estimators)
+  (B) OLS always produces 100% accurate predictions
+  (C) OLS is biased but fast
+  (D) OLS requires quantum computers
+Correct Answer: (A)
+Explanation: The Gauss-Markov theorem proves that under standard assumptions, OLS estimators have minimum variance among all linear unbiased estimators.
+
+Q161 [Unit 4] [EASY]: What is Multiple Linear Regression?
+  (A) Running simple linear regression multiple times in parallel
+  (B) An extension of linear regression that models the relationship between two or more independent features and a continuous target: Y = β₀ + β₁X₁ + β₂X₂ + ... + βₚXₚ + ε
+  (C) A model that outputs multiple target columns simultaneously
+  (D) A regression model with multiple layers of neural networks
+Correct Answer: (B)
+Explanation: Multiple linear regression extends bivariate regression to multidimensional feature spaces.
+
+Q162 [Unit 4] [HARD]: In matrix notation, what is the closed-form analytical solution (Normal Equation) for the OLS coefficient vector β?
+  (A) β = (XᵀX)⁻¹XᵀY
+  (B) β = XᵀY / XᵀX
+  (C) β = (X + Y)⁻¹Xᵀ
+  (D) β = X(YᵀY)⁻¹
+Correct Answer: (A)
+Explanation: The normal equation minimizing RSS in matrix form is β = (XᵀX)⁻¹Xᵀy.
+
+Q163 [Unit 4] [HARD]: Under which condition does the matrix (XᵀX) become non-invertible (singular), preventing direct analytical solution via the Normal Equation?
+  (A) When the number of observations N is greater than 100
+  (B) When perfect multicollinearity exists (features are linearly dependent) or when number of features P > number of samples N
+  (C) When all numbers are positive
+  (D) When using 64-bit operating systems
+Correct Answer: (B)
+Explanation: If features are collinear or features exceed observations (P > N), XᵀX is rank-deficient and cannot be inverted.
+
+Q164 [Unit 4] [MEDIUM]: What is 'Gradient Descent' in the context of linear model optimization?
+  (A) An analytical single-step closed-form formula
+  (B) An iterative first-order optimization algorithm that updates parameters in the direction opposite to the gradient of the loss function to locate a minimum
+  (C) A method for sorting numbers in descending order
+  (D) A hardware cooling technique for processors
+Correct Answer: (B)
+Explanation: Gradient descent iteratively updates weights: w = w - α * ∇Loss(w), stepping down the loss surface.
+
+Q165 [Unit 4] [MEDIUM]: In Gradient Descent, what does the 'Learning Rate' (α) parameter control?
+  (A) The number of CPU cores used
+  (B) The step size taken in the parameter space towards the cost function minimum at each iteration
+  (C) The percentage of data loaded into memory
+  (D) The speed of the network card
+Correct Answer: (B)
+Explanation: The learning rate α scales the gradient step; too small converges slowly, while too large can cause divergence.
+
+Q166 [Unit 4] [EASY]: What is a 'Residual Plot' used for in regression evaluation?
+  (A) To plot residuals on the vertical axis against predicted fitted values on the horizontal axis to verify regression assumptions
+  (B) To display the distribution of student test grades
+  (C) To plot the physical coordinates of servers
+  (D) To monitor memory usage over time
+Correct Answer: (A)
+Explanation: Residual plots assess linearity and homoscedasticity; an ideal plot displays an unstructured random cloud of points around zero.
+
+Q167 [Unit 4] [MEDIUM]: In an ideal, well-specified linear regression model, how should the Residual Plot appear?
+  (A) A random, homoscedastic scatter of points centered around zero with no discernible curved or funnel patterns
+  (B) A clear U-shaped parabolic curve
+  (C) A straight diagonal line with a slope of 45 degrees
+  (D) All points clustered tightly on the far right
+Correct Answer: (A)
+Explanation: A random dispersion around zero confirms that the linear function captured all structural relationships.
+
+Q168 [Unit 4] [MEDIUM]: What does a curved, U-shaped pattern in a Residual Plot indicate?
+  (A) The relationship between predictors and the target is non-linear, suggesting polynomial terms or non-linear models are needed
+  (B) The model has achieved perfection
+  (C) The data has zero variance
+  (D) The computer processor made an arithmetic error
+Correct Answer: (A)
+Explanation: Systematic curvature in residuals indicates uncaptured non-linear relationships.
+
+Q169 [Unit 4] [MEDIUM]: What is a 'Distribution Plot' of residuals used to verify in regression diagnostics?
+  (A) Whether the residual errors follow an approximately Normal (Gaussian) distribution with mean zero
+  (B) Whether the dataset has enough rows
+  (C) Whether the features are stored in alphabetical order
+  (D) The download speed of the model weights
+Correct Answer: (A)
+Explanation: Linear regression hypothesis tests (t-tests, F-tests) assume normally distributed error terms.
+
+Q170 [Unit 4] [EASY]: What is Polynomial Regression?
+  (A) A form of regression where the relationship between the independent variable X and target Y is modeled as an nth degree polynomial: Y = β₀ + β₁X + β₂X² + ... + βₙXⁿ + ε
+  (B) A regression algorithm designed exclusively for polygon graphics
+  (C) A model where coefficients are non-linear powers
+  (D) A model that only accepts complex numbers
+Correct Answer: (A)
+Explanation: Polynomial regression models non-linear relationships by creating higher-order polynomial powers of features while remaining linear in parameters.
+
+Q171 [Unit 4] [MEDIUM]: Why is Polynomial Regression still considered a 'Linear Model'?
+  (A) Because its graph is always a straight line
+  (B) Because the model is linear in the unknown parameters (coefficients β), even though the feature variables are transformed non-linearly
+  (C) Because it is trained using linear accelerators
+  (D) Because it only accepts integers
+Correct Answer: (B)
+Explanation: Linearity in regression refers to linearity in parameters β, not the predictors X.
+
+Q172 [Unit 4] [MEDIUM]: What major risk increases exponentially as the degree of a Polynomial Regression model increases (e.g., degree 15 on 20 data points)?
+  (A) Severe Overfitting, capturing noise and exhibiting extreme oscillatory fluctuations between training points
+  (B) Underfitting with high bias
+  (C) The file size decreasing to zero bytes
+  (D) The loss function becoming negative
+Correct Answer: (A)
+Explanation: High-degree polynomials flex to fit sample noise, leading to catastrophic generalization error on unseen data.
+
+Q173 [Unit 4] [MEDIUM]: What is a 'Machine Learning Pipeline' (e.g., Scikit-Learn `Pipeline`)?
+  (A) A physical plumbing pipe for liquid cooling
+  (B) A software construct that chains multiple data transformation steps (imputation, scaling) together with a final estimator into a unified object
+  (C) A method for downloading datasets via torrents
+  (D) A pipeline for deploying Docker containers to Kubernetes
+Correct Answer: (B)
+Explanation: Pipelines encapsulate preprocessing, feature selection, and estimation into a single object, preventing data leakage.
+
+Q174 [Unit 4] [HARD]: Why is encapsulating feature scaling and model training inside a Scikit-Learn `Pipeline` critical?
+  (A) It speeds up computer execution by 1000x
+  (B) It guarantees that scaling parameters (mean and std) are learned strictly from training folds, preventing data leakage from test sets during cross-validation
+  (C) It automatically writes unit tests
+  (D) It converts Python scripts to C++ code
+Correct Answer: (B)
+Explanation: Fitting scalers outside pipelines leaks test-set distributional knowledge into training representations.
+
+Q175 [Unit 4] [EASY]: What does the Coefficient of Determination (R²) represent in regression evaluation?
+  (A) The proportion of variance in the dependent target variable that is explained by the independent features in the model
+  (B) The square of the standard error of the estimate
+  (C) The probability that the model is correct
+  (D) The slope of the line multiplied by two
+Correct Answer: (A)
+Explanation: R² = 1 - (SS_res / SS_tot), measuring the proportion of target variance explained by predictors.
+
+Q176 [Unit 4] [MEDIUM]: What is the valid mathematical range of R² in a training evaluation with an intercept?
+  (A) Between -1.0 and +1.0
+  (B) Between 0.0 and 1.0 (though it can be negative on out-of-sample test sets when predictions are worse than the mean)
+  (C) Between 0 and 100 without decimals
+  (D) From 1 to infinity
+Correct Answer: (B)
+Explanation: On training data with an intercept, R² ranges from 0 to 1; on test sets, poor models can yield negative R².
+
+Q177 [Unit 4] [MEDIUM]: What is a major limitation of standard R² when adding many new predictor features to a multiple linear regression model?
+  (A) R² can never be calculated on more than two features
+  (B) Standard R² monotonically increases (or remains constant), never decreasing, even if completely irrelevant noise features are added
+  (C) R² becomes zero whenever three features are present
+  (D) R² turns into an imaginary number
+Correct Answer: (B)
+Explanation: R² mechanically increases with every added predictor, rewarding overparameterization.
+
+Q178 [Unit 4] [MEDIUM]: How does 'Adjusted R²' resolve the limitation of standard R²?
+  (A) By penalizing the score for every additional independent feature added to the model: R²_adj = 1 - [(1 - R²)(n - 1) / (n - p - 1)]
+  (B) By taking the square root of R²
+  (C) By multiplying R² by the sample size
+  (D) By rounding R² to the nearest integer
+Correct Answer: (A)
+Explanation: Adjusted R² penalizes model complexity; it increases only if a new term improves fit more than expected by chance.
+
+Q179 [Unit 4] [EASY]: What is Mean Squared Error (MSE)?
+  (A) The average of absolute errors
+  (B) The average of the squared differences between observed values and predicted values: MSE = (1/n) Σ(y_i - ŷ_i)²
+  (C) The square of the mean target value
+  (D) The ratio of errors to sample size
+Correct Answer: (B)
+Explanation: MSE measures average squared prediction error, heavily penalizing large outliers.
+
+Q180 [Unit 4] [EASY]: What is Root Mean Squared Error (RMSE)?
+  (A) The square of the MSE
+  (B) The square root of the Mean Squared Error: RMSE = sqrt(MSE), bringing the error metric back to the original units of the target variable
+  (C) The absolute value of the mean error
+  (D) The reciprocal of MSE
+Correct Answer: (B)
+Explanation: RMSE takes the square root of MSE, interpreting errors in the same units as the target variable.
+
+Q181 [Unit 4] [EASY]: What is Mean Absolute Error (MAE)?
+  (A) MAE = (1/n) Σ|y_i - ŷ_i|
+  (B) MAE = (1/n) Σ(y_i - ŷ_i)²
+  (C) MAE = sqrt(MSE)
+  (D) MAE = max(|y_i - ŷ_i|)
+Correct Answer: (A)
+Explanation: MAE calculates average absolute magnitude of errors, providing a linear, outlier-robust metric.
+
+Q182 [Unit 4] [MEDIUM]: How does RMSE compare to MAE in terms of sensitivity to extreme outlier prediction errors?
+  (A) RMSE penalizes large outlier errors much more heavily than MAE because individual errors are squared before averaging
+  (B) MAE penalizes outliers more than RMSE
+  (C) They are mathematically identical in every scenario
+  (D) RMSE completely ignores outliers
+Correct Answer: (A)
+Explanation: Squaring errors in RMSE gives disproportionate weight to large outliers, whereas MAE scales linearly.
+
+Q183 [Unit 4] [MEDIUM]: What is Mean Absolute Percentage Error (MAPE)?
+  (A) The average percentage by which predictions deviate from actual values: MAPE = (100%/n) Σ|(y_i - ŷ_i) / y_i|
+  (B) The percentage of correct predictions in classification
+  (C) The maximum error expressed as a fraction
+  (D) The correlation coefficient expressed as a percentage
+Correct Answer: (A)
+Explanation: MAPE expresses prediction accuracy as a scale-independent percentage of actual values.
+
+Q184 [Unit 4] [MEDIUM]: What is a critical limitation of Mean Absolute Percentage Error (MAPE)?
+  (A) It cannot be calculated on negative numbers or when actual target values equal zero (division by zero)
+  (B) It is too fast to compute on modern computers
+  (C) It only accepts integer variables
+  (D) It produces numbers greater than 1000 in all cases
+Correct Answer: (A)
+Explanation: When true values y_i are zero or near zero, division results in undefined or explosive values.
+
+Q185 [Unit 4] [MEDIUM]: In regression analysis, what does a t-test on an individual coefficient β_j evaluate?
+  (A) Whether the entire model has an R² > 0.5
+  (B) Whether that specific predictor has a statistically significant linear relationship with the target (testing H₀: β_j = 0)
+  (C) Whether the feature has missing values
+  (D) Whether the feature follows a uniform distribution
+Correct Answer: (B)
+Explanation: The t-statistic evaluates whether a single regression weight differs significantly from zero.
+
+Q186 [Unit 4] [MEDIUM]: What does the overall F-test evaluate in multiple linear regression?
+  (A) Whether at least one of the predictor coefficients is significantly different from zero (testing H₀: β₁ = β₂ = ... = βₚ = 0)
+  (B) Whether the intercept equals zero
+  (C) Whether the sample size is sufficient
+  (D) Whether the computer processor is running at full capacity
+Correct Answer: (A)
+Explanation: The global F-test checks if the predictors collectively explain a significant proportion of target variance.
+
+Q187 [Unit 4] [HARD]: What does the Durbin-Watson test detect in regression diagnostics?
+  (A) Multicollinearity among independent features
+  (B) Autocorrelation (serial correlation) among residual error terms
+  (C) Heteroscedasticity of residuals
+  (D) Non-normality of predictor features
+Correct Answer: (B)
+Explanation: The Durbin-Watson statistic tests for first-order autocorrelation in residuals; values near 2 indicate zero autocorrelation.
+
+Q188 [Unit 4] [HARD]: What is 'Cook's Distance' used for in regression analysis?
+  (A) Measuring the cooking temperature of data servers
+  (B) Identifying highly influential data points that exert disproportionate leverage on the estimated regression coefficients
+  (C) Measuring the distance between two database tables
+  (D) Calculating the execution time of linear regression
+Correct Answer: (B)
+Explanation: Cook's distance measures aggregate change in fitted values when an observation is omitted, pinpointing influential outliers.
+
+Q189 [Unit 4] [HARD]: What is 'Leverage' in regression diagnostics?
+  (A) The financial debt of the company using the model
+  (B) A measure of how far an observation's predictor feature values deviate from the mean of those features (identifying extreme values in the X space)
+  (C) The mechanical force applied to cooling fans
+  (D) The slope of the regression line
+Correct Answer: (B)
+Explanation: Leverage (hat matrix diagonal h_ii) flags points with extreme predictor values that can pull the regression line.
+
+Q190 [Unit 4] [HARD]: What is a 'Partial Residual Plot' (Component-Plus-Residual Plot) used for?
+  (A) To visually inspect the relationship between an individual predictor and the target while controlling for the effects of all other independent features
+  (B) To plot residuals in different pastel colors
+  (C) To divide residuals among team members
+  (D) To plot memory usage of background processes
+Correct Answer: (A)
+Explanation: Partial residual plots diagnose non-linear relationships for specific predictors in multiple regression.
+
+Q191 [Unit 4] [EASY]: What does 'In-Sample Evaluation' mean in predictive modeling?
+  (A) Evaluating the model on the exact same dataset that was used to train the model
+  (B) Evaluating the model on brand new data from next year
+  (C) Evaluating the model inside a clean-room laboratory
+  (D) Evaluating only the first 5 rows of data
+Correct Answer: (A)
+Explanation: In-sample evaluation measures fit on training observations, which typically underestimates true out-of-sample error.
+
+Q192 [Unit 4] [EASY]: What does 'Out-of-Sample Evaluation' mean?
+  (A) Testing the model on unseen data that was not utilized in any way during parameter estimation or training
+  (B) Deleting samples from the database
+  (C) Testing code on a computer with no internet connection
+  (D) Measuring the file size of the trained model
+Correct Answer: (A)
+Explanation: Out-of-sample evaluation tests generalization on holdout data to assess real-world performance.
+
+Q193 [Unit 4] [EASY]: What is the primary danger of relying solely on In-Sample Evaluation metrics?
+  (A) Models may execute too quickly
+  (B) A severely overfitted model can achieve near-zero training error (R² = 1.0) while completely failing on new out-of-sample data
+  (C) The model weights will be deleted automatically
+  (D) It violates open-source software licenses
+Correct Answer: (B)
+Explanation: Overfitted models memorize training noise; in-sample scores create an illusion of predictive power.
+
+Q194 [Unit 4] [MEDIUM]: What is 'Interaction Effect' in multiple regression?
+  (A) When two users edit the same database row simultaneously
+  (B) A situation where the effect of one predictor variable on the target depends on the value of another predictor variable (modeled via product terms X₁ * X₂)
+  (C) When graphics cards interact through SLI bridges
+  (D) When code interacts with operating system APIs
+Correct Answer: (B)
+Explanation: Interaction terms capture synergistic effects where one feature modulates the impact of another.
+
+Q195 [Unit 4] [EASY]: In Scikit-Learn, which class is used to fit a standard Ordinary Least Squares multiple linear regression model?
+  (A) `sklearn.linear_model.LinearRegression`
+  (B) `sklearn.tree.DecisionTreeRegressor`
+  (C) `sklearn.cluster.KMeans`
+  (D) `sklearn.svm.SVC`
+Correct Answer: (A)
+Explanation: `LinearRegression` in Scikit-Learn fits an OLS regression using LAPACK routines.
+
+Q196 [Unit 4] [EASY]: In Scikit-Learn's `LinearRegression`, which attribute stores the learned regression coefficients (slopes)?
+  (A) `model.coef_`
+  (B) `model.intercept_`
+  (C) `model.weights_`
+  (D) `model.params_`
+Correct Answer: (A)
+Explanation: The estimated slopes are stored in `model.coef_`, while the intercept is stored in `model.intercept_`.
+
+Q197 [Unit 4] [EASY]: What does the `fit()` method do in Scikit-Learn estimators?
+  (A) It resizes the computer window to fit the monitor
+  (B) It estimates the model parameters (weights, coefficients) from the training data X and y
+  (C) It plots the regression line in a new window
+  (D) It exports data to an Excel spreadsheet
+Correct Answer: (B)
+Explanation: `fit(X, y)` estimates mathematical parameters from training features and targets.
+
+Q198 [Unit 4] [EASY]: What does the `predict()` method do in Scikit-Learn estimators?
+  (A) It generates predictions for given input features using the learned model parameters
+  (B) It guesses future stock market prices randomly
+  (C) It prints text to the system console
+  (D) It deletes test labels from the database
+Correct Answer: (A)
+Explanation: `predict(X)` applies learned coefficients to new feature matrices to generate predicted values.
+
+Q199 [Unit 4] [MEDIUM]: What is 'Stepwise Regression'?
+  (A) Writing code one line at a time
+  (B) A step-by-step automated feature selection procedure that iteratively adds or removes predictors based on statistical significance (e.g., p-values or AIC)
+  (C) Running linear regression on staircase data
+  (D) Executing models on walking robot hardware
+Correct Answer: (B)
+Explanation: Stepwise regression systematically evaluates feature subsets using forward addition, backward elimination, or bidirectional steps.
+
+Q200 [Unit 4] [HARD]: What is the Akaike Information Criterion (AIC) used for in model selection?
+  (A) Measuring CPU temperature during training
+  (B) An estimator of out-of-sample prediction error that balances model goodness-of-fit with a penalty for the number of estimated parameters: AIC = 2k - 2ln(L)
+  (C) A measure of graphical image clarity
+  (D) The financial cost of running a cloud cluster
+Correct Answer: (B)
+Explanation: AIC quantifies information loss, rewarding goodness-of-fit while penalizing model complexity (lower AIC is preferred).
+
+Q201 [Unit 5] [EASY]: What is 'Generalization Error' in machine learning?
+  (A) A syntax error produced by compilers when compiling code
+  (B) A measure of how accurately an algorithm is able to predict target values for previously unseen out-of-sample data
+  (C) An error caused by faulty RAM modules
+  (D) The difference between floating point and integer precision
+Correct Answer: (B)
+Explanation: Generalization error measures how well model representations perform on novel, unseen data.
+
+Q202 [Unit 5] [EASY]: In the fundamental Bias-Variance Tradeoff, what does 'Bias' represent?
+  (A) The physical tilt of a laptop monitor
+  (B) The error introduced by approximating a complicated real-world problem with an overly simplistic model (leading to underfitting)
+  (C) The random noise in the measurement sensors
+  (D) The execution time of the algorithm
+Correct Answer: (B)
+Explanation: Bias error stems from erroneous assumptions (e.g., assuming linear relationships for complex non-linear phenomena).
+
+Q203 [Unit 5] [EASY]: What does 'Variance' represent in the Bias-Variance Tradeoff?
+  (A) The spread of the training data features around zero
+  (B) The sensitivity of the model to small fluctuations and random noise in the training set (leading to overfitting)
+  (C) The storage size of the dataset on disk
+  (D) The number of hyperparameter combinations tested
+Correct Answer: (B)
+Explanation: High variance means the model fits specific training noise too closely, failing to generalize across different sample splits.
+
+Q204 [Unit 5] [EASY]: A model characterized by High Bias and Low Variance typically suffers from:
+  (A) Underfitting (the model is too simple to capture the underlying structure of the data)
+  (B) Overfitting
+  (C) Zero training error
+  (D) Data leakage
+Correct Answer: (A)
+Explanation: High bias causes underfitting: the model fails to capture underlying patterns on both training and test data.
+
+Q205 [Unit 5] [EASY]: A model characterized by Low Bias and High Variance typically suffers from:
+  (A) Underfitting
+  (B) Overfitting (the model has memorized the training set, including noise and outliers, and fails on unseen test data)
+  (C) Fast execution time
+  (D) Zero parameters
+Correct Answer: (B)
+Explanation: Low bias with high variance yields overfitting: stellar training performance but poor validation scores.
+
+Q206 [Unit 5] [HARD]: What is the theoretical decomposition of the expected generalization error of a supervised learning model?
+  (A) Error = (Bias)² + Variance + Irreducible Error (Noise)
+  (B) Error = Bias + Variance * 2
+  (C) Error = Bias / Variance
+  (D) Error = (Bias * Variance) - Noise
+Correct Answer: (A)
+Explanation: Expected MSE decomposes into squared bias, model variance, and irreducible environmental noise σ².
+
+Q207 [Unit 5] [MEDIUM]: What is 'Irreducible Error' in machine learning?
+  (A) Errors caused by bugs in the Python interpreter
+  (B) Noise inherent in the data generation process itself that cannot be eliminated by any machine learning model
+  (C) Errors that cause computers to crash
+  (D) Data entry mistakes that can easily be corrected
+Correct Answer: (B)
+Explanation: Irreducible error σ² arises from unobserved variables or measurement noise beyond algorithmic control.
+
+Q208 [Unit 5] [EASY]: What is the simplest and most common validation strategy in machine learning?
+  (A) Train-Test Split (Holdout Method)
+  (B) Training on 100% of data and evaluating on 100% of data
+  (C) Deleting test data before training
+  (D) Testing models on synthetic random noise
+Correct Answer: (A)
+Explanation: The holdout method partitions available data into distinct training and testing subsets (e.g., 80/20 split).
+
+Q209 [Unit 5] [EASY]: In standard Train-Test Split validation, what is a typical split ratio used in practice?
+  (A) 99% testing, 1% training
+  (B) 70% to 80% training data, and 20% to 30% testing data
+  (C) 10% training, 90% testing
+  (D) 50% training, 50% hyperparameter tuning, 0% testing
+Correct Answer: (B)
+Explanation: An 80/20 or 70/30 split provides ample training samples while maintaining a statistically significant evaluation sample.
+
+Q210 [Unit 5] [MEDIUM]: What is a major limitation of a single Holdout Train-Test Split, especially on small datasets?
+  (A) It consumes too much cloud storage
+  (B) Performance estimates can be highly sensitive to the specific random split, exhibiting high variance depending on which samples ended up in the test set
+  (C) It only works on decision tree models
+  (D) It modifies the original dataset files permanently
+Correct Answer: (B)
+Explanation: On smaller datasets, single splits suffer from high sampling variance depending on partition boundaries.
+
+Q211 [Unit 5] [EASY]: What is 'K-Fold Cross-Validation'?
+  (A) Running a model K times on the entire dataset
+  (B) A resampling technique that partitions data into K equal folds, iteratively training on K-1 folds and evaluating on the remaining fold K times
+  (C) Multiplying model parameters by K
+  (D) Splitting code into K separate Python scripts
+Correct Answer: (B)
+Explanation: K-Fold Cross-Validation rotates validation across K non-overlapping folds, averaging performance across all K iterations.
+
+Q212 [Unit 5] [EASY]: In standard 5-Fold Cross-Validation, how many distinct models are trained?
+  (A) 1
+  (B) 5
+  (C) 25
+  (D) 10
+Correct Answer: (B)
+Explanation: In 5-fold CV, 5 distinct models are trained, each evaluated on a different 20% holdout fold.
+
+Q213 [Unit 5] [MEDIUM]: What is the primary advantage of K-Fold Cross-Validation over a single train-test split?
+  (A) It requires zero computational power
+  (B) Every single observation is used for validation exactly once, providing a much more reliable and low-variance estimate of generalization performance
+  (C) It guarantees 100% accuracy on all future data
+  (D) It eliminates the need for data cleaning
+Correct Answer: (B)
+Explanation: K-fold CV maximizes data utilization and provides unbiased variance estimates of out-of-sample error.
+
+Q214 [Unit 5] [MEDIUM]: What is 'Stratified K-Fold Cross-Validation'?
+  (A) Cross-validation where data is split randomly without checking labels
+  (B) A variation of K-Fold cross-validation designed for classification where each fold contains approximately the same percentage of each target class as the complete dataset
+  (C) Cross-validation performed on stratified rock samples
+  (D) Cross-validation where K is always set to 100
+Correct Answer: (B)
+Explanation: Stratified K-fold ensures class proportions in each fold match the full population distribution.
+
+Q215 [Unit 5] [MEDIUM]: What is 'Leave-One-Out Cross-Validation' (LOOCV)?
+  (A) An extreme case of K-Fold CV where K equals N (the total number of observations), training on N-1 samples and testing on exactly one sample per iteration
+  (B) Leaving one feature out of the model training
+  (C) Leaving out the test set completely
+  (D) Excluding the worst-performing model
+Correct Answer: (A)
+Explanation: LOOCV sets K = N, training N times on N-1 observations and testing on the single left-out observation.
+
+Q216 [Unit 5] [MEDIUM]: What is the primary computational disadvantage of Leave-One-Out Cross-Validation (LOOCV) on large datasets?
+  (A) It can only run on Linux computers
+  (B) It requires training the model N separate times, which becomes computationally prohibitive when N is large
+  (C) It increases model bias dramatically
+  (D) It deletes one row from the database permanently
+Correct Answer: (B)
+Explanation: For large N, training N separate models causes severe computational latency.
+
+Q217 [Unit 5] [EASY]: What is 'Regularization' in machine learning and regression modeling?
+  (A) A legal technique for complying with government data rules
+  (B) A technique that discourages learning overly complex or flexible models by adding a penalty term to the loss function to prevent overfitting
+  (C) The process of sorting data in ascending regular order
+  (D) Writing clean code following PEP 8 standards
+Correct Answer: (B)
+Explanation: Regularization adds a penalty term to the optimization objective, constraining model parameter magnitudes to prevent overfitting.
+
+Q218 [Unit 5] [EASY]: What is 'Ridge Regression' (also known as Tikhonov Regularization or L2 Regularization)?
+  (A) A regression model that forces coefficients to be exactly zero
+  (B) A linear regression variant that adds an L2 penalty proportional to the sum of squared coefficients to the OLS loss function: Loss = RSS + λ Σ(β_j)²
+  (C) A model that fits data along geological mountain ridges
+  (D) A model that only uses integer coefficients
+Correct Answer: (B)
+Explanation: Ridge adds an L2 penalty (λ Σβ_j²) to the loss function, shrinking coefficients toward zero without setting them strictly to zero.
+
+Q219 [Unit 5] [MEDIUM]: In Ridge Regression, what does the hyperparameter λ (or `alpha` in Scikit-Learn) control?
+  (A) The learning rate of gradient descent
+  (B) The strength of the regularization penalty, balancing goodness-of-fit against coefficient shrinkage
+  (C) The number of folds in cross-validation
+  (D) The number of features to select
+Correct Answer: (B)
+Explanation: Alpha (λ) governs penalty severity: λ = 0 yields standard OLS; large λ shrinks coefficients asymptotically toward zero.
+
+Q220 [Unit 5] [EASY]: What happens in Ridge Regression when the regularization parameter λ approaches zero (λ -> 0)?
+  (A) All coefficients become exactly zero
+  (B) The Ridge Regression estimator converges to the standard Ordinary Least Squares (OLS) estimator
+  (C) The model execution crashes
+  (D) All coefficients become infinite
+Correct Answer: (B)
+Explanation: When λ = 0, the penalty vanishes, reverting the objective function back to standard OLS.
+
+Q221 [Unit 5] [MEDIUM]: What happens in Ridge Regression when λ becomes extremely large (λ -> ∞)?
+  (A) All feature coefficients β_j shrink asymptotically towards zero (intercept β₀ remains as the mean of Y)
+  (B) All coefficients explode to infinity
+  (C) The model achieves zero training error
+  (D) The model becomes severely overfitted
+Correct Answer: (A)
+Explanation: Large λ penalizes non-zero weights heavily, shrinking all slopes toward zero and resulting in high bias (underfitting).
+
+Q222 [Unit 5] [HARD]: Can Ridge Regression perform automated feature selection by setting coefficients strictly to zero?
+  (A) Yes, Ridge always sets 50% of coefficients to exactly zero
+  (B) No, Ridge shrinks coefficients continuously close to zero, but rarely sets them exactly to zero
+  (C) Yes, Ridge only retains non-zero coefficients
+  (D) Only when trained on GPU hardware
+Correct Answer: (B)
+Explanation: Because the L2 penalty is smooth and circular (differentiable at zero), Ridge shrinks coefficients asymptotically but keeps all features active.
+
+Q223 [Unit 5] [EASY]: What is 'Lasso Regression' (Least Absolute Shrinkage and Selection Operator, or L1 Regularization)?
+  (A) A regression model that adds an L1 penalty proportional to the sum of the absolute values of the coefficients: Loss = RSS + λ Σ|β_j|
+  (B) A model used exclusively in cowboy cattle ranching
+  (C) A regression model with circular penalty contours
+  (D) A model that minimizes absolute errors without coefficients
+Correct Answer: (A)
+Explanation: Lasso adds an L1 penalty (λ Σ|β_j|), generating sparse weight vectors.
+
+Q224 [Unit 5] [HARD]: What unique and powerful property distinguishes Lasso Regression (L1) from Ridge Regression (L2)?
+  (A) Lasso can shrink coefficients to exactly zero, effectively performing automatic feature selection and producing sparse models
+  (B) Lasso executes 1000x faster than Ridge
+  (C) Lasso can only be used on classification problems
+  (D) Lasso does not require hyperparameter tuning
+Correct Answer: (A)
+Explanation: L1 penalty contours have sharp corners on parameter axes; constrained minima frequently land exactly on axes, setting irrelevant weights to 0.
+
+Q225 [Unit 5] [HARD]: Why does the L1 penalty in Lasso produce sparse models with exact zeros while the L2 penalty in Ridge does not?
+  (A) Geometrically, the L1 constraint region is a diamond with sharp vertices along coordinate axes where contours typically intersect first, while L2 is a smooth sphere
+  (B) Because L1 uses division while L2 uses multiplication
+  (C) Because L1 is an open-source algorithm while L2 is proprietary
+  (D) Because L2 is only defined for imaginary numbers
+Correct Answer: (A)
+Explanation: The diamond geometry of the L1 ball intersects loss ellipses on coordinate axes where parameter values equal zero.
+
+Q226 [Unit 5] [MEDIUM]: What is 'Elastic Net' Regularization?
+  (A) A physical bungee cord used in computer assembly
+  (B) A regularization technique that combines both L1 (Lasso) and L2 (Ridge) penalties: Loss = RSS + λ₁ Σ|β_j| + λ₂ Σ(β_j)²
+  (C) A deep neural network connecting cloud servers
+  (D) An algorithm that stretches dataset rows dynamically
+Correct Answer: (B)
+Explanation: Elastic Net blends L1 and L2 penalties, overcoming Lasso's limitations on collinear feature groups.
+
+Q227 [Unit 5] [HARD]: When is Elastic Net typically preferred over standard Lasso Regression?
+  (A) When the number of features P is much larger than observations N (P >> N) or when groups of correlated predictors exist
+  (B) When the dataset has zero missing values
+  (C) When all features are completely uncorrelated
+  (D) When using non-relational databases
+Correct Answer: (A)
+Explanation: Lasso arbitrarily picks one feature among correlated predictors; Elastic Net retains grouped correlation structure.
+
+Q228 [Unit 5] [HARD]: Why is it mandatory to standardize (scale) features before applying Ridge, Lasso, or Elastic Net regularization?
+  (A) Because unscaled features cause floating point overflows in Python
+  (B) Because regularization penalizes coefficient magnitude; features with naturally smaller numerical scales will receive arbitrarily larger coefficients and be unfairly penalized
+  (C) Because Scikit-Learn will throw an exception otherwise
+  (D) Because scaling deletes outliers
+Correct Answer: (B)
+Explanation: Regularization is scale-sensitive; features with large units naturally have smaller coefficients, causing unscaled features to be penalized unequally.
+
+Q229 [Unit 5] [EASY]: What is 'Hyperparameter Tuning'?
+  (A) Tuning the guitar strings in an audio dataset
+  (B) The process of finding the optimal set of hyperparameters (e.g., regularization strength λ, polynomial degree) that minimizes validation error
+  (C) Overclocking the computer CPU frequency
+  (D) Writing comments in Python code
+Correct Answer: (B)
+Explanation: Hyperparameters cannot be learned directly via gradient descent; they must be tuned via search procedures across validation splits.
+
+Q230 [Unit 5] [EASY]: What is 'Grid Search' (e.g., `GridSearchCV` in Scikit-Learn)?
+  (A) A visual search through spreadsheet grids
+  (B) An exhaustive search algorithm that trains and evaluates models across all combinations of specified hyperparameter values using cross-validation
+  (C) Searching for electrical power grids using satellite images
+  (D) A method for ordering data in a table
+Correct Answer: (B)
+Explanation: `GridSearchCV` systematically tests every combination across a specified parameter grid, identifying the top validation configuration.
+
+Q231 [Unit 5] [MEDIUM]: What is 'Randomized Search' (`RandomizedSearchCV`) as compared to Grid Search?
+  (A) A search algorithm that randomly deletes parameters
+  (B) An optimization strategy that samples a fixed number of parameter combinations randomly from specified probability distributions, saving significant compute time
+  (C) A technique that guesses predictions randomly
+  (D) A method for randomizing dataset rows
+Correct Answer: (B)
+Explanation: `RandomizedSearchCV` samples parameter candidates randomly, exploring large parameter spaces faster and more efficiently than exhaustive grid search.
+
+Q232 [Unit 5] [HARD]: What is the primary risk of tuning hyperparameters on the same Test Set used for final evaluation?
+  (A) Information Leakage (Data Snooping), causing overoptimistic performance estimates that fail to generalize to true production data
+  (B) The test set files will be corrupted
+  (C) The model will execute more slowly
+  (D) The computer memory will be exhausted
+Correct Answer: (A)
+Explanation: Tuning hyperparameters on the test set overfits the test partition; an isolated holdout test set is necessary for unbiased validation.
+
+Q233 [Unit 5] [MEDIUM]: What is a 'Three-Way Data Split' in machine learning?
+  (A) Splitting data into three separate hard drives
+  (B) Partitioning data into Training Set (for parameter estimation), Validation Set (for hyperparameter tuning and model selection), and Test Set (for final unbiased evaluation)
+  (C) Dividing data by morning, afternoon, and night
+  (D) Splitting code into three functions
+Correct Answer: (B)
+Explanation: Three-way splitting ensures clean separation between parameter fitting (train), model selection (validation), and final auditing (test).
+
+Q234 [Unit 5] [EASY]: What does the `best_params_` attribute contain in a fitted `GridSearchCV` object in Scikit-Learn?
+  (A) The total time elapsed during execution
+  (B) The dictionary of parameter setting combinations that gave the best score on the holdout validation folds
+  (C) The memory addresses of the models
+  (D) The coefficients of the worst model
+Correct Answer: (B)
+Explanation: `best_params_` outputs the parameter dictionary achieving maximum average validation score.
+
+Q235 [Unit 5] [MEDIUM]: What is a 'Validation Curve' used for in model diagnostics?
+  (A) Plotting training and validation scores against varying values of a single hyperparameter (e.g., tree depth, regularization alpha) to visualize underfitting and overfitting
+  (B) Plotting the financial revenue of a company over time
+  (C) Plotting CPU clock frequency against voltage
+  (D) Drawing smooth curves on presentation slides
+Correct Answer: (A)
+Explanation: Validation curves illustrate how varying a hyperparameter shifts performance along the bias-variance spectrum.
+
+Q236 [Unit 5] [MEDIUM]: What is a 'Learning Curve' in model evaluation?
+  (A) A plot of student grades over an academic semester
+  (B) A plot showing training and validation scores as a function of the number of training samples, diagnosing whether a model suffers from high bias or high variance
+  (C) The time required for an engineer to learn Python
+  (D) A curve showing download progress of a dataset
+Correct Answer: (B)
+Explanation: Learning curves plot train vs validation error against sample size to diagnose data sufficiency and model capacity.
+
+Q237 [Unit 5] [MEDIUM]: If both the Training Error and Validation Error on a Learning Curve are high and plateau close together, the model suffers from:
+  (A) High Variance (Overfitting)
+  (B) High Bias (Underfitting)
+  (C) Data Leakage
+  (D) Zero Error
+Correct Answer: (B)
+Explanation: Converging high training and validation errors indicate the model lacks capacity to capture true patterns (underfitting).
+
+Q238 [Unit 5] [MEDIUM]: If the Training Error is very low, but the Validation Error is high and a large gap persists between them on a Learning Curve, the model suffers from:
+  (A) High Variance (Overfitting)
+  (B) High Bias (Underfitting)
+  (C) Optimal Convergence
+  (D) Underparameterization
+Correct Answer: (A)
+Explanation: A wide generalization gap between training fit and validation performance is the hallmark of overfitting.
+
+Q239 [Unit 5] [EASY]: What effective strategy should be pursued to fix High Variance (Overfitting)?
+  (A) Adding more polynomial features and increasing model capacity
+  (B) Gathering more training data, applying regularization (L1/L2), and reducing feature complexity
+  (C) Decreasing regularization strength to zero
+  (D) Deleting the validation set
+Correct Answer: (B)
+Explanation: Overfitting is mitigated by expanding sample size, feature selection, and increasing regularization penalties.
+
+Q240 [Unit 5] [EASY]: What effective strategy should be pursued to fix High Bias (Underfitting)?
+  (A) Increasing model complexity (e.g., adding polynomial features, neural network layers) and decreasing regularization strength
+  (B) Collecting fewer data samples
+  (C) Increasing regularization penalty λ to infinity
+  (D) Deleting half the features randomly
+Correct Answer: (A)
+Explanation: Underfitting requires expanding expressive capacity, feature engineering, and relaxing regularization constraints.
+
+Q241 [Unit 5] [EASY]: In Scikit-Learn, which class implements Ridge Regression with built-in cross-validation for efficient alpha selection?
+  (A) `RidgeCV`
+  (B) `LassoCV`
+  (C) `GridSearchCV`
+  (D) `LinearRegressionCV`
+Correct Answer: (A)
+Explanation: `RidgeCV` performs efficient generalized cross-validation across alpha candidates.
+
+Q242 [Unit 5] [EASY]: In Scikit-Learn, which class implements Lasso Regression with built-in cross-validation?
+  (A) `LassoCV`
+  (B) `RidgeCV`
+  (C) `ElasticNetCV`
+  (D) `SGDRegressor`
+Correct Answer: (A)
+Explanation: `LassoCV` fits Lasso along a regularization path with automated cross-validation.
+
+Q243 [Unit 5] [HARD]: What is 'Data Leakage' (Target Leakage) in model development?
+  (A) When data files are accidentally leaked on the internet
+  (B) A critical error where information from outside the training dataset (such as target values or future data) is inadvertently used to create the model, resulting in unrealistic performance
+  (C) Water leaking onto server hardware
+  (D) When a computer program runs out of memory
+Correct Answer: (B)
+Explanation: Data leakage occurs when validation or future information contaminates training, generating falsely elevated evaluation metrics.
+
+Q244 [Unit 5] [HARD]: Which of the following represents a common source of Data Leakage?
+  (A) Fitting a Min-Max Scaler on the entire dataset before performing Train-Test split
+  (B) Using 5-fold cross validation inside a pipeline
+  (C) Standardizing features using only training fold statistics
+  (D) Writing automated unit tests for preprocessing functions
+Correct Answer: (A)
+Explanation: Fitting transformations across the entire dataset exposes test-set distributions to training inputs.
+
+Q245 [Unit 5] [MEDIUM]: What is 'Early Stopping' in iterative model training (e.g., Gradient Descent)?
+  (A) Shutting down the computer before finishing
+  (B) Halting the optimization process as soon as validation loss begins to increase, preventing the model from overfitting to training noise
+  (C) Killing background tasks manually
+  (D) Stopping when training error reaches exactly zero
+Correct Answer: (B)
+Explanation: Early stopping monitors validation loss, terminating training when validation improvement stalls to prevent overfitting.
+
+Q246 [Unit 5] [EASY]: In regression, what is the 'Baseline Model' against which all developed models should be benchmarked?
+  (A) A complex 50-layer deep convolutional neural network
+  (B) A trivial heuristic model that always predicts the mean (or median) of the target variable for every observation
+  (C) A random number generator between 0 and 100
+  (D) A model that copies the first column of the dataset
+Correct Answer: (B)
+Explanation: A dummy regressor predicting the sample mean serves as the baseline; viable models must demonstrate superior performance over this baseline.
+
+Q247 [Unit 5] [EASY]: What does `DummyRegressor(strategy='mean')` in Scikit-Learn do?
+  (A) It trains an advanced ensemble of regression trees
+  (B) It acts as a baseline estimator that always predicts the training target mean, regardless of input feature values
+  (C) It throws a syntax error if input features are missing
+  (D) It generates random predictions from a Gaussian distribution
+Correct Answer: (B)
+Explanation: `DummyRegressor` provides a null reference benchmark to verify if trained models provide legitimate predictive signal.
+
+Q248 [Unit 5] [MEDIUM]: What is 'Model Drift' (or Concept Drift) in post-deployment model evaluation?
+  (A) When the physical hard drive vibrates out of place
+  (B) The gradual degradation of model predictive accuracy over time due to shifts in real-world environmental patterns and distributions
+  (C) When variable names are renamed in software updates
+  (D) When users change their passwords
+Correct Answer: (B)
+Explanation: Real-world data dynamics drift from historical training snapshots, necessitating performance monitoring and retraining.
+
+Q249 [Unit 5] [EASY]: What is A/B Testing in machine learning deployment evaluation?
+  (A) Testing code using only the keys A and B on the keyboard
+  (B) An experimental randomized trial where users are split between model version A (control) and model version B (challenger) to measure real-world performance differences
+  (C) Training two models on odd and even rows
+  (D) Comparing the size of two database files
+Correct Answer: (B)
+Explanation: A/B testing evaluates live statistical performance between incumbent and candidate models in production environments.
+
+Q250 [Unit 5] [EASY]: Why should model performance be continually monitored post-deployment using dashboards and automated alerts?
+  (A) To prevent software licenses from expiring
+  (B) To detect data drift, concept drift, and performance regressions early, triggering timely model retraining before business operations are impaired
+  (C) To make sure cooling fans continue spinning
+  (D) To ensure developers do not forget their login credentials
+Correct Answer: (B)
+Explanation: Production telemetry monitors feature drift and error spikes, triggering automated retraining pipelines.
+

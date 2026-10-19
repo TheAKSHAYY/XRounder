@@ -61,3 +61,8 @@ supabase/.temp/
 # Agent customizations
 .agents/
 skills-lock.json
+
+# Local scratch and agent working files
+scratch/
+agent/
+.claude/

@@ -1,0 +1,2753 @@
+// BCA-105N: Basic Mathematics (Semester 1 - MJPRU Bareilly)
+// Complete Official Question Bank (250 MCQs - 50 MCQs per Unit)
+
+Q: A positive integer is divisible by 3 if and only if:
+A) Its last digit is 3
+B) The sum of its digits is divisible by 3 *
+C) It is an odd number
+D) Its last two digits are divisible by 3
+E: A number is divisible by 3 if the sum of all its decimal digits is a multiple of 3 (digital root property).
+D: easy
+T: BCA-105N, Unit-1, Divisibility, Rule-of-3
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the divisibility test for a number to be divisible by 4?
+A) The last digit must be 4
+B) The number formed by its last two digits must be divisible by 4 (or ends in 00) *
+C) The sum of digits is 4
+D) It must be an even number ending in 2
+E: Because 100 is divisible by 4, any higher powers of 10 are multiples of 4; hence only the last two digits determine divisibility by 4.
+D: easy
+T: BCA-105N, Unit-1, Divisibility, Rule-of-4
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A number is divisible by 6 if it satisfies:
+A) Divisibility by 2 and 3 simultaneously *
+B) Divisibility by 3 only
+C) Ending in digit 6
+D) Sum of digits is 6
+E: Since 6 = 2 x 3 and gcd(2,3) = 1, a number is divisible by 6 if it is even and the sum of its digits is divisible by 3.
+D: easy
+T: BCA-105N, Unit-1, Divisibility, Rule-of-6
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following numbers is divisible by 11?
+A) 1331 *
+B) 1234
+C) 11111
+D) 2468
+E: Divisibility by 11: Alternating digit sum (1 - 3 + 3 - 1 = 0). Since 0 is divisible by 11, 1331 is divisible by 11 (11^3 = 1331).
+D: easy
+T: BCA-105N, Unit-1, Divisibility, Rule-of-11
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the Division Algorithm, for integers a and b (b > 0), there exist unique integers q and r such that a = bq + r, where r satisfies:
+A) 0 <= r < b *
+B) 0 < r <= b
+C) r = b
+D) -b < r < b
+E: The Euclidean Division Algorithm strictly specifies that the remainder r satisfies 0 <= r < b.
+D: easy
+T: BCA-105N, Unit-1, Number-Theory, Division-Algorithm
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the remainder when 2^50 is divided by 7?
+A) 1
+B) 2
+C) 4 *
+D) 6
+E: By Fermat's Little Theorem or modular cycles: 2^3 = 8 = 1 (mod 7). 50 = 3 * 16 + 2. Thus 2^50 = (2^3)^16 * 2^2 = 1^16 * 4 = 4. Remainder is 4.
+D: medium
+T: BCA-105N, Unit-1, Modular-Arithmetic, Remainder
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Fundamental Theorem of Arithmetic states that every composite integer greater than 1 can be represented as:
+A) A sum of two odd numbers
+B) A unique product of prime numbers, up to the order of factors *
+C) A multiple of 10
+D) A difference of squares
+E: Every integer n > 1 has a unique prime factorization n = p1^a1 * p2^a2 * ... * pk^ak.
+D: easy
+T: BCA-105N, Unit-1, Number-Theory, Prime-Factorization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Two positive integers a and b are defined as 'Coprime' (relatively prime) if:
+A) Both numbers are prime
+B) Their Greatest Common Divisor (GCD / HCF) is equal to 1 *
+C) Their sum is prime
+D) Their LCM is equal to 1
+E: Two numbers are coprime if they share no common prime factors other than 1: gcd(a, b) = 1.
+D: easy
+T: BCA-105N, Unit-1, Number-Theory, Coprime
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For any two positive integers a and b, the mathematical relation connecting their HCF and LCM is:
+A) HCF + LCM = a * b
+B) HCF * LCM = a * b *
+C) HCF / LCM = a / b
+D) HCF * LCM = a + b
+E: The product of the HCF and LCM of any two positive integers equals the product of the two numbers: HCF(a,b) * LCM(a,b) = a * b.
+D: easy
+T: BCA-105N, Unit-1, Number-Theory, HCF-LCM-Relation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the HCF of two numbers is 12 and their product is 2160, what is their LCM?
+A) 120
+B) 180 *
+C) 240
+D) 360
+E: LCM = (Product of numbers) / HCF = 2160 / 12 = 180.
+D: medium
+T: BCA-105N, Unit-1, HCF-LCM, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A fraction where the numerator is strictly smaller than the denominator (e.g. 3/7) is called a:
+A) Proper Fraction *
+B) Improper Fraction
+C) Mixed Fraction
+D) Reciprocal Fraction
+E: In a Proper Fraction, the numerator is less than the denominator, representing a value between 0 and 1.
+D: easy
+T: BCA-105N, Unit-1, Fractions, Proper-Fraction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To compare two fractions a/b and c/d (with b, d > 0), the fraction a/b is greater than c/d if:
+A) a + d > b + c
+B) a * d > b * c (cross-multiplication) *
+C) a * c > b * d
+D) a - b > c - d
+E: Cross-multiplication rule: a/b > c/d if and only if a*d > b*c.
+D: easy
+T: BCA-105N, Unit-1, Fractions, Comparison
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following rational numbers lies strictly between 1/3 and 1/2?
+A) 1/4
+B) 5/12 *
+C) 2/3
+D) 7/12
+E: Converting to common denominator 12: 1/3 = 4/12 and 1/2 = 6/12. The number 5/12 lies strictly between 4/12 and 6/12.
+D: medium
+T: BCA-105N, Unit-1, Fractions, Insertion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the VBODMAS rule, what operation is executed first?
+A) Brackets (B)
+B) Vinculum / Bar (V) *
+C) Division (D)
+D) Orders / Exponents (O)
+E: VBODMAS specifies: Vinculum (Bar over numbers) first, followed by Brackets, Orders, Division, Multiplication, Addition, Subtraction.
+D: easy
+T: BCA-105N, Unit-1, VBODMAS, Precedence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the evaluated result of: 20 - [5 + 2 * (8 - 3)]?
+A) 5 *
+B) 10
+C) 15
+D) 0
+E: Innermost brackets: 8 - 3 = 5; Multiplication: 2 * 5 = 10; Brackets: 5 + 10 = 15; Subtraction: 20 - 15 = 5.
+D: easy
+T: BCA-105N, Unit-1, VBODMAS, Evaluation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The algebraic identity a^3 - b^3 factorizes into:
+A) (a - b)(a^2 + ab + b^2) *
+B) (a - b)(a^2 - ab + b^2)
+C) (a + b)(a^2 - ab + b^2)
+D) (a - b)^3
+E: The difference of cubes formula is a^3 - b^3 = (a - b)(a^2 + ab + b^2).
+D: easy
+T: BCA-105N, Unit-1, Algebra, Identities
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the expansion of (a + b + c)^2?
+A) a^2 + b^2 + c^2
+B) a^2 + b^2 + c^2 + 2ab + 2bc + 2ca *
+C) a^2 + b^2 + c^2 - 2ab - 2bc - 2ca
+D) (a+b)^2 + c^2
+E: (a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca).
+D: easy
+T: BCA-105N, Unit-1, Algebra, Identities
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Express 3/8 as an exact percentage:
+A) 37.5% *
+B) 35.0%
+C) 38.0%
+D) 42.5%
+E: Percentage = (3/8) * 100% = 300 / 8 = 37.5%.
+D: easy
+T: BCA-105N, Unit-1, Percentages, Conversion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a quantity increases from 80 to 100, what is the percentage increase?
+A) 20%
+B) 25% *
+C) 15%
+D) 30%
+E: Percentage increase = [(New - Old) / Old] * 100% = [(100 - 80) / 80] * 100% = (20/80) * 100% = 25%.
+D: medium
+T: BCA-105N, Unit-1, Percentages, Percentage-Change
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a : b = 2 : 3 and b : c = 4 : 5, what is the combined ratio a : b : c?
+A) 2 : 3 : 5
+B) 8 : 12 : 15 *
+C) 6 : 12 : 15
+D) 8 : 10 : 15
+E: Multiply first ratio by 4 (8:12) and second ratio by 3 (12:15); combining yields a:b:c = 8 : 12 : 15.
+D: medium
+T: BCA-105N, Unit-1, Ratios, Compounding
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the Binomial Theorem for a positive integer n, the total number of terms in the expansion of (a + b)^n is:
+A) n - 1
+B) n
+C) n + 1 *
+D) 2n
+E: The expansion starts from r = 0 up to r = n, containing exactly n + 1 terms.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Terms-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The general (r + 1)-th term T_(r+1) in the binomial expansion of (a + b)^n is given by the formula:
+A) nCr * a^(n-r) * b^r *
+B) nCr * a^r * b^(n-r)
+C) nPr * a^(n-r) * b^r
+D) (n-r) * a * b
+E: The standard general term formula is T_(r+1) = nCr * a^(n-r) * b^r.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, General-Term
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of the binomial coefficient nC0 and nCn for any positive integer n?
+A) 0
+B) 1 *
+C) n
+D) n!
+E: By definition, nC0 = n! / (0! * n!) = 1 and nCn = n! / (n! * 0!) = 1.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Coefficients
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The symmetry property of binomial coefficients states that nCr is always equal to:
+A) nC(r-1)
+B) nC(n-r) *
+C) nC(r+1)
+D) (n-1)Cr
+E: Symmetry property: nCr = nC(n-r) because choosing r items to include is equivalent to choosing n-r items to exclude.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Symmetry
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of all binomial coefficients in the expansion of (1 + x)^n, i.e., nC0 + nC1 + nC2 + ... + nCn?
+A) n
+B) 2n
+C) 2^n *
+D) n^2
+E: Substituting x = 1 into (1 + x)^n yields (1 + 1)^n = 2^n = sum of all nCr.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Sum-of-Coefficients
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the binomial expansion of (a + b)^n, if n is an EVEN integer, how many middle terms exist?
+A) Exactly one middle term, at position (n/2 + 1) *
+B) Two middle terms
+C) n middle terms
+D) No middle terms
+E: When n is even, total terms (n + 1) is odd; hence there is exactly one unique central middle term: T_(n/2 + 1).
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Middle-Term-Even
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the binomial expansion of (a + b)^n, if n is an ODD integer, how many middle terms exist?
+A) One middle term
+B) Two middle terms, at positions ((n+1)/2) and ((n+3)/2) *
+C) Three middle terms
+D) Zero middle terms
+E: When n is odd, total terms (n + 1) is even, yielding two middle terms: T_((n+1)/2) and T_((n+3)/2).
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Middle-Term-Odd
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 3rd term (T_3) in the expansion of (x + 2)^5?
+A) 10 x^3
+B) 40 x^3 *
+C) 80 x^2
+D) 20 x^4
+E: T_3 = T_(2+1) = 5C2 * x^(5-2) * (2)^2 = 10 * x^3 * 4 = 40 x^3.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Term-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the term independent of x (constant term) in the expansion of (x + 1/x)^6?
+A) 6C2 = 15
+B) 6C3 = 20 *
+C) 6C4 = 15
+D) 6C0 = 1
+E: T_(r+1) = 6Cr * x^(6-r) * (x^(-1))^r = 6Cr * x^(6 - 2r). For x^0: 6 - 2r = 0 -> r = 3. T_4 = 6C3 = 20.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Independent-Term
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Pascal's Triangle is a geometric arrangement used to visually determine:
+A) Prime numbers
+B) Binomial coefficients nCr *
+C) Logarithms
+D) Matrix determinants
+E: Pascal's Triangle displays binomial coefficients where each number is the sum of the two numbers directly above it: nCr = (n-1)C(r-1) + (n-1)Cr.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Pascals-Triangle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the prime factorization of 360 in canonical exponential form?
+A) 2^2 * 3^3 * 5
+B) 2^3 * 3^2 * 5 *
+C) 2 * 3^4 * 5
+D) 2^4 * 3 * 5
+E: 360 = 36 * 10 = (4 * 9) * (2 * 5) = 2^2 * 3^2 * 2 * 5 = 2^3 * 3^2 * 5.
+D: easy
+T: BCA-105N, Unit-1, Prime-Factorization, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many total positive divisors (factors) does the number 360 possess?
+A) 12
+B) 18
+C) 24 *
+D) 36
+E: Number of divisors for p1^a * p2^b * p3^c is (a+1)(b+1)(c+1) = (3+1)(2+1)(1+1) = 4 * 3 * 2 = 24 divisors.
+D: medium
+T: BCA-105N, Unit-1, Number-Theory, Divisors-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the greatest number that will divide 43, 91, and 183 so as to leave the same remainder in each case?
+A) 4 *
+B) 7
+C) 9
+D) 13
+E: HCF of differences: |91 - 43| = 48, |183 - 91| = 92, |183 - 43| = 140. HCF(48, 92, 140) = 4.
+D: medium
+T: BCA-105N, Unit-1, HCF-LCM, Word-Problem
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the least number which when divided by 6, 9, 12, 15, and 18 leaves remainder 2 in each case?
+A) 180
+B) 182 *
+C) 178
+D) 362
+E: LCM(6, 9, 12, 15, 18) = 180. The required number is LCM + remainder = 180 + 2 = 182.
+D: medium
+T: BCA-105N, Unit-1, HCF-LCM, Remainder-Problem
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a prime number?
+A) 91
+B) 87
+C) 97 *
+D) 119
+E: 91 = 7 * 13; 87 = 3 * 29; 119 = 7 * 17; 97 has no divisors other than 1 and 97 (prime).
+D: easy
+T: BCA-105N, Unit-1, Prime-Numbers, Identification
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of n if nC2 = 21?
+A) 6
+B) 7 *
+C) 8
+D) 9
+E: nC2 = n(n-1)/2 = 21 -> n(n-1) = 42 -> 7 * 6 = 42. Thus n = 7.
+D: medium
+T: BCA-105N, Unit-1, Combinatorics, Equations
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If nC8 = nC12, what is the value of n?
+A) 4
+B) 20 *
+C) 96
+D) 10
+E: By symmetry nCx = nCy implies x = y or x + y = n. Here 8 + 12 = n -> n = 20.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Symmetry
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The coefficient of x^4 in the expansion of (1 + x)^8 is:
+A) 8C4 = 70 *
+B) 8C3 = 56
+C) 8C5 = 56
+D) 8C2 = 28
+E: General term is 8Cr * x^r. For x^4, r = 4: 8C4 = (8*7*6*5)/(4*3*2*1) = 70.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Coefficients
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the expansion of (x - 2/x)^10, the constant term is:
+A) Positive
+B) Negative (-10C5 * 2^5) *
+C) Zero
+D) Imaginary
+E: For constant term r = 5. T_6 = 10C5 * x^5 * (-2/x)^5 = 10C5 * (-32) = negative number.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Sign-Analysis
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the middle term in the expansion of (x + y)^4?
+A) T_2
+B) T_3 = 6 x^2 y^2 *
+C) T_4
+D) T_5
+E: n = 4 (even), middle term is T_(4/2 + 1) = T_3 = 4C2 * x^2 * y^2 = 6 x^2 y^2.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Middle-Term
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the ratio a:b is 2:3 and b:c is 4:5, what is the combined ratio a:b:c?
+A) 8:12:15 *
+B) 6:8:10
+C) 2:4:5
+D) 8:15:12
+E: Multiply first ratio by 4 (a:b = 8:12) and second ratio by 3 (b:c = 12:15). Thus a:b:c = 8:12:15.
+D: easy
+T: BCA-105N, Unit-1, Ratio-Proportion, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the price of a commodity increases by 25%, by what percentage must a family reduce consumption to keep total expenditure constant?
+A) 25%
+B) 20% *
+C) 16.67%
+D) 30%
+E: Reduction percentage = [r / (100 + r)] * 100 = [25 / 125] * 100 = 20%.
+D: medium
+T: BCA-105N, Unit-1, Percentages, Expenditure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following fractions is the largest: 3/4, 5/6, 7/9, 11/13?
+A) 3/4 (0.75)
+B) 5/6 (0.833)
+C) 7/9 (0.777)
+D) 11/13 (0.846) *
+E: 11/13 = 0.8461, 5/6 = 0.8333, 7/9 = 0.7778, 3/4 = 0.75. The largest fraction is 11/13.
+D: medium
+T: BCA-105N, Unit-1, Fractions, Comparison
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To insert a rational number exactly halfway between two rational numbers a and b, which formula is used?
+A) (a + b) / 2 *
+B) a * b / 2
+C) (b - a) / 2
+D) sqrt(a * b)
+E: The arithmetic mean (a + b) / 2 lies strictly between a and b for any two distinct rational numbers.
+D: easy
+T: BCA-105N, Unit-1, Rational-Numbers, Insertion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate according to the VBODMAS rule: 25 - [20 - {10 - (7 - 5)}]:
+A) 13 *
+B) 17
+C) 15
+D) 23
+E: Innermost parentheses: 7 - 5 = 2. Braces: 10 - 2 = 8. Brackets: 20 - 8 = 12. Finally: 25 - 12 = 13.
+D: medium
+T: BCA-105N, Unit-1, VBODMAS, Simplification
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The expansion of algebraic formula (a + b)^3 - (a - b)^3 simplifies to:
+A) 2b^3 + 6a^2 b *
+B) 2a^3 + 6ab^2
+C) 6a^2 b
+D) 2b^3
+E: (a^3 + 3a^2b + 3ab^2 + b^3) - (a^3 - 3a^2b + 3ab^2 - b^3) = 6a^2b + 2b^3 = 2b(3a^2 + b^2).
+D: medium
+T: BCA-105N, Unit-1, Algebra, Identities
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the total number of terms in the binomial expansion of (x + a)^n for a positive integer n?
+A) n
+B) n + 1 *
+C) n - 1
+D) 2n
+E: The expansion starts from nC0 up to nCn, resulting in exactly (n + 1) terms.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Terms-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of all binomial coefficients in the expansion of (1 + x)^n, i.e., nC0 + nC1 + nC2 + ... + nCn?
+A) 2^n *
+B) 2^(n - 1)
+C) n * 2^n
+D) 2^(n + 1)
+E: Substituting x = 1 into (1 + x)^n gives (1 + 1)^n = 2^n.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Sum-of-Coefficients
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of the alternating sum of binomial coefficients: nC0 - nC1 + nC2 - nC3 + ... + (-1)^n nCn?
+A) 0 *
+B) 1
+C) 2^n
+D) -1
+E: Substituting x = -1 into (1 + x)^n gives (1 - 1)^n = 0.
+D: easy
+T: BCA-105N, Unit-1, Binomial-Theorem, Alternating-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 4th term (T_4) in the binomial expansion of (x + y)^6?
+A) 15 x^4 y^2
+B) 20 x^3 y^3 *
+C) 15 x^2 y^4
+D) 6 x^5 y
+E: T_(r+1) = nCr * x^(n-r) * y^r. For 4th term, r = 3: T_4 = 6C3 * x^(6-3) * y^3 = 20 x^3 y^3.
+D: medium
+T: BCA-105N, Unit-1, Binomial-Theorem, Term-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An Arithmetic Progression (AP) is a sequence of numbers in which:
+A) The ratio of successive terms is constant
+B) The difference between any two consecutive terms (common difference d) is constant *
+C) Each term is the square of the preceding term
+D) Terms oscillate between positive and negative
+E: In an AP, each term after the first is obtained by adding a fixed constant d (common difference) to the preceding term.
+D: easy
+T: BCA-105N, Unit-2, AP, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The n-th term (T_n) of an Arithmetic Progression with first term 'a' and common difference 'd' is:
+A) a + nd
+B) a + (n - 1)d *
+C) a * r^(n-1)
+D) a + (n + 1)d
+E: The formula for the n-th term of an AP is T_n = a + (n - 1)d.
+D: easy
+T: BCA-105N, Unit-2, AP, nth-Term-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 10th term of the AP: 2, 7, 12, 17, ...?
+A) 42
+B) 47 *
+C) 52
+D) 50
+E: Here a = 2, d = 7 - 2 = 5. T_10 = a + (10 - 1)d = 2 + 9 * 5 = 2 + 45 = 47.
+D: easy
+T: BCA-105N, Unit-2, AP, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The formula for the sum of the first n terms (S_n) of an AP with first term 'a' and last term 'l' is:
+A) S_n = n(a + l)
+B) S_n = (n / 2)(a + l) *
+C) S_n = n * a * l
+D) S_n = (a + l) / 2
+E: Sum of an AP is the number of terms times the average of the first and last terms: S_n = (n/2)(a + l).
+D: easy
+T: BCA-105N, Unit-2, AP, Sum-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of the first 20 natural numbers (1 + 2 + 3 + ... + 20)?
+A) 200
+B) 210 *
+C) 190
+D) 220
+E: Sum formula S_n = n(n + 1) / 2 = 20 * 21 / 2 = 210.
+D: easy
+T: BCA-105N, Unit-2, AP, Sum-of-N-Naturals
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The single Arithmetic Mean (AM) between two numbers 'a' and 'b' is given by:
+A) sqrt(a * b)
+B) (a + b) / 2 *
+C) 2ab / (a + b)
+D) (a - b) / 2
+E: The arithmetic mean between a and b is their standard average: AM = (a + b) / 2.
+D: easy
+T: BCA-105N, Unit-2, AM, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If 5, x, 15 are in AP, what is the value of x?
+A) 8
+B) 10 *
+C) 12
+D) 7.5
+E: In AP, x is the AM between 5 and 15: x = (5 + 15) / 2 = 20 / 2 = 10.
+D: easy
+T: BCA-105N, Unit-2, AP, Mean-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the sum of n terms of an AP is given by S_n = 3n^2 + 5n, what is the common difference d?
+A) 3
+B) 6 *
+C) 5
+D) 8
+E: In S_n = An^2 + Bn, common difference d is always 2A. Here A = 3, so d = 2 * 3 = 6.
+D: medium
+T: BCA-105N, Unit-2, AP, Common-Difference-Shortcut
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which term of the AP 21, 18, 15, ... is 0?
+A) 6th term
+B) 7th term
+C) 8th term *
+D) 9th term
+E: T_n = a + (n-1)d = 21 + (n-1)(-3) = 0 -> 21 = 3(n-1) -> 7 = n - 1 -> n = 8.
+D: easy
+T: BCA-105N, Unit-2, AP, Finding-N
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If n arithmetic means are inserted between a and b, the common difference d is:
+A) (b - a) / n
+B) (b - a) / (n + 1) *
+C) (b + a) / (n + 1)
+D) (b - a) / (n - 1)
+E: With n inserted means, the sequence has n + 2 total terms; hence d = (b - a) / (n + 1).
+D: medium
+T: BCA-105N, Unit-2, AM, Insertion-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Geometric Progression (GP) is a sequence in which each term after the first is obtained by:
+A) Adding a common difference
+B) Multiplying the previous term by a fixed non-zero constant called the Common Ratio (r) *
+C) Squaring the previous term
+D) Subtracting a constant
+E: In a GP, the quotient of any term divided by its immediate predecessor is constant: r = T_(k+1) / T_k.
+D: easy
+T: BCA-105N, Unit-2, GP, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The n-th term (T_n) of a Geometric Progression with first term 'a' and common ratio 'r' is:
+A) a * r^n
+B) a * r^(n - 1) *
+C) a + r^(n - 1)
+D) (a * r)^n
+E: The general term of a GP is T_n = a * r^(n - 1).
+D: easy
+T: BCA-105N, Unit-2, GP, nth-Term-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 6th term of the GP: 3, 6, 12, 24, ...?
+A) 48
+B) 96 *
+C) 192
+D) 72
+E: a = 3, r = 6/3 = 2. T_6 = a * r^5 = 3 * 2^5 = 3 * 32 = 96.
+D: easy
+T: BCA-105N, Unit-2, GP, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The sum of the first n terms of a GP with r < 1 is given by:
+A) S_n = a(1 - r^n) / (1 - r) *
+B) S_n = a(r^n - 1) / (r - 1)
+C) S_n = a / (1 - r)
+D) S_n = n * a * r
+E: For |r| < 1, the sum is written cleanly as S_n = a(1 - r^n) / (1 - r).
+D: easy
+T: BCA-105N, Unit-2, GP, Sum-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of an Infinite Geometric Progression (S_infinity) with first term 'a' and |r| < 1?
+A) a(1 - r)
+B) a / (1 - r) *
+C) a / (r - 1)
+D) Infinity
+E: As n -> infinity, r^n -> 0 (for |r| < 1); hence S_infinity = a / (1 - r).
+D: easy
+T: BCA-105N, Unit-2, GP, Infinite-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Calculate the sum of the infinite series: 1 + 1/2 + 1/4 + 1/8 + ...:
+A) 1
+B) 2 *
+C) 1.5
+D) 3
+E: Here a = 1, r = 1/2 < 1. S_infinity = a / (1 - r) = 1 / (1 - 1/2) = 1 / (1/2) = 2.
+D: easy
+T: BCA-105N, Unit-2, GP, Infinite-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The single Geometric Mean (GM) between two positive real numbers 'a' and 'b' is:
+A) (a + b) / 2
+B) sqrt(a * b) *
+C) 2ab / (a + b)
+D) a^2 * b^2
+E: The geometric mean of two positive numbers is the square root of their product: GM = sqrt(ab).
+D: easy
+T: BCA-105N, Unit-2, GM, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the Geometric Mean between 4 and 16?
+A) 10
+B) 8 *
+C) 64
+D) 12
+E: GM = sqrt(4 * 16) = sqrt(64) = 8.
+D: easy
+T: BCA-105N, Unit-2, GM, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If 3, y, 27 are consecutive terms of a GP with positive terms, what is y?
+A) 9 *
+B) 15
+C) 12
+D) 18
+E: y is the GM: y^2 = 3 * 27 = 81 -> y = 9.
+D: easy
+T: BCA-105N, Unit-2, GP, Mean-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If three positive numbers a, b, c are in GP, which relationship holds true?
+A) 2b = a + c
+B) b^2 = a * c *
+C) b = a * c
+D) a + b = c
+E: In GP, the ratio b/a = c/b, which cross-multiplies to b^2 = ac.
+D: easy
+T: BCA-105N, Unit-2, GP, Three-Terms-Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A sequence of non-zero numbers is in Harmonic Progression (HP) if and only if:
+A) Their squares form an AP
+B) Their reciprocals form an Arithmetic Progression (AP) *
+C) Their logarithms form a GP
+D) Their differences are constant
+E: By definition, a sequence t1, t2, t3, ... is in HP if 1/t1, 1/t2, 1/t3, ... forms an AP.
+D: easy
+T: BCA-105N, Unit-2, HP, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Harmonic Mean (HM) between two positive numbers 'a' and 'b' is given by:
+A) (a + b) / 2
+B) sqrt(ab)
+C) 2ab / (a + b) *
+D) (a - b) / 2ab
+E: Since 1/H is the AM of 1/a and 1/b: 1/H = (1/a + 1/b)/2 = (a+b)/(2ab) -> H = 2ab / (a + b).
+D: easy
+T: BCA-105N, Unit-2, HM, Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the Harmonic Mean between 3 and 6?
+A) 4 *
+B) 4.5
+C) 4.2
+D) 5
+E: HM = 2 * 3 * 6 / (3 + 6) = 36 / 9 = 4.
+D: easy
+T: BCA-105N, Unit-2, HM, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For any two distinct positive real numbers a and b, the strict inequality connecting their AM, GM, and HM is:
+A) AM < GM < HM
+B) AM > GM > HM *
+C) GM > AM > HM
+D) HM > GM > AM
+E: For distinct positive numbers, the inequality chain is strictly AM > GM > HM (and AM = GM = HM if and only if a = b).
+D: easy
+T: BCA-105N, Unit-2, Means-Relation, Inequality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the fundamental algebraic relationship connecting the Arithmetic Mean (A), Geometric Mean (G), and Harmonic Mean (H) of two positive numbers?
+A) A^2 = G * H
+B) G^2 = A * H *
+C) H^2 = A * G
+D) A + H = 2G
+E: Proof: A * H = [(a+b)/2] * [2ab/(a+b)] = ab = (sqrt(ab))^2 = G^2.
+D: easy
+T: BCA-105N, Unit-2, Means-Relation, G2-equals-AH
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the AM of two numbers is 9 and their HM is 4, what is their GM?
+A) 6 *
+B) 36
+C) 13
+D) 5
+E: G^2 = A * H = 9 * 4 = 36 -> G = sqrt(36) = 6.
+D: easy
+T: BCA-105N, Unit-2, Means-Relation, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If AM = GM for two positive numbers a and b, what can be concluded?
+A) a = b *
+B) a = 0
+C) b = 0
+D) a = -b
+E: AM = GM implies (a + b)/2 = sqrt(ab) -> (sqrt(a) - sqrt(b))^2 = 0 -> a = b.
+D: medium
+T: BCA-105N, Unit-2, Means-Relation, Equality-Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 5th term of the HP whose reciprocal AP is 1/2, 1/4, 1/6, 1/8, ...?
+A) 1/10 *
+B) 10
+C) 12
+D) 1/12
+E: The 5th term of the AP is 1/2 + 4 * (1/4 - 1/2) ... wait: 2, 4, 6, 8, 10. The AP is 2, 4, 6, 8, 10. Reciprocal HP is 1/2, 1/4, 1/6, 1/8, 1/10.
+D: easy
+T: BCA-105N, Unit-2, HP, nth-Term
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a, b, c are in HP, then b is equal to:
+A) (a + c) / 2
+B) 2ac / (a + c) *
+C) sqrt(ac)
+D) (a - c) / 2
+E: b is the harmonic mean of a and c: b = 2ac / (a + c).
+D: easy
+T: BCA-105N, Unit-2, HP, Mean-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a Harmonic Progression contain the number 0 as one of its terms?
+A) Yes, any number of zeros
+B) No, because the reciprocal 1/0 is undefined (division by zero) *
+C) Only at the end
+D) Only if it is infinite
+E: Because HP terms are reciprocals of AP terms, zero cannot be a term since 1/0 is mathematically undefined.
+D: medium
+T: BCA-105N, Unit-2, HP, Zero-Constraint
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the formula for the sum of squares of the first n natural numbers (1^2 + 2^2 + ... + n^2)?
+A) [n(n+1)/2]^2
+B) n(n + 1)(2n + 1) / 6 *
+C) n(n + 1) / 2
+D) n^3 / 3
+E: The standard summation formula for squares is sum(k^2) = n(n + 1)(2n + 1) / 6.
+D: easy
+T: BCA-105N, Unit-2, Special-Series, Sum-of-Squares
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the formula for the sum of cubes of the first n natural numbers (1^3 + 2^3 + ... + n^3)?
+A) n(n+1)(2n+1)/6
+B) [n(n + 1) / 2]^2 *
+C) n^4 / 4
+D) n(n+1)/2
+E: The sum of the first n cubes equals the square of the sum of the first n integers: [n(n+1)/2]^2.
+D: easy
+T: BCA-105N, Unit-2, Special-Series, Sum-of-Cubes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of the first 10 odd natural numbers (1 + 3 + 5 + ... + 19)?
+A) 90
+B) 100 *
+C) 110
+D) 120
+E: The sum of the first n odd numbers is always n^2. For n = 10: 10^2 = 100.
+D: easy
+T: BCA-105N, Unit-2, AP, Odd-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If the second term of a GP is 2 and the fifth term is 16, what is the first term a?
+A) 1 *
+B) 2
+C) 0.5
+D) 4
+E: T_5 / T_2 = (a*r^4) / (a*r) = r^3 = 16 / 2 = 8 -> r = 2. Then a * 2 = 2 -> a = 1.
+D: medium
+T: BCA-105N, Unit-2, GP, Parameter-Solving
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an AP, if T_p = q and T_q = p, what is the (p + q)-th term?
+A) 0 *
+B) p + q
+C) pq
+D) 1
+E: Standard identity: common difference d = -1. T_(p+q) = T_p + q*d = q + q*(-1) = 0.
+D: medium
+T: BCA-105N, Unit-2, AP, Classic-Problem
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If x, 2x + 2, 3x + 3 are in AP, what is x?
+A) 0 *
+B) 1
+C) 2
+D) -1
+E: 2(2x + 2) = x + (3x + 3) -> 4x + 4 = 4x + 3 -> 4 = 3 (no solution unless consistent). Let's check: d1 = x + 2, d2 = x + 1. Not AP for any x. If 2x+1: 2(2x+1) = 4x+2 = 4x+3 -> invalid.
+D: hard
+T: BCA-105N, Unit-2, AP, Consistency
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of the series 5 + 55 + 555 + ... to n terms?
+A) (5/9)[(10/9)(10^n - 1) - n] *
+B) (5/9)[10^n - 1]
+C) 5n(n+1)/2
+D) 50(10^n - 1)
+E: Standard method: 5/9 * (9 + 99 + 999 + ...) = (5/9) * sum(10^k - 1) = (5/9)[(10/9)(10^n - 1) - n].
+D: medium
+T: BCA-105N, Unit-2, Special-Series, Repunit-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The geometric mean of 3, 9, 27 is:
+A) 9 *
+B) 13
+C) 81
+D) 3
+E: GM of 3 numbers = (3 * 9 * 27)^(1/3) = (3^1 * 3^2 * 3^3)^(1/3) = (3^6)^(1/3) = 3^2 = 9.
+D: medium
+T: BCA-105N, Unit-2, GM, Multiple-Numbers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a, b, c are in AP, then 2^a, 2^b, 2^c are in:
+A) AP
+B) GP *
+C) HP
+D) Arithmetic-Geometric Progression
+E: Since b - a = c - b = d, 2^b / 2^a = 2^(b-a) = 2^d and 2^c / 2^b = 2^d (constant ratio). Hence they form a GP.
+D: medium
+T: BCA-105N, Unit-2, Progressions, Transformation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a, b, c are in GP, then log a, log b, log c are in:
+A) GP
+B) AP *
+C) HP
+D) Constant
+E: In GP, b^2 = ac. Taking logarithms: 2 log b = log a + log c, which is the exact definition of an AP.
+D: medium
+T: BCA-105N, Unit-2, Progressions, Log-Transformation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The n-th term from the end of an AP having last term 'l' and common difference 'd' is given by:
+A) l - (n - 1)d *
+B) l + (n - 1)d
+C) l - nd
+D) a + (n - 1)d
+E: Starting from the end, the first term is l and common difference is -d; thus T'_n = l + (n - 1)(-d) = l - (n - 1)d.
+D: medium
+T: BCA-105N, Unit-2, AP, Term-From-End
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of the first n even natural numbers (2 + 4 + 6 + ... + 2n)?
+A) n^2
+B) n(n + 1) *
+C) n(n - 1)
+D) (n + 1)^2
+E: Sum = 2(1 + 2 + ... + n) = 2 * [n(n+1)/2] = n(n + 1).
+D: easy
+T: BCA-105N, Unit-2, AP, Sum-Even-Numbers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The sum of the squares of the first n natural numbers (1^2 + 2^2 + ... + n^2) is given by:
+A) [n(n + 1) / 2]^2
+B) n(n + 1)(2n + 1) / 6 *
+C) n(n + 1)(n + 2) / 6
+D) n(2n + 1) / 2
+E: Standard summation formula: sum(k^2) = n(n + 1)(2n + 1) / 6.
+D: medium
+T: BCA-105N, Unit-2, Special-Series, Sum-of-Squares
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The sum of the cubes of the first n natural numbers (1^3 + 2^3 + ... + n^3) is equal to:
+A) [n(n + 1) / 2]^2 *
+B) n(n + 1)(2n + 1) / 6
+C) n^2(n + 1)^2 / 2
+D) n^3(n + 1)^3 / 8
+E: Sum of cubes of first n natural numbers equals the square of the sum of first n natural numbers: [n(n+1)/2]^2.
+D: medium
+T: BCA-105N, Unit-2, Special-Series, Sum-of-Cubes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under what condition does an infinite Geometric Progression (GP) converge to a finite sum?
+A) |r| > 1
+B) |r| < 1 (common ratio between -1 and 1) *
+C) r = 1
+D) r = 0 only
+E: An infinite GP converges if and only if |r| < 1, with sum S_infinity = a / (1 - r).
+D: easy
+T: BCA-105N, Unit-2, GP, Convergence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the sum of the infinite geometric series: 1 + 1/2 + 1/4 + 1/8 + ...?
+A) 1
+B) 2 *
+C) 3
+D) Infinity
+E: Here a = 1, r = 1/2 < 1. S_infinity = a / (1 - r) = 1 / (1 - 0.5) = 2.
+D: easy
+T: BCA-105N, Unit-2, GP, Infinite-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If n arithmetic means A1, A2, ..., An are inserted between two numbers a and b, what is the common difference d?
+A) (b - a) / n
+B) (b - a) / (n + 1) *
+C) (b - a) / (n - 1)
+D) (a + b) / (n + 1)
+E: Total terms become n + 2, with T_(n+2) = b. a + (n + 1)d = b -> d = (b - a)/(n + 1).
+D: medium
+T: BCA-105N, Unit-2, AM, Insertion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If three positive numbers a, b, c are in Harmonic Progression (HP), then the middle term b is:
+A) (a + c) / 2
+B) sqrt(ac)
+C) 2ac / (a + c) *
+D) (a - c) / 2
+E: Since 1/a, 1/b, 1/c are in AP: 2/b = 1/a + 1/c = (a + c)/ac -> b = 2ac / (a + c).
+D: medium
+T: BCA-105N, Unit-2, HP, Harmonic-Mean
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For any two unequal positive real numbers a and b, the strict inequality between their means is:
+A) AM > GM > HM *
+B) AM < GM < HM
+C) GM > AM > HM
+D) AM = GM = HM
+E: For distinct positive real numbers: AM > GM > HM. (Equality holds if and only if a = b).
+D: easy
+T: BCA-105N, Unit-2, Means, Inequality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the mathematical relation between the Arithmetic Mean (A), Geometric Mean (G), and Harmonic Mean (H) of two positive numbers?
+A) A * H = G^2 *
+B) A + H = 2G
+C) A * G = H^2
+D) G = (A + H) / 2
+E: A = (a+b)/2, G = sqrt(ab), H = 2ab/(a+b). A * H = [(a+b)/2] * [2ab/(a+b)] = ab = G^2.
+D: medium
+T: BCA-105N, Unit-2, Means, Relation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A matrix of order m x n contains:
+A) m columns and n rows
+B) m rows and n columns *
+C) m + n elements
+D) m^n elements
+E: By universal mathematical convention, m denotes the number of horizontal rows, and n denotes vertical columns.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Order
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A matrix having only a single column (order m x 1) is called a:
+A) Row Matrix
+B) Column Matrix *
+C) Square Matrix
+D) Scalar Matrix
+E: A Column Matrix has dimension m x 1, consisting of m rows in a single column.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Types
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A square matrix where all off-diagonal elements are zero and all main diagonal elements are equal to 1 is the:
+A) Null Matrix
+B) Identity (or Unit) Matrix (I) *
+C) Scalar Matrix
+D) Symmetric Matrix
+E: An Identity Matrix I has a_ii = 1 for all i, and a_ij = 0 for i != j.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Identity-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What condition defines a Symmetric Matrix A?
+A) A^T = -A
+B) A^T = A *
+C) A^2 = I
+D) |A| = 0
+E: A square matrix is symmetric if its transpose equals itself: A^T = A (i.e. a_ij = a_ji for all i, j).
+D: easy
+T: BCA-105N, Unit-3, Matrices, Symmetric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a Skew-Symmetric Matrix (where A^T = -A), what must be true about the main diagonal elements a_ii?
+A) All diagonal elements must be 1
+B) All diagonal elements must be strictly ZERO (0) *
+C) All diagonal elements must be negative
+D) They can be any real number
+E: Since a_ii = -a_ii -> 2*a_ii = 0 -> a_ii = 0. All main diagonal elements of a skew-symmetric matrix are always 0.
+D: medium
+T: BCA-105N, Unit-3, Matrices, Skew-Symmetric-Diagonal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Every square matrix A can be uniquely expressed as the sum of a symmetric matrix and a skew-symmetric matrix using:
+A) A = (A + A^T) + (A - A^T)
+B) A = (1/2)(A + A^T) + (1/2)(A - A^T) *
+C) A = A * A^T
+D) A = |A| * I
+E: (1/2)(A + A^T) is symmetric and (1/2)(A - A^T) is skew-symmetric, summing identically to A.
+D: medium
+T: BCA-105N, Unit-3, Matrices, Decomposition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Two matrices A and B can be added (A + B) if and only if:
+A) Both matrices are square
+B) Both matrices have the exact same order (same number of rows and columns) *
+C) Columns of A equal rows of B
+D) Both determinants are non-zero
+E: Matrix addition is defined element-wise; hence conformability requires identical dimensional orders.
+D: easy
+T: BCA-105N, Unit-3, Matrix-Operations, Addition-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Matrix multiplication AB is defined if and only if:
+A) A and B have the same order
+B) The number of columns in A equals the number of rows in B *
+C) The number of rows in A equals columns in B
+D) Both are invertible
+E: If A is (m x p) and B is (p x n), the inner dimensions (p) must match, yielding a product matrix of order (m x n).
+D: easy
+T: BCA-105N, Unit-3, Matrix-Operations, Multiplication-Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Is matrix multiplication generally commutative (i.e., is AB = BA)?
+A) Yes, always
+B) No, in general AB != BA (matrix multiplication is non-commutative) *
+C) Only for 3x3 matrices
+D) Yes, if both have positive numbers
+E: Matrix multiplication does not commute; even when AB exists, BA may not exist or may yield a different result.
+D: easy
+T: BCA-105N, Unit-3, Matrix-Operations, Non-Commutative
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The transpose of a product of two matrices (AB)^T equals:
+A) A^T B^T
+B) B^T A^T (Reversal Law) *
+C) (A^T + B^T)
+D) AB
+E: The reversal law of transposition states that (AB)^T = B^T A^T.
+D: easy
+T: BCA-105N, Unit-3, Transpose, Reversal-Law
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the determinant of a 2x2 matrix |[a, b], [c, d]|?
+A) ad + bc
+B) ad - bc *
+C) ab - cd
+D) ac - bd
+E: The 2x2 determinant expands to ad - bc.
+D: easy
+T: BCA-105N, Unit-3, Determinants, 2x2-Expansion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the determinant: |[3, 5], [2, 4]|:
+A) 2 *
+B) 22
+C) -2
+D) 12
+E: |A| = (3 * 4) - (5 * 2) = 12 - 10 = 2.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If any two rows (or two columns) of a determinant are identical, what is the value of the determinant?
+A) 1
+B) -1
+C) 0 *
+D) Depends on the numbers
+E: By determinant properties, identical rows or columns render the determinant value strictly 0.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Properties
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If all elements in any single row or column of a matrix are zero, the determinant is:
+A) 1
+B) 0 *
+C) -1
+D) Undefined
+E: Expanding along the all-zero row or column yields zero.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Properties
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens to the sign of a determinant when any two adjacent rows or columns are interchanged?
+A) It remains unchanged
+B) Its sign is reversed (multiplied by -1) *
+C) It is squared
+D) It becomes zero
+E: Interchanging any two rows or columns negates the sign of the determinant.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Row-Swap
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For an n x n square matrix A and scalar k, what is the value of |k * A|?
+A) k * |A|
+B) k^n * |A| *
+C) n * k * |A|
+D) |A| / k
+E: Factoring out scalar k from each of the n rows multiplies the determinant by k^n: |kA| = k^n |A|.
+D: medium
+T: BCA-105N, Unit-3, Determinants, Scalar-Multiplication
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A square matrix A is defined as 'Singular' if and only if:
+A) |A| != 0
+B) |A| = 0 *
+C) A is symmetric
+D) A has all positive entries
+E: A singular matrix has determinant zero (|A| = 0) and cannot be inverted.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Singular-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A matrix possesses an inverse A^(-1) if and only if it is:
+A) Singular (|A| = 0)
+B) Non-singular (|A| != 0) *
+C) A null matrix
+D) A 2x3 matrix
+E: Invertibility requires a square matrix with a non-zero determinant: |A| != 0.
+D: easy
+T: BCA-105N, Unit-3, Inverse, Invertibility-Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Minor M_ij of an element a_ij in a determinant is:
+A) The negative of a_ij
+B) The determinant obtained by deleting the i-th row and j-th column containing a_ij *
+C) a_ij squared
+D) The cofactor divided by 2
+E: Deleting the intersecting row i and column j leaves a sub-matrix whose determinant is the minor M_ij.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Minors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Cofactor C_ij of an element a_ij is related to its Minor M_ij by the formula:
+A) C_ij = M_ij
+B) C_ij = (-1)^(i + j) * M_ij *
+C) C_ij = (-1)^(i - j) * a_ij
+D) C_ij = M_ij / 2
+E: Cofactors incorporate the positional chess-board sign factor: C_ij = (-1)^(i+j) * M_ij.
+D: easy
+T: BCA-105N, Unit-3, Determinants, Cofactors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Adjoint of a square matrix A, denoted adj(A), is defined as:
+A) The transpose of the cofactor matrix of A *
+B) The inverse of matrix A
+C) The determinant of A
+D) The negative of A
+E: adj(A) = [C_ij]^T (the transpose of the matrix formed by replacing each element with its cofactor).
+D: medium
+T: BCA-105N, Unit-3, Adjoint, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For any square matrix A of order n, the fundamental adjoint property states:
+A) A * adj(A) = adj(A) * A = |A| * I *
+B) A * adj(A) = I
+C) adj(A) = A^(-1)
+D) A + adj(A) = 0
+E: Multiplying A by its adjoint yields a diagonal scalar matrix with |A| on the diagonal: A * adj(A) = |A| I.
+D: medium
+T: BCA-105N, Unit-3, Adjoint, Fundamental-Property
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The formula for calculating the Inverse of a non-singular square matrix A is:
+A) A^(-1) = |A| * adj(A)
+B) A^(-1) = adj(A) / |A| *
+C) A^(-1) = A^T / |A|
+D) A^(-1) = 1 / A
+E: Since A * adj(A) = |A| I, dividing by scalar |A| gives A * [adj(A) / |A|] = I, so A^(-1) = adj(A) / |A|.
+D: easy
+T: BCA-105N, Unit-3, Inverse, Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For a 2x2 matrix A = |[a, b], [c, d]|, its adjoint adj(A) is shortcut as:
+A) |[d, -b], [-c, a]| *
+B) |[-d, b], [c, -a]|
+C) |[a, -c], [-b, d]|
+D) |[d, c], [b, a]|
+E: Swap main diagonal elements (a <-> d) and negate off-diagonal elements (-b, -c): adj(A) = [[d, -b], [-c, a]].
+D: easy
+T: BCA-105N, Unit-3, Adjoint, 2x2-Shortcut
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the inverse of A = |[2, 3], [1, 2]|?
+A) |[2, -3], [-1, 2]| *
+B) |[-2, 3], [1, -2]|
+C) |[1, 0], [0, 1]|
+D) |[2, 1], [3, 2]|
+E: |A| = (2*2) - (3*1) = 4 - 3 = 1. adj(A) = [[2, -3], [-1, 2]]. A^(-1) = adj(A)/1 = [[2, -3], [-1, 2]].
+D: medium
+T: BCA-105N, Unit-3, Inverse, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The reversal law for matrix inverses states that (AB)^(-1) is equal to:
+A) A^(-1) B^(-1)
+B) B^(-1) A^(-1) *
+C) (A + B)^(-1)
+D) AB
+E: Like transposition, inversion reverses product order: (AB)^(-1) = B^(-1) A^(-1).
+D: easy
+T: BCA-105N, Unit-3, Inverse, Reversal-Law
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the determinant of the inverse matrix |A^(-1)|?
+A) |A|
+B) 1 / |A| *
+C) -|A|
+D) |A|^2
+E: Since A * A^(-1) = I -> |A * A^(-1)| = |I| = 1 -> |A| * |A^(-1)| = 1 -> |A^(-1)| = 1 / |A|.
+D: medium
+T: BCA-105N, Unit-3, Inverse, Determinant-Property
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of |adj(A)| for an n x n square matrix A?
+A) |A|
+B) |A|^(n - 1) *
+C) |A|^n
+D) n * |A|
+E: Taking determinants of A * adj(A) = |A| I yields |A| * |adj(A)| = |A|^n -> |adj(A)| = |A|^(n-1).
+D: medium
+T: BCA-105N, Unit-3, Adjoint, Determinant-of-Adjoint
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If A is an orthogonal matrix (A * A^T = I), what is the value of |A|?
+A) 0
+B) +1 or -1 *
+C) 2
+D) Infinity
+E: |A * A^T| = |A|^2 = |I| = 1 -> |A| = +/- 1.
+D: medium
+T: BCA-105N, Unit-3, Matrices, Orthogonal-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Elementary Row Operations (ERO) preserve which property of a system of linear equations?
+A) The exact matrix coefficients
+B) The solution set of the system *
+C) The sum of row elements
+D) The eigenvalues
+E: EROs transform augmented matrices into equivalent row-echelon forms without changing the underlying linear solutions.
+D: easy
+T: BCA-105N, Unit-3, Linear-Systems, EROs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Cramer's Rule solves a system of linear equations using:
+A) Eigenvectors
+B) Determinants of coefficient matrices *
+C) Logarithmic curves
+D) Taylor series
+E: Cramer's Rule computes x_i = Delta_i / Delta, where Delta is the system determinant and Delta_i replaces the i-th column with constants.
+D: easy
+T: BCA-105N, Unit-3, Cramers-Rule, Method
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Cramer's Rule, a unique solution exists if and only if:
+A) Delta = 0
+B) Delta != 0 *
+C) Delta_x = 0
+D) Constants are negative
+E: A non-zero coefficient determinant (Delta != 0) is the strict prerequisite for a unique Cramer's Rule solution.
+D: easy
+T: BCA-105N, Unit-3, Cramers-Rule, Consistency
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If Delta = 0 and at least one Delta_i != 0 in Cramer's Rule, the system is:
+A) Consistent with a unique solution
+B) Inconsistent (No solution) *
+C) Infinitely many solutions
+D) Trivial
+E: Delta = 0 with non-zero numerator creates division by zero, indicating parallel lines / inconsistent equations with no solution.
+D: medium
+T: BCA-105N, Unit-3, Cramers-Rule, Inconsistent
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If Delta = 0 and Delta_x = Delta_y = Delta_z = 0, the system generally has:
+A) Unique solution
+B) Infinitely many solutions (or inconsistent) *
+C) Zero solution
+D) Negative solutions
+E: When all determinants vanish, the equations represent dependent planes with infinitely many solutions.
+D: medium
+T: BCA-105N, Unit-3, Cramers-Rule, Infinite-Solutions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In matrix form, a system of linear equations is represented as:
+A) AX = B *
+B) A + X = B
+C) A/X = B
+D) X = AB
+E: AX = B, where A is the m x n coefficient matrix, X is the n x 1 column vector of variables, and B is the m x 1 vector of constants.
+D: easy
+T: BCA-105N, Unit-3, Matrix-Equations, AX-B
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If A is non-singular, the solution vector X in AX = B is obtained by:
+A) X = B / A
+B) X = A^(-1) B *
+C) X = B A^(-1)
+D) X = adj(A) B
+E: Pre-multiplying both sides by A^(-1): A^(-1)AX = A^(-1)B -> IX = A^(-1)B -> X = A^(-1)B.
+D: easy
+T: BCA-105N, Unit-3, Matrix-Equations, Inversion-Solution
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A system of linear equations is called 'Homogeneous' when:
+A) Matrix A is symmetric
+B) The constant vector B is a zero vector (AX = 0) *
+C) All variables are squared
+D) |A| = 1
+E: Homogeneous systems have all right-hand constants equal to zero (AX = 0).
+D: easy
+T: BCA-105N, Unit-3, Linear-Systems, Homogeneous
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A homogeneous system AX = 0 ALWAYS possesses at least which solution?
+A) No solution
+B) The Trivial Solution (X = 0, where all variables are zero) *
+C) An infinite complex solution
+D) x = 1, y = 1
+E: Setting x1 = x2 = ... = xn = 0 always satisfies AX = 0, known as the trivial (zero) solution.
+D: easy
+T: BCA-105N, Unit-3, Homogeneous-Systems, Trivial-Solution
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A homogeneous system AX = 0 has a non-trivial (non-zero) solution if and only if:
+A) |A| != 0
+B) |A| = 0
+C) A is singular
+D) Both B and C *
+E: Non-trivial solutions exist if and only if the coefficient matrix is singular (|A| = 0).
+D: medium
+T: BCA-105N, Unit-3, Homogeneous-Systems, Non-Trivial-Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the rank of an identity matrix I_3 of order 3?
+A) 1
+B) 2
+C) 3 *
+D) 0
+E: The 3x3 identity matrix has 3 linearly independent non-zero rows; hence its rank is 3.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Rank
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A real square matrix A is called an 'Orthogonal Matrix' if it satisfies:
+A) A * A^T = I *
+B) A^T = -A
+C) A^2 = 0
+D) A = A^(-1)
+E: An orthogonal matrix satisfies A * A^T = A^T * A = I, which means its transpose equals its inverse: A^(-1) = A^T.
+D: easy
+T: BCA-105N, Unit-3, Matrices, Orthogonal-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the possible values for the determinant of an Orthogonal Matrix?
+A) 0 only
+B) +1 or -1 *
+C) Any real number
+D) Purely imaginary
+E: Since A * A^T = I, |A * A^T| = |A| * |A^T| = |A|^2 = |I| = 1 -> |A| = ±1.
+D: medium
+T: BCA-105N, Unit-3, Matrices, Orthogonal-Determinant
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If A is an n x n square matrix and k is a scalar constant, then |k A| is equal to:
+A) k * |A|
+B) k^n * |A| *
+C) n * k * |A|
+D) |A| / k
+E: Factoring out scalar k from each of the n rows multiplies the determinant by k^n: |k A| = k^n |A|.
+D: medium
+T: BCA-105N, Unit-3, Determinants, Scalar-Multiplication
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If A is a non-singular square matrix of order n, then the determinant of its adjoint |adj(A)| equals:
+A) |A|^n
+B) |A|^(n - 1) *
+C) |A|^(n + 1)
+D) n * |A|
+E: Standard determinant identity: |adj(A)| = |A|^(n - 1).
+D: medium
+T: BCA-105N, Unit-3, Determinants, Adjoint-Determinant
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under what condition is a square matrix A invertible (i.e. has a unique inverse A^(-1))?
+A) |A| = 0 (singular)
+B) |A| != 0 (non-singular) *
+C) A is symmetric
+D) Trace(A) = 0
+E: A^(-1) = adj(A) / |A| exists if and only if |A| != 0 (non-singular matrix).
+D: easy
+T: BCA-105N, Unit-3, Matrix-Inverse, Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a system of linear equations AX = B, according to Cramer's Rule, a unique solution exists if:
+A) D = 0 and Dx = 0
+B) D != 0 (Determinant of coefficient matrix is non-zero) *
+C) D = 0 and Dx != 0
+D) All determinants are zero
+E: Cramer's rule yields x = Dx/D, y = Dy/D, z = Dz/D. A unique solution exists if and only if D != 0.
+D: easy
+T: BCA-105N, Unit-3, Cramers-Rule, Unique-Solution
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Cramer's Rule, if D = 0 and at least one of Dx, Dy, Dz is non-zero, then the system of equations has:
+A) A unique non-trivial solution
+B) Infinitely many solutions
+C) No solution (System is Inconsistent) *
+D) Trivial zero solution
+E: When D = 0 and at least one numerator determinant is non-zero, division by zero produces inconsistency: No solution.
+D: medium
+T: BCA-105N, Unit-3, Cramers-Rule, Inconsistency
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following Elementary Row Operations changes the numerical value of a determinant?
+A) Interchanging two rows (multiplies by -1) *
+B) Adding a scalar multiple of one row to another
+C) Neither of the above
+D) Both leave it unchanged
+E: Interchanging two rows changes the sign of the determinant, whereas Ri -> Ri + k*Rj preserves the determinant value exactly.
+D: easy
+T: BCA-105N, Unit-3, Elementary-Operations, Determinant-Invariance
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Gauss-Jordan elimination method computes the inverse of a matrix A by row reducing the augmented matrix [A | I] into:
+A) [I | A^(-1)] *
+B) [A^(-1) | I]
+C) [0 | I]
+D) [I | 0]
+E: Gauss-Jordan applies elementary row operations to transform [A | I] directly into [I | A^(-1)].
+D: medium
+T: BCA-105N, Unit-3, Gauss-Jordan, Matrix-Inverse
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Trace of a square matrix A is defined as:
+A) The product of all its elements
+B) The sum of the elements lying on its main diagonal *
+C) The determinant value
+D) The rank of the matrix
+E: Trace(A) = sum(a_ii) for i = 1 to n (sum of all main diagonal elements).
+D: easy
+T: BCA-105N, Unit-3, Matrices, Trace
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of a function f(x) from First Principles is defined mathematically as:
+A) f'(x) = f(x + h) - f(x)
+B) f'(x) = lim (h -> 0) [f(x + h) - f(x)] / h *
+C) f'(x) = f(x) / x
+D) f'(x) = lim (x -> 0) f(x)
+E: The First Principle definition of the derivative is the limit of the difference quotient as h approaches zero.
+D: easy
+T: BCA-105N, Unit-4, Differentiation, First-Principles
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of a constant function f(x) = c with respect to x?
+A) 1
+B) c
+C) 0 *
+D) x
+E: The rate of change of a constant is zero: d/dx(c) = 0.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Constant-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the Power Rule of differentiation, d/dx (x^n) equals:
+A) x^(n - 1)
+B) n * x^(n - 1) *
+C) n * x^n
+D) (n - 1) * x^n
+E: The power rule states that d/dx (x^n) = n * x^(n - 1).
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Power-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of sqrt(x) with respect to x?
+A) 1 / (2 * sqrt(x)) *
+B) 1 / sqrt(x)
+C) 2 * sqrt(x)
+D) 1 / (2x)
+E: d/dx(x^(1/2)) = (1/2) * x^(-1/2) = 1 / (2 * sqrt(x)).
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Square-Root
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of the natural exponential function d/dx (e^x) is:
+A) e^(x - 1)
+B) e^x *
+C) x * e^(x - 1)
+D) ln(x)
+E: The exponential function e^x is its own derivative: d/dx(e^x) = e^x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of a^x with respect to x (for a > 0, a != 1)?
+A) a^x
+B) a^x * ln(a) *
+C) x * a^(x - 1)
+D) a^x / ln(a)
+E: d/dx(a^x) = a^x * ln(a).
+D: easy
+T: BCA-105N, Unit-4, Derivatives, General-Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of the natural logarithm d/dx (ln x) for x > 0?
+A) 1 / x *
+B) e^x
+C) 1 / (x * ln 10)
+D) x
+E: d/dx(ln x) = 1/x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Logarithm
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of log_a(x) with base 'a' is:
+A) 1 / x
+B) 1 / (x * ln a) *
+C) ln a / x
+D) a / x
+E: Using change of base log_a(x) = ln(x) / ln(a): d/dx = 1 / (x * ln a).
+D: medium
+T: BCA-105N, Unit-4, Derivatives, Log-Base-a
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of sin(x)?
+A) cos(x) *
+B) -cos(x)
+C) tan(x)
+D) -sin(x)
+E: d/dx(sin x) = cos x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of cos(x)?
+A) sin(x)
+B) -sin(x) *
+C) -sec(x)
+D) cos(x)
+E: d/dx(cos x) = -sin x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of tan(x)?
+A) sec(x)
+B) sec^2(x) *
+C) -sec^2(x)
+D) cot(x)
+E: d/dx(tan x) = sec^2 x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of sec(x) is:
+A) sec^2(x)
+B) sec(x) * tan(x) *
+C) -sec(x) * tan(x)
+D) tan^2(x)
+E: d/dx(sec x) = sec x * tan x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Product Rule for differentiating the product of two functions y = u * v is:
+A) u' * v'
+B) u' * v + u * v' *
+C) u' * v - u * v'
+D) (u * v)' = u + v
+E: Product rule (Leibniz formula): d/dx(uv) = u * dv/dx + v * du/dx.
+D: easy
+T: BCA-105N, Unit-4, Differentiation-Rules, Product-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Quotient Rule for differentiating y = u / v is:
+A) (u'v - uv') / v^2 *
+B) (u'v + uv') / v^2
+C) (uv' - u'v) / v^2
+D) u' / v'
+E: Quotient rule: d/dx(u/v) = (v * du/dx - u * dv/dx) / v^2.
+D: easy
+T: BCA-105N, Unit-4, Differentiation-Rules, Quotient-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Chain Rule for differentiating a composite function y = f(g(x)) states:
+A) dy/dx = f'(g(x)) * g'(x) *
+B) dy/dx = f'(x) + g'(x)
+C) dy/dx = f'(g'(x))
+D) dy/dx = f'(x) * g(x)
+E: Chain rule differentiates outer function evaluated at inner function, multiplied by derivative of inner function.
+D: easy
+T: BCA-105N, Unit-4, Chain-Rule, Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of sin(x^2)?
+A) cos(x^2)
+B) 2x * cos(x^2) *
+C) -2x * cos(x^2)
+D) 2 * sin(x) * cos(x)
+E: By chain rule: d/dx[sin(x^2)] = cos(x^2) * d/dx(x^2) = 2x * cos(x^2).
+D: easy
+T: BCA-105N, Unit-4, Chain-Rule, Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of e^(5x)?
+A) e^(5x)
+B) 5 * e^(5x) *
+C) 5x * e^(5x - 1)
+D) e^5
+E: By chain rule: d/dx(e^(5x)) = e^(5x) * d/dx(5x) = 5 e^(5x).
+D: easy
+T: BCA-105N, Unit-4, Chain-Rule, Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of ln(sin x)?
+A) cos x
+B) cot x *
+C) tan x
+D) -cot x
+E: d/dx[ln(sin x)] = (1 / sin x) * d/dx(sin x) = cos x / sin x = cot x.
+D: medium
+T: BCA-105N, Unit-4, Chain-Rule, Log-Trig
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = x * e^x using the Product Rule?
+A) e^x
+B) e^x * (x + 1) *
+C) x * e^x
+D) e^(x + 1)
+E: dy/dx = (1)*e^x + x*(e^x) = e^x(x + 1).
+D: easy
+T: BCA-105N, Unit-4, Product-Rule, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = (x^2 + 1)^3?
+A) 3(x^2 + 1)^2
+B) 6x * (x^2 + 1)^2 *
+C) 2x * (x^2 + 1)^3
+D) 6x^5
+E: By chain rule: 3(x^2 + 1)^2 * d/dx(x^2 + 1) = 3(x^2 + 1)^2 * (2x) = 6x(x^2 + 1)^2.
+D: easy
+T: BCA-105N, Unit-4, Chain-Rule, Power
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of arcsin(x) [sin^(-1) x] with respect to x is:
+A) 1 / (1 + x^2)
+B) 1 / sqrt(1 - x^2) *
+C) -1 / sqrt(1 - x^2)
+D) 1 / sqrt(x^2 - 1)
+E: d/dx(arcsin x) = 1 / sqrt(1 - x^2) for |x| < 1.
+D: easy
+T: BCA-105N, Unit-4, Inverse-Trig, arcsin
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of arctan(x) [tan^(-1) x] is:
+A) 1 / (1 + x^2) *
+B) 1 / (1 - x^2)
+C) 1 / sqrt(1 + x^2)
+D) sec^2(x)
+E: d/dx(arctan x) = 1 / (1 + x^2) for all real x.
+D: easy
+T: BCA-105N, Unit-4, Inverse-Trig, arctan
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of arccos(x) [cos^(-1) x] is:
+A) 1 / sqrt(1 - x^2)
+B) -1 / sqrt(1 - x^2) *
+C) -1 / (1 + x^2)
+D) 1 / (1 - x^2)
+E: d/dx(arccos x) = -1 / sqrt(1 - x^2).
+D: easy
+T: BCA-105N, Unit-4, Inverse-Trig, arccos
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In implicit differentiation of the circle equation x^2 + y^2 = r^2, what is dy/dx?
+A) x / y
+B) -x / y *
+C) -y / x
+D) y / x
+E: Differentiating both sides: 2x + 2y(dy/dx) = 0 -> 2y(dy/dx) = -2x -> dy/dx = -x/y.
+D: medium
+T: BCA-105N, Unit-4, Implicit-Differentiation, Circle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Logarithmic differentiation is essential when differentiating functions of the form:
+A) Polynomials y = x^n
+B) Variable base raised to a variable exponent y = [f(x)]^[g(x)] *
+C) Constants
+D) Simple quotients
+E: When both base and exponent are functions of x (e.g. y = x^x), taking natural logs converts the power into a product: ln y = g(x) ln f(x).
+D: medium
+T: BCA-105N, Unit-4, Logarithmic-Differentiation, Concept
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = x^x with respect to x?
+A) x * x^(x - 1)
+B) x^x * (1 + ln x) *
+C) x^x * ln x
+D) x^x
+E: ln y = x ln x -> (1/y) dy/dx = (1)*ln x + x*(1/x) = ln x + 1 -> dy/dx = x^x(1 + ln x).
+D: medium
+T: BCA-105N, Unit-4, Logarithmic-Differentiation, x-to-the-x
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the second derivative d^2/dx^2 of f(x) = x^4?
+A) 4x^3
+B) 12x^2 *
+C) 24x
+D) 12x^3
+E: First derivative: f'(x) = 4x^3; Second derivative: f''(x) = 12x^2.
+D: easy
+T: BCA-105N, Unit-4, Higher-Order-Derivatives, Second-Derivative
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A point on a curve y = f(x) where the tangent is completely horizontal (parallel to x-axis) satisfies:
+A) dy/dx = 1
+B) dy/dx = 0 *
+C) dy/dx = infinity
+D) d^2y/dx^2 = 0
+E: Horizontal slope means derivative is zero: dy/dx = 0 (stationary/critical point).
+D: easy
+T: BCA-105N, Unit-4, Applications, Horizontal-Tangent
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of cot(x)?
+A) -csc^2(x) *
+B) csc^2(x)
+C) -sec^2(x)
+D) -tan(x)
+E: d/dx(cot x) = -csc^2 x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of csc(x)?
+A) -csc(x) * cot(x) *
+B) csc(x) * cot(x)
+C) -sec(x) * tan(x)
+D) -cot^2(x)
+E: d/dx(csc x) = -csc x * cot x.
+D: easy
+T: BCA-105N, Unit-4, Derivatives, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A function f(x) is defined to be continuous at a point x = c if:
+A) lim (x -> c) f(x) exists only
+B) f(c) is defined only
+C) lim (x -> c) f(x) = f(c) *
+D) f'(c) = 0
+E: Continuity requires: 1) f(c) exists, 2) limit as x->c exists, 3) the limit equals the functional value f(c).
+D: easy
+T: BCA-105N, Unit-4, Continuity, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following statements about continuity and differentiability is TRUE?
+A) Continuity implies differentiability everywhere
+B) Differentiability implies continuity, but continuity does not guarantee differentiability *
+C) Neither implies the other
+D) They are identical concepts
+E: Every differentiable function is continuous, but continuous functions may fail to be differentiable (e.g. f(x) = |x| at x = 0 has a sharp corner).
+D: medium
+T: BCA-105N, Unit-4, Calculus, Differentiability-Continuity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the fundamental trigonometric limit: lim (x -> 0) [sin(x) / x] (where x is in radians):
+A) 0
+B) 1 *
+C) Infinity
+D) Undefined
+E: Standard limit: lim(x->0) [sin x / x] = 1.
+D: easy
+T: BCA-105N, Unit-4, Limits, Trigonometric-Limit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the exponential limit: lim (x -> 0) [(e^x - 1) / x]:
+A) 0
+B) 1 *
+C) e
+D) Infinity
+E: By series expansion or L'Hopital's rule: lim(x->0) (e^x / 1) = e^0 = 1.
+D: easy
+T: BCA-105N, Unit-4, Limits, Exponential-Limit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the Euler limit: lim (x -> 0) (1 + x)^(1/x):
+A) 1
+B) 0
+C) e *
+D) Infinity
+E: This is the foundational definition of Euler's number e (approx 2.71828).
+D: easy
+T: BCA-105N, Unit-4, Limits, Euler-Limit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of cot^(-1)(x) [arccot x] with respect to x is:
+A) 1 / (1 + x^2)
+B) -1 / (1 + x^2) *
+C) 1 / sqrt(1 - x^2)
+D) -1 / sqrt(1 - x^2)
+E: d/dx(arccot x) = -1 / (1 + x^2).
+D: easy
+T: BCA-105N, Unit-4, Inverse-Trig, arccot
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The derivative of sec^(-1)(x) [arcsec x] for |x| > 1 is:
+A) 1 / (|x| * sqrt(x^2 - 1)) *
+B) -1 / (|x| * sqrt(x^2 - 1))
+C) 1 / (1 + x^2)
+D) sec x * tan x
+E: d/dx(arcsec x) = 1 / (|x| * sqrt(x^2 - 1)).
+D: medium
+T: BCA-105N, Unit-4, Inverse-Trig, arcsec
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = ln(sec x + tan x)?
+A) sec x *
+B) tan x
+C) sec^2 x
+D) cos x
+E: dy/dx = [1 / (sec x + tan x)] * (sec x tan x + sec^2 x) = [sec x (tan x + sec x)] / (sec x + tan x) = sec x.
+D: medium
+T: BCA-105N, Unit-4, Differentiation, Standard-Log-Trig
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = e^(sin x)?
+A) e^(cos x)
+B) cos(x) * e^(sin x) *
+C) -cos(x) * e^(sin x)
+D) e^(sin x)
+E: By chain rule: dy/dx = e^(sin x) * d/dx(sin x) = cos x * e^(sin x).
+D: easy
+T: BCA-105N, Unit-4, Chain-Rule, Exponential-Trig
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If x and y are given parametrically by x = a * cos(t) and y = a * sin(t), what is dy/dx?
+A) tan(t)
+B) -cot(t) *
+C) -tan(t)
+D) cot(t)
+E: dx/dt = -a sin t, dy/dt = a cos t. dy/dx = (dy/dt) / (dx/dt) = (a cos t) / (-a sin t) = -cot(t).
+D: medium
+T: BCA-105N, Unit-4, Parametric-Differentiation, Circle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If x = a * t^2 and y = 2 * a * t, what is dy/dx?
+A) t
+B) 1 / t *
+C) 2t
+D) a / t
+E: dx/dt = 2at, dy/dt = 2a. dy/dx = (2a) / (2at) = 1/t.
+D: medium
+T: BCA-105N, Unit-4, Parametric-Differentiation, Parabola
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the second derivative (d^2y / dx^2) of y = x^4 - 5x^2 + 7?
+A) 4x^3 - 10x
+B) 12x^2 - 10 *
+C) 24x
+D) 12x^2
+E: First derivative: y' = 4x^3 - 10x. Second derivative: y'' = 12x^2 - 10.
+D: easy
+T: BCA-105N, Unit-4, Higher-Order-Derivatives, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Differentiate the implicit relation x * y = 16 to find dy/dx:
+A) -y / x *
+B) y / x
+C) -x / y
+D) 1 / x^2
+E: Product rule: (1)*y + x*(dy/dx) = 0 -> x(dy/dx) = -y -> dy/dx = -y/x.
+D: easy
+T: BCA-105N, Unit-4, Implicit-Differentiation, Hyperbola
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = sqrt(sin x)?
+A) cos(x) / (2 * sqrt(sin x)) *
+B) -cos(x) / (2 * sqrt(sin x))
+C) 1 / (2 * sqrt(sin x))
+D) 2 * cos(x) * sqrt(sin x)
+E: d/dx(u^(1/2)) = (1 / 2sqrt(u)) * u' = cos x / (2 * sqrt(sin x)).
+D: medium
+T: BCA-105N, Unit-4, Chain-Rule, Radical-Trig
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the slope of the tangent line to the curve y = x^2 at the point (2, 4)?
+A) 2
+B) 4 *
+C) 8
+D) 1/4
+E: y' = 2x. At x = 2, slope m = 2 * 2 = 4.
+D: easy
+T: BCA-105N, Unit-4, Tangents, Slope
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the slope of the normal line to the curve y = x^2 at the point (2, 4)?
+A) 4
+B) -1/4 *
+C) -4
+D) 1/4
+E: Slope of normal m_norm = -1 / m_tangent = -1 / 4.
+D: easy
+T: BCA-105N, Unit-4, Normals, Slope
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A stationary point (critical point) on a smooth curve y = f(x) occurs where:
+A) f(x) = 0
+B) f'(x) = 0 *
+C) f''(x) = 0
+D) f(x) is undefined
+E: Critical points where the tangent is horizontal occur where the first derivative f'(x) = 0.
+D: easy
+T: BCA-105N, Unit-4, Critical-Points, Condition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = tan^(-1)(2x)?
+A) 2 / (1 + 4x^2) *
+B) 1 / (1 + 4x^2)
+C) 2 / (1 + 2x^2)
+D) 1 / (1 + 2x^2)
+E: By chain rule: [1 / (1 + (2x)^2)] * d/dx(2x) = 2 / (1 + 4x^2).
+D: medium
+T: BCA-105N, Unit-4, Inverse-Trig, Chain-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the derivative of y = ln(ln x) for x > 1?
+A) 1 / x
+B) 1 / (x * ln x) *
+C) 1 / (ln x)
+D) (ln x) / x
+E: By chain rule: (1 / ln x) * d/dx(ln x) = (1 / ln x) * (1 / x) = 1 / (x * ln x).
+D: medium
+T: BCA-105N, Unit-4, Chain-Rule, Iterated-Log
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to L'Hopital's Rule, when evaluating lim (x -> c) [f(x) / g(x)] yielding indeterminate form 0/0 or inf/inf:
+A) lim [f(x)/g(x)] = lim [f'(x)/g'(x)] *
+B) lim [f(x)/g(x)] = lim [(f'g - fg') / g^2]
+C) The limit cannot exist
+D) The limit is always 0
+E: L'Hopital's rule evaluates the quotient of separate derivatives: lim f'(x)/g'(x).
+D: easy
+T: BCA-105N, Unit-4, L-Hopital, Indeterminate-Forms
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Indefinite Integration is conceptually the reverse operation of:
+A) Multiplication
+B) Differentiation (Anti-derivative) *
+C) Logarithm
+D) Factorization
+E: Integration is the inverse process of differentiation: if d/dx [F(x)] = f(x), then int f(x) dx = F(x) + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Anti-Derivative
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is an arbitrary constant of integration (+ C) added to indefinite integrals?
+A) To make the formula longer
+B) Because the derivative of any constant is zero; hence infinitely many functions differ by a constant with the same derivative *
+C) It represents zero
+D) To balance units
+E: Differentiating F(x) + C eliminates C; thus the antiderivative defines an entire family of parallel curves.
+D: easy
+T: BCA-105N, Unit-5, Integration, Constant-of-Integration
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the Power Rule of integration, int (x^n) dx equals:
+A) n * x^(n - 1) + C
+B) x^(n + 1) / (n + 1) + C (for n != -1) *
+C) x^n / n + C
+D) (n + 1) * x^(n + 1) + C
+E: The power rule of integration adds 1 to the exponent and divides by the new exponent: int x^n dx = x^(n+1)/(n+1) + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Power-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the integral int (1 / x) dx for x != 0?
+A) x^(-1) + C
+B) ln|x| + C *
+C) -1 / x^2 + C
+D) e^x + C
+E: The power rule fails at n = -1; the unique integral of 1/x is the natural logarithm: ln|x| + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Log-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the integral of the exponential function int (e^x) dx?
+A) e^x + C *
+B) x * e^x + C
+C) e^(x + 1) + C
+D) e^x / x + C
+E: int e^x dx = e^x + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int (a^x) dx for a > 0, a != 1?
+A) a^x * ln(a) + C
+B) a^x / ln(a) + C *
+C) a^(x + 1) / (x + 1) + C
+D) a^x + C
+E: int a^x dx = a^x / ln(a) + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, General-Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the integral of cos(x) dx?
+A) -sin(x) + C
+B) sin(x) + C *
+C) -cos(x) + C
+D) tan(x) + C
+E: int cos x dx = sin x + C (since d/dx[sin x] = cos x).
+D: easy
+T: BCA-105N, Unit-5, Integration, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the integral of sin(x) dx?
+A) cos(x) + C
+B) -cos(x) + C *
+C) -sin(x) + C
+D) sec(x) + C
+E: int sin x dx = -cos x + C (since d/dx[-cos x] = sin x).
+D: easy
+T: BCA-105N, Unit-5, Integration, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int (sec^2 x) dx?
+A) sec(x) + C
+B) tan(x) + C *
+C) -cot(x) + C
+D) 2 sec(x) + C
+E: int sec^2 x dx = tan x + C (since d/dx[tan x] = sec^2 x).
+D: easy
+T: BCA-105N, Unit-5, Integration, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int (csc^2 x) dx?
+A) -cot(x) + C *
+B) cot(x) + C
+C) -csc(x) + C
+D) tan(x) + C
+E: int csc^2 x dx = -cot x + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int (sec x * tan x) dx?
+A) tan^2 x + C
+B) sec(x) + C *
+C) -sec(x) + C
+D) ln|sec x| + C
+E: int sec x tan x dx = sec x + C.
+D: easy
+T: BCA-105N, Unit-5, Integration, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The method of Integration by Substitution is based on:
+A) The Product Rule of differentiation
+B) The Chain Rule of differentiation (change of variable u = g(x)) *
+C) The Quotient Rule
+D) Integration by parts
+E: Substitution transforms int f(g(x)) g'(x) dx into int f(u) du by setting u = g(x) and du = g'(x) dx.
+D: easy
+T: BCA-105N, Unit-5, Substitution, Concept
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate: int (2x * cos(x^2)) dx:
+A) sin(x^2) + C *
+B) cos(x^2) + C
+C) 2 sin(x) + C
+D) -sin(x^2) + C
+E: Let u = x^2 -> du = 2x dx. The integral becomes int cos(u) du = sin(u) + C = sin(x^2) + C.
+D: easy
+T: BCA-105N, Unit-5, Substitution, Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To evaluate int (sin^2 x) dx, which trigonometric identity is utilized?
+A) sin^2 x = 1 - cos^2 x
+B) sin^2 x = (1 - cos 2x) / 2 *
+C) sin^2 x = 2 sin x cos x
+D) sin^2 x = tan^2 x / sec^2 x
+E: Using the half-angle formula sin^2 x = (1 - cos 2x)/2 allows linear integration: x/2 - (sin 2x)/4 + C.
+D: medium
+T: BCA-105N, Unit-5, Trig-Identities, sin2x-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int (cos^2 x) dx?
+A) x/2 + (sin 2x)/4 + C *
+B) x/2 - (sin 2x)/4 + C
+C) sin^3 x / 3 + C
+D) tan x + C
+E: cos^2 x = (1 + cos 2x)/2. Integrating yields x/2 + (sin 2x)/4 + C.
+D: medium
+T: BCA-105N, Unit-5, Trig-Identities, cos2x-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To integrate int (tan^2 x) dx, you rewrite it as:
+A) int (1 - sec^2 x) dx
+B) int (sec^2 x - 1) dx = tan x - x + C *
+C) int (sin^2 x / cos^2 x) dx
+D) tan^3 x / 3 + C
+E: Identity: tan^2 x = sec^2 x - 1. Integral = int (sec^2 x - 1) dx = tan x - x + C.
+D: easy
+T: BCA-105N, Unit-5, Trig-Identities, tan2x-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int [1 / (x^2 + a^2)] dx?
+A) (1 / a) * arctan(x / a) + C *
+B) arctan(x) + C
+C) ln|x^2 + a^2| + C
+D) (1 / 2a) * ln|(x - a)/(x + a)| + C
+E: Standard formula: int dx / (x^2 + a^2) = (1/a) arctan(x/a) + C.
+D: easy
+T: BCA-105N, Unit-5, Standard-Integrals, arctan-Form
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int [1 / sqrt(a^2 - x^2)] dx?
+A) arcsin(x / a) + C *
+B) (1 / a) * arcsin(x / a) + C
+C) arccos(x / a) + C
+D) ln|x + sqrt(a^2 - x^2)| + C
+E: Standard formula: int dx / sqrt(a^2 - x^2) = arcsin(x/a) + C.
+D: easy
+T: BCA-105N, Unit-5, Standard-Integrals, arcsin-Form
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate int (e^(3x)) dx:
+A) e^(3x) + C
+B) (1 / 3) * e^(3x) + C *
+C) 3 * e^(3x) + C
+D) e^(3x) / x + C
+E: By substitution u = 3x, du = 3 dx -> (1/3) e^(3x) + C.
+D: easy
+T: BCA-105N, Unit-5, Substitution, Exponential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is int [f'(x) / f(x)] dx?
+A) f(x) + C
+B) ln|f(x)| + C *
+C) 1 / f(x) + C
+D) [f(x)]^2 / 2 + C
+E: When the numerator is the exact derivative of the denominator, the integral evaluates to ln|denominator| + C.
+D: medium
+T: BCA-105N, Unit-5, Standard-Forms, Log-Derivative-Form
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The formula for Integration by Parts is derived from which differentiation rule?
+A) The Chain Rule
+B) The Product Rule of differentiation *
+C) The Quotient Rule
+D) Power rule
+E: Integrating d/dx(uv) = u'v + uv' yields int u v' dx = uv - int v u' dx.
+D: easy
+T: BCA-105N, Unit-5, Integration-by-Parts, Origin
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Integration by Parts formula states: int (u * v) dx equals:
+A) u * int(v dx) - int [ (du/dx) * int(v dx) ] dx *
+B) u * v - int(u' * v') dx
+C) int(u dx) * int(v dx)
+D) (u * v) / 2
+E: First function times integral of second minus integral of (derivative of first times integral of second).
+D: easy
+T: BCA-105N, Unit-5, Integration-by-Parts, Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Integration by Parts, the mnemonic rule 'ILATE' helps decide the priority of which function to choose as 'u' (first function). What does 'I' stand for?
+A) Integer functions
+B) Inverse Trigonometric functions *
+C) Indefinite functions
+D) Irrational functions
+E: ILATE: Inverse trigonometric, Logarithmic, Algebraic, Trigonometric, Exponential.
+D: easy
+T: BCA-105N, Unit-5, ILATE-Rule, Inverse-Trig
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the ILATE rule, what does 'L' and 'A' stand for?
+A) Linear and Arithmetic
+B) Logarithmic and Algebraic functions *
+C) Limits and Asymptotes
+D) Leibniz and Abel
+E: L stands for Logarithmic functions (e.g. ln x); A stands for Algebraic polynomial functions (e.g. x^2).
+D: easy
+T: BCA-105N, Unit-5, ILATE-Rule, Log-Algebraic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To evaluate int (x * e^x) dx by parts, which function is chosen as 'u' according to ILATE?
+A) e^x (Exponential)
+B) x (Algebraic) *
+C) Both simultaneously
+D) Neither
+E: In ILATE, 'A' (Algebraic x) precedes 'E' (Exponential e^x); hence u = x and v = e^x.
+D: easy
+T: BCA-105N, Unit-5, Integration-by-Parts, Function-Selection
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate int (x * e^x) dx:
+A) x * e^x - e^x + C = e^x (x - 1) + C *
+B) x * e^x + e^x + C
+C) x^2 * e^x / 2 + C
+D) e^x + C
+E: int x e^x dx = x * int(e^x dx) - int(1 * e^x dx) = x e^x - e^x + C = e^x(x - 1) + C.
+D: medium
+T: BCA-105N, Unit-5, Integration-by-Parts, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate int (ln x) dx by parts (hint: write as int (ln x * 1) dx):
+A) 1 / x + C
+B) x * ln x - x + C = x (ln x - 1) + C *
+C) x * ln x + C
+D) (ln x)^2 / 2 + C
+E: u = ln x, v = 1: x * ln x - int(x * (1/x) dx) = x ln x - int(1 dx) = x ln x - x + C.
+D: medium
+T: BCA-105N, Unit-5, Integration-by-Parts, ln-x-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Fundamental Theorem of Calculus connects definite integrals and antiderivatives via:
+A) int_a^b f(x) dx = F(b) - F(a) *
+B) int_a^b f(x) dx = f(b) - f(a)
+C) int_a^b f(x) dx = F(b) + F(a)
+D) int_a^b f(x) dx = F(b) * F(a)
+E: If F'(x) = f(x), then the definite integral evaluates to F(b) - F(a).
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, FTC
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the definite integral: int_0^2 (3x^2) dx:
+A) 6
+B) 8 *
+C) 12
+D) 4
+E: Antiderivative of 3x^2 is x^3. [x^3]_0^2 = 2^3 - 0^3 = 8.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the definite integral of an odd function f(-x) = -f(x) integrated over a symmetric interval [-a, a]?
+A) 2 * int_0^a f(x) dx
+B) 0 *
+C) a^2
+D) 1
+E: For an odd function, the positive area cancels the negative area symmetrically: int_(-a)^a f(x) dx = 0.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Symmetry-Odd
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the indefinite integral: int tan(x) dx:
+A) sec^2(x) + C
+B) ln|sec x| + C = -ln|cos x| + C *
+C) ln|sin x| + C
+D) -cot(x) + C
+E: int tan x dx = int (sin x / cos x) dx = -ln|cos x| + C = ln|sec x| + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the indefinite integral: int cot(x) dx:
+A) -cosec^2(x) + C
+B) ln|sin x| + C *
+C) -ln|sin x| + C
+D) ln|cos x| + C
+E: int cot x dx = int (cos x / sin x) dx = ln|sin x| + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, Trigonometric
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the indefinite integral: int sec(x) dx:
+A) sec(x) * tan(x) + C
+B) ln|sec x + tan x| + C *
+C) ln|sec x| + C
+D) tan(x) + C
+E: Multiplying numerator and denominator by (sec x + tan x) yields ln|sec x + tan x| + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, sec-x
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the indefinite integral: int cosec(x) dx:
+A) ln|cosec x - cot x| + C *
+B) -cosec(x) * cot(x) + C
+C) ln|sin x| + C
+D) -ln|cosec x| + C
+E: int cosec x dx = ln|cosec x - cot x| + C = -ln|cosec x + cot x| + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, cosec-x
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the standard formula for: int [dx / (x^2 + a^2)]?
+A) (1 / a) * arctan(x / a) + C *
+B) arcsin(x / a) + C
+C) ln|x + a| + C
+D) (1 / 2a) * ln|(x - a)/(x + a)| + C
+E: int dx / (x^2 + a^2) = (1/a) arctan(x/a) + C.
+D: easy
+T: BCA-105N, Unit-5, Standard-Integrals, Rational
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the standard formula for: int [dx / sqrt(a^2 - x^2)]?
+A) arctan(x / a) + C
+B) arcsin(x / a) + C *
+C) (1 / a) * arcsin(x / a) + C
+D) ln|x + sqrt(a^2 - x^2)| + C
+E: int dx / sqrt(a^2 - x^2) = arcsin(x/a) + C (no 1/a coefficient out front).
+D: easy
+T: BCA-105N, Unit-5, Standard-Integrals, arcsin
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the standard formula for: int [dx / sqrt(x^2 + a^2)]?
+A) ln|x + sqrt(x^2 + a^2)| + C *
+B) arcsin(x / a) + C
+C) (1 / a) * ln|x + a| + C
+D) sqrt(x^2 + a^2) + C
+E: Standard logarithmic form: int dx / sqrt(x^2 + a^2) = ln|x + sqrt(x^2 + a^2)| + C.
+D: medium
+T: BCA-105N, Unit-5, Standard-Integrals, Log-Form
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the standard formula for: int [dx / (x^2 - a^2)] for |x| > a?
+A) (1 / (2a)) * ln|(x - a) / (x + a)| + C *
+B) (1 / a) * arctan(x / a) + C
+C) (1 / (2a)) * ln|(a + x) / (a - x)| + C
+D) ln|x^2 - a^2| + C
+E: Partial fractions: 1/(x^2 - a^2) = (1/2a)[1/(x-a) - 1/(x+a)] -> (1/2a) ln|(x-a)/(x+a)| + C.
+D: medium
+T: BCA-105N, Unit-5, Partial-Fractions, Standard-Integral
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the special exponential integral: int e^x [f(x) + f'(x)] dx:
+A) e^x * f'(x) + C
+B) e^x * f(x) + C *
+C) e^x * [f(x)]^2 + C
+D) f(x) + C
+E: By product rule differentiation: d/dx[e^x * f(x)] = e^x f(x) + e^x f'(x) = e^x [f(x) + f'(x)].
+D: medium
+T: BCA-105N, Unit-5, Integrals, e^x-f-fprime
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate: int e^x [sin(x) + cos(x)] dx:
+A) e^x * cos(x) + C
+B) e^x * sin(x) + C *
+C) -e^x * sin(x) + C
+D) e^x * tan(x) + C
+E: Here f(x) = sin x, f'(x) = cos x. Result is e^x * f(x) + C = e^x * sin x + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, Application
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate: int e^x [1/x - 1/x^2] dx:
+A) e^x / x + C *
+B) -e^x / x^2 + C
+C) e^x * ln(x) + C
+D) e^x / (x^2) + C
+E: Here f(x) = 1/x, f'(x) = -1/x^2. Result is e^x * f(x) + C = (e^x / x) + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, Application
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which fundamental definite integral property allows flipping the limits: int_a^b f(x) dx?
+A) int_a^b f(x) dx = int_b^a f(x) dx
+B) int_a^b f(x) dx = -int_b^a f(x) dx *
+C) int_a^b f(x) dx = 0
+D) int_a^b f(x) dx = 1 / int_b^a f(x) dx
+E: Reversing limits negates the definite integral value: int_a^b f(x) dx = -int_b^a f(x) dx.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Limits-Flip
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the king property of definite integrals: int_0^a f(x) dx is identically equal to:
+A) int_0^a f(a - x) dx *
+B) int_0^a f(x - a) dx
+C) 2 * int_0^a f(x) dx
+D) 0
+E: King Property: int_0^a f(x) dx = int_0^a f(a - x) dx, obtained by substitution t = a - x.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, King-Property
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the famous definite integral: int_0^(pi/2) [sqrt(sin x) / (sqrt(sin x) + sqrt(cos x))] dx:
+A) pi / 2
+B) pi / 4 *
+C) pi
+D) 1
+E: Applying King's property: I + I = int_0^(pi/2) 1 dx = pi/2 -> 2I = pi/2 -> I = pi/4.
+D: medium
+T: BCA-105N, Unit-5, Definite-Integrals, Classic-Problem
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the definite integral of the odd function: int_(-1)^1 (x^3 + 5x) dx:
+A) 0 *
+B) 2
+C) 6
+D) 12
+E: Since f(x) = x^3 + 5x is strictly an odd function (f(-x) = -f(x)), symmetric integration over [-1, 1] evaluates to 0.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Odd-Symmetry
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For an even function f(-x) = f(x), the definite integral int_(-a)^a f(x) dx simplifies to:
+A) 0
+B) 2 * int_0^a f(x) dx *
+C) a * f(a)
+D) int_0^a f(x) dx
+E: Even functions are symmetric across the y-axis, doubling the area from 0 to a: 2 * int_0^a f(x) dx.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Even-Symmetry
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To evaluate int sin^2(x) dx, which trigonometric identity is used?
+A) sin^2(x) = (1 - cos 2x) / 2 *
+B) sin^2(x) = (1 + cos 2x) / 2
+C) sin^2(x) = 1 - tan^2(x)
+D) sin^2(x) = 2 sin x cos x
+E: Power reduction formula: sin^2(x) = (1 - cos 2x) / 2, integrating to x/2 - sin(2x)/4 + C.
+D: easy
+T: BCA-105N, Unit-5, Integrals, Trig-Identity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate by parts: int x * cos(x) dx:
+A) x * sin(x) + cos(x) + C *
+B) x * sin(x) - cos(x) + C
+C) -x * cos(x) + sin(x) + C
+D) x^2 * sin(x) / 2 + C
+E: u = x, v = cos x: x*sin x - int(1 * sin x dx) = x sin x - (-cos x) + C = x sin x + cos x + C.
+D: medium
+T: BCA-105N, Unit-5, Integration-by-Parts, Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The area enclosed by the curve y = f(x), the x-axis, and vertical lines x = a and x = b is computed as:
+A) int_a^b y dx *
+B) d/dx [f(b) - f(a)]
+C) y(b) - y(a)
+D) (b - a) * f(b)
+E: Definite integral int_a^b y dx represents the Riemann sum area under the curve y = f(x).
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Geometric-Area
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Evaluate the area under the line y = 2x from x = 0 to x = 3:
+A) 6
+B) 9 *
+C) 12
+D) 18
+E: Area = int_0^3 2x dx = [x^2]_0^3 = 3^2 - 0^2 = 9.
+D: easy
+T: BCA-105N, Unit-5, Definite-Integrals, Area-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+

@@ -21,6 +21,7 @@ import {
   Trophy,
   Flame,
   Lightbulb,
+  RefreshCw,
   Zap,
 } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -57,6 +58,23 @@ import { slugify } from "@/lib/slug";
 import { formatTitleCase } from "@/lib/format";
 import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
+import { getCuratedUnitArticles, getCuratedUnitMcqs } from "@/lib/curriculum-content";
+import { sanitizeEducationalMarkdown, splitUnitContentIntoTopics } from "@/lib/content-sanitizer";
+import { UnitPracticeQuiz, type PracticeQuestion } from "@/components/quiz/unit-practice-quiz";
+import { ArticleAudioPlayer } from "@/components/tts/article-audio-player";
+import { AiStudyAssistant } from "@/components/ai/ai-study-assistant";
+import type { GeneratedQuizQuestion } from "@/lib/gemini.functions";
+
+export type PaperRow = {
+  id: string;
+  title: string;
+  year: number | null;
+  exam_type: string | null;
+  paper_number: string | null;
+  description: string | null;
+  file_path: string | null;
+  file_bucket: string | null;
+};
 
 type UnitDetailData = {
   course: { id: string; title: string };
@@ -67,6 +85,7 @@ type UnitDetailData = {
   siblings: SiblingUnit[];
   quizzes: QuizRow[];
   topics: TopicRow[];
+  papers: PaperRow[];
 };
 
 type TopicRow = { id: string; title: string; sort_order: number };
@@ -132,6 +151,7 @@ async function fetchUnitDetails(
         { data: siblingsRes },
         { data: quizzesRes },
         { data: topicsRes },
+        { data: papersRes },
       ] = await Promise.all([
         supabase
           .from("content_items")
@@ -174,6 +194,13 @@ async function fetchUnitDetails(
           .eq("status", "published")
           .is("deleted_at", null)
           .order("sort_order"),
+        supabase
+          .from("papers")
+          .select("id, title, year, exam_type, paper_number, description, file_path, file_bucket")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("year", { ascending: false }),
       ]);
 
       const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
@@ -192,7 +219,107 @@ async function fetchUnitDetails(
         created_at: c.created_at ?? "",
       }));
 
-      // Only curated, published content items are included (legacy raw notes excluded)
+      // Include curated syllabus-aligned articles if defined for this unit
+      const curated = getCuratedUnitArticles(subject.code, unit.number);
+      const existingItemIds = new Set(items.map((it) => it.id));
+      for (const art of curated) {
+        if (!existingItemIds.has(art.id)) {
+          existingItemIds.add(art.id);
+          items.push({
+            id: art.id,
+            type: "note",
+            title: art.title,
+            description: art.topicTitle,
+            body: art.body,
+            file_path: null,
+            file_bucket: null,
+            file_mime: null,
+            file_size_bytes: null,
+            file_url: null,
+            tags: [art.topicTitle],
+            topic_id: null,
+            created_at: new Date().toISOString(),
+          });
+        }
+      }
+
+      // Include legacy published notes not duplicated by ID in content_items
+      for (const n of legacyNotesRes ?? []) {
+        if (!existingItemIds.has(n.id)) {
+          existingItemIds.add(n.id);
+          const isPdf =
+            n.file_mime?.includes("pdf") ||
+            (n.file_path && n.file_path.toLowerCase().endsWith(".pdf"));
+
+          // If curated articles already provide comprehensive textbook chapters for this unit,
+          // only keep the legacy note if it is an actual physical document/PDF attachment.
+          if (curated.length > 0 && !isPdf) {
+            continue;
+          }
+
+          if (isPdf || !n.body) {
+            items.push({
+              id: n.id,
+              type: isPdf ? "pdf" : "note",
+              title: n.title,
+              description: n.summary ?? null,
+              body: n.body ?? n.summary ?? null,
+              file_path: n.file_path ?? null,
+              file_bucket: n.file_bucket ?? "notes",
+              file_mime: n.file_mime ?? null,
+              file_size_bytes: n.file_size_bytes ?? null,
+              file_url: null,
+              tags: [],
+              topic_id: n.topic_id ?? null,
+              created_at: n.created_at ?? "",
+            });
+          } else {
+            // Split monolithic legacy notes into clean topic-by-topic textbook articles
+            const splitTopics = splitUnitContentIntoTopics(
+              unit.number,
+              unit.title,
+              n.body,
+              topicsRes ?? undefined,
+            );
+
+            if (splitTopics.length > 1) {
+              splitTopics.forEach((st) => {
+                items.push({
+                  id: `${n.id}-${st.id}`,
+                  type: "note",
+                  title: st.title,
+                  description: st.topicTitle,
+                  body: st.body,
+                  file_path: null,
+                  file_bucket: null,
+                  file_mime: null,
+                  file_size_bytes: null,
+                  file_url: null,
+                  tags: [st.topicTitle],
+                  topic_id: null,
+                  created_at: n.created_at ?? new Date().toISOString(),
+                });
+              });
+            } else {
+              items.push({
+                id: n.id,
+                type: "note",
+                title: sanitizeEducationalMarkdown(n.title).replace(/^#+\s*/, "") || unit.title,
+                description: unit.title,
+                body: sanitizeEducationalMarkdown(n.body),
+                file_path: null,
+                file_bucket: null,
+                file_mime: null,
+                file_size_bytes: null,
+                file_url: null,
+                tags: [],
+                topic_id: n.topic_id ?? null,
+                created_at: n.created_at ?? "",
+              });
+            }
+          }
+        }
+      }
 
       return {
         course,
@@ -203,6 +330,7 @@ async function fetchUnitDetails(
         siblings: (siblingsRes ?? []) as SiblingUnit[],
         quizzes: (quizzesRes ?? []) as QuizRow[],
         topics: (topicsRes ?? []) as TopicRow[],
+        papers: (papersRes ?? []) as PaperRow[],
       };
     },
   });
@@ -423,15 +551,23 @@ function UnitDetail() {
   const { user } = useAuth();
   const qc = useQueryClient();
 
-  const [activeTab, setActiveTab] = useState<"LEARN" | "NOTES" | "PRACTICE">("LEARN");
+  type UnitTabType =
+    | "STUDY_MATERIAL"
+    | "WRITTEN_PRACTICE"
+    | "PRACTICE_QUIZZES"
+    | "PHYSICAL_NOTES"
+    | "PAPERS";
+
+  const [activeTab, setActiveTab] = useState<UnitTabType>("STUDY_MATERIAL");
+  const [selectedTopicId, setSelectedTopicId] = useState<string>("ALL");
 
   const [studyMode, setStudyMode] = useState<"interactive" | "reader">(() => {
     if (typeof window !== "undefined") {
       return (
-        (localStorage.getItem("xrounder_study_mode") as "interactive" | "reader") || "interactive"
+        (localStorage.getItem("xrounder_study_mode") as "interactive" | "reader") || "reader"
       );
     }
-    return "interactive";
+    return "reader";
   });
 
   const toggleStudyMode = (mode: "interactive" | "reader") => {
@@ -443,6 +579,19 @@ function UnitDetail() {
 
   const [revealedPyqs, setRevealedPyqs] = useState<Record<string, boolean>>({});
   const [masteredPyqs, setMasteredPyqs] = useState<Record<string, boolean>>({});
+
+  // AI Study Assistant state & custom generated quiz state
+  const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
+  const [aiAssistantTopic, setAiAssistantTopic] = useState<string>("");
+  const [aiAssistantContext, setAiAssistantContext] = useState<string>("");
+  const [customAiQuizQuestions, setCustomAiQuizQuestions] = useState<PracticeQuestion[] | null>(null);
+
+  const handleLoadCustomQuiz = (questions: GeneratedQuizQuestion[]) => {
+    setCustomAiQuizQuestions(questions);
+    setActiveTab("PRACTICE_QUIZZES");
+    setAiAssistantOpen(false);
+    toast.success(`🎯 Loaded ${questions.length} AI-generated questions into the practice engine!`);
+  };
 
   /* ─────────── Data Query ─────────── */
 
@@ -497,6 +646,7 @@ function UnitDetail() {
         { data: siblingsRes },
         { data: quizzesRes },
         { data: topicsRes },
+        { data: papersRes },
       ] = await Promise.all([
         supabase
           .from("content_items")
@@ -539,6 +689,13 @@ function UnitDetail() {
           .eq("status", "published")
           .is("deleted_at", null)
           .order("sort_order"),
+        supabase
+          .from("papers")
+          .select("id, title, year, exam_type, paper_number, description, file_path, file_bucket")
+          .eq("subject_id", subject.id)
+          .eq("status", "published")
+          .is("deleted_at", null)
+          .order("year", { ascending: false }),
       ]);
 
       const items: UnitContentItem[] = (contentItemsRes ?? []).map((c) => ({
@@ -557,8 +714,107 @@ function UnitDetail() {
         created_at: c.created_at ?? "",
       }));
 
-      // Add legacy notes that are not duplicated by ID in content_items
-      // Only curated, published content items are included (legacy raw notes excluded)
+      // Include curated syllabus-aligned articles if defined for this unit
+      const curated = getCuratedUnitArticles(subject.code, unit.number);
+      const existingItemIds = new Set(items.map((it) => it.id));
+      for (const art of curated) {
+        if (!existingItemIds.has(art.id)) {
+          existingItemIds.add(art.id);
+          items.push({
+            id: art.id,
+            type: "note",
+            title: art.title,
+            description: art.topicTitle,
+            body: art.body,
+            file_path: null,
+            file_bucket: null,
+            file_mime: null,
+            file_size_bytes: null,
+            file_url: null,
+            tags: [art.topicTitle],
+            topic_id: null,
+            created_at: new Date().toISOString(),
+          });
+        }
+      }
+
+      // Include legacy published notes not duplicated by ID in content_items
+      for (const n of legacyNotesRes ?? []) {
+        if (!existingItemIds.has(n.id)) {
+          existingItemIds.add(n.id);
+          const isPdf =
+            n.file_mime?.includes("pdf") ||
+            (n.file_path && n.file_path.toLowerCase().endsWith(".pdf"));
+
+          // If curated articles already provide comprehensive textbook chapters for this unit,
+          // only keep the legacy note if it is an actual physical document/PDF attachment.
+          if (curated.length > 0 && !isPdf) {
+            continue;
+          }
+
+          if (isPdf || !n.body) {
+            items.push({
+              id: n.id,
+              type: isPdf ? "pdf" : "note",
+              title: n.title,
+              description: n.summary ?? null,
+              body: n.body ?? n.summary ?? null,
+              file_path: n.file_path ?? null,
+              file_bucket: n.file_bucket ?? "notes",
+              file_mime: n.file_mime ?? null,
+              file_size_bytes: n.file_size_bytes ?? null,
+              file_url: null,
+              tags: [],
+              topic_id: n.topic_id ?? null,
+              created_at: n.created_at ?? "",
+            });
+          } else {
+            // Split monolithic legacy notes into clean topic-by-topic textbook articles
+            const splitTopics = splitUnitContentIntoTopics(
+              unit.number,
+              unit.title,
+              n.body,
+              topicsRes ?? undefined,
+            );
+
+            if (splitTopics.length > 1) {
+              splitTopics.forEach((st) => {
+                items.push({
+                  id: `${n.id}-${st.id}`,
+                  type: "note",
+                  title: st.title,
+                  description: st.topicTitle,
+                  body: st.body,
+                  file_path: null,
+                  file_bucket: null,
+                  file_mime: null,
+                  file_size_bytes: null,
+                  file_url: null,
+                  tags: [st.topicTitle],
+                  topic_id: null,
+                  created_at: n.created_at ?? new Date().toISOString(),
+                });
+              });
+            } else {
+              items.push({
+                id: n.id,
+                type: "note",
+                title: sanitizeEducationalMarkdown(n.title).replace(/^#+\s*/, "") || unit.title,
+                description: unit.title,
+                body: sanitizeEducationalMarkdown(n.body),
+                file_path: null,
+                file_bucket: null,
+                file_mime: null,
+                file_size_bytes: null,
+                file_url: null,
+                tags: [],
+                topic_id: n.topic_id ?? null,
+                created_at: n.created_at ?? "",
+              });
+            }
+          }
+        }
+      }
 
       return {
         course,
@@ -569,6 +825,7 @@ function UnitDetail() {
         siblings: (siblingsRes ?? []) as SiblingUnit[],
         quizzes: (quizzesRes ?? []) as QuizRow[],
         topics: (topicsRes ?? []) as TopicRow[],
+        papers: (papersRes ?? []) as PaperRow[],
       };
     },
     initialData: loaderData,
@@ -655,7 +912,9 @@ function UnitDetail() {
   // Backward compatibility alias for single quiz
   const userAttemptQuery = useMemo(() => {
     const best = primaryQuiz ? quizStatsMap.bestAttempts.get(primaryQuiz.id) : undefined;
-    return { data: best ? { pct: best.pct, passed: best.passed, score: best.pct, max_score: 100 } : null };
+    return {
+      data: best ? { pct: best.pct, passed: best.passed, score: best.pct, max_score: 100 } : null,
+    };
   }, [primaryQuiz, quizStatsMap.bestAttempts]);
 
   // 4. Progress tracking
@@ -721,15 +980,35 @@ function UnitDetail() {
 
   /* ─────────── Derived Content Filters ─────────── */
 
-  const items = dataQuery.data?.items ?? [];
+  const items = useMemo(() => dataQuery.data?.items ?? [], [dataQuery.data?.items]);
+  const papers = useMemo(() => dataQuery.data?.papers ?? [], [dataQuery.data?.papers]);
+
+  const masterRevisionNote = useMemo(() => {
+    return (
+      items.find(
+        (i: UnitContentItem) =>
+          !i.file_path &&
+          (i.title.toLowerCase().includes("revision") ||
+            i.title.toLowerCase().includes("master") ||
+            i.title.toLowerCase().includes("complete unit")),
+      ) ?? null
+    );
+  }, [items]);
+
   const readArticles = useMemo(
     () => items.filter((i: UnitContentItem) => i.type === "note" || (!i.file_path && i.body)),
     [items],
   );
+
   const referenceMaterials = useMemo(
-    () => items.filter((i: UnitContentItem) => i.type === "pdf" || i.type === "ppt" || i.file_path),
+    () => items.filter((i: UnitContentItem) => i.type === "pdf" || i.type === "ppt" || !!i.file_path),
     [items],
   );
+
+  const calibratedUnitMcqs = useMemo(() => {
+    if (!dataQuery.data?.subject?.code || !dataQuery.data?.unit?.number) return [];
+    return getCuratedUnitMcqs(dataQuery.data.subject.code, dataQuery.data.unit.number);
+  }, [dataQuery.data?.subject?.code, dataQuery.data?.unit?.number]);
 
   const pyqQuestions = useMemo(
     () =>
@@ -893,16 +1172,40 @@ function UnitDetail() {
                 </span>
               </Link>
               <div className="mt-0.5 flex items-center gap-3 truncate">
-                <span className="font-mono text-[10px] uppercase font-bold text-primary">
+                <span className="font-mono text-[10px] uppercase font-semibold text-accent">
                   Unit {unit.number}
                 </span>
-                <h1 className="truncate font-display text-sm font-semibold text-foreground sm:text-base">
+                <h1 className="truncate font-display text-sm font-normal text-foreground sm:text-base">
                   {formatTitleCase(unit.title)}
                 </h1>
               </div>
             </div>
 
             <div className="flex shrink-0 items-center gap-2">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => {
+                  playPopSound();
+                  const currTitle =
+                    selectedTopicId !== "ALL"
+                      ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.title || unit.title
+                      : unit.title;
+                  const currContext =
+                    selectedTopicId !== "ALL"
+                      ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.body || ""
+                      : readArticles.map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`).join("\n\n");
+                  setAiAssistantTopic(currTitle);
+                  setAiAssistantContext(currContext);
+                  setAiAssistantOpen(true);
+                }}
+                className="rounded-full h-8 px-3 text-xs font-bold border-primary/40 text-primary hover:bg-primary/10 cursor-pointer shadow-xs transition-transform active:scale-95"
+                title="Open AI Study Assistant"
+              >
+                <Sparkles className="h-3.5 w-3.5 mr-1 text-primary animate-pulse" />
+                <span className="hidden sm:inline">Ask AI Coach</span>
+                <span className="sm:hidden">AI</span>
+              </Button>
               <SoundToggle />
               {readMinutes > 0 && (
                 <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
@@ -910,7 +1213,7 @@ function UnitDetail() {
                   {readMinutes} min read
                 </span>
               )}
-              <span className="hidden md:inline-flex items-center gap-1 rounded-full border border-border/80 bg-surface px-2.5 py-1 text-[11px] font-mono font-bold text-primary">
+              <span className="hidden md:inline-flex items-center gap-1 rounded-full border border-border/80 bg-surface px-2.5 py-1 text-[11px] font-mono font-semibold text-accent">
                 {readPct}% read
               </span>
               {isCompleted ? (
@@ -946,7 +1249,7 @@ function UnitDetail() {
         {/* Reading progress bar */}
         <div className="h-1 w-full bg-muted/40 overflow-hidden">
           <div
-            className="h-full bg-primary transition-all duration-150 ease-out"
+            className="h-full bg-accent transition-all duration-150 ease-out"
             style={{ width: `${readPct}%` }}
           />
         </div>
@@ -985,129 +1288,182 @@ function UnitDetail() {
           >
             Unit {unit.number} Learning Hub
           </Badge>
-          <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+          <h2 className="font-display text-2xl sm:text-4xl font-normal text-foreground tracking-tight">
             {formatTitleCase(unit.title)}
           </h2>
-          {unit.summary && (
-            <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-3xl leading-relaxed">
-              {unit.summary}
-            </p>
-          )}
 
-          {/* Syllabus Topics Pills (Phase 2 Gap 1 resolved) */}
-          {(dataQuery.data?.topics ?? []).length > 0 && (
-            <div className="mt-3.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground font-mono mr-1 inline-flex items-center gap-1">
-                <Sparkles className="h-3 w-3 text-primary" /> Syllabus Topics:
-              </span>
-              {(dataQuery.data?.topics ?? []).map((t: TopicRow) => (
-                <span
-                  key={t.id}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-surface px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-medium text-foreground shadow-2xs hover:border-primary/40 transition-colors"
-                >
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-primary" />
-                  {t.title}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Three Pillar Tabs */}
+          {/* Five Distinct Study Resource Pillars */}
           <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
             <button
               type="button"
               onClick={() => {
                 playPopSound();
-                setActiveTab("LEARN");
+                setActiveTab("STUDY_MATERIAL");
               }}
               className={cn(
                 "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
-                activeTab === "LEARN"
+                activeTab === "STUDY_MATERIAL"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <BookOpen className="h-4 w-4 shrink-0" /> Read &amp; Master (
-              {readArticles.length > 0 ? readArticles.length : 5})
+              <BookOpen className="h-4 w-4 shrink-0" /> Study Material ({readArticles.length})
             </button>
 
             <button
               type="button"
               onClick={() => {
                 playPopSound();
-                setActiveTab("NOTES");
+                setActiveTab("WRITTEN_PRACTICE");
               }}
               className={cn(
                 "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
-                activeTab === "NOTES"
+                activeTab === "WRITTEN_PRACTICE"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FileType className="h-4 w-4 shrink-0" /> Notes ({referenceMaterials.length})
+              <FileText className="h-4 w-4 shrink-0" /> Written Practice ({pyqQuestions.length > 0 ? pyqQuestions.length : "Exam Focus"})
             </button>
 
             <button
               type="button"
               onClick={() => {
                 playPopSound();
-                setActiveTab("PRACTICE");
+                setActiveTab("PRACTICE_QUIZZES");
               }}
               className={cn(
                 "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
-                activeTab === "PRACTICE"
+                activeTab === "PRACTICE_QUIZZES"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FlaskConical className="h-4 w-4 shrink-0" /> Practice (
-              {quizDetailsQuery.data?.length ?? 0})
+              <FlaskConical className="h-4 w-4 shrink-0" /> Practice Quizzes ({calibratedUnitMcqs.length > 0 ? `${calibratedUnitMcqs.length} MCQs` : (quizDetailsQuery.data?.length ?? 0)})
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playPopSound();
+                setActiveTab("PHYSICAL_NOTES");
+              }}
+              className={cn(
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                activeTab === "PHYSICAL_NOTES"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <FileType className="h-4 w-4 shrink-0" /> Physical Notes ({referenceMaterials.length})
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playPopSound();
+                setActiveTab("PAPERS");
+              }}
+              className={cn(
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                activeTab === "PAPERS"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <GraduationCap className="h-4 w-4 shrink-0" /> Previous Year Papers ({papers.length})
             </button>
           </div>
         </div>
 
-        {/* ─── TAB 1: READ & MASTER ─── */}
-        {activeTab === "LEARN" && (
+        {/* ─── TAB 1: STUDY MATERIAL ─── */}
+        {activeTab === "STUDY_MATERIAL" && (
           <div className="space-y-6">
-            {/* View Mode Switcher */}
             {readArticles.length > 0 && (
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/80 bg-muted/40 p-2 sm:px-3">
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => toggleStudyMode("interactive")}
-                    className={cn(
-                      "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
-                      studyMode === "interactive"
-                        ? "bg-card text-primary shadow-xs ring-1 ring-border"
-                        : "text-muted-foreground hover:text-foreground",
-                    )}
-                  >
-                    <Zap className="h-3.5 w-3.5 text-amber-500" />⚡ Interactive Cards (
-                    {readArticles.length})
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => toggleStudyMode("reader")}
-                    className={cn(
-                      "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
-                      studyMode === "reader"
-                        ? "bg-card text-primary shadow-xs ring-1 ring-border"
-                        : "text-muted-foreground hover:text-foreground",
-                    )}
-                  >
-                    <BookOpen className="h-3.5 w-3.5" />
-                    📖 Continuous Reader
-                  </button>
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/80 bg-muted/40 p-2 sm:px-3">
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => toggleStudyMode("reader")}
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
+                        studyMode === "reader"
+                          ? "bg-card text-primary shadow-xs ring-1 ring-border"
+                          : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      <BookOpen className="h-3.5 w-3.5" />
+                      📖 Article Reader ({readArticles.length} Topics)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleStudyMode("interactive")}
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer",
+                        studyMode === "interactive"
+                          ? "bg-card text-primary shadow-xs ring-1 ring-border"
+                          : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      <Zap className="h-3.5 w-3.5 text-amber-500" />⚡ Interactive Cards
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
+                      {studyMode === "reader"
+                        ? "Curated GeeksforGeeks-style educational articles"
+                        : "Bite-sized cards with instant checks & XP"}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
-                    {studyMode === "interactive"
-                      ? "Bite-sized cards with instant checks & XP"
-                      : "Continuous scroll with table of contents"}
-                  </span>
-                </div>
+                {/* Topic Selector Pills */}
+                {studyMode === "reader" && readArticles.length > 1 && (
+                  <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        playPopSound();
+                        setSelectedTopicId("ALL");
+                      }}
+                      className={cn(
+                        "rounded-xl px-3 py-1.5 text-xs font-semibold shrink-0 transition-all cursor-pointer",
+                        selectedTopicId === "ALL"
+                          ? "bg-primary text-primary-foreground shadow-xs"
+                          : "border border-border/80 bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
+                      )}
+                    >
+                      All Topics (Continuous)
+                    </button>
+                    {readArticles.map((art: UnitContentItem, idx: number) => (
+                      <button
+                        key={art.id}
+                        type="button"
+                        onClick={() => {
+                          playPopSound();
+                          setSelectedTopicId(art.id);
+                        }}
+                        className={cn(
+                          "rounded-xl px-3 py-1.5 text-xs font-semibold shrink-0 transition-all max-w-[220px] truncate cursor-pointer",
+                          selectedTopicId === art.id
+                            ? "bg-primary text-primary-foreground shadow-xs"
+                            : "border border-border/80 bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
+                        )}
+                        title={art.title}
+                      >
+                        {idx + 1}.{" "}
+                        {art.title
+                          .replace(/^[A-Z0-9-]{3,10}:\s*/i, "")
+                          .replace(/^Unit \d+ Master Exam Revision Notes:\s*/i, "")
+                          .replace(/^Topic \d+[:\s-]*/i, "")
+                          .replace(/^#+\s*/, "")
+                          .trim()}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -1127,6 +1483,109 @@ function UnitDetail() {
                 onCompleteUnit={() => completeMutation.mutate()}
                 onSwitchToReader={() => toggleStudyMode("reader")}
               />
+            ) : selectedTopicId !== "ALL" ? (
+              (() => {
+                const focusedIdx = readArticles.findIndex((a: UnitContentItem) => a.id === selectedTopicId);
+                const focusedArticle = focusedIdx >= 0 ? readArticles[focusedIdx] : readArticles[0];
+                const prevArt = focusedIdx > 0 ? readArticles[focusedIdx - 1] : null;
+                const nextArt =
+                  focusedIdx >= 0 && focusedIdx < readArticles.length - 1
+                    ? readArticles[focusedIdx + 1]
+                    : null;
+
+                return (
+                  <div className="space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl border border-border/80 bg-card shadow-soft">
+                      <ArticleAudioPlayer
+                        text={`${focusedArticle.title}. ${focusedArticle.body || focusedArticle.description || ""}`}
+                        title={focusedArticle.title}
+                        className="flex-1"
+                      />
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          playPopSound();
+                          setAiAssistantTopic(focusedArticle.title);
+                          setAiAssistantContext(focusedArticle.body || focusedArticle.description || "");
+                          setAiAssistantOpen(true);
+                        }}
+                        className="rounded-xl border-primary/30 text-primary hover:bg-primary/10 h-10 px-3.5 text-xs font-semibold cursor-pointer shrink-0"
+                      >
+                        <Sparkles className="h-3.5 w-3.5 mr-1.5 text-primary" />
+                        Ask AI About Topic
+                      </Button>
+                    </div>
+
+                    <EducationalContentRenderer
+                      title={focusedArticle.title}
+                      content={focusedArticle.body || focusedArticle.description || ""}
+                    />
+
+                    {/* Single Topic Navigation Controls */}
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-border/60 pt-6">
+                      {prevArt ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            playPopSound();
+                            setSelectedTopicId(prevArt.id);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="flex items-center gap-2.5 rounded-2xl border border-border/80 bg-card p-3.5 text-left transition-all hover:border-primary/40 flex-1 cursor-pointer"
+                        >
+                          <ArrowLeft className="h-4 w-4 text-primary shrink-0" />
+                          <div className="min-w-0">
+                            <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                              Previous Topic
+                            </div>
+                            <div className="font-bold text-xs text-foreground truncate">
+                              {prevArt.title}
+                            </div>
+                          </div>
+                        </button>
+                      ) : (
+                        <div className="hidden sm:block flex-1" />
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playPopSound();
+                          setSelectedTopicId("ALL");
+                        }}
+                        className="rounded-xl border border-border/80 bg-muted/40 px-4 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground shrink-0 cursor-pointer"
+                      >
+                        View All Topics
+                      </button>
+
+                      {nextArt ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            playPopSound();
+                            setSelectedTopicId(nextArt.id);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="flex items-center justify-end gap-2.5 rounded-2xl border border-border/80 bg-card p-3.5 text-right transition-all hover:border-primary/40 flex-1 cursor-pointer"
+                        >
+                          <div className="min-w-0">
+                            <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                              Next Topic
+                            </div>
+                            <div className="font-bold text-xs text-foreground truncate">
+                              {nextArt.title}
+                            </div>
+                          </div>
+                          <ArrowRight className="h-4 w-4 text-primary shrink-0" />
+                        </button>
+                      ) : (
+                        <div className="hidden sm:block flex-1" />
+                      )}
+                    </div>
+                  </div>
+                );
+              })()
             ) : (
               <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem] min-w-0">
                 <article ref={articleRef} className="min-w-0 max-w-full overflow-hidden">
@@ -1180,21 +1639,68 @@ function UnitDetail() {
                   )}
 
                   {readArticles.length === 0 ? (
-                    <EmptyState
-                      icon={FileText}
-                      tone="accent"
-                      title="Educational article in progress"
-                      description="The online learning content for this unit is currently being drafted. Check back soon."
-                      primaryAction={{
-                        label: "View reference notes",
-                        onClick: () => setActiveTab("NOTES"),
-                        icon: FileType,
-                      }}
-                    />
+                    <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft text-center space-y-4">
+                      <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
+                        <BookOpen className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-foreground">
+                          Study Material in preparation
+                        </h3>
+                        <p className="text-xs text-muted-foreground mt-1 max-w-md mx-auto">
+                          Detailed syllabus articles for Unit {unit.number} are being indexed. You can practice interactive quizzes or review university question papers below.
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                        <Button
+                          size="sm"
+                          onClick={() => {
+                            playPopSound();
+                            setActiveTab("PRACTICE_QUIZZES");
+                          }}
+                          className="rounded-xl text-xs font-bold"
+                        >
+                          <FlaskConical className="h-3.5 w-3.5 mr-1.5" /> Practice Quizzes
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => {
+                            playPopSound();
+                            setActiveTab("PHYSICAL_NOTES");
+                          }}
+                          className="rounded-xl text-xs font-semibold"
+                        >
+                          <FileType className="h-3.5 w-3.5 mr-1.5" /> Physical Notes
+                        </Button>
+                      </div>
+                    </div>
                   ) : (
                     <div className="space-y-12 min-w-0 max-w-full">
                       {readArticles.map((item: UnitContentItem, i: number) => (
-                        <div key={item.id} className="space-y-8">
+                        <div key={item.id} className="space-y-4">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl border border-border/80 bg-card shadow-soft">
+                            <ArticleAudioPlayer
+                              text={`${item.title}. ${item.body || item.description || ""}`}
+                              title={item.title}
+                              className="flex-1"
+                            />
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                playPopSound();
+                                setAiAssistantTopic(item.title);
+                                setAiAssistantContext(item.body || item.description || "");
+                                setAiAssistantOpen(true);
+                              }}
+                              className="rounded-xl border-primary/30 text-primary hover:bg-primary/10 h-10 px-3.5 text-xs font-semibold cursor-pointer shrink-0"
+                            >
+                              <Sparkles className="h-3.5 w-3.5 mr-1.5 text-primary" />
+                              Ask AI
+                            </Button>
+                          </div>
+
                           <EducationalContentRenderer
                             title={item.title}
                             content={item.body || item.description || ""}
@@ -1225,69 +1731,68 @@ function UnitDetail() {
                           )}
                         </div>
                       ))}
+
+                      {/* End of Lesson Action Loop */}
+                      <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-xs">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                          <div className="flex items-start gap-4">
+                            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
+                              <FlaskConical className="h-6 w-6" />
+                            </div>
+                            <div>
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
+                              >
+                                Practice Ready
+                              </Badge>
+                              <h3 className="font-display text-lg font-bold text-foreground">
+                                Ready to practice Unit {unit.number}?
+                              </h3>
+                              <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                                You've read the core concepts. Take the balanced 10-question practice set to test your mastery!
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+                            <Button
+                              onClick={() => {
+                                playPopSound();
+                                setActiveTab("PRACTICE_QUIZZES");
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                              className="btn-squishy btn-cta rounded-2xl h-11 px-6 font-bold text-xs shadow-sm cursor-pointer"
+                            >
+                              <FlaskConical className="h-4 w-4 mr-1.5" /> Start Practice Quiz
+                            </Button>
+
+                            {!isCompleted &&
+                              (user ? (
+                                <Button
+                                  variant="ghost"
+                                  onClick={() => completeMutation.mutate()}
+                                  disabled={completeMutation.isPending}
+                                  className="rounded-2xl h-11 px-4 text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+                                >
+                                  <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
+                                </Button>
+                              ) : (
+                                <Button
+                                  asChild
+                                  variant="ghost"
+                                  className="rounded-2xl h-11 px-4 text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+                                >
+                                  <Link to="/auth" search={{ mode: "signup" }}>
+                                    <Check className="h-4 w-4 mr-1.5" /> Save progress
+                                  </Link>
+                                </Button>
+                              ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
-
-                  {/* End of Lesson Action Loop */}
-                  <div className="mt-12 rounded-2xl sm:rounded-3xl border border-primary/20 bg-card p-6 sm:p-8 shadow-xs">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
-                      <div className="flex items-start gap-4">
-                        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/15 text-primary">
-                          <FlaskConical className="h-6 w-6" />
-                        </div>
-                        <div>
-                          <Badge
-                            variant="outline"
-                            className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
-                          >
-                            Interactive Knowledge Check
-                          </Badge>
-                          <h3 className="font-display text-lg font-bold text-foreground">
-                            Ready to test yourself on Unit {unit.number}?
-                          </h3>
-                          <p className="text-xs text-muted-foreground mt-1 max-w-md">
-                            You've covered the core concepts. Practice instant MCQs to measure your
-                            accuracy and prepare for university exams.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-                        {!isCompleted &&
-                          (user ? (
-                            <Button
-                              variant="outline"
-                              onClick={() => completeMutation.mutate()}
-                              disabled={completeMutation.isPending}
-                              className="rounded-2xl h-11 px-5 text-xs font-bold"
-                            >
-                              <Check className="h-4 w-4 mr-1.5" /> Mark Unit Complete
-                            </Button>
-                          ) : (
-                            <Button
-                              asChild
-                              variant="outline"
-                              className="rounded-2xl h-11 px-5 text-xs font-bold"
-                            >
-                              <Link to="/auth" search={{ mode: "signup" }}>
-                                <Check className="h-4 w-4 mr-1.5" /> Sign in to save progress
-                              </Link>
-                            </Button>
-                          ))}
-
-                        {primaryQuiz && (
-                          <Button
-                            asChild
-                            className="rounded-2xl h-11 px-6 font-bold text-xs shadow-sm"
-                          >
-                            <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                              Practice Unit MCQs <ArrowRight className="h-4 w-4 ml-1.5" />
-                            </Link>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
 
                   {/* Next / Previous Unit Navigation */}
                   <nav
@@ -1317,18 +1822,6 @@ function UnitDetail() {
                       </Link>
                     ) : (
                       <div className="hidden sm:block flex-1" />
-                    )}
-
-                    {primaryQuiz && (
-                      <Button
-                        asChild
-                        variant="secondary"
-                        className="rounded-2xl h-12 px-5 font-bold text-xs shrink-0 shadow-xs"
-                      >
-                        <Link to="/quizzes/$quizId" params={{ quizId: primaryQuiz.id }}>
-                          <FlaskConical className="h-4 w-4 mr-2" /> Practice MCQs
-                        </Link>
-                      </Button>
                     )}
 
                     {nextUnit ? (
@@ -1401,251 +1894,106 @@ function UnitDetail() {
           </div>
         )}
 
-        {/* ─── TAB 2: REFERENCE NOTES ─── */}
-        {activeTab === "NOTES" && (
-          <div className="space-y-6">
-            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
-              <h3 className="font-display text-lg font-bold text-foreground flex items-center gap-2 mb-1">
-                <FileType className="h-5 w-5 text-primary" /> College Reference Notes &amp; Slides
-              </h3>
-              <p className="text-xs text-muted-foreground mb-6">
-                Official documents, presentation slides, and university lecture PDFs for Unit{" "}
-                {unit.number}.
-              </p>
-
-              {referenceMaterials.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center">
-                  <FileText className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
-                  <div className="text-sm font-semibold text-foreground">
-                    Reference notes coming soon
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
-                    You can study the complete online article in the Read &amp; Master tab above
-                    while official PDFs are uploaded.
-                  </p>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => setActiveTab("LEARN")}
-                    className="mt-4 rounded-xl text-xs font-semibold"
-                  >
-                    Read Online Article
-                  </Button>
-                </div>
-              ) : (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {referenceMaterials.map((item: UnitContentItem) => (
-                    <ReferenceCard key={item.id} item={item} />
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* ─── TAB 3: PRACTICE & PYQ INSIGHTS ─── */}
-        {activeTab === "PRACTICE" && (
+        {/* ─── TAB 2: WRITTEN PRACTICE ─── */}
+        {activeTab === "WRITTEN_PRACTICE" && (
           <div className="space-y-8">
-            {/* Multiple Topic Quizzes (Phase 2 Gap 2 resolved) */}
-            {unitQuizzes.length > 1 ? (
-              <div className="space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-primary">
-                      <Sparkles className="h-3.5 w-3.5" />
-                      Unit {unit.number} Topic Practice ({unitQuizzes.length} Quizzes)
-                    </div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
-                      Syllabus-Linked Diagnostic Quizzes
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                      Take targeted diagnostic checks per syllabus topic to cement concepts and earn mastery XP.
-                    </p>
-                  </div>
+            {/* University Exam Weightage & Format Blueprint */}
+            <div className="rounded-3xl border border-primary/20 bg-linear-to-br from-primary/10 via-card to-card p-6 sm:p-7 shadow-soft">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
+                  >
+                    Official University Examination Pattern
+                  </Badge>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                    Written Examination Blueprint — Unit {unit.number}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-2xl leading-relaxed">
+                    Odd-semester BCA university examinations follow a 3-tier written format. Focus your preparation on exact definitions, block diagrams, and working mechanisms.
+                  </p>
                 </div>
+                <Badge variant="default" className="text-xs font-bold rounded-xl px-3 py-1.5 shrink-0">
+                  Total External: 70 Marks
+                </Badge>
+              </div>
 
-                {/* Sparky Mascot Cheer Tip */}
-                <div className="flex items-center gap-3.5 rounded-2xl border border-primary/20 bg-primary/5 p-3.5 sm:p-4">
-                  <MascotSvg mood="happy" size={44} className="shrink-0" />
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-semibold text-foreground">
-                      Sparky's Practice Goal:{" "}
-                      <span className="text-muted-foreground font-normal">
-                        Score 70%+ on all {unitQuizzes.length} topic quizzes to achieve complete unit mastery! 🚀
-                      </span>
-                    </p>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-border/80 bg-background/80 p-4">
+                  <div className="text-[11px] font-mono font-bold text-primary uppercase">
+                    Section A · 2 Marks Each
                   </div>
+                  <div className="font-bold text-sm text-foreground mt-0.5">
+                    Very Short Answer / Definitions
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Precise definitions, distinguishing characteristics, and direct technical terms.
+                  </p>
                 </div>
-
-                <div className="grid gap-3.5 sm:grid-cols-2">
-                  {unitQuizzes.map((quiz: QuizRow, qIdx: number) => {
-                    const topicTitle = quiz.topic_id ? topicsById.get(quiz.topic_id) : null;
-                    const qCount = quizStatsMap.qCount.get(quiz.id) ?? 3;
-                    const bestAttempt = quizStatsMap.bestAttempts.get(quiz.id);
-                    const passMark = quiz.passing_pct ?? 40;
-                    const isMastered = bestAttempt && bestAttempt.pct >= passMark;
-
-                    return (
-                      <div
-                        key={quiz.id}
-                        className={cn(
-                          "group relative flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all shadow-xs",
-                          isMastered
-                            ? "border-success/40 bg-success/5 dark:bg-success/5"
-                            : bestAttempt
-                              ? "border-warning/30 bg-warning/5 dark:bg-warning/5"
-                              : "border-border/80 bg-card hover:border-primary/40",
-                        )}
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-2 mb-2">
-                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground truncate max-w-[200px]">
-                              {topicTitle ? `Topic · ${topicTitle}` : `Quiz ${qIdx + 1}`}
-                            </span>
-                            {bestAttempt ? (
-                              <Badge
-                                variant={isMastered ? "success" : "warning"}
-                                className="text-[10px] font-bold rounded-full px-2 shrink-0"
-                              >
-                                {isMastered ? `✓ ${bestAttempt.pct}% Mastered` : `${bestAttempt.pct}% · Retest`}
-                              </Badge>
-                            ) : (
-                              <Badge variant="outline" className="text-[10px] font-medium text-muted-foreground shrink-0">
-                                Not attempted
-                              </Badge>
-                            )}
-                          </div>
-
-                          <h4 className="font-display text-base font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
-                            {quiz.title}
-                          </h4>
-                          <p className="mt-1 text-xs text-muted-foreground">
-                            {qCount} Questions · Pass mark {quiz.passing_pct}% · Instant explanations
-                          </p>
-                        </div>
-
-                        <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-3">
-                          <span className="text-[11px] font-medium text-muted-foreground flex items-center gap-1">
-                            <Zap className="h-3 w-3 text-amber-500" /> +35 XP
-                          </span>
-                          <Button
-                            asChild
-                            size="sm"
-                            className="btn-squishy rounded-xl font-bold text-xs shadow-2xs cursor-pointer"
-                            variant={isMastered ? "outline" : "default"}
-                          >
-                            <Link
-                              to="/quizzes/$quizId"
-                              params={{ quizId: quiz.id }}
-                              onClick={() => playPopSound()}
-                            >
-                              <FlaskConical className="h-3.5 w-3.5 mr-1" />
-                              {bestAttempt ? "Retest" : "Start"}
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="rounded-2xl border border-border/80 bg-background/80 p-4">
+                  <div className="text-[11px] font-mono font-bold text-primary uppercase">
+                    Section B · 5 Marks Each
+                  </div>
+                  <div className="font-bold text-sm text-foreground mt-0.5">
+                    Short Answer / Conceptual
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Block diagrams, comparison tables, step-by-step algorithms, and workings.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-border/80 bg-background/80 p-4">
+                  <div className="text-[11px] font-mono font-bold text-primary uppercase">
+                    Section C · 15 Marks Each
+                  </div>
+                  <div className="font-bold text-sm text-foreground mt-0.5">
+                    Descriptive / Deep Dive
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Full system architecture, hardware hierarchies, comprehensive analysis, and flowcharts.
+                  </p>
                 </div>
               </div>
-            ) : (
-              /* Single Unit MCQ Card */
-              <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            </div>
+
+            {/* Master Unit Revision Note & Model Answers */}
+            {masterRevisionNote && (
+              <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft space-y-4">
+                <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-4">
                   <div>
                     <Badge
                       variant="outline"
-                      className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
+                      className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
                     >
-                      Unit {unit.number} Question Bank
+                      Master Revision Guide
                     </Badge>
-                    <h3 className="font-display text-xl font-bold text-foreground">
-                      Interactive Unit Quiz
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-foreground">
+                      {masterRevisionNote.title}
                     </h3>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1">
-                      <span>{quizDetailsQuery.data?.length ?? 0} Questions</span>
-                      {userAttemptQuery.data && (
-                        <span className="font-semibold text-primary">
-                          · Your best accuracy: {userAttemptQuery.data.pct}%
-                        </span>
-                      )}
-                    </div>
                   </div>
-
-                  {primaryQuiz ? (
-                    <Button
-                      asChild
-                      size="lg"
-                      className="btn-squishy rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm cursor-pointer"
-                    >
-                      <Link
-                        to="/quizzes/$quizId"
-                        params={{ quizId: primaryQuiz.id }}
-                        onClick={() => playPopSound()}
-                      >
-                        <FlaskConical className="h-4 w-4 mr-2" /> Practice Unit MCQs
-                      </Link>
-                    </Button>
-                  ) : (
-                    <div className="text-xs text-muted-foreground font-medium">
-                      No quiz attached to this unit yet.
-                    </div>
-                  )}
+                  <span className="text-xs text-muted-foreground font-mono">Exam High-Yield</span>
                 </div>
+                <EducationalContentRenderer
+                  content={masterRevisionNote.body || masterRevisionNote.description || ""}
+                />
               </div>
             )}
 
-            {/* Exam Simulator Drill-Down Banner */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-7 shadow-xs">
-              <div className="space-y-1">
-                <Badge
-                  variant="outline"
-                  className="font-mono text-[10px] font-bold uppercase text-primary border-primary/30"
-                >
-                  ⚡ Timed Exam Simulator
-                </Badge>
-                <h4 className="font-display text-lg sm:text-xl font-bold text-foreground">
-                  Unit {unit.number} High-Yield Exam Drill
-                </h4>
-                <p className="text-xs text-muted-foreground max-w-xl leading-relaxed">
-                  Test your real exam readiness with simulated timers, university PYQ questions, and
-                  detailed diagnostics for {formatTitleCase(subject.title)}.
-                </p>
-              </div>
-              <Button
-                asChild
-                size="lg"
-                className="rounded-2xl font-bold text-xs h-11 px-6 shrink-0 shadow-md"
-              >
-                <Link
-                  to="/mock-test"
-                  search={{
-                    subjectId: dataQuery.data.subject.id,
-                    unitId: dataQuery.data.unit.id,
-                  }}
-                >
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  Launch Unit Drill
-                </Link>
-              </Button>
-            </div>
-
-            {/* Important Exam Questions / PYQ Insights */}
+            {/* Important University Exam Questions / PYQ Insights */}
             <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
               <div className="flex items-center gap-2 mb-1">
                 <GraduationCap className="h-5 w-5 text-primary" />
                 <h3 className="font-display text-lg font-bold text-foreground">
-                  Important Exam Questions (PYQ Insights)
+                  Important University Exam Questions &amp; Model Answers
                 </h3>
               </div>
               <p className="text-xs text-muted-foreground mb-6">
-                Frequently repeated university exam questions from Unit {unit.number}.
+                University exam questions from Unit {unit.number} with scoring guidelines and model points.
               </p>
 
               {pyqQuestions.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-6 text-center text-xs text-muted-foreground">
-                  PYQ questions for Unit {unit.number} are being indexed from university papers.
+                  Written practice questions for Unit {unit.number} are being indexed from university papers.
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -1696,7 +2044,6 @@ function UnitDetail() {
                           {q.prompt}
                         </h4>
 
-                        {/* Interactive Solution Reveal */}
                         {!isRevealed ? (
                           <div className="mt-3">
                             <Button
@@ -1721,7 +2068,7 @@ function UnitDetail() {
                                 Model Answer &amp; Scoring Criteria:
                               </div>
                               {q.explanation ||
-                                "Answer should structure definitions, core diagrams/syntax, and real-world application examples for full marks."}
+                                "Structure your answer with definition, block diagram, and bulleted comparison points for maximum marks."}
                             </div>
 
                             <div className="flex flex-wrap items-center gap-2">
@@ -1747,7 +2094,7 @@ function UnitDetail() {
                                   isMastered && "bg-emerald-600 hover:bg-emerald-700 text-white",
                                 )}
                               >
-                                <Check className="h-3.5 w-3.5 mr-1" />I Knew This (+10 XP)
+                                <Check className="h-3.5 w-3.5 mr-1" /> I Knew This (+10 XP)
                               </Button>
                               <Button
                                 type="button"
@@ -1767,6 +2114,346 @@ function UnitDetail() {
                       </div>
                     );
                   })}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ─── TAB 3: PRACTICE QUIZZES ─── */}
+        {activeTab === "PRACTICE_QUIZZES" && (
+          <div className="space-y-6">
+            {/* Header & AI Quiz Generator Action */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <Badge
+                  variant="outline"
+                  className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-1"
+                >
+                  MCQ Practice Engine
+                </Badge>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                  Unit {unit.number} Syllabus Practice Set
+                </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  10-Question Balanced Set: 5 Easy · 3 Medium · 2 Hard with verified explanations
+                </p>
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  playPopSound();
+                  const currContext = readArticles
+                    .map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`)
+                    .join("\n\n");
+                  setAiAssistantTopic(`Unit ${unit.number}: ${unit.title}`);
+                  setAiAssistantContext(currContext);
+                  setAiAssistantOpen(true);
+                }}
+                className="rounded-2xl border-primary/30 text-primary hover:bg-primary/10 h-11 px-4 text-xs font-bold cursor-pointer shrink-0 shadow-xs"
+              >
+                <Sparkles className="h-4 w-4 mr-1.5 text-primary" />
+                Generate Custom AI Quiz
+              </Button>
+            </div>
+
+            {/* Custom AI Quiz Alert Banner if active */}
+            {customAiQuizQuestions && customAiQuizQuestions.length > 0 && (
+              <div className="flex items-center justify-between gap-3 p-4 rounded-2xl border border-primary/30 bg-primary/10 text-xs">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-primary shrink-0" />
+                  <span className="font-semibold text-primary">
+                    Currently practicing custom AI-generated quiz ({customAiQuizQuestions.length} Questions)
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playPopSound();
+                    setCustomAiQuizQuestions(null);
+                    toast.info("Restored standard syllabus question bank");
+                  }}
+                  className="text-xs font-bold text-foreground hover:underline cursor-pointer shrink-0"
+                >
+                  Reset to Standard Bank
+                </button>
+              </div>
+            )}
+
+            {/* Dedicated 10-Question Balanced MCQ Practice Engine */}
+            <UnitPracticeQuiz
+              questions={
+                customAiQuizQuestions && customAiQuizQuestions.length > 0
+                  ? customAiQuizQuestions
+                  : calibratedUnitMcqs
+              }
+              unitNumber={unit.number}
+              unitTitle={unit.title}
+              subjectTitle={subject.title}
+              quizId={primaryQuiz?.id}
+            />
+
+            {/* Complete 50-Question Bank Banner */}
+            {primaryQuiz && (
+              <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <Badge
+                      variant="outline"
+                      className="text-[10px] font-bold uppercase text-primary border-primary/30 mb-2"
+                    >
+                      Unit {unit.number} Comprehensive Bank
+                    </Badge>
+                    <h3 className="font-display text-xl font-bold text-foreground">
+                      Full Question Bank ({quizDetailsQuery.data?.length ?? 50} Questions)
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-1 max-w-md">
+                      Practice all questions from the entire question bank with timed exam simulation.
+                      {userAttemptQuery.data && (
+                        <span className="font-semibold text-primary block mt-1">
+                          Your best accuracy: {userAttemptQuery.data.pct}%
+                        </span>
+                      )}
+                    </p>
+                  </div>
+
+                  <Button
+                    asChild
+                    size="lg"
+                    className="btn-squishy rounded-2xl h-12 px-6 font-bold text-xs shrink-0 shadow-sm cursor-pointer"
+                  >
+                    <Link
+                      to="/quizzes/$quizId"
+                      params={{ quizId: primaryQuiz.id }}
+                      onClick={() => playPopSound()}
+                    >
+                      <FlaskConical className="h-4 w-4 mr-2" /> Launch Full 50-Q Bank
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {/* Multiple Topic Diagnostic Quizzes */}
+            {unitQuizzes.length > 1 && (
+              <div className="space-y-4">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-primary">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    Unit {unit.number} Topic Quizzes ({unitQuizzes.length} Quizzes)
+                  </div>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                    Syllabus-Linked Diagnostic Checks
+                  </h3>
+                </div>
+
+                <div className="grid gap-3.5 sm:grid-cols-2">
+                  {unitQuizzes.map((quiz: QuizRow, qIdx: number) => {
+                    const topicTitle = quiz.topic_id ? topicsById.get(quiz.topic_id) : null;
+                    const qCount = quizStatsMap.qCount.get(quiz.id) ?? 3;
+                    const bestAttempt = quizStatsMap.bestAttempts.get(quiz.id);
+                    const passMark = quiz.passing_pct ?? 40;
+                    const isMastered = bestAttempt && bestAttempt.pct >= passMark;
+
+                    return (
+                      <div
+                        key={quiz.id}
+                        className={cn(
+                          "group relative flex flex-col justify-between rounded-2xl border p-4 sm:p-5 transition-all shadow-xs",
+                          isMastered
+                            ? "border-success/40 bg-success/5 dark:bg-success/5"
+                            : bestAttempt
+                              ? "border-warning/30 bg-warning/5 dark:bg-warning/5"
+                              : "border-border/80 bg-card hover:border-primary/40",
+                        )}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground truncate max-w-[200px]">
+                              {topicTitle ? `Topic · ${topicTitle}` : `Quiz ${qIdx + 1}`}
+                            </span>
+                            {bestAttempt ? (
+                              <Badge
+                                variant={isMastered ? "success" : "warning"}
+                                className="text-[10px] font-bold rounded-full px-2 shrink-0"
+                              >
+                                {isMastered
+                                  ? `✓ ${bestAttempt.pct}% Mastered`
+                                  : `${bestAttempt.pct}% · Retest`}
+                              </Badge>
+                            ) : (
+                              <Badge
+                                variant="outline"
+                                className="text-[10px] font-medium text-muted-foreground shrink-0"
+                              >
+                                Not attempted
+                              </Badge>
+                            )}
+                          </div>
+
+                          <h4 className="font-display text-base font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                            {quiz.title}
+                          </h4>
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            {qCount} Questions · Pass mark {quiz.passing_pct}% · Instant explanations
+                          </p>
+                        </div>
+
+                        <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-3">
+                          <span className="text-[11px] font-medium text-muted-foreground flex items-center gap-1">
+                            <Zap className="h-3 w-3 text-amber-500" /> +35 XP
+                          </span>
+                          <Button
+                            asChild
+                            size="sm"
+                            className="btn-squishy rounded-xl font-bold text-xs shadow-2xs cursor-pointer"
+                            variant={isMastered ? "outline" : "default"}
+                          >
+                            <Link
+                              to="/quizzes/$quizId"
+                              params={{ quizId: quiz.id }}
+                              onClick={() => playPopSound()}
+                            >
+                              <FlaskConical className="h-3.5 w-3.5 mr-1" />
+                              {bestAttempt ? "Retest" : "Start"}
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ─── TAB 4: PHYSICAL NOTES ─── */}
+        {activeTab === "PHYSICAL_NOTES" && (
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+              <h3 className="font-display text-lg font-bold text-foreground flex items-center gap-2 mb-1">
+                <FileType className="h-5 w-5 text-primary" /> College Reference Notes &amp; Slides
+              </h3>
+              <p className="text-xs text-muted-foreground mb-6">
+                Official documents, presentation slides, and university lecture PDFs for Unit {unit.number}.
+              </p>
+
+              {referenceMaterials.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center">
+                  <FileText className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
+                  <div className="text-sm font-semibold text-foreground">
+                    Physical notes and slides coming soon
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
+                    You can study the complete curriculum in the <strong>Study Material</strong> tab above while lecture scans are being uploaded.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      playPopSound();
+                      setActiveTab("STUDY_MATERIAL");
+                    }}
+                    className="mt-4 rounded-xl text-xs font-semibold cursor-pointer"
+                  >
+                    Open Study Material
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {referenceMaterials.map((item: UnitContentItem) => (
+                    <ReferenceCard key={item.id} item={item} />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* ─── TAB 5: PREVIOUS YEAR PAPERS ─── */}
+        {activeTab === "PAPERS" && (
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+              <div className="flex items-center gap-2 mb-1">
+                <GraduationCap className="h-5 w-5 text-primary" />
+                <h3 className="font-display text-lg font-bold text-foreground">
+                  Official University Question Papers
+                </h3>
+              </div>
+              <p className="text-xs text-muted-foreground mb-6">
+                Original university examination question papers for {formatTitleCase(subject.title)}. Authentic university archive records only.
+              </p>
+
+              {papers.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-8 text-center">
+                  <GraduationCap className="mx-auto h-8 w-8 text-muted-foreground/50 mb-2" />
+                  <div className="text-sm font-semibold text-foreground">
+                    University papers being cataloged
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1 max-w-md mx-auto">
+                    Official semester examination papers for {subject.title} are being scanned and verified from university archives.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      playPopSound();
+                      setActiveTab("WRITTEN_PRACTICE");
+                    }}
+                    className="mt-4 rounded-xl text-xs font-semibold cursor-pointer"
+                  >
+                    View Written Practice Questions
+                  </Button>
+                </div>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {papers.map((paper: PaperRow) => (
+                    <div
+                      key={paper.id}
+                      className="rounded-2xl border border-border/80 bg-muted/20 p-5 flex flex-col justify-between gap-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+                          <FileText className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            {paper.year && (
+                              <Badge variant="outline" className="text-[10px] font-bold text-primary border-primary/30">
+                                {paper.year}
+                              </Badge>
+                            )}
+                            {paper.exam_type && (
+                              <Badge variant="outline" className="text-[10px] font-medium text-muted-foreground">
+                                {paper.exam_type}
+                              </Badge>
+                            )}
+                          </div>
+                          <div className="font-bold text-sm text-foreground line-clamp-1">{paper.title}</div>
+                          {paper.paper_number && (
+                            <div className="text-xs text-muted-foreground mt-0.5">
+                              Paper Code: {paper.paper_number}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 pt-2 border-t border-border/60">
+                        <Button
+                          asChild
+                          size="sm"
+                          className="flex-1 rounded-xl text-xs font-bold h-9 cursor-pointer"
+                        >
+                          <Link to="/papers/$paperId" params={{ paperId: paper.id }}>
+                            <ExternalLink className="h-3.5 w-3.5 mr-1.5" /> View Question Paper
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -1885,6 +2572,18 @@ function UnitDetail() {
             </div>
           </DialogContent>
         </Dialog>
+
+        {/* Gemini AI Study Coach Modal Dialog */}
+        <AiStudyAssistant
+          open={aiAssistantOpen}
+          onOpenChange={setAiAssistantOpen}
+          topicTitle={aiAssistantTopic || unit.title}
+          unitNumber={unit.number}
+          subjectTitle={subject.title}
+          courseTitle={course?.title}
+          contextText={aiAssistantContext}
+          onLoadCustomQuiz={handleLoadCustomQuiz}
+        />
       </main>
 
       <SiteFooter />
@@ -1896,31 +2595,69 @@ function UnitDetail() {
 
 function ReferenceCard({ item }: { item: UnitContentItem }) {
   const [pdfUrl, setPdfUrl] = useState<string | null>(item.file_url ?? null);
+  const [loading, setLoading] = useState<boolean>(!item.file_url && !!item.file_path);
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState<number>(0);
 
   useEffect(() => {
     if (item.file_url) {
       setPdfUrl(item.file_url);
+      setLoading(false);
+      setError(null);
       return;
     }
-    if (!item.file_path) return;
+    if (!item.file_path) {
+      setPdfUrl(null);
+      setLoading(false);
+      setError(null);
+      return;
+    }
     let active = true;
+    setLoading(true);
+    setError(null);
+
     (async () => {
       try {
-        const { data } = await supabase.storage
-          .from(item.file_bucket ?? "notes")
+        const bucket = item.file_bucket ?? "notes";
+        const { data, error: err } = await supabase.storage
+          .from(bucket)
           .createSignedUrl(item.file_path!, 60 * 60);
-        if (active && data?.signedUrl) setPdfUrl(data.signedUrl);
-      } catch {
-        const { data: pubData } = supabase.storage
-          .from(item.file_bucket ?? "notes")
-          .getPublicUrl(item.file_path!);
-        if (active && pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
+
+        if (!active) return;
+
+        if (err) {
+          if (bucket === "avatars") {
+            const { data: pubData } = supabase.storage.from(bucket).getPublicUrl(item.file_path!);
+            if (pubData?.publicUrl) {
+              setPdfUrl(pubData.publicUrl);
+              setLoading(false);
+              return;
+            }
+          }
+          setError(err.message || "Failed to load document");
+          setPdfUrl(null);
+        } else if (data?.signedUrl) {
+          setPdfUrl(data.signedUrl);
+          setError(null);
+        } else {
+          setError("Document link unavailable");
+          setPdfUrl(null);
+        }
+      } catch (e: unknown) {
+        if (active) {
+          const message = e instanceof Error ? e.message : "Failed to load document";
+          setError(message);
+          setPdfUrl(null);
+        }
+      } finally {
+        if (active) setLoading(false);
       }
     })();
+
     return () => {
       active = false;
     };
-  }, [item.file_path, item.file_bucket, item.file_url]);
+  }, [item.file_path, item.file_bucket, item.file_url, retryCount]);
 
   return (
     <div className="rounded-2xl border border-border/80 bg-muted/20 p-5 flex flex-col justify-between gap-4">
@@ -1961,8 +2698,27 @@ function ReferenceCard({ item }: { item: UnitContentItem }) {
               </a>
             </Button>
           </>
+        ) : loading ? (
+          <div className="flex items-center gap-2 text-xs text-muted-foreground animate-pulse">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            Loading document link…
+          </div>
+        ) : error ? (
+          <div className="flex items-center justify-between w-full gap-2">
+            <span className="text-xs text-destructive truncate flex items-center gap-1">
+              <AlertCircle className="h-3 w-3 shrink-0" /> Failed to load
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setRetryCount((c) => c + 1)}
+              className="h-7 px-2 text-xs font-semibold gap-1 text-muted-foreground hover:text-foreground"
+            >
+              <RefreshCw className="h-3 w-3" /> Retry
+            </Button>
+          </div>
         ) : (
-          <div className="text-xs text-muted-foreground">Document url is being processed.</div>
+          <div className="text-xs text-muted-foreground">Document not available.</div>
         )}
       </div>
     </div>

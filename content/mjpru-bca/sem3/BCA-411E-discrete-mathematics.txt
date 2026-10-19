@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 3
+COURSE CODE: BCA-411E - DISCRETE MATHEMATICS
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Set' in discrete mathematics?
+     (A) A well-defined collection of distinct objects [CORRECT]
+     (B) An ordered sequence of numbers with duplicates allowed
+     (C) A continuous real-valued function
+     (D) A matrix of complex numbers
+     Explanation: A set is defined as an unordered collection of well-defined, distinct objects called elements.
+     Tags: BCA-411E, Unit-1, Set-Theory, Definition
+
+Q2. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the 'Power Set' P(A) of a set A containing n elements?
+     (A) The set of all subsets of A, containing exactly 2^n elements [CORRECT]
+     (B) The set of all elements multiplied by n
+     (C) A set containing n^2 elements
+     (D) The empty set
+     Explanation: The power set P(A) contains all possible subsets of A, including the empty set and A itself. Its cardinality is |P(A)| = 2^n.
+     Tags: BCA-411E, Unit-1, Power-Set, Cardinality
+
+Q3. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     If A = {1, 2, 3}, what is the cardinality of the power set P(A)?
+     (A) 8 (2^3 = 8) [CORRECT]
+     (B) 6
+     (C) 9
+     (D) 3
+     Explanation: |A| = 3, so |P(A)| = 2^3 = 8.
+     Tags: BCA-411E, Unit-1, Power-Set, Calculation
+
+Q4. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the 'Symmetric Difference' (A Δ B or A ⊕ B) of two sets A and B?
+     (A) (A - B) ∪ (B - A) = (A ∪ B) - (A ∩ B) [CORRECT]
+     (B) A ∩ B
+     (C) A ∪ B
+     (D) A - B
+     Explanation: The symmetric difference consists of elements that belong to either A or B, but not to both simultaneously.
+     Tags: BCA-411E, Unit-1, Set-Operations, Symmetric-Difference
+
+Q5. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     According to De Morgan's Laws for sets, what is (A ∪ B)' equal to?
+     (A) A' ∩ B' [CORRECT]
+     (B) A' ∪ B'
+     (C) (A ∩ B)'
+     (D) A - B
+     Explanation: De Morgan's First Law: The complement of the union of two sets is the intersection of their individual complements: (A ∪ B)' = A' ∩ B'.
+     Tags: BCA-411E, Unit-1, De-Morgans-Laws, Sets
+
+Q6. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     According to De Morgan's Laws for sets, what is (A ∩ B)' equal to?
+     (A) A' ∪ B' [CORRECT]
+     (B) A' ∩ B'
+     (C) (A ∪ B)'
+     (D) A' - B'
+     Explanation: De Morgan's Second Law: The complement of an intersection is the union of individual complements: (A ∩ B)' = A' ∪ B'.
+     Tags: BCA-411E, Unit-1, De-Morgans-Laws, Sets
+
+Q7. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What three mathematical properties must a binary relation R on a set A satisfy to be a 'Partial Order Relation'?
+     (A) Reflexive, Anti-symmetric, and Transitive [CORRECT]
+     (B) Reflexive, Symmetric, and Transitive (Equivalence Relation)
+     (C) Irreflexive, Symmetric, and Transitive
+     (D) Anti-reflexive, Asymmetric, and Non-transitive
+     Explanation: A relation <= is a partial order if: 1. a <= a (Reflexive), 2. If a <= b and b <= a then a = b (Anti-symmetric), 3. If a <= b and b <= c then a <= c (Transitive).
+     Tags: BCA-411E, Unit-1, Poset, Properties
+
+Q8. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Partially Ordered Set' (Poset)?
+     (A) A set A together with a partial order relation R, denoted as (A, R) or (A, <=) [CORRECT]
+     (B) A set where every pair of elements can be compared
+     (C) A set sorted in ascending numerical order
+     (D) A sequence of prime numbers
+     Explanation: A Poset is an algebraic structure consisting of a set equipped with a reflexive, anti-symmetric, and transitive relation.
+     Tags: BCA-411E, Unit-1, Poset, Definition
+
+Q9. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Totally Ordered Set' (Chain / Linearly Ordered Set)?
+     (A) A poset where every pair of elements a, b is comparable (either a <= b or b <= a) [CORRECT]
+     (B) A poset with no relations
+     (C) A set with circular dependencies
+     (D) A set of disconnected vertices
+     Explanation: In a totally ordered set (chain), trichotomy holds: no two elements are incomparable.
+     Tags: BCA-411E, Unit-1, Total-Order, Chain
+
+Q10. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Hasse Diagram' in poset theory?
+     (A) A visual graph representation of a finite poset where reflexivity and transitivity are implied, drawing edges only for covering relations from bottom to top [CORRECT]
+     (B) A Venn diagram with 5 circles
+     (C) A bar chart of frequencies
+     (D) A circuit schematic for microprocessors
+     Explanation: Hasse diagrams eliminate self-loops (implied by reflexivity) and transitive edges (implied by upward paths), showing only immediate covering relations.
+     Tags: BCA-411E, Unit-1, Hasse-Diagram, Definition
+
+Q11. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     In a poset (A, <=), when is element b said to 'cover' element a (denoted a -< b)?
+     (A) If a < b and there exists NO element c in A such that a < c < b [CORRECT]
+     (B) If a > b
+     (C) If a = b
+     (D) If a and b have no common divisors
+     Explanation: Element b covers a if b is an immediate successor of a with no intermediate elements strictly between them.
+     Tags: BCA-411E, Unit-1, Poset, Covering-Relation
+
+Q12. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is a 'Maximal Element' in a poset (A, <=)?
+     (A) An element m in A such that there is NO element x in A with m < x [CORRECT]
+     (B) The unique greatest element in the entire set
+     (C) An element that is smaller than all other elements
+     (D) An element with degree 0
+     Explanation: A maximal element has no strictly greater elements above it in the poset. A poset can have multiple maximal elements.
+     Tags: BCA-411E, Unit-1, Poset, Maximal-Element
+
+Q13. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is the difference between a 'Maximal Element' and the 'Greatest Element' (Maximum) of a poset?
+     (A) A greatest element g must satisfy x <= g for ALL x in A (unique if it exists); a maximal element m merely has no x such that m < x [CORRECT]
+     (B) They are identical in all posets
+     (C) A poset can have multiple greatest elements
+     (D) Maximal elements only exist in infinite sets
+     Explanation: If a greatest element exists, it is unique and is the sole maximal element. A poset can have several distinct maximal elements that are mutually incomparable.
+     Tags: BCA-411E, Unit-1, Poset, Maximal-vs-Greatest
+
+Q14. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In the poset of positive divisors of 36 ordered by divisibility (D_36, |), what is the Least Element (Minimum)?
+     (A) 1 (since 1 divides every divisor of 36) [CORRECT]
+     (B) 2
+     (C) 36
+     (D) 0
+     Explanation: Under divisibility, 1 divides every integer a; hence 1 <= a for all a in D_36, making 1 the unique least element.
+     Tags: BCA-411E, Unit-1, Divisibility-Poset, Least-Element
+
+Q15. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In the same poset (D_36, |), what is the Greatest Element (Maximum)?
+     (A) 36 (since every divisor divides 36) [CORRECT]
+     (B) 18
+     (C) 72
+     (D) 1
+     Explanation: Every divisor x of 36 satisfies x | 36; hence 36 is the unique greatest element.
+     Tags: BCA-411E, Unit-1, Divisibility-Poset, Greatest-Element
+
+Q16. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the 'Least Upper Bound' (LUB / Supremum / Join) of two elements a and b in a poset?
+     (A) An upper bound u of {a, b} such that u <= x for every other upper bound x of {a, b} [CORRECT]
+     (B) The smaller of the two numbers
+     (C) The intersection of sets
+     (D) The arithmetic mean
+     Explanation: LUB (Join, a v b) is the smallest element that is greater than or equal to both a and b.
+     Tags: BCA-411E, Unit-1, LUB-Join, Definition
+
+Q17. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the 'Greatest Lower Bound' (GLB / Infimum / Meet) of two elements a and b in a poset?
+     (A) A lower bound l of {a, b} such that x <= l for every other lower bound x of {a, b} [CORRECT]
+     (B) The larger of the two numbers
+     (C) The union of sets
+     (D) The product of numbers
+     Explanation: GLB (Meet, a ^ b) is the largest element that is less than or equal to both a and b.
+     Tags: BCA-411E, Unit-1, GLB-Meet, Definition
+
+Q18. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     Under the divisibility poset of positive integers (Z+, |), what do the GLB (Meet) and LUB (Join) of two numbers a and b correspond to?
+     (A) GLB(a, b) = GCD(a, b) and LUB(a, b) = LCM(a, b) [CORRECT]
+     (B) GLB = LCM and LUB = GCD
+     (C) GLB = a - b and LUB = a + b
+     (D) GLB = a / b and LUB = a * b
+     Explanation: Greatest Common Divisor is the greatest lower bound under divisibility; Least Common Multiple is the least upper bound.
+     Tags: BCA-411E, Unit-1, Divisibility-Lattice, GCD-LCM
+
+Q19. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Lattice' in abstract algebra?
+     (A) A poset (L, <=) in which every pair of elements a, b has a unique Least Upper Bound (Join, a v b) and a unique Greatest Lower Bound (Meet, a ^ b) [CORRECT]
+     (B) A grid used for drawing graphs
+     (C) A matrix with determinant 1
+     (D) A set with no relations
+     Explanation: A lattice is a partially ordered set in which every two-element subset {a, b} has both a join (supremum) and a meet (infimum).
+     Tags: BCA-411E, Unit-1, Lattice, Definition
+
+Q20. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     Which algebraic law states that in any lattice, a v (a ^ b) = a and a ^ (a v b) = a?
+     (A) Absorption Law [CORRECT]
+     (B) Idempotent Law
+     (C) Distributive Law
+     (D) De Morgan's Law
+     Explanation: The Absorption Laws a v (a ^ b) = a and a ^ (a v b) = a are fundamental lattice axioms connecting join and meet.
+     Tags: BCA-411E, Unit-1, Lattice-Properties, Absorption-Law
+
+Q21. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     Which algebraic law states that for all elements a in a lattice, a v a = a and a ^ a = a?
+     (A) Idempotent Law [CORRECT]
+     (B) Associative Law
+     (C) Commutative Law
+     (D) Involution Law
+     Explanation: Idempotency ensures that combining an element with itself under join or meet yields the element itself.
+     Tags: BCA-411E, Unit-1, Lattice-Properties, Idempotence
+
+Q22. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Bounded Lattice'?
+     (A) A lattice that has both a unique least element 0 (bottom) and a unique greatest element 1 (top) [CORRECT]
+     (B) A lattice with fewer than 10 elements
+     (C) A lattice that fits inside a circle
+     (D) A totally ordered chain
+     Explanation: A bounded lattice (L, v, ^, 0, 1) satisfies 0 <= x <= 1 for all x in L: a v 0 = a, a ^ 0 = 0, a v 1 = 1, a ^ 1 = a.
+     Tags: BCA-411E, Unit-1, Bounded-Lattice, Definition
+
+Q23. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In a bounded lattice (L, v, ^, 0, 1), when is element b called a 'Complement' of element a?
+     (A) If a v b = 1 (top) AND a ^ b = 0 (bottom) [CORRECT]
+     (B) If a + b = 0
+     (C) If a * b = 1
+     (D) If a <= b
+     Explanation: An element b is a complement of a if their join is the universal top element 1 and their meet is the universal bottom element 0.
+     Tags: BCA-411E, Unit-1, Complemented-Lattice, Complement-Definition
+
+Q24. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Complemented Lattice'?
+     (A) A bounded lattice in which EVERY element has at least one complement [CORRECT]
+     (B) A lattice with no least element
+     (C) A lattice where elements have no meet
+     (D) A finite chain
+     Explanation: A lattice is complemented if every element a in L possesses a complement element a' such that a v a' = 1 and a ^ a' = 0.
+     Tags: BCA-411E, Unit-1, Complemented-Lattice, Definition
+
+Q25. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Distributive Lattice'?
+     (A) A lattice where meet distributes over join AND join distributes over meet: a ^ (b v c) = (a ^ b) v (a ^ c) and a v (b ^ c) = (a v b) ^ (a v c) [CORRECT]
+     (B) A lattice where elements can be divided by integers
+     (C) A lattice with no upper bound
+     (D) A lattice with only 2 elements
+     Explanation: In a distributive lattice, the operations of join and meet distribute across one another symmetrically.
+     Tags: BCA-411E, Unit-1, Distributive-Lattice, Definition
+
+Q26. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (HARD)
+     Which two classic non-distributive lattices are the forbidden sublattices for distributivity (Birkhoff's Theorem)?
+     (A) The Diamond Lattice M_3 and the Pentagon Lattice N_5 [CORRECT]
+     (B) The Line and Circle
+     (C) K_3,3 and K_5
+     (D) P_1 and P_2
+     Explanation: Birkhoff's representation theorem proves that a lattice is distributive if and only if it contains no sublattice isomorphic to M_3 (diamond) or N_5 (pentagon).
+     Tags: BCA-411E, Unit-1, Birkhoff-Theorem, Forbidden-Lattices
+
+Q27. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     In a Distributive Complemented Lattice, how many complements does each element have?
+     (A) Exactly one UNIQUE complement [CORRECT]
+     (B) At least two complements
+     (C) Zero complements
+     (D) Infinitely many complements
+     Explanation: In any distributive lattice, if an element has a complement, that complement is mathematically unique.
+     Tags: BCA-411E, Unit-1, Distributive-Lattice, Unique-Complement
+
+Q28. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Boolean Algebra' defined as in terms of lattice theory?
+     (A) A Complemented, Distributive Lattice: (B, v, ^, ', 0, 1) [CORRECT]
+     (B) A lattice with no bottom element
+     (C) Any finite poset
+     (D) A totally ordered group
+     Explanation: A Boolean Algebra is mathematically identical to a complemented distributive lattice possessing bottom (0) and top (1) elements.
+     Tags: BCA-411E, Unit-1, Boolean-Algebra, Lattice-Definition
+
+Q29. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is the cardinality of any FINITE Boolean Algebra?
+     (A) Always a power of 2: |B| = 2^n for some integer n >= 0 [CORRECT]
+     (B) Any odd integer
+     (C) Any prime number
+     (D) Only 2
+     Explanation: Stone's Representation Theorem proves that every finite Boolean algebra is isomorphic to the power set Boolean algebra P(S), meaning its cardinality must be 2^n.
+     Tags: BCA-411E, Unit-1, Boolean-Algebra, Cardinality-2n
+
+Q30. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     Can a Boolean algebra have exactly 6 elements?
+     (A) No, because 6 is not a power of 2 (cardinalities can only be 1, 2, 4, 8, 16, 32, ...) [CORRECT]
+     (B) Yes, if it has 3 atoms
+     (C) Yes, any even number is possible
+     (D) Yes, in modular arithmetic
+     Explanation: Because all finite Boolean algebras have order 2^n, no Boolean algebra of order 6 can exist.
+     Tags: BCA-411E, Unit-1, Boolean-Algebra, Impossible-Orders
+
+Q31. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the Principle of Duality in Boolean Algebra?
+     (A) Any true Boolean identity remains true if operators (+ and *) and identity elements (0 and 1) are swapped simultaneously [CORRECT]
+     (B) Multiplying two negative numbers gives a positive
+     (C) Every proposition has an inverse
+     (D) Inverting bits twice yields zero
+     Explanation: Duality states that interchanging AND with OR, and 0 with 1, converts any valid Boolean equation into another equally valid Boolean equation.
+     Tags: BCA-411E, Unit-1, Principle-of-Duality, Boolean-Algebra
+
+Q32. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the dual of the Boolean expression: a + (b * c) = (a + b) * (a + c)?
+     (A) a * (b + c) = (a * b) + (a * c) [CORRECT]
+     (B) a + b + c = a * b * c
+     (C) a' + b' = c'
+     (D) 1 + 0 = 1
+     Explanation: Swapping + with * throughout yields: a * (b + c) = (a * b) + (a * c).
+     Tags: BCA-411E, Unit-1, Duality, Example
+
+Q33. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is the Involution Law in Boolean Algebra?
+     (A) (a')' = a (double negation returns the original element) [CORRECT]
+     (B) a + a = a
+     (C) a * 1 = a
+     (D) a + 0 = a
+     Explanation: The involution law states that complementing an element twice yields the original element: (a')' = a.
+     Tags: BCA-411E, Unit-1, Involution-Law, Boolean-Algebra
+
+Q34. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Minterm' in Boolean algebra of n variables?
+     (A) A product term (AND) containing all n variables in either complemented or uncomplemented form [CORRECT]
+     (B) A sum term containing all variables
+     (C) The smallest variable in the formula
+     (D) The number zero
+     Explanation: A minterm is a boolean product term (e.g., x y' z) that equals 1 for exactly one row of the truth table.
+     Tags: BCA-411E, Unit-1, Minterms, Canonical-Forms
+
+Q35. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Maxterm' in Boolean algebra of n variables?
+     (A) A sum term (OR) containing all n variables in either complemented or uncomplemented form [CORRECT]
+     (B) A product term containing all variables
+     (C) The maximum integer value
+     (D) The value 1
+     Explanation: A maxterm is a boolean sum term (e.g., x + y' + z) that evaluates to 0 for exactly one row of the truth table.
+     Tags: BCA-411E, Unit-1, Maxterms, Canonical-Forms
+
+Q36. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is 'Disjunctive Normal Form' (Sum of Products - SOP)?
+     (A) A Boolean expression written as a logical OR (sum) of one or more AND (product) terms [CORRECT]
+     (B) A product of sums
+     (C) An expression with no variables
+     (D) A truth table in decimal format
+     Explanation: Sum-of-Products (SOP / DNF) expresses a function as the OR of minterms for which the output is 1 (e.g., f = m1 + m3 + m7).
+     Tags: BCA-411E, Unit-1, SOP-DNF, Normal-Forms
+
+Q37. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is 'Conjunctive Normal Form' (Product of Sums - POS)?
+     (A) A Boolean expression written as a logical AND (product) of one or more OR (sum) terms [CORRECT]
+     (B) A sum of products
+     (C) A single minterm
+     (D) A formula with no negations
+     Explanation: Product-of-Sums (POS / CNF) expresses a function as the AND of maxterms for which the output is 0 (e.g., f = M0 * M2 * M5).
+     Tags: BCA-411E, Unit-1, POS-CNF, Normal-Forms
+
+Q38. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is an 'Atom' in a Boolean algebra (B, v, ^, ', 0, 1)?
+     (A) An element a > 0 such that there is NO element x with 0 < x < a (an element immediately covering 0) [CORRECT]
+     (B) A chemical element
+     (C) The top element 1
+     (D) An element with degree 1
+     Explanation: Atoms are the minimal non-zero elements in a Boolean algebra, corresponding to singleton sets {x} in power set algebras.
+     Tags: BCA-411E, Unit-1, Atoms, Boolean-Algebra
+
+Q39. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     How many atoms does a finite Boolean algebra of cardinality 2^n possess?
+     (A) Exactly n atoms [CORRECT]
+     (B) 2^n atoms
+     (C) n^2 atoms
+     (D) 1 atom
+     Explanation: A Boolean algebra with 2^n elements has exactly n atoms (corresponding to the n singletons of an n-element set).
+     Tags: BCA-411E, Unit-1, Atoms, Count
+
+Q40. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     If A and B are finite sets with |A| = 10, |B| = 15, and |A ∩ B| = 5, what is |A ∪ B| by the Principle of Inclusion-Exclusion?
+     (A) 20 (|A ∪ B| = 10 + 15 - 5 = 20) [CORRECT]
+     (B) 25
+     (C) 30
+     (D) 15
+     Explanation: By inclusion-exclusion: |A ∪ B| = |A| + |B| - |A ∩ B| = 10 + 15 - 5 = 20.
+     Tags: BCA-411E, Unit-1, Inclusion-Exclusion, Calculation
+
+Q41. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is a 'Relation' from set A to set B mathematically?
+     (A) Any subset of the Cartesian product A x B [CORRECT]
+     (B) A function that is bijective
+     (C) An equation with two unknowns
+     (D) A table with no columns
+     Explanation: A binary relation R from A to B is formally defined as any subset of the Cartesian product A x B (R ⊆ A x B).
+     Tags: BCA-411E, Unit-1, Relations, Definition
+
+Q42. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     If |A| = m and |B| = n, how many distinct binary relations can be defined from A to B?
+     (A) 2^(m * n) [CORRECT]
+     (B) m * n
+     (C) 2^(m + n)
+     (D) m^n
+     Explanation: Since |A x B| = m * n, the number of subsets of A x B is 2^(m*n).
+     Tags: BCA-411E, Unit-1, Relations, Count
+
+Q43. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What is an 'Equivalence Relation'?
+     (A) A relation that is Reflexive, Symmetric, and Transitive [CORRECT]
+     (B) A relation that is Reflexive, Anti-symmetric, and Transitive
+     (C) A relation that is Bijective
+     (D) A relation with zero elements
+     Explanation: An equivalence relation partitions a set into disjoint equivalence classes.
+     Tags: BCA-411E, Unit-1, Equivalence-Relation, Definition
+
+Q44. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is the 'Transitive Closure' of a relation R, often computed via Warshall's Algorithm?
+     (A) The smallest transitive relation containing R, denoted R^+ [CORRECT]
+     (B) The inverse of R
+     (C) The complement of R
+     (D) The symmetric product
+     Explanation: Transitive closure adds all implied reachability paths (if aRb and bRc, adds aRc), efficiently computed via Warshall's O(n^3) algorithm.
+     Tags: BCA-411E, Unit-1, Transitive-Closure, Warshall
+
+Q45. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     What does the fundamental theorem of Equivalence Relations state?
+     (A) Every equivalence relation on a set A induces a unique partition of A into pairwise disjoint equivalence classes, and vice versa [CORRECT]
+     (B) All equivalence relations are linear chains
+     (C) Equivalence relations cannot be plotted
+     (D) Equivalence classes are always infinite
+     Explanation: Equivalence relations and set partitions are dual concepts: an equivalence relation partitions the set into disjoint non-empty classes whose union is the entire set.
+     Tags: BCA-411E, Unit-1, Equivalence-Classes, Partition-Theorem
+
+Q46. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (MEDIUM)
+     What is a 'Well-Ordered Set'?
+     (A) A totally ordered set where EVERY non-empty subset has a least element [CORRECT]
+     (B) A set sorted alphabetically
+     (C) A poset with no cycles
+     (D) A finite graph
+     Explanation: A well-order is a linear order where every non-empty subset has a minimal element (e.g., natural numbers (N, <=) is well-ordered; integers (Z, <=) is not).
+     Tags: BCA-411E, Unit-1, Well-Ordered-Set, Definition
+
+Q47. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In Boolean algebra, what is the value of x + x'?
+     (A) 1 [CORRECT]
+     (B) 0
+     (C) x
+     (D) 2x
+     Explanation: By the complement law: x + x' = 1.
+     Tags: BCA-411E, Unit-1, Complement-Law, Boolean-Algebra
+
+Q48. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In Boolean algebra, what is the value of x * x'?
+     (A) 0 [CORRECT]
+     (B) 1
+     (C) x
+     (D) x'
+     Explanation: By the complement law: x * x' = 0.
+     Tags: BCA-411E, Unit-1, Complement-Law, Boolean-Algebra
+
+Q49. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     In Boolean algebra, what is x + (x * y) equal to?
+     (A) x (Absorption Law) [CORRECT]
+     (B) y
+     (C) x + y
+     (D) x * y
+     Explanation: By the absorption law: x + (x * y) = x * (1 + y) = x * 1 = x.
+     Tags: BCA-411E, Unit-1, Absorption-Law, Boolean-Simplification
+
+Q50. [Unit 1: Set Theory, Posets, Lattices & Boolean Algebra] (EASY)
+     Why is Discrete Mathematics considered the mathematical bedrock of Computer Science?
+     (A) Digital computers operate on discrete states (bits, logic gates, graph structures, finite steps) rather than continuous smooth calculus [CORRECT]
+     (B) Because computers cannot calculate fractions
+     (C) Because continuous math is obsolete
+     (D) Because discrete math requires no proofs
+     Explanation: Data structures, algorithms, databases, cryptography, digital logic, and formal grammar theory are fundamentally founded on discrete mathematical structures.
+     Tags: BCA-411E, Unit-1, Discrete-Math, Foundations
+
+Q51. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Proposition' (Statement) in formal logic?
+     (A) A declarative statement that is either True or False, but not both simultaneously [CORRECT]
+     (B) A question asked by a user
+     (C) A command like 'Close the door!'
+     (D) A mathematical expression with free variables like x + 2 = 5
+     Explanation: A proposition must be a declarative sentence having a definitive truth value (either True T or False F).
+     Tags: BCA-411E, Unit-2, Propositional-Logic, Definition
+
+Q52. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     Which of the following sentences is a valid proposition?
+     (A) 'Bareilly is a city in Uttar Pradesh, India.' [CORRECT]
+     (B) 'What time is the lecture?'
+     (C) 'Please pass the salt.'
+     (D) 'x + 5 = 10' (with unassigned x)
+     Explanation: 'Bareilly is a city in Uttar Pradesh' is a factual declarative statement with a definitive truth value (True). The others are questions, commands, or open predicate sentences.
+     Tags: BCA-411E, Unit-2, Propositions, Identification
+
+Q53. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the truth value of the Conjunction (p ∧ q) of two propositions p and q?
+     (A) True IF AND ONLY IF both p and q are True simultaneously; False otherwise [CORRECT]
+     (B) True if at least one of them is True
+     (C) Always True
+     (D) False only if both are True
+     Explanation: Conjunction (logical AND, p ∧ q) is true only when both conjuncts are true.
+     Tags: BCA-411E, Unit-2, Logical-Connectives, Conjunction
+
+Q54. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the truth value of the Disjunction (p ∨ q)?
+     (A) True if at least one of p or q is True; False only when both p and q are False [CORRECT]
+     (B) True only if both are True
+     (C) True only if exactly one is True
+     (D) Always False
+     Explanation: Disjunction (inclusive OR, p ∨ q) is true if p is true, or q is true, or both are true.
+     Tags: BCA-411E, Unit-2, Logical-Connectives, Disjunction
+
+Q55. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     Under what condition is the Conditional statement (Implication p -> q) FALSE?
+     (A) ONLY when the antecedent (p) is True and the consequent (q) is False (T -> F is False) [CORRECT]
+     (B) Whenever p is False
+     (C) Whenever q is True
+     (D) When both p and q are False
+     Explanation: An implication p -> q is false exclusively when a true hypothesis leads to a false conclusion. If p is false, the implication is vacuously true.
+     Tags: BCA-411E, Unit-2, Conditional-Statement, Truth-Condition
+
+Q56. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is the truth value of the implication 'If 2 + 2 = 5, then the Moon is made of cheese'?
+     (A) True (Vacuously True, because the hypothesis is False) [CORRECT]
+     (B) False
+     (C) Neither True nor False
+     (D) Undefined
+     Explanation: In formal logic, false implies anything (ex falso quodlibet): False -> False is logically True.
+     Tags: BCA-411E, Unit-2, Vacuous-Truth, Implication
+
+Q57. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the Biconditional statement (p <-> q)?
+     (A) True if p and q have the SAME truth value (both True or both False); False otherwise [CORRECT]
+     (B) True only when both are True
+     (C) The inverse of conjunction
+     (D) Always True
+     Explanation: The biconditional (p <-> q) expresses logical equivalence: it is true when p and q agree in truth value.
+     Tags: BCA-411E, Unit-2, Biconditional, Truth-Condition
+
+Q58. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     For conditional statement p -> q, what is its 'Converse'?
+     (A) q -> p [CORRECT]
+     (B) ~p -> ~q
+     (C) ~q -> ~p
+     (D) ~p -> q
+     Explanation: The converse of p -> q is formed by swapping hypothesis and conclusion: q -> p.
+     Tags: BCA-411E, Unit-2, Converse, Conditional
+
+Q59. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     For conditional statement p -> q, what is its 'Inverse'?
+     (A) ~p -> ~q [CORRECT]
+     (B) q -> p
+     (C) ~q -> ~p
+     (D) p -> ~q
+     Explanation: The inverse of p -> q is formed by negating both hypothesis and conclusion: ~p -> ~q.
+     Tags: BCA-411E, Unit-2, Inverse, Conditional
+
+Q60. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     For conditional statement p -> q, what is its 'Contrapositive'?
+     (A) ~q -> ~p [CORRECT]
+     (B) q -> p
+     (C) ~p -> ~q
+     (D) q -> ~p
+     Explanation: The contrapositive of p -> q is formed by swapping and negating both: ~q -> ~p.
+     Tags: BCA-411E, Unit-2, Contrapositive, Definition
+
+Q61. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     Which statement is LOGICALLY EQUIVALENT to the original conditional statement p -> q?
+     (A) Its Contrapositive (~q -> ~p) [CORRECT]
+     (B) Its Converse (q -> p)
+     (C) Its Inverse (~p -> ~q)
+     (D) Its Negation ~(p -> q)
+     Explanation: A conditional statement p -> q and its contrapositive ~q -> ~p have identical truth tables (p -> q ≡ ~q -> ~p). The converse and inverse are equivalent to each other, but NOT to p -> q.
+     Tags: BCA-411E, Unit-2, Contrapositive, Logical-Equivalence
+
+Q62. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is the logical negation of the conditional statement ~(p -> q)?
+     (A) p ∧ ~q [CORRECT]
+     (B) ~p ∧ q
+     (C) ~p ∨ ~q
+     (D) p -> ~q
+     Explanation: Since p -> q is equivalent to ~p ∨ q, its negation is ~(~p ∨ q) ≡ p ∧ ~q by De Morgan's Law.
+     Tags: BCA-411E, Unit-2, Negation-of-Implication, Equivalence
+
+Q63. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Tautology' in propositional logic?
+     (A) A compound proposition that is ALWAYS True for all possible truth values of its constituent variables [CORRECT]
+     (B) A proposition that is always False
+     (C) A proposition with unknown truth value
+     (D) A statement with no variables
+     Explanation: A tautology (denoted T or 1) evaluates to True across all 2^n rows of its truth table (e.g., p ∨ ~p).
+     Tags: BCA-411E, Unit-2, Tautology, Definition
+
+Q64. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Contradiction' (Absurdity) in propositional logic?
+     (A) A compound proposition that is ALWAYS False for all possible truth assignments of its variables [CORRECT]
+     (B) A proposition that is sometimes True
+     (C) A tautology
+     (D) An equation with two answers
+     Explanation: A contradiction (denoted F or 0) evaluates to False in every row of its truth table (e.g., p ∧ ~p).
+     Tags: BCA-411E, Unit-2, Contradiction, Definition
+
+Q65. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Contingency' in propositional logic?
+     (A) A proposition that is neither a tautology nor a contradiction (it is True for some assignments and False for others) [CORRECT]
+     (B) A permanent logical truth
+     (C) A mathematical theorem
+     (D) An invalid argument
+     Explanation: Most ordinary logical statements are contingencies, having a mix of True and False outputs across their truth tables.
+     Tags: BCA-411E, Unit-2, Contingency, Definition
+
+Q66. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     According to De Morgan's Laws for Propositional Logic, what is ~(p ∧ q) equivalent to?
+     (A) ~p ∨ ~q [CORRECT]
+     (B) ~p ∧ ~q
+     (C) p ∨ q
+     (D) ~p -> ~q
+     Explanation: De Morgan's First Law: ~(p ∧ q) ≡ ~p ∨ ~q.
+     Tags: BCA-411E, Unit-2, De-Morgans-Laws, Logic
+
+Q67. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     According to De Morgan's Laws for Propositional Logic, what is ~(p ∨ q) equivalent to?
+     (A) ~p ∧ ~q [CORRECT]
+     (B) ~p ∨ ~q
+     (C) p ∧ q
+     (D) p -> ~q
+     Explanation: De Morgan's Second Law: ~(p ∨ q) ≡ ~p ∧ ~q.
+     Tags: BCA-411E, Unit-2, De-Morgans-Laws, Logic
+
+Q68. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the Rule of Inference known as 'Modus Ponens' (Law of Detachment)?
+     (A) If p -> q is True, and p is True, then q must be True: [ (p -> q) ∧ p ] -> q [CORRECT]
+     (B) If p -> q is True, and q is True, then p is True
+     (C) If p is False, then q is False
+     (D) p -> ~p
+     Explanation: Modus Ponens ('mode that affirms') deduces the consequent q from conditional p -> q and established premise p.
+     Tags: BCA-411E, Unit-2, Rules-of-Inference, Modus-Ponens
+
+Q69. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the Rule of Inference known as 'Modus Tollens' (Law of Contraposition)?
+     (A) If p -> q is True, and ~q is True (q is False), then ~p must be True: [ (p -> q) ∧ ~q ] -> ~p [CORRECT]
+     (B) If p is True, then q is False
+     (C) If ~p is True, then ~q is True
+     (D) q -> p
+     Explanation: Modus Tollens ('mode that denies') deduces the negation of the antecedent ~p from conditional p -> q and negated consequent ~q.
+     Tags: BCA-411E, Unit-2, Rules-of-Inference, Modus-Tollens
+
+Q70. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is 'Hypothetical Syllogism' (Chain Rule of Logic)?
+     (A) [ (p -> q) ∧ (q -> r) ] -> (p -> r) [CORRECT]
+     (B) [ (p ∨ q) ∧ ~p ] -> q
+     (C) [ (p -> q) ∧ p ] -> q
+     (D) p ∧ q -> p
+     Explanation: Hypothetical Syllogism establishes the transitivity of implication: if p implies q and q implies r, then p implies r.
+     Tags: BCA-411E, Unit-2, Rules-of-Inference, Hypothetical-Syllogism
+
+Q71. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is 'Disjunctive Syllogism'?
+     (A) [ (p ∨ q) ∧ ~p ] -> q [CORRECT]
+     (B) [ (p ∧ q) ∧ p ] -> q
+     (C) (p -> q) -> p
+     (D) p ∨ ~p
+     Explanation: Disjunctive Syllogism states: given that either p or q is true, if p is false, then q must be true.
+     Tags: BCA-411E, Unit-2, Rules-of-Inference, Disjunctive-Syllogism
+
+Q72. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is the 'Resolution' principle in automated theorem proving and logic programming (Prolog)?
+     (A) [ (p ∨ q) ∧ (~p ∨ r) ] -> (q ∨ r) [CORRECT]
+     (B) (p ∧ q) -> r
+     (C) (p -> q) -> r
+     (D) p ∨ q ∨ r
+     Explanation: The resolution rule resolves clauses (p ∨ q) and (~p ∨ r) on complementary literals p and ~p, yielding the resolvent (q ∨ r).
+     Tags: BCA-411E, Unit-2, Resolution-Principle, Inference
+
+Q73. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is the Fallacy of 'Affirming the Consequent'?
+     (A) An invalid argument that mistakenly concludes p from premises (p -> q) and q [CORRECT]
+     (B) Concluding q from p and p -> q
+     (C) Proving a theorem by induction
+     (D) Using truth tables
+     Explanation: Affirming the Consequent is a formal fallacy: knowing p -> q and observing q does NOT imply p was true (e.g., 'If it rains, grass is wet; grass is wet, therefore it rained' - sprinklers could have caused it).
+     Tags: BCA-411E, Unit-2, Logical-Fallacies, Affirming-Consequent
+
+Q74. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is the Fallacy of 'Denying the Antecedent'?
+     (A) An invalid argument that mistakenly concludes ~q from premises (p -> q) and ~p [CORRECT]
+     (B) Modus Tollens
+     (C) Hypothetical Syllogism
+     (D) De Morgan's Law
+     Explanation: Denying the Antecedent is a formal fallacy: assuming that because p is false, q must also be false.
+     Tags: BCA-411E, Unit-2, Logical-Fallacies, Denying-Antecedent
+
+Q75. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Predicate' in Predicate Logic (First-Order Logic)?
+     (A) A statement containing one or more variables that becomes a proposition with a truth value when variables are assigned specific values from the domain (e.g., P(x): 'x > 3') [CORRECT]
+     (B) A noun in English grammar
+     (C) A constant number
+     (D) A compiler directive
+     Explanation: A predicate P(x) is a propositional function modeling properties or relations over a domain of discourse.
+     Tags: BCA-411E, Unit-2, Predicate-Logic, Definition
+
+Q76. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What does the 'Universal Quantifier' (∀, 'For All') assert?
+     (A) The proposition P(x) is True for EVERY element x in the domain of discourse [CORRECT]
+     (B) P(x) is True for at least one element
+     (C) P(x) is False everywhere
+     (D) P(x) is true for exactly 5 elements
+     Explanation: ∀x P(x) asserts universality: if even a single counterexample c exists where P(c) is false, ∀x P(x) is False.
+     Tags: BCA-411E, Unit-2, Universal-Quantifier, Definition
+
+Q77. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What does the 'Existential Quantifier' (∃, 'There Exists') assert?
+     (A) There exists AT LEAST ONE element x in the domain for which P(x) is True [CORRECT]
+     (B) P(x) is True for all elements
+     (C) P(x) is False for all elements
+     (D) P(x) has no variables
+     Explanation: ∃x P(x) is True if at least one witness c in the domain satisfies P(c) = True.
+     Tags: BCA-411E, Unit-2, Existential-Quantifier, Definition
+
+Q78. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     According to De Morgan's Laws for Quantifiers, what is the negation of the universally quantified statement ~[ ∀x P(x) ]?
+     (A) ∃x ~P(x) (There exists an x such that P(x) is False) [CORRECT]
+     (B) ∀x ~P(x)
+     (C) ~∃x P(x)
+     (D) ∃x P(x)
+     Explanation: To disprove that all swans are white (~∀x P(x)), it suffices to find at least one swan that is not white (∃x ~P(x)).
+     Tags: BCA-411E, Unit-2, Quantifier-Negation, De-Morgans
+
+Q79. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     According to De Morgan's Laws for Quantifiers, what is the negation of the existentially quantified statement ~[ ∃x P(x) ]?
+     (A) ∀x ~P(x) (For all x, P(x) is False) [CORRECT]
+     (B) ∃x ~P(x)
+     (C) ∀x P(x)
+     (D) ~∀x P(x)
+     Explanation: Negating that there exists a unicorn (~∃x P(x)) means that for all creatures, none are unicorns (∀x ~P(x)).
+     Tags: BCA-411E, Unit-2, Quantifier-Negation, De-Morgans
+
+Q80. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     Are the quantifiers commutative in order: is ∀x ∃y P(x, y) logically equivalent to ∃y ∀x P(x, y)?
+     (A) NO, they are NOT logically equivalent (order of mixed quantifiers matters fundamentally) [CORRECT]
+     (B) YES, quantifiers always commute
+     (C) Only if domain is finite
+     (D) Only in Boolean algebra
+     Explanation: ∀x ∃y (Every person has a mother) is true; but ∃y ∀x (There is one mother of all people) is false. Changing quantifier order alters the meaning.
+     Tags: BCA-411E, Unit-2, Quantifiers, Commutativity-Order
+
+Q81. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Direct Proof' in mathematics?
+     (A) Assuming premise p is True, and using axioms, definitions, and logical rules of inference to show step-by-step that conclusion q must be True [CORRECT]
+     (B) Assuming the theorem is false to find a contradiction
+     (C) Testing 10 random numbers
+     (D) Using a calculator
+     Explanation: Direct proof builds an unbroken deductive chain: p -> p1 -> p2 -> ... -> q.
+     Tags: BCA-411E, Unit-2, Mathematical-Proofs, Direct-Proof
+
+Q82. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is a 'Proof by Contraposition' (Indirect Proof)?
+     (A) Proving that conditional statement p -> q is true by proving that its contrapositive ~q -> ~p is true [CORRECT]
+     (B) Proving p and q are both false
+     (C) Proving q -> p
+     (D) Assuming p is true and q is true
+     Explanation: Because p -> q ≡ ~q -> ~p, assuming ~q and directly deriving ~p proves the original theorem.
+     Tags: BCA-411E, Unit-2, Proof-Techniques, Contraposition
+
+Q83. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Proof by Contradiction' (Reductio ad Absurdum)?
+     (A) Assuming the NEGATION of the theorem (~p) is True, and deriving an impossible logical contradiction (e.g., r ∧ ~r or 0 = 1), concluding that p must be True [CORRECT]
+     (B) Proving two opposite statements simultaneously
+     (C) Arguing in circles
+     (D) Rejecting axioms
+     Explanation: Proof by contradiction assumes ~p is true; if this leads to an undeniable contradiction (like sqrt(2) being a reduced fraction of two even integers), ~p must be false, so p is true.
+     Tags: BCA-411E, Unit-2, Proof-by-Contradiction, Method
+
+Q84. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What classic theorem was famously proved by Hippasus / Euclid using Proof by Contradiction?
+     (A) The square root of 2 is an irrational number (sqrt(2) ∉ Q) [CORRECT]
+     (B) 2 + 2 = 4
+     (C) The area of a circle is pi*r^2
+     (D) Pythagorean theorem
+     Explanation: Assuming sqrt(2) = a/b in lowest terms leads to both a and b being even, contradicting that a/b was in lowest terms.
+     Tags: BCA-411E, Unit-2, Proof-by-Contradiction, Sqrt2-Irrational
+
+Q85. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What are the two mandatory steps in a 'Proof by Mathematical Induction' for a proposition P(n) over positive integers?
+     (A) Base Step (prove P(1) is true) AND Inductive Step (prove that if P(k) is true, then P(k+1) must be true) [CORRECT]
+     (B) Hypothesis Step and Conclusion Step
+     (C) Even step and Odd step
+     (D) Addition step and Multiplication step
+     Explanation: 1. Basis step verifies P(1). 2. Inductive step proves ∀k (P(k) -> P(k+1)). By the Well-Ordering Principle of natural numbers, P(n) is true for all n >= 1.
+     Tags: BCA-411E, Unit-2, Mathematical-Induction, Steps
+
+Q86. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is 'Strong Mathematical Induction'?
+     (A) In the inductive step, we assume P(1), P(2), ..., P(k) are ALL True, and use this entire history to prove P(k+1) is True [CORRECT]
+     (B) Induction with larger numbers
+     (C) Induction that uses calculus
+     (D) Induction proved by computers
+     Explanation: Strong induction broadens the inductive hypothesis to assume all prior instances P(1)..P(k) hold, which is essential for proving the Fundamental Theorem of Arithmetic.
+     Tags: BCA-411E, Unit-2, Strong-Induction, Foundations
+
+Q87. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is a 'Counterexample' in mathematical proofs?
+     (A) A single specific instance in the domain where a universal claim P(x) is False, completely disproving ∀x P(x) [CORRECT]
+     (B) An example that proves a theorem
+     (C) A mathematical equation with no solution
+     (D) An error in arithmetic
+     Explanation: A universal statement ∀x P(x) is refuted by producing a single counterexample c such that P(c) = False.
+     Tags: BCA-411E, Unit-2, Counterexample, Refutation
+
+Q88. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is a 'Vacuous Proof'?
+     (A) Proving conditional statement p -> q by showing that the hypothesis p is ALWAYS False [CORRECT]
+     (B) A proof that has no words
+     (C) An invalid proof
+     (D) A proof that uses empty sets
+     Explanation: Since False -> q is automatically True regardless of q, showing p is impossible constitutes a vacuous proof.
+     Tags: BCA-411E, Unit-2, Proof-Techniques, Vacuous-Proof
+
+Q89. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is a 'Trivial Proof'?
+     (A) Proving conditional statement p -> q by showing that the conclusion q is ALWAYS True [CORRECT]
+     (B) A proof that takes one second
+     (C) A proof with no numbers
+     (D) A proof written in pencil
+     Explanation: Since p -> True is automatically True regardless of p, demonstrating that conclusion q is inherently true constitutes a trivial proof.
+     Tags: BCA-411E, Unit-2, Proof-Techniques, Trivial-Proof
+
+Q90. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is 'Constructive Proof' vs 'Non-Constructive Proof' of an existential statement ∃x P(x)?
+     (A) Constructive proof explicitly finds or provides an algorithm to produce such an element x; Non-constructive proof proves x must exist without finding it [CORRECT]
+     (B) Constructive proof uses geometry; Non-constructive uses algebra
+     (C) Constructive proof uses induction only
+     (D) There is no difference
+     Explanation: Constructive proofs display the witness; non-constructive proofs (e.g., via the Intermediate Value Theorem or Pigeonhole Principle) guarantee existence without constructing the object.
+     Tags: BCA-411E, Unit-2, Proof-Techniques, Constructive-vs-NonConstructive
+
+Q91. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the truth value of proposition (p ∧ ~p)?
+     (A) Always False (Contradiction) [CORRECT]
+     (B) Always True (Tautology)
+     (C) Depends on p
+     (D) Undefined
+     Explanation: A statement cannot be simultaneously true and false (Law of Non-Contradiction): p ∧ ~p is always False.
+     Tags: BCA-411E, Unit-2, Contradiction, Basic-Law
+
+Q92. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the truth value of proposition (p ∨ ~p)?
+     (A) Always True (Tautology / Law of Excluded Middle) [CORRECT]
+     (B) Always False
+     (C) Depends on p
+     (D) 0
+     Explanation: Every statement must be either true or false (Law of Excluded Middle): p ∨ ~p is always True.
+     Tags: BCA-411E, Unit-2, Tautology, Excluded-Middle
+
+Q93. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the Absorption Law in Propositional Logic?
+     (A) p ∨ (p ∧ q) ≡ p  AND  p ∧ (p ∨ q) ≡ p [CORRECT]
+     (B) p ∨ q ≡ q ∨ p
+     (C) p ∧ ~p ≡ 0
+     (D) p -> q ≡ ~p ∨ q
+     Explanation: Absorption laws simplify propositions: p ∨ (p ∧ q) evaluates to p.
+     Tags: BCA-411E, Unit-2, Absorption-Law, Logic
+
+Q94. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     In propositional logic, what is the 'Domination Law' (Null Law) for conjunction with False?
+     (A) p ∧ F ≡ F [CORRECT]
+     (B) p ∧ F ≡ p
+     (C) p ∧ F ≡ T
+     (D) p ∧ F ≡ ~p
+     Explanation: ANDing any proposition with False dominates the expression, yielding False: p ∧ F ≡ F.
+     Tags: BCA-411E, Unit-2, Domination-Law, Logic
+
+Q95. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     In propositional logic, what is the 'Domination Law' for disjunction with True?
+     (A) p ∨ T ≡ T [CORRECT]
+     (B) p ∨ T ≡ p
+     (C) p ∨ T ≡ F
+     (D) p ∨ T ≡ ~p
+     Explanation: ORing any proposition with True dominates, yielding True: p ∨ T ≡ T.
+     Tags: BCA-411E, Unit-2, Domination-Law, Logic
+
+Q96. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     What is the 'Idempotent Law' in propositional logic?
+     (A) p ∨ p ≡ p  AND  p ∧ p ≡ p [CORRECT]
+     (B) p ∨ ~p ≡ T
+     (C) p ∧ ~p ≡ F
+     (D) p -> p ≡ T
+     Explanation: Conjoining or disjoining a proposition with itself leaves its truth value unchanged: p ∨ p ≡ p, p ∧ p ≡ p.
+     Tags: BCA-411E, Unit-2, Idempotent-Law, Logic
+
+Q97. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     In predicate calculus, what is the scope of a quantifier?
+     (A) The portion of the logical formula to which the quantifier applies [CORRECT]
+     (B) The domain of all integers
+     (C) The number of variables in the formula
+     (D) The length of the proof
+     Explanation: The scope is the subformula enclosed in parentheses following the quantifier over which the bound variable has effect.
+     Tags: BCA-411E, Unit-2, Quantifier-Scope, Predicate-Logic
+
+Q98. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is a 'Bound Variable' vs a 'Free Variable' in predicate logic?
+     (A) A bound variable is quantified by ∀ or ∃; a free variable is not quantified and acts as a placeholder parameter [CORRECT]
+     (B) A bound variable cannot be negative
+     (C) A free variable has no name
+     (D) A bound variable is always True
+     Explanation: In ∀x P(x, y), x is bound by the universal quantifier, while y is a free variable.
+     Tags: BCA-411E, Unit-2, Bound-vs-Free, Variables
+
+Q99. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (MEDIUM)
+     What is 'Clause' in Conjunctive Normal Form (CNF)?
+     (A) A disjunction (OR) of literals (variables or their negations) [CORRECT]
+     (B) A conjunction of formulas
+     (C) A single quantifier
+     (D) A truth table row
+     Explanation: A clause is a disjunction of literals (e.g., x ∨ ~y ∨ z). A CNF formula is a conjunction (AND) of such clauses.
+     Tags: BCA-411E, Unit-2, CNF, Clauses
+
+Q100. [Unit 2: Propositional Logic, Predicate Calculus & Mathematical Proofs] (EASY)
+     Why is Propositional and Predicate Logic critical in computer programming and software engineering?
+     (A) It forms the logical foundation of conditional statements (if-else), Boolean expressions, formal software verification, SQL queries, and AI knowledge representation [CORRECT]
+     (B) It replaces the need for compilers
+     (C) It allows computers to run without memory
+     (D) It prevents computers from using electricity
+     Explanation: Every if-else condition, loop termination test, database query filter (WHERE clause), and automated constraint solver is rooted in formal propositional and first-order predicate logic.
+     Tags: BCA-411E, Unit-2, Logic, Computer-Science-Relevance
+
+Q101. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What does the 'Addition Principle' (Rule of Sum) state in combinatorics?
+     (A) If an event A can occur in m ways and an event B can occur in n ways, and they are mutually exclusive, then either A or B can occur in m + n ways [CORRECT]
+     (B) A and B occur in m * n ways
+     (C) A occurs in m^n ways
+     (D) Events cannot occur
+     Explanation: The Rule of Sum applies to disjoint (mutually exclusive) choices: total ways = m + n.
+     Tags: BCA-411E, Unit-3, Counting-Principles, Rule-of-Sum
+
+Q102. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What does the 'Multiplication Principle' (Rule of Product) state?
+     (A) If a task consists of two sequential steps where step 1 has m outcomes and step 2 has n outcomes, the total number of ways to perform the task is m * n [CORRECT]
+     (B) Total ways is m + n
+     (C) Total ways is m / n
+     (D) Total ways is m^n
+     Explanation: The Rule of Product applies to sequential, independent stages: total outcomes = m * n.
+     Tags: BCA-411E, Unit-3, Counting-Principles, Rule-of-Product
+
+Q103. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the mathematical definition of n! (n factorial) for a positive integer n?
+     (A) n! = n * (n - 1) * (n - 2) * ... * 2 * 1, with 0! = 1 [CORRECT]
+     (B) n! = n + (n - 1) + ... + 1
+     (C) n! = 2^n
+     (D) n! = n^n
+     Explanation: Factorial represents the product of all positive integers less than or equal to n, with 0! defined as 1 by convention.
+     Tags: BCA-411E, Unit-3, Factorial, Definition
+
+Q104. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the formula for the number of Permutations of n distinct objects taken r at a time P(n, r)?
+     (A) P(n, r) = n! / (n - r)! [CORRECT]
+     (B) P(n, r) = n! / [r! * (n - r)!]
+     (C) P(n, r) = (n - r)! / n!
+     (D) P(n, r) = n^r
+     Explanation: Permutations count ordered arrangements: P(n, r) = n! / (n - r)!.
+     Tags: BCA-411E, Unit-3, Permutations, Formula
+
+Q105. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the formula for the number of Combinations of n distinct objects taken r at a time C(n, r)?
+     (A) C(n, r) = n! / [r! * (n - r)!] [CORRECT]
+     (B) C(n, r) = n! / (n - r)!
+     (C) C(n, r) = r! / n!
+     (D) C(n, r) = n * r
+     Explanation: Combinations count unordered selections: C(n, r) = n! / [r!(n - r)!].
+     Tags: BCA-411E, Unit-3, Combinations, Formula
+
+Q106. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the relationship between Permutations P(n, r) and Combinations C(n, r)?
+     (A) P(n, r) = r! * C(n, r) [CORRECT]
+     (B) C(n, r) = r! * P(n, r)
+     (C) P(n, r) = C(n, r) / r!
+     (D) P(n, r) = C(n, r) + r!
+     Explanation: Because each combination of r objects can be arranged in r! ways, P(n, r) = r! * C(n, r).
+     Tags: BCA-411E, Unit-3, Permutations-vs-Combinations, Relation
+
+Q107. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the Symmetry Property of combinations?
+     (A) C(n, r) = C(n, n - r) [CORRECT]
+     (B) C(n, r) = -C(n, r)
+     (C) C(n, r) = C(r, n)
+     (D) C(n, r) = C(n+1, r)
+     Explanation: Choosing r items to include is mathematically identical to choosing n - r items to leave behind: C(n, r) = C(n, n - r).
+     Tags: BCA-411E, Unit-3, Combinations, Symmetry
+
+Q108. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is Pascal's Identity for combinations?
+     (A) C(n, r) + C(n, r - 1) = C(n + 1, r) [CORRECT]
+     (B) C(n, r) * C(n, r - 1) = C(n + 1, r)
+     (C) C(n, r) - C(n, r - 1) = C(n - 1, r)
+     (D) C(n, r) + C(n, r) = 2n
+     Explanation: Pascal's identity forms the recursive addition rule of Pascal's Triangle: C(n, r) + C(n, r-1) = C(n+1, r).
+     Tags: BCA-411E, Unit-3, Pascals-Identity, Combinations
+
+Q109. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     In how many distinct ways can the letters of the word 'MATHEMATICS' be arranged?
+     (A) 4,989,600 (11! / (2! * 2! * 2!)) [CORRECT]
+     (B) 39,916,800 (11!)
+     (C) 1,247,400
+     (D) 2,494,800
+     Explanation: Total letters = 11. M appears 2 times, A appears 2 times, T appears 2 times. Total arrangements = 11! / (2! * 2! * 2!) = 39,916,800 / 8 = 4,989,600.
+     Tags: BCA-411E, Unit-3, Permutations-with-Repetition, Calculation
+
+Q110. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     In how many ways can n distinct people be seated around a circular table (where rotations are considered identical)?
+     (A) (n - 1)! [CORRECT]
+     (B) n!
+     (C) (n + 1)!
+     (D) n! / 2
+     Explanation: Fixing one person to eliminate rotational symmetry leaves (n - 1) people to arrange linearly: (n - 1)!.
+     Tags: BCA-411E, Unit-3, Circular-Permutations, Formula
+
+Q111. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     In how many ways can n different beads be arranged to form a circular necklace (where flipping the necklace over is identical)?
+     (A) (n - 1)! / 2 [CORRECT]
+     (B) (n - 1)!
+     (C) n! / 2
+     (D) n!
+     Explanation: For beads or keys on a ring, clockwise and counterclockwise orientations are indistinguishable by flipping, halving arrangements to (n - 1)! / 2.
+     Tags: BCA-411E, Unit-3, Circular-Permutations, Reversible
+
+Q112. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the Binomial Theorem expansion for (a + b)^n where n is a positive integer?
+     (A) sum_{r=0}^n [ C(n, r) * a^(n - r) * b^r ] [CORRECT]
+     (B) sum_{r=0}^n [ a^r * b^r ]
+     (C) sum_{r=0}^n [ n * a * b ]
+     (D) (a + b) * n
+     Explanation: The Binomial Theorem gives: (a + b)^n = C(n, 0)a^n + C(n, 1)a^(n-1)b + ... + C(n, n)b^n.
+     Tags: BCA-411E, Unit-3, Binomial-Theorem, Expansion
+
+Q113. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     In the binomial expansion of (a + b)^n, what is the formula for the general (r + 1)-th term T_{r+1}?
+     (A) T_{r+1} = C(n, r) * a^(n - r) * b^r [CORRECT]
+     (B) T_{r+1} = C(n, r+1) * a^r * b^(n-r)
+     (C) T_{r+1} = C(n, r) * a^r * b^r
+     (D) T_{r+1} = n * a * b
+     Explanation: The general term is given by T_{r+1} = nCr * a^(n-r) * b^r.
+     Tags: BCA-411E, Unit-3, Binomial-Theorem, General-Term
+
+Q114. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     How many total terms are present in the expansion of (a + b)^n?
+     (A) n + 1 terms [CORRECT]
+     (B) n terms
+     (C) 2n terms
+     (D) 2^n terms
+     Explanation: Because index r runs from 0 to n inclusive, there are exactly n + 1 terms in the expansion.
+     Tags: BCA-411E, Unit-3, Binomial-Theorem, Term-Count
+
+Q115. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the sum of all binomial coefficients: C(n, 0) + C(n, 1) + ... + C(n, n)?
+     (A) 2^n [CORRECT]
+     (B) n^2
+     (C) 2n
+     (D) n!
+     Explanation: Substituting a = 1, b = 1 into (a + b)^n gives (1 + 1)^n = 2^n = sum_{r=0}^n C(n, r).
+     Tags: BCA-411E, Unit-3, Binomial-Coefficients, Sum-Identity
+
+Q116. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     In the expansion of (a + b)^n where n is EVEN, how many middle terms exist and at what position?
+     (A) Exactly ONE middle term, at position (n/2 + 1) [CORRECT]
+     (B) Two middle terms
+     (C) n middle terms
+     (D) No middle term
+     Explanation: If n is even, total terms n + 1 is odd, resulting in a single middle term at position T_{(n/2) + 1}.
+     Tags: BCA-411E, Unit-3, Binomial-Expansion, Middle-Term-Even
+
+Q117. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     In the expansion of (a + b)^n where n is ODD, how many middle terms exist?
+     (A) Exactly TWO middle terms, at positions ((n+1)/2) and ((n+3)/2) [CORRECT]
+     (B) Only one middle term
+     (C) Three middle terms
+     (D) Zero middle terms
+     Explanation: If n is odd, total terms n + 1 is even, yielding two central middle terms.
+     Tags: BCA-411E, Unit-3, Binomial-Expansion, Middle-Term-Odd
+
+Q118. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is the term independent of x (constant term) in the expansion of (x + 1/x)^10?
+     (A) C(10, 5) = 252 [CORRECT]
+     (B) C(10, 4) = 210
+     (C) 1
+     (D) 0
+     Explanation: T_{r+1} = 10Cr * (x)^(10-r) * (x^(-1))^r = 10Cr * x^(10 - 2r). For x^0: 10 - 2r = 0 => r = 5. T_6 = 10C5 = 252.
+     Tags: BCA-411E, Unit-3, Binomial-Expansion, Constant-Term
+
+Q119. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What does the basic 'Pigeonhole Principle' (Dirichlet's Box Principle) state?
+     (A) If k + 1 or more pigeons are placed into k pigeonholes, then at least one pigeonhole must contain two or more pigeons [CORRECT]
+     (B) Every pigeon has its own hole
+     (C) Pigeons fly in pairs
+     (D) Pigeonholes must be square
+     Explanation: If n items are placed into k containers and n > k, at least one container must contain at least ceil(n/k) items.
+     Tags: BCA-411E, Unit-3, Pigeonhole-Principle, Statement
+
+Q120. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What does the 'Generalized Pigeonhole Principle' state?
+     (A) If N objects are placed into k boxes, then at least one box must contain at least ceil(N / k) objects [CORRECT]
+     (B) Each box gets N / k objects
+     (C) Boxes must be sorted
+     (D) Objects cannot be divided
+     Explanation: If N objects are distributed among k boxes, at least one box contains at least ceil(N / k) items.
+     Tags: BCA-411E, Unit-3, Generalized-Pigeonhole, Principle
+
+Q121. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     Among any group of 13 people, at least how many must share the same birth month?
+     (A) At least 2 people (ceil(13 / 12) = 2) [CORRECT]
+     (B) At least 1 person
+     (C) At least 3 people
+     (D) All 13
+     Explanation: By Pigeonhole Principle: 13 people (pigeons) and 12 calendar months (pigeonholes): ceil(13/12) = 2.
+     Tags: BCA-411E, Unit-3, Pigeonhole-Principle, Birth-Month
+
+Q122. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     How many cards must be selected from a standard 52-card deck to guarantee that at least 3 cards of the same suit are chosen?
+     (A) 9 cards (4 suits * 2 + 1 = 9) [CORRECT]
+     (B) 12 cards
+     (C) 3 cards
+     (D) 13 cards
+     Explanation: Worst-case scenario picks 2 of each of the 4 suits (8 cards). The 9th card must complete a set of 3 in some suit: ceil(9/4) = 3.
+     Tags: BCA-411E, Unit-3, Pigeonhole-Principle, Cards
+
+Q123. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is a 'Recurrence Relation' for a sequence {a_n}?
+     (A) An equation that expresses each term a_n as a function of one or more of its preceding terms (e.g., a_{n-1}, a_{n-2}) [CORRECT]
+     (B) An equation that has no variables
+     (C) A calculus derivative
+     (D) A matrix determinant
+     Explanation: A recurrence relation defines a sequence recursively using earlier terms alongside initial conditions (base cases).
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, Definition
+
+Q124. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the recurrence relation defining the famous Fibonacci sequence 0, 1, 1, 2, 3, 5, 8, 13, ...?
+     (A) F_n = F_{n-1} + F_{n-2} with F_0 = 0, F_1 = 1 [CORRECT]
+     (B) F_n = F_{n-1} * F_{n-2}
+     (C) F_n = 2 * F_{n-1}
+     (D) F_n = F_{n-1} + n
+     Explanation: Each Fibonacci number is the sum of the preceding two numbers: F_n = F_{n-1} + F_{n-2}.
+     Tags: BCA-411E, Unit-3, Fibonacci, Recurrence-Relation
+
+Q125. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is the 'Order' (or Degree) of a recurrence relation?
+     (A) The difference between the highest and lowest subscripts of the sequence terms appearing in the relation [CORRECT]
+     (B) The highest power of n
+     (C) The number of solutions
+     (D) The number of base cases
+     Explanation: For example, in a_n = 3*a_{n-1} + 2*a_{n-2}, highest subscript is n and lowest is n-2, so degree is n - (n - 2) = 2 (second-order).
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, Order
+
+Q126. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is a 'Linear Homogeneous Recurrence Relation with Constant Coefficients'?
+     (A) A relation of the form a_n = c1*a_{n-1} + c2*a_{n-2} + ... + ck*a_{n-k} where all c_i are constants and there is no standalone f(n) term [CORRECT]
+     (B) A relation with variable coefficients
+     (C) A non-linear equation with squares
+     (D) An equation with trigonometric terms
+     Explanation: It is linear (degree 1 in terms), homogeneous (RHS is zero when all a_i grouped), and coefficients c_i are constants independent of n.
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, Classification
+
+Q127. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     How is the Characteristic Equation of a second-order recurrence a_n - c1*a_{n-1} - c2*a_{n-2} = 0 formed?
+     (A) r^2 - c1*r - c2 = 0 (substituting a_n = r^n) [CORRECT]
+     (B) r^2 + c1*r + c2 = 0
+     (C) c1*r^2 - c2*r = 0
+     (D) r = c1 + c2
+     Explanation: Assuming solution a_n = r^n yields r^n - c1*r^(n-1) - c2*r^(n-2) = 0. Dividing by r^(n-2) yields characteristic equation r^2 - c1*r - c2 = 0.
+     Tags: BCA-411E, Unit-3, Characteristic-Equation, Recurrence
+
+Q128. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     If the characteristic roots r1 and r2 of a second-order relation are DISTINCT real numbers (r1 != r2), what is the general solution?
+     (A) a_n = A * (r1)^n + B * (r2)^n [CORRECT]
+     (B) a_n = (A + B*n) * (r1)^n
+     (C) a_n = A * r1 + B * r2
+     (D) a_n = (r1 * r2)^n
+     Explanation: For distinct roots r1 != r2, the general solution is linear combination: a_n = A*(r1)^n + B*(r2)^n, where A and B are constants determined by initial conditions.
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, Distinct-Roots
+
+Q129. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     If the characteristic roots are EQUAL (r1 = r2 = r, repeated root of multiplicity 2), what is the general solution?
+     (A) a_n = (A + B * n) * r^n [CORRECT]
+     (B) a_n = A * r^n + B * r^n
+     (C) a_n = A * n * r
+     (D) a_n = r^(2n)
+     Explanation: Repeated root r of multiplicity 2 yields general solution: a_n = (A + B*n) * r^n.
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, Repeated-Roots
+
+Q130. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What are the roots of the characteristic equation r^2 - r - 1 = 0 for the Fibonacci recurrence?
+     (A) r = (1 ± sqrt(5)) / 2 (The Golden Ratio phi and its conjugate) [CORRECT]
+     (B) r = 1 and -1
+     (C) r = 2 and -1
+     (D) r = ± sqrt(2)
+     Explanation: By quadratic formula: r = [1 ± sqrt(1 - 4(1)(-1))] / 2 = (1 ± sqrt(5)) / 2.
+     Tags: BCA-411E, Unit-3, Fibonacci, Golden-Ratio
+
+Q131. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (HARD)
+     What is Binet's Formula for the n-th Fibonacci number F_n in closed form?
+     (A) F_n = (1 / sqrt(5)) * [ ((1 + sqrt(5))/2)^n - ((1 - sqrt(5))/2)^n ] [CORRECT]
+     (B) F_n = 2^n / sqrt(5)
+     (C) F_n = ((1 + sqrt(5))/2)^n
+     (D) F_n = n * sqrt(5)
+     Explanation: Binet's closed-form formula expresses F_n purely algebraically using the golden ratio powers: F_n = (phi^n - psi^n) / sqrt(5).
+     Tags: BCA-411E, Unit-3, Binets-Formula, Fibonacci
+
+Q132. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     Solve the recurrence relation a_n = 2*a_{n-1} with initial condition a_0 = 3:
+     (A) a_n = 3 * 2^n [CORRECT]
+     (B) a_n = 2 * 3^n
+     (C) a_n = 3 + 2n
+     (D) a_n = 6^n
+     Explanation: This is a first-order geometric progression: a_1 = 3*2, a_2 = 3*2^2, ..., a_n = 3 * 2^n.
+     Tags: BCA-411E, Unit-3, Recurrence-Relations, First-Order-Solution
+
+Q133. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     In how many ways can 5 books be arranged on a shelf?
+     (A) 120 (5! = 120) [CORRECT]
+     (B) 25
+     (C) 24
+     (D) 60
+     Explanation: Arranging 5 distinct books in 5 slots is 5! = 5 * 4 * 3 * 2 * 1 = 120.
+     Tags: BCA-411E, Unit-3, Permutations, Calculation
+
+Q134. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     In how many ways can a committee of 3 people be chosen from a group of 8 people?
+     (A) 56 (C(8, 3) = 8! / (3! * 5!) = 56) [CORRECT]
+     (B) 336
+     (C) 24
+     (D) 512
+     Explanation: Order does not matter in a committee: C(8, 3) = (8 * 7 * 6) / (3 * 2 * 1) = 56.
+     Tags: BCA-411E, Unit-3, Combinations, Calculation
+
+Q135. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the coefficient of x^2 * y^3 in the binomial expansion of (x + y)^5?
+     (A) 10 (C(5, 3) = 10) [CORRECT]
+     (B) 5
+     (C) 20
+     (D) 15
+     Explanation: General term T_{r+1} = 5Cr * x^(5-r) * y^r. For x^2 y^3, r = 3: 5C3 = 10.
+     Tags: BCA-411E, Unit-3, Binomial-Theorem, Coefficient
+
+Q136. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is the coefficient of x^3 in the expansion of (1 + 2x)^5?
+     (A) 80 (C(5, 3) * 1^2 * (2x)^3 = 10 * 8 = 80) [CORRECT]
+     (B) 40
+     (C) 160
+     (D) 10
+     Explanation: Term with x^3 is 5C3 * 1^2 * (2x)^3 = 10 * 8x^3 = 80x^3. Coefficient is 80.
+     Tags: BCA-411E, Unit-3, Binomial-Theorem, Calculation
+
+Q137. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is 'Generating Function' of a sequence {a_n}?
+     (A) An infinite formal power series G(x) = sum_{n=0}^inf a_n * x^n whose coefficients encode the sequence [CORRECT]
+     (B) A function that generates random numbers
+     (C) A compiler utility
+     (D) A graph plot of points
+     Explanation: Generating functions transform discrete sequences into continuous algebraic functions (clotheslines on which sequences are hung).
+     Tags: BCA-411E, Unit-3, Generating-Functions, Definition
+
+Q138. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What sequence is represented by the generating function 1 / (1 - x) = 1 + x + x^2 + x^3 + ...?
+     (A) The constant sequence 1, 1, 1, 1, ... [CORRECT]
+     (B) The Fibonacci sequence
+     (C) The factorial sequence
+     (D) The alternating sequence 1, -1, 1, -1
+     Explanation: By geometric series: 1 / (1 - x) = sum_{n=0}^inf 1 * x^n, representing sequence a_n = 1 for all n >= 0.
+     Tags: BCA-411E, Unit-3, Generating-Functions, Geometric-Series
+
+Q139. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What sequence is represented by 1 / (1 - 2x) = 1 + 2x + 4x^2 + 8x^3 + ...?
+     (A) The powers of 2: 1, 2, 4, 8, 16, ..., 2^n [CORRECT]
+     (B) The even numbers
+     (C) The odd numbers
+     (D) The square numbers
+     Explanation: 1 / (1 - 2x) = sum_{n=0}^inf (2x)^n = sum (2^n) x^n, corresponding to a_n = 2^n.
+     Tags: BCA-411E, Unit-3, Generating-Functions, Powers-of-2
+
+Q140. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     What is the Principle of Inclusion-Exclusion for THREE sets A, B, and C?
+     (A) |A ∪ B ∪ C| = |A| + |B| + |C| - |A ∩ B| - |B ∩ C| - |A ∩ C| + |A ∩ B ∩ C| [CORRECT]
+     (B) |A| + |B| + |C|
+     (C) |A ∩ B ∩ C|
+     (D) (|A| * |B| * |C|) / 3
+     Explanation: PIE alternates signs: add singletons, subtract pairwise intersections, and re-add triple intersection.
+     Tags: BCA-411E, Unit-3, Inclusion-Exclusion, Three-Sets
+
+Q141. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is a 'Derangement' D_n in combinatorics?
+     (A) A permutation of n elements such that NO element appears in its original natural position (zero fixed points) [CORRECT]
+     (B) A sorted list
+     (C) A permutation with duplicates
+     (D) An infinite sequence
+     Explanation: A derangement is a permutation sigma such that sigma(i) != i for all i (e.g., matching hats to owners where nobody gets their own hat).
+     Tags: BCA-411E, Unit-3, Derangements, Definition
+
+Q142. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (HARD)
+     What is the formula for the number of derangements D_n of n items?
+     (A) D_n = n! * [ 1 - 1/1! + 1/2! - 1/3! + ... + (-1)^n / n! ] [CORRECT]
+     (B) D_n = n! / 2
+     (C) D_n = (n - 1)!
+     (D) D_n = n^n
+     Explanation: Derived via Inclusion-Exclusion: D_n = n! * sum_{k=0}^n (-1)^k / k! ≈ n! / e.
+     Tags: BCA-411E, Unit-3, Derangements, Formula
+
+Q143. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     For n = 3, what is the number of derangements D_3?
+     (A) 2 [CORRECT]
+     (B) 6
+     (C) 1
+     (D) 0
+     Explanation: For {1, 2, 3}, the 2 valid derangements are (2, 3, 1) and (3, 1, 2): D_3 = 3!(1 - 1 + 1/2 - 1/6) = 6(2/6) = 2.
+     Tags: BCA-411E, Unit-3, Derangements, Calculation
+
+Q144. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     For n = 4, what is the number of derangements D_4?
+     (A) 9 [CORRECT]
+     (B) 24
+     (C) 12
+     (D) 6
+     Explanation: D_4 = 4!(1/2 - 1/6 + 1/24) = 24(12/24 - 4/24 + 1/24) = 9.
+     Tags: BCA-411E, Unit-3, Derangements, Calculation
+
+Q145. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (HARD)
+     What is the limit of the probability that a random permutation of n items is a derangement as n -> infinity?
+     (A) 1 / e ≈ 0.3679 (roughly 36.8%) [CORRECT]
+     (B) 0.50 (50%)
+     (C) 0
+     (D) 1
+     Explanation: As n -> inf, the series sum_{k=0}^n (-1)^k / k! converges to e^(-1) = 1/e ≈ 0.367879.
+     Tags: BCA-411E, Unit-3, Derangements, Probability-Limit
+
+Q146. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (HARD)
+     What is the Catalan number C_n formula?
+     (A) C_n = (1 / (n + 1)) * C(2n, n) = (2n)! / ((n + 1)! * n!) [CORRECT]
+     (B) C_n = 2^n / n
+     (C) C_n = n!
+     (D) C_n = n^2 + 1
+     Explanation: Catalan numbers count valid parentheses expressions, binary search trees, and polygon triangulations: C_n = (1/(n+1)) * 2nCn.
+     Tags: BCA-411E, Unit-3, Catalan-Numbers, Formula
+
+Q147. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     What is the value of the 3rd Catalan number C_3?
+     (A) 5 (C_3 = (1/4) * C(6, 3) = (1/4) * 20 = 5) [CORRECT]
+     (B) 3
+     (C) 14
+     (D) 4
+     Explanation: C_0 = 1, C_1 = 1, C_2 = 2, C_3 = 5, C_4 = 14.
+     Tags: BCA-411E, Unit-3, Catalan-Numbers, Calculation
+
+Q148. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     How many structurally distinct Binary Search Trees (BSTs) can be formed with 3 distinct keys?
+     (A) 5 (Given by Catalan number C_3 = 5) [CORRECT]
+     (B) 6
+     (C) 3
+     (D) 9
+     Explanation: The number of unique binary search trees with n nodes is given directly by the n-th Catalan number: C_3 = 5.
+     Tags: BCA-411E, Unit-3, Catalan-Numbers, BST-Count
+
+Q149. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (MEDIUM)
+     In how many ways can 4 math books and 3 physics books be arranged on a shelf so that all math books are grouped together?
+     (A) 576 (4! * 4! = 24 * 24 = 576) [CORRECT]
+     (B) 5040
+     (C) 144
+     (D) 288
+     Explanation: Treat the 4 math books as 1 single block: we have 1 math block + 3 physics books = 4 items to arrange (4! ways). The 4 math books inside their block can be arranged in 4! ways. Total = 4! * 4! = 24 * 24 = 576.
+     Tags: BCA-411E, Unit-3, Combinatorics, Block-Method
+
+Q150. [Unit 3: Combinatorics, Recurrence Relations & Binomial Theorem] (EASY)
+     Why is Combinatorics fundamental to algorithm design and computational complexity?
+     (A) It enables rigorous analysis of algorithm runtime (time complexity), space requirements, state space sizes, and discrete problem bounds [CORRECT]
+     (B) Because computers only do combinatorics
+     (C) It replaces sorting algorithms
+     (D) It allows programming without variables
+     Explanation: Combinatorial mathematics provides the exact tools needed to calculate best/average/worst case operations, tree branching factors, and search space dimensions.
+     Tags: BCA-411E, Unit-3, Combinatorics, Relevance
+
+Q151. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Binary Operation' * on a non-empty set S?
+     (A) A function mapping every ordered pair (a, b) in S x S to a unique element a * b in S (Closure property) [CORRECT]
+     (B) An operation that only uses 0 and 1
+     (C) An operation between two computers
+     (D) A division by 2
+     Explanation: A binary operation on S is a mapping * : S x S -> S, meaning S is closed under *.
+     Tags: BCA-411E, Unit-4, Binary-Operation, Definition
+
+Q152. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is an 'Algebraic Structure' (Algebraic System)?
+     (A) A non-empty set equipped with one or more binary operations satisfying specific axioms (e.g., (G, *)) [CORRECT]
+     (B) A set with no operations
+     (C) A graphical chart
+     (D) An algebra textbook
+     Explanation: An algebraic structure is a system (S, *, o, ...) consisting of a carrier set S and defined operations obeying formal mathematical laws.
+     Tags: BCA-411E, Unit-4, Algebraic-Structure, Definition
+
+Q153. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Groupoid'?
+     (A) An algebraic structure (S, *) satisfying ONLY the Closure property [CORRECT]
+     (B) A structure with identity and inverse
+     (C) A commutative group
+     (D) An empty set
+     Explanation: A groupoid is the most general algebraic structure, requiring solely that the set is closed under the binary operation.
+     Tags: BCA-411E, Unit-4, Groupoid, Hierarchy
+
+Q154. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Semigroup'?
+     (A) An algebraic structure (S, *) that satisfies Closure AND Associativity: (a * b) * c = a * (b * c) [CORRECT]
+     (B) A group with no inverses
+     (C) A groupoid with 2 elements
+     (D) A group that is half full
+     Explanation: A semigroup is an associative groupoid: closed and associative for all elements.
+     Tags: BCA-411E, Unit-4, Semigroup, Definition
+
+Q155. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Monoid'?
+     (A) A Semigroup that additionally possesses an Identity Element e such that a * e = e * a = a for all a [CORRECT]
+     (B) A group with no identity
+     (C) A group with only 1 element
+     (D) A set of matrices
+     Explanation: Monoid = Closure + Associativity + Identity Element.
+     Tags: BCA-411E, Unit-4, Monoid, Definition
+
+Q156. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What are the FOUR foundational axioms that a set G with binary operation * must satisfy to be a 'Group' (G, *)?
+     (A) 1. Closure, 2. Associativity, 3. Existence of Identity, 4. Existence of Inverse for every element [CORRECT]
+     (B) 1. Closure, 2. Commutativity, 3. Distributivity, 4. Finiteness
+     (C) 1. Identity, 2. Inverse, 3. Divisibility, 4. Positivity
+     (D) 1. Reflexive, 2. Symmetric, 3. Transitive, 4. Bounded
+     Explanation: A group satisfies: Closure (a*b in G), Associativity ((a*b)*c = a*(b*c)), Identity (e*a = a*e = a), and Inverse (a * a^-1 = a^-1 * a = e).
+     Tags: BCA-411E, Unit-4, Group, Axioms
+
+Q157. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is an 'Abelian Group' (Commutative Group)?
+     (A) A group that additionally satisfies the Commutative Law: a * b = b * a for all a, b in G [CORRECT]
+     (B) A group named after Alan Turing
+     (C) A group with infinite elements
+     (D) A group where every element is its own square
+     Explanation: Named after Niels Henrik Abel, an Abelian group satisfies commutativity in addition to the four standard group axioms.
+     Tags: BCA-411E, Unit-4, Abelian-Group, Definition
+
+Q158. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Is the set of all integers under addition (Z, +) an Abelian group?
+     (A) YES (Closed, Associative, Identity is 0, Inverse of a is -a, and Commutative) [CORRECT]
+     (B) NO, it has no inverses
+     (C) NO, it is not associative
+     (D) NO, it is only a monoid
+     Explanation: (Z, +) satisfies all 5 axioms: closed, associative, identity = 0, inverse of a is -a, and a + b = b + a.
+     Tags: BCA-411E, Unit-4, Group-Examples, Integers-Addition
+
+Q159. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Why is the set of natural numbers under addition (N, +) NOT a group?
+     (A) It lacks inverse elements (negative numbers do not belong to N) [CORRECT]
+     (B) It is not associative
+     (C) It is not closed
+     (D) It has too many elements
+     Explanation: For positive integers under addition, there are no inverse elements in N (e.g., -5 ∉ N), making it only a monoid (or semigroup).
+     Tags: BCA-411E, Unit-4, Non-Group, Natural-Numbers
+
+Q160. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Is the set of non-zero real numbers under multiplication (R*, *) an Abelian group?
+     (A) YES (Identity is 1, and the inverse of every non-zero x is 1/x) [CORRECT]
+     (B) NO, multiplication is not associative
+     (C) NO, 1 has no inverse
+     (D) NO, it is not closed
+     Explanation: Excluding zero allows every real number x to have a valid multiplicative inverse 1/x, forming an Abelian group with identity 1.
+     Tags: BCA-411E, Unit-4, Group-Examples, Real-Multiplication
+
+Q161. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the 'Order of a Group' |G|?
+     (A) The total number of elements in the set G (finite or infinite) [CORRECT]
+     (B) The degree of the largest polynomial
+     (C) The number of operations defined on G
+     (D) The rank of the matrix
+     Explanation: The order of a group |G| or O(G) is simply the cardinality of its underlying set.
+     Tags: BCA-411E, Unit-4, Group-Order, Definition
+
+Q162. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the 'Order of an Element' a in a group G, denoted o(a)?
+     (A) The smallest positive integer n such that a^n = e (identity), or infinite if no such n exists [CORRECT]
+     (B) The position of a in the alphabet
+     (C) The value of a multiplied by 2
+     (D) The index of a in an array
+     Explanation: The order o(a) is the smallest positive power n that cycles element a back to the group identity e.
+     Tags: BCA-411E, Unit-4, Element-Order, Definition
+
+Q163. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     In the group of integers modulo 6 under addition (Z_6, +_6), what is the identity element?
+     (A) 0 [CORRECT]
+     (B) 1
+     (C) 6
+     (D) 5
+     Explanation: In additive modular groups (Z_n, +_n), 0 is the additive identity: (a + 0) mod n = a.
+     Tags: BCA-411E, Unit-4, Modular-Arithmetic, Additive-Identity
+
+Q164. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     In the same group (Z_6, +_6), what is the inverse of element 2?
+     (A) 4 (since (2 + 4) mod 6 = 6 mod 6 = 0) [CORRECT]
+     (B) 3
+     (C) 1
+     (D) -2
+     Explanation: The inverse of a modulo n is n - a: inverse of 2 is (6 - 2) = 4, because 2 +_6 4 = 0.
+     Tags: BCA-411E, Unit-4, Modular-Arithmetic, Additive-Inverse
+
+Q165. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Cayley Table' (Group Multiplication Table)?
+     (A) A grid showing the results of applying the group binary operation to all pairs of group elements [CORRECT]
+     (B) A table of logarithms
+     (C) A periodic table of elements
+     (D) A truth table for logic
+     Explanation: A Cayley table completely specifies the operation of a finite group; every row and column forms a permutation of the group elements (Latin square property).
+     Tags: BCA-411E, Unit-4, Cayley-Table, Finite-Groups
+
+Q166. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Subgroup' H of a group G, denoted H <= G?
+     (A) A non-empty subset H of G that itself forms a group under the same binary operation as G [CORRECT]
+     (B) Any subset of G
+     (C) A set with fewer than 2 elements
+     (D) A group that contains G as a subset
+     Explanation: H is a subgroup if H ⊆ G and H satisfies all group axioms under the operation inherited from G.
+     Tags: BCA-411E, Unit-4, Subgroup, Definition
+
+Q167. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What does the 'One-Step Subgroup Test' state?
+     (A) A non-empty subset H of group G is a subgroup if and only if for all a, b in H, a * b^(-1) is in H [CORRECT]
+     (B) H must be finite
+     (C) H must contain the number 0
+     (D) H must be commutative
+     Explanation: The one-step criterion combines closure and existence of inverses into a single test: a * b^-1 ∈ H for all a, b ∈ H.
+     Tags: BCA-411E, Unit-4, Subgroup-Tests, One-Step-Test
+
+Q168. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What are the two 'Trivial Subgroups' that every group G always possesses?
+     (A) The singleton identity group {e} and the entire group G itself [CORRECT]
+     (B) The empty set and G
+     (C) Only the prime elements
+     (D) Subgroups of order 2
+     Explanation: Every group G contains the trivial subgroup {e} and improper subgroup G. All other subgroups are called proper subgroups.
+     Tags: BCA-411E, Unit-4, Subgroups, Trivial-Subgroups
+
+Q169. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Cyclic Group' G?
+     (A) A group in which every element can be expressed as an integral power (or multiple) of a single element a, called the 'Generator': G = <a> [CORRECT]
+     (B) A group whose elements move in circles
+     (C) A group with no identity
+     (D) A group with prime order only
+     Explanation: G is cyclic if G = {a^n : n ∈ Z} for some generator a. Every cyclic group is automatically Abelian.
+     Tags: BCA-411E, Unit-4, Cyclic-Groups, Definition
+
+Q170. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Is every Cyclic Group necessarily an Abelian Group?
+     (A) YES (Always: a^m * a^n = a^(m+n) = a^n * a^m) [CORRECT]
+     (B) NO, only if the group is infinite
+     (C) NO, only if order is even
+     (D) NO, cyclic groups are never Abelian
+     Explanation: Because powers of a single generator commute (a^m * a^n = a^(m+n) = a^n * a^m), every cyclic group is Abelian.
+     Tags: BCA-411E, Unit-4, Cyclic-Groups, Abelian-Property
+
+Q171. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What are the generators of the cyclic group (Z_6, +_6)?
+     (A) 1 and 5 (elements coprime to 6) [CORRECT]
+     (B) 2 and 4
+     (C) 0 and 3
+     (D) All elements
+     Explanation: In (Z_n, +), an element k is a generator if and only if GCD(k, n) = 1. For n = 6, coprime elements are 1 and 5.
+     Tags: BCA-411E, Unit-4, Cyclic-Groups, Generators
+
+Q172. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     How many generators does a finite cyclic group of order n have?
+     (A) phi(n) (Euler's Totient Function) [CORRECT]
+     (B) n - 1
+     (C) n / 2
+     (D) 2^n
+     Explanation: The number of generators of a cyclic group of order n equals Euler's phi function phi(n), counting integers k in 1..n coprime to n.
+     Tags: BCA-411E, Unit-4, Eulers-Totient, Cyclic-Generators
+
+Q173. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What does the fundamental 'Lagrange's Theorem' state for finite groups?
+     (A) The order of any subgroup H of a finite group G divides the order of G: |H| divides |G| [CORRECT]
+     (B) The order of G is always prime
+     (C) Subgroups have the same order as G
+     (D) Every group has an even order
+     Explanation: Lagrange's Theorem is a central cornerstone of group theory: if G is finite and H <= G, then |G| = [G : H] * |H|, meaning |H| must be a factor of |G|.
+     Tags: BCA-411E, Unit-4, Lagranges-Theorem, Statement
+
+Q174. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Can a group of order 12 have a subgroup of order 5?
+     (A) NO, because 5 does not divide 12 (by Lagrange's Theorem) [CORRECT]
+     (B) YES, any order is possible
+     (C) YES, if it is cyclic
+     (D) YES, by Euler's theorem
+     Explanation: By Lagrange's theorem, subgroup orders must be divisors of 12 (possible orders: 1, 2, 3, 4, 6, 12). 5 is not a divisor of 12, so no such subgroup can exist.
+     Tags: BCA-411E, Unit-4, Lagranges-Theorem, Application
+
+Q175. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is an immediate corollary of Lagrange's Theorem regarding the order of any element a in a finite group G?
+     (A) The order of every element o(a) divides the order of the group |G|: o(a) | |G| [CORRECT]
+     (B) o(a) = |G| always
+     (C) o(a) must be prime
+     (D) o(a) is greater than |G|
+     Explanation: Because the cyclic subgroup <a> generated by a has order o(a), Lagrange's theorem guarantees that o(a) divides |G|.
+     Tags: BCA-411E, Unit-4, Lagranges-Theorem, Element-Order-Corollary
+
+Q176. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What can be concluded about any group G whose order is a PRIME number p (|G| = p)?
+     (A) G is ALWAYS a Cyclic Group (and therefore Abelian), having no non-trivial proper subgroups [CORRECT]
+     (B) G cannot have an identity element
+     (C) G is non-Abelian
+     (D) G has p^2 elements
+     Explanation: Since the only divisors of prime p are 1 and p, any non-identity element must generate the entire group, making G cyclic and Abelian.
+     Tags: BCA-411E, Unit-4, Prime-Order-Groups, Cyclic
+
+Q177. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Left Coset' of a subgroup H in group G for an element a in G?
+     (A) aH = { a * h : h ∈ H } [CORRECT]
+     (B) Ha = { h * a : h ∈ H }
+     (C) a + H
+     (D) H / a
+     Explanation: The left coset aH is formed by multiplying every element of H on the left by element a.
+     Tags: BCA-411E, Unit-4, Cosets, Left-Coset
+
+Q178. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the 'Index' of a subgroup H in group G, denoted [G : H]?
+     (A) The number of distinct left (or right) cosets of H in G: [G : H] = |G| / |H| [CORRECT]
+     (B) The number of elements in H
+     (C) The position of H in the group
+     (D) The power of H
+     Explanation: The index [G : H] is the count of disjoint cosets partitioning G: |G| = [G : H] * |H|.
+     Tags: BCA-411E, Unit-4, Subgroup-Index, Definition
+
+Q179. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is a 'Normal Subgroup' (Invariant Subgroup) N of group G, denoted N ◁ G?
+     (A) A subgroup N where left and right cosets coincide for every element: gN = Ng (or g * n * g^(-1) ∈ N for all g ∈ G, n ∈ N) [CORRECT]
+     (B) A subgroup that has no identity
+     (C) A subgroup whose order is 1
+     (D) A subgroup that cannot be divided
+     Explanation: Normal subgroups are invariant under conjugation: g * N * g^-1 = N for all g in G, which allows the construction of quotient groups.
+     Tags: BCA-411E, Unit-4, Normal-Subgroup, Definition
+
+Q180. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     In an Abelian group, is every subgroup automatically a Normal Subgroup?
+     (A) YES (Since g * h = h * g for all elements, gH = Hg trivially) [CORRECT]
+     (B) NO, never
+     (C) Only if the group is finite
+     (D) Only if the subgroup is cyclic
+     Explanation: Because commutativity holds across the entire group, left and right cosets are always identical, making every subgroup normal.
+     Tags: BCA-411E, Unit-4, Normal-Subgroups, Abelian
+
+Q181. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is a 'Quotient Group' (Factor Group) G / N?
+     (A) The group formed by the set of all cosets of a NORMAL subgroup N under coset multiplication: (aN)(bN) = (ab)N [CORRECT]
+     (B) The arithmetic division of G by N
+     (C) A subgroup of N
+     (D) The intersection of G and N
+     Explanation: If and only if N is normal, coset multiplication is well-defined, turning the set of cosets G/N into a valid group of order |G| / |N|.
+     Tags: BCA-411E, Unit-4, Quotient-Group, Definition
+
+Q182. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Group Homomorphism' from group (G, *) to group (H, o)?
+     (A) A mapping f: G -> H that preserves the group operation: f(a * b) = f(a) o f(b) for all a, b in G [CORRECT]
+     (B) A function that has no inverses
+     (C) A function that squares every element
+     (D) A function between two identical sets
+     Explanation: Homomorphisms preserve algebraic structure: the image of a product equals the product of the images.
+     Tags: BCA-411E, Unit-4, Homomorphism, Definition
+
+Q183. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is the 'Kernel' of a group homomorphism f: G -> H, denoted Ker(f)?
+     (A) The set of all elements in G that map to the identity element e_H of H: Ker(f) = { x ∈ G : f(x) = e_H } [CORRECT]
+     (B) The set of all outputs in H
+     (C) The size of G
+     (D) The inverse of f
+     Explanation: The kernel measures how much f compresses G; Ker(f) is ALWAYS a normal subgroup of G.
+     Tags: BCA-411E, Unit-4, Kernel, Homomorphism
+
+Q184. [Unit 4: Algebraic Structures & Group Theory] (HARD)
+     What does the First Isomorphism Theorem for groups state?
+     (A) If f: G -> H is a group homomorphism, then G / Ker(f) is isomorphic to the image Im(f): G / Ker(f) ≅ f(G) [CORRECT]
+     (B) G is equal to H
+     (C) Ker(f) is always empty
+     (D) f is always bijective
+     Explanation: The fundamental theorem establishes: G / Ker(f) ≅ Im(f).
+     Tags: BCA-411E, Unit-4, Isomorphism-Theorem, Fundamental
+
+Q185. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Group Isomorphism'?
+     (A) A group homomorphism that is BIJECTIVE (one-to-one and onto), establishing that the two groups have identical algebraic structure [CORRECT]
+     (B) A homomorphism with an empty kernel
+     (C) An operation that maps numbers to zero
+     (D) A group with 1 element
+     Explanation: An isomorphism f: G -> H is a structure-preserving bijection; G ≅ H means G and H are algebraically indistinguishable.
+     Tags: BCA-411E, Unit-4, Isomorphism, Definition
+
+Q186. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is 'Klein 4-Group' (V_4)?
+     (A) The smallest non-cyclic group, of order 4, where every non-identity element has order 2 (e.g., V_4 ≅ Z_2 x Z_2) [CORRECT]
+     (B) A group with 4 cycles
+     (C) A group of prime order
+     (D) A continuous group
+     Explanation: Klein 4-group {e, a, b, c} has order 4, is Abelian, but non-cyclic since a^2 = b^2 = c^2 = e and ab = c.
+     Tags: BCA-411E, Unit-4, Klein-4-Group, Properties
+
+Q187. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the 'Symmetric Group' S_n?
+     (A) The group of all n! permutations of a set of n elements under function composition [CORRECT]
+     (B) A group of symmetric matrices
+     (C) A group with symmetric numbers
+     (D) A group with n elements
+     Explanation: S_n consists of all bijections on {1, 2, ..., n}; its order is |S_n| = n!. For n >= 3, S_n is non-Abelian.
+     Tags: BCA-411E, Unit-4, Symmetric-Group, Permutations
+
+Q188. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is an 'Even Permutation' in S_n?
+     (A) A permutation that can be expressed as the product of an EVEN number of transpositions (2-cycles) [CORRECT]
+     (B) A permutation with an even number of elements
+     (C) A permutation of even numbers only
+     (D) A permutation that equals identity
+     Explanation: Every permutation decomposes into 2-cycles (transpositions); a permutation is even if this count is even (sign = +1).
+     Tags: BCA-411E, Unit-4, Permutations, Even-vs-Odd
+
+Q189. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     What is the 'Alternating Group' A_n?
+     (A) The normal subgroup of S_n consisting of all EVEN permutations, having order n! / 2 [CORRECT]
+     (B) The group of odd permutations
+     (C) A group of alternating signs
+     (D) A group of order 2n
+     Explanation: The set of even permutations forms the Alternating Group A_n of order n! / 2.
+     Tags: BCA-411E, Unit-4, Alternating-Group, Definition
+
+Q190. [Unit 4: Algebraic Structures & Group Theory] (HARD)
+     How is Group Theory applied to Error-Correcting Codes (Group Codes / Linear Block Codes)?
+     (A) Codewords are structured as a subgroup of the vector space Z_2^n, using parity-check matrices and coset syndrome decoding to detect and correct transmission errors [CORRECT]
+     (B) By adding random bits to passwords
+     (C) By encrypting data with prime numbers only
+     (D) By compressing images with DCT
+     Explanation: Linear block codes treat valid code words as a subgroup of {0, 1}^n; syndromes computed via parity check matrix H map received words to specific error cosets.
+     Tags: BCA-411E, Unit-4, Group-Codes, Coding-Theory
+
+Q191. [Unit 4: Algebraic Structures & Group Theory] (MEDIUM)
+     In an algebraic system (R, +, *), what is a 'Ring'?
+     (A) An algebraic structure with two binary operations where (R, +) is an Abelian group, (R, *) is a semigroup, and * distributes over + [CORRECT]
+     (B) A circular set of numbers
+     (C) A group with no inverses
+     (D) A set with only positive numbers
+     Explanation: A ring satisfies: Abelian group under addition, semigroup under multiplication, and distributive laws: a*(b+c) = a*b + a*c.
+     Tags: BCA-411E, Unit-4, Rings, Definition
+
+Q192. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Field' in abstract algebra?
+     (A) A commutative ring with unity (1 != 0) where every non-zero element has a multiplicative inverse (e.g., Q, R, C) [CORRECT]
+     (B) A set of green grass
+     (C) A database column
+     (D) A group with only addition
+     Explanation: A field allows addition, subtraction, multiplication, and division by non-zero elements (e.g., rational Q, real R, complex C, and finite Galois fields GF(p)).
+     Tags: BCA-411E, Unit-4, Fields, Definition
+
+Q193. [Unit 4: Algebraic Structures & Group Theory] (HARD)
+     What is a 'Galois Field' (Finite Field) GF(p^n)?
+     (A) A field that contains a finite number of elements, where the number of elements is ALWAYS a prime power p^n [CORRECT]
+     (B) An infinite field of fractions
+     (C) A field discovered in France with no operations
+     (D) A field with negative numbers only
+     Explanation: Finite fields exist if and only if the order is a prime power p^n (e.g., GF(2) in digital logic, GF(2^8) in AES encryption).
+     Tags: BCA-411E, Unit-4, Finite-Fields, Galois-Fields
+
+Q194. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     In (Z_7, +_7, *_7), what is the multiplicative inverse of 3?
+     (A) 5 (since (3 * 5) mod 7 = 15 mod 7 = 1) [CORRECT]
+     (B) 2
+     (C) 4
+     (D) 6
+     Explanation: 3 * 5 = 15 = 2*7 + 1 ≡ 1 mod 7. Therefore, the multiplicative inverse of 3 is 5.
+     Tags: BCA-411E, Unit-4, Modular-Arithmetic, Multiplicative-Inverse
+
+Q195. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the identity element in any group G?
+     (A) The unique element e such that a * e = e * a = a for all a in G [CORRECT]
+     (B) Always 0
+     (C) Always 1
+     (D) The largest number in G
+     Explanation: Identity is unique by group axioms: e1 = e1 * e2 = e2.
+     Tags: BCA-411E, Unit-4, Identity-Element, Uniqueness
+
+Q196. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Is the inverse of an element in a group unique?
+     (A) YES (Every element in a group has a strictly UNIQUE inverse) [CORRECT]
+     (B) NO, elements can have two inverses
+     (C) Only in Abelian groups
+     (D) Only in finite groups
+     Explanation: If b and c are inverses of a: b = b*e = b*(a*c) = (b*a)*c = e*c = c. Inverse is uniquely determined.
+     Tags: BCA-411E, Unit-4, Inverse-Element, Uniqueness
+
+Q197. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the inverse of a product (a * b)^(-1) in a group?
+     (A) b^(-1) * a^(-1) (The Socks and Shoes Property) [CORRECT]
+     (B) a^(-1) * b^(-1)
+     (C) a * b
+     (D) 1 / (a * b)
+     Explanation: Shoes and socks rule: to invert putting on socks then shoes, you take off shoes first then socks: (a * b)^-1 = b^-1 * a^-1.
+     Tags: BCA-411E, Unit-4, Shoes-and-Socks, Inverses
+
+Q198. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is a 'Transposition' in permutation groups?
+     (A) A cycle of length 2 (2-cycle) that swaps exactly two elements and leaves all others fixed [CORRECT]
+     (B) A matrix transpose
+     (C) A 3-cycle
+     (D) An identity permutation
+     Explanation: A transposition is a cycle (i j) of length 2 swapping i and j.
+     Tags: BCA-411E, Unit-4, Transpositions, Permutations
+
+Q199. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     What is the order of the alternating group A_4?
+     (A) 12 (4! / 2 = 24 / 2 = 12) [CORRECT]
+     (B) 24
+     (C) 4
+     (D) 6
+     Explanation: |A_n| = n! / 2. For n = 4: |A_4| = 24 / 2 = 12.
+     Tags: BCA-411E, Unit-4, Alternating-Group, Order
+
+Q200. [Unit 4: Algebraic Structures & Group Theory] (EASY)
+     Why is Group Theory essential in computer science, cryptography, and modern computing?
+     (A) It provides the foundational mathematics for RSA, Elliptic Curve Cryptography (ECC), AES encryption, error-correcting codes, and quantum computing algorithms [CORRECT]
+     (B) It allows computers to run without electricity
+     (C) It eliminates software bugs automatically
+     (D) It replaces relational databases
+     Explanation: Public key cryptography (Diffie-Hellman, ECC), symmetric cryptography (AES S-boxes), and coding theory are direct applications of group and finite field theory.
+     Tags: BCA-411E, Unit-4, Group-Theory, Applications
+
+Q201. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Graph' G = (V, E) formally defined as in discrete mathematics?
+     (A) A non-empty set of Vertices V and a set of Edges E connecting pairs of vertices [CORRECT]
+     (B) A continuous line chart on a Cartesian plane
+     (C) A table of database rows
+     (D) A binary tree with no leaves
+     Explanation: A graph G = (V, E) consists of a non-empty vertex set V and an edge set E where each edge connects two vertices.
+     Tags: BCA-411E, Unit-5, Graph-Theory, Definition
+
+Q202. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the 'Degree' of a vertex v in an undirected graph, denoted deg(v)?
+     (A) The number of edges incident with vertex v (with self-loops counting twice) [CORRECT]
+     (B) The temperature of the vertex
+     (C) The angle between adjacent edges
+     (D) The number of vertices in the graph
+     Explanation: The degree deg(v) counts edges meeting at v. Each self-loop adds 2 to the degree of the vertex.
+     Tags: BCA-411E, Unit-5, Vertex-Degree, Definition
+
+Q203. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What does the fundamental 'Handshaking Theorem' (Euler) state for any undirected graph G = (V, E)?
+     (A) The sum of degrees of all vertices equals TWICE the number of edges: sum_{v in V} deg(v) = 2 * |E| [CORRECT]
+     (B) Sum of degrees equals |E|
+     (C) Sum of degrees equals |V|
+     (D) Every vertex has degree 2
+     Explanation: Because every edge has two endpoints, summing the degrees counts every edge exactly twice: sum deg(v) = 2|E|.
+     Tags: BCA-411E, Unit-5, Handshaking-Theorem, Statement
+
+Q204. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is an immediate corollary of the Handshaking Theorem regarding vertices of odd degree?
+     (A) In any undirected graph, the number of vertices with ODD degree is ALWAYS EVEN [CORRECT]
+     (B) The number of odd vertices is always odd
+     (C) All vertices must have even degree
+     (D) There can be no odd vertices
+     Explanation: Since the total degree sum is even (2|E|), the sum of odd degrees must be even, implying an even count of odd-degree vertices.
+     Tags: BCA-411E, Unit-5, Handshaking-Theorem, Odd-Vertices-Corollary
+
+Q205. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Simple Graph'?
+     (A) An undirected graph with NO self-loops and NO parallel (multiple) edges between any pair of vertices [CORRECT]
+     (B) A graph with only 2 vertices
+     (C) A graph that can be drawn in a straight line
+     (D) A graph with no edges
+     Explanation: Simple graphs forbid self-loops (edges from v to v) and multi-edges (multiple edges between same u and v).
+     Tags: BCA-411E, Unit-5, Simple-Graph, Definition
+
+Q206. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Complete Graph' K_n?
+     (A) A simple graph on n vertices in which every pair of distinct vertices is connected by an edge [CORRECT]
+     (B) A graph with no edges
+     (C) A tree with n leaves
+     (D) A planar graph with 1 face
+     Explanation: In complete graph K_n, every vertex is adjacent to all other n - 1 vertices.
+     Tags: BCA-411E, Unit-5, Complete-Graph, Definition
+
+Q207. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     How many edges does a Complete Graph K_n have?
+     (A) n * (n - 1) / 2 [CORRECT]
+     (B) n^2
+     (C) n - 1
+     (D) 2n
+     Explanation: Connecting all pairs of n vertices yields C(n, 2) = n(n - 1) / 2 edges.
+     Tags: BCA-411E, Unit-5, Complete-Graph, Edge-Count
+
+Q208. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     How many edges does K_5 have?
+     (A) 10 (5 * 4 / 2 = 10) [CORRECT]
+     (B) 5
+     (C) 20
+     (D) 15
+     Explanation: 5 * 4 / 2 = 10 edges.
+     Tags: BCA-411E, Unit-5, Complete-Graph, Calculation
+
+Q209. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Regular Graph' (k-regular graph)?
+     (A) A graph where EVERY vertex has the exact same degree k (deg(v) = k for all v) [CORRECT]
+     (B) A graph where vertices form a regular polygon
+     (C) A graph with equal edge lengths
+     (D) A directed acyclic graph
+     Explanation: A graph is k-regular if all vertices share identical degree k (e.g., K_n is (n-1)-regular; a cycle C_n is 2-regular).
+     Tags: BCA-411E, Unit-5, Regular-Graph, Definition
+
+Q210. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Bipartite Graph' G = (V, E)?
+     (A) A graph whose vertex set can be partitioned into two disjoint sets V1 and V2 such that every edge connects a vertex in V1 to a vertex in V2 [CORRECT]
+     (B) A graph with two components
+     (C) A graph with two edges
+     (D) A graph with cycles of length 2
+     Explanation: In a bipartite graph, no edge connects vertices within the same partition set (independent sets).
+     Tags: BCA-411E, Unit-5, Bipartite-Graph, Definition
+
+Q211. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is the fundamental characterization theorem for Bipartite Graphs (König's Theorem)?
+     (A) A graph is Bipartite IF AND ONLY IF it contains NO cycles of ODD length [CORRECT]
+     (B) A graph is bipartite if it is connected
+     (C) A graph is bipartite if all degrees are even
+     (D) A graph is bipartite if it has no cycles at all
+     Explanation: D. König proved that a graph is 2-colorable (bipartite) if and only if it contains no odd cycles (e.g., triangles C_3 are non-bipartite).
+     Tags: BCA-411E, Unit-5, Bipartite-Graph, Konig-Odd-Cycles
+
+Q212. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Complete Bipartite Graph' K_{m, n}?
+     (A) A bipartite graph with partitions of size m and n, where every vertex in V1 is connected to every vertex in V2 [CORRECT]
+     (B) A graph with m + n edges
+     (C) A graph where all vertices have degree m
+     (D) A tree with m branches
+     Explanation: In K_{m, n}, all m vertices in V1 connect to all n vertices in V2, giving total edges |E| = m * n.
+     Tags: BCA-411E, Unit-5, Complete-Bipartite, Definition
+
+Q213. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     How many edges does the Complete Bipartite Graph K_{3, 3} have?
+     (A) 9 (3 * 3 = 9) [CORRECT]
+     (B) 6
+     (C) 18
+     (D) 12
+     Explanation: Number of edges in K_{m, n} is m * n = 3 * 3 = 9.
+     Tags: BCA-411E, Unit-5, Complete-Bipartite, Edge-Count
+
+Q214. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is an 'Eulerian Trail' vs an 'Eulerian Circuit' in a graph?
+     (A) An Eulerian trail visits every EDGE of the graph exactly once; an Eulerian circuit is an Eulerian trail that starts and ends at the SAME vertex [CORRECT]
+     (B) A path visiting every vertex once
+     (C) A path that avoids cycles
+     (D) A path of minimum weight
+     Explanation: Eulerian paths/circuits traverse every edge exactly once (originating from the 1736 Seven Bridges of Königsberg problem).
+     Tags: BCA-411E, Unit-5, Eulerian-Graph, Definition
+
+Q215. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is Euler's Theorem for the existence of an Eulerian Circuit in a connected undirected graph?
+     (A) A connected graph has an Eulerian Circuit if and only if EVERY vertex has an EVEN degree [CORRECT]
+     (B) If all vertices have odd degree
+     (C) If it has no cycles
+     (D) If it is a tree
+     Explanation: Because entering and leaving a vertex consumes 2 incident edges, every vertex must have even degree for an Eulerian circuit to exist.
+     Tags: BCA-411E, Unit-5, Eulerian-Circuit, Eulers-Theorem
+
+Q216. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     Under what condition does a connected graph have an Eulerian Trail (but NOT a circuit)?
+     (A) If and only if it has EXACTLY TWO vertices of ODD degree (the trail begins at one odd vertex and ends at the other) [CORRECT]
+     (B) If it has 4 odd vertices
+     (C) If all vertices are odd
+     (D) If it has zero edges
+     Explanation: A connected graph has an Eulerian path if and only if it has exactly 0 or 2 vertices of odd degree.
+     Tags: BCA-411E, Unit-5, Eulerian-Trail, Condition
+
+Q217. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Hamiltonian Cycle' in a graph?
+     (A) A closed cycle that visits every VERTEX of the graph exactly once (except the start/end vertex) [CORRECT]
+     (B) A cycle visiting every edge once
+     (C) A cycle with 3 vertices
+     (D) A cycle with minimum weight
+     Explanation: While Eulerian circuits traverse every edge, Hamiltonian cycles visit every vertex exactly once.
+     Tags: BCA-411E, Unit-5, Hamiltonian-Graph, Definition
+
+Q218. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is Dirac's Theorem for Hamiltonian Graphs?
+     (A) If a simple graph G has n >= 3 vertices and deg(v) >= n / 2 for EVERY vertex v, then G is Hamiltonian [CORRECT]
+     (B) If G has an even number of vertices
+     (C) If G has no triangles
+     (D) If G is planar
+     Explanation: Dirac (1952) proved that high vertex degree (deg(v) >= n/2 for all v) guarantees the existence of a Hamiltonian cycle.
+     Tags: BCA-411E, Unit-5, Diracs-Theorem, Hamiltonian
+
+Q219. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is Ore's Theorem for Hamiltonian Graphs?
+     (A) If a simple graph G has n >= 3 vertices and deg(u) + deg(v) >= n for every pair of NON-ADJACENT vertices u, v, then G is Hamiltonian [CORRECT]
+     (B) If the sum of degrees is 2n
+     (C) If all vertices have degree 2
+     (D) If the graph has no bridges
+     Explanation: Ore's condition generalizes Dirac's theorem: deg(u) + deg(v) >= n for non-adjacent pairs guarantees a Hamiltonian cycle.
+     Tags: BCA-411E, Unit-5, Ores-Theorem, Hamiltonian
+
+Q220. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Planar Graph'?
+     (A) A graph that can be drawn in the geometric plane such that no two edges cross or intersect each other except at their common endpoints [CORRECT]
+     (B) A graph drawn on an airplane
+     (C) A graph with straight edges only
+     (D) A graph with no faces
+     Explanation: Planarity means the graph can be embedded in 2D Euclidean plane with zero edge crossings.
+     Tags: BCA-411E, Unit-5, Planar-Graph, Definition
+
+Q221. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is Euler's Formula for a connected planar graph with V vertices, E edges, and F faces (regions)?
+     (A) V - E + F = 2 [CORRECT]
+     (B) V + E + F = 0
+     (C) V * E = F
+     (D) V - F = E
+     Explanation: Euler's planar formula: V - E + F = 2 (including the single unbounded exterior face).
+     Tags: BCA-411E, Unit-5, Eulers-Planar-Formula, Statement
+
+Q222. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     In a connected planar graph with V = 6 vertices and E = 9 edges, how many faces (regions) F are created?
+     (A) 5 faces (F = 2 - V + E = 2 - 6 + 9 = 5) [CORRECT]
+     (B) 3 faces
+     (C) 6 faces
+     (D) 4 faces
+     Explanation: By Euler's formula: 6 - 9 + F = 2 => F = 2 + 3 = 5 faces.
+     Tags: BCA-411E, Unit-5, Eulers-Formula, Calculation
+
+Q223. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What are the two canonical non-planar graphs according to Kuratowski's Theorem?
+     (A) K_5 (Complete graph on 5 vertices) and K_{3, 3} (Complete bipartite utility graph on 3 and 3 vertices) [CORRECT]
+     (B) K_3 and K_4
+     (C) C_5 and C_6
+     (D) W_4 and W_5
+     Explanation: Kuratowski proved that a graph is planar if and only if it contains no subgraph homeomorphic to K_5 or K_3,3.
+     Tags: BCA-411E, Unit-5, Kuratowskis-Theorem, Non-Planar
+
+Q224. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is the maximum number of edges a connected simple planar graph on V >= 3 vertices can have?
+     (A) E <= 3V - 6 [CORRECT]
+     (B) E <= 2V - 4
+     (C) E <= V^2
+     (D) E = V - 1
+     Explanation: Because every face is bounded by at least 3 edges (2E >= 3F), substituting into Euler's formula yields E <= 3V - 6.
+     Tags: BCA-411E, Unit-5, Planar-Graphs, Edge-Bound
+
+Q225. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What does the famous 'Four Color Theorem' state for planar graphs?
+     (A) The vertices of ANY planar graph can be colored using at most 4 colors such that no two adjacent vertices share the same color (chi(G) <= 4) [CORRECT]
+     (B) Every graph needs 4 colors
+     (C) Faces cannot be colored
+     (D) Maps require 7 colors
+     Explanation: Proved by Appel and Haken in 1976 using computer-assisted proof: chromatic number of any planar graph is at most 4.
+     Tags: BCA-411E, Unit-5, Four-Color-Theorem, Graph-Coloring
+
+Q226. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the 'Chromatic Number' chi(G) of a graph?
+     (A) The minimum number of colors needed to color the vertices of G such that no two adjacent vertices have the same color [CORRECT]
+     (B) The total number of edges
+     (C) The number of cycles
+     (D) The degree of the largest vertex
+     Explanation: Vertex coloring assigns colors to vertices such that adjacent vertices receive distinct colors; the chromatic number is the minimal color count.
+     Tags: BCA-411E, Unit-5, Chromatic-Number, Definition
+
+Q227. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the chromatic number of the complete graph K_n?
+     (A) n [CORRECT]
+     (B) n - 1
+     (C) 2
+     (D) 1
+     Explanation: Because every vertex is adjacent to every other vertex in K_n, every vertex requires a distinct color: chi(K_n) = n.
+     Tags: BCA-411E, Unit-5, Complete-Graph, Chromatic-Number
+
+Q228. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the chromatic number of any non-trivial Bipartite Graph?
+     (A) 2 [CORRECT]
+     (B) 1
+     (C) 3
+     (D) 4
+     Explanation: By definition, the vertices can be partitioned into two independent sets V1 and V2, which can be colored with 2 colors.
+     Tags: BCA-411E, Unit-5, Bipartite-Graph, Chromatic-Number
+
+Q229. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Tree' in graph theory?
+     (A) A connected, acyclic undirected graph [CORRECT]
+     (B) A graph with a root vertex
+     (C) A directed graph with no leaves
+     (D) A graph where all vertices have degree 2
+     Explanation: A tree is formally defined as a connected graph with no simple circuits (cycles).
+     Tags: BCA-411E, Unit-5, Tree, Definition
+
+Q230. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     How many edges does ANY tree with n vertices contain?
+     (A) n - 1 edges [CORRECT]
+     (B) n edges
+     (C) n + 1 edges
+     (D) n * (n - 1) / 2
+     Explanation: Every tree with n vertices contains exactly n - 1 edges: |E| = |V| - 1.
+     Tags: BCA-411E, Unit-5, Tree-Properties, Edge-Count
+
+Q231. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Spanning Tree' of a connected graph G?
+     (A) A subgraph of G that is a tree and includes EVERY vertex of G [CORRECT]
+     (B) A tree that covers the whole screen
+     (C) A tree with the maximum number of edges
+     (D) A tree with no root
+     Explanation: A spanning tree is a maximal acyclic subgraph spanning all |V| vertices, containing exactly |V| - 1 edges.
+     Tags: BCA-411E, Unit-5, Spanning-Tree, Definition
+
+Q232. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     How many spanning trees does a Complete Graph K_n have (Cayley's Formula)?
+     (A) n^(n - 2) [CORRECT]
+     (B) 2^n
+     (C) n!
+     (D) n * (n - 1)
+     Explanation: Arthur Cayley (1889) proved that the number of labeled trees on n vertices is n^(n-2).
+     Tags: BCA-411E, Unit-5, Cayleys-Formula, Spanning-Trees
+
+Q233. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     For a complete graph K_4 on 4 vertices, how many distinct spanning trees exist?
+     (A) 16 (4^(4 - 2) = 4^2 = 16) [CORRECT]
+     (B) 4
+     (C) 24
+     (D) 8
+     Explanation: By Cayley's formula: 4^(4-2) = 4^2 = 16 spanning trees.
+     Tags: BCA-411E, Unit-5, Cayleys-Formula, Calculation
+
+Q234. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the greedy strategy used by 'Kruskal's Algorithm' to find the Minimum Spanning Tree (MST)?
+     (A) Sorts all edges by non-decreasing weight and repeatedly adds the edge with the minimum weight that does NOT create a cycle [CORRECT]
+     (B) Grows a tree from a start vertex by adding the cheapest adjacent vertex
+     (C) Removes edges with highest weight
+     (D) Selects edges at random
+     Explanation: Kruskal's algorithm examines edges globally in sorted weight order, using Disjoint Set Union (Union-Find) to detect and reject cycle-forming edges.
+     Tags: BCA-411E, Unit-5, Kruskals-Algorithm, MST
+
+Q235. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the greedy strategy used by 'Prim's Algorithm' to find the Minimum Spanning Tree?
+     (A) Starts from an arbitrary root vertex and continuously grows a single connected tree by adding the minimum-weight edge connecting a vertex in the tree to a vertex outside the tree [CORRECT]
+     (B) Sorts all edges globally
+     (C) Deletes cycles from the graph
+     (D) Connects leaves first
+     Explanation: Prim's algorithm grows a single cut-crossing tree outward vertex-by-vertex using a priority queue (min-heap).
+     Tags: BCA-411E, Unit-5, Prims-Algorithm, MST
+
+Q236. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is an 'Adjacency Matrix' A of a simple graph with n vertices?
+     (A) An n x n binary matrix where entry A[i, j] = 1 if an edge exists between vertex i and vertex j, and 0 otherwise [CORRECT]
+     (B) A matrix of shortest paths
+     (C) A list of degrees
+     (D) A table of vertex coordinates
+     Explanation: The adjacency matrix represents graph topology: symmetric for undirected graphs, with diagonal zeros for loopless simple graphs.
+     Tags: BCA-411E, Unit-5, Adjacency-Matrix, Definition
+
+Q237. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What does the (i, j)-th entry of the k-th power of the adjacency matrix, A^k[i, j], represent?
+     (A) The exact number of distinct walks of length k from vertex i to vertex j [CORRECT]
+     (B) The shortest distance between i and j
+     (C) The weight of the edge
+     (D) Zero
+     Explanation: A fundamental theorem of graph theory states that (A^k)_ij equals the count of directed walks of length k between vertices i and j.
+     Tags: BCA-411E, Unit-5, Adjacency-Matrix-Powers, Walks-Count
+
+Q238. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is an 'Incidence Matrix' M of an undirected graph with n vertices and m edges?
+     (A) An n x m matrix where M[i, j] = 1 if vertex v_i is incident with edge e_j, and 0 otherwise [CORRECT]
+     (B) An n x n matrix of weights
+     (C) An m x m matrix of cycles
+     (D) A list of isolated vertices
+     Explanation: The incidence matrix relates vertices (rows) to edges (columns), where every column has exactly two 1s representing edge endpoints.
+     Tags: BCA-411E, Unit-5, Incidence-Matrix, Definition
+
+Q239. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Cut-Vertex' (Articulation Point) in a connected graph?
+     (A) A vertex whose removal (along with its incident edges) increases the number of connected components (disconnects the graph) [CORRECT]
+     (B) A vertex with degree 0
+     (C) A vertex in a cycle
+     (D) A vertex with maximum degree
+     Explanation: Removing an articulation point splits a connected component into two or more disconnected pieces.
+     Tags: BCA-411E, Unit-5, Articulation-Point, Connectivity
+
+Q240. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'Bridge' (Cut-Edge) in a connected graph?
+     (A) An edge whose removal increases the number of connected components of the graph [CORRECT]
+     (B) An edge connecting two graphs on different computers
+     (C) An edge with weight 0
+     (D) A self-loop
+     Explanation: A bridge is an edge that does not belong to any simple cycle; deleting it disconnects the graph.
+     Tags: BCA-411E, Unit-5, Bridge, Connectivity
+
+Q241. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is 'Dijkstra's Algorithm' used for?
+     (A) Finding the Single-Source Shortest Paths from a starting vertex to all other vertices in a weighted graph with NON-NEGATIVE edge weights [CORRECT]
+     (B) Finding maximum flow in a pipe
+     (C) Detecting Hamiltonian cycles
+     (D) Sorting numbers
+     Explanation: Dijkstra's greedy algorithm finds minimum-cost paths from a source to all nodes using a priority queue, requiring non-negative weights.
+     Tags: BCA-411E, Unit-5, Dijkstras-Algorithm, Shortest-Path
+
+Q242. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     Which algorithm is used to find Single-Source Shortest Paths in graphs that may contain NEGATIVE edge weights?
+     (A) Bellman-Ford Algorithm [CORRECT]
+     (B) Dijkstra's Algorithm
+     (C) Prim's Algorithm
+     (D) Kruskal's Algorithm
+     Explanation: Bellman-Ford relaxes all edges |V| - 1 times, correctly handling negative edge weights and detecting negative weight cycles.
+     Tags: BCA-411E, Unit-5, Bellman-Ford, Negative-Weights
+
+Q243. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is the 'Floyd-Warshall Algorithm' used for?
+     (A) Finding All-Pairs Shortest Paths between every pair of vertices in O(V^3) time using dynamic programming [CORRECT]
+     (B) Finding spanning trees
+     (C) Coloring vertices
+     (D) Topological sorting
+     Explanation: Floyd-Warshall computes the complete distance matrix for all pairs of nodes using triple-nested loops: dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]).
+     Tags: BCA-411E, Unit-5, Floyd-Warshall, All-Pairs-Shortest-Paths
+
+Q244. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is a 'DAG' (Directed Acyclic Graph)?
+     (A) A directed graph with NO directed cycles [CORRECT]
+     (B) A graph with no edges
+     (C) A tree with cycles
+     (D) An undirected path
+     Explanation: A DAG is a directed graph containing no closed directed loops, commonly representing task dependencies and scheduling workflows.
+     Tags: BCA-411E, Unit-5, DAG, Definition
+
+Q245. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is 'Topological Sorting' of a Directed Acyclic Graph (DAG)?
+     (A) A linear ordering of vertices such that for every directed edge u -> v, vertex u appears before vertex v in the ordering [CORRECT]
+     (B) Sorting vertices by name
+     (C) Sorting edges by weight
+     (D) Drawing the graph in 3D
+     Explanation: Topological sorting linearizes task dependency graphs: a task appears before all tasks that depend on it (e.g., Kahn's algorithm or DFS).
+     Tags: BCA-411E, Unit-5, Topological-Sort, DAG
+
+Q246. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     What is the computational complexity of Breadth-First Search (BFS) and Depth-First Search (DFS) on a graph represented by adjacency lists?
+     (A) O(V + E) [CORRECT]
+     (B) O(V * E)
+     (C) O(V^2)
+     (D) O(1)
+     Explanation: Both BFS and DFS visit every vertex once and inspect every incident edge once, achieving linear time O(|V| + |E|).
+     Tags: BCA-411E, Unit-5, BFS-DFS, Complexity
+
+Q247. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     Which graph traversal algorithm uses a First-In, First-Out (FIFO) Queue to explore vertices in level-by-level concentric rings?
+     (A) Breadth-First Search (BFS) [CORRECT]
+     (B) Depth-First Search (DFS)
+     (C) Kruskal's Algorithm
+     (D) Binary Search
+     Explanation: BFS explores neighbor vertices layer-by-layer using a FIFO queue, finding the unweighted shortest path.
+     Tags: BCA-411E, Unit-5, BFS, Queue
+
+Q248. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     Which graph traversal algorithm uses a Last-In, First-Out (LIFO) Stack (or recursion) to explore as deep as possible along each branch before backtracking?
+     (A) Depth-First Search (DFS) [CORRECT]
+     (B) Breadth-First Search (BFS)
+     (C) Dijkstra's Algorithm
+     (D) Prim's Algorithm
+     Explanation: DFS dives deeply into branches using a stack or recursion before backtracking.
+     Tags: BCA-411E, Unit-5, DFS, Stack
+
+Q249. [Unit 5: Graph Theory, Trees & Network Algorithms] (MEDIUM)
+     What is 'Graph Isomorphism'?
+     (A) A bijection f between vertex sets V(G1) and V(G2) that preserves adjacency: (u, v) is an edge in G1 if and only if (f(u), f(v)) is an edge in G2 [CORRECT]
+     (B) Two graphs with the same colors
+     (C) Two graphs of equal weight
+     (D) A graph drawn on two pages
+     Explanation: Isomorphic graphs have identical topological structure despite different visual drawings or vertex labeling.
+     Tags: BCA-411E, Unit-5, Graph-Isomorphism, Definition
+
+Q250. [Unit 5: Graph Theory, Trees & Network Algorithms] (EASY)
+     Why is Graph Theory considered the ultimate modeling abstraction in Computer Science?
+     (A) Graphs model computer networks, internet web links, social networks, database schemas, road maps, compiler dataflow, circuit wiring, and dependency graphs [CORRECT]
+     (B) Because graphs look nice on screens
+     (C) Because graphs require no math
+     (D) Because all data is circular
+     Explanation: Virtually every structural, navigational, and relational problem in computer science—from Google PageRank and GPS navigation to neural networks and compilers—is modeled and solved as a graph algorithm.
+     Tags: BCA-411E, Unit-5, Graph-Theory, Applications
+

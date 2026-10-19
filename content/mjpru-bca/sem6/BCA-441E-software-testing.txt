@@ -1,0 +1,2005 @@
+MJPRU BAREILLY BCA SEMESTER 6 - ACADEMIC EXAM QUESTION BANK
+SUBJECT: BCA-441E Software Testing
+TOTAL QUESTIONS: 250 (50 MCQs per Unit)
+================================================================================
+
+Q_1 [Unit 1] [EASY]: According to IEEE Standard 610.12, what is the formal definition of Software Testing?
+  (A) The process of analyzing a software item to detect differences between existing and required conditions and to evaluate its features
+  (B) The process of writing computer code using a keyboard
+  (C) The physical manufacturing of silicon microprocessors
+  (D) The marketing and distribution of commercial software
+Correct Answer: (A)
+Explanation: IEEE 610.12 defines testing as evaluating an item to discover deviations from requirements and assess quality attributes.
+
+Q_2 [Unit 1] [EASY]: What is the fundamental difference between an Error, a Defect (Bug), and a Failure?
+  (A) An Error is a human mistake; a Defect is the flaw in code/document; a Failure is the observable deviation during runtime
+  (B) They are exact synonyms in computer science
+  (C) An Error is hardware; a Defect is software; a Failure is network
+  (D) A Failure causes an Error which causes a Defect
+Correct Answer: (A)
+Explanation: A programmer commits an Error, creating a Defect/Bug in code. When executed, that defect causes a dynamic Failure.
+
+Q_3 [Unit 1] [EASY]: What did Edsger W. Dijkstra famously state regarding the limits of software testing?
+  (A) 'Program testing can be used to show the presence of bugs, but never to show their absence!'
+  (B) 'Testing guarantees 100% bug-free software if automated.'
+  (C) 'Testing should only be performed by the developer who wrote the code.'
+  (D) 'Compilers eliminate all software errors automatically.'
+Correct Answer: (A)
+Explanation: Dijkstra emphasized that testing demonstrates where bugs exist, but cannot prove that zero hidden bugs remain.
+
+Q_4 [Unit 1] [EASY]: What is the primary distinction between Verification and Validation (V&V)?
+  (A) Verification asks 'Are we building the product right?' (static checking); Validation asks 'Are we building the right product?' (dynamic execution against user needs)
+  (B) Verification is done by clients; Validation is done by developers
+  (C) Verification is automated; Validation is manual
+  (D) There is no difference between them
+Correct Answer: (A)
+Explanation: Verification ensures specifications and standards are met without code execution; Validation confirms the software satisfies genuine user requirements.
+
+Q_5 [Unit 1] [MEDIUM]: What is the 'Pesticide Paradox' in software testing (Boris Beizer)?
+  (A) If the same tests are repeated over and over, eventually the same test suite ceases to find new defects
+  (B) Software bugs are caused by actual biological insects
+  (C) Antivirus software deletes testing files
+  (D) Testing tools degrade in performance after 30 days
+Correct Answer: (A)
+Explanation: Bugs adapt to predictable test vectors; testers must regularly revise and diversify test cases to uncover new defect classes.
+
+Q_6 [Unit 1] [MEDIUM]: How does the Cost of Quality (CoQ) escalate as a defect progresses through the SDLC?
+  (A) Exponentially (detecting a bug in production can cost up to 100x more than catching it in requirements)
+  (B) Linearly (costs exactly $10 per phase)
+  (C) It decreases over time
+  (D) It remains completely constant across all phases
+Correct Answer: (A)
+Explanation: Fixing a requirements defect costs trivial editing time; fixing that same defect in live production involves emergency patching, data repair, and legal liability.
+
+Q_7 [Unit 1] [EASY]: How does Debugging differ fundamentally from Testing?
+  (A) Testing is the systematic search for defects and failures; Debugging is the diagnostic activity to locate and remove the root cause in code
+  (B) Testing is done by developers; Debugging is done by customers
+  (C) Testing requires compilers; Debugging does not
+  (D) There is no distinction
+Correct Answer: (A)
+Explanation: Testing finds the failure symptom; debugging is the investigative process of finding and fixing the exact faulty line of source code.
+
+Q_8 [Unit 1] [MEDIUM]: What is 'Defect Clustering' (The Pareto Principle in testing)?
+  (A) Approximately 80% of software defects are concentrated in roughly 20% of the software modules
+  (B) Defects naturally delete each other over time
+  (C) All modules always contain exactly identical numbers of defects
+  (D) Bugs only occur on Friday afternoons
+Correct Answer: (A)
+Explanation: Complex, poorly designed, or highly interconnected modules harbor the vast majority of application bugs.
+
+Q_9 [Unit 1] [EASY]: What is Exhaustive Testing and why is it practically impossible?
+  (A) Testing every possible combinatorial permutation of input data and execution paths; impossible due to infinite state spaces
+  (B) Testing every computer in a company
+  (C) Testing software for 24 hours without stopping
+  (D) A test suite that has zero assertions
+Correct Answer: (A)
+Explanation: Combinatorial input spaces and asynchronous paths create trillions of execution permutations, making exhaustive testing mathematically infeasible.
+
+Q_10 [Unit 1] [EASY]: What is Static Testing?
+  (A) Testing software work products (specifications, code, models) without executing the code (reviews, walkthroughs, static analysis)
+  (B) Testing a computer while it is turned off
+  (C) Testing a computer placed on a static workbench
+  (D) Running automated tests without touching the mouse
+Correct Answer: (A)
+Explanation: Static techniques (code reviews, linters) inspect artifacts at rest, identifying syntax errors and logic flaws before code is ever compiled.
+
+Q_11 [Unit 1] [EASY]: What is Dynamic Testing?
+  (A) Executing compiled code with concrete input data to evaluate dynamic outputs, memory usage, and runtime behavior
+  (B) Testing software that contains video animations
+  (C) Testing while moving across a network
+  (D) Typing code very quickly
+Correct Answer: (A)
+Explanation: Dynamic testing requires executing the program on a machine, checking actual outputs against expected outputs.
+
+Q_12 [Unit 1] [MEDIUM]: What is a Formal Inspection (Fagan Inspection)?
+  (A) A highly structured, disciplined peer review process with formal roles (Author, Moderator, Reader, Recorder, Inspector) and entry/exit criteria
+  (B) A government legal audit of financial accounts
+  (C) A surprise test given to developers by managers
+  (D) An automated security scan using antivirus
+Correct Answer: (A)
+Explanation: Developed by Michael Fagan at IBM, inspections follow a formal 6-step lifecycle: Planning, Overview, Preparation, Meeting, Rework, Follow-up.
+
+Q_13 [Unit 1] [MEDIUM]: What is a Walkthrough in static testing?
+  (A) An informal to semi-formal review led by the author of the document to explain the work product and gather feedback from peers
+  (B) Physically walking around a data center room
+  (C) A step-by-step user guide for playing video games
+  (D) A tool for measuring network bandwidth
+Correct Answer: (A)
+Explanation: Unlike formal inspections, walkthroughs are led by the author, have no formal moderator, and focus on knowledge transfer and informal feedback.
+
+Q_14 [Unit 1] [EASY]: What is the 'Shift-Left' testing philosophy?
+  (A) Moving testing activities earlier in the development lifecycle (during requirements and design) to prevent bugs early rather than detecting them late
+  (B) Pressing the left arrow key on a keyboard during testing
+  (C) Aligning all computer code to the left margin
+  (D) Moving developer desks to the left side of an office
+Correct Answer: (A)
+Explanation: Shift-Left advocates testing from Day 1 to lower the cost of defect resolution and foster shared quality ownership.
+
+Q_15 [Unit 1] [EASY]: What is the initial state of a newly discovered defect in a standard Bug Lifecycle?
+  (A) New (or Logged)
+  (B) Closed
+  (C) Verified
+  (D) Deferred
+Correct Answer: (A)
+Explanation: When a tester discovers an anomaly, they document reproduction steps and submit it into the bug tracking system in the 'New' state.
+
+Q_16 [Unit 1] [MEDIUM]: What occurs when a developer marks a bug report as 'Rejected'?
+  (A) The developer claims the reported behavior is by-design, an invalid test case, or not an actual defect
+  (B) The computer was thrown into the trash
+  (C) The tester was fired from the company
+  (D) The software was rolled back to an earlier release
+Correct Answer: (A)
+Explanation: If the software behaves exactly as documented in requirements, or the tester misunderstood functionality, the defect is rejected with explanation.
+
+Q_17 [Unit 1] [MEDIUM]: What is a 'Deferred' state in defect tracking?
+  (A) The bug is acknowledged as valid, but its repair is postponed to a future release milestone due to low severity or release constraints
+  (B) The bug deleted itself automatically
+  (C) The developer refused to fix the bug forever
+  (D) The bug only occurs on weekends
+Correct Answer: (A)
+Explanation: Triage committees defer non-critical cosmetic or low-frequency bugs to avoid destabilizing an imminent software release.
+
+Q_18 [Unit 1] [EASY]: What is Defect Severity?
+  (A) The degree of impact that a defect has on the technical operation, stability, or capability of the software system
+  (B) How urgently the business manager wants the bug fixed
+  (C) The emotional anger of the customer
+  (D) The physical size of the software code file
+Correct Answer: (A)
+Explanation: Severity is technical: Critical (system crash, data loss), Major (feature broken without workaround), Moderate, or Minor (cosmetic).
+
+Q_19 [Unit 1] [EASY]: What is Defect Priority?
+  (A) The business urgency and order in which a defect should be fixed by the engineering team
+  (B) The technical impact of the bug on the database kernel
+  (C) The number of lines of code required to patch the bug
+  (D) The salary of the developer assigned to the bug
+Correct Answer: (A)
+Explanation: Priority is business-driven: a typo in the corporate header logo is low severity (zero technical impact) but High Priority (brand damage).
+
+Q_20 [Unit 1] [MEDIUM]: What is a 'High Severity, Low Priority' defect scenario?
+  (A) A catastrophic system crash that occurs only under an obscure, obsolete hardware/OS combination that 0.01% of customers use
+  (B) A spelling error on the login homepage
+  (C) The checkout button failing for all mobile users
+  (D) A broken link in an internal employee wiki
+Correct Answer: (A)
+Explanation: The technical impact is total crash (High Severity), but because virtually no paying customers trigger it, fixing it is Low Priority.
+
+Q_21 [Unit 1] [MEDIUM]: What is Backtracking in debugging?
+  (A) Starting at the point where a failure symptom occurs and tracing backwards through execution logic to find the erroneous statement
+  (B) Walking backwards while writing computer code
+  (C) Deleting the last 100 lines of source code
+  (D) Restoring a backup from yesterday
+Correct Answer: (A)
+Explanation: Backtracking works well for small programs: following variable values up the call stack until the point of divergence is reached.
+
+Q_22 [Unit 1] [MEDIUM]: What is Cause Elimination (Hypothesis-Driven Debugging)?
+  (A) Formulating hypotheses regarding potential causes, devising experiments to test each hypothesis, and eliminating disproven candidates
+  (B) Deleting random lines of code until the program runs
+  (C) Replacing computer hardware parts one by one
+  (D) Rewriting the entire software application from scratch
+Correct Answer: (A)
+Explanation: A rigorous scientific debugging approach: hypothesize, isolate variables, execute test probes, and deductively eliminate non-causes.
+
+Q_23 [Unit 1] [HARD]: What is a Heisenbug?
+  (A) A software bug that disappears or alters its behavior when one attempts to isolate, observe, or debug it (often due to timing/memory probes)
+  (B) A bug caused by radioactive decay in microchips
+  (C) A bug named after an infamous computer hacker
+  (D) A bug that permanently damages hardware circuits
+Correct Answer: (A)
+Explanation: Named after Heisenberg's uncertainty principle: inserting print statements or running in a debugger changes thread timing, masking race conditions.
+
+Q_24 [Unit 1] [MEDIUM]: What is a Bohrbug?
+  (A) A deterministic, reproducible bug that consistently manifests under a specific, repeatable set of input conditions
+  (B) A bug caused by magnetic interference
+  (C) A bug that only occurs on quantum computers
+  (D) A bug that creates boring error messages
+Correct Answer: (A)
+Explanation: Named after the deterministic Bohr atom model: easily reproducible in test environments once input conditions are duplicated.
+
+Q_25 [Unit 1] [HARD]: What is a Mandelbug?
+  (A) A bug whose underlying causes are so complex and chaotic that its behavior appears non-deterministic or intermittent
+  (B) A bug discovered in fractal graphics software
+  (C) A hardware defect in German computers
+  (D) A bug caused by loose network cables
+Correct Answer: (A)
+Explanation: Named after Benoit Mandelbrot: caused by complex multi-tier dependencies, operating system scheduling quirks, and asynchronous race conditions.
+
+Q_26 [Unit 1] [MEDIUM]: What is Software Fault Injection?
+  (A) Deliberately introducing faults, network delays, or memory corruptions into a system to evaluate its error handling and fault tolerance
+  (B) Injecting malicious computer viruses into customer machines
+  (C) A hardware defect caused by soldering irons
+  (D) A method for destroying computer motherboards
+Correct Answer: (A)
+Explanation: Fault injection tests whether safety-critical systems detect anomalies and transition gracefully into deterministic fail-safe states.
+
+Q_27 [Unit 1] [MEDIUM]: What is the IEEE 829 Standard for Software Test Documentation?
+  (A) A standard specifying the form and content of individual test documents (Test Plan, Test Design Spec, Test Case Spec, Test Log, Incident Report)
+  (B) A standard for manufacturing optical mice
+  (C) A protocol for sending emails over the internet
+  (D) A standard for building computer power supplies
+Correct Answer: (A)
+Explanation: IEEE 829 outlines 8 core test documentation stages ensuring rigorous traceability across the entire testing lifecycle.
+
+Q_28 [Unit 1] [EASY]: What is a Test Plan?
+  (A) A formal document detailing the scope, approach, resources, schedule, and deliverables of intended testing activities
+  (B) A list of employee phone numbers in the QA department
+  (C) The source code of automated test scripts
+  (D) A spreadsheet tracking weekly work hours
+Correct Answer: (A)
+Explanation: The Test Plan establishes what will be tested, what will NOT be tested, entry/exit criteria, test environment needs, and risk mitigations.
+
+Q_29 [Unit 1] [EASY]: What is a Test Case?
+  (A) A set of preconditions, input values, execution steps, expected results, and postconditions developed for a specific test objective
+  (B) A physical protective plastic case for carrying laptops
+  (C) A legal lawsuit filed against a software company
+  (D) A folder storing software source code files
+Correct Answer: (A)
+Explanation: Test cases provide reproducible, deterministic instructions that any tester can follow to verify a requirement.
+
+Q_30 [Unit 1] [MEDIUM]: What is a Test Oracle?
+  (A) A mechanism or source of truth used to determine whether the actual output of a software program matches its expected behavior
+  (B) A relational database company
+  (C) A fortune teller predicting computer crashes
+  (D) A hardware component inside computer processors
+Correct Answer: (A)
+Explanation: Oracles include user requirements, legacy system outputs, mathematical formulas, or human domain expert judgment.
+
+Q_31 [Unit 1] [EASY]: What is Test Coverage?
+  (A) A quantitative metric measuring the degree to which a specified coverage item (code statements, branches, requirements) has been exercised by tests
+  (B) The physical warranty coverage of a computer monitor
+  (C) The number of testers working in a company
+  (D) The percentage of internet bandwidth used during testing
+Correct Answer: (A)
+Explanation: Coverage metrics indicate testing thoroughness, highlighting unexercised areas of code or unverified business requirements.
+
+Q_32 [Unit 1] [MEDIUM]: What is Defect Removal Efficiency (DRE)?
+  (A) $$\text{DRE} = \frac{E}{E + D} \times 100\%$$ where $E$ is defects found before release and $D$ is defects found by users after release
+  (B) The speed at which a developer fixes a bug in hours
+  (C) The percentage of code deleted during refactoring
+  (D) The monetary cost of hiring software testers
+Correct Answer: (A)
+Explanation: High DRE ($> 95\%$) proves that internal testing successfully filters out almost all defects before shipping to customers.
+
+Q_33 [Unit 1] [HARD]: What is Mutational Testing (Mutation Analysis)?
+  (A) Deliberately introducing small syntactic changes (mutants) into source code to evaluate whether the existing test suite detects and kills the mutants
+  (B) Testing software exposed to biological radiation
+  (C) A virus that mutates computer files
+  (D) Running tests on different operating systems
+Correct Answer: (A)
+Explanation: If a mutant survives (tests still pass despite altered logic), it exposes gaps in test suite assertion quality.
+
+Q_34 [Unit 1] [HARD]: What is a 'Killed Mutant' in mutation testing?
+  (A) A mutant code variation that causes at least one test in the test suite to fail, proving the test suite successfully caught the code modification
+  (B) A computer bug that was permanently deleted
+  (C) A broken computer processor
+  (D) A software project that was cancelled
+Correct Answer: (A)
+Explanation: High mutation score (percentage of mutants killed) demonstrates high test suite fault-detection capability.
+
+Q_35 [Unit 1] [MEDIUM]: What is Code Inspection vs Code Walkthrough?
+  (A) Inspection is formal, led by a trained moderator with checklist metrics; Walkthrough is informal and author-led for review
+  (B) Inspection is automated; Walkthrough is manual
+  (C) Inspection is for hardware; Walkthrough is for software
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Inspections strictly separate author and moderator roles to eliminate defensive cognitive bias, achieving higher defect discovery rates.
+
+Q_36 [Unit 1] [MEDIUM]: What is the 'Absence-of-Errors' Fallacy in testing principles?
+  (A) Finding and fixing thousands of bugs is useless if the system does not satisfy real user expectations or business goals
+  (B) A system that has zero bugs in production
+  (C) A developer claiming their code has no bugs
+  (D) A software program that runs forever without stopping
+Correct Answer: (A)
+Explanation: Building a 100% bug-free system that nobody wants or that solves the wrong problem is an ultimate engineering failure.
+
+Q_37 [Unit 1] [MEDIUM]: What is Exploratory Testing?
+  (A) Simultaneous learning, test design, and test execution where the tester dynamically designs new tests based on insights gained from previous runs
+  (B) Testing software on space exploration satellites
+  (C) Running automated scripts while browsing the internet
+  (D) A beginner guessing random computer buttons
+Correct Answer: (A)
+Explanation: Cem Kaner and James Bach popularized exploratory testing as a disciplined, unscripted cognitive investigation complementing automated regression.
+
+Q_38 [Unit 1] [HARD]: What is Session-Based Test Management (SBTM)?
+  (A) A method for managing exploratory testing using uninterrupted, time-boxed testing sessions guided by a formal Charter and debriefing report
+  (B) A database session management protocol
+  (C) An employee timecard clocking system
+  (D) A technique for recording video game sessions
+Correct Answer: (A)
+Explanation: SBTM structures exploratory testing with formal time boxes (typically 90 minutes) and measurable charter deliverables.
+
+Q_39 [Unit 1] [MEDIUM]: What is Risk-Based Testing (RBT)?
+  (A) An approach where testing effort, depth, and priority are organized based on the probability of failure and the business impact of that failure
+  (B) Testing dangerous nuclear power software carelessly
+  (C) Gambling money on software release dates
+  (D) Testing software without writing any test cases
+Correct Answer: (A)
+Explanation: $$\text{Risk} = \text{Likelihood of Failure} \times \text{Business Impact}$$; ensures high-risk modules receive maximum testing scrutiny under tight deadlines.
+
+Q_40 [Unit 1] [EASY]: What is an Entry Criterion in a software test plan?
+  (A) The set of formal conditions and prerequisites that must be satisfied before testing can officially commence in a given phase
+  (B) The physical security badge needed to enter an office
+  (C) The minimum grade required to pass an exam
+  (D) The price of purchasing test automation software
+Correct Answer: (A)
+Explanation: Examples: Build successfully compiles with 0 errors, unit test coverage $\ge 80\%$, test environment provisioned with sanitized data.
+
+Q_41 [Unit 1] [EASY]: What is an Exit Criterion (Definition of Done) in a test plan?
+  (A) The agreed-upon criteria that must be achieved before a testing phase can be formally concluded and approved for release
+  (B) The door used to leave a testing laboratory
+  (C) The moment when all testers go home for the day
+  (D) When the testing project runs out of money
+Correct Answer: (A)
+Explanation: Examples: 100% critical test cases passed, zero open Blocker/Critical defects, automated regression suite green.
+
+Q_42 [Unit 1] [EASY]: What is Rubber Duck Debugging?
+  (A) A debugging method where a programmer explains source code line-by-line to an inanimate object (like a rubber duck) to discover logic errors
+  (B) Playing with toys in an office bathtub
+  (C) A software algorithm for drawing cartoon characters
+  (D) A testing tool developed by the rubber industry
+Correct Answer: (A)
+Explanation: Articulating thought processes out loud forces the conscious mind to re-evaluate implicit assumptions, uncovering the bug without outside help.
+
+Q_43 [Unit 1] [MEDIUM]: What is a Memory Leak and how does dynamic testing detect it?
+  (A) A program allocates memory on the heap but fails to release it back, causing memory consumption to grow until the program crashes (OOM)
+  (B) A physical crack on a computer RAM stick
+  (C) A computer monitor leaking liquid crystal
+  (D) A program deleting files from a hard drive
+Correct Answer: (A)
+Explanation: Dynamic profilers (Valgrind, Chrome DevTools Memory tab) track allocations over time, identifying heap objects that retain references indefinitely.
+
+Q_44 [Unit 1] [MEDIUM]: What is Profiling in software performance engineering?
+  (A) Dynamic analysis that measures the memory consumption, CPU utilization, call stack frequency, and execution duration of functions in a program
+  (B) Creating a user account profile on a social network
+  (C) Taking a photograph of computer hardware
+  (D) Checking credit scores of software developers
+Correct Answer: (A)
+Explanation: Profilers generate flame graphs and call trees, identifying algorithmic bottlenecks where a program spends 90% of its execution time.
+
+Q_45 [Unit 1] [MEDIUM]: What is a Core Dump?
+  (A) A recorded state of the working memory of an application process at the precise moment it crashed, saved to a file for post-mortem analysis
+  (B) Throwing old computer hardware into a landfill
+  (C) Deleting the root directory of an operating system
+  (D) Emptying the recycle bin on a desktop
+Correct Answer: (A)
+Explanation: Developers load core dump files into debuggers (GDB) with debug symbols to inspect variable values and stack frames at the moment of fatal crash.
+
+Q_46 [Unit 1] [EASY]: What is Conditional Breakpoint in IDE debuggers?
+  (A) A breakpoint that pauses program execution only when a specified boolean condition evaluates to true (e.g., `i == 9999`)
+  (B) A breakpoint that breaks the computer screen
+  (C) A breakpoint that only pauses on weekends
+  (D) A breakpoint that deletes the source code line
+Correct Answer: (A)
+Explanation: Saves hours during loops by avoiding manual stepping through thousands of non-problematic iterations.
+
+Q_47 [Unit 1] [EASY]: What is Static Analysis Tool (Linter) in software development?
+  (A) A program that analyzes source code for programmatic errors, stylistic bugs, code smells, and security flaws without executing the code
+  (B) A tool for cleaning dust off keyboards
+  (C) A program that formats hard drives
+  (D) A compiler that converts C++ into Java
+Correct Answer: (A)
+Explanation: Linters (ESLint, Pylint, SonarQube) automatically enforce coding standards and detect dangerous anti-patterns during continuous integration.
+
+Q_48 [Unit 1] [MEDIUM]: What is Pair Testing in agile software development?
+  (A) Two team members (typically a developer and a tester, or two testers) working together concurrently on one machine to execute tests
+  (B) Testing two identical computers side by side
+  (C) Testing software twice before releasing it
+  (D) Testing two different software programs at once
+Correct Answer: (A)
+Explanation: Combines developer technical architecture knowledge with tester exploratory critical mindset for rapid bug discovery and cross-pollination.
+
+Q_49 [Unit 1] [MEDIUM]: What is the difference between Black-box Debugging and White-box Debugging?
+  (A) Black-box debugging analyzes external logs, inputs, and outputs without modifying source code; White-box debugging steps through code line-by-line with symbols
+  (B) Black-box is done at night; White-box is done during the day
+  (C) Black-box is for hardware; White-box is for software
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: White-box debugging uses breakpoints and variable watches inside an IDE; black-box debugging analyzes log traces, network frames, and diagnostic error codes.
+
+Q_50 [Unit 1] [EASY]: What is Bug Triage in software project management?
+  (A) A collaborative meeting where developers, testers, and product managers review newly reported bugs to evaluate severity, verify priority, and assign owners
+  (B) A medical examination given to software engineers
+  (C) A legal trial held to punish programmers who make bugs
+  (D) A process for automatically deleting low-quality bugs
+Correct Answer: (A)
+Explanation: Triage ensures that engineering resources are focused strictly on high-impact business defects before minor cosmetic issues.
+
+Q_51 [Unit 2] [EASY]: What is White Box Testing also commonly referred to as?
+  (A) Glass Box Testing, Clear Box Testing, or Structural Testing
+  (B) Black Box Testing
+  (C) Opaque Box Testing
+  (D) Blind Testing
+Correct Answer: (A)
+Explanation: Because internal logic, data structures, and source code statements are completely visible to the tester.
+
+Q_52 [Unit 2] [EASY]: What is the primary basis for designing White Box test cases?
+  (A) Control flow graphs, statement paths, conditions, and internal code logic
+  (B) Marketing requirements documents
+  (C) End-user customer interviews
+  (D) Competitor product feature lists
+Correct Answer: (A)
+Explanation: White box testing directly derives tests from the physical code structure to verify statement, branch, and path execution.
+
+Q_53 [Unit 2] [MEDIUM]: What is Statement Coverage in white box testing?
+  (A) The percentage of executable source code statements traversed by a test suite relative to total executable statements
+  (B) The number of comments written in code
+  (C) The percentage of requirements listed in a document
+  (D) The number of print statements in a program
+Correct Answer: (A)
+Explanation: $$\text{Statement Coverage} = \frac{\text{Executed Statements}}{\text{Total Executable Statements}} \times 100\%$$. Note: 100% statement coverage does NOT guarantee 100% branch coverage.
+
+Q_54 [Unit 2] [HARD]: Why does 100% Statement Coverage NOT guarantee 100% Branch Coverage?
+  (A) Because an `if` statement without an `else` branch can execute its body (100% statement coverage) without testing the `false` condition branch
+  (B) Because statements and branches are identical
+  (C) Because compilers delete branch statements
+  (D) Because statement coverage only applies to Java
+Correct Answer: (A)
+Explanation: Consider `if (x > 0) y = 1;`. A test with $x=5$ executes all statements (100%), but completely fails to test the branch when $x \le 0$.
+
+Q_55 [Unit 2] [MEDIUM]: What is Branch (Decision) Coverage?
+  (A) Ensuring that every decision point in control flow structures evaluates to both TRUE and FALSE outcomes across the test suite
+  (B) Making sure every branch of a company is tested
+  (C) Testing code on multiple computer branches
+  (D) Executing a program on different days of the week
+Correct Answer: (A)
+Explanation: Branch coverage verifies that all edges in a control flow graph are traversed at least once.
+
+Q_56 [Unit 2] [MEDIUM]: What is Condition Coverage (Predicate Coverage)?
+  (A) Ensuring that each individual boolean sub-condition in a compound decision evaluates to both true and false independently
+  (B) Checking the physical weather conditions during testing
+  (C) Ensuring that computers have adequate air conditioning
+  (D) Testing whether employees have good working conditions
+Correct Answer: (A)
+Explanation: In `if (A || B)`, condition coverage requires testing $A=\text{true}$, $A=\text{false}$, $B=\text{true}$, and $B=\text{false}$.
+
+Q_57 [Unit 2] [HARD]: What is Multiple Condition Coverage (MCC)?
+  (A) Testing all possible $2^n$ truth table combinations of $n$ boolean sub-conditions within a compound decision
+  (B) Testing multiple programs simultaneously
+  (C) Running tests on multiple computers
+  (D) Writing multiple assertions in a test
+Correct Answer: (A)
+Explanation: For $n$ sub-conditions, MCC tests all $2^n$ permutations, guaranteeing exhaustive logical evaluation at the cost of exponential test explosion.
+
+Q_58 [Unit 2] [HARD]: What is Modified Condition/Decision Coverage (MC/DC)?
+  (A) A testing criterion requiring each condition to independently affect the decision outcome, achieving high rigor with only $n+1$ tests instead of $2^n$
+  (B) A military radio encryption algorithm
+  (C) A compiler optimization technique
+  (D) A database query language
+Correct Answer: (A)
+Explanation: Mandated by the FAA (DO-178C Level A) for safety-critical avionics software: proves every condition independently controls the decision.
+
+Q_59 [Unit 2] [HARD]: What is Path Coverage in white box testing?
+  (A) Executing all possible linearly independent and loop-variant execution paths from entry to exit in a program
+  (B) Testing the file path of a program on disk
+  (C) Measuring the physical distance traveled by network packets
+  (D) Testing how long a mouse path travels on screen
+Correct Answer: (A)
+Explanation: The strongest form of structural coverage; practically impossible on programs with loops because loops create infinite theoretical paths.
+
+Q_60 [Unit 2] [EASY]: Who invented Cyclomatic Complexity in 1976?
+  (A) Thomas J. McCabe
+  (B) Edsger Dijkstra
+  (C) Alan Turing
+  (D) John von Neumann
+Correct Answer: (A)
+Explanation: Thomas McCabe formulated cyclomatic complexity as a quantitative measure of logical complexity based on graph theory.
+
+Q_61 [Unit 2] [MEDIUM]: In McCabe's Cyclomatic Complexity formula $V(G) = E - N + 2P$, what do $E, N,$ and $P$ represent?
+  (A) $E$ = Edges, $N$ = Nodes, $P$ = Connected Components (typically 1 for a single program)
+  (B) $E$ = Errors, $N$ = Numbers, $P$ = Programs
+  (C) $E$ = Equations, $N$ = Networks, $P$ = Paths
+  (D) $E$ = Execution, $N$ = Nulls, $P$ = Pointers
+Correct Answer: (A)
+Explanation: Cyclomatic complexity measures the number of linearly independent paths in a directed Control Flow Graph (CFG).
+
+Q_62 [Unit 2] [EASY]: If a program has 4 binary decision points (`if` statements), what is its Cyclomatic Complexity using the Predicate Node formula $V(G) = P + 1$?
+  (A) $V(G) = 4 + 1 = 5$
+  (B) $V(G) = 4 \times 2 = 8$
+  (C) $V(G) = 4 - 1 = 3$
+  (D) $V(G) = 16$
+Correct Answer: (A)
+Explanation: For simple programs with $P$ binary decision nodes, $V(G) = P + 1$. Thus, 4 decision nodes yield a complexity of 5.
+
+Q_63 [Unit 2] [MEDIUM]: What is the practical significance of Cyclomatic Complexity in Basis Path Testing?
+  (A) It defines the exact number of linearly independent paths required to achieve full branch and statement coverage
+  (B) It dictates the maximum price of the software
+  (C) It tells how many hours it takes to compile code
+  (D) It measures the hard drive space of the program
+Correct Answer: (A)
+Explanation: Cyclomatic complexity provides an upper bound on the minimum number of test cases needed to execute every statement at least once.
+
+Q_64 [Unit 2] [MEDIUM]: According to software engineering industry benchmarks, what does a Cyclomatic Complexity score above 20 indicate?
+  (A) High complexity, difficult to test, low maintainability, and high defect probability
+  (B) Excellent, high-performance code
+  (C) A program with zero bugs
+  (D) A program that requires 20 developers to run
+Correct Answer: (A)
+Explanation: Scores 1–10 are simple/low risk; 11–20 are moderate risk; 21–50 are high risk; $> 50$ are untestable 'God' routines that must be refactored.
+
+Q_65 [Unit 2] [MEDIUM]: What is Basis Path Testing?
+  (A) A white-box testing technique that derives test cases by identifying a linearly independent basis set of paths through a program's Control Flow Graph
+  (B) Testing how fast files copy across a network path
+  (C) Testing the basic features of a computer operating system
+  (D) Running tests on a fundamental hardware board
+Correct Answer: (A)
+Explanation: Basis path testing guarantees that every statement and branch in the program is executed at least once during test execution.
+
+Q_66 [Unit 2] [EASY]: What is Black Box Testing also known as?
+  (A) Behavioral Testing or Specification-Based Testing
+  (B) Structural Testing
+  (C) Glass Box Testing
+  (D) Unit Testing
+Correct Answer: (A)
+Explanation: Because testers evaluate external system behavior against specifications without inspecting internal source code.
+
+Q_67 [Unit 2] [EASY]: What is Equivalence Partitioning (EP)?
+  (A) Dividing the input domain into partitions of equivalent data where the system is expected to treat all values within a partition identically
+  (B) Dividing testing duties equally among all employees
+  (C) Splitting code into two equal halves
+  (D) Formatting a hard drive into two equal partitions
+Correct Answer: (A)
+Explanation: Testers select one representative value from each valid and invalid partition, reducing millions of potential inputs to a manageable set.
+
+Q_68 [Unit 2] [MEDIUM]: In Equivalence Partitioning, what is an 'Invalid Partition'?
+  (A) A partition containing input values that fall outside the acceptable range or data type, designed to test system error handling
+  (B) A partition on a broken hard drive
+  (C) A test case written with spelling errors
+  (D) A partition that should never be tested
+Correct Answer: (A)
+Explanation: Robust testing requires testing both valid partitions (happy paths) and invalid partitions to prove the system rejects bad data gracefully.
+
+Q_69 [Unit 2] [EASY]: A system accepts student examination scores between 0 and 100 inclusive. What are the Equivalence Partitions?
+  (A) Valid: [0, 100]; Invalid: Score < 0; Invalid: Score > 100
+  (B) Valid: [1, 99]; Invalid: 0 and 100
+  (C) Valid: All positive numbers; Invalid: Negative numbers
+  (D) Valid: Scores ending in 5; Invalid: All other scores
+Correct Answer: (A)
+Explanation: Three partitions: one valid interval $[0, 100]$, and two invalid intervals: negative scores ($< 0$) and scores exceeding maximum ($> 100$).
+
+Q_70 [Unit 2] [EASY]: What is Boundary Value Analysis (BVA)?
+  (A) A testing technique that focuses on values at the boundaries of input equivalence partitions (min, max, just below, just above)
+  (B) Measuring the physical boundary of a computer screen
+  (C) Testing whether network cables reach the boundary of an office
+  (D) Analyzing the financial limits of a project budget
+Correct Answer: (A)
+Explanation: Empirical studies prove that programmers make disproportionately more off-by-one errors at boundaries than in the middle of ranges.
+
+Q_71 [Unit 2] [MEDIUM]: For an input range $1 \le X \le 50$, what are the standard 2-boundary BVA test values?
+  (A) 0, 1, 2, 49, 50, 51
+  (B) 1, 25, 50
+  (C) 0, 50, 100
+  (D) -1, 1, 50, 52
+Correct Answer: (A)
+Explanation: Standard BVA tests: Just below min (0), Min (1), Just above min (2), Just below max (49), Max (50), Just above max (51).
+
+Q_72 [Unit 2] [MEDIUM]: What is Robustness Boundary Value Analysis?
+  (A) Testing beyond standard boundaries by explicitly testing extreme invalid values (e.g., $X_{\min} - 1$ and $X_{\max} + 1$)
+  (B) Testing whether computer hardware can survive being dropped
+  (C) Testing software with very large font sizes
+  (D) Running tests on rugged industrial laptops
+Correct Answer: (A)
+Explanation: Robustness testing specifically pushes values just outside boundaries to verify defensive error handling and exception trapping.
+
+Q_73 [Unit 2] [MEDIUM]: What is Decision Table Testing?
+  (A) A black-box technique that tabulates complex combinations of input conditions and their resulting business actions in a matrix format
+  (B) A meeting table where managers make decisions
+  (C) A database table that stores user decisions
+  (D) A flowchart drawn on an office whiteboard
+Correct Answer: (A)
+Explanation: Decision tables systematically list all combinations of conditions ($2^n$) to guarantee no conditional branch or policy rule is overlooked.
+
+Q_74 [Unit 2] [MEDIUM]: What is State Transition Testing?
+  (A) A black-box testing technique that models a system as a Finite State Machine (FSM) to verify states, transitions, inputs, and actions
+  (B) Testing whether water changes from liquid to ice in a simulation
+  (C) Testing a computer when moving between different rooms
+  (D) Upgrading an operating system from Windows 10 to 11
+Correct Answer: (A)
+Explanation: Essential for systems with clear historical states (e.g., ATM transactions: Card Inserted $\to$ PIN Entered $\to$ Authenticated).
+
+Q_75 [Unit 2] [MEDIUM]: What is a State Transition Matrix?
+  (A) A 2D table listing current states along one axis and input events along the other, showing the resulting next states
+  (B) A mathematical matrix used in 3D computer graphics
+  (C) A spreadsheet tracking employee salaries
+  (D) A network routing table in routers
+Correct Answer: (A)
+Explanation: Helps testers identify both valid state transitions and illegal transitions (e.g., dispensing cash before PIN authentication).
+
+Q_76 [Unit 2] [EASY]: What is Use Case Testing?
+  (A) A black-box testing technique that derives test cases from business use cases describing interactions between actors and the system
+  (B) Testing whether software can be used for playing music
+  (C) Testing software that is used by police departments
+  (D) A legal case involving software patent infringement
+Correct Answer: (A)
+Explanation: Validates end-to-end user workflows, business process flows, and exceptional alternate paths from an actor's operational perspective.
+
+Q_77 [Unit 2] [EASY]: What is Gray Box Testing?
+  (A) A hybrid testing technique where the tester has partial knowledge of internal data structures, database schemas, or architecture
+  (B) Testing computers painted gray
+  (C) Testing software during stormy weather
+  (D) An outdated testing methodology discontinued in 1990
+Correct Answer: (A)
+Explanation: Testers design tests from the outside (black box) but use internal architectural knowledge (database schemas, logs) to verify state changes.
+
+Q_78 [Unit 2] [MEDIUM]: In database-driven web applications, how is Gray Box Testing typically utilized?
+  (A) Submitting forms via the public web GUI and directly executing SQL queries on the backend database to verify data integrity and storage
+  (B) Writing SQL queries using a text editor
+  (C) Deleting the database to see if the website crashes
+  (D) Formatting hard drives in data centers
+Correct Answer: (A)
+Explanation: The tester interacts with the black-box UI, but verifies white-box backend database states, foreign key integrity, and stored procedure executions.
+
+Q_79 [Unit 2] [EASY]: What is Unit Testing?
+  (A) The testing of individual software components, methods, or modules in isolation from the rest of the application
+  (B) Testing whether an entire company works together as a unit
+  (C) Testing a single computer monitor
+  (D) Testing whether software runs for one unit of time
+Correct Answer: (A)
+Explanation: Unit tests isolate atomic functions, mocking out external dependencies (databases, networks) to verify core algorithmic correctness.
+
+Q_80 [Unit 2] [MEDIUM]: What is a Test Driver in integration testing?
+  (A) A dummy test harness or calling program that invokes a module under test and passes test arguments to it
+  (B) A device driver that controls computer hardware like printers
+  (C) A person who drives delivery trucks for a computer company
+  (D) A software program that speeds up computer processors
+Correct Answer: (A)
+Explanation: Used in Bottom-Up integration testing to simulate higher-level calling modules that have not yet been developed.
+
+Q_81 [Unit 2] [MEDIUM]: What is a Test Stub in integration testing?
+  (A) A dummy mock program that simulates the behavior of a lower-level module called by the unit under test, returning hardcoded responses
+  (B) A short pencil used during manual testing
+  (C) A broken computer cable
+  (D) A receipt given when purchasing software
+Correct Answer: (A)
+Explanation: Used in Top-Down integration testing to simulate subordinate modules that have not yet been coded.
+
+Q_82 [Unit 2] [MEDIUM]: What is Top-Down Integration Testing?
+  (A) An incremental integration strategy where testing begins with the top-level control module, using stubs for lower-level unbuilt modules
+  (B) Testing from the top floor of an office building down to the basement
+  (C) Writing code from top to bottom of a file
+  (D) Testing the most expensive computers first
+Correct Answer: (A)
+Explanation: Validates major high-level architectural control logic and user interfaces early; requires writing numerous dummy stubs.
+
+Q_83 [Unit 2] [MEDIUM]: What is Bottom-Up Integration Testing?
+  (A) An incremental integration strategy that begins by testing primitive leaf-level modules first, using drivers to invoke them
+  (B) Testing from the basement of an office building up to the roof
+  (C) Writing code from bottom to top
+  (D) Testing low-cost software before expensive software
+Correct Answer: (A)
+Explanation: Simplifies test creation because drivers are easier to write than complex stubs; however, high-level architectural flaws are discovered late.
+
+Q_84 [Unit 2] [MEDIUM]: What is Sandwich (Hybrid) Integration Testing?
+  (A) A combination of Top-Down and Bottom-Up integration testing, where a middle target layer is chosen and testing converges from both directions
+  (B) Testing software while eating a sandwich in an office
+  (C) Testing software sandwiched between two firewalls
+  (D) Testing software on three computers simultaneously
+Correct Answer: (A)
+Explanation: Optimizes engineering velocity by allowing UI teams (Top-Down) and database/core teams (Bottom-Up) to integrate concurrently.
+
+Q_85 [Unit 2] [EASY]: What is Big-Bang Integration Testing?
+  (A) A non-incremental strategy where all developed modules are combined simultaneously into a single build and tested all at once
+  (B) Testing an explosion simulation software program
+  (C) Testing software during a thunderstorm
+  (D) The creation of the universe in physics
+Correct Answer: (A)
+Explanation: Not recommended for complex systems: when failures occur, pinpointing which specific module or interface caused the crash is extremely difficult.
+
+Q_86 [Unit 2] [EASY]: What is Regression Testing?
+  (A) Re-running existing functional and non-functional tests to ensure that recent code modifications or bug fixes have not broken existing functionality
+  (B) Testing whether software can run backwards
+  (C) A statistical technique used in data science
+  (D) Testing software on older computers
+Correct Answer: (A)
+Explanation: Guarantees that fixing Bug A does not inadvertently introduce Bug B into an unrelated, previously working module.
+
+Q_87 [Unit 2] [EASY]: What is a Smoke Test (Build Verification Test)?
+  (A) A rapid, automated preliminary test suite executed on every new build to verify that vital core features function before handing over to QA
+  (B) Testing whether a computer catches fire when turned on
+  (C) Testing smoke detectors in office ceilings
+  (D) A test that produces smoke on the screen
+Correct Answer: (A)
+Explanation: If the smoke test fails (e.g., application won't launch or login crashes), the build is rejected immediately, saving QA team time.
+
+Q_88 [Unit 2] [MEDIUM]: What is a Sanity Test?
+  (A) A narrow, focused test performed after receiving a minor bug fix to verify that the reported defect has been resolved without full regression
+  (B) A mental health evaluation given to software testers
+  (C) A test to verify whether a computer is operating sensibly
+  (D) Testing software without getting angry
+Correct Answer: (A)
+Explanation: Unlike wide smoke tests, sanity tests are narrow and deep, validating only the specific bug fix and closely adjacent components.
+
+Q_89 [Unit 2] [MEDIUM]: What is the difference between Smoke Testing and Sanity Testing?
+  (A) Smoke testing is wide and shallow across all core modules; Sanity testing is narrow and deep on a specific bug-fix module
+  (B) Smoke testing is manual; Sanity testing is automated
+  (C) Smoke testing is for hardware; Sanity testing is for software
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Smoke tests assess overall build stability for QA readiness; sanity tests verify a specific defect resolution before release.
+
+Q_90 [Unit 2] [EASY]: What is Acceptance Testing?
+  (A) Formal testing conducted to determine whether a software system satisfies its acceptance criteria and enables clients to accept the delivery
+  (B) Accepting that software always has bugs
+  (C) A company accepting job applications from testers
+  (D) Testing whether a credit card is accepted online
+Correct Answer: (A)
+Explanation: The final phase of testing before production deployment, proving the system meets contractual and operational business requirements.
+
+Q_91 [Unit 2] [EASY]: What is Alpha Testing?
+  (A) Internal acceptance testing conducted by company employees and QA staff at the developer's site in a controlled staging environment
+  (B) Testing the first Greek letter in an alphabet app
+  (C) Testing conducted by senior executives only
+  (D) Testing performed on animals
+Correct Answer: (A)
+Explanation: Alpha testing occurs before public release, allowing internal teams to catch critical defects in a controlled laboratory setting.
+
+Q_92 [Unit 2] [EASY]: What is Beta Testing?
+  (A) External testing conducted by real end-users at their own locations in uncontrolled real-world operational environments
+  (B) Testing the second Greek letter in an alphabet app
+  (C) Testing conducted strictly by computer programmers
+  (D) Testing performed only in laboratories
+Correct Answer: (A)
+Explanation: Beta testing exposes the software to diverse user environments, hardware configurations, and unexpected real-world usage patterns.
+
+Q_93 [Unit 2] [EASY]: What is User Acceptance Testing (UAT)?
+  (A) Testing conducted by end-users or clients to verify that the software delivers the required business workflows and value
+  (B) Testing whether users are friendly to each other
+  (C) A test measuring user typing speed
+  (D) A test given to job applicants
+Correct Answer: (A)
+Explanation: UAT provides business stakeholders with final sign-off authority before authorizing enterprise rollout.
+
+Q_94 [Unit 2] [MEDIUM]: What is Operational Acceptance Testing (OAT)?
+  (A) Testing system administration, backup/restore, disaster recovery, failover, and maintenance procedures before production release
+  (B) Testing whether surgeons can use software in hospital operating rooms
+  (C) Testing how many operations a computer executes per second
+  (D) Testing financial office operations
+Correct Answer: (A)
+Explanation: OAT verifies that system administrators and DevOps teams can operate, monitor, backup, and restore the software reliably in production.
+
+Q_95 [Unit 2] [EASY]: What is Compatibility Testing?
+  (A) Evaluating whether an application functions correctly across different hardware architectures, operating systems, browsers, and network environments
+  (B) Testing whether two employees are compatible coworkers
+  (C) Testing whether a software program can fall in love
+  (D) A psychological personality quiz
+Correct Answer: (A)
+Explanation: Ensures consistent behavior across Windows, macOS, Android, iOS, Chrome, Safari, and diverse display resolutions.
+
+Q_96 [Unit 2] [MEDIUM]: What is Localization Testing (L10n) vs Internationalization Testing (I18n)?
+  (A) I18n tests that the software architecture supports global languages and formats without code changes; L10n tests specific local cultural translations, currencies, and dates
+  (B) They are identical in every way
+  (C) I18n is for Europe; L10n is for Asia
+  (D) I18n is for hardware; L10n is for software
+Correct Answer: (A)
+Explanation: Internationalization adapts the core engine for global use; Localization verifies the specific translation (e.g., Hindi, Japanese, right-to-left Arabic).
+
+Q_97 [Unit 2] [EASY]: What is Accessibility Testing (Section 508 / WCAG)?
+  (A) Verifying that a software application can be comfortably navigated and used by people with disabilities (visual, auditory, motor, cognitive impairments)
+  (B) Testing whether an office building has wheelchair ramps
+  (C) Testing whether software is accessible from home over VPN
+  (D) Testing how fast a website loads on mobile phones
+Correct Answer: (A)
+Explanation: Evaluates compatibility with screen readers (NVDA, JAWS), keyboard-only navigation, color contrast ratios, and text alternatives.
+
+Q_98 [Unit 2] [MEDIUM]: What is Compliance / Regulatory Testing?
+  (A) Verifying that software adheres to external legal regulations, industry standards, and data protection mandates (e.g., HIPAA, GDPR, PCI-DSS)
+  (B) Testing whether employees follow company dress codes
+  (C) Testing whether software passes government tax audits
+  (D) A driving license test for delivery trucks
+Correct Answer: (A)
+Explanation: Prevents multi-million-dollar fines and criminal liability by validating compliance with healthcare, financial, and privacy laws.
+
+Q_99 [Unit 2] [MEDIUM]: What is Concurrency Testing in multi-user applications?
+  (A) Testing system stability, data integrity, and transactional isolation when multiple users access the exact same records simultaneously
+  (B) Testing two different software programs at the same time
+  (C) Testing software while listening to music
+  (D) Testing computers connected to the same electrical outlet
+Correct Answer: (A)
+Explanation: Uncovers race conditions, lost updates, and database deadlocks that only occur under simultaneous parallel transactions.
+
+Q_100 [Unit 2] [EASY]: What is the primary role of a 'Traceability Matrix' (RTM - Requirements Traceability Matrix)?
+  (A) A document that maps and traces user requirements forward to test cases and backward to code implementations, proving 100% test coverage
+  (B) A matrix used in linear algebra mathematics
+  (C) A spreadsheet tracking employee vacation days
+  (D) A tool for tracing stolen laptop hardware
+Correct Answer: (A)
+Explanation: The RTM proves that every single business requirement has corresponding test cases and ensures zero orphaned features exist.
+
+Q_101 [Unit 3] [EASY]: What is Graphical User Interface (GUI) Testing?
+  (A) The process of testing the visible graphical interface of an application (buttons, menus, textboxes, layouts) to ensure visual and functional correctness
+  (B) Testing computer graphic video games
+  (C) Testing computer monitor hardware cables
+  (D) Designing logos in graphic design software
+Correct Answer: (A)
+Explanation: GUI testing validates that visual elements render properly, respond to user events, and display data accurately across viewports.
+
+Q_102 [Unit 3] [MEDIUM]: What is the primary difficulty associated with automated GUI testing?
+  (A) GUI tests are notoriously brittle and flaky; minor shifts in HTML layout, CSS classes, or asynchronous timing can break test scripts
+  (B) Computers cannot see colors on monitors
+  (C) Web browsers refuse to run automated scripts
+  (D) GUI testing requires expensive 3D glasses
+Correct Answer: (A)
+Explanation: UI elements frequently change IDs or positions, causing automated scripts with hardcoded locators to fail even when business logic works.
+
+Q_103 [Unit 3] [MEDIUM]: What is the Page Object Model (POM) in UI automation?
+  (A) A design pattern that creates an object repository for web UI elements, decoupling test assertions from underlying HTML DOM locators
+  (B) A model for printing web pages on paper
+  (C) A template for writing HTML web pages
+  (D) A tool for measuring website page loading speed
+Correct Answer: (A)
+Explanation: POM wraps web pages inside reusable classes; if an HTML button ID changes, developers update only one class instead of fifty test scripts.
+
+Q_104 [Unit 3] [MEDIUM]: What is Visual Regression Testing?
+  (A) Capturing screenshots of web pages and using image diffing algorithms to compare them against golden baseline screenshots to detect unintended layout shifts
+  (B) Testing whether software graphics look old-fashioned
+  (C) A medical vision test for software developers
+  (D) Testing software on black-and-white monitors
+Correct Answer: (A)
+Explanation: Visual regression tools (Percy, Applitools) catch unintended pixel shifts, broken CSS margins, and font clipping that functional tests miss.
+
+Q_105 [Unit 3] [EASY]: What is Client/Server Architecture Testing?
+  (A) Testing the interaction, network communication protocols, and data synchronization between client frontends and backend servers
+  (B) Testing computers inside an office server room
+  (C) Testing whether a client is satisfied with a server's customer service
+  (D) Testing cables connecting two computers
+Correct Answer: (A)
+Explanation: Validates that client requests correctly transmit over HTTP/TCP, backend services process payloads, and databases maintain ACID consistency.
+
+Q_106 [Unit 3] [MEDIUM]: What is Network Latency and Bandwidth Throttling in client/server testing?
+  (A) Artificially simulating poor network connections (3G, packet loss, high ping) to verify how gracefully client applications handle slow connections
+  (B) Restricting internet access for employees in an office
+  (C) A physical clamp placed on network cables
+  (D) A technique for speeding up internet downloads
+Correct Answer: (A)
+Explanation: Throttling verifies whether client applications display loading spinners, handle timeouts, and prevent freezing on slow mobile networks.
+
+Q_107 [Unit 3] [MEDIUM]: What is Real-Time System Testing?
+  (A) Testing systems where operational correctness depends strictly on delivering calculated results within deterministic clock deadlines
+  (B) Testing software while watching a physical wall clock
+  (C) Testing software that streams live television broadcasts
+  (D) Testing software that is currently being written
+Correct Answer: (A)
+Explanation: In real-time systems (flight controls, medical pacemakers), arriving at the correct mathematical answer after the deadline is a catastrophic failure.
+
+Q_108 [Unit 3] [EASY]: What is a Hard Real-Time System vs a Soft Real-Time System?
+  (A) Hard real-time systems cause catastrophic failure or loss of life if a deadline is missed; Soft real-time systems suffer degraded quality without destruction
+  (B) Hard systems use metal hardware; Soft systems use plastic
+  (C) Hard systems are difficult to test; Soft systems are easy
+  (D) Hard systems only run on mainframes
+Correct Answer: (A)
+Explanation: An automotive airbag controller is Hard Real-Time ($< 30\,\text{ms}$); video streaming frame rendering is Soft Real-Time (brief stutter is tolerable).
+
+Q_109 [Unit 3] [HARD]: What is Worst-Case Execution Time (WCET) in real-time systems testing?
+  (A) The absolute maximum time a computational task can take to execute under the most unfavorable hardware and input conditions
+  (B) The slowest time a developer took to fix a bug
+  (C) The duration of an office electrical power outage
+  (D) The time taken to install an operating system
+Correct Answer: (A)
+Explanation: Engineers must mathematically prove that $\text{WCET} \le \text{Deadline}$ under maximum CPU load to guarantee safety compliance.
+
+Q_110 [Unit 3] [HARD]: What is Priority Inversion in concurrent real-time operating systems?
+  (A) A condition where a low-priority task holds a shared resource required by a high-priority task, causing the high-priority task to miss its deadline
+  (B) Inverting the order of numbers in an array
+  (C) Promoting a junior tester to project manager
+  (D) Turning a computer upside down
+Correct Answer: (A)
+Explanation: Famously afflicted the Mars Pathfinder spacecraft in 1997; solved by implementing **Priority Inheritance Protocols** in RTOS kernels.
+
+Q_111 [Unit 3] [EASY]: What is Documentation and Help Facilities Testing?
+  (A) Verifying that user guides, API manuals, error messages, and context-sensitive help dialogs are accurate, readable, and match actual software behavior
+  (B) Testing whether office printers can print user manuals
+  (C) Checking the grammar of emails sent by managers
+  (D) Testing software documentation stored in file cabinets
+Correct Answer: (A)
+Explanation: Misleading, inaccurate, or outdated documentation causes customer support ticket spikes and severe user frustration.
+
+Q_112 [Unit 3] [EASY]: What is Error Message Usability Testing?
+  (A) Verifying that error messages explain what went wrong in plain language, avoid technical jargon, and provide clear actionable recovery steps
+  (B) Testing whether computer error sounds are loud enough
+  (C) Making error messages appear in red text
+  (D) Deleting all error messages from the software
+Correct Answer: (A)
+Explanation: Poor error: 'Error 0x80040154'; Good error: 'Credit card expired. Please update your payment details in Account Settings.'
+
+Q_113 [Unit 3] [EASY]: What is API (Application Programming Interface) Testing?
+  (A) Testing backend software interfaces directly at the message layer (sending HTTP requests to REST/SOAP endpoints and asserting JSON response payloads)
+  (B) Testing computer keyboard buttons
+  (C) Testing whether two applications can share a screen
+  (D) A test given to API developers
+Correct Answer: (A)
+Explanation: API tests execute in milliseconds without UI overhead, verifying business logic, HTTP status codes, schema contracts, and authentication.
+
+Q_114 [Unit 3] [HARD]: What is Contract Testing (e.g., Pact framework) in microservices architecture?
+  (A) Verifying that a service provider and service consumer adhere to an agreed-upon API request/response schema without testing live deployed systems together
+  (B) A legal contract signed between two companies
+  (C) A contract signed by software testers upon hiring
+  (D) An agreement regarding software pricing
+Correct Answer: (A)
+Explanation: Contract testing prevents breaking API changes between distributed microservice teams before deploying code into staging environments.
+
+Q_115 [Unit 3] [EASY]: What is Performance Testing?
+  (A) Evaluating the responsiveness, speed, throughput, resource usage, and stability of a software application under a given operational workload
+  (B) Measuring the typing speed of software developers
+  (C) Testing how fast a computer can calculate mathematical formulas
+  (D) Evaluating whether employees work hard
+Correct Answer: (A)
+Explanation: Validates non-functional quality attributes: response times ($< 200\,\text{ms}$), memory footprints, and server CPU limits.
+
+Q_116 [Unit 3] [EASY]: What is Load Testing?
+  (A) Simulating anticipated normal and peak concurrent user traffic volumes to verify whether the system maintains acceptable performance metrics
+  (B) Testing whether a truck can carry heavy computer hardware
+  (C) Loading software onto thousands of USB drives
+  (D) Testing a computer with many applications open
+Correct Answer: (A)
+Explanation: Proves that a banking website can handle 50,000 concurrent users on salary day without crashing or degrading response times.
+
+Q_117 [Unit 3] [EASY]: What is Stress Testing (Torture Testing)?
+  (A) Pushing an application beyond its maximum operational capacity until it breaks, to observe its failure mode and recovery behavior
+  (B) Yelling at software developers to make them work faster
+  (C) Testing software under stressful office deadlines
+  (D) Testing software in very hot rooms
+Correct Answer: (A)
+Explanation: Ensures that when extreme traffic strikes, the application degrades gracefully (sheds load with HTTP 503) rather than corrupting databases.
+
+Q_118 [Unit 3] [MEDIUM]: What is Spike Testing in performance engineering?
+  (A) Suddenly and dramatically increasing the user load on a system to observe whether it can handle instantaneous traffic surges
+  (B) Testing sharp metal components inside computers
+  (C) Measuring voltage spikes with an oscilloscope
+  (D) A test that fails immediately
+Correct Answer: (A)
+Explanation: Simulates sudden events like a televised Super Bowl commercial or breaking news alert driving 100,000 users to a website in 10 seconds.
+
+Q_119 [Unit 3] [MEDIUM]: What is Soak Testing (Endurance Testing)?
+  (A) Running a system under an expected continuous operational load for an extended duration (days or weeks) to uncover slow memory leaks and resource degradation
+  (B) Submerging computer hardware in water to test waterproofing
+  (C) Testing software while taking a bath
+  (D) Leaving a computer turned off for a month
+Correct Answer: (A)
+Explanation: Detects memory leaks, unclosed database connection pools, log file disk exhaustion, and garbage collection pauses that only appear over time.
+
+Q_120 [Unit 3] [MEDIUM]: What is Scalability Testing?
+  (A) Evaluating the software's ability to handle growing workloads by scaling up (more CPU/RAM) or scaling out (adding more servers/containers)
+  (B) Testing whether software can be installed on larger computer monitors
+  (C) Testing software in different geographic regions
+  (D) Measuring the weight of servers on a scale
+Correct Answer: (A)
+Explanation: Determines the operational breaking points and proves whether adding $2\times$ servers delivers $2\times$ transaction throughput.
+
+Q_121 [Unit 3] [EASY]: What is Security Testing?
+  (A) Evaluating an information system to uncover vulnerabilities, threats, and risks, ensuring that data is protected from unauthorized access or malicious attacks
+  (B) Testing the physical door locks of a data center
+  (C) Hiring armed security guards for an office building
+  (D) A background check conducted on software testers
+Correct Answer: (A)
+Explanation: Validates authentication, authorization, cryptography, input validation, and resistance against hacking exploits.
+
+Q_122 [Unit 3] [EASY]: What is Penetration Testing (Ethical Hacking)?
+  (A) An authorized simulated cyberattack performed on a computer system to identify exploitable security vulnerabilities
+  (B) Hacking into a bank to steal money illegally
+  (C) A test measuring the physical sharpness of needles
+  (D) Testing how deep a drill can penetrate metal
+Correct Answer: (A)
+Explanation: Ethical hackers use the exact tools and techniques as malicious attackers to discover security flaws before criminals exploit them.
+
+Q_123 [Unit 3] [EASY]: What is SQL Injection (SQLi) and how is it tested?
+  (A) Injecting malicious SQL syntax into user input fields to manipulate backend database queries, tested using payloads like `' OR '1'='1`
+  (B) A physical syringe used to clean computer hardware
+  (C) An error caused by typing SQL queries too quickly
+  (D) A tool for deleting duplicate database rows
+Correct Answer: (A)
+Explanation: Tested manually and with automated tools (SQLmap) to prove that prepared statements and parameterized queries prevent database compromise.
+
+Q_124 [Unit 3] [EASY]: What is Cross-Site Scripting (XSS) and how is it tested?
+  (A) Injecting malicious JavaScript payloads into web applications that are subsequently executed in the browsers of other unsuspecting users
+  (B) A software program that designs crosswords
+  (C) An error caused by clicking links too quickly
+  (D) A tool for translating websites into different languages
+Correct Answer: (A)
+Explanation: Testers inject payloads like `<script>alert('XSS')</script>` into form fields to check whether inputs are properly sanitized and encoded.
+
+Q_125 [Unit 3] [MEDIUM]: What is Cross-Site Request Forgery (CSRF)?
+  (A) An attack that tricks an authenticated user's browser into submitting an unauthorized malicious request to a trusted web application
+  (B) A software program that copies files across computers
+  (C) An error that occurs when two websites share a server
+  (D) A tool for forging digital certificates
+Correct Answer: (A)
+Explanation: Tested by verifying that sensitive state-changing requests require unique, cryptographically random Anti-CSRF tokens.
+
+Q_126 [Unit 3] [MEDIUM]: What is Distributed Denial of Service (DDoS) testing?
+  (A) Simulating distributed botnet traffic flooding network gateways and application endpoints to evaluate bandwidth resilience and rate limiting
+  (B) Turning off all computers in an office at the same time
+  (C) A software bug that crashes an operating system
+  (D) Testing whether internet cables are plugged in properly
+Correct Answer: (A)
+Explanation: Validates cloud Web Application Firewalls (WAF), CDN edge caching, and upstream scrubbing center mitigations.
+
+Q_127 [Unit 3] [MEDIUM]: What is Fuzz Testing (Fuzzing)?
+  (A) Automated black-box testing that inputs massive streams of random, malformed, and unexpected data into software parsers to find crashes and memory leaks
+  (B) Cleaning computer monitors with a fuzzy cloth
+  (C) Testing microphones with fuzzy wind covers
+  (D) Writing code using fuzzy logic formulas
+Correct Answer: (A)
+Explanation: Fuzzers (AFL, Peach Fuzzer) test protocol parsers and file decoders with corrupted inputs to expose unhandled memory buffer overflows.
+
+Q_128 [Unit 3] [MEDIUM]: What is Static Application Security Testing (SAST) vs Dynamic Application Security Testing (DAST)?
+  (A) SAST inspects source code at rest from the inside (White-box); DAST probes running applications from the outside over the network (Black-box)
+  (B) SAST is manual; DAST is automated
+  (C) SAST is for hardware; DAST is for software
+  (D) There is no difference between them
+Correct Answer: (A)
+Explanation: SAST catches security flaws early in development; DAST catches configuration errors and runtime authentication flaws in staging environments.
+
+Q_129 [Unit 3] [HARD]: What is Chaos Engineering (e.g., Netflix Chaos Monkey)?
+  (A) Deliberately injecting random server crashes, network dropouts, and hardware failures into production environments to test system resilience
+  (B) Writing disorganized software code carelessly
+  (C) Allowing software testers to work without a plan
+  (D) A theory explaining how the universe began
+Correct Answer: (A)
+Explanation: Pioneered by Netflix: if critical infrastructure can survive random automated server killings during business hours, customer outages are avoided.
+
+Q_130 [Unit 3] [MEDIUM]: What is Disaster Recovery Testing in enterprise IT environments?
+  (A) Simulating complete regional data center destruction (earthquake, flood) to verify whether secondary hot-standby systems automatically failover safely
+  (B) Testing whether office buildings can survive natural disasters
+  (C) A physical fire drill for office employees
+  (D) Testing whether computers can be repaired after an explosion
+Correct Answer: (A)
+Explanation: Validates that database replication, DNS failover, and operational procedures satisfy business RTO and RPO benchmarks under catastrophe.
+
+Q_131 [Unit 3] [MEDIUM]: What is Headless Browser Testing in modern UI test automation?
+  (A) Running automated browser test suites without displaying a visible graphical window, accelerating execution inside CI/CD pipelines
+  (B) Testing computers without video graphics cards installed
+  (C) Testing software developed for headless robots
+  (D) A software testing tool with no user documentation
+Correct Answer: (A)
+Explanation: Headless browsers (Puppeteer, Playwright) render HTML/CSS and execute JavaScript in RAM without the CPU overhead of drawing monitor pixels.
+
+Q_132 [Unit 3] [EASY]: What is Cross-Browser Testing in web quality assurance?
+  (A) Verifying that a web application renders, operates, and performs consistently across Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge
+  (B) Testing whether browsers can communicate with each other
+  (C) Installing multiple browsers on the same computer
+  (D) Testing how fast a browser can download software
+Correct Answer: (A)
+Explanation: Uncovers layout rendering quirks, unsupported CSS flexbox/grid features, and JavaScript engine deviations between Blink, Gecko, and WebKit.
+
+Q_133 [Unit 3] [EASY]: What is Responsive Web Design (RWD) Testing?
+  (A) Verifying that a website dynamically adapts its visual layout, images, and navigation menus to various screen viewports (mobile, tablet, desktop)
+  (B) Testing whether a website responds quickly to user clicks
+  (C) Testing whether a website can be translated into Spanish
+  (D) Testing whether an application can send email responses
+Correct Answer: (A)
+Explanation: Tests viewport boundaries (375px mobile, 768px tablet, 1440px desktop) to ensure zero horizontal text clipping or overlapping buttons.
+
+Q_134 [Unit 3] [EASY]: What is A/B Testing (Split Testing) in web optimization?
+  (A) Displaying two distinct variants of a web page (A and B) to randomized user groups to measure which variant produces higher business conversions
+  (B) Testing whether students get an A or B grade on an exam
+  (C) Testing software on two different computers
+  (D) Testing whether a button is blue or green
+Correct Answer: (A)
+Explanation: Data-driven experimentation: comparing baseline Variant A against experimental Variant B to statistically prove customer preference.
+
+Q_135 [Unit 3] [MEDIUM]: What is Mobile Application Testing across device fragmentation?
+  (A) Testing mobile apps across hundreds of distinct physical smartphone models with varying screen sizes, OS versions (Android/iOS), and hardware capabilities
+  (B) Testing mobile phones while walking around an office
+  (C) Testing whether a phone can be dropped without breaking
+  (D) A test given to mobile phone sales employees
+Correct Answer: (A)
+Explanation: Device farms (BrowserStack, AWS Device Farm) execute automated test suites across physical smartphones to detect vendor-specific OEM bugs.
+
+Q_136 [Unit 3] [MEDIUM]: What is Battery Drain Testing in mobile application QA?
+  (A) Measuring the electrical energy consumed by a mobile application over time to ensure it does not deplete user smartphone batteries prematurely
+  (B) Testing whether a battery can be recharged quickly
+  (C) Testing how long a flashlight battery lasts
+  (D) A test given to battery manufacturing companies
+Correct Answer: (A)
+Explanation: Apps that abuse background GPS location polling, high-frequency wake-locks, or excessive cellular radios are rejected by app store reviewers.
+
+Q_137 [Unit 3] [EASY]: What is an APK and IPA in mobile application testing?
+  (A) APK is the Android application package file; IPA is the iOS application archive file
+  (B) They are proprietary encryption algorithms
+  (C) They are programming languages developed by Google and Apple
+  (D) They are testing tools used for web browsers
+Correct Answer: (A)
+Explanation: Testers install compiled APK/IPA binaries onto physical test devices and emulators to verify mobile installation and runtime behavior.
+
+Q_138 [Unit 3] [HARD]: What is Hardware-in-the-Loop (HIL) Testing in real-time embedded systems?
+  (A) Connecting real physical controller hardware to a high-speed real-time simulation computer that mathematically mimics the environment and sensors
+  (B) A computer cable looped into a circle
+  (C) A testing laboratory with many computer desks in a circle
+  (D) A software program that loops indefinitely
+Correct Answer: (A)
+Explanation: Allows aerospace and automotive engineers to test physical electronic control units (ECUs) under simulated extreme crash conditions safely.
+
+Q_139 [Unit 3] [MEDIUM]: What is Database Migration Testing in enterprise applications?
+  (A) Verifying that data transferred from a legacy database system to a new database schema retains 100% data integrity, completeness, and accuracy
+  (B) Moving physical server computers to a new building
+  (C) Upgrading database software to a newer version
+  (D) Testing whether birds migrate during winter months
+Correct Answer: (A)
+Explanation: Validates that data types map correctly, no records are dropped or truncated, and historical transactions remain identical.
+
+Q_140 [Unit 3] [MEDIUM]: What is Mutation in database testing?
+  (A) Modifying database schema, table structures, or stored procedures and verifying that all downstream queries and applications continue to function
+  (B) A genetic variation in biological organisms
+  (C) A software virus corrupting database records
+  (D) A technique for deleting database backups
+Correct Answer: (A)
+Explanation: Ensures that adding foreign keys or changing column constraints does not trigger database locks or break existing API routes.
+
+Q_141 [Unit 3] [EASY]: What is a Golden Master (Baseline) in visual regression testing?
+  (A) An approved, verified screenshot of a web page used as the standard benchmark against which all future test screenshots are compared
+  (B) A gold trophy awarded to the best software tester
+  (C) A master copy of software stored in a bank vault
+  (D) A software developer with 20 years of experience
+Correct Answer: (A)
+Explanation: If a new build shifts a button by 5 pixels, image diffing tools compare against the Golden Master and highlight the altered pixels in red.
+
+Q_142 [Unit 3] [EASY]: What is an API Mock Server (e.g., WireMock, MSW)?
+  (A) A simulator that intercepts HTTP requests and returns predefined fake responses without invoking the actual backend production services
+  (B) A server that makes fun of software developers
+  (C) A computer that does not have an operating system
+  (D) A broken computer server in a data center
+Correct Answer: (A)
+Explanation: Allows frontend engineers to develop and test UI features even before the backend engineering team has finished building the real APIs.
+
+Q_143 [Unit 3] [MEDIUM]: What is Zero-Downtime Deployment Testing (e.g., Blue-Green Deployments)?
+  (A) Testing whether a new software release can be deployed into production without disconnecting active users or experiencing server downtime
+  (B) A software project that never releases any new updates
+  (C) Testing software while the server is turned off
+  (D) A test that runs for zero seconds
+Correct Answer: (A)
+Explanation: In Blue-Green deployment, Blue is live; Green receives the new release; after tests pass, traffic router flips immediately to Green with zero outage.
+
+Q_144 [Unit 3] [MEDIUM]: What is Canary Deployment in modern software release strategies?
+  (A) Rolling out a new software release to a tiny subset of real production users (e.g., 2%) first to monitor error rates before wide deployment
+  (B) Testing software inside coal mines with yellow birds
+  (C) A software program that plays bird sounds
+  (D) A test conducted exclusively by junior developers
+Correct Answer: (A)
+Explanation: If the new version produces a spike in HTTP 500 errors or latency, traffic is rolled back instantly before affecting 98% of users.
+
+Q_145 [Unit 3] [MEDIUM]: What is Dark Launching in web application feature releases?
+  (A) Deploying a new feature to production servers so it runs in the background or for internal staff without exposing UI elements to the public
+  (B) Launching a website at midnight in the dark
+  (C) A cyberattack that takes down a website
+  (D) Testing a website with a black background
+Correct Answer: (A)
+Explanation: Tests backend database scaling, caching, and server load under live production traffic without users noticing the new feature.
+
+Q_146 [Unit 3] [EASY]: What is Feature Flagging (Feature Toggles)?
+  (A) A software development technique that allows features to be remotely turned on or off in production code via configuration without deploying new code
+  (B) A country's national flag displayed on a website
+  (C) An error that occurs when writing conditional statements
+  (D) A tool for marking software bugs as resolved
+Correct Answer: (A)
+Explanation: If a newly launched feature causes crashes, developers toggle the feature flag to 'off' in seconds without triggering an emergency code rollback.
+
+Q_147 [Unit 3] [EASY]: What is End-to-End (E2E) Testing?
+  (A) Testing a complete software application flow from beginning to end, ensuring all integrated sub-systems and databases work together seamlessly
+  (B) Testing both ends of a physical copper wire
+  (C) Testing software from January to December
+  (D) A test that has an end but no beginning
+Correct Answer: (A)
+Explanation: Simulates genuine user journeys (e.g., Register Account $\to$ Add Course to Cart $\to$ Complete Payment $\to$ Verify Enrollment in DB).
+
+Q_148 [Unit 3] [MEDIUM]: What is a Flaky Test in automated testing?
+  (A) An automated test that exhibits both passing and failing results across different runs without any changes to the underlying code or environment
+  (B) A test that is easy to break like a pastry
+  (C) A test written by an unreliable software developer
+  (D) A test that only runs on winter mornings
+Correct Answer: (A)
+Explanation: Caused by race conditions, asynchronous timing delays, network jitter, or non-deterministic test order dependencies; destroys team confidence in CI/CD.
+
+Q_149 [Unit 3] [MEDIUM]: What is Idempotency Testing in RESTful web APIs?
+  (A) Verifying that making multiple identical HTTP requests (e.g., multiple identical PUT or DELETE requests) produces the exact same system state as a single request
+  (B) Testing software that has no electrical power
+  (C) Testing whether two numbers are equal
+  (D) A method for measuring internet download speeds
+Correct Answer: (A)
+Explanation: If a payment gateway request times out and the user clicks 'Submit' twice, idempotency keys guarantee the customer is billed exactly once.
+
+Q_150 [Unit 3] [EASY]: What is Synthetic Monitoring (Synthetics)?
+  (A) Automated scripts that periodically simulate user actions (e.g., every 5 minutes) against live production systems to monitor uptime and latency proactively
+  (B) Using artificial intelligence to write user manuals
+  (C) Testing synthetic plastic materials in laboratories
+  (D) A software program that generates fake financial data
+Correct Answer: (A)
+Explanation: Alerts operations teams to production outages before paying customers encounter broken checkout flows and file complaints.
+
+Q_151 [Unit 4] [EASY]: What is the primary objective of System Testing in the software testing hierarchy?
+  (A) Evaluating the complete, fully integrated software system against high-level specified business and functional requirements
+  (B) Testing individual C++ functions in isolation
+  (C) Testing whether hardware cables fit into wall sockets
+  (D) Testing how fast a developer can type code
+Correct Answer: (A)
+Explanation: System testing treats the software as an integrated whole, validating end-to-end workflows, security, recovery, and performance.
+
+Q_152 [Unit 4] [EASY]: What is the Software Testing Pyramid popularized by Mike Cohn?
+  (A) A visual model showing that test suites should have a broad base of fast Unit Tests, a middle layer of Service/API Tests, and a narrow apex of UI/E2E Tests
+  (B) A geometric pyramid built by ancient Egyptians
+  (C) A management structure with a CEO at the top
+  (D) A model advocating 100% manual testing
+Correct Answer: (A)
+Explanation: Unit tests are cheap and fast; UI tests are slow and brittle. The pyramid ensures rapid developer feedback and low maintenance overhead.
+
+Q_153 [Unit 4] [MEDIUM]: What is the primary drawback of an Inverted Testing Pyramid ('Ice Cream Cone' Anti-Pattern)?
+  (A) Massive reliance on brittle, slow, expensive manual/UI tests at the top with virtually no automated unit tests, leading to long release cycles and high bug leakage
+  (B) The tests taste too sweet like ice cream
+  (C) The software code file becomes upside down
+  (D) It requires freezing computer hardware in ice
+Correct Answer: (A)
+Explanation: When teams neglect unit tests and rely solely on UI regression, testing takes hours or days to run and constantly breaks due to minor cosmetic changes.
+
+Q_154 [Unit 4] [EASY]: What is Agile Testing?
+  (A) A collaborative testing practice that follows agile software principles, integrating testing continuously throughout iterations rather than as a separate post-coding phase
+  (B) Testing while running around an office building
+  (C) Testing software developed by sports athletes
+  (D) Testing software very quickly without thinking
+Correct Answer: (A)
+Explanation: Testers, developers, and product owners collaborate in 2-week sprints, preventing defects rather than inspecting for them at the end.
+
+Q_155 [Unit 4] [EASY]: What is Test-Driven Development (TDD) and its three-phase cycle?
+  (A) Red (Write a failing test) -> Green (Write minimal code to pass) -> Refactor (Clean code while keeping tests green)
+  (B) Plan -> Code -> Pray
+  (C) Write code -> Deploy -> Fix bugs in production
+  (D) Design -> Test -> Delete code
+Correct Answer: (A)
+Explanation: TDD forces modular architecture and comprehensive test coverage from the very first line of production code.
+
+Q_156 [Unit 4] [EASY]: What is Behavior-Driven Development (BDD)?
+  (A) An agile methodology where software behavior is specified in collaborative, human-readable natural language using the Gherkin syntax (Given-When-Then)
+  (B) Testing the psychological behavior of software engineers
+  (C) A tool for disciplining unruly developers
+  (D) A training program for guide dogs
+Correct Answer: (A)
+Explanation: BDD frameworks (Cucumber, SpecFlow) enable business stakeholders and developers to share an unambiguous living specification.
+
+Q_157 [Unit 4] [EASY]: In BDD Gherkin syntax, what do `Given`, `When`, and `Then` represent?
+  (A) `Given` = Preconditions/Context; `When` = Action/Event; `Then` = Expected Outcome/Assertion
+  (B) `Given` = Past; `When` = Present; `Then` = Future
+  (C) `Given` = Input; `When` = Processing; `Then` = Storage
+  (D) `Given` = Code; `When` = Compile; `Then` = Deploy
+Correct Answer: (A)
+Explanation: `Given a logged-in student, When they complete a quiz, Then their score is saved and leaderboard is updated.`
+
+Q_158 [Unit 4] [EASY]: What is Software Metric in software engineering?
+  (A) A quantitative measure of the degree to which a software system, component, or process possesses a given property
+  (B) A ruler used to measure computer screens in centimeters
+  (C) A formula for calculating electrical voltage
+  (D) A software program developed in Europe
+Correct Answer: (A)
+Explanation: Metrics provide objective visibility into quality, productivity, complexity, defect density, and readiness for release.
+
+Q_159 [Unit 4] [MEDIUM]: What is Defect Density and how is it mathematically formulated?
+  (A) $$\text{Defect Density} = \frac{\text{Total Confirmed Defects}}{\text{Size in KLOC or Function Points}}$$
+  (B) Defect Density = Bugs multiplied by lines of code
+  (C) Defect Density = Number of developers divided by testers
+  (D) Defect Density = Time taken to fix a bug
+Correct Answer: (A)
+Explanation: Allows comparative quality benchmarking across software projects of disparate sizes (e.g., 2.5 defects per 1,000 lines of code).
+
+Q_160 [Unit 4] [MEDIUM]: What is Maurice Halstead's Software Science (1977) metric suite based on?
+  (A) Four primitive counts: distinct operators ($\eta_1$), distinct operands ($\eta_2$), total operators ($N_1$), and total operands ($N_2$)
+  (B) The number of hours a programmer sleeps
+  (C) The number of lines of comments in code
+  (D) The price of the computer hardware
+Correct Answer: (A)
+Explanation: Halstead treats code as an algorithmic text, calculating Program Length, Vocabulary, Volume, Difficulty, and Development Effort.
+
+Q_161 [Unit 4] [MEDIUM]: In Halstead Metrics, what is Program Vocabulary ($\eta$)?
+  (A) $$\eta = \eta_1 + \eta_2$$ (The sum of distinct operators and distinct operands)
+  (B) The list of words known by a developer
+  (C) The number of English dictionary words in comments
+  (D) The total lines of source code
+Correct Answer: (A)
+Explanation: Represents the total unique tokens that a programmer must comprehend to understand the program implementation.
+
+Q_162 [Unit 4] [HARD]: In Halstead Metrics, what is Program Volume ($V$)?
+  (A) $$V = N \times \log_2(\eta)$$ where $N = N_1 + N_2$ and $\eta = \eta_1 + \eta_2$
+  (B) The loudness of audio speakers connected to a computer
+  (C) The physical cubic size of a computer chassis
+  (D) The total megabytes of software installed on disk
+Correct Answer: (A)
+Explanation: Volume represents the minimal number of binary bits required to encode the algorithm in memory.
+
+Q_163 [Unit 4] [HARD]: In Halstead Metrics, what is Program Difficulty ($D$)?
+  (A) $$D = \left(\frac{\eta_1}{2}\right) \times \left(\frac{N_2}{\eta_2}\right)$$
+  (B) How hard an exam was for students
+  (C) The number of bugs found in a module
+  (D) The salary required by a developer
+Correct Answer: (A)
+Explanation: Measures the cognitive effort required to write or understand the program, proportional to operator diversity and operand reuse.
+
+Q_164 [Unit 4] [MEDIUM]: In Halstead Metrics, how is Development Effort ($E$) calculated?
+  (A) $$E = D \times V$$ (Difficulty multiplied by Volume)
+  (B) Effort = Lines of code multiplied by hours worked
+  (C) Effort = Number of developers in a company
+  (D) Effort = Total bugs fixed in a sprint
+Correct Answer: (A)
+Explanation: Represents the mental effort and cognitive discriminatory operations required to implement the algorithm.
+
+Q_165 [Unit 4] [HARD]: What are the Chidamber & Kemerer (C&K) Object-Oriented Metrics?
+  (A) A standardized suite of metrics measuring OO software complexity: WMC, DIT, NOC, CBO, RFC, and LCOM
+  (B) A programming language developed in 1994
+  (C) A set of rules for naming Java variables
+  (D) A legal contract for hiring software engineers
+Correct Answer: (A)
+Explanation: The C&K metrics quantitatively measure inheritance depth, coupling, and class cohesion in object-oriented codebases.
+
+Q_166 [Unit 4] [MEDIUM]: In C&K Metrics, what is Weighted Methods per Class (WMC)?
+  (A) The sum of the cyclomatic complexities of all methods declared in a class
+  (B) The physical weight of the source code file on disk
+  (C) The number of static methods in a class
+  (D) The number of times a class is called by other classes
+Correct Answer: (A)
+Explanation: High WMC flags a 'God Class' that attempts to do too much, violating the Single Responsibility Principle and increasing defect rates.
+
+Q_167 [Unit 4] [MEDIUM]: In C&K Metrics, what is Depth of Inheritance Tree (DIT)?
+  (A) The maximum architectural path length from a given class to the root ancestor class in the inheritance hierarchy
+  (B) The age of an oak tree in an office garden
+  (C) The number of folders in a software project
+  (D) The number of subclasses in a program
+Correct Answer: (A)
+Explanation: Deep inheritance trees ($DIT > 5$) increase code reuse but severely inflate cognitive complexity and make unit testing difficult.
+
+Q_168 [Unit 4] [MEDIUM]: In C&K Metrics, what is Coupling Between Object Classes (CBO)?
+  (A) The number of other classes to which a given class is coupled (uses methods or instance variables of)
+  (B) Two classes that have identical names
+  (C) Classes written by the same developer
+  (D) The speed of message passing between classes
+Correct Answer: (A)
+Explanation: High CBO indicates tight coupling, reducing modularity, making unit test isolation painful, and increasing ripple-effect regressions.
+
+Q_169 [Unit 4] [MEDIUM]: In C&K Metrics, what is Lack of Cohesion in Methods (LCOM)?
+  (A) A measure of the degree to which methods in a class share access to the same instance variables
+  (B) A class that has no comments
+  (C) Methods that have syntax errors
+  (D) A class written in multiple programming languages
+Correct Answer: (A)
+Explanation: High LCOM suggests that a class is performing disparate, unrelated responsibilities and should be refactored into smaller classes.
+
+Q_170 [Unit 4] [EASY]: What is Mean Time Between Failures (MTBF)?
+  (A) $$\text{MTBF} = \text{MTTF} + \text{MTTR}$$ (The average operational time between consecutive system failures)
+  (B) The time it takes to restart a computer
+  (C) The average time a developer works before taking a break
+  (D) The frequency of office fire drills
+Correct Answer: (A)
+Explanation: The universal reliability engineering metric combining Mean Time to Failure (MTTF) and Mean Time to Repair (MTTR).
+
+Q_171 [Unit 4] [EASY]: What is Mean Time to Repair (MTTR)?
+  (A) The average clock time required to diagnose, patch, and restore a failed system back to full operational status
+  (B) The time it takes to buy replacement hardware
+  (C) The duration of an employee warranty
+  (D) The time taken to install an update
+Correct Answer: (A)
+Explanation: DevOps and SRE teams focus on minimizing MTTR through automated container self-healing, rolling deployments, and observability.
+
+Q_172 [Unit 4] [MEDIUM]: What is System Availability ($A$) formulated mathematically from reliability metrics?
+  (A) $$A = \frac{\text{MTTF}}{\text{MTTF} + \text{MTTR}} = \frac{\text{MTTF}}{\text{MTBF}}$$
+  (B) Availability = Total hours worked divided by days
+  (C) Availability = Uptime multiplied by downtime
+  (D) Availability = Total server memory in gigabytes
+Correct Answer: (A)
+Explanation: Demonstrates that high availability can be achieved either by building ultra-reliable software (high MTTF) or by automating instantaneous recovery (near-zero MTTR).
+
+Q_173 [Unit 4] [HARD]: What is a Software Reliability Growth Model (SRGM)?
+  (A) A mathematical model (e.g., Jelinski-Moranda, Goel-Okumoto) that forecasts the decline in software failure rate as defects are discovered and removed over testing time
+  (B) A business plan for expanding software sales
+  (C) A chart showing employee salary increases
+  (D) A software program that upgrades itself
+Correct Answer: (A)
+Explanation: SRGMs allow project managers to statistically predict how many more weeks of testing are required before the software achieves target release reliability.
+
+Q_174 [Unit 4] [HARD]: In the Jelinski-Moranda SRGM, what is the core assumption?
+  (A) Software contains a fixed number of initial faults $N$, and each fault removed reduces the hazard failure rate by an equal constant amount $\phi$
+  (B) All bugs are caused by hardware defects
+  (C) Software bugs grow like biological bacteria
+  (D) Testing never eliminates any bugs
+Correct Answer: (A)
+Explanation: $$\lambda(t) = \phi [N - (i - 1)]$$; models software hardening as a Poisson process where failures become exponentially rarer over time.
+
+Q_175 [Unit 4] [MEDIUM]: What is Code Churn in software development analytics?
+  (A) The rate at which lines of code are added, modified, or deleted within a codebase over a specified period
+  (B) A machine used to make butter in agriculture
+  (C) A database deleting corrupted records
+  (D) The number of developers resigning from a team
+Correct Answer: (A)
+Explanation: High code churn right before a release indicates architectural instability and strongly correlates with high production defect rates.
+
+Q_176 [Unit 4] [EASY]: What is Test Execution Velocity in agile metrics?
+  (A) The number of test cases executed by the QA team or CI/CD pipeline within a given time interval (e.g., tests passed per hour or per sprint)
+  (B) The speed of the computer processor running tests
+  (C) The speed of typing test cases on a keyboard
+  (D) The download speed of test automation tools
+Correct Answer: (A)
+Explanation: Tracks whether test automation execution is keeping pace with rapid developer commit velocity.
+
+Q_177 [Unit 4] [MEDIUM]: What is the Defect Leakage Rate?
+  (A) The percentage of defects that escaped internal QA testing and were discovered by end-users in production: $\frac{\text{Defects in Prod}}{\text{Total Defects}} \times 100\%$
+  (B) Water leaking onto computer hardware
+  (C) A computer memory leak causing a crash
+  (D) Stealing confidential company software
+Correct Answer: (A)
+Explanation: A critical KPI for QA teams; high leakage indicates inadequate test coverage, stale test cases, or flawed staging environments.
+
+Q_178 [Unit 4] [MEDIUM]: What is the Defect Age (Bug Dwell Time) metric?
+  (A) The duration of time between when a defect is first introduced into the codebase and when it is finally detected and fixed
+  (B) The age of the developer who wrote the bug
+  (C) How long a software company has been in business
+  (D) The copyright expiration date of software
+Correct Answer: (A)
+Explanation: Lowering defect age through continuous automated testing prevents bugs from becoming deeply entrenched across dependent modules.
+
+Q_179 [Unit 4] [MEDIUM]: What is Test Case Effectiveness (TCE)?
+  (A) $$\text{TCE} = \frac{\text{Defects Found by Tests}}{\text{Defects Found by Tests} + \text{Defects Missed}} \times 100\%$$
+  (B) The speed at which a test case runs
+  (C) The number of words in a test case document
+  (D) The price of writing a test case
+Correct Answer: (A)
+Explanation: Measures how effectively a test suite uncovers defects before release.
+
+Q_180 [Unit 4] [MEDIUM]: What is Code Coverage vs Requirements Coverage?
+  (A) Code coverage measures physical lines/branches of code executed; Requirements coverage measures percentage of functional specifications tested
+  (B) They are identical in every way
+  (C) Code coverage is for managers; Requirements coverage is for programmers
+  (D) Code coverage only applies to Python
+Correct Answer: (A)
+Explanation: A test suite can achieve 100% code coverage while having 50% requirements coverage if half of the required business features were never coded.
+
+Q_181 [Unit 4] [EASY]: What is Branch Coverage Target standard in safety-critical systems (e.g., ISO 26262 ASIL-B/C)?
+  (A) 100% Branch Coverage (every decision branch must be proven tested)
+  (B) 50% Branch Coverage
+  (C) Branch coverage is not required for safety
+  (D) 10% Branch Coverage
+Correct Answer: (A)
+Explanation: Automotive and industrial functional safety standards mandate 100% statement and branch coverage for safety-critical components.
+
+Q_182 [Unit 4] [EASY]: What is Mean Time to Detect (MTTD)?
+  (A) The average time that elapses between when a security incident or software defect occurs and when it is detected by monitoring or QA systems
+  (B) The time it takes to read an email
+  (C) The time taken to write a software program
+  (D) The lifespan of a computer monitor
+Correct Answer: (A)
+Explanation: Lowering MTTD through real-time APM telemetry (Datadog, Prometheus) allows teams to contain outages before broad customer impact.
+
+Q_183 [Unit 4] [EASY]: What is Mean Time to Acknowledge (MTTA)?
+  (A) The average time between when an automated system alert is triggered and when an engineering responder acknowledges and begins investigating it
+  (B) The time it takes to say thank you
+  (C) The time taken to sign a business contract
+  (D) The duration of an office meeting
+Correct Answer: (A)
+Explanation: Tracks incident response team alertness and prevents on-call alert fatigue.
+
+Q_184 [Unit 4] [MEDIUM]: What is Test Suite Flakiness Rate in CI/CD pipelines?
+  (A) The percentage of automated test runs that fail spuriously due to timing, network, or test environment issues rather than true code bugs
+  (B) The number of pastry recipes found online
+  (C) The percentage of tests that pass on the first try
+  (D) The speed of the network router
+Correct Answer: (A)
+Explanation: High flakiness ($> 2\%$) erodes developer trust, causing teams to ignore CI build failures and merge breaking code.
+
+Q_185 [Unit 4] [HARD]: What is Regression Test Selection (RTS)?
+  (A) Algorithms that analyze code modifications in a pull request and dynamically execute only the subset of tests whose execution paths intersect the modified code
+  (B) Selecting tests at random from a hat
+  (C) Running all 10,000 tests on every commit
+  (D) Deleting tests that fail
+Correct Answer: (A)
+Explanation: RTS slashes CI build duration from hours to minutes while retaining 100% safety against regression bugs.
+
+Q_186 [Unit 4] [MEDIUM]: What is Test Case Prioritization (TCP)?
+  (A) Ordering test cases in an execution schedule such that tests with the highest historical failure rate and risk execute first
+  (B) Running tests in alphabetical order
+  (C) Letting the youngest developer choose which test to run
+  (D) Running tests only on weekends
+Correct Answer: (A)
+Explanation: Maximizes the **Average Percentage of Faults Detected (APFD)**, providing developers with failure feedback in minutes.
+
+Q_187 [Unit 4] [HARD]: What is the APFD (Average Percentage of Faults Detected) metric?
+  (A) A quantitative metric measuring how rapidly a prioritized test suite uncovers defects during its execution run
+  (B) The average price of fixing a bug
+  (C) The percentage of developers who pass an exam
+  (D) A formula for measuring computer screen brightness
+Correct Answer: (A)
+Explanation: Higher APFD values ($0.8 - 0.95$) prove that a prioritization algorithm front-loads failing tests at the beginning of the CI run.
+
+Q_188 [Unit 4] [EASY]: What is Burn-Down Chart in agile sprint testing?
+  (A) A publicly displayed graphical chart showing the remaining work (story points/tasks) versus time in a sprint
+  (B) A chart showing how hot computer servers are running
+  (C) A financial record of money spent on snacks
+  (D) A chart showing how many computers were broken
+Correct Answer: (A)
+Explanation: Enables self-organizing teams to visualize whether sprint deliverables and testing activities are on track to complete by sprint end.
+
+Q_189 [Unit 4] [EASY]: What is Velocity in agile team performance measurement?
+  (A) A metric measuring the amount of work (in story points) an agile team successfully delivers and tests during a single sprint
+  (B) The physical speed of developers walking
+  (C) The download speed of internet connections
+  (D) The clock frequency of computer processors
+Correct Answer: (A)
+Explanation: Averages historical sprint completions to forecast how many user stories the team can realistically commit to in future sprints.
+
+Q_190 [Unit 4] [EASY]: What is Continuous Integration (CI)?
+  (A) The practice of merging developer working copies to a shared mainline several times a day, accompanied by automated building and testing
+  (B) Writing software continuously for 24 hours without sleeping
+  (C) A continuous cable connecting two computers
+  (D) A software program that runs forever
+Correct Answer: (A)
+Explanation: Pioneered by Extreme Programming: eliminates 'Merge Hell' by verifying every single commit with automated builds and unit tests.
+
+Q_191 [Unit 4] [MEDIUM]: What is Continuous Delivery (CD) vs Continuous Deployment?
+  (A) Continuous Delivery automatically prepares every green build for production release with manual approval; Continuous Deployment automatically deploys directly to production with zero human intervention
+  (B) They are identical in every way
+  (C) Continuous Delivery is for hardware; Deployment is for software
+  (D) Continuous Delivery is slower than Waterfall
+Correct Answer: (A)
+Explanation: Continuous Deployment achieves maximum agility: a commit that passes automated lint, unit, integration, and security gates goes live in production automatically.
+
+Q_192 [Unit 4] [EASY]: What is Static Code Quality Gate in CI/CD (e.g., SonarQube)?
+  (A) A set of automated threshold conditions (e.g., 0 Blocker Bugs, $> 80\%$ Coverage, $< 3\%$ Duplication) that must pass before code can merge
+  (B) A physical gate at a data center entrance
+  (C) A password required to login to GitHub
+  (D) A legal agreement between software companies
+Correct Answer: (A)
+Explanation: Enforces uncompromised code quality standards programmatically, automatically rejecting pull requests that violate security or complexity rules.
+
+Q_193 [Unit 4] [MEDIUM]: What is Lead Time for Changes in DORA (DevOps Research and Assessment) metrics?
+  (A) The amount of clock time it takes for a commit to go from being authored by a developer to running successfully in production
+  (B) The time taken to purchase a computer
+  (C) The duration of an office meeting
+  (D) The time a manager takes to read an email
+Correct Answer: (A)
+Explanation: Elite DevOps performers achieve lead times of under 1 hour; low performers take months.
+
+Q_194 [Unit 4] [EASY]: What is Deployment Frequency in DORA metrics?
+  (A) How often an organization successfully releases software to production (e.g., multiple times per day vs monthly)
+  (B) The radio frequency of Wi-Fi routers
+  (C) The frequency of computer processor clock cycles
+  (D) How often employees attend conferences
+Correct Answer: (A)
+Explanation: A primary indicator of software agility: deploying small batches frequently lowers release risk compared to monolithic annual releases.
+
+Q_195 [Unit 4] [MEDIUM]: What is Change Failure Rate (CFR) in DORA metrics?
+  (A) The percentage of deployments to production that fail, cause an outage, or require an immediate hotfix or rollback
+  (B) The percentage of employees who change jobs
+  (C) The rate at which computer hardware breaks down
+  (D) The percentage of code lines modified during editing
+Correct Answer: (A)
+Explanation: Elite organizations achieve CFR $< 5\%$, demonstrating that rapid release velocity does NOT sacrifice operational stability.
+
+Q_196 [Unit 4] [EASY]: What is Time to Restore Service (MTTR) in DORA metrics?
+  (A) The time it takes to recover from a production failure or unplanned outage
+  (B) The time taken to reinstall Windows on a PC
+  (C) The time taken to restart an office Wi-Fi router
+  (D) The lifespan of a computer monitor
+Correct Answer: (A)
+Explanation: Elite teams restore service in $< 1\,\text{hour}$ using automated rollbacks, feature flag disabling, and container orchestration.
+
+Q_197 [Unit 4] [MEDIUM]: What is Static Application Profiling (Linting) vs Dynamic Analysis in SonarQube?
+  (A) Static analysis inspects AST and control flow rules at compile time; Dynamic analysis measures test execution coverage and runtime memory traces
+  (B) Static is manual; Dynamic is automated
+  (C) Static is for Python; Dynamic is for Java
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Combining static AST inspection with dynamic coverage reports provides complete multidimensional quality governance.
+
+Q_198 [Unit 4] [EASY]: What is Code Smell in software quality?
+  (A) A surface indication in code that usually corresponds to a deeper architectural problem or design flaw (e.g., Duplicate Code, Long Method, Large Class)
+  (B) A physical odor emitted by computer hardware
+  (C) A computer monitor that smells like smoke
+  (D) A defect that causes software to delete files
+Correct Answer: (A)
+Explanation: Coined by Kent Beck: smells are not bugs (code still works), but they degrade maintainability and increase future defect vulnerability.
+
+Q_199 [Unit 4] [EASY]: What is Technical Debt in software engineering?
+  (A) The implied future cost of additional rework caused by choosing an easy, fast, or subpar technical shortcut now instead of a better architectural approach
+  (B) Money owed to banks for purchasing computer hardware
+  (C) The cost of paying software developer salaries
+  (D) The electrical bill of a data center
+Correct Answer: (A)
+Explanation: Coined by Ward Cunningham: like financial debt, technical debt accrues compound interest in the form of slower future development velocity until paid off.
+
+Q_200 [Unit 4] [EASY]: What is Cyclomatic Complexity Threshold in clean code governance?
+  (A) Limiting individual function cyclomatic complexity to a maximum of 10 to ensure modularity and ease of unit testing
+  (B) Limiting code files to 10 bytes
+  (C) Writing programs with only 10 variables
+  (D) Allowing a program to run for only 10 seconds
+Correct Answer: (A)
+Explanation: Enforced by automated linters to prevent developers from writing sprawling, unmaintainable nested conditional statements.
+
+Q_201 [Unit 5] [EASY]: What is Test Automation?
+  (A) The use of software tools to control the execution of tests, compare actual outcomes with predicted outcomes, and set test preconditions automatically
+  (B) Hiring robots to type on physical keyboards
+  (C) Writing code without using a computer screen
+  (D) A machine that cleans office keyboards
+Correct Answer: (A)
+Explanation: Test automation eliminates repetitive human manual testing effort, accelerating regression cycles and preventing human execution mistakes.
+
+Q_202 [Unit 5] [EASY]: What is JUnit in the Java programming ecosystem?
+  (A) An open-source unit testing framework for Java, providing annotations and assertion libraries to automate test execution
+  (B) A proprietary operating system developed by Sun Microsystems
+  (C) A database management engine like MySQL
+  (D) A software program for designing 3D graphics
+Correct Answer: (A)
+Explanation: Created by Kent Beck and Erich Gamma, JUnit is the foundational unit testing framework that inspired the xUnit family across all languages.
+
+Q_203 [Unit 5] [EASY]: In JUnit 5 (Jupiter), what does the `@Test` annotation signify?
+  (A) Declares that the annotated method is a test method to be executed by the test runner
+  (B) Declares that the method is broken and should be skipped
+  (C) Compiles the method into machine code
+  (D) Deletes the method from memory
+Correct Answer: (A)
+Explanation: `@Test` marks public or package-private methods containing assertions for execution by the JUnit test engine.
+
+Q_204 [Unit 5] [MEDIUM]: In JUnit 5, what is the purpose of the `@BeforeEach` annotation?
+  (A) Executes the annotated method before each individual `@Test` method in the current test class, setting up isolated test fixtures
+  (B) Executes the method once a year
+  (C) Executes the method before the computer turns on
+  (D) Deletes all temporary files on disk
+Correct Answer: (A)
+Explanation: Replaces JUnit 4's `@Before`, guaranteeing fresh, clean fixture state (e.g., instantiating a new object) before every test runs.
+
+Q_205 [Unit 5] [MEDIUM]: In JUnit 5, what is the purpose of the `@AfterEach` annotation?
+  (A) Executes the annotated method after each individual test method completes, performing teardown and resource cleanup
+  (B) Turns off the computer after testing
+  (C) Deletes the source code file
+  (D) Sends an email to the project manager
+Correct Answer: (A)
+Explanation: Used to close database connections, delete temporary test files, or reset global state after each test.
+
+Q_206 [Unit 5] [MEDIUM]: In JUnit 5, how do `@BeforeAll` and `@AfterAll` differ from `@BeforeEach` and `@AfterEach`?
+  (A) `@BeforeAll` and `@AfterAll` execute exactly once for the entire test class (must be static by default); `@BeforeEach` and `@AfterEach` execute for every test method
+  (B) They are identical in every way
+  (C) `@BeforeAll` is only for Python; `@BeforeEach` is for Java
+  (D) `@BeforeAll` runs in the background
+Correct Answer: (A)
+Explanation: Used for expensive one-time setup operations (e.g., spinning up a Docker database container) shared across all tests in the class.
+
+Q_207 [Unit 5] [EASY]: In JUnit 5, which annotation is used to temporarily disable or ignore a test case?
+  (A) `@Disabled`
+  (B) `@Ignore`
+  (C) `@Skip`
+  (D) `@Delete`
+Correct Answer: (A)
+Explanation: JUnit 5 uses `@Disabled("Reason")`; JUnit 4 previously used `@Ignore`.
+
+Q_208 [Unit 5] [EASY]: What is an Assertion in JUnit testing?
+  (A) A static utility method (e.g., `assertEquals()`, `assertTrue()`) that validates whether expected values match actual runtime values
+  (B) An angry argument between two developers
+  (C) A comment written in source code
+  (D) A tool for measuring memory usage
+Correct Answer: (A)
+Explanation: If the assertion condition is false, the assertion throws an `AssertionFailedError`, marking the test method as Failed.
+
+Q_209 [Unit 5] [MEDIUM]: In JUnit 5, what is the advantage of `assertAll()` (Grouped Assertions)?
+  (A) Executes all bundled assertions and reports all failures together, rather than terminating early at the first failed assertion
+  (B) Makes test execution twice as fast
+  (C) Automatically fixes bugs in the code
+  (D) Deletes failing assertions
+Correct Answer: (A)
+Explanation: Grouped assertions ensure that if assertion 1 fails, assertions 2, 3, and 4 are still evaluated, providing a complete diagnostic picture.
+
+Q_210 [Unit 5] [MEDIUM]: In JUnit 5, which method is used to assert that a specific exception is thrown by a piece of code?
+  (A) `assertThrows(Class<T> expectedType, Executable executable)`
+  (B) `catchException()`
+  (C) `expectError()`
+  (D) `verifyFailure()`
+Correct Answer: (A)
+Explanation: Example: `assertThrows(ArithmeticException.class, () -> calc.divide(10, 0));` verifies expected defensive exceptions.
+
+Q_211 [Unit 5] [MEDIUM]: What is a Parameterized Test in JUnit 5 (`@ParameterizedTest`)?
+  (A) A test that runs multiple times with different argument values injected from sources like `@ValueSource`, `@CsvSource`, or `@MethodSource`
+  (B) A test that takes a long time to run
+  (C) A test that uses mathematical parameters in equations
+  (D) A test that measures the parameters of a computer screen
+Correct Answer: (A)
+Explanation: Eliminates duplicate boilerplate test code by executing the same test logic across multiple input data vectors.
+
+Q_212 [Unit 5] [EASY]: What is Apache JMeter in software performance testing?
+  (A) An open-source Java application designed to load test functional behavior and measure performance of web applications and APIs under concurrent virtual user load
+  (B) An electricity meter for measuring power consumption in offices
+  (C) A software program for editing audio files
+  (D) A web browser developed by the Apache foundation
+Correct Answer: (A)
+Explanation: JMeter simulates heavy concurrent thread loads on HTTP, REST, SOAP, JDBC, FTP, and TCP servers to analyze throughput and response latency.
+
+Q_213 [Unit 5] [EASY]: What is a 'Thread Group' in an Apache JMeter test plan?
+  (A) The fundamental element that controls the number of simulated concurrent virtual users, ramp-up time, and loop execution count
+  (B) A group of software developers working together
+  (C) A thread in a CPU processor
+  (D) A chat room where testers send messages
+Correct Answer: (A)
+Explanation: A Thread Group of 500 threads with a 50-second ramp-up spawns 10 new virtual users every second until 500 concurrent users are active.
+
+Q_214 [Unit 5] [MEDIUM]: In Apache JMeter, what is a 'Sampler'?
+  (A) A component that sends a specific request to a target server (e.g., HTTP Request, JDBC Request, FTP Request) and waits for a response
+  (B) A person who tastes food in a restaurant
+  (C) A tool that records audio samples
+  (D) A small piece of hardware given away for free
+Correct Answer: (A)
+Explanation: Samplers do the actual work of generating network traffic and measuring the elapsed response time in milliseconds.
+
+Q_215 [Unit 5] [MEDIUM]: In Apache JMeter, what is a 'Listener'?
+  (A) A component that collects, visualizes, and tabulates test results and performance metrics (e.g., View Results Tree, Summary Report, Aggregate Graph)
+  (B) A person who listens to music in an office
+  (C) A microphone connected to a computer
+  (D) A program that records telephone conversations
+Correct Answer: (A)
+Explanation: Listeners process raw telemetry to calculate minimum, maximum, median, 95th percentile latency, and throughput (TPS).
+
+Q_216 [Unit 5] [MEDIUM]: In Apache JMeter, what is an 'Assertion' component?
+  (A) A component that evaluates the server response (status code, headers, response body) to determine whether the test passed or failed
+  (B) A comment written in an XML file
+  (C) A tool for increasing internet download speeds
+  (D) A physical button on a computer keyboard
+Correct Answer: (A)
+Explanation: Example: Response Assertion checking that HTTP status code is `200 OK` and response body contains `"status":"success"`.
+
+Q_217 [Unit 5] [MEDIUM]: In Apache JMeter, what is a 'Timer' component used for?
+  (A) To introduce realistic delays (think time) between sampler requests to simulate human user behavior rather than continuous robotic hammering
+  (B) To measure how long an employee works each day
+  (C) A digital clock displayed on the computer screen
+  (D) A tool that shuts down the computer after 10 minutes
+Correct Answer: (A)
+Explanation: Without timers, 100 virtual users would fire thousands of requests per second, skewing performance metrics away from realistic human usage.
+
+Q_218 [Unit 5] [HARD]: Why must production load tests in Apache JMeter be executed in Non-GUI CLI mode?
+  (A) Because rendering the graphical user interface consumes substantial JVM heap memory and CPU cycles, corrupting performance latency measurements
+  (B) Because the GUI mode is illegal to use in commercial companies
+  (C) Because CLI mode is only for Linux computers
+  (D) Because GUI mode does not support internet connections
+Correct Answer: (A)
+Explanation: Running in GUI mode distorts results: `jmeter -n -t plan.jmx -l results.jtl -e -o /report` ensures maximum load generation capacity.
+
+Q_219 [Unit 5] [EASY]: What is Throughput (Transactions Per Second - TPS) in Apache JMeter reports?
+  (A) The number of requests or transactions processed successfully by the target server per unit of time (seconds, minutes)
+  (B) The speed of the computer processor running JMeter
+  (C) The percentage of memory consumed by the server
+  (D) The physical weight of the server in kilograms
+Correct Answer: (A)
+Explanation: TPS is the primary capacity metric: higher throughput indicates the system handles larger volumes of concurrent customer traffic.
+
+Q_220 [Unit 5] [MEDIUM]: What is the 95th Percentile Response Time in performance testing?
+  (A) The response time threshold below which 95% of all observed user requests fell, isolating the slowest 5% of outliers
+  (B) The average response time of the fastest 95 requests
+  (C) A grade of 95% awarded to an algorithm
+  (D) The speed of the network router in megabits
+Correct Answer: (A)
+Explanation: Far more representative than arithmetic mean because mean hides severe latency spikes experienced by unlucky tail-end users.
+
+Q_221 [Unit 5] [EASY]: What is Mercury WinRunner in software testing history?
+  (A) A pioneer commercial GUI automated functional testing tool developed by Mercury Interactive that recorded and played back user interactions using TSL
+  (B) A racing video game developed for Windows
+  (C) A tool for making computer processors run faster
+  (D) An operating system developed in 1995
+Correct Answer: (A)
+Explanation: WinRunner popularized capture-and-replay GUI automation in the 1990s using its proprietary Test Scripting Language (TSL).
+
+Q_222 [Unit 5] [MEDIUM]: What was the Test Scripting Language (TSL) used in WinRunner?
+  (A) A proprietary C-like procedural scripting language used by Mercury WinRunner to automate GUI test actions and assertions
+  (B) A language used by NASA satellites
+  (C) A modern dialect of JavaScript
+  (D) A database query language like SQL
+Correct Answer: (A)
+Explanation: TSL allowed testers to edit recorded scripts, add conditional loops, and interface with GUI objects programmatically.
+
+Q_223 [Unit 5] [EASY]: What is HP LoadRunner?
+  (A) An enterprise-grade commercial performance and load testing software tool capable of simulating thousands of concurrent virtual users across diverse protocols
+  (B) A delivery truck used by Hewlett Packard
+  (C) A computer battery charging tool
+  (D) A hardware router manufactured by HP
+Correct Answer: (A)
+Explanation: Acquired by HP (later Micro Focus / OpenText), LoadRunner is the legacy enterprise gold standard for performance testing SAP, Citrix, and web applications.
+
+Q_224 [Unit 5] [HARD]: What are the core components of the HP LoadRunner architecture?
+  (A) Virtual User Generator (VuGen), Controller, Load Generator, and Analysis
+  (B) Input, Output, Processing, and Storage
+  (C) Client, Server, Database, and Router
+  (D) Editor, Compiler, Linker, and Debugger
+Correct Answer: (A)
+Explanation: VuGen records scripts; Controller designs scenarios; Load Generators simulate virtual users; Analysis aggregates performance graphs.
+
+Q_225 [Unit 5] [MEDIUM]: What is IBM Rational Robot in testing history?
+  (A) A legacy automated functional and regression test tool that recorded and executed test scripts in SQA Basic for client-server applications
+  (B) A physical mechanical robot manufactured by IBM
+  (C) An artificial intelligence program that writes software
+  (D) A computer game developed in 1998
+Correct Answer: (A)
+Explanation: Part of the IBM Rational Software suite, Rational Robot was widely used for automated testing of Windows 32-bit client/server applications.
+
+Q_226 [Unit 5] [EASY]: What is Record-and-Playback in automated testing tools?
+  (A) A feature that records human tester mouse clicks, typing, and navigation steps, automatically generating an executable test script for playback
+  (B) Recording video of a tester's face with a webcam
+  (C) Playing music in an office while testing
+  (D) A tool for recording telephone calls
+Correct Answer: (A)
+Explanation: Allows non-technical testers to generate automated test scripts without writing code; however, recorded scripts are notoriously fragile.
+
+Q_227 [Unit 5] [MEDIUM]: Why are Record-and-Playback scripts considered fragile and high-maintenance?
+  (A) They rely on hardcoded absolute screen coordinates, brittle DOM paths, or static timing delays that break whenever visual layout slightly changes
+  (B) Because the computer screen runs out of ink
+  (C) Because recorded scripts delete themselves after 24 hours
+  (D) Because scripts are written in pencil
+Correct Answer: (A)
+Explanation: A 5-pixel shift in button position or a 100ms asynchronous network delay causes recorded playback scripts to fail catastrophically.
+
+Q_228 [Unit 5] [MEDIUM]: What is a Data-Driven Testing (DDT) Framework?
+  (A) An automation framework where test input and expected output data are externalized into external files (Excel, CSV, JSON, DB) while test logic remains in a single script
+  (B) A framework where tests write data into hard drives
+  (C) A framework that only tests database software
+  (D) A framework developed by data science teams
+Correct Answer: (A)
+Explanation: Separates test logic from test data, allowing a single automated script to execute hundreds of test scenarios simply by adding rows to an Excel sheet.
+
+Q_229 [Unit 5] [MEDIUM]: What is a Keyword-Driven (Table-Driven) Testing Framework?
+  (A) An automation framework where test steps are expressed as discrete action keywords (e.g., `Click`, `EnterText`, `Verify`) in a tabular spreadsheet
+  (B) A framework that searches for keywords in books
+  (C) A framework used by search engine companies
+  (D) A framework that uses computer keyboards
+Correct Answer: (A)
+Explanation: Allows non-technical business analysts to construct automated tests by assembling predefined keywords in spreadsheets without touching code.
+
+Q_230 [Unit 5] [MEDIUM]: What is a Hybrid Test Automation Framework?
+  (A) A framework that combines the best architectural elements of Data-Driven, Keyword-Driven, and Modular automation frameworks
+  (B) A car engine that runs on gasoline and electricity
+  (C) A framework that runs on Windows and Linux simultaneously
+  (D) A framework written in two programming languages
+Correct Answer: (A)
+Explanation: The modern industry standard: modular page objects, externalized data sources, custom keywords, and integrated HTML reporting.
+
+Q_231 [Unit 5] [EASY]: What is Selenium WebDriver in modern web test automation?
+  (A) An open-source browser automation framework that controls browser engines natively using browser drivers and W3C WebDriver standard protocols
+  (B) A chemical element used in computer batteries
+  (C) A web browser developed by Google
+  (D) A software program for editing video files
+Correct Answer: (A)
+Explanation: The universal industry standard for automated cross-browser testing across Chrome, Firefox, Safari, and Edge.
+
+Q_232 [Unit 5] [MEDIUM]: What is the W3C WebDriver Standard?
+  (A) An official W3C specification that standardizes the RESTful HTTP wire protocol used by test automation tools to interact with web browsers
+  (B) A standard for manufacturing computer keyboards
+  (C) A protocol for sending emails between browsers
+  (D) A software license agreement
+Correct Answer: (A)
+Explanation: Standardized the JSON Wire Protocol into a native browser standard, ensuring identical automation behavior across all browser vendors.
+
+Q_233 [Unit 5] [MEDIUM]: What is Cypress in modern web testing?
+  (A) A next-generation, front-end testing tool built for the modern web that executes directly inside the same browser run loop as the application
+  (B) A species of tree planted near data centers
+  (C) A computer processor manufactured by AMD
+  (D) A software program for compressing images
+Correct Answer: (A)
+Explanation: Unlike Selenium (which runs outside the browser and commands via HTTP), Cypress runs inside the browser, offering ultra-fast, flakeless execution.
+
+Q_234 [Unit 5] [EASY]: What is Playwright in modern test automation?
+  (A) An open-source automation library by Microsoft enabling fast, reliable, headless and headed cross-browser testing using the Chrome DevTools Protocol (CDP)
+  (B) A person who writes theatrical plays
+  (C) A software tool for editing audio scripts
+  (D) A proprietary operating system developed by Microsoft
+Correct Answer: (A)
+Explanation: Supports Chromium, WebKit, and Firefox with native bidirectional WebSocket connections, automatic waiting, and zero setup friction.
+
+Q_235 [Unit 5] [MEDIUM]: What is Mockito in Java unit testing?
+  (A) A popular open-source mocking framework that allows the creation of mock objects, stubbing method calls, and verifying interactions in unit tests
+  (B) A Cuban mint and lime cocktail drink
+  (C) A software program for editing photographs
+  (D) A database management engine developed by Apache
+Correct Answer: (A)
+Explanation: Used in conjunction with JUnit to mock out complex dependencies: `when(mockRepo.findById(1)).thenReturn(mockUser);`.
+
+Q_236 [Unit 5] [HARD]: What is the difference between a Mock and a Stub in automated testing (Gerard Meszaros)?
+  (A) A Stub provides pre-programmed canned answers to method calls during the test; a Mock also verifies that expected method interactions actually occurred
+  (B) Mocks are real; Stubs are fake
+  (C) Stubs are for Java; Mocks are for Python
+  (D) There is no difference between them
+Correct Answer: (A)
+Explanation: Stubs verify **state** (what the method returns); Mocks verify **behavior** (verifying that `save()` was called exactly once with specific parameters).
+
+Q_237 [Unit 5] [MEDIUM]: What is TestNG in Java testing?
+  (A) A testing framework inspired by JUnit and NUnit introducing advanced features like data providers, test grouping, dependency testing, and multi-thread execution
+  (B) A television network broadcasting technology news
+  (C) A new programming language developed by Google
+  (D) A tool for compressing video files
+Correct Answer: (A)
+Explanation: Widely used in enterprise Selenium test suites due to its rich XML configuration, parallel test suite execution, and flexible `@DataProvider` support.
+
+Q_238 [Unit 5] [EASY]: What is PyTest in Python software engineering?
+  (A) A mature, full-featured Python testing framework that uses simple native `assert` statements, powerful fixtures, and a vast plugin ecosystem
+  (B) A tool for testing Python typing speed
+  (C) A software program for drawing charts
+  (D) A compiler that converts Python into C++
+Correct Answer: (A)
+Explanation: Replaces legacy boilerplate `unittest.TestCase` with clean, idiomatic Python assertions and composable dependency-injected fixtures.
+
+Q_239 [Unit 5] [EASY]: What is Postman in API testing and development?
+  (A) A collaboration platform for API development that allows developers to design, mock, debug, automate, and monitor REST/SOAP HTTP requests
+  (B) A person who delivers physical letters to offices
+  (C) A software program for managing email inboxes
+  (D) A tool for printing shipping labels on boxes
+Correct Answer: (A)
+Explanation: Provides a graphical UI for constructing HTTP requests, writing JavaScript test assertions, and running automated collection test runners (Newman).
+
+Q_240 [Unit 5] [MEDIUM]: What is Newman in API test automation?
+  (A) The official command-line collection runner for Postman that allows Postman API test suites to execute headlessly in CI/CD server pipelines
+  (B) A character on a popular television comedy
+  (C) A programming language developed by IBM
+  (D) A database indexing engine
+Correct Answer: (A)
+Explanation: Enables teams to export Postman collections and run them inside GitHub Actions or Jenkins: `newman run collection.json -e env.json`.
+
+Q_241 [Unit 5] [MEDIUM]: What is SoapUI in web services testing?
+  (A) An open-source test automation tool specifically designed for testing SOAP web services and RESTful APIs with WSDL inspection and WS-Security
+  (B) A soap brand used to clean computer hardware
+  (C) A web browser developed for washing machines
+  (D) A tool for creating website animations
+Correct Answer: (A)
+Explanation: The premier tool for legacy enterprise SOAP testing, parsing WSDL contracts and generating automated schema validation suites.
+
+Q_242 [Unit 5] [MEDIUM]: What is Appium in mobile test automation?
+  (A) An open-source, cross-platform test automation framework for native, hybrid, and mobile web applications on iOS and Android using the WebDriver protocol
+  (B) A chemical element discovered in computer chips
+  (C) A mobile phone manufactured by Google
+  (D) An app store for downloading smartphone games
+Correct Answer: (A)
+Explanation: Appium enables writing one test script that executes identically on both Android (via UiAutomator2) and iOS (via XCUITest).
+
+Q_243 [Unit 5] [MEDIUM]: What is Robot Framework?
+  (A) A generic open-source automation framework for acceptance testing and robotic process automation (RPA) utilizing a keyword-driven tabular syntax
+  (B) A physical mechanical robot assembled in a factory
+  (C) A software program that plays chess games
+  (D) A tool for cleaning computer hardware
+Correct Answer: (A)
+Explanation: Built in Python, Robot Framework allows non-programmers to write human-readable test cases using tabular keyword libraries.
+
+Q_244 [Unit 5] [EASY]: What is SonarQube in continuous software quality inspection?
+  (A) An open-source platform for continuous code quality and security inspection, analyzing code across 30+ languages for bugs, vulnerabilities, and code smells
+  (B) A sonar device used on submarine ships
+  (C) A musical instrument played in digital orchestras
+  (D) An operating system developed for audio editing
+Correct Answer: (A)
+Explanation: Integrates into CI/CD pipelines to enforce static code Quality Gates, tracking technical debt, test coverage, and OWASP security compliance.
+
+Q_245 [Unit 5] [MEDIUM]: What is Jacoco (Java Code Coverage Library)?
+  (A) A free, open-source code coverage library for Java that measures line, instruction, and branch coverage during JUnit test execution
+  (B) A hot tub used for employee relaxation
+  (C) A brand of coffee popular with programmers
+  (D) A software tool for formatting hard drives
+Correct Answer: (A)
+Explanation: Generates detailed visual HTML code coverage reports and enforces minimum coverage thresholds in Maven and Gradle builds.
+
+Q_246 [Unit 5] [MEDIUM]: What is Istanbul / NYC in JavaScript test coverage?
+  (A) A widely used code coverage tool for JavaScript and Node.js that tracks statement, branch, function, and line execution during test runs
+  (B) A city in Turkey where computers are made
+  (C) A web browser developed in Europe
+  (D) A programming language developed by Facebook
+Correct Answer: (A)
+Explanation: Instruments JavaScript code to generate visual coverage summaries when running Jest, Mocha, or Vitest suites.
+
+Q_247 [Unit 5] [MEDIUM]: What is K6 (by Grafana) in modern load testing?
+  (A) A modern, developer-centric open-source load testing tool where performance test scripts are written in ES6 JavaScript with a high-performance Go runner
+  (B) A mountain climbed by adventurous software testers
+  (C) A sports car manufactured in Germany
+  (D) An encryption algorithm developed by Grafana
+Correct Answer: (A)
+Explanation: A lightweight, CLI-first alternative to JMeter that treats performance tests as code stored directly in Git repositories.
+
+Q_248 [Unit 5] [MEDIUM]: What is Gatling in load testing?
+  (A) An open-source load testing framework based on Scala, Akka, and Netty designed for high performance, utilizing an asynchronous non-blocking engine
+  (B) A vintage multi-barrel machine gun
+  (C) A software tool for editing video files
+  (D) A database management engine developed by IBM
+Correct Answer: (A)
+Explanation: Simulates tens of thousands of virtual users on a single machine with minimal CPU overhead, generating rich HTML performance reports.
+
+Q_249 [Unit 5] [MEDIUM]: What is Self-Healing Test Automation in AI-powered testing?
+  (A) AI algorithms that detect when an HTML element locator has changed, automatically analyzing DOM context to adapt and keep test scripts executing without failing
+  (B) A broken computer screen that repairs its own glass
+  (C) A software virus that deletes itself after being discovered
+  (D) A computer battery that recharges without electricity
+Correct Answer: (A)
+Explanation: Reduces test maintenance by up to 70% by dynamically adapting to minor UI redesigns without requiring human tester intervention.
+
+Q_250 [Unit 5] [EASY]: What is the Primary Criterion for choosing between Commercial and Open-Source Testing Tools?
+  (A) Evaluating total cost of ownership (TCO), vendor support SLAs, specialized enterprise protocol needs (SAP/Citrix), and team programming skills
+  (B) Picking whichever tool has the prettiest logo
+  (C) Buying the most expensive tool available
+  (D) Using only tools written in C++
+Correct Answer: (A)
+Explanation: Open-source excels in modern web/CI/CD pipelines with skilled developers; commercial tools provide turnkey support for legacy enterprise stacks.
+

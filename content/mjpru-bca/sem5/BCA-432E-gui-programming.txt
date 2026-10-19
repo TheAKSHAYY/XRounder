@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 5
+BCA-432E: GUI PROGRAMMING - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-432e-u1-q01] (Unit 1) What is the Microsoft .NET Framework?
+  A.     An operating system replacing Windows
+  B. (*) A comprehensive software development platform providing a runtime environment (CLR), class libraries (FCL), and cross-language interoperability
+  C.     A database server engine
+  D.     A web browser plugin
+Explanation: The .NET Framework is an integrated managed platform comprising the Common Language Runtime (CLR) and the Framework Class Library (FCL).
+
+[bca-432e-u1-q02] (Unit 1) What is the primary execution engine of the .NET Framework responsible for memory management, thread execution, and security enforcement?
+  A. (*) Common Language Runtime (CLR)
+  B.     Framework Class Library (FCL)
+  C.     Common Type System (CTS)
+  D.     Microsoft Intermediate Language (MSIL)
+Explanation: The CLR is the managed execution engine that loads, JIT-compiles, and executes managed assemblies while managing garbage collection.
+
+[bca-432e-u1-q03] (Unit 1) What does MSIL (or CIL) stand for in the .NET Framework architecture?
+  A.     Microsoft System Instruction Language
+  B. (*) Microsoft Intermediate Language (or Common Intermediate Language)
+  C.     Managed Source Integrated Library
+  D.     Multi-platform System Interface Link
+Explanation: MSIL is the CPU-independent intermediate bytecode produced by all .NET language compilers (VB.NET, C#).
+
+[bca-432e-u1-q04] (Unit 1) What is the role of the Just-In-Time (JIT) Compiler in the .NET Framework?
+  A.     To translate C# into Visual Basic
+  B. (*) To compile CPU-independent MSIL bytecode into native CPU machine instructions at runtime immediately before execution
+  C.     To format HTML web pages
+  D.     To clean up physical RAM
+Explanation: The JIT compiler converts intermediate MSIL instructions into native target architecture machine code as methods are invoked.
+
+[bca-432e-u1-q05] (Unit 1) What are the three types of JIT Compilers available in the .NET CLR architecture?
+  A. (*) Pre-JIT, Normal JIT, and Econo-JIT
+  B.     Fast JIT, Slow JIT, and Medium JIT
+  C.     Static JIT, Dynamic JIT, and Virtual JIT
+  D.     Client JIT, Server JIT, and Web JIT
+Explanation: Pre-JIT compiles entire assemblies ahead-of-time (NGEN); Normal JIT compiles methods on-demand; Econo-JIT compiled only when memory was severely constrained.
+
+[bca-432e-u1-q06] (Unit 1) What is the Common Type System (CTS) in .NET?
+  A.     A font classification system
+  B. (*) A formal specification that defines all data types and programming constructs supported by the CLR, ensuring cross-language type compatibility
+  C.     A hardware processor specification
+  D.     A database indexing model
+Explanation: The CTS defines standard rules for declaring, using, and managing types across all compliant .NET languages.
+
+[bca-432e-u1-q07] (Unit 1) Under the Common Type System (CTS), what are the two fundamental categories of data types?
+  A.     Binary Types and Hexadecimal Types
+  B. (*) Value Types (stored on the Stack) and Reference Types (stored on the Managed Heap)
+  C.     Integer Types and String Types
+  D.     Static Types and Dynamic Types
+Explanation: CTS divides all types into Value Types (primitives, structs, enums) and Reference Types (classes, interfaces, arrays, delegates).
+
+[bca-432e-u1-q08] (Unit 1) Where are Value Types allocated in memory in the .NET CLR?
+  A.     On the Managed Garbage-Collected Heap
+  B. (*) On the Call Stack (or inline inside containing objects)
+  C.     In the Windows Registry
+  D.     On the hard disk pagefile
+Explanation: Value types contain their data directly and are allocated on the execution stack, providing rapid allocation and deallocation.
+
+[bca-432e-u1-q09] (Unit 1) What is 'Boxing' in .NET type system operations?
+  A.     Packing software into retail boxes
+  B. (*) The implicit or explicit conversion of a Value Type to the System.Object reference type (wrapping it in an object instance on the managed heap)
+  C.     Deleting variables from memory
+  D.     Formatting text output
+Explanation: Boxing wraps a stack-allocated value type inside a heap-allocated reference object container.
+
+[bca-432e-u1-q10] (Unit 1) What is 'Unboxing' in .NET?
+  A.     Deleting a program from Windows
+  B. (*) The explicit conversion of an Object reference type back into its original Value Type, extracting the value from the heap to the stack
+  C.     Opening a software archive
+  D.     Creating a new class
+Explanation: Unboxing extracts the value type from the boxed object, requiring explicit casting.
+
+[bca-432e-u1-q11] (Unit 1) What is the Common Language Specification (CLS)?
+  A.     A programming language designed by Microsoft
+  B. (*) A set of fundamental rules and language feature subsets that all .NET languages must adhere to in order to ensure seamless cross-language interoperability
+  C.     A list of valid variable names
+  D.     A hardware interface standard
+Explanation: The CLS establishes baseline rules (e.g., case-insensitive public identifiers) ensuring components written in C# work in VB.NET.
+
+[bca-432e-u1-q12] (Unit 1) What is an 'Assembly' in .NET software deployment?
+  A.     Assembly language source code
+  B. (*) The primary building block of .NET applications, packaged as a .exe or .dll file containing compiled MSIL bytecode, type metadata, and a manifest
+  C.     A physical computer motherboard
+  D.     A team of software engineers
+Explanation: Assemblies (.dll / .exe) are the self-describing, versioned deployment units of .NET.
+
+[bca-432e-u1-q13] (Unit 1) What is the 'Assembly Manifest' in .NET?
+  A.     A legal software agreement
+  B. (*) An internal metadata directory within an assembly describing its identity (name, version, culture, public key token), exported types, and external dependencies
+  C.     A compiler error log
+  D.     A list of user passwords
+Explanation: The manifest stores assembly identity metadata, establishing versioning and security dependencies.
+
+[bca-432e-u1-q14] (Unit 1) What is 'Garbage Collection' (GC) in the .NET Common Language Runtime?
+  A.     Deleting old files from the Windows recycle bin
+  B. (*) An automated memory management mechanism that periodically detects and reclaims heap memory occupied by unreferenced, unreachable objects
+  C.     A tool for cleaning registry keys
+  D.     A virus removal program
+Explanation: The CLR Garbage Collector eliminates manual memory deallocation and pointer bugs by automatically freeing unused heap objects.
+
+[bca-432e-u1-q15] (Unit 1) How many 'Generations' does the .NET Garbage Collector utilize to optimize memory reclamation?
+  A.     1 generation
+  B.     2 generations
+  C. (*) 3 generations (Generation 0, Generation 1, and Generation 2)
+  D.     5 generations
+Explanation: The .NET GC uses 3 generational pools: Gen 0 (short-lived young objects), Gen 1 (buffer/intermediate), and Gen 2 (long-lived objects).
+
+[bca-432e-u1-q16] (Unit 1) What paradigm describes Windows Forms programming where code executes in response to user actions (such as mouse clicks, keystrokes, and timer ticks)?
+  A.     Procedural Batch Programming
+  B. (*) Event-Driven Programming
+  C.     Functional Dataflow Programming
+  D.     Microcode Sequencing
+Explanation: Event-driven applications remain in a message-wait loop until user or system events trigger registered event handlers.
+
+[bca-432e-u1-q17] (Unit 1) In Visual Studio 2010 IDE, which tool window displays all projects, files, references, and folders in the active solution?
+  A.     Toolbox
+  B.     Properties Window
+  C. (*) Solution Explorer
+  D.     Output Window
+Explanation: Solution Explorer provides the hierarchical project and item management tree view.
+
+[bca-432e-u1-q18] (Unit 1) In Visual Studio 2010, which window contains reusable controls and components (Buttons, TextBoxes, Labels) ready to be dragged onto a design surface?
+  A.     Solution Explorer
+  B. (*) Toolbox
+  C.     Immediate Window
+  D.     Call Stack
+Explanation: The Toolbox contains visual controls categorized into functional tabs for drag-and-drop UI design.
+
+[bca-432e-u1-q19] (Unit 1) In Visual Studio IDE, which window allows developers to inspect and edit design-time attributes (Text, BackColor, Font) of the currently selected control?
+  A. (*) Properties Window
+  B.     Toolbox
+  C.     Error List
+  D.     Class View
+Explanation: The Properties Window displays and modifies properties and event bindings for selected controls.
+
+[bca-432e-u1-q20] (Unit 1) Are Visual Basic (.NET) keyword and identifier names case-sensitive?
+  A.     Yes, strictly case-sensitive like C#
+  B. (*) No, Visual Basic is completely case-insensitive; the IDE automatically normalizes casing
+  C.     Only variable names are case-sensitive
+  D.     Only comments are case-sensitive
+Explanation: VB.NET is case-insensitive, distinguishing it from C-family languages like C# and Java.
+
+[bca-432e-u1-q21] (Unit 1) How are comments denoted in Visual Basic source code?
+  A.     Using double slashes //
+  B. (*) Using a single apostrophe (') or the REM keyword
+  C.     Using /* ... */
+  D.     Using #
+Explanation: VB.NET uses an apostrophe (') or the legacy REM keyword for comments.
+
+[bca-432e-u1-q22] (Unit 1) Which keyword is standardly used to declare local variables in Visual Basic?
+  A.     var
+  B. (*) Dim
+  C.     let
+  D.     def
+Explanation: Dim (short for Dimension) is the standard declaration keyword in Visual Basic: Dim count As Integer.
+
+[bca-432e-u1-q23] (Unit 1) Which keyword declares a constant value that cannot be modified once initialized in Visual Basic?
+  A.     ReadOnly
+  B. (*) Const
+  C.     Static
+  D.     Fixed
+Explanation: Const PI As Double = 3.14159 defines an immutable compile-time constant.
+
+[bca-432e-u1-q24] (Unit 1) What does the `Static` keyword do when used inside a Visual Basic procedure?
+  A.     Makes the variable visible to all classes
+  B. (*) Causes a local procedure variable to retain its value between successive calls to that procedure, without resetting
+  C.     Prevents the variable from changing
+  D.     Deletes the variable after one call
+Explanation: Static local variables retain their state across multiple procedure invocations.
+
+[bca-432e-u1-q25] (Unit 1) Which Visual Basic operator performs Integer Division (truncating any fractional remainder)?
+  A.     Forward slash (/)
+  B. (*) Backslash (\)
+  C.     Modulo (Mod)
+  D.     Div
+Explanation: Forward slash (/) performs floating-point division; backslash (\) performs integer division (e.g., 7 \ 2 = 3).
+
+[bca-432e-u1-q26] (Unit 1) Which Visual Basic operator computes the remainder of an integer division?
+  A.     %
+  B. (*) Mod
+  C.     rem
+  D.     \
+Explanation: VB uses the Mod keyword (e.g., 7 Mod 3 = 1) rather than the % operator used in C/Java.
+
+[bca-432e-u1-q27] (Unit 1) What is the string concatenation operator in Visual Basic?
+  A.     +
+  B. (*) & (and + also concatenates, but & is strongly preferred to avoid type ambiguity)
+  C.     .
+  D.     ~
+Explanation: The ampersand (&) is the dedicated string concatenation operator, avoiding unintended numeric addition.
+
+[bca-432e-u1-q28] (Unit 1) What does `Option Strict On` enforce in Visual Basic programs?
+  A.     Requires all lines to end in semicolons
+  B. (*) Disallows implicit narrowing type conversions and prevents late binding, enforcing strict compile-time type safety
+  C.     Disallows comments
+  D.     Limits variable names to 5 letters
+Explanation: Option Strict On prevents subtle runtime conversion errors and enforces robust typing.
+
+[bca-432e-u1-q29] (Unit 1) What does `Option Explicit On` enforce in Visual Basic?
+  A. (*) Requires explicit declaration of all variables using Dim or type keywords before they can be used
+  B.     Allows variables to be created on the fly without declaration
+  C.     Forces explicit printing to the console
+  D.     Encrypts all source files
+Explanation: Option Explicit On mandates that every variable must be explicitly declared before use.
+
+[bca-432e-u1-q30] (Unit 1) In Visual Basic, which function safely attempts to convert a string to an integer without throwing an unhandled exception if conversion fails?
+  A.     CInt()
+  B. (*) Integer.TryParse()
+  C.     Integer.Parse()
+  D.     Val()
+Explanation: Integer.TryParse(text, result) returns a boolean indicating success and avoids runtime exceptions.
+
+[bca-432e-u1-q31] (Unit 1) In Visual Basic, what is the syntax for a multi-branch selection statement?
+  A.     switch(x) { case 1: ... }
+  B. (*) Select Case variable ... Case value ... Case Else ... End Select
+  C.     match variable with ...
+  D.     branch on variable
+Explanation: Select Case is VB's structured switch construct: Select Case x ... Case 1 ... Case Else ... End Select.
+
+[bca-432e-u1-q32] (Unit 1) What is the syntax for an iterative counter loop in Visual Basic?
+  A.     for(int i=0; i<10; i++)
+  B. (*) For i As Integer = 1 To 10 Step 1 ... Next
+  C.     loop i from 1 to 10
+  D.     repeat i = 1 to 10
+Explanation: For variable = start To end [Step increment] ... Next is VB's counting loop.
+
+[bca-432e-u1-q33] (Unit 1) Which loop construct in Visual Basic iterates over each element in an array or collection?
+  A. (*) For Each item In collection ... Next
+  B.     Foreach(item in collection)
+  C.     Iterate collection item
+  D.     While HasNext()
+Explanation: For Each item In collection ... Next executes a block for each member of an enumerable sequence.
+
+[bca-432e-u1-q34] (Unit 1) How are single-dimensional Arrays declared in Visual Basic?
+  A.     Dim arr[10] As Integer
+  B. (*) Dim arr(9) As Integer (declaring an array with upper bound 9, containing 10 elements from index 0 to 9)
+  C.     int[] arr = new int[10]
+  D.     Array arr(10)
+Explanation: In VB.NET, the dimension specifies the upper bound: Dim arr(9) As Integer contains 10 elements (0 to 9).
+
+[bca-432e-u1-q35] (Unit 1) Which keyword dynamically resizes an existing array in Visual Basic?
+  A.     Resize
+  B. (*) ReDim
+  C.     Array.Expand
+  D.     ReAlloc
+Explanation: ReDim changes array bounds; adding the Preserve keyword (ReDim Preserve arr(15)) preserves existing data.
+
+[bca-432e-u1-q36] (Unit 1) What is the difference between a `Sub` (Subroutine) and a `Function` in Visual Basic?
+  A.     A Sub returns a value; a Function does not
+  B. (*) A Sub performs actions without returning a value; a Function performs actions and returns a value to the caller
+  C.     A Sub cannot accept arguments
+  D.     They are identical in VB
+Explanation: Subroutines (Sub ... End Sub) execute without return values; Functions (Function ... As Type ... End Function) return values.
+
+[bca-432e-u1-q37] (Unit 1) In Visual Basic procedure declarations, what does the `ByVal` keyword specify?
+  A. (*) The argument is passed by value (a copy of the variable data is passed, protecting the caller's original variable from modification)
+  B.     The argument is passed by pointer
+  C.     The argument is optional
+  D.     The argument is constant
+Explanation: ByVal passes a copy of the argument; modifications inside the procedure do not alter the caller's variable.
+
+[bca-432e-u1-q38] (Unit 1) In Visual Basic procedure declarations, what does the `ByRef` keyword specify?
+  A. (*) The argument is passed by reference (a reference to the caller's actual variable memory location is passed, allowing the procedure to modify the original variable)
+  B.     The argument is read-only
+  C.     The argument must be an integer
+  D.     The argument is ignored
+Explanation: ByRef passes the memory reference directly, so changes made to the parameter modify the caller's original variable.
+
+[bca-432e-u1-q39] (Unit 1) What is the default parameter passing mechanism in Visual Basic .NET if neither ByVal nor ByRef is specified in modern versions?
+  A.     ByRef
+  B. (*) ByVal (defaults to passing by value for safety)
+  C.     ByPointer
+  D.     Random selection
+Explanation: In modern VB.NET, parameters default to ByVal to prevent unintended side effects.
+
+[bca-432e-u1-q40] (Unit 1) What is an 'Enumeration' (Enum) in Visual Basic?
+  A.     A mathematical theorem
+  B. (*) A user-defined type that provides meaningful symbolic names for a set of related integral constants
+  C.     A type of loop construct
+  D.     A database table
+Explanation: Enum Days ... Monday = 1 ... End Enum defines strongly typed symbolic integer constants.
+
+[bca-432e-u1-q41] (Unit 1) How do you define an optional parameter with a default fallback value in Visual Basic?
+  A. (*) Optional ByVal x As Integer = 10
+  B.     Default x = 10
+  C.     ParamArray x
+  D.     Null x
+Explanation: Optional ByVal param As Type = defaultValue defines optional arguments.
+
+[bca-432e-u1-q42] (Unit 1) What does the `ParamArray` keyword allow in Visual Basic procedure declarations?
+  A.     Declaring an array of constants
+  B. (*) Passing a variable, comma-separated number of arguments to a procedure as an array
+  C.     Allocating an array on the GPU
+  D.     Sorting an array
+Explanation: ParamArray allows procedures to accept arbitrary variable-length argument lists.
+
+[bca-432e-u1-q43] (Unit 1) What is the standard base class for all data types in the .NET Framework?
+  A.     System.Type
+  B. (*) System.Object
+  C.     System.ValueType
+  D.     System.String
+Explanation: System.Object is the ultimate root superclass of every class, struct, enum, and primitive in .NET.
+
+[bca-432e-u1-q44] (Unit 1) Which method inherited from System.Object converts an object's value into a human-readable string representation?
+  A.     ToText()
+  B. (*) ToString()
+  C.     GetString()
+  D.     Print()
+Explanation: ToString() is implemented on System.Object and overridden across .NET classes to supply string formatting.
+
+[bca-432e-u1-q45] (Unit 1) What logical operator in Visual Basic performs short-circuit logical AND evaluation?
+  A.     And
+  B. (*) AndAlso
+  C.     &&
+  D.     BitAnd
+Explanation: AndAlso short-circuits: if the first operand is false, the second operand is never evaluated.
+
+[bca-432e-u1-q46] (Unit 1) What logical operator in Visual Basic performs short-circuit logical OR evaluation?
+  A.     Or
+  B. (*) OrElse
+  C.     ||
+  D.     BitOr
+Explanation: OrElse short-circuits: if the first operand is true, the second operand is skipped.
+
+[bca-432e-u1-q47] (Unit 1) In Visual Basic, what does the `Is` operator evaluate?
+  A.     Equality of numeric values
+  B. (*) Object reference identity (determining whether two object reference variables point to the exact same object in heap memory)
+  C.     String alphabetical order
+  D.     File existence
+Explanation: The Is operator checks reference equality (e.g., If obj1 Is obj2 Then), while = compares values.
+
+[bca-432e-u1-q48] (Unit 1) What does `TypeOf ... Is` evaluate in Visual Basic?
+  A.     Checks the size of a variable in bytes
+  B. (*) Checks whether an object instance is compatible with or inherits from a specific target class or interface type
+  C.     Converts a variable to an integer
+  D.     Prints the type name to console
+Explanation: If TypeOf ctrl Is Button Then checks object type compatibility dynamically.
+
+[bca-432e-u1-q49] (Unit 1) What is the .NET Framework Class Library (FCL)?
+  A.     A library of books in Redmond, Washington
+  B. (*) A vast, standardized, reusable hierarchy of thousands of object-oriented classes, interfaces, and value types organized into namespaces that provide foundational services (I/O, networking, data, UI)
+  C.     A database management tool
+  D.     An antivirus definitions file
+Explanation: The FCL provides comprehensive built-in APIs for all .NET programming needs.
+
+[bca-432e-u1-q50] (Unit 1) What is a 'Namespace' in the .NET Framework Class Library?
+  A.     A physical folder on the C: drive
+  B. (*) A logical naming container used to organize related classes, structures, and interfaces hierarchically and prevent naming collisions (e.g., System.IO, System.Data)
+  C.     A network domain name
+  D.     A user account name
+Explanation: Namespaces prevent identifier collisions and group related types logically.
+
+[bca-432e-u2-q51] (Unit 2) Which namespace in the .NET Framework provides classes for creating rich Windows-based GUI desktop applications?
+  A.     System.Web.UI
+  B. (*) System.Windows.Forms
+  C.     System.Data
+  D.     System.Console
+Explanation: System.Windows.Forms contains the Form class and desktop controls (Buttons, TextBoxes, etc.).
+
+[bca-432e-u2-q52] (Unit 2) What is the primary visual container representing a window in a desktop GUI application?
+  A.     Panel
+  B. (*) Form (inheriting from System.Windows.Forms.Form)
+  C.     GroupBox
+  D.     TabControl
+Explanation: The Form class represents a window or dialog box in desktop applications.
+
+[bca-432e-u2-q53] (Unit 2) What event fires immediately when a Form is loaded into memory before it is shown on screen?
+  A.     Form.Shown
+  B. (*) Form.Load
+  C.     Form.Activated
+  D.     Form.Paint
+Explanation: Form_Load is the standard startup event used to initialize variables, controls, and database connections.
+
+[bca-432e-u2-q54] (Unit 2) Which control displays read-only text that the user cannot directly edit on a Form?
+  A.     TextBox
+  B. (*) Label
+  C.     RichTextBox
+  D.     ComboBox
+Explanation: Labels display non-editable descriptive text labels on forms.
+
+[bca-432e-u2-q55] (Unit 2) Which control accepts typed keyboard text input from the user?
+  A.     Label
+  B. (*) TextBox
+  C.     PictureBox
+  D.     ProgressBar
+Explanation: The TextBox control permits single-line or multi-line user text entry.
+
+[bca-432e-u2-q56] (Unit 2) Which property of a TextBox obscures typed characters with an asterisk (*) for password entry?
+  A.     ReadOnly
+  B. (*) PasswordChar (or UseSystemPasswordChar = True)
+  C.     Multiline
+  D.     CharacterCasing
+Explanation: Setting PasswordChar = '*' or UseSystemPasswordChar = True masks sensitive inputs.
+
+[bca-432e-u2-q57] (Unit 2) Which event fires every time the user types, pastes, or modifies text inside a TextBox?
+  A.     Click
+  B. (*) TextChanged
+  C.     Validated
+  D.     KeyPress
+Explanation: TextChanged triggers immediately upon any change to the Text property.
+
+[bca-432e-u2-q58] (Unit 2) Which control raises a `Click` event when pushed by a mouse click or spacebar?
+  A.     Label
+  B. (*) Button
+  C.     Panel
+  D.     Timer
+Explanation: Buttons trigger primary form actions upon being clicked.
+
+[bca-432e-u2-q59] (Unit 2) What is the difference between a `CheckBox` and a `RadioButton`?
+  A. (*) CheckBox allows multiple independent selections (True/False); RadioButtons within a container are mutually exclusive (only one can be checked)
+  B.     CheckBox is round; RadioButton is square
+  C.     CheckBox only works on touchscreens
+  D.     They are identical
+Explanation: CheckBoxes permit multiple concurrent selections; RadioButtons enforce mutual exclusion within a group.
+
+[bca-432e-u2-q60] (Unit 2) Which container control is used to group related RadioButtons together to enforce separate mutually exclusive selections?
+  A. (*) GroupBox (or Panel)
+  B.     TextBox
+  C.     ListBox
+  D.     ToolStrip
+Explanation: GroupBoxes and Panels isolate radio button groups so each group has one selected button.
+
+[bca-432e-u2-q61] (Unit 2) Which control displays a scrollable list of items from which users can select one or multiple entries?
+  A.     ComboBox
+  B. (*) ListBox
+  C.     TextBox
+  D.     Label
+Explanation: ListBox displays multiple visible options in a scrollable box.
+
+[bca-432e-u2-q62] (Unit 2) Which property of a ListBox accesses the collection of items stored in the control?
+  A. (*) Items
+  B.     Rows
+  C.     List
+  D.     Elements
+Explanation: ListBox.Items provides Add(), Remove(), Clear(), and Count methods.
+
+[bca-432e-u2-q63] (Unit 2) What does `ListBox.SelectedIndex` return when no item is currently selected in the list?
+  A.     0
+  B. (*) -1
+  C.     Null
+  D.     1
+Explanation: SelectedIndex returns -1 when no element is selected.
+
+[bca-432e-u2-q64] (Unit 2) What control combines a text box with a drop-down list, allowing users to choose an option or type a custom value?
+  A.     ListBox
+  B. (*) ComboBox
+  C.     CheckedListBox
+  D.     TreeView
+Explanation: ComboBox provides a compact drop-down selection interface.
+
+[bca-432e-u2-q65] (Unit 2) Which control displays bitmap, JPEG, GIF, or PNG images on a Form?
+  A.     ImageLabel
+  B. (*) PictureBox
+  C.     IconView
+  D.     GraphicPanel
+Explanation: PictureBox hosts and renders graphic images (Image property, SizeMode setting).
+
+[bca-432e-u2-q66] (Unit 2) Which PictureBox `SizeMode` property value resizes the image to fit the exact dimensions of the control?
+  A.     Normal
+  B. (*) StretchImage
+  C.     AutoSize
+  D.     CenterImage
+Explanation: StretchImage stretches or shrinks the graphic to match the control's dimensions.
+
+[bca-432e-u2-q67] (Unit 2) What invisible background control executes code at recurring, specified time intervals without user interaction?
+  A.     ProgressBar
+  B. (*) Timer
+  C.     Stopwatch
+  D.     Clock
+Explanation: The Timer control triggers its Tick event periodically based on its Interval (in milliseconds).
+
+[bca-432e-u2-q68] (Unit 2) What property on a Timer control sets the duration between Tick events in milliseconds?
+  A.     Duration
+  B. (*) Interval
+  C.     Speed
+  D.     Frequency
+Explanation: Timer.Interval = 1000 sets a 1-second delay between ticks.
+
+[bca-432e-u2-q69] (Unit 2) What control visually indicates the progress of a lengthy operation via a filling horizontal bar?
+  A.     TrackBar
+  B. (*) ProgressBar
+  C.     HScrollBar
+  D.     Timer
+Explanation: ProgressBar displays percentage completion (Value, Minimum, Maximum properties).
+
+[bca-432e-u2-q70] (Unit 2) Which advanced control displays items in a hierarchical, expandable tree structure with parent and child nodes?
+  A.     ListView
+  B. (*) TreeView
+  C.     ListBox
+  D.     DataGrid
+Explanation: TreeView presents hierarchical data using a collection of TreeNode objects.
+
+[bca-432e-u2-q71] (Unit 2) Which advanced control displays items in multiple view styles (LargeIcon, SmallIcon, List, Details with columns)?
+  A.     TreeView
+  B. (*) ListView
+  C.     DataGridView
+  D.     Panel
+Explanation: ListView supports icon views and columnar detail listings (Details view).
+
+[bca-432e-u2-q72] (Unit 2) Which menu control introduced in .NET 2.0 provides professional, skinnable menu bars with access keys and shortcut keys?
+  A.     MainMenu (legacy)
+  B. (*) MenuStrip
+  C.     ToolBar
+  D.     ContextMenuStrip
+Explanation: MenuStrip provides modern menu bar capabilities in Windows Forms.
+
+[bca-432e-u2-q73] (Unit 2) In a MenuStrip or Button text property, how do you designate an underlined keyboard 'Access Key' (Alt + letter)?
+  A. (*) By preceding the letter with an ampersand (&) (e.g., '&File' makes Alt+F activate the menu)
+  B.     By using the @ symbol
+  C.     By surrounding with brackets [F]ile
+  D.     By using uppercase only
+Explanation: An ampersand (&) designates the subsequent letter as an Alt access shortcut.
+
+[bca-432e-u2-q74] (Unit 2) What control displays a contextual popup menu when a user right-clicks on a form or control?
+  A.     MenuStrip
+  B. (*) ContextMenuStrip
+  C.     ToolStrip
+  D.     StatusStrip
+Explanation: ContextMenuStrip provides right-click context menus.
+
+[bca-432e-u2-q75] (Unit 2) Which control provides a horizontal toolbar populated with graphical buttons for quick access to frequent commands?
+  A.     StatusStrip
+  B. (*) ToolStrip
+  C.     MenuStrip
+  D.     Panel
+Explanation: ToolStrip hosts buttons, dropdowns, and textboxes on application toolbars.
+
+[bca-432e-u2-q76] (Unit 2) Which control sits along the bottom edge of a Form to display status information, caps lock indicators, and progress bars?
+  A.     ToolStrip
+  B. (*) StatusStrip
+  C.     Panel
+  D.     FooterBox
+Explanation: StatusStrip hosts status labels, progress bars, and operational metrics along form footers.
+
+[bca-432e-u2-q77] (Unit 2) What common dialog box control allows users to browse file systems and select a file to open?
+  A.     SaveFileDialog
+  B. (*) OpenFileDialog
+  C.     FolderBrowserDialog
+  D.     ColorDialog
+Explanation: OpenFileDialog provides the standard Windows file selection browser.
+
+[bca-432e-u2-q78] (Unit 2) What property on OpenFileDialog and SaveFileDialog restricts the types of files displayed (e.g., 'Text files (*.txt)|*.txt')?
+  A.     FileTypes
+  B. (*) Filter
+  C.     Extensions
+  D.     Pattern
+Explanation: The Filter property defines allowed file extensions and user descriptions.
+
+[bca-432e-u2-q79] (Unit 2) What method must be invoked on common dialog controls (OpenFileDialog, ColorDialog, FontDialog) to display them on screen?
+  A.     Open()
+  B. (*) ShowDialog()
+  C.     Display()
+  D.     Show()
+Explanation: ShowDialog() displays dialogs modally, returning a DialogResult (OK, Cancel).
+
+[bca-432e-u2-q80] (Unit 2) What dialog control enables users to select a color from a palette?
+  A.     PaletteDialog
+  B. (*) ColorDialog
+  C.     FontDialog
+  D.     ThemeDialog
+Explanation: ColorDialog lets users pick standard or custom RGB colors.
+
+[bca-432e-u2-q81] (Unit 2) What dialog control enables users to select font family, size, weight, and effects?
+  A.     StyleDialog
+  B. (*) FontDialog
+  C.     ColorDialog
+  D.     TextDialog
+Explanation: FontDialog lets users choose fonts from installed system typefaces.
+
+[bca-432e-u2-q82] (Unit 2) What are the three major categories of errors encountered in computer programming?
+  A.     Fatal, Non-fatal, Warning
+  B. (*) Syntax (Compile-Time) Errors, Runtime (Execution) Errors, and Logic (Semantic) Errors
+  C.     User errors, OS errors, Hardware errors
+  D.     Low, Medium, High
+Explanation: Errors are categorized into compile-time syntax flaws, runtime crashes/exceptions, and semantic logic bugs.
+
+[bca-432e-u2-q83] (Unit 2) What is a 'Syntax Error' in Visual Basic?
+  A.     An error that crashes the computer during execution
+  B. (*) A violation of grammatical language rules (such as misspelled keywords or missing End If) detected by the compiler before execution
+  C.     A calculation that returns the wrong answer
+  D.     A database timeout
+Explanation: Syntax errors violate language grammar and prevent successful compilation.
+
+[bca-432e-u2-q84] (Unit 2) What is a 'Runtime Error' (Exception)?
+  A.     A misspelling in source code
+  B. (*) An unexpected error or exceptional condition that occurs while the program is running (e.g., division by zero, missing file, null reference)
+  C.     A styling error in CSS
+  D.     A feature request
+Explanation: Runtime errors occur during execution when invalid operations are attempted.
+
+[bca-432e-u2-q85] (Unit 2) What is a 'Logic Error' (Bug)?
+  A.     An error that produces compiler warnings
+  B. (*) A program that compiles and runs without crashing, but produces incorrect, unintended, or flawed output due to flawed developer algorithms
+  C.     A division by zero crash
+  D.     An out-of-memory exception
+Explanation: Logic errors are algorithmic mistakes where code runs cleanly but yields erroneous results.
+
+[bca-432e-u2-q86] (Unit 2) What structured exception handling construct is utilized in Visual Basic .NET to handle runtime errors gracefully?
+  A.     On Error Goto (legacy)
+  B. (*) Try ... Catch ... Finally ... End Try
+  C.     Begin ... Rescue ... Ensure
+  D.     Check ... Error ... End
+Explanation: Try...Catch...Finally is the standard structured exception handling paradigm in .NET.
+
+[bca-432e-u2-q87] (Unit 2) In a `Try...Catch...Finally` block, what is the role of the `Finally` block?
+  A.     It executes only when an exception occurs
+  B. (*) It contains cleanup code that is GUARANTEED to execute whether an exception occurred or not (even if an error was caught or a return statement was hit)
+  C.     It terminates the application
+  D.     It re-throws the exception
+Explanation: Finally blocks always execute, ensuring critical resources (files, sockets, database connections) are closed.
+
+[bca-432e-u2-q88] (Unit 2) What is the base class for all exceptions in the .NET Framework?
+  A.     System.Error
+  B. (*) System.Exception
+  C.     System.Throwable
+  D.     System.Crash
+Explanation: System.Exception is the root class of all .NET exception types.
+
+[bca-432e-u2-q89] (Unit 2) How do you define a Custom (User-Defined) Exception in Visual Basic .NET?
+  A.     By creating an interface called IException
+  B. (*) By creating a class that inherits from `System.Exception` (or `System.ApplicationException`)
+  C.     By using the Dim statement
+  D.     By declaring a Sub called Error()
+Explanation: Custom exceptions inherit from System.Exception, providing specialized constructors and properties.
+
+[bca-432e-u2-q90] (Unit 2) Which keyword explicitly raises/throws an exception in Visual Basic?
+  A.     Raise
+  B. (*) Throw
+  C.     Error
+  D.     Dispatch
+Explanation: Throw New InvalidOperationException('Invalid data') raises exceptions programmatically.
+
+[bca-432e-u2-q91] (Unit 2) Can a single `Try` block have multiple `Catch` blocks in Visual Basic?
+  A.     No, only one Catch block is permitted
+  B. (*) Yes; multiple Catch blocks can catch specific exception types, ordered from most specific subclass to most general base class
+  C.     Only in C#, not VB
+  D.     Up to two Catch blocks only
+Explanation: Multiple Catch blocks handle specific exception types (e.g., FileNotFoundException before general Exception).
+
+[bca-432e-u2-q92] (Unit 2) In Visual Studio debugging, what is a 'Breakpoint'?
+  A.     A point where the computer breaks down
+  B. (*) An intentional pausing point set on a specific line of source code where the debugger halts program execution to allow inspection of variables and state
+  C.     A syntax error in code
+  D.     The end of a program
+Explanation: Breakpoints suspend execution at designated code lines, letting developers inspect memory and step through execution.
+
+[bca-432e-u2-q93] (Unit 2) In Visual Studio debugger, what is the difference between 'Step Into' (F11) and 'Step Over' (F10)?
+  A. (*) Step Into steps inside called functions to execute them line-by-line; Step Over executes the called function as a single unit and pauses on the next line of the current procedure
+  B.     Step Into skips functions; Step Over steps inside
+  C.     They are identical shortcuts
+  D.     Step Into terminates debugging
+Explanation: Step Into descends into called method bodies; Step Over executes methods atomically.
+
+[bca-432e-u2-q94] (Unit 2) What does the 'Immediate Window' in Visual Studio allow developers to do during active debugging?
+  A.     Design user interface forms
+  B. (*) Evaluate expressions, execute statements, and inspect or modify variable values interactively while paused in break mode
+  C.     Compile release binaries
+  D.     Check network ping times
+Explanation: The Immediate Window provides a live REPL command line to query and alter state during debug pauses.
+
+[bca-432e-u2-q95] (Unit 2) What does the 'Watch Window' in Visual Studio do?
+  A.     Displays an analog clock
+  B. (*) Allows developers to track and monitor the real-time changing values of specified variables and custom expressions as they step through code
+  C.     Times CPU clock cycles
+  D.     Records video of the screen
+Explanation: Watch windows continuously display evaluated expressions and variable states across debug steps.
+
+[bca-432e-u2-q96] (Unit 2) What is the 'Call Stack' window used for in Visual Studio debugging?
+  A.     Viewing internet phone calls
+  B. (*) Displaying the active chain of method invocations leading up to the current execution pause point, showing which function called which
+  C.     Allocating stack memory
+  D.     Listing installed software
+Explanation: The Call Stack displays active stack frames, tracing execution paths back to the application entry point.
+
+[bca-432e-u2-q97] (Unit 2) What property determines whether a Form displays the standard Minimize, Maximize, and Close control buttons in its title bar?
+  A. (*) ControlBox
+  B.     FormBorderStyle
+  C.     ShowInTaskbar
+  D.     WindowState
+Explanation: ControlBox = False hides the upper-right minimize/maximize/close icons.
+
+[bca-432e-u2-q98] (Unit 2) Which Form property sets the starting screen position (e.g., CenterScreen) when the form opens?
+  A.     Location
+  B. (*) StartPosition
+  C.     WindowState
+  D.     Alignment
+Explanation: Form.StartPosition = FormStartPosition.CenterScreen centers the window on the active monitor.
+
+[bca-432e-u2-q99] (Unit 2) What is the difference between displaying a Form using `form.Show()` versus `form.ShowDialog()`?
+  A. (*) Show() displays the form modelessly (user can interact with other application windows); ShowDialog() displays it modally (blocking interaction with parent windows until closed)
+  B.     Show() is invisible; ShowDialog() is visible
+  C.     Show() is for web pages; ShowDialog() is for desktop
+  D.     They are identical
+Explanation: ShowDialog() opens modal windows (dialogs); Show() opens modeless independent windows.
+
+[bca-432e-u2-q100] (Unit 2) Which Form event occurs just before a Form closes, allowing the application to cancel the close operation if unsaved changes exist?
+  A.     FormClosed
+  B. (*) FormClosing (setting e.Cancel = True cancels closure)
+  C.     FormDeactivate
+  D.     Disposed
+Explanation: FormClosing provides a cancellable event (e.Cancel = True) to prompt users to save work.
+
+[bca-432e-u3-q101] (Unit 3) What are the four foundational pillars of Object-Oriented Programming (OOP)?
+  A.     Variables, Constants, Loops, Arrays
+  B. (*) Encapsulation, Abstraction, Inheritance, and Polymorphism
+  C.     Compilation, Assembly, Linking, Execution
+  D.     Forms, Buttons, TextBoxes, Menus
+Explanation: Encapsulation, Abstraction, Inheritance, and Polymorphism form the four universal pillars of OOP.
+
+[bca-432e-u3-q102] (Unit 3) In Visual Basic, which keyword declares a Class blueprint?
+  A.     Structure
+  B. (*) Class ... End Class
+  C.     Module
+  D.     Type
+Explanation: Classes are defined using the Class ... End Class block construct.
+
+[bca-432e-u3-q103] (Unit 3) Which keyword in Visual Basic instantiates a new object instance from a class blueprint in memory?
+  A.     Create
+  B. (*) New
+  C.     Alloc
+  D.     Instantiate
+Explanation: Dim obj As New Customer() or Dim obj As Customer = New Customer().
+
+[bca-432e-u3-q104] (Unit 3) In Visual Basic, what special method serves as the Constructor called automatically during object instantiation?
+  A.     Sub Create()
+  B. (*) Sub New()
+  C.     Sub Init()
+  D.     Sub Constructor()
+Explanation: Sub New() is Visual Basic's constructor method, executed whenever New is invoked.
+
+[bca-432e-u3-q105] (Unit 3) Can a class have multiple Constructor methods in Visual Basic?
+  A.     No, each class can only have one constructor
+  B. (*) Yes, through Constructor Overloading by declaring multiple Sub New() methods with different parameter lists
+  C.     Only if declared as static
+  D.     Only in C#
+Explanation: Constructor overloading permits multiple Sub New definitions with varying signatures.
+
+[bca-432e-u3-q106] (Unit 3) What is 'Encapsulation' in OOP?
+  A.     Packing files into a ZIP archive
+  B. (*) Bundling data (fields) and methods operating on that data into a single unit (class), while hiding internal implementation details using access modifiers
+  C.     Inheriting from multiple parents
+  D.     Converting classes into modules
+Explanation: Encapsulation protects internal state from unauthorized external manipulation.
+
+[bca-432e-u3-q107] (Unit 3) In Visual Basic, how are object properties cleanly exposed using encapsulation while protecting private backing fields?
+  A.     Using public global variables
+  B. (*) Using Property ... Get ... Set ... End Property procedures
+  C.     Using Sub New only
+  D.     Using external text files
+Explanation: Property procedures provide controlled Get and Set accessor logic wrapping private fields.
+
+[bca-432e-u3-q108] (Unit 3) What does a 'ReadOnly' property declaration in Visual Basic mean?
+  A.     The property cannot be displayed
+  B. (*) The property has only a `Get` block and no `Set` block (it can be read but not modified externally)
+  C.     The property can only store text
+  D.     The property is deleted after reading
+Explanation: ReadOnly properties omit the Set block, allowing read-only access.
+
+[bca-432e-u3-q109] (Unit 3) Which Visual Basic keyword specifies that a derived class inherits from a base parent class?
+  A.     Extends
+  B. (*) Inherits
+  C.     Implements
+  D.     Uses
+Explanation: Inherits BaseClass establishes class inheritance in Visual Basic.
+
+[bca-432e-u3-q110] (Unit 3) Does Visual Basic .NET support Multiple Class Inheritance (inheriting from more than one concrete class)?
+  A.     Yes, classes can inherit from any number of base classes
+  B. (*) No; .NET enforces Single Class Inheritance (a class can inherit from only ONE base class, but can implement MULTIPLE interfaces)
+  C.     Only if both classes are abstract
+  D.     Only on Windows 7
+Explanation: Like Java and C#, .NET permits single class inheritance alongside multiple interface implementation.
+
+[bca-432e-u3-q111] (Unit 3) Which keyword designates that a base class method CAN be overridden by a derived subclass?
+  A. (*) Virtual (in C#) / Overridable (in VB)
+  B.     Overrides
+  C.     MustOverride
+  D.     Shadows
+Explanation: Overridable declares that a method may be overridden in derived classes.
+
+[bca-432e-u3-q112] (Unit 3) Which keyword is used in a derived class method to override an `Overridable` base class method?
+  A.     Overridable
+  B. (*) Overrides
+  C.     Shadows
+  D.     New
+Explanation: Overrides indicates the method replaces the base class implementation.
+
+[bca-432e-u3-q113] (Unit 3) Which keyword declares an Abstract method that has NO implementation in the base class and MUST be overridden by subclasses?
+  A.     Overridable
+  B. (*) MustOverride (equivalent to abstract in C#/Java)
+  C.     Shared
+  D.     Partial
+Explanation: MustOverride declares an abstract method requiring concrete derived implementations.
+
+[bca-432e-u3-q114] (Unit 3) Which keyword declares an Abstract Class that cannot be directly instantiated with `New` and can only serve as a base class?
+  A.     NotInheritable
+  B. (*) MustInherit (equivalent to abstract class)
+  C.     Module
+  D.     Static
+Explanation: MustInherit classes cannot be instantiated directly and exist solely to be subclassed.
+
+[bca-432e-u3-q115] (Unit 3) Which keyword declares a Sealed Class that CANNOT be inherited from by any subclass?
+  A.     MustInherit
+  B. (*) NotInheritable (equivalent to sealed in C# or final in Java)
+  C.     Private
+  D.     Static
+Explanation: NotInheritable prevents classes from being subclassed.
+
+[bca-432e-u3-q116] (Unit 3) What keyword in Visual Basic refers to the current instance of the class (equivalent to `this` in C# and Java)?
+  A.     MyBase
+  B. (*) Me
+  C.     MyClass
+  D.     Self
+Explanation: Me refers to the current class instance.
+
+[bca-432e-u3-q117] (Unit 3) What keyword in Visual Basic refers to the immediate base (parent) class of the current derived class (equivalent to `super` in Java)?
+  A.     Me
+  B. (*) MyBase
+  C.     MyClass
+  D.     Base
+Explanation: MyBase allows derived classes to call parent constructors and methods (MyBase.New(), MyBase.Method()).
+
+[bca-432e-u3-q118] (Unit 3) What is 'Method Overloading' (Compile-Time Polymorphism)?
+  A.     Overriding a method in a subclass
+  B. (*) Defining multiple methods within the same class with the SAME name but DIFFERENT parameter lists (types, number of parameters)
+  C.     Calling a method too many times in a loop
+  D.     Crashing a method with large numbers
+Explanation: Method overloading provides multiple variants of a method name distinguished by signatures.
+
+[bca-432e-u3-q119] (Unit 3) What keyword in Visual Basic explicitly marks an overloaded method?
+  A.     Overrides
+  B. (*) Overloads
+  C.     Overridable
+  D.     Multiple
+Explanation: Overloads indicates that a method shares a name with another method signature.
+
+[bca-432e-u3-q120] (Unit 3) What is 'Method Overriding' (Runtime Polymorphism)?
+  A.     Defining two methods in the same class
+  B. (*) A derived class providing a specialized implementation of an Overridable method inherited from its base class, resolved dynamically at runtime
+  C.     Writing a comment over code
+  D.     Deleting a method
+Explanation: Overriding provides dynamic runtime method dispatch based on actual runtime object type.
+
+[bca-432e-u3-q121] (Unit 3) What is an 'Interface' in Visual Basic .NET?
+  A.     A physical cable connector
+  B. (*) A pure contract containing only declarations of methods, properties, and events with NO implementation, which implementing classes must fulfill
+  C.     A graphical user interface form
+  D.     A database table schema
+Explanation: Interfaces define contracts of member signatures without method bodies.
+
+[bca-432e-u3-q122] (Unit 3) Which keyword declares that a class implements a specific Interface in Visual Basic?
+  A.     Inherits
+  B. (*) Implements
+  C.     Extends
+  D.     Uses
+Explanation: Implements InterfaceName commits a class to implementing interface members.
+
+[bca-432e-u3-q123] (Unit 3) What is the standard naming convention for Interfaces in the .NET Framework?
+  A.     They must end with 'Class'
+  B. (*) They begin with a capital letter 'I' (e.g., IComparable, IDisposable, IEnumerable)
+  C.     They must be in lowercase
+  D.     They start with 'Interface_'
+Explanation: The standard .NET convention prefixes interface names with 'I'.
+
+[bca-432e-u3-q124] (Unit 3) What access modifier restricts visibility strictly to the containing class itself?
+  A.     Public
+  B. (*) Private
+  C.     Protected
+  D.     Friend
+Explanation: Private members are accessible only within their declaring class.
+
+[bca-432e-u3-q125] (Unit 3) What access modifier allows access within the declaring class AND by derived subclasses, but hides the member from general external code?
+  A.     Private
+  B. (*) Protected
+  C.     Friend
+  D.     Public
+Explanation: Protected members are accessible to the class and its derived subclasses.
+
+[bca-432e-u3-q126] (Unit 3) What access modifier in Visual Basic allows access anywhere within the same compiled Assembly (.exe/.dll), but hides it from external assemblies (equivalent to `internal` in C#)?
+  A.     Protected
+  B. (*) Friend
+  C.     Public
+  D.     Private
+Explanation: Friend limits accessibility to code within the same compiled assembly.
+
+[bca-432e-u3-q127] (Unit 3) What access modifier makes a class member accessible to all code everywhere in any assembly?
+  A. (*) Public
+  B.     Friend
+  C.     Protected
+  D.     Shared
+Explanation: Public imposes no access restrictions.
+
+[bca-432e-u3-q128] (Unit 3) What keyword in Visual Basic declares a 'Shared' member (equivalent to `static` in C# and Java) that belongs to the class itself rather than individual object instances?
+  A.     Static
+  B. (*) Shared
+  C.     Common
+  D.     Global
+Explanation: Shared members belong to the type itself and are invoked via ClassName.Method().
+
+[bca-432e-u3-q129] (Unit 3) Which keyword brings an entire namespace into scope, eliminating the need to type fully qualified class names?
+  A. (*) Using (in C#) / Imports (in VB)
+  B.     Include
+  C.     Require
+  D.     Package
+Explanation: Imports System.Data brings the namespace into scope in VB.NET.
+
+[bca-432e-u3-q130] (Unit 3) What is a 'Delegate' in the .NET Framework?
+  A.     A government representative
+  B. (*) A type-safe object-oriented function pointer that holds references to methods with matching parameter signatures and return types
+  C.     An operating system process
+  D.     A database connection string
+Explanation: Delegates are type-safe function pointers underlying .NET event architecture and callbacks.
+
+[bca-432e-u3-q131] (Unit 3) How are custom events declared and raised in Visual Basic?
+  A. (*) Using `Event EventName()` declaration and `RaiseEvent EventName()` statement
+  B.     Using Throw New Event()
+  C.     Using MsgBox()
+  D.     Using Call Event()
+Explanation: Events are declared via Event and fired using RaiseEvent.
+
+[bca-432e-u3-q132] (Unit 3) What statement in Visual Basic dynamically attaches an event handler method to an object event at runtime?
+  A.     AttachEvent
+  B. (*) AddHandler object.Event, AddressOf HandlerMethod
+  C.     BindEvent
+  D.     ConnectEvent
+Explanation: AddHandler binds events to handlers dynamically; RemoveHandler detaches them.
+
+[bca-432e-u3-q133] (Unit 3) What does the `AddressOf` operator do in Visual Basic?
+  A.     Returns the physical memory pointer of a variable
+  B. (*) Creates a delegate instance that points to a specified procedure/method
+  C.     Finds the IP address of the computer
+  D.     Returns an email address
+Explanation: AddressOf creates a delegate pointing to a target method.
+
+[bca-432e-u3-q134] (Unit 3) What clause on a Visual Basic method header statically binds it to handle a specific control event?
+  A. (*) Handles ControlName.EventName (e.g., Handles Button1.Click)
+  B.     ListensTo
+  C.     OnEvent
+  D.     Catches
+Explanation: Handles binds methods to events declaratively at compile time.
+
+[bca-432e-u3-q135] (Unit 3) What is a 'Class Library' project in Visual Studio?
+  A.     A collection of paper programming textbooks
+  B. (*) A project that compiles into a reusable Dynamic Link Library (.dll) assembly containing classes without an executable user interface entry point
+  C.     A project that only contains images
+  D.     An executable console application
+Explanation: Class Library projects compile into reusable .dll assemblies shared across multiple applications.
+
+[bca-432e-u3-q136] (Unit 3) How does an application project consume classes from an external compiled Class Library (.dll)?
+  A.     By copying the source code manually
+  B. (*) By adding an Assembly Reference to the .dll in Solution Explorer and using an `Imports` statement
+  C.     By uploading the .dll to the internet
+  D.     By renaming the .dll to .exe
+Explanation: Adding an assembly reference allows projects to instantiate types from external libraries.
+
+[bca-432e-u3-q137] (Unit 3) What is a 'Module' in Visual Basic .NET?
+  A.     A physical RAM chip
+  B. (*) A reference type whose members are inherently Shared (static) and accessible without class instantiation, primarily used for global procedural utilities
+  C.     A web form
+  D.     A database table
+Explanation: VB Modules contain static functions accessible globally across the project.
+
+[bca-432e-u3-q138] (Unit 3) What is 'Shadowing' in Visual Basic inheritance?
+  A.     Drawing drop shadows under buttons
+  B. (*) Re-declaring a member in a derived class using the `Shadows` keyword to completely hide an identical base class member by name, regardless of signature differences
+  C.     Darkening a computer screen
+  D.     A security vulnerability
+Explanation: Shadows hides all overloaded variants of a base member by name, unlike Overrides.
+
+[bca-432e-u3-q139] (Unit 3) What interface in .NET is implemented to enable deterministic resource cleanup of unmanaged resources (file handles, database connections) via the `Dispose()` method?
+  A.     ICloneable
+  B. (*) IDisposable
+  C.     IComparable
+  D.     ISerializable
+Explanation: IDisposable provides the Dispose() method for explicit unmanaged resource release.
+
+[bca-432e-u3-q140] (Unit 3) What statement in Visual Basic automatically calls `Dispose()` on an IDisposable object when exiting the block, even if exceptions occur?
+  A. (*) Using ... End Using
+  B.     Try ... Catch
+  C.     With ... End With
+  D.     Lock ... End Lock
+Explanation: The Using statement guarantees deterministic Dispose() execution upon scope exit.
+
+[bca-432e-u3-q141] (Unit 3) What does the `With ... End With` construct in Visual Basic do?
+  A.     Encrypts a block of code
+  B. (*) Allows multiple statements to reference properties and methods of an object repeatedly using a leading dot (.) without retyping the object name
+  C.     Creates a new thread
+  D.     Checks for null references
+Explanation: With obj ... .Text = 'A' ... .Width = 100 ... End With streamlines repetitive object manipulation.
+
+[bca-432e-u3-q142] (Unit 3) What is 'Polymorphism' in OOP?
+  A.     The ability of code to run on different operating systems
+  B. (*) The ability of different classes to respond to the same method call in different, specialized ways appropriate to their specific type
+  C.     Converting source code to machine language
+  D.     A class with multiple constructors only
+Explanation: Polymorphism allows treating derived objects uniformly via common base interfaces while executing specialized behaviors.
+
+[bca-432e-u3-q143] (Unit 3) What does `My.Computer` and `My.Application` provide in Visual Basic?
+  A.     Access to computer sales websites
+  B. (*) The 'My' namespace shortcuts providing rapid, intuitive access to operating system services, hardware, file systems, and application metadata
+  C.     A hardware diagnostic tool
+  D.     An external printer driver
+Explanation: The My namespace provides convenient helper access to common platform features.
+
+[bca-432e-u3-q144] (Unit 3) Can an Interface contain fields (variables) or constructors in .NET?
+  A.     Yes, interfaces can store variable data
+  B. (*) No; interfaces can only contain declarations of methods, properties, indexers, and events, but zero instance fields or constructors
+  C.     Only static variables
+  D.     Only integer fields
+Explanation: Interfaces contain no instance state; they are pure behavioral contracts.
+
+[bca-432e-u3-q145] (Unit 3) What is an 'Abstract Class' compared to an 'Interface' in .NET design?
+  A. (*) An abstract class can contain partial concrete implementation code, constructors, and instance fields, whereas an interface contains zero implementation
+  B.     An abstract class cannot have methods
+  C.     Interfaces are faster to run
+  D.     They are 100% identical
+Explanation: Abstract classes permit shared implementation and state; interfaces specify pure contracts.
+
+[bca-432e-u3-q146] (Unit 3) What is the difference between a `Structure` (Struct) and a `Class` in Visual Basic .NET?
+  A. (*) A Structure is a Value Type (stack-allocated); a Class is a Reference Type (heap-allocated)
+  B.     Structures cannot have methods
+  C.     Structures are only for text
+  D.     Classes are value types
+Explanation: Structures are lightweight stack-allocated value types; Classes are managed reference types.
+
+[bca-432e-u3-q147] (Unit 3) What is 'Operator Overloading' in Visual Basic?
+  A.     Typing operators too quickly
+  B. (*) Defining custom behaviors for standard language operators (+, -, *, =) when applied to user-defined classes and structures using the `Operator` keyword
+  C.     An error where an operator divides by zero
+  D.     A compiler bug
+Explanation: Operator overloading defines custom mathematical operations for domain classes (e.g., Vector + Vector).
+
+[bca-432e-u3-q148] (Unit 3) What is 'Early Binding' compared to 'Late Binding' in .NET?
+  A.     Early binding occurs at 8 AM
+  B. (*) Early binding resolves types and methods at compile time with full type-checking and high performance; Late binding resolves methods dynamically at runtime (via reflection), which is slower and error-prone
+  C.     Early binding is only in C
+  D.     Late binding avoids errors
+Explanation: Early binding provides compile-time verification and IntelliSense; late binding defers dispatch to runtime.
+
+[bca-432e-u3-q149] (Unit 3) What is a 'Partial Class' in Visual Basic?
+  A.     A broken class that failed to compile
+  B. (*) A class definition split across multiple physical source files using the `Partial` keyword, combined into a single unified class at compile time (standardly used to separate designer UI code from logic)
+  C.     A class with only half its methods
+  D.     An abstract class
+Explanation: Partial classes allow auto-generated UI designer code and developer business logic to coexist in separate files.
+
+[bca-432e-u3-q150] (Unit 3) What is 'Object Initializer' syntax in Visual Basic?
+  A.     Running a setup installer
+  B. (*) Syntax allowing properties of a newly created object to be initialized directly in the instantiation statement: `Dim c As New Customer With {.Name = 'John', .Age = 30}`
+  C.     Writing an empty constructor
+  D.     Formatting hard drives
+Explanation: With { .Prop = Value } initializes properties cleanly upon instantiation.
+
+[bca-432e-u4-q151] (Unit 4) What is ADO.NET?
+  A.     An audio driver for Windows
+  B. (*) A data access architecture included in the .NET Framework that provides an interface between application code and relational databases or XML data sources
+  C.     An operating system utility
+  D.     A web browser
+Explanation: ADO.NET provides structured data access for managed .NET applications.
+
+[bca-432e-u4-q152] (Unit 4) What is the primary architectural paradigm shift introduced by ADO.NET compared to classic ADO?
+  A.     Classic ADO was disconnected; ADO.NET requires permanent live connections
+  B. (*) ADO.NET is built around a Disconnected Data Architecture using XML as its universal data transmission format, conserving server connections
+  C.     ADO.NET cannot connect to SQL Server
+  D.     ADO.NET only runs on Linux
+Explanation: ADO.NET's disconnected model fetches data into in-memory structures and releases database connections immediately.
+
+[bca-432e-u4-q153] (Unit 4) What are the two primary core architectural components of ADO.NET?
+  A. (*) .NET Data Providers (Connected layer) and the DataSet (Disconnected layer)
+  B.     Input Provider and Output Provider
+  C.     SQL Engine and Table Engine
+  D.     Client Cache and Server Cache
+Explanation: ADO.NET is structured into Data Providers (Connection, Command, DataReader, DataAdapter) and the disconnected DataSet.
+
+[bca-432e-u4-q154] (Unit 4) What are the four core objects that comprise a .NET Data Provider?
+  A.     Form, Button, TextBox, Label
+  B. (*) Connection, Command, DataReader, and DataAdapter
+  C.     Table, Column, Row, Cell
+  D.     Client, Server, Network, Cloud
+Explanation: Data Providers provide: Connection (physical link), Command (SQL execution), DataReader (fast stream), and DataAdapter (bridge).
+
+[bca-432e-u4-q155] (Unit 4) Which namespace contains the .NET Data Provider specifically optimized for Microsoft SQL Server?
+  A.     System.Data.OleDb
+  B. (*) System.Data.SqlClient
+  C.     System.Data.Odbc
+  D.     System.Data.OracleClient
+Explanation: System.Data.SqlClient communicates directly with SQL Server via its native Tabular Data Stream (TDS) protocol.
+
+[bca-432e-u4-q156] (Unit 4) Which namespace contains the generic .NET Data Provider used for connecting to Access, Excel, or older databases via OLE DB?
+  A.     System.Data.SqlClient
+  B. (*) System.Data.OleDb
+  C.     System.Data.Sql
+  D.     System.Data.Common
+Explanation: System.Data.OleDb connects to any OLE DB-compliant data source.
+
+[bca-432e-u4-q157] (Unit 4) What object establishes the physical communication session to a database in ADO.NET?
+  A.     SqlCommand
+  B. (*) SqlConnection (or OleDbConnection)
+  C.     SqlDataAdapter
+  D.     SqlDataReader
+Explanation: The Connection object opens and manages the physical database connection channel.
+
+[bca-432e-u4-q158] (Unit 4) What is a 'Connection String' in ADO.NET?
+  A.     A piece of network cable
+  B. (*) A formatted string of key-value parameters (Data Source, Initial Catalog, User ID, Password) specifying the database server, database name, and authentication credentials
+  C.     The name of a database table
+  D.     An SQL query string
+Explanation: The connection string specifies driver parameters for locating and authenticating with the target database.
+
+[bca-432e-u4-q159] (Unit 4) Which method of the `SqlConnection` object opens the physical database connection?
+  A.     connection.Start()
+  B. (*) connection.Open()
+  C.     connection.Connect()
+  D.     connection.Execute()
+Explanation: connection.Open() establishes the active connection.
+
+[bca-432e-u4-q160] (Unit 4) Why should database connections in ADO.NET always be enclosed within a `Using` block or closed explicitly in a `Finally` block?
+  A.     Because unclosed connections crash the monitor
+  B. (*) To return the physical connection to the Connection Pool immediately, preventing connection pool exhaustion and database denial of service
+  C.     To delete the database records
+  D.     To save hard drive space
+Explanation: Failing to close connections leaks pool resources, causing subsequent connection attempts to time out.
+
+[bca-432e-u4-q161] (Unit 4) What object is used to execute an SQL statement or stored procedure against a database in ADO.NET?
+  A.     SqlConnection
+  B. (*) SqlCommand (or OleDbCommand)
+  C.     DataSet
+  D.     DataView
+Explanation: The Command object encapsulates the SQL text or stored procedure to be executed.
+
+[bca-432e-u4-q162] (Unit 4) Which method of the `SqlCommand` object executes an SQL statement and returns a fast, forward-only, read-only data stream?
+  A.     ExecuteNonQuery()
+  B.     ExecuteScalar()
+  C. (*) ExecuteReader()
+  D.     ExecuteTable()
+Explanation: ExecuteReader() executes a query and returns a SqlDataReader.
+
+[bca-432e-u4-q163] (Unit 4) Which method of `SqlCommand` is used for executing INSERT, UPDATE, or DELETE statements, returning the count of affected rows?
+  A.     ExecuteReader()
+  B. (*) ExecuteNonQuery()
+  C.     ExecuteScalar()
+  D.     ExecuteUpdate()
+Explanation: ExecuteNonQuery() executes DML/DDL commands and returns the number of rows modified.
+
+[bca-432e-u4-q164] (Unit 4) Which method of `SqlCommand` executes a query and returns ONLY the first column of the first row in the result set (ideal for aggregate queries like COUNT(*) or MAX)?
+  A.     ExecuteReader()
+  B.     ExecuteNonQuery()
+  C. (*) ExecuteScalar()
+  D.     ExecuteFirst()
+Explanation: ExecuteScalar() returns an Object containing the single value at row 0, column 0.
+
+[bca-432e-u4-q165] (Unit 4) What are the two defining characteristics of an ADO.NET `SqlDataReader`?
+  A.     Disconnected and updatable
+  B. (*) Connected, Read-Only, and Forward-Only stream of data
+  C.     Buffered in an XML document
+  D.     Bidirectional scrollable cursor
+Explanation: DataReader streams rows sequentially without caching the entire table, providing high performance.
+
+[bca-432e-u4-q166] (Unit 4) Why can you NOT modify records directly through a `SqlDataReader`?
+  A. (*) Because it is read-only by design to minimize overhead and maximize throughput
+  B.     Because databases do not permit edits
+  C.     Because it requires an administrator password
+  D.     Because it uses integer arrays
+Explanation: DataReaders are strictly read-only; modifications require separate Command executions or DataAdapters.
+
+[bca-432e-u4-q167] (Unit 4) What object in ADO.NET acts as the central bidirectional bridge connecting the physical database with the in-memory disconnected `DataSet`?
+  A.     SqlDataReader
+  B. (*) SqlDataAdapter
+  C.     SqlCommandBuilder
+  D.     DataView
+Explanation: The DataAdapter mediates between the live database and disconnected DataSets using Fill() and Update().
+
+[bca-432e-u4-q168] (Unit 4) Which method of the `SqlDataAdapter` executes its SelectCommand and populates data rows into a `DataSet` or `DataTable`?
+  A. (*) Fill()
+  B.     Update()
+  C.     Load()
+  D.     Fetch()
+Explanation: adapter.Fill(dataSet, 'TableName') retrieves data, populates the DataSet, and immediately closes the connection.
+
+[bca-432e-u4-q169] (Unit 4) Which method of `SqlDataAdapter` reconciles in-memory changes (inserts, updates, deletes) made in a `DataTable` back to the live database?
+  A.     Fill()
+  B. (*) Update()
+  C.     Commit()
+  D.     Sync()
+Explanation: adapter.Update(dataSet, 'TableName') examines RowState and issues corresponding INSERT/UPDATE/DELETE commands.
+
+[bca-432e-u4-q170] (Unit 4) What helper object in ADO.NET automatically generates the `InsertCommand`, `UpdateCommand`, and `DeleteCommand` for a `SqlDataAdapter` based on its `SelectCommand`?
+  A. (*) SqlCommandBuilder
+  B.     SqlDataReader
+  C.     SqlSchema
+  D.     SqlTransaction
+Explanation: SqlCommandBuilder inspects metadata and automatically generates required DML commands.
+
+[bca-432e-u4-q171] (Unit 4) What is the `DataSet` in ADO.NET?
+  A.     A connection string generator
+  B. (*) An in-memory, completely disconnected relational data store that can hold multiple DataTables, relations, and constraints independent of any live database connection
+  C.     A database server installed on Windows
+  D.     A visual grid control on forms
+Explanation: The DataSet is an in-memory relational database cache, holding multiple tables and foreign-key relationships.
+
+[bca-432e-u4-q172] (Unit 4) Can a `DataSet` store multiple tables simultaneously?
+  A.     No, a DataSet can only hold one table
+  B. (*) Yes, a DataSet contains a `Tables` collection (DataTableCollection) holding multiple distinct DataTables
+  C.     Only if the database is Access
+  D.     Only in web applications
+Explanation: DataSet.Tables can hold numerous DataTables linked by DataRelation objects.
+
+[bca-432e-u4-q173] (Unit 4) What object in ADO.NET represents a single in-memory table of relational data with columns and rows?
+  A.     DataSet
+  B. (*) DataTable
+  C.     DataView
+  D.     DataColumn
+Explanation: A DataTable represents an individual table comprising DataColumns and DataRows.
+
+[bca-432e-u4-q174] (Unit 4) What collection on a `DataTable` defines its schema (column names, data types, constraints)?
+  A.     Rows
+  B. (*) Columns (DataColumnCollection)
+  C.     Fields
+  D.     Schema
+Explanation: DataTable.Columns defines field definitions and data types.
+
+[bca-432e-u4-q175] (Unit 4) What collection on a `DataTable` stores the actual record data?
+  A.     Columns
+  B. (*) Rows (DataRowCollection)
+  C.     Records
+  D.     Items
+Explanation: DataTable.Rows holds the collection of DataRow instances.
+
+[bca-432e-u4-q176] (Unit 4) How do you add a new record row to an existing `DataTable` in ADO.NET?
+  A.     table.Rows.Add(new String())
+  B. (*) Dim row As DataRow = table.NewRow(); populate fields; table.Rows.Add(row);
+  C.     table.InsertRow()
+  D.     table.Append()
+Explanation: table.NewRow() instantiates a row adhering to the table schema; table.Rows.Add(row) inserts it.
+
+[bca-432e-u4-q177] (Unit 4) What property on a `DataRow` tracks whether the row is Unchanged, Added, Modified, or Deleted?
+  A. (*) RowState
+  B.     Status
+  C.     State
+  D.     Flag
+Explanation: RowState tracks modifications (Added, Modified, Deleted, Unchanged), enabling DataAdapter.Update to reconcile changes.
+
+[bca-432e-u4-q178] (Unit 4) What object in ADO.NET provides a customized, bindable view of a `DataTable` for sorting, filtering, and searching without modifying the underlying table data?
+  A.     DataSet
+  B. (*) DataView
+  C.     DataGridView
+  D.     DataFilter
+Explanation: DataView provides customized views (RowFilter, Sort) over a DataTable.
+
+[bca-432e-u4-q179] (Unit 4) Which property of a `DataView` is assigned an SQL-like filter string (e.g., 'City = "Bareilly" AND Age > 20') to filter displayed records?
+  A.     FilterString
+  B. (*) RowFilter
+  C.     Condition
+  D.     WhereClause
+Explanation: dataView.RowFilter = 'Department = "IT"' dynamically filters visible records.
+
+[bca-432e-u4-q180] (Unit 4) Which visual control in Windows Forms is standardly used to display, navigate, and edit tabular database records in a rich grid format?
+  A.     ListView
+  B. (*) DataGridView
+  C.     ListBox
+  D.     TableLayoutPanel
+Explanation: DataGridView is the primary data grid control in Windows Forms.
+
+[bca-432e-u4-q181] (Unit 4) What property on a `DataGridView` binds it to a data source (such as a DataTable, DataSet, or BindingSource)?
+  A.     DataMember
+  B. (*) DataSource
+  C.     DataBind
+  D.     Source
+Explanation: dataGridView.DataSource = dataTable binds the grid to the data source.
+
+[bca-432e-u4-q182] (Unit 4) What is 'Data Binding' in GUI programming?
+  A.     Binding computer cables with zip-ties
+  B. (*) The automatic synchronization mechanism that links visual UI control properties (e.g., TextBox.Text) to underlying data source fields (e.g., DataTable column)
+  C.     Encrypting database tables
+  D.     Compiling SQL queries
+Explanation: Data binding synchronizes UI controls with data sources automatically.
+
+[bca-432e-u4-q183] (Unit 4) What is the difference between Simple Data Binding and Complex Data Binding?
+  A. (*) Simple binds one data value to one control property (e.g., binding customer name to a TextBox); Complex binds an entire multi-row dataset to a multi-record control (e.g., DataGridView or ComboBox)
+  B.     Simple binding is for numbers; Complex binding is for text
+  C.     They are identical
+  D.     Simple binding requires SQL
+Explanation: Simple binding binds a single value; Complex binding binds collections/tables.
+
+[bca-432e-u4-q184] (Unit 4) What intermediary component in Windows Forms simplifies data binding, currency management (tracking current record position), and sorting between controls and data sources?
+  A. (*) BindingSource
+  B.     DataConnector
+  C.     DataSourceManager
+  D.     RecordTracker
+Explanation: The BindingSource component manages current item navigation (Position, MoveNext), sorting, and filtering.
+
+[bca-432e-u4-q185] (Unit 4) Which control provides a standardized visual VCR-style toolbar for navigating (First, Previous, Next, Last), adding, and deleting records bound via a BindingSource?
+  A.     StatusStrip
+  B. (*) BindingNavigator
+  C.     ToolStrip
+  D.     MenuBar
+Explanation: BindingNavigator provides navigation and CRUD toolbar buttons for a bound BindingSource.
+
+[bca-432e-u4-q186] (Unit 4) In ADO.NET, how are SQL Injection attacks prevented when executing commands with user-supplied input?
+  A.     By concatenating strings with the & operator
+  B. (*) By using Parameterized Queries (adding `SqlParameter` objects to `command.Parameters`) rather than concatenating raw input strings into SQL text
+  C.     By converting all user input to uppercase
+  D.     By disabling database logins
+Explanation: Parameters treat input strictly as literal values, preventing attackers from injecting SQL command syntax.
+
+[bca-432e-u4-q187] (Unit 4) How do you add a parameter to an `SqlCommand` in Visual Basic?
+  A. (*) command.Parameters.AddWithValue('@id', txtId.Text)
+  B.     command.AddParam('id', txtId.Text)
+  C.     command.SetVariable('@id', txtId.Text)
+  D.     command.Append('@id')
+Explanation: command.Parameters.AddWithValue('@id', value) safely binds parameterized arguments.
+
+[bca-432e-u4-q188] (Unit 4) Can ADO.NET DataSets export their internal data and schema as XML?
+  A.     No, DataSets only use binary files
+  B. (*) Yes, using `dataSet.WriteXml('data.xml')` and `dataSet.WriteXmlSchema('schema.xsd')`
+  C.     Only in ASP.NET
+  D.     Only with third-party software
+Explanation: DataSets integrate natively with XML, serializing data and schemas via WriteXml() and ReadXml().
+
+[bca-432e-u4-q189] (Unit 4) What is a 'Typed DataSet' in Visual Studio?
+  A.     A dataset typed by a secretary
+  B. (*) A strongly typed subclass of DataSet generated from an XSD schema that exposes tables and columns as named object properties (e.g., ds.Customers.Name) with compile-time type checking
+  C.     A dataset containing only text strings
+  D.     An unformatted dataset
+Explanation: Typed DataSets provide strongly typed accessors, catching field misspellings at compile time.
+
+[bca-432e-u4-q190] (Unit 4) What visual tool in Visual Studio generates a complete database interface (connection, adapter, dataset, grid, navigator) on a Form via simple drag-and-drop?
+  A. (*) Data Sources Window (and Data Form Wizard)
+  B.     Toolbox Only
+  C.     Paint Brush
+  D.     Notepad
+Explanation: The Data Sources window allows dragging tables onto forms to generate data-bound UI controls automatically.
+
+[bca-432e-u4-q191] (Unit 4) What is a 'Transaction' in ADO.NET database operations?
+  A.     A payment made via credit card
+  B. (*) A single logical unit of work comprising one or more database operations that must all succeed together (Commit) or all fail and revert together (Rollback) adhering to ACID properties
+  C.     A single row in a table
+  D.     A network ping
+Explanation: Transactions guarantee Atomic, Consistent, Isolated, and Durable (ACID) execution across multiple queries.
+
+[bca-432e-u4-q192] (Unit 4) How do you initiate a database transaction in ADO.NET?
+  A.     connection.StartTransaction()
+  B. (*) Dim transaction As SqlTransaction = connection.BeginTransaction()
+  C.     connection.CreateTransaction()
+  D.     transaction.Open()
+Explanation: connection.BeginTransaction() returns a transaction object that must be assigned to command.Transaction.
+
+[bca-432e-u4-q193] (Unit 4) What object represents a relationship between two `DataTable` objects in a `DataSet` based on parent-child foreign keys?
+  A. (*) DataRelation
+  B.     ForeignKeyConstraint
+  C.     DataLink
+  D.     JoinTable
+Explanation: DataRelation models parent-child relationships between tables in a DataSet.
+
+[bca-432e-u4-q194] (Unit 4) What happens to an active `SqlDataReader` if the command is executed with the `CommandBehavior.CloseConnection` flag?
+  A.     The computer shuts down
+  B. (*) Closing the SqlDataReader automatically closes the underlying physical SqlConnection
+  C.     The database is deleted
+  D.     The connection remains open indefinitely
+Explanation: CommandBehavior.CloseConnection ensures the physical connection closes as soon as the reader is closed.
+
+[bca-432e-u4-q195] (Unit 4) What is the primary role of the `ReportViewer` control in Visual Studio desktop and web applications?
+  A.     To report software crashes to Microsoft
+  B. (*) To display, render, paginate, and print professional formatted enterprise business reports (RDLC client reports or SSRS server reports) directly within applications
+  C.     To inspect computer temperatures
+  D.     To view antivirus logs
+Explanation: ReportViewer renders local RDLC reports with tabular grouping, sorting, charts, and PDF/Excel export.
+
+[bca-432e-u4-q196] (Unit 4) What file extension is used for local client report definitions designed in Visual Studio?
+  A.     .rpt
+  B. (*) .rdlc (Report Definition Language Client-side)
+  C.     .pdf
+  D.     .xml
+Explanation: RDLC (Report Definition Language Client) files define report layouts locally without requiring full SQL Server Reporting Services.
+
+[bca-432e-u4-q197] (Unit 4) What does `connection.State` return in ADO.NET?
+  A.     The geographical state of the server
+  B. (*) A `ConnectionState` enumeration value indicating whether the connection is Closed, Open, Connecting, Executing, or Fetching
+  C.     A boolean True/False
+  D.     The server IP address
+Explanation: connection.State inspects current connection status (e.g., ConnectionState.Open).
+
+[bca-432e-u4-q198] (Unit 4) Which method of a `DataTable` returns an array of `DataRow` objects that match a specified filter expression?
+  A.     table.Find()
+  B. (*) table.Select(String filterExpression)
+  C.     table.Query()
+  D.     table.Search()
+Explanation: table.Select('Age >= 18', 'LastName ASC') filters and sorts rows in-memory.
+
+[bca-432e-u4-q199] (Unit 4) What is the default value of the `IsolationLevel` when starting an ADO.NET `SqlTransaction`?
+  A.     IsolationLevel.ReadUncommitted
+  B. (*) IsolationLevel.ReadCommitted
+  C.     IsolationLevel.Serializable
+  D.     IsolationLevel.Snapshot
+Explanation: SqlTransaction defaults to ReadCommitted isolation.
+
+[bca-432e-u4-q200] (Unit 4) What is the primary benefit of the ADO.NET disconnected model for web applications and distributed architectures?
+  A.     It uses less electricity
+  B. (*) Scalability: web servers do not hold database connections open while users view pages, allowing a small pool of database connections to service thousands of concurrent web users
+  C.     Web pages load without internet
+  D.     It eliminates database passwords
+Explanation: Releasing connections during user think-time enables high scalability in web tier architectures.
+
+[bca-432e-u5-q201] (Unit 5) What is ASP.NET?
+  A.     A desktop operating system
+  B. (*) A server-side web application framework developed by Microsoft for building dynamic web pages, applications, and XML web services
+  C.     A web browser by Microsoft
+  D.     A database system
+Explanation: ASP.NET is Microsoft's enterprise web application technology built on top of the .NET CLR.
+
+[bca-432e-u5-q202] (Unit 5) What is the fundamental architectural difference between Windows Forms and ASP.NET Web Forms?
+  A. (*) Windows Forms runs locally as a thick-client desktop process; ASP.NET Web Forms runs on a remote web server (IIS), generating HTML sent to thin-client web browsers over stateless HTTP
+  B.     Windows Forms is for the internet; ASP.NET is for desktop
+  C.     Windows Forms uses HTML; ASP.NET uses C++ only
+  D.     There is no difference
+Explanation: Windows Forms is stateful and desktop-native; ASP.NET Web Forms generates server-side HTML/JavaScript for web clients.
+
+[bca-432e-u5-q203] (Unit 5) What is a 'Thin-Client' architecture in ASP.NET web computing?
+  A.     A computer with a thin physical monitor
+  B. (*) An architecture where application processing, business logic, and data storage occur on the central web/database server, while the client machine requires only a lightweight web browser to render HTML
+  C.     A client machine with no RAM
+  D.     An architecture without a keyboard
+Explanation: Thin-client systems shift heavy processing to the server, requiring client devices to only render standard HTML/CSS.
+
+[bca-432e-u5-q204] (Unit 5) What is the standard file extension for an ASP.NET Web Form page?
+  A.     .asp
+  B. (*) .aspx
+  C.     .html
+  D.     .php
+Explanation: .aspx is the standard extension for ASP.NET web pages.
+
+[bca-432e-u5-q205] (Unit 5) What is the 'Code-Behind' model in ASP.NET Web Forms?
+  A.     Hiding code behind images
+  B. (*) An architectural separation where visual HTML/ASP markup is stored in a `.aspx` file, while procedural logic is stored in a separate code-behind file (e.g., `.aspx.vb` or `.aspx.cs`)
+  C.     Writing code in comments
+  D.     A password protection scheme
+Explanation: Code-behind separates presentation markup from server-side programming logic.
+
+[bca-432e-u5-q206] (Unit 5) What is a 'PostBack' in ASP.NET Web Forms?
+  A.     Sending a letter in the mail
+  B. (*) The process where a web page submits its form data back to the same page URL on the server for processing and event handling
+  C.     Reloading the browser cache
+  D.     A database rollback
+Explanation: PostBack sends the page form back to itself so server controls can process user interactions.
+
+[bca-432e-u5-q207] (Unit 5) Which Page property indicates whether the page is being rendered for the very first time or in response to a postback?
+  A.     Page.IsFirstTime
+  B. (*) Page.IsPostBack
+  C.     Page.IsLoaded
+  D.     Page.IsCallback
+Explanation: If Not Page.IsPostBack Then executes initialization code only on the initial page load.
+
+[bca-432e-u5-q208] (Unit 5) What is 'ViewState' in ASP.NET Web Forms?
+  A.     A panoramic screen display
+  B. (*) A client-side state management mechanism that preserves control property values across postbacks by encoding them into a hidden HTML form field (`__VIEWSTATE`) as a Base64 string
+  C.     A video graphics card feature
+  D.     A database view
+Explanation: ViewState preserves control state across stateless HTTP requests by serializing state into a hidden field.
+
+[bca-432e-u5-q209] (Unit 5) What special file in an ASP.NET application handles application-level and session-level lifecycle events (such as Application_Start, Session_Start)?
+  A.     web.config
+  B. (*) global.asax
+  C.     machine.config
+  D.     default.aspx
+Explanation: global.asax (the Global Application File) handles global application and session events.
+
+[bca-432e-u5-q210] (Unit 5) What is the primary XML configuration file in an ASP.NET web application used for setting database connection strings, authentication modes, and compilation settings?
+  A.     global.asax
+  B. (*) web.config
+  C.     app.config
+  D.     server.xml
+Explanation: web.config stores application-specific configuration settings in standard XML format.
+
+[bca-432e-u5-q211] (Unit 5) In web.config, which section standardly stores database connection strings?
+  A.     <appSettings>
+  B. (*) <connectionStrings>
+  C.     <system.web>
+  D.     <authentication>
+Explanation: The <connectionStrings> section stores reusable database connections accessible via ConfigurationManager.
+
+[bca-432e-u5-q212] (Unit 5) What is the difference between Application State (`Application(...)`) and Session State (`Session(...)`) in ASP.NET?
+  A. (*) Application state is shared among ALL users across the entire web application; Session state is private to a SINGLE individual user
+  B.     Application state stores text; Session state stores numbers
+  C.     Application state expires in 10 minutes
+  D.     They are identical
+Explanation: Application state is global across all active sessions; Session state tracks individual users.
+
+[bca-432e-u5-q213] (Unit 5) Where is ASP.NET In-Proc (In-Process) Session data stored by default?
+  A.     In client browser cookies
+  B. (*) In the memory space of the ASP.NET worker process on the web server (w3wp.exe)
+  C.     In an external SQL Server database
+  D.     On a network file share
+Explanation: In-Proc session state resides in the server's local RAM process (fastest, but lost if the app restarts).
+
+[bca-432e-u5-q214] (Unit 5) What special ASP.NET folder is automatically compiled at runtime and used for storing shared business classes, data access modules, and utility code?
+  A.     App_Data
+  B. (*) App_Code
+  C.     Bin
+  D.     App_Themes
+Explanation: App_Code contains shared classes dynamically compiled by ASP.NET.
+
+[bca-432e-u5-q215] (Unit 5) What special ASP.NET folder is standardly used to store local database files (such as `.mdf` SQL Server Express or `.mdb` Access databases)?
+  A.     App_Code
+  B. (*) App_Data
+  C.     Bin
+  D.     App_Local
+Explanation: App_Data stores application data files, protected by IIS from remote direct browser download.
+
+[bca-432e-u5-q216] (Unit 5) What special ASP.NET folder holds pre-compiled assembly `.dll` files referenced by the web application?
+  A. (*) Bin
+  B.     App_Data
+  C.     App_Code
+  D.     Lib
+Explanation: The Bin directory hosts compiled assemblies, which are automatically linked by the runtime.
+
+[bca-432e-u5-q217] (Unit 5) All ASP.NET standard Server Controls must include which mandatory attribute in their tag definition?
+  A. (*) runat='server'
+  B.     server='true'
+  C.     asp='execute'
+  D.     postback='true'
+Explanation: runat='server' tells ASP.NET to process the tag on the server rather than treating it as static HTML.
+
+[bca-432e-u5-q218] (Unit 5) Which ASP.NET validation control ensures that a required input field is NOT left blank by the user?
+  A.     RangeValidator
+  B. (*) RequiredFieldValidator
+  C.     RegularExpressionValidator
+  D.     CompareValidator
+Explanation: RequiredFieldValidator ensures mandatory fields contain data before form submission.
+
+[bca-432e-u5-q219] (Unit 5) Which ASP.NET validation control verifies that a user's input falls within a specified minimum and maximum range (e.g., age between 18 and 60)?
+  A.     RequiredFieldValidator
+  B. (*) RangeValidator
+  C.     CompareValidator
+  D.     CustomValidator
+Explanation: RangeValidator tests if values fall within MinimumValue and MaximumValue boundaries.
+
+[bca-432e-u5-q220] (Unit 5) Which ASP.NET validation control tests an input value against a regular expression pattern (such as validating an email address or postal code)?
+  A.     RangeValidator
+  B. (*) RegularExpressionValidator
+  C.     CompareValidator
+  D.     RequiredFieldValidator
+Explanation: RegularExpressionValidator evaluates inputs against regex patterns.
+
+[bca-432e-u5-q221] (Unit 5) Which ASP.NET validation control compares an input value against another control's value (e.g., verifying Password and Confirm Password match) or against a constant?
+  A. (*) CompareValidator
+  B.     RangeValidator
+  C.     CustomValidator
+  D.     ValidationSummary
+Explanation: CompareValidator compares inputs between two controls or against fixed values.
+
+[bca-432e-u5-q222] (Unit 5) Which ASP.NET validation control displays an aggregated list or bulleted summary of all validation failure messages in one central location on the page?
+  A.     CustomValidator
+  B. (*) ValidationSummary
+  C.     ErrorList
+  D.     AlertBox
+Explanation: ValidationSummary aggregates all active error messages into a single visual summary block.
+
+[bca-432e-u5-q223] (Unit 5) What is a 'Master Page' (.master) in ASP.NET?
+  A.     A page with administrator access
+  B. (*) A template page that defines a consistent common layout, headers, navigation menus, and footers across all pages in a website
+  C.     The home page of a website
+  D.     A web server controller
+Explanation: Master pages provide unified website layouts containing ContentPlaceHolder zones filled by individual content pages.
+
+[bca-432e-u5-q224] (Unit 5) Which control inside an ASP.NET Master Page marks the replaceable region where individual Content Pages inject their specific unique content?
+  A. (*) ContentPlaceHolder
+  B.     MasterRegion
+  C.     PageSlot
+  D.     DynamicArea
+Explanation: ContentPlaceHolder controls define the customizable content regions of master pages.
+
+[bca-432e-u5-q225] (Unit 5) What is an ASP.NET 'Theme'?
+  A.     A musical background tune
+  B. (*) A collection of visual styling properties, CSS files, control skin files (.skin), and images that define a unified visual appearance across a website
+  C.     A website font
+  D.     A database design
+Explanation: Themes and Skins standardize the visual styling and control appearances across an entire web application.
+
+[bca-432e-u5-q226] (Unit 5) What is a 'Skin File' (.skin) in an ASP.NET Theme?
+  A.     A file defining human skin tones
+  B. (*) A file containing design property settings for ASP.NET server controls (e.g., defining default button colors or font sizes) applied across pages
+  C.     A CSS file
+  D.     A graphic icon
+Explanation: Skin files declare default visual property values for server controls.
+
+[bca-432e-u5-q227] (Unit 5) What web server software developed by Microsoft hosts and runs ASP.NET applications on Windows Server?
+  A.     Apache
+  B. (*) Internet Information Services (IIS)
+  C.     Nginx
+  D.     Tomcat
+Explanation: Internet Information Services (IIS) is Microsoft's enterprise web server hosting ASP.NET.
+
+[bca-432e-u5-q228] (Unit 5) Which rich data control in ASP.NET Web Forms provides automatic tabular data display, sorting, paging, in-place editing, and deleting of database records?
+  A.     Repeater
+  B. (*) GridView
+  C.     DataList
+  D.     Table
+Explanation: The GridView control provides comprehensive out-of-the-box data display, pagination, and editing.
+
+[bca-432e-u5-q229] (Unit 5) Which data source control in ASP.NET connects directly to a relational database using an ADO.NET connection string and SQL queries, binding seamlessly to a GridView?
+  A.     ObjectDataSource
+  B. (*) SqlDataSource
+  C.     XmlDataSource
+  D.     SiteMapDataSource
+Explanation: SqlDataSource executes declarative SQL queries and binds to data controls without manual code-behind.
+
+[bca-432e-u5-q230] (Unit 5) What is the lightweight, template-driven ASP.NET data control that repeats a custom HTML markup template for each record without generating extraneous outer HTML tables?
+  A.     GridView
+  B. (*) Repeater
+  C.     DetailsView
+  D.     FormView
+Explanation: Repeater offers maximum HTML rendering control by repeating custom item templates without wrapper markup.
+
+[bca-432e-u5-q231] (Unit 5) What navigation control in ASP.NET displays a 'Breadcrumb' trail (e.g., Home > Products > Electronics) showing the user's current location in site hierarchy?
+  A.     TreeView
+  B. (*) SiteMapPath
+  C.     Menu
+  D.     NavBar
+Explanation: SiteMapPath renders hierarchical breadcrumb trails based on Web.sitemap.
+
+[bca-432e-u5-q232] (Unit 5) What XML file standardly defines the hierarchical structure of pages for ASP.NET site navigation controls?
+  A. (*) Web.sitemap
+  B.     web.config
+  C.     navigation.xml
+  D.     site.xml
+Explanation: Web.sitemap defines the tree of site URLs, titles, and descriptions.
+
+[bca-432e-u5-q233] (Unit 5) What is 'Compilation' in ASP.NET deployment?
+  A.     Copying files to a USB drive
+  B. (*) The process of compiling all code-behind files, web pages, and classes into compiled assembly `.dll` files in the Bin directory
+  C.     Formatting hard drives
+  D.     Compressing images
+Explanation: Compilation transforms source files into executable binary assemblies.
+
+[bca-432e-u5-q234] (Unit 5) What is 'Precompilation' in ASP.NET deployment (using aspnet_compiler.exe)?
+  A.     Writing code before designing the UI
+  B. (*) Compiling all pages and code-behind into assemblies prior to deployment, eliminating first-request compilation delay and protecting intellectual property (source code is not deployed)
+  C.     Testing code on local servers
+  D.     Designing website templates
+Explanation: Precompilation improves first-request response times and secures proprietary source code from server deployment.
+
+[bca-432e-u5-q235] (Unit 5) What is a Windows Installer (.msi) Setup Project in Visual Studio?
+  A.     A project that runs on the web
+  B. (*) A project type that builds a standard Windows setup package (.msi) complete with installation wizards, shortcut creation, registry entries, and prerequisite checks
+  C.     An antivirus scanner
+  D.     A database backup file
+Explanation: Setup projects produce .msi installers for distributing and installing Windows applications.
+
+[bca-432e-u5-q236] (Unit 5) What is ClickOnce deployment in the .NET Framework?
+  A.     An advertising link that users click once
+  B. (*) A deployment technology that allows Windows desktop applications to be installed and updated from a web server with minimal user interaction and automatic background updates
+  C.     A mouse clicking tutorial
+  D.     A single-use software license
+Explanation: ClickOnce deploys desktop applications via web links, featuring automated update checks.
+
+[bca-432e-u5-q237] (Unit 5) What is the Global Assembly Cache (GAC) in the .NET Framework?
+  A.     A worldwide internet cache
+  B. (*) A machine-wide central CLI cache that stores strongly named shared assemblies (.dll) accessible by all applications running on the machine
+  C.     A website search engine
+  D.     A CPU hardware register
+Explanation: The GAC stores shared, strongly named assemblies in the Windows directory (assembly / Microsoft.NET).
+
+[bca-432e-u5-q238] (Unit 5) What is a 'Strong Name' for an assembly in .NET?
+  A.     A name written in bold capital letters
+  B. (*) An assembly identity consisting of its simple text name, version number, culture information, and a cryptographic digital signature generated with a private key pair (public key token)
+  C.     A password-protected file name
+  D.     An encrypted folder name
+Explanation: Strong naming uniquely identifies assemblies and prevents DLL hell / version conflicts.
+
+[bca-432e-u5-q239] (Unit 5) What utility tool in the .NET Framework SDK is used to generate strong name cryptographic key pairs (`.snk` files)?
+  A.     gacutil.exe
+  B. (*) sn.exe (Strong Name Utility)
+  C.     regasm.exe
+  D.     csc.exe
+Explanation: sn.exe generates and manages cryptographic key pairs for strong-named assemblies.
+
+[bca-432e-u5-q240] (Unit 5) What utility tool in the .NET SDK is used to install or remove shared assemblies from the Global Assembly Cache (GAC)?
+  A.     sn.exe
+  B. (*) gacutil.exe (GAC Utility)
+  C.     nunit.exe
+  D.     msbuild.exe
+Explanation: gacutil -i assembly.dll installs assemblies into the GAC.
+
+[bca-432e-u5-q241] (Unit 5) What is 'XCOPY Deployment' in the .NET Framework?
+  A.     Copying code with an optical Xerox machine
+  B. (*) Deploying a self-contained .NET application simply by copying its files/directories to the target machine without requiring complex registry entries or COM registration
+  C.     An operating system command that deletes files
+  D.     A type of network transfer protocol
+Explanation: XCOPY deployment reflects .NET's modular architecture: copy the directory and run.
+
+[bca-432e-u5-q242] (Unit 5) What is 'Session Hijacking' prevention in ASP.NET?
+  A.     Encrypting the entire hard drive
+  B. (*) Regenerating session IDs upon privilege elevation, using HTTPS, and setting `requireSSL='true'` and `httpOnlyCookies='true'` in web.config
+  C.     Shutting down the server every 5 minutes
+  D.     Disabling all cookies
+Explanation: Configuring secure cookie attributes and HTTPS mitigates session token interception.
+
+[bca-432e-u5-q243] (Unit 5) In ASP.NET, what is the default timeout period for a Session if the user is inactive?
+  A.     5 minutes
+  B. (*) 20 minutes
+  C.     1 hour
+  D.     24 hours
+Explanation: ASP.NET session timeout defaults to 20 minutes in web.config (<sessionState timeout='20'/>).
+
+[bca-432e-u5-q244] (Unit 5) What does `Response.Redirect('page.aspx')` do in ASP.NET?
+  A.     Forwards the request internally on the server without changing the URL
+  B. (*) Sends an HTTP 302 redirect response instructing the client browser to issue a new GET request to the target URL
+  C.     Closes the browser window
+  D.     Restarts the web server
+Explanation: Response.Redirect triggers a client-side roundtrip redirect to a new URL.
+
+[bca-432e-u5-q245] (Unit 5) What does `Server.Transfer('page.aspx')` do compared to `Response.Redirect`?
+  A.     Terminates the application
+  B. (*) Transfers execution to the target page internally entirely on the server within the same request, avoiding an extra client browser roundtrip (browser URL remains unchanged)
+  C.     Sends an email to the administrator
+  D.     Creates a new database table
+Explanation: Server.Transfer executes on the server, eliminating network latency and preserving request context.
+
+[bca-432e-u5-q246] (Unit 5) What is 'Cross-Page Posting' in ASP.NET Web Forms?
+  A.     Posting comments on social media
+  B. (*) Configuring a Button's `PostBackUrl` property to post form data directly to a different target page rather than back to itself
+  C.     Copying HTML between pages
+  D.     Sharing passwords across domains
+Explanation: PostBackUrl directs form submission to an alternate target page.
+
+[bca-432e-u5-q247] (Unit 5) Which ASP.NET control manages client-side script libraries, asynchronous partial-page updates, and AJAX functionality?
+  A.     Timer
+  B. (*) ScriptManager
+  C.     UpdatePanel
+  D.     AjaxRouter
+Explanation: ScriptManager coordinates client scripts and AJAX operations in ASP.NET AJAX applications.
+
+[bca-432e-u5-q248] (Unit 5) Which ASP.NET AJAX control encloses a region of a web page that can be refreshed asynchronously without a full page reload?
+  A.     ScriptManager
+  B. (*) UpdatePanel
+  C.     UpdateProgress
+  D.     Timer
+Explanation: UpdatePanel enables partial-page rendering via asynchronous postbacks.
+
+[bca-432e-u5-q249] (Unit 5) What is 'DLL Hell' that the .NET Framework was explicitly designed to eradicate?
+  A.     A physical storage room filled with broken hard drives
+  B. (*) The conflict and instability in legacy Windows/COM systems where installing or upgrading a shared DLL overwrote or broke dependencies for other existing software applications
+  C.     A computer virus
+  D.     A slow network connection
+Explanation: .NET eliminated DLL Hell through side-by-side assembly versioning and isolated dependencies.
+
+[bca-432e-u5-q250] (Unit 5) What is the ultimate purpose of application deployment packaging in professional software engineering?
+  A.     To make the software file as large as possible
+  B. (*) To package all required binaries, dependencies, configuration files, and assets into an easily installable, verified, and maintainable release for end-users
+  C.     To lock users out of their operating system
+  D.     To prevent users from uninstalling software
+Explanation: Deployment packages ensure reliable, standardized software distribution and setup across target systems.
+

@@ -11,11 +11,18 @@ import {
   Plus,
   Settings,
   Shield,
+  ShieldCheck,
   Layout,
   Tag as TagIcon,
   Inbox,
   UserCircle2,
   FolderTree,
+  Users,
+  Megaphone,
+  SlidersHorizontal,
+  LayoutTemplate,
+  Globe,
+  Activity,
 } from "lucide-react";
 
 import {
@@ -32,7 +39,7 @@ type Action = {
   id: string;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
-  group: "Jump to" | "Create" | "Settings";
+  group: "Jump to" | "Create" | "Settings" | "Platform";
   to: string;
   keywords?: string;
 };
@@ -45,9 +52,9 @@ const ACTIONS: Action[] = [
     group: "Jump to",
     to: "/admin",
   },
-  { id: "nav-courses", label: "Courses", icon: BookOpen, group: "Jump to", to: "/admin/courses" },
-  { id: "nav-subjects", label: "Subjects", icon: Library, group: "Jump to", to: "/admin/subjects" },
-  { id: "nav-content", label: "Content", icon: FileText, group: "Jump to", to: "/admin/content" },
+  { id: "nav-courses", label: "Courses & Semesters", icon: BookOpen, group: "Jump to", to: "/admin/courses" },
+  { id: "nav-subjects", label: "Subjects & Units", icon: Library, group: "Jump to", to: "/admin/subjects" },
+  { id: "nav-content", label: "Notes & Materials", icon: FileText, group: "Jump to", to: "/admin/content" },
   {
     id: "nav-papers",
     label: "Previous Papers",
@@ -57,18 +64,21 @@ const ACTIONS: Action[] = [
   },
   {
     id: "nav-quizzes",
-    label: "Question Bank",
+    label: "Question Bank & Quizzes",
     icon: FlaskConical,
     group: "Jump to",
     to: "/admin/quizzes",
   },
   {
     id: "nav-explorer",
-    label: "Content tree",
+    label: "Curriculum Tree",
     icon: FolderTree,
     group: "Jump to",
     to: "/admin/explorer",
   },
+  { id: "nav-users", label: "Student Directory", icon: Users, group: "Jump to", to: "/admin/users" },
+  { id: "nav-announcements", label: "Announcements", icon: Megaphone, group: "Jump to", to: "/admin/announcements" },
+  { id: "nav-inbox", label: "Inbox Messages", icon: Inbox, group: "Jump to", to: "/admin/inbox" },
   {
     id: "nav-media",
     label: "Media library",
@@ -76,8 +86,7 @@ const ACTIONS: Action[] = [
     group: "Jump to",
     to: "/admin/media",
   },
-  { id: "nav-tags", label: "Tags", icon: TagIcon, group: "Jump to", to: "/admin/tags" },
-  { id: "nav-inbox", label: "Inbox", icon: Inbox, group: "Jump to", to: "/admin/inbox" },
+  { id: "nav-tags", label: "Tags Taxonomy", icon: TagIcon, group: "Jump to", to: "/admin/tags" },
   {
     id: "nav-homepage",
     label: "Homepage sections",
@@ -94,17 +103,52 @@ const ACTIONS: Action[] = [
   },
   {
     id: "nav-settings",
-    label: "Settings",
+    label: "Admin Settings",
     icon: Settings,
     group: "Settings",
     to: "/admin/settings",
   },
   {
     id: "nav-super",
-    label: "Super admin",
+    label: "Platform Governance",
     icon: Shield,
-    group: "Settings",
+    group: "Platform",
     to: "/admin/superadmin",
+  },
+  {
+    id: "nav-super-users",
+    label: "Staff & Role Access",
+    icon: ShieldCheck,
+    group: "Platform",
+    to: "/admin/superadmin/users",
+  },
+  {
+    id: "nav-super-audit",
+    label: "Audit Logs",
+    icon: Activity,
+    group: "Platform",
+    to: "/admin/superadmin/audit",
+  },
+  {
+    id: "nav-super-flags",
+    label: "Feature Flags",
+    icon: SlidersHorizontal,
+    group: "Platform",
+    to: "/admin/superadmin/flags",
+  },
+  {
+    id: "nav-super-branding",
+    label: "Platform Branding",
+    icon: LayoutTemplate,
+    group: "Platform",
+    to: "/admin/superadmin/branding",
+  },
+  {
+    id: "nav-super-seo",
+    label: "SEO Manager",
+    icon: Globe,
+    group: "Platform",
+    to: "/admin/superadmin/seo",
   },
   {
     id: "new-content",
@@ -131,7 +175,7 @@ export function CommandPalette() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const groups = ["Jump to", "Create", "Settings"] as const;
+  const groups = ["Jump to", "Create", "Settings", "Platform"] as const;
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>

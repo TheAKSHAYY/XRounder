@@ -170,41 +170,53 @@ export const migrateLegacyNotes = createServerFn({ method: "POST" })
       : { data: [] as Array<{ id: string; subject_id: string | null }> };
     const subjectByUnit = new Map((units ?? []).map((u) => [u.id, u.subject_id as string | null]));
 
-    // Skip notes already migrated (match by unit_id + title)
-    const { data: existing } = await sb
-      .from("content_items")
-      .select("unit_id, title")
-      .is("deleted_at", null);
-    const existingKey = new Set((existing ?? []).map((e) => `${e.unit_id}::${e.title}`));
+    // Skip notes already present in content_items by primary key ID.
+    // Notes already present in the active table will be excluded upfront.
+    const { data: existing, error: existingErr } = await sb.from("content_items").select("id");
+    if (existingErr)
+      throw new Error(`Checking existing content items failed: ${existingErr.message}`);
+    const existingIds = new Set((existing ?? []).map((e) => e.id));
 
-    const rows = notes
-      .filter((n) => !existingKey.has(`${n.unit_id}::${n.title}`))
-      .map((n) => ({
-        type: (n.file_mime === "application/pdf" ? "pdf" : "note") as "pdf" | "note",
-        title: n.title,
-        description: n.body || n.summary || null,
-        unit_id: n.unit_id,
-        subject_id: subjectByUnit.get(n.unit_id as string) ?? null,
-        file_bucket: n.file_bucket,
-        file_path: n.file_path,
-        file_mime: n.file_mime,
-        file_size_bytes: n.file_size_bytes,
-        status: n.status,
-        visibility: "students" as const,
-        tags: [],
-        created_by: context.userId,
-      }));
-    const skipped = notes.length - rows.length;
-    if (rows.length === 0) return { migrated: 0, skipped, errors: [] as string[] };
+    const unmigratedNotes = notes.filter((n) => !existingIds.has(n.id));
+    let skipped = notes.length - unmigratedNotes.length;
+    if (unmigratedNotes.length === 0) return { migrated: 0, skipped, errors: [] as string[] };
 
-    // Insert one-by-one so a single bad row cannot fail the whole import,
-    // and so the failing title is reported back to the admin.
+    const rows = unmigratedNotes.map((n) => ({
+      id: n.id,
+      type: (n.file_mime === "application/pdf" ? "pdf" : "note") as "pdf" | "note",
+      title: n.title,
+      description: n.body || n.summary || null,
+      unit_id: n.unit_id,
+      subject_id: subjectByUnit.get(n.unit_id as string) ?? null,
+      file_bucket: n.file_bucket,
+      file_path: n.file_path,
+      file_mime: n.file_mime,
+      file_size_bytes: n.file_size_bytes,
+      status: n.status,
+      visibility: "students" as const,
+      tags: [],
+      created_by: context.userId,
+    }));
+
+    // Upsert one-by-one with onConflict: "id" and ignoreDuplicates: true.
+    // Chaining .select("id") ensures that if PostgreSQL executes DO NOTHING
+    // (due to a race condition or a soft-deleted row invisible to RLS),
+    // insData is empty and the row is safely counted as skipped.
     let migrated = 0;
     const errors: string[] = [];
     for (const row of rows) {
-      const { error: insErr } = await sb.from("content_items").insert(row);
-      if (insErr) errors.push(`${row.title}: ${insErr.message}`);
-      else migrated++;
+      const { data: insData, error: insErr } = await sb
+        .from("content_items")
+        .upsert(row, { onConflict: "id", ignoreDuplicates: true })
+        .select("id");
+
+      if (insErr) {
+        errors.push(`${row.title}: ${insErr.message}`);
+      } else if (insData && insData.length > 0) {
+        migrated++;
+      } else {
+        skipped++;
+      }
     }
     if (migrated === 0 && errors.length > 0) throw new Error(errors.join(" | "));
     return { migrated, skipped, errors };

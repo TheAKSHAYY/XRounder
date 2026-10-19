@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 4
+BCA-204N: UNIX AND SHELL PROGRAMMING - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-204n-u1-q01] (Unit 1) Where was the UNIX operating system originally developed in 1969?
+  A.     Microsoft Corporation
+  B. (*) AT&T Bell Laboratories
+  C.     Xerox PARC
+  D.     Stanford University
+Explanation: UNIX was pioneered in 1969 at Bell Labs by Ken Thompson, Dennis Ritchie, Brian Kernighan, and colleagues.
+
+[bca-204n-u1-q02] (Unit 1) What programming language was UNIX largely rewritten in during 1973, making it extraordinarily portable?
+  A.     Assembly
+  B.     B language
+  C. (*) C language
+  D.     Pascal
+Explanation: In 1973, Dennis Ritchie and Ken Thompson rewrote UNIX in C, transforming operating system history by breaking hardware dependency.
+
+[bca-204n-u1-q03] (Unit 1) Which of the following is NOT a core philosophy of the UNIX operating system?
+  A.     Write programs that do one thing and do it well
+  B.     Write programs to work together via text streams
+  C. (*) Design massive, monolithic programs containing all user utilities in a single executable
+  D.     Store data in flat text files
+Explanation: The UNIX philosophy emphasizes modular, small tools chained together via text streams, rather than bloated single monoliths.
+
+[bca-204n-u1-q04] (Unit 1) Which layer in the UNIX architecture directly interacts with physical computer hardware?
+  A.     Shell
+  B. (*) Kernel
+  C.     User Applications
+  D.     System Libraries
+Explanation: The Kernel is the heart of UNIX residing in supervisor memory, directly controlling CPU, RAM, and hardware devices.
+
+[bca-204n-u1-q05] (Unit 1) What is the function of the UNIX Shell?
+  A.     A hardware chip
+  B. (*) A command-line interpreter that reads user commands, interprets them, and requests kernel services
+  C.     A memory partition
+  D.     A disk format
+Explanation: The Shell is a user-level program providing an interactive interface between the user and the kernel.
+
+[bca-204n-u1-q06] (Unit 1) What command reveals whether a command is a shell built-in or an external disk binary?
+  A. (*) type
+  B.     where
+  C.     info
+  D.     find
+Explanation: The `type` command (e.g., `type cd`, `type ls`) identifies whether a command is a built-in or external executable.
+
+[bca-204n-u1-q07] (Unit 1) Which command displays the manual page documentation for a UNIX utility?
+  A.     help
+  B.     doc
+  C. (*) man
+  D.     guide
+Explanation: The `man` utility (e.g., `man ls`, `man grep`) formats and displays reference manual pages.
+
+[bca-204n-u1-q08] (Unit 1) In UNIX man pages, which section specifically covers System Calls?
+  A.     Section 1
+  B. (*) Section 2
+  C.     Section 3
+  D.     Section 8
+Explanation: Section 1 covers User Commands; Section 2 covers System Calls; Section 3 covers C Library Functions; Section 8 covers System Admin Commands.
+
+[bca-204n-u1-q09] (Unit 1) Which command displays a one-line description of a command from the whatis database?
+  A. (*) whatis
+  B.     whois
+  C.     describe
+  D.     lookup
+Explanation: `whatis command` displays short manual page descriptions.
+
+[bca-204n-u1-q10] (Unit 1) Which command searches man page descriptions for keywords (equivalent to `man -k`)?
+  A.     search
+  B. (*) apropos
+  C.     find
+  D.     locate
+Explanation: `apropos keyword` searches description strings in manual pages.
+
+[bca-204n-u1-q11] (Unit 1) Which command displays the current absolute working directory path?
+  A.     dir
+  B.     cwd
+  C. (*) pwd
+  D.     path
+Explanation: `pwd` (Print Working Directory) outputs the current directory hierarchy from root `/`.
+
+[bca-204n-u1-q12] (Unit 1) What does `cd ..` do?
+  A.     Changes to root directory
+  B.     Changes to current user's home directory
+  C. (*) Moves up one level to parent directory
+  D.     Deletes directory
+Explanation: `..` denotes the parent directory in hierarchical file path traversal.
+
+[bca-204n-u1-q13] (Unit 1) What does `cd ~` or simply `cd` with no arguments do in UNIX?
+  A.     Changes to root `/`
+  B. (*) Changes to current user's home directory (`$HOME`)
+  C.     Stays in current directory
+  D.     Raises error
+Explanation: A bare `cd` or `cd ~` returns the user immediately to their login home directory.
+
+[bca-204n-u1-q14] (Unit 1) Which option with `mkdir` automatically creates missing parent directories in a nested path?
+  A.     -r
+  B. (*) -p
+  C.     -f
+  D.     -a
+Explanation: `mkdir -p /a/b/c` creates all missing parent directories without error.
+
+[bca-204n-u1-q15] (Unit 1) Which command removes an empty directory?
+  A. (*) rmdir
+  B.     del
+  C.     remove
+  D.     erase
+Explanation: `rmdir` removes directories that contain no files or subdirectories.
+
+[bca-204n-u1-q16] (Unit 1) Which command option with `ls` displays long-format detailed file information (permissions, links, owner, size, date)?
+  A.     -a
+  B. (*) -l
+  C.     -h
+  D.     -R
+Explanation: `ls -l` outputs detailed file metadata columns.
+
+[bca-204n-u1-q17] (Unit 1) Which option with `ls` displays all hidden files (files beginning with a dot `.`)?
+  A.     -h
+  B. (*) -a
+  C.     -d
+  D.     -t
+Explanation: `ls -a` (all) lists all entries including dot files like `.bashrc` and `.profile`.
+
+[bca-204n-u1-q18] (Unit 1) Which option with `ls` recursively lists all subdirectories and their contents?
+  A.     -r
+  B. (*) -R
+  C.     -s
+  D.     -x
+Explanation: `ls -R` performs recursive directory listing.
+
+[bca-204n-u1-q19] (Unit 1) Which command creates an empty file or updates the access and modification timestamps of an existing file?
+  A.     create
+  B. (*) touch
+  C.     new
+  D.     stamp
+Explanation: `touch filename` creates a zero-byte file if it does not exist, or updates timestamps if it exists.
+
+[bca-204n-u1-q20] (Unit 1) Which command copies files or directories from source to destination?
+  A.     copy
+  B. (*) cp
+  C.     clone
+  D.     dup
+Explanation: `cp source dest` copies files (`cp -r` for recursive directory copy).
+
+[bca-204n-u1-q21] (Unit 1) Which command moves or renames files and directories in UNIX?
+  A.     ren
+  B.     move
+  C. (*) mv
+  D.     rn
+Explanation: `mv oldname newname` renames or relocates files.
+
+[bca-204n-u1-q22] (Unit 1) Which command deletes files in UNIX?
+  A.     del
+  B. (*) rm
+  C.     erase
+  D.     unlink_all
+Explanation: `rm` removes directory entries and deletes files (`rm -r` for recursive directory removal).
+
+[bca-204n-u1-q23] (Unit 1) Which command concatenates and displays entire text file contents on terminal stdout?
+  A.     type
+  B. (*) cat
+  C.     echo
+  D.     print
+Explanation: `cat file1 file2` concatenates and streams text to stdout.
+
+[bca-204n-u1-q24] (Unit 1) Which command displays the first 10 lines of a file by default?
+  A.     top
+  B. (*) head
+  C.     start
+  D.     first
+Explanation: `head -n 10 file` displays the initial lines.
+
+[bca-204n-u1-q25] (Unit 1) Which command continuously monitors and displays growing file lines in real time (e.g., log files)?
+  A.     head -f
+  B. (*) tail -f
+  C.     watch
+  D.     cat -live
+Explanation: `tail -f /var/log/syslog` follows appended data in real time.
+
+[bca-204n-u1-q26] (Unit 1) Which command displays physical disk filesystem usage in human-readable units (GB, MB)?
+  A.     du -h
+  B. (*) df -h
+  C.     disk -u
+  D.     fdisk -l
+Explanation: `df -h` (Disk Free) reports filesystem capacity and available space.
+
+[bca-204n-u1-q27] (Unit 1) Which command estimates file space usage for a directory and its subtrees?
+  A.     df
+  B. (*) du
+  C.     free
+  D.     stat
+Explanation: `du -sh directory` (Disk Usage) computes directory subtree consumption.
+
+[bca-204n-u1-q28] (Unit 1) Which command reports snapshot information about currently active processes?
+  A.     top
+  B. (*) ps
+  C.     proc
+  D.     tasks
+Explanation: `ps` lists current active processes.
+
+[bca-204n-u1-q29] (Unit 1) What does `ps -ef` or `ps aux` display?
+  A.     Only root processes
+  B. (*) Every active process running across all users on the system with full details
+  C.     Terminated processes
+  D.     Network ports
+Explanation: `ps -ef` and `ps aux` provide comprehensive process listings across all system terminals and daemons.
+
+[bca-204n-u1-q30] (Unit 1) What is the unique numeric identification assigned to every process in UNIX called?
+  A.     UID
+  B.     GID
+  C. (*) PID
+  D.     PPID
+Explanation: PID stands for Process IDentifier.
+
+[bca-204n-u1-q31] (Unit 1) What is the Parent Process ID of a process called?
+  A. (*) PPID
+  B.     ParentID
+  C.     MPID
+  D.     GPID
+Explanation: PPID stands for Parent Process IDentifier.
+
+[bca-204n-u1-q32] (Unit 1) What is the special PID assigned to the system initialization daemon `init` / `systemd`?
+  A.     0
+  B. (*) 1
+  C.     -1
+  D.     100
+Explanation: Process 1 (`init` or `systemd`) is the ancestor of all user-space processes spawned after kernel boot.
+
+[bca-204n-u1-q33] (Unit 1) What character placed at the end of a command instructs the shell to run it as a background job?
+  A.     %
+  B. (*) &
+  C.     #
+  D.     @
+Explanation: Appending `&` (e.g., `python script.py &`) detaches command execution to run in the background.
+
+[bca-204n-u1-q34] (Unit 1) Which utility prevents a running command from receiving SIGHUP signals when the user logs out?
+  A.     bg
+  B.     fg
+  C. (*) nohup
+  D.     disown_all
+Explanation: `nohup command &` ensures jobs continue executing after terminal disconnection, logging output to `nohup.out`.
+
+[bca-204n-u1-q35] (Unit 1) Which command lists all background jobs managed by the current shell session?
+  A.     ps
+  B. (*) jobs
+  C.     tasks
+  D.     bg_list
+Explanation: The shell built-in `jobs` lists active job numbers and states (`[1]+ Running`).
+
+[bca-204n-u1-q36] (Unit 1) How do you bring background job number 1 into the foreground?
+  A. (*) fg %1
+  B.     bg %1
+  C.     bring 1
+  D.     run 1
+Explanation: `fg %1` switches job 1 to the interactive foreground.
+
+[bca-204n-u1-q37] (Unit 1) What command adjusts the scheduling priority of a new process before launching?
+  A.     renice
+  B. (*) nice
+  C.     priority
+  D.     setpri
+Explanation: `nice -n 10 command` starts a command with lower priority; `renice` alters running processes.
+
+[bca-204n-u1-q38] (Unit 1) What is the numerical range of the 'nice' value in modern UNIX/Linux systems?
+  A.     0 to 100
+  B. (*) -20 (highest priority) to +19 (lowest priority)
+  C.     1 to 10
+  D.     -100 to 100
+Explanation: Nice values range from -20 (least nice to others, highest CPU share) to +19 (nicest, lowest CPU share).
+
+[bca-204n-u1-q39] (Unit 1) Which signal is the default signal sent by the `kill` command?
+  A.     SIGKILL (9)
+  B. (*) SIGTERM (15)
+  C.     SIGINT (2)
+  D.     SIGHUP (1)
+Explanation: `kill PID` sends `SIGTERM` (signal 15), requesting graceful process termination.
+
+[bca-204n-u1-q40] (Unit 1) Which signal CANNOT be caught, blocked, or ignored by any process in UNIX?
+  A.     SIGINT (2)
+  B.     SIGTERM (15)
+  C. (*) SIGKILL (9) and SIGSTOP
+  D.     SIGHUP (1)
+Explanation: `SIGKILL` (signal 9) and `SIGSTOP` are intercepted directly by the kernel and cannot be handled or masked.
+
+[bca-204n-u1-q41] (Unit 1) Which terminal keyboard combination generates the `SIGINT` (Interrupt) signal to terminate foreground jobs?
+  A.     Ctrl + Z
+  B. (*) Ctrl + C
+  C.     Ctrl + D
+  D.     Ctrl + \
+Explanation: `Ctrl + C` sends `SIGINT` (signal 2) causing immediate interruption.
+
+[bca-204n-u1-q42] (Unit 1) Which terminal keyboard combination generates `SIGTSTP` to suspend a foreground job?
+  A.     Ctrl + C
+  B. (*) Ctrl + Z
+  C.     Ctrl + D
+  D.     Ctrl + X
+Explanation: `Ctrl + Z` sends `SIGTSTP`, pausing execution and returning shell prompt.
+
+[bca-204n-u1-q43] (Unit 1) What does `Ctrl + D` represent at the terminal console?
+  A.     Abort signal
+  B. (*) End of File (EOF) / Logout signal
+  C.     Clear screen
+  D.     Break signal
+Explanation: `Ctrl + D` signals EOF on standard input.
+
+[bca-204n-u1-q44] (Unit 1) What is a Zombie Process in UNIX?
+  A.     A process consuming 100% CPU
+  B. (*) A process that has finished execution (exited) but its exit status has not yet been read by its parent via `wait()`
+  C.     A virus program
+  D.     A background daemon
+Explanation: A Zombie process holds no memory except its PCB entry in the process table awaiting parent reaping.
+
+[bca-204n-u1-q45] (Unit 1) What is an Orphan Process in UNIX?
+  A.     A process without a child
+  B. (*) A process whose parent terminated before it; it is immediately adopted by `init` (PID 1)
+  C.     A process with invalid permissions
+  D.     A suspended process
+Explanation: When a parent process dies, orphan children are reparented to PID 1 (`init`).
+
+[bca-204n-u1-q46] (Unit 1) Which command displays dynamic, real-time interactive process CPU and memory utilization?
+  A.     ps
+  B. (*) top (or htop)
+  C.     uptime
+  D.     free
+Explanation: `top` provides a real-time updating view of system resource usage and active processes.
+
+[bca-204n-u1-q47] (Unit 1) Which command displays who is currently logged into the UNIX system?
+  A.     who
+  B.     w
+  C.     whoami
+  D. (*) All of the above provide user login details
+Explanation: `who`, `w`, and `whoami` all provide information regarding logged-in users.
+
+[bca-204n-u1-q48] (Unit 1) What command displays the current system date and time?
+  A.     time
+  B.     clock
+  C. (*) date
+  D.     now
+Explanation: `date` outputs the system date, time, and timezone.
+
+[bca-204n-u1-q49] (Unit 1) What command displays monthly or yearly calendars in UNIX?
+  A.     calendar
+  B. (*) cal
+  C.     month
+  D.     date -c
+Explanation: `cal` prints formatted monthly text calendars.
+
+[bca-204n-u1-q50] (Unit 1) What does the `uname -a` command output?
+  A.     User name
+  B. (*) Complete operating system name, hostname, kernel release, and hardware architecture
+  C.     Network address
+  D.     RAM capacity
+Explanation: `uname -a` outputs operating system kernel and hardware architecture specifications.
+
+[bca-204n-u2-q51] (Unit 2) What is the top-level directory in the UNIX hierarchical file system called?
+  A.     /home
+  B.     /root
+  C. (*) / (Root directory)
+  D.     /bin
+Explanation: The single slash `/` represents the absolute root directory of the entire filesystem.
+
+[bca-204n-u2-q52] (Unit 2) Which standard UNIX directory contains essential user command binaries (e.g., `ls`, `cp`, `cat`)?
+  A.     /etc
+  B. (*) /bin
+  C.     /dev
+  D.     /tmp
+Explanation: `/bin` holds fundamental user binary executables.
+
+[bca-204n-u2-q53] (Unit 2) Which directory contains system administrative commands intended primarily for the superuser (root)?
+  A.     /bin
+  B. (*) /sbin
+  C.     /usr
+  D.     /var
+Explanation: `/sbin` (System Binaries) holds admin tools like `fdisk`, `fsck`, `reboot`.
+
+[bca-204n-u2-q54] (Unit 2) Which directory contains host-specific system configuration files (e.g., `passwd`, `fstab`)?
+  A. (*) /etc
+  B.     /conf
+  C.     /sys
+  D.     /var
+Explanation: `/etc` stores administrative configuration text files.
+
+[bca-204n-u2-q55] (Unit 2) Which directory contains special device files representing physical and virtual hardware?
+  A.     /hard
+  B. (*) /dev
+  C.     /hw
+  D.     /devices
+Explanation: `/dev` contains device nodes (block and character devices like `/dev/sda`, `/dev/null`).
+
+[bca-204n-u2-q56] (Unit 2) What is the special device file `/dev/null` commonly called?
+  A. (*) The bit bucket (null sink that discards all data written to it and returns EOF on read)
+  B.     RAM drive
+  C.     System terminal
+  D.     Trash folder
+Explanation: `/dev/null` acts as a data black hole for discarding unwanted output (`2> /dev/null`).
+
+[bca-204n-u2-q57] (Unit 2) Which directory is dedicated to variable, volatile runtime data like system logs and mail spools?
+  A.     /tmp
+  B. (*) /var
+  C.     /usr
+  D.     /opt
+Explanation: `/var` (Variable) contains logs (`/var/log`), spool queues, and runtime caches.
+
+[bca-204n-u2-q58] (Unit 2) Which leading character in the first column of `ls -l` designates a regular/ordinary file?
+  A. (*) -
+  B.     d
+  C.     c
+  D.     l
+Explanation: `-` indicates a regular file; `d` indicates directory; `l` indicates symlink; `c` indicates character device.
+
+[bca-204n-u2-q59] (Unit 2) What does the letter `c` at the beginning of an `ls -l` line signify?
+  A.     Compressed file
+  B. (*) Character special device file (transfers stream byte-by-byte)
+  C.     C source file
+  D.     Core dump
+Explanation: `c` designates character special files like serial ports and terminal devices.
+
+[bca-204n-u2-q60] (Unit 2) What does `b` at the beginning of an `ls -l` line signify?
+  A.     Binary file
+  B. (*) Block special device file (transfers data in blocks, like hard disks)
+  C.     Backup file
+  D.     Boot sector
+Explanation: `b` denotes block storage devices (e.g., `/dev/sda1`).
+
+[bca-204n-u2-q61] (Unit 2) What is an Inode in the UNIX file system?
+  A.     An input-output node on motherboard
+  B. (*) A data structure containing all metadata attributes of a file except its name
+  C.     A command shell
+  D.     A user account
+Explanation: An Inode (index node) stores permissions, owner UID, file size, timestamps, and block pointers.
+
+[bca-204n-u2-q62] (Unit 2) Does an Inode store the actual filename of a file?
+  A.     Yes, stored in the first 16 bytes
+  B. (*) No, filenames are stored inside directory files mapped to inode numbers
+  C.     Only for small files
+  D.     Yes, in the super block
+Explanation: Filenames exist strictly as entries in directory files paired with inode numbers.
+
+[bca-204n-u2-q63] (Unit 2) Which option with `ls` displays the inode number of files?
+  A.     -l
+  B. (*) -i
+  C.     -n
+  D.     -s
+Explanation: `ls -i` prints the inode index number before each filename.
+
+[bca-204n-u2-q64] (Unit 2) What are the four fundamental physical sections of a standard UNIX disk filesystem?
+  A. (*) Boot Block, Super Block, Inode Table (I-list), Data Blocks
+  B.     Kernel, Shell, Users, Swap
+  C.     MBR, FAT, VBR, Data
+  D.     Root, Bin, Home, Dev
+Explanation: Standard UNIX filesystems partition disks into Boot block, Super block, Inode table, and Data storage blocks.
+
+[bca-204n-u2-q65] (Unit 2) What is stored inside the Super Block?
+  A.     User passwords
+  B. (*) Filesystem metadata: total blocks, free block pointers, total inodes, filesystem status flags
+  C.     Individual filenames
+  D.     Bootloader code only
+Explanation: The Super block holds overall filesystem geometry and free space allocation state.
+
+[bca-204n-u2-q66] (Unit 2) What happens to an active UNIX filesystem if its Super Block gets corrupted?
+  A.     Nothing, files are unaffected
+  B. (*) The filesystem cannot be mounted or accessed by the OS until repaired (using backup superblocks via fsck)
+  C.     Files become read-only automatically
+  D.     It converts to FAT32
+Explanation: Superblock corruption renders the filesystem unmountable; secondary backup superblocks must be restored via `fsck`.
+
+[bca-204n-u2-q67] (Unit 2) How many direct block pointers does a standard UNIX Inode typically contain?
+  A.     1
+  B.     8
+  C. (*) 12
+  D.     64
+Explanation: Standard UNIX inodes feature 12 direct block pointers (0 to 11), followed by single, double, and triple indirect pointers.
+
+[bca-204n-u2-q68] (Unit 2) What is a Hard Link in UNIX?
+  A.     A physical cable connection
+  B. (*) A directory entry pointing directly to an existing Inode number
+  C.     A shortcut file containing a path string
+  D.     A symbolic link
+Explanation: A hard link creates a new directory entry sharing the identical inode and disk blocks.
+
+[bca-204n-u2-q69] (Unit 2) What command creates a hard link between `file1` and `file2`?
+  A. (*) ln file1 file2
+  B.     ln -s file1 file2
+  C.     link file1 file2
+  D.     cp -l file1 file2
+Explanation: `ln source target` creates a hard link.
+
+[bca-204n-u2-q70] (Unit 2) What happens to data when you delete the original file of a Hard Link?
+  A.     The data is deleted immediately and other link breaks
+  B. (*) The link count decrements by 1; data remains completely accessible through the other hard link
+  C.     The system crashes
+  D.     Both files are deleted
+Explanation: Data blocks are deleted only when the inode's link count drops to zero and no active processes have it open.
+
+[bca-204n-u2-q71] (Unit 2) Can Hard Links cross different disk filesystem partitions?
+  A.     Yes, across all partitions
+  B. (*) No, hard links cannot cross filesystem boundaries because inode numbers are only unique per filesystem
+  C.     Only with root privileges
+  D.     Only on network drives
+Explanation: Hard links are strictly constrained to the same local filesystem because inode numbers are partition-relative.
+
+[bca-204n-u2-q72] (Unit 2) What is a Symbolic (Soft) Link in UNIX?
+  A. (*) A file whose content is merely a pathname string pointing to another target file
+  B.     Another name for a hard link
+  C.     A compiled pointer
+  D.     A temporary RAM file
+Explanation: A symbolic link (`ln -s`) contains a path reference to target file.
+
+[bca-204n-u2-q73] (Unit 2) Can Symbolic Links cross different filesystems and point to directories?
+  A.     No, soft links are restricted
+  B. (*) Yes, soft links can span multiple filesystems and link to directories
+  C.     Only across USB drives
+  D.     Only in read-only mode
+Explanation: Symbolic links can freely cross filesystems and link to directories.
+
+[bca-204n-u2-q74] (Unit 2) What happens to a Symbolic Link if the original target file is deleted or renamed?
+  A.     The symlink updates automatically
+  B. (*) The symlink becomes a broken / dangling link pointing to a non-existent path
+  C.     The symlink is deleted automatically
+  D.     The original file is restored
+Explanation: The symlink remains in the directory pointing to a dead path (dangling symlink).
+
+[bca-204n-u2-q75] (Unit 2) Which command formats a disk partition with a new ext4 filesystem in Linux?
+  A.     format /dev/sdb1
+  B. (*) mkfs.ext4 /dev/sdb1 (or mke2fs)
+  C.     newfs /dev/sdb1
+  D.     fdisk -f /dev/sdb1
+Explanation: `mkfs.ext4 /dev/sdb1` writes an ext4 filesystem onto the partition.
+
+[bca-204n-u2-q76] (Unit 2) Which command is used to attach a disk filesystem to a directory mount point?
+  A.     attach
+  B. (*) mount
+  C.     connect
+  D.     linkfs
+Explanation: `mount /dev/sdb1 /mnt/data` attaches the storage device to the directory tree.
+
+[bca-204n-u2-q77] (Unit 2) Which command detaches a mounted filesystem?
+  A.     unmount
+  B. (*) umount
+  C.     detach
+  D.     eject
+Explanation: `umount /mnt/data` safely unmounts the filesystem.
+
+[bca-204n-u2-q78] (Unit 2) Which system file contains static filesystem mount configurations executed at system boot?
+  A.     /etc/filesystems
+  B. (*) /etc/fstab
+  C.     /etc/mtab
+  D.     /etc/bootfs
+Explanation: `/etc/fstab` (File Systems Table) specifies partitions and mount options loaded on boot.
+
+[bca-204n-u2-q79] (Unit 2) Which utility checks and repairs UNIX file system consistency?
+  A.     chkdsk
+  B. (*) fsck
+  C.     scandisk
+  D.     repairfs
+Explanation: `fsck` (File System Consistency Check) inspects superblocks, inodes, and directory structures.
+
+[bca-204n-u2-q80] (Unit 2) Which command creates an archive bundle of multiple files using the Tape Archive format?
+  A.     zip
+  B. (*) tar
+  C.     gzip
+  D.     bundle
+Explanation: `tar -cvf archive.tar files/` packages files into a single archive.
+
+[bca-204n-u2-q81] (Unit 2) Which command extracts a `.tar.gz` compressed archive?
+  A.     tar -xvf archive.tar.gz
+  B. (*) tar -xzvf archive.tar.gz
+  C.     gzip -d archive.tar.gz
+  D.     untar archive.tar.gz
+Explanation: `tar -xzvf archive.tar.gz` decompresses (`z`) and extracts (`x`) archive files.
+
+[bca-204n-u2-q82] (Unit 2) What does the `gzip` utility do?
+  A.     Archives multiple directories into one file
+  B. (*) Compresses a single file using Lempel-Ziv coding, replacing it with a `.gz` file
+  C.     Splits files
+  D.     Encodes text in base64
+Explanation: `gzip` compresses files individually; unlike `tar`, it does not bundle multi-file directories on its own.
+
+[bca-204n-u2-q83] (Unit 2) What system call opens an existing file or creates a new file in UNIX C programming?
+  A.     fopen()
+  B. (*) open()
+  C.     creat()
+  D.     sys_open()
+Explanation: `open(pathname, flags, mode)` is the fundamental low-level UNIX system call.
+
+[bca-204n-u2-q84] (Unit 2) What does `open()` return on success in UNIX?
+  A.     A file pointer FILE*
+  B. (*) A non-negative integer file descriptor (e.g., 3, 4)
+  C.     The file size
+  D.     True
+Explanation: `open()` returns an integer index into the process's file descriptor table.
+
+[bca-204n-u2-q85] (Unit 2) What is the integer file descriptor number assigned to Standard Input (`stdin`)?
+  A. (*) 0
+  B.     1
+  C.     2
+  D.     -1
+Explanation: Standard file descriptors: 0 = stdin, 1 = stdout, 2 = stderr.
+
+[bca-204n-u2-q86] (Unit 2) What is the integer file descriptor number assigned to Standard Output (`stdout`)?
+  A.     0
+  B. (*) 1
+  C.     2
+  D.     3
+Explanation: Descriptor 1 represents standard output.
+
+[bca-204n-u2-q87] (Unit 2) What is the integer file descriptor number assigned to Standard Error (`stderr`)?
+  A.     0
+  B.     1
+  C. (*) 2
+  D.     3
+Explanation: Descriptor 2 represents standard error output.
+
+[bca-204n-u2-q88] (Unit 2) Which system call repositions the read/write file offset pointer in an open file?
+  A.     fseek()
+  B.     seek()
+  C. (*) lseek()
+  D.     reposition()
+Explanation: `lseek(fd, offset, whence)` changes the byte offset position in the file.
+
+[bca-204n-u2-q89] (Unit 2) What does `SEEK_SET` designate in the `lseek()` system call?
+  A.     Relative to current position
+  B. (*) Relative to beginning of file
+  C.     Relative to end of file
+  D.     Seek backward
+Explanation: `SEEK_SET` sets the file offset strictly relative to the start (byte 0).
+
+[bca-204n-u2-q90] (Unit 2) What system call closes an open file descriptor, releasing kernel resources?
+  A.     fclose()
+  B. (*) close()
+  C.     delete()
+  D.     free()
+Explanation: `close(fd)` closes the file descriptor.
+
+[bca-204n-u2-q91] (Unit 2) What system call duplicates an exact running process image to create a child process?
+  A.     clone()
+  B. (*) fork()
+  C.     spawn()
+  D.     exec()
+Explanation: `fork()` creates a child process duplicating the calling process's address space.
+
+[bca-204n-u2-q92] (Unit 2) What return value does `fork()` deliver to the child process?
+  A.     The child's PID
+  B.     The parent's PID
+  C. (*) 0
+  D.     -1
+Explanation: `fork()` returns 0 to the newly created child process, and returns the child's PID to the parent.
+
+[bca-204n-u2-q93] (Unit 2) Which system call replaces the current process address space with a new executable program?
+  A.     fork()
+  B. (*) exec() family (execve, execl, execp)
+  C.     load()
+  D.     system()
+Explanation: `exec` replaces text, data, heap, and stack segments with the new program binary.
+
+[bca-204n-u2-q94] (Unit 2) Which system call suspends the calling parent process until one of its child processes terminates?
+  A.     sleep()
+  B. (*) wait() or waitpid()
+  C.     pause()
+  D.     halt()
+Explanation: `wait(&status)` blocks until a child process terminates, retrieving its exit code.
+
+[bca-204n-u2-q95] (Unit 2) What system call creates an anonymous unidirectional data communication channel between processes?
+  A.     socket()
+  B. (*) pipe()
+  C.     shmget()
+  D.     channel()
+Explanation: `pipe(int pipefd[2])` creates a pipe where `pipefd[0]` is read-end and `pipefd[1]` is write-end.
+
+[bca-204n-u2-q96] (Unit 2) What command changes file ownership to a new user?
+  A.     chmod
+  B. (*) chown
+  C.     chgrp
+  D.     setowner
+Explanation: `chown user:group file` changes file ownership.
+
+[bca-204n-u2-q97] (Unit 2) What command changes the group ownership of a file?
+  A.     chgroup
+  B. (*) chgrp
+  C.     chmod
+  D.     groupadd
+Explanation: `chgrp groupname file` alters group ownership.
+
+[bca-204n-u2-q98] (Unit 2) What does the `umask` command control?
+  A.     User password length
+  B. (*) Default permission mask subtracted from 777 (for directories) or 666 (for files) upon creation
+  C.     Memory allocation bounds
+  D.     Network subnet mask
+Explanation: `umask` sets file creation mask (e.g., umask 022 gives new files 644 permissions).
+
+[bca-204n-u2-q99] (Unit 2) What are the default permissions of a file created with `umask 022`?
+  A.     755 (rwxr-xr-x)
+  B. (*) 644 (rw-r--r--)
+  C.     666 (rw-rw-rw-)
+  D.     777
+Explanation: $666 - 022 = 644$ (read/write for owner, read-only for group and others).
+
+[bca-204n-u2-q100] (Unit 2) What does `chmod 755 script.sh` set the permissions to?
+  A. (*) rwxr-xr-x (Owner: read/write/exec; Group: read/exec; Others: read/exec)
+  B.     rw-r--r--
+  C.     rwxrwxrwx
+  D.     r-xr-xr-x
+Explanation: 7 in binary is 111 (rwx), 5 is 101 (r-x). Thus 755 = `rwxr-xr-x`.
+
+[bca-204n-u3-q101] (Unit 3) What does the redirection operator `>>` do in UNIX command line?
+  A.     Overwrites the target file with standard output
+  B. (*) Appends standard output to the end of the target file without truncating it
+  C.     Redirects standard input
+  D.     Pipes output to next process
+Explanation: `>` overwrites; `>>` appends data to the end of the file.
+
+[bca-204n-u3-q102] (Unit 3) How do you redirect standard error (`stderr`) to a file in bash?
+  A.     1> file.txt
+  B. (*) 2> error.log
+  C.     e> error.log
+  D.     >& error.log
+Explanation: File descriptor 2 represents stderr, so `2> error.log` redirects error messages.
+
+[bca-204n-u3-q103] (Unit 3) What does the construct `2>&1` mean in shell redirection?
+  A. (*) Redirect descriptor 2 to descriptor 1 (combine stderr into stdout)
+  B.     Redirect stdout to stderr
+  C.     Run command twice
+  D.     Pipe stdout and stderr together
+Explanation: `cmd > out.log 2>&1` redirects both standard output and standard error into `out.log`.
+
+[bca-204n-u3-q104] (Unit 3) What does the pipeline operator `|` do in UNIX?
+  A.     Runs commands conditionally
+  B. (*) Connects standard output of the left command directly to standard input of the right command
+  C.     Concatenates file contents
+  D.     Executes commands sequentially
+Explanation: Pipelines connect commands through kernel memory buffers without creating temporary intermediate disk files.
+
+[bca-204n-u3-q105] (Unit 3) Which utility reads from standard input and simultaneously writes to standard output AND a file?
+  A.     pipe
+  B.     split
+  C. (*) tee
+  D.     fork
+Explanation: The `tee` utility splits a stream into two paths, echoing to the terminal while saving to a file.
+
+[bca-204n-u3-q106] (Unit 3) Which command sorts lines in text files?
+  A.     order
+  B. (*) sort
+  C.     arrange
+  D.     index
+Explanation: The `sort` command sorts lines textually or numerically.
+
+[bca-204n-u3-q107] (Unit 3) Which option with `sort` performs numeric sorting rather than default lexicographic sorting?
+  A. (*) -n
+  B.     -r
+  C.     -u
+  D.     -k
+Explanation: `sort -n` treats field values as numerical integers/floats.
+
+[bca-204n-u3-q108] (Unit 3) Which option with `sort` reverses the sort order (descending)?
+  A.     -d
+  B. (*) -r
+  C.     -rev
+  D.     -desc
+Explanation: `sort -r` outputs lines in reverse descending order.
+
+[bca-204n-u3-q109] (Unit 3) Which command removes adjacent duplicate lines from a sorted file?
+  A.     dedup
+  B. (*) uniq
+  C.     clean
+  D.     distinct
+Explanation: `uniq` filters adjacent duplicate lines (`uniq -c` counts occurrences).
+
+[bca-204n-u3-q110] (Unit 3) Why must a file be sorted before running `uniq` on it?
+  A.     uniq requires alphabetical inputs
+  B. (*) uniq only detects adjacent duplicate lines; non-consecutive duplicates are ignored
+  C.     uniq modifies the disk directly
+  D.     It is a requirement of UNIX
+Explanation: `uniq` compares lines consecutively, so `sort file | uniq` is the standard pipeline.
+
+[bca-204n-u3-q111] (Unit 3) Which command cuts out specified sections or columns from each line of a file?
+  A.     paste
+  B. (*) cut
+  C.     split
+  D.     extract
+Explanation: `cut -d':' -f1 /etc/passwd` extracts the first colon-delimited field.
+
+[bca-204n-u3-q112] (Unit 3) What do options `-d` and `-f` specify in the `cut` command?
+  A.     Directory and File
+  B. (*) Delimiter character and Field number
+  C.     Date and Format
+  D.     Data and Filter
+Explanation: `-d` defines field separator delimiter; `-f` specifies target field indices.
+
+[bca-204n-u3-q113] (Unit 3) Which command merges lines of files side-by-side horizontally?
+  A.     join
+  B. (*) paste
+  C.     cat
+  D.     merge
+Explanation: `paste file1 file2` concatenates corresponding lines tab-separated.
+
+[bca-204n-u3-q114] (Unit 3) Which command translates or deletes characters from standard input?
+  A.     trans
+  B. (*) tr
+  C.     replace
+  D.     sub
+Explanation: `tr 'a-z' 'A-Z'` translates lowercase letters to uppercase.
+
+[bca-204n-u3-q115] (Unit 3) How can you delete all digits from standard input using `tr`?
+  A. (*) tr -d '0-9'
+  B.     tr -del '0-9'
+  C.     tr -r '0-9'
+  D.     tr '0-9' ''
+Explanation: The `-d` flag in `tr -d '0-9'` deletes matching characters from input stream.
+
+[bca-204n-u3-q116] (Unit 3) Which command counts lines, words, and byte/character counts in text files?
+  A.     count
+  B. (*) wc
+  C.     size
+  D.     stat
+Explanation: `wc` (Word Count) reports line (`-l`), word (`-w`), and byte (`-c`) counts.
+
+[bca-204n-u3-q117] (Unit 3) How do you count only the total number of lines in a file with `wc`?
+  A.     wc -w file
+  B. (*) wc -l file
+  C.     wc -c file
+  D.     wc -n file
+Explanation: `wc -l file` prints line count.
+
+[bca-204n-u3-q118] (Unit 3) Which command compares two files line-by-line and generates the difference instructions?
+  A.     cmp
+  B. (*) diff
+  C.     comm
+  D.     compare
+Explanation: `diff file1 file2` outputs line-by-line edits required to convert file1 into file2.
+
+[bca-204n-u3-q119] (Unit 3) What does the `find` command do?
+  A.     Searches for text strings inside a file
+  B. (*) Searches the directory hierarchy for files matching specific criteria (name, size, type, mtime)
+  C.     Searches man pages
+  D.     Finds user accounts
+Explanation: `find /path -name '*.txt'` traverses the directory tree finding matching files.
+
+[bca-204n-u3-q120] (Unit 3) How do you find all files ending in `.log` modified in the last 7 days and delete them?
+  A. (*) find /var/log -name '*.log' -mtime -7 -exec rm {} \;
+  B.     find delete '*.log'
+  C.     rm -find '*.log'
+  D.     find / -del 7
+Explanation: `-exec command {} \;` executes the specified command on each found path.
+
+[bca-204n-u3-q121] (Unit 3) What does `grep` stand for?
+  A.     General Regular Expression Processor
+  B. (*) Globally search for a Regular Expression and Print
+  C.     Global Record Extraction Parser
+  D.     Generic Resource Pattern
+Explanation: `grep` derives from the early ed editor command `g/re/p` (Globally search for Regular Expression and Print).
+
+[bca-204n-u3-q122] (Unit 3) Which `grep` option inverts the match (prints lines that do NOT match the pattern)?
+  A.     -i
+  B. (*) -v
+  C.     -n
+  D.     -c
+Explanation: `grep -v pattern file` inverts matching.
+
+[bca-204n-u3-q123] (Unit 3) Which `grep` option ignores case distinctions in both pattern and input data?
+  A.     -c
+  B. (*) -i
+  C.     -v
+  D.     -l
+Explanation: `grep -i pattern file` performs case-insensitive matching.
+
+[bca-204n-u3-q124] (Unit 3) Which `grep` option prefixes each matching output line with its 1-based line number in the file?
+  A.     -l
+  B. (*) -n
+  C.     -c
+  D.     -o
+Explanation: `grep -n pattern file` prints line numbers.
+
+[bca-204n-u3-q125] (Unit 3) Which `grep` option only prints the count of matching lines rather than the lines themselves?
+  A.     -n
+  B. (*) -c
+  C.     -v
+  D.     -l
+Explanation: `grep -c pattern file` outputs line match counts.
+
+[bca-204n-u3-q126] (Unit 3) Which `grep` option prints only the names of files containing matching lines?
+  A.     -f
+  B. (*) -l
+  C.     -L
+  D.     -h
+Explanation: `grep -l pattern *.txt` lists matching filenames.
+
+[bca-204n-u3-q127] (Unit 3) What does the regular expression anchor `^` signify?
+  A.     Match end of line
+  B. (*) Match beginning of line
+  C.     Match any digit
+  D.     Match empty space
+Explanation: `^` asserts position at the start of a line.
+
+[bca-204n-u3-q128] (Unit 3) What does the regular expression anchor `$` signify?
+  A. (*) Match end of line
+  B.     Match beginning of line
+  C.     Match dollar sign only
+  D.     Match non-printable character
+Explanation: `$` asserts position at the end of a line.
+
+[bca-204n-u3-q129] (Unit 3) What does the regular expression pattern `^$` match?
+  A.     Lines containing dollar signs
+  B. (*) Completely empty (blank) lines
+  C.     Every line in the file
+  D.     No lines
+Explanation: `^$` matches empty lines with zero characters between start and end.
+
+[bca-204n-u3-q130] (Unit 3) What does the regex character class `[0-9]` match?
+  A. (*) Any single digit from 0 through 9
+  B.     The string '0-9'
+  C.     Any letter
+  D.     Non-numeric characters
+Explanation: `[0-9]` matches any single ASCII digit.
+
+[bca-204n-u3-q131] (Unit 3) What does the negated character class `[^0-9]` match?
+  A.     Any digit starting at beginning of line
+  B. (*) Any single character that is NOT a digit
+  C.     Numbers greater than 9
+  D.     Syntax error
+Explanation: `[^...]` inverts the character set.
+
+[bca-204n-u3-q132] (Unit 3) What does the quantifier `*` match in basic regular expressions?
+  A.     At least one occurrence
+  B. (*) Zero or more occurrences of the preceding element
+  C.     Exactly one character
+  D.     Any word
+Explanation: `*` matches 0 or more occurrences.
+
+[bca-204n-u3-q133] (Unit 3) What does `egrep` (or `grep -E`) support that standard basic `grep` does not without backslashes?
+  A. (*) Extended Regular Expressions (ERE) including +, ?, |, ()
+  B.     Only binary files
+  C.     Only C code
+  D.     Faster network reads
+Explanation: `egrep` supports Extended Regular Expressions (+, ?, |, parenthesized grouping) natively.
+
+[bca-204n-u3-q134] (Unit 3) What does `sed` stand for?
+  A. (*) Stream Editor
+  B.     Serial Editor
+  C.     Standard Edit Daemon
+  D.     System Editor
+Explanation: `sed` is a stream editor for parsing and transforming text line-by-line.
+
+[bca-204n-u3-q135] (Unit 3) How does `sed` process input text?
+  A.     Loads entire file into memory and overwrites it
+  B. (*) Reads input line-by-line into the Pattern Space, applies editing commands, and outputs to stdout
+  C.     Executes an interactive GUI
+  D.     Compiles code
+Explanation: `sed` operates line-by-line using its internal Pattern Space buffer.
+
+[bca-204n-u3-q136] (Unit 3) What does the `sed` command `sed 's/apple/orange/' fruits.txt` do?
+  A.     Replaces all occurrences of apple in every line
+  B. (*) Replaces only the FIRST occurrence of 'apple' on each line with 'orange'
+  C.     Deletes apple
+  D.     Appends orange to file
+Explanation: Without the global flag `g`, substitution `s/old/new/` replaces only the first occurrence per line.
+
+[bca-204n-u3-q137] (Unit 3) What does the `g` flag appended to `s/old/new/g` do in `sed`?
+  A.     Greedy match
+  B. (*) Global replacement across ALL occurrences on each line
+  C.     Group matching
+  D.     Ignore case
+Explanation: `g` enables global replacement across the entire line.
+
+[bca-204n-u3-q138] (Unit 3) What does `sed '/pattern/d' file.txt` do?
+  A.     Duplicates lines matching pattern
+  B. (*) Deletes all lines matching pattern from the output stream
+  C.     Displays only matching lines
+  D.     Replaces pattern
+Explanation: `d` deletes matching lines from Pattern Space.
+
+[bca-204n-u3-q139] (Unit 3) What option in `sed` modifies files in-place directly on disk?
+  A.     -p
+  B. (*) -i
+  C.     -f
+  D.     -e
+Explanation: `sed -i 's/foo/bar/g' file.txt` edits the file in place.
+
+[bca-204n-u3-q140] (Unit 3) What does `awk` stand for?
+  A.     Advanced Word Kernel
+  B. (*) Aho, Weinberger, and Kernighan (the authors' initials)
+  C.     Automated Word Keying
+  D.     Array Working Kit
+Explanation: `awk` was designed by Alfred Aho, Peter Weinberger, and Brian Kernighan.
+
+[bca-204n-u3-q141] (Unit 3) What is the fundamental structure of an AWK program?
+  A.     function name() { ... }
+  B. (*) pattern { action }
+  C.     SELECT column FROM table
+  D.     if condition then statement
+Explanation: AWK programs consist of sequences of `pattern { action }` statements.
+
+[bca-204n-u3-q142] (Unit 3) In AWK, what special variable refers to the ENTIRE current input line?
+  A.     $1
+  B. (*) $0
+  C.     $LINE
+  D.     $ALL
+Explanation: `$0` represents the complete unparsed input record.
+
+[bca-204n-u3-q143] (Unit 3) In AWK, what variable refers to the first field of the current line?
+  A.     $0
+  B. (*) $1
+  C.     $F1
+  D.     F[0]
+Explanation: `$1` refers to field 1, `$2` to field 2, and so on.
+
+[bca-204n-u3-q144] (Unit 3) What does the built-in AWK variable `NF` represent?
+  A.     New File
+  B. (*) Number of Fields in the current record
+  C.     Next Function
+  D.     Number of Files
+Explanation: `NF` holds the total count of whitespace-delimited fields in the current line.
+
+[bca-204n-u3-q145] (Unit 3) What does the built-in AWK variable `NR` represent?
+  A.     Name of Record
+  B. (*) Number of Records (current input line number) processed so far
+  C.     Next Record
+  D.     Number of Runs
+Explanation: `NR` tracks the current ordinal record/line number.
+
+[bca-204n-u3-q146] (Unit 3) What special block in AWK executes ONCE before any input records are read?
+  A.     START
+  B. (*) BEGIN
+  C.     INIT
+  D.     PRE
+Explanation: The `BEGIN { ... }` block executes prior to reading input stream lines.
+
+[bca-204n-u3-q147] (Unit 3) What special block in AWK executes ONCE after all input records have been read?
+  A.     FINISH
+  B. (*) END
+  C.     CLOSE
+  D.     POST
+Explanation: The `END { ... }` block executes after end-of-file is reached.
+
+[bca-204n-u3-q148] (Unit 3) What built-in AWK variable defines the Input Field Separator?
+  A.     OFS
+  B. (*) FS
+  C.     IFS
+  D.     DELIM
+Explanation: `FS` sets the input delimiter (e.g., `awk -F':' '{print $1}' /etc/passwd` sets `FS` to `:`).
+
+[bca-204n-u3-q149] (Unit 3) What does the AWK script `awk '{sum += $1} END {print sum}' data.txt` do?
+  A.     Counts total lines
+  B. (*) Calculates and prints the mathematical sum of all numbers in column 1
+  C.     Multiplies column 1
+  D.     Prints average
+Explanation: It accumulates the first field of each row into `sum` and prints the total in the `END` block.
+
+[bca-204n-u3-q150] (Unit 3) What command will print lines from line 5 to line 10 using `sed`?
+  A. (*) sed -n '5,10p' file.txt
+  B.     sed '5 to 10' file.txt
+  C.     sed -l 5-10 file.txt
+  D.     sed 'lines 5,10' file.txt
+Explanation: `sed -n '5,10p'` suppresses automatic printing (`-n`) and prints (`p`) lines 5 through 10.
+
+[bca-204n-u4-q151] (Unit 4) Where was the UNIX operating system originally developed in 1969?
+  A.     Microsoft Corporation
+  B. (*) AT&T Bell Laboratories
+  C.     Xerox PARC
+  D.     Stanford University
+Explanation: UNIX was pioneered in 1969 at Bell Labs by Ken Thompson, Dennis Ritchie, Brian Kernighan, and colleagues.
+
+[bca-204n-u4-q152] (Unit 4) What programming language was UNIX largely rewritten in during 1973, making it extraordinarily portable?
+  A.     Assembly
+  B.     B language
+  C. (*) C language
+  D.     Pascal
+Explanation: In 1973, Dennis Ritchie and Ken Thompson rewrote UNIX in C, transforming operating system history by breaking hardware dependency.
+
+[bca-204n-u4-q153] (Unit 4) Which of the following is NOT a core philosophy of the UNIX operating system?
+  A.     Write programs that do one thing and do it well
+  B.     Write programs to work together via text streams
+  C. (*) Design massive, monolithic programs containing all user utilities in a single executable
+  D.     Store data in flat text files
+Explanation: The UNIX philosophy emphasizes modular, small tools chained together via text streams, rather than bloated single monoliths.
+
+[bca-204n-u4-q154] (Unit 4) Which layer in the UNIX architecture directly interacts with physical computer hardware?
+  A.     Shell
+  B. (*) Kernel
+  C.     User Applications
+  D.     System Libraries
+Explanation: The Kernel is the heart of UNIX residing in supervisor memory, directly controlling CPU, RAM, and hardware devices.
+
+[bca-204n-u4-q155] (Unit 4) What is the function of the UNIX Shell?
+  A.     A hardware chip
+  B. (*) A command-line interpreter that reads user commands, interprets them, and requests kernel services
+  C.     A memory partition
+  D.     A disk format
+Explanation: The Shell is a user-level program providing an interactive interface between the user and the kernel.
+
+[bca-204n-u4-q156] (Unit 4) What command reveals whether a command is a shell built-in or an external disk binary?
+  A. (*) type
+  B.     where
+  C.     info
+  D.     find
+Explanation: The `type` command (e.g., `type cd`, `type ls`) identifies whether a command is a built-in or external executable.
+
+[bca-204n-u4-q157] (Unit 4) Which command displays the manual page documentation for a UNIX utility?
+  A.     help
+  B.     doc
+  C. (*) man
+  D.     guide
+Explanation: The `man` utility (e.g., `man ls`, `man grep`) formats and displays reference manual pages.
+
+[bca-204n-u4-q158] (Unit 4) In UNIX man pages, which section specifically covers System Calls?
+  A.     Section 1
+  B. (*) Section 2
+  C.     Section 3
+  D.     Section 8
+Explanation: Section 1 covers User Commands; Section 2 covers System Calls; Section 3 covers C Library Functions; Section 8 covers System Admin Commands.
+
+[bca-204n-u4-q159] (Unit 4) Which command displays a one-line description of a command from the whatis database?
+  A. (*) whatis
+  B.     whois
+  C.     describe
+  D.     lookup
+Explanation: `whatis command` displays short manual page descriptions.
+
+[bca-204n-u4-q160] (Unit 4) Which command searches man page descriptions for keywords (equivalent to `man -k`)?
+  A.     search
+  B. (*) apropos
+  C.     find
+  D.     locate
+Explanation: `apropos keyword` searches description strings in manual pages.
+
+[bca-204n-u4-q161] (Unit 4) Which command displays the current absolute working directory path?
+  A.     dir
+  B.     cwd
+  C. (*) pwd
+  D.     path
+Explanation: `pwd` (Print Working Directory) outputs the current directory hierarchy from root `/`.
+
+[bca-204n-u4-q162] (Unit 4) What does `cd ..` do?
+  A.     Changes to root directory
+  B.     Changes to current user's home directory
+  C. (*) Moves up one level to parent directory
+  D.     Deletes directory
+Explanation: `..` denotes the parent directory in hierarchical file path traversal.
+
+[bca-204n-u4-q163] (Unit 4) What does `cd ~` or simply `cd` with no arguments do in UNIX?
+  A.     Changes to root `/`
+  B. (*) Changes to current user's home directory (`$HOME`)
+  C.     Stays in current directory
+  D.     Raises error
+Explanation: A bare `cd` or `cd ~` returns the user immediately to their login home directory.
+
+[bca-204n-u4-q164] (Unit 4) Which option with `mkdir` automatically creates missing parent directories in a nested path?
+  A.     -r
+  B. (*) -p
+  C.     -f
+  D.     -a
+Explanation: `mkdir -p /a/b/c` creates all missing parent directories without error.
+
+[bca-204n-u4-q165] (Unit 4) Which command removes an empty directory?
+  A. (*) rmdir
+  B.     del
+  C.     remove
+  D.     erase
+Explanation: `rmdir` removes directories that contain no files or subdirectories.
+
+[bca-204n-u4-q166] (Unit 4) Which command option with `ls` displays long-format detailed file information (permissions, links, owner, size, date)?
+  A.     -a
+  B. (*) -l
+  C.     -h
+  D.     -R
+Explanation: `ls -l` outputs detailed file metadata columns.
+
+[bca-204n-u4-q167] (Unit 4) Which option with `ls` displays all hidden files (files beginning with a dot `.`)?
+  A.     -h
+  B. (*) -a
+  C.     -d
+  D.     -t
+Explanation: `ls -a` (all) lists all entries including dot files like `.bashrc` and `.profile`.
+
+[bca-204n-u4-q168] (Unit 4) Which option with `ls` recursively lists all subdirectories and their contents?
+  A.     -r
+  B. (*) -R
+  C.     -s
+  D.     -x
+Explanation: `ls -R` performs recursive directory listing.
+
+[bca-204n-u4-q169] (Unit 4) Which command creates an empty file or updates the access and modification timestamps of an existing file?
+  A.     create
+  B. (*) touch
+  C.     new
+  D.     stamp
+Explanation: `touch filename` creates a zero-byte file if it does not exist, or updates timestamps if it exists.
+
+[bca-204n-u4-q170] (Unit 4) Which command copies files or directories from source to destination?
+  A.     copy
+  B. (*) cp
+  C.     clone
+  D.     dup
+Explanation: `cp source dest` copies files (`cp -r` for recursive directory copy).
+
+[bca-204n-u4-q171] (Unit 4) Which command moves or renames files and directories in UNIX?
+  A.     ren
+  B.     move
+  C. (*) mv
+  D.     rn
+Explanation: `mv oldname newname` renames or relocates files.
+
+[bca-204n-u4-q172] (Unit 4) Which command deletes files in UNIX?
+  A.     del
+  B. (*) rm
+  C.     erase
+  D.     unlink_all
+Explanation: `rm` removes directory entries and deletes files (`rm -r` for recursive directory removal).
+
+[bca-204n-u4-q173] (Unit 4) Which command concatenates and displays entire text file contents on terminal stdout?
+  A.     type
+  B. (*) cat
+  C.     echo
+  D.     print
+Explanation: `cat file1 file2` concatenates and streams text to stdout.
+
+[bca-204n-u4-q174] (Unit 4) Which command displays the first 10 lines of a file by default?
+  A.     top
+  B. (*) head
+  C.     start
+  D.     first
+Explanation: `head -n 10 file` displays the initial lines.
+
+[bca-204n-u4-q175] (Unit 4) Which command continuously monitors and displays growing file lines in real time (e.g., log files)?
+  A.     head -f
+  B. (*) tail -f
+  C.     watch
+  D.     cat -live
+Explanation: `tail -f /var/log/syslog` follows appended data in real time.
+
+[bca-204n-u4-q176] (Unit 4) Which command displays physical disk filesystem usage in human-readable units (GB, MB)?
+  A.     du -h
+  B. (*) df -h
+  C.     disk -u
+  D.     fdisk -l
+Explanation: `df -h` (Disk Free) reports filesystem capacity and available space.
+
+[bca-204n-u4-q177] (Unit 4) Which command estimates file space usage for a directory and its subtrees?
+  A.     df
+  B. (*) du
+  C.     free
+  D.     stat
+Explanation: `du -sh directory` (Disk Usage) computes directory subtree consumption.
+
+[bca-204n-u4-q178] (Unit 4) Which command reports snapshot information about currently active processes?
+  A.     top
+  B. (*) ps
+  C.     proc
+  D.     tasks
+Explanation: `ps` lists current active processes.
+
+[bca-204n-u4-q179] (Unit 4) What does `ps -ef` or `ps aux` display?
+  A.     Only root processes
+  B. (*) Every active process running across all users on the system with full details
+  C.     Terminated processes
+  D.     Network ports
+Explanation: `ps -ef` and `ps aux` provide comprehensive process listings across all system terminals and daemons.
+
+[bca-204n-u4-q180] (Unit 4) What is the unique numeric identification assigned to every process in UNIX called?
+  A.     UID
+  B.     GID
+  C. (*) PID
+  D.     PPID
+Explanation: PID stands for Process IDentifier.
+
+[bca-204n-u4-q181] (Unit 4) What is the Parent Process ID of a process called?
+  A. (*) PPID
+  B.     ParentID
+  C.     MPID
+  D.     GPID
+Explanation: PPID stands for Parent Process IDentifier.
+
+[bca-204n-u4-q182] (Unit 4) What is the special PID assigned to the system initialization daemon `init` / `systemd`?
+  A.     0
+  B. (*) 1
+  C.     -1
+  D.     100
+Explanation: Process 1 (`init` or `systemd`) is the ancestor of all user-space processes spawned after kernel boot.
+
+[bca-204n-u4-q183] (Unit 4) What character placed at the end of a command instructs the shell to run it as a background job?
+  A.     %
+  B. (*) &
+  C.     #
+  D.     @
+Explanation: Appending `&` (e.g., `python script.py &`) detaches command execution to run in the background.
+
+[bca-204n-u4-q184] (Unit 4) Which utility prevents a running command from receiving SIGHUP signals when the user logs out?
+  A.     bg
+  B.     fg
+  C. (*) nohup
+  D.     disown_all
+Explanation: `nohup command &` ensures jobs continue executing after terminal disconnection, logging output to `nohup.out`.
+
+[bca-204n-u4-q185] (Unit 4) Which command lists all background jobs managed by the current shell session?
+  A.     ps
+  B. (*) jobs
+  C.     tasks
+  D.     bg_list
+Explanation: The shell built-in `jobs` lists active job numbers and states (`[1]+ Running`).
+
+[bca-204n-u4-q186] (Unit 4) How do you bring background job number 1 into the foreground?
+  A. (*) fg %1
+  B.     bg %1
+  C.     bring 1
+  D.     run 1
+Explanation: `fg %1` switches job 1 to the interactive foreground.
+
+[bca-204n-u4-q187] (Unit 4) What command adjusts the scheduling priority of a new process before launching?
+  A.     renice
+  B. (*) nice
+  C.     priority
+  D.     setpri
+Explanation: `nice -n 10 command` starts a command with lower priority; `renice` alters running processes.
+
+[bca-204n-u4-q188] (Unit 4) What is the numerical range of the 'nice' value in modern UNIX/Linux systems?
+  A.     0 to 100
+  B. (*) -20 (highest priority) to +19 (lowest priority)
+  C.     1 to 10
+  D.     -100 to 100
+Explanation: Nice values range from -20 (least nice to others, highest CPU share) to +19 (nicest, lowest CPU share).
+
+[bca-204n-u4-q189] (Unit 4) Which signal is the default signal sent by the `kill` command?
+  A.     SIGKILL (9)
+  B. (*) SIGTERM (15)
+  C.     SIGINT (2)
+  D.     SIGHUP (1)
+Explanation: `kill PID` sends `SIGTERM` (signal 15), requesting graceful process termination.
+
+[bca-204n-u4-q190] (Unit 4) Which signal CANNOT be caught, blocked, or ignored by any process in UNIX?
+  A.     SIGINT (2)
+  B.     SIGTERM (15)
+  C. (*) SIGKILL (9) and SIGSTOP
+  D.     SIGHUP (1)
+Explanation: `SIGKILL` (signal 9) and `SIGSTOP` are intercepted directly by the kernel and cannot be handled or masked.
+
+[bca-204n-u4-q191] (Unit 4) Which terminal keyboard combination generates the `SIGINT` (Interrupt) signal to terminate foreground jobs?
+  A.     Ctrl + Z
+  B. (*) Ctrl + C
+  C.     Ctrl + D
+  D.     Ctrl + \
+Explanation: `Ctrl + C` sends `SIGINT` (signal 2) causing immediate interruption.
+
+[bca-204n-u4-q192] (Unit 4) Which terminal keyboard combination generates `SIGTSTP` to suspend a foreground job?
+  A.     Ctrl + C
+  B. (*) Ctrl + Z
+  C.     Ctrl + D
+  D.     Ctrl + X
+Explanation: `Ctrl + Z` sends `SIGTSTP`, pausing execution and returning shell prompt.
+
+[bca-204n-u4-q193] (Unit 4) What does `Ctrl + D` represent at the terminal console?
+  A.     Abort signal
+  B. (*) End of File (EOF) / Logout signal
+  C.     Clear screen
+  D.     Break signal
+Explanation: `Ctrl + D` signals EOF on standard input.
+
+[bca-204n-u4-q194] (Unit 4) What is a Zombie Process in UNIX?
+  A.     A process consuming 100% CPU
+  B. (*) A process that has finished execution (exited) but its exit status has not yet been read by its parent via `wait()`
+  C.     A virus program
+  D.     A background daemon
+Explanation: A Zombie process holds no memory except its PCB entry in the process table awaiting parent reaping.
+
+[bca-204n-u4-q195] (Unit 4) What is an Orphan Process in UNIX?
+  A.     A process without a child
+  B. (*) A process whose parent terminated before it; it is immediately adopted by `init` (PID 1)
+  C.     A process with invalid permissions
+  D.     A suspended process
+Explanation: When a parent process dies, orphan children are reparented to PID 1 (`init`).
+
+[bca-204n-u4-q196] (Unit 4) Which command displays dynamic, real-time interactive process CPU and memory utilization?
+  A.     ps
+  B. (*) top (or htop)
+  C.     uptime
+  D.     free
+Explanation: `top` provides a real-time updating view of system resource usage and active processes.
+
+[bca-204n-u4-q197] (Unit 4) Which command displays who is currently logged into the UNIX system?
+  A.     who
+  B.     w
+  C.     whoami
+  D. (*) All of the above provide user login details
+Explanation: `who`, `w`, and `whoami` all provide information regarding logged-in users.
+
+[bca-204n-u4-q198] (Unit 4) What command displays the current system date and time?
+  A.     time
+  B.     clock
+  C. (*) date
+  D.     now
+Explanation: `date` outputs the system date, time, and timezone.
+
+[bca-204n-u4-q199] (Unit 4) What command displays monthly or yearly calendars in UNIX?
+  A.     calendar
+  B. (*) cal
+  C.     month
+  D.     date -c
+Explanation: `cal` prints formatted monthly text calendars.
+
+[bca-204n-u4-q200] (Unit 4) What does the `uname -a` command output?
+  A.     User name
+  B. (*) Complete operating system name, hostname, kernel release, and hardware architecture
+  C.     Network address
+  D.     RAM capacity
+Explanation: `uname -a` outputs operating system kernel and hardware architecture specifications.
+
+[bca-204n-u5-q201] (Unit 5) What keyword terminates an `if` block in bash shell scripting?
+  A.     endif
+  B. (*) fi
+  C.     end
+  D.     done
+Explanation: In bash, `if` statements are closed with the reverse keyword `fi`.
+
+[bca-204n-u5-q202] (Unit 5) What is the syntax for an `else-if` branch in a bash `if` statement?
+  A.     elseif
+  B. (*) elif
+  C.     else if
+  D.     elsif
+Explanation: bash uses `elif condition; then` for intermediate conditional branches.
+
+[bca-204n-u5-q203] (Unit 5) What keyword terminates a `case` selection structure in bash?
+  A.     endcase
+  B. (*) esac
+  C.     fi
+  D.     done
+Explanation: The `case` statement is closed with the reverse keyword `esac`.
+
+[bca-204n-u5-q204] (Unit 5) What characters terminate each pattern action branch in a `case` statement?
+  A.     ;
+  B. (*) ;;
+  C.     :
+  D.     break
+Explanation: Double semicolons `;;` terminate each individual clause in a `case` block.
+
+[bca-204n-u5-q205] (Unit 5) What keyword represents the default / catch-all pattern in a `case` statement?
+  A.     default
+  B. (*) *
+  C.     else
+  D.     other
+Explanation: The wildcard `*)` catches all unmatched options in a `case` block.
+
+[bca-204n-u5-q206] (Unit 5) What keywords enclose the body of a `while` loop in shell scripting?
+  A.     begin ... end
+  B. (*) do ... done
+  C.     { ... }
+  D.     repeat ... end
+Explanation: Loops in bash execute statements between `do` and `done`.
+
+[bca-204n-u5-q207] (Unit 5) How does a `while` loop behave compared to an `until` loop in bash?
+  A. (*) while iterates while condition is True; until iterates while condition is False (until it becomes True)
+  B.     They are completely identical
+  C.     until iterates backward
+  D.     while does not support break
+Explanation: `while` loops execute as long as the test succeeds (returns 0); `until` loops execute until the test succeeds.
+
+[bca-204n-u5-q208] (Unit 5) What is the syntax for a C-style for loop in bash?
+  A.     for i = 1 to 10 do ... done
+  B. (*) for (( i=0; i<n; i++ )); do ... done
+  C.     for i in (0..n):
+  D.     loop i = 1..n
+Explanation: Modern bash supports double-parentheses C-style syntax: `for (( init; condition; step )); do ... done`.
+
+[bca-204n-u5-q209] (Unit 5) How do you iterate through all `.txt` files in the current directory using a `for` loop?
+  A. (*) for f in *.txt; do ... done
+  B.     for each f in *.txt do
+  C.     loop *.txt into f
+  D.     for f: *.txt
+Explanation: `for file in *.txt; do echo $file; done` iterates over file glob expansions.
+
+[bca-204n-u5-q210] (Unit 5) What does `break` do inside a shell loop?
+  A.     Terminates the script
+  B. (*) Exits the current enclosing loop immediately
+  C.     Skips to the next iteration
+  D.     Pauses execution
+Explanation: `break` terminates the loop.
+
+[bca-204n-u5-q211] (Unit 5) What does `break 2` do inside nested shell loops?
+  A.     Pauses for 2 seconds
+  B. (*) Breaks out of 2 levels of nested loops simultaneously
+  C.     Breaks loop 2 only
+  D.     Skips 2 lines
+Explanation: `break n` terminates $n$ levels of enclosing loops.
+
+[bca-204n-u5-q212] (Unit 5) What does `continue` do inside a loop?
+  A.     Exits the loop
+  B. (*) Skips the remainder of the current iteration and begins the next loop cycle
+  C.     Restarts script
+  D.     None
+Explanation: `continue` jumps to the next iteration.
+
+[bca-204n-u5-q213] (Unit 5) What command terminates execution of a shell script with an optional exit code?
+  A.     stop
+  B. (*) exit
+  C.     quit
+  D.     abort
+Explanation: `exit [status]` terminates the script and returns the status code to the parent shell.
+
+[bca-204n-u5-q214] (Unit 5) How is a shell function defined in bash?
+  A. (*) function name { ... } or name() { ... }
+  B.     def name():
+  C.     func name { ... }
+  D.     sub name()
+Explanation: Functions are declared as `my_func() { ... }` or `function my_func { ... }`.
+
+[bca-204n-u5-q215] (Unit 5) How are arguments passed to and accessed inside a shell function?
+  A.     Accessed via func_args array
+  B. (*) Passed space-separated after function name (`my_func arg1 arg2`) and accessed via `$1, $2` inside the function
+  C.     Through global variables only
+  D.     Functions take no arguments
+Explanation: Functions receive parameters as `$1`, `$2`, etc., shadowing the script's positional parameters locally.
+
+[bca-204n-u5-q216] (Unit 5) What does the `return` statement inside a shell function do?
+  A.     Returns a string value to caller
+  B. (*) Exits the function and returns an integer numeric exit status code (0-255)
+  C.     Prints to stdout
+  D.     Deletes the function
+Explanation: `return [n]` returns an exit code accessible via `$?`. To return string data, functions use `echo`.
+
+[bca-204n-u5-q217] (Unit 5) How can a caller capture a string value produced by a shell function?
+  A. (*) result=$(my_func)
+  B.     result=my_func()
+  C.     return result
+  D.     read result from my_func
+Explanation: Capturing stdout via command substitution `result=$(my_func)` is the standard way to retrieve data from functions.
+
+[bca-204n-u5-q218] (Unit 5) How do you declare a variable with local scope restricted strictly to a function in bash?
+  A.     private var=val
+  B. (*) local var=val
+  C.     my var=val
+  D.     scoped var=val
+Explanation: `local var=val` creates a function-scoped variable.
+
+[bca-204n-u5-q219] (Unit 5) What is a Here Document (`<<EOF`) in shell scripting?
+  A.     A file saved in current directory
+  B. (*) A multi-line text block redirected into a command until a delimiter word (like EOF) is encountered
+  C.     An archive file
+  D.     A script comment
+Explanation: Here Documents stream multi-line literal blocks directly into stdin.
+
+[bca-204n-u5-q220] (Unit 5) What does the `trap` command in a shell script do?
+  A.     Catches file errors
+  B. (*) Catches specified signals (like SIGINT, SIGTERM) and executes a specified cleanup handler function
+  C.     Logs keystrokes
+  D.     Traps infinite loops
+Explanation: `trap cleanup_func SIGINT SIGTERM` intercepts signals to ensure clean resource shutdown.
+
+[bca-204n-u5-q221] (Unit 5) What cron scheduling expression runs a backup script every day at 2:30 AM?
+  A. (*) 30 2 * * * /backup.sh
+  B.     2 30 * * * /backup.sh
+  C.     * 2 30 * * /backup.sh
+  D.     30 2 1 * * /backup.sh
+Explanation: Crontab fields: `minute (30) hour (2) day (*) month (*) weekday (*) command`.
+
+[bca-204n-u5-q222] (Unit 5) What command is used to edit the current user's crontab scheduling file?
+  A.     cron -e
+  B. (*) crontab -e
+  C.     edit cron
+  D.     crontab -edit
+Explanation: `crontab -e` opens the user's cron schedule in the default editor.
+
+[bca-204n-u5-q223] (Unit 5) What command schedules a task to run exactly once at a specified future time?
+  A.     cron
+  B. (*) at
+  C.     batch
+  D.     once
+Explanation: The `at` command (e.g., `at 10:00 PM`) schedules single execution jobs.
+
+[bca-204n-u5-q224] (Unit 5) What tool securely transfers files between remote UNIX hosts over an SSH encrypted channel?
+  A.     ftp
+  B. (*) scp (Secure Copy) or rsync
+  C.     telnet
+  D.     rcp
+Explanation: `scp` and `rsync -avz` transfer files encrypted over SSH.
+
+[bca-204n-u5-q225] (Unit 5) What does the command `alias ll='ls -la'` achieve in bash?
+  A.     Renames the ls binary
+  B. (*) Creates a command shortcut `ll` that automatically expands to `ls -la`
+  C.     Creates a symbolic link
+  D.     Deletes files
+Explanation: `alias` defines command shortcuts in the interactive shell.
+
+[bca-204n-u5-q226] (Unit 5) Which startup configuration file is executed when an interactive non-login bash subshell starts?
+  A.     /etc/hosts
+  B. (*) ~/.bashrc
+  C.     /etc/passwd
+  D.     ~/.bash_history
+Explanation: `~/.bashrc` runs on every new interactive bash subshell instantiation.
+
+[bca-204n-u5-q227] (Unit 5) Which file is executed once during initial login shell initialization?
+  A.     ~/.bashrc
+  B. (*) ~/.bash_profile (or ~/.profile)
+  C.     ~/.bash_logout
+  D.     /etc/profile.d
+Explanation: `~/.bash_profile` or `~/.profile` runs once upon user authentication.
+
+[bca-204n-u5-q228] (Unit 5) What does `set -e` placed at the start of a bash script do?
+  A.     Enables echo debugging
+  B. (*) Instructs the shell to exit immediately if any command returns a non-zero exit status (error)
+  C.     Forces strict typing
+  D.     Enables encryption
+Explanation: `set -e` halts script execution on any unhandled error, enhancing reliability.
+
+[bca-204n-u5-q229] (Unit 5) What does `set -x` do in a bash script?
+  A.     Executes script in background
+  B. (*) Prints each command and its expanded arguments to stdout before executing (execution trace for debugging)
+  C.     Runs script as root
+  D.     Ignores errors
+Explanation: `set -x` provides verbose step-by-step trace debugging.
+
+[bca-204n-u5-q230] (Unit 5) What does `set -u` do in a bash script?
+  A. (*) Treats uninitialized/unset variables as errors and exits immediately
+  B.     Runs as unprivileged user
+  C.     Unsets all variables
+  D.     Updates shell
+Explanation: `set -u` prevents bugs caused by referencing misspelled or uninitialized variable names.
+
+[bca-204n-u5-q231] (Unit 5) What does `source script.sh` or `. script.sh` do differently from `./script.sh`?
+  A.     It compiles the script
+  B. (*) It executes the script inside the CURRENT shell process, preserving variable assignments and environment changes
+  C.     It runs in background
+  D.     It skips permissions
+Explanation: `source` (or `.`) executes within the calling process rather than spawning a subshell.
+
+[bca-204n-u5-q232] (Unit 5) What command displays the current resource limits (stack size, open file descriptors, max processes) in shell?
+  A.     limit
+  B. (*) ulimit -a
+  C.     sysctl
+  D.     resmon
+Explanation: `ulimit -a` displays user process resource constraints.
+
+[bca-204n-u5-q233] (Unit 5) What command changes a user's login password in UNIX?
+  A.     password
+  B. (*) passwd
+  C.     setpass
+  D.     userpass
+Explanation: `passwd` updates authentication tokens.
+
+[bca-204n-u5-q234] (Unit 5) Where are encrypted user password hashes stored on modern Linux systems?
+  A.     /etc/passwd
+  B. (*) /etc/shadow
+  C.     /etc/security
+  D.     /var/passwords
+Explanation: `/etc/shadow` stores encrypted password hashes with restricted permissions (readable only by root).
+
+[bca-204n-u5-q235] (Unit 5) What does the second field in `/etc/passwd` historically represent (now typically `x`)?
+  A.     Username
+  B. (*) Encrypted password placeholder (indicating hash is in /etc/shadow)
+  C.     User ID
+  D.     Home directory
+Explanation: `x` indicates password hash is secured inside `/etc/shadow`.
+
+[bca-204n-u5-q236] (Unit 5) What command creates a new user account in UNIX/Linux?
+  A. (*) useradd (or adduser)
+  B.     newuser
+  C.     mkuser
+  D.     createuser
+Explanation: `useradd` registers a new user account.
+
+[bca-204n-u5-q237] (Unit 5) What command deletes an existing user account?
+  A. (*) userdel
+  B.     deluser
+  C.     rmuser
+  D.     removeuser
+Explanation: `userdel` removes user records from system files.
+
+[bca-204n-u5-q238] (Unit 5) What command displays system uptime and load average?
+  A.     time
+  B. (*) uptime
+  C.     top
+  D.     stat
+Explanation: `uptime` prints system run duration, logged-in user count, and load averages (1, 5, 15 min).
+
+[bca-204n-u5-q239] (Unit 5) What does a load average of 2.0 mean on a dual-core (2 CPU) system?
+  A. (*) 100% capacity utilization with zero queued wait
+  B.     50% utilization
+  C.     System is thrashing
+  D.     Zero utilization
+Explanation: On a 2-core system, a load average of 2.0 indicates both cores are fully utilized with zero backlog.
+
+[bca-204n-u5-q240] (Unit 5) What command reboots a UNIX system from command line with root privileges?
+  A.     restart
+  B. (*) reboot (or shutdown -r now)
+  C.     boot -r
+  D.     sys_restart
+Explanation: `reboot` or `shutdown -r now` initiates system restart.
+
+[bca-204n-u5-q241] (Unit 5) How do you safely shut down and power off a UNIX machine immediately?
+  A. (*) poweroff (or shutdown -h now)
+  B.     halt -fast
+  C.     kill -9 1
+  D.     exit
+Explanation: `shutdown -h now` halts processes, flushes disk caches, and powers down.
+
+[bca-204n-u5-q242] (Unit 5) What is the purpose of the `/tmp` directory?
+  A.     Stores user pictures
+  B. (*) Stores temporary scratch files shared across processes, cleared on system reboot
+  C.     Stores permanent archives
+  D.     Stores network configurations
+Explanation: `/tmp` provides volatile scratch storage accessible to all users.
+
+[bca-204n-u5-q243] (Unit 5) What is the sticky bit permission (`chmod +t` or octal `1777`) on directory `/tmp`?
+  A.     Prevents all writes
+  B. (*) Ensures users can only delete or rename files they personally own, even in a world-writable directory
+  C.     Forces encryption
+  D.     Runs executable as root
+Explanation: The sticky bit prevents users from deleting other users' files in shared directories.
+
+[bca-204n-u5-q244] (Unit 5) What does the SUID (Set User ID) permission bit (`chmod u+s file`) achieve on an executable binary?
+  A.     Encrypts the binary
+  B. (*) Causes the program to execute with the effective permissions of the FILE OWNER (e.g., root) rather than the invoking user
+  C.     Prevents deletion
+  D.     Makes binary static
+Explanation: SUID binaries (like `/usr/bin/passwd`) allow unprivileged users to execute privileged tasks safely.
+
+[bca-204n-u5-q245] (Unit 5) What does the SGID (Set Group ID) bit on a directory achieve?
+  A.     Prevents deletion
+  B. (*) Ensures newly created files inherit the group ownership of the parent directory rather than the user's primary group
+  C.     Deletes group files
+  D.     Forces read-only
+Explanation: SGID on directories facilitates shared group collaborative folders.
+
+[bca-204n-u5-q246] (Unit 5) What command displays the current shell process tree hierarchy?
+  A. (*) pstree
+  B.     tree
+  C.     proc_tree
+  D.     ps -tree
+Explanation: `pstree` renders active processes as a visual hierarchical tree.
+
+[bca-204n-u5-q247] (Unit 5) What does the `watch -n 2 command` utility do?
+  A.     Watches video files
+  B. (*) Repeatedly executes `command` every 2 seconds, displaying its output in full screen
+  C.     Checks file integrity
+  D.     Monitors network packets
+Explanation: `watch` runs commands periodically to track output changes.
+
+[bca-204n-u5-q248] (Unit 5) What command tests network host reachability by sending ICMP Echo Request packets?
+  A.     traceroute
+  B. (*) ping
+  C.     netstat
+  D.     ifconfig
+Explanation: `ping hostname` verifies network latency and connectivity via ICMP.
+
+[bca-204n-u5-q249] (Unit 5) What utility tracks the intermediate network router hops taken to reach a remote host?
+  A.     ping
+  B. (*) traceroute (or tracepath)
+  C.     route
+  D.     arp
+Explanation: `traceroute` displays each intermediate router IP address and round-trip time.
+
+[bca-204n-u5-q250] (Unit 5) What command displays active network socket connections, listening ports, and routing tables?
+  A. (*) netstat (or ss)
+  B.     ifconfig
+  C.     ping
+  D.     route -a
+Explanation: `netstat` and `ss` report active TCP/UDP sockets and network status.
+

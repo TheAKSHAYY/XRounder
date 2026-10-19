@@ -1,0 +1,2753 @@
+// BCA-109N: Principle of Management (Semester 1 - MJPRU Bareilly)
+// Complete Official Question Bank (250 MCQs - 50 MCQs per Unit)
+
+Q: According to classic management definitions, Management is fundamentally defined as:
+A) Solely bookkeeping and financial accounting
+B) The art and science of getting things done through and with people to achieve organizational goals efficiently and effectively *
+C) Dictating absolute orders to factory workers
+D) Writing computer software code
+E: Mary Parker Follett and Harold Koontz define management as the art of getting things done through and with people in formally organized groups.
+D: easy
+T: BCA-109N, Unit-1, Management, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary difference between 'Efficiency' and 'Effectiveness' in management?
+A) Efficiency means doing the right things; Effectiveness means doing things fast
+B) Efficiency means doing things right (minimizing cost and resource waste); Effectiveness means doing the right things (achieving intended goals) *
+C) There is no difference in modern management
+D) Efficiency applies only to machines; Effectiveness applies only to humans
+E: Efficiency focuses on input-output ratio (low cost/waste), whereas effectiveness focuses on goal accomplishment and outcomes.
+D: easy
+T: BCA-109N, Unit-1, Management, Efficiency-vs-Effectiveness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Who coined the famous acronym 'POSDCORB' to summarize the core functions of management?
+A) Henri Fayol
+B) Frederick Winslow Taylor
+C) Luther Gulick (and Lyndall Urwick) *
+D) Peter Drucker
+E: Luther Gulick formulated POSDCORB: Planning, Organizing, Staffing, Directing, Coordinating, Reporting, and Budgeting.
+D: medium
+T: BCA-109N, Unit-1, POSDCORB, Luther-Gulick
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which five core functions of management were originally identified by Henri Fayol?
+A) Planning, Organizing, Commanding, Coordinating, and Controlling (POCCC) *
+B) Input, Process, Output, Feedback, Storage
+C) Hiring, Firing, Promoting, Rewarding, Punishing
+D) Designing, Building, Testing, Deploying, Maintaining
+E: Henri Fayol specified: Prévoir (Plan), Organiser (Organize), Commander (Command), Coordonner (Coordinate), and Contrôler (Control).
+D: easy
+T: BCA-109N, Unit-1, Fayol, Core-Functions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is management recognized as both an 'Art' and a 'Science'?
+A) Because managers study biology and paint canvases
+B) It is a science because it has systematized principles and organized body of knowledge; it is an art because it requires personal skills, creativity, and practical application *
+C) Because it is purely theoretical without real-world utility
+D) Because it relies solely on luck and guesswork
+E: Management combines scientific principles and systematic methods with the creative, situational art of interpersonal application.
+D: easy
+T: BCA-109N, Unit-1, Nature-of-Management, Art-and-Science
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The top level of management (e.g., Board of Directors, CEO, Managing Director) is primarily responsible for:
+A) Daily line supervision of factory floor workers
+B) Formulating overall strategic goals, organizational vision, policies, and long-term plans *
+C) Maintaining mechanical machinery and wiring
+D) Directly typing data into Excel sheets
+E: Top management focuses on long-range strategic planning, policy formulation, and overall corporate direction.
+D: easy
+T: BCA-109N, Unit-1, Levels-of-Management, Top-Management
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Middle-level managers (e.g., Departmental Heads, Branch Managers, Plant Managers) act as the vital bridge between:
+A) Top-level executives and first-line operative supervisors *
+B) The government and competitors
+C) Shareholders and customers
+D) Suppliers and retail buyers
+E: Middle management translates broad strategic plans from top leadership into actionable operational plans for lower-level managers.
+D: easy
+T: BCA-109N, Unit-1, Levels-of-Management, Middle-Management
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Robert L. Katz, what are the three essential managerial skills required across the corporate hierarchy?
+A) Technical Skills, Human (Interpersonal) Skills, and Conceptual Skills *
+B) Coding, Auditing, and Marketing
+C) Speaking, Writing, and Listening
+D) Buying, Selling, and Storing
+E: Katz identified Technical (domain expertise), Human (people relations), and Conceptual (systemic vision) skills.
+D: easy
+T: BCA-109N, Unit-1, Managerial-Skills, Katz-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Katz's model, which managerial skill is of paramount importance for TOP-LEVEL executives?
+A) Detailed hands-on technical skills
+B) Conceptual skills (the ability to see the organization as a whole and understand systemic interactions) *
+C) Machine operating skills
+D) Typing speed
+E: Top management requires superior conceptual ability to anticipate market trends, formulate strategies, and understand systemic interdependencies.
+D: medium
+T: BCA-109N, Unit-1, Managerial-Skills, Conceptual-Skill
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Katz's framework, which managerial skill is equally critical across ALL levels of management (Top, Middle, and Lower)?
+A) Technical skills
+B) Human / Interpersonal skills *
+C) Conceptual skills
+D) Assembly skills
+E: Human skills (communication, motivation, empathy, leadership) are essential at every tier because all managers deal with people.
+D: easy
+T: BCA-109N, Unit-1, Managerial-Skills, Human-Skills
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Henry Mintzberg categorized managerial activities into 10 roles grouped under which three broad categories?
+A) Interpersonal, Informational, and Decisional Roles *
+B) Strategic, Tactical, and Operational
+C) Financial, Marketing, and Technical
+D) Planning, Doing, and Checking
+E: Mintzberg's 10 roles fall into Interpersonal (3), Informational (3), and Decisional (4) categories.
+D: easy
+T: BCA-109N, Unit-1, Mintzberg-Roles, Categories
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under Mintzberg's framework, which role is a manager performing when they represent the organization at ceremonial events (e.g. ribbon-cutting or signing legal documents)?
+A) Figurehead Role (Interpersonal) *
+B) Spokesperson Role
+C) Negotiator Role
+D) Monitor Role
+E: The Figurehead role involves symbolic, ceremonial, and legal social duties as the formal head of the unit.
+D: medium
+T: BCA-109N, Unit-1, Mintzberg-Roles, Figurehead
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When a software project manager resolves conflicts between team members, manages server crash crises, and mitigates sudden budget cuts, they act as a:
+A) Disturbance Handler (Decisional Role) *
+B) Disseminator
+C) Figurehead
+D) Liaison
+E: The Disturbance Handler takes charge when the organization faces unexpected crises or major disruptions.
+D: easy
+T: BCA-109N, Unit-1, Mintzberg-Roles, Disturbance-Handler
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When a manager transmits external market intelligence and top-level directives downward to internal team members, they fulfill the role of:
+A) Disseminator (Informational Role) *
+B) Spokesperson
+C) Entrepreneur
+D) Monitor
+E: The Disseminator shares relevant internal and external information among subordinates.
+D: easy
+T: BCA-109N, Unit-1, Mintzberg-Roles, Disseminator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Max Weber is globally renowned in management theory for introducing the concept of:
+A) Scientific Management
+B) Bureaucratic Organization (Bureaucracy) *
+C) Hawthorne Experiments
+D) Theory X and Theory Y
+E: German sociologist Max Weber proposed Bureaucracy as a rational-legal organizational model based on rules, hierarchy, and impersonality.
+D: easy
+T: BCA-109N, Unit-1, Classical-Theory, Max-Weber
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a foundational characteristic of Max Weber's Ideal Bureaucracy?
+A) Nepotism and favoritism in promotions
+B) Clear hierarchy of authority, rigid division of labor, formal rules and procedures, and impersonality *
+C) Informal grapevine decision-making
+D) Lack of job descriptions
+E: Weberian bureaucracy emphasizes formalization, merit-based career advancement, jurisdictional hierarchy, and objective impersonality.
+D: easy
+T: BCA-109N, Unit-1, Bureaucracy, Characteristics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a common modern criticism of excessive bureaucratic management in organizations?
+A) Excessive flexibility and lack of documentation
+B) Red tape, procedural rigidity, slow decision-making, and stifling of employee initiative *
+C) Too much informal social interaction
+D) Absence of management hierarchy
+E: Bureaucratic red tape and rigid adherence to rules often lead to organizational inertia, inflexibility, and alienated employees.
+D: easy
+T: BCA-109N, Unit-1, Bureaucracy, Criticisms
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Scalar Chain' principle formulated by Henri Fayol dictates that:
+A) Salaries must increase by 10% annually
+B) The unbroken line of authority and formal communication should extend from highest executive down to the lowest rank *
+C) Employees must change departments every month
+D) Work must be done without tools
+E: The Scalar Chain represents the formal hierarchical line of authority along which official communication flows.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Scalar-Chain
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What special exception did Henri Fayol introduce to prevent delays in urgent communication across the Scalar Chain?
+A) Red Tape
+B) Gang Plank *
+C) Notice Board
+D) Informal Strike
+E: The 'Gang Plank' permits direct lateral communication between employees of equal rank across different departments in urgent situations without violating the chain of command.
+D: medium
+T: BCA-109N, Unit-1, Fayol-Principles, Gang-Plank
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which principle of Fayol states that an employee should receive orders from ONE and ONLY ONE superior?
+A) Unity of Direction
+B) Unity of Command *
+C) Division of Work
+D) Esprit de Corps
+E: Unity of Command prevents dual subordination, conflicting instructions, and authority confusion by ensuring each subordinate reports to a single boss.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Unity-of-Command
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the crucial distinction between Fayol's 'Unity of Command' and 'Unity of Direction'?
+A) Unity of Command applies to workers; Unity of Direction applies to computers
+B) Unity of Command concerns dual subordination (one boss per employee); Unity of Direction concerns group activities having the same objective (one head and one plan) *
+C) They are identical in meaning
+D) Unity of Direction forbids planning
+E: Unity of Command prevents conflict for individual employees; Unity of Direction coordinates departmental efforts toward a singular common objective.
+D: medium
+T: BCA-109N, Unit-1, Fayol-Principles, Command-vs-Direction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which principle of Henri Fayol promotes team spirit, harmony, and mutual trust among organizational members?
+A) Subordination of Individual Interest
+B) Esprit de Corps *
+C) Remuneration
+D) Centralization
+E: 'Esprit de Corps' emphasizes teamwork, union of effort, and harmony to foster high morale.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Esprit-de-Corps
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Fayol's principle of 'Order' (Material and Social Order) means:
+A) Issuing harsh military commands to workers
+B) A place for everything (everyone) and everything (everyone) in its place *
+C) Purchasing goods in bulk
+D) Alphabetical arrangement of files
+E: Social and material order ensures that physical resources and human personnel are systematically positioned for optimal efficiency.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Order
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Fayol's principle of 'Equity' emphasizes:
+A) Equal pay for unequal work
+B) Kindness, fairness, and impartial justice in dealing with employees without discrimination *
+C) Distributing company shares equally to all staff
+D) Total elimination of discipline
+E: Equity blends justice with friendliness, ensuring fair treatment to inspire employee devotion and loyalty.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Equity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Who is universally recognized as the 'Father of Scientific Management'?
+A) Henri Fayol
+B) Frederick Winslow Taylor (F.W. Taylor) *
+C) Elton Mayo
+D) Chester Barnard
+E: F.W. Taylor pioneered Scientific Management (Taylorism) focusing on shop-floor industrial engineering and productivity.
+D: easy
+T: BCA-109N, Unit-1, Taylor, Father-of-Scientific-Management
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Taylor's principle 'Science, Not Rule of Thumb' advocates:
+A) Using traditional trial-and-error folklore
+B) Replacing traditional guesswork and custom with scientific investigation of every element of a job to discover the 'one best way' *
+C) Eliminating all mathematical calculations
+D) Replacing human managers with robots
+E: Taylor demanded rigorous scientific analysis, standardized tools, and empirical measurement to replace subjective guesswork.
+D: easy
+T: BCA-109N, Unit-1, Taylor-Principles, Science-Not-Rule-of-Thumb
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Taylor's Scientific Management, what was the primary purpose of a 'Time Study'?
+A) To check clock accuracy in the factory
+B) To determine the standard time required by an average skilled worker to complete a specific task using a stopwatch *
+C) To measure lunch break duration
+D) To set shift timings
+E: Time study establishes precise standard output benchmarks and fair work quotas.
+D: easy
+T: BCA-109N, Unit-1, Taylor-Techniques, Time-Study
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Taylor's 'Motion Study' (developed extensively with Frank and Lillian Gilbreth) was designed to:
+A) Track worker running speeds across the shop floor
+B) Identify, eliminate, and streamline unnecessary, wasteful, and inefficient body movements during work *
+C) Count the total number of parts manufactured
+D) Measure machine vibration
+E: Motion study systematically eliminates unproductive physical movements to reduce strain and increase hourly production.
+D: easy
+T: BCA-109N, Unit-1, Taylor-Techniques, Motion-Study
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What was the purpose of Taylor's 'Fatigue Study'?
+A) To eliminate all rest breaks completely
+B) To scientifically determine the frequency and duration of rest intervals required to sustain peak human productivity without physical exhaustion *
+C) To measure worker sleep hours at home
+D) To test eye strain
+E: Fatigue study provides planned rest pauses so workers recharge stamina and maintain error-free output.
+D: easy
+T: BCA-109N, Unit-1, Taylor-Techniques, Fatigue-Study
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under Taylor's 'Differential Piece Rate System':
+A) All workers receive identical flat hourly wages regardless of output
+B) Workers who achieve or exceed the standard output receive a higher wage rate per unit, while substandard performers receive a lower rate *
+C) Workers are paid in company stock
+D) Only managers receive bonuses
+E: Taylor tied financial rewards directly to efficiency to motivate high productivity and penalize laziness.
+D: medium
+T: BCA-109N, Unit-1, Taylor-Techniques, Differential-Piece-Rate
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Taylor proposed replacing the traditional single foreman with 'Functional Foremanship' consisting of how many specialized bosses?
+A) 2 bosses
+B) 4 bosses
+C) 8 bosses (4 in planning, 4 in execution) *
+D) 12 bosses
+E: Functional Foremanship divides supervision among 8 specialists: Route Clerk, Instruction Card Clerk, Time & Cost Clerk, Disciplinarian (Planning); Gang Boss, Speed Boss, Repair Boss, Inspector (Shop Floor).
+D: medium
+T: BCA-109N, Unit-1, Taylor-Techniques, Functional-Foremanship
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What was the primary conceptual difference in the approach of Henri Fayol versus F.W. Taylor?
+A) Fayol focused on factory shop-floor mechanics, while Taylor focused on top executive administration
+B) Fayol adopted a top-down administrative perspective applicable to the entire organization, while Taylor adopted a bottom-up shop-floor technical perspective *
+C) Fayol wrote in English; Taylor wrote in French
+D) They held identical views on all matters
+E: Fayol developed general administrative theory for overall corporate management, whereas Taylor focused on bottom-up workshop efficiency.
+D: medium
+T: BCA-109N, Unit-1, Management-Comparison, Fayol-vs-Taylor
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The famous 'Hawthorne Experiments' (1924–1932) were conducted at the Western Electric Hawthorne Plant under the leadership of:
+A) Elton Mayo (and Fritz Roethlisberger) *
+B) F.W. Taylor
+C) Henri Fayol
+D) Max Weber
+E: Australian psychologist Elton Mayo led the landmark Hawthorne Studies that inaugurated the Human Relations Movement.
+D: easy
+T: BCA-109N, Unit-1, Hawthorne-Studies, Elton-Mayo
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Hawthorne Effect' discovered during the illumination and relay assembly experiments revealed that:
+A) Worker productivity depends purely on lighting intensity
+B) Employees alter their behavior and work harder when they realize they are receiving special attention and observation from researchers/management *
+C) Workers are purely economic animals motivated only by money
+D) Physical working conditions are the only determinant of output
+E: The Hawthorne Effect demonstrated that social validation, recognition, and interpersonal relationships outweigh mere physical working conditions.
+D: easy
+T: BCA-109N, Unit-1, Hawthorne-Studies, Hawthorne-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Bank Wiring Observation Room' study in the Hawthorne experiments revealed the profound influence of:
+A) Automated industrial robots
+B) Informal social groups, group norms, peer pressure, and informal output restrictions *
+C) Air conditioning on factory output
+D) Government safety regulations
+E: Workers created informal peer norms ('don't be a rate buster' or 'chisel') that governed daily productivity regardless of management targets.
+D: medium
+T: BCA-109N, Unit-1, Hawthorne-Studies, Bank-Wiring-Room
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which management approach views an organization as an interconnected, interrelated set of components operating within an external environment?
+A) Classical Machine Approach
+B) Systems Approach *
+C) Bureaucratic Approach
+D) Scientific Approach
+E: The Systems Approach (von Bertalanffy, Katz & Kahn) views the firm as an open system taking inputs, transforming them into outputs, and utilizing feedback.
+D: easy
+T: BCA-109N, Unit-1, Systems-Approach, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the Systems Approach, an 'Open System' is distinct from a 'Closed System' because it:
+A) Has no doors or security guards
+B) Dynamically interacts, exchanges information, energy, and resources with its external environment *
+C) Operates in total isolation from the market
+D) Does not make any profit
+E: Open systems continuously interact with the external environment (customers, competitors, government regulations).
+D: easy
+T: BCA-109N, Unit-1, Systems-Approach, Open-System
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the concept of 'Synergy' in the Systems Approach mean?
+A) The whole is greater than the sum of its individual parts (2 + 2 = 5) *
+B) Every department acts independently without communication
+C) Total organizational output is zero
+D) Employees work without supervision
+E: Synergy means collaborative, integrated departments produce greater collective value than isolated units acting alone.
+D: easy
+T: BCA-109N, Unit-1, Systems-Approach, Synergy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Contingency' (or Situational) Approach to management asserts that:
+A) There is one universal, perfect management technique that works everywhere
+B) There is no single best way to manage; managerial actions depend on the specific situational variables and environmental contingencies *
+C) Managers must guess outcomes randomly
+D) Past experience has zero relevance
+E: Contingency theory (Fiedler, Woodward, Lorsch) stresses 'if-then' situational alignment: the best approach depends on contextual variables.
+D: easy
+T: BCA-109N, Unit-1, Contingency-Approach, Principle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Quantitative Approach' (Management Science) to management relies primarily on:
+A) Astrology and intuition
+B) Mathematical modeling, statistics, linear programming, simulation, and optimization algorithms *
+C) Solely psychological personality tests
+D) Strict military discipline
+E: Management Science utilizes mathematical and statistical models for complex operational decision-making.
+D: easy
+T: BCA-109N, Unit-1, Quantitative-Approach, Management-Science
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Chester Barnard's 'Acceptance Theory of Authority' states that authority originates from:
+A) The physical strength of the manager
+B) The willingness of subordinates to accept the manager's command as legitimate *
+C) Government police power
+D) The size of the company office
+E: Barnard argued authority is effective only if subordinates understand, agree with, and voluntarily accept executive directives.
+D: medium
+T: BCA-109N, Unit-1, Barnard, Acceptance-Theory
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is considered an external environmental factor affecting management decisions?
+A) Organizational culture
+B) Economic inflation, technological breakthroughs, legal policies, and competitor actions *
+C) Internal company email servers
+D) Employee cafeteria menu
+E: External macro-environmental forces (PESTEL: Political, Economic, Social, Technological, Environmental, Legal) influence strategy directly.
+D: easy
+T: BCA-109N, Unit-1, Environment, External-Factors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Social Responsibility of Management (Corporate Social Responsibility - CSR) dictates that businesses must:
+A) Focus exclusively on profit maximization without regard for pollution
+B) Balance profit-making with ethical operations, environmental sustainability, and societal welfare *
+C) Donate all company revenue to charity
+D) Stop selling products
+E: CSR requires organizations to consider their impact on society, environment, employees, and community alongside financial gains.
+D: easy
+T: BCA-109N, Unit-1, CSR, Business-Ethics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In modern agile tech companies, the trend is moving away from rigid hierarchical bureaucracy toward:
+A) Absolute anarchy without rules
+B) Flat, decentralized, cross-functional, and highly adaptable organizational structures *
+C) Solely manual paper documentation
+D) Military chain of command
+E: Tech enterprises adopt flat, networked, agile structures to speed up innovation, empower teams, and enhance customer focus.
+D: easy
+T: BCA-109N, Unit-1, Modern-Trends, Agile-Organization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Henri Fayol identified how many total universal Principles of Management in his classic work 'Administration Industrielle et Générale' (1916)?
+A) 7 Principles
+B) 10 Principles
+C) 14 Principles *
+D) 20 Principles
+E: Henri Fayol formulated the globally celebrated 14 Principles of Management.
+D: easy
+T: BCA-109N, Unit-1, Fayol, 14-Principles
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Taylor's concept of 'Mental Revolution' required that:
+A) Workers overthrow the corporate board
+B) Both management and workers completely change their mutual mindset from hostility and conflict to total cooperation and mutual prosperity *
+C) Workers take psychiatric examinations
+D) Management fire all trade union leaders
+E: The mental revolution is the cornerstone of Taylorism: mutual understanding that increased productivity benefits both wages and company profits.
+D: medium
+T: BCA-109N, Unit-1, Taylor, Mental-Revolution
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'Subordination of Individual Interest to General Interest' according to Henri Fayol?
+A) Employees should ignore company rules
+B) The goals and welfare of the organization as a whole must supersede the personal interests of any single individual employee or group *
+C) Managers should put their personal bonus above company survival
+D) Shareholder dividends must be zero
+E: Organizational objectives must take priority over individual or departmental self-interest.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Subordination-of-Interest
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which managerial function involves comparing actual performance against predetermined standards and taking corrective measures?
+A) Planning
+B) Organizing
+C) Staffing
+D) Controlling *
+E: Controlling is the measurement and correction of performance to ensure organizational objectives and plans are achieved.
+D: easy
+T: BCA-109N, Unit-1, Functions, Controlling
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Who is widely recognized as the 'Father of Modern Management' for developing Management by Objectives (MBO) and knowledge worker concepts?
+A) Peter F. Drucker *
+B) Henri Fayol
+C) F.W. Taylor
+D) Elton Mayo
+E: Peter Drucker (1909–2005) coined 'Management by Objectives' (MBO) and predicted the rise of the 'knowledge worker'.
+D: easy
+T: BCA-109N, Unit-1, Thinkers, Peter-Drucker
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Fayol's principle 'Stability of Tenure of Personnel', why is minimizing employee turnover critical?
+A) To avoid hiring HR staff
+B) Because excessive turnover causes high recruitment costs, disrupts workflows, and wastes learning curve investments *
+C) To keep wages artificially low
+D) It is required by traffic laws
+E: Stable employment allows workers to gain domain competence, build loyalty, and eliminate recurring hiring/training friction.
+D: easy
+T: BCA-109N, Unit-1, Fayol-Principles, Stability-of-Tenure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which management function is known as the 'Primary Function' of management because all other functions depend upon it?
+A) Planning *
+B) Organizing
+C) Staffing
+D) Controlling
+E: Planning provides the foundational direction, vision, and objectives that determine organizing, staffing, directing, and controlling.
+D: easy
+T: BCA-109N, Unit-2, Planning, Primacy-of-Planning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Planning is best described as the cognitive process of:
+A) Looking backward at past errors only
+B) Deciding in advance what to do, how to do it, when to do it, and who is to do it, bridging the gap between where we are and where we want to be *
+C) Mechanically auditing cash balances
+D) Supervising factory machines
+E: Planning is forward-looking decision-making that charts the path to achieve future organizational goals.
+D: easy
+T: BCA-109N, Unit-2, Planning, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the first chronological step in the formal Planning Process?
+A) Developing planning premises
+B) Evaluating alternative courses of action
+C) Setting clear, measurable organizational objectives *
+D) Formulating derivative plans
+E: Planning begins with identifying and establishing overarching goals and measurable objectives.
+D: easy
+T: BCA-109N, Unit-2, Planning-Process, First-Step
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the planning process, 'Developing Planning Premises' refers to:
+A) Purchasing office real estate
+B) Forecasting and establishing assumptions regarding the future operating environment (economic conditions, market trends, policies) *
+C) Drafting employee contracts
+D) Printing brochures
+E: Premises are the forecasted assumptions about the future environment on which plans are formulated.
+D: medium
+T: BCA-109N, Unit-2, Planning-Process, Planning-Premises
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Long-term plans (typically 3 to 5+ years) formulated by top-level executives to define the firm's overall mission and competitive positioning are:
+A) Operational Plans
+B) Strategic Plans *
+C) Tactical Plans
+D) Contingency Budgets
+E: Strategic plans define broad corporate direction, resource allocation, and market positioning over a multi-year horizon.
+D: easy
+T: BCA-109N, Unit-2, Planning-Types, Strategic-Plans
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Medium-term plans (typically 1 to 3 years) developed by middle managers to coordinate specific departments are:
+A) Strategic Plans
+B) Tactical Plans *
+C) Operational Plans
+D) Standing Policies
+E: Tactical plans detail how individual functional departments will support the overarching strategic plan.
+D: easy
+T: BCA-109N, Unit-2, Planning-Types, Tactical-Plans
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Short-term, day-to-day, or weekly plans formulated by first-line operative supervisors are called:
+A) Strategic Plans
+B) Operational Plans *
+C) Corporate Visions
+D) Tactical Missions
+E: Operational plans govern routine daily/weekly activities, machine schedules, and task assignments.
+D: easy
+T: BCA-109N, Unit-2, Planning-Types, Operational-Plans
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is classified as a 'Single-Use Plan'?
+A) Policy
+B) Procedure
+C) Rule
+D) Budget (or Project Programme) *
+E: Single-use plans (budgets, schedules, programs) are designed for a non-recurring specific goal, expiring once executed.
+D: easy
+T: BCA-109N, Unit-2, Planning-Types, Single-Use-Plans
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a 'Standing Plan' designed for recurring situations?
+A) Annual Operating Budget
+B) Company Policy and Code of Conduct *
+C) Single Hackathon Schedule
+D) Advertising Campaign Plan
+E: Standing plans (policies, procedures, rules) provide continuous, consistent guidance for recurring operational scenarios.
+D: easy
+T: BCA-109N, Unit-2, Planning-Types, Standing-Plans
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'MBO' stand for in modern management theory?
+A) Management by Observation
+B) Management by Objectives *
+C) Management by Optimization
+D) Management by Operations
+E: MBO (Management by Objectives) was popularized by Peter Drucker in 1954 in his classic 'The Practice of Management'.
+D: easy
+T: BCA-109N, Unit-2, MBO, Acronym
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A core distinguishing characteristic of Management by Objectives (MBO) is:
+A) Top-down authoritarian dictate of quotas
+B) Joint, collaborative goal setting between managers and subordinates with regular performance feedback *
+C) Elimination of all performance reviews
+D) Paying workers only in cryptocurrency
+E: MBO emphasizes participative goal setting, where superiors and subordinates jointly define and evaluate milestones.
+D: easy
+T: BCA-109N, Unit-2, MBO, Collaborative-Goal-Setting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following represents a recognized limitation of MBO in practice?
+A) It gives too much clarity on expectations
+B) Tendency to overemphasize short-term measurable goals at the expense of vital long-term qualitative growth *
+C) It increases employee motivation
+D) It reduces paper work
+E: MBO can foster short-sightedness and administrative paperwork overload if goals focus exclusively on easily quantifiable quarterly metrics.
+D: medium
+T: BCA-109N, Unit-2, MBO, Limitations
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Decisions that are repetitive, routine, well-structured, and resolved using established rules or algorithms are:
+A) Non-Programmed Decisions
+B) Programmed Decisions *
+C) Intuitive Decisions
+D) Strategic Decisions
+E: Programmed decisions handle recurring routine situations via standard operating procedures (SOPs).
+D: easy
+T: BCA-109N, Unit-2, Decision-Making, Programmed-Decisions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Complex, novel, poorly structured decisions that involve high uncertainty and require executive judgment (e.g. launching a new AI product) are:
+A) Programmed Decisions
+B) Non-Programmed Decisions *
+C) Routine Procedures
+D) Automatic Actions
+E: Non-programmed decisions address unique, high-stakes strategic challenges with no predefined formula.
+D: easy
+T: BCA-109N, Unit-2, Decision-Making, Non-Programmed-Decisions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A decision made under a condition of 'Risk' occurs when:
+A) The manager knows the exact outcome with 100% certainty
+B) The future is unknown, but the decision-maker can assign statistical probabilities to various possible outcomes *
+C) No probabilities can be assigned whatsoever
+D) There is zero possibility of loss
+E: Under risk, decision-makers use objective or subjective probability estimates for competing outcomes.
+D: medium
+T: BCA-109N, Unit-2, Decision-Making, Decision-Under-Risk
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Herbert Simon's Administrative Model of Decision Making, the term 'Satisficing' means:
+A) Searching endlessly until the mathematically perfect optimal solution is found
+B) Selecting the first available alternative that meets the minimum acceptable threshold of criteria rather than the absolute optimal choice *
+C) Ignoring the problem completely
+D) Delegating the decision to an intern
+E: Herbert Simon showed that due to 'Bounded Rationality', humans satisfice (satisfy + suffice) rather than perfectly optimize.
+D: medium
+T: BCA-109N, Unit-2, Herbert-Simon, Satisficing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The concept of 'Bounded Rationality' formulated by Nobel laureate Herbert Simon recognizes that:
+A) Human managers have unlimited computing memory
+B) Human cognitive capacity is limited by time constraints, information incompleteness, and computational limits *
+C) Decisions are always 100% rational
+D) Computers have no value in management
+E: Bounded rationality explains that managers operate within cognitive and environmental constraints that prevent complete information processing.
+D: easy
+T: BCA-109N, Unit-2, Herbert-Simon, Bounded-Rationality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the rational decision-making model, what is the critical step following the evaluation of alternatives?
+A) Ignoring stakeholder feedback
+B) Selecting the best alternative course of action *
+C) Filing for bankruptcy
+D) Writing code immediately
+E: Once alternatives are evaluated against criteria, the decision-maker chooses the best option for execution.
+D: easy
+T: BCA-109N, Unit-2, Decision-Making-Process, Selection-Step
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which structured group decision-making technique uses anonymous multi-round questionnaires analyzed by a central facilitator to reach expert consensus without physical confrontation?
+A) Brainstorming
+B) Delphi Technique *
+C) Nominal Group Technique
+D) Fishbone Analysis
+E: The Delphi Technique gathers expert opinions through repeated anonymous survey rounds to avoid groupthink and social intimidation.
+D: medium
+T: BCA-109N, Unit-2, Decision-Techniques, Delphi-Technique
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The psychological phenomenon where members of a cohesive group prioritize unanimity and harmony over realistic appraisal of alternatives is termed:
+A) Synergy
+B) Groupthink *
+C) Brainstorming
+D) Satisficing
+E: Groupthink (Irving Janis) leads to disastrous decisions due to suppression of dissenting viewpoints in cohesive teams.
+D: medium
+T: BCA-109N, Unit-2, Decision-Making, Groupthink
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which management function involves identifying activities, grouping them logically into departments, and assigning authority-responsibility relationships?
+A) Planning
+B) Organizing *
+C) Staffing
+D) Controlling
+E: Organizing establishes the organizational structure, dividing work and coordinating roles to fulfill plans.
+D: easy
+T: BCA-109N, Unit-2, Organizing, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The process of grouping jobs, activities, and tasks into logical administrative units or departments is known as:
+A) Departmentation *
+B) Centralization
+C) Delegation
+D) Integration
+E: Departmentation clusters specialized activities into manageable administrative divisions.
+D: easy
+T: BCA-109N, Unit-2, Organizing, Departmentation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Grouping activities according to business functions (e.g., Marketing, Finance, HR, Software Development, R&D) represents:
+A) Functional Departmentation *
+B) Product Departmentation
+C) Geographical Departmentation
+D) Customer Departmentation
+E: Functional departmentation organizes work around specialized professional skills and resource efficiency.
+D: easy
+T: BCA-109N, Unit-2, Departmentation, Functional
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an enterprise creates autonomous self-contained divisions for distinct product lines (e.g., Smartphones, Laptops, Home Appliances), it uses:
+A) Functional Departmentation
+B) Product (Divisional) Departmentation *
+C) Process Departmentation
+D) Customer Departmentation
+E: Product departmentation fosters focus, accountability, and flexibility for specific product categories.
+D: easy
+T: BCA-109N, Unit-2, Departmentation, Product-Divisional
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A multinational IT corporation organizing operations into 'North America', 'EMEA', and 'Asia-Pacific' divisions is utilizing:
+A) Functional Departmentation
+B) Geographic (Territorial) Departmentation *
+C) Process Departmentation
+D) Customer Departmentation
+E: Geographic grouping adapts marketing and services to regional cultural, legal, and operational nuances.
+D: easy
+T: BCA-109N, Unit-2, Departmentation, Geographical
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which organizational structure superimposes a project-based horizontal team structure onto a traditional vertical functional hierarchy, resulting in employees having two bosses?
+A) Line Organization
+B) Functional Organization
+C) Matrix Organization *
+D) Line and Staff Organization
+E: A Matrix structure features dual command: employees report to both a functional manager and a project/product manager.
+D: medium
+T: BCA-109N, Unit-2, Organizational-Structures, Matrix-Structure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The number of subordinates that a single manager can supervise effectively and efficiently is termed the:
+A) Scalar Chain
+B) Span of Management (Span of Control) *
+C) Chain of Command
+D) Unity of Direction
+E: Span of control dictates the width of the organization: narrow spans create tall hierarchies, wide spans create flat structures.
+D: easy
+T: BCA-109N, Unit-2, Span-of-Control, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Wide Span of Control' leads directly to which type of organizational structure?
+A) Tall organizational structure with many hierarchical levels
+B) Flat organizational structure with few hierarchical levels *
+C) Circular structure with no managers
+D) Bureaucratic pyramid
+E: Wide spans mean managers supervise many subordinates directly, reducing management tiers and flattening the organization.
+D: easy
+T: BCA-109N, Unit-2, Span-of-Control, Flat-Structure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Narrow Span of Control' is characterized by:
+A) Fewer levels of management and high autonomy
+B) Close supervision, tight control, many management levels (tall structure), and higher overhead costs *
+C) Zero communication
+D) Complete freedom for employees
+E: Narrow spans enable close monitoring but increase payroll costs and lengthen vertical communication lines.
+D: easy
+T: BCA-109N, Unit-2, Span-of-Control, Narrow-Span
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: French management consultant V.A. Graicunas developed a mathematical formula to analyze how the complexity of relationships increases exponentially with the span of control, examining:
+A) Direct Single, Direct Group, and Cross Relationships *
+B) Salary, Bonuses, and Stock Options
+C) Hardware, Software, and Network ports
+D) Age, Experience, and Education
+E: Graicunas formulated R = n[2^(n-1) + n - 1], proving that adding subordinates multiplies direct and cross relationships geometrically.
+D: medium
+T: BCA-109N, Unit-2, Span-of-Control, Graicunas-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The formal right of a manager to make decisions, give orders, and allocate resources by virtue of their position is:
+A) Authority *
+B) Power
+C) Responsibility
+D) Accountability
+E: Authority is the legitimate, institutionalized right vested in a formal position to command action.
+D: easy
+T: BCA-109N, Unit-2, Authority-Concepts, Authority
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The obligation of a subordinate to perform assigned duties and tasks to the best of their ability is:
+A) Authority
+B) Responsibility *
+C) Power
+D) Centralization
+E: Responsibility is the duty and obligation to execute entrusted work effectively.
+D: easy
+T: BCA-109N, Unit-2, Authority-Concepts, Responsibility
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The answerability of a subordinate to their superior for the final outcome and performance of assigned duties is:
+A) Accountability *
+B) Delegation
+C) Scalar Chain
+D) Grapevine
+E: Accountability is the liability for end results, which flows strictly upwards in an organization.
+D: easy
+T: BCA-109N, Unit-2, Authority-Concepts, Accountability
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Principle of Parity of Authority and Responsibility' states that:
+A) Authority must be double the responsibility
+B) Authority granted to an employee must be commensurate with and equal to their assigned responsibility *
+C) Responsibility can exist without authority
+D) Managers hold all authority with zero responsibility
+E: Managers cannot hold subordinates accountable for goals without granting them equal authority and resources to act.
+D: medium
+T: BCA-109N, Unit-2, Principles-of-Organizing, Parity-Principle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can ultimate 'Accountability' be delegated away by a manager to their subordinates?
+A) Yes, completely; the manager is freed of all blame
+B) No; while authority and responsibility can be delegated, ultimate accountability to higher management CANNOT be delegated away *
+C) Only in private corporations
+D) Yes, by signing a waiver
+E: The delegating manager remains ultimately accountable to top leadership for results achieved by their subordinates.
+D: medium
+T: BCA-109N, Unit-2, Delegation, Non-delegability-of-Accountability
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the three essential pillars of the Delegation Process?
+A) Hiring, Firing, and Promoting
+B) Assignment of Duties, Granting of Authority, and Creation of Accountability *
+C) Planning, Doing, and Checking
+D) Writing, Reading, and Speaking
+E: Delegation requires: 1) Entrusting tasks, 2) Conferring authority, 3) Establishing accountability.
+D: easy
+T: BCA-109N, Unit-2, Delegation, Three-Pillars
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why do some managers hesitate or refuse to delegate authority to subordinates?
+A) Lack of confidence in subordinates' competence, fear of being surpassed ('I can do it better myself'), and desire for personal control *
+B) Because company policies prohibit it
+C) Because it takes too much money
+D) Because it is illegal
+E: Psychological insecurity, perfectionism, and lack of trust are primary barriers to managerial delegation.
+D: easy
+T: BCA-109N, Unit-2, Delegation, Barriers-to-Delegation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The systematic and consistent reservation of decision-making authority at the top management level is termed:
+A) Decentralization
+B) Centralization *
+C) Delegation
+D) Departmentation
+E: Centralization concentrates authority and strategic choices in top executive hands.
+D: easy
+T: BCA-109N, Unit-2, Centralization, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The systematic and dispersed delegation of decision-making authority throughout all levels of the organization is:
+A) Centralization
+B) Decentralization *
+C) Scalar Isolation
+D) Bureaucratic Rigidity
+E: Decentralization diffuses authority widely, empowering regional and middle managers to act independently.
+D: easy
+T: BCA-109N, Unit-2, Decentralization, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the fundamental difference between 'Delegation' and 'Decentralization'?
+A) Delegation is a philosophy of management; Decentralization is an individual act
+B) Delegation is an individual, two-person relationship (superior to subordinate); Decentralization is an organization-wide structural policy philosophy affecting all tiers *
+C) They are identical synonyms
+D) Decentralization applies only to government
+E: Delegation is a micro interpersonal transfer of tasks; decentralization is a macro organizational policy distributing authority broadly.
+D: medium
+T: BCA-109N, Unit-2, Organizing, Delegation-vs-Decentralization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which factor favors greater DECENTRALIZATION in an organization?
+A) Crisis and emergency situations
+B) Geographically dispersed business units, dynamic market conditions, and capable, well-trained local managers *
+C) Incompetent subordinates
+D) Very small enterprise size with only 3 employees
+E: Geographic spread and local market nuances make decentralization highly advantageous.
+D: easy
+T: BCA-109N, Unit-2, Decentralization, Favorable-Factors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a 'Line and Staff' organization, what is the primary role of 'Staff' personnel (e.g. Legal, HR, IT Consultants)?
+A) Issuing direct operational commands to line workers
+B) Providing specialized advisory, counseling, research, and support services to line managers *
+C) Executing manufacturing on the shop floor
+D) Selling products directly to customers
+E: Staff personnel provide advisory and consultative support; they do not possess direct line authority over line operations.
+D: medium
+T: BCA-109N, Unit-2, Organizational-Structures, Line-and-Staff
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the major source of conflict in 'Line and Staff' organizations?
+A) Staff specialists overstepping advisory roles by attempting to command line managers, while line managers ignore expert staff advice *
+B) Disagreements over lunch hours
+C) Lack of stationery
+D) Office temperature
+E: Friction arises when advisory staff overstep bounds into command or when practical line managers dismiss specialist input.
+D: easy
+T: BCA-109N, Unit-2, Line-and-Staff, Conflict-Sources
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An organization characterized by wide spans of control, few hierarchical levels, decentralized authority, and informal communication is a:
+A) Tall Organization
+B) Flat Organization *
+C) Hierarchical Bureaucracy
+D) Military Chain
+E: Flat organizations reduce vertical layers, accelerate decision speed, and empower frontline teams.
+D: easy
+T: BCA-109N, Unit-2, Organizational-Design, Flat-Organization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary operational advantage of a Flat Organizational Structure?
+A) Slower decision making
+B) Faster communication, reduced overhead management payroll, and enhanced employee empowerment *
+C) Strict minute-by-minute micromanagement
+D) More opportunities for promotions
+E: Fewer vertical layers eliminate transmission distortion, speed up responsiveness, and foster worker autonomy.
+D: easy
+T: BCA-109N, Unit-2, Flat-Structure, Advantages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a major potential disadvantage of a Flat Organization?
+A) Managers can become overloaded and overburdened with too many direct subordinates to supervise effectively *
+B) Communication becomes too slow
+C) Executive salaries are too high
+D) Too many vertical promotions
+E: Overly wide spans can overwhelm managers, resulting in inadequate mentoring and supervisory bottlenecks.
+D: easy
+T: BCA-109N, Unit-2, Flat-Structure, Disadvantages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is an informal organization feature?
+A) Formal organizational chart
+B) Official company job descriptions
+C) Spontaneous interpersonal social relations, shared hobbies, and informal leadership *
+D) Scalar chain policy handbooks
+E: The informal organization emerges organically from human social interactions and personal affinities within the formal framework.
+D: easy
+T: BCA-109N, Unit-2, Organizing, Informal-Organization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Virtual Organization' (Network Organization) is characterized by:
+A) Owning massive physical factories in every city
+B) Outsourcing almost all major business functions (manufacturing, marketing, distribution) to external specialized partners, coordinating them digitally from a lean core *
+C) Employing only robots without human workers
+D) Having zero internet connection
+E: Virtual organizations maintain a small strategic core and coordinate a dynamic web of outsourced specialist vendors via IT networks.
+D: medium
+T: BCA-109N, Unit-2, Modern-Structures, Virtual-Organization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The term 'Unity of Direction' implies:
+A) One manager giving orders to one employee
+B) One head and one comprehensive plan for a group of activities sharing the same overarching objective *
+C) All employees walking in the same physical direction
+D) Having no formal plans
+E: Unity of direction aligns all related functional operations under a single coordinated strategy.
+D: easy
+T: BCA-109N, Unit-2, Principles, Unity-of-Direction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In modern organizational design, 'Downsizing' or 'Delayering' refers to:
+A) Adding ten more middle-management levels
+B) Eliminating intermediate middle-management layers to create a leaner, flatter, and more agile corporate structure *
+C) Shutting down the company permanently
+D) Replacing all computers with typewriters
+E: Delayering removes redundant managerial bureaucracy to accelerate operational responsiveness and reduce administrative overhead.
+D: easy
+T: BCA-109N, Unit-2, Modern-Trends, Delayering
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Staffing' function of management is fundamentally concerned with:
+A) Procuring mechanical computers and furniture
+B) Acquiring, developing, maintaining, and utilizing human resources to fill organizational positions ('Putting the right person in the right job') *
+C) Balancing the accounting ledger
+D) Issuing marketing press releases
+E: Staffing ensures the organization is populated with qualified, competent personnel matched to appropriate roles.
+D: easy
+T: BCA-109N, Unit-3, Staffing, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the sequential steps in the Human Resource Staffing process?
+A) Manpower Planning -> Recruitment -> Selection -> Placement & Induction -> Training & Development -> Performance Appraisal *
+B) Firing -> Hiring -> Training
+C) Interview -> Advertisement -> Offer
+D) Appraisal -> Induction -> Selection
+E: Staffing systematically proceeds from estimating human resource requirements (planning) through recruitment, selection, onboarding, training, and appraisal.
+D: easy
+T: BCA-109N, Unit-3, Staffing-Process, Steps
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The detailed written statement outlining the tasks, duties, responsibilities, working conditions, and reporting relationships of a job is the:
+A) Job Specification
+B) Job Description *
+C) Job Enrichment
+D) Job Rotation
+E: A Job Description defines the job itself (what is to be done, where, and how).
+D: easy
+T: BCA-109N, Unit-3, Job-Analysis, Job-Description
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The written statement detailing the minimum acceptable human qualities, qualifications, skills, experience, and physical traits needed to perform a job is the:
+A) Job Description
+B) Job Specification *
+C) Job Evaluation
+D) Job Enlargement
+E: A Job Specification specifies the human requirements needed to perform the duties outlined in the job description.
+D: easy
+T: BCA-109N, Unit-3, Job-Analysis, Job-Specification
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary difference between 'Recruitment' and 'Selection'?
+A) Recruitment is negative; Selection is positive
+B) Recruitment is a positive search process to attract a large pool of applicants; Selection is a negative/filtering process to pick the best candidates and reject unsuitable ones *
+C) They occur in reverse order
+D) There is no difference
+E: Recruitment encourages candidates to apply (positive); selection screens and eliminates candidates to identify the best fit (negative).
+D: easy
+T: BCA-109N, Unit-3, Staffing, Recruitment-vs-Selection
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is an INTERNAL source of recruitment?
+A) Campus recruitment at universities
+B) Transfers and promotions of existing employees *
+C) Employment exchange advertisements
+D) Headhunting consultants
+E: Internal sources recruit from within the existing workforce via lateral transfers, internal job postings, or vertical promotions.
+D: easy
+T: BCA-109N, Unit-3, Recruitment, Internal-Sources
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a major advantage of utilizing INTERNAL recruitment for higher-level managerial roles?
+A) It brings completely fresh blood and radical outside ideas
+B) It boosts employee morale, reduces hiring and onboarding costs, and leverages proven employee track records *
+C) It eliminates the need for any compensation
+D) It creates conflict with competitors
+E: Internal promotions motivate staff, increase retention, and reduce the risks and costs of hiring unknown outsiders.
+D: easy
+T: BCA-109N, Unit-3, Recruitment, Internal-Advantages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A training method where an employee learns practical work skills under the direct guidance of a master craftsman or senior mentor on the job is:
+A) Vestibule Training
+B) Apprenticeship Training *
+C) Lecture Method
+D) Classroom Simulation
+E: Apprenticeship pairs a trainee with an experienced master to acquire hands-on trade or technical expertise.
+D: easy
+T: BCA-109N, Unit-3, Training-Methods, Apprenticeship
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Systematically moving a management trainee or software engineer through different departments (e.g. Sales -> QA -> Development -> Support) to give them broad exposure is:
+A) Job Rotation *
+B) Vestibule Training
+C) Apprenticeship
+D) Job Simplification
+E: Job rotation diversifies employee skills, prevents monotony, and prepares future general managers.
+D: easy
+T: BCA-109N, Unit-3, Training-Methods, Job-Rotation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Training conducted in a simulated, duplicate off-site environment that closely mirrors the actual work setting with identical machinery or software is:
+A) Vestibule Training *
+B) Apprenticeship
+C) Job Enrichment
+D) Mentoring
+E: Vestibule training trains workers in a safe simulated replica without risking production disruption or equipment damage on the live floor.
+D: medium
+T: BCA-109N, Unit-3, Training-Methods, Vestibule-Training
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Directing' function of management involves:
+A) Writing financial audit statements
+B) Guiding, inspiring, motivating, supervising, and leading subordinates toward achieving organizational goals *
+C) Counting warehouse inventory items
+D) Buying raw materials
+E: Directing is the active leadership and motivational heart of management that sets organizational plans into motion.
+D: easy
+T: BCA-109N, Unit-3, Directing, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the four foundational elements of the Directing function?
+A) Supervision, Motivation, Leadership, and Communication *
+B) Hiring, Training, Evaluating, and Firing
+C) Planning, Budgeting, Reporting, and Auditing
+D) Inputs, Outputs, Storage, and Processing
+E: Directing encompasses: Supervision (overseeing), Motivation (energizing), Leadership (guiding), and Communication (informing).
+D: easy
+T: BCA-109N, Unit-3, Directing, Elements
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Abraham Maslow's Need Hierarchy Theory, human needs are arranged in which hierarchical order from lowest to highest?
+A) Physiological -> Safety -> Social (Belonging) -> Esteem -> Self-Actualization *
+B) Self-Actualization -> Esteem -> Safety -> Social -> Physiological
+C) Safety -> Social -> Esteem -> Money -> Power
+D) Work -> Food -> Sleep -> House -> Car
+E: Maslow's pyramid climbs from basic physiological needs up through safety, social belonging, self-esteem, to self-actualization.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Order-of-Needs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Maslow, needs for food, clean water, adequate clothing, sleep, and physical shelter represent:
+A) Safety Needs
+B) Physiological Needs (Basic Survival Needs) *
+C) Esteem Needs
+D) Self-Actualization Needs
+E: Physiological needs are fundamental biological requirements for human survival.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Physiological-Needs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Job security, health insurance, provident funds, safe working conditions, and pension schemes satisfy which of Maslow's need levels?
+A) Physiological Needs
+B) Safety and Security Needs *
+C) Social Needs
+D) Self-Actualization Needs
+E: Safety needs protect individuals from physical dangers, illness, financial instability, and arbitrary job loss.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Safety-Needs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Friendly colleagues, workplace social gatherings, supportive team relationships, and a sense of belonging satisfy Maslow's:
+A) Social (Belongingness / Affiliation) Needs *
+B) Esteem Needs
+C) Physiological Needs
+D) Security Needs
+E: Social needs satisfy human cravings for affection, friendship, acceptance, and group identity.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Social-Needs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Job titles, promotions, prestigious awards, peer recognition, executive offices, and status symbols primarily fulfill Maslow's:
+A) Physiological Needs
+B) Esteem Needs (Self-Respect & Recognition) *
+C) Safety Needs
+D) Biological Needs
+E: Esteem needs encompass internal self-respect and autonomy, paired with external prestige, status, and recognition.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Esteem-Needs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Maslow's highest need level—the desire to fulfill one's full potential, achieve ultimate creative growth, and 'become everything one is capable of becoming'—is:
+A) Self-Actualization *
+B) Ego Need
+C) Affiliation
+D) Materialism
+E: Self-actualization is the ultimate drive toward personal growth, self-fulfillment, and realizing peak potential.
+D: easy
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Self-Actualization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Maslow's 'Progression Principle' asserts that:
+A) All needs must be satisfied simultaneously
+B) A higher-level need does not become an active motivator until lower-level foundational needs are substantially satisfied *
+C) Higher needs are less important than money
+D) Needs do not affect behavior
+E: Individuals satisfy lower foundational needs before higher-level psychological and self-fulfillment needs emerge as motivators.
+D: medium
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Progression-Principle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Maslow's 'Deficit Principle' states that:
+A) Deficits in money always motivate workers
+B) A satisfied need no longer acts as an active motivator of human behavior *
+C) People are motivated only by fear
+D) Needs cannot be met in a corporation
+E: Once a need is substantially met, it ceases to motivate behavior; people are energized by unsatisfied needs.
+D: medium
+T: BCA-109N, Unit-3, Maslow-Hierarchy, Deficit-Principle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Frederick Herzberg's 'Two-Factor Theory' (Motivation-Hygiene Theory) categorizes workplace factors into:
+A) Hygiene Factors (Dissatisfiers) and Motivating Factors (Satisfiers) *
+B) Theory X and Theory Y
+C) Financial and Non-financial factors
+D) Intrinsic and Extrinsic variables
+E: Herzberg distinguished between Hygiene factors (prevent dissatisfaction) and Motivators (generate positive satisfaction).
+D: easy
+T: BCA-109N, Unit-3, Herzberg-Theory, Two-Factors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Herzberg, what happens when 'Hygiene Factors' (e.g., base salary, company policies, working conditions, job security) are optimal?
+A) Workers become exceptionally motivated and reach peak innovation
+B) Workers are NOT dissatisfied, but they are NOT necessarily actively motivated to perform at their best *
+C) Workers immediately demand higher equity
+D) Workers become lazy
+E: Hygiene factors eliminate dissatisfaction and workplace toxicity, but they do not actively motivate employees to superior achievement.
+D: medium
+T: BCA-109N, Unit-3, Herzberg-Theory, Hygiene-Role
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is classified as a genuine 'Motivating Factor' (Satisfier) in Herzberg's theory?
+A) Base salary and fringe benefits
+B) Challenging work itself, personal achievement, meaningful recognition, and opportunities for advancement/growth *
+C) Physical air conditioning in the office
+D) Company parking space
+E: True motivators stem from intrinsic aspects of the job: achievement, recognition, challenging responsibilities, and advancement.
+D: easy
+T: BCA-109N, Unit-3, Herzberg-Theory, Motivators
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Herzberg, the opposite of 'Job Satisfaction' is:
+A) Job Dissatisfaction
+B) No Job Satisfaction *
+C) Extreme Anger
+D) Resignation
+E: Herzberg argued the opposite of Satisfaction is 'No Satisfaction'; the opposite of Dissatisfaction is 'No Dissatisfaction'.
+D: medium
+T: BCA-109N, Unit-3, Herzberg-Theory, Opposite-Dimensions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Douglas McGregor's 'Theory X' assumes that the average human worker:
+A) Naturally loves working and is self-motivated
+B) Dislikes work, will avoid it whenever possible, lacks ambition, and must be closely monitored, coerced, or threatened with punishment *
+C) Thrives on high responsibility and creativity
+D) Prefers working in teams without bosses
+E: Theory X represents the traditional, pessimistic, authoritarian view of human nature.
+D: easy
+T: BCA-109N, Unit-3, McGregor, Theory-X
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Douglas McGregor's 'Theory Y' assumes that:
+A) Workers are inherently lazy and selfish
+B) Work is as natural as play or rest; employees can exercise self-direction, seek responsibility, and exhibit high creative potential when motivated properly *
+C) Money is the only incentive that matters
+D) Managers should micromanage every minute
+E: Theory Y reflects an optimistic, humanistic perspective of workers as capable of self-motivation, ownership, and innovation.
+D: easy
+T: BCA-109N, Unit-3, McGregor, Theory-Y
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A leadership style where the leader retains all decision-making authority, dictates tasks unilaterally, and tolerates zero subordinate input is:
+A) Autocratic (Authoritarian) Leadership *
+B) Democratic (Participative) Leadership
+C) Laissez-Faire (Free-Rein) Leadership
+D) Transformational Leadership
+E: Autocratic leaders centralize power, issue non-negotiable instructions, and demand unquestioning obedience.
+D: easy
+T: BCA-109N, Unit-3, Leadership-Styles, Autocratic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A leadership style characterized by employee consultation, shared decision-making, open discussions, and consensus building is:
+A) Autocratic Leadership
+B) Democratic (Participative) Leadership *
+C) Laissez-Faire Leadership
+D) Coercive Leadership
+E: Democratic leaders solicit input, involve subordinates in planning, and foster collective ownership.
+D: easy
+T: BCA-109N, Unit-3, Leadership-Styles, Democratic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Laissez-Faire' (Free-Rein) leadership style is best described as:
+A) Strict military micromanagement
+B) A completely hands-off approach where the leader gives full freedom to autonomous subordinates to make decisions and establish goals *
+C) Punishing employees for speaking up
+D) Leading through inspirational speeches
+E: Laissez-faire leaders grant maximum autonomy, functioning merely as resource providers for self-directed teams.
+D: easy
+T: BCA-109N, Unit-3, Leadership-Styles, Laissez-Faire
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under which workplace scenario is an Autocratic leadership style most effective and necessary?
+A) Brainstorming creative marketing concepts in a startup
+B) Emergency crisis situations, factory safety emergencies, or when dealing with urgent military operations *
+C) Guiding experienced senior AI researchers
+D) Writing research papers
+E: Emergencies requiring split-second decisions and absolute coordination demand decisive autocratic direction.
+D: medium
+T: BCA-109N, Unit-3, Leadership-Styles, Autocratic-Scenario
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A leader who inspires, intellectually stimulates, and mentors followers to transcend their self-interest for a shared grand vision is a:
+A) Transactional Leader
+B) Transformational Leader *
+C) Bureaucratic Leader
+D) Laissez-Faire Leader
+E: Transformational leaders use charisma, vision, intellectual stimulation, and individualized mentorship to drive organizational change.
+D: easy
+T: BCA-109N, Unit-3, Leadership-Styles, Transformational
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Blake and Mouton Managerial Grid evaluates leadership styles based on which two behavioral dimensions?
+A) Concern for Production (Tasks) and Concern for People *
+B) Concern for Money and Concern for Fame
+C) Concern for Hardware and Concern for Software
+D) Speed and Accuracy
+E: The Managerial Grid plots leaders on a 9x9 matrix balancing 'Concern for Production' and 'Concern for People'.
+D: medium
+T: BCA-109N, Unit-3, Leadership-Grid, Blake-and-Mouton
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: On Blake and Mouton's Managerial Grid, the optimal (9,9) leadership style combining high concern for tasks with high concern for people is called:
+A) Country Club Management (1,9)
+B) Team Management (9,9) *
+C) Impoverished Management (1,1)
+D) Authoritarian Task Management (9,1)
+E: Team Management (9,9) maximizes performance by fostering committed, engaged teams aligned around common goals.
+D: medium
+T: BCA-109N, Unit-3, Leadership-Grid, Team-Management
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Vroom's Expectancy Theory of Motivation, the formula connecting motivation is:
+A) Motivation = Expectancy * Instrumentality * Valence (M = E * I * V) *
+B) Motivation = Salary + Bonus
+C) Motivation = Effort / Result
+D) Motivation = Goal * Luck
+E: Victor Vroom stated that motivation depends on Expectancy (Effort->Performance), Instrumentality (Performance->Reward), and Valence (Value of Reward).
+D: medium
+T: BCA-109N, Unit-3, Motivation-Theories, Vroom-Expectancy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: William Ouchi's 'Theory Z' blends American individual responsibility with which nation's corporate management practices?
+A) German engineering bureaucracy
+B) Japanese management practices (lifetime employment, consensus decision-making, holistic employee concern) *
+C) British trade union rules
+D) Soviet state planning
+E: Theory Z integrates Japanese consensual, long-term employment values into Western corporate culture.
+D: medium
+T: BCA-109N, Unit-3, Motivation-Theories, Theory-Z
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why are Planning and Controlling often described as the 'Siamese Twins of Management'?
+A) Because both functions were invented in Thailand
+B) Planning sets the targets and standards, while controlling measures performance against those targets; neither can function effectively without the other *
+C) Because they are performed by the exact same junior clerk
+D) Because they are identical words in French
+E: Planning provides benchmarks for control, while control provides feedback to refine future planning.
+D: easy
+T: BCA-109N, Unit-3, Controlling, Planning-and-Controlling
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The first foundational step in the Controlling Process is:
+A) Taking disciplinary action against workers
+B) Establishing clear, measurable performance standards and benchmarks *
+C) Measuring actual daily performance
+D) Comparing data with competitors
+E: Controlling begins by defining objective, quantifiable standards against which real output will be judged.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Process, First-Step
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the sequential steps in the standard Controlling Process?
+A) Establishing Standards -> Measuring Actual Performance -> Comparing Performance with Standards -> Analyzing Deviations -> Taking Corrective Action *
+B) Taking Action -> Measuring -> Setting Goals
+C) Comparing -> Punishing -> Reporting -> Hiring
+D) Setting Goals -> Closing the Firm
+E: Control systematically flows: Establish standards, measure actual results, compare against benchmarks, analyze variances, and apply corrective remedies.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Process, Steps
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The principle of 'Management by Exception' (MBE) in controlling dictates that:
+A) Managers must inspect 100% of all factory components every minute
+B) Managers should focus their attention only on significant, critical deviations and variances from the standard, leaving routine minor variances to subordinates *
+C) Managers should work without rules
+D) Every employee must be treated as an exception
+E: MBE conserves managerial time by flagging only major variances outside permissible tolerances for senior review.
+D: medium
+T: BCA-109N, Unit-3, Controlling-Principles, Management-by-Exception
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In controlling, 'Critical Point Control' (CPC) means:
+A) Monitoring only during power outages
+B) Focusing managerial control on strategic key result areas (KRAs) that have the greatest impact on organizational success *
+C) Checking spelling on every employee email
+D) Controlling worker lunch breaks
+E: Critical Point Control prioritizes inspection of vital factors that determine overall profitability and operational flow.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Principles, Critical-Point-Control
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Feedforward Control' (Preliminary Control) mechanism acts:
+A) After the entire project is completed and shipped to customers
+B) Before an activity begins, by proactively inspecting raw material quality, policies, and resource inputs to prevent defects in advance *
+C) During the exact moment of manufacturing
+D) Only when customers complain
+E: Feedforward control anticipates and prevents problems before they occur by screening inputs and resources.
+D: medium
+T: BCA-109N, Unit-3, Controlling-Types, Feedforward-Control
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A quality control manager testing samples directly on the assembly line as production is actively occurring is exercising:
+A) Feedback Control
+B) Concurrent (Real-Time) Control *
+C) Feedforward Control
+D) Post-mortem Control
+E: Concurrent control monitors activities as they happen to correct errors before downstream waste accumulates.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Types, Concurrent-Control
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Analyzing customer returns, financial audit reports, and defect statistics at the end of the fiscal quarter represents:
+A) Feedforward Control
+B) Concurrent Control
+C) Feedback (Post-action) Control *
+D) Preventative Control
+E: Feedback control evaluates finished performance to identify variances and guide future cycles.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Types, Feedback-Control
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A visual scheduling tool displaying project tasks, dependencies, and timeline milestones as horizontal bars across a calendar is a:
+A) Gantt Chart (developed by Henry Gantt) *
+B) Venn Diagram
+C) Pareto Chart
+D) Fishbone Diagram
+E: Gantt charts plot task schedules horizontally over time to monitor progress against milestones.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Techniques, Gantt-Chart
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'PERT' stand for in project management and operational control?
+A) Project Evaluation and Review Technique *
+B) Program Efficiency and Resource Tracking
+C) Performance Examination and Recording Tool
+D) Practical Enterprise Resource Technique
+E: PERT (Program Evaluation and Review Technique) is a probabilistic network analysis tool used for non-repetitive R&D projects.
+D: easy
+T: BCA-109N, Unit-3, Project-Management, PERT
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Critical Path Method (CPM) network analysis, the 'Critical Path' is defined as:
+A) The path with the fewest number of tasks
+B) The longest sequential path of dependent activities through a project network, determining the minimum total time required to complete the project *
+C) The cheapest path in dollar terms
+D) The path with no deadlines
+E: The critical path has zero slack/float; any delay along it directly postpones project completion.
+D: medium
+T: BCA-109N, Unit-3, Project-Management, Critical-Path
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Break-Even Analysis' determines the exact operational volume where:
+A) Profits are maximized to 100%
+B) Total revenue equals total costs, resulting in zero profit and zero loss (Break-Even Point) *
+C) The company goes bankrupt
+D) All inventory is destroyed
+E: The Break-Even Point (BEP = Fixed Costs / [Price - Variable Cost]) is where revenues cover expenses with zero net profit.
+D: easy
+T: BCA-109N, Unit-3, Financial-Control, Break-Even-Point
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A formal, systematic, and independent examination of an organization's financial accounts, books, and compliance records is an:
+A) Audit *
+B) Inventory Count
+C) Appraisal
+D) Brainstorming
+E: Financial audits verify accuracy, legal compliance, and internal control effectiveness.
+D: easy
+T: BCA-109N, Unit-3, Controlling-Techniques, Audit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Balanced Scorecard' framework (Kaplan & Norton) tracks organizational performance across which four distinct perspectives?
+A) Financial, Customer, Internal Business Processes, and Learning & Growth *
+B) Sales, Marketing, HR, and Accounting
+C) Hardware, Software, Firmware, and Network
+D) Past, Present, Future, and Infinity
+E: The Balanced Scorecard pairs financial metrics with Customer, Internal Processes, and Organizational Learning & Growth metrics.
+D: medium
+T: BCA-109N, Unit-3, Modern-Control, Balanced-Scorecard
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Total Quality Management (TQM) is characterized by:
+A) Inspecting products only at the shipping dock
+B) An organization-wide commitment to continuous improvement (Kaizen), customer satisfaction, and total employee involvement in quality at every stage *
+C) Ignoring worker feedback
+D) Accepting a 10% defect rate as unavoidable
+E: TQM embeds customer-centric continuous improvement into every business process across the enterprise.
+D: easy
+T: BCA-109N, Unit-3, Quality-Management, TQM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Organizational Behavior (OB) is best defined as the academic field devoted to understanding, explaining, and improving:
+A) Only mechanical machinery operations
+B) The attitudes, behaviors, and interpersonal dynamics of individuals and groups within an organizational setting *
+C) Solely tax calculation codes
+D) The physical architecture of office buildings
+E: OB investigates human behavior in organizational contexts to optimize individual satisfaction and organizational performance.
+D: easy
+T: BCA-109N, Unit-4, OB, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which behavioral discipline has contributed most profoundly to our understanding of individual-level OB concepts like personality, learning, perception, and motivation?
+A) Sociology
+B) Psychology *
+C) Anthropology
+D) Political Science
+E: Psychology focuses on individual human cognition, behavior, learning, perception, and motivation.
+D: easy
+T: BCA-109N, Unit-4, OB-Disciplines, Psychology
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Sociology contributes primarily to our understanding of which organizational behavioral level?
+A) Individual neurological firing
+B) Group dynamics, organizational culture, formal structure, communication networks, and social status *
+C) Microchip design
+D) Individual genetic heredity
+E: Sociology investigates human relationships in groups, collective structures, and social systems.
+D: easy
+T: BCA-109N, Unit-4, OB-Disciplines, Sociology
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Keith Davis's Models of Organizational Behavior, the 'Autocratic Model' is rooted in:
+A) Economic resources and employee benefits
+B) Managerial power, authority, and strict subordinate obedience *
+C) Partnership and teamwork
+D) Self-actualization
+E: The Autocratic Model relies on management power and formal authority, demanding employee compliance.
+D: easy
+T: BCA-109N, Unit-4, OB-Models, Autocratic-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Keith Davis's 'Custodial Model' of OB focuses primarily on satisfying employee needs for:
+A) Social prestige
+B) Economic security, pensions, health insurance, and welfare benefits to build organizational dependence *
+C) Autonomy and freedom
+D) Authority over peers
+E: The Custodial Model provides economic welfare programs, making employees dependent on the firm for security.
+D: easy
+T: BCA-109N, Unit-4, OB-Models, Custodial-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Supportive Model' of OB, originating from the Human Relations Movement, is anchored in managerial:
+A) Power and fear
+B) Leadership that supports employee job performance, psychological participation, and professional growth *
+C) Strict physical supervision
+D) Financial auditing
+E: The Supportive Model emphasizes leadership that helps employees grow and succeed.
+D: easy
+T: BCA-109N, Unit-4, OB-Models, Supportive-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Collegial Model' of OB is especially suited to research laboratories and software teams, emphasizing:
+A) Military chain of command
+B) Partnership, teamwork, mutual respect, self-discipline, and shared organizational responsibility *
+C) Harsh monetary fines for bugs
+D) Extreme hierarchical distance
+E: The Collegial Model treats workers as respected colleagues working collaboratively as partners.
+D: easy
+T: BCA-109N, Unit-4, OB-Models, Collegial-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the 'MARS Model' of individual behavior and performance, what do the four letters stand for?
+A) Motivation, Ability, Role Perceptions, and Situational Factors *
+B) Management, Authority, Rules, and Salary
+C) Morale, Attendance, Readiness, and Success
+D) Marketing, Accounting, Research, and Sales
+E: MARS: Motivation (drive), Ability (competencies), Role perceptions (clarity of duties), Situational factors (external environment).
+D: medium
+T: BCA-109N, Unit-4, MARS-Model, Components
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Personality is shaped by which two primary interacting forces?
+A) Heredity (genetics/nature) and Environment (culture, family, socialization/nurture) *
+B) Only the clothes a person wears
+C) Solely bank account balance
+D) Purely dietary preferences
+E: Personality emerges from genetic biological heritage interacting with cultural and environmental experiences.
+D: easy
+T: BCA-109N, Unit-4, Personality, Determinants
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the five core dimensions of the universally accepted 'Big Five Model' (OCEAN) of personality?
+A) Openness to Experience, Conscientiousness, Extraversion, Agreeableness, and Neuroticism (Emotional Stability) *
+B) Optimism, Confidence, Energy, Ambition, and Networking
+C) Originality, Care, Effort, Accuracy, and Neatness
+D) Organization, Control, Efficiency, Authority, and Negotiation
+E: The Big Five (OCEAN) personality traits: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism.
+D: easy
+T: BCA-109N, Unit-4, Big-Five, OCEAN-Traits
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Big Five personality trait is globally recognized as the STRONGEST and most consistent predictor of high job performance across virtually all professions?
+A) Extraversion
+B) Conscientiousness (dependability, organization, persistence, and achievement orientation) *
+C) Agreeableness
+D) Neuroticism
+E: Conscientiousness reflects self-discipline, organized habits, and perseverance, correlating directly with superior career output.
+D: medium
+T: BCA-109N, Unit-4, Big-Five, Conscientiousness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An individual who scores high on 'Openness to Experience' is typically characterized as:
+A) Rigid, dogmatic, and fearful of technology
+B) Imaginative, creative, curious, intellectually adaptable, and receptive to novel ideas *
+C) Aggressive and combative
+D) Emotionally unstable
+E: High Openness manifests in intellectual curiosity, creative flair, and willingness to embrace innovation.
+D: easy
+T: BCA-109N, Unit-4, Big-Five, Openness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An individual who is sociable, outgoing, assertive, talkative, and energized by social interactions ranks high in:
+A) Introversion
+B) Extraversion *
+C) Neuroticism
+D) Conscientiousness
+E: Extraversion reflects interpersonal sociability, assertiveness, and outward enthusiasm.
+D: easy
+T: BCA-109N, Unit-4, Big-Five, Extraversion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Myers-Briggs Type Indicator (MBTI) classifies human personality into 16 distinct types based on how many bipolar psychological preferences?
+A) 2 dichotomies
+B) 4 dichotomies (Extraversion/Introversion, Sensing/Intuition, Thinking/Feeling, Judging/Perceiving) *
+C) 5 dimensions
+D) 10 categories
+E: MBTI assesses 4 dichotomies: E/I (energy), S/N (information gathering), T/F (decision-making), J/P (lifestyle approach).
+D: easy
+T: BCA-109N, Unit-4, MBTI, Dichotomies
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An individual with an 'Internal Locus of Control' firmly believes that:
+A) Their life outcomes, career success, and failures are determined by their own actions, choices, and efforts *
+B) Fate, luck, astrological destiny, and powerful outside forces control everything
+C) Other people are always to blame for errors
+D) Computers decide human destinies
+E: Internals attribute success and setbacks to personal effort, skill, and agency.
+D: easy
+T: BCA-109N, Unit-4, Locus-of-Control, Internal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An individual with an 'External Locus of Control' believes that:
+A) They possess complete autonomy over their life
+B) Success, failures, and opportunities are primarily governed by luck, chance, fate, or powerful external forces beyond their control *
+C) Personal hard work guarantees victory
+D) Managers are never needed
+E: Externals perceive themselves as passive subjects governed by external circumstances, chance, or systemic luck.
+D: easy
+T: BCA-109N, Unit-4, Locus-of-Control, External
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A personality characterized by high cynicism, emotional detachment, manipulation of others, and belief that 'the end justifies the means' is termed:
+A) Type B Personality
+B) Machiavellianism (High Mach) *
+C) High Agreeableness
+D) High Neuroticism
+E: High Machs maintain detached pragmatism and manipulate social situations to achieve personal agendas.
+D: medium
+T: BCA-109N, Unit-4, Personality-Traits, Machiavellianism
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An individual's general belief regarding their own capabilities and competence to successfully perform a specific task is termed:
+A) Self-Esteem
+B) Self-Efficacy (Albert Bandura) *
+C) Locus of Control
+D) Machiavellianism
+E: Self-efficacy is domain-specific task confidence: belief that one has the capacity to execute the required actions.
+D: medium
+T: BCA-109N, Unit-4, Personality-Traits, Self-Efficacy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Type A' personality is typically characterized by:
+A) Calm relaxation, unhurried pace, and patient demeanor
+B) Intense chronic time urgency, impatience, extreme competitiveness, multitasking, and high stress vulnerability *
+C) Complete lack of career ambition
+D) Preference for sleeping during the day
+E: Type A individuals exhibit aggressive ambition, restlessness, urgency, and vulnerability to cardiovascular stress.
+D: easy
+T: BCA-109N, Unit-4, Personality-Types, Type-A
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Type B' personality is characterized as being:
+A) Hyper-aggressive and constantly hostile
+B) Relaxed, patient, steady, non-competitive, and able to enjoy leisure without guilt *
+C) Obsessed with deadlines
+D) Unable to finish tasks
+E: Type B individuals stay calm, work steadily, and maintain low emotional volatility under pressure.
+D: easy
+T: BCA-109N, Unit-4, Personality-Types, Type-B
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Any relatively permanent change in human behavior or knowledge that occurs as a direct result of experience is defined as:
+A) Maturation
+B) Learning *
+C) Instinct
+D) Perception
+E: Learning requires practice or experience that produces enduring behavioral change.
+D: easy
+T: BCA-109N, Unit-4, Learning, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Ivan Pavlov's classical conditioning experiments demonstrated learning through:
+A) Financial bonuses and pay cuts
+B) Associating an unconditioned stimulus (food) with a previously neutral conditioned stimulus (ringing bell) to elicit a conditioned response (salivation) *
+C) Writing computer code
+D) Observing peers silently
+E: Classical conditioning pairs a neutral trigger with an involuntary reflexive stimulus to create learned associations.
+D: easy
+T: BCA-109N, Unit-4, Learning-Theories, Classical-Conditioning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: B.F. Skinner's 'Operant Conditioning' theory asserts that human behavior is a function of its:
+A) Genetic inheritance alone
+B) Consequences (Reinforcement or Punishment) *
+C) Unconscious childhood dreams
+D) Physical height
+E: Operant conditioning holds that behavior followed by pleasant consequences is repeated, while behavior followed by unpleasant consequences decreases.
+D: easy
+T: BCA-109N, Unit-4, Learning-Theories, Operant-Conditioning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Skinner's Reinforcement Theory, 'Positive Reinforcement' involves:
+A) Administering painful electric shocks
+B) Presenting a desirable, rewarding stimulus (e.g. praise, bonus) immediately following a target behavior to strengthen and increase that behavior *
+C) Ignoring the worker
+D) Reducing base salary
+E: Positive reinforcement rewards desired conduct, encouraging recurrence.
+D: easy
+T: BCA-109N, Unit-4, Reinforcement, Positive-Reinforcement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Skinner's framework, 'Negative Reinforcement' means:
+A) Punishing an employee severely
+B) Withholding, terminating, or avoiding an unpleasant, noxious stimulus when the desired behavior occurs, thereby strengthening that behavior *
+C) Insulting a team member
+D) Canceling all bonuses
+E: Negative reinforcement strengthens behavior by removing an irritating or unpleasant condition (e.g. stopping a loud alarm once seatbelt is clicked).
+D: medium
+T: BCA-109N, Unit-4, Reinforcement, Negative-Reinforcement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Albert Bandura's 'Social Learning Theory' emphasizes that people learn primarily through:
+A) Trial-and-error physical shocks only
+B) Observational learning, modeling, and imitating the behaviors, attitudes, and outcomes of credible role models *
+C) Reading legal codes in solitude
+D) Hypnotic suggestion
+E: Bandura demonstrated that people acquire new behaviors observationally through modeling and vicarious reinforcement.
+D: easy
+T: BCA-109N, Unit-4, Learning-Theories, Social-Learning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The cognitive psychological process by which individuals select, organize, and interpret sensory impressions to give meaningful order to their environment is:
+A) Perception *
+B) Sensation
+C) Reflex
+D) Conditioning
+E: Perception filters sensory data and constructs mental interpretations of reality.
+D: easy
+T: BCA-109N, Unit-4, Perception, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why do two different people observing the exact same workplace event often arrive at completely different conclusions?
+A) Because they use different computer monitors
+B) Because perceptual interpretation is influenced by the perceiver's unique background, past experiences, values, expectations, and personal biases *
+C) Because human eyes are defective
+D) It is impossible for people to disagree
+E: Perception is subjective; personal filters, beliefs, and attitudes shape cognitive interpretation.
+D: easy
+T: BCA-109N, Unit-4, Perception, Subjective-Nature
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The perceptual distortion where an observer judges an individual based solely on their perception of the social, ethnic, or demographic group to which that person belongs is:
+A) Halo Effect
+B) Stereotyping *
+C) Contrast Effect
+D) Projection
+E: Stereotyping applies generalized, oversimplified group assumptions to single individuals.
+D: easy
+T: BCA-109N, Unit-4, Perceptual-Biases, Stereotyping
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The cognitive distortion where an observer forms an overall favorable impression of a person based on a single positive characteristic (e.g. attractive appearance) is the:
+A) Horn Effect
+B) Halo Effect *
+C) Selective Perception
+D) Framing Effect
+E: The Halo Effect allows a single shining trait to cast an unearned favorable glow across unrelated competencies.
+D: easy
+T: BCA-109N, Unit-4, Perceptual-Biases, Halo-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The tendency to attribute one's own personal thoughts, motives, insecurities, or unethical desires onto other colleagues is termed:
+A) Projection *
+B) Stereotyping
+C) Halo Effect
+D) Self-Serving Bias
+E: Projection defends personal ego by attributing one's internal feelings or failings onto others.
+D: medium
+T: BCA-109N, Unit-4, Perceptual-Biases, Projection
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an employee blames external bad luck or difficult software tools for their own failed project, but claims 100% personal credit for successful projects, they exhibit:
+A) Fundamental Attribution Error
+B) Self-Serving Bias *
+C) Projection
+D) Halo Effect
+E: Self-Serving Bias attributes personal successes to internal ability, and failures to external scapegoats.
+D: medium
+T: BCA-109N, Unit-4, Attribution-Theory, Self-Serving-Bias
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Fundamental Attribution Error' describes the pervasive tendency of observers to:
+A) Overestimate external situational factors when judging others
+B) Underestimate the impact of external situational factors and overestimate internal dispositional factors when judging others' poor performance *
+C) Always blame machines
+D) Never judge anyone
+E: People instinctively blame others' failures on laziness or poor character (internal), while underestimating situational roadblocks (external).
+D: medium
+T: BCA-109N, Unit-4, Attribution-Theory, Fundamental-Attribution-Error
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Pygmalion Effect' (Self-Fulfilling Prophecy) in organizational management demonstrates that:
+A) Worker output is determined purely by air temperature
+B) Subordinates tend to perform up to or down to the level of performance expectations held and communicated by their managers *
+C) Employees ignore managers
+D) Money has zero influence
+E: High managerial expectations inspire confidence and elevated performance, whereas low expectations breed underachievement.
+D: medium
+T: BCA-109N, Unit-4, Perception, Pygmalion-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the perceptual process, evaluating a job applicant more favorably simply because they were interviewed immediately after an exceptionally terrible candidate is the:
+A) Halo Effect
+B) Contrast Effect *
+C) Recency Effect
+D) Stereotype
+E: The Contrast Effect distorts evaluations due to immediate comparison with preceding stimuli.
+D: easy
+T: BCA-109N, Unit-4, Perceptual-Biases, Contrast-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Attitude' in organizational behavior is best defined as:
+A) A sudden physical reflex
+B) A persistent learned predisposition to evaluate an object, person, or situation in a favorable or unfavorable manner *
+C) An innate biological instinct
+D) A temporary headache
+E: Attitudes are evaluative judgments—favorable or unfavorable—concerning objects, people, or events.
+D: easy
+T: BCA-109N, Unit-4, Attitudes, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'ABC Model' identifies which three structural components of human attitudes?
+A) Action, Belief, and Consequence
+B) Affective (feelings), Behavioral (action intentions), and Cognitive (beliefs/opinions) components *
+C) Authority, Behavior, and Control
+D) Ambition, Business, and Career
+E: ABC: Affective (emotional feeling), Behavioral (intended action), Cognitive (opinion, belief, knowledge).
+D: easy
+T: BCA-109N, Unit-4, Attitudes, ABC-Model
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the statement 'I believe the new corporate vacation policy is unfair', which component of attitude is expressed?
+A) Affective component
+B) Cognitive component *
+C) Behavioral component
+D) Subconscious component
+E: Statements of evaluation, factual appraisal, or belief reflect the cognitive dimension.
+D: easy
+T: BCA-109N, Unit-4, Attitudes, Cognitive-Component
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the statement 'I feel angry whenever our servers go down during a release', which component of attitude is expressed?
+A) Affective component (emotion/feeling) *
+B) Cognitive component
+C) Behavioral component
+D) Physical component
+E: Emotional states ('I feel angry') constitute the affective component of attitude.
+D: easy
+T: BCA-109N, Unit-4, Attitudes, Affective-Component
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the statement 'I plan to submit my resignation letter next Monday', which component of attitude is manifested?
+A) Cognitive component
+B) Affective component
+C) Behavioral component (intention to act) *
+D) Philosophical component
+E: Expressed intentions to act in a specific manner reflect the behavioral component.
+D: easy
+T: BCA-109N, Unit-4, Attitudes, Behavioral-Component
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Leon Festinger's 'Cognitive Dissonance Theory' describes the psychological state of:
+A) Extreme joy upon receiving a salary raise
+B) Uncomfortable psychological tension and conflict experienced when an individual holds two contradictory beliefs, or acts in conflict with their core values *
+C) Complete peace of mind
+D) Inability to learn languages
+E: Cognitive dissonance arises when actions contradict beliefs, compelling individuals to alter beliefs or behavior to restore equilibrium.
+D: medium
+T: BCA-109N, Unit-4, Cognitive-Dissonance, Festinger
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an employee experiences acute cognitive dissonance, they instinctively seek to:
+A) Increase the contradiction to maximize stress
+B) Reduce or eliminate the psychological discomfort by changing their attitude, changing their behavior, or rationalizing the inconsistency *
+C) Sue the company
+D) Ignore their feelings permanently
+E: Individuals resolve dissonance by rationalizing, changing attitudes, or altering behavior to regain consistency.
+D: easy
+T: BCA-109N, Unit-4, Cognitive-Dissonance, Dissonance-Reduction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A positive, pleasurable emotional state resulting from an employee's appraisal of their job experiences and workplace rewards is:
+A) Job Dissonance
+B) Job Satisfaction *
+C) Organizational Stress
+D) Alienation
+E: Job satisfaction reflects positive emotional engagement with work duties, culture, and rewards.
+D: easy
+T: BCA-109N, Unit-4, Workplace-Attitudes, Job-Satisfaction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The degree to which an employee psychologically identifies with their specific job, actively participates in it, and considers performance central to self-worth is:
+A) Job Involvement *
+B) Organizational Commitment
+C) Job Enlargement
+D) Job Rotation
+E: Job involvement measures psychological identification with one's specific work duties.
+D: easy
+T: BCA-109N, Unit-4, Workplace-Attitudes, Job-Involvement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The degree to which an employee identifies with the overall organization, its goals, and desires to maintain active membership within it is:
+A) Job Satisfaction
+B) Organizational Commitment *
+C) Locus of Control
+D) Self-Efficacy
+E: Organizational commitment reflects loyalty, dedication, and institutional attachment.
+D: easy
+T: BCA-109N, Unit-4, Workplace-Attitudes, Organizational-Commitment
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Meyer and Allen's three-component model of Organizational Commitment encompasses:
+A) Affective Commitment (want to stay), Continuance Commitment (need to stay due to costs), and Normative Commitment (ought to stay due to moral duty) *
+B) Financial, Social, and Technical commitment
+C) Daily, Weekly, and Monthly commitment
+D) Beginner, Intermediate, and Advanced commitment
+E: Three dimensions: Affective (emotional desire), Continuance (economic cost of leaving), Normative (ethical obligation to stay).
+D: medium
+T: BCA-109N, Unit-4, Organizational-Commitment, Three-Components
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an employee stays with an IT company primarily because leaving would forfeit unvested stock options and lucrative pensions, they exhibit:
+A) Affective Commitment
+B) Continuance Commitment (Calculative) *
+C) Normative Commitment
+D) Altruistic Commitment
+E: Continuance commitment is rooted in the perceived financial penalty and transactional cost of quitting.
+D: medium
+T: BCA-109N, Unit-4, Organizational-Commitment, Continuance
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Voluntary, discretionary employee behaviors that are not part of formal job requirements but contribute positively to the overall workplace culture (e.g. helping new peers) are:
+A) Counterproductive Work Behaviors (CWB)
+B) Organizational Citizenship Behaviors (OCB) *
+C) Mandatory Tasks
+D) Bureaucratic Procedures
+E: OCBs (altruism, civic virtue, sportsmanship) represent voluntary helpfulness that elevates organizational functioning.
+D: easy
+T: BCA-109N, Unit-4, Workplace-Behaviors, OCB
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Intentional employee behaviors that actively harm organizational functioning, property, or colleagues (e.g., sabotage, theft, harassment, gossiping) are termed:
+A) Organizational Citizenship Behaviors
+B) Counterproductive Work Behaviors (CWB) *
+C) Theory Y Actions
+D) Job Rotation
+E: CWBs inflict damage on organizational assets, workplace climate, or individual colleagues.
+D: easy
+T: BCA-109N, Unit-4, Workplace-Behaviors, CWB
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Employee Absenteeism and High Turnover in an enterprise are most commonly the direct behavioral consequences of:
+A) Excessively high job satisfaction
+B) Low job satisfaction, organizational alienation, and toxic supervisory climate *
+C) High emotional intelligence
+D) Continuous promotions
+E: Dissatisfaction and burnout manifest behaviorally in withdrawal, absenteeism, and resignation.
+D: easy
+T: BCA-109N, Unit-4, Job-Satisfaction, Consequences
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In organizational management, the primary purpose of an Information System is to:
+A) Consume electricity
+B) Transform raw data into meaningful, timely, and actionable information to support managerial decision-making *
+C) Replace human executives permanently
+D) Store paper files on desks
+E: Information systems process raw data into structured insights for planning, coordination, and control.
+D: easy
+T: BCA-109N, Unit-5, IT-Management, Purpose
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which level of information system handles routine, high-volume, operational daily transactions (e.g., ATM withdrawals, supermarket barcode scanning)?
+A) Decision Support System (DSS)
+B) Transaction Processing System (TPS) *
+C) Executive Support System (ESS)
+D) Management Information System (MIS)
+E: TPS processes day-to-day transactional data at the operational level of business.
+D: easy
+T: BCA-109N, Unit-5, Information-Systems, TPS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Management Information System (MIS) primarily serves which level of management with periodic, structured summary reports?
+A) First-line factory laborers
+B) Middle-level managers for monitoring and controlling structured operational performance *
+C) External auditors only
+D) Retail customers
+E: MIS provides middle management with standardized reports (sales summaries, inventory levels) to track operational health.
+D: easy
+T: BCA-109N, Unit-5, Information-Systems, MIS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A computer-based system that combines data, sophisticated analytical models, and user-friendly interfaces to assist managers with semi-structured, non-routine decisions (e.g., 'What-If' scenarios) is a:
+A) Transaction Processing System (TPS)
+B) Decision Support System (DSS) *
+C) Payroll Ledger
+D) Keyboard Driver
+E: DSS helps decision-makers explore complex scenarios through mathematical modeling and sensitivity analysis.
+D: easy
+T: BCA-109N, Unit-5, Information-Systems, DSS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An Executive Support System (ESS / EIS) is tailored specifically for TOP-LEVEL executives by featuring:
+A) Extremely detailed lines of raw SQL database code
+B) High-level visual executive dashboards, KPI drill-downs, exception alerts, and external market competitive data *
+C) Only a text-based DOS command line
+D) Word processors for writing memos
+E: ESS/EIS delivers graphical dashboards and strategic metrics designed for executive decision-making.
+D: easy
+T: BCA-109N, Unit-5, Information-Systems, ESS-EIS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In spreadsheet and financial modeling software (e.g. Microsoft Excel), evaluating 'What happens to net profit if material costs rise by 15% and sales drop by 5%?' is an example of:
+A) What-If / Sensitivity Analysis *
+B) Data Sorting
+C) Spell Checking
+D) Macro Recording
+E: What-If sensitivity analysis models how changing input variables impacts financial and operational outcomes.
+D: easy
+T: BCA-109N, Unit-5, DSS-Techniques, What-If-Analysis
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A central relational database in modern enterprise IT that aggregates historical, integrated data from multiple operational sources for business intelligence analysis is a:
+A) Data Warehouse *
+B) Compact Disc
+C) Floppy Disk
+D) RAM Cache
+E: A Data Warehouse consolidates enterprise data from disparate operational systems to support analytical queries and reporting.
+D: easy
+T: BCA-109N, Unit-5, Data-Management, Data-Warehouse
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The computational process of discovering hidden patterns, predictive trends, and valuable correlations from massive datasets using machine learning algorithms is:
+A) Data Entry
+B) Data Mining *
+C) Data Erasing
+D) Data Printing
+E: Data Mining uncovers non-obvious patterns, customer clustering, and behavioral predictions across large datasets.
+D: easy
+T: BCA-109N, Unit-5, Data-Management, Data-Mining
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A visual display interface that consolidates and tracks organizational Key Performance Indicators (KPIs), metrics, and real-time status gauges on a single screen is an:
+A) Executive Dashboard *
+B) Operating System Terminal
+C) Spreadsheet Grid
+D) Email Inbox
+E: Executive Dashboards present immediate, visual overviews of organizational performance indicators.
+D: easy
+T: BCA-109N, Unit-5, MIS, Dashboard
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In enterprise information management, what does 'OLAP' stand for?
+A) Online Analytical Processing *
+B) Offline Automated Ledger Processing
+C) Optical Laser Access Point
+D) Output Line Analysis Protocol
+E: OLAP enables multidimensional analytical queries across complex business data cubes.
+D: medium
+T: BCA-109N, Unit-5, BI, OLAP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which core computerized financial accounting module maintains the permanent, central record of all financial debit and credit transactions across all ledger accounts?
+A) Accounts Receivable (AR)
+B) General Ledger (GL) *
+C) Accounts Payable (AP)
+D) Fixed Assets Module
+E: The General Ledger is the master accounting record consolidating transactions across all financial accounts.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, General-Ledger
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A computerized 'Accounts Receivable' (AR) system tracks:
+A) Money the company owes to external suppliers for raw materials
+B) Money owed to the company by customers for goods/services delivered on credit (invoices and collections) *
+C) Monthly employee salaries
+D) Factory property taxes
+E: Accounts Receivable manages outstanding customer invoices, credit limits, and incoming payment collections.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, Accounts-Receivable
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A computerized 'Accounts Payable' (AP) module manages:
+A) Money owed by the organization to external suppliers, vendors, and creditors for purchased supplies *
+B) Customer credit cards
+C) Shareholder dividends
+D) Employee provident fund investments
+E: Accounts Payable automates vendor invoice matching, approval workflows, and supplier disbursements.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, Accounts-Payable
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Computerized financial management software simplifies 'Cash Flow Forecasting' by:
+A) Guessing random lottery numbers
+B) Projecting future cash inflows and outflows based on scheduled receivables, recurring payables, and historical sales trends to prevent liquidity crunches *
+C) Printing paper checks only
+D) Eliminating company bank accounts
+E: Cash flow systems model expected inflows and outflows to optimize working capital and maintain corporate liquidity.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, Cash-Flow-Forecasting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In computerized Payroll systems, 'Gross Salary' represents:
+A) The final net amount credited to the employee's bank account
+B) Total earnings before any statutory deductions (Basic Pay + HRA + DA + Allowances) *
+C) The company's annual profit
+D) Income tax deducted by government
+E: Gross Pay equals total basic earnings plus allowances before any deductions are subtracted.
+D: easy
+T: BCA-109N, Unit-5, Payroll-Systems, Gross-Salary
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In computerized Indian payroll processing, 'TDS' stands for:
+A) Total Depreciation System
+B) Tax Deducted at Source (Income Tax withheld by the employer from salary) *
+C) Terminal Data Service
+D) Time Distribution Standard
+E: TDS represents income tax deducted by the employer from employee compensation for direct remittance to the government.
+D: easy
+T: BCA-109N, Unit-5, Payroll-Systems, TDS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which statutory social security deduction in Indian computerized payroll involves matched contributions from both employee and employer toward a retirement fund?
+A) Provident Fund (PF) *
+B) GST
+C) Customs Duty
+D) Corporate Tax
+E: Employees' Provident Fund (EPF) mandates shared employee and employer contributions for long-term retirement security.
+D: easy
+T: BCA-109N, Unit-5, Payroll-Systems, Provident-Fund
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Modern computerized payroll software automates final salary disbursement primarily through:
+A) Mailing cash in paper envelopes
+B) Generating automated NACH / NEFT / Direct Bank Transfer payment gateway files *
+C) Paying workers in factory goods
+D) Physical promissory notes
+E: Payroll engines compile direct bank deposit instruction files for automated electronic batch clearance.
+D: easy
+T: BCA-109N, Unit-5, Payroll-Systems, Direct-Deposit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Financial ratio analysis software enables corporate financial analysts to automatically calculate:
+A) Liquidity ratios (Current Ratio), Solvency ratios, Profitability ratios, and Asset Turnover *
+B) Worker typing speed
+C) Network ping latency
+D) Office room temperature
+E: Automated financial analytics compute solvency, liquidity, leverage, and profitability ratios instantly.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, Ratio-Analysis
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In digital financial auditing, an 'Audit Trail' refers to:
+A) A paper receipt thrown in the trash
+B) A secure, chronological, tamper-evident electronic record of system activities that logs who modified which data, when, and from which IP address *
+C) The physical hallway to the finance office
+D) A software license agreement
+E: An audit trail records financial transactions and user actions, ensuring accountability and compliance.
+D: easy
+T: BCA-109N, Unit-5, Financial-IT, Audit-Trail
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'MRP I' stand for in computerized production and operations management?
+A) Material Requirements Planning *
+B) Manufacturing Resource Processing
+C) Management Reporting Protocol
+D) Master Routing Plan
+E: Material Requirements Planning (MRP I) calculates production schedules and raw material purchase orders.
+D: easy
+T: BCA-109N, Unit-5, Operations-IT, MRP-I
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the three essential input files required by a computerized MRP I system to generate material purchase orders?
+A) Master Production Schedule (MPS), Bill of Materials (BOM), and Inventory Records File *
+B) Marketing slogans, TV ads, and customer names
+C) Employee salaries, tax codes, and bank cards
+D) General Ledger, Cash Book, and Petty Cash
+E: MRP I demands: 1) Master Production Schedule (what to make and when), 2) Bill of Materials (components per product), 3) Current inventory on hand.
+D: medium
+T: BCA-109N, Unit-5, Operations-IT, MRP-Inputs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In manufacturing IT systems, a 'Bill of Materials' (BOM) is defined as:
+A) An invoice for electricity
+B) A comprehensive, hierarchical list of all raw materials, sub-assemblies, components, and quantities required to manufacture one unit of a finished product *
+C) The marketing price list
+D) Employee payroll register
+E: The BOM acts as the manufacturing recipe detailing all component parts required to assemble the finished good.
+D: easy
+T: BCA-109N, Unit-5, Operations-IT, Bill-of-Materials
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does 'MRP II' (Manufacturing Resource Planning) expand upon 'MRP I'?
+A) It eliminates computers
+B) It integrates manufacturing planning with marketing, capacity requirements planning (CRP), plant maintenance, and financial accounting modules into a closed-loop system *
+C) It applies only to fast food restaurants
+D) It handles only employee recruitment
+E: MRP II expands basic materials calculation into an integrated closed-loop system including shop capacity, tooling, and financial accounting.
+D: medium
+T: BCA-109N, Unit-5, Operations-IT, MRP-II
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'ERP' stand for in modern enterprise software architectures?
+A) Enterprise Resource Planning *
+B) Electronic Record Processing
+C) Emergency Response Protocol
+D) External Routing Provider
+E: Enterprise Resource Planning (ERP) connects core business functions across an enterprise into an integrated database.
+D: easy
+T: BCA-109N, Unit-5, ERP, Acronym
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The central defining feature of an Enterprise Resource Planning (ERP) system is:
+A) Using separate, incompatible software databases for every single department
+B) A single, centralized, unified relational database shared seamlessly across Finance, HR, Supply Chain, Manufacturing, and Sales *
+C) Eliminating all data backups
+D) Operating without user passwords
+E: ERP replaces disconnected functional silos with a centralized database providing shared real-time data.
+D: easy
+T: BCA-109N, Unit-5, ERP, Central-Feature
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a globally recognized commercial ERP software vendor?
+A) SAP (Systems, Applications, and Products in Data Processing) *
+B) Microsoft Windows Paint
+C) Mozilla Firefox
+D) Adobe Photoshop
+E: SAP is the worldwide market leader in enterprise ERP solutions, alongside Oracle ERP Cloud and Microsoft Dynamics 365.
+D: easy
+T: BCA-109N, Unit-5, ERP, Vendors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A major implementation challenge frequently causing ERP projects to exceed budget or fail is:
+A) The software takes too little disk space
+B) Organizational resistance to change, complex business process re-engineering, and extensive software customization costs *
+C) Lack of computers in modern offices
+D) ERP software is too cheap
+E: ERP implementation requires sweeping cultural, structural, and workflow adjustments that trigger user resistance if poorly managed.
+D: medium
+T: BCA-109N, Unit-5, ERP, Implementation-Challenges
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In computerized inventory management, 'EOQ' stands for:
+A) Electronic Output Quota
+B) Economic Order Quantity *
+C) Estimated Operating Quality
+D) Enterprise Order Queue
+E: Economic Order Quantity (EOQ) determines optimal purchase order size to minimize combined ordering and carrying costs.
+D: easy
+T: BCA-109N, Unit-5, Inventory-IT, EOQ
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In computerized 'ABC Analysis' of inventory control, 'Category A' items represent:
+A) Items with low monetary value and huge quantities
+B) High-value items that account for roughly 70–80% of total inventory value but only 10–20% of total physical inventory items (demanding strict control) *
+C) Items that are obsolete and should be discarded
+D) Stationery paper and pens
+E: ABC analysis follows the Pareto principle: A items represent high monetary value requiring tight, continuous control.
+D: medium
+T: BCA-109N, Unit-5, Inventory-IT, ABC-Analysis
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In computerized inventory management, 'JIT' (Just-In-Time) systems aim to:
+A) Stock massive warehouse stockpiles lasting 5 years
+B) Minimize inventory holding costs by coordinating deliveries so materials arrive exactly when needed for production ('Zero Inventory') *
+C) Never order any raw materials
+D) Delay customer deliveries indefinitely
+E: Pioneered by Toyota, JIT synchronizes supply deliveries with production to eliminate inventory carrying overhead.
+D: easy
+T: BCA-109N, Unit-5, Operations-IT, JIT
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which wireless technology utilizes tiny microchip tags and radio frequencies for real-time, non-line-of-sight tracking of inventory pallets in modern warehouses?
+A) Barcode scanners
+B) Radio Frequency Identification (RFID) *
+C) Infrared remote controls
+D) Dial-up modems
+E: RFID tags broadcast radio signals, enabling automated bulk inventory scanning without requiring direct visual line-of-sight.
+D: easy
+T: BCA-109N, Unit-5, Logistics-IT, RFID
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In automated warehousing, a 'Barcode System' functions by:
+A) Listening to sound vibrations
+B) Optically reading printed parallel lines and spaces of variable widths using laser scanners to retrieve product IDs instantly from a database *
+C) Weighing the box on a scale
+D) Using satellite GPS
+E: Barcodes visually encode alphanumeric SKU data for rapid optical scanning and automated stock reconciliation.
+D: easy
+T: BCA-109N, Unit-5, Logistics-IT, Barcodes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In production management, 'CAD / CAM' stands for:
+A) Computer-Aided Design / Computer-Aided Manufacturing *
+B) Centralized Automated Data / Continuous Access Memory
+C) Corporate Audit Division / Customer Action Model
+D) Computer Accounting Document / Cash Audit Module
+E: CAD/CAM software tools design geometric models and translate them into automated CNC machine manufacturing instructions.
+D: easy
+T: BCA-109N, Unit-5, Operations-IT, CAD-CAM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In supply chain management, 'SCM' software facilitates:
+A) Only printing office memos
+B) End-to-end coordination and optimization of material flows, data, and finances from raw supplier extraction to final customer delivery *
+C) Internal payroll deduction calculations
+D) Employee disciplinary hearings
+E: Supply Chain Management (SCM) optimizes logistics, procurement, warehouse fulfillment, and delivery across external partners.
+D: easy
+T: BCA-109N, Unit-5, Supply-Chain, SCM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'HRIS' stand for in contemporary human resource management?
+A) Human Resource Information System *
+B) High Reliability Internet System
+C) Human Recruitment Integration Standard
+D) Hourly Rate Inspection Service
+E: An HRIS integrates human resource processes with information technology for data-driven workforce administration.
+D: easy
+T: BCA-109N, Unit-5, HRIS, Acronym
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A primary functional capability of an HRIS is:
+A) Controlling factory CNC cutting lasers
+B) Maintaining centralized digital employee master records, leave management, biometric attendance, and performance appraisals *
+C) Auditing global bank accounts
+D) Writing compiler algorithms
+E: HRIS automates workforce records, onboarding, leave/attendance tracking, benefits administration, and talent analytics.
+D: easy
+T: BCA-109N, Unit-5, HRIS, Core-Capabilities
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Software designed to automate and manage the recruitment lifecycle—from job posting, resume parsing, candidate screening, to interview scheduling—is an:
+A) Applicant Tracking System (ATS) *
+B) Electronic Data Interchange (EDI)
+C) Operating System
+D) Supply Chain Monitor
+E: An ATS filters resumes, parses skills, and manages candidate pipelines throughout recruitment.
+D: easy
+T: BCA-109N, Unit-5, HRIS, ATS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How do computerized biometric attendance systems (e.g. fingerprint or facial recognition scanners) benefit HR management?
+A) They increase paper consumption
+B) They eliminate 'buddy punching', ensure punctuality logging, and feed accurate real-time attendance data directly into payroll engines *
+C) They make employees work 24 hours a day
+D) They are strictly used for entertainment
+E: Biometric terminals capture verified timestamps, eliminating proxy attendance and automating payroll inputs.
+D: easy
+T: BCA-109N, Unit-5, HRIS, Biometrics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Human Resource Information Systems, '360-Degree Feedback' software enables:
+A) Evaluating employee performance solely through a single boss
+B) Gathering confidential performance appraisals from superiors, peers, subordinates, and self-evaluations for a holistic assessment *
+C) Rotating chairs in the office
+D) Checking clock angles
+E: 360-degree feedback tools aggregate multi-source appraisals from colleagues, supervisors, and direct reports.
+D: medium
+T: BCA-109N, Unit-5, HRIS, 360-Degree-Feedback
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'CRM' stand for in modern marketing and sales management?
+A) Customer Relationship Management *
+B) Corporate Resource Monitoring
+C) Client Revenue Measurement
+D) Central Retail Marketing
+E: Customer Relationship Management (CRM) manages interactions with current and prospective clients.
+D: easy
+T: BCA-109N, Unit-5, CRM, Acronym
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A major business objective of implementing an enterprise CRM system (e.g. Salesforce, HubSpot) is to:
+A) Spam customers with viruses
+B) Organize customer data, automate lead tracking, enhance customer retention, personalize marketing, and improve sales conversion rates *
+C) Fire all sales representatives
+D) Close down retail branches
+E: CRM unifies customer interaction histories, tracks sales pipelines, and enhances customer satisfaction and lifetime value.
+D: easy
+T: BCA-109N, Unit-5, CRM, Objective
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In CRM systems, 'Sales Force Automation' (SFA) automates which functions?
+A) Factory floor assembly lines
+B) Sales pipeline tracking, lead qualification, contact management, quote generation, and sales forecasting *
+C) Tax calculation for government
+D) Employee pension plans
+E: SFA automates administrative sales workflows, freeing representatives to focus on customer engagement and closing deals.
+D: easy
+T: BCA-109N, Unit-5, CRM, SFA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In marketing data analytics, 'Customer Lifetime Value' (CLV) calculates:
+A) The physical biological lifespan of a customer
+B) The total projected net monetary revenue a business expects to earn from a customer relationship throughout their entire engagement with the brand *
+C) The age of the oldest customer
+D) The customer's annual income tax
+E: CLV estimates cumulative future revenue attributable to an individual customer relationship to guide marketing spend.
+D: medium
+T: BCA-109N, Unit-5, Marketing-Analytics, CLV
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In digital marketing analytics, 'Conversion Rate' measures:
+A) The speed of internet downloading
+B) The percentage of website or app visitors who complete a desired target action (e.g., buying a product, signing up for a trial) *
+C) The change from Celsius to Fahrenheit
+D) The rate of battery drainage
+E: Conversion Rate = (Conversions / Total Visitors) * 100, measuring digital marketing efficacy.
+D: easy
+T: BCA-109N, Unit-5, Marketing-Analytics, Conversion-Rate
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In web and digital analytics, 'Bounce Rate' refers to:
+A) The physical elasticity of laptops
+B) The percentage of website visitors who enter the site and leave immediately from the entrance page without browsing any other pages *
+C) The number of emails sent per hour
+D) The server restart frequency
+E: Bounce Rate tracks single-page sessions where the visitor exits without interacting further.
+D: easy
+T: BCA-109N, Unit-5, Marketing-Analytics, Bounce-Rate
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In online digital marketing campaigns (e.g. Google Ads), 'CTR' stands for:
+A) Click-Through Rate *
+B) Customer Tracking Record
+C) Central Transfer Ratio
+D) Corporate Tax Return
+E: Click-Through Rate (CTR = [Clicks / Impressions] * 100) measures how effectively an ad induces viewers to click.
+D: easy
+T: BCA-109N, Unit-5, Digital-Marketing, CTR
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'A/B Testing' (Split Testing) in digital marketing and product management?
+A) Testing batteries A and B
+B) Comparing two distinct versions of a webpage, email, or ad (Version A vs Version B) shown randomly to users to measure which drives higher conversions *
+C) Testing only on Android and Blackberry
+D) Grading student exams
+E: A/B testing evaluates two variations with a single altered variable to empirically determine which delivers superior performance.
+D: easy
+T: BCA-109N, Unit-5, Marketing-Analytics, A-B-Testing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In CRM and digital analytics, 'Customer Churn Rate' measures:
+A) The rate at which ice cream is manufactured
+B) The percentage of existing customers or subscribers who cancel or discontinue their relationship/service with the company over a specific time period *
+C) The rate at which products are shipped
+D) The increase in customer phone calls
+E: Churn rate tracks subscriber/customer attrition over time, highlighting customer retention health.
+D: easy
+T: BCA-109N, Unit-5, Marketing-Analytics, Churn-Rate
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In modern digital marketing analytics, 'SEO' stands for:
+A) Search Engine Optimization *
+B) Sales Enablement Operations
+C) System Evaluation Order
+D) Security Encryption Output
+E: SEO optimizes website technical architecture and content to gain higher organic rankings in search engines.
+D: easy
+T: BCA-109N, Unit-5, Digital-Marketing, SEO
+Y: 2024
+X: MJPRU BCA Sem 1
+

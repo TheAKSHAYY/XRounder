@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { ArrowRight, ArrowLeft, BookOpen, Check, Compass } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -21,6 +21,7 @@ type SubjectItem = {
   code: string;
   slug: string;
   title: string;
+  credits?: number | null;
 };
 
 type SemesterData = {
@@ -30,7 +31,7 @@ type SemesterData = {
 };
 
 async function fetchSemesterDetails(
-  queryClient: any,
+  queryClient: QueryClient,
   courseSlug: string,
   semesterNumber: string,
 ): Promise<SemesterData> {
@@ -59,7 +60,7 @@ async function fetchSemesterDetails(
 
       const { data: subjects, error: sue } = await supabase
         .from("subjects")
-        .select("id, code, slug, title")
+        .select("id, code, slug, title, credits")
         .eq("semester_id", sem.id)
         .eq("status", "published")
         .is("deleted_at", null)
@@ -229,7 +230,7 @@ function SemesterDetail() {
 
       const { data: subjects, error: sue } = await supabase
         .from("subjects")
-        .select("id, code, slug, title")
+        .select("id, code, slug, title, credits")
         .eq("semester_id", sem.id)
         .eq("status", "published")
         .is("deleted_at", null)
@@ -244,7 +245,7 @@ function SemesterDetail() {
 
   const semesterId = semQuery.data?.sem.id;
   const courseId = semQuery.data?.course.id;
-  const subjects = semQuery.data?.subjects ?? [];
+  const subjects = useMemo(() => semQuery.data?.subjects ?? [], [semQuery.data?.subjects]);
 
   // Units + progress for aggregation
   // All published semesters of this course, so learners can hop between them
@@ -281,7 +282,7 @@ function SemesterDetail() {
     },
   });
 
-  const units = unitsQuery.data ?? [];
+  const units = useMemo(() => unitsQuery.data ?? [], [unitsQuery.data]);
 
   const progressQuery = useQuery({
     queryKey: ["student", "sem-progress", user?.id, semesterId],
@@ -298,7 +299,7 @@ function SemesterDetail() {
     },
   });
 
-  const progress = progressQuery.data ?? [];
+  const progress = useMemo(() => progressQuery.data ?? [], [progressQuery.data]);
 
   // Live-refresh
   useEffect(() => {
@@ -646,45 +647,41 @@ function SubjectCard({
   const isDone = status === "completed";
 
   const ctaLabel = !showProgress
-    ? "Open"
+    ? "Open Subject"
     : isDone
-      ? "Review"
+      ? "Review Subject"
       : status === "in_progress"
         ? "Continue"
-        : "Start";
+        : "Start Subject";
 
   return (
     <Link
       {...href}
       aria-label={`${subject.title} — ${ctaLabel}`}
-      className="hud-card interactive-card group relative flex h-full min-h-[14rem] w-full min-w-0 flex-col overflow-hidden rounded-2xl p-5 sm:p-6 shadow-soft-xs hover:border-primary/50 transition-all duration-200"
+      className="interactive-card group relative flex h-full min-h-[14rem] w-full min-w-0 flex-col overflow-hidden rounded-xl border border-border bg-card p-5 sm:p-6 shadow-2xs hover:border-accent/70 transition-all duration-200"
     >
-      {/* Top accent sheen */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10"
-      />
-
       {/* Header: code chip + status badge */}
       <div className="flex min-w-0 items-center justify-between gap-2">
-        <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/25 px-2 py-0.5 rounded-md">
           {subject.code}
         </span>
         <div className="flex items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/20 px-2 py-0.5 text-[10px] font-semibold text-primary">
-            15/15 Blueprint
-          </span>
+          {subject.credits != null ? (
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 border border-accent/20 px-2 py-0.5 text-[10px] font-semibold text-accent">
+              {subject.credits} Credits
+            </span>
+          ) : totalUnits > 0 ? (
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 border border-accent/20 px-2 py-0.5 text-[10px] font-semibold text-accent">
+              {totalUnits} Units
+            </span>
+          ) : null}
           {showProgress && (
             <span
               className={
                 isDone
-                  ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary"
+                  ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent"
                   : status === "in_progress"
-                    ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-foreground"
+                    ? "inline-flex shrink-0 items-center gap-1 rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent"
                     : "inline-flex shrink-0 items-center rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
               }
             >
@@ -704,7 +701,7 @@ function SubjectCard({
       </div>
 
       {/* Title */}
-      <h3 className="mt-3.5 text-h3 text-foreground font-display font-bold group-hover:text-primary transition-colors line-clamp-2 [overflow-wrap:anywhere]">
+      <h3 className="mt-3.5 text-h3 text-foreground font-display font-normal group-hover:text-accent transition-colors line-clamp-2 [overflow-wrap:anywhere]">
         {formatTitleCase(subject.title)}
       </h3>
 
@@ -732,12 +729,14 @@ function SubjectCard({
                 ? `${completedUnits} of ${totalUnits} units`
                 : `${totalUnits} unit${totalUnits === 1 ? "" : "s"}`}
           </div>
-          {showProgress && rel && <div className="mt-0.5 truncate text-[10px]">Last studied {rel}</div>}
+          {showProgress && rel && (
+            <div className="mt-0.5 truncate text-[10px]">Last studied {rel}</div>
+          )}
         </div>
 
-        <span className="btn-squishy inline-flex shrink-0 items-center gap-1.5 text-xs sm:text-sm font-bold text-primary group-hover:underline">
+        <span className="inline-flex shrink-0 items-center gap-1.5 text-xs sm:text-sm font-semibold text-foreground group-hover:text-accent">
           {ctaLabel}
-          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-1" />
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-180 group-hover:translate-x-1 text-accent" />
         </span>
       </div>
     </Link>

@@ -1,0 +1,415 @@
+{
+  "semester": 2,
+  "semester_id": "be0534c5-8d70-479b-9690-3dd06d688846",
+  "subjects": [
+    {
+      "code": "BCA-102N",
+      "title": "Data Structures using C",
+      "subject_id": "d80e2834-2323-4f76-ab61-4bd36f605538",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "ba474b73-58b8-4728-847b-aabb00b9bb6b",
+          "title": "Introduction to Data Structures, Complexity & Arrays",
+          "topics": [
+            "Basic Terminology & Elementary Data Organizations",
+            "Need of Data Structures & Classification (Linear vs Non-Linear, Static vs Dynamic)",
+            "Operations on Data Structures (Traversing, Insertion, Deletion, Searching, Sorting, Merging)",
+            "Algorithm Complexity: Time-Space Trade-off & Asymptotic Notations (Big-O, Omega, Theta)",
+            "Arrays: Memory Representation of Single and Multidimensional Arrays (Row-Major vs Column-Major)",
+            "Address Calculation in 1D, 2D, and 3D Arrays",
+            "Sparse Arrays: Concept, Representation & Lower/Upper Triangular and Tri-diagonal Matrices",
+            "Addition and Subtraction Operations on Sparse Arrays"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "f5a68165-ba67-4174-8fa1-ab0a947cf0b7",
+          "title": "Searching, Sorting Techniques & Hashing",
+          "topics": [
+            "Searching Techniques: Linear Search (Algorithm, Complexity & Implementation)",
+            "Binary Search: Divide & Conquer Approach, Prerequisite, Algorithm & Complexity Analysis",
+            "Hashing Concepts: Hash Functions (Division, Mid-Square, Folding), Collision Resolution Strategies",
+            "Collision Handling: Open Addressing (Linear Probing, Quadratic Probing, Double Hashing) vs Separate Chaining",
+            "Insertion Sort: Working Principle, Algorithm, Trace & Time Complexity Analysis",
+            "Selection Sort: Working Principle, Minimum Element Selection, Algorithm & Trace",
+            "Merge Sort: Divide, Conquer & Combine Algorithm, Recurrence Relation & Trace"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "53bd5982-c943-4f1c-b590-538d2da61a1a",
+          "title": "Stacks, Queues & Expression Conversions",
+          "topics": [
+            "Stack ADT: Definition, LIFO Principle, Array Representation & Primitive Operations (Push, Pop, Peek, IsEmpty, IsFull)",
+            "Stack Applications: Function Call Mechanism, Recursion Handling & Reversal",
+            "Polish Notations: Infix, Prefix, and Postfix Notations",
+            "Conversion from Infix to Postfix Expression using Stack Algorithm",
+            "Evaluation of Postfix Expression using Stack Algorithm with Step-by-Step Trace",
+            "Queue ADT: Definition, FIFO Principle, Array Representation & Primitive Operations (Enqueue, Dequeue)",
+            "Circular Queues: Concept, Need, Full & Empty Condition Calculations",
+            "Double-Ended Queues (D-queues): Input-Restricted and Output-Restricted Deques",
+            "Priority Queues: Concept, Array/Heap Implementation & Applications"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "661c3be6-4072-4dad-b5c5-006a796149b1",
+          "title": "Linked Lists & Binary Trees",
+          "topics": [
+            "Introduction to Linked Lists: Dynamic Memory Allocation vs Static Arrays",
+            "Singly Linked List: Node Structure, Traversal, Searching, Insertion (Start, End, Middle) & Deletion",
+            "Doubly Linked Lists (Two-Way Lists): Structure, Forward/Backward Traversal, Insertion & Deletion",
+            "Circular Linked Lists: Singly Circular and Doubly Circular Lists",
+            "Header Linked Lists: Grounded Header and Circular Header Lists",
+            "Trees: Introduction, Basic Terminology (Root, Node, Degree, Level, Height, Subtree)",
+            "Binary Trees: Definition, Full, Complete, Extended (Strict) Binary Tree Properties",
+            "Binary Tree Traversals: Inorder (LNR), Preorder (NLR), Postorder (LRN)",
+            "Recursive Algorithms for Tree Operations: Traversal, Node Insertion, and Deletion"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "ddf16cc1-c0b4-47c2-94ef-c4c53a1ae803",
+          "title": "AVL Trees, M-way Search Trees & B-Trees",
+          "topics": [
+            "Binary Search Trees (BST): Properties, Insertion, Searching, and Deletion Cases",
+            "AVL Trees: Definition, Balance Factor (-1, 0, +1) & Height-Balanced Tree Concept",
+            "AVL Tree Rotations: LL, RR, LR, and RL Rotations with Rebalancing Examples",
+            "M-Way Search Trees: Concept, Multi-way Branching, Properties and Search Operations",
+            "Multilevel Indexing & Tree-Based Indexes: Concept, Advantages over Sequential Indexes",
+            "B-Trees: Formal Definition, Properties (Order m, Key Limits, Node Splitting & Merging)",
+            "B-Tree Construction & Key Insertion Algorithm with Step-by-Step Examples",
+            "B+ Trees: Concept, Linked Leaf Nodes & Comparison with B-Trees"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-104N",
+      "title": "Introduction to Database System",
+      "subject_id": "e1e44a1c-6c24-44de-84f9-16edb60505b0",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "61010ab6-9c95-4a87-aaab-4960161894a1",
+          "title": "Database Concepts, DBMS Architecture & Data Independence",
+          "topics": [
+            "Database Definition, File Processing System vs DBMS: Redundancy, Inconsistency & Isolation",
+            "DBMS Architecture: ANSI-SPARC Three-Level Architecture (Internal, Conceptual, External)",
+            "Data Independence: Physical Data Independence vs Logical Data Independence",
+            "Data Models Overview: Hierarchical, Network, Relational, and Object-Oriented Models",
+            "Role & Responsibilities of Database Administrator (DBA)",
+            "Classification of Database Users: Sophisticated, Naive/End Users, Application Programmers, Specialized",
+            "Front-End Tools, DBMS Interfaces & Utilities"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "c5f7f235-66b4-40e5-90a1-c51017b09cef",
+          "title": "Entity-Relationship (E-R) Modeling & Conceptual Design",
+          "topics": [
+            "E-R Modeling Concepts: Entity Types, Entity Sets, Weak Entities vs Strong Entities",
+            "Attributes: Simple, Composite, Single-Valued, Multi-Valued, Stored, Derived & Key Attributes",
+            "Relationship Types & Degrees: Unary (Recursive), Binary, Ternary Relationships",
+            "Mapping Cardinalities: One-to-One (1:1), One-to-Many (1:N), Many-to-One (N:1), Many-to-Many (M:N)",
+            "Participation Constraints: Total Participation vs Partial Participation",
+            "E-R Diagram Notations: Symbols, Entities, Attributes, Relationships & Roles",
+            "Database Design using E-R Diagrams: Real-world Case Studies (University, Hospital, Banking)",
+            "Reduction of E-R Schemas to Relational Tables with Integrity Rules"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "a62a03f9-7839-40fa-99b3-2bd54a85c960",
+          "title": "Relational Data Model, Constraints & Normalization",
+          "topics": [
+            "Relational Model Concepts: Relations, Tuples, Attributes, Cardinality, Degree & Domain",
+            "Relational Integrity Constraints: Domain Constraints, Key Constraints, Entity Integrity Constraint",
+            "Referential Integrity Constraint & Foreign Keys (CASCADE, SET NULL, RESTRICT Actions)",
+            "Functional Dependency (FD): Definition, Trivial vs Non-Trivial FDs, Armstrong's Axioms",
+            "Closure of Attribute Sets and Candidate Key Determination",
+            "Database Anomalies: Insertion, Deletion, and Modification/Update Anomalies",
+            "Normalization: First Normal Form (1NF) - Elimination of Multi-Valued Attributes",
+            "Second Normal Form (2NF) - Elimination of Partial Functional Dependencies",
+            "Third Normal Form (3NF) - Elimination of Transitive Dependencies"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "532c7166-9acf-4af8-aa7b-0d6453823ee5",
+          "title": "Structured Query Language (SQL) & Table Management",
+          "topics": [
+            "SQL Language Architecture: DDL (Data Definition Language), DML (Data Manipulation Language), DCL, TCL",
+            "Data Types in SQL: Numeric, Character (CHAR/VARCHAR), Date, Time, Boolean",
+            "DDL Commands: CREATE TABLE, ALTER TABLE (ADD, MODIFY, DROP Column), DROP TABLE, TRUNCATE",
+            "Constraints in SQL: PRIMARY KEY, UNIQUE, NOT NULL, CHECK, DEFAULT, FOREIGN KEY REFERENCES",
+            "DML Commands: INSERT INTO, UPDATE SET WHERE, DELETE FROM WHERE",
+            "SQL Queries: SELECT Clause, WHERE Filtering, ORDER BY, DISTINCT, LIKE Wildcards, BETWEEN, IN",
+            "Aggregate Functions: COUNT, SUM, AVG, MIN, MAX & GROUP BY, HAVING Clause Filtering",
+            "SQL Joins: Inner Join, Left Outer Join, Right Outer Join, Full Outer Join, Cross Join",
+            "Subqueries: Nested Queries, Correlated Subqueries & Table Views (CREATE VIEW)"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "0ec279fb-4293-4eef-ac5d-1896e25d5b9c",
+          "title": "Database Security, Integrity, Control & Recent Trends",
+          "topics": [
+            "Database Security Threats: SQL Injection, Unauthorized Access, Privilege Abuse, Data Loss",
+            "Defense Mechanisms: Authentication, Authorization, Role-Based Access Control (RBAC), Data Encryption",
+            "Granting and Revoking Privileges: GRANT and REVOKE SQL Statements",
+            "Transaction Concepts: ACID Properties (Atomicity, Consistency, Isolation, Durability)",
+            "Concurrency Control Overview: Lock-Based Protocols, Deadlocks & Recovery Techniques",
+            "Recent Trends in DBMS: Distributed Databases (Architecture, Fragmentation, Replication)",
+            "Deductive Databases & Rule-Based Query Evaluation",
+            "NoSQL Databases & Big Data Storage Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-106N",
+      "title": "Business Organization & Management",
+      "subject_id": "16de7764-85ea-41ae-9600-d7a9ad807eb9",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "f71cce92-2184-435e-bf56-2a950da9abce",
+          "title": "Business Concepts, Trade, Industry & Forms of Organization",
+          "topics": [
+            "Concepts: Business, Trade, Industry and Commerce Definition & Characteristics",
+            "Features of Modern Business: Economic Activity, Risk & Profit Motive",
+            "Classification of Trade: Internal (Wholesale/Retail) vs International (Import/Export/Entrepot) & Aids to Trade",
+            "Industry Classification: Primary, Secondary, Tertiary/Service Industries",
+            "Relationship between Trade, Industry and Commerce & Core Functions of Business",
+            "Sole Proprietorship: Meaning, Features, Merits, Demerits & Suitability",
+            "Partnership: Meaning, Characteristics, Rights/Duties, Kinds of Partners, Partnership Deed & Registration",
+            "Limited Liability Partnership (LLP): Concept, Distinctions from General Partnership & Companies"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "761004b1-a216-4fb7-bcb6-daabbf0c98d7",
+          "title": "Management Foundations, Thoughts & Bureaucracy",
+          "topics": [
+            "Definition & Scope of Management: Is Management an Art, Science, or Profession?",
+            "Manager Defined: Manager vs Leader Roles and Behavioral Differences",
+            "Levels of Management: Top, Middle, Lower/Operational Management and Hierarchy",
+            "Managerial Skills (Robert Katz): Conceptual, Human, and Technical Skills",
+            "Classical Management Thoughts: Henri Fayol's 14 Principles of Management & Administrative Theory",
+            "F.W. Taylor's Scientific Management: Principles, Time/Motion Study, Differential Piece-Rate System",
+            "Max Weber's Theory of Bureaucracy: Rational-Legal Authority, Hierarchy, Rules & Merits/Demerits"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "dc6d99e6-0a42-4e8d-9267-e8aee059db0e",
+          "title": "Planning Concepts & Decision-Making Processes",
+          "topics": [
+            "Planning: Definition, Characteristics, Importance & Primacy in Management",
+            "Steps in the Planning Process: Objective Setting, Forecasting, Identifying/Evaluating Alternatives",
+            "Limitations of Planning: Rigidity, Time Consumption, Environmental Uncertainties",
+            "Types of Plans: Strategic vs Tactical, Operational, Standing Plans (Policies, Procedures, Rules) vs Single-Use Plans (Budgets, Programs)",
+            "Decision Making: Definition, Characteristics & Significance in Business",
+            "Rational Decision-Making Process: Problem Diagnosis, Alternative Generation, Evaluation & Implementation",
+            "Types of Decisions: Programmed vs Non-Programmed, Strategic vs Routine, Major vs Minor, Individual vs Group Decisions"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "4cd661cb-dee7-4e9a-bafb-35ee7eae4c8e",
+          "title": "Organization Structure, Delegation & Decentralization",
+          "topics": [
+            "Meaning of Organizing & Organization Structure Definition",
+            "Organization Charts: Types, Principles & Visual Representation of Hierarchy",
+            "Formal vs Informal Organization: Characteristics, Differences, Benefits & Disadvantages",
+            "Span of Management (Span of Control): Narrow vs Wide Span & Factors Determining Span",
+            "Line and Staff Organization Concepts: Line Authority, Staff Authority & Line-Staff Conflicts",
+            "Delegation of Authority: Meaning, Elements (Authority, Responsibility, Accountability), Advantages & Barriers",
+            "Decentralization: Concept, Distinction from Delegation, Merits, Demerits & Factors Influencing Degree of Decentralization"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "0bfafb6e-d07b-476b-ada4-dac708f30667",
+          "title": "Motivation, Leadership, Coordination & Control Systems",
+          "topics": [
+            "Motivation: Definition, Meaning, Nature, Financial vs Non-Financial Incentives",
+            "Theories of Motivation: Abraham Maslow's Need Hierarchy Theory (Physiological to Self-Actualization)",
+            "Herzberg's Two-Factor / Hygiene Approach to Motivation (Hygiene Factors vs Motivators)",
+            "Leadership: Definition, Traits of Successful Leaders & Leadership vs Management",
+            "Leadership Styles: Autocratic, Democratic / Participative, Laissez-Faire / Free-Rein Styles",
+            "Blake and Mouton's Managerial Grid: Task vs People Orientation (1,1; 9,1; 1,9; 5,5; 9,9)",
+            "Coordination: Definition, Essence of Management, Need, Difficulties & Techniques for Effective Coordination",
+            "Control: Definition, Nature, The Control Process (Standards, Measurement, Comparison, Corrective Action)",
+            "Essentials of a Good Control System: Merits, Demerits, and Modern Control Techniques"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-108N",
+      "title": "Digital Electronics",
+      "subject_id": "bca10800-0002-4000-8000-000000000108",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "bca10801-0002-4000-8000-000000000108",
+          "title": "Boolean Algebra Basics, Logic Gates & K-Maps",
+          "topics": [
+            "Introduction to Digital Systems & Binary Logic",
+            "Laws and Theorems of Boolean Algebra (Idempotent, Boundedness, Involution, Distributive, De Morgan's Laws)",
+            "Basic Logic Gates: Truth Tables, Symbols and Operation of NOT, AND, OR Gates",
+            "Universal Gates: NAND and NOR Gates & Implementing Basic Logic using Universal Gates",
+            "Exclusive Gates: EX-OR and EX-NOR Gates, Truth Tables, Parity Generation & Checking",
+            "Boolean Expressions: Sum of Products (SOP) and Product of Sums (POS) Canonical Forms",
+            "Karnaugh Maps (K-Maps): 2-Variable, 3-Variable, and 4-Variable K-Map Minimization",
+            "Don't Care Conditions in K-Map Simplification with Practical Examples"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "bca10802-0002-4000-8000-000000000108",
+          "title": "Number Systems, Binary Codes & Error Detection",
+          "topics": [
+            "Review of Number Systems: Binary, Octal, Decimal, and Hexadecimal Number Systems",
+            "Number Base Conversions: Between Binary, Octal, Decimal, and Hexadecimal",
+            "Binary Arithmetic: Unsigned Addition, Subtraction, Multiplication & Division",
+            "Complements: r's and (r-1)'s Complements (1's and 2's Complements) & Signed Binary Subtraction",
+            "Binary Coded Decimal (BCD): 8421 Code, BCD Addition & Invalid BCD Correction",
+            "Gray Codes: Definition, Properties, Binary-to-Gray and Gray-to-Binary Conversions",
+            "Excess-3 Code: Self-Complementing Property and Applications",
+            "Alphanumeric Codes & Parity Codes for Error Detection"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "bca10803-0002-4000-8000-000000000108",
+          "title": "Arithmetic Circuits & Combinational Logic Design",
+          "topics": [
+            "Half Adder and Full Adder: Circuit Design, Truth Tables & Boolean Expressions",
+            "Half Subtractor and Full Subtractor: Logic Circuit Design & Truth Tables",
+            "Parallel Binary Adder/Subtractor using 2's Complement Logic & 7483 IC Overview",
+            "Binary Multipliers and Dividers Overview",
+            "Multiplexers (Data Selectors): 2:1, 4:1, 8:1 MUX Design, Truth Tables & Function Realization",
+            "De-Multiplexers (Data Distributors): 1:2, 1:4, 1:8 DEMUX Design and Operation",
+            "Decoders: 2-to-4, 3-to-8 Binary Decoders, BCD-to-7-Segment Decoder Operation",
+            "Encoders: Decimal-to-BCD Encoders and Priority Encoders"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "bca10804-0002-4000-8000-000000000108",
+          "title": "Latches, Flip-Flops & Shift Registers",
+          "topics": [
+            "Latches vs Flip-Flops: Level Triggering vs Edge Triggering Concepts",
+            "S-R Flip-Flop: NOR and NAND Latch Implementation, Clocked S-R Flip-Flop & Truth Table",
+            "D (Data) Flip-Flop and T (Toggle) Flip-Flop: Working Principle and Characteristic Equations",
+            "J-K Flip-Flop: Eliminating the Indeterminate State, Truth Table & Excitation Table",
+            "Race-Around Condition in J-K Flip-Flop: Causes and Prevention",
+            "Master-Slave J-K Flip-Flop: Operation, Timing Diagrams & Overcoming Race Conditions",
+            "Conversion / Realization of One Flip-Flop using Another Flip-Flop",
+            "Shift Registers Overview & Classification",
+            "SISO (Serial-In Serial-Out), SIPO, PISO, and PIPO Shift Registers",
+            "Bi-Directional Shift Registers and Universal Shift Register Operation"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "bca10805-0002-4000-8000-000000000108",
+          "title": "Counters, Modulo Circuits & Programmable Logic",
+          "topics": [
+            "Asynchronous (Ripple) Counters: Up-Counter, Down-Counter, Timing Diagrams & Propagation Delay",
+            "Synchronous Counters: Design Steps, State Diagram, Excitation Tables, Up/Down Counters",
+            "Modulo Counters: Mod-N Counters, Decade / BCD Counter (Mod-10) Design",
+            "Ring Counter: Operation, State Sequence & Clock Waveforms",
+            "Johnson (Twisted Ring) Counter: Self-Starting Property & Waveforms",
+            "Memory Devices: RAM (SRAM vs DRAM Cells) and ROM Types (PROM, EPROM, EEPROM, Flash)",
+            "Programmable Logic Devices: PAL (Programmable Array Logic) vs PLA (Programmable Logic Array) Architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-401E",
+      "title": "Mathematics II",
+      "subject_id": "1d8c39f2-baa5-4fed-a3a9-fb20ca34ca76",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "7844c00f-50ca-4135-b0d4-daaeca67d7ee",
+          "title": "Set Theory, Set Operations & Applications",
+          "topics": [
+            "Sets Definition, Representation (Roster vs Set-Builder Form), Subsets & Proper Subsets",
+            "Equal Sets, Equivalent Sets, Universal Sets, Finite and Infinite Sets",
+            "Set Operations: Union, Intersection, Difference, Symmetric Difference, and Complements",
+            "Properties & Laws of Set Operations: Commutative, Associative, Distributive, De Morgan's Laws",
+            "Cartesian Product of Sets, Ordered Pairs & Cardinality Properties",
+            "Power Set: Definition, Cardinality Calculation (2^n) & Properties",
+            "Venn Diagrams and Practical Word Problem Applications involving Cardinality Formulae"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "f271ca33-4e1e-4aea-a31e-c4d8909fd49e",
+          "title": "Relations, Equivalence & Types of Functions",
+          "topics": [
+            "Binary Relations: Domain, Range, and Inverse of a Relation",
+            "Properties of Relations: Reflexive, Symmetric, Transitive, and Anti-Symmetric Relations",
+            "Equivalence Relations: Definition, Equivalence Classes, Partitions of Sets & Proofs",
+            "Partial Order Relations: Posets, Hasse Diagrams & Chain/Antichain Concepts",
+            "Functions: Definition as Special Relations, Domain, Co-domain, and Range",
+            "Types of Functions: One-to-One (Injective), Onto (Surjective), Bijective, Into Functions",
+            "Composition of Functions: Associativity of Composite Functions & Inverse Functions",
+            "Principle of Mathematical Induction: First and Second Principles with Proofs"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "ac0fb7be-e747-43a9-918d-c9f6cd2ae5e0",
+          "title": "Functions of Several Variables & Partial Differentiation",
+          "topics": [
+            "Functions of Several Variables: Limit and Continuity of Two-Variable Functions",
+            "Indeterminate Forms and Evaluation Techniques",
+            "Partial Differentiation: First-Order and Higher-Order Partial Derivatives",
+            "Chain Rule for Functions of Two and Three Independent Variables",
+            "Euler's Theorem for Homogeneous Functions and Verification with Examples",
+            "Jacobians: Definition, Properties, Chain Rule for Jacobians & Functional Dependence",
+            "Extrema of Functions of Two Variables: Necessary and Sufficient Conditions for Maxima and Minima",
+            "Vector Differentiation: Scalar and Vector Fields, Gradient, Divergence, and Curl Operators"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "92e71595-e501-433f-89dc-b4e303e6178b",
+          "title": "Infinite Series & Tests of Convergence",
+          "topics": [
+            "Infinite Series: Sequence of Partial Sums, Convergent, Divergent, and Oscillatory Series",
+            "Alternating Series & Leibniz's Alternating Series Test",
+            "Absolute Convergence vs Conditional Convergence of Series",
+            "Positive Term Series Tests: p-Series Test (1/n^p convergence conditions)",
+            "Comparison Tests: Direct Comparison Test and Limit Comparison Test",
+            "D'Alembert's Ratio Test: Statement, Proof Outline & Applied Problems",
+            "Cauchy's Root Test (nth Root Test) with Worked Examples",
+            "Raabe's Test and Logarithmic Ratio Test for Higher-Order Convergence Decisions"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "291be6f9-6552-4446-bcc9-1e062af8bfcd",
+          "title": "Mean Value Theorems, Taylor/Maclaurin Series & Extrema",
+          "topics": [
+            "Rolle's Theorem: Statement, Geometric Interpretation & Verification Conditions",
+            "Lagrange's Mean Value Theorem: Statement, Geometric Meaning & Applications",
+            "Cauchy's Mean Value Theorem: Statement and Analytical Significance",
+            "Taylor's Theorem with Remainder Term and Maclaurin's Theorem",
+            "Maclaurin Series Expansion for Elementary Functions: sin(x), cos(x), tan(x), e^x, log(1+x), log(1-x)",
+            "Indeterminate Forms: L'Hospital's Rule applied to 0/0, infinity/infinity, 0*infinity, 1^infinity",
+            "Applications of Maxima and Minima to Practical Geometric and Economic Optimization Problems"
+          ]
+        }
+      ]
+    }
+  ]
+}

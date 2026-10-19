@@ -1,0 +1,598 @@
+{
+  "semester": 3,
+  "academic_year": "2024-25",
+  "university": "Mahatma Jyotiba Phule Rohilkhand University (MJPRU), Bareilly",
+  "degree": "Bachelor of Computer Applications (BCA)",
+  "subjects": [
+    {
+      "code": "BCA-201N",
+      "title": "Object Oriented Programming using JAVA",
+      "slug": "bca-201n-object-oriented-programming-using-java",
+      "db_subject_id": "8ffa5896-3b23-4839-bf31-130163ecf801",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "4e2a6856-906d-579c-bf99-d97570e06433",
+          "title": "Java Fundamentals, JVM Architecture & Language Syntax",
+          "topics": [
+            "History and Evolution of Java: Oak, Sun Microsystems to Oracle, Internet Integration & Applets",
+            "Core Features of Java: Simple, Object-Oriented, Platform Independent, Robust, Secure, Multi-Threaded",
+            "Paradigm Comparison: How Java Differs Architecturally and Semantically from C and C++",
+            "Java Virtual Machine (JVM) Architecture: ClassLoader Subsystem, Memory Areas, Execution Engine (JIT), GC",
+            "Java Environment Hierarchy: Java Development Kit (JDK) vs Java Runtime Environment (JRE) vs JVM",
+            "Structure of a Java Application: Package Declaration, Import Statements, Class Definition, main() Entry Point",
+            "Compilation and Execution Lifecycle: javac Source-to-Bytecode Compilation and java Bytecode Interpretation",
+            "Java Lexical Tokens: Reserved Keywords, Identifiers, Literals, Standard Operators, Separators",
+            "Primitive Data Types: Integral, Floating-Point, Character (Unicode 16-bit), Boolean, Sizes & Default Values",
+            "Variable Declarations, Scope, Lifetime & Type Casting (Widening/Implicit vs Narrowing/Explicit Conversions)",
+            "Operators & Expressions: Arithmetic, Relational, Logical, Bitwise, Assignment, Ternary, Operator Precedence",
+            "Decision Making & Branching: if, if-else, nested if, if-else-if Ladder, switch-case (Fall-through, break, default)",
+            "Iteration Constructs: while Loop (Entry-Controlled), do-while Loop (Exit-Controlled), for Loop, Enhanced for-each",
+            "Jump Statements: break Statement, continue Statement, return Statement & Labeled Break/Continue",
+            "Command Line Arguments (String[] args) & Console I/O: System.out.println, System.in, java.util.Scanner"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "931ea332-3d62-5a88-845d-12d24fc111fe",
+          "title": "Classes, Objects, Methods, Constructors & Inheritance",
+          "topics": [
+            "Object-Oriented Programming Principles: Encapsulation, Data Abstraction, Inheritance, Polymorphism",
+            "Class Definition in Java: Member Variables, Member Methods, Access Specifiers within Class",
+            "Object Creation & Memory Layout: new Operator, Heap Allocation, Reference Variables in Stack",
+            "Methods in Java: Declaration, Syntax, Return Types, Parameter Passing Semantics (Strict Pass-by-Value)",
+            "Nesting of Methods & Method Overloading: Compile-Time Polymorphism via Argument Lists and Data Types",
+            "Constructors in Java: Purpose, Default Constructor, Parameterized Constructors, Constructor Overloading",
+            "The this Reference: Resolving Instance Variable Shadowing, Invoking Overloaded Constructors (this())",
+            "Static Members: static Fields (Class-Level Storage), static Methods, Static Initialization Blocks",
+            "Inheritance Fundamentals: Subclass and Superclass Concepts, extends Keyword, IS-A Relationship",
+            "Forms of Inheritance: Single, Multilevel, Hierarchical (Why Multiple Inheritance of Classes is Disallowed)",
+            "The super Keyword: Invoking Superclass Constructors (super()), Calling Overridden Superclass Methods",
+            "Method Overriding: Runtime Polymorphism, Dynamic Method Dispatch, Rules and Method Signature Constraints",
+            "The final Keyword: final Variables (Constants), final Methods (Preventing Override), final Classes",
+            "Abstract Classes & Abstract Methods: Concept, abstract Keyword, Rules, Enforcing Contractual Implementations",
+            "Garbage Collection & Object Lifecycle: Heap Management, Object Dereferencing, System.gc(), finalize() Method"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "465feec2-fa34-598c-948a-afaf21612f35",
+          "title": "Interfaces, Packages, Arrays, Strings & Wrapper Classes",
+          "topics": [
+            "Interfaces in Java: Concept of 100% Abstract Contract, interface Keyword, Public Static Final Constants",
+            "Implementing Interfaces: implements Keyword, Multiple Interface Implementation (Resolving Multiple Inheritance)",
+            "Extending Interfaces: Interface Inheritance, Nested Interfaces & Default/Static Methods in Interfaces",
+            "Packages in Java: Meaning, Namespace Partitioning, Prevention of Name Collisions, Code Organization",
+            "Standard Built-in Java API Packages: java.lang, java.util, java.io, java.net, java.awt, java.applet",
+            "Creating and Using Custom Packages: package Statement, Directory Hierarchy, Compiling with -d Flag",
+            "Importing Packages: import Statement, Specific Class Import vs Asterisk (*) Wildcard Import, Static Imports",
+            "Package Access Protection: private, default (Package-Private), protected, public Access Modifiers Matrix",
+            "Arrays in Java: One-Dimensional Arrays, Array Instantiation, Memory Contiguity, Length Property, Bounds Checking",
+            "Multi-Dimensional Arrays: 2D Arrays, Matrix Allocations, Jagged (Ragged) Arrays in Java",
+            "String Handling with java.lang.String: String Literals, String Constant Pool, Immutability Mechanics",
+            "String Class Methods: length(), charAt(), substring(), indexOf(), equals(), compareTo(), concat(), trim()",
+            "Mutable String Handlers: StringBuffer vs StringBuilder, Thread Safety, Buffer Growth, Mutability Methods",
+            "Vector Class (java.util.Vector): Dynamic Array Architecture, Capacity Increment, Element Access, Synchronization",
+            "Wrapper Classes (java.lang): Primitive-to-Object Encapsulation, Autoboxing and Unboxing, Utility Conversion Methods"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "d26825c0-b0c3-5c75-9cfd-f9936187b430",
+          "title": "Exception Handling & Multithreaded Programming",
+          "topics": [
+            "Errors vs Exceptions in Java: Syntactic/Logical Errors, System Errors vs Recoverable Exceptional Conditions",
+            "Exception Class Hierarchy: java.lang.Throwable, Error Subclasses, Exception Subclasses, RuntimeException",
+            "Checked Exceptions (Compile-Time Enforced) vs Unchecked Exceptions (Runtime unchecked)",
+            "Exception Handling Mechanism: try Block, catch Block, Execution Flow upon Exception Generation",
+            "Multiple Catch Statements: Specific-to-General Ordering Rules, Multi-Catch Syntax (Java 7+)",
+            "Nested Try-Catch Blocks: Scope of Inner and Outer Exception Handlers",
+            "The finally Block: Execution Guarantee, Resource Deallocation Semantics, Execution with return Statements",
+            "Explicit Exception Generation: throw Statement, Re-throwing Exceptions",
+            "The throws Clause: Exception Propagation, Method Header Declarations, Caller Responsibility",
+            "Custom / User-Defined Exceptions: Subclassing java.lang.Exception, Custom Error Messages and State",
+            "Multithreading Fundamentals: Process-Based vs Thread-Based Multitasking, Context Switching Advantages",
+            "Creating Threads: Extending java.lang.Thread Class vs Implementing java.lang.Runnable Interface",
+            "Thread Life Cycle & State Machine: New, Runnable, Blocked, Waiting, Timed Waiting, Terminated States",
+            "Thread Control Methods: start(), run(), sleep(), join(), yield(), interrupt(), isAlive()",
+            "Thread Priorities: MIN_PRIORITY (1), NORM_PRIORITY (5), MAX_PRIORITY (10), Preemptive Scheduling",
+            "Synchronization in Multithreading: Race Conditions, Critical Section, synchronized Methods & Blocks",
+            "Inter-Thread Communication: Object Monitor Locking, wait(), notify(), notifyAll(), Producer-Consumer Problem"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "b0a32c41-9236-5075-9a0d-cf0cc936d248",
+          "title": "Managing Input/Output Files, Streams & Java Utilities",
+          "topics": [
+            "Java I/O Stream Model: Concept of Streaming Data, Sources and Sinks, Byte Streams vs Character Streams",
+            "Byte Stream Class Hierarchy: java.io.InputStream and java.io.OutputStream Root Abstract Classes",
+            "File Byte Streaming: FileInputStream and FileOutputStream for Reading and Writing Raw Binary/Text Data",
+            "Buffered Byte Streaming: BufferedInputStream and BufferedOutputStream for Optimized Disk I/O",
+            "Character Stream Class Hierarchy: java.io.Reader and java.io.Writer Root Abstract Classes, 16-bit Unicode Handling",
+            "File Character Streaming: FileReader and FileWriter, Character Encoding Conventions",
+            "Buffered Character Streaming: BufferedReader, BufferedWriter, readLine() and newLine() Methods",
+            "Standard Console Input: InputStreamReader with BufferedReader, System.in Wrapping, System.console()",
+            "Data Streams: DataInputStream and DataOutputStream for Primitive Binary Typed I/O (writeInt, readDouble)",
+            "Object Serialization & Deserialization: ObjectOutputStream, ObjectInputStream, Serializable Marker Interface",
+            "The transient Keyword: Excluding Sensitive Member Variables from Object Serialization",
+            "File Class (java.io.File): Pathnames, File Metadata, exists(), isFile(), isDirectory(), length(), delete()",
+            "Directory Management: mkdir(), mkdirs(), list(), listFiles() Operations on Filesystem Directories",
+            "I/O Exception Handling: IOException, FileNotFoundException, EOFException, try-with-resources AutoCloseable",
+            "Modern Java NIO Preview: java.nio Package, Path, Paths, Files Utility Methods, High-Performance Buffers"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-203N",
+      "title": "Numerical Analysis and Statistical Techniques",
+      "slug": "bca-203n-numerical-analysis-and-statistical-techniques",
+      "db_subject_id": "e66c67d0-158e-477f-bb65-10fc3d6eadf4",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "96e6e0ec-a7dc-5b08-818e-fb1320c77a03",
+          "title": "Mathematical Modeling, Errors & Taylor Series",
+          "topics": [
+            "Mathematical Modeling in Engineering & Computing: Formulation of Real-World Problems, Conservation Laws",
+            "Number Representation in Digital Computers: Floating-Point Format, Mantissa, Exponent, Machine Epsilon",
+            "Significant Figures: Rules for Identifying Significant Digits, Rounding-Off Rules",
+            "Accuracy vs Precision: Bias, Systematic Errors vs Random Inaccuracies in Numerical Methods",
+            "Error Definitions: Absolute Error (|True - Approx|), Relative Error, Percentage Error Formulas",
+            "Round-off Errors: Chopping vs Symmetric Rounding, Error Accumulation in Multi-Step Arithmetic",
+            "Truncation Errors: Error Arising from Replacing Infinite Mathematical Processes with Finite Approximations",
+            "Taylor Series Expansion: Statement, Formula, Remainder Term (Lagrange Form), Polynomial Approximation",
+            "Error Propagation: Error in Sum, Difference, Product, and Quotient of Numbers",
+            "Total Numerical Error: Interplay between Round-Off and Truncation Errors, Optimal Step Size Selection",
+            "Conditioning and Stability: Well-Posed Problems vs Ill-Conditioned Systems in Numerical Computation"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "823861ed-afab-5d0c-95d1-2ce548d7fc04",
+          "title": "Algebraic/Transcendental Equations & Interpolation",
+          "topics": [
+            "Algebraic vs Transcendental Equations: Polynomial Roots, Trigonometric, Exponential, Logarithmic Equations",
+            "Initial Root Localization: Intermediate Value Theorem, Graphical and Tabular Sign-Change Detection",
+            "Bisection Method (Bolzano): Algorithm, Interval Halving, Guaranteed Convergence, Convergence Rate Analysis",
+            "Regula-Falsi Method (Method of False Position): Linear Secant Interpolation, Algorithm & Convergence Behavior",
+            "Secant Method: Open Two-Point Secant Iteration, Non-Bracketing Approach, Superlinear Convergence",
+            "Newton-Raphson Method: Derivation using Taylor Series, Tangent Iteration Formula x_{n+1} = x_n - f(x_n)/f'(x_n)",
+            "Convergence Analysis of Newton-Raphson: Quadratic Convergence Proof (Order 2), Failure Cases & Oscillations",
+            "Finite Differences: Forward Difference Operator (Delta), Backward Difference Operator (Nabla), Shift Operator (E)",
+            "Finite Difference Tables: Construction, Properties, Fundamental Theorem of Finite Differences",
+            "Newton's Forward Difference Interpolation Formula: Derivation, Formula, Application for Interpolating Near Start",
+            "Newton's Backward Difference Interpolation Formula: Derivation, Formula, Application for Interpolating Near End",
+            "Lagrange's Interpolation Formula for Unequally Spaced Data: Lagrange Polynomials, Advantages, Limitations"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "438015e4-6f9e-53f3-b823-70f489c69f4e",
+          "title": "Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs",
+          "topics": [
+            "Systems of Linear Algebraic Equations: Matrix Representation Ax = B, Consistency & Rank Conditions",
+            "Gauss Elimination Method: Forward Elimination to Upper Triangular Form, Back-Substitution",
+            "Gauss-Jordan Method: Complete Diagonalization / Identity Matrix Reduction, Matrix Inversion",
+            "Iterative Methods for Linear Systems: Jacobi Iteration Method, Diagonally Dominant Condition for Convergence",
+            "Gauss-Seidel Iteration Method: Immediate Update Mechanism, Accelerated Convergence over Jacobi Method",
+            "Numerical Differentiation: Derivatives using Newton's Forward and Backward Difference Interpolation Polynomials",
+            "Numerical Integration Foundations: Newton-Cotes Quadrature Formulas, Trapezoidal Approximation",
+            "Trapezoidal Rule: Derivation (Linear Interpolant), Formula, Error Term (-h^3/12 * f''(xi)), Composite Form",
+            "Simpson's 1/3rd Rule: Derivation (Quadratic Interpolant, Even Subintervals), Formula, Error Term, Composite Form",
+            "Simpson's 3/8th Rule: Derivation (Cubic Interpolant, Subintervals Multiple of 3), Formula, Composite Form",
+            "Ordinary Differential Equations (ODEs) Initial Value Problems: dy/dx = f(x, y), y(x0) = y0",
+            "Taylor's Series Method for Solving 1st Order ODEs: Step-by-Step Expansion, High-Order Accuracy",
+            "Euler's Method: Tangent Line Approximation y_{n+1} = y_n + h*f(x_n, y_n), Local and Global Truncation Errors",
+            "Modified Euler's Method (Heun's Predictor-Corrector): Predictor Step, Trapezoidal Corrector Step",
+            "Runge-Kutta 2nd Order Method (RK2): Derivation, Midpoint Formulation, Improved Accuracy over Euler",
+            "Runge-Kutta 4th Order Method (RK4): Formulas for k1, k2, k3, k4, Weighted Average Slope, High-Precision Performance"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "77327cbc-9bcf-5d52-b408-33b650aa393f",
+          "title": "Least-Squares Curve Fitting & Linear Programming",
+          "topics": [
+            "Curve Fitting Fundamentals: Scatter Plots, Trend Lines, Interpolation vs Curve Fitting Approximation",
+            "Principle of Least Squares: Minimizing Sum of Squared Residuals (Errors) S = sum(y_i - f(x_i))^2",
+            "Linear Regression / Straight Line Fitting (y = a + bx): Derivation of Normal Equations, Slope and Intercept",
+            "Polynomial Regression / Parabolic Curve Fitting (y = a + bx + cx^2): Derivation of 3 Normal Equations",
+            "Fitting Exponential Curves (y = ae^(bx) and y = ab^x): Logarithmic Linearization Transformations",
+            "Fitting Power Curves (y = ax^b): Double-Logarithmic Linearization and Parameter Estimation",
+            "Multiple Linear Regression Overview: Dependent Variable with Two or More Independent Variables",
+            "Correlation Analysis: Karl Pearson's Coefficient of Linear Correlation (r), Range [-1, +1], Interpretation",
+            "Rank Correlation: Spearman's Rank Correlation Coefficient for Qualitative / Ranked Data",
+            "Linear Programming Problems (LPP): Components (Decision Variables, Objective Function, Constraints, Non-Negativity)",
+            "LPP Mathematical Formulation: Manufacturing, Diet, Transportation & Resource Allocation Enterprise Problems",
+            "Graphical Method for Solving LPP: Plotting Constraint Lines, Identifying Feasible Region (Bounded vs Unbounded)",
+            "Corner Point / Extreme Point Method: Evaluating Objective Function at Vertices, Multiple Optimal Solutions",
+            "Infeasible and Unbounded Solutions in Linear Programming: Identification and Physical Interpretation"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "ea73fc67-550d-53f5-acd4-19053adb0116",
+          "title": "Random Variables & Theoretical Probability Distributions",
+          "topics": [
+            "Random Variables: Definition, Sample Space Mapping, Discrete vs Continuous Random Variables",
+            "Probability Mass Function (PMF): Definition, Properties (P(X=x) >= 0, sum P(x) = 1), Cumulative Distribution Function (CDF)",
+            "Probability Density Function (PDF): Definition, Properties (f(x) >= 0, integral f(x)dx = 1), Cumulative Distribution Function",
+            "Mathematical Expectation (Expected Value): E(X) Formula for Discrete and Continuous Distributions, Properties of Expectation",
+            "Variance and Standard Deviation: Var(X) = E(X^2) - [E(X)]^2, Properties of Variance, Moments of Distributions",
+            "Discrete Uniform Distribution: PMF, Mean, Variance, Real-World Applications (Fair Die Toss)",
+            "Bernoulli Distribution: Single Trial with Success Probability p, Mean = p, Variance = pq",
+            "Binomial Distribution: Assumptions (n Independent Bernoulli Trials), PMF P(X=r) = nCr * p^r * q^(n-r)",
+            "Characteristics of Binomial Distribution: Mean = np, Variance = npq, Conditions (Mean > Variance), Practical Applications",
+            "Poisson Distribution: Rare Events Model, Limiting Form of Binomial Distribution (n -> inf, p -> 0, np = lambda)",
+            "Characteristics of Poisson Distribution: PMF P(X=r) = (e^(-lambda) * lambda^r) / r!, Mean = Variance = lambda",
+            "Continuous Uniform (Rectangular) Distribution: PDF, CDF, Mean = (a+b)/2, Variance = (b-a)^2 / 12",
+            "Exponential Distribution: Memoryless Property, PDF f(x) = lambda * e^(-lambda*x), Mean = 1/lambda, Reliability Models",
+            "Normal (Gaussian) Distribution: Bell-Shaped Curve, PDF Formula, Parameters Mean (mu) and Variance (sigma^2)",
+            "Properties of Normal Curve: Symmetry about Mean, Unimodal, Area Properties (Empirical Rule 68-95-99.7%)",
+            "Standard Normal Distribution (Z): Z-Score Transformation Z = (X - mu)/sigma, Standard Normal Probability Tables"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-205N",
+      "title": "Operating System",
+      "slug": "bca-205n-operating-system",
+      "db_subject_id": "f7689cea-4163-4bf9-808f-be37ea46ae4a",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "f96a6a0e-7b0e-5bb8-a668-d5dbbc2ee673",
+          "title": "Operating System Foundations, Architecture & Evolution",
+          "topics": [
+            "Operating System Definition: Extended Machine (Virtual Machine) vs Resource Manager Perspectives",
+            "Primary Goals of Operating System: Convenience, Efficiency, Robustness, Hardware Abstraction",
+            "Historical Evolution of Operating Systems: Serial Processing, Simple Batch Systems, Spooling Techniques",
+            "Multiprogramming Systems: CPU-I/O Overlap, Memory Partitioning, High Resource Utilization",
+            "Time-Sharing (Multitasking) Systems: Interactive Multi-User Support, Quantum Slicing, Low Response Time",
+            "Distributed & Real-Time Operating Systems: Clustered Node Transparency, Hard vs Soft Real-Time Constraints",
+            "Operating System Core Functions: Process, Memory, Storage, I/O Device, Security & User Interface Management",
+            "Operating System Structural Architectures: Monolithic Kernel Architecture, Layered System Design",
+            "Microkernel Architecture: Minimal Kernel Services, User-Space Server Daemons, Fault Isolation, Mach/QNX",
+            "Dual-Mode Operation in Modern Hardware: User Mode vs Kernel/Supervisor Mode, Mode Bit, Protection Mechanisms",
+            "System Calls: Hardware Trap Mechanism, User-to-Kernel Mode Switching, System Call Interface",
+            "Categories of System Calls: Process Control (fork, exec), File Manipulation, Device Management, Information Maintenance"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "0208c6e1-bb32-524b-a374-2ad1b17373fe",
+          "title": "Process Management, CPU Scheduling & Threads",
+          "topics": [
+            "Process Concept: Process Definition, Program vs Process, Memory Layout (Text, Data, Stack, Heap Segments)",
+            "Process States & 5-State Transition Model: New, Ready, Running, Waiting (Blocked), Terminated",
+            "Process Control Block (PCB): Structure, Task Attributes (PID, Program Counter, CPU Registers, Memory Limits, Open Files)",
+            "Process Context Switching: Hardware State Saving, Cache Invalidation Overhead, Performance Impact",
+            "Process Scheduling Queues: Job Queue, Ready Queue, Device/I/O Queues, Queue Transition Flow",
+            "Schedulers in Operating Systems: Long-Term (Admission), Short-Term (CPU), Medium-Term (Swapping) Schedulers",
+            "Process Creation & Termination: Process Trees, parent-child Relationships, fork() and exec() System Calls, Zombie/Orphan Processes",
+            "Threads Fundamentals: Definition, Light-Weight Processes (LWP), Resource Sharing Benefits, Thread vs Process",
+            "Multithreading Models: Many-to-One, One-to-One (Standard in Linux/Windows), Many-to-Many Kernel Models",
+            "CPU Scheduling Concepts: Preemptive vs Non-Preemptive Scheduling Policies, Dispatcher Latency",
+            "Scheduling Criteria: CPU Utilization, Throughput, Turnaround Time, Waiting Time, Response Time",
+            "First-Come, First-Served (FCFS) Scheduling: Algorithm, Convoy Effect, Average Waiting Time Evaluation",
+            "Shortest Job First (SJF) Scheduling: Non-Preemptive SJF, Preemptive SJF (Shortest Remaining Time First - SRTF), Starvation",
+            "Priority Scheduling: Static vs Dynamic Priorities, Internal vs External Priorities, Starvation & Aging Solution",
+            "Round Robin (RR) Scheduling: Time Quantum Selection Trade-offs, Response Time Optimization, Context Switch Overhead",
+            "Multilevel Queue & Multilevel Feedback Queue Scheduling: Separation of Foreground/Background Processes, Feedback Upgrading"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "0557765b-dbac-5908-a7f3-49ade77d15ca",
+          "title": "Memory Management & Virtual Memory Architecture",
+          "topics": [
+            "Memory Management Overview: Memory Allocation Strategies, Address Space Protection & Sharing",
+            "Address Binding: Compile Time, Load Time, and Execution/Run Time Dynamic Address Binding",
+            "Logical vs Physical Address Space: Memory Management Unit (MMU), Base and Relocation Registers",
+            "Dynamic Loading & Dynamic Linking: Shared Libraries (.dll / .so), Memory Footprint Minimization",
+            "Contiguous Memory Allocation: Single Partition vs Fixed Multiple Partitions (MFT) vs Variable Partitions (MVT)",
+            "Dynamic Storage Allocation Algorithms: First-Fit, Best-Fit, Worst-Fit Algorithms & Comparative Performance",
+            "Fragmentation: Internal Fragmentation (Inside Allocation Blocks) vs External Fragmentation (Scattered Holes)",
+            "Compaction & Swapping: Relocation of Running Programs, Swapping Out to Backing Store",
+            "Paging Architecture: Non-Contiguous Allocation, Logical Pages, Physical Frames, Page Table Architecture",
+            "Hardware Implementation of Page Tables: Page Table Base Register (PTBR), Translation Lookaside Buffer (TLB)",
+            "Effective Memory Access Time (EMAT) with TLB: Hit Ratio Calculation Formula",
+            "Segmentation: User-View of Memory, Segment Table (Base, Limit), Segment Registers, Protection Bits",
+            "Virtual Memory Concept: Execution of Partially Loaded Programs, Separation of Logical Memory from Physical Memory",
+            "Demand Paging: Pure Demand Paging, Lazy Swapper / Pager, Valid-Invalid Bit in Page Table",
+            "Page Fault Handling Procedure: Hardware Trap, OS Page Fault Handler, Disk Fetch to Free Frame, Table Update, Restart",
+            "Page Replacement Algorithms: First-In-First-Out (FIFO) & Belady's Anomaly Demonstration",
+            "Optimal (OPT) Page Replacement: Theoretical Lower Bound Benchmark (Replacing Page Not Used for Longest Time)",
+            "Least Recently Used (LRU) Page Replacement: Approximation using Counter and Stack Implementations",
+            "Second-Chance (Clock) Algorithm: Reference Bit Mechanics, Cyclic Scanner Implementation",
+            "Thrashing: Definition, Cause (High Paging Rate, Low CPU Utilization), Degree of Multiprogramming Collapse",
+            "Working-Set Model (Peter Denning): Working-Set Window (Delta), Working-Set Size (WSS), Preventing Thrashing"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "a4e35aa8-a89b-5fbf-aa72-ac386118b06c",
+          "title": "Process Synchronization, Concurrency & Deadlocks",
+          "topics": [
+            "Concurrent Processes: Cooperating vs Independent Processes, Shared Memory & Message Passing Communication",
+            "The Critical Section Problem: Race Conditions, Producer-Consumer Buffer Counter Problem",
+            "Requirements for Solutions to Critical Section: Mutual Exclusion, Progress, Bounded Waiting",
+            "Software Solutions: Peterson's Algorithm for Two Processes, Correctness Proof (Mutual Exclusion, Progress, Bounded Waiting)",
+            "Hardware-Assisted Synchronization: Atomic Instructions (Test-and-Set, Compare-and-Swap)",
+            "Semaphores: Dijkstra's Primitive, Counting Semaphores vs Binary Semaphores (Mutexes)",
+            "Semaphore Operations: wait() / P() and signal() / V() Atomic Implementations, Spinlock vs Blocking Semaphores",
+            "Classical Synchronization Problems: Bounded-Buffer (Producer-Consumer) Problem using Semaphores",
+            "The Readers-Writers Problem: Reader Priority vs Writer Priority, Starvation Mitigation",
+            "The Dining Philosophers Problem: Resource Allocation Deadlock, Deadlock-Free Symmetric Solutions",
+            "Monitors: High-Level Language Synchronization Construct, Condition Variables (wait, signal)",
+            "Deadlock Definition: Necessary Coffman Conditions (Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait)",
+            "Resource Allocation Graphs (RAG): Request Edges, Assignment Edges, Cycle Detection in Single vs Multi-Instance Systems",
+            "Deadlock Prevention: Negating Coffman Conditions (Eliminating Hold & Wait, Preempting Resources, Linear Ordering of Resources)",
+            "Deadlock Avoidance & Safe State: Concept of Safe Sequences, System Transition State Trajectory",
+            "Banker's Algorithm (Edsger Dijkstra): Data Structures (Available, Max, Allocation, Need), Safety and Resource-Request Algorithms",
+            "Deadlock Detection & Recovery: Wait-For Graphs for Single Instances, Matrix Detection Algorithm, Process Termination & Rollback"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "140212af-3260-552c-9308-e371e626b20e",
+          "title": "File Systems, Secondary Storage Management & Disk Scheduling",
+          "topics": [
+            "File Concept: Logical Storage Abstraction, File Attributes (Name, Identifier, Type, Location, Size, Protection)",
+            "File Operations: Create, Open, Read, Write, Seek/Reposition, Delete, Truncate, Close",
+            "File Access Methods: Sequential Access (Tape/Card Model), Direct / Random Access (Fixed-Length Records), Indexed Access",
+            "Directory Structures: Single-Level Directory, Two-Level Directory, Tree-Structured Hierarchical Directory",
+            "Acyclic-Graph & General Graph Directories: Hard Links vs Symbolic (Soft) Links, Shared Subdirectories, Reference Cycles",
+            "File System Mounting & File Protection: Access Control Lists (ACL), Unix Permission Bits (Read, Write, Execute for Owner, Group, Others)",
+            "File Allocation Methods: Contiguous Allocation (External Fragmentation, Compaction, File Growth Issues)",
+            "Linked Allocation: Pointer-Chained Disk Blocks, No External Fragmentation, Elimination of Random Access",
+            "Indexed Allocation: Direct Index Blocks, Multi-Level Indexing, Combined Schemes (UNIX Inode Architecture)",
+            "Free Space Management: Bit Vector (Bitmap), Linked Free List, Grouping, Counting Methods",
+            "Physical Disk Geometry: Platters, Surfaces, Tracks, Sectors, Cylinders, Read/Write Heads, Rotational Latency, Seek Time",
+            "Disk Head Scheduling Concept: Minimizing Seek Time and Head Travel Distance Across Cylinders",
+            "First-Come, First-Served (FCFS) Disk Scheduling: Algorithm, Head Traversal Calculation, Fair but Suboptimal Performance",
+            "Shortest Seek Time First (SSTF) Disk Scheduling: Algorithm, Head Traversal Calculation, Starvation Risks for Outlying Requests",
+            "SCAN (Elevator) Scheduling: Unidirectional Cylinder Traversal to Boundary, Boundary Reversal",
+            "C-SCAN (Circular SCAN) Scheduling: Unidirectional Sweep with Immediate Return to Start, Uniform Waiting Time Distribution",
+            "LOOK and C-LOOK Disk Scheduling: Optimizing SCAN and C-SCAN by Limiting Sweep to Final Active Request"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-207N",
+      "title": "Computer Organization and Architecture",
+      "slug": "bca-207n-computer-organization-and-architecture",
+      "db_subject_id": "94d8428f-1759-466e-9838-af1e0fef68b3",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "93dbb129-6c97-521e-a8f0-4c4f8c12475c",
+          "title": "Basic Organization, CPU Registers & Control Unit",
+          "topics": [
+            "Computer Organization vs Computer Architecture: Functional Structure vs Programmer-Visible Attributes",
+            "Von Neumann Architecture & Stored Program Concept: Unified Memory for Code and Data, Sequential Fetch Cycle",
+            "Components of a Digital Computer: Processing Unit, Memory Unit, Input/Output Subsystem, System Bus",
+            "Machine Instructions: Operation Codes (Opcodes), Operands, Addressing Information, Instruction Word Format",
+            "Computer Registers: Program Counter (PC), Memory Address Register (MAR), Memory Data Register (MDR/MBR)",
+            "Instruction Register (IR), Accumulator (AC), Temporary Registers (TR), Input/Output Registers (INPR/OUTR)",
+            "Common Bus System: Multiplexer-Based vs Tri-State Buffer Based Internal Bus Interconnections",
+            "Instruction Execution Cycle: Fetch, Decode, Read Effective Address (Indirect Address Phase), Execute, Interrupt Check",
+            "Register Transfer Language (RTL): Symbolic Representation of Microoperations (Arithmetic, Logic, Shift)",
+            "Control Unit Architecture: Hardwired Control Unit (Combinational Logic, State Counters, Decoders, Fast Execution)",
+            "Microprogrammed Control Unit: Control Memory (ROM), Control Address Register (CAR), Microinstruction Formats, Flexibility",
+            "General Purpose Register (GPR) Organization: Register Set, Bus Multiplexers, ALU Interface, Control Word Structure"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "0cd7f2eb-eb8d-5f4e-8ca9-4e22f15f6a32",
+          "title": "CPU Functioning, Instruction Formats & Addressing Modes",
+          "topics": [
+            "Instruction Format Architecture: Three-Address, Two-Address, One-Address (Accumulator), Zero-Address (Stack) Instructions",
+            "Instruction Types: Data Transfer, Data Manipulation (Arithmetic, Logical, Shift), Program Control (Branches, Subroutines)",
+            "Addressing Modes: Purpose (Relocatability, Pointer Indexing, Memory Saving)",
+            "Immediate Addressing Mode: Operand Specified Explicitly Inside Instruction Word",
+            "Direct Addressing Mode: Instruction Contains Memory Address of Target Operand",
+            "Indirect Addressing Mode: Instruction Points to Memory Location Containing Actual Target Address",
+            "Register Addressing & Register Indirect Addressing Modes: High-Speed Register Access and Pointer Manipulation",
+            "Relative Addressing Mode: Program Counter (PC) Relative Offset, Branching Efficiency",
+            "Indexed Addressing Mode: Base Register + Index Register Calculation, Array Traversal",
+            "Base Register Addressing Mode: Segment Base + Displacement, Dynamic Program Relocation",
+            "Auto-Increment and Auto-Decrement Addressing Modes: Stack Pointer and Sequential Array Handling",
+            "Reduced Instruction Set Computer (RISC) vs Complex Instruction Set Computer (CISC) Paradigms",
+            "Modern Multi-core Microprocessor Architecture: Shared L3 Cache, Point-to-Point Interconnects (QPI), Simultaneous Multithreading"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "a9c00073-9807-52cd-b535-a2fdc7334f89",
+          "title": "Memory Organization, Hierarchy & Cache Architecture",
+          "topics": [
+            "Memory Hierarchy: Speed, Capacity, Cost Trade-Offs (Registers, Cache, Main Memory, Secondary Storage)",
+            "Main Memory Organization: RAM (SRAM vs DRAM Cells) and ROM (PROM, EPROM, EEPROM, Flash Memory)",
+            "Memory Chip Internal Architecture: Memory Address Decoding, Coincident Decoding, Chip Select Logic",
+            "Auxiliary / Secondary Memory: Magnetic Hard Drives, Optical Discs, Solid-State Drives (NAND Flash Architecture)",
+            "Associative Memory (Content Addressable Memory - CAM): Parallel Comparison Hardware, Match Logic, Fast Table Lookups",
+            "Cache Memory Fundamentals: Principle of Locality of Reference (Temporal Locality vs Spatial Locality)",
+            "Cache Mapping Techniques: Direct Mapping (Index, Tag, Block Offset, Conflict Misses)",
+            "Associative Mapping: Tag-Data Pairs, Zero Conflict Misses, Expensive Hardware Associative Comparator",
+            "Set-Associative Mapping: K-Way Partitioning, Compromise between Direct and Fully Associative Schemes",
+            "Cache Write Policies: Write-Through (Consistent Memory, Slower Writes) vs Write-Back (Dirty Bit, Higher Speed)",
+            "Cache Replacement Policies: Least Recently Used (LRU), First-In-First-Out (FIFO), Random Replacement",
+            "Virtual Memory Architecture: Page-Based Virtual Address Translation, Page Faults, Demand Paging Hardware Support"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "5fd1ea7a-96ef-5298-9dd9-0eecba20ee0c",
+          "title": "Input/Output Organization, Interfaces & Data Transfer Modes",
+          "topics": [
+            "Peripheral Devices: Input Devices, Output Devices, Electromechanical vs Electronic Operating Speeds",
+            "I/O Interface: Need for Interface (Speed Discrepancy, Data Format Differences, Operating Mode Disparities)",
+            "I/O Bus vs Memory Bus: Isolated I/O (Separate I/O Instructions, IN/OUT) vs Memory-Mapped I/O (Unified Address Space)",
+            "Asynchronous Data Transfer: Strobe Control Protocol (Source-Initiated vs Destination-Initiated Strobe)",
+            "Handshaking Data Transfer Protocol: Source-Initiated vs Destination-Initiated Two-Way Handshake with Timing Diagrams",
+            "Modes of Data Transfer: Programmed I/O (Polling Loop, Inefficient CPU Busy-Waiting)",
+            "Interrupt-Initiated I/O: Hardware Interrupt Signal, Interrupt Service Routine (ISR), Context Saving",
+            "Priority Interrupt System: Daisy-Chaining Priority Resolution (Hardware Serial Connection)",
+            "Parallel Priority Interrupt: Priority Encoder, Mask Register, Interrupt Status Register",
+            "Direct Memory Access (DMA): Need for DMA in Block Transfers, Stealing CPU Bus Cycles (Cycle Stealing vs Burst Mode)",
+            "DMA Controller (DMAC) Internal Architecture: Address Register, Word Count Register, Control Register, Bus Grant (BG)",
+            "Input-Output Processor (IOP): Dedicated I/O Channels, Autonomous Channel Programs, Mainframe Architecture",
+            "Serial Communication Protocols: Synchronous vs Asynchronous Serial Transmission, Baud Rate, Parity, Start/Stop Bits"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "42200db4-826d-5c33-ab77-08c632943b9e",
+          "title": "Parallel Processing, Pipelining & Multiprocessor Systems",
+          "topics": [
+            "Parallel Processing Concept: Concurrent Data Processing, Spatial vs Temporal Parallelism",
+            "Flynn's Hardware Classification: SISD (Single Instruction Single Data), SIMD (Vector/Array Processors)",
+            "Flynn's MISD (Multiple Instruction Single Data) and MIMD (Multiple Instruction Multiple Data / Multiprocessors)",
+            "Pipelining Fundamentals: Overlapping Execution Stages, Industrial Assembly Line Analogy",
+            "Space-Time Diagram for Pipelining: Segment Clock Cycles, Throughput Evaluation, Latency",
+            "Pipelining Metrics: Speedup Ratio S_k = (n * t_n) / ((k + n - 1) * t_k), Efficiency, Maximum Theoretical Speedup (k)",
+            "Arithmetic Pipeline: Floating-Point Addition/Subtraction Multi-Stage Pipeline (Compare Exponents, Align, Add, Normalize)",
+            "Instruction Pipeline: Four-Stage Pipeline (Fetch Instruction FI, Decode Instruction DA, Fetch Operand FO, Execute EX)",
+            "Pipeline Hazards: Structural Hazards (Hardware Resource Conflicts)",
+            "Data Hazards: Data Dependencies (Read-After-Write RAW, Write-After-Read WAR, Write-After-Write WAW), Forwarding Solution",
+            "Control / Branch Hazards: Unconditional and Conditional Branch Penalties, Pipeline Flushes, Branch Prediction Techniques",
+            "Amdahl's Law: Theoretical Speedup Limit of Parallel Systems Based on Serial Fraction S = 1 / ((1 - P) + P / N)"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-411E",
+      "title": "Discrete Mathematics",
+      "slug": "bca-411e-discrete-mathematics",
+      "db_subject_id": "19db3ea2-df09-4c50-af44-59811381fd81",
+      "credits": 4,
+      "type": "elective",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "64ceb1cb-1e27-503e-abd6-757dd220abf4",
+          "title": "Set Theory, Posets, Lattices & Boolean Algebra",
+          "topics": [
+            "Sets and Elements: Set Notations, Universal Set, Empty (Null) Set, Singleton Sets, Subsets and Supersets",
+            "Set Operations: Union, Intersection, Difference, Symmetric Difference, Absolute and Relative Complements",
+            "Venn Diagrams and Visual Set Representations: Modeling Multi-Set Relationships",
+            "Laws of Set Algebra: Idempotent, Associative, Commutative, Distributive, Identity, De Morgan's Laws",
+            "Principle of Duality in Set Theory and Boolean Structures",
+            "Partially Ordered Sets (Posets): Partial Order Relation (Reflexive, Anti-Symmetric, Transitive)",
+            "Hasse Diagrams: Visualizing Posets, Construction Rules, Covering Relations",
+            "Extremal Elements in Posets: Maximal, Minimal, Greatest (Maximum), and Least (Minimum) Elements",
+            "Bounds in Posets: Upper Bounds, Lower Bounds, Least Upper Bound (LUB / Supremum / Join), Greatest Lower Bound (GLB / Infimum / Meet)",
+            "Lattices as Algebraic Systems: Definition as Poset where every Pair has LUB and GLB (a v b, a ^ b)",
+            "Properties of Lattices: Idempotency, Commutativity, Associativity, Absorption Laws",
+            "Special Lattices: Distributive Lattices, Complemented Lattices, Bounded Lattices",
+            "Boolean Algebra Foundations: Definition as a Complemented Distributive Lattice (B, +, *, ', 0, 1)",
+            "Uniqueness of Finite Boolean Algebras: Isomorphism to Power Set Boolean Algebra (Cardinality 2^n)",
+            "Boolean Functions & Boolean Expressions: Truth Values, Sum-of-Products (SOP), Product-of-Sums (POS) Normal Forms"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "fc7b0943-6502-577f-9b55-ba67821c4b0a",
+          "title": "Propositional Logic, Predicate Calculus & Mathematical Proofs",
+          "topics": [
+            "Propositions: Declarative Statements, Truth Values (True/False), Atomic vs Compound Propositions",
+            "Basic Logical Connectives: Negation (NOT ~), Conjunction (AND ^), Disjunction (OR v)",
+            "Conditional (Implication ->) and Biconditional (<->) Statements: Truth Tables, Antecedents and Consequents",
+            "Converse, Inverse, and Contrapositive of Conditional Statements: Logical Equivalence Proof of Implication and Contrapositive",
+            "Truth Tables for Complex Logical Formulas: Construction and Step-by-Step Evaluation",
+            "Tautologies, Contradictions, and Contingencies: Definitions, Truth Table Identification",
+            "Logical Equivalence: Equivalence Laws (Identity, Domination, Double Negation, De Morgan's Laws for Logic)",
+            "Algebra of Propositions: Simplifying Boolean Propositional Expressions using Logical Equivalences",
+            "Rules of Inference: Modus Ponens, Modus Tollens, Hypothetical Syllogism, Disjunctive Syllogism, Resolution",
+            "Valid and Invalid Arguments: Fallacies, Testing Argument Validity via Truth Tables and Derivation Rules",
+            "Predicate Logic & Propositional Functions: Variables, Predicates P(x), Domain of Discourse",
+            "Quantifiers: Universal Quantifier (For All), Existential Quantifier (There Exists)",
+            "Negation of Quantified Statements: De Morgan's Laws for Quantifiers (~(For All x P(x)) <=> There Exists x ~P(x))",
+            "Normal Forms in Propositional Logic: Disjunctive Normal Form (DNF) and Conjunctive Normal Form (CNF)"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "94294521-6157-5d4f-9937-0600e47a0186",
+          "title": "Combinatorics, Recurrence Relations & Binomial Theorem",
+          "topics": [
+            "Fundamental Principles of Counting: Addition Principle (Rule of Sum) and Multiplication Principle (Rule of Product)",
+            "Factorial Notation: n!, Properties, Recursive Definition 0! = 1",
+            "Permutations: Linear Permutations of n Distinct Objects, Formulas P(n, r) = n! / (n - r)!",
+            "Permutations with Repetition: Objects Not All Distinct (n! / (n1! * n2! * ... * nk!))",
+            "Circular Permutations: Arrangements in a Circle ((n - 1)! for Distinct Sense, (n - 1)! / 2 for Reversible)",
+            "Combinations: Selection without Regard to Order, Formula C(n, r) = n! / (r! * (n - r)!)",
+            "Combinatorial Identities: Symmetry Identity C(n, r) = C(n, n-r), Pascal's Identity C(n, r) + C(n, r-1) = C(n+1, r)",
+            "Binomial Theorem for Positive Integral Index: Statement, Expansion Formula, Pascal's Triangle Geometry",
+            "Key Terms in Binomial Expansions: General (r+1)th Term Formula T_{r+1} = nCr * a^(n-r) * b^r",
+            "Determination of Middle Term(s) in Binomial Expansion (n is Even vs n is Odd)",
+            "Term Independent of Variable (Constant Term) and Finding Specific Coefficients in Expansions",
+            "Pigeonhole Principle: Basic Statement, Generalized Pigeonhole Principle, Applications to Discrete Sets",
+            "Recurrence Relations: First-Order and Second-Order Linear Homogeneous Recurrence Relations with Constant Coefficients",
+            "Solving Recurrence Relations: Characteristic Equation Method, Fibonacci Sequence Closed-Form Derivation"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "3c40208d-2d50-5404-bdb1-936bbe24f1c1",
+          "title": "Algebraic Structures & Group Theory",
+          "topics": [
+            "Binary Operations: Definition on a Set, Closure Property, Commutativity, Associativity, Distributivity",
+            "Identity and Invertible Elements: Existence of Unique Identity Element, Inverse of an Element",
+            "Algebraic Structures Hierarchy: Groupoids (Closure), Semigroups (Closure + Associativity)",
+            "Monoids: Semigroups with Identity Element, Matrix and String Monoids",
+            "Groups: Definition, Four Group Axioms (Closure, Associativity, Identity, Inverses)",
+            "Abelian (Commutative) Groups: Definition, Examples (Integer Addition (Z, +), Real Multiplication (R*, *))",
+            "Finite Groups and Group Order: Order of a Group |G|, Order of an Element o(a), Group Multiplication Tables (Cayley Tables)",
+            "Subgroups: Definition, Necessary and Sufficient Conditions for a Subset to be a Subgroup (Two-Step and One-Step Subgroup Tests)",
+            "Cyclic Groups: Generator Elements, Properties of Cyclic Groups, Subgroups of Cyclic Groups",
+            "Cosets: Left Cosets (aH) and Right Cosets (Ha), Properties of Cosets, Partitioning of Group into Disjoint Cosets",
+            "Lagrange's Theorem: Statement (Order of Subgroup Divides Order of Finite Group), Proof and Corollaries",
+            "Normal Subgroups: Definition (gH = Hg for all g in G), Criterion for Normal Subgroups, Quotient (Factor) Groups",
+            "Group Homomorphisms: Definition (f(ab) = f(a)f(b)), Kernel of Homomorphism, Group Isomorphisms (Fundamental Theorem)",
+            "Burnside's Lemma / Theorem: Orbits, Stabilizers, Orbit-Counting Theorem for Combinatorial Symmetries",
+            "Applications of Group Theory to Coding: Binary Symmetric Channels, Group Codes, Generator and Parity-Check Matrices"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "4612b805-4412-5c85-8a70-f2066b6e18dd",
+          "title": "Graph Theory, Trees & Network Algorithms",
+          "topics": [
+            "Graph Fundamentals: Definition G = (V, E), Vertices, Edges, Directed Graphs (Digraphs) vs Undirected Graphs",
+            "Graph Terminology: Adjacent Vertices, Incident Edges, Degree of a Vertex (deg(v)), In-degree and Out-degree",
+            "Handshaking Theorem (Euler): Sum of Degrees of all Vertices = 2 * |E|, Proof and Corollaries (Number of Odd Vertices is Even)",
+            "Types of Graphs: Simple Graphs, Multigraphs, Pseudographs (Self-Loops and Parallel Edges)",
+            "Special Families of Simple Graphs: Complete Graphs (K_n), Cycle Graphs (C_n), Wheel Graphs (W_n), Regular Graphs (k-regular)",
+            "Bipartite Graphs: Definition, Characterization (Graph is Bipartite iff it has No Odd Cycles), Complete Bipartite Graphs (K_{m,n})",
+            "Subgraphs, Isomorphic Graphs, and Homeomorphic Graphs: Invariants of Graph Isomorphism",
+            "Walks, Trails, Paths, and Cycles: Connected Graphs, Connected Components, Cut-Points (Articulation Points) and Bridges",
+            "Eulerian Graphs: Eulerian Trail, Eulerian Circuit, Euler's Theorem (Connected Graph is Eulerian iff Every Vertex has Even Degree)",
+            "Hamiltonian Graphs: Hamiltonian Path, Hamiltonian Cycle, Dirac's Theorem and Ore's Theorem Criteria",
+            "Planar Graphs: Euler's Planar Formula V - E + F = 2, Non-Planar Graphs, Kuratowski's Theorem (K_5 and K_{3,3})",
+            "Graph Coloring: Vertex Coloring, Chromatic Number chi(G), The Famous Four Color Theorem",
+            "Tree Fundamentals: Definition as Connected Acyclic Graph, Equivalent Characterizations of Trees (n vertices, n-1 edges)",
+            "Spanning Trees: Definition, Existence in Connected Graphs, Fundamental Cycles and Fundamental Cutsets",
+            "Minimum Spanning Tree (MST) Algorithms: Kruskal's Greedy Algorithm (Disjoint Set Union) and Prim's Algorithm",
+            "Matrix Representations of Graphs: Adjacency Matrix (A), Properties of Adjacency Matrix Powers, Incidence Matrix (M)"
+          ]
+        }
+      ]
+    }
+  ]
+}

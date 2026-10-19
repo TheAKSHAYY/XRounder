@@ -74,7 +74,7 @@ export function QuizHeader({
         </div>
         <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-muted">
           <motion.div
-            className="h-full rounded-full bg-primary shadow-xs"
+            className="h-full rounded-full bg-accent shadow-xs"
             initial={false}
             animate={{ width: `${progressPct}%` }}
             transition={{ type: "spring", stiffness: 140, damping: 22 }}

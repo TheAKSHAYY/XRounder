@@ -5,7 +5,6 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
-  FlaskConical,
   LayoutDashboard,
   ListChecks,
   RotateCcw,
@@ -262,7 +261,12 @@ export function ResultsView({
               <Sparkles className="h-3.5 w-3.5" />
               <span>Celebrate</span>
             </Button>
-            <Button asChild variant="ghost" size="sm" className="btn-squishy h-8 text-xs font-semibold">
+            <Button
+              asChild
+              variant="ghost"
+              size="sm"
+              className="btn-squishy h-8 text-xs font-semibold"
+            >
               <Link to="/dashboard">View Level &amp; Badges →</Link>
             </Button>
           </div>
@@ -296,68 +300,80 @@ export function ResultsView({
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-            {!isMastered &&
-              context?.courseSlug &&
-              context.semesterNumber &&
-              context.subjectSlug &&
-              context.unitNumber && (
+            {!isMastered ? (
+              <>
                 <Button
-                  asChild
-                  variant="warning"
-                  className="h-11 px-5 rounded-2xl text-xs font-bold shadow-xs"
+                  onClick={() => setShowReview(true)}
+                  className="btn-squishy btn-cta h-11 px-5 rounded-2xl text-xs font-bold shadow-xs cursor-pointer"
                 >
-                  <Link
-                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                    params={{
-                      courseSlug: context.courseSlug,
-                      semesterNumber: String(context.semesterNumber),
-                      subjectSlug: context.subjectSlug,
-                      unitNumber: String(context.unitNumber),
-                    }}
-                  >
-                    <BookOpen className="h-4 w-4 mr-1.5" /> Start Unit Revision
-                  </Link>
+                  <ListChecks className="h-4 w-4 mr-1.5" />
+                  <span>Review Answers</span>
                 </Button>
-              )}
 
-            {!isMastered && (
-              <Button
-                onClick={onRetry}
-                disabled={retryPending}
-                variant="outline"
-                className="btn-squishy h-11 px-4 rounded-2xl text-xs font-bold cursor-pointer"
-              >
-                <RotateCcw className="h-4 w-4 mr-1.5" />{" "}
-                {retryPending ? "Starting…" : "Take Retest Now"}
-              </Button>
-            )}
+                {context?.courseSlug &&
+                  context.semesterNumber &&
+                  context.subjectSlug &&
+                  context.unitNumber && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="h-11 px-4 rounded-2xl text-xs font-semibold"
+                    >
+                      <Link
+                        to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                        params={{
+                          courseSlug: context.courseSlug,
+                          semesterNumber: String(context.semesterNumber),
+                          subjectSlug: context.subjectSlug,
+                          unitNumber: String(context.unitNumber),
+                        }}
+                      >
+                        <BookOpen className="h-4 w-4 mr-1.5" /> Unit Notes
+                      </Link>
+                    </Button>
+                  )}
 
-            {isMastered && context?.courseSlug && context.semesterNumber && context.subjectSlug && (
-              <Button
-                asChild
-                variant="cta"
-                className="btn-squishy h-11 px-5 rounded-2xl text-xs font-bold shadow-xs cursor-pointer"
-              >
-                <Link
-                  to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
-                  params={{
-                    courseSlug: context.courseSlug,
-                    semesterNumber: String(context.semesterNumber),
-                    subjectSlug: context.subjectSlug,
-                  }}
+                <Button
+                  onClick={onRetry}
+                  disabled={retryPending}
+                  variant="ghost"
+                  className="btn-squishy h-11 px-4 rounded-2xl text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer"
                 >
-                  <span>Continue Subject Syllabus</span>
-                  <ArrowRight className="h-4 w-4 ml-1.5" />
-                </Link>
-              </Button>
-            )}
+                  <RotateCcw className="h-4 w-4 mr-1.5" />
+                  {retryPending ? "Starting…" : "Retest"}
+                </Button>
+              </>
+            ) : (
+              <>
+                {context?.courseSlug && context.semesterNumber && context.subjectSlug && (
+                  <Button
+                    asChild
+                    variant="cta"
+                    className="btn-squishy h-11 px-6 rounded-2xl text-xs font-bold shadow-xs cursor-pointer"
+                  >
+                    <Link
+                      to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
+                      params={{
+                        courseSlug: context.courseSlug,
+                        semesterNumber: String(context.semesterNumber),
+                        subjectSlug: context.subjectSlug,
+                      }}
+                    >
+                      <span>Continue Learning</span>
+                      <ArrowRight className="h-4 w-4 ml-1.5" />
+                    </Link>
+                  </Button>
+                )}
 
-            {isMastered && (
-              <Button asChild variant="outline" className="btn-squishy h-11 px-4 rounded-2xl text-xs font-bold cursor-pointer">
-                <Link to="/mock-test">
-                  <FlaskConical className="h-4 w-4 mr-1.5" /> Challenge Mock Exam
-                </Link>
-              </Button>
+                <Button
+                  onClick={() => setShowReview((v) => !v)}
+                  variant="outline"
+                  className="btn-squishy h-11 px-4 rounded-2xl text-xs font-semibold cursor-pointer"
+                >
+                  <ListChecks className="h-4 w-4 mr-1.5" />
+                  <span>{showReview ? "Hide Answers" : "Review Answers"}</span>
+                </Button>
+              </>
             )}
           </div>
         </div>

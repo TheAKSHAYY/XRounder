@@ -21,6 +21,8 @@ import {
 import { useServerFn } from "@tanstack/react-start";
 import { reorderUnits } from "@/lib/announcements.functions";
 import { PageContainer } from "@/components/admin/ui/page-container";
+import { PageHeader } from "@/components/admin/ui/page-header";
+import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -93,59 +95,58 @@ function CourseTreePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/60">
-        <div className="mx-auto flex w-full sm:max-w-6xl items-center justify-between px-4 sm:px-6 py-5">
-          <Link
-            to="/admin/courses"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> All courses
-          </Link>
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={[
+          { label: "Courses", to: "/admin/courses" },
+          { label: courseQuery.data?.title || "Curriculum tree" },
+        ]}
+        title={courseQuery.data?.title || "Curriculum tree"}
+        description={
+          courseQuery.data ? (
+            <span className="flex items-center gap-2">
+              <span className="font-mono font-semibold uppercase">{courseQuery.data.code}</span>
+              <span>·</span>
+              <span>{courseQuery.data.total_semesters} semesters</span>
+              {courseQuery.data.duration_years ? (
+                <>
+                  <span>·</span>
+                  <span>{courseQuery.data.duration_years} years</span>
+                </>
+              ) : null}
+            </span>
+          ) : (
+            "Course curriculum, semesters, subjects, and units structure."
+          )
+        }
+        actions={
           <Button onClick={() => setSemOpen(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Add semester
+            <Plus className="mr-1.5 h-4 w-4" /> Add semester
           </Button>
-        </div>
-      </header>
+        }
+      />
 
-      <PageContainer>
-        {courseQuery.data && (
-          <div className="flex items-center gap-3">
-            <Layers className="h-6 w-6 text-primary" />
-            <div>
-              <h1 className="font-display text-3xl font-semibold text-foreground">
-                {courseQuery.data.title}
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-mono uppercase">{courseQuery.data.code}</span> ·{" "}
-                {courseQuery.data.total_semesters} semesters
-              </p>
-            </div>
+      <section className="mt-8 space-y-3">
+        {semestersQuery.isLoading && <p className="text-sm text-muted-foreground">Loading…</p>}
+        {semestersQuery.data && semestersQuery.data.length === 0 && (
+          <div className="rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
+            <p className="font-display text-lg text-foreground">No semesters yet</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Add the first semester to begin structuring this course.
+            </p>
           </div>
         )}
 
-        <section className="mt-8 space-y-3">
-          {semestersQuery.isLoading && <p className="text-sm text-muted-foreground">Loading…</p>}
-          {semestersQuery.data && semestersQuery.data.length === 0 && (
-            <div className="rounded-2xl border border-dashed border-border bg-surface p-10 text-center">
-              <p className="font-display text-lg text-foreground">No semesters yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Add the first semester to begin structuring this course.
-              </p>
-            </div>
-          )}
-
-          <Accordion type="multiple" className="space-y-3">
-            {semestersQuery.data?.map((sem) => (
-              <SemesterCard
-                key={sem.id}
-                sem={{ ...sem, status: sem.status as Status }}
-                onChange={invalidateAll}
-              />
-            ))}
-          </Accordion>
-        </section>
-      </PageContainer>
+        <Accordion type="multiple" className="space-y-3">
+          {semestersQuery.data?.map((sem) => (
+            <SemesterCard
+              key={sem.id}
+              sem={{ ...sem, status: sem.status as Status }}
+              onChange={invalidateAll}
+            />
+          ))}
+        </Accordion>
+      </section>
 
       <SemesterDialog
         open={semOpen}
@@ -154,7 +155,7 @@ function CourseTreePage() {
         nextNumber={(semestersQuery.data?.length ?? 0) + 1}
         onSaved={invalidateAll}
       />
-    </div>
+    </PageContainer>
   );
 }
 
@@ -175,6 +176,7 @@ function SemesterCard({
   const qc = useQueryClient();
   const [subOpen, setSubOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [delSemOpen, setDelSemOpen] = useState(false);
 
   const subjectsQuery = useQuery({
     queryKey: ["admin", "subjects", sem.id],
@@ -236,17 +238,9 @@ function SemesterCard({
             <Button
               size="sm"
               variant="ghost"
-              onClick={() => {
-                if (
-                  confirm(
-                    `Delete semester ${sem.number}? Subjects and units inside will also be deleted.`,
-                  )
-                ) {
-                  removeSem.mutate();
-                }
-              }}
+              onClick={() => setDelSemOpen(true)}
             >
-              <Trash2 className="h-4 w-4" />
+              <Trash2 className="h-4 w-4 text-destructive" />
             </Button>
           </div>
         </div>
@@ -284,6 +278,18 @@ function SemesterCard({
         semesterId={sem.id}
         onSaved={() => qc.invalidateQueries({ queryKey: ["admin", "subjects", sem.id] })}
       />
+      <ConfirmDialog
+        open={delSemOpen}
+        onOpenChange={setDelSemOpen}
+        title={`Delete semester ${sem.number}?`}
+        description="All subjects and units inside this semester will also be deleted. This action cannot be undone."
+        destructive
+        confirmLabel="Delete semester"
+        onConfirm={() => {
+          removeSem.mutate();
+          setDelSemOpen(false);
+        }}
+      />
     </AccordionItem>
   );
 }
@@ -298,6 +304,8 @@ function SubjectRow({
   const qc = useQueryClient();
   const [unitOpen, setUnitOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [delSubOpen, setDelSubOpen] = useState(false);
+  const [unitToDelete, setUnitToDelete] = useState<{ id: string; number: number } | null>(null);
 
   const unitsQuery = useQuery({
     queryKey: ["admin", "units", sub.id],
@@ -367,13 +375,9 @@ function SubjectRow({
         <Button
           size="sm"
           variant="ghost"
-          onClick={() => {
-            if (confirm(`Delete subject ${sub.code}? Units inside will also be deleted.`)) {
-              removeSub.mutate();
-            }
-          }}
+          onClick={() => setDelSubOpen(true)}
         >
-          <Trash2 className="h-4 w-4" />
+          <Trash2 className="h-4 w-4 text-destructive" />
         </Button>
       </div>
 
@@ -398,9 +402,7 @@ function SubjectRow({
                   index={i}
                   total={unitsQuery.data!.length}
                   allUnitIds={unitsQuery.data!.map((x) => x.id)}
-                  onDelete={() => {
-                    if (confirm(`Delete unit ${u.number}?`)) removeUnit.mutate(u.id);
-                  }}
+                  onDelete={() => setUnitToDelete({ id: u.id, number: u.number })}
                 />
               ))}
             </ul>
@@ -417,6 +419,34 @@ function SubjectRow({
         onSaved={() => {
           qc.invalidateQueries({ queryKey: ["admin", "units", sub.id] });
           setExpanded(true);
+        }}
+      />
+
+      <ConfirmDialog
+        open={delSubOpen}
+        onOpenChange={setDelSubOpen}
+        title={`Delete subject "${sub.code}"?`}
+        description="All units, notes, quizzes, and papers inside this subject will also be deleted. This action cannot be undone."
+        destructive
+        confirmLabel="Delete subject"
+        onConfirm={() => {
+          removeSub.mutate();
+          setDelSubOpen(false);
+        }}
+      />
+
+      <ConfirmDialog
+        open={!!unitToDelete}
+        onOpenChange={(o) => !o && setUnitToDelete(null)}
+        title={`Delete unit ${unitToDelete?.number}?`}
+        description="All notes and quizzes under this unit will be permanently deleted."
+        destructive
+        confirmLabel="Delete unit"
+        onConfirm={() => {
+          if (unitToDelete) {
+            removeUnit.mutate(unitToDelete.id);
+            setUnitToDelete(null);
+          }
         }}
       />
     </div>
@@ -794,6 +824,7 @@ function UnitRow({
 }) {
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<{ id: string; title: string; type: "note" | "quiz" } | null>(null);
   const reorderFn = useServerFn(reorderUnits);
   const reorderMut = useMutation({
     mutationFn: (unitIds: string[]) => reorderFn({ data: { subjectId, unitIds } }),
@@ -945,11 +976,9 @@ function UnitRow({
                     size="sm"
                     variant="ghost"
                     className="h-6 w-6 p-0"
-                    onClick={() => {
-                      if (confirm(`Delete note "${n.title}"?`)) removeNote.mutate(n.id);
-                    }}
+                    onClick={() => setItemToDelete({ id: n.id, title: n.title, type: "note" })}
                   >
-                    <Trash2 className="h-3 w-3" />
+                    <Trash2 className="h-3 w-3 text-destructive" />
                   </Button>
                 </li>
               ))}
@@ -980,11 +1009,9 @@ function UnitRow({
                     size="sm"
                     variant="ghost"
                     className="h-6 w-6 p-0"
-                    onClick={() => {
-                      if (confirm(`Delete quiz "${q.title}"?`)) removeQuiz.mutate(q.id);
-                    }}
+                    onClick={() => setItemToDelete({ id: q.id, title: q.title, type: "quiz" })}
                   >
-                    <Trash2 className="h-3 w-3" />
+                    <Trash2 className="h-3 w-3 text-destructive" />
                   </Button>
                 </li>
               ))}
@@ -992,12 +1019,30 @@ function UnitRow({
           </div>
         </div>
       )}
+
+      <ConfirmDialog
+        open={!!itemToDelete}
+        onOpenChange={(o) => !o && setItemToDelete(null)}
+        title={`Delete ${itemToDelete?.type === "note" ? "note" : "quiz"} "${itemToDelete?.title}"?`}
+        description="This will permanently delete this item. This action cannot be undone."
+        destructive
+        confirmLabel={`Delete ${itemToDelete?.type === "note" ? "note" : "quiz"}`}
+        onConfirm={() => {
+          if (itemToDelete) {
+            if (itemToDelete.type === "note") removeNote.mutate(itemToDelete.id);
+            else removeQuiz.mutate(itemToDelete.id);
+            setItemToDelete(null);
+          }
+        }}
+      />
     </li>
   );
 }
 
 function PapersList({ subjectId }: { subjectId: string }) {
   const qc = useQueryClient();
+  const [paperToDelete, setPaperToDelete] = useState<{ id: string; title: string } | null>(null);
+
   const papersQuery = useQuery({
     queryKey: ["admin", "subject-papers", subjectId],
     queryFn: async () => {
@@ -1047,15 +1092,28 @@ function PapersList({ subjectId }: { subjectId: string }) {
               size="sm"
               variant="ghost"
               className="h-6 w-6 p-0"
-              onClick={() => {
-                if (confirm(`Delete paper "${p.title}"?`)) removePaper.mutate(p.id);
-              }}
+              onClick={() => setPaperToDelete({ id: p.id, title: p.title })}
             >
-              <Trash2 className="h-3 w-3" />
+              <Trash2 className="h-3 w-3 text-destructive" />
             </Button>
           </li>
         ))}
       </ul>
+
+      <ConfirmDialog
+        open={!!paperToDelete}
+        onOpenChange={(o) => !o && setPaperToDelete(null)}
+        title={`Delete paper "${paperToDelete?.title}"?`}
+        description="This will remove this exam paper from student downloads."
+        destructive
+        confirmLabel="Delete paper"
+        onConfirm={() => {
+          if (paperToDelete) {
+            removePaper.mutate(paperToDelete.id);
+            setPaperToDelete(null);
+          }
+        }}
+      />
     </div>
   );
 }

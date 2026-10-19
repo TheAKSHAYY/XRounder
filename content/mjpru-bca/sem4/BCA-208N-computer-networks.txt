@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 4
+BCA-208N: COMPUTER NETWORKS - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-208n-u1-q01] (Unit 1) Which of the following is NOT a fundamental component of a data communication system?
+  A.     Sender
+  B.     Receiver
+  C.     Transmission Medium
+  D. (*) Compaction Engine
+Explanation: The five basic components of data communications are: Message, Sender, Receiver, Transmission Medium, and Protocol.
+
+[bca-208n-u1-q02] (Unit 1) In which network topology is every node connected to every other node through dedicated point-to-point links?
+  A.     Star Topology
+  B.     Bus Topology
+  C. (*) Mesh Topology
+  D.     Ring Topology
+Explanation: In a fully connected mesh topology of $n$ nodes, there are $n(n-1)/2$ dedicated physical duplex links.
+
+[bca-208n-u1-q03] (Unit 1) How many physical cables are required for a fully connected mesh topology with 8 computers?
+  A.     8
+  B.     16
+  C. (*) 28
+  D.     56
+Explanation: Number of duplex links in mesh = $n(n-1)/2 = 8 \times 7 / 2 = 28$ physical cables.
+
+[bca-208n-u1-q04] (Unit 1) Which network topology features a central device (such as a switch or hub) to which all nodes are connected via point-to-point links?
+  A. (*) Star Topology
+  B.     Ring Topology
+  C.     Bus Topology
+  D.     Tree Topology
+Explanation: In a star topology, all end stations connect directly to a central hub or switch via individual cables.
+
+[bca-208n-u1-q05] (Unit 1) What is the primary drawback of a Star Topology?
+  A.     Difficult to add new nodes
+  B.     A single cable fault brings down the entire network
+  C. (*) Single point of failure at the central hub/switch
+  D.     High collision rate on bus terminator
+Explanation: If the central hub or switch fails, the entire network connected to it becomes inoperative.
+
+[bca-208n-u1-q06] (Unit 1) Which topology uses a single backbone communication cable terminated at both ends with terminators?
+  A.     Ring Topology
+  B. (*) Bus Topology
+  C.     Star Topology
+  D.     Mesh Topology
+Explanation: Bus topology shares a single multipoint backbone cable. Terminators absorb electrical signals at endpoints to prevent signal bounce.
+
+[bca-208n-u1-q07] (Unit 1) What is a major advantage of Fiber Optic cables over Copper Twisted Pair cables?
+  A. (*) Immunity to electromagnetic interference (EMI) and much higher bandwidth over long distances
+  B.     Requires no connectors
+  C.     Cheaper than standard telephone wire
+  D.     Can be bent at sharp 90-degree angles easily
+Explanation: Fiber optic cables transmit light pulses through glass/silica cores, providing complete EMI immunity and massive data throughput.
+
+[bca-208n-u1-q08] (Unit 1) What is the standard characteristic impedance of coaxial cable used in traditional Ethernet (10BASE2 Thinnet)?
+  A. (*) 50 Ohms
+  B.     75 Ohms
+  C.     100 Ohms
+  D.     120 Ohms
+Explanation: 10BASE2 Thinnet utilizes 50-ohm RG-58 coaxial cable, whereas 75-ohm cable (RG-6/RG-59) is used for cable TV systems.
+
+[bca-208n-u1-q09] (Unit 1) Which transmission medium relies on line-of-sight propagation where transmitting and receiving antennas must be aligned precisely?
+  A.     Infrared
+  B. (*) Microwave transmission
+  C.     Radio waves
+  D.     Ground wave propagation
+Explanation: Terrestrial and satellite microwaves require line-of-sight propagation because high frequencies (above 1 GHz) travel in straight lines.
+
+[bca-208n-u1-q10] (Unit 1) Which command-line utility is used to discover the path and measure transit delays of packets across an IP network?
+  A.     ping
+  B. (*) traceroute (or tracert in Windows)
+  C.     netstat
+  D.     ipconfig
+Explanation: `traceroute` (Unix) and `tracert` (Windows) use increasing IP TTL fields and ICMP Time Exceeded messages to trace hop-by-hop routers.
+
+[bca-208n-u1-q11] (Unit 1) In network socket programming, what does the `socket()` system call return?
+  A.     An IP address
+  B. (*) A socket file descriptor integer
+  C.     A MAC address string
+  D.     A port number
+Explanation: The `socket(domain, type, protocol)` API creates an endpoint for communication and returns a small integer file descriptor.
+
+[bca-208n-u1-q12] (Unit 1) On the server side in TCP socket programming, what is the correct sequence of system calls before communicating?
+  A.     socket() -> connect() -> read()
+  B. (*) socket() -> bind() -> listen() -> accept()
+  C.     socket() -> accept() -> bind() -> listen()
+  D.     bind() -> socket() -> listen() -> accept()
+Explanation: A TCP server creates a socket, binds it to an IP/port with `bind()`, puts it into passive listening mode with `listen()`, and blocks on `accept()`.
+
+[bca-208n-u1-q13] (Unit 1) Which layer of the OSI model is responsible for electrical, physical, and timing specifications of bits on the medium?
+  A.     Data Link Layer
+  B. (*) Physical Layer
+  C.     Network Layer
+  D.     Transport Layer
+Explanation: The Physical Layer deals with transmitting raw bits over a communication channel, signal voltage, cable types, and pinouts.
+
+[bca-208n-u1-q14] (Unit 1) How many layers are in the ISO Open Systems Interconnection (OSI) reference model?
+  A.     4
+  B.     5
+  C. (*) 7
+  D.     8
+Explanation: The OSI model defines 7 distinct layers: Physical, Data Link, Network, Transport, Session, Presentation, Application.
+
+[bca-208n-u1-q15] (Unit 1) At which OSI layer does a network Router operate?
+  A.     Physical Layer (Layer 1)
+  B.     Data Link Layer (Layer 2)
+  C. (*) Network Layer (Layer 3)
+  D.     Transport Layer (Layer 4)
+Explanation: Routers inspect destination IP addresses at Network Layer (Layer 3) to forward packets between different subnets.
+
+[bca-208n-u1-q16] (Unit 1) At which layer does a standard Layer-2 Ethernet switch operate?
+  A.     Physical Layer (Layer 1)
+  B. (*) Data Link Layer (Layer 2)
+  C.     Network Layer (Layer 3)
+  D.     Session Layer (Layer 5)
+Explanation: Layer 2 switches maintain MAC address tables and forward frames based on destination hardware (MAC) addresses.
+
+[bca-208n-u1-q17] (Unit 1) What is the primary difference between a network Hub and a Switch?
+  A.     A hub forwards packets based on IP; a switch forwards based on MAC
+  B. (*) A hub broadcasts all incoming electrical signals to all ports (single collision domain); a switch selectively filters and forwards frames to the destination port (micro-segmentation)
+  C.     A hub is faster than a switch
+  D.     A switch cannot connect computers on a LAN
+Explanation: Hubs are multiport repeaters operating at Layer 1 with one collision domain; switches operate at Layer 2, dedicating collision domains per port.
+
+[bca-208n-u1-q18] (Unit 1) What network device operates at the Physical layer to regenerate or amplify attenuated electrical signals over long cable runs?
+  A. (*) Repeater
+  B.     Bridge
+  C.     Router
+  D.     Gateway
+Explanation: A Repeater regenerates incoming signals at the physical bit level before retransmitting them, extending network span.
+
+[bca-208n-u1-q19] (Unit 1) What is the Protocol Data Unit (PDU) at the Transport layer in TCP called?
+  A.     Frame
+  B.     Packet
+  C. (*) Segment
+  D.     Bit stream
+Explanation: PDUs across layers: Bits (Physical), Frame (Data Link), Packet/Datagram (Network), Segment (TCP Transport), Message (Application).
+
+[bca-208n-u1-q20] (Unit 1) What is the PDU at the Data Link layer called?
+  A.     Segment
+  B.     Packet
+  C. (*) Frame
+  D.     Datagram
+Explanation: Data link layer encapsulates network packets into Frames with headers (MAC addresses) and trailers (FCS/CRC).
+
+[bca-208n-u1-q21] (Unit 1) Which device translates between completely different communication protocols across all layers (up to Layer 7)?
+  A.     Repeater
+  B.     Bridge
+  C. (*) Gateway
+  D.     Hub
+Explanation: A Gateway operates across upper protocol layers, translating disparate network architectures and application protocols.
+
+[bca-208n-u1-q22] (Unit 1) Which of the following is categorized as a Metropolitan Area Network (MAN)?
+  A.     Bluetooth connection between smartphone and smartwatch
+  B.     Campus Ethernet connecting computers in one lab
+  C. (*) Cable television network covering a whole city
+  D.     The worldwide Internet
+Explanation: A MAN covers a geographic span larger than a LAN but smaller than a WAN (typically a town or metropolitan municipality, like citywide cable TV).
+
+[bca-208n-u1-q23] (Unit 1) What is the primary function of the Presentation Layer in the OSI reference model?
+  A.     Routing packets across autonomous systems
+  B. (*) Data representation, syntax translation, data compression, and encryption/decryption
+  C.     Establishing and terminating process dialogs
+  D.     Detecting bit errors in frames
+Explanation: The Presentation Layer handles differences in data representation (e.g., ASCII to EBCDIC), data compression, and cryptographic transformations.
+
+[bca-208n-u1-q24] (Unit 1) Which OSI layer establishes, maintains, synchronizes, and terminates dialogs and checkpoints between communicating applications?
+  A.     Network Layer
+  B.     Transport Layer
+  C. (*) Session Layer
+  D.     Data Link Layer
+Explanation: The Session Layer manages dialog control (half/full duplex), token management, and synchronization checkpoints for crash recovery.
+
+[bca-208n-u1-q25] (Unit 1) In the TCP/IP model, which layer corresponds roughly to the OSI Session, Presentation, and Application layers combined?
+  A.     Internet Layer
+  B.     Transport Layer
+  C. (*) Application Layer
+  D.     Network Access Layer
+Explanation: The TCP/IP model combines OSI layers 5 (Session), 6 (Presentation), and 7 (Application) into a single unified Application Layer.
+
+[bca-208n-u1-q26] (Unit 1) What is 'Encapsulation' in layered computer networks?
+  A.     Compressing files into .zip archives
+  B. (*) The process of adding layer-specific protocol control headers (and trailers) to data as it moves down the protocol stack
+  C.     Encrypting passwords
+  D.     Removing parity bits
+Explanation: Encapsulation occurs when each lower layer wraps the upper layer's PDU with its own header/trailer control information.
+
+[bca-208n-u1-q27] (Unit 1) What is 'Decapsulation'?
+  A. (*) Unpacking and stripping off layer headers as received data travels upward from Physical to Application layer
+  B.     Discarding corrupt packets
+  C.     Converting light signals to electricity
+  D.     Closing a TCP socket
+Explanation: At the receiving station, each layer examines, strips its own header, and passes the payload upward to the next higher layer.
+
+[bca-208n-u1-q28] (Unit 1) Which transmission medium is unguided (wireless)?
+  A.     Shielded Twisted Pair (STP)
+  B.     Coaxial Cable
+  C. (*) Infrared transmission
+  D.     Optical Fiber
+Explanation: Unguided media convey electromagnetic waves through free space/air (Radio waves, Microwaves, Infrared) without physical conductors.
+
+[bca-208n-u1-q29] (Unit 1) Why are the pairs of copper wires in a UTP cable twisted around each other?
+  A.     To make the cable stronger physically
+  B. (*) To reduce electromagnetic crosstalk and interference from adjacent pairs and external noise
+  C.     To speed up the flow of electrons
+  D.     To differentiate color coding
+Explanation: Twisting pairs balances induced noise equally across both conductors, allowing differential receivers to cancel common-mode interference.
+
+[bca-208n-u1-q30] (Unit 1) Which Category of twisted pair cable is certified for Gigabit Ethernet (1000BASE-T) up to 100 meters?
+  A.     Cat 3
+  B. (*) Cat 5e / Cat 6
+  C.     Cat 1
+  D.     Cat 2
+Explanation: Cat 5e and Cat 6 cables support 1000 Mbps (Gigabit Ethernet) operation over distances up to 100 meters.
+
+[bca-208n-u1-q31] (Unit 1) What type of connector is standard for connecting UTP cables to Ethernet network interface cards (NIC)?
+  A.     BNC connector
+  B. (*) RJ-45 connector
+  C.     ST connector
+  D.     DB-9 connector
+Explanation: RJ-45 (Registered Jack 45) an 8-position 8-contact (8P8C) modular plug is standard for Ethernet twisted-pair cabling.
+
+[bca-208n-u1-q32] (Unit 1) In computer networks, what does the term 'Bandwidth' represent?
+  A.     The physical thickness of the cable
+  B. (*) The maximum theoretical rate of data transfer across a given path, measured in bits per second (bps)
+  C.     The delay in milliseconds
+  D.     The number of users on Wi-Fi
+Explanation: Bandwidth represents the carrying capacity or maximum data rate of a communication channel in bits per second (bps/Mbps/Gbps).
+
+[bca-208n-u1-q33] (Unit 1) What does 'Latency' (or propagation delay) refer to?
+  A.     The amount of data lost during transfer
+  B. (*) The time required for a signal or packet to travel from sender to receiver
+  C.     The cost of ISP subscription
+  D.     The length of network socket code
+Explanation: Latency is the time delay for a bit to travel from one end of the transmission link to the other.
+
+[bca-208n-u1-q34] (Unit 1) What is the formula for Propagation Time over a link?
+  A.     Packet Size / Bandwidth
+  B. (*) Distance / Propagation Speed
+  C.     Bandwidth * Delay
+  D.     Frame Size * Signal Strength
+Explanation: $\text{Propagation Time} = \text{Distance} / \text{Propagation Speed}$ (speed of light/signal in the medium).
+
+[bca-208n-u1-q35] (Unit 1) What is the formula for Transmission Time of a packet?
+  A.     Distance / Speed
+  B. (*) Packet Size (in bits) / Bandwidth (in bps)
+  C.     Total Round Trip Time / 2
+  D.     Signal Frequency / Voltage
+Explanation: $\text{Transmission Time} = L / B$, where $L$ is packet length in bits and $B$ is channel bandwidth in bits per second.
+
+[bca-208n-u1-q36] (Unit 1) If a link has a bandwidth of 10 Mbps, how long does it take to transmit a 5,000,000-bit packet onto the wire?
+  A.     0.1 seconds
+  B. (*) 0.5 seconds
+  C.     1.0 seconds
+  D.     5.0 seconds
+Explanation: $\text{Transmission Time} = 5,000,000 / 10,000,000 = 0.5 \text{ seconds}$.
+
+[bca-208n-u1-q37] (Unit 1) Which layer in the OSI model provides end-to-end, process-to-process data delivery and reliability?
+  A.     Network Layer
+  B. (*) Transport Layer
+  C.     Data Link Layer
+  D.     Physical Layer
+Explanation: The Transport Layer (Layer 4) provides true end-to-end process-to-process communication, flow control, and error recovery.
+
+[bca-208n-u1-q38] (Unit 1) A transparent bridge maintains which internal table to make forwarding decisions?
+  A.     Routing Table of IP prefixes
+  B. (*) Forwarding / MAC Address Table (CAM Table)
+  C.     DNS cache
+  D.     ARP request log
+Explanation: Bridges and switches build a MAC address table by learning source addresses of incoming frames and filtering/forwarding accordingly.
+
+[bca-208n-u1-q39] (Unit 1) What happens when a switch receives a frame with an unknown destination MAC address?
+  A.     The frame is dropped immediately
+  B. (*) The switch floods the frame out of all ports except the receiving port
+  C.     The switch sends an ICMP error packet
+  D.     The switch restarts
+Explanation: Unknown unicast frames are flooded out all other active ports on that VLAN until the destination replies and its port is learned.
+
+[bca-208n-u1-q40] (Unit 1) What is a 'Collision Domain'?
+  A.     A group of computers sharing the same Wi-Fi password
+  B. (*) A network segment where simultaneous packet transmissions by two or more devices result in a collision
+  C.     A list of blocked IP addresses
+  D.     The area reached by a router broadcast
+Explanation: A collision domain is a physical network segment where data packets can collide with one another when sent simultaneously.
+
+[bca-208n-u1-q41] (Unit 1) What is a 'Broadcast Domain'?
+  A. (*) The group of all devices on a network that receive broadcast frames transmitted by any member
+  B.     A television channel frequency
+  C.     A single port on a router
+  D.     A Bluetooth pairing list
+Explanation: A broadcast domain includes all devices that receive a broadcast frame (MAC FF:FF:FF:FF:FF:FF). Routers break broadcast domains.
+
+[bca-208n-u1-q42] (Unit 1) Which device separates both collision domains AND broadcast domains?
+  A.     Hub
+  B.     Repeater
+  C.     Bridge
+  D. (*) Router
+Explanation: Routers do not forward Layer-2 broadcast frames by default; each router interface constitutes a separate broadcast and collision domain.
+
+[bca-208n-u1-q43] (Unit 1) What is the Bandwidth-Delay Product (BDP)?
+  A.     Bandwidth divided by Latency
+  B. (*) The product of channel bandwidth (bps) and Round Trip Time (RTT), measuring volume of bits in flight to fill the pipe
+  C.     Total packets dropped per minute
+  D.     Cabling cost per meter
+Explanation: $BDP = \text{Bandwidth} \times \text{Delay}$. It represents the maximum amount of data that can be in transit on the link at any given instant.
+
+[bca-208n-u1-q44] (Unit 1) Which standard defines Ethernet local area networks?
+  A. (*) IEEE 802.3
+  B.     IEEE 802.11
+  C.     IEEE 802.15
+  D.     IEEE 802.16
+Explanation: IEEE 802.3 is the standard family defining physical and data link specifications for wired Ethernet networks.
+
+[bca-208n-u1-q45] (Unit 1) Which standard defines Wireless LAN (Wi-Fi)?
+  A.     IEEE 802.3
+  B. (*) IEEE 802.11
+  C.     IEEE 802.1
+  D.     IEEE 802.5
+Explanation: IEEE 802.11 governs Wireless Local Area Networks (WLAN / Wi-Fi).
+
+[bca-208n-u1-q46] (Unit 1) What is the primary role of the Data Link layer's MAC (Media Access Control) sublayer?
+  A.     To assign IP addresses to hosts
+  B. (*) To coordinate access to shared physical transmission media and prevent chaotic collisions
+  C.     To encrypt user data
+  D.     To route packets across continents
+Explanation: The MAC sublayer governs shared channel access protocols (such as CSMA/CD, CSMA/CA, or token passing).
+
+[bca-208n-u1-q47] (Unit 1) What is the size of a standard IEEE 802 MAC (hardware) address?
+  A.     32 bits
+  B. (*) 48 bits (6 bytes)
+  C.     64 bits
+  D.     128 bits
+Explanation: A MAC address is a 48-bit (6-byte) physical hardware address, typically displayed as 12 hexadecimal digits (e.g., 00:1A:2B:3C:4D:5E).
+
+[bca-208n-u1-q48] (Unit 1) The first 24 bits (3 bytes) of an IEEE MAC address represent the:
+  A.     Host serial number
+  B. (*) Organizationally Unique Identifier (OUI) assigned to the manufacturer by IEEE
+  C.     Checksum CRC
+  D.     Subnet prefix
+Explanation: The OUI (first 24 bits) identifies the network hardware vendor/manufacturer; the remaining 24 bits are device-unique serials.
+
+[bca-208n-u1-q49] (Unit 1) In computer networking, 'Full Duplex' communication means:
+  A.     Data can flow in only one direction at all times (like radio broadcast)
+  B.     Data can flow in both directions, but only one direction at a time (like walkie-talkie)
+  C. (*) Data can be transmitted and received in both directions simultaneously
+  D.     Data is transmitted twice for redundancy
+Explanation: Full-duplex allows concurrent bidirectional transmission without sharing bandwidth or causing collisions.
+
+[bca-208n-u1-q50] (Unit 1) Which topology provides maximum fault tolerance because the failure of any single link never disconnects any pair of nodes?
+  A.     Bus Topology
+  B.     Star Topology
+  C. (*) Fully Connected Mesh Topology
+  D.     Linear Daisy Chain
+Explanation: Fully connected mesh has multiple redundant physical paths between every node, offering unmatched fault tolerance.
+
+[bca-208n-u2-q51] (Unit 2) What characterizes a Client/Server network architecture compared to Peer-to-Peer?
+  A.     Every computer has equal privileges and acts as both client and server
+  B. (*) Dedicated centralized server machines provide services and resources to client nodes
+  C.     No cables are used
+  D.     Data cannot be stored centrally
+Explanation: In Client/Server models, specialized centralized servers manage access to shared resources, databases, and authentication.
+
+[bca-208n-u2-q52] (Unit 2) What is a major advantage of Peer-to-Peer (P2P) networks?
+  A.     Centralized administrative control
+  B. (*) Low cost of setup, no need for expensive dedicated server hardware or operating systems
+  C.     High resistance to copyright violations
+  D.     Guaranteed bandwidth per node
+Explanation: P2P networks are easy and inexpensive to implement for small workgroups as each workstation shares its own resources.
+
+[bca-208n-u2-q53] (Unit 2) Which method is used in Data Link Layer framing to prevent a flag sequence inside payload data from prematurely ending the frame?
+  A.     Parity generation
+  B. (*) Byte (Character) Stuffing or Bit Stuffing
+  C.     CRC polynomial division
+  D.     Checksum calculation
+Explanation: Bit stuffing (inserting a '0' after five consecutive '1's) or byte stuffing (escaping flag bytes with ESC) ensures data transparency.
+
+[bca-208n-u2-q54] (Unit 2) In bit stuffing, what does the transmitter insert whenever it detects five consecutive '1's in the data stream?
+  A.     A '1' bit
+  B. (*) A '0' bit
+  C.     An ESC byte
+  D.     A sync pulse
+Explanation: The transmitter inserts a '0' bit after five consecutive '1's so the data cannot mimic the flag pattern 01111110. The receiver deletes it.
+
+[bca-208n-u2-q55] (Unit 2) What is the primary function of Flow Control in data communication?
+  A.     To prevent transmission errors caused by cable noise
+  B. (*) To prevent a fast sender from overwhelming a slow receiver with more data than its buffers can handle
+  C.     To encrypt credit card numbers
+  D.     To increase transmission speed
+Explanation: Flow control mechanisms (e.g., sliding window, pause frames) regulate transmission pace so receiver buffers never overflow.
+
+[bca-208n-u2-q56] (Unit 2) In a Stop-and-Wait ARQ protocol, what must the sender do after transmitting a frame?
+  A.     Immediately transmit the next 10 frames
+  B. (*) Wait for an explicit Acknowledgment (ACK) from the receiver before transmitting the next frame
+  C.     Close the socket connection
+  D.     Send a duplicate copy
+Explanation: Stop-and-Wait transmits one frame and starts a timer, waiting for ACK before sending the subsequent frame.
+
+[bca-208n-u2-q57] (Unit 2) What is the maximum sender window size in Go-Back-N ARQ using $m$-bit sequence numbers?
+  A.     $2^m$
+  B. (*) $2^m - 1$
+  C.     $2^{(m-1)}$
+  D.     1
+Explanation: In Go-Back-N, the sender window size must be at most $2^m - 1$ to prevent overlapping sequence number confusion at the receiver.
+
+[bca-208n-u2-q58] (Unit 2) What is the maximum sender and receiver window size in Selective Repeat ARQ using $m$-bit sequence numbers?
+  A.     $2^m$
+  B.     $2^m - 1$
+  C. (*) $2^{(m-1)}$
+  D.     1
+Explanation: Selective Repeat requires equal sender and receiver windows of at most $2^{(m-1)}$ so sequence numbers do not wrap around and conflict.
+
+[bca-208n-u2-q59] (Unit 2) What happens in Go-Back-N ARQ when frame $k$ is lost or corrupted in transit?
+  A.     Only frame $k$ is retransmitted
+  B.     The receiver buffers all subsequent frames
+  C. (*) The sender's timer expires, and the sender retransmits frame $k$ and ALL subsequent frames in the window
+  D.     The connection resets
+Explanation: Go-Back-N discards out-of-order frames at the receiver; the sender must go back and retransmit all frames from the lost frame onward.
+
+[bca-208n-u2-q60] (Unit 2) Which ARQ protocol buffers out-of-order correctly received frames and retransmits ONLY the lost/damaged frame?
+  A.     Stop-and-Wait ARQ
+  B.     Go-Back-N ARQ
+  C. (*) Selective Repeat ARQ
+  D.     Pure ALOHA
+Explanation: Selective Repeat buffers subsequent valid frames and retransmits only corrupted/lost frames via negative acknowledgments (NAK) or timeout.
+
+[bca-208n-u2-q61] (Unit 2) Which error detection technique uses polynomial arithmetic modulo 2?
+  A.     Simple Parity Check
+  B. (*) Cyclic Redundancy Check (CRC)
+  C.     Internet Checksum
+  D.     Hamming Code
+Explanation: CRC treats bit sequences as algebraic polynomials over GF(2), using binary division modulo 2 to generate frame check sequences (FCS).
+
+[bca-208n-u2-q62] (Unit 2) What is the divisor polynomial generator $G(x) = x^4 + x + 1$ represented in binary?
+  A. (*) 10011
+  B.     11001
+  C.     10101
+  D.     11110
+Explanation: $x^4 (1) + x^3 (0) + x^2 (0) + x^1 (1) + x^0 (1) = 10011$.
+
+[bca-208n-u2-q63] (Unit 2) How many redundant CRC bits are appended to a message when the generator polynomial has degree $r$?
+  A.     $r - 1$
+  B. (*) $r$
+  C.     $r + 1$
+  D.     $2r$
+Explanation: A generator polynomial of degree $r$ appends exactly $r$ zero bits initially and results in an $r$-bit CRC remainder.
+
+[bca-208n-u2-q64] (Unit 2) Which error correction code can detect up to 2-bit errors and correct single-bit errors using parity check bits?
+  A.     Checksum
+  B. (*) Hamming Code
+  C.     CRC-32
+  D.     Two-dimensional parity
+Explanation: Richard Hamming's code inserts parity bits at powers-of-two positions ($1, 2, 4, 8, \dots$) to pinpoint and correct single-bit flips.
+
+[bca-208n-u2-q65] (Unit 2) What media access control protocol was traditionally used in Ethernet to manage collisions on shared half-duplex cables?
+  A.     CSMA/CA
+  B. (*) CSMA/CD (Carrier Sense Multiple Access with Collision Detection)
+  C.     Token Ring
+  D.     TDMA
+Explanation: CSMA/CD listens before talking (carrier sense) and detects simultaneous transmissions, halting and backing off exponentially.
+
+[bca-208n-u2-q66] (Unit 2) In CSMA/CD, what signal does a station transmit upon detecting a collision?
+  A.     An ACK frame
+  B. (*) A 32-to-48 bit Jam Signal to ensure all other stations detect the collision
+  C.     A reset signal
+  D.     A beacon frame
+Explanation: The jam signal reinforces the collision so all stations on the bus detect corruption, abort transmission, and execute backoff.
+
+[bca-208n-u2-q67] (Unit 2) What algorithm is used in CSMA/CD to calculate the random wait time before retransmission after a collision?
+  A.     Dijkstra algorithm
+  B. (*) Binary Exponential Backoff algorithm
+  C.     Round Robin scheduling
+  D.     Leaky Bucket algorithm
+Explanation: Binary exponential backoff chooses a random number of slot times between $0$ and $2^k - 1$ (where $k = \min(\text{attempts}, 10)$).
+
+[bca-208n-u2-q68] (Unit 2) Why does Wireless LAN (Wi-Fi 802.11) use CSMA/CA (Collision Avoidance) instead of CSMA/CD?
+  A.     Wireless cables are too thick
+  B. (*) A wireless station cannot detect weak collisions while transmitting at high power (near-far problem) and faces hidden terminal issues
+  C.     Collision detection is illegal in wireless
+  D.     CSMA/CD is patented by IBM
+Explanation: In wireless radio, outgoing transmission overwhelms the receiver, making collision detection impossible while transmitting. Hence avoidance is used.
+
+[bca-208n-u2-q69] (Unit 2) In Wi-Fi CSMA/CA, what four-way handshake is optionally used to overcome the Hidden Terminal Problem?
+  A.     SYN, SYN-ACK, ACK, FIN
+  B. (*) RTS (Request to Send) / CTS (Clear to Send) / Data / ACK
+  C.     Ping, Pong, Echo, Reply
+  D.     ARP, RARP, DHCP, DNS
+Explanation: RTS/CTS reserves the wireless channel around both transmitter and receiver, informing hidden stations of transmission duration.
+
+[bca-208n-u2-q70] (Unit 2) What is the primary role of the Network Layer in the OSI model?
+  A.     Bit encoding and modulation
+  B.     Process-to-process reliable byte streaming
+  C. (*) Host-to-host delivery, logical addressing, and routing packets across multiple networks
+  D.     Session synchronization
+Explanation: Network layer (Layer 3) handles end-to-end packet routing across intermediate hops and logical IP addressing.
+
+[bca-208n-u2-q71] (Unit 2) Which of the following is a Connectionless, Best-Effort protocol at the Internet layer of TCP/IP?
+  A.     TCP
+  B. (*) IP (Internet Protocol)
+  C.     SCTP
+  D.     BGP
+Explanation: IP is connectionless and un-reliable (best-effort); it does not guarantee packet delivery, in-order arrival, or flow control.
+
+[bca-208n-u2-q72] (Unit 2) What are the two major transport layer protocols in the TCP/IP suite?
+  A.     IP and ICMP
+  B. (*) TCP (Transmission Control Protocol) and UDP (User Datagram Protocol)
+  C.     HTTP and FTP
+  D.     ARP and RARP
+Explanation: TCP provides connection-oriented reliable byte streams; UDP provides lightweight, connectionless, unreliable datagrams.
+
+[bca-208n-u2-q73] (Unit 2) Which transport protocol is preferred for real-time applications like video conferencing, VoIP, and online gaming?
+  A.     TCP
+  B. (*) UDP
+  C.     FTP
+  D.     SMTP
+Explanation: UDP has minimal header overhead (8 bytes) and no retransmission delays, making it ideal for delay-sensitive real-time media.
+
+[bca-208n-u2-q74] (Unit 2) What is the minimum header size of a standard TCP segment (without options)?
+  A.     8 bytes
+  B. (*) 20 bytes
+  C.     32 bytes
+  D.     40 bytes
+Explanation: Standard TCP header is 20 bytes (expandable up to 60 bytes with options).
+
+[bca-208n-u2-q75] (Unit 2) What is the header size of a UDP datagram?
+  A. (*) 8 bytes
+  B.     16 bytes
+  C.     20 bytes
+  D.     32 bytes
+Explanation: UDP header has exactly 4 fields of 2 bytes each (Source Port, Destination Port, Length, Checksum) totaling 8 bytes.
+
+[bca-208n-u2-q76] (Unit 2) How does TCP establish a connection between client and server?
+  A.     One-way broadcast
+  B.     Two-way handshake
+  C. (*) Three-way handshake (SYN -> SYN-ACK -> ACK)
+  D.     Four-way FIN termination
+Explanation: TCP connection setup: Client sends SYN; Server responds with SYN-ACK; Client replies with ACK.
+
+[bca-208n-u2-q77] (Unit 2) Which TCP control flag is set to initiate graceful connection termination?
+  A.     SYN
+  B.     ACK
+  C. (*) FIN
+  D.     RST
+Explanation: The FIN (Finish) flag requests orderly closing of the sender's half of the full-duplex TCP stream.
+
+[bca-208n-u2-q78] (Unit 2) Which TCP flag forces immediate abrupt abort/reset of an invalid or closed connection?
+  A.     PSH
+  B.     URG
+  C. (*) RST
+  D.     SYN
+Explanation: RST (Reset) rejects an invalid segment or immediately tears down a broken connection.
+
+[bca-208n-u2-q79] (Unit 2) In TCP, what mechanism prevents network congestion by throttling transmission rate based on lost packets?
+  A. (*) Congestion Control (Slow Start, Congestion Avoidance, Fast Retransmit, Fast Recovery)
+  B.     Parity checking
+  C.     Static time multiplexing
+  D.     Port forwarding
+Explanation: TCP congestion control modulates the Congestion Window (cwnd) using Slow Start, Congestion Avoidance (additive increase/multiplicative decrease), and Fast Recovery.
+
+[bca-208n-u2-q80] (Unit 2) During TCP Slow Start, how does the Congestion Window (cwnd) grow each Round Trip Time (RTT)?
+  A.     Linearly (adds 1 MSS per RTT)
+  B. (*) Exponentially (doubles every RTT: 1, 2, 4, 8...)
+  C.     It remains completely fixed
+  D.     Decreases by half
+Explanation: During slow start, cwnd increases by 1 MSS for every received ACK, effectively doubling the congestion window every RTT.
+
+[bca-208n-u2-q81] (Unit 2) When does TCP switch from Slow Start phase to Congestion Avoidance phase?
+  A.     When cwnd reaches zero
+  B. (*) When cwnd reaches the slow start threshold (ssthresh)
+  C.     After 10 seconds
+  D.     When the user presses Ctrl+C
+Explanation: Once $cwnd \ge ssthresh$, TCP transitions from exponential slow start to linear congestion avoidance (adding 1 MSS per RTT).
+
+[bca-208n-u2-q82] (Unit 2) What are Port Numbers used for in the Transport layer?
+  A.     To identify the physical switch port where the cable is plugged in
+  B. (*) To identify specific application processes running on a host (process-to-process addressing)
+  C.     To count how many packets are sent
+  D.     To measure cable resistance
+Explanation: Port numbers (16-bit values from 0 to 65535) route incoming transport segments to the specific destination process/service.
+
+[bca-208n-u2-q83] (Unit 2) What is the standard range of Well-Known Ports reserved for privileged system services?
+  A. (*) 0 to 1023
+  B.     1024 to 49151
+  C.     49152 to 65535
+  D.     1000 to 2000
+Explanation: Well-known ports (0–1023) are assigned by IANA for standard core services (e.g., 20/21 FTP, 22 SSH, 25 SMTP, 80 HTTP, 443 HTTPS).
+
+[bca-208n-u2-q84] (Unit 2) What range of ports are Ephemeral / Dynamic ports typically allocated by client operating systems?
+  A.     0 to 1023
+  B.     1024 to 49151
+  C. (*) 49152 to 65535
+  D.     1 to 255
+Explanation: Dynamic/private/ephemeral ports (49152 to 65535) are assigned temporarily by OS client sockets for outbound sessions.
+
+[bca-208n-u2-q85] (Unit 2) What constitutes a network 'Socket'?
+  A.     IP address only
+  B. (*) Combination of an IP address and a Port Number (e.g., 192.168.1.10:80)
+  C.     MAC address and subnet mask
+  D.     Cable connector pin
+Explanation: A socket is uniquely identified by the tuple (IP address, Port number).
+
+[bca-208n-u2-q86] (Unit 2) What is 'Multiplexing' at the transport layer?
+  A.     Sending data across multiple physical cables
+  B. (*) Gathering data chunks from multiple application processes, encapsulating them with transport headers, and passing them to the network layer
+  C.     Compressing images
+  D.     Converting analog to digital
+Explanation: Transport multiplexing collects data from different application sockets, tags them with source ports, and hands them to IP.
+
+[bca-208n-u2-q87] (Unit 2) What is 'Demultiplexing' at the transport layer?
+  A.     Splitting physical fiber cables
+  B. (*) Delivering received transport segments to the correct application socket based on port numbers
+  C.     Encrypting passwords
+  D.     Translating hostnames
+Explanation: Demultiplexing uses destination port numbers in the segment header to direct payload data to the appropriate waiting socket.
+
+[bca-208n-u2-q88] (Unit 2) What does the PSH (Push) flag in TCP signal to the receiver?
+  A.     Reset the connection immediately
+  B. (*) Push all buffered data immediately up to the application without waiting for buffers to fill
+  C.     Terminate the connection
+  D.     Double the window size
+Explanation: PSH informs the receiving TCP stack to deliver existing buffered data to the application layer immediately.
+
+[bca-208n-u2-q89] (Unit 2) What does the URG (Urgent) flag in TCP indicate?
+  A. (*) The segment carries urgent out-of-band data, pointed to by the Urgent Pointer field
+  B.     The packet has highest priority in routing queues
+  C.     The server is crashing
+  D.     Bandwidth is exceeded
+Explanation: When URG is set, the 16-bit Urgent Pointer field indicates the offset where urgent data ends.
+
+[bca-208n-u2-q90] (Unit 2) Why does TCP use Cumulative Acknowledgments?
+  A. (*) To save bytes, where ACK $N$ acknowledges that all bytes up to $N-1$ have been successfully received and byte $N$ is expected next
+  B.     Because individual ACKs are forbidden
+  C.     To increase packet delay
+  D.     To support encryption
+Explanation: TCP sequence numbers track byte streams; ACK $N$ informs the sender that all bytes through $N-1$ arrived safely.
+
+[bca-208n-u2-q91] (Unit 2) What is the Silly Window Syndrome in TCP?
+  A.     A virus in operating system
+  B. (*) An inefficient scenario where data is exchanged in minuscule chunks (e.g., 1 byte) because either sender generates or receiver advertises tiny window updates
+  C.     When window size exceeds 64 KB
+  D.     A hardware switch failure
+Explanation: Silly window syndrome severely degrades throughput when small segments are repeatedly exchanged with full 40-byte headers.
+
+[bca-208n-u2-q92] (Unit 2) Which algorithm is implemented at the TCP sender to prevent Silly Window Syndrome by buffering small outgoing data until a full MSS can be sent?
+  A. (*) Nagle's Algorithm
+  B.     Clark's Solution
+  C.     Karn's Algorithm
+  D.     Jacobson's Algorithm
+Explanation: Nagle's algorithm dictates that if there is unacknowledged data in flight, small user data is buffered until a full MSS accumulates or previous ACK arrives.
+
+[bca-208n-u2-q93] (Unit 2) Which solution is applied at the TCP receiver to prevent Silly Window Syndrome?
+  A.     Nagle's Algorithm
+  B. (*) Clark's Algorithm (do not advertise small window increments until either 1 MSS or 50% buffer is free)
+  C.     Dijkstra algorithm
+  D.     Bellman-Ford
+Explanation: Clark's algorithm prevents receiver-induced silly window syndrome by holding back window advertisements until substantial buffer space frees up.
+
+[bca-208n-u2-q94] (Unit 2) What is the purpose of Karn's Algorithm in TCP retransmission timeout (RTO) estimation?
+  A. (*) To ignore RTT measurements for retransmitted segments when updating smoothed RTT (SRTT)
+  B.     To double the window size every minute
+  C.     To prevent SYN floods
+  D.     To compress HTTP headers
+Explanation: Karn's algorithm avoids retransmission ambiguity by never measuring RTT on retransmitted packets, as one cannot know which transmission the ACK corresponds to.
+
+[bca-208n-u2-q95] (Unit 2) Which field in the TCP header is used for Flow Control?
+  A.     Sequence Number
+  B.     Acknowledgment Number
+  C. (*) Receive Window (Advertised Window)
+  D.     Checksum
+Explanation: The 16-bit Receive Window field communicates how many bytes of buffer space the receiver currently has available for incoming data.
+
+[bca-208n-u2-q96] (Unit 2) What does a TCP Receive Window of 0 indicate?
+  A.     Close the connection immediately
+  B. (*) Zero Window: the receiver's buffer is completely full, pausing sender transmissions until a window update is sent
+  C.     Send at maximum line rate
+  D.     Packet was dropped
+Explanation: A zero window probe is sent periodically by the sender to verify when the receiver's buffer has freed space.
+
+[bca-208n-u2-q97] (Unit 2) Which of the following transport protocols is message-oriented and preserves application message boundaries?
+  A.     TCP
+  B. (*) UDP
+  C.     Telnet
+  D.     IP
+Explanation: UDP preserves datagram boundaries; one application `send()` equals exactly one UDP packet. TCP is a continuous stream without message boundaries.
+
+[bca-208n-u2-q98] (Unit 2) What is the maximum theoretical payload size of a standard IPv4 packet?
+  A.     1,500 bytes
+  B. (*) 65,535 bytes (including header)
+  C.     64 KB
+  D.     4 GB
+Explanation: The 16-bit Total Length field in IPv4 limits the maximum datagram size to $2^{16} - 1 = 65,535$ bytes.
+
+[bca-208n-u2-q99] (Unit 2) What is the Maximum Transmission Unit (MTU) of standard Ethernet?
+  A.     576 bytes
+  B. (*) 1,500 bytes
+  C.     4,096 bytes
+  D.     9,000 bytes
+Explanation: Standard IEEE 802.3 Ethernet frame payload MTU is 1,500 bytes.
+
+[bca-208n-u2-q100] (Unit 2) What happens when an IP packet larger than the outgoing link's MTU has the 'Don't Fragment' (DF) bit set to 1?
+  A.     The router fragments it anyway
+  B. (*) The router drops the packet and sends back an ICMP 'Destination Unreachable - Fragmentation Needed' message
+  C.     The router compresses the packet
+  D.     The packet enters an infinite loop
+Explanation: Path MTU Discovery (PMTUD) relies on this exact mechanism to discover the bottleneck MTU along a route without fragmentation.
+
+[bca-208n-u3-q101] (Unit 3) How many bits are in an IPv4 address?
+  A.     16 bits
+  B. (*) 32 bits
+  C.     64 bits
+  D.     128 bits
+Explanation: An IPv4 address consists of 32 bits divided into 4 octets separated by dots (e.g., 192.168.1.1).
+
+[bca-208n-u3-q102] (Unit 3) How many bits are in an IPv6 address?
+  A.     32 bits
+  B.     64 bits
+  C. (*) 128 bits
+  D.     256 bits
+Explanation: IPv6 addresses are 128 bits (16 bytes) long, represented as 8 groups of 4 hexadecimal digits separated by colons.
+
+[bca-208n-u3-q103] (Unit 3) Which class of IPv4 addresses has a first octet range of 192 to 223?
+  A.     Class A
+  B.     Class B
+  C. (*) Class C
+  D.     Class D
+Explanation: Class A: 1–126; Class B: 128–191; Class C: 192–223; Class D (Multicast): 224–239; Class E (Experimental): 240–255.
+
+[bca-208n-u3-q104] (Unit 3) What is the default subnet mask for a Class B IPv4 network?
+  A.     255.0.0.0
+  B. (*) 255.255.0.0
+  C.     255.255.255.0
+  D.     255.255.255.240
+Explanation: Class B uses 16 network bits and 16 host bits, yielding default mask 255.255.0.0 (/16).
+
+[bca-208n-u3-q105] (Unit 3) What is the IPv4 Class D address range used for?
+  A.     Large enterprise LANs
+  B. (*) Multicast communication
+  C.     Experimental research
+  D.     Loopback testing
+Explanation: Class D addresses (224.0.0.0 to 239.255.255.255) are dedicated to IP Multicasting.
+
+[bca-208n-u3-q106] (Unit 3) What is the IPv4 address `127.0.0.1` reserved for?
+  A.     Default gateway
+  B. (*) Loopback address (localhost)
+  C.     Directed broadcast
+  D.     Auto-configuration (APIPA)
+Explanation: The 127.0.0.0/8 block is reserved for host internal loopback communication without transmitting packets onto physical wire.
+
+[bca-208n-u3-q107] (Unit 3) In CIDR notation `192.168.10.0/26`, how many usable host IP addresses are available on this subnet?
+  A.     64
+  B. (*) 62
+  C.     30
+  D.     126
+Explanation: Prefix length = /26. Host bits = $32 - 26 = 6$. Total IPs = $2^6 = 64$. Usable hosts = $64 - 2 = 62$ (subtracting network and broadcast).
+
+[bca-208n-u3-q108] (Unit 3) What is the broadcast address for the subnet `192.168.1.0/24`?
+  A.     192.168.1.0
+  B.     192.168.1.1
+  C. (*) 192.168.1.255
+  D.     192.168.1.254
+Explanation: In a /24 subnet, host bits are all 1s for the broadcast address, resulting in .255.
+
+[bca-208n-u3-q109] (Unit 3) Which of the following is a Private IPv4 address as defined in RFC 1918?
+  A.     8.8.8.8
+  B. (*) 10.0.0.1
+  C.     172.33.1.1
+  D.     192.169.1.1
+Explanation: RFC 1918 private ranges: 10.0.0.0/8, 172.16.0.0/12 (172.16–172.31), and 192.168.0.0/16.
+
+[bca-208n-u3-q110] (Unit 3) What does the Time to Live (TTL) field in an IPv4 packet header accomplish?
+  A.     Measures packet latency in microseconds
+  B. (*) Limits the lifespan of a packet by decrementing at each router hop to prevent infinite routing loops
+  C.     Specifies download time
+  D.     Counts remaining retransmissions
+Explanation: Each router decrements TTL by 1. When TTL reaches 0, the packet is discarded and an ICMP Time Exceeded message is sent back.
+
+[bca-208n-u3-q111] (Unit 3) What is the minimum header size of an IPv4 packet?
+  A.     16 bytes
+  B. (*) 20 bytes
+  C.     32 bytes
+  D.     40 bytes
+Explanation: An IPv4 header without optional fields is exactly 20 bytes long (IHL = 5).
+
+[bca-208n-u3-q112] (Unit 3) What is the fixed base header size of an IPv6 packet?
+  A.     20 bytes
+  B. (*) 40 bytes
+  C.     64 bytes
+  D.     128 bytes
+Explanation: IPv6 simplified header processing by using a fixed 40-byte base header; optional features are handled via chained Extension Headers.
+
+[bca-208n-u3-q113] (Unit 3) Which transition mechanism allows IPv6 packets to be encapsulated inside IPv4 packets across IPv4-only networks?
+  A.     Dual Stack
+  B. (*) Tunneling (e.g., 6to4, Teredo)
+  C.     NAT-PT
+  D.     CIDR
+Explanation: Tunneling encapsulates IPv6 datagrams inside IPv4 packets to traverse legacy IPv4 routing backbones.
+
+[bca-208n-u3-q114] (Unit 3) What does the Address Resolution Protocol (ARP) resolve?
+  A.     Domain names to IP addresses
+  B. (*) A known Logical IP address to a physical hardware (MAC) address on a local link
+  C.     MAC address to IP address
+  D.     Port numbers to services
+Explanation: ARP broadcasts an inquiry on the local network: 'Who has IP X.X.X.X? Send me your MAC address.'
+
+[bca-208n-u3-q115] (Unit 3) What is RARP (Reverse ARP) used for?
+  A.     Resolving IP to hostname
+  B. (*) Allowing a diskless workstation to determine its own IP address given its physical MAC address
+  C.     Blocking hacker IP addresses
+  D.     Routing packets across subnets
+Explanation: Diskless machines broadcast a RARP request containing their MAC address at boot to obtain an assigned IP from a RARP server.
+
+[bca-208n-u3-q116] (Unit 3) What protocol has universally replaced BOOTP and RARP for dynamic IP configuration in modern networks?
+  A.     DNS
+  B. (*) DHCP (Dynamic Host Configuration Protocol)
+  C.     SNMP
+  D.     BGP
+Explanation: DHCP automatically leases IP addresses, subnet masks, default gateways, and DNS servers to client computers.
+
+[bca-208n-u3-q117] (Unit 3) What is the four-step sequence of messages exchanged during DHCP address assignment?
+  A.     SYN, SYN-ACK, ACK, FIN
+  B. (*) DORA: Discover -> Offer -> Request -> Acknowledge
+  C.     Hello, Join, Accept, Confirm
+  D.     Query, Response, Bind, Lease
+Explanation: DHCP handshake acronym DORA: DHCPDiscover (broadcast) -> DHCPOffer -> DHCPRequest -> DHCPAck.
+
+[bca-208n-u3-q118] (Unit 3) On which transport protocol and port numbers does DHCP operate?
+  A.     TCP ports 80 and 443
+  B. (*) UDP port 67 (Server) and UDP port 68 (Client)
+  C.     TCP port 25 and 110
+  D.     UDP port 53
+Explanation: DHCP uses UDP ports 67 (server listening for requests) and 68 (client listening for offers/acks).
+
+[bca-208n-u3-q119] (Unit 3) Which protocol is used by network devices like routers to report errors and diagnostic information back to the source host?
+  A. (*) ICMP (Internet Control Message Protocol)
+  B.     IGMP
+  C.     SNMP
+  D.     SMTP
+Explanation: ICMP (encapsulated directly inside IP packets, protocol 1) handles error reporting (Destination Unreachable, TTL Exceeded) and diagnostics (Ping).
+
+[bca-208n-u3-q120] (Unit 3) The `ping` utility tests network reachability by sending which type of ICMP message?
+  A.     ICMP Router Solicitation
+  B. (*) ICMP Echo Request (Type 8) and expecting ICMP Echo Reply (Type 0)
+  C.     ICMP Source Quench
+  D.     ICMP Time Exceeded
+Explanation: `ping` sends ICMP Type 8 (Echo Request) and measures round-trip time until receipt of ICMP Type 0 (Echo Reply).
+
+[bca-208n-u3-q121] (Unit 3) What is IGMP (Internet Group Management Protocol) used for?
+  A.     Managing email group accounts
+  B. (*) Enabling IPv4 hosts to join and leave multicast groups and report membership to local multicast routers
+  C.     Generating IP certificates
+  D.     Managing DNS root zones
+Explanation: IGMP facilitates multicast group membership communication between individual hosts and their local multicast router.
+
+[bca-208n-u3-q122] (Unit 3) In Distance Vector Routing, which mathematical algorithm is used to compute shortest paths?
+  A.     Dijkstra's Algorithm
+  B. (*) Bellman-Ford Algorithm
+  C.     Floyd-Warshall Algorithm
+  D.     Kruskal's Algorithm
+Explanation: Distance vector protocols (like RIP) calculate routing tables using the Bellman-Ford distributed shortest path algorithm.
+
+[bca-208n-u3-q123] (Unit 3) What routing problem occurs in Distance Vector protocols when a link fails and routers slowly exchange incrementing metrics?
+  A.     Split Horizon
+  B. (*) Count-to-Infinity Problem
+  C.     Poison Reverse
+  D.     Subnet loopback
+Explanation: The Count-to-Infinity problem occurs when routing updates circulate in loops, slowly incrementing metric up to infinity (16 in RIP).
+
+[bca-208n-u3-q124] (Unit 3) Which mechanism prevents Count-to-Infinity by prohibiting a router from advertising a route back out the interface it was learned from?
+  A.     Poison Reverse
+  B. (*) Split Horizon
+  C.     Hold-down Timer
+  D.     Path Vectoring
+Explanation: Split Horizon rule states: Never advertise a routing update back through the interface from which it was originally learned.
+
+[bca-208n-u3-q125] (Unit 3) What is 'Poison Reverse' in distance vector routing?
+  A.     Injecting malformed packets to crash routers
+  B. (*) Advertising an unreachable network back to the source with an infinite metric (e.g., metric 16 in RIP) to immediately break loops
+  C.     Shutting down the router port
+  D.     Encrypting routing tables
+Explanation: Poison Reverse explicitly advertises failed routes back with metric $\infty$ to purge invalid entries across neighbors rapidly.
+
+[bca-208n-u3-q126] (Unit 3) What is the maximum hop count allowed in Routing Information Protocol (RIP)?
+  A.     10
+  B. (*) 15 (16 is defined as unreachable/infinity)
+  C.     255
+  D.     Unlimited
+Explanation: RIP restricts network diameter to 15 hops; a metric of 16 signifies unreachable distance to prevent infinite loops.
+
+[bca-208n-u3-q127] (Unit 3) Which routing protocol uses Link State Routing and Dijkstra's Shortest Path First (SPF) algorithm?
+  A.     RIP
+  B. (*) OSPF (Open Shortest Path First)
+  C.     BGP
+  D.     EGP
+Explanation: OSPF floods Link-State Advertisements (LSAs), constructs a complete topological map of the area, and executes Dijkstra's algorithm.
+
+[bca-208n-u3-q128] (Unit 3) What is an Autonomous System (AS) in computer networking?
+  A.     A self-driving robot
+  B. (*) A collection of connected IP routing prefixes under the control of a single administrative entity with a common routing policy
+  C.     A local Wi-Fi router
+  D.     A root DNS cluster
+Explanation: An AS is a unified network domain (like an ISP or university campus) governed by a coherent internal routing policy.
+
+[bca-208n-u3-q129] (Unit 3) Which protocol is the de facto Exterior Gateway Protocol (EGP) powering inter-domain routing across the global Internet?
+  A.     RIP
+  B.     OSPF
+  C. (*) BGP (Border Gateway Protocol)
+  D.     IS-IS
+Explanation: BGP (specifically BGP-4) is the path-vector exterior routing protocol connecting distinct Autonomous Systems globally over TCP port 179.
+
+[bca-208n-u3-q130] (Unit 3) On which transport protocol and port does BGP establish peering sessions?
+  A.     UDP port 520
+  B. (*) TCP port 179
+  C.     IP protocol 89
+  D.     UDP port 53
+Explanation: BGP establishes reliable point-to-point peer sessions over TCP port 179.
+
+[bca-208n-u3-q131] (Unit 3) What is the purpose of the Fragment Offset field in an IPv4 header?
+  A.     To count total packets in a stream
+  B. (*) To specify the position of fragmented data relative to the beginning of the original unfragmented IP datagram, measured in 8-byte units
+  C.     To delay packet delivery
+  D.     To measure hop latency
+Explanation: Fragment Offset measures where payload belongs in 8-byte (64-bit) blocks. The MF (More Fragments) flag indicates whether more follow.
+
+[bca-208n-u3-q132] (Unit 3) What does the 'MF' (More Fragments) flag set to 0 indicate in an IPv4 packet?
+  A.     The packet is the first fragment
+  B. (*) The packet is the LAST fragment (or the packet was never fragmented)
+  C.     The packet must be dropped
+  D.     The packet has corrupted checksum
+Explanation: MF = 0 indicates no subsequent fragments exist for this datagram; MF = 1 indicates more fragments follow.
+
+[bca-208n-u3-q133] (Unit 3) What is Network Address Translation (NAT) primarily used for?
+  A.     To encrypt internet data
+  B. (*) To map multiple private (RFC 1918) IP addresses into a single public routable IP address, conserving global IPv4 address space
+  C.     To speed up optical cables
+  D.     To generate SSL certificates
+Explanation: NAT/PAT (Port Address Translation) allows entire private LANs to share a single public IP by tracking source port translations.
+
+[bca-208n-u3-q134] (Unit 3) What is Port Address Translation (PAT) / NAT Overload?
+  A.     Mapping one private IP to one static public IP
+  B. (*) Translating both IP addresses and transport layer port numbers, allowing thousands of private internal hosts to share a single public IP
+  C.     Assigning random MAC addresses
+  D.     Blocking unused UDP ports
+Explanation: PAT modifies layer 4 port numbers in addition to IP addresses, enabling many internal private sockets to multiplex onto one public IP.
+
+[bca-208n-u3-q135] (Unit 3) In IPv6, which address type replaces IPv4 Broadcast addresses (since IPv6 eliminates broadcast)?
+  A.     Anycast addresses
+  B. (*) Multicast addresses
+  C.     Unicast addresses
+  D.     Loopback addresses
+Explanation: IPv6 eliminated broadcast entirely; broadcast functions are implemented using targeted Multicast groups (e.g., all-nodes multicast `FF02::1`).
+
+[bca-208n-u3-q136] (Unit 3) What is an Anycast address in IPv6?
+  A.     An address assigned to all computers in the world
+  B. (*) An address assigned to multiple interfaces (typically on different nodes), where a packet is routed to the nearest (topologically closest) interface
+  C.     A private local address
+  D.     A temporary MAC address
+Explanation: Anycast routes traffic to the nearest instance among a group of servers sharing the same IP, commonly used for global DNS root and CDN services.
+
+[bca-208n-u3-q137] (Unit 3) What is the compressed representation of the IPv6 address `2001:0db8:0000:0000:0000:0000:0000:0001`?
+  A. (*) 2001:db8::1
+  B.     2001:db8:0:1
+  C.     2001:db8:1
+  D.     2001::db8::1
+Explanation: Leading zeros are dropped (`0db8` -> `db8`) and the longest consecutive run of zero blocks is replaced by `::` (allowed only once).
+
+[bca-208n-u3-q138] (Unit 3) What is the link-local prefix assigned to all IPv6 network interfaces automatically?
+  A. (*) FE80::/10
+  B.     FC00::/7
+  C.     2001::/16
+  D.     FF00::/8
+Explanation: IPv6 auto-configures a Link-Local Unicast address with prefix `FE80::/10` on every enabled interface for local subnet communication.
+
+[bca-208n-u3-q139] (Unit 3) What protocol in IPv6 replaces IPv4 ARP for link-layer address discovery?
+  A.     DHCPv6
+  B. (*) Neighbor Discovery Protocol (NDP) using ICMPv6 Neighbor Solicitation and Advertisement
+  C.     RARP
+  D.     OSPFv3
+Explanation: NDP operates over ICMPv6 messages (Neighbor Solicitation / Neighbor Advertisement) to discover MAC addresses and routers without broadcasts.
+
+[bca-208n-u3-q140] (Unit 3) If a network router receives a packet with TTL = 1 and destination is not local, what does the router do?
+  A.     Forwards the packet normally
+  B. (*) Decrements TTL to 0, discards the packet, and transmits an ICMP Time Exceeded (Type 11) to the sender
+  C.     Buffers the packet for 10 seconds
+  D.     Increments TTL to 64
+Explanation: A router decrements TTL first; if TTL becomes 0, it drops the packet and sends ICMP Type 11 back, which is how `traceroute` identifies routers.
+
+[bca-208n-u3-q141] (Unit 3) What is Supernetting (or Route Summarization / Aggregation)?
+  A.     Splitting a large network into small subnets
+  B. (*) Combining multiple smaller contiguous network routes into a single shorter prefix advertisement to shrink routing tables
+  C.     Increasing network cable bandwidth
+  D.     Assigning duplicate IP addresses
+Explanation: Route summarization merges multiple subnets (e.g., 192.168.0.0/24 through 192.168.3.0/24 into 192.168.0.0/22) reducing routing overhead.
+
+[bca-208n-u3-q142] (Unit 3) What is the subnet mask corresponding to `/28` in CIDR notation?
+  A.     255.255.255.0
+  B.     255.255.255.192
+  C. (*) 255.255.255.240
+  D.     255.255.255.248
+Explanation: /28 has 24 bits + 4 bits in the last octet: $128 + 64 + 32 + 16 = 240$. Subnet mask = 255.255.255.240.
+
+[bca-208n-u3-q143] (Unit 3) Which of the following is a Distance Vector interior routing protocol?
+  A.     OSPF
+  B.     IS-IS
+  C. (*) RIP (Routing Information Protocol)
+  D.     BGP
+Explanation: RIP is a classical distance vector IGP based on hop count.
+
+[bca-208n-u3-q144] (Unit 3) How often does RIPv2 broadcast/multicast its complete routing table by default?
+  A.     Every 10 seconds
+  B. (*) Every 30 seconds
+  C.     Every 60 seconds
+  D.     Only when a link changes
+Explanation: RIP periodically transmits full routing update messages every 30 seconds to multicast address 224.0.0.9.
+
+[bca-208n-u3-q145] (Unit 3) What metric does OSPF use to determine the best path?
+  A.     Hop count
+  B. (*) Cost (inversely proportional to link bandwidth: $10^8 / \text{bandwidth in bps}$)
+  C.     Delay in microseconds
+  D.     Number of active users
+Explanation: OSPF computes path cost based on link bandwidth ($Cost = \text{Reference Bandwidth} / \text{Interface Bandwidth}$).
+
+[bca-208n-u3-q146] (Unit 3) Which IPv4 header field identifies the upper-layer protocol (e.g., 6 for TCP, 17 for UDP, 1 for ICMP)?
+  A.     Type of Service
+  B. (*) Protocol
+  C.     Identification
+  D.     Flags
+Explanation: The 8-bit Protocol field informs the IP layer which transport handler receives the packet payload (6=TCP, 17=UDP, 1=ICMP).
+
+[bca-208n-u3-q147] (Unit 3) What is the purpose of the Internet Checksum in the IPv4 header?
+  A.     Verifies error-free delivery of entire user data payload
+  B. (*) Verifies integrity of the IPv4 header fields only (recomputed at every hop due to TTL decrement)
+  C.     Encrypts the destination IP
+  D.     Controls packet speed
+Explanation: The IPv4 checksum covers ONLY the 20-byte IP header, not payload; routers recompute it at every hop as TTL decrements.
+
+[bca-208n-u3-q148] (Unit 3) What is the primary function of a Default Gateway?
+  A.     To assign IP addresses to new laptops
+  B. (*) To act as the outbound router to which local hosts send all packets destined for outside subnets
+  C.     To block spam emails
+  D.     To monitor Wi-Fi signal strength
+Explanation: The default gateway is the local router interface that routes packets when no specific host route matches the destination IP.
+
+[bca-208n-u3-q149] (Unit 3) What is the loopback IPv6 address equivalent to `127.0.0.1`?
+  A. (*) ::1
+  B.     ::0
+  C.     FE80::1
+  D.     FFFF::1
+Explanation: The IPv6 loopback address is `0:0:0:0:0:0:0:1`, abbreviated as `::1`.
+
+[bca-208n-u3-q150] (Unit 3) What is the main limitation of Classful addressing that led to the introduction of CIDR in 1993?
+  A.     Classful addressing was too fast
+  B. (*) Massive waste and rapid exhaustion of IPv4 addresses because organizations were forced into rigid Class A, B, or C blocks
+  C.     Classful addresses did not support computers
+  D.     Classful routing required no routers
+Explanation: A Class B block granted 65,534 hosts (too large for most firms), while Class C granted only 254 (too small), squandering address space.
+
+[bca-208n-u4-q151] (Unit 4) What is the primary role of the Domain Name System (DNS)?
+  A.     To assign dynamic IP addresses to mobile phones
+  B. (*) To translate human-friendly domain names (e.g., www.google.com) into numerical IP addresses
+  C.     To encrypt web pages
+  D.     To route email across LANs
+Explanation: DNS is the global distributed hierarchical database translating domain names to IP addresses.
+
+[bca-208n-u4-q152] (Unit 4) On which transport protocol and default port does DNS service operate for standard client queries?
+  A.     TCP port 80
+  B. (*) UDP port 53
+  C.     TCP port 25
+  D.     UDP port 67
+Explanation: Standard DNS queries and responses use UDP port 53 for speed; TCP port 53 is used for zone transfers and responses exceeding 512 bytes.
+
+[bca-208n-u4-q153] (Unit 4) Which DNS Resource Record (RR) type maps a host name to an IPv4 address?
+  A. (*) A Record
+  B.     AAAA Record
+  C.     CNAME Record
+  D.     MX Record
+Explanation: An 'A' record maps a hostname to an IPv4 address. 'AAAA' maps to an IPv6 address.
+
+[bca-208n-u4-q154] (Unit 4) Which DNS record maps a domain name to its mail exchange servers?
+  A.     A
+  B. (*) MX Record
+  C.     PTR Record
+  D.     NS Record
+Explanation: MX (Mail Exchanger) records specify the mail servers responsible for accepting incoming email for a domain.
+
+[bca-208n-u4-q155] (Unit 4) Which DNS record type provides an alias (canonical name) pointing to another domain name?
+  A. (*) CNAME Record
+  B.     PTR Record
+  C.     SOA Record
+  D.     TXT Record
+Explanation: CNAME (Canonical Name) creates an alias pointing one domain name to another canonical name.
+
+[bca-208n-u4-q156] (Unit 4) What is a Reverse DNS lookup (PTR Record) used for?
+  A. (*) Translating an IP address back to its corresponding domain name
+  B.     Finding the owner's phone number
+  C.     Reversing spelling of names
+  D.     Checking email read status
+Explanation: PTR (Pointer) records in the `in-addr.arpa` domain map an IP address back to its registered hostname.
+
+[bca-208n-u4-q157] (Unit 4) In DNS resolution, what is the difference between Recursive and Iterative queries?
+  A. (*) Recursive queries require the queried server to return the final resolved answer or error; iterative queries return the best referral pointer to another name server
+  B.     Iterative queries use TCP; recursive use UDP
+  C.     Recursive queries never cache results
+  D.     There is no difference
+Explanation: A client asks its local resolver recursively ('get me the answer'); the resolver queries root, TLD, and authoritative servers iteratively ('ask that server next').
+
+[bca-208n-u4-q158] (Unit 4) What is Dynamic DNS (DDNS)?
+  A.     DNS for mobile phones only
+  B. (*) A system that automatically updates DNS database records in real time when a host's dynamic IP address changes
+  C.     DNS that runs without servers
+  D.     DNS encrypted with SSL
+Explanation: DDNS enables hosts with changing DHCP IP addresses to keep their persistent domain names updated automatically.
+
+[bca-208n-u4-q159] (Unit 4) Why is TELNET considered insecure for remote system administration across untrusted networks?
+  A.     It operates only on Windows
+  B. (*) It transmits all credentials (usernames and passwords) and terminal sessions in unencrypted plaintext
+  C.     It uses too much bandwidth
+  D.     It requires token rings
+Explanation: TELNET (port 23) has no encryption; anyone sniffing network packets can read passwords and session text in cleartext.
+
+[bca-208n-u4-q160] (Unit 4) Which encrypted protocol has universally replaced TELNET for secure remote terminal access and file transfers?
+  A.     FTP
+  B. (*) SSH (Secure Shell, port 22)
+  C.     SNMP
+  D.     TFTP
+Explanation: SSH uses strong public-key cryptography and symmetric ciphers to authenticate and encrypt remote terminal sessions over port 22.
+
+[bca-208n-u4-q161] (Unit 4) What protocol is used by email clients to SEND / push outgoing messages to mail servers?
+  A.     POP3
+  B.     IMAP4
+  C. (*) SMTP (Simple Mail Transfer Protocol)
+  D.     HTTP
+Explanation: SMTP (Simple Mail Transfer Protocol, port 25/587) is the standard push protocol for sending emails from client to server and server to server.
+
+[bca-208n-u4-q162] (Unit 4) Which protocol allows email clients to retrieve messages from a mail server by downloading and typically deleting them from the server?
+  A.     SMTP
+  B. (*) POP3 (Post Office Protocol version 3)
+  C.     DNS
+  D.     SNMP
+Explanation: POP3 (port 110) downloads emails to the local device mailbox and traditionally removes them from the remote mail server.
+
+[bca-208n-u4-q163] (Unit 4) What is the primary advantage of IMAP4 over POP3?
+  A.     IMAP4 is faster than SMTP
+  B. (*) IMAP4 keeps emails on the server and synchronizes folder states (read/unread, sent, trash) across multiple devices in real time
+  C.     IMAP4 does not use port numbers
+  D.     IMAP4 requires no password
+Explanation: IMAP4 (port 143) maintains all mailboxes and folders centrally on the server, ensuring identical synchronized views across laptops and phones.
+
+[bca-208n-u4-q164] (Unit 4) What standard extends SMTP to allow transmission of non-ASCII data like images, audio, video, and attachments?
+  A. (*) MIME (Multipurpose Internet Mail Extensions)
+  B.     ASCII-2
+  C.     UTF-88
+  D.     SNMPv3
+Explanation: MIME introduces headers (like Content-Type, Content-Transfer-Encoding e.g. Base64) to transmit binary media through plain ASCII email channels.
+
+[bca-208n-u4-q165] (Unit 4) How many separate TCP connections does File Transfer Protocol (FTP) utilize simultaneously?
+  A.     One connection
+  B. (*) Two distinct connections: Control Connection (port 21) and Data Connection (port 20)
+  C.     Three connections
+  D.     Four connections
+Explanation: FTP uses out-of-band architecture: Control connection on port 21 stays open for commands; Data connection on port 20 opens/closes for each file transfer.
+
+[bca-208n-u4-q166] (Unit 4) What is the difference between Active FTP and Passive FTP (PASV)?
+  A. (*) In Active FTP, the server initiates the data connection to the client; in Passive FTP, the client initiates both control and data connections to bypass client firewalls
+  B.     Passive FTP transmits no data
+  C.     Active FTP is encrypted; Passive is not
+  D.     Passive FTP uses UDP
+Explanation: In Active mode, the server connects back to the client's data port (often blocked by client firewalls/NAT). Passive mode has client initiate data connection.
+
+[bca-208n-u4-q167] (Unit 4) What is TFTP (Trivial File Transfer Protocol)?
+  A.     An encrypted version of FTP
+  B. (*) A stripped-down, lightweight file transfer protocol running over UDP (port 69) without authentication, used for network bootstrapping (PXE)
+  C.     A protocol for video streaming
+  D.     A web browser plugin
+Explanation: TFTP uses UDP port 69 and simple lock-step Stop-and-Wait file transfers, commonly used by routers to load firmware and boot configs.
+
+[bca-208n-u4-q168] (Unit 4) What is the default port for unencrypted World Wide Web traffic using HTTP?
+  A.     21
+  B.     25
+  C. (*) 80
+  D.     443
+Explanation: HTTP operates by default on TCP port 80.
+
+[bca-208n-u4-q169] (Unit 4) What is the default TCP port for secure, encrypted HTTPS traffic?
+  A.     80
+  B.     8080
+  C. (*) 443
+  D.     8443
+Explanation: HTTPS (HTTP over TLS/SSL) uses TCP port 443.
+
+[bca-208n-u4-q170] (Unit 4) Which HTTP method is idempotent and used by browsers to request/retrieve a web resource without modifying server state?
+  A.     POST
+  B. (*) GET
+  C.     PATCH
+  D.     CONNECT
+Explanation: `GET` retrieves data from a specified URI without changing server resources, making it a safe, idempotent method.
+
+[bca-208n-u4-q171] (Unit 4) Which HTTP method is used to submit form data or upload files, causing a change in state or side-effect on the server?
+  A.     GET
+  B. (*) POST
+  C.     HEAD
+  D.     OPTIONS
+Explanation: `POST` submits entity data to the server (e.g., login credentials, form inputs) to create or process resources.
+
+[bca-208n-u4-q172] (Unit 4) What does HTTP status code `200 OK` mean?
+  A.     The server cannot find the requested URL
+  B. (*) The client request succeeded, and the requested payload is returned
+  C.     The client is unauthorized
+  D.     The server experienced an internal crash
+Explanation: 200 OK indicates the client HTTP request was successfully processed.
+
+[bca-208n-u4-q173] (Unit 4) What does HTTP status code `404 Not Found` indicate?
+  A.     The server crashed completely
+  B. (*) The server cannot find the requested resource at the specified URI
+  C.     Access is forbidden due to bad password
+  D.     The request was redirected to a new domain
+Explanation: 404 Not Found indicates the server is reachable but the requested URI does not map to any existing file or endpoint.
+
+[bca-208n-u4-q174] (Unit 4) Which HTTP status code signifies an Internal Server Error?
+  A.     400
+  B.     403
+  C. (*) 500
+  D.     502
+Explanation: 500 Internal Server Error indicates an unhandled server-side application exception or failure.
+
+[bca-208n-u4-q175] (Unit 4) What does HTTP status code `301 Moved Permanently` indicate?
+  A.     Temporary server downtime
+  B. (*) The requested resource has been permanently assigned a new URI, and future requests should use that new URI
+  C.     Client is blocked by firewall
+  D.     Session expired
+Explanation: 301 Moved Permanently tells browsers and search engine crawlers that the page permanently resides at a new address.
+
+[bca-208n-u4-q176] (Unit 4) What is the fundamental difference between HTTP/1.0 and HTTP/1.1 regarding TCP connection management?
+  A.     HTTP/1.0 uses persistent connections; HTTP/1.1 closes connections after every file
+  B. (*) HTTP/1.0 opens a new TCP connection for every single inline resource (non-persistent); HTTP/1.1 supports persistent connections (`Keep-Alive`) reusing one connection for multiple requests
+  C.     HTTP/1.1 uses UDP instead of TCP
+  D.     HTTP/1.0 is encrypted by default
+Explanation: HTTP/1.0 suffered high 3-way handshake overhead by tearing down TCP per asset; HTTP/1.1 introduced default persistent connections.
+
+[bca-208n-u4-q177] (Unit 4) What major improvement did HTTP/2 introduce to eliminate Head-of-Line blocking at the application layer?
+  A.     Replacing TCP with Bluetooth
+  B. (*) Multiplexing multiple concurrent bidirectional request/response streams over a single TCP connection using binary framing
+  C.     Eliminating HTML tags
+  D.     Mandating daily password changes
+Explanation: HTTP/2 breaks messages into independent binary frames multiplexed over one connection, ending application-level head-of-line bottlenecks.
+
+[bca-208n-u4-q178] (Unit 4) What transport layer protocol does HTTP/3 utilize instead of traditional TCP?
+  A.     Raw IP
+  B. (*) QUIC (Quick UDP Internet Connections over UDP)
+  C.     SCTP
+  D.     AppleTalk
+Explanation: HTTP/3 replaces TCP with QUIC running over UDP, eliminating transport-layer head-of-line blocking and providing 0-RTT handshakes.
+
+[bca-208n-u4-q179] (Unit 4) What is an HTTP Cookie?
+  A. (*) A small piece of state data sent by a web server and stored on the user's browser, sent back with subsequent requests to maintain state
+  B.     A browser cache of images
+  C.     A cryptographic private key
+  D.     A harmful virus
+Explanation: Because HTTP is fundamentally stateless, cookies (via `Set-Cookie` and `Cookie` headers) enable session tracking, authentication, and shopping carts.
+
+[bca-208n-u4-q180] (Unit 4) What does the `Cache-Control` header in HTTP regulate?
+  A.     Browser window resolution
+  B. (*) Directives for caching mechanisms in requests and responses across browsers and intermediary proxy caches
+  C.     Network switch packet routing
+  D.     Cookie expiration date
+Explanation: `Cache-Control` specifies policies (e.g., `no-cache`, `max-age=3600`, `public`) controlling how responses are cached.
+
+[bca-208n-u4-q181] (Unit 4) What is the Simple Network Management Protocol (SNMP) used for?
+  A.     Sending chat messages across computers
+  B. (*) Monitoring, managing, and configuring network devices (routers, switches, servers) across an IP network
+  C.     Managing web domain registrations
+  D.     Compressing media files
+Explanation: SNMP allows network administrators to monitor device performance, track bandwidth, detect faults, and modify settings remotely.
+
+[bca-208n-u4-q182] (Unit 4) In SNMP architecture, what is a 'Managed Device'?
+  A. (*) A network node (router, switch, host) containing an SNMP Agent that provides access to its management data
+  B.     A laptop locked with a password
+  C.     An unplugged server
+  D.     A commercial software license
+Explanation: Managed devices host an SNMP agent software daemon that gathers local status metrics and answers management requests.
+
+[bca-208n-u4-q183] (Unit 4) What is a Management Information Base (MIB) in SNMP?
+  A.     A physical hard drive on the switch
+  B. (*) A formal hierarchical database of managed objects accessed via Object Identifiers (OIDs)
+  C.     A proprietary database owned by Microsoft
+  D.     The network cable wiring map
+Explanation: The MIB is a tree-structured database describing all measurable variables and parameters available on the managed device.
+
+[bca-208n-u4-q184] (Unit 4) In SNMP, what message does an SNMP Agent send asynchronously to notify the Manager of an alert or critical event?
+  A.     GetRequest
+  B.     SetRequest
+  C. (*) Trap (or InformRequest)
+  D.     Ping
+Explanation: SNMP Traps are unrequested event alerts pushed by agents to the manager (UDP port 162) when critical thresholds (e.g., link down) occur.
+
+[bca-208n-u4-q185] (Unit 4) On which UDP ports does SNMP communicate?
+  A.     Port 80 and 443
+  B. (*) Port 161 (SNMP Requests/Responses) and Port 162 (SNMP Traps)
+  C.     Port 21 and 20
+  D.     Port 53 and 67
+Explanation: SNMP agents listen for commands on UDP port 161; SNMP managers receive agent traps on UDP port 162.
+
+[bca-208n-u4-q186] (Unit 4) Which version of SNMP introduced robust cryptographic authentication and packet encryption?
+  A.     SNMPv1
+  B.     SNMPv2c
+  C. (*) SNMPv3
+  D.     SNMPv0
+Explanation: SNMPv1 and v2c used plaintext 'community strings'. SNMPv3 introduced user-based security (USM) with SHA authentication and AES encryption.
+
+[bca-208n-u4-q187] (Unit 4) What is the purpose of the `HEAD` HTTP method?
+  A. (*) Fetches only the HTTP response headers without returning the response message body
+  B.     Restarts the web server
+  C.     Deletes the home page
+  D.     Uploads user cookies
+Explanation: `HEAD` asks for identical headers as a GET request without transmitting the actual body, useful for testing cache validity or content size.
+
+[bca-208n-u4-q188] (Unit 4) Which header field in HTTP request specifies the target domain name for virtual web hosting?
+  A.     User-Agent
+  B. (*) Host
+  C.     Accept
+  D.     Referer
+Explanation: The `Host` header allows a single web server with one IP address to serve hundreds of different domain websites (Name-based Virtual Hosting).
+
+[bca-208n-u4-q189] (Unit 4) What does the HTTP header `Content-Type: application/json` signify?
+  A.     The response body contains plaintext ASCII
+  B. (*) The body payload is formatted as a structured JSON object
+  C.     The page is written in Python
+  D.     The file is an image
+Explanation: MIME content types instruct the receiving parser how to interpret the payload bytes.
+
+[bca-208n-u4-q190] (Unit 4) What is a Proxy Server in network applications?
+  A.     A cable splitter
+  B. (*) An intermediary computer acting as an agent between client browsers and the destination Internet server, providing caching, filtering, and anonymity
+  C.     A server that only prints documents
+  D.     A database server
+Explanation: Proxy servers intercept client requests to deliver cached resources, enforce parental/enterprise access control, or mask internal IPs.
+
+[bca-208n-u4-q191] (Unit 4) What is the difference between a Forward Proxy and a Reverse Proxy?
+  A. (*) A forward proxy sits in front of clients to regulate outbound internet access; a reverse proxy sits in front of backend web servers to load balance, cache, and terminate SSL
+  B.     A forward proxy is hardware; reverse proxy is software
+  C.     Reverse proxy cannot use HTTP
+  D.     There is no functional difference
+Explanation: Forward proxies protect and represent clients; reverse proxies protect, load balance, and represent web servers.
+
+[bca-208n-u4-q192] (Unit 4) What is Web Caching?
+  A.     Storing physical paper copies of websites
+  B. (*) Temporary storage of web documents (HTML, CSS, images) near the user to reduce bandwidth consumption and latency
+  C.     Deleting cookies regularly
+  D.     Encrypting database tables
+Explanation: Caches (in browsers, CDNs, or forward proxies) fulfill repeat requests locally, avoiding redundant cross-Internet round trips.
+
+[bca-208n-u4-q193] (Unit 4) What does a Content Delivery Network (CDN) accomplish?
+  A.     Manufactures computer hard drives
+  B. (*) Distributes web content across geographically dispersed edge servers to serve content with minimal latency from nearest location
+  C.     Registers domain names with ICANN
+  D.     Provides home broadband connections
+Explanation: CDNs (like Cloudflare or Akamai) replicate static assets across global edge nodes so users fetch content from local geographic points.
+
+[bca-208n-u4-q194] (Unit 4) In email transmission, what does the 'POP3 before SMTP' mechanism historically provide?
+  A.     Spam filtering
+  B. (*) Basic authentication for relaying outgoing mail by requiring users to check their mailbox first
+  C.     Attachment compression
+  D.     Encryption keys
+Explanation: Legacy SMTP had no native authentication; checking POP3 authenticated the user's IP for a short window to permit sending.
+
+[bca-208n-u4-q195] (Unit 4) What is the role of the DNS Root Name Servers?
+  A.     To store the IP address of every website in the world
+  B. (*) To serve the root zone (.) of the DNS hierarchy and direct queries to the authoritative TLD servers (.com, .org, .in)
+  C.     To host Google's homepage
+  D.     To generate Wi-Fi passwords
+Explanation: There are 13 logical root server addresses (operated globally via anycast) that point resolvers to Top-Level Domain (TLD) servers.
+
+[bca-208n-u4-q196] (Unit 4) What is DNS Cache Poisoning (DNS Spoofing)?
+  A.     Pouring liquid into server racks
+  B. (*) The malicious injection of fraudulent DNS records into a caching resolver's cache, redirecting unsuspecting users to rogue websites
+  C.     Deleting the root zone file
+  D.     Shutting down port 53
+Explanation: Attacker injects forged IP mappings into a vulnerable resolver, diverting web traffic to phishing replicas.
+
+[bca-208n-u4-q197] (Unit 4) Which security extension to DNS provides cryptographic authentication of DNS data to prevent spoofing?
+  A. (*) DNSSEC (Domain Name System Security Extensions)
+  B.     HTTPS
+  C.     SNMPv3
+  D.     IPSec
+Explanation: DNSSEC adds digital signatures (RRSIG) to resource records, enabling resolvers to verify authenticity and integrity.
+
+[bca-208n-u4-q198] (Unit 4) In email, what does the BCC (Blind Carbon Copy) field do?
+  A.     Sends an encrypted copy to the police
+  B. (*) Sends a copy of the email to recipients without revealing their addresses to any other recipient
+  C.     Bounces corrupt emails
+  D.     Prints a physical copy
+Explanation: BCC recipients receive the message, but their email addresses are stripped from headers visible to To, CC, or other BCC recipients.
+
+[bca-208n-u4-q199] (Unit 4) What is the primary function of a Web Socket connection compared to standard HTTP?
+  A.     To download images faster
+  B. (*) To provide persistent, full-duplex, bidirectional communication channels over a single TCP connection with minimal overhead
+  C.     To eliminate the need for JavaScript
+  D.     To replace Ethernet cables
+Explanation: WebSockets upgrade an initial HTTP handshake into a persistent bidirectional stream, ideal for live chat, stock tickers, and multiplayer gaming.
+
+[bca-208n-u4-q200] (Unit 4) Which command-line utility queries DNS name servers to look up IP addresses, MX records, and other DNS data?
+  A. (*) nslookup (or dig)
+  B.     ping
+  C.     tracert
+  D.     netstat
+Explanation: `nslookup` and `dig` query DNS servers directly for specific record types (A, MX, NS, TXT).
+
+[bca-208n-u5-q201] (Unit 5) What are the three core principles of information security represented by the CIA Triad?
+  A.     Centralization, Intelligence, Automation
+  B. (*) Confidentiality, Integrity, Availability
+  C.     Cryptography, Inspection, Authorization
+  D.     Cabling, Infrastructure, Access
+Explanation: The CIA triad forms the cornerstone of information security: Confidentiality (privacy), Integrity (accuracy), and Availability (accessibility).
+
+[bca-208n-u5-q202] (Unit 5) What does 'Non-repudiation' mean in network security?
+  A.     Preventing hackers from guessing passwords
+  B. (*) Ensuring that a sender cannot falsely deny having originated or sent a particular message
+  C.     Guaranteeing continuous server uptime
+  D.     Blocking spoofed IP packets
+Explanation: Non-repudiation proves the author's identity using digital signatures, making it legally impossible to deny message origin.
+
+[bca-208n-u5-q203] (Unit 5) What is the difference between a Passive Attack and an Active Attack?
+  A.     Passive attacks alter data; active attacks only listen
+  B. (*) Passive attacks monitor or eavesdrop on transmissions without modifying data; active attacks modify messages or disrupt system services
+  C.     Active attacks use no software
+  D.     Passive attacks cannot be detected by antivirus
+Explanation: Passive attacks (sniffing, traffic analysis) compromise confidentiality; active attacks (replay, masquerade, tampering, DoS) compromise integrity/availability.
+
+[bca-208n-u5-q204] (Unit 5) A Denial of Service (DoS) attack aims primarily to compromise which aspect of the CIA triad?
+  A.     Confidentiality
+  B.     Integrity
+  C. (*) Availability
+  D.     Authentication
+Explanation: DoS attacks flood network bandwidth or server compute resources to make services unavailable to legitimate users.
+
+[bca-208n-u5-q205] (Unit 5) In Symmetric Key Cryptography (Secret-Key Cryptography):
+  A.     Two mathematically related keys (public and private) are used
+  B. (*) The exact same shared secret key is used for both encryption and decryption
+  C.     No keys are required
+  D.     Only hash algorithms are executed
+Explanation: Symmetric encryption uses a single identical key shared in advance by both sender and receiver (e.g., AES, DES).
+
+[bca-208n-u5-q206] (Unit 5) If $N$ parties wish to communicate securely using pairwise Symmetric keys, how many total secret keys must be generated and distributed?
+  A.     $N$
+  B.     $2N$
+  C. (*) $N(N - 1) / 2$
+  D.     $N^2$
+Explanation: Each pair requires a unique symmetric key, requiring $N(N-1)/2$ keys. For 1,000 users, nearly 500,000 keys are required.
+
+[bca-208n-u5-q207] (Unit 5) Which of the following is a symmetric block cipher standard developed to replace DES?
+  A.     RSA
+  B. (*) AES (Advanced Encryption Standard)
+  C.     Diffie-Hellman
+  D.     MD5
+Explanation: AES (Rijndael) replaced DES/3DES as the global symmetric standard, supporting 128, 192, and 256-bit key sizes.
+
+[bca-208n-u5-q208] (Unit 5) What was the primary vulnerability that made the original Data Encryption Standard (DES) obsolete?
+  A.     It was an asymmetric cipher
+  B. (*) Its 56-bit key length is far too short, making it vulnerable to brute-force key search in hours
+  C.     It could only encrypt text files
+  D.     It required quantum computers
+Explanation: A 56-bit key ($2^{56}$ combinations) is easily cracked by modern computers; AES uses minimum 128-bit keys ($2^{128}$ space).
+
+[bca-208n-u5-q209] (Unit 5) In Asymmetric (Public-Key) Cryptography, how are the two keys utilized for secure confidential communication?
+  A. (*) Sender encrypts with receiver's Public Key, and receiver decrypts with their own Private Key
+  B.     Sender encrypts with sender's Private Key, and receiver decrypts with receiver's Public Key
+  C.     Both use the same public key
+  D.     Public keys are kept secret
+Explanation: To maintain confidentiality: Anyone can encrypt using the recipient's openly published Public Key, but ONLY the recipient's matching Private Key can decrypt.
+
+[bca-208n-u5-q210] (Unit 5) If 100 users join an Asymmetric (Public-Key) cryptosystem, how many total keys (public and private pairs) are needed?
+  A.     100
+  B. (*) 200 (Each user has 1 public key and 1 private key)
+  C.     4,950
+  D.     10,000
+Explanation: Each user requires 1 public key and 1 private key. For $N=100$ users, total keys = $2N = 200$, solving symmetric key explosion.
+
+[bca-208n-u5-q211] (Unit 5) On which hard mathematical problem is the RSA algorithm based?
+  A.     Discrete Logarithm problem in finite fields
+  B. (*) Difficulty of factoring large composite integers into their prime factors
+  C.     Elliptic curve discrete logarithm
+  D.     Polynomial division modulo 2
+Explanation: RSA's security depends on the extreme computational difficulty of factoring large numbers $n = p \times q$ where $p$ and $q$ are giant primes.
+
+[bca-208n-u5-q212] (Unit 5) What is the primary purpose of the Diffie-Hellman algorithm?
+  A.     Encrypting large email attachments
+  B. (*) Securely establishing and exchanging a shared secret symmetric key over an insecure public channel
+  C.     Generating digital certificates
+  D.     Detecting packet tampering
+Explanation: Diffie-Hellman Key Exchange allows two parties with no prior shared secret to agree on a shared symmetric key across public networks.
+
+[bca-208n-u5-q213] (Unit 5) What is a major vulnerability of the basic Diffie-Hellman key exchange if no authentication is used?
+  A.     Buffer overflow
+  B. (*) Man-in-the-Middle (MitM) attack
+  C.     Brute-force password guessing
+  D.     Denial of service
+Explanation: Without digital signatures or authentication, an active attacker intercepts the exchange, impersonating both endpoints independently.
+
+[bca-208n-u5-q214] (Unit 5) What is a Cryptographic Hash Function?
+  A.     A reversible encryption algorithm
+  B. (*) A one-way mathematical function that converts arbitrary-length input data into a unique, fixed-size digest that cannot be reversed
+  C.     A hardware firewall filter
+  D.     A compression tool
+Explanation: Cryptographic hashes (e.g., SHA-256) are deterministic one-way functions: easy to compute forward, computationally infeasible to invert.
+
+[bca-208n-u5-q215] (Unit 5) What is the fixed output digest length of the SHA-256 hash algorithm?
+  A.     128 bits
+  B.     160 bits
+  C. (*) 256 bits (32 bytes)
+  D.     512 bits
+Explanation: SHA-256 produces a 256-bit (32-byte / 64 hexadecimal characters) hash digest.
+
+[bca-208n-u5-q216] (Unit 5) What property of cryptographic hash functions states that even a 1-bit change in input drastically changes the resulting hash?
+  A.     Confusion property
+  B. (*) Avalanche Effect
+  C.     Transposition
+  D.     Permutation
+Explanation: The avalanche effect ensures that flipping a single bit produces an entirely unrecognizable and radically different hash digest.
+
+[bca-208n-u5-q217] (Unit 5) What does 'Collision Resistance' mean for a hash function?
+  A.     Data packets never collide on Ethernet
+  B. (*) It is computationally infeasible to find two distinct different inputs $x$ and $y$ such that $\text{Hash}(x) = \text{Hash}(y)$
+  C.     The hash function produces no output
+  D.     Hashes are completely reversible
+Explanation: Strong collision resistance guarantees no two different inputs can be found that hash to identical outputs.
+
+[bca-208n-u5-q218] (Unit 5) Why has the MD5 message digest algorithm been deprecated for secure digital signatures?
+  A.     It is too slow
+  B. (*) Cryptanalytic practical collision attacks have been discovered, allowing forged certificates with matching hashes
+  C.     It outputs 1,024 bits
+  D.     It is patented
+Explanation: MD5 produces 128-bit digests and suffers from severe collision vulnerabilities; SHA-256 or SHA-3 is now mandatory.
+
+[bca-208n-u5-q219] (Unit 5) How is a Digital Signature created by the sender on a document?
+  A. (*) The sender computes a hash of the document and encrypts that hash using the sender's Private Key
+  B.     The sender encrypts the document with the receiver's Public Key
+  C.     The sender types their name in italic font
+  D.     The sender scans their handwritten signature image
+Explanation: Digital Signature = $\text{Encrypt}_{\text{PrivateKey}}(\text{Hash}(\text{Message}))$. Anyone with the sender's public key can verify the signature and integrity.
+
+[bca-208n-u5-q220] (Unit 5) How does a receiver verify a Digital Signature?
+  A. (*) Decrypts signature with sender's Public Key to recover original hash, hashes the received message independently, and compares both hashes
+  B.     Asks the ISP if the email is genuine
+  C.     Decrypts with receiver's Private Key
+  D.     Checks if the file is larger than 1 MB
+Explanation: If the decrypted signature hash matches the independently calculated hash of the received document, authenticity and integrity are proven.
+
+[bca-208n-u5-q221] (Unit 5) What security services does a Digital Signature provide?
+  A.     Confidentiality and encryption
+  B. (*) Message Integrity, Sender Authentication, and Non-repudiation
+  C.     Bandwidth throttling
+  D.     Virus detection
+Explanation: Digital signatures prove who signed it (authentication), that it wasn't altered in transit (integrity), and prevent denial (non-repudiation).
+
+[bca-208n-u5-q222] (Unit 5) What is a Digital Certificate (such as X.509)?
+  A.     An electronic diploma for network engineers
+  B. (*) An electronic credential binding a public key to an individual or entity identity, digitally signed by a trusted Certificate Authority (CA)
+  C.     A password file on a server
+  D.     A Wi-Fi access code
+Explanation: An X.509 certificate guarantees that a specific public key belongs to the verified domain or organization, signed by a trusted CA.
+
+[bca-208n-u5-q223] (Unit 5) What role does a Certificate Authority (CA) play in Public Key Infrastructure (PKI)?
+  A.     Sells broadband internet cables
+  B. (*) Acts as a trusted third party verifying identity and issuing digitally signed public-key certificates
+  C.     Manages Google search results
+  D.     Monitors employee internet usage
+Explanation: The CA (like DigiCert or Let's Encrypt) verifies applicant identity before signing their public-key certificate with the CA's root private key.
+
+[bca-208n-u5-q224] (Unit 5) What is a Certificate Revocation List (CRL)?
+  A.     A list of expired passwords
+  B. (*) A list of digital certificates that have been revoked by the issuing CA before their scheduled expiration date
+  C.     A list of blocked email addresses
+  D.     A list of unlicensed software
+Explanation: CRLs (and online OCSP checks) inform browsers when private keys have been compromised and certificates invalidated.
+
+[bca-208n-u5-q225] (Unit 5) At which layer of the network model does IPsec (IP Security) operate?
+  A.     Data Link Layer
+  B. (*) Network Layer (Layer 3)
+  C.     Transport Layer
+  D.     Application Layer
+Explanation: IPsec operates at Network Layer (Layer 3), securing all upper-layer IP traffic transparently without application modifications.
+
+[bca-208n-u5-q226] (Unit 5) What are the two primary security protocols within IPsec?
+  A.     TCP and UDP
+  B. (*) AH (Authentication Header) and ESP (Encapsulating Security Payload)
+  C.     RSA and AES
+  D.     SSL and TLS
+Explanation: AH (protocol 51) provides integrity and authentication; ESP (protocol 50) provides confidentiality, integrity, and anti-replay protection.
+
+[bca-208n-u5-q227] (Unit 5) What is the critical difference between IPsec Transport Mode and Tunnel Mode?
+  A. (*) Transport mode encrypts only the IP payload; Tunnel mode encrypts the entire original IP packet and prepends a new outer IP header
+  B.     Transport mode is for wireless; Tunnel mode is for fiber
+  C.     Tunnel mode does not support encryption
+  D.     There is no difference
+Explanation: Transport mode is host-to-host (original IP headers intact); Tunnel mode is gateway-to-gateway (entire original packet hidden inside new packet).
+
+[bca-208n-u5-q228] (Unit 5) What does SSL (Secure Sockets Layer) / TLS (Transport Layer Security) secure?
+  A.     Physical Ethernet cables
+  B. (*) Application layer communication channels (such as HTTPS on port 443) running over reliable transport layer (TCP)
+  C.     ARP broadcast tables
+  D.     DHCP leases
+Explanation: TLS runs on top of TCP, securing application protocols like HTTPS, IMAPS, and SMTPS through encryption and certificate authentication.
+
+[bca-208n-u5-q229] (Unit 5) What happens during the TLS Handshake phase before data transmission?
+  A.     Server deletes user cookies
+  B. (*) Client and server authenticate each other via certificates, negotiate cipher suites, and securely establish symmetric session encryption keys
+  C.     Packets are sent unencrypted
+  D.     Client downloads an operating system update
+Explanation: TLS handshake negotiates cryptographic algorithms, verifies server certificate authenticity, and exchanges random secrets to derive session keys.
+
+[bca-208n-u5-q230] (Unit 5) What is Pretty Good Privacy (PGP) primarily used for?
+  A.     Creating 3D video animations
+  B. (*) Securing email communications with hybrid encryption, digital signatures, and web of trust key management
+  C.     Managing SQL databases
+  D.     Accelerating web downloads
+Explanation: Phil Zimmermann's PGP encrypts email messages using symmetric session keys wrapped with the recipient's public key.
+
+[bca-208n-u5-q231] (Unit 5) What is a Virtual Private Network (VPN)?
+  A.     A private computer with no internet connection
+  B. (*) An encrypted communication tunnel over a public network (the Internet) enabling remote users or offices to securely access internal enterprise networks
+  C.     A wireless local loop
+  D.     A private chat room
+Explanation: A VPN creates a secure, encrypted virtual tunnel traversing untrusted public IP infrastructure.
+
+[bca-208n-u5-q232] (Unit 5) What is a Packet Filtering Firewall?
+  A.     A physical vault for hard drives
+  B. (*) A network security device that inspects individual packet headers (Source IP, Destination IP, Port, Protocol) and permits or denies packets based on access control rules
+  C.     A web browser cache cleaner
+  D.     An antivirus scanner for files
+Explanation: Packet filtering firewalls operate at Layers 3 and 4, checking packets against stateless or stateful Access Control Lists (ACLs).
+
+[bca-208n-u5-q233] (Unit 5) How does a Stateful Inspection Firewall differ from a simple Stateless Packet Filter?
+  A. (*) Stateful firewalls track the state of active TCP connections and permit returning inbound response packets belonging to established sessions automatically
+  B.     Stateful firewalls ignore IP addresses
+  C.     Stateless filters are faster and more secure
+  D.     Stateful firewalls can only be used on Linux
+Explanation: Stateful firewalls maintain a state table of live connections, automatically allowing dynamic replies without opening wide inbound holes.
+
+[bca-208n-u5-q234] (Unit 5) What is an Application-Level Gateway (Proxy Firewall)?
+  A.     A hardware hub
+  B. (*) A firewall that inspects and filters traffic at Layer 7 (Application layer), understanding specific application commands (HTTP, FTP, SMTP) to block malicious payloads
+  C.     A tool to set passwords
+  D.     An ethernet patch panel
+Explanation: Proxy firewalls disassemble application payloads to detect hidden malicious code or policy violations before regenerating clean traffic.
+
+[bca-208n-u5-q235] (Unit 5) In network security architecture, what is a Demilitarized Zone (DMZ)?
+  A.     A military computer system
+  B. (*) A physical or logical subnetwork that exposes an organization's external-facing services (e.g., Web, Mail, DNS) to the untrusted Internet while isolating the private internal LAN
+  C.     A room where phones are prohibited
+  D.     A zone where all traffic is unencrypted
+Explanation: The DMZ sits between the external untrusted Internet and private intranet, containing public servers so compromise of a public server doesn't expose the core LAN.
+
+[bca-208n-u5-q236] (Unit 5) What is a 'Bastion Host'?
+  A.     A backup computer in case of fire
+  B. (*) A heavily fortified, hardened server located in the DMZ exposed to direct public traffic, running minimal services to withstand attacks
+  C.     A portable flash drive
+  D.     An optical network switch
+Explanation: Bastion hosts are locked-down servers stripped of unnecessary daemons, users, and ports to serve as secure public gateways.
+
+[bca-208n-u5-q237] (Unit 5) What is the primary difference between an Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS)?
+  A. (*) IDS passively monitors and alerts administrators upon detecting suspicious activity; IPS actively sits in-line and automatically blocks or drops malicious traffic in real time
+  B.     IDS can block attacks; IPS only writes logs
+  C.     IDS is hardware; IPS is software
+  D.     There is no difference
+Explanation: IDS is a burglar alarm (detects and alerts); IPS is an armed security guard (detects, intercepts, and blocks malicious packets).
+
+[bca-208n-u5-q238] (Unit 5) What is Signature-based detection in an IDS/IPS?
+  A.     Scanning biometric fingerprints of users
+  B. (*) Matching network traffic patterns against a database of known attack signatures and virus patterns
+  C.     Analyzing statistical standard deviations of traffic
+  D.     Checking digital certificates
+Explanation: Signature-based detection compares packet payloads against known attack strings (like antivirus definitions), highly accurate for known exploits.
+
+[bca-208n-u5-q239] (Unit 5) What is Anomaly-based detection in an IDS/IPS?
+  A.     Checking for misspelled usernames
+  B. (*) Establishing a baseline profile of normal network behavior and triggering alerts when observed activity deviates significantly from the norm
+  C.     Searching for known virus names
+  D.     Blocking all traffic during night hours
+Explanation: Anomaly detection flags deviations from baseline activity, enabling detection of novel zero-day attacks, though with higher false positives.
+
+[bca-208n-u5-q240] (Unit 5) What is a Man-in-the-Middle (MitM) attack?
+  A.     An attacker physically sitting between two chairs
+  B. (*) An attack where the adversary secretly intercepts, relays, and possibly alters communications between two parties who believe they are talking directly to each other
+  C.     A server crash in the middle of data processing
+  D.     Stealing a laptop
+Explanation: MitM attacks (e.g., via ARP spoofing or rogue Wi-Fi access points) eavesdrop on or hijack sessions without either party's knowledge.
+
+[bca-208n-u5-q241] (Unit 5) What is ARP Spoofing (or ARP Poisoning)?
+  A.     Flooding a switch with random MAC addresses
+  B. (*) Sending fraudulent ARP reply messages across a LAN to associate the attacker's MAC address with the IP of the default gateway, intercepting all outbound subnet traffic
+  C.     Changing IP addresses in DNS
+  D.     Deleting the ARP table
+Explanation: Because ARP has no authentication, forged ARP replies cause victims to cache the attacker's MAC address for the gateway router, enabling MitM.
+
+[bca-208n-u5-q242] (Unit 5) What is a Replay Attack in network security?
+  A.     Playing video games over a network
+  B. (*) An attack where valid intercepted data transmission is maliciously or fraudulently repeated or delayed to deceive the receiver
+  C.     Sending ping requests repeatedly
+  D.     Restarting a web server
+Explanation: Replay attacks capture legitimate authentication packets (e.g., login tokens) and resend them later to gain unauthorized access.
+
+[bca-208n-u5-q243] (Unit 5) How do security protocols defend against Replay Attacks?
+  A.     By using complex passwords only
+  B. (*) By incorporating Sequence Numbers, Timestamps, and Nonces (cryptographic single-use numbers) in message exchanges
+  C.     By disabling firewalls
+  D.     By using faster fiber optic links
+Explanation: Nonces and timestamps ensure that a retransmitted captured packet is rejected as stale or duplicate.
+
+[bca-208n-u5-q244] (Unit 5) What is a 'Zero-Day Vulnerability'?
+  A.     A bug that causes computers to reset at midnight
+  B. (*) A software security flaw that is unknown to the vendor or public, having zero days of available patches or defenses
+  C.     A vulnerability discovered on day zero of a month
+  D.     An expired SSL certificate
+Explanation: Zero-day exploits target unpatched, newly discovered vulnerabilities before software developers can release a security fix.
+
+[bca-208n-u5-q245] (Unit 5) What is a Phishing attack?
+  A.     Catching electronic fish in simulation
+  B. (*) Social engineering deception where attackers masquerade as trustworthy institutions via fraudulent emails or websites to steal sensitive user credentials
+  C.     Overloading servers with TCP SYN packets
+  D.     Eavesdropping on fiber optic cables
+Explanation: Phishing tricks users into disclosing passwords or credit card data through deceptive emails or spoofed websites.
+
+[bca-208n-u5-q246] (Unit 5) What is a Distributed Denial of Service (DDoS) attack?
+  A. (*) A DoS attack launched simultaneously from thousands of compromised distributed computers (a Botnet) coordinated by a central command and control
+  B.     An attack that targets multiple hard drives
+  C.     Distributing pirated software
+  D.     A single user pressing refresh rapidly
+Explanation: DDoS mobilizes thousands of malware-infected botnet hosts to overwhelm targets with massive volumetric traffic.
+
+[bca-208n-u5-q247] (Unit 5) In the context of network authentication, what does Multi-Factor Authentication (MFA) require?
+  A.     Multiple usernames for the same account
+  B. (*) Presenting two or more independent credentials across different categories: Something you know (password), Something you have (hardware token/phone), and Something you are (biometrics)
+  C.     Entering the password twice
+  D.     Using multiple web browsers
+Explanation: MFA substantially increases account security by requiring evidence from at least two distinct authentication categories.
+
+[bca-208n-u5-q248] (Unit 5) What is Port Scanning used for in network reconnaissance?
+  A.     Cleaning dirty cable ports
+  B. (*) Probing a target host's range of ports to discover active listening services, operating system versions, and potential vulnerabilities
+  C.     Measuring internet download speed
+  D.     Assigning DHCP addresses
+Explanation: Tools like Nmap scan ports (e.g., SYN scan) to map open services and outdated daemon versions susceptible to exploitation.
+
+[bca-208n-u5-q249] (Unit 5) Which of the following is considered an Asymmetric Key algorithm?
+  A.     AES
+  B.     DES
+  C. (*) RSA
+  D.     Triple-DES
+Explanation: RSA is public-key (asymmetric) cryptography; AES, DES, and 3DES are symmetric ciphers.
+
+[bca-208n-u5-q250] (Unit 5) What is the primary role of an IPsec Security Association (SA)?
+  A.     To register domain names
+  B. (*) A simplex (one-way) logical connection that specifies the exact cryptographic algorithms, keys, and security parameters agreed upon between two IPsec communicating entities
+  C.     An employee union for network engineers
+  D.     A table of physical router ports
+Explanation: An SA defines the cryptographic contract (cipher, key, protocol AH/ESP, SPI) negotiated via IKE for protecting a unidirectional packet flow.
+

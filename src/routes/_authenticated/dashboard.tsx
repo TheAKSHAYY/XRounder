@@ -117,6 +117,16 @@ type WeakAttemptResult = {
   } | null;
 };
 
+type SemSubjectUnit = {
+  id: string;
+  units: { id: string }[] | null;
+};
+
+type SemSubjectQuiz = {
+  id: string;
+  units: { id: string; quizzes: { id: string }[] | null }[] | null;
+};
+
 function greeting() {
   const h = new Date().getHours();
   if (h < 5) return "Burning the midnight oil";
@@ -191,6 +201,20 @@ function DashboardPage() {
     queryFn: async (): Promise<EnrichedProgress[]> => {
       if (!currentSemesterId) return [];
       try {
+        // Fetch all unit IDs for the active semester
+        const { data: semSubjects, error: sErr } = await supabase
+          .from("subjects")
+          .select("id, units(id)")
+          .eq("semester_id", currentSemesterId)
+          .is("deleted_at", null);
+
+        if (sErr || !semSubjects || semSubjects.length === 0) return [];
+
+        const unitIds = (semSubjects as unknown as SemSubjectUnit[]).flatMap((s) =>
+          (s.units ?? []).map((u) => u.id),
+        );
+        if (unitIds.length === 0) return [];
+
         const { data, error } = await supabase
           .from("progress_tracking")
           .select(
@@ -225,7 +249,7 @@ function DashboardPage() {
           `,
           )
           .eq("user_id", user.id)
-          .eq("units.subjects.semester_id", currentSemesterId)
+          .in("unit_id", unitIds)
           .order("last_activity_at", { ascending: false })
           .limit(10);
 
@@ -266,39 +290,57 @@ function DashboardPage() {
     enabled: !!currentSemesterId,
     queryFn: async () => {
       if (!currentSemesterId) return [];
-      const { data, error } = await supabase
-        .from("quiz_attempts")
-        .select(
-          `
-          id,
-          quiz_id,
-          pct,
-          score,
-          max_score,
-          passed,
-          submitted_at,
-          quizzes:quizzes!inner (
+      try {
+        const { data: semSubjects, error: sErr } = await supabase
+          .from("subjects")
+          .select("id, units(id, quizzes(id))")
+          .eq("semester_id", currentSemesterId)
+          .is("deleted_at", null);
+
+        if (sErr || !semSubjects || semSubjects.length === 0) return [];
+
+        const quizIds = (semSubjects as unknown as SemSubjectQuiz[]).flatMap((s) =>
+          (s.units ?? []).flatMap((u) => (u.quizzes ?? []).map((q) => q.id)),
+        );
+        if (quizIds.length === 0) return [];
+
+        const { data, error } = await supabase
+          .from("quiz_attempts")
+          .select(
+            `
             id,
-            title,
-            unit_id,
-            units:units!inner (
+            quiz_id,
+            pct,
+            score,
+            max_score,
+            passed,
+            submitted_at,
+            quizzes:quizzes!inner (
               id,
-              subject_id,
-              subjects:subjects!inner (
+              title,
+              unit_id,
+              units:units!inner (
                 id,
-                semester_id
+                subject_id,
+                subjects:subjects!inner (
+                  id,
+                  semester_id
+                )
               )
             )
+          `,
           )
-        `,
-        )
-        .eq("user_id", user.id)
-        .eq("quizzes.units.subjects.semester_id", currentSemesterId)
-        .not("submitted_at", "is", null)
-        .order("submitted_at", { ascending: false })
-        .limit(8);
-      if (error) throw error;
-      return (data ?? []) as unknown as QuizAttemptRow[];
+          .eq("user_id", user.id)
+          .in("quiz_id", quizIds)
+          .not("submitted_at", "is", null)
+          .order("submitted_at", { ascending: false })
+          .limit(8);
+
+        if (error) throw error;
+        return (data ?? []) as unknown as QuizAttemptRow[];
+      } catch {
+        return [];
+      }
     },
   });
 
@@ -324,6 +366,19 @@ function DashboardPage() {
     queryFn: async (): Promise<WeakTopic[]> => {
       if (!currentSemesterId) return [];
       try {
+        const { data: semSubjects, error: sErr } = await supabase
+          .from("subjects")
+          .select("id, units(id, quizzes(id))")
+          .eq("semester_id", currentSemesterId)
+          .is("deleted_at", null);
+
+        if (sErr || !semSubjects || semSubjects.length === 0) return [];
+
+        const quizIds = (semSubjects as unknown as SemSubjectQuiz[]).flatMap((s) =>
+          (s.units ?? []).flatMap((u) => (u.quizzes ?? []).map((q) => q.id)),
+        );
+        if (quizIds.length === 0) return [];
+
         const { data, error } = await supabase
           .from("quiz_attempts")
           .select(
@@ -355,7 +410,7 @@ function DashboardPage() {
           `,
           )
           .eq("user_id", user.id)
-          .eq("quizzes.units.subjects.semester_id", currentSemesterId)
+          .in("quiz_id", quizIds)
           .not("submitted_at", "is", null)
           .order("submitted_at", { ascending: false })
           .limit(20);
@@ -404,13 +459,16 @@ function DashboardPage() {
     },
   });
 
-  const bookmarks = bookmarksQuery.data ?? [];
-  const progress = progressQuery.data ?? [];
-  const attempts = quizAttemptsQuery.data ?? [];
+  const bookmarks = useMemo(() => bookmarksQuery.data ?? [], [bookmarksQuery.data]);
+  const progress = useMemo(() => progressQuery.data ?? [], [progressQuery.data]);
+  const attempts = useMemo(() => quizAttemptsQuery.data ?? [], [quizAttemptsQuery.data]);
   const streak = streakQuery.data ?? 0;
-  const weakTopics = weakTopicsQuery.data ?? [];
+  const weakTopics = useMemo(() => weakTopicsQuery.data ?? [], [weakTopicsQuery.data]);
   const semester = contextQuery.data?.semester ?? null;
-  const semesterSubjects = contextQuery.data?.subjects ?? [];
+  const semesterSubjects = useMemo(
+    () => contextQuery.data?.subjects ?? [],
+    [contextQuery.data?.subjects],
+  );
   const courseTitle = (semester?.courses as { title?: string; slug?: string } | null)?.title;
   const courseSlug = (semester?.courses as { title?: string; slug?: string } | null)?.slug;
 
@@ -476,7 +534,7 @@ function DashboardPage() {
               {greeting()}
             </span>
           </div>
-          <h1 className="mt-1 truncate font-display text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h1 className="mt-1 truncate font-display text-2xl font-normal tracking-tight text-foreground sm:text-4xl">
             {firstName}
             {semester ? (
               <span className="ml-2 font-serif font-normal italic text-muted-foreground text-xl sm:text-2xl">

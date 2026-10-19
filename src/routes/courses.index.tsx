@@ -210,10 +210,10 @@ function CoursesIndex() {
 
           <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold font-mono uppercase tracking-wider text-primary">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold font-sans tracking-wide text-accent">
                 <Sparkles className="h-3.5 w-3.5" /> University Curriculum
               </div>
-              <h1 className="mt-3 font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+              <h1 className="mt-3 font-display text-3xl sm:text-5xl font-normal tracking-tight text-foreground">
                 Degree Programs
               </h1>
               <p className="mt-2.5 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
@@ -317,29 +317,19 @@ function CoursesIndex() {
                   key={c.id}
                   to="/courses/$courseSlug"
                   params={{ courseSlug: c.slug }}
-                  className="hud-card interactive-card group relative flex flex-col justify-between overflow-hidden rounded-3xl p-6 sm:p-7 shadow-soft-xs hover:border-primary/50 transition-all duration-200"
+                  className="interactive-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card p-6 sm:p-7 shadow-2xs hover:border-accent/70 transition-all duration-200"
                 >
-                  {/* Decorative subtle ambient glow & top sheen */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent opacity-60 transition-opacity duration-200 group-hover:opacity-100"
-                  />
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/5 blur-2xl transition-all duration-200 group-hover:bg-primary/10"
-                  />
-
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 border border-primary/25 px-2.5 py-0.5 rounded-md">
+                      <span className="font-mono text-xs font-semibold uppercase tracking-wider text-accent bg-accent/10 border border-accent/25 px-2.5 py-0.5 rounded-md">
                         {c.code}
                       </span>
-                      <span className="text-xs text-muted-foreground font-semibold">
+                      <span className="text-xs text-muted-foreground font-medium">
                         {c.duration_years ? `${c.duration_years} Years` : "Degree"}
                       </span>
                     </div>
 
-                    <h2 className="mt-4 font-display text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-snug">
+                    <h2 className="mt-4 font-display text-2xl font-normal text-foreground group-hover:text-accent transition-colors leading-snug">
                       {formatTitleCase(c.title)}
                     </h2>
 
@@ -350,31 +340,31 @@ function CoursesIndex() {
                     )}
 
                     <div className="mt-5 flex flex-wrap gap-2">
-                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                         Unit Notes
                       </span>
-                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                         Past Papers
                       </span>
-                      <span className="rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-semibold text-primary">
+                      <span className="rounded-full bg-accent/10 border border-accent/20 px-2.5 py-0.5 text-[10px] font-semibold text-accent">
                         15/15 Blueprints
                       </span>
-                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                      <span className="rounded-full bg-muted/80 border border-border/60 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                         MCQs
                       </span>
                     </div>
                   </div>
 
                   <div className="mt-8 flex items-center justify-between border-t border-border/60 pt-4 text-xs">
-                    <span className="flex items-center gap-1.5 text-muted-foreground font-semibold">
-                      <Layers className="h-3.5 w-3.5 text-primary" />
+                    <span className="flex items-center gap-1.5 text-muted-foreground font-medium">
+                      <Layers className="h-3.5 w-3.5 text-accent" />
                       {(semCounts?.[c.id] ?? 0) > 0
                         ? `${semCounts![c.id]} of ${c.total_semesters ?? 6} Semesters live`
                         : "6 Semesters"}
                     </span>
-                    <span className="btn-squishy font-bold text-primary inline-flex items-center gap-1 group-hover:underline">
+                    <span className="font-semibold text-foreground group-hover:text-accent inline-flex items-center gap-1">
                       {(semCounts?.[c.id] ?? 0) > 0 ? "View semesters" : "Preview program"}{" "}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 text-accent" />
                     </span>
                   </div>
                 </Link>

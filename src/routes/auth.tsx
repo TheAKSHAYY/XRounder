@@ -103,10 +103,8 @@ function AuthPage() {
       {/* Left: brand panel */}
       <aside className="relative hidden overflow-hidden bg-primary text-primary-foreground lg:flex lg:flex-col lg:justify-between lg:p-12">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/30 blur-3xl" />
-          <div className="absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
           <div
-            className="absolute inset-0 opacity-[0.06]"
+            className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)",
               backgroundSize: "24px 24px",
@@ -123,7 +121,7 @@ function AuthPage() {
         <div className="relative space-y-8">
           <div>
             <Sparkles className="h-8 w-8 text-accent" />
-            <h2 className="mt-5 max-w-md font-display text-4xl font-semibold leading-tight">
+            <h2 className="mt-5 max-w-md font-display text-4xl font-normal leading-tight">
               Your syllabus, organised.
               <br />
               Your time, respected.
@@ -209,7 +207,7 @@ function SignInForm() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-3xl font-semibold text-foreground">Welcome back</h1>
+        <h1 className="font-display text-3xl font-normal text-foreground">Welcome back</h1>
         <p className="mt-1.5 text-sm text-muted-foreground">Sign in with Google or your email.</p>
       </div>
       <GoogleSignInButton redirect={redirect} />
@@ -299,7 +297,7 @@ function EmailSignInForm() {
         />
         Remember me on this device
       </label>
-      <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
+      <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Sign in
       </Button>
@@ -373,7 +371,7 @@ function SignUpForm() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-3xl font-semibold text-foreground">Create your account</h1>
+        <h1 className="font-display text-3xl font-normal text-foreground">Create your account</h1>
         <p className="mt-1.5 text-sm text-muted-foreground">
           Free for students. Takes less than a minute.
         </p>
@@ -418,7 +416,7 @@ function SignUpForm() {
           {capsOn && <p className="text-xs font-medium text-accent-foreground">Caps Lock is on</p>}
           <PasswordStrengthMeter password={password} />
         </div>
-        <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
+        <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Create account
         </Button>
@@ -468,7 +466,7 @@ function ForgotForm() {
         <div className="grid h-10 w-10 place-items-center rounded-xl bg-success/15 text-success">
           <CheckCircle2 className="h-5 w-5" />
         </div>
-        <h2 className="font-display text-lg font-semibold text-foreground">Check your inbox</h2>
+        <h2 className="font-display text-lg font-normal text-foreground">Check your inbox</h2>
         <p className="text-muted-foreground">
           We sent a password reset link to{" "}
           <span className="font-medium text-foreground">{email}</span>. The link expires in 1 hour.
@@ -480,7 +478,7 @@ function ForgotForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       <div>
-        <h1 className="font-display text-3xl font-semibold text-foreground">Reset your password</h1>
+        <h1 className="font-display text-3xl font-normal text-foreground">Reset your password</h1>
         <p className="mt-1.5 text-sm text-muted-foreground">
           We'll email you a secure link to set a new password.
         </p>
@@ -497,7 +495,7 @@ function ForgotForm() {
           required
         />
       </div>
-      <Button type="submit" size="lg" className="btn-squishy btn-cta w-full rounded-xl font-bold" disabled={loading}>
+      <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Send reset link
       </Button>

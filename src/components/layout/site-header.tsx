@@ -41,11 +41,10 @@ export function SiteHeader({
 
   const anchors: Array<{ label: string; href?: string; to?: string }> = marketing
     ? [
-        { label: "Degree Roadmap", href: "#curriculum-roadmap" },
-        { label: "BCA Syllabus", href: "#syllabus" },
+        { label: "Syllabus", href: "#syllabus" },
         { label: "How It Works", href: "#how-it-works" },
-        { label: "Exam Rescue", href: "#hero-rescue-machine" },
-        { label: "Browse Courses", to: "/courses" },
+        { label: "FAQ", href: "#faq" },
+        { label: "Courses", to: "/courses" },
       ]
     : [];
 
@@ -130,7 +129,9 @@ export function SiteHeader({
 
         <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
           {isGuest && <GuestBadge className="hidden md:inline-flex" />}
-          <SoundToggle />
+          <div className="hidden sm:inline-flex items-center">
+            <SoundToggle />
+          </div>
           <ThemeToggle />
 
           {loading ? (
@@ -142,11 +143,12 @@ export function SiteHeader({
             <Button
               asChild
               size="sm"
-              className="btn-squishy btn-cta h-9 sm:h-10 rounded-xl px-3 sm:px-4 text-xs sm:text-sm font-semibold shadow-xs shrink-0"
+              className="btn-cta h-9 sm:h-10 rounded-full px-3 sm:px-5 text-xs sm:text-sm font-medium shadow-soft-xs shrink-0"
             >
               <Link to="/dashboard">
-                Dashboard
-                <ArrowRight className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                <span className="hidden sm:inline">Dashboard</span>
+                <span className="sm:hidden">App</span>
+                <ArrowRight className="ml-1 sm:ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </Link>
             </Button>
           ) : (
@@ -155,7 +157,7 @@ export function SiteHeader({
                 asChild
                 variant="ghost"
                 size="sm"
-                className="btn-squishy hidden h-10 rounded-xl px-3.5 text-sm font-medium lg:inline-flex text-muted-foreground hover:text-foreground"
+                className="hidden h-10 rounded-full px-4 text-sm font-medium lg:inline-flex text-muted-foreground hover:text-foreground"
               >
                 <Link to="/auth" search={{ mode: "signin" }}>
                   Sign in
@@ -164,9 +166,9 @@ export function SiteHeader({
               <Button
                 asChild
                 size="sm"
-                className="btn-squishy btn-cta h-9 sm:h-10 rounded-xl px-2.5 sm:px-4 text-xs sm:text-sm font-semibold shadow-xs shrink-0"
+                className="btn-cta h-9 sm:h-10 rounded-full px-3 sm:px-5 text-xs sm:text-sm font-medium shadow-soft-xs shrink-0"
               >
-                <Link to="/auth" search={{ mode: "signup" }}>
+                <Link to="/courses/$courseSlug" params={{ courseSlug: "bca" }}>
                   <span className="hidden sm:inline">Start Learning</span>
                   <span className="sm:hidden">Start</span>
                   <ArrowRight className="ml-1 sm:ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
@@ -180,7 +182,7 @@ export function SiteHeader({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl md:hidden shrink-0"
+                className="h-9 w-9 sm:h-10 sm:w-10 rounded-full md:hidden shrink-0"
                 aria-label="Open menu"
               >
                 <Menu className="h-5 w-5" />
@@ -189,7 +191,7 @@ export function SiteHeader({
             <SheetContent side="right" className="w-[min(20rem,85vw)]">
               <SheetHeader>
                 <div className="flex items-center justify-between pr-6">
-                  <SheetTitle className="font-display">Navigation</SheetTitle>
+                  <SheetTitle className="font-display font-normal">Navigation</SheetTitle>
                   {isGuest && <GuestBadge />}
                 </div>
               </SheetHeader>
@@ -248,12 +250,21 @@ export function SiteHeader({
                 >
                   Developer
                 </Link>
-                <Link
-                  to="/help"
-                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-                >
-                  Help
-                </Link>
+                {user ? (
+                  <Link
+                    to="/help"
+                    className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    Help & guides
+                  </Link>
+                ) : (
+                  <a
+                    href="mailto:support@xrounder.app"
+                    className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    Help & support
+                  </a>
+                )}
 
                 <div className="mt-4 pt-4 border-t border-border/60">
                   {user ? (
@@ -273,7 +284,7 @@ export function SiteHeader({
                         size="sm"
                         className="btn-cta h-11 w-full rounded-xl font-semibold"
                       >
-                        <Link to="/auth" search={{ mode: "signup" }}>
+                        <Link to="/courses/$courseSlug" params={{ courseSlug: "bca" }}>
                           Start Learning <ArrowRight className="ml-1.5 h-4 w-4" />
                         </Link>
                       </Button>

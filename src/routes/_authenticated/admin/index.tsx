@@ -234,7 +234,7 @@ function AdminDashboard() {
       {/* Trend strip — last 7 days */}
       <section className="mb-8">
         <div className="mb-2 flex items-baseline justify-between">
-          <h2 className="font-serif text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-sans text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Last 7 days
           </h2>
         </div>
@@ -248,7 +248,7 @@ function AdminDashboard() {
       {/* Library totals — collapsed reference */}
       <section className="mb-8">
         <div className="mb-2 flex items-baseline justify-between">
-          <h2 className="font-serif text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-sans text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Library totals
           </h2>
           <Link to="/admin/explorer" className="text-xs text-primary hover:underline">
@@ -394,7 +394,7 @@ function AttentionCard({
             <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
               {title}
             </div>
-            <div className="font-serif text-2xl font-semibold text-foreground">
+            <div className="font-sans text-2xl font-bold tabular-nums text-foreground">
               {loading ? <Skeleton className="h-7 w-10" /> : count}
             </div>
           </div>
@@ -452,7 +452,7 @@ function TrendTile({
         <div className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
           {label}
         </div>
-        <div className="font-serif text-xl font-semibold text-foreground">
+        <div className="font-sans text-xl font-bold tabular-nums text-foreground">
           {loading ? <Skeleton className="h-6 w-10" /> : (value ?? 0)}
         </div>
       </div>
@@ -476,7 +476,7 @@ function MiniStat({
       <div className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
         {label}
       </div>
-      <div className="font-serif text-base font-semibold text-foreground">
+      <div className="font-sans text-base font-bold tabular-nums text-foreground">
         {loading ? <Skeleton className="h-5 w-8" /> : (value ?? 0)}
       </div>
     </div>

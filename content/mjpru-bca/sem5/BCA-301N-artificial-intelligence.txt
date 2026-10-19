@@ -1,0 +1,1752 @@
+MJPRU BAREILLY BCA SEMESTER 5
+BCA-301N: ARTIFICIAL INTELLIGENCE - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-301n-u1-q01] (Unit 1) Who is widely recognized as the 'Father of Artificial Intelligence' and coined the term 'Artificial Intelligence' in 1956?
+  A.     Alan Turing
+  B. (*) John McCarthy
+  C.     Marvin Minsky
+  D.     Herbert Simon
+Explanation: John McCarthy coined the term 'Artificial Intelligence' at the Dartmouth Summer Research Project on Artificial Intelligence in 1956.
+
+[bca-301n-u1-q02] (Unit 1) In which historic workshop was Artificial Intelligence formally established as an academic field?
+  A.     1950 Manchester Computing Conference
+  B. (*) 1956 Dartmouth Summer Research Project
+  C.     1968 Stanford AI Symposium
+  D.     1980 Tokyo Fifth Generation Conference
+Explanation: The Dartmouth workshop of 1956, organized by McCarthy, Minsky, Rochester, and Shannon, officially founded the field of AI.
+
+[bca-301n-u1-q03] (Unit 1) Russell and Norvig categorize definitions of AI into four distinct approaches based on:
+  A.     Cost, Speed, Reliability, and Scalability
+  B. (*) Thinking Humanly, Thinking Rationally, Acting Humanly, and Acting Rationally
+Explanation: The standard modern textbook definition categorizes AI along two dimensions: human performance vs ideal rationality, and thought processes vs behavior.
+
+[bca-301n-u1-q04] (Unit 1) Which test was proposed in 1950 to provide an operational definition of machine intelligence?
+  A.     Voight-Kampff Test
+  B. (*) The Turing Test (Imitation Game)
+  C.     Chinese Room Experiment
+  D.     Winograd Schema Challenge
+Explanation: Alan Turing proposed the Imitation Game in his paper 'Computing Machinery and Intelligence' (1950).
+
+[bca-301n-u1-q05] (Unit 1) Which of the following cognitive capabilities is NOT typically required for a computer to pass the standard Turing Test?
+  A.     Natural Language Processing
+  B.     Knowledge Representation and Automated Reasoning
+  C. (*) Physical locomotion via bipedal robotic legs
+  D.     Machine Learning
+Explanation: The standard Turing Test involves text-based terminal communication, deliberately avoiding physical interaction or locomotion.
+
+[bca-301n-u1-q06] (Unit 1) The 'Total Turing Test' extends the original test by including which additional capabilities?
+  A.     Quantum computing processing
+  B. (*) Computer Vision and Robotics to interact with physical objects
+  C.     Self-replication and bio-mimicry
+  D.     Telepathic neural transmission
+Explanation: The Total Turing Test requires computer vision to perceive objects and robotics to manipulate them physically.
+
+[bca-301n-u1-q07] (Unit 1) What philosophical thought experiment did John Searle formulate in 1980 to argue against 'Strong AI'?
+  A.     The Trolley Problem
+  B. (*) The Chinese Room Argument
+  C.     Ship of Theseus
+  D.     Brain in a Vat
+Explanation: Searle's Chinese Room argument asserts that syntactic symbol manipulation does not constitute semantic understanding or intentionality.
+
+[bca-301n-u1-q08] (Unit 1) According to John Searle, a computer running a program possesses syntax but lacks:
+  A.     Speed
+  B. (*) Semantics (meaning and understanding)
+  C.     Mathematical consistency
+  D.     Binary memory
+Explanation: Searle concluded: 'Syntax is not by itself sufficient for, nor constitutive of, semantics.'
+
+[bca-301n-u1-q09] (Unit 1) What is the fundamental assertion of the Physical Symbol System Hypothesis (PSSH) formulated by Newell and Simon?
+  A.     Neural networks are the only path to artificial general intelligence
+  B. (*) A physical symbol system has the necessary and sufficient means for general intelligent action
+  C.     Symbols cannot represent human consciousness
+  D.     Intelligence requires quantum mechanical superposition
+Explanation: Newell and Simon postulated that symbolic manipulation of discrete tokens is both necessary and sufficient for general intelligence.
+
+[bca-301n-u1-q10] (Unit 1) GOFAI stands for which historical paradigm of Artificial Intelligence?
+  A.     Genetic Optimization For Artificial Intelligence
+  B. (*) Good Old-Fashioned Artificial Intelligence
+  C.     Grid-Oriented Framework for AI
+  D.     Global Ontology Formats for AI
+Explanation: GOFAI (coined by John Haugeland) refers to classical, symbolic, logic-based AI prevalent from the 1950s to the 1980s.
+
+[bca-301n-u1-q11] (Unit 1) In contrast to Symbolic AI, Connectionist AI relies primarily on:
+  A.     Predicate logic deduction trees
+  B. (*) Artificial Neural Networks with parallel distributed processing
+  C.     Hard-coded IF-THEN expert systems
+  D.     Frame-based inheritance hierarchies
+Explanation: Connectionism models mental phenomena using interconnected networks of simple units inspired by biological neurons.
+
+[bca-301n-u1-q12] (Unit 1) An intelligent agent is formally defined as an entity that:
+  A.     Contains at least 100 billion parameters
+  B. (*) Perceives its environment through sensors and acts upon it through actuators
+  C.     Has biological self-awareness and emotions
+  D.     Always performs faster than human specialists
+Explanation: An agent is anything that can view its environment through sensors and act upon that environment through actuators.
+
+[bca-301n-u1-q13] (Unit 1) In AI agent theory, the mapping from percept sequences to actions is known as the:
+  A.     Agent Program
+  B. (*) Agent Function
+  C.     Sensor Matrix
+  D.     Actuator Driver
+Explanation: The agent function is an abstract mathematical mapping from percept histories to actions; the agent program is the concrete implementation.
+
+[bca-301n-u1-q14] (Unit 1) What does the acronym PEAS stand for in the context of intelligent agent task environment specification?
+  A. (*) Performance, Environment, Actuators, Sensors
+  B.     Perception, Entities, Actions, Strategy
+  C.     Planning, Execution, Assessment, Stability
+  D.     Protocol, Encoding, Architecture, Syntax
+Explanation: PEAS stands for Performance measure, Environment, Actuators, and Sensors.
+
+[bca-301n-u1-q15] (Unit 1) Which of the following represents the PEAS specification for an Automated Taxi Driver agent?
+  A. (*) P: Maximize profit, minimize fuel; E: Roads, traffic; A: Steering, accelerator, brakes; S: Cameras, LIDAR, GPS
+  B.     P: Correct grammar; E: Keyboard; A: Display; S: Mouse
+  C.     P: High chess ELO; E: Board; A: Mechanical arm; S: Visual sensor
+  D.     P: Cold temperature; E: Room; A: Compressor; S: Thermometer
+Explanation: An automated taxi requires performance metrics (safety, speed, legality), real roads, mechanical actuators, and spatial sensors.
+
+[bca-301n-u1-q16] (Unit 1) An environment is considered 'Fully Observable' if:
+  A.     The agent has infinite memory
+  B. (*) The agent's sensors give it access to the complete state of the environment at each point in time
+  C.     The environment does not change while the agent is deliberating
+  D.     All actions have strictly deterministic outcomes
+Explanation: A fully observable environment leaves no unobserved state variables that affect action selection (e.g., Chess vs Poker).
+
+[bca-301n-u1-q17] (Unit 1) A game of Poker is an example of an environment that is:
+  A.     Fully Observable, Deterministic, Static
+  B. (*) Partially Observable, Stochastic, Sequential
+  C.     Continuous, Episodic, Fully Observable
+  D.     Single-Agent, Deterministic, Episodic
+Explanation: Poker features hidden opponent cards (partially observable), random card dealing (stochastic), and multi-round decision making (sequential).
+
+[bca-301n-u1-q18] (Unit 1) An environment is defined as 'Deterministic' if:
+  A.     The agent's next action is predetermined by hardcoded logic
+  B. (*) The next state of the environment is completely determined by the current state and the agent's action
+  C.     The environment contains no other active agents
+  D.     The time taken to deliberate is zero
+Explanation: In a deterministic environment, there is no randomness or uncertainty in how actions alter the environment state.
+
+[bca-301n-u1-q19] (Unit 1) In an 'Episodic' task environment:
+  A.     The current decision affects all subsequent future decisions
+  B. (*) The agent's experience is divided into independent atomic episodes where current action has no bearing on future episodes
+  C.     The agent cannot perceive any sensor input
+  D.     The environment is constantly moving in continuous time
+Explanation: In episodic environments (e.g., defect classification on an assembly line), each percept-action pair is completely independent.
+
+[bca-301n-u1-q20] (Unit 1) Which agent architecture selects actions based solely on the current percept, ignoring the percept history completely?
+  A.     Model-Based Reflex Agent
+  B. (*) Simple Reflex Agent
+  C.     Goal-Based Agent
+  D.     Utility-Based Agent
+Explanation: Simple reflex agents operate via condition-action rules evaluated strictly against the current percept.
+
+[bca-301n-u1-q21] (Unit 1) Why do Simple Reflex Agents fail in partially observable environments?
+  A.     They have too many rules to evaluate in real time
+  B. (*) They cannot maintain internal state to track unperceived aspects of the world, leading to infinite loops
+  C.     They lack floating-point arithmetic units
+  D.     They cannot execute actuators simultaneously
+Explanation: Without internal state, simple reflex agents can suffer from infinite loops because identical percepts yield identical actions even in differing hidden states.
+
+[bca-301n-u1-q22] (Unit 1) A Model-Based Reflex Agent differs from a Simple Reflex Agent because it maintains:
+  A.     A neural network with at least 50 layers
+  B. (*) An internal state reflecting how the world evolves and how the agent's actions affect it
+  C.     A monetary utility function
+  D.     A database of all past user credentials
+Explanation: Model-based agents track history using an internal model of world physics ('how the world evolves') and sensor dynamics.
+
+[bca-301n-u1-q23] (Unit 1) What distinguishes a Goal-Based Agent from a Reflex Agent?
+  A.     It operates without sensors
+  B. (*) It combines current state knowledge with explicit goal information to evaluate if an action achieves a desired state
+  C.     It only executes pre-compiled binary tables
+  D.     It ignores all obstacles during traversal
+Explanation: Goal-based agents deliberate on whether a sequence of actions leads to an explicit goal state (search and planning).
+
+[bca-301n-u1-q24] (Unit 1) When multiple competing goals exist, which agent architecture uses a real-valued mapping to trade off conflicting objectives?
+  A.     Simple Reflex Agent
+  B. (*) Utility-Based Agent
+  C.     Logic Theorem Prover
+  D.     Deterministic Finite Automaton
+Explanation: A utility-based agent uses a continuous utility function U(s) to measure the degree of happiness or performance in any given state.
+
+[bca-301n-u1-q25] (Unit 1) In the Learning Agent architecture, which component is responsible for evaluating the agent's behavior against an external performance standard?
+  A.     The Learning Element
+  B. (*) The Critic
+  C.     The Performance Element
+  D.     The Learning Goals Generator
+Explanation: The Critic evaluates how well the agent is doing with respect to an external performance standard and provides feedback.
+
+[bca-301n-u1-q26] (Unit 1) In a learning agent, what is the specific role of the 'Learning Goals Generator' (or Problem Generator)?
+  A.     To shut down the agent when errors occur
+  B. (*) To suggest novel exploratory actions that lead to new, informative experiences even if sub-optimal short-term
+  C.     To compute gradients for backpropagation
+  D.     To encrypt user input
+Explanation: The problem generator encourages exploration, discovering better actions rather than merely exploiting existing knowledge.
+
+[bca-301n-u1-q27] (Unit 1) Which term describes the periods of reduced funding and interest in AI research following unmet commercial expectations?
+  A.     AI Eclipse
+  B. (*) AI Winter
+  C.     Silicon Recession
+  D.     Turing Drought
+Explanation: The AI Winters (notably mid-1970s and late-1980s) occurred when exaggerated promises collided with computational limitations.
+
+[bca-301n-u1-q28] (Unit 1) The historic 1997 chess match where an AI defeated reigning World Champion Garry Kasparov was won by:
+  A.     AlphaGo
+  B. (*) Deep Blue
+  C.     Watson
+  D.     TD-Gammon
+Explanation: IBM's Deep Blue defeated Garry Kasparov 3.5 to 2.5 in a six-game match in May 1997.
+
+[bca-301n-u1-q29] (Unit 1) The 'Frame Problem' in classical artificial intelligence philosophy refers to the challenge of:
+  A.     Drawing graphical user interface borders in window managers
+  B. (*) Representing what remains unchanged in the world when an action is performed
+  C.     Fitting neural networks into memory frames
+  D.     Streaming video frames across networks
+Explanation: Formulated by McCarthy and Hayes (1969), the frame problem addresses how to specify non-effects of actions without exhaustive non-change axioms.
+
+[bca-301n-u1-q30] (Unit 1) The concept of 'Bounded Rationality', which heavily influences intelligent agent design, was introduced by:
+  A.     Alan Turing
+  B. (*) Herbert A. Simon
+  C.     Claude Shannon
+  D.     Noam Chomsky
+Explanation: Nobel laureate Herbert Simon recognized that real-world agents must make rational decisions under strict computational and temporal constraints.
+
+[bca-301n-u1-q31] (Unit 1) In the context of the Turing Test, what is the 'Loebner Prize'?
+  A.     A prize for building the most energy-efficient robot
+  B. (*) An annual competition that awards prizes to the computer programs considered most human-like
+  C.     A medal awarded to top mathematics researchers
+  D.     A grant for developing hardware microchips
+Explanation: The Loebner Prize was an annual competition in artificial intelligence that awarded prizes to chat programs passing Turing-like tests.
+
+[bca-301n-u1-q32] (Unit 1) Which of the following is considered a 'Discrete' task environment?
+  A. (*) Chess
+  B.     Autonomous Vehicle Highway Driving
+  C.     Aircraft Flight Control
+  D.     Robot Arm Assembly
+Explanation: In Chess, states, turns, and moves are distinct, finite, and countable (discrete), unlike continuous physical vehicular dynamics.
+
+[bca-301n-u1-q33] (Unit 1) If an agent's environment does not change while the agent is deliberating, the environment is called:
+  A. (*) Static
+  B.     Dynamic
+  C.     Semidynamic
+  D.     Immutable
+Explanation: Static environments remain frozen while the agent plans; dynamic environments continuously evolve independently.
+
+[bca-301n-u1-q34] (Unit 1) If the environment itself does not change with the passage of time, but the agent's performance score does, it is classified as:
+  A.     Discrete
+  B. (*) Semidynamic
+  C.     Static
+  D.     Episodic
+Explanation: A semidynamic environment (e.g., timed chess) does not change state, but the clock ticking impacts performance.
+
+[bca-301n-u1-q35] (Unit 1) What constitutes a 'Multi-Agent Competitive' environment?
+  A.     Multiple agents working together to maximize a shared reward
+  B. (*) The utility of one agent directly opposes or detracts from the utility of other agents (zero-sum)
+  C.     An agent operating in an empty virtual room
+  D.     An agent communicating with multiple sensors simultaneously
+Explanation: In competitive multi-agent environments (e.g., Chess, Go), an agent's gain is an opponent's loss.
+
+[bca-301n-u1-q36] (Unit 1) Which early AI program developed by Newell, Shaw, and Simon in 1956 is widely regarded as the first AI software?
+  A. (*) Logic Theorist
+  B.     ELIZA
+  C.     SHRDLU
+  D.     MYCIN
+Explanation: Logic Theorist proved 38 of the first 52 theorems in Whitehead and Russell's Principia Mathematica.
+
+[bca-301n-u1-q37] (Unit 1) What major limitation of single-layer perceptrons was mathematically proved by Marvin Minsky and Seymour Papert in 1969?
+  A.     Inability to compute linear functions
+  B. (*) Inability to learn the non-linearly separable XOR (exclusive OR) function
+  C.     Inability to perform floating point division
+  D.     Inability to run on vacuum-tube computers
+Explanation: Minsky and Papert's book 'Perceptrons' proved single-layer networks cannot solve linearly inseparable problems like XOR, triggering the first AI winter.
+
+[bca-301n-u1-q38] (Unit 1) The 'Qualification Problem' in knowledge representation and reasoning refers to:
+  A.     Qualifying human examiners for Turing tests
+  B. (*) The impossibility of explicitly enumerating all preconditions required for a real-world action to succeed
+  C.     Certifying software engineers to deploy algorithms
+  D.     Allocating memory buffers for floating point values
+Explanation: The qualification problem highlights that real-world actions have endless rare failure conditions (e.g., car won't start if exhaust pipe is plugged by a potato).
+
+[bca-301n-u1-q39] (Unit 1) In AI safety, 'Alignment Problem' concerns:
+  A.     Aligning graphical pixels on a video monitor
+  B. (*) Ensuring that the goals and actions of autonomous AI systems align with human values and intended outcomes
+  C.     Aligning text tokens in NLP parse trees
+  D.     Calibrating robotic joint angle offsets
+Explanation: AI alignment focuses on preventing autonomous systems from pursuing unintended or destructive goals while optimizing a proxy metric.
+
+[bca-301n-u1-q40] (Unit 1) Weak AI (Narrow AI) is characterized by:
+  A.     A system that possesses human-level consciousness and general reasoning across all domains
+  B. (*) A system engineered and trained to solve a specific, dedicated task exceptionally well
+  C.     An obsolete system that runs on mechanical relays
+  D.     A software program that has failed the Turing test
+Explanation: Weak/Narrow AI excels in specialized domains (e.g., AlphaFold, speech recognition, chess) without general consciousness.
+
+[bca-301n-u1-q41] (Unit 1) Strong AI (Artificial General Intelligence - AGI) refers to a hypothetical machine that:
+  A.     Can only perform integer additions
+  B. (*) Possesses the ability to understand, learn, and apply intellectual capacity across any cognitive task equal to or surpassing humans
+  C.     Operates exclusively using quantum gates
+  D.     Is immune to power failure
+Explanation: AGI represents true general-purpose intelligence across diverse cognitive and creative domains.
+
+[bca-301n-u1-q42] (Unit 1) Which early conversational chatbot, written by Joseph Weizenbaum in 1966, simulated a Rogerian psychotherapist?
+  A.     Siri
+  B. (*) ELIZA
+  C.     ALICE
+  D.     PARRY
+Explanation: ELIZA used simple pattern matching and substitution to parody a therapist, startling its creator with how readily users attributed empathy to it.
+
+[bca-301n-u1-q43] (Unit 1) The 'Eliza Effect' in cognitive science refers to the human tendency to:
+  A.     Fear all computational devices
+  B. (*) Unconsciously attribute human-like understanding, emotions, and consciousness to computer software based on surface symbols
+  C.     Prefer voice assistants over human doctors
+  D.     Forget computer passwords
+Explanation: The Eliza effect describes anthropomorphizing software due to syntactic fluency.
+
+[bca-301n-u1-q44] (Unit 1) In knowledge-based AI, what is an 'Ontology'?
+  A.     A physical hard drive sector
+  B. (*) A formal, explicit specification of a shared conceptualization (entities, categories, relationships in a domain)
+  C.     The speed of neural network convergence
+  D.     A programming error in LISP
+Explanation: An ontology defines formal terms and relationships representing a specific universe of discourse (e.g., OWL, WordNet).
+
+[bca-301n-u1-q45] (Unit 1) Which of the following is an example of an 'Episodic and Single-Agent' environment?
+  A. (*) Automated automated visual inspection of circuit boards on a factory line
+  B.     Autonomous car driving on an interstate
+  C.     Multiplayer real-time strategy gaming
+  D.     High-frequency stock market trading
+Explanation: Part sorting/inspection treats each item independently (episodic) without other rational adversaries (single-agent).
+
+[bca-301n-u1-q46] (Unit 1) What is the primary objective of a 'Rational Agent'?
+  A.     To simulate human mistakes and biological fatigue
+  B. (*) For each possible percept sequence, select an action expected to maximize its performance measure based on evidence and knowledge
+  C.     To always arrive at the globally optimal state with zero computation time
+  D.     To store all past user inputs indefinitely
+Explanation: Rationality is about expected success given available information, not omniscience or perfection.
+
+[bca-301n-u1-q47] (Unit 1) Why is 'Omniscience' distinct from 'Rationality' in intelligent agents?
+  A. (*) Omniscience means knowing the actual outcome of actions beforehand, which is impossible in uncertain environments; rationality maximizes expected outcome
+  B.     Omniscience is achievable by simple reflex agents, whereas rationality requires utility models
+  C.     Rational agents do not use sensors
+  D.     There is no difference; the terms are synonymous
+Explanation: An omniscient agent knows the real outcome of its actions and can act accordingly; a rational agent maximizes expected performance given incomplete data.
+
+[bca-301n-u1-q48] (Unit 1) The DARPA Grand Challenge (2004-2007) was a pivotal technological catalyst for which branch of AI?
+  A.     Expert systems for hospital accounting
+  B. (*) Autonomous vehicles and robotic navigation in unmapped terrain
+  C.     Machine translation of ancient cuneiform texts
+  D.     Speech synthesis for mainframe terminals
+Explanation: The DARPA Grand Challenges accelerated autonomous vehicle sensors (LIDAR, computer vision) and path planning.
+
+[bca-301n-u1-q49] (Unit 1) Which AI programming language, created by John McCarthy in 1958, dominated AI research for decades due to symbolic manipulation and list processing?
+  A.     Fortran
+  B. (*) LISP (List Processing)
+  C.     COBOL
+  D.     Pascal
+Explanation: LISP introduced tree data structures, automatic memory management, dynamic typing, and symbolic expressions.
+
+[bca-301n-u1-q50] (Unit 1) What programming language developed in 1972 by Alain Colmerauer is based on First-Order Predicate Logic and automated resolution?
+  A. (*) Prolog (Programmation en Logique)
+  B.     Ada
+  C.     Simula
+  D.     Smalltalk
+Explanation: Prolog evaluates declarative facts and rules using depth-first search and unification.
+
+[bca-301n-u2-q51] (Unit 2) In AI state space search, how is a problem formally defined?
+  A. (*) Initial State, Actions/Transition Model, Goal Test, and Path Cost
+  B.     Hardware specifications, RAM size, clock speed, and compiler flags
+  C.     Variables, Loops, Functions, and Recursion depth
+  D.     Knowledge base, Inference engine, and User interface
+Explanation: A search problem is formally defined by: Initial state, Actions/Successor function, Goal test, and Path cost function.
+
+[bca-301n-u2-q52] (Unit 2) What is the time complexity of Breadth-First Search (BFS), where 'b' is the branching factor and 'd' is the depth of the shallowest solution?
+  A.     O(b * d)
+  B. (*) O(b^d)
+  C.     O(d^b)
+  D.     O(b + d)
+Explanation: BFS generates every node at each depth level, leading to exponential time complexity O(b^d).
+
+[bca-301n-u2-q53] (Unit 2) What is the space complexity of Depth-First Search (DFS), where 'b' is branching factor and 'm' is maximum depth?
+  A.     O(b^m)
+  B. (*) O(b * m)
+  C.     O(m^b)
+  D.     O(b + m)
+Explanation: DFS only needs to store the current path from the root to the leaf along with unexpanded sibling nodes, requiring only O(bm) memory.
+
+[bca-301n-u2-q54] (Unit 2) Which uninformed search algorithm is guaranteed to find the lowest-cost solution when step costs are non-uniform?
+  A.     Breadth-First Search
+  B.     Depth-First Search
+  C. (*) Uniform-Cost Search (Dijkstra's Algorithm variant)
+  D.     Depth-Limited Search
+Explanation: Uniform-Cost Search expands the node with the lowest path cost g(n) using a priority queue.
+
+[bca-301n-u2-q55] (Unit 2) What is the primary advantage of Iterative Deepening Search (IDS)?
+  A.     It requires zero memory
+  B. (*) It combines the space efficiency of DFS (O(bd)) with the completeness and optimality of BFS
+  C.     It avoids examining the root node more than once
+  D.     It runs in logarithmic time
+Explanation: IDS combines the modest memory requirements of DFS with the completeness and optimality of BFS.
+
+[bca-301n-u2-q56] (Unit 2) In heuristic search, a heuristic function h(n) represents:
+  A.     The exact cost incurred from the start node to node n
+  B. (*) An estimate of the cheapest path cost from node n to a goal state
+  C.     The number of child nodes expanded so far
+  D.     The depth of node n in the search tree
+Explanation: h(n) is an informed estimate of the remaining distance to the goal state.
+
+[bca-301n-u2-q57] (Unit 2) A heuristic function h(n) is defined as 'admissible' if:
+  A.     It never underestimates the true cost to reach the nearest goal state (h(n) >= h*(n))
+  B. (*) It never overestimates the true cost to reach the nearest goal state (h(n) <= h*(n))
+  C.     It is always equal to 0 for all states
+  D.     It increases strictly by 1 at every step
+Explanation: Admissibility means h(n) is an optimistic estimate: it never overestimates the true minimum cost h*(n).
+
+[bca-301n-u2-q58] (Unit 2) In the A* search algorithm, what is the evaluation function f(n)?
+  A.     f(n) = g(n) - h(n)
+  B. (*) f(n) = g(n) + h(n)
+  C.     f(n) = g(n) * h(n)
+  D.     f(n) = max(g(n), h(n))
+Explanation: f(n) = g(n) + h(n), where g(n) is the known cost to reach n, and h(n) is the estimated cost from n to the goal.
+
+[bca-301n-u2-q59] (Unit 2) For A* tree search to be mathematically guaranteed to find an optimal solution, the heuristic h(n) must be:
+  A.     Monotonic only
+  B. (*) Admissible
+  C.     Non-linear
+  D.     Constant
+Explanation: A* tree search is guaranteed to be optimal if h(n) is admissible.
+
+[bca-301n-u2-q60] (Unit 2) For A* graph search (which checks for repeated states) to guarantee optimality without reopening closed nodes, h(n) must be:
+  A. (*) Consistent (Monotonic)
+  B.     Inadmissible
+  C.     Negative
+  D.     Unbounded
+Explanation: Consistency (satisfying the triangle inequality: h(n) <= c(n, a, n') + h(n')) guarantees optimal graph search without node reopening.
+
+[bca-301n-u2-q61] (Unit 2) If h(n) = 0 for all nodes, the A* algorithm behaves identically to:
+  A.     Depth-First Search
+  B. (*) Uniform-Cost Search (Dijkstra's Algorithm)
+  C.     Greedy Best-First Search
+  D.     Hill Climbing
+Explanation: When h(n) = 0, f(n) = g(n) + 0 = g(n), reducing A* directly to Uniform-Cost Search.
+
+[bca-301n-u2-q62] (Unit 2) Greedy Best-First Search selects the next node to expand strictly based on:
+  A.     Lowest g(n)
+  B. (*) Lowest h(n)
+  C.     Lowest g(n) + h(n)
+  D.     Random selection
+Explanation: Greedy Best-First Search evaluates nodes using only f(n) = h(n), trying to get as close to the goal as quickly as possible.
+
+[bca-301n-u2-q63] (Unit 2) What is the primary vulnerability of Greedy Best-First Search?
+  A. (*) It is prone to getting stuck in false starts or loops and is neither complete nor optimal
+  B.     It consumes O(b^d) space at every step
+  C.     It cannot be implemented with a priority queue
+  D.     It only operates on binary trees
+Explanation: Like depth-first search, greedy search can follow an erroneous path indefinitely without backtracking efficiently, making it incomplete and sub-optimal.
+
+[bca-301n-u2-q64] (Unit 2) In pure Hill Climbing search, why does the algorithm terminate prematurely?
+  A.     It runs out of memory on the heap
+  B. (*) It gets trapped in Local Maxima, Plateaus, or Ridges
+  C.     It requires an admissible heuristic
+  D.     It encounters a cycle of length 2
+Explanation: Hill climbing halts when no immediate neighboring state has a higher value than the current state, even if far from the global maximum.
+
+[bca-301n-u2-q65] (Unit 2) What is a 'Plateau' in a local search state space landscape?
+  A.     A global maximum with steep drops on all sides
+  B. (*) A flat area of the state space where all neighboring states have the identical evaluation value
+  C.     A vertical wall where no actions are valid
+  D.     A deep valley representing minimum cost
+Explanation: On a plateau or shoulder, the gradient is zero, giving hill climbing no guidance on which direction to proceed.
+
+[bca-301n-u2-q66] (Unit 2) In problem reduction, what graphical representation is used to model problems that decompose into sub-problems?
+  A.     State Transition Matrices
+  B. (*) AND/OR Graphs
+  C.     Petri Nets
+  D.     Directed Acyclic Lattice
+Explanation: AND/OR graphs represent alternate solution paths (OR nodes) and mandatory concurrent sub-problem decompositions (AND nodes).
+
+[bca-301n-u2-q67] (Unit 2) Which search algorithm is specifically designed to find optimal solution trees in AND/OR graphs?
+  A.     A* Algorithm
+  B. (*) AO* Algorithm
+  C.     Minimax Algorithm
+  D.     Dijkstra's Algorithm
+Explanation: The AO* algorithm computes optimal cost-effective sub-trees in AND/OR graphs using heuristic estimates.
+
+[bca-301n-u2-q68] (Unit 2) In an AND/OR graph, an AND branch connecting node N to children N1 and N2 means:
+  A.     Solving either N1 or N2 solves N
+  B. (*) Both sub-problems N1 and N2 must be completely solved to solve problem N
+  C.     Neither N1 nor N2 can be solved
+  D.     N1 and N2 are mutually exclusive
+Explanation: An AND node decomposes a problem into multiple required sub-tasks; all must be solved.
+
+[bca-301n-u2-q69] (Unit 2) In a two-player zero-sum perfect information game like Chess or Tic-Tac-Toe, which algorithm determines optimal moves?
+  A.     Kruskal's Algorithm
+  B. (*) The Minimax Algorithm
+  C.     Simulated Annealing
+  D.     Bellman-Ford Algorithm
+Explanation: The Minimax algorithm computes optimal decisions assuming an adversary who plays to minimize the player's utility.
+
+[bca-301n-u2-q70] (Unit 2) In the Minimax algorithm, what does the MAX player attempt to do?
+  A.     Minimize the opponent's thinking time
+  B. (*) Maximize its own minimum payoff / utility score
+  C.     Equalize the board score to force a draw
+  D.     Pick moves at random to confuse the adversary
+Explanation: The MAX player chooses the action that leads to the highest possible value among all available actions.
+
+[bca-301n-u2-q71] (Unit 2) Alpha-Beta pruning improves the efficiency of the Minimax algorithm by:
+  A.     Altering the final evaluation score of the game tree
+  B. (*) Eliminating branches from the search tree that cannot possibly influence the final minimax decision
+  C.     Restricting the game to only 3 turns
+  D.     Converting zero-sum games into cooperative games
+Explanation: Alpha-beta pruning discards branches that are demonstrably inferior to alternatives already examined, returning identical results to Minimax.
+
+[bca-301n-u2-q72] (Unit 2) In Alpha-Beta pruning, what does the parameter 'Alpha' represent?
+  A.     The minimum score that the minimizing player is assured of
+  B. (*) The maximum score that the maximizing player is assured of so far
+  C.     The total number of nodes pruned
+  D.     The branching factor of the root node
+Explanation: Alpha (α) tracks the highest-value choice found so far at any choice point along the path for the MAX player.
+
+[bca-301n-u2-q73] (Unit 2) In Alpha-Beta pruning, a 'Beta Cutoff' occurs when:
+  A.     Beta becomes greater than Alpha
+  B. (*) At a MIN node, the current evaluation value is less than or equal to Alpha (v <= α)
+  C.     Alpha reaches positive infinity
+  D.     The game tree reaches depth 0
+Explanation: If a MIN node's value drops below or matches Alpha, MAX will never choose the parent branch, so remaining children are pruned.
+
+[bca-301n-u2-q74] (Unit 2) Under ideal move ordering (best moves evaluated first), what is the effective time complexity of Alpha-Beta pruning compared to Minimax O(b^d)?
+  A. (*) O(b^(d/2))
+  B.     O(d * b)
+  C.     O(log(b^d))
+  D.     O(b^(d/4))
+Explanation: With optimal ordering, Alpha-Beta searches twice as deep in the same amount of time, cutting the effective branching factor to √b (complexity O(b^(d/2))).
+
+[bca-301n-u2-q75] (Unit 2) What is a Constraint Satisfaction Problem (CSP) composed of?
+  A. (*) Variables, Domains of allowable values, and Constraints
+  B.     Matrices, Eigenvectors, and Determinants
+  C.     Threads, Locks, and Semaphores
+  D.     Production rules and Inference engines only
+Explanation: A CSP is formally defined by a set of variables X, domains D, and constraints C specifying allowable combinations of values.
+
+[bca-301n-u2-q76] (Unit 2) Which classic puzzle is standardly formulated as a Constraint Satisfaction Problem?
+  A. (*) The 8-Queens Puzzle and Map Coloring
+  B.     Computing Fibonacci numbers
+  C.     Shortest path on a GPS map
+  D.     Sorting an array of floating point numbers
+Explanation: 8-Queens, Sudoku, and Map Coloring are benchmark CSPs with discrete variables and mutual exclusion constraints.
+
+[bca-301n-u2-q77] (Unit 2) In CSP solving, what is 'Forward Checking'?
+  A.     Running Dijkstra's algorithm in reverse
+  B. (*) Whenever a variable X is assigned, tracking remaining legal values in the domains of unassigned variables connected to X
+  C.     Predicting user keystrokes in a terminal
+  D.     Reverting all assignments when a conflict occurs
+Explanation: Forward checking prunes domains of unassigned neighbors whenever a variable is assigned, detecting dead ends early.
+
+[bca-301n-u2-q78] (Unit 2) What does 'Arc Consistency' (AC-3 algorithm) ensure in a CSP?
+  A.     Every node has at least two edges
+  B. (*) For every value in variable Xi's domain, there exists at least one allowable value in variable Xj's domain satisfying constraint (Xi, Xj)
+  C.     All graph cycles are removed
+  D.     The problem has only one unique solution
+Explanation: A directed arc (Xi, Xj) is consistent if every value x in Di has a satisfying counterpart y in Dj.
+
+[bca-301n-u2-q79] (Unit 2) In local search, what technique introduces controlled randomness to escape local maxima by occasionally accepting sub-optimal moves?
+  A. (*) Simulated Annealing
+  B.     Breadth-First Search
+  C.     Linear Regression
+  D.     Bubble Sort
+Explanation: Simulated Annealing (analogous to metallurgical annealing) accepts worse moves with probability P = e^(ΔE/T), where temperature T gradually drops.
+
+[bca-301n-u2-q80] (Unit 2) What is 'Beam Search' in heuristic problem solving?
+  A.     Using infrared lasers for robotic sensing
+  B. (*) A heuristic search algorithm that retains only the 'k' most promising candidate nodes at each level
+  C.     An exhaustive depth-first search of infinite trees
+  D.     A search that only operates on grid networks
+Explanation: Beam search limits memory and computation by keeping only a fixed-width beam of k best states at each frontier.
+
+[bca-301n-u2-q81] (Unit 2) Means-Ends Analysis (MEA), utilized in the General Problem Solver (GPS), operates by:
+  A.     Searching states backwards from the goal only
+  B. (*) Identifying differences between the current state and the goal, then applying operators specifically designed to reduce those differences
+  C.     Evaluating all possible states simultaneously using matrix operations
+  D.     Executing random mutations until a goal is reached
+Explanation: Means-Ends Analysis detects the most significant difference between current and goal states and invokes operators to reduce it.
+
+[bca-301n-u2-q82] (Unit 2) In state space search, the set of all leaf nodes available for expansion is termed the:
+  A.     Backlog
+  B. (*) Frontier (or Open List)
+  C.     Closed List
+  D.     State Matrix
+Explanation: The frontier (or open list) holds all generated states that have not yet been expanded.
+
+[bca-301n-u2-q83] (Unit 2) In Graph Search, why is a 'Closed List' (or Explored Set) maintained?
+  A.     To store the final solution path
+  B. (*) To record all visited states and avoid redundant expansion of cycles / loops
+  C.     To log user debug messages
+  D.     To enforce FIFO ordering on the queue
+Explanation: The closed list prevents infinite loops and combinatorial explosion caused by revisiting identical states via alternate paths.
+
+[bca-301n-u2-q84] (Unit 2) What is the branching factor of the 8-puzzle game on average?
+  A. (*) Around 3 (ranging from 2 at corners to 4 at the center)
+  B.     Exactly 8
+  C.     16
+  D.     24
+Explanation: In an 8-puzzle, the blank tile can move in 2 directions (corners), 3 directions (edges), or 4 directions (center), averaging ~3.
+
+[bca-301n-u2-q85] (Unit 2) Which of the following heuristics for the 8-puzzle problem is admissible?
+  A.     Manhattan Distance (Sum of absolute horizontal and vertical distances of tiles from goal positions)
+  B.     Number of misplaced tiles
+  C. (*) Both Manhattan Distance and Number of misplaced tiles
+  D.     Neither; heuristics must overestimate to be useful
+Explanation: Both the number of misplaced tiles (h1) and Manhattan distance (h2) never overestimate the true number of moves, making both admissible.
+
+[bca-301n-u2-q86] (Unit 2) Between h1 (misplaced tiles) and h2 (Manhattan distance) for the 8-puzzle, which heuristic is 'dominant'?
+  A.     h1 dominates h2 because it is simpler to compute
+  B. (*) h2 dominates h1 because h2(n) >= h1(n) for all states n, leading to fewer node expansions in A*
+  C.     Neither dominates; they expand identical numbers of nodes
+  D.     Dominance only applies to neural networks
+Explanation: A heuristic h2 dominates h1 if h2(n) >= h1(n) for all n and both are admissible. A* with h2 will expand fewer or equal nodes.
+
+[bca-301n-u2-q87] (Unit 2) The 'Horizon Effect' in game-tree search occurs when:
+  A.     The computer screen brightness dims after 10 turns
+  B. (*) An unavoidable serious detriment is pushed beyond the search depth limit by delaying moves
+  C.     The game reaches a draw automatically
+  D.     The minimax algorithm prunes the root node
+Explanation: The horizon effect occurs when a heuristic search delays an inevitable catastrophic loss by executing stalling moves that push the event beyond the search depth.
+
+[bca-301n-u2-q88] (Unit 2) In game search, what is 'Quiescence Search'?
+  A.     Shutting down the computer when no moves remain
+  B. (*) Extending search depth specifically for volatile, non-quiet positions (e.g., active captures in chess) until stability is reached
+  C.     Randomizing move selections in peaceful board configurations
+  D.     Searching only opening moves from a library
+Explanation: Quiescence search prevents evaluation errors caused by cutting off search mid-exchange of pieces.
+
+[bca-301n-u2-q89] (Unit 2) Which search strategy expands the shallowest unexpanded node using a First-In-First-Out (FIFO) queue?
+  A. (*) Breadth-First Search (BFS)
+  B.     Depth-First Search (DFS)
+  C.     Iterative Deepening Search (IDS)
+  D.     Best-First Search
+Explanation: BFS utilizes a FIFO queue so that all nodes at depth d are expanded before nodes at depth d+1.
+
+[bca-301n-u2-q90] (Unit 2) Which search strategy utilizes a Last-In-First-Out (LIFO) stack for frontier management?
+  A.     Breadth-First Search
+  B. (*) Depth-First Search
+  C.     Uniform-Cost Search
+  D.     A* Search
+Explanation: DFS utilizes a LIFO stack (or recursion stack) to explore deeply along each branch before backtracking.
+
+[bca-301n-u2-q91] (Unit 2) What happens in Hill Climbing when the algorithm encounters a 'Ridge'?
+  A.     It easily reaches the top in one step
+  B. (*) Progress is severely impeded because the ridge consists of a sequence of steep local peaks where single-variable steps oscillate
+  C.     The algorithm crashes with a memory fault
+  D.     It switches to Breadth-First Search automatically
+Explanation: Ridges slope upward, but single-coordinate directional steps move off the ridge onto lower slopes, causing hill climbing to oscillate or stall.
+
+[bca-301n-u2-q92] (Unit 2) Genetic Algorithms (GA) are categorized as what type of search algorithm?
+  A.     Deterministic logic resolution
+  B. (*) Stochastic global local beam search inspired by natural biological evolution
+  C.     Exhaustive brute-force graph search
+  D.     Adversarial game-tree minimax variant
+Explanation: Genetic Algorithms maintain a population of states, combining and mutating them using fitness functions.
+
+[bca-301n-u2-q93] (Unit 2) In Genetic Algorithms, the operation where two parent chromosomes combine their genetic code to create offspring is called:
+  A.     Mutation
+  B. (*) Crossover (Recombination)
+  C.     Selection
+  D.     Inversion
+Explanation: Crossover exchanges segments of parent representations at chosen crossover points to generate new candidate solutions.
+
+[bca-301n-u2-q94] (Unit 2) In Constraint Satisfaction Problems, what is the 'Minimum Remaining Values' (MRV) heuristic?
+  A. (*) Choosing the variable with the fewest 'legal' values remaining in its domain
+  B.     Choosing the variable involved in the largest number of constraints on unassigned variables
+  C.     Assigning the value that rules out the fewest choices for neighboring variables
+  D.     Expanding the variable with the lowest numerical ID
+Explanation: The MRV (fail-first) heuristic chooses the most constrained variable to detect failures as early as possible.
+
+[bca-301n-u2-q95] (Unit 2) What does the 'Degree Heuristic' in CSPs select?
+  A.     The variable that has the highest temperature in simulated annealing
+  B. (*) The variable with the most constraints on remaining unassigned variables to reduce future branching factor
+  C.     The node with the highest heuristic evaluation
+  D.     The constraint with the highest mathematical degree
+Explanation: The degree heuristic acts as a tie-breaker for MRV, picking the variable that exerts the most constraints on others.
+
+[bca-301n-u2-q96] (Unit 2) What does the 'Least Constraining Value' (LCV) heuristic do in CSPs?
+  A.     Picks the value that eliminates the largest number of values from neighbors
+  B. (*) Prefers the value that leaves the maximum flexibility for remaining unassigned variables
+  C.     Randomizes the values in the domain
+  D.     Selects the minimum numerical integer
+Explanation: LCV is a 'fail-last' heuristic designed to maximize the chances of finding a valid solution without backtracking.
+
+[bca-301n-u2-q97] (Unit 2) In Minimax search, if a leaf node represents a win for MAX, its utility score is standardly evaluated as:
+  A.     -1 or -Infinity
+  B. (*) +1 or +Infinity
+  C.     0
+  D.     Undefined
+Explanation: MAX seeks maximum positive utility (+1, +Infinity, or a high positive score).
+
+[bca-301n-u2-q98] (Unit 2) What is the primary drawback of using a bidirectional search?
+  A.     It cannot run on graphs with cycles
+  B. (*) Space complexity: at least one of the frontiers must be kept in memory to check for intersection
+  C.     It only works if the goal state is unknown
+  D.     It doubles the time complexity compared to BFS
+Explanation: Bidirectional search must keep one search tree in memory (typically BFS) to detect collision with the other search frontier.
+
+[bca-301n-u2-q99] (Unit 2) An optimal solution in state space search is defined as:
+  A.     Any path that reaches the goal state
+  B. (*) A path to the goal state that has the lowest path cost among all possible paths
+  C.     The path with the highest number of intermediate nodes
+  D.     A path found in under one second
+Explanation: An optimal path minimizes total path cost g(n) among all viable paths from initial state to goal.
+
+[bca-301n-u2-q100] (Unit 2) In the Traveling Salesperson Problem (TSP) with N cities, how many possible tour permutations exist in an exhaustive brute-force search?
+  A.     N^2
+  B.     N!
+  C. (*) (N - 1)! / 2 for symmetric TSP
+  D.     2^N
+Explanation: For an undirected symmetric TSP of N cities, there are (N-1)! / 2 unique Hamiltonian cycles, representing factorial combinatorial explosion.
+
+[bca-301n-u3-q101] (Unit 3) Which of the following is NOT a fundamental requirement of a Knowledge Representation system?
+  A.     Representational Adequacy
+  B.     Inferential Adequacy
+  C.     Inferential Efficiency
+  D. (*) Compilation to Assembly Language
+Explanation: The four classical criteria are: Representational Adequacy, Inferential Adequacy, Inferential Efficiency, and Acquisitional Efficiency.
+
+[bca-301n-u3-q102] (Unit 3) A sentence in Propositional Logic is defined as 'Valid' (or a Tautology) if and only if:
+  A.     It is true in at least one possible interpretation/model
+  B. (*) It is true in ALL possible interpretations/models
+  C.     It contains no logical connectives
+  D.     It is false in all interpretations
+Explanation: A valid sentence or tautology (e.g., P ∨ ¬P) evaluates to True in every row of its truth table.
+
+[bca-301n-u3-q103] (Unit 3) A sentence is 'Satisfiable' if and only if:
+  A.     It is true in all possible models
+  B. (*) There exists at least one model (interpretation) in which it evaluates to True
+  C.     It cannot be resolved
+  D.     It contains only existential quantifiers
+Explanation: Satisfiability means there is at least one assignment of truth values under which the formula holds True.
+
+[bca-301n-u3-q104] (Unit 3) What logical relationship exists between two propositions P and Q if P entails Q (denoted P ⊨ Q)?
+  A. (*) In every model where P is true, Q is also true
+  B.     P and Q have identical truth tables
+  C.     P is false whenever Q is true
+  D.     Q is independent of P
+Explanation: Entailment (semantic consequence) means that whenever the premise P holds true, the conclusion Q must inevitably hold true.
+
+[bca-301n-u3-q105] (Unit 3) Which inference rule allows deriving Q from the premises 'P' and 'P → Q'?
+  A.     Modus Tollens
+  B. (*) Modus Ponens (Law of Detachment)
+  C.     Resolution
+  D.     Disjunctive Syllogism
+Explanation: Modus Ponens: From P and P → Q, infer Q.
+
+[bca-301n-u3-q106] (Unit 3) Which inference rule allows deriving ¬P from the premises '¬Q' and 'P → Q'?
+  A.     Modus Ponens
+  B. (*) Modus Tollens
+  C.     Hypothetical Syllogism
+  D.     Simplification
+Explanation: Modus Tollens: If P implies Q and Q is false, P must also be false.
+
+[bca-301n-u3-q107] (Unit 3) In First-Order Predicate Logic (FOPL), what do Quantifiers allow us to express?
+  A.     Floating point arithmetic precision
+  B. (*) Properties of all objects (Universal ∀) or some objects (Existential ∃) in the universe of discourse
+  C.     Conditional branching in microcode
+  D.     Database table indexes
+Explanation: FOPL extends propositional logic by introducing variables and quantifiers: ∀ (for all) and ∃ (there exists).
+
+[bca-301n-u3-q108] (Unit 3) What is the formal First-Order Logic translation of the statement: 'All rational agents make decisions'?
+  A.     ∀x (RationalAgent(x) ∧ MakesDecisions(x))
+  B. (*) ∀x (RationalAgent(x) → MakesDecisions(x))
+  C.     ∃x (RationalAgent(x) → MakesDecisions(x))
+  D.     RationalAgent(x) ↔ MakesDecisions(x)
+Explanation: Universal quantification standardly pairs with implication (→). Pairing ∀ with ∧ would incorrectly assert that everything in the universe is both an agent and makes decisions.
+
+[bca-301n-u3-q109] (Unit 3) What is the formal First-Order Logic translation of: 'Some students passed the AI exam'?
+  A.     ∀x (Student(x) → PassedExam(x))
+  B. (*) ∃x (Student(x) ∧ PassedExam(x))
+  C.     ∃x (Student(x) → PassedExam(x))
+  D.     PassedExam(Student)
+Explanation: Existential quantification standardly pairs with conjunction (∧). Using → would make the statement trivially true if there exists anything that is not a student.
+
+[bca-301n-u3-q110] (Unit 3) What is Conjunctive Normal Form (CNF)?
+  A.     A disjunction of conjunctions
+  B. (*) A conjunction of one or more clauses, where each clause is a disjunction of literals
+  C.     A formula consisting exclusively of implication arrows
+  D.     A single skolem function
+Explanation: CNF is an 'AND of ORs' (e.g., (A ∨ B) ∧ (¬B ∨ C ∨ ¬D)).
+
+[bca-301n-u3-q111] (Unit 3) In the conversion of a FOPL formula into CNF, what is the first step?
+  A.     Skolemization
+  B. (*) Eliminate all implication (→) and equivalence (↔) operators
+  C.     Drop universal quantifiers
+  D.     Standardize variables
+Explanation: The standard 9-step CNF conversion begins by eliminating implications: P → Q becomes ¬P ∨ Q.
+
+[bca-301n-u3-q112] (Unit 3) According to De Morgan's Laws, what is the negation of (P ∧ Q)?
+  A.     ¬P ∧ ¬Q
+  B. (*) ¬P ∨ ¬Q
+  C.     P ∨ Q
+  D.     ¬P → Q
+Explanation: ¬(P ∧ Q) ≡ (¬P ∨ ¬Q).
+
+[bca-301n-u3-q113] (Unit 3) What is 'Skolemization' in first-order logic normalization?
+  A.     Replacing universal quantifiers with existential ones
+  B. (*) Eliminating existential quantifiers (∃) by replacing them with Skolem constants or Skolem functions
+  C.     Inverting truth tables
+  D.     Removing duplicate literals in clauses
+Explanation: Skolemization eliminates existential quantifiers: an existentially quantified variable dependent on preceding universal variables is replaced by a Skolem function f(x).
+
+[bca-301n-u3-q114] (Unit 3) In the formula ∀x ∃y Loves(x, y), how is the variable 'y' Skolemized?
+  A.     Replaced with a constant 'C'
+  B. (*) Replaced with a Skolem function f(x) reflecting its dependence on x: ∀x Loves(x, f(x))
+  C.     Deleted from the formula
+  D.     Replaced with the variable x
+Explanation: Because y is inside the scope of ∀x, each x may love a different y, requiring a function y = f(x).
+
+[bca-301n-u3-q115] (Unit 3) In the formula ∃x Planet(x), how is 'x' Skolemized?
+  A. (*) Replaced with a Skolem constant, e.g., Planet(Mars_Constant)
+  B.     Replaced with a Skolem function f(y)
+  C.     Replaced with a universal quantifier
+  D.     Converted into an implication
+Explanation: When an existential quantifier is not governed by any universal quantifier, it is replaced by a simple ground Skolem constant.
+
+[bca-301n-u3-q116] (Unit 3) What is a 'Clause' in automated theorem proving?
+  A.     A sentence with exactly one variable
+  B. (*) A disjunction (OR) of zero or more literals
+  C.     A loop in a production system
+  D.     A definition in an ontology
+Explanation: A clause is a set or disjunction of literals: L1 ∨ L2 ∨ ... ∨ Lk.
+
+[bca-301n-u3-q117] (Unit 3) A clause that contains at most ONE positive literal is formally designated as a:
+  A. (*) Horn Clause
+  B.     Skolem Clause
+  C.     Tautology Clause
+  D.     Universal Clause
+Explanation: Horn clauses contain zero or one positive literal (e.g., ¬A ∨ ¬B ∨ C, equivalent to A ∧ B → C). They form the computational foundation of Prolog.
+
+[bca-301n-u3-q118] (Unit 3) Why are Horn Clauses particularly significant in computational AI?
+  A.     They eliminate the need for memory allocation
+  B. (*) Inference with Horn clauses can be performed in linear time using forward or backward chaining
+  C.     They cannot represent logical contradictions
+  D.     They are immune to syntax errors
+Explanation: Horn clause logic programming allows highly efficient deterministic polynomial-time inference.
+
+[bca-301n-u3-q119] (Unit 3) Who invented the Resolution Refutation Principle in 1965?
+  A.     Alan Turing
+  B. (*) J. Alan Robinson
+  C.     Claude Shannon
+  D.     Lotfi Zadeh
+Explanation: John Alan Robinson introduced the Resolution Principle in 1965, enabling automated theorem proving.
+
+[bca-301n-u3-q120] (Unit 3) How does Resolution operate on two propositional clauses (P ∨ Q) and (¬P ∨ R)?
+  A. (*) It derives the resolvent (Q ∨ R)
+  B.     It derives (P ∧ ¬P)
+  C.     It returns False immediately
+  D.     It multiplies the truth values
+Explanation: The complementary literals P and ¬P cancel out, yielding the resolvent clause (Q ∨ R).
+
+[bca-301n-u3-q121] (Unit 3) What is a 'Proof by Refutation' (Proof by Contradiction)?
+  A.     Proving a theorem by finding an empirical real-world example
+  B. (*) Negating the target goal, adding it to the knowledge base, and applying resolution to derive an empty clause (contradiction □)
+  C.     Proving that all axioms are invalid
+  D.     Checking every branch in an infinite search tree
+Explanation: Resolution refutation assumes the negation of the theorem and shows it leads inevitably to a logical contradiction (nil/empty clause).
+
+[bca-301n-u3-q122] (Unit 3) What does deriving the Empty Clause (denoted as □ or NIL) signify in resolution refutation?
+  A.     A syntax error in the knowledge base
+  B. (*) A contradiction has been derived, proving the original unnegated goal is valid
+  C.     The theorem is unprovable
+  D.     The search has timed out
+Explanation: The empty clause is unsatisfiable; its derivation proves the asserted premises and negated goal cannot both be true, validating the goal.
+
+[bca-301n-u3-q123] (Unit 3) In First-Order Predicate Logic, what process finds variable substitutions that make two distinct atomic expressions syntactically identical?
+  A.     Skolemization
+  B. (*) Unification
+  C.     De Morganization
+  D.     Factorization
+Explanation: Unification computes the Most General Unifier (MGU) θ such that Subst(θ, p) = Subst(θ, q).
+
+[bca-301n-u3-q124] (Unit 3) What is the Most General Unifier (MGU) of the two atomic expressions P(x, f(y)) and P(a, z)?
+  A. (*) {x/a, z/f(y)}
+  B.     {x/f(y), z/a}
+  C.     {x/y, z/a}
+  D.     They cannot be unified
+Explanation: Substituting x with a and z with f(y) yields P(a, f(y)) for both expressions.
+
+[bca-301n-u3-q125] (Unit 3) What critical safety verification in the Unification algorithm checks whether a variable occurs inside the term it is being bound to?
+  A. (*) Occur Check
+  B.     Bound Check
+  C.     Parity Check
+  D.     Type Check
+Explanation: The occur check prevents unifying a variable x with a term containing x (e.g., x with f(x)), which would create infinite cyclic terms.
+
+[bca-301n-u3-q126] (Unit 3) Why do many practical Prolog interpreters historically omit the Occur Check?
+  A.     Because it causes syntax errors
+  B. (*) Performance reasons: the occur check has O(n^2) complexity, though omitting it risks unsoundness in cyclic cases
+  C.     Prolog does not support variables
+  D.     Prolog uses propositional logic only
+Explanation: Omitting the occur check ensures O(n) unification speed, but can lead to unsound derivations in circular structures.
+
+[bca-301n-u3-q127] (Unit 3) What is 'Deductive Reasoning'?
+  A.     Inferring general rules from specific observations
+  B. (*) Deriving logically certain specific conclusions from true general premises
+  C.     Selecting the most plausible hypothesis to explain an anomaly
+  D.     Random walk through a state graph
+Explanation: Deduction is truth-preserving: if the premises are true, the conclusion MUST be true.
+
+[bca-301n-u3-q128] (Unit 3) What is 'Inductive Reasoning'?
+  A.     Deriving guaranteed truths from axioms
+  B. (*) Generalizing broad probabilistic principles from a finite set of specific empirical observations
+  C.     Proving a theorem by contradiction
+  D.     Skolemizing existential quantifiers
+Explanation: Induction observes patterns (e.g., 'all observed swans are white') to infer generalizations, which are plausible but not guaranteed.
+
+[bca-301n-u3-q129] (Unit 3) What is 'Abductive Reasoning'?
+  A.     Strict mathematical deduction
+  B. (*) Reasoning from an observed effect to the most likely cause or explanation (inference to the best explanation)
+  C.     Inverting a truth table
+  D.     Refuting an empty clause
+Explanation: Abduction infers the best hypothesis: e.g., if the grass is wet (effect), it probably rained (most likely cause).
+
+[bca-301n-u3-q130] (Unit 3) In resolution, what is 'Factoring'?
+  A.     Dividing integers by prime numbers
+  B. (*) Unifying two literals within the same clause that have the same sign to remove redundancy
+  C.     Factoring polynomials in calculus
+  D.     Sorting clauses by length
+Explanation: Factoring unifies two complementary literals within a single clause, essential for completeness in first-order resolution.
+
+[bca-301n-u3-q131] (Unit 3) Which resolution strategy restricts resolution so that at least one of the parent clauses must be a member of the original goal negation or its descendants?
+  A. (*) Set of Support Strategy
+  B.     Unit Resolution Strategy
+  C.     Linear Resolution
+  D.     Input Resolution
+Explanation: The Set-of-Support strategy prevents wasteful resolutions among axioms that are already known to be mutually consistent.
+
+[bca-301n-u3-q132] (Unit 3) What is 'Unit Resolution'?
+  A. (*) Resolution where every step must involve at least one unit clause (a clause containing exactly one literal)
+  B.     Resolution applied strictly to physical metric units
+  C.     Resolution executed on a single CPU core
+  D.     Eliminating all clauses of length greater than 5
+Explanation: Unit resolution always resolves against a clause with only one literal, producing shorter resolvents and rapid progress.
+
+[bca-301n-u3-q133] (Unit 3) Green's Method in resolution theorem proving is specifically applied to:
+  A. (*) Question Answering systems to extract variable bindings from a resolution proof
+  B.     Optimizing memory in Prolog
+  C.     Balancing AVL trees in LISP
+  D.     Generating natural language speech
+Explanation: Green's method attaches an 'Answer literal' to the negated query, collecting variable substitutions as resolution progresses to output exact answers.
+
+[bca-301n-u3-q134] (Unit 3) Which of the following represents a contradiction in propositional logic?
+  A.     P ∨ ¬P
+  B. (*) P ∧ ¬P
+  C.     P → P
+  D.     P ↔ P
+Explanation: P ∧ ¬P asserts that a proposition is simultaneously true and false, which is identically False (contradiction).
+
+[bca-301n-u3-q135] (Unit 3) In logic, a system is 'Sound' if:
+  A.     It can prove every statement that is true
+  B. (*) It only proves statements that are genuinely true (it never derives false conclusions from true premises)
+  C.     It operates without generating error logs
+  D.     It runs in constant time
+Explanation: Soundness means: if KB ⊢ α, then KB ⊨ α (no false derivations).
+
+[bca-301n-u3-q136] (Unit 3) In logic, a system is 'Complete' if:
+  A. (*) It can prove all true statements that follow from the premises (if KB ⊨ α, then KB ⊢ α)
+  B.     It contains no variables
+  C.     It uses only one rule of inference
+  D.     It terminates on infinite loops
+Explanation: Completeness means every valid entailment can be successfully derived by the proof procedure.
+
+[bca-301n-u3-q137] (Unit 3) Kurt Gödel's First Incompleteness Theorem (1931) proved that:
+  A.     Computers can never play master-level chess
+  B. (*) Any consistent formal axiomatic system capable of doing basic arithmetic cannot be both complete and self-contained
+  C.     All logical problems can be solved in polynomial time
+  D.     Propositional logic is undecidable
+Explanation: Gödel demonstrated that in sufficiently expressive formal systems, there exist true statements that cannot be proven within the system.
+
+[bca-301n-u3-q138] (Unit 3) Is First-Order Predicate Logic decidable?
+  A.     Yes, fully decidable in all cases
+  B. (*) It is semidecidable: if a sentence is entailed, an algorithm will eventually prove it, but if not entailed, it may loop indefinitely
+  C.     It is completely uncomputable
+  D.     It is decidable only on Sundays
+Explanation: By Turing and Church's results, FOPL is semidecidable: a refutation proof will terminate if entailment holds, but may not halt otherwise.
+
+[bca-301n-u3-q139] (Unit 3) What is the resolution of clauses (A ∨ B) and (¬A ∨ ¬B)?
+  A.     The empty clause □
+  B. (*) (B ∨ ¬B), which is a tautology, and (A ∨ ¬A)
+  C.     False
+  D.     No resolution is possible
+Explanation: Resolving on A yields (B ∨ ¬B); resolving on B yields (A ∨ ¬A). Crucially, one cannot cancel BOTH pairs simultaneously in a single resolution step.
+
+[bca-301n-u3-q140] (Unit 3) What error occurs if an amateur theorem prover resolves (A ∨ B) and (¬A ∨ ¬B) to derive the empty clause □?
+  A. (*) It violates the single-literal resolution rule: simultaneous cancellation of two literals in one step is logically unsound
+  B.     Syntax error
+  C.     Memory leakage
+  D.     Type mismatch
+Explanation: Only ONE pair of complementary literals can be resolved per step; resolving both simultaneously produces a false contradiction.
+
+[bca-301n-u3-q141] (Unit 3) In FOPL, what is a 'Ground Term'?
+  A. (*) A term that contains no variables (contains only constants and function symbols applied to constants)
+  B.     A variable assigned to the system ground
+  C.     A predicate with arity zero
+  D.     An invalid symbol
+Explanation: Ground terms contain zero variables (e.g., Socrates, father_of(John)).
+
+[bca-301n-u3-q142] (Unit 3) What does the 'Herbrand Universe' of a set of clauses consist of?
+  A.     All possible real numbers
+  B. (*) The set of all ground terms constructible from the constants and function symbols in the clauses
+  C.     All truth table combinations
+  D.     The set of all valid models
+Explanation: Herbrand's universe provides a syntactic domain of ground terms to test for satisfiability.
+
+[bca-301n-u3-q143] (Unit 3) Which of the following is equivalent to the logical sentence ¬(P → Q)?
+  A.     ¬P ∨ Q
+  B. (*) P ∧ ¬Q
+  C.     ¬P ∧ Q
+  D.     P → ¬Q
+Explanation: Since P → Q is ¬P ∨ Q, its negation is ¬(¬P ∨ Q) ≡ P ∧ ¬Q.
+
+[bca-301n-u3-q144] (Unit 3) What is the resolution resolvent of the two clauses: P(x) ∨ Q(x) and ¬P(a)?
+  A. (*) Q(a) with substitution {x/a}
+  B.     Q(x)
+  C.     P(a)
+  D.     Empty clause
+Explanation: Unifying P(x) with P(a) yields substitution {x/a}, leaving the resolvent Q(a).
+
+[bca-301n-u3-q145] (Unit 3) What is the contrapositive of the implication 'If it rains, the grass is wet'?
+  A.     If the grass is wet, it rained
+  B.     If it does not rain, the grass is not wet
+  C. (*) If the grass is not wet, it did not rain
+  D.     It rains and the grass is wet
+Explanation: The contrapositive of P → Q is ¬Q → ¬P, and they are logically equivalent.
+
+[bca-301n-u3-q146] (Unit 3) In knowledge engineering, what is the 'Ontological Commitment' of Propositional Logic?
+  A. (*) Facts that are either true or false in the world
+  B.     Objects, relations, and functions
+  C.     Degrees of belief between 0 and 1
+  D.     Temporal intervals
+Explanation: Propositional logic assumes only atomic facts that hold or do not hold.
+
+[bca-301n-u3-q147] (Unit 3) What is the Ontological Commitment of First-Order Predicate Logic?
+  A. (*) Objects and relations that hold among them
+  B.     Real-valued probabilistic states
+  C.     Sub-symbolic vector weights
+  D.     Quantum superpositions
+Explanation: First-Order Logic commits to a world consisting of distinct objects with relations and functions holding between them.
+
+[bca-301n-u3-q148] (Unit 3) What is the Ontological Commitment of Fuzzy Logic?
+  A. (*) Facts that hold with degrees of truth from 0.0 to 1.0
+  B.     Strict binary truths only
+  C.     Random variables with Gaussian distributions
+  D.     Quantum entangled states
+Explanation: Fuzzy logic permits vagueness: propositions have continuous truth degrees rather than binary true/false values.
+
+[bca-301n-u3-q149] (Unit 3) The Wumpus World environment in AI literature is primarily used to illustrate:
+  A.     Computer graphics rasterization
+  B. (*) Logical reasoning, knowledge representation, and agent inference under partial observability
+  C.     Operating system scheduling
+  D.     Relational database indexing
+Explanation: The Wumpus World demonstrates how an agent builds a propositional knowledge base to deduce safe squares in an unobserved cave.
+
+[bca-301n-u3-q150] (Unit 3) In automated reasoning, what does 'Monotonicity' of a logic mean?
+  A.     Truth values decrease with time
+  B. (*) Adding new axioms to the knowledge base never invalidates any previously derived conclusions
+  C.     The knowledge base can only contain one rule
+  D.     Inference only moves in the forward direction
+Explanation: Classical logic is monotonic: if KB ⊨ α, then (KB ∧ β) ⊨ α. New evidence cannot overturn past deductions.
+
+[bca-301n-u4-q151] (Unit 4) Forward Chaining is classified as what style of reasoning?
+  A.     Goal-driven reasoning
+  B. (*) Data-driven (bottom-up) reasoning
+  C.     Hypothesis-driven reasoning
+  D.     Bidirectional tree search
+Explanation: Forward chaining starts with known facts and asserts new conclusions using condition-action rules until a goal is reached.
+
+[bca-301n-u4-q152] (Unit 4) Backward Chaining is classified as what style of reasoning?
+  A.     Data-driven reasoning
+  B. (*) Goal-driven (top-down) reasoning
+  C.     Exhaustive brute-force search
+  D.     Randomized heuristic search
+Explanation: Backward chaining begins with a goal/hypothesis and works backward looking for supporting facts.
+
+[bca-301n-u4-q153] (Unit 4) Which reasoning strategy is standardly employed in Prolog interpreter execution?
+  A.     Forward Chaining
+  B. (*) Backward Chaining with SLD Resolution
+  C.     Breadth-First Graph Traversal
+  D.     Genetic Recombination
+Explanation: Prolog evaluates queries using goal-directed backward chaining with depth-first search and backtracking.
+
+[bca-301n-u4-q154] (Unit 4) In production systems, what situation necessitates 'Conflict Resolution'?
+  A.     When the computer runs out of disk storage
+  B. (*) When the conditions of multiple production rules are satisfied simultaneously by working memory facts
+  C.     When syntax errors exist in the source code
+  D.     When two users access the database at once
+Explanation: Conflict resolution selects which rule to fire from the 'conflict set' when multiple rules match the current state.
+
+[bca-301n-u4-q155] (Unit 4) Which conflict resolution strategy prioritizes the rule that has the most specific or detailed set of preconditions?
+  A.     Recency Principle
+  B. (*) Specificity (Most Specific Rule First)
+  C.     Refractoriness
+  D.     Arbitrary Selection
+Explanation: The specificity rule favors rules that match more conditions, treating them as specialized overrides of general rules.
+
+[bca-301n-u4-q156] (Unit 4) Which conflict resolution strategy prevents an identical rule from firing repeatedly on the same data facts?
+  A. (*) Refractoriness
+  B.     Recency
+  C.     Specificity
+  D.     Futility
+Explanation: Refractoriness ensures that once a rule fires on a specific set of facts, it will not fire again on that same data.
+
+[bca-301n-u4-q157] (Unit 4) What famous pattern-matching algorithm was developed by Charles Forgy in 1979 to scale forward chaining in production systems?
+  A.     Dijkstra's Algorithm
+  B. (*) The Rete Algorithm
+  C.     CYK Algorithm
+  D.     Viterbi Algorithm
+Explanation: The Rete algorithm constructs a directed acyclic discrimination graph, avoiding redundant condition evaluations across cycles.
+
+[bca-301n-u4-q158] (Unit 4) How does the Rete algorithm achieve dramatic speedup in rule evaluation?
+  A.     By compiling rules to native GPU assembly
+  B. (*) By caching partial matches in Alpha and Beta network memory nodes between cycles
+  C.     By deleting half of the knowledge base at each step
+  D.     By using quantum annealing
+Explanation: Rete exploits temporal redundancy (only a few facts change per cycle) and structural similarity across rule conditions.
+
+[bca-301n-u4-q159] (Unit 4) In Semantic Networks, how are knowledge concepts and their relationships graphically represented?
+  A.     Concepts as directed edges; relationships as matrices
+  B. (*) Concepts/objects as Nodes; relationships as Labeled Directed Edges
+  C.     Concepts as floating point numbers; relationships as memory pointers
+  D.     Concepts as truth tables; relationships as boolean logic
+Explanation: Semantic nets represent knowledge using nodes (objects/concepts) connected by arcs denoting relationships.
+
+[bca-301n-u4-q160] (Unit 4) What is the primary semantic relationship used to implement property inheritance in semantic networks?
+  A. (*) IS-A (or AKO - A Kind Of) link
+  B.     HAS-A link
+  C.     LOVES link
+  D.     PRECEDES link
+Explanation: IS-A links establish taxonomy hierarchies, allowing subclasses to inherit attributes from superclasses automatically.
+
+[bca-301n-u4-q161] (Unit 4) In a semantic net where 'Bird IS-A Animal' and 'Can-Fly: True', how is the exception 'Penguin' handled?
+  A.     Penguins cannot be stored in semantic nets
+  B. (*) By attaching an overriding 'Can-Fly: False' property directly to the Penguin node
+  C.     By deleting the Bird node
+  D.     By converting the network to a relational database
+Explanation: Property inheritance permits default overriding: local properties defined on child nodes supersede inherited distant properties.
+
+[bca-301n-u4-q162] (Unit 4) What classic problem arises in semantic networks when a concept inherits conflicting properties from multiple parent nodes?
+  A.     The Frame Problem
+  B. (*) The Diamond Problem (Multiple Inheritance Ambiguity / Nixon Diamond)
+  C.     The Halting Problem
+  D.     The Chinese Room Problem
+Explanation: The Nixon Diamond (Nixon IS-A Quaker [Pacifist] and Nixon IS-A Republican [Non-Pacifist]) illustrates multiple inheritance conflict.
+
+[bca-301n-u4-q163] (Unit 4) Who proposed the 'Frames' knowledge representation scheme in 1974?
+  A.     Alan Turing
+  B. (*) Marvin Minsky
+  C.     Noam Chomsky
+  D.     John McCarthy
+Explanation: Marvin Minsky introduced Frames in his 1974 paper 'A Framework for Representing Knowledge'.
+
+[bca-301n-u4-q164] (Unit 4) What are the fundamental structural components of a 'Frame' in AI?
+  A.     Rows and Columns
+  B. (*) Slots and Fillers (Values/Pointers)
+  C.     Registers and Accumulators
+  D.     Nodes and Unlabeled Vertices
+Explanation: A frame consists of a collection of attributes called 'slots', and each slot contains one or more 'fillers' or values.
+
+[bca-301n-u4-q165] (Unit 4) In frame-based systems, what is a 'Facet'?
+  A.     An external USB peripheral
+  B. (*) An extended descriptor attached to a slot providing metadata, constraints, or default values
+  C.     A syntax error in LISP
+  D.     A type of machine learning model
+Explanation: Facets decorate slots (e.g., value type, range constraint, default value, demonic triggers).
+
+[bca-301n-u4-q166] (Unit 4) In frame systems, procedural attachments known as 'Demons' are triggered by:
+  A.     Hardware clock interrupts
+  B. (*) Accessing or modifying specific slot values (e.g., IF-NEEDED, IF-ADDED, IF-REMOVED)
+  C.     Malicious network payloads
+  D.     Memory overflow exceptions
+Explanation: Demons (demonic procedures) execute automatically when a slot is queried (if-needed) or altered (if-added).
+
+[bca-301n-u4-q167] (Unit 4) Who formulated Conceptual Dependency (CD) Theory in 1969 to represent the meaning of natural language sentences?
+  A. (*) Roger Schank
+  B.     Noam Chomsky
+  C.     Terry Winograd
+  D.     Edward Feigenbaum
+Explanation: Roger Schank formulated Conceptual Dependency theory for natural language understanding.
+
+[bca-301n-u4-q168] (Unit 4) What is the core premise of Schank's Conceptual Dependency (CD) Theory?
+  A.     Sentences with identical syntactic structure have identical meaning
+  B. (*) Any two sentences that have the same conceptual meaning will have the identical CD psychological representation
+  C.     Computers can only understand numbers, not meaning
+  D.     Grammar rules are more important than semantics
+Explanation: CD theory provides a canonical representation independent of surface phrasing: if two sentences mean the same thing, they share one CD graph.
+
+[bca-301n-u4-q169] (Unit 4) In Conceptual Dependency Theory, which primitive act represents the transfer of an abstract relationship (such as possession or ownership)?
+  A.     PTRANS
+  B. (*) ATRANS
+  C.     MTRANS
+  D.     PROPEL
+Explanation: ATRANS represents transfer of an abstract relationship (e.g., giving, buying, selling).
+
+[bca-301n-u4-q170] (Unit 4) In CD Theory, which primitive act represents the transfer of physical location of an object?
+  A.     ATRANS
+  B. (*) PTRANS
+  C.     MTRANS
+  D.     INGEST
+Explanation: PTRANS represents the physical transfer of the location of an object (e.g., walking, driving, throwing).
+
+[bca-301n-u4-q171] (Unit 4) In CD Theory, which primitive act represents the transfer of mental information between conscious entities or mental locations?
+  A. (*) MTRANS
+  B.     PTRANS
+  C.     MBUILD
+  D.     SPEAK
+Explanation: MTRANS represents the transfer of mental information (e.g., telling someone a secret, reading a book).
+
+[bca-301n-u4-q172] (Unit 4) In CD Theory, which primitive act represents the construction of new information or thought from old thoughts?
+  A.     MTRANS
+  B. (*) MBUILD
+  C.     CONSTRUCT
+  D.     THINK
+Explanation: MBUILD represents manufacturing new thoughts or conclusions from existing concepts.
+
+[bca-301n-u4-q173] (Unit 4) In CD Theory, which primitive act corresponds to taking an object into the interior of an animate organism (eating, drinking, inhaling)?
+  A. (*) INGEST
+  B.     EXPEL
+  C.     GRASP
+  D.     MOVE
+Explanation: INGEST represents taking an object inside an organism.
+
+[bca-301n-u4-q174] (Unit 4) Which primitive act in CD theory represents forcefully expelling an object from the body (crying, sweating, spitting)?
+  A.     INGEST
+  B. (*) EXPEL
+  C.     PROPEL
+  D.     PTRANS
+Explanation: EXPEL represents ejecting something from the body.
+
+[bca-301n-u4-q175] (Unit 4) Which CD conceptual role designates the entity that performs an action?
+  A. (*) Actor
+  B.     Objective
+  C.     Recipient
+  D.     Directive
+Explanation: The Actor is the active instigator of the conceptual primitive.
+
+[bca-301n-u4-q176] (Unit 4) What knowledge representation structure was introduced by Roger Schank and Robert Abelson to represent stereotypical sequences of events in specific contexts?
+  A.     Decision Trees
+  B. (*) Scripts
+  C.     Semantic Networks
+  D.     Neural Embeddings
+Explanation: Scripts model stereotypical human social situations (like dining in a restaurant or visiting a doctor).
+
+[bca-301n-u4-q177] (Unit 4) Which of the following is the most famous standard textbook example of a Script in AI literature?
+  A.     The Airport Check-in Script
+  B. (*) The Restaurant Script
+  C.     The Classroom Lecture Script
+  D.     The Banking Transaction Script
+Explanation: Schank and Abelson's Restaurant Script is the prototypical example used to illustrate script mechanisms.
+
+[bca-301n-u4-q178] (Unit 4) What are the primary structural components of a Script?
+  A.     Initial state, Heuristic function, Transition model, Goal state
+  B. (*) Entry Conditions, Props, Roles, Tracks, and Scenes
+  C.     Nodes, Edges, Weights, and Biases
+  D.     Classes, Interfaces, Methods, and Fields
+Explanation: A script includes: Entry Conditions, Result, Props (objects), Roles (actors), Tracks (variations), and sequential Scenes.
+
+[bca-301n-u4-q179] (Unit 4) In a Restaurant Script, what role do 'Props' play?
+  A.     They represent the human participants (Customer, Waiter)
+  B. (*) They represent physical inanimate objects involved in the scenario (Tables, Menu, Food, Bill, Money)
+  C.     They evaluate rule conflicts
+  D.     They define syntax errors
+Explanation: Props are objects utilized in the script scenes (e.g., menu, food, check, plates).
+
+[bca-301n-u4-q180] (Unit 4) In a Script, what are 'Tracks'?
+  A.     Magnetic tape recording tracks
+  B. (*) Specific variations or sub-categories of the general script (e.g., Fast-Food Track vs Fine-Dining Track)
+  C.     Music audio files played in the background
+  D.     Error logs
+Explanation: Tracks represent specific contextual variations of the overarching script theme.
+
+[bca-301n-u4-q181] (Unit 4) Why are Scripts highly effective for Natural Language Understanding question answering systems?
+  A.     They consume zero bytes of RAM
+  B. (*) They allow the system to infer unstated default facts (e.g., if John ate steak, he probably paid the bill and tipped the waiter)
+  C.     They eliminate all grammar rules
+  D.     They run on GPUs without training
+Explanation: Scripts enable reasoning about implied background events that humans omit in everyday discourse.
+
+[bca-301n-u4-q182] (Unit 4) What is 'Default Reasoning' (Non-Monotonic Reasoning)?
+  A.     Reasoning where defaults are strictly forbidden
+  B. (*) Drawing plausible conclusions in the absence of complete information, which can later be retracted if contradictory evidence emerges
+  C.     Always picking the first option in a menu
+  D.     Reverting all database changes
+Explanation: Non-monotonic reasoning withdraws conclusions when new contrary facts are discovered (e.g., Tweety is a bird -> flies; Tweety is a penguin -> does not fly).
+
+[bca-301n-u4-q183] (Unit 4) Which formal logic system allows retracting beliefs when new contradictory evidence arrives?
+  A.     First-Order Classical Logic
+  B. (*) Non-Monotonic Logic (e.g., Reiter's Default Logic, McCarthy's Circumscription)
+  C.     Propositional Calculus
+  D.     Boolean Algebra
+Explanation: Non-monotonic logics explicitly model defeasible reasoning and belief revision.
+
+[bca-301n-u4-q184] (Unit 4) In Truth Maintenance Systems (TMS), what is the function of the 'Justification-Based TMS' (JTMS)?
+  A.     To balance financial transactions in banking
+  B. (*) To maintain logical dependencies among beliefs so that when a premise is retracted, all derived beliefs are automatically invalidated
+  C.     To encrypt user passwords
+  D.     To speed up floating point operations
+Explanation: JTMS maintains dependency networks connecting assertions to their justifications, propagating belief retractions.
+
+[bca-301n-u4-q185] (Unit 4) What is the primary trade-off between Forward Chaining and Backward Chaining?
+  A.     Forward chaining is never complete, while backward chaining is always complete
+  B. (*) Forward chaining can generate many irrelevant facts if unguided; backward chaining only explores rules relevant to the specific goal
+  C.     Forward chaining requires quantum hardware
+  D.     There is no trade-off; they are identical
+Explanation: Forward chaining computes all reachable consequences (data-driven); backward chaining focuses narrowly on proving a hypothesis.
+
+[bca-301n-u4-q186] (Unit 4) In a production system, what does the 'Working Memory' (or Fact Base) contain?
+  A.     The compiled binary executable code
+  B. (*) The current dynamic state facts describing the problem situation
+  C.     The operating system kernel
+  D.     The historical logs from previous decades
+Explanation: Working memory stores the current assertions and facts that rule conditions are matched against.
+
+[bca-301n-u4-q187] (Unit 4) A Production Rule is formally structured as:
+  A.     WHILE condition DO action
+  B. (*) IF <Condition/Antecedent> THEN <Action/Consequent>
+  C.     TRY statement CATCH exception
+  D.     SELECT column FROM table
+Explanation: Production rules are Condition-Action (or IF-THEN) associations.
+
+[bca-301n-u4-q188] (Unit 4) In pattern matching for expert systems, what is 'Discrimination Tree' indexing?
+  A.     A tree that categorizes neural network layers
+  B. (*) A hierarchical index where shared condition prefixes are evaluated once to filter applicable rules rapidly
+  C.     A random forest model
+  D.     A technique to sort array elements
+Explanation: Discrimination trees structure tests hierarchically so redundant tests across rules are evaluated only once.
+
+[bca-301n-u4-q189] (Unit 4) In semantic networks, what is an 'Instance' link compared to a 'Subclass' (AKO) link?
+  A. (*) An Instance link connects an individual specific object to its class; Subclass connects a specialized class to a general class
+  B.     Instance links connect only numbers; Subclass links connect words
+  C.     They are identical in meaning
+  D.     Instance links are forbidden in modern AI
+Explanation: Example: 'Snoopy' (individual) -Instance-of-> 'Dog'; 'Dog' -AKO-> 'Mammal' (class hierarchy).
+
+[bca-301n-u4-q190] (Unit 4) In frame-based systems, an 'If-Needed' demonic procedure is executed when:
+  A.     A new frame is created
+  B. (*) A request is made to read a slot whose value is currently empty or undefined
+  C.     The program encounters an error
+  D.     A slot value is deleted
+Explanation: An if-needed demon computes or retrieves the requested value on the fly when accessed.
+
+[bca-301n-u4-q191] (Unit 4) In frame systems, an 'If-Added' demonic procedure is executed when:
+  A. (*) A new value is assigned or stored into a slot
+  B.     A frame is printed to the screen
+  C.     Memory is garbage collected
+  D.     A query is aborted
+Explanation: An if-added demon acts as a side-effect trigger (like a database trigger) when data is updated.
+
+[bca-301n-u4-q192] (Unit 4) What limitation of early Semantic Networks prompted the development of formal Description Logics (DL)?
+  A. (*) Semantic networks lacked formal mathematical semantics, leading to ambiguous interpretations of links
+  B.     Semantic networks could only store up to 10 nodes
+  C.     Semantic networks did not support English words
+  D.     Semantic networks were too fast to debug
+Explanation: Early nets lacked precise formal semantics (an arc could mean subset, element, physical part, or temporal successor), necessitating Description Logics (e.g., OWL).
+
+[bca-301n-u4-q193] (Unit 4) What does the 'Conceptual Dependency' primitive PROPEL represent?
+  A. (*) Application of physical force to an object (e.g., pushing, kicking, pulling)
+  B.     Moving one's own body part
+  C.     Speaking words aloud
+  D.     Thinking about a problem
+Explanation: PROPEL represents applying physical force to an object.
+
+[bca-301n-u4-q194] (Unit 4) What does the CD primitive MOVE represent?
+  A.     Relocating a vehicle to a new city
+  B. (*) Movement of a body part by its owner (e.g., raising an arm, kicking a foot)
+  C.     Transferring money to an account
+  D.     Changing a computer file directory
+Explanation: MOVE specifically models an agent moving one of its own body parts.
+
+[bca-301n-u4-q195] (Unit 4) What does the CD primitive GRASP represent?
+  A.     Intellectual comprehension of a mathematical theorem
+  B. (*) Physically grasping or clutching an object with a body part
+  C.     Transferring ownership of real estate
+  D.     Speaking through a microphone
+Explanation: GRASP is the physical act of grasping an object.
+
+[bca-301n-u4-q196] (Unit 4) What does the CD primitive SPEAK represent?
+  A. (*) Producing vocal sounds or speech utterances
+  B.     Thinking silently in memory
+  C.     Writing an email
+  D.     Moving a limb
+Explanation: SPEAK models the physical production of sound by an animate agent.
+
+[bca-301n-u4-q197] (Unit 4) In Conceptual Dependency representations, conceptual tenses (such as Past, Present, Future, Negation) are denoted by:
+  A.     Uppercase English words
+  B. (*) Modifier annotations above or on the conceptual dependency arrows
+  C.     SQL query clauses
+  D.     Pointers to operating system timers
+Explanation: Tense markers (p = past, f = future, / = negation, c = conditional) decorate the causal links in CD graphs.
+
+[bca-301n-u4-q198] (Unit 4) In Roger Schank's script representation, what are 'Causal Chains'?
+  A.     Chains of computer network cables
+  B. (*) Linked sequences of events where the outcome/result of one action serves as the enabling precondition for the next
+  C.     Markov decision chains
+  D.     Blockchain cryptographic hashes
+Explanation: Causal chains link actions: enabling, initiating, or resulting in psychological or physical state changes.
+
+[bca-301n-u4-q199] (Unit 4) In frame systems, the term 'Slot Filler' can be which of the following?
+  A.     A primitive value (integer, string)
+  B.     Another frame (enabling hierarchical composition)
+  C.     A procedural demon function
+  D. (*) All of the above
+Explanation: Fillers are versatile: they can be atomic values, references to other frames, or procedural code.
+
+[bca-301n-u4-q200] (Unit 4) What is the primary benefit of Knowledge Representation schemes over raw database tables?
+  A.     They consume less disk storage
+  B. (*) They support rich automated inference, inheritance hierarchies, and semantic reasoning beyond explicit tabular records
+  C.     They do not require memory caches
+  D.     They are readable by web browsers without HTML
+Explanation: KR schemes support automated deduction, semantic classification, and default reasoning over sparse knowledge.
+
+[bca-301n-u5-q201] (Unit 5) What is an Expert System in Artificial Intelligence?
+  A.     A fast operating system kernel
+  B. (*) A computer program that emulates the decision-making ability of a human expert in a specialized domain
+  C.     A hardware processor with multi-threaded registers
+  D.     A generic word processing application
+Explanation: An expert system is a knowledge-intensive program that solves complex problems in a specific domain at human-expert levels.
+
+[bca-301n-u5-q202] (Unit 5) What are the two primary core components that comprise the engine of a classical Expert System?
+  A.     Monitor and Keyboard
+  B. (*) Knowledge Base and Inference Engine
+  C.     Transistor and Capacitor
+  D.     Compiler and Linker
+Explanation: The fundamental architectural separation in expert systems is the domain Knowledge Base and the domain-independent Inference Engine.
+
+[bca-301n-u5-q203] (Unit 5) Why is the separation of the Knowledge Base from the Inference Engine considered a critical design principle?
+  A.     It reduces electricity consumption
+  B. (*) It allows modifying or expanding domain expertise without rewriting the underlying reasoning mechanism
+  C.     It prevents software piracy
+  D.     It allows running on 8-bit CPUs
+Explanation: Decoupling knowledge from inference enables modular rule updates, easier maintenance, and domain adaptability.
+
+[bca-301n-u5-q204] (Unit 5) What is the primary role of the 'Explanation Facility' in an Expert System?
+  A.     To translate output into foreign languages
+  B. (*) To explain to the user 'HOW' a conclusion was reached and 'WHY' a particular question is being asked
+  C.     To format graphics on screen
+  D.     To monitor memory usage
+Explanation: The explanation subsystem justifies the system's reasoning path, establishing trust and facilitating verification.
+
+[bca-301n-u5-q205] (Unit 5) When a user asks 'WHY' during an interactive session with an expert system, the system standardly responds with:
+  A.     A definition of all terms in the dictionary
+  B. (*) The current rule being evaluated and the sub-goal it is attempting to establish
+  C.     An error code
+  D.     The source code of the inference engine
+Explanation: 'Why' questions inspect the current rule context and explain what hypothesis the question aims to prove.
+
+[bca-301n-u5-q206] (Unit 5) When a user asks 'HOW' after an expert system reaches a final diagnosis, the system explains by:
+  A. (*) Displaying the chain of fired rules and factual assertions that led to that specific conclusion
+  B.     Showing the execution speed in gigahertz
+  C.     Restarting the program from the beginning
+  D.     Calling the software vendor
+Explanation: 'How' questions trace backwards through the proof tree of fired rules supporting the recommendation.
+
+[bca-301n-u5-q207] (Unit 5) What is an 'Expert System Shell'?
+  A.     A physical plastic protective case for computers
+  B. (*) An expert system with the domain-specific knowledge base removed, leaving the inference engine, user interface, and explanation facility
+  C.     A command-line terminal in Linux
+  D.     A web browser plugin
+Explanation: An expert system shell (e.g., CLIPS, EMYCIN) is a reusable development environment containing inference and UI tools.
+
+[bca-301n-u5-q208] (Unit 5) Which historic expert system, developed at Stanford in the 1970s by Shortliffe, diagnosed infectious blood diseases and recommended antibiotics?
+  A.     DENDRAL
+  B. (*) MYCIN
+  C.     PROSPECTOR
+  D.     MACSYMA
+Explanation: MYCIN was a groundbreaking medical expert system that utilized certainty factors for bacterial infection diagnosis.
+
+[bca-301n-u5-q209] (Unit 5) Which was the earliest expert system (1965), developed by Feigenbaum and Lederberg to infer chemical molecular structures from mass spectrometer data?
+  A.     MYCIN
+  B. (*) DENDRAL
+  C.     CADUCEUS
+  D.     XCON (R1)
+Explanation: DENDRAL mapped organic chemical structures from mass spectrometry data, initiating knowledge-based AI.
+
+[bca-301n-u5-q210] (Unit 5) Which expert system was famously used by the US Geological Survey to discover a multimillion-dollar molybdenum ore deposit?
+  A. (*) PROSPECTOR
+  B.     MYCIN
+  C.     INTERNIST-1
+  D.     DART
+Explanation: PROSPECTOR (developed at SRI) accurately predicted the location of a major mineral deposit in Washington State.
+
+[bca-301n-u5-q211] (Unit 5) How did the MYCIN expert system mathematically handle uncertainty in medical diagnosis?
+  A.     Bayesian networks with exact integrals
+  B. (*) Certainty Factor (CF) Theory, combining Measure of Belief (MB) and Measure of Disbelief (MD)
+  C.     Fuzzy clustering centroids
+  D.     Random guesswork
+Explanation: MYCIN introduced Certainty Factors: CF(h, e) = MB(h, e) - MD(h, e), ranging from -1.0 (certainly false) to +1.0 (certainly true).
+
+[bca-301n-u5-q212] (Unit 5) In MYCIN's Certainty Factor theory, what does a CF of +1.0 signify?
+  A.     Total uncertainty (no evidence)
+  B. (*) Absolute certainty that the hypothesis is True
+  C.     Absolute certainty that the hypothesis is False
+  D.     A system error
+Explanation: CF = +1.0 indicates conclusive proof of truth; CF = -1.0 indicates conclusive disproof; CF = 0 denotes complete absence of evidence.
+
+[bca-301n-u5-q213] (Unit 5) What is the 'Knowledge Acquisition Bottleneck' in expert system development?
+  A.     Slow hard drive read speeds
+  B. (*) The difficult and time-consuming process of eliciting, translating, and formalizing implicit human expertise into explicit rules
+  C.     Running out of network bandwidth
+  D.     The high price of computer monitors
+Explanation: Transferring subtle, unstructured expert intuition into formal rules through interviews is notoriously slow and difficult.
+
+[bca-301n-u5-q214] (Unit 5) What is the job title of the AI professional who interviews domain experts and codifies their knowledge into production rules?
+  A.     Database Administrator
+  B. (*) Knowledge Engineer
+  C.     Scrum Master
+  D.     Frontend Developer
+Explanation: A Knowledge Engineer specializes in extracting domain expertise and engineering it into an AI knowledge base.
+
+[bca-301n-u5-q215] (Unit 5) Natural Language Processing (NLP) is formally positioned at the intersection of:
+  A. (*) Computer Science, Artificial Intelligence, and Computational Linguistics
+  B.     Civil Engineering and Architecture
+  C.     Operating Systems and Microcode
+  D.     Graphic Design and Marketing
+Explanation: NLP combines computational linguistics with computer science and AI to enable machines to understand human language.
+
+[bca-301n-u5-q216] (Unit 5) In the NLP pipeline, what is 'Morphological Analysis'?
+  A.     Analyzing the layout of physical pixels on screen
+  B. (*) Analyzing word structures, stems, prefixes, suffixes, and inflections to identify base roots
+  C.     Parsing the syntactic phrase tree of a complete novel
+  D.     Translating words into binary ASCII
+Explanation: Morphology studies how morphemes (smallest units of meaning) combine to form words (e.g., un-break-able).
+
+[bca-301n-u5-q217] (Unit 5) What is the difference between 'Stemming' and 'Lemmatization' in NLP text pre-processing?
+  A.     They are identical algorithms with different names
+  B. (*) Stemming chops off word ends using crude heuristics (e.g., Porter Stemmer); Lemmatization uses vocabularies and morphological analysis to return valid base dictionary words (lemma)
+  C.     Stemming translates languages; Lemmatization counts vowels
+  D.     Stemming requires neural networks; Lemmatization does not
+Explanation: Stemming uses algorithmic truncation (e.g., 'caring' -> 'car'), while lemmatization uses dictionaries and POS tags to return the true root 'care'.
+
+[bca-301n-u5-q218] (Unit 5) In NLP syntactic parsing, a Context-Free Grammar (CFG) is standardly defined by which 4-tuple?
+  A.     (P, E, A, S)
+  B. (*) (V, Σ, R, S) representing Variables/Non-terminals, Terminal symbols, Production rules, and Start symbol
+  C.     (X, D, C, R)
+  D.     (Q, Σ, δ, q0, F)
+Explanation: A CFG G = (V, Σ, R, S) comprises Non-terminals (V), Terminals (Σ), Rules (R), and Start symbol (S).
+
+[bca-301n-u5-q219] (Unit 5) What is 'Lexical Ambiguity' in Natural Language Processing?
+  A. (*) When a word can have multiple distinct meanings or parts of speech in a language (e.g., 'bank' as river bank vs financial bank)
+  B.     When a sentence structure can be parsed into multiple trees
+  C.     When text has spelling mistakes
+  D.     When an audio file has background noise
+Explanation: Lexical ambiguity (polysemy/homonymy) occurs when an individual word possesses multiple dictionary definitions.
+
+[bca-301n-u5-q220] (Unit 5) The classic headline 'Enraged Cow Injures Farmer with Axe' is a prime example of which NLP challenge?
+  A. (*) Syntactic (Structural) Ambiguity
+  B.     Lexical Ambiguity
+  C.     Acoustic Noise
+  D.     Spelling error
+Explanation: Structural ambiguity: did the cow use an axe to injure the farmer, or did the farmer have the axe? Prepositional attachment ambiguity.
+
+[bca-301n-u5-q221] (Unit 5) What NLP task assigns parts of speech (Noun, Verb, Adjective, Preposition) to each word in a sentence?
+  A.     Named Entity Recognition (NER)
+  B. (*) Part-of-Speech (POS) Tagging
+  C.     Sentiment Analysis
+  D.     Machine Translation
+Explanation: POS tagging annotates each token with its grammatical category based on context.
+
+[bca-301n-u5-q222] (Unit 5) What is 'Word Sense Disambiguation' (WSD)?
+  A.     Translating English text to French
+  B. (*) Identifying which specific sense/meaning of a polysemous word is intended in a particular sentence context
+  C.     Converting speech audio to written text
+  D.     Correcting typographical errors
+Explanation: WSD determines the correct meaning of ambiguous words (e.g., 'crane' as a bird vs lifting machinery) using context.
+
+[bca-301n-u5-q223] (Unit 5) In NLP, what is 'Named Entity Recognition' (NER)?
+  A.     Giving names to newly created variables
+  B. (*) Locating and classifying named entities in text into predefined categories (Persons, Organizations, Locations, Dates)
+  C.     Identifying grammatical clauses
+  D.     Sorting names alphabetically
+Explanation: NER identifies proper nouns representing entities (e.g., 'Google' -> Organization, 'Paris' -> Location).
+
+[bca-301n-u5-q224] (Unit 5) What does the 'Bag-of-Words' (BoW) model in text processing discard?
+  A.     Word frequency counts
+  B. (*) Word order and grammatical structure, retaining only word occurrence frequencies
+  C.     All dictionary definitions
+  D.     Uppercase letters
+Explanation: Bag-of-Words treats documents as unordered frequency histograms, ignoring syntactic word order.
+
+[bca-301n-u5-q225] (Unit 5) What does TF-IDF stand for in information retrieval and NLP text processing?
+  A.     True Frequency - Inverse Density Factor
+  B. (*) Term Frequency - Inverse Document Frequency
+  C.     Text Formatting - Indexed Directory Format
+  D.     Total Floating - Internal Data Field
+Explanation: TF-IDF measures how important a word is to a document relative to a corpus of documents.
+
+[bca-301n-u5-q226] (Unit 5) In Machine Learning, what is the defining characteristic of 'Supervised Learning'?
+  A.     The algorithm learns without any human oversight or data
+  B. (*) The model is trained on labeled data consisting of paired input features and known target outputs
+  C.     The algorithm only clusters data points by Euclidean distance
+  D.     The algorithm plays against itself in an empty room
+Explanation: Supervised learning trains on explicit input-output pairs (X, y) to learn a predictive mapping function.
+
+[bca-301n-u5-q227] (Unit 5) In Machine Learning, what is 'Unsupervised Learning'?
+  A.     Learning with a human teacher grading every step
+  B. (*) Discovering inherent patterns, groupings, or representations in unlabeled data without target guidance (e.g., K-Means clustering)
+  C.     Learning from punishment signals only
+  D.     Training models without computers
+Explanation: Unsupervised learning finds hidden intrinsic structures (clusters, manifolds) in unlabeled datasets.
+
+[bca-301n-u5-q228] (Unit 5) What is 'Reinforcement Learning' (RL)?
+  A.     Training a model on labeled image classification datasets
+  B. (*) An agent learning optimal behavioral policies by taking actions in an environment to maximize cumulative numerical reward signals
+  C.     Fixing physical broken robotic cables
+  D.     Encrypting database records
+Explanation: RL learns through trial-and-error interactions guided by rewards and penalties (e.g., Q-learning, AlphaGo).
+
+[bca-301n-u5-q229] (Unit 5) In an Artificial Neural Network (ANN), what mathematical function computes the weighted sum of inputs plus a bias?
+  A.     Loss function
+  B. (*) Net input combination function: z = Σ(w_i * x_i) + b
+  C.     Activation derivative
+  D.     Softmax normalizer
+Explanation: Each artificial neuron calculates z = w · x + b before passing it to an activation function.
+
+[bca-301n-u5-q230] (Unit 5) Why are non-linear 'Activation Functions' (such as Sigmoid, ReLU, Tanh) essential in multi-layer neural networks?
+  A.     They keep the hardware cool
+  B. (*) Without non-linearities, any composition of linear layers collapses into an ordinary single linear transformation
+  C.     They ensure all weights are positive
+  D.     They format outputs for display screens
+Explanation: Non-linear activations allow networks to approximate arbitrary complex, non-linear functions (Universal Approximation Theorem).
+
+[bca-301n-u5-q231] (Unit 5) What is the Backpropagation algorithm in neural network training?
+  A.     Propagating input images backward into cameras
+  B. (*) An algorithm that calculates the gradient of the loss function with respect to each weight using the mathematical chain rule, propagating errors backward
+  C.     Rewinding video frames in animation
+  D.     Undoing database commits
+Explanation: Backpropagation calculates gradients from the output layer back to the input layer to update weights via gradient descent.
+
+[bca-301n-u5-q232] (Unit 5) What machine learning algorithm seeks to find the optimal separating hyperplane that maximizes the margin between two distinct classes?
+  A. (*) Support Vector Machine (SVM)
+  B.     K-Means Clustering
+  C.     Naive Bayes Classifier
+  D.     Linear Regression
+Explanation: SVM constructs an optimal hyperplane that maximizes the geometric margin to the nearest training support vectors.
+
+[bca-301n-u5-q233] (Unit 5) In Support Vector Machines, what is the 'Kernel Trick'?
+  A.     A cheat code in computer gaming
+  B. (*) Implicitly mapping non-linearly separable input data into a higher-dimensional space where it becomes linearly separable, using inner-product kernel functions
+  C.     Overclocking the GPU processor
+  D.     Deleting outlier data points
+Explanation: The kernel trick (e.g., RBF kernel) computes dot products in high-dimensional Hilbert spaces without explicitly calculating coordinates.
+
+[bca-301n-u5-q234] (Unit 5) Who introduced 'Fuzzy Logic' in 1965 to model reasoning with vague, imprecise information?
+  A. (*) Lotfi A. Zadeh
+  B.     Alan Turing
+  C.     John von Neumann
+  D.     Marvin Minsky
+Explanation: Lotfi Zadeh of UC Berkeley published his seminal paper 'Fuzzy Sets' in 1965.
+
+[bca-301n-u5-q235] (Unit 5) In classical Crisp set theory, an element's membership is binary (0 or 1). In Fuzzy Set theory, membership is defined by:
+  A.     Strict integers from 0 to 100
+  B. (*) A continuous Membership Function μA(x) taking values in the closed interval [0.0, 1.0]
+  C.     Complex imaginary numbers
+  D.     Negative numbers only
+Explanation: Fuzzy sets permit partial membership: an element can belong to a set with any real degree between 0.0 (not a member) and 1.0 (full member).
+
+[bca-301n-u5-q236] (Unit 5) In Fuzzy Logic, what are the three primary stages of a Fuzzy Inference System (FIS)?
+  A.     Compilation, Linking, and Execution
+  B. (*) Fuzzification, Fuzzy Rule Evaluation (Inference), and Defuzzification
+  C.     Input, Storage, and Output
+  D.     Encoding, Encryption, and Decryption
+Explanation: FIS operates through: 1) Fuzzifying crisp inputs into linguistic variables; 2) Evaluating IF-THEN fuzzy rules; 3) Defuzzifying results into a crisp output.
+
+[bca-301n-u5-q237] (Unit 5) Which of the following is a classic consumer application of Fuzzy Logic controllers?
+  A. (*) Automated washing machines adjusting wash cycles based on water turbidity
+  B.     Compiling C code into machine language
+  C.     Formatting word processor documents
+  D.     Transmitting email over SMTP
+Explanation: Fuzzy logic controllers excel in home appliances (washing machines, air conditioners, autofocus cameras) with continuous, vague sensory thresholds.
+
+[bca-301n-u5-q238] (Unit 5) In Defuzzification, which method calculates the center of gravity of the aggregated fuzzy output area?
+  A. (*) Centroid Method (Center of Area / COA)
+  B.     Max-Membership Principle
+  C.     Mean of Maximum (MOM)
+  D.     First of Maxima
+Explanation: The Centroid (Center of Gravity) method is the most widely utilized defuzzification technique.
+
+[bca-301n-u5-q239] (Unit 5) Which early AI system developed by Terry Winograd in 1968 demonstrated natural language comprehension in a simulated tabletop 'Blocks World'?
+  A. (*) SHRDLU
+  B.     ELIZA
+  C.     MYCIN
+  D.     ALICE
+Explanation: SHRDLU understood English commands to manipulate virtual blocks and could answer questions about its reasoning.
+
+[bca-301n-u5-q240] (Unit 5) What is 'Sentiment Analysis' in modern NLP?
+  A.     Detecting grammatical spelling errors in text
+  B. (*) Computationally identifying and categorizing subjective opinions and emotional polarities (Positive, Negative, Neutral) expressed in text
+  C.     Translating ancient languages
+  D.     Converting audio waveforms to text
+Explanation: Sentiment analysis extracts opinion polarities from product reviews, social media, and customer feedback.
+
+[bca-301n-u5-q241] (Unit 5) What is 'Overfitting' in Machine Learning?
+  A.     When a model is too small to fit onto a hard disk
+  B. (*) When a model memorizes training data noise and idiosyncrasies, achieving near-perfect training accuracy but generalizing poorly to unseen test data
+  C.     When an algorithm runs out of training epochs
+  D.     When an activation function outputs numbers greater than 1
+Explanation: Overfitting occurs when a high-capacity model learns noise rather than true underlying population distributions.
+
+[bca-301n-u5-q242] (Unit 5) What technique is standardly used to detect and prevent overfitting during model evaluation?
+  A. (*) Cross-Validation (e.g., k-fold cross-validation) and Regularization (L1/L2)
+  B.     Deleting half of the features randomly
+  C.     Doubling the learning rate
+  D.     Running the program in dark mode
+Explanation: K-fold cross-validation and weight regularization (penalizing large coefficients) safeguard against overfitting.
+
+[bca-301n-u5-q243] (Unit 5) Which evaluation metric is defined as the proportion of true positive predictions among all positive instances predicted by a classifier (TP / (TP + FP))?
+  A.     Recall (Sensitivity)
+  B. (*) Precision
+  C.     Accuracy
+  D.     Specificity
+Explanation: Precision measures exactness: out of all items labeled positive, how many were truly positive?
+
+[bca-301n-u5-q244] (Unit 5) Which evaluation metric is defined as the proportion of actual positive instances that were correctly identified by the classifier (TP / (TP + FN))?
+  A. (*) Recall (Sensitivity)
+  B.     Precision
+  C.     False Positive Rate
+  D.     F1 Score
+Explanation: Recall measures completeness: out of all genuinely positive items in reality, how many did the model capture?
+
+[bca-301n-u5-q245] (Unit 5) What is the 'F1 Score' in classification performance measurement?
+  A.     The arithmetic average of True Positives and False Positives
+  B. (*) The harmonic mean of Precision and Recall: 2 * (Precision * Recall) / (Precision + Recall)
+  C.     The square root of accuracy
+  D.     The highest score achieved in an epoch
+Explanation: The F1 score provides a balanced single metric, particularly useful on imbalanced class distributions.
+
+[bca-301n-u5-q246] (Unit 5) In modern AI, what architecture introduced by Vaswani et al. (2017) revolutionized NLP through Self-Attention mechanisms?
+  A.     Recurrent Neural Networks (RNN)
+  B. (*) The Transformer Architecture
+  C.     Convolutional Neural Networks (CNN)
+  D.     Multilayer Perceptrons (MLP)
+Explanation: 'Attention Is All You Need' introduced the Transformer, which underpins modern Large Language Models (BERT, GPT).
+
+[bca-301n-u5-q247] (Unit 5) What is the primary operational advantage of Self-Attention over sequential Recurrent Neural Networks (RNN)?
+  A.     It requires zero floating point multiplications
+  B. (*) It processes all tokens in an input sequence in parallel rather than sequentially, allowing massive GPU scaling and capturing long-range dependencies
+  C.     It eliminates the need for training data
+  D.     It runs strictly on CPU chips
+Explanation: Self-attention computes direct token-to-token contextual relationships in parallel, breaking the sequential recurrence bottleneck of LSTMs.
+
+[bca-301n-u5-q248] (Unit 5) In rule-based systems, an expert system that reasons backwards from a failure symptom to identify underlying component faults is performing:
+  A. (*) Diagnostic Reasoning
+  B.     Predictive Planning
+  C.     Hardware Emulation
+  D.     Compiling
+Explanation: Diagnostic reasoning maps observed anomalies back to their underlying causative defects.
+
+[bca-301n-u5-q249] (Unit 5) What is 'Knowledge Base Refinement'?
+  A.     Formatting text indentation in rules
+  B. (*) The ongoing iterative process of validating, updating, correcting, and pruning rules in an expert system to improve operational accuracy
+  C.     Compressing a database into a ZIP archive
+  D.     Translating LISP code to Python
+Explanation: Knowledge base refinement tunes and updates rules to resolve discrepancies observed during field testing.
+
+[bca-301n-u5-q250] (Unit 5) Which of the following best describes the ultimate objective of Artificial Intelligence as an academic and engineering discipline?
+  A.     To build humanoid robots with metal skins
+  B. (*) To understand the principles of intelligence and construct computational systems capable of rational, adaptive, and autonomous problem solving
+  C.     To replace all human workers with mechanical calculators
+  D.     To prove that biological brains are obsolete
+Explanation: AI strives both scientifically to understand intelligence principles and technologically to engineer systems exhibiting adaptive rational agency.
+

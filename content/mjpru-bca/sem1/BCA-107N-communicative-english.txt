@@ -1,0 +1,2753 @@
+// BCA-107N: Communicative English (Semester 1 - MJPRU Bareilly)
+// Complete Official Question Bank (250 MCQs - 50 MCQs per Unit)
+
+Q: The English word 'Communication' is derived from which Latin verb?
+A) Communicare *
+B) Communis
+C) Communicatio
+D) Communico
+E: Communication comes from the Latin verb 'Communicare' (meaning to share, impart, or make common) and the noun 'Communis'.
+D: easy
+T: BCA-107N, Unit-1, Etymology, Basics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following best defines the primary nature of communication?
+A) A static one-time activity
+B) A continuous, two-way dynamic process of sharing meaning *
+C) Solely the transmission of printed words
+D) A purely mechanical transfer of data
+E: Communication is fundamentally an ongoing, interactive two-way process of exchanging information, ideas, and feelings to create mutual understanding.
+D: easy
+T: BCA-107N, Unit-1, Nature, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the sequential stages in the basic communication cycle?
+A) Sender -> Encoding -> Message -> Channel -> Receiver -> Decoding -> Feedback *
+B) Receiver -> Decoding -> Channel -> Sender -> Feedback
+C) Encoding -> Sender -> Channel -> Receiver -> Message
+D) Sender -> Channel -> Feedback -> Receiver -> Decoding
+E: The sender encodes thoughts into a message transmitted via a channel to a receiver who decodes it and responds with feedback.
+D: easy
+T: BCA-107N, Unit-1, Process, Stages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the communication process, the transformation of an abstract thought or idea into symbols, words, or gestures is termed:
+A) Decoding
+B) Encoding *
+C) Modulation
+D) Feedback
+E: Encoding is the cognitive process by which the sender converts ideas and intentions into understandable symbolic code (words, signs, symbols).
+D: easy
+T: BCA-107N, Unit-1, Components, Encoding
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The interpretation and translation of received symbols back into meaningful ideas by the recipient is called:
+A) Encoding
+B) Decoding *
+C) Transmission
+D) Transduction
+E: Decoding is the receiver's process of interpreting the sender's symbols and assigning meaning to them.
+D: easy
+T: BCA-107N, Unit-1, Components, Decoding
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which component of the communication cycle completes the loop and confirms whether the message was accurately understood?
+A) Channel
+B) Noise
+C) Feedback *
+D) Encoding
+E: Feedback is the receiver's response that tells the sender whether the message was received, understood, or requires clarification.
+D: easy
+T: BCA-107N, Unit-1, Components, Feedback
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Any disturbance, distortion, or interference that impedes the accurate transmission or reception of a message is called:
+A) Friction
+B) Noise *
+C) Resistance
+D) Barrier
+E: In communication theory (Shannon-Weaver), 'Noise' refers to any extraneous factor that degrades, distorts, or interrupts the message.
+D: easy
+T: BCA-107N, Unit-1, Components, Noise
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which communication model was the first major linear model originally proposed for telecommunication by Claude Shannon and Warren Weaver in 1949?
+A) Shannon-Weaver Model *
+B) Schramm's Interactive Model
+C) Berlo's SMCR Model
+D) Lasswell's 5W Model
+E: The Shannon-Weaver Mathematical Model of Communication (1949) introduced Sender, Transmitter, Channel, Noise, Receiver, and Destination as a linear concept.
+D: medium
+T: BCA-107N, Unit-1, Models, Shannon-Weaver
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Wilbur Schramm's interactive model of communication emphasizes which crucial concept for successful communication?
+A) Optical medium
+B) Overlapping Field of Experience between sender and receiver *
+C) Absolute silence
+D) Speed of transmission
+E: Schramm introduced the 'Field of Experience', stating communication can only occur to the extent that sender and receiver share common cultural and linguistic backgrounds.
+D: medium
+T: BCA-107N, Unit-1, Models, Schramm
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Harold Lasswell's classic model describes communication through which memorable formula?
+A) Who says What in Which Channel to Whom with What Effect? *
+B) Where, When, Why, How, What?
+C) Input, Process, Output, Storage
+D) Subject, Verb, Object, Indirect Object
+E: Lasswell's (1948) 5-question formula: Who (Sender) -> Says What (Message) -> In Which Channel (Medium) -> To Whom (Receiver) -> With What Effect (Feedback/Impact).
+D: easy
+T: BCA-107N, Unit-1, Models, Lasswell
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is NOT one of the traditional '7 Cs' of effective communication?
+A) Clarity
+B) Conciseness
+C) Complexity *
+D) Courtesy
+E: The 7 Cs are: Completeness, Conciseness, Consideration, Clarity, Concreteness, Courtesy, and Correctness. Complexity is an obstacle, not a principle.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Overview
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Ensuring that a business message contains all facts, figures, and details necessary for the receiver to react properly exemplifies:
+A) Completeness *
+B) Conciseness
+C) Courtesy
+D) Creativity
+E: Completeness ensures no vital information is omitted, answering all the reader's anticipated questions.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Completeness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Communicating the complete intended message using the fewest possible words without sacrificing clarity or meaning is:
+A) Concreteness
+B) Conciseness (Brevity) *
+C) Courtesy
+D) Correctness
+E: Conciseness eliminates wordiness, redundancy, and fluff while preserving full meaning.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Conciseness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The principle of 'Consideration' in communication is best characterized by adopting:
+A) The 'I' attitude
+B) The 'You' attitude (empathy for the reader's needs and viewpoint) *
+C) A commanding authoritative tone
+D) Excessive flattery
+E: Consideration means seeing the situation from the recipient's perspective ('You-attitude') and respecting their emotions and desires.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Consideration
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Using specific, definitive facts and figures rather than vague, ambiguous generalizations satisfies which C?
+A) Concreteness *
+B) Courtesy
+C) Coherence
+D) Completeness
+E: Concreteness relies on tangible, specific, and verifiable evidence rather than vague assumptions.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Concreteness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Ensuring that grammatical structures, technical facts, data figures, and terminology are completely accurate is the principle of:
+A) Correctness *
+B) Conciseness
+C) Courtesy
+D) Clarity
+E: Correctness implies accurate facts, proper grammar, spelling, punctuation, and appropriate language level.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Correctness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Maintaining politeness, respect, sincere friendliness, and absence of offensive bias in communication represents:
+A) Courtesy *
+B) Clarity
+C) Conciseness
+D) Concreteness
+E: Courtesy shows genuine respect, uses polite expressions, and avoids discriminatory or condescending remarks.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Courtesy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Expressing ideas in simple, lucid language so that the receiver grasps the message effortlessly without ambiguity is:
+A) Clarity *
+B) Complexity
+C) Concreteness
+D) Consideration
+E: Clarity ensures that the reader understands the intended message without requiring multiple interpretations.
+D: easy
+T: BCA-107N, Unit-1, 7-Cs, Clarity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which sentence best embodies the 'You-attitude' in professional correspondence?
+A) We are pleased to announce our new product
+B) You can now access your course materials 24/7 with your updated portal *
+C) I demand your immediate response
+D) We need your payment immediately
+E: 'You can now access...' centers on the user's benefit and convenience rather than the company's internal perspective.
+D: medium
+T: BCA-107N, Unit-1, 7-Cs, You-Attitude
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A manager writes: 'Send it soon.' Which C of communication does this message violate most directly?
+A) Concreteness (it lacks specific date/time and clarity on what 'it' refers to) *
+B) Courtesy
+C) Conciseness
+D) Grammar
+E: The statement is hopelessly vague; specifying 'Please email the BCA-101 lab report by 3:00 PM Friday' provides concreteness.
+D: medium
+T: BCA-107N, Unit-1, 7-Cs, Concreteness-Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Communication flowing from senior leadership down to subordinate employees (e.g. policies, directives) is classified as:
+A) Upward Communication
+B) Downward Communication *
+C) Horizontal Communication
+D) Diagonal Communication
+E: Downward communication flows along the formal scalar chain from higher organizational hierarchy to lower levels.
+D: easy
+T: BCA-107N, Unit-1, Channels, Downward
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Employee feedback, grievance redressal, project progress reports, and suggestions represent:
+A) Downward Communication
+B) Upward Communication *
+C) Horizontal Communication
+D) Grapevine
+E: Upward communication moves from subordinate levels up to managers and executive decision-makers.
+D: easy
+T: BCA-107N, Unit-1, Channels, Upward
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Communication occurring between peers or colleagues at the same hierarchical organizational level (e.g., between two team leads) is:
+A) Lateral or Horizontal Communication *
+B) Downward Communication
+C) Diagonal Communication
+D) Vertical Communication
+E: Horizontal or lateral communication takes place between people of equal rank for interdepartmental coordination.
+D: easy
+T: BCA-107N, Unit-1, Channels, Horizontal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When a software engineer directly communicates with the marketing director across departmental and hierarchical lines, it is:
+A) Diagonal (Cross-functional) Communication *
+B) Horizontal Communication
+C) Downward Communication
+D) Grapevine
+E: Diagonal communication cuts across different functions and vertical hierarchical levels to expedite problem-solving.
+D: medium
+T: BCA-107N, Unit-1, Channels, Diagonal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The informal, unofficial, and organic interpersonal communication network within an organization is popularly known as the:
+A) Scalar Chain
+B) Grapevine *
+C) Intranet
+D) Spider Web
+E: The 'Grapevine' is the informal social network through which unofficial information, rumors, and work-culture news circulate.
+D: easy
+T: BCA-107N, Unit-1, Grapevine, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In which Grapevine network does one individual selectively communicate information to several chosen individuals, who in turn pass it to other selected individuals?
+A) Single Strand Chain
+B) Gossip Chain
+C) Probability Chain
+D) Cluster Chain *
+E: The Cluster Chain is the most dominant informal pattern in modern organizations where trusted liaisons share information with selected contacts.
+D: medium
+T: BCA-107N, Unit-1, Grapevine, Cluster-Network
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a 'Gossip Chain' grapevine network:
+A) One person transmits the information indiscriminately to everyone they encounter *
+B) Information passes along a single straight line from A to B to C
+C) Information spreads purely randomly according to probability laws
+D) No one shares any information
+E: In a gossip chain, a central person tells everyone around them non-selectively.
+D: medium
+T: BCA-107N, Unit-1, Grapevine, Gossip-Network
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a recognized advantage of the Grapevine in an organization?
+A) It is 100% accurate at all times
+B) It transmits messages with exceptional speed and relieves workplace emotional tension *
+C) It provides formal documentary legal proof
+D) It eliminates the need for formal managers
+E: The grapevine spreads urgent news rapidly, builds social cohesion, and serves as an emotional safety valve for employees.
+D: medium
+T: BCA-107N, Unit-1, Grapevine, Advantages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary danger associated with excessive reliance on Grapevine communication?
+A) It consumes too much paper
+B) It is prone to distortion, misinformation, half-truths, and destructive rumors *
+C) It slows down decision making
+D) It is strictly illegal
+E: Because grapevine messages lack formal accountability, they frequently suffer from omission, exaggeration, and rumor-mongering.
+D: easy
+T: BCA-107N, Unit-1, Grapevine, Disadvantages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A memo, official email circular, policy handbook, and minutes of a board meeting are examples of:
+A) Informal Communication
+B) Formal Written Communication *
+C) Grapevine
+D) Non-verbal communication
+E: Formal written documents maintain institutional records, carry executive authority, and establish legal accountability.
+D: easy
+T: BCA-107N, Unit-1, Channels, Formal-Written
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Loud machinery noise, excessive distance between speakers, and poor telephone connectivity belong to which barrier category?
+A) Psychological Barriers
+B) Physical / Environmental Barriers *
+C) Semantic Barriers
+D) Cultural Barriers
+E: Physical barriers are tangible environmental obstructions that interfere with transmission or audibility.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Physical
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Semantic barriers to communication primarily originate from:
+A) Poor room lighting
+B) Differences in language interpretation, technical jargon, ambiguous words, and connotations *
+C) Headaches and physical illness
+D) Faulty network cables
+E: Semantics deals with meaning; semantic barriers occur when sender and receiver interpret words or jargon differently.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Semantic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an IT specialist uses complex technical jargon like 'asynchronous zero-knowledge cryptographic primitives' with a non-technical client, it creates a:
+A) Semantic Barrier *
+B) Physical Barrier
+C) Environmental Barrier
+D) Temporal Barrier
+E: Specialized vocational jargon without explanation confuses outsiders and creates a linguistic semantic barrier.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Jargon
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The cognitive bias where a listener's overall positive impression of a speaker favorably influences their judgment of the speaker's specific message is called:
+A) Horn Effect
+B) Halo Effect *
+C) Stereotyping
+D) Selective Retention
+E: The Halo Effect occurs when one positive trait casts a favorable light over everything an individual says or does.
+D: medium
+T: BCA-107N, Unit-1, Barriers, Halo-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an individual hears only what aligns with their existing beliefs and systematically ignores conflicting facts, they exhibit:
+A) Active Listening
+B) Selective Perception *
+C) Empathy
+D) Decoding
+E: Selective perception leads receivers to filter incoming messages based on personal needs, biases, and background.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Selective-Perception
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A subordinate deliberately alters, softens, or omits negative project data so that their boss views the report favorably. This barrier is known as:
+A) Filtering *
+B) Feedback
+C) Noise
+D) Modulation
+E: Filtering is the intentional manipulation of information to make it appear more appealing to the receiver.
+D: medium
+T: BCA-107N, Unit-1, Barriers, Filtering
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Emotional states such as extreme anger, anxiety, jealousy, or intense stress act as:
+A) Physical Barriers
+B) Psychological / Emotional Barriers *
+C) Syntactic Barriers
+D) Mechanical Barriers
+E: Psychological barriers arise from internal emotional states that distort objective cognitive processing.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Psychological
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The difference between the literal dictionary definition of a word and its emotional or cultural association is the difference between:
+A) Semantics and Syntax
+B) Denotation and Connotation *
+C) Phonetics and Morphology
+D) Pitch and Tone
+E: Denotation is the objective dictionary meaning; connotation is the subjective emotional/cultural nuance evoked by a word.
+D: medium
+T: BCA-107N, Unit-1, Language, Denotation-Connotation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Rigid bureaucratic rules, excessive scalar chain hierarchy, and lack of grievance mechanisms are examples of:
+A) Organizational Barriers *
+B) Personal Barriers
+C) Physiological Barriers
+D) Environmental Barriers
+E: Organizational barriers stem from structural defects, rigid policies, complex reporting hierarchies, and poor climate.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Organizational
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following techniques is most effective in eliminating psychological and semantic barriers?
+A) Speaking louder
+B) Practicing Empathy and Active Listening with prompt feedback *
+C) Sending emails only in uppercase letters
+D) Ignoring the receiver's questions
+E: Cultivating empathy, checking understanding through active listening, and eliciting feedback resolve interpersonal misunderstandings.
+D: easy
+T: BCA-107N, Unit-1, Overcoming-Barriers, Empathy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In intercultural communication, 'Ethnocentrism' refers to the counterproductive belief that:
+A) All cultures are inherently equal
+B) One's own culture is superior to all others and should be the universal standard *
+C) Languages cannot be learned after childhood
+D) Time is strictly linear
+E: Ethnocentrism judges other cultural behaviors through the lens of one's own culture, generating severe cultural barriers.
+D: medium
+T: BCA-107N, Unit-1, Barriers, Ethnocentrism
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A student unable to pay attention in class due to severe toothache and fever is experiencing a:
+A) Physiological Barrier *
+B) Semantic Barrier
+C) Linguistic Barrier
+D) Sociological Barrier
+E: Physiological barriers are physical bodily discomforts, sensory impairments, or illnesses that inhibit communication.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Physiological
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following describes an effective 'Feedback Mechanism' to verify message comprehension?
+A) Paraphrasing the message back to the sender ('So what you mean is...') *
+B) Interrupting before the sender finishes
+C) Assuming understanding without asking
+D) Remaining completely silent
+E: Paraphrasing allows the listener to restate the core message in their own words to confirm alignment.
+D: easy
+T: BCA-107N, Unit-1, Feedback, Techniques
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'KISS' principle in communication stand for?
+A) Keep It Short and Simple *
+B) Knowledge Is Superb Strategy
+C) Know Information System Structures
+D) Keep Internal Systems Secure
+E: KISS ('Keep It Short and Simple') advocates brevity, clarity, and avoidance of unnecessary complexity.
+D: easy
+T: BCA-107N, Unit-1, Principles, KISS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which communication direction is historically most vulnerable to distortion through 'filtering'?
+A) Downward Communication
+B) Upward Communication *
+C) Horizontal Communication
+D) Informal Gossip
+E: Upward communication suffers most from filtering because subordinates hesitate to deliver bad news to their superiors.
+D: medium
+T: BCA-107N, Unit-1, Channels, Filtering-Direction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When the verbal message contradicts the speaker's non-verbal body language, receivers typically:
+A) Believe the verbal words 100%
+B) Believe the non-verbal body language and tone of voice *
+C) Discard both completely
+D) Ask a computer algorithm
+E: Non-verbal signals are perceived as instinctive and involuntary, leading people to trust body language over spoken words when they conflict.
+D: medium
+T: BCA-107N, Unit-1, Non-Verbal, Congruence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Information overload occurs when an employee:
+A) Receives more information than they can effectively process, evaluate, or respond to *
+B) Has no access to information
+C) Reads books very quickly
+D) Communicates in multiple languages
+E: Information overload causes cognitive fatigue, errors, missed deadlines, and breakdown of communication channels.
+D: easy
+T: BCA-107N, Unit-1, Barriers, Information-Overload
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A memo in an office should ideally be used for:
+A) Internal written communication between members of the same organization *
+B) Marketing to external global clients
+C) Filing a legal lawsuit
+D) Informal personal chats
+E: A memorandum (memo) is designed for concise, official internal communication within an organization.
+D: easy
+T: BCA-107N, Unit-1, Written-Communication, Memo
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following promotes an open communication climate in a corporate environment?
+A) Punishing employees who ask clarifying questions
+B) Establishing an open-door policy and multi-directional feedback channels *
+C) Encouraging strict secrecy and siloed departments
+D) Withholding company performance data
+E: Open-door policies, town halls, and psychological safety foster transparency and effective communication.
+D: easy
+T: BCA-107N, Unit-1, Organizational-Climate, Best-Practices
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In business communication, what does the term 'Channel Richness' denote?
+A) The monetary cost of advertising on the channel
+B) The capacity of a communication medium to convey multiple verbal and non-verbal cues and allow instant feedback *
+C) The number of words in an email
+D) The electrical bandwidth in fiber optic cables
+E: Rich channels (like face-to-face meetings) convey facial expressions, body language, tone, and immediate feedback; lean channels (posters) convey few cues.
+D: medium
+T: BCA-107N, Unit-1, Media-Richness, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which rapid reading technique is used to get the general idea or gist of a long passage or newspaper article?
+A) Scanning
+B) Skimming *
+C) Intensive Reading
+D) Critical Reading
+E: Skimming involves reading quickly across headings, topic sentences, and summaries to obtain the central theme or overall gist.
+D: easy
+T: BCA-107N, Unit-2, Reading-Skills, Skimming
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When searching through an index, dictionary, or airline timetable for a specific name, date, or number, you use:
+A) Skimming
+B) Scanning *
+C) Extensive Reading
+D) Reflective Reading
+E: Scanning is looking specifically for a predetermined piece of information without reading the whole text.
+D: easy
+T: BCA-107N, Unit-2, Reading-Skills, Scanning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Reading a technical research paper, legal contract, or code algorithm line-by-line with deep scrutiny is known as:
+A) Intensive Reading *
+B) Extensive Reading
+C) Skimming
+D) Casual Reading
+E: Intensive reading focuses on close analysis, understanding nuance, grammar, vocabulary, and logical structure.
+D: easy
+T: BCA-107N, Unit-2, Reading-Skills, Intensive-Reading
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Reading several fictional novels or general interest magazines for pleasure and overall language fluency is termed:
+A) Intensive Reading
+B) Extensive Reading *
+C) Proofreading
+D) Syntopic Reading
+E: Extensive reading emphasizes reading large volumes of accessible material for overall fluency, vocabulary growth, and enjoyment.
+D: easy
+T: BCA-107N, Unit-2, Reading-Skills, Extensive-Reading
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the fundamental difference between 'Hearing' and 'Listening'?
+A) Hearing is cognitive; Listening is physical
+B) Hearing is a passive, involuntary physiological process; Listening is an active, voluntary psychological process *
+C) Hearing requires training; Listening occurs naturally
+D) There is no difference
+E: Hearing is the automatic auditory reception of sound waves; listening requires conscious attention, decoding, and mental evaluation.
+D: easy
+T: BCA-107N, Unit-2, Listening-Skills, Hearing-vs-Listening
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the listening process, which stage immediately follows 'Receiving' auditory sensory input?
+A) Evaluating
+B) Understanding (Decoding Meaning) *
+C) Responding
+D) Remembering
+E: The stages are: Receiving -> Understanding -> Remembering -> Evaluating -> Responding.
+D: medium
+T: BCA-107N, Unit-2, Listening-Skills, Stages
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Listening to a persuasive sales presentation or political debate where you assess credibility, logic, and biases is called:
+A) Critical or Evaluative Listening *
+B) Appreciative Listening
+C) Empathetic Listening
+D) Discriminative Listening
+E: Critical listening involves analyzing, evaluating evidence, identifying fallacies, and deciding whether to accept assertions.
+D: easy
+T: BCA-107N, Unit-2, Listening-Skills, Critical-Listening
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When a counselor or friend listens attentively without judging to understand the speaker's emotional state, they practice:
+A) Evaluative Listening
+B) Empathetic (Therapeutic) Listening *
+C) Selective Listening
+D) Passive Listening
+E: Empathetic listening seeks to understand the feelings, emotions, and personal world of the speaker ('walking in their shoes').
+D: easy
+T: BCA-107N, Unit-2, Listening-Skills, Empathetic-Listening
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Listening to instrumental music, poetry, or a comedic podcast purely for personal enjoyment and aesthetic pleasure is:
+A) Critical Listening
+B) Appreciative Listening *
+C) Active Listening
+D) Informational Listening
+E: Appreciative listening is driven by pleasure, relaxation, and emotional gratification.
+D: easy
+T: BCA-107N, Unit-2, Listening-Skills, Appreciative-Listening
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a major barrier to effective listening?
+A) Maintaining eye contact
+B) Taking organized notes
+C) Prejudgment and cognitive distraction (mind drifting) *
+D) Asking relevant clarifying questions
+E: Prejudging the speaker or daydreaming due to the differential between speech speed (150 wpm) and thought speed (500 wpm) severely undermines listening.
+D: easy
+T: BCA-107N, Unit-2, Listening-Skills, Barriers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The highness or lowness of a speaker's voice determined by the frequency of vocal cord vibrations is termed:
+A) Pitch *
+B) Volume
+C) Tempo
+D) Articulation
+E: Pitch refers to musical frequency (high/low notes) of the voice; varying pitch prevents a boring monotone.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Pitch
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Varying pitch, volume, and pace to add emotion, emphasis, and vitality to spoken speech is called:
+A) Vocal Modulation *
+B) Monotone
+C) Syllabification
+D) Articulation
+E: Vocal modulation is the intentional variation in tone, pitch, pace, and intensity to maintain listener interest and highlight key points.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Modulation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The speed or rate at which words are spoken during an oral presentation is known as:
+A) Pitch
+B) Pace (Tempo) *
+C) Volume
+D) Resonance
+E: Pace is the speed of delivery; optimal speaking rate is typically between 130 and 160 words per minute.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Pace
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Clear, distinct, and crisp utterance of individual syllables and speech sounds is known as:
+A) Articulation (or Enunciation) *
+B) Pitch
+C) Loudness
+D) Inflection
+E: Articulation refers to shaping distinct speech sounds with the tongue, lips, teeth, and palate.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Articulation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A speaker who delivers an entire 40-minute presentation without any variation in pitch or tone is speaking in a:
+A) Staccato
+B) Monotone *
+C) Falsetto
+D) Cadence
+E: Monotone delivery lacks inflection and quickly leads to audience fatigue and boredom.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Monotone
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary function of a strategic 'Pause' during an oral presentation?
+A) To waste the audience's time
+B) To allow listeners to absorb key points, build suspense, and signal topic transitions *
+C) To demonstrate that the speaker forgot their notes
+D) To check smartphone notifications
+E: Deliberate pauses emphasize crucial concepts, give listeners time to reflect, and help speakers collect their thoughts without vocal fillers.
+D: easy
+T: BCA-107N, Unit-2, Oral-Presentation, Pause
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Non-words such as 'uh', 'um', 'like', 'you know', and 'er' inserted repeatedly during speech are called:
+A) Vocal Fillers (Crutch Words) *
+B) Articulators
+C) Phonemes
+D) Alliterations
+E: Vocal fillers occur when speakers hesitate or feel anxious; eliminating them creates a confident, polished delivery.
+D: easy
+T: BCA-107N, Unit-2, Vocal-Dynamics, Vocal-Fillers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to public speaking best practices, what are the three essential sections of an oral presentation?
+A) Introduction, Body, Conclusion *
+B) Title, Abstract, Appendix
+C) Data, Figures, Code
+D) Preamble, Clauses, Signature
+E: Classic 3-part oral presentation rule: Tell them what you are going to tell them (Intro), tell them (Body), tell them what you told them (Conclusion).
+D: easy
+T: BCA-107N, Unit-2, Oral-Presentation, Structure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When designing slides for a presentation (e.g., PowerPoint), the '6x6 Rule' recommends:
+A) 6 images per slide with 6 colors
+B) Maximum 6 bullet points per slide, with at most 6 words per bullet point *
+C) 6 slides total lasting 6 minutes
+D) 6 font families across 6 columns
+E: The 6x6 rule prevents cluttered slides, keeping visual aids readable, concise, and focused on audience comprehension.
+D: medium
+T: BCA-107N, Unit-2, Visual-Aids, 6x6-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an oral presentation, 'Audience Analysis' involves examining:
+A) Only the demographic age of listeners
+B) Listeners' background knowledge, expectations, attitudes, interests, and educational level *
+C) The room temperature
+D) The brand of laptop used
+E: Audience analysis enables the speaker to customize content, tone, complexity, and examples for maximum impact.
+D: easy
+T: BCA-107N, Unit-2, Oral-Presentation, Audience-Analysis
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Albert Mehrabian's famous communication model regarding inconsistent emotional messages, what are the percentages for Words, Voice/Tone, and Body Language?
+A) 7% Words, 38% Tone/Voice, 55% Body Language *
+B) 50% Words, 25% Tone, 25% Body
+C) 70% Words, 20% Tone, 10% Body
+D) 33% Words, 33% Tone, 33% Body
+E: Mehrabian's 55-38-7 rule states that when feelings and attitudes are communicated, 55% of the message comes from facial/body cues, 38% from paralanguage, and only 7% from words.
+D: medium
+T: BCA-107N, Unit-2, Non-Verbal, Mehrabian-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The study of body movements, gestures, facial expressions, eye contact, and posture as communication is termed:
+A) Proxemics
+B) Kinesics *
+C) Haptics
+D) Chronemics
+E: Kinesics (coined by Ray Birdwhistell) is the interpretation of body-motion communication.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Kinesics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The study of personal space, physical distance between interacting individuals, and territoriality is known as:
+A) Proxemics *
+B) Kinesics
+C) Chronemics
+D) Oculesics
+E: Proxemics was pioneered by anthropologist Edward T. Hall to describe spatial zones in human interactions.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Proxemics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to Edward T. Hall, what is the distance range for 'Intimate Space'?
+A) 0 to 1.5 feet (0 to 18 inches) *
+B) 1.5 to 4 feet
+C) 4 to 12 feet
+D) 12 feet and beyond
+E: Intimate distance (0 - 1.5 ft) is reserved for close family, loved ones, and private comforting.
+D: medium
+T: BCA-107N, Unit-2, Proxemics, Intimate-Zone
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is Edward T. Hall's spatial range for 'Personal Space' (used for conversations between close friends and acquaintances)?
+A) 0 to 1.5 feet
+B) 1.5 to 4 feet *
+C) 4 to 12 feet
+D) 12 to 25 feet
+E: Personal space extends from 1.5 to 4 feet, common for informal social conversations and friendly interactions.
+D: medium
+T: BCA-107N, Unit-2, Proxemics, Personal-Zone
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The distance maintained for formal business transactions, professional meetings, and interviews (4 to 12 feet) is:
+A) Intimate Space
+B) Personal Space
+C) Social Space *
+D) Public Space
+E: Social space (4 to 12 feet) is the standard distance for impersonal business negotiations and workplace interactions.
+D: medium
+T: BCA-107N, Unit-2, Proxemics, Social-Zone
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The public zone (12 feet to 25 feet or more) is typically utilized during:
+A) A whispered confession
+B) Public speeches, lectures to large audiences, and theatrical performances *
+C) A handshake
+D) A one-on-one performance review
+E: Public distance (12+ ft) separates a public speaker or performer from a large group of spectators.
+D: easy
+T: BCA-107N, Unit-2, Proxemics, Public-Zone
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The study of eye movements, eye contact, blinking, and pupil dilation in human communication is called:
+A) Oculesics *
+B) Haptics
+C) Olfactics
+D) Chronemics
+E: Oculesics is the subcategory of kinesics examining how eye behavior communicates honesty, attention, dominance, or interest.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Oculesics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The non-verbal communication study focused on human touch (such as handshakes, hugs, pats on the back) is:
+A) Haptics *
+B) Chronemics
+C) Proxemics
+D) Artifactics
+E: Haptics examines touch as a communicative behavior across different social and professional contexts.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Haptics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The study of how humans perceive, structure, and react to time (e.g. punctuality, deadlines) is called:
+A) Chronemics *
+B) Kinesics
+C) Ergonomics
+D) Proxemics
+E: Chronemics examines how time orientation reflects status, power, cultural norms, and interpersonal commitment.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Chronemics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Cultures that view time as linear, segmented, compartmentalized, and strictly emphasize punctuality are classified as:
+A) Polychronic (P-Time)
+B) Monochronic (M-Time) *
+C) Synchronous
+D) Asynchronous
+E: Monochronic cultures (e.g., Germany, USA, Switzerland) value scheduling, punctuality, and handling one task at a time.
+D: medium
+T: BCA-107N, Unit-2, Chronemics, Monochronic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Non-verbal vocal elements that accompany spoken words—such as pitch, volume, rhythm, tempo, and sighing—are collectively called:
+A) Paralanguage (or Vocalics) *
+B) Syntax
+C) Morphology
+D) Lexicon
+E: Paralanguage refers to 'how' something is said rather than 'what' words are used.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Paralanguage
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Gestures that have a direct, universally or culturally agreed-upon verbal translation (e.g., thumbs-up or waving goodbye) are:
+A) Emblems *
+B) Illustrators
+C) Affect Displays
+D) Adaptors
+E: Emblems are intentional non-verbal gestures that translate directly into specific words or phrases.
+D: medium
+T: BCA-107N, Unit-2, Kinesics, Emblems
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Gestures that accompany, emphasize, or visually sketch the spoken message (e.g., spreading hands to show 'it was this big') are:
+A) Illustrators *
+B) Emblems
+C) Regulators
+D) Adaptors
+E: Illustrators reinforce or visually demonstrate the verbal message simultaneously.
+D: medium
+T: BCA-107N, Unit-2, Kinesics, Illustrators
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Unconscious nervous behaviors that release physical or emotional tension (e.g., tapping feet, biting nails, twirling hair) are:
+A) Adaptors *
+B) Emblems
+C) Illustrators
+D) Regulators
+E: Adaptors are habitual self-touching or object-manipulating actions triggered by stress or anxiety.
+D: medium
+T: BCA-107N, Unit-2, Kinesics, Adaptors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Clothing, jewelry, hairstyle, tattoos, and professional attire belong to which branch of non-verbal communication?
+A) Artifactics (or Objectics) *
+B) Haptics
+C) Chronemics
+D) Kinesics
+E: Artifactics examines personal adornment, dress, and physical objects that signal status, identity, and credibility.
+D: easy
+T: BCA-107N, Unit-2, Non-Verbal, Artifactics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which body posture universally signals openness, attentiveness, and confidence in a job interview?
+A) Crossed arms and legs with hunched shoulders
+B) An upright, slightly forward-leaning posture with uncrossed arms and steady eye contact *
+C) Slouching back deep into the chair looking at the floor
+D) Constantly fidgeting with a pen
+E: An open, upright, slightly leaning posture conveys engagement, respect, and self-assurance.
+D: easy
+T: BCA-107N, Unit-2, Body-Language, Interview-Posture
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is steady, natural eye contact considered critical during an interview or presentation in professional settings?
+A) It intimidates the interviewer into submission
+B) It conveys honesty, engagement, self-confidence, and active interest *
+C) It prevents the speaker from blinking
+D) It is legally mandatory
+E: Appropriate eye contact builds rapport, establishes trust, and indicates attention and credibility.
+D: easy
+T: BCA-107N, Unit-2, Oculesics, Eye-Contact
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In non-verbal communication, 'Regulators' serve the primary purpose of:
+A) Translating words into sign language
+B) Controlling, coordinating, and directing the flow of speaking and listening turns in a conversation *
+C) Showing extreme joy
+D) Alleviating boredom
+E: Regulators (head nods, eye shifts, leaning in) guide conversational turn-taking smoothly.
+D: medium
+T: BCA-107N, Unit-2, Kinesics, Regulators
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a job interview, arriving 10 minutes prior to the scheduled time communicates respect and professionalism through:
+A) Chronemics *
+B) Proxemics
+C) Haptics
+D) Kinesics
+E: Punctuality is a chronemic statement of reliability, discipline, and respect for others' time.
+D: easy
+T: BCA-107N, Unit-2, Chronemics, Punctuality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is considered an offensive non-verbal habit during a business meeting?
+A) Nodding in agreement
+B) Checking a wristwatch or mobile phone repeatedly while someone is speaking *
+C) Leaning slightly forward
+D) Maintaining a calm smile
+E: Glancing repeatedly at a watch signals impatience, disinterest, and disrespect to the speaker.
+D: easy
+T: BCA-107N, Unit-2, Business-Etiquette, Non-Verbal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A firm, dry handshake accompanied by eye contact and a warm greeting falls under which category?
+A) Haptics *
+B) Proxemics
+C) Chronemics
+D) Artifactics
+E: A professional handshake is a primary haptic greeting ritual across the global corporate world.
+D: easy
+T: BCA-107N, Unit-2, Haptics, Handshake
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When delivering a technical presentation, moving purposefully across the stage rather than staying frozen behind a lectern:
+A) Distracts the audience completely
+B) Engages different sections of the audience and energizes the presentation delivery *
+C) Is considered highly unprofessional
+D) Shows that the speaker is nervous
+E: Controlled physical movement projects confidence, connects with listeners across the room, and maintains visual dynamism.
+D: easy
+T: BCA-107N, Unit-2, Presentation-Skills, Stage-Movement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does a sudden pupil dilation typically indicate in oculesic communication?
+A) Extreme boredom and sleepiness
+B) Heightened interest, arousal, excitement, or cognitive effort *
+C) Anger only
+D) Physical blindness
+E: Pupils naturally dilate when a person is positively stimulated, interested, or processing complex ideas.
+D: medium
+T: BCA-107N, Unit-2, Oculesics, Pupil-Dilation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The term 'Affect Displays' in body language refers to:
+A) Movements that display emotional states (e.g., smiling, frowning, trembling lips) *
+B) Rules for writing memos
+C) Types of graphic bar charts
+D) The physical distance between desks
+E: Affect displays are bodily and facial expressions that clearly reveal internal emotions.
+D: medium
+T: BCA-107N, Unit-2, Kinesics, Affect-Displays
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If an employee crosses their arms tightly across their chest and leans backward during a critique, they are projecting:
+A) Openness and vulnerability
+B) Defensiveness, resistance, or withdrawal *
+C) Unconditional agreement
+D) Extreme enthusiasm
+E: Crossing arms creates a defensive barrier, often reflecting skepticism, discomfort, or disagreement.
+D: easy
+T: BCA-107N, Unit-2, Body-Language, Defensiveness
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which reading style should a software developer use when looking for a specific syntax error on line 42 of a code file?
+A) Skimming
+B) Scanning *
+C) Extensive reading
+D) Appreciative reading
+E: Locating line 42 specifically is a target-oriented search (scanning).
+D: easy
+T: BCA-107N, Unit-2, Reading-Application, Scanning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Extensive reading in English language acquisition primarily leads to improvements in:
+A) Grammatical parsing speed only
+B) Vocabulary breadth, sentence fluency, and natural language intuition *
+C) Mathematical calculations
+D) Physical stamina
+E: Extensive reading exposes learners to authentic contexts, enhancing vocabulary acquisition and reading speed.
+D: easy
+T: BCA-107N, Unit-2, Reading-Skills, Benefits
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In interpersonal listening, 'Selective Listening' is characterized by:
+A) Listening to all perspectives objectively
+B) Filtering the conversation to hear only what confirms one's desires while tuning out other parts *
+C) Taking detailed Cornell notes
+D) Asking open-ended questions
+E: Selective listeners pay attention only to parts that interest them, missing vital context.
+D: easy
+T: BCA-107N, Unit-2, Listening-Types, Selective-Listening
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To maintain vocal health and resonance during long lectures or presentations, speakers should practice:
+A) Shouting from the throat
+B) Diaphragmatic breathing (breathing deeply from the belly/diaphragm) *
+C) Drinking icy cold beverages continuously
+D) Whispering
+E: Diaphragmatic breathing supplies consistent air volume, reduces vocal cord strain, and supports resonant, steady projection.
+D: medium
+T: BCA-107N, Unit-2, Vocal-Health, Breathing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The primary goal of Technical Writing is to:
+A) Entertain the reader with flowery poetic prose
+B) Transmit complex technical information clearly, concisely, objectively, and accurately so the reader can take action *
+C) Showcase an extravagant literary vocabulary
+D) Obscure technical errors
+E: Technical writing focuses on utility, clarity, precision, and reader comprehension.
+D: easy
+T: BCA-107N, Unit-3, Technical-Writing, Objective
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following attributes is essential to professional technical writing?
+A) Ambiguity and rhetorical flourish
+B) Objectivity, clarity, factual accuracy, and conciseness *
+C) Subjective emotional outbursts
+D) Lengthy philosophical tangents
+E: Technical documents prioritize facts, logical structure, verifiable evidence, and clear language.
+D: easy
+T: BCA-107N, Unit-3, Technical-Writing, Attributes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Abstract' in an academic or scientific research paper is:
+A) A complete transcription of the raw database
+B) A concise, standalone summary of the entire paper outlining purpose, methodology, key findings, and conclusion *
+C) The acknowledgments page thanking sponsors
+D) A list of alphabetical references
+E: An abstract provides a comprehensive overview allowing researchers to decide whether to read the full work.
+D: easy
+T: BCA-107N, Unit-3, Abstracts, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the typical recommended word count for a standard academic abstract?
+A) 50 to 80 words
+B) 150 to 250 words *
+C) 500 to 1,000 words
+D) At least 5 pages
+E: Most scholarly journals specify abstracts between 150 and 250 words.
+D: easy
+T: BCA-107N, Unit-3, Abstracts, Length
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Informative Abstract' differs from a 'Descriptive Abstract' because it:
+A) Only lists the table of contents without results
+B) Includes the actual findings, quantitative data, and primary conclusions of the research *
+C) Contains personal anecdotes
+D) Exceeds 2,000 words
+E: Informative abstracts summarize the entire paper, including background, methods, results, and conclusions; descriptive abstracts merely describe what topics the paper covers without revealing results.
+D: medium
+T: BCA-107N, Unit-3, Abstracts, Informative-vs-Descriptive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Executive Summary' is primarily targeted towards:
+A) Entry-level laboratory interns
+B) Busy executives and decision-makers who need essential business insights, ROI, and recommendations quickly *
+C) Librarians cataloging books
+D) Typesetters in print shops
+E: Executive summaries highlight business impact, feasibility, risks, and strategic decisions in non-technical terms.
+D: easy
+T: BCA-107N, Unit-3, Executive-Summary, Audience
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature distinguishes an Executive Summary from a standard Academic Abstract?
+A) An Executive Summary can stand alone and often includes actionable recommendations and financial figures *
+B) An Executive Summary is never more than 10 words
+C) An Executive Summary contains zero facts
+D) An Executive Summary is written in Latin
+E: Unlike brief academic abstracts, executive summaries may be 1 to 3 pages, emphasizing recommendations and business value.
+D: medium
+T: BCA-107N, Unit-3, Executive-Summary, Distinction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'Precis Writing', what is the universally accepted guideline regarding length relative to the original passage?
+A) It should be exactly the same length
+B) It should be approximately one-third (1/3) of the original length *
+C) It must be at least twice as long
+D) It should consist of exactly 10 words
+E: A précis is a concise summary containing the core argument, strictly maintaining around one-third of the original text's length.
+D: easy
+T: BCA-107N, Unit-3, Precis-Writing, Length-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is STRICTLY PROHIBITED in a good précis?
+A) Retaining the main logical argument of the author
+B) Inserting your own personal opinions, criticisms, or external examples not found in the original text *
+C) Using your own words to condense the passage
+D) Writing in the third person
+E: A précis must faithfully mirror the original author's thoughts without adding personal interpretations, commentary, or extraneous data.
+D: medium
+T: BCA-107N, Unit-3, Precis-Writing, Rules
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A précis should generally be written in:
+A) First-person present tense ('I believe that...')
+B) Third-person past or neutral tense reporting the author's viewpoint *
+C) Future tense with exclamation marks
+D) Second-person imperative ('You must...')
+E: A précis maintains detached objectivity, using third-person framing ('The author demonstrates that...').
+D: easy
+T: BCA-107N, Unit-3, Precis-Writing, Point-of-View
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Cornell Note-Taking System divides the paper into which three specific sections?
+A) Cue (Recall) Column, Notes Column, and Summary Area at the bottom *
+B) Title, Body, Appendix
+C) Front Matter, Middle Matter, Back Matter
+D) Introduction, Discussion, Conclusion
+E: Devised by Walter Pauk at Cornell, the layout features a 2.5-inch cue column on the left, a 6-inch note area on the right, and a 2-inch summary section at the bottom.
+D: medium
+T: BCA-107N, Unit-3, Note-Making, Cornell-System
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the Cornell Note-Taking System, the 'Cue Column' on the left is utilized for:
+A) Full paragraph transcriptions
+B) Keywords, study questions, main concepts, and headings to facilitate active self-testing *
+C) Doodling cartoons
+D) Teacher's grading remarks
+E: The cue column contains prompts, questions, and keywords used during review and revision.
+D: easy
+T: BCA-107N, Unit-3, Cornell-Notes, Cue-Column
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A non-linear, visual diagram that radiates outwards from a central core idea using branches, colors, and keywords is a:
+A) Mind Map *
+B) Bar Graph
+C) Gantt Chart
+D) Flowchart
+E: Mind mapping (popularized by Tony Buzan) mimics neural associative pathways, connecting sub-ideas visually around a central hub.
+D: easy
+T: BCA-107N, Unit-3, Note-Making, Mind-Mapping
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a recognized benefit of effective note-making?
+A) It forces verbatim memorization of entire textbooks
+B) It transforms passive reading into active cognitive engagement and aids rapid exam revision *
+C) It eliminates the need to attend classes
+D) It increases paper consumption
+E: Note-making demands filtering, prioritizing, synthesizing information, and dramatically aids long-term retention.
+D: easy
+T: BCA-107N, Unit-3, Note-Making, Benefits
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When taking notes, using standard abbreviations (e.g., 'i.e.', 'e.g.', 'w/o', 'info') and mathematical symbols ('->', '=', '&'):
+A) Is considered a serious violation of exam law
+B) Saves time and increases recording speed without sacrificing comprehension *
+C) Makes notes impossible to understand
+D) Should never be done
+E: Judicious use of symbols and abbreviations speeds up note capture during fast-paced lectures.
+D: easy
+T: BCA-107N, Unit-3, Note-Making, Abbreviations
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'Linear Note' structure typically organizes information using:
+A) Chronological storyboards
+B) Headings, subheadings, bullet points, and decimal numbering outlines (1.0, 1.1, 1.1.1) *
+C) Random scribbles
+D) Concentric circular rings
+E: Linear notes use standard hierarchical indentations, headings, and alphanumeric lists.
+D: easy
+T: BCA-107N, Unit-3, Note-Making, Linear-Notes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What should be placed in the bottom summary section of a Cornell Note sheet?
+A) A word-for-word copy of Wikipedia
+B) A brief, 2-to-4 sentence synthesis capturing the essence of the page in your own words *
+C) List of all classmates' names
+D) Nothing, it must be left blank
+E: The summary forces the learner to distill the entire page's core message in a couple of clear sentences.
+D: easy
+T: BCA-107N, Unit-3, Cornell-Notes, Summary-Section
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which technical document evaluates whether a proposed software solution or project is technically, financially, and operationally viable before funds are committed?
+A) Feasibility Report *
+B) Periodic Progress Report
+C) Incident Report
+D) Laboratory Manual
+E: A Feasibility Study evaluates viability, budget constraints, technical risks, and expected ROI.
+D: easy
+T: BCA-107N, Unit-3, Report-Writing, Feasibility-Report
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A report submitted at regular fixed intervals (e.g. weekly or monthly) detailing tasks completed, ongoing work, and milestone schedule status is a:
+A) Periodic Progress Report *
+B) Feasibility Report
+C) Autopsy Report
+D) Statutory Audit
+E: Progress reports keep stakeholders informed about timeline adherence, budget expenditure, and blockers.
+D: easy
+T: BCA-107N, Unit-3, Report-Writing, Progress-Report
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A report written immediately following a cyberattack, server outage, or industrial hardware failure to detail root causes and corrective actions is an:
+A) Incident (or Trouble) Report *
+B) Annual Shareholder Report
+C) Market Survey
+D) Sales Brochure
+E: An Incident Report documents what happened, chronology, damage, root cause, and remediation steps.
+D: easy
+T: BCA-107N, Unit-3, Report-Writing, Incident-Report
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A formal technical report is traditionally structured into which three primary divisions?
+A) Front Matter, Main Body, and Back Matter *
+B) Introduction, Story, Epilogue
+C) Premise, Debate, Resolution
+D) Cover, Paper, Binding
+E: Technical reports follow the three-tier architecture: Front Matter, Main Body (Text), and Back Matter.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Divisions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following elements belongs to the 'Front Matter' of a formal technical report?
+A) Appendices
+B) Table of Contents *
+C) Glossary
+D) References
+E: Front matter includes Title Page, Transmittal Letter, Acknowledgments, Table of Contents, and Executive Summary.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Front-Matter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following elements belongs to the 'Back Matter' of a formal technical report?
+A) Table of Contents
+B) Abstract / Executive Summary
+C) Appendices and References *
+D) Statement of Problem
+E: Back matter houses supplementary details that would interrupt reading flow: Appendices, References, and Glossary.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Back-Matter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Letter of Transmittal' in a formal business report serves to:
+A) Explain the math formulas
+B) Formally submit the completed report from the author/committee to the recipient who commissioned it *
+C) List all cited websites
+D) Serve as the back cover
+E: The transmittal letter formally hands over the document, stating purpose, authorization, and major highlights.
+D: medium
+T: BCA-107N, Unit-3, Report-Structure, Transmittal-Letter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What information should always appear on the 'Title Page' of a formal report?
+A) Full title, author name/designation, organization/institution, recipient name/designation, and date of submission *
+B) The complete raw SQL code
+C) A list of every book in the library
+D) Personal life history of the author
+E: The title page is the formal cover providing vital metadata: Title, Subtitle, Author, Recipient, Organization, and Date.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Title-Page
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a technical report, the 'Scope' section defines:
+A) The exact monetary compensation of the author
+B) The boundaries, limitations, parameters, and extent of the investigation *
+C) The physical weight of the paper
+D) The names of competitors
+E: The scope delineates what was covered and explicitly what was excluded from the study.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Scope
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Methodology' section of a research or technical report explains:
+A) The philosophical life view of the researcher
+B) The specific procedures, algorithms, experimental setups, and tools used to collect and analyze data *
+C) Why reading books is pleasant
+D) Future career dreams
+E: Methodology must provide sufficient detail so another qualified investigator could replicate the work.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Methodology
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the crucial difference between 'Findings / Results' and 'Conclusions' in a technical report?
+A) They are completely identical
+B) Findings present objective data/observations; Conclusions interpret what those findings mean logically *
+C) Findings are written in German; Conclusions in French
+D) Conclusions come before Findings
+E: Results present raw/analyzed data; Conclusions synthesize insights and deduce logical meaning from that data.
+D: medium
+T: BCA-107N, Unit-3, Report-Structure, Findings-vs-Conclusions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Recommendations' section of a technical report contains:
+A) Thank you notes to colleagues
+B) Actionable, prioritized steps and solutions suggested based directly on the report's conclusions *
+C) A reprint of the table of contents
+D) Historical poetry
+E: Recommendations provide practical, prescriptive advice on what management or stakeholders should do next.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Recommendations
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Appendix' in a technical report should contain:
+A) The core executive summary
+B) Supplementary material such as lengthy questionnaires, massive data tables, complete source code, or mathematical proofs *
+C) The title page
+D) The formal introduction
+E: Appendices store supporting evidence that would clutter the main narrative flow.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Appendix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In academic and technical writing, a 'Glossary' provides:
+A) An alphabetical list of technical terms, acronyms, and specialized jargon with concise definitions *
+B) A list of library book numbers
+C) A collection of photographs
+D) Author contact numbers
+E: A glossary helps readers understand specialized vocabulary, symbols, and domain jargon.
+D: easy
+T: BCA-107N, Unit-3, Report-Structure, Glossary
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In IEEE citation style, how are in-text references formatted?
+A) Using author-date in parentheses (Smith, 2024)
+B) Using bracketed sequential numbers [1], [2], [3] matching the end reference list *
+C) Using footnotes with asterisks
+D) Writing author names in bold red font
+E: IEEE style uses bracketed numerals [1] keyed to an ordered list of references at the end of the paper.
+D: medium
+T: BCA-107N, Unit-3, Referencing-Styles, IEEE-Format
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In APA (American Psychological Association) citation style, in-text citations are formatted as:
+A) [1], [2]
+B) (Author Surname, Year) e.g., (Ritchie, 1978) *
+C) Roman numerals (I, II)
+D) Full web URL in body text
+E: APA uses the author-date system: (Tanenbaum, 2013).
+D: medium
+T: BCA-107N, Unit-3, Referencing-Styles, APA-Format
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is accurate bibliographic citation and referencing legally and ethically mandatory in technical writing?
+A) To make the report look thicker
+B) To give proper credit to original sources, avoid Plagiarism, and allow readers to verify data integrity *
+C) To increase printing costs
+D) Because university servers require it
+E: Proper citation prevents intellectual theft (plagiarism) and maintains academic integrity.
+D: easy
+T: BCA-107N, Unit-3, Ethics, Plagiarism-Referencing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The standard structure of a Computer Science Laboratory Report follows which logical sequence?
+A) Aim -> Apparatus / Environment -> Theory -> Algorithm & Flowchart -> Source Code -> Test Cases / Observations -> Results & Conclusion *
+B) Results -> Aim -> Theory -> Source Code
+C) Code only
+D) Conclusion -> Title -> Table
+E: CS lab reports systematically articulate: Aim, Environment (OS, Compiler), Theory, Algorithm, Source Code, Test Cases, and Inferences.
+D: easy
+T: BCA-107N, Unit-3, Lab-Reports, Format
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In technical writing, the use of 'Passive Voice' is often preferred because:
+A) It sounds more poetic and artistic
+B) It shifts the spotlight onto the process, experiment, or object rather than the person who performed it *
+C) It is grammatically simpler
+D) It uses fewer words
+E: Passive voice emphasizes objective detachment (e.g. 'The solution was heated to 100°C' rather than 'I heated the solution').
+D: easy
+T: BCA-107N, Unit-3, Technical-Style, Passive-Voice
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following illustrates concise technical writing by eliminating wordiness?
+A) Due to the fact that the server was overloaded...
+B) Because the server was overloaded... *
+C) Owing to the undeniable circumstance that...
+D) Taking into consideration the reality that...
+E: 'Because' cleanly replaces wordy phrases like 'due to the fact that' or 'owing to the circumstance that'.
+D: easy
+T: BCA-107N, Unit-3, Conciseness, Wordiness-Reduction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A well-written technical heading should be:
+A) Vague and mysterious like a novel chapter ('A Dark Mystery')
+B) Descriptive, informative, and grammatically parallel ('5.2 Database Migration Protocol') *
+C) At least three lines long
+D) Written in all small letters with no numbers
+E: Effective headings act as clear signposts reflecting exact content and maintaining parallel structure.
+D: easy
+T: BCA-107N, Unit-3, Technical-Style, Headings
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'Coherence' in a technical paragraph?
+A) Having every sentence start with the exact same letter
+B) A smooth, logical progression of ideas where sentences connect naturally using appropriate transitional devices *
+C) Writing without using any punctuation
+D) Using words with at least four syllables
+E: Coherence ensures sentences flow logically, connected by cohesive ties and transitional adverbs (moreover, consequently).
+D: easy
+T: BCA-107N, Unit-3, Paragraph-Writing, Coherence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which transitional word expresses a 'Cause and Effect' relationship in technical writing?
+A) Furthermore
+B) Consequently *
+C) Similarly
+D) Nevertheless
+E: 'Consequently', 'therefore', and 'as a result' signal cause-and-effect outcomes.
+D: easy
+T: BCA-107N, Unit-3, Transitional-Words, Cause-Effect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which transitional word expresses a 'Contrast or Concession'?
+A) Moreover
+B) However *
+C) In addition
+D) Therefore
+E: 'However', 'nevertheless', and 'conversely' signal contrast or counterpoints.
+D: easy
+T: BCA-107N, Unit-3, Transitional-Words, Contrast
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In technical descriptions of mechanisms, which two perspectives are essential?
+A) Physical Description (size, shape, material) and Functional Description (how it works and its purpose) *
+B) Price and resale value
+C) Color preference of the author
+D) Historical poetry
+E: A complete mechanism description pairs physical attributes (anatomy) with operating principles (physiology).
+D: medium
+T: BCA-107N, Unit-3, Mechanism-Description, Components
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'User Manual' or 'Software Installation Guide' relies primarily on which sentence mood?
+A) Interrogative mood ('Did you click next?')
+B) Imperative mood ('Click Next', 'Enter your license key') *
+C) Exclamatory mood ('Hooray!')
+D) Subjunctive mood ('Were you to install...')
+E: Instructional documentation uses direct imperative commands for clear step-by-step guidance.
+D: easy
+T: BCA-107N, Unit-3, Technical-Writing, Imperative-Mood
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Flesch-Kincaid Grade Level' index is used in technical communication to evaluate:
+A) The color contrast of diagrams
+B) The readability and comprehension difficulty of a written text based on sentence and word length *
+C) The speed of the printer
+D) The font licensing cost
+E: Readability formulas calculate readability scores to match writing to the target audience's literacy level.
+D: medium
+T: BCA-107N, Unit-3, Readability, Flesch-Kincaid
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When including figures, graphs, or tables in a technical report, the author must:
+A) Insert them randomly without captions
+B) Number them sequentially, give clear captions, and refer to them explicitly in the preceding text *
+C) Avoid explaining what the axes mean
+D) Only use hand-drawn sketches
+E: All visuals must be referenced in-text (e.g., 'As shown in Figure 3.1...') and possess descriptive numbered captions.
+D: easy
+T: BCA-107N, Unit-3, Visuals, Labeling
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In software documentation, 'API Documentation' primarily provides:
+A) Company payroll data
+B) Detailed descriptions of functions, classes, return types, parameters, and code usage examples *
+C) Marketing slogans for social media
+D) Legal disclaimers about copyright
+E: API docs detail interfaces, endpoints, data types, inputs, outputs, and sample implementations for developers.
+D: easy
+T: BCA-107N, Unit-3, Documentation, API-Docs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which document records the official, binding record of discussions and decisions made during a formal committee meeting?
+A) Minutes of the Meeting (MoM) *
+B) Notice of Meeting
+C) Agenda
+D) Resolution Proposal
+E: The Minutes document attendance, agenda items discussed, voting outcomes, and assigned action items.
+D: easy
+T: BCA-107N, Unit-3, Business-Writing, Minutes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'Agenda' distributed prior to a business meeting serves to:
+A) Outline the list of topics and order of business to be addressed during the meeting *
+B) List the menu for lunch
+C) Rate the performance of employees
+D) Provide legal proof of tax filing
+E: An agenda sets objectives, specifies topics, and allocates time to keep meetings on track.
+D: easy
+T: BCA-107N, Unit-3, Business-Writing, Agenda
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'Plagiarism' in academic and technical writing?
+A) Submitting a report before the deadline
+B) Using another person's ideas, text, code, or data without proper acknowledgment and passing them off as one's own *
+C) Writing in more than one programming language
+D) Using a spell checker
+E: Plagiarism is intellectual dishonesty that can lead to academic disqualification and legal liability.
+D: easy
+T: BCA-107N, Unit-3, Ethics, Plagiarism-Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'White Paper' in the computing and technology industry is:
+A) A blank sheet of paper for taking notes
+B) An authoritative, in-depth report that explains a complex problem and proposes a specific technology or methodology as the optimal solution *
+C) A legal arrest warrant
+D) An invoice for hardware purchase
+E: White papers are authoritative technical guides used by tech enterprises to educate prospective clients and promote technical solutions.
+D: medium
+T: BCA-107N, Unit-3, Technical-Writing, White-Paper
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'The server responded remarkably fast', what part of speech is 'remarkably'?
+A) Adjective
+B) Adverb *
+C) Noun
+D) Conjunction
+E: 'Remarkably' modifies the adverb 'fast', making it an adverb of degree.
+D: easy
+T: BCA-107N, Unit-4, Parts-of-Speech, Adverb
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'Integrity is essential for software engineers', the noun 'Integrity' is classified as:
+A) Proper Noun
+B) Abstract Noun *
+C) Collective Noun
+D) Material Noun
+E: Abstract nouns name intangible qualities, concepts, states, or ideas that cannot be perceived with physical senses.
+D: easy
+T: BCA-107N, Unit-4, Parts-of-Speech, Abstract-Noun
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the collective noun in: 'The debugging team discovered the memory leak.'
+A) Debugging
+B) Team *
+C) Discovered
+D) Leak
+E: 'Team' refers to a collection of individuals acting as a unified group.
+D: easy
+T: BCA-107N, Unit-4, Parts-of-Speech, Collective-Noun
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'She introduced herself to the project manager', the word 'herself' functions as a:
+A) Reflexive Pronoun *
+B) Demonstrative Pronoun
+C) Relative Pronoun
+D) Interrogative Pronoun
+E: 'Herself' is a reflexive pronoun where the subject and object refer to the same person.
+D: easy
+T: BCA-107N, Unit-4, Parts-of-Speech, Reflexive-Pronoun
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What part of speech is 'Although' in: 'Although the algorithm was complex, it executed in linear time'?
+A) Subordinating Conjunction *
+B) Coordinating Conjunction
+C) Preposition
+D) Adverb
+E: 'Although' introduces a subordinate adverb clause of concession.
+D: easy
+T: BCA-107N, Unit-4, Parts-of-Speech, Subordinating-Conjunction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'The compiler gave the developer an error message', what is the Indirect Object?
+A) The compiler
+B) The developer *
+C) An error message
+D) Gave
+E: Ask: 'Gave what?' -> an error message (Direct Object). 'Gave to whom?' -> the developer (Indirect Object).
+D: medium
+T: BCA-107N, Unit-4, Sentence-Elements, Indirect-Object
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'The executive committee appointed Sarah chief technology officer', 'chief technology officer' functions as:
+A) Direct Object
+B) Indirect Object
+C) Object Complement *
+D) Subject Complement
+E: An object complement renames or defines the direct object ('Sarah').
+D: medium
+T: BCA-107N, Unit-4, Sentence-Elements, Object-Complement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'The system is reliable', the word 'reliable' functions as a:
+A) Direct Object
+B) Subject Complement (Predicate Adjective) *
+C) Adverb
+D) Prepositional Object
+E: Followed by the linking verb 'is', 'reliable' modifies the subject 'system'.
+D: easy
+T: BCA-107N, Unit-4, Sentence-Elements, Subject-Complement
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A group of related words that does NOT contain both a subject and a finite verb is called a:
+A) Clause
+B) Phrase *
+C) Sentence
+D) Paragraph
+E: A phrase is a group of words lacking a subject-verb combination (e.g. 'in the morning').
+D: easy
+T: BCA-107N, Unit-4, Phrases-Clauses, Phrase-Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A group of words containing a subject and a finite verb that can stand alone as a complete thought is an:
+A) Dependent Clause
+B) Independent (Main) Clause *
+C) Prepositional Phrase
+D) Noun Phrase
+E: An independent clause contains both subject and predicate and forms a complete sentence on its own.
+D: easy
+T: BCA-107N, Unit-4, Phrases-Clauses, Independent-Clause
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the underlined phrase type in: 'The program crashed [with a segmentation fault].'
+A) Noun phrase
+B) Prepositional phrase functioning as an adverb *
+C) Participial phrase
+D) Infinitive phrase
+E: 'With a segmentation fault' begins with preposition 'with' and modifies the verb 'crashed' (adverbial).
+D: easy
+T: BCA-107N, Unit-4, Phrases, Prepositional
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'Walking down the hallway, the engineer noticed the blinking red LED', 'Walking down the hallway' is a:
+A) Gerund phrase
+B) Participial phrase *
+C) Infinitive phrase
+D) Prepositional phrase
+E: A participial phrase begins with a present participle (-ing) functioning as an adjective modifying 'the engineer'.
+D: medium
+T: BCA-107N, Unit-4, Phrases, Participial
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the dependent clause in: 'We will deploy the update when the QA team finishes testing.'
+A) We will deploy the update
+B) when the QA team finishes testing *
+C) the QA team finishes
+D) the update
+E: 'When the QA team finishes testing' is a subordinate adverb clause of time introduced by 'when'.
+D: easy
+T: BCA-107N, Unit-4, Clauses, Adverb-Clause
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'The student who wrote the Python script won the hackathon', 'who wrote the Python script' is an:
+A) Adjective (Relative) Clause *
+B) Noun Clause
+C) Adverb Clause
+D) Independent Clause
+E: Introduced by relative pronoun 'who', it modifies the noun 'student'.
+D: easy
+T: BCA-107N, Unit-4, Clauses, Relative-Clause
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'What the database administrator said surprised the management', 'What the database administrator said' is a:
+A) Noun Clause functioning as Subject *
+B) Adverb Clause
+C) Adjective Clause
+D) Independent Clause
+E: The clause acts as the grammatical subject of the verb 'surprised'.
+D: medium
+T: BCA-107N, Unit-4, Clauses, Noun-Clause
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A sentence consisting of exactly one independent clause and no dependent clauses is classified as a:
+A) Simple Sentence *
+B) Compound Sentence
+C) Complex Sentence
+D) Compound-Complex Sentence
+E: A simple sentence contains a single independent clause: Subject + Verb (+ Object).
+D: easy
+T: BCA-107N, Unit-4, Sentence-Types, Simple-Sentence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A sentence containing two or more independent clauses joined by a coordinating conjunction (FANBOYS) or a semicolon is a:
+A) Simple Sentence
+B) Compound Sentence *
+C) Complex Sentence
+D) Subordinate Sentence
+E: Compound sentences join independent clauses via coordinating conjunctions (For, And, Nor, But, Or, Yet, So) or semicolons.
+D: easy
+T: BCA-107N, Unit-4, Sentence-Types, Compound-Sentence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A sentence containing ONE independent clause and AT LEAST ONE dependent clause is a:
+A) Simple Sentence
+B) Compound Sentence
+C) Complex Sentence *
+D) Compound-Complex Sentence
+E: A complex sentence joins an independent clause with one or more dependent clauses.
+D: easy
+T: BCA-107N, Unit-4, Sentence-Types, Complex-Sentence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Classify this sentence: 'The server overheated because the cooling fan failed, so the system shut down.'
+A) Simple Sentence
+B) Compound Sentence
+C) Complex Sentence
+D) Compound-Complex Sentence *
+E: It contains two independent clauses ('The server overheated' and 'the system shut down') and one dependent clause ('because the cooling fan failed').
+D: medium
+T: BCA-107N, Unit-4, Sentence-Types, Compound-Complex
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the 7 coordinating conjunctions remembered by the acronym 'FANBOYS'?
+A) For, And, Nor, But, Or, Yet, So *
+B) From, After, Next, Before, Over, Yield, Since
+C) Fast, And, Near, By, On, Yes, So
+D) Few, All, None, Both, One, You, Some
+E: FANBOYS: For, And, Nor, But, Or, Yet, So.
+D: easy
+T: BCA-107N, Unit-4, Conjunctions, FANBOYS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which tense is used to state universal scientific truths, general facts, and habitual routines?
+A) Present Continuous
+B) Simple Present *
+C) Present Perfect
+D) Past Simple
+E: Simple Present (e.g., 'Water boils at 100°C', 'The CPU processes binary code') expresses timeless facts and habits.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Simple-Present
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the tense in: 'The data packets are traveling through the optical fiber network.'
+A) Simple Present
+B) Present Continuous (Progressive) *
+C) Present Perfect
+D) Past Continuous
+E: 'Are traveling' is formed with auxiliary 'are' + verb-ing, indicating an action ongoing at the present moment.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Present-Continuous
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which sentence correctly uses the Present Perfect Continuous tense?
+A) The engine has run for five hours.
+B) The engine has been running for five hours. *
+C) The engine was running for five hours.
+D) The engine had been running.
+E: Present Perfect Continuous uses 'has/have been + V-ing' to denote an action that began in the past and continues into the present.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Present-Perfect-Continuous
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'I have lived in Bareilly _____ 2021', the correct preposition of time is:
+A) for
+B) since *
+C) from
+D) during
+E: 'Since' denotes a specific starting point in time; 'for' denotes a duration or period of time.
+D: easy
+T: BCA-107N, Unit-4, Prepositions-Tense, Since-vs-For
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'She has worked on this project _____ three months', the correct preposition is:
+A) since
+B) for *
+C) from
+D) at
+E: 'For' is used with a duration (three months).
+D: easy
+T: BCA-107N, Unit-4, Prepositions-Tense, For-Duration
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When two actions occurred at different times in the past, the EARLIER action must be expressed in the:
+A) Simple Past Tense
+B) Past Perfect Tense (had + V3) *
+C) Past Continuous Tense
+D) Present Perfect Tense
+E: The Past Perfect ('had + past participle') establishes that an action completed prior to another past event.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Past-Perfect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Complete the classic sequence: 'The train _____ before we reached the railway station.'
+A) had left *
+B) has left
+C) left
+D) was leaving
+E: The departure of the train happened before the past arrival at the station, requiring Past Perfect ('had left').
+D: easy
+T: BCA-107N, Unit-4, Tenses, Sequence-Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the tense: 'While the analyst was compiling the report, the computer battery died.'
+A) Past Continuous and Simple Past *
+B) Past Perfect and Simple Past
+C) Simple Past only
+D) Present Continuous and Past Perfect
+E: 'Was compiling' is Past Continuous; 'died' is Simple Past.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Past-Continuous-Combo
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which sentence correctly uses the Simple Past tense of the irregular verb 'begin'?
+A) The lecture begun at 10 AM.
+B) The lecture began at 10 AM. *
+C) The lecture has began at 10 AM.
+D) The lecture had began at 10 AM.
+E: The V2 (Simple Past) form of 'begin' is 'began'; 'begun' is the V3 (Past Participle).
+D: easy
+T: BCA-107N, Unit-4, Verbs, Irregular-Verbs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the past participle (V3) form of the irregular verb 'write'?
+A) Wrote
+B) Written *
+C) Writed
+D) Writing
+E: Write (V1) -> Wrote (V2) -> Written (V3).
+D: easy
+T: BCA-107N, Unit-4, Verbs, Past-Participle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which tense describes an action that will be completed prior to a specific point in the future?
+A) Simple Future
+B) Future Continuous
+C) Future Perfect (will have + V3) *
+D) Future Perfect Continuous
+E: Future Perfect ('will have + past participle') indicates that an action will finish before a future deadline.
+D: easy
+T: BCA-107N, Unit-4, Tenses, Future-Perfect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Fill in the blank: 'By this time next year, the team _____ developing the new mobile OS.'
+A) will finish
+B) will have finished *
+C) had finished
+D) finishes
+E: 'By this time next year' specifies a future completion deadline, requiring Future Perfect ('will have finished').
+D: medium
+T: BCA-107N, Unit-4, Tenses, Future-Perfect-Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to the Rule of Sequence of Tenses, if the principal clause verb is in the Past Tense, the subordinate clause verb:
+A) Must always be in the Future Tense
+B) Must generally be in a corresponding Past Tense *
+C) Can be in any random tense
+D) Must be in the Present Tense
+E: When the main verb is in the past, dependent verbs follow into the past ('He said that he was busy', not 'is busy').
+D: medium
+T: BCA-107N, Unit-4, Sequence-of-Tenses, Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the major EXCEPTION to the Sequence of Tenses rule when the main clause is in the past tense?
+A) When the speaker is whispering
+B) When the subordinate clause expresses a universal scientific truth, mathematical fact, or habitual truth *
+C) When the sentence has more than ten words
+D) There are no exceptions
+E: Universal truths remain in the present tense even after a past reporting verb ('Our teacher said that the Earth orbits the Sun').
+D: medium
+T: BCA-107N, Unit-4, Sequence-of-Tenses, Exception
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the grammatical error in: 'She said that honesty was the best policy.'
+A) No error, it is completely fine
+B) 'Was' should be 'is' because 'Honesty is the best policy' is a universal proverb/truth *
+C) 'Said' should be 'says'
+D) 'Honesty' must be in capital letters
+E: Universal truths and proverbs retain simple present tense: 'She said that honesty IS the best policy.'
+D: medium
+T: BCA-107N, Unit-4, Grammar-Errors, Universal-Truth
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the error: 'If I will study hard, I will pass the BCA semester examination.'
+A) In a conditional clause introduced by 'if', the Simple Present tense ('If I study') must be used, not 'will study' *
+B) 'Pass' should be 'passed'
+C) 'Will pass' should be 'would pass'
+D) No error
+E: In real future conditional sentences (Type 1), the if-clause takes Simple Present: 'If I study hard, I will pass...'
+D: medium
+T: BCA-107N, Unit-4, Conditionals, Type-1
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What type of conditional sentence is: 'If I had possessed the encryption key, I would have decrypted the file.'?
+A) Zero Conditional
+B) First Conditional
+C) Second Conditional
+D) Third (Unfulfilled Past) Conditional *
+E: Third conditional (past unfulfilled): 'If + had + V3 ..., would have + V3'.
+D: medium
+T: BCA-107N, Unit-4, Conditionals, Third-Conditional
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the grammatically correct sentence:
+A) He is knowing the answer.
+B) He knows the answer. *
+C) He was knowing the answer.
+D) He has been knowing the answer.
+E: Stative verbs of cognition (know, believe, understand, remember) do not take continuous/progressive aspect.
+D: easy
+T: BCA-107N, Unit-4, Stative-Verbs, Know
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is a 'Stative Verb' that typically resists continuous (-ing) forms?
+A) Run
+B) Own *
+C) Type
+D) Build
+E: 'Own' denotes a state of possession, not a dynamic action; you say 'I own a laptop', never 'I am owning a laptop'.
+D: easy
+T: BCA-107N, Unit-4, Stative-Verbs, Possession
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'Having finished his code, the compiler was shut down', the grammatical error is a:
+A) Split Infinitive
+B) Dangling Participle *
+C) Comma Splice
+D) Run-on Sentence
+E: The participial phrase 'Having finished his code' illogically modifies 'the compiler'; it should be 'Having finished his code, the programmer shut down the compiler.'
+D: hard
+T: BCA-107N, Unit-4, Grammar-Errors, Dangling-Participle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a 'Comma Splice' in English writing?
+A) A comma placed inside quotation marks
+B) Joining two independent clauses with only a comma without a coordinating conjunction *
+C) A missing period at the end of a paragraph
+D) Using three commas in a row
+E: A comma splice incorrectly connects two complete sentences using just a comma instead of a period, semicolon, or comma + conjunction.
+D: medium
+T: BCA-107N, Unit-4, Grammar-Errors, Comma-Splice
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which punctuation mark is correctly used to link two closely related independent clauses without a coordinating conjunction?
+A) Hyphen (-)
+B) Semicolon (;) *
+C) Colon (:)
+D) Comma (,)
+E: A semicolon joins two related independent clauses smoothly without needing 'and' or 'but'.
+D: easy
+T: BCA-107N, Unit-4, Punctuation, Semicolon
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the correct use of an apostrophe showing plural possession for the word 'engineers':
+A) The engineer's workstations
+B) The engineers' workstations *
+C) The engineers's workstations
+D) The engineers workstation
+E: For plural nouns ending in 's', add only the apostrophe at the end: 'engineers''.
+D: easy
+T: BCA-107N, Unit-4, Punctuation, Possessive-Apostrophe
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In 'Neither the hardware nor the software _____ functioning properly', which verb form is correct?
+A) are
+B) is *
+C) were
+D) have been
+E: Rule of proximity: With 'neither...nor', the verb agrees with the closer subject ('the software' -> singular 'is').
+D: medium
+T: BCA-107N, Unit-4, Concord, Neither-Nor
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Identify the sentence with correct parallel structure:
+A) The job requires programming, to debug, and documentation.
+B) The job requires programming, debugging, and documenting. *
+C) The job requires to program, debugging, and documentation.
+D) The job requires program, debug, and documenting.
+E: Parallel structure demands identical grammatical forms (all gerunds: programming, debugging, documenting).
+D: easy
+T: BCA-107N, Unit-4, Style, Parallelism
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What part of speech is 'since' in: 'I haven't rebooted the system since yesterday'?
+A) Conjunction
+B) Preposition *
+C) Adverb
+D) Noun
+E: Followed directly by noun 'yesterday', 'since' functions as a preposition of time.
+D: medium
+T: BCA-107N, Unit-4, Parts-of-Speech, Since-Preposition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What part of speech is 'since' in: 'Since the power failed, the server crashed'?
+A) Preposition
+B) Subordinating Conjunction *
+C) Adverb
+D) Interjection
+E: Introducing a full clause with subject and verb ('the power failed'), 'since' functions as a subordinating conjunction of cause.
+D: medium
+T: BCA-107N, Unit-4, Parts-of-Speech, Since-Conjunction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which modal auxiliary expresses past ability?
+A) Can
+B) Could *
+C) May
+D) Must
+E: 'Could' indicates past ability (e.g. 'He could code in assembly when he was 12').
+D: easy
+T: BCA-107N, Unit-4, Modals, Past-Ability
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which modal auxiliary denotes strong obligation or absolute necessity?
+A) Might
+B) Should
+C) Must *
+D) Could
+E: 'Must' conveys mandatory duty or strict necessity.
+D: easy
+T: BCA-107N, Unit-4, Modals, Obligation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the sentence 'The algorithm runs quickly', what kind of adverb is 'quickly'?
+A) Adverb of Time
+B) Adverb of Place
+C) Adverb of Manner *
+D) Adverb of Degree
+E: 'Quickly' answers the question 'How does it run?' -> Adverb of Manner.
+D: easy
+T: BCA-107N, Unit-4, Adverbs, Manner
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an 'Active Voice' sentence, the grammatical focus is on:
+A) The receiver of the action
+B) The subject who performs the action (Agent) *
+C) The prepositional phrase
+D) The punctuation
+E: In active voice, the subject acts as the agent performing the verb's action.
+D: easy
+T: BCA-107N, Unit-5, Voice, Active-Voice
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the general structural formula for converting an active sentence into the Passive Voice?
+A) Subject + Verb + Object
+B) Object (as Subject) + Auxiliary Verb (be) + Past Participle (V3) + by + Agent *
+C) Subject + will + V1
+D) Object + V1 + Subject
+E: Passive construction requires an appropriate tense form of 'to be' followed by the third form (Past Participle V3) of the main verb.
+D: easy
+T: BCA-107N, Unit-5, Voice, Passive-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Passive: 'Dennis Ritchie created the C programming language.'
+A) The C programming language created Dennis Ritchie.
+B) The C programming language was created by Dennis Ritchie. *
+C) The C programming language is created by Dennis Ritchie.
+D) The C programming language had created Dennis Ritchie.
+E: Simple Past active ('created') converts to 'was/were + V3' ('was created by...').
+D: easy
+T: BCA-107N, Unit-5, Voice, Simple-Past-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Passive: 'The technician is repairing the network switch.'
+A) The network switch was repaired by the technician.
+B) The network switch is repaired by the technician.
+C) The network switch is being repaired by the technician. *
+D) The network switch has been repaired by the technician.
+E: Present Continuous active ('is repairing') converts to 'is/are being + V3' ('is being repaired').
+D: easy
+T: BCA-107N, Unit-5, Voice, Present-Continuous-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Passive: 'The QA team has verified the security patch.'
+A) The security patch was verified by the QA team.
+B) The security patch has been verified by the QA team. *
+C) The security patch had been verified by the QA team.
+D) The security patch is verified by the QA team.
+E: Present Perfect active ('has verified') converts to 'has/have been + V3' ('has been verified').
+D: easy
+T: BCA-107N, Unit-5, Voice, Present-Perfect-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Passive: 'The team will complete the migration tomorrow.'
+A) The migration will completed tomorrow by the team.
+B) The migration will be completed tomorrow by the team. *
+C) The migration would be completed tomorrow by the team.
+D) The migration is completed tomorrow.
+E: Simple Future active ('will complete') converts to 'will be + V3' ('will be completed').
+D: easy
+T: BCA-107N, Unit-5, Voice, Future-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert the imperative command into passive voice: 'Shut down the mainframe.'
+A) You shut down the mainframe.
+B) Let the mainframe be shut down. *
+C) The mainframe should shut down.
+D) Shutdown the mainframe please.
+E: Imperative commands convert to passive using 'Let + Object + be + V3' ('Let the mainframe be shut down').
+D: easy
+T: BCA-107N, Unit-5, Voice, Imperative-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert the polite imperative request into passive: 'Please submit the assignment.'
+A) Let the assignment submit.
+B) You are requested to submit the assignment. *
+C) The assignment must be submitted by you.
+D) Submit the assignment now.
+E: Imperatives with 'Please' convert smoothly using 'You are requested to + V1'.
+D: easy
+T: BCA-107N, Unit-5, Voice, Polite-Imperative
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert into passive: 'Who wrote this malicious script?'
+A) By whom was this malicious script written?
+B) Who was this malicious script written by?
+C) By who was this malicious script written?
+D) Both A and B are acceptable *
+E: Formal: 'By whom was this script written?'; Modern informal: 'Who was this script written by?'. Both are acceptable.
+D: medium
+T: BCA-107N, Unit-5, Voice, Interrogative-Passive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following verb tenses DOES NOT have a standard, natural passive voice form in English?
+A) Simple Present
+B) Present Perfect Continuous *
+C) Simple Past
+D) Future Simple
+E: The four tenses lacking standard natural passive forms are: Present Perfect Continuous, Past Perfect Continuous, Future Continuous, and Future Perfect Continuous.
+D: medium
+T: BCA-107N, Unit-5, Voice, Untransformable-Tenses
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can intransitive verbs (verbs without an object, e.g., 'sleep', 'arrive', 'die') be converted into passive voice?
+A) Yes, always
+B) No, intransitive verbs cannot be transformed into the passive voice because they lack a direct object to become the new subject *
+C) Only in technical manuals
+D) Yes, by adding 'by someone'
+E: Without a direct object, there is no recipient of the action to serve as the subject in passive voice.
+D: easy
+T: BCA-107N, Unit-5, Voice, Intransitive-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert into passive: 'The teacher gave the student an award.' (Passive focusing on the recipient):
+A) The student was given an award by the teacher.
+B) An award was given to the student by the teacher.
+C) The student gave an award to the teacher.
+D) Both A and B are valid passive transformations *
+E: Sentences with two objects (indirect: student, direct: award) yield two valid passive transformations.
+D: medium
+T: BCA-107N, Unit-5, Voice, Two-Objects
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is passive voice especially prevalent in scientific research papers and technical lab reports?
+A) It makes the author seem mysterious
+B) It maintains an objective, impersonal tone by focusing on the empirical procedure and data rather than the researcher *
+C) It is shorter to write
+D) Because active voice is illegal in science
+E: Scientific style prioritizes the process ('The compound was synthesized') over the researcher ('I synthesized the compound').
+D: easy
+T: BCA-107N, Unit-5, Voice, Scientific-Rationale
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Active: 'The database was corrupted by a malware infection.'
+A) A malware infection corrupted the database. *
+B) A malware infection was corrupting the database.
+C) The database corrupted a malware infection.
+D) A malware infection had corrupted the database.
+E: Subject 'A malware infection' performs the simple past verb 'corrupted' upon object 'the database'.
+D: easy
+T: BCA-107N, Unit-5, Voice, Passive-to-Active
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Passive: 'Someone stole the backup drive.'
+A) The backup drive was stolen by someone.
+B) The backup drive was stolen.
+C) The backup drive is stolen.
+D) Both A and B (with 'by someone' usually omitted as unnecessary) *
+E: When the agent is vague ('someone', 'people', 'they'), it is conventionally omitted in passive voice: 'The backup drive was stolen.'
+D: easy
+T: BCA-107N, Unit-5, Voice, Indefinite-Agent
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The fundamental golden rule of Concord (Subject-Verb Agreement) states that:
+A) A singular subject requires a singular verb, and a plural subject requires a plural verb *
+B) All subjects require plural verbs in technical writing
+C) Verbs agree with the direct object
+D) The longest word determines the verb
+E: Singular subject takes singular verb (The computer boots); plural subject takes plural verb (The computers boot).
+D: easy
+T: BCA-107N, Unit-5, Concord, Golden-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'The quality of these graphics cards _____ exceptional.'
+A) are
+B) is *
+C) were
+D) have been
+E: The true subject is the singular noun 'quality', not the prepositional object 'graphics cards': 'The quality ... is exceptional.'
+D: easy
+T: BCA-107N, Unit-5, Concord, Prepositional-Interrupter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Bread and butter _____ my preferred morning breakfast.'
+A) is *
+B) are
+C) were
+D) have been
+E: When two nouns joined by 'and' represent a single unified entity or collective concept, they take a singular verb.
+D: medium
+T: BCA-107N, Unit-5, Concord, Compound-Unit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'The project manager, along with three software engineers, _____ attending the conference.'
+A) are
+B) is *
+C) were
+D) have been
+E: Parenthetical phrases introduced by 'along with', 'as well as', 'together with' do not change the number of the main singular subject ('manager' -> is).
+D: medium
+T: BCA-107N, Unit-5, Concord, Along-With
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Either the lead developer or his team members _____ responsible for this bug.'
+A) is
+B) are *
+C) was
+D) has been
+E: With 'either...or' and 'neither...nor', the verb agrees with the closer subject ('team members' -> plural 'are').
+D: medium
+T: BCA-107N, Unit-5, Concord, Rule-of-Proximity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Neither the monitor nor the keyboard _____ connected to the tower.'
+A) is *
+B) are
+C) were
+D) have been
+E: Both subjects are singular and the nearest subject 'keyboard' is singular -> 'is'.
+D: easy
+T: BCA-107N, Unit-5, Concord, Neither-Nor-Singular
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Each of the participating programmers _____ awarded a certificate.'
+A) were
+B) was *
+C) are
+D) have been
+E: Indefinite pronoun 'Each' is grammatically singular and strictly takes a singular verb ('was awarded').
+D: easy
+T: BCA-107N, Unit-5, Concord, Each
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Every student and teacher _____ present in the auditorium.'
+A) were
+B) was *
+C) are
+D) have been
+E: Subjects preceded by 'every' or 'each' always take a singular verb.
+D: medium
+T: BCA-107N, Unit-5, Concord, Every
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Ten thousand rupees _____ a reasonable price for this SSD.'
+A) are
+B) is *
+C) were
+D) have been
+E: Quantities of money, time, distance, or weight thought of as a single total sum take a singular verb.
+D: medium
+T: BCA-107N, Unit-5, Concord, Sum-of-Money
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Five kilometers _____ not a long distance to walk.'
+A) are
+B) is *
+C) were
+D) have been
+E: A measurement of distance treated as a whole unit takes a singular verb ('is').
+D: easy
+T: BCA-107N, Unit-5, Concord, Distance-Unit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'The committee _____ divided in their opinions regarding the budget.'
+A) was
+B) were *
+C) is
+D) has been
+E: When members of a collective noun act individually or have conflicting opinions, the collective noun takes a plural verb ('were divided in their opinions').
+D: hard
+T: BCA-107N, Unit-5, Concord, Collective-Noun-Divided
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'The jury _____ delivered its unanimous verdict.'
+A) have
+B) has *
+C) were
+D) are
+E: Acting as a unified whole ('its unanimous verdict'), the collective noun 'jury' takes a singular verb ('has').
+D: medium
+T: BCA-107N, Unit-5, Concord, Collective-Noun-Unified
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'Mathematics _____ an essential foundational subject for computer science.'
+A) are
+B) is *
+C) were
+D) have been
+E: Nouns plural in form but singular in meaning (Mathematics, Physics, News, Politics) take singular verbs.
+D: easy
+T: BCA-107N, Unit-5, Concord, Plural-Form-Singular-Meaning
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'A pair of trousers _____ kept in the wardrobe.'
+A) is *
+B) are
+C) were
+D) have been
+E: 'Trousers' is plural, but the subject 'pair' is singular: 'A pair ... is kept.'
+D: medium
+T: BCA-107N, Unit-5, Concord, Pair-Of
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Choose the correct verb: 'The scissors on the desk _____ very sharp.'
+A) is
+B) are *
+C) was
+D) has been
+E: Tools and garments with two matching parts (scissors, pliers, eyeglasses, jeans) without 'a pair of' take plural verbs ('are').
+D: easy
+T: BCA-107N, Unit-5, Concord, Scissors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In direct speech, what punctuation marks enclose the exact words spoken by a person?
+A) Parentheses ( )
+B) Quotation Marks / Inverted Commas (" ") *
+C) Square Brackets [ ]
+D) Curly Braces { }
+E: Quotation marks enclose exact verbatim spoken statements in direct speech.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Punctuation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What grammatical phenomenon occurs when a past tense reporting verb (e.g. 'said') causes the verb in the reported clause to shift into a corresponding past form?
+A) Front-loading
+B) Backshifting *
+C) Code-switching
+D) Transposition
+E: Backshifting is the systematic shifting of present tenses into past tenses when reporting in the past.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Backshifting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech with a past reporting verb, Simple Present ('I work') transforms into:
+A) Present Continuous
+B) Simple Past ('he worked') *
+C) Past Perfect
+D) Future Simple
+E: Simple Present shifts into Simple Past.
+D: easy
+T: BCA-107N, Unit-5, Backshifting, Simple-Present
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech, Present Continuous ('I am writing') transforms into:
+A) Simple Past
+B) Past Continuous ('he was writing') *
+C) Past Perfect Continuous
+D) Present Perfect
+E: Present Continuous shifts into Past Continuous.
+D: easy
+T: BCA-107N, Unit-5, Backshifting, Present-Continuous
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech, Present Perfect ('I have completed') transforms into:
+A) Simple Past
+B) Past Perfect ('he had completed') *
+C) Past Continuous
+D) Present Continuous
+E: Present Perfect shifts into Past Perfect.
+D: easy
+T: BCA-107N, Unit-5, Backshifting, Present-Perfect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech, Simple Past ('I tested the code') transforms into:
+A) Past Continuous
+B) Past Perfect ('he had tested the code') *
+C) Present Perfect
+D) Remains Simple Past
+E: Simple Past shifts into Past Perfect ('had + V3').
+D: medium
+T: BCA-107N, Unit-5, Backshifting, Simple-Past-to-Past-Perfect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech, modal auxiliary 'will' changes to:
+A) would *
+B) shall
+C) can
+D) must
+E: 'Will' shifts to 'would' in indirect speech.
+D: easy
+T: BCA-107N, Unit-5, Backshifting, Will-to-Would
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In reported speech, modal auxiliary 'can' changes to:
+A) could *
+B) may
+C) might
+D) would
+E: 'Can' shifts to 'could'.
+D: easy
+T: BCA-107N, Unit-5, Backshifting, Can-to-Could
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does the adverb of time 'now' change when converted to indirect speech?
+A) today
+B) then *
+C) later
+D) yesterday
+E: 'Now' shifts to 'then'.
+D: easy
+T: BCA-107N, Unit-5, Adverb-Shifts, Now-to-Then
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does 'today' change in indirect speech?
+A) that day *
+B) the next day
+C) yesterday
+D) now
+E: 'Today' shifts to 'that day'.
+D: easy
+T: BCA-107N, Unit-5, Adverb-Shifts, Today-to-That-Day
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does 'tomorrow' change in indirect speech?
+A) yesterday
+B) the next day (or the following day) *
+C) that day
+D) the previous day
+E: 'Tomorrow' shifts to 'the next day' or 'the following day'.
+D: easy
+T: BCA-107N, Unit-5, Adverb-Shifts, Tomorrow
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does 'yesterday' change in indirect speech?
+A) tomorrow
+B) the day before (or the previous day) *
+C) that day
+D) now
+E: 'Yesterday' shifts to 'the previous day' or 'the day before'.
+D: easy
+T: BCA-107N, Unit-5, Adverb-Shifts, Yesterday
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Indirect: He said, 'I am learning C programming.'
+A) He said that he was learning C programming. *
+B) He said that I am learning C programming.
+C) He said that he is learning C programming.
+D) He says that he was learning C programming.
+E: 'I' changes to 'he'; 'am learning' changes to 'was learning'.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Conversion-1
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Indirect: The teacher said, 'The Sun rises in the east.'
+A) The teacher said that the Sun rose in the east.
+B) The teacher said that the Sun rises in the east. *
+C) The teacher said that the Sun will rise in the east.
+D) The teacher says that the Sun rises in the east.
+E: Universal truths do not undergo backshifting: 'The Sun rises in the east' stays in the Simple Present.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Universal-Truth
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When converting a 'Yes/No' question into indirect speech, which conjunction is used to introduce the reported clause?
+A) that
+B) if or whether *
+C) what
+D) which
+E: Yes/No questions use 'if' or 'whether' as the connecting conjunction.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Yes-No-Questions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Indirect: She asked me, 'Are you coming to the computer lab?'
+A) She asked me if I was coming to the computer lab. *
+B) She asked me that was I coming to the computer lab.
+C) She asked me if are you coming to the computer lab.
+D) She told me that I was coming to the computer lab.
+E: Word order changes to declarative statement (subject 'I' before verb 'was'), linked by 'if'.
+D: medium
+T: BCA-107N, Unit-5, Reported-Speech, Interrogative-Conversion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When converting a 'Wh-' question (e.g., 'Where do you live?'), the connecting word used in indirect speech is:
+A) that
+B) if
+C) The specific Wh-word itself (where, what, why, when, how) *
+D) whether
+E: The wh-word itself serves as the conjunction, followed by standard subject-verb statement order.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Wh-Questions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Indirect: He asked me, 'Where do you store your backup files?'
+A) He asked me where did I store my backup files.
+B) He asked me where I stored my backup files. *
+C) He asked me that where I stored my backup files.
+D) He asked me if where I store my backup files.
+E: In indirect questions, the inverted auxiliary 'do' is removed, and the statement order is used: 'where I stored...'. Never use 'that where'.
+D: medium
+T: BCA-107N, Unit-5, Reported-Speech, Wh-Conversion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert the imperative command into indirect speech: The manager said to the clerk, 'Send this email immediately.'
+A) The manager ordered the clerk to send that email immediately. *
+B) The manager said the clerk that send this email immediately.
+C) The manager requested that the clerk sends that email immediately.
+D) The manager ordered to send this email.
+E: Imperative commands use 'ordered/told + object + to + V1', and 'this' shifts to 'that'.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Imperative-Conversion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Convert to Indirect: The doctor said to the patient, 'Do not skip your prescribed medication.'
+A) The doctor advised the patient to not skip his prescribed medication.
+B) The doctor advised the patient not to skip his prescribed medication. *
+C) The doctor said the patient that do not skip your medication.
+D) The doctor ordered the patient not skip his medication.
+E: Negative imperatives transform into 'advised/told + object + NOT TO + V1'.
+D: easy
+T: BCA-107N, Unit-5, Reported-Speech, Negative-Imperative
+Y: 2024
+X: MJPRU BCA Sem 1
+

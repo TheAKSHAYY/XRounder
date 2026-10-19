@@ -10,12 +10,10 @@ import {
   FileStack,
   FileText,
   FileType,
-  Flame,
   FlaskConical,
   Link2,
   List,
   ListChecks,
-  Lock,
   Map as MapIcon,
   PlayCircle,
   Presentation,
@@ -23,7 +21,6 @@ import {
   Star,
   Trophy,
   Video,
-  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -898,7 +895,9 @@ function SubjectDetail() {
                   onClick={() => setPathView("map")}
                   className={cn(
                     "h-8 gap-1.5 rounded-xl px-3 text-xs font-semibold cursor-pointer transition-all",
-                    pathView === "map" ? "shadow-xs" : "text-muted-foreground hover:text-foreground",
+                    pathView === "map"
+                      ? "shadow-xs"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   <MapIcon className="h-3.5 w-3.5" />
@@ -911,7 +910,9 @@ function SubjectDetail() {
                   onClick={() => setPathView("list")}
                   className={cn(
                     "h-8 gap-1.5 rounded-xl px-3 text-xs font-semibold cursor-pointer transition-all",
-                    pathView === "list" ? "shadow-xs" : "text-muted-foreground hover:text-foreground",
+                    pathView === "list"
+                      ? "shadow-xs"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   <List className="h-3.5 w-3.5" />
@@ -1136,11 +1137,6 @@ function SubjectDetail() {
                           {formatTitleCase(s.unit.title)}
                         </h3>
 
-                        {s.unit.summary && (
-                          <p className="mt-1 text-xs sm:text-sm text-muted-foreground line-clamp-2">
-                            {s.unit.summary}
-                          </p>
-                        )}
 
                         {/* Interactive Unit Pills */}
                         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -1204,7 +1200,7 @@ function SubjectDetail() {
                             }}
                           >
                             <span>
-                              {isResume ? "Resume Quest" : isDone ? "Review Quest" : "Start Quest"}
+                              {isResume ? "Continue Unit" : isDone ? "Review Unit" : "Start Unit"}
                             </span>
                             <ArrowRight className="h-4 w-4 ml-1.5" />
                           </Link>
@@ -1343,14 +1339,14 @@ function UnitCard({
   const isMastered = !!stats.quiz?.isMastered;
 
   const ctaLabel = !showProgress
-    ? "Open"
+    ? "Start Unit"
     : needsRevision
-      ? "Revise"
+      ? "Revise Unit"
       : isDone
-        ? "Review"
+        ? "Review Unit"
         : inProgress
-          ? "Continue"
-          : "Start";
+          ? "Continue Unit"
+          : "Start Unit";
 
   return (
     <Link
@@ -1406,14 +1402,9 @@ function UnitCard({
             />
           )}
         </div>
-        <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug tracking-tight text-foreground">
+        <h3 className="mt-1.5 font-display text-lg font-normal leading-snug tracking-tight text-foreground">
           {formatTitleCase(unit.title)}
         </h3>
-        {unit.summary && (
-          <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground line-clamp-2">
-            {unit.summary}
-          </p>
-        )}
 
         {/* Unit Readiness Badges */}
         <div className="mt-3 flex flex-wrap items-center gap-2">

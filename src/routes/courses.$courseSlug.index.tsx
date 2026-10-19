@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, type QueryClient } from "@tanstack/react-query";
 import { ArrowRight, ArrowLeft, BookOpen, Compass, Layers } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -32,7 +32,10 @@ type CourseDetailData = {
   semesters: SemesterItem[];
 };
 
-async function fetchCourseDetails(queryClient: any, courseSlug: string): Promise<CourseDetailData> {
+async function fetchCourseDetails(
+  queryClient: QueryClient,
+  courseSlug: string,
+): Promise<CourseDetailData> {
   const course = await queryClient.ensureQueryData({
     queryKey: ["public", "course", courseSlug],
     queryFn: async () => {
@@ -83,7 +86,7 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
         : "Browse syllabus-aligned degree courses on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}`;
 
-    const schemas: any[] = [
+    const schemas: Array<Record<string, unknown>> = [
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -345,8 +348,11 @@ function CourseDetail() {
                     </div>
                   </div>
 
-                  <div className="btn-squishy grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/80 bg-muted/60 text-primary group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    <ArrowRight className="h-4 w-4" />
+                  <div className="flex shrink-0 items-center gap-2 text-xs font-bold text-primary group-hover:underline">
+                    <span className="hidden sm:inline">Open Semester</span>
+                    <div className="btn-squishy grid h-9 w-9 place-items-center rounded-full border border-border/80 bg-muted/60 text-primary group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
                   </div>
                 </Link>
               ))}

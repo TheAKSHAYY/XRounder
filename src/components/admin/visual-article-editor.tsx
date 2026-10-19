@@ -240,6 +240,12 @@ export function parseMarkdownToBlocks(markdown: string): ContentBlockItem[] {
       }
     }
 
+    // Horizontal divider --- or ***
+    if (/^[-*_]{3,}$/.test(line.trim())) {
+      i++;
+      continue;
+    }
+
     // Regular paragraph
     if (line.trim()) {
       const paraLines: string[] = [line];

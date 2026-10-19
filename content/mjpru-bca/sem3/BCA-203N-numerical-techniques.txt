@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 3
+COURSE CODE: BCA-203N - NUMERICAL ANALYSIS AND STATISTICAL TECHNIQUES
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the primary objective of mathematical modeling in computing?
+     (A) To convert real-world physical problems into mathematical formulations solvable by computers [CORRECT]
+     (B) To replace computers with analytical proofs
+     (C) To eliminate all approximation errors completely
+     (D) To generate graphical charts without numerical data
+     Explanation: Mathematical modeling involves formulating physical phenomena or engineering processes into mathematical equations that can be solved numerically on digital computers.
+     Tags: BCA-203N, Unit-1, Mathematical-Modeling, Foundations
+
+Q2. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     Which principle is commonly used in physical mathematical modeling to establish governing equations?
+     (A) Conservation Laws (Mass, Energy, Momentum) [CORRECT]
+     (B) Heisenberg's Uncertainty Principle
+     (C) Law of Diminishing Returns
+     (D) Occam's Constant
+     Explanation: Conservation laws (conservation of mass, momentum, and energy) form the primary basis for deriving differential and algebraic equations in engineering modeling.
+     Tags: BCA-203N, Unit-1, Conservation-Laws, Formulation
+
+Q3. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     How is a floating-point number typically represented in digital computers?
+     (A) ± m × b^e where m is the mantissa, b is the base, and e is the exponent [CORRECT]
+     (B) ± e × m^b where e is the base
+     (C) ± (m + e) × b
+     (D) Only as an integer fraction without exponents
+     Explanation: In digital computing (IEEE 754 standard), a real number is represented in floating-point form as ± m × b^e, where m is the significand (mantissa), b is the radix/base, and e is the exponent.
+     Tags: BCA-203N, Unit-1, Floating-Point, Computer-Arithmetic
+
+Q4. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What is 'machine epsilon' (unit roundoff) in computer arithmetic?
+     (A) The smallest positive floating-point number ε such that 1 + ε > 1 [CORRECT]
+     (B) The largest number representable in memory
+     (C) The absolute error in integer division
+     (D) The minimum number of bits in an accumulator
+     Explanation: Machine epsilon (ε_mach) characterizes the precision of a floating-point system and represents the upper bound on the relative approximation error due to rounding.
+     Tags: BCA-203N, Unit-1, Machine-Epsilon, Precision
+
+Q5. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     How many significant figures are in the number 0.005040?
+     (A) 4 [CORRECT]
+     (B) 6
+     (C) 3
+     (D) 7
+     Explanation: Leading zeros (0.00) are placeholders and not significant. The digits 5, 0, 4 and the trailing 0 are significant, giving a total of 4 significant figures.
+     Tags: BCA-203N, Unit-1, Significant-Figures, Rules
+
+Q6. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     According to standard rounding rules, what does 4.755 round to when rounded to two decimal places using the round-to-even rule?
+     (A) 4.76 [CORRECT]
+     (B) 4.75
+     (C) 4.74
+     (D) 4.80
+     Explanation: In round-to-even (banker's rounding), when the discarded digit is 5, the preceding digit is rounded to the nearest even number. Since 5 is preceded by 5 (odd), it rounds up to 6, giving 4.76.
+     Tags: BCA-203N, Unit-1, Rounding-Rules, Precision
+
+Q7. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the fundamental difference between 'accuracy' and 'precision'?
+     (A) Accuracy is closeness to true value; precision is repeatability/closeness among measurements [CORRECT]
+     (B) Accuracy refers to number of digits; precision refers to correctness
+     (C) Accuracy applies only to integers; precision applies to floats
+     (D) There is no distinction in numerical analysis
+     Explanation: Accuracy refers to how closely a measured or calculated value agrees with the true value. Precision refers to how closely individual measurements or computed values agree with each other.
+     Tags: BCA-203N, Unit-1, Accuracy-vs-Precision, Definitions
+
+Q8. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     If the true value is X = 10.5 and the approximated value is X' = 10.2, what is the Absolute Error?
+     (A) 0.3 [CORRECT]
+     (B) -0.3
+     (C) 0.028
+     (D) 2.85%
+     Explanation: Absolute Error = |True Value - Approximate Value| = |10.5 - 10.2| = 0.3.
+     Tags: BCA-203N, Unit-1, Absolute-Error, Formula
+
+Q9. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the formula for Relative Error (E_r) given true value X and approximate value X'?
+     (A) |X - X'| / |X| [CORRECT]
+     (B) |X - X'| * |X|
+     (C) |X' - X| / |X'|
+     (D) |X - X'| / 100
+     Explanation: Relative Error E_r is the ratio of absolute error to the true value: E_r = |X - X'| / |X|.
+     Tags: BCA-203N, Unit-1, Relative-Error, Formula
+
+Q10. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     If the absolute error is 0.05 and the true value is 2.50, what is the Percentage Error?
+     (A) 2.0% [CORRECT]
+     (B) 0.02%
+     (C) 5.0%
+     (D) 0.5%
+     Explanation: Percentage Error = (Absolute Error / True Value) * 100% = (0.05 / 2.50) * 100% = 2.0%.
+     Tags: BCA-203N, Unit-1, Percentage-Error, Calculation
+
+Q11. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is a 'truncation error' in numerical computation?
+     (A) Error caused by terminating an infinite series or approximating a continuous process with a finite sum [CORRECT]
+     (B) Error caused by discarding low-order bits due to fixed register length
+     (C) Error caused by hardware defects in the CPU ALU
+     (D) Error caused by incorrect operator precedence in source code
+     Explanation: Truncation error results from using an approximation in place of an exact mathematical procedure, such as cutting off an infinite Taylor series after a finite number of terms.
+     Tags: BCA-203N, Unit-1, Truncation-Error, Concepts
+
+Q12. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is a 'round-off error'?
+     (A) Error arising from the inability of digital computers to represent exact real numbers with finite bits [CORRECT]
+     (B) Error caused by using trapezoidal rule instead of Simpson rule
+     (C) Error resulting from user typos in data input
+     (D) Error caused by compiler optimization flags
+     Explanation: Round-off errors originate because computers retain only a fixed number of significant digits during computation (e.g., 1/3 = 0.333333...).
+     Tags: BCA-203N, Unit-1, Round-off-Error, Concepts
+
+Q13. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is 'chopping' (truncation of digits) in digital representation?
+     (A) Discarding all digits beyond the n-th decimal or binary place without adjusting the last retained digit [CORRECT]
+     (B) Increasing the last digit by 1 if the remainder >= 5
+     (C) Rounding to the nearest even digit
+     (D) Converting floating-point values to ASCII text
+     Explanation: In chopping, digits following the specified precision limit are simply dropped with no round-up logic.
+     Tags: BCA-203N, Unit-1, Chopping, Arithmetic
+
+Q14. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What mathematical theorem provides the foundation for approximating sufficiently differentiable functions locally as polynomials?
+     (A) Taylor's Theorem [CORRECT]
+     (B) Gauss's Divergence Theorem
+     (C) Intermediate Value Theorem
+     (D) Cayley-Hamilton Theorem
+     Explanation: Taylor's Theorem states that any smooth, n-times differentiable function can be represented near a point a by a polynomial plus a remainder term.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Foundations
+
+Q15. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     In the Taylor series expansion of f(x) about x = a, what is the coefficient of the term (x - a)^n?
+     (A) f^(n)(a) / n! [CORRECT]
+     (B) f^(n)(a) * n!
+     (C) f'(a) / n
+     (D) n * f(a)
+     Explanation: The n-th term of Taylor series is [f^(n)(a) / n!] * (x - a)^n.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Formula
+
+Q16. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     What is the Lagrange form of the remainder R_n(x) for Taylor's series of order n?
+     (A) [f^(n+1)(ξ) / (n+1)!] * (x - a)^(n+1) where ξ lies between a and x [CORRECT]
+     (B) [f^(n)(ξ) / n!] * (x - a)^n
+     (C) [f'(ξ) / (n+1)] * (x - a)
+     (D) Zero for all functions
+     Explanation: Lagrange's remainder term gives exact expression for truncation error: R_n(x) = [f^(n+1)(ξ) / (n+1)!] * (x - a)^(n+1) for some ξ ∈ (a, x).
+     Tags: BCA-203N, Unit-1, Taylor-Series, Lagrange-Remainder
+
+Q17. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     When approximating f(x) = e^x by the Maclaurin series 1 + x + x^2/2!, what is the order of the truncation error?
+     (A) O(x^3) [CORRECT]
+     (B) O(x^2)
+     (C) O(x)
+     (D) O(1)
+     Explanation: Since the first neglected term is x^3/3!, the truncation error is proportional to x^3, denoted as Big-O O(x^3).
+     Tags: BCA-203N, Unit-1, Truncation-Error, Big-O
+
+Q18. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     In numerical methods, what happens to truncation error and round-off error as step size h decreases towards zero?
+     (A) Truncation error decreases, but round-off error increases [CORRECT]
+     (B) Both truncation and round-off error decrease to zero
+     (C) Both truncation and round-off error explode to infinity
+     (D) Truncation error increases, while round-off error decreases
+     Explanation: As step size h gets smaller, mathematical truncation error decreases (O(h^p)), but the number of arithmetic operations increases dramatically, causing accumulated round-off error to grow. Total error has a minimum at an optimal step size.
+     Tags: BCA-203N, Unit-1, Total-Numerical-Error, Step-Size
+
+Q19. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What is meant by an 'ill-conditioned' problem in numerical analysis?
+     (A) A problem where small changes in input data cause disproportionately large changes in the output solution [CORRECT]
+     (B) A problem that has no real roots
+     (C) A problem that cannot be programmed in C or Java
+     (D) A problem with complex eigenvalues
+     Explanation: An ill-conditioned problem has a high condition number; small perturbations in inputs or coefficient rounding lead to vast inaccuracies in output.
+     Tags: BCA-203N, Unit-1, Conditioning, Stability
+
+Q20. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     What is the condition number of a linear system Ax = b defined as?
+     (A) ||A|| * ||A^(-1)|| [CORRECT]
+     (B) ||A|| / ||A^(-1)||
+     (C) det(A) * trace(A)
+     (D) rank(A) / dim(A)
+     Explanation: The condition number κ(A) of an invertible matrix A is defined as ||A|| * ||A^(-1)||. If κ(A) >> 1, the system is ill-conditioned.
+     Tags: BCA-203N, Unit-1, Condition-Number, Matrix
+
+Q21. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     If u = x + y, where absolute errors in x and y are Δx and Δy respectively, what is the maximum absolute error Δu?
+     (A) Δx + Δy [CORRECT]
+     (B) Δx - Δy
+     (C) Δx * Δy
+     (D) (Δx + Δy) / (x + y)
+     Explanation: The maximum absolute error in a sum u = x + y is the sum of the absolute errors of the individual components: Δu = Δx + Δy.
+     Tags: BCA-203N, Unit-1, Error-Propagation, Sum
+
+Q22. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     If u = x * y, what is the relative error Δu / u to first-order approximation?
+     (A) (Δx / x) + (Δy / y) [CORRECT]
+     (B) (Δx / x) * (Δy / y)
+     (C) (Δx / x) - (Δy / y)
+     (D) (x * Δy + y * Δx) / (x + y)
+     Explanation: Taking natural logarithms: ln(u) = ln(x) + ln(y). Differentiating: du/u = dx/x + dy/y. Thus relative error is the sum of relative errors: (Δx/x) + (Δy/y).
+     Tags: BCA-203N, Unit-1, Error-Propagation, Product
+
+Q23. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     What severe error phenomenon occurs when two almost equal numbers are subtracted in floating-point arithmetic?
+     (A) Catastrophic Cancellation (Loss of Significance) [CORRECT]
+     (B) Stack Overflow
+     (C) Underflow Exception
+     (D) Arithmetic Divide-by-Zero
+     Explanation: Subtracting two nearly equal numbers causes catastrophic cancellation, where leading significant digits cancel out, leaving mostly round-off noise.
+     Tags: BCA-203N, Unit-1, Cancellation, Floating-Point
+
+Q24. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     How can catastrophic cancellation in calculating f(x) = sqrt(x+1) - sqrt(x) for large x be avoided?
+     (A) By rationalizing the numerator: 1 / (sqrt(x+1) + sqrt(x)) [CORRECT]
+     (B) By dividing by x^2
+     (C) By using integer arithmetic
+     (D) By truncating x to two digits
+     Explanation: Multiplying and dividing by conjugate [sqrt(x+1) + sqrt(x)] yields 1 / [sqrt(x+1) + sqrt(x)], which replaces subtraction of close numbers with addition, eliminating cancellation.
+     Tags: BCA-203N, Unit-1, Cancellation, Remedy
+
+Q25. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What is the relative error in quotient u = x / y?
+     (A) |Δx / x| + |Δy / y| [CORRECT]
+     (B) |Δx / x| - |Δy / y|
+     (C) (Δx * Δy) / (x * y)
+     (D) |x / y| * (Δx / Δy)
+     Explanation: For u = x/y, ln(u) = ln(x) - ln(y). In the worst-case scenario, errors add: |Δu/u| ≈ |Δx/x| + |Δy/y|.
+     Tags: BCA-203N, Unit-1, Error-Propagation, Quotient
+
+Q26. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the Maclaurin series expansion of cos(x)?
+     (A) 1 - x^2/2! + x^4/4! - x^6/6! + ... [CORRECT]
+     (B) x - x^3/3! + x^5/5! - ...
+     (C) 1 + x + x^2/2 + x^3/6 + ...
+     (D) 1 - x + x^2 - x^3 + ...
+     Explanation: The Maclaurin series for cos(x) is an alternating series containing only even powers of x: 1 - x^2/2! + x^4/4! - x^6/6! + ...
+     Tags: BCA-203N, Unit-1, Taylor-Series, Trigonometric
+
+Q27. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the Maclaurin series expansion of sin(x)?
+     (A) x - x^3/3! + x^5/5! - x^7/7! + ... [CORRECT]
+     (B) 1 - x^2/2! + x^4/4! - ...
+     (C) x + x^2/2 + x^3/3 + ...
+     (D) 1 + x - x^2/2 - x^3/6 + ...
+     Explanation: The Maclaurin series for sin(x) contains only odd powers of x with alternating signs: x - x^3/3! + x^5/5! - x^7/7! + ...
+     Tags: BCA-203N, Unit-1, Taylor-Series, Trigonometric
+
+Q28. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What is the order of error when approximating f'(x) by forward difference (f(x+h) - f(x)) / h?
+     (A) O(h) [CORRECT]
+     (B) O(h^2)
+     (C) O(h^3)
+     (D) O(1/h)
+     Explanation: By Taylor series: f(x+h) = f(x) + h*f'(x) + (h^2/2)*f''(ξ). Rearranging gives [f(x+h) - f(x)]/h = f'(x) + O(h). Thus the error is first-order O(h).
+     Tags: BCA-203N, Unit-1, Finite-Difference, Order-of-Error
+
+Q29. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What is the order of error when approximating f'(x) by central difference (f(x+h) - f(x-h)) / (2h)?
+     (A) O(h^2) [CORRECT]
+     (B) O(h)
+     (C) O(h^3)
+     (D) O(h^4)
+     Explanation: Expanding f(x+h) and f(x-h) via Taylor series and subtracting cancels the h^2 terms, yielding a leading truncation error of O(h^2), making central difference second-order accurate.
+     Tags: BCA-203N, Unit-1, Central-Difference, Order-of-Error
+
+Q30. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     A numerical algorithm is said to be 'numerically stable' if:
+     (A) Errors introduced at any stage do not amplify exponentially during subsequent computation [CORRECT]
+     (B) It never produces floating-point numbers
+     (C) It computes the exact analytical answer without approximations
+     (D) It runs in constant O(1) time
+     Explanation: Stability means perturbations and round-off errors introduced during computation remain bounded or decay rather than growing uncontrollably.
+     Tags: BCA-203N, Unit-1, Stability, Concepts
+
+Q31. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     If an approximate number is rounded to n significant figures, the relative error does not exceed:
+     (A) 1 / (2 * 10^(n-1)) [CORRECT]
+     (B) 1 / (10^n)
+     (C) 1 / (2 * 10^n)
+     (D) 10^(1-n)
+     Explanation: If a number is correctly rounded to n significant digits, its relative error is bounded by 1 / (2 * k * 10^(n-1)) where k is the first significant digit, giving a maximum bound of 1 / (2 * 10^(n-1)).
+     Tags: BCA-203N, Unit-1, Significant-Figures, Error-Bound
+
+Q32. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the absolute error if a true value of pi = 3.1415926 is approximated as 3.14?
+     (A) 0.0015926 [CORRECT]
+     (B) 0.001
+     (C) 0.01
+     (D) 0.0005926
+     Explanation: Absolute Error = |3.1415926 - 3.14| = 0.0015926.
+     Tags: BCA-203N, Unit-1, Absolute-Error, Pi
+
+Q33. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     If u = x^m, where x has relative error Δx/x, what is the relative error in u?
+     (A) m * (Δx / x) [CORRECT]
+     (B) (Δx / x)^m
+     (C) m + (Δx / x)
+     (D) (Δx / x) / m
+     Explanation: Since ln(u) = m*ln(x), differentiating gives du/u = m*(dx/x). Therefore, the relative error in x^m is m times the relative error in x.
+     Tags: BCA-203N, Unit-1, Error-Propagation, Power
+
+Q34. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     Which representation standard is used for 32-bit single precision floating point numbers in modern computers?
+     (A) IEEE 754 (1 sign bit, 8 exponent bits, 23 mantissa bits) [CORRECT]
+     (B) IEEE 854 (2 sign bits, 10 exponent bits)
+     (C) ISO 9001 (16 bit integer, 16 bit float)
+     (D) ANSI C 64-bit integer
+     Explanation: IEEE 754 single-precision (32-bit) allocates: 1 bit for sign, 8 bits for biased exponent, and 23 bits for fractional mantissa.
+     Tags: BCA-203N, Unit-1, IEEE-754, Computer-Arithmetic
+
+Q35. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     In double precision IEEE 754 floating point standard, how many bits are used for the exponent and mantissa respectively?
+     (A) 11 bits exponent, 52 bits mantissa (64 bits total with sign) [CORRECT]
+     (B) 8 bits exponent, 24 bits mantissa
+     (C) 15 bits exponent, 64 bits mantissa
+     (D) 16 bits exponent, 48 bits mantissa
+     Explanation: IEEE 754 double precision uses 64 bits total: 1 sign bit, 11 exponent bits, and 52 mantissa (fraction) bits, offering ~15-17 decimal digits of precision.
+     Tags: BCA-203N, Unit-1, IEEE-754, Double-Precision
+
+Q36. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     What does 'underflow' mean in computer arithmetic?
+     (A) A calculated non-zero value is smaller in magnitude than the smallest positive representable number [CORRECT]
+     (B) A number exceeds the maximum representable magnitude
+     (C) Memory buffer exceeds stack capacity
+     (D) Division by negative numbers
+     Explanation: Underflow occurs when a floating-point result is so close to zero that it falls between zero and the smallest positive normalized representable number, often flushing to zero.
+     Tags: BCA-203N, Unit-1, Underflow, Floating-Point
+
+Q37. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the Taylor series expansion of ln(1 + x) for |x| < 1?
+     (A) x - x^2/2 + x^3/3 - x^4/4 + ... [CORRECT]
+     (B) x + x^2/2 + x^3/3 + ...
+     (C) 1 + x + x^2/2! + ...
+     (D) x - x^3/3! + x^5/5! - ...
+     Explanation: The Mercator series for natural logarithm is ln(1+x) = x - x^2/2 + x^3/3 - x^4/4 + ... for -1 < x <= 1.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Logarithm
+
+Q38. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     What is the general error propagation formula for a multivariable function u = f(x, y, z)?
+     (A) Δu ≈ |∂f/∂x|*Δx + |∂f/∂y|*Δy + |∂f/∂z|*Δz [CORRECT]
+     (B) Δu = (∂f/∂x + ∂f/∂y + ∂f/∂z) * (Δx + Δy + Δz)
+     (C) Δu = (Δx*Δy*Δz) / (∂f/∂x)
+     (D) Δu = ∂^3f / (∂x∂y∂z)
+     Explanation: By total differential, the maximum absolute error in u = f(x,y,z) is given by: Δu ≈ |∂f/∂x|Δx + |∂f/∂y|Δy + |∂f/∂z|Δz.
+     Tags: BCA-203N, Unit-1, Error-Propagation, Total-Differential
+
+Q39. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     The number 72.350 rounded to three significant digits is:
+     (A) 72.4 [CORRECT]
+     (B) 72.3
+     (C) 72.0
+     (D) 73.0
+     Explanation: To round to 3 significant digits: the first 3 digits are 7, 2, and 3. The next digit is 5 followed by 0. Using round-to-even: 3 is odd, so it rounds up to 4, giving 72.4.
+     Tags: BCA-203N, Unit-1, Significant-Figures, Rounding
+
+Q40. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What type of error is introduced when a user inputs 3.1416 instead of 3.1415926535?
+     (A) Data Error (Input Error) [CORRECT]
+     (B) Round-off Error in ALU
+     (C) Truncation Error of Series
+     (D) Syntax Error
+     Explanation: Inaccurate or rounded input measurement provided to the algorithm is categorized as Inherent/Input/Data Error.
+     Tags: BCA-203N, Unit-1, Error-Types, Classification
+
+Q41. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the order of convergence if error e_{n+1} <= C * (e_n)^1?
+     (A) Linear Convergence [CORRECT]
+     (B) Quadratic Convergence
+     (C) Superlinear Convergence
+     (D) Cubic Convergence
+     Explanation: When e_{n+1} ≈ C * (e_n)^p with p = 1, the convergence is linear. When p = 2, it is quadratic.
+     Tags: BCA-203N, Unit-1, Convergence-Rate, Order
+
+Q42. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     Why is Taylor's series called an infinite polynomial series?
+     (A) Because it expresses a function as a power series with ascending powers of (x - a) [CORRECT]
+     (B) Because its degree is always bounded by 2
+     (C) Because it only uses trigonometric terms
+     (D) Because it is derived from matrix determinants
+     Explanation: Taylor's series represents smooth functions as a power series: sum_{n=0}^inf [f^(n)(a)/n!] * (x-a)^n.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Concept
+
+Q43. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     What is the value of 1! * 2! * 3! in Taylor series denominator calculations?
+     (A) 12 [CORRECT]
+     (B) 6
+     (C) 24
+     (D) 18
+     Explanation: 1! = 1, 2! = 2, 3! = 6. 1 * 2 * 6 = 12.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Basics
+
+Q44. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     When using Taylor series to evaluate e^(0.1) using the first three terms (1 + x + x^2/2), what is the estimated value?
+     (A) 1.105 [CORRECT]
+     (B) 1.100
+     (C) 1.110
+     (D) 1.005
+     Explanation: 1 + 0.1 + (0.1)^2 / 2 = 1 + 0.1 + 0.01 / 2 = 1 + 0.1 + 0.005 = 1.105.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Calculation
+
+Q45. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (MEDIUM)
+     In floating-point multiplication of two normalized numbers, how are the exponents handled?
+     (A) Exponents are added together (with bias adjustment) [CORRECT]
+     (B) Exponents are multiplied
+     (C) Exponents are subtracted
+     (D) Exponents remain unchanged
+     Explanation: In floating-point multiplication (m1 * b^e1) * (m2 * b^e2) = (m1 * m2) * b^(e1 + e2); mantissas are multiplied and exponents are added.
+     Tags: BCA-203N, Unit-1, Floating-Point, Multiplication
+
+Q46. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     In floating-point addition, what prerequisite alignment step must take place before adding mantissas?
+     (A) The number with the smaller exponent has its mantissa shifted right until exponents match [CORRECT]
+     (B) Both numbers are converted to integers
+     (C) Exponents are multiplied
+     (D) The larger exponent is decreased
+     Explanation: To add two floating-point numbers, their radix points must align: the number with smaller exponent shifts its mantissa right while incrementing its exponent until exponents are equal.
+     Tags: BCA-203N, Unit-1, Floating-Point, Addition-Alignment
+
+Q47. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (HARD)
+     What is the remainder term in Taylor's series called when expressed as an integral?
+     (A) Cauchy's Integral Form of Remainder [CORRECT]
+     (B) Euler's Integral
+     (C) Riemann Sum
+     (D) Gauss Integral
+     Explanation: Taylor's remainder can be expressed in integral form: R_n(x) = (1/n!) * integral_a^x (x - t)^n f^(n+1)(t) dt, known as Cauchy's integral form.
+     Tags: BCA-203N, Unit-1, Taylor-Series, Cauchy-Remainder
+
+Q48. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     Which of the following errors is strictly within the programmer's control to eliminate?
+     (A) Algorithmic / Programming Bugs [CORRECT]
+     (B) Machine Epsilon Round-off
+     (C) Inherent Input Data Uncertainty
+     (D) Irrational Number Representation
+     Explanation: Syntax, logic, and implementation bugs are completely avoidable by the programmer, whereas machine representation limits and inherent data noise are intrinsic.
+     Tags: BCA-203N, Unit-1, Error-Classification, Practical
+
+Q49. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     If f(x) = x^3 - 2x + 1, what is the exact second derivative f''(x)?
+     (A) 6x [CORRECT]
+     (B) 3x^2 - 2
+     (C) 6
+     (D) x^2
+     Explanation: f'(x) = 3x^2 - 2; f''(x) = d/dx(3x^2 - 2) = 6x.
+     Tags: BCA-203N, Unit-1, Calculus, Derivatives
+
+Q50. [Unit 1: Mathematical Modeling, Errors & Taylor Series] (EASY)
+     Why is numerical analysis essential in software engineering and data science?
+     (A) Most real-world mathematical models have no closed-form analytical solutions and must be solved iteratively [CORRECT]
+     (B) Because analytical mathematics is deprecated
+     (C) Computers cannot perform algebraic manipulations
+     (D) It eliminates the need for computer hardware
+     Explanation: Complex differential equations, high-dimensional optimizations, and non-linear systems rarely have closed-form symbolic solutions; numerical approximations provide feasible computational solutions.
+     Tags: BCA-203N, Unit-1, Numerical-Analysis, Relevance
+
+Q51. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What distinguishes an 'algebraic equation' from a 'transcendental equation'?
+     (A) Algebraic equations contain purely polynomial terms; transcendental equations involve trigonometric, exponential, or logarithmic functions [CORRECT]
+     (B) Algebraic equations have no real roots
+     (C) Transcendental equations can only be solved analytically
+     (D) Algebraic equations cannot have degree higher than 2
+     Explanation: An equation f(x) = 0 is algebraic if f(x) is purely a polynomial in x. If f(x) contains non-algebraic functions (sin x, e^x, ln x), it is transcendental.
+     Tags: BCA-203N, Unit-2, Algebraic-vs-Transcendental, Definitions
+
+Q52. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Which theorem guarantees the existence of at least one real root of f(x) = 0 in [a, b] if f(x) is continuous and f(a) * f(b) < 0?
+     (A) Intermediate Value Theorem (Bolzano's Theorem) [CORRECT]
+     (B) Rolle's Theorem
+     (C) Mean Value Theorem
+     (D) Fundamental Theorem of Algebra
+     Explanation: Bolzano's Intermediate Value Theorem states that if continuous function f changes sign across [a, b] (f(a)*f(b) < 0), there exists at least one root c in (a, b) such that f(c) = 0.
+     Tags: BCA-203N, Unit-2, Intermediate-Value-Theorem, Root-Localization
+
+Q53. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the recurrence relation for the Bisection method to find the root in interval [a, b]?
+     (A) c = (a + b) / 2 [CORRECT]
+     (B) c = a - [f(a)*(b-a)] / [f(b)-f(a)]
+     (C) c = b - f(b)/f'(b)
+     (D) c = (a*f(b) + b*f(a)) / 2
+     Explanation: The Bisection method repeatedly bisects the interval at its midpoint: c = (a + b) / 2.
+     Tags: BCA-203N, Unit-2, Bisection-Method, Formula
+
+Q54. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the order of convergence of the Bisection method?
+     (A) Linear (Order 1, with rate 1/2) [CORRECT]
+     (B) Quadratic (Order 2)
+     (C) Superlinear (Order 1.618)
+     (D) Cubic (Order 3)
+     Explanation: The Bisection method halves the interval of uncertainty at every step: |e_{n+1}| = 0.5 * |e_n|. Its convergence is linear with an asymptotic error constant of 0.5.
+     Tags: BCA-203N, Unit-2, Bisection-Method, Convergence
+
+Q55. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     How many iterations of Bisection method are required to achieve an error tolerance ε starting from interval [a, b]?
+     (A) n >= [ln(b - a) - ln(ε)] / ln(2) [CORRECT]
+     (B) n = (b - a) / ε
+     (C) n = 2^(b - a)
+     (D) n = ln(ε) * (b - a)
+     Explanation: Since interval length after n steps is (b-a)/2^n <= ε, taking log_2 gives: n >= log_2((b-a)/ε) = [ln(b-a) - ln(ε)] / ln(2).
+     Tags: BCA-203N, Unit-2, Bisection-Method, Iterations
+
+Q56. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the primary advantage of the Bisection method over open methods like Newton-Raphson?
+     (A) It is unconditionally guaranteed to converge if an initial bracket with f(a)*f(b) < 0 is found [CORRECT]
+     (B) It converges much faster than all other methods
+     (C) It requires evaluating derivatives f'(x)
+     (D) It can find complex roots
+     Explanation: Bisection is a bracketing method that is robust and guaranteed to converge, regardless of function curvature or inflection points.
+     Tags: BCA-203N, Unit-2, Bisection-Method, Advantages
+
+Q57. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the Regula-Falsi (Method of False Position) root formula for interval [a, b]?
+     (A) c = [a*f(b) - b*f(a)] / [f(b) - f(a)] [CORRECT]
+     (B) c = (a + b) / 2
+     (C) c = a - f(a)/f'(a)
+     (D) c = [f(a) + f(b)] / 2
+     Explanation: Regula-Falsi finds the x-intercept of the secant line joining (a, f(a)) and (b, f(b)): c = [a*f(b) - b*f(a)] / [f(b) - f(a)].
+     Tags: BCA-203N, Unit-2, Regula-Falsi, Formula
+
+Q58. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is a common drawback of the standard Regula-Falsi method?
+     (A) One endpoint often remains stagnant, leading to slow linear convergence [CORRECT]
+     (B) It can diverge to infinity
+     (C) It requires computing second derivatives
+     (D) It cannot be applied to polynomials
+     Explanation: If the function is convex or concave, one endpoint tends to get stuck (stagnant point), reducing the convergence rate to slow first-order linear.
+     Tags: BCA-203N, Unit-2, Regula-Falsi, Stagnation
+
+Q59. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the Newton-Raphson iteration formula for finding root of f(x) = 0?
+     (A) x_{n+1} = x_n - f(x_n) / f'(x_n) [CORRECT]
+     (B) x_{n+1} = x_n + f(x_n) / f'(x_n)
+     (C) x_{n+1} = f(x_n) / x_n
+     (D) x_{n+1} = x_n - f'(x_n) / f(x_n)
+     Explanation: The Newton-Raphson formula is derived from linear Taylor approximation: x_{n+1} = x_n - f(x_n) / f'(x_n).
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Formula
+
+Q60. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the order of convergence of the Newton-Raphson method for a simple root?
+     (A) 2 (Quadratic) [CORRECT]
+     (B) 1 (Linear)
+     (C) 1.618 (Golden ratio)
+     (D) 3 (Cubic)
+     Explanation: For a simple root (f'(r) != 0), the Newton-Raphson method exhibits quadratic convergence: e_{n+1} ≈ [f''(r) / (2*f'(r))] * (e_n)^2.
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Quadratic-Convergence
+
+Q61. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Under what condition does the Newton-Raphson method fail or experience division by zero?
+     (A) When f'(x_n) = 0 (horizontal tangent) [CORRECT]
+     (B) When f(x_n) = 0
+     (C) When f''(x_n) > 0
+     (D) When x_n is negative
+     Explanation: If f'(x_n) = 0, the tangent line is horizontal and never intersects the x-axis, causing division by zero.
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Failure-Case
+
+Q62. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the iterative formula to calculate the square root of a positive number N using Newton-Raphson?
+     (A) x_{n+1} = 0.5 * (x_n + N / x_n) [CORRECT]
+     (B) x_{n+1} = x_n - N
+     (C) x_{n+1} = 2 * (x_n + N)
+     (D) x_{n+1} = (x_n^2 + N) / 2
+     Explanation: Let f(x) = x^2 - N = 0. Then f'(x) = 2x. Newton's step: x_{n+1} = x_n - (x_n^2 - N)/(2x_n) = (2x_n^2 - x_n^2 + N)/(2x_n) = 0.5 * (x_n + N/x_n) (Babylonian method).
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Square-Root
+
+Q63. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     What is the iterative formula to compute the reciprocal (1/N) without performing division using Newton-Raphson?
+     (A) x_{n+1} = x_n * (2 - N * x_n) [CORRECT]
+     (B) x_{n+1} = x_n * (1 + N * x_n)
+     (C) x_{n+1} = 2 / (N * x_n)
+     (D) x_{n+1} = (2*x_n - N)
+     Explanation: Let f(x) = 1/x - N = 0. Then f'(x) = -1/x^2. x_{n+1} = x_n - (1/x_n - N)/(-1/x_n^2) = x_n + x_n^2*(1/x_n - N) = x_n*(2 - N*x_n).
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Reciprocal
+
+Q64. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the order of convergence of the Secant method?
+     (A) Approximately 1.618 (Superlinear) [CORRECT]
+     (B) Exactly 1.0 (Linear)
+     (C) Exactly 2.0 (Quadratic)
+     (D) 3.0 (Cubic)
+     Explanation: The Secant method approximates the derivative with a finite difference across two prior points, yielding an order of convergence equal to the golden ratio phi ≈ (1 + sqrt(5))/2 ≈ 1.618.
+     Tags: BCA-203N, Unit-2, Secant-Method, Convergence
+
+Q65. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     How does the Secant method differ fundamentally from the Regula-Falsi method?
+     (A) Secant is an open method that retains the two most recent iterates without requiring them to bracket the root [CORRECT]
+     (B) Secant method computes analytical derivatives
+     (C) Regula-Falsi always converges quadratically
+     (D) Secant method only works on linear equations
+     Explanation: Unlike Regula-Falsi which enforces f(a)*f(b) < 0 at every step, the Secant method simply uses the two newest iterates x_n and x_{n-1}, allowing it to move outside the initial bracket.
+     Tags: BCA-203N, Unit-2, Secant-vs-RegulaFalsi, Differences
+
+Q66. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the forward difference operator denoted by?
+     (A) Δ (Delta) [CORRECT]
+     (B) ∇ (Nabla)
+     (C) E (Shift)
+     (D) δ (Central difference)
+     Explanation: The forward difference operator is denoted by Δ: Δf(x) = f(x + h) - f(x).
+     Tags: BCA-203N, Unit-2, Finite-Differences, Operators
+
+Q67. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the definition of backward difference operator ∇f(x)?
+     (A) f(x) - f(x - h) [CORRECT]
+     (B) f(x + h) - f(x)
+     (C) f(x + h/2) - f(x - h/2)
+     (D) f(x + h) + f(x)
+     Explanation: The backward difference operator is ∇f(x) = f(x) - f(x - h).
+     Tags: BCA-203N, Unit-2, Finite-Differences, Backward-Operator
+
+Q68. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the relation between the Shift operator E and the Forward difference operator Δ?
+     (A) E = 1 + Δ [CORRECT]
+     (B) E = 1 - Δ
+     (C) E = Δ - 1
+     (D) E = 1 / Δ
+     Explanation: Since Ef(x) = f(x + h) and Δf(x) = f(x+h) - f(x) = (E - 1)f(x), the operator identity is E = 1 + Δ.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Operator-Algebra
+
+Q69. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the Fundamental Theorem of Finite Differences for a polynomial of degree n?
+     (A) The n-th forward difference is constant, and (n+1)-th difference is zero [CORRECT]
+     (B) All differences are equal to zero
+     (C) The n-th difference is equal to n!
+     (D) The differences grow exponentially with degree
+     Explanation: The n-th forward difference of a polynomial of degree n with constant spacing h is constant: Δ^n P_n(x) = a_n * n! * h^n, and Δ^(n+1) P_n(x) = 0.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Fundamental-Theorem
+
+Q70. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the value of Δ(c) where c is a constant?
+     (A) 0 [CORRECT]
+     (B) c
+     (C) 1
+     (D) c * h
+     Explanation: Δ(c) = c - c = 0.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Constant
+
+Q71. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the relationship between the backward operator ∇ and shift operator E?
+     (A) ∇ = 1 - E^(-1) [CORRECT]
+     (B) ∇ = E - 1
+     (C) ∇ = 1 + E^(-1)
+     (D) ∇ = E / (1 - E)
+     Explanation: ∇f(x) = f(x) - f(x - h) = (1 - E^(-1))f(x), so ∇ = 1 - E^(-1).
+     Tags: BCA-203N, Unit-2, Finite-Differences, Operators
+
+Q72. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Newton's Forward Difference Interpolation formula is best suited for estimating values:
+     (A) Near the beginning of a tabular set of equally spaced data [CORRECT]
+     (B) Near the end of a tabular set of data
+     (C) Far outside the range of data
+     (D) Only for unequally spaced data
+     Explanation: Newton's Forward formula uses differences from the top of the difference table and is ideal for interpolation near the beginning of the table.
+     Tags: BCA-203N, Unit-2, Newton-Forward, Application
+
+Q73. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Newton's Backward Difference Interpolation formula is best suited for estimating values:
+     (A) Near the end of a tabular set of equally spaced data [CORRECT]
+     (B) Near the beginning of the table
+     (C) Only at the exact midpoint
+     (D) Exclusively for complex numbers
+     Explanation: Newton's Backward formula uses backward differences terminating at the bottom of the table and is ideal for interpolation near the end.
+     Tags: BCA-203N, Unit-2, Newton-Backward, Application
+
+Q74. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     In Newton's forward interpolation formula, what is parameter u defined as?
+     (A) u = (x - x_0) / h [CORRECT]
+     (B) u = (x - x_n) / h
+     (C) u = (x_0 - x) / h
+     (D) u = (x + x_0) * h
+     Explanation: Parameter u represents the normalized distance from the base point x_0: u = (x - x_0) / h, where h is the step size.
+     Tags: BCA-203N, Unit-2, Newton-Forward, Formula
+
+Q75. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     In Newton's backward interpolation formula, what is parameter v defined as?
+     (A) v = (x - x_n) / h [CORRECT]
+     (B) v = (x - x_0) / h
+     (C) v = (x_n - x) / h
+     (D) v = x * h
+     Explanation: In backward interpolation, parameter v measures distance from the final tabular point x_n: v = (x - x_n) / h.
+     Tags: BCA-203N, Unit-2, Newton-Backward, Formula
+
+Q76. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the primary advantage of Lagrange's Interpolation formula over Newton's formulas?
+     (A) It can be applied to data points with unequal (non-uniform) intervals [CORRECT]
+     (B) It never requires multiplication
+     (C) It guarantees zero truncation error
+     (D) It is always of degree 1
+     Explanation: Lagrange's interpolation polynomial does not require data points x_0, x_1, ..., x_n to be equally spaced.
+     Tags: BCA-203N, Unit-2, Lagrange-Interpolation, Advantages
+
+Q77. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     For n+1 distinct data points (x_0, y_0), (x_1, y_1), ..., (x_n, y_n), what is the degree of the unique interpolating polynomial?
+     (A) At most n [CORRECT]
+     (B) Exactly n+1
+     (C) At least n+1
+     (D) Always 1
+     Explanation: Through n+1 distinct points, there exists a unique interpolating polynomial of degree at most n.
+     Tags: BCA-203N, Unit-2, Interpolation, Uniqueness
+
+Q78. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     In Lagrange's interpolation formula, what is the value of basis polynomial L_i(x_j)?
+     (A) 1 if i = j, and 0 if i != j (Kronecker delta δ_ij) [CORRECT]
+     (B) 0 if i = j, and 1 if i != j
+     (C) Always 1 for all i, j
+     (D) Always 0 for all i, j
+     Explanation: The Lagrange basis polynomials satisfy the cardinal property L_i(x_j) = δ_ij: they equal 1 at their own node x_i and 0 at all other nodes x_j.
+     Tags: BCA-203N, Unit-2, Lagrange-Interpolation, Basis-Functions
+
+Q79. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the main computational disadvantage of Lagrange's interpolation formula when new data points are added?
+     (A) All basis polynomials must be completely recalculated from scratch [CORRECT]
+     (B) It causes division by zero automatically
+     (C) It converts the polynomial into an exponential
+     (D) It can only handle integer data
+     Explanation: Adding a new data point to a Lagrange interpolant requires recomputing all terms, unlike Newton's divided difference form which simply appends a new term.
+     Tags: BCA-203N, Unit-2, Lagrange-Interpolation, Disadvantages
+
+Q80. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is Newton's Divided Difference interpolation formula designed for?
+     (A) Interpolating functions with arbitrarily spaced (unequal) intervals while allowing easy addition of new points [CORRECT]
+     (B) Finding roots of transcendental equations
+     (C) Computing matrix inverses
+     (D) Solving systems of ODEs
+     Explanation: Newton's divided difference form accommodates unequal intervals while retaining a progressive structure where adding a data point adds a single higher-order term.
+     Tags: BCA-203N, Unit-2, Divided-Differences, Purpose
+
+Q81. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is the definition of the first divided difference f[x_0, x_1]?
+     (A) [f(x_1) - f(x_0)] / (x_1 - x_0) [CORRECT]
+     (B) [f(x_1) + f(x_0)] / (x_1 + x_0)
+     (C) [f(x_0) - f(x_1)] * (x_1 - x_0)
+     (D) f(x_1) / f(x_0)
+     Explanation: The first divided difference is defined as f[x_0, x_1] = (f(x_1) - f(x_0)) / (x_1 - x_0).
+     Tags: BCA-203N, Unit-2, Divided-Differences, Definition
+
+Q82. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Divided differences are symmetric functions of their arguments. What does this mean?
+     (A) f[x_0, x_1] = f[x_1, x_0] [CORRECT]
+     (B) f[x_0, x_1] = -f[x_1, x_0]
+     (C) f[x_0, x_1] = 0
+     (D) f[x_0, x_1] = 1 / f[x_1, x_0]
+     Explanation: Symmetry means the value of the divided difference is invariant under any permutation of its arguments: f[x_0, x_1] = f[x_1, x_0].
+     Tags: BCA-203N, Unit-2, Divided-Differences, Symmetry
+
+Q83. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     What is the relation between divided difference f[x_0, x_1, ..., x_n] and the n-th derivative f^(n)(ξ)?
+     (A) f[x_0, x_1, ..., x_n] = f^(n)(ξ) / n! [CORRECT]
+     (B) f[x_0, x_1, ..., x_n] = f^(n)(ξ) * n!
+     (C) f[x_0, x_1, ..., x_n] = f'(ξ) / n
+     (D) They are completely unrelated
+     Explanation: By the Mean Value Theorem for divided differences, f[x_0, ..., x_n] = f^(n)(ξ) / n! for some ξ in the span of the nodes.
+     Tags: BCA-203N, Unit-2, Divided-Differences, Derivatives
+
+Q84. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     What is Runge's Phenomenon in polynomial interpolation?
+     (A) Severe oscillations occurring near the edges of an interval when using high-degree polynomials with equidistant nodes [CORRECT]
+     (B) The monotonic convergence of polynomials to zero
+     (C) The failure of matrix inversion in Newton-Raphson
+     (D) A type of round-off error in floating-point ALU
+     Explanation: Runge discovered that interpolating f(x) = 1/(1 + 25x^2) with high-degree polynomials at equispaced points causes wild oscillations near interval boundaries.
+     Tags: BCA-203N, Unit-2, Runge-Phenomenon, Interpolation-Error
+
+Q85. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     How can Runge's phenomenon be minimized when high-degree polynomial interpolation is necessary?
+     (A) By using Chebyshev nodes (clusters near interval boundaries) or piecewise splines [CORRECT]
+     (B) By increasing the spacing between central nodes
+     (C) By using only even-degree polynomials
+     (D) By rounding data points to 2 decimal places
+     Explanation: Chebyshev nodes concentrate sample points near the edges where oscillation tends to occur, minimizing the maximum interpolation error (minimax principle).
+     Tags: BCA-203N, Unit-2, Runge-Phenomenon, Chebyshev-Nodes
+
+Q86. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     In fixed-point iteration x_{n+1} = g(x_n), what condition guarantees convergence to a unique fixed point in [a, b]?
+     (A) |g'(x)| <= k < 1 for all x in [a, b] [CORRECT]
+     (B) |g'(x)| > 1
+     (C) g'(x) = 0 everywhere
+     (D) g(x) is discontinuous
+     Explanation: By Banach Fixed Point Theorem, if g maps [a, b] into itself and |g'(x)| <= k < 1 (contraction mapping), the iteration converges.
+     Tags: BCA-203N, Unit-2, Fixed-Point-Iteration, Convergence-Condition
+
+Q87. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     If f(x) = x^3 - x - 1 = 0, which of the following is a valid iteration function g(x) that converges near root x ≈ 1.32?
+     (A) g(x) = (x + 1)^(1/3) [CORRECT]
+     (B) g(x) = x^3 - 1
+     (C) g(x) = 1 / (x^2 - 1)
+     (D) g(x) = x^3 + x
+     Explanation: For g(x) = (x+1)^(1/3), g'(x) = (1/3)(x+1)^(-2/3). Near x = 1.32, |g'(x)| ≈ (1/3)(2.32)^(-2/3) ≈ 0.19 < 1, so it converges rapidly.
+     Tags: BCA-203N, Unit-2, Fixed-Point-Iteration, Selection
+
+Q88. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What is an 'extrapolation' in numerical computing?
+     (A) Estimating a function value outside the range of known tabular data points [CORRECT]
+     (B) Estimating a function value between known tabular data points
+     (C) Finding the root of a polynomial
+     (D) Integrating a function over an infinite domain
+     Explanation: Interpolation estimates values inside the range of known points; extrapolation estimates values outside the known data range and is generally less reliable.
+     Tags: BCA-203N, Unit-2, Interpolation-vs-Extrapolation, Concepts
+
+Q89. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the second forward difference Δ^2 y_0 in terms of function values y_0, y_1, y_2?
+     (A) y_2 - 2*y_1 + y_0 [CORRECT]
+     (B) y_2 - y_1 + y_0
+     (C) y_2 - 2*y_1 - y_0
+     (D) y_1 - 2*y_0 + y_2
+     Explanation: Δ^2 y_0 = Δ(y_1 - y_0) = Δy_1 - Δy_0 = (y_2 - y_1) - (y_1 - y_0) = y_2 - 2*y_1 + y_0.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Second-Difference
+
+Q90. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the third forward difference Δ^3 y_0 in terms of function values?
+     (A) y_3 - 3*y_2 + 3*y_1 - y_0 [CORRECT]
+     (B) y_3 + 3*y_2 + 3*y_1 + y_0
+     (C) y_3 - y_2 + y_1 - y_0
+     (D) 3*y_3 - 2*y_2 + y_0
+     Explanation: Using binomial expansion coefficients (E - 1)^3 = E^3 - 3E^2 + 3E - 1: Δ^3 y_0 = y_3 - 3y_2 + 3y_1 - y_0.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Third-Difference
+
+Q91. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     If f(1) = 2, f(2) = 5, what is the first divided difference f[1, 2]?
+     (A) 3 [CORRECT]
+     (B) 7
+     (C) 2.5
+     (D) 1.5
+     Explanation: f[1, 2] = (f(2) - f(1)) / (2 - 1) = (5 - 2) / 1 = 3.
+     Tags: BCA-203N, Unit-2, Divided-Differences, Calculation
+
+Q92. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     What is the order of error in linear interpolation between two adjacent points spaced by h?
+     (A) O(h^2) [CORRECT]
+     (B) O(h)
+     (C) O(h^3)
+     (D) O(1)
+     Explanation: Linear interpolation error is given by E(x) = (x - x_0)(x - x_1) f''(ξ) / 2. Since (x - x_0)(x - x_1) <= h^2/4, the error is O(h^2).
+     Tags: BCA-203N, Unit-2, Interpolation-Error, Order
+
+Q93. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     In Newton-Raphson, if a root has multiplicity m > 1 (multiple root), how does the standard convergence rate degrade?
+     (A) It degrades from quadratic (order 2) to linear (order 1) [CORRECT]
+     (B) It degrades to zero
+     (C) It accelerates to cubic
+     (D) It remains quadratic
+     Explanation: At a multiple root, f'(r) = 0, violating the standard quadratic convergence assumption. Convergence becomes linear with rate (1 - 1/m).
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Multiple-Roots
+
+Q94. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (HARD)
+     How can quadratic convergence be restored in Newton-Raphson for a root of known multiplicity m?
+     (A) Modify the formula to: x_{n+1} = x_n - m * [f(x_n) / f'(x_n)] [CORRECT]
+     (B) Divide f(x_n) by m^2
+     (C) Use step size h = 1/m
+     (D) Multiply f'(x_n) by m
+     Explanation: The modified Newton-Raphson formula x_{n+1} = x_n - m * f(x_n)/f'(x_n) restores quadratic convergence for roots of known multiplicity m.
+     Tags: BCA-203N, Unit-2, Newton-Raphson, Modified-Formula
+
+Q95. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (MEDIUM)
+     If an equation f(x) = 0 has a root between 1 and 2, and f(1) = -4, f(2) = 2, what is the first Regula-Falsi approximation?
+     (A) 1.667 [CORRECT]
+     (B) 1.500
+     (C) 1.750
+     (D) 1.333
+     Explanation: c = [a*f(b) - b*f(a)] / [f(b) - f(a)] = [1*(2) - 2*(-4)] / [2 - (-4)] = [2 + 8] / 6 = 10 / 6 = 1.667.
+     Tags: BCA-203N, Unit-2, Regula-Falsi, Calculation
+
+Q96. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Using the Bisection method on interval [1, 2] for f(x) = x^2 - 2, what is the first midpoint c_1 and its function value f(c_1)?
+     (A) c_1 = 1.5, f(c_1) = 0.25 [CORRECT]
+     (B) c_1 = 1.5, f(c_1) = -0.25
+     (C) c_1 = 1.414, f(c_1) = 0
+     (D) c_1 = 1.25, f(c_1) = 0.5
+     Explanation: c_1 = (1 + 2)/2 = 1.5. f(1.5) = (1.5)^2 - 2 = 2.25 - 2 = +0.25.
+     Tags: BCA-203N, Unit-2, Bisection-Method, Calculation
+
+Q97. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     For data points (0, 1), (1, 3), (2, 7), what is the forward difference table's first column of Δy?
+     (A) Δy_0 = 2, Δy_1 = 4 [CORRECT]
+     (B) Δy_0 = 3, Δy_1 = 7
+     (C) Δy_0 = 1, Δy_1 = 2
+     (D) Δy_0 = 4, Δy_1 = 2
+     Explanation: Δy_0 = y_1 - y_0 = 3 - 1 = 2; Δy_1 = y_2 - y_1 = 7 - 3 = 4.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Table-Construction
+
+Q98. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     For the same points (0, 1), (1, 3), (2, 7), what is the second difference Δ^2 y_0?
+     (A) 2 [CORRECT]
+     (B) 4
+     (C) 6
+     (D) 0
+     Explanation: Δ^2 y_0 = Δy_1 - Δy_0 = 4 - 2 = 2.
+     Tags: BCA-203N, Unit-2, Finite-Differences, Second-Difference
+
+Q99. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     What does the shift operator applied n times, E^n f(x), evaluate to?
+     (A) f(x + n*h) [CORRECT]
+     (B) n * f(x + h)
+     (C) [f(x)]^n
+     (D) f(n * x)
+     Explanation: By definition of the shift operator, E^n f(x) = f(x + nh).
+     Tags: BCA-203N, Unit-2, Finite-Differences, Shift-Operator
+
+Q100. [Unit 2: Algebraic/Transcendental Equations & Interpolation] (EASY)
+     Which method is an 'open method' (does not require bracketing the root between two sign-opposite points)?
+     (A) Newton-Raphson Method [CORRECT]
+     (B) Bisection Method
+     (C) Regula-Falsi Method
+     (D) Interval Halving Method
+     Explanation: Newton-Raphson and Secant methods are open methods requiring only initial estimates, whereas Bisection and Regula-Falsi are bracketing methods.
+     Tags: BCA-203N, Unit-2, Root-Finding, Classification
+
+Q101. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the primary operational procedure of the Gauss Elimination method for solving Ax = B?
+     (A) Forward elimination to convert the augmented matrix to upper triangular form, followed by back-substitution [CORRECT]
+     (B) Direct matrix inversion using determinants
+     (C) Iterative relaxation until residuals vanish
+     (D) Row-column swapping without elimination
+     Explanation: Gauss elimination transforms the augmented matrix [A|B] into upper triangular form via systematic row operations, after which variables are solved sequentially via back-substitution.
+     Tags: BCA-203N, Unit-3, Gauss-Elimination, Procedure
+
+Q102. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     Why is 'partial pivoting' used in Gaussian elimination?
+     (A) To avoid division by zero or very small numbers and minimize round-off error magnification [CORRECT]
+     (B) To sort the matrix alphabetically
+     (C) To double the speed of convergence
+     (D) To make all diagonal elements equal to 1 directly
+     Explanation: Partial pivoting selects the element with the largest absolute magnitude in the current pivot column and swaps rows, preventing catastrophic division by near-zero pivot values.
+     Tags: BCA-203N, Unit-3, Partial-Pivoting, Stability
+
+Q103. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     How does the Gauss-Jordan method differ from Gaussian elimination?
+     (A) It eliminates elements both above and below the pivot, reducing A directly to an identity matrix [CORRECT]
+     (B) It only operates on 2x2 matrices
+     (C) It is an iterative method rather than a direct method
+     (D) It requires no row operations
+     Explanation: Gauss-Jordan continues elimination to create zeros both above and below each diagonal entry, yielding the reduced row echelon form (identity matrix) and eliminating the need for back-substitution.
+     Tags: BCA-203N, Unit-3, Gauss-Jordan, Comparison
+
+Q104. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the necessary and sufficient condition for the convergence of Jacobi and Gauss-Seidel iterative methods?
+     (A) The coefficient matrix must be strictly diagonally dominant: |a_ii| > sum_{j != i} |a_ij| [CORRECT]
+     (B) The matrix determinant must equal 1
+     (C) All matrix entries must be positive integers
+     (D) The matrix must be skew-symmetric
+     Explanation: Strict diagonal dominance guarantees convergence of both Jacobi and Gauss-Seidel iterations regardless of the initial starting guess.
+     Tags: BCA-203N, Unit-3, Iterative-Methods, Convergence
+
+Q105. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     How does the Gauss-Seidel method differ from the Jacobi method in its update mechanism?
+     (A) Gauss-Seidel uses the newly computed values of variables immediately in the current iteration [CORRECT]
+     (B) Jacobi updates variables immediately while Gauss-Seidel waits
+     (C) Gauss-Seidel does not use iterations
+     (D) Jacobi requires only 1 iteration to converge
+     Explanation: In Jacobi, all new values are computed using only values from the previous iteration. In Gauss-Seidel, newly updated variables are used immediately in subsequent equations of the same iteration, typically doubling convergence speed.
+     Tags: BCA-203N, Unit-3, Gauss-Seidel, Update-Rule
+
+Q106. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the formula for the Trapezoidal Rule for numerical integration over a single interval [x_0, x_1] with width h?
+     (A) (h / 2) * [f(x_0) + f(x_1)] [CORRECT]
+     (B) (h / 3) * [f(x_0) + 4*f(x_1)]
+     (C) h * [f(x_0) + f(x_1)]
+     (D) (3*h / 8) * [f(x_0) + f(x_1)]
+     Explanation: The Trapezoidal rule approximates the area under the curve by a trapezoid: I = (h/2) * [y_0 + y_1].
+     Tags: BCA-203N, Unit-3, Trapezoidal-Rule, Formula
+
+Q107. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the local truncation error in the single-segment Trapezoidal Rule?
+     (A) -(h^3 / 12) * f''(ξ) [CORRECT]
+     (B) -(h^5 / 90) * f^(4)(ξ)
+     (C) -(3*h^5 / 80) * f^(4)(ξ)
+     (D) O(h)
+     Explanation: The truncation error for single-interval trapezoidal integration is E = -(h^3 / 12) * f''(ξ), making it exact for polynomials of degree <= 1.
+     Tags: BCA-203N, Unit-3, Trapezoidal-Rule, Error
+
+Q108. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What requirement must be satisfied regarding the number of subintervals (n) to apply Simpson's 1/3rd Rule?
+     (A) The number of subintervals n must be even (multiple of 2) [CORRECT]
+     (B) The number of subintervals must be odd
+     (C) The number of subintervals must be a multiple of 3
+     (D) Any number of intervals is acceptable
+     Explanation: Simpson's 1/3rd rule approximates pairs of intervals by quadratic parabolas; hence the total number of subintervals n must be even.
+     Tags: BCA-203N, Unit-3, Simpson-1-3-Rule, Condition
+
+Q109. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the composite Simpson's 1/3rd Rule formula for n subintervals?
+     (A) (h / 3) * [ (y_0 + y_n) + 4*(sum of odd ordinates) + 2*(sum of even ordinates) ] [CORRECT]
+     (B) (h / 2) * [ (y_0 + y_n) + 2*(sum of remaining ordinates) ]
+     (C) (3*h / 8) * [ (y_0 + y_n) + 3*(sum of remaining) ]
+     (D) (h / 3) * [ y_0 + y_1 + ... + y_n ]
+     Explanation: Composite Simpson's 1/3 rule: I = (h/3) * [ (y_0 + y_n) + 4*(y_1 + y_3 + ... + y_{n-1}) + 2*(y_2 + y_4 + ... + y_{n-2}) ].
+     Tags: BCA-203N, Unit-3, Simpson-1-3-Rule, Composite-Formula
+
+Q110. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What degree of polynomial does Simpson's 1/3rd Rule integrate exactly without any truncation error?
+     (A) Polynomials of degree up to 3 (Cubic polynomials) [CORRECT]
+     (B) Only linear polynomials (degree 1)
+     (C) Only quadratic polynomials (degree 2)
+     (D) Polynomials of any arbitrary degree
+     Explanation: Although derived from quadratic interpolation (degree 2), symmetry causes the third-order error term to cancel out, so Simpson's 1/3rd rule is exact for polynomials up to degree 3.
+     Tags: BCA-203N, Unit-3, Simpson-1-3-Rule, Precision-Degree
+
+Q111. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What requirement must be satisfied regarding the number of subintervals (n) for Simpson's 3/8th Rule?
+     (A) The number of subintervals n must be a multiple of 3 [CORRECT]
+     (B) The number of subintervals must be even
+     (C) The number of subintervals must be a prime number
+     (D) The number of subintervals must be exactly 8
+     Explanation: Simpson's 3/8th rule fits cubics over sets of three subintervals; hence n must be a multiple of 3.
+     Tags: BCA-203N, Unit-3, Simpson-3-8-Rule, Condition
+
+Q112. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the step formula for Euler's method to solve initial value problem dy/dx = f(x, y), y(x_0) = y_0?
+     (A) y_{n+1} = y_n + h * f(x_n, y_n) [CORRECT]
+     (B) y_{n+1} = y_n + (h/2) * [f(x_n) + f(x_{n+1})]
+     (C) y_{n+1} = y_n - h * f(x_n, y_n)
+     (D) y_{n+1} = y_n + h^2 * f(x_n, y_n)
+     Explanation: Euler's method follows the tangent line: y_{n+1} = y_n + h * f(x_n, y_n).
+     Tags: BCA-203N, Unit-3, Euler-Method, Formula
+
+Q113. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the global truncation error order of Euler's method?
+     (A) O(h) [CORRECT]
+     (B) O(h^2)
+     (C) O(h^3)
+     (D) O(h^4)
+     Explanation: While Euler's local truncation error per step is O(h^2), over a fixed interval [a, b] containing N = (b-a)/h steps, the global accumulated error is O(h) (first-order method).
+     Tags: BCA-203N, Unit-3, Euler-Method, Error-Order
+
+Q114. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the Modified Euler's (Heun's) method formula?
+     (A) y_{n+1} = y_n + (h/2) * [ f(x_n, y_n) + f(x_{n+1}, y_n + h*f(x_n, y_n)) ] [CORRECT]
+     (B) y_{n+1} = y_n + h * f(x_n + h/2, y_n)
+     (C) y_{n+1} = y_n + (h/3) * f(x_n, y_n)
+     (D) y_{n+1} = y_n + h * f(x_{n+1}, y_{n+1})
+     Explanation: Modified Euler (Heun's method) predicts y*_{n+1} = y_n + h*f(x_n,y_n) and corrects using the average slope: y_{n+1} = y_n + (h/2)[f(x_n, y_n) + f(x_{n+1}, y*_{n+1})].
+     Tags: BCA-203N, Unit-3, Modified-Euler, Formula
+
+Q115. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the global order of accuracy of the 4th Order Runge-Kutta (RK4) method?
+     (A) O(h^4) [CORRECT]
+     (B) O(h^2)
+     (C) O(h)
+     (D) O(h^5)
+     Explanation: The classical RK4 method has a local truncation error of O(h^5) and a global truncation error of O(h^4).
+     Tags: BCA-203N, Unit-3, Runge-Kutta-4, Accuracy
+
+Q116. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     In the classical RK4 method, what is the formula for the weighted average slope used to compute y_{n+1}?
+     (A) y_{n+1} = y_n + (1/6) * (k_1 + 2*k_2 + 2*k_3 + k_4) [CORRECT]
+     (B) y_{n+1} = y_n + (1/4) * (k_1 + k_2 + k_3 + k_4)
+     (C) y_{n+1} = y_n + (1/8) * (k_1 + 3*k_2 + 3*k_3 + k_4)
+     (D) y_{n+1} = y_n + h * (k_1 + k_2)
+     Explanation: In RK4, the increment is computed by the Simpson-like weighted average: y_{n+1} = y_n + (1/6)*(k1 + 2*k2 + 2*k3 + k4).
+     Tags: BCA-203N, Unit-3, Runge-Kutta-4, Weights
+
+Q117. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     In the RK4 method, how is k_2 calculated?
+     (A) k_2 = h * f(x_n + h/2, y_n + k_1 / 2) [CORRECT]
+     (B) k_2 = h * f(x_n + h, y_n + k_1)
+     (C) k_2 = h * f(x_n, y_n + k_1)
+     (D) k_2 = (h/2) * f(x_n + h/2, y_n)
+     Explanation: k2 evaluates the derivative at the estimated midpoint using slope k1: k2 = h * f(x_n + h/2, y_n + k1/2).
+     Tags: BCA-203N, Unit-3, Runge-Kutta-4, k2-Formula
+
+Q118. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     In the RK4 method, how is k_3 calculated?
+     (A) k_3 = h * f(x_n + h/2, y_n + k_2 / 2) [CORRECT]
+     (B) k_3 = h * f(x_n + h, y_n + k_2)
+     (C) k_3 = h * f(x_n + h/2, y_n + k_1)
+     (D) k_3 = (h/2) * f(x_n, y_n + k_2)
+     Explanation: k3 evaluates the derivative at the midpoint using slope k2: k3 = h * f(x_n + h/2, y_n + k2/2).
+     Tags: BCA-203N, Unit-3, Runge-Kutta-4, k3-Formula
+
+Q119. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     In the RK4 method, how is k_4 calculated?
+     (A) k_4 = h * f(x_n + h, y_n + k_3) [CORRECT]
+     (B) k_4 = h * f(x_n + h/2, y_n + k_3)
+     (C) k_4 = h * f(x_n + h, y_n + k_2)
+     (D) k_4 = (h/6) * f(x_n + h, y_n + k_3)
+     Explanation: k4 evaluates the derivative at the end of the step using slope k3: k4 = h * f(x_n + h, y_n + k3).
+     Tags: BCA-203N, Unit-3, Runge-Kutta-4, k4-Formula
+
+Q120. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the primary advantage of Runge-Kutta methods over Taylor Series methods for solving ODEs?
+     (A) Runge-Kutta achieves high-order accuracy without needing analytical expressions for higher-order derivatives [CORRECT]
+     (B) Runge-Kutta requires no function evaluations
+     (C) Runge-Kutta only works on linear ODEs
+     (D) Taylor series methods are always faster
+     Explanation: Taylor series methods require evaluating messy higher-order total derivatives (d^2y/dx^2, d^3y/dx^3); Runge-Kutta achieves identical orders of accuracy using only evaluations of f(x, y).
+     Tags: BCA-203N, Unit-3, Runge-Kutta, Advantage
+
+Q121. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     If dy/dx = x + y with y(0) = 1 and step size h = 0.1, what is the Euler estimate for y(0.1)?
+     (A) 1.10 [CORRECT]
+     (B) 1.00
+     (C) 1.21
+     (D) 1.15
+     Explanation: f(0, 1) = 0 + 1 = 1. y(0.1) = y(0) + h*f(0, 1) = 1 + 0.1*(1) = 1.10.
+     Tags: BCA-203N, Unit-3, Euler-Method, Calculation
+
+Q122. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     Evaluate integral_0^1 x dx using Trapezoidal rule with a single interval [0, 1] (h = 1):
+     (A) 0.50 [CORRECT]
+     (B) 1.00
+     (C) 0.25
+     (D) 0.75
+     Explanation: f(0) = 0, f(1) = 1. I = (h/2)[f(0) + f(1)] = (1/2)[0 + 1] = 0.5. (Matches exact integral [x^2/2]_0^1 = 0.5).
+     Tags: BCA-203N, Unit-3, Trapezoidal-Rule, Calculation
+
+Q123. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     Evaluate integral_0^2 x^2 dx using Simpson's 1/3 rule with n = 2 (h = 1, nodes x = 0, 1, 2):
+     (A) 8/3 ≈ 2.667 [CORRECT]
+     (B) 3.00
+     (C) 2.50
+     (D) 2.00
+     Explanation: y_0 = 0^2 = 0, y_1 = 1^2 = 1, y_2 = 2^2 = 4. I = (h/3)[y_0 + 4*y_1 + y_2] = (1/3)[0 + 4(1) + 4] = 8/3 ≈ 2.667. Exactly matches analytical [x^3/3]_0^2 = 8/3.
+     Tags: BCA-203N, Unit-3, Simpson-1-3-Rule, Calculation
+
+Q124. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What is Romberg Integration?
+     (A) Richardson extrapolation applied systematically to the composite Trapezoidal rule [CORRECT]
+     (B) An adaptive form of Euler's method
+     (C) A technique for matrix diagonalization
+     (D) A Monte Carlo integration scheme
+     Explanation: Romberg integration eliminates lower-order error terms (O(h^2), O(h^4), ...) by combining Trapezoidal estimates at step sizes h, h/2, h/4 using Richardson extrapolation.
+     Tags: BCA-203N, Unit-3, Romberg-Integration, Richardson-Extrapolation
+
+Q125. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is an Initial Value Problem (IVP) in ODEs?
+     (A) A differential equation where all auxiliary conditions are specified at the same starting independent variable value [CORRECT]
+     (B) A differential equation where conditions are given at two distinct boundaries
+     (C) An ODE with no solution
+     (D) An ODE with constant coefficients only
+     Explanation: In an IVP, all required conditions (e.g., y(x_0), y'(x_0)) are specified at a single initial point x_0.
+     Tags: BCA-203N, Unit-3, ODEs, IVP-Definition
+
+Q126. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is a Boundary Value Problem (BVP)?
+     (A) An ODE where boundary conditions are specified at two or more different points [CORRECT]
+     (B) An ODE with infinite boundary
+     (C) An ODE solved only by Euler's method
+     (D) An algebraic system Ax = b
+     Explanation: In a BVP, conditions are specified at different points (typically the endpoints of an interval [a, b]), such as y(a) = alpha and y(b) = beta.
+     Tags: BCA-203N, Unit-3, ODEs, BVP-Definition
+
+Q127. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     Which method converts a Boundary Value Problem into a sequence of Initial Value Problems?
+     (A) Shooting Method [CORRECT]
+     (B) Euler's Explicit Method
+     (C) Cramer's Rule
+     (D) Jacobi Iteration
+     Explanation: The shooting method guesses initial slopes at one boundary, integrates as an IVP to the other boundary, and iterates on the guess until the target boundary condition is hit.
+     Tags: BCA-203N, Unit-3, Shooting-Method, BVP
+
+Q128. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What does it mean for an ODE system to be 'stiff'?
+     (A) It involves widely separated timescales/decay rates, requiring tiny step sizes for explicit methods to remain stable [CORRECT]
+     (B) The ODE has discontinuous coefficients
+     (C) The ODE cannot be represented in matrix form
+     (D) The solution has no real components
+     Explanation: Stiff ODEs contain components varying at drastically different rates (e.g., rapid transient vs slow steady state), causing explicit methods to become unstable unless extremely small step sizes are used.
+     Tags: BCA-203N, Unit-3, Stiff-ODEs, Stability
+
+Q129. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     Which class of numerical ODE solvers is preferred for stiff differential equations?
+     (A) Implicit Methods (e.g., Backward Euler, implicit Runge-Kutta, BDF) [CORRECT]
+     (B) Explicit Euler Method
+     (C) Classical RK4
+     (D) Forward Difference Euler
+     Explanation: Implicit methods have large or unbounded regions of absolute stability (A-stable), making them computationally efficient and stable for stiff systems.
+     Tags: BCA-203N, Unit-3, Stiff-ODEs, Implicit-Methods
+
+Q130. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     In numerical differentiation using Newton's forward difference formula, what is the formula for the first derivative f'(x_0)?
+     (A) (1/h) * [ Δy_0 - (1/2)*Δ^2 y_0 + (1/3)*Δ^3 y_0 - ... ] [CORRECT]
+     (B) (1/h) * [ Δy_0 + Δ^2 y_0 + Δ^3 y_0 + ... ]
+     (C) (h) * [ Δy_0 - Δ^2 y_0 ]
+     (D) (1/h^2) * [ Δy_0 - (1/2)*Δ^2 y_0 ]
+     Explanation: Differentiating Newton's forward interpolation polynomial with respect to x at x = x_0 (where u = 0) yields: f'(x_0) = (1/h)[Δy_0 - (1/2)Δ^2 y_0 + (1/3)Δ^3 y_0 - (1/4)Δ^4 y_0 + ...].
+     Tags: BCA-203N, Unit-3, Numerical-Differentiation, Formula
+
+Q131. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What is the formula for the second derivative f''(x_0) using forward differences?
+     (A) (1/h^2) * [ Δ^2 y_0 - Δ^3 y_0 + (11/12)*Δ^4 y_0 - ... ] [CORRECT]
+     (B) (1/h^2) * [ Δy_0 + Δ^2 y_0 ]
+     (C) (1/h) * Δ^2 y_0
+     (D) (2/h^2) * [ Δ^2 y_0 - Δy_0 ]
+     Explanation: Differentiating twice at u = 0 gives: f''(x_0) = (1/h^2)[Δ^2 y_0 - Δ^3 y_0 + (11/12)Δ^4 y_0 - ...].
+     Tags: BCA-203N, Unit-3, Numerical-Differentiation, Second-Derivative
+
+Q132. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the central difference approximation for second derivative f''(x)?
+     (A) [f(x+h) - 2*f(x) + f(x-h)] / h^2 [CORRECT]
+     (B) [f(x+h) - f(x-h)] / (2h)
+     (C) [f(x+h) + f(x-h)] / h^2
+     (D) [f(x+2h) - 2*f(x+h) + f(x)] / h^2
+     Explanation: The standard symmetric central difference formula for second derivative is f''(x) ≈ [f(x+h) - 2f(x) + f(x-h)] / h^2 with O(h^2) error.
+     Tags: BCA-203N, Unit-3, Numerical-Differentiation, Central-Second-Derivative
+
+Q133. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What is the composite Simpson's 3/8th Rule formula for n subintervals (where n is a multiple of 3)?
+     (A) (3*h / 8) * [ (y_0 + y_n) + 3*(y_1 + y_2 + y_4 + y_5 + ...) + 2*(y_3 + y_6 + ...) ] [CORRECT]
+     (B) (3*h / 8) * [ y_0 + 3*y_1 + 3*y_2 + y_3 ]
+     (C) (h / 8) * [ (y_0 + y_n) + 4*(sum odd) + 2*(sum even) ]
+     (D) (3*h / 8) * [ sum of all ordinates ]
+     Explanation: In composite Simpson's 3/8th rule, ordinates at indices that are multiples of 3 have coefficient 2; all other intermediate ordinates have coefficient 3: I = (3h/8)[(y_0 + y_n) + 3*sum_{3 doesn't divide i} y_i + 2*sum_{3 divides i} y_i].
+     Tags: BCA-203N, Unit-3, Simpson-3-8-Rule, Formula
+
+Q134. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the degree of precision of Trapezoidal Rule, Simpson's 1/3rd Rule, and Simpson's 3/8th Rule respectively?
+     (A) 1, 3, and 3 [CORRECT]
+     (B) 1, 2, and 3
+     (C) 2, 3, and 4
+     (D) 1, 1, and 2
+     Explanation: Trapezoidal rule is exact up to degree 1; Simpson's 1/3rd rule is exact up to degree 3; Simpson's 3/8th rule is also exact up to degree 3.
+     Tags: BCA-203N, Unit-3, Quadrature, Degree-of-Precision
+
+Q135. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     In solving a system Ax = b by LU Decomposition, how is the matrix A factored?
+     (A) A = L * U, where L is a lower triangular matrix and U is an upper triangular matrix [CORRECT]
+     (B) A = L + U
+     (C) A = L * L^T (Cholesky only)
+     (D) A = Q * R (Orthogonal QR)
+     Explanation: LU decomposition factors matrix A into product of a lower triangular matrix L and an upper triangular matrix U such that LUx = b.
+     Tags: BCA-203N, Unit-3, LU-Decomposition, Concept
+
+Q136. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     In Doolittle's LU decomposition algorithm, what are the diagonal elements of matrix L?
+     (A) All diagonal elements l_ii = 1 (unit lower triangular) [CORRECT]
+     (B) All diagonal elements are zero
+     (C) All diagonal elements u_ii = 1
+     (D) Diagonal elements are arbitrary
+     Explanation: Doolittle's method fixes the diagonal elements of L to 1 (l_ii = 1), whereas Crout's method fixes the diagonal elements of U to 1 (u_ii = 1).
+     Tags: BCA-203N, Unit-3, LU-Decomposition, Doolittle
+
+Q137. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     When can Cholesky Decomposition A = L * L^T be applied to a system of linear equations?
+     (A) When matrix A is symmetric and positive-definite [CORRECT]
+     (B) When matrix A is singular
+     (C) For any arbitrary rectangular matrix
+     (D) Only when A has all negative eigenvalues
+     Explanation: Cholesky factorization A = L * L^T is applicable strictly to symmetric positive-definite (SPD) matrices, requiring roughly half the floating-point operations of standard LU factorization.
+     Tags: BCA-203N, Unit-3, Cholesky-Decomposition, Applicability
+
+Q138. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the computational complexity of Gaussian elimination for an n x n system?
+     (A) O(n^3) [CORRECT]
+     (B) O(n^2)
+     (C) O(n * log n)
+     (D) O(2^n)
+     Explanation: Standard Gaussian elimination requires roughly (2/3)*n^3 arithmetic operations, making its complexity O(n^3).
+     Tags: BCA-203N, Unit-3, Gauss-Elimination, Complexity
+
+Q139. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     What is the computational complexity of the back-substitution phase in solving an upper triangular system?
+     (A) O(n^2) [CORRECT]
+     (B) O(n^3)
+     (C) O(n)
+     (D) O(1)
+     Explanation: Back-substitution requires solving for each x_i in reverse order using previously determined values, taking roughly n^2 / 2 operations, which is O(n^2).
+     Tags: BCA-203N, Unit-3, Back-Substitution, Complexity
+
+Q140. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     In Euler's method, what geometric shape is used to approximate the integral from x_n to x_{n+1}?
+     (A) A rectangle of height f(x_n, y_n) (Left Riemann Sum) [CORRECT]
+     (B) A parabola
+     (C) A cubic spline
+     (D) A circle
+     Explanation: Euler's method approximates the integral integral_{x_n}^{x_{n+1}} f(t, y) dt by a single rectangle of height f(x_n, y_n) and width h.
+     Tags: BCA-203N, Unit-3, Euler-Method, Geometric-Interpretation
+
+Q141. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is Picard's method of successive approximations for solving dy/dx = f(x, y)?
+     (A) An analytical/iterative integral method: y^(k+1)(x) = y_0 + integral_{x_0}^x f(t, y^(k)(t)) dt [CORRECT]
+     (B) A finite difference algebraic solver
+     (C) A predictor-corrector matrix solver
+     (D) A shooting method for BVPs
+     Explanation: Picard's method generates successive analytical approximations by repeatedly integrating the differential equation.
+     Tags: BCA-203N, Unit-3, Picard-Method, Successive-Approximations
+
+Q142. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     For the initial value problem dy/dx = y, y(0) = 1, what is the first Picard approximation y^(1)(x)?
+     (A) 1 + x [CORRECT]
+     (B) 1 + x + x^2/2
+     (C) x
+     (D) e^x
+     Explanation: y^(0)(x) = 1. y^(1)(x) = 1 + integral_0^x (1) dt = 1 + x.
+     Tags: BCA-203N, Unit-3, Picard-Method, Calculation
+
+Q143. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     For the same problem dy/dx = y, y(0) = 1, what is the second Picard approximation y^(2)(x)?
+     (A) 1 + x + x^2 / 2 [CORRECT]
+     (B) 1 + x^2
+     (C) 1 + 2x
+     (D) x + x^2/2
+     Explanation: y^(2)(x) = 1 + integral_0^x (1 + t) dt = 1 + [t + t^2/2]_0^x = 1 + x + x^2/2. (Generates the Maclaurin series of e^x).
+     Tags: BCA-203N, Unit-3, Picard-Method, Calculation
+
+Q144. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     What is the principle of Predictor-Corrector methods (such as Milne's or Adams-Bashforth-Moulton)?
+     (A) An explicit formula predicts an initial value, and an implicit formula corrects it iteratively [CORRECT]
+     (B) They compute matrix eigenvalues to predict roots
+     (C) They only use backward differences without forward steps
+     (D) They predict random values until error decreases
+     Explanation: Predictor-corrector methods use an explicit multistep method to 'predict' y_{n+1}, which is then fed into an implicit multistep formula to 'correct' and refine the estimate.
+     Tags: BCA-203N, Unit-3, Predictor-Corrector, Concepts
+
+Q145. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     How many prior starting values does Milne's Predictor-Corrector method require?
+     (A) 4 starting values (y_0, y_1, y_2, y_3) [CORRECT]
+     (B) Only 1 starting value (y_0)
+     (C) 2 starting values
+     (D) 10 starting values
+     Explanation: Milne's method is a 4-step method requiring values at four preceding points (often generated using RK4) before it can start predicting.
+     Tags: BCA-203N, Unit-3, Milne-Method, Multistep
+
+Q146. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What is the Milne's predictor formula?
+     (A) y_{n+1, P} = y_{n-3} + (4h/3) * [2*f_{n-2} - f_{n-1} + 2*f_n] [CORRECT]
+     (B) y_{n+1, P} = y_n + h * f_n
+     (C) y_{n+1, P} = y_{n-1} + 2h * f_n
+     (D) y_{n+1, P} = y_0 + n*h
+     Explanation: Milne's predictor formula is: y_{n+1, P} = y_{n-3} + (4h/3)[2*f'_{n-2} - f'_{n-1} + 2*f'_n].
+     Tags: BCA-203N, Unit-3, Milne-Method, Predictor-Formula
+
+Q147. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     What is the Milne's corrector formula?
+     (A) y_{n+1, C} = y_{n-1} + (h/3) * [f_{n-1} + 4*f_n + f_{n+1}] [CORRECT]
+     (B) y_{n+1, C} = y_n + (h/2) * [f_n + f_{n+1}]
+     (C) y_{n+1, C} = y_{n-3} + (h/3) * [f_n]
+     (D) y_{n+1, C} = y_n + h * f_{n+1}
+     Explanation: Milne's corrector is based on Simpson's 1/3 rule: y_{n+1, C} = y_{n-1} + (h/3)[f_{n-1} + 4*f_n + f_{n+1}].
+     Tags: BCA-203N, Unit-3, Milne-Method, Corrector-Formula
+
+Q148. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (MEDIUM)
+     If A is a strictly diagonally dominant matrix, Jacobi iteration is guaranteed to:
+     (A) Converge to the unique solution for any initial vector x^(0) [CORRECT]
+     (B) Diverge to infinity
+     (C) Oscillate indefinitely
+     (D) Converge only if x^(0) = 0
+     Explanation: By the Gershgorin circle theorem, strict diagonal dominance ensures the spectral radius of the iteration matrix is strictly less than 1, guaranteeing convergence from any initial guess.
+     Tags: BCA-203N, Unit-3, Jacobi-Iteration, Convergence-Theorem
+
+Q149. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (EASY)
+     In Gaussian elimination, what operation is NOT an elementary row operation?
+     (A) Adding a non-zero constant scalar to every element of a row [CORRECT]
+     (B) Multiplying a row by a non-zero scalar
+     (C) Interchanging two rows
+     (D) Adding a scalar multiple of one row to another row
+     Explanation: Adding a constant to each element changes the solution set; elementary row operations are: row swap, row scaling by non-zero scalar, and adding a multiple of one row to another.
+     Tags: BCA-203N, Unit-3, Gauss-Elimination, Row-Operations
+
+Q150. [Unit 3: Simultaneous Linear Equations, Numerical Differentiation & Integration, ODEs] (HARD)
+     Why is numerical differentiation inherently more sensitive to round-off error than numerical integration?
+     (A) Differentiation involves subtracting nearly equal numbers and dividing by small h (amplifying noise), while integration sums and smooths variations [CORRECT]
+     (B) Differentiation cannot be performed on digital computers
+     (C) Integration requires infinite steps
+     (D) Numerical differentiation formulas have no error bounds
+     Explanation: Numerical differentiation divides difference of noisy values by small h, magnifying data and round-off errors, whereas numerical integration acts as a low-pass filter, averaging and damping local perturbations.
+     Tags: BCA-203N, Unit-3, Numerical-Differentiation, Noise-Sensitivity
+
+Q151. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is the fundamental objective of the Principle of Least Squares in curve fitting?
+     (A) To minimize the sum of the squares of the vertical residuals between data points and the fitted curve [CORRECT]
+     (B) To ensure the curve passes through every single data point exactly
+     (C) To maximize the slope of the trend line
+     (D) To minimize the number of parameters to zero
+     Explanation: The principle of least squares chooses curve parameters to minimize S = sum_{i=1}^n (y_i - f(x_i))^2, where (y_i - f(x_i)) is the vertical residual error.
+     Tags: BCA-203N, Unit-4, Least-Squares, Foundations
+
+Q152. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     For fitting a straight line y = a + bx to n data points, what are the two standard Normal Equations?
+     (A) sum y = n*a + b*sum x  AND  sum(x*y) = a*sum x + b*sum(x^2) [CORRECT]
+     (B) sum y = a*sum x + b  AND  sum(x*y) = n*a + b*sum x
+     (C) sum y = n*a*b  AND  sum(x*y) = (sum x)*(sum y)
+     (D) sum y = a + b*sum x  AND  sum(x*y) = a*sum x + b
+     Explanation: Setting ∂S/∂a = 0 and ∂S/∂b = 0 yields the normal equations: (1) sum y = n*a + b*sum x, and (2) sum(xy) = a*sum x + b*sum(x^2).
+     Tags: BCA-203N, Unit-4, Normal-Equations, Straight-Line
+
+Q153. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     How is the exponential curve y = a * e^(bx) transformed into a linear form Y = A + B*X for least squares fitting?
+     (A) By taking natural logarithm: ln(y) = ln(a) + b*x (where Y = ln y, A = ln a, B = b, X = x) [CORRECT]
+     (B) By differentiating both sides with respect to x
+     (C) By squaring both sides: y^2 = a^2 * e^(2bx)
+     (D) By dividing both sides by x
+     Explanation: Taking natural log yields ln y = ln a + bx. Setting Y = ln y, A = ln a, and B = b converts it into the linear equation Y = A + Bx.
+     Tags: BCA-203N, Unit-4, Curve-Fitting, Exponential-Linearization
+
+Q154. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     How is the power curve y = a * x^b linearized for least squares fitting?
+     (A) By taking logarithms: log y = log a + b * log x [CORRECT]
+     (B) By substituting x = 1/t
+     (C) By subtracting bx from both sides
+     (D) By integrating both sides
+     Explanation: Taking log of both sides yields: log y = log a + b*log x. Letting Y = log y, A = log a, X = log x gives the linear model Y = A + bX.
+     Tags: BCA-203N, Unit-4, Curve-Fitting, Power-Curve
+
+Q155. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     For fitting a parabola y = a + bx + cx^2 to n points, how many normal equations are required?
+     (A) 3 normal equations [CORRECT]
+     (B) 2 normal equations
+     (C) 4 normal equations
+     (D) 1 normal equation
+     Explanation: A second-degree polynomial has 3 parameters (a, b, c); minimizing the sum of squared residuals with respect to a, b, and c generates a system of 3 simultaneous normal equations.
+     Tags: BCA-203N, Unit-4, Curve-Fitting, Parabola-Normal-Equations
+
+Q156. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What does Karl Pearson's coefficient of correlation (r) measure?
+     (A) The strength and direction of the linear relationship between two quantitative variables [CORRECT]
+     (B) The non-linear curvature of a dataset
+     (C) The probability of a hypothesis being true
+     (D) The ratio of standard deviations
+     Explanation: Pearson's correlation coefficient r quantifies the degree and direction of linear association between two continuous variables.
+     Tags: BCA-203N, Unit-4, Correlation, Pearson-Coefficient
+
+Q157. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is the valid numerical range of Karl Pearson's correlation coefficient r?
+     (A) -1 <= r <= +1 [CORRECT]
+     (B) 0 <= r <= 1
+     (C) -infinity < r < +infinity
+     (D) -100 <= r <= +100
+     Explanation: By Cauchy-Schwarz inequality, Pearson's correlation coefficient r is bounded strictly between -1 (perfect negative correlation) and +1 (perfect positive correlation).
+     Tags: BCA-203N, Unit-4, Correlation, Range
+
+Q158. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What does a correlation coefficient r = 0 indicate?
+     (A) No linear relationship exists between the two variables [CORRECT]
+     (B) A perfect positive linear relationship exists
+     (C) A perfect negative linear relationship exists
+     (D) The variables are identical
+     Explanation: r = 0 indicates the absence of a linear relationship (though strong non-linear relationships could still exist, such as y = x^2).
+     Tags: BCA-203N, Unit-4, Correlation, Interpretation
+
+Q159. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What is the mathematical relationship between the correlation coefficient r and the two regression coefficients b_yx and b_xy?
+     (A) r = ± sqrt(b_yx * b_xy) [CORRECT]
+     (B) r = (b_yx + b_xy) / 2
+     (C) r = b_yx / b_xy
+     (D) r = b_yx * b_xy
+     Explanation: The correlation coefficient is the geometric mean of the two regression slopes: r = ± sqrt(b_yx * b_xy). The sign of r matches the signs of b_yx and b_xy.
+     Tags: BCA-203N, Unit-4, Regression, Coefficients-Relation
+
+Q160. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     If both regression coefficients b_yx and b_xy are negative, what must be the sign of correlation coefficient r?
+     (A) Negative [CORRECT]
+     (B) Positive
+     (C) Zero
+     (D) Can be either positive or negative
+     Explanation: The correlation coefficient r and both regression coefficients (b_yx, b_xy) must always share the same algebraic sign. If both slopes are negative, r is negative.
+     Tags: BCA-203N, Unit-4, Regression, Sign-Property
+
+Q161. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     If b_yx = 0.8 and b_xy = 0.45, what is the value of correlation coefficient r?
+     (A) 0.60 [CORRECT]
+     (B) 0.36
+     (C) 0.72
+     (D) 0.90
+     Explanation: r = sqrt(0.8 * 0.45) = sqrt(0.36) = 0.60.
+     Tags: BCA-203N, Unit-4, Regression, Calculation
+
+Q162. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     Can both regression coefficients b_yx and b_xy be greater than 1 simultaneously?
+     (A) No, because their product must be r^2 <= 1 [CORRECT]
+     (B) Yes, in all non-linear datasets
+     (C) Yes, if the correlation is positive
+     (D) Yes, if sample size n > 100
+     Explanation: Since r^2 = b_yx * b_xy and |r| <= 1, r^2 cannot exceed 1. Therefore, if one regression coefficient is greater than 1, the other must be less than 1.
+     Tags: BCA-203N, Unit-4, Regression, Property
+
+Q163. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is Spearman's Rank Correlation Coefficient used for?
+     (A) Measuring association between two ranked or qualitative variables [CORRECT]
+     (B) Fitting straight lines to continuous data
+     (C) Solving systems of linear inequalities
+     (D) Optimizing warehouse logistics
+     Explanation: Spearman's rank correlation coefficient (rho) evaluates monotonic relationships between ranked or ordinal datasets.
+     Tags: BCA-203N, Unit-4, Rank-Correlation, Spearman
+
+Q164. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What is the formula for Spearman's Rank Correlation Coefficient when ranks are not tied?
+     (A) rho = 1 - [6 * sum(d_i^2)] / [n * (n^2 - 1)] [CORRECT]
+     (B) rho = 1 + [6 * sum(d_i^2)] / [n * (n^2 - 1)]
+     (C) rho = [sum(d_i^2)] / [n * (n^2 - 1)]
+     (D) rho = 1 - [sum(d_i)] / n
+     Explanation: Spearman's formula for non-tied ranks: rho = 1 - [6*sum(d_i^2)] / [n(n^2 - 1)], where d_i = R_{x,i} - R_{y,i}.
+     Tags: BCA-203N, Unit-4, Rank-Correlation, Formula
+
+Q165. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     In a Linear Programming Problem (LPP), what is the 'Objective Function'?
+     (A) A linear mathematical function of decision variables to be maximized or minimized (e.g., profit or cost) [CORRECT]
+     (B) The system of resource constraints
+     (C) The condition that variables must be positive integers
+     (D) The boundary line separating feasible regions
+     Explanation: The objective function expresses the goal of the optimization model (e.g., Maximize Z = c1*x1 + c2*x2) subject to given resource constraints.
+     Tags: BCA-203N, Unit-4, LPP, Objective-Function
+
+Q166. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What do 'decision variables' represent in an LPP formulation?
+     (A) Quantities or activity levels to be determined to optimize the objective function [CORRECT]
+     (B) The fixed resource limits of the factory
+     (C) The profit constants per unit
+     (D) The slack in machine availability
+     Explanation: Decision variables (e.g., x1, x2) represent the controllable choices whose optimal values are sought.
+     Tags: BCA-203N, Unit-4, LPP, Decision-Variables
+
+Q167. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     Why are non-negativity restrictions (e.g., x_1 >= 0, x_2 >= 0) mandatory in practical LPP formulations?
+     (A) Because physical quantities such as produced units, hours, or materials cannot take negative values [CORRECT]
+     (B) Because negative numbers crash the simplex algorithm
+     (C) Because constraints cannot have negative slopes
+     (D) Because matrix determinants must be positive
+     Explanation: Physical goods, production runs, and materials cannot be negative in the physical world, mandating x_j >= 0.
+     Tags: BCA-203N, Unit-4, LPP, Non-Negativity
+
+Q168. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     In the graphical solution of an LPP, what is the 'feasible region'?
+     (A) The set of all points that satisfy all constraints and non-negativity restrictions simultaneously [CORRECT]
+     (B) The area outside the first quadrant
+     (C) The set of points where objective function is zero
+     (D) Only the optimal corner point
+     Explanation: The feasible region (feasible space) is the convex intersection of all half-planes defined by the constraints and non-negativity conditions.
+     Tags: BCA-203N, Unit-4, Graphical-Method, Feasible-Region
+
+Q169. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What geometric shape does the feasible region of a linear programming problem always take?
+     (A) A convex polygon / polyhedron (convex set) [CORRECT]
+     (B) A concave non-linear curve
+     (C) A circle or ellipse
+     (D) A parabolic trajectory
+     Explanation: Because all constraints are linear inequalities representing half-spaces, their intersection forms a convex polygon (in 2D) or convex polyhedron (in n-D).
+     Tags: BCA-203N, Unit-4, LPP-Geometry, Convex-Set
+
+Q170. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What does the Extreme Point Theorem (Corner Point Theorem) state for linear programming?
+     (A) If an optimal solution exists, at least one optimal solution occurs at an extreme point (vertex) of the feasible region [CORRECT]
+     (B) The optimal solution always lies at the origin
+     (C) The optimal solution is always inside the interior of the polygon
+     (D) Linear programs have no vertices
+     Explanation: The Fundamental Theorem of Linear Programming guarantees that if the feasible region is convex and bounded, the optimal value of the linear objective function is achieved at one of the vertices (extreme points).
+     Tags: BCA-203N, Unit-4, Extreme-Point-Theorem, LPP
+
+Q171. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     When does an LPP have 'Multiple (Alternative) Optimal Solutions' in the graphical method?
+     (A) When the objective function line is parallel to an active binding constraint line forming a boundary edge of the feasible region [CORRECT]
+     (B) When the feasible region is unbounded
+     (C) When there are no constraint equations
+     (D) When all corner points yield value 0
+     Explanation: If the slope of the objective function coincides with the slope of a binding constraint segment, all points along that line segment between the two vertices are optimal.
+     Tags: BCA-203N, Unit-4, Alternative-Optima, LPP
+
+Q172. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is an 'unbounded solution' in a linear programming problem?
+     (A) The objective function can increase (or decrease) indefinitely without violating any constraints [CORRECT]
+     (B) The feasible region has no corners
+     (C) The problem has zero decision variables
+     (D) Constraints intersect at the origin
+     Explanation: An unbounded solution occurs when the feasible region extends infinitely in the direction of optimization, allowing Z -> +infinity (for maximization).
+     Tags: BCA-203N, Unit-4, Unbounded-Solution, LPP
+
+Q173. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is an 'infeasible solution' in linear programming?
+     (A) No single point satisfies all constraints and non-negativity conditions simultaneously (empty feasible region) [CORRECT]
+     (B) A solution where Z is negative
+     (C) A problem where decision variables are fractional
+     (D) A solution that has more than 10 constraints
+     Explanation: Infeasibility arises when the system of constraints contains mutually contradictory requirements, leaving no overlapping feasible space.
+     Tags: BCA-203N, Unit-4, Infeasible-Solution, LPP
+
+Q174. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is a 'redundant constraint' in an LPP?
+     (A) A constraint whose removal does not alter the feasible region or affect the optimal solution [CORRECT]
+     (B) A constraint that contains no variables
+     (C) A constraint that cannot be plotted on a graph
+     (D) A constraint that makes the problem non-linear
+     Explanation: A constraint is redundant if the region defined by all other constraints is entirely contained within its half-space; it adds no active restriction.
+     Tags: BCA-203N, Unit-4, Redundant-Constraint, LPP
+
+Q175. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is a 'slack variable' in linear programming?
+     (A) A non-negative variable added to a '<=' constraint to convert it into an equality [CORRECT]
+     (B) A variable subtracted from a '>=' constraint
+     (C) A penalty coefficient in Big-M method
+     (D) A variable that takes negative values
+     Explanation: For a resource constraint sum a_j*x_j <= b, adding a slack variable s >= 0 converts it into sum a_j*x_j + s = b, representing unused resource.
+     Tags: BCA-203N, Unit-4, Simplex-Method, Slack-Variables
+
+Q176. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is a 'surplus variable' in linear programming?
+     (A) A non-negative variable subtracted from a '>=' constraint to convert it into an equality [CORRECT]
+     (B) A variable added to '<=' constraints
+     (C) An artificial variable used in Phase 1
+     (D) The dual variable of the objective
+     Explanation: For a minimum requirement constraint sum a_j*x_j >= b, subtracting a surplus variable s >= 0 gives sum a_j*x_j - s = b, representing excess over requirement.
+     Tags: BCA-203N, Unit-4, Simplex-Method, Surplus-Variables
+
+Q177. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     Why are 'artificial variables' introduced in linear programming when using the Big-M or Two-Phase method?
+     (A) To provide an initial starting basic feasible solution (identity submatrix) for constraints with '>=' or '=' signs [CORRECT]
+     (B) To eliminate decision variables
+     (C) To increase profit margins artificially
+     (D) To turn non-linear problems into linear ones
+     Explanation: Surplus variables yield coefficients of -1, failing to form an initial identity basis. Artificial variables provide immediate slack basis vectors to start the simplex tableau.
+     Tags: BCA-203N, Unit-4, Artificial-Variables, Big-M
+
+Q178. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     If two lines of regression are perpendicular to each other, what is the correlation coefficient r?
+     (A) r = 0 [CORRECT]
+     (B) r = 1
+     (C) r = -1
+     (D) r = 0.5
+     Explanation: The angle θ between two regression lines satisfies tan θ = |(1 - r^2)/r| * [sigma_x * sigma_y / (sigma_x^2 + sigma_y^2)]. If lines are perpendicular (θ = 90°), tan θ -> inf, which implies r = 0.
+     Tags: BCA-203N, Unit-4, Regression-Lines, Angle
+
+Q179. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     If two lines of regression coincide (are identical), what is the correlation coefficient r?
+     (A) r = ± 1 (perfect correlation) [CORRECT]
+     (B) r = 0
+     (C) r = 0.5
+     (D) r = 0.707
+     Explanation: When regression lines coincide, θ = 0° (tan θ = 0), implying 1 - r^2 = 0, which yields r = ± 1 (perfect linear correlation).
+     Tags: BCA-203N, Unit-4, Regression-Lines, Coincidence
+
+Q180. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     The two regression lines always intersect at which coordinate point?
+     (A) (x_bar, y_bar) - the mean of X and mean of Y [CORRECT]
+     (B) (0, 0) - the origin
+     (C) (sigma_x, sigma_y)
+     (D) (1, 1)
+     Explanation: Both regression equations (y - y_bar = b_yx(x - x_bar) and x - x_bar = b_xy(y - y_bar)) pass through the centroid of the data (x_bar, y_bar).
+     Tags: BCA-203N, Unit-4, Regression-Lines, Intersection-Point
+
+Q181. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is the slope of the regression line of Y on X (b_yx)?
+     (A) b_yx = r * (sigma_y / sigma_x) [CORRECT]
+     (B) b_yx = r * (sigma_x / sigma_y)
+     (C) b_yx = r^2 * sigma_y
+     (D) b_yx = (sigma_x * sigma_y) / r
+     Explanation: The regression coefficient of Y on X is b_yx = Cov(X,Y)/Var(X) = r * (sigma_y / sigma_x).
+     Tags: BCA-203N, Unit-4, Regression-Coefficient, Slope
+
+Q182. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is the slope of the regression line of X on Y (b_xy)?
+     (A) b_xy = r * (sigma_x / sigma_y) [CORRECT]
+     (B) b_xy = r * (sigma_y / sigma_x)
+     (C) b_xy = r / (sigma_x * sigma_y)
+     (D) b_xy = Cov(X, Y) * Var(Y)
+     Explanation: The regression coefficient of X on Y is b_xy = Cov(X,Y)/Var(Y) = r * (sigma_x / sigma_y).
+     Tags: BCA-203N, Unit-4, Regression-Coefficient, Slope
+
+Q183. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     In fitting y = a + bx, if the origin is shifted to the midpoint such that sum x = 0, how are parameters a and b calculated?
+     (A) a = (sum y) / n  AND  b = sum(xy) / sum(x^2) [CORRECT]
+     (B) a = sum(xy) / n  AND  b = sum y
+     (C) a = sum y  AND  b = sum x
+     (D) a = 0  AND  b = sum(xy)
+     Explanation: When sum x = 0, the normal equations decouple: sum y = n*a => a = (sum y)/n, and sum(xy) = b*sum(x^2) => b = sum(xy)/sum(x^2).
+     Tags: BCA-203N, Unit-4, Curve-Fitting, Origin-Shift
+
+Q184. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What is the 'coefficient of determination' (r^2) in regression analysis?
+     (A) The proportion of the total variation in the dependent variable explained by the regression model [CORRECT]
+     (B) The square of the standard error
+     (C) The ratio of sample sizes
+     (D) The slope of the tangent line
+     Explanation: r^2 (ranging from 0 to 1) measures the fraction of variance in the dependent variable that is predictable from the independent variable.
+     Tags: BCA-203N, Unit-4, Coefficient-of-Determination, Regression
+
+Q185. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     If r = 0.9, what percentage of the variation in Y is explained by the regression on X?
+     (A) 81% [CORRECT]
+     (B) 90%
+     (C) 9%
+     (D) 19%
+     Explanation: r^2 = (0.9)^2 = 0.81 = 81%. Thus, 81% of the variation in Y is explained by the linear model.
+     Tags: BCA-203N, Unit-4, Coefficient-of-Determination, Calculation
+
+Q186. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     In solving an LPP graphically, Maximize Z = 3x + 5y subject to x + y <= 4, x, y >= 0. What is the maximum value of Z?
+     (A) 20 (at x = 0, y = 4) [CORRECT]
+     (B) 12 (at x = 4, y = 0)
+     (C) 15 (at x = 1, y = 3)
+     (D) 16 (at x = 2, y = 2)
+     Explanation: Vertices are (0,0), (4,0), (0,4). Z(0,0)=0; Z(4,0)=12; Z(0,4) = 3(0) + 5(4) = 20. Maximum is 20 at (0, 4).
+     Tags: BCA-203N, Unit-4, Graphical-Method, Calculation
+
+Q187. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     In an LPP, if the constraint is 2x_1 - 3x_2 <= -6, how should it be rewritten into standard form?
+     (A) Multiply by -1 and reverse inequality: -2x_1 + 3x_2 >= 6 [CORRECT]
+     (B) Leave it unchanged with negative RHS
+     (C) Drop the negative sign without reversing inequality
+     (D) Set x_1 and x_2 to zero
+     Explanation: Standard linear programming formulation requires right-hand side constants (b_i) to be non-negative. Multiplying by -1 reverses the inequality: -2x_1 + 3x_2 >= 6.
+     Tags: BCA-203N, Unit-4, Standard-LPP, Formulation
+
+Q188. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What is a 'basic solution' in an m x n linear programming system (where n > m)?
+     (A) A solution obtained by setting (n - m) non-basic variables to zero and solving for the remaining m basic variables [CORRECT]
+     (B) A solution with all variables equal to 1
+     (C) A solution that has no zero entries
+     (D) The initial guess at the origin
+     Explanation: In a system of m equations with n variables (n > m), a basic solution sets n - m non-basic variables to 0 and solves the unique m x m basis subsystem.
+     Tags: BCA-203N, Unit-4, Simplex-Method, Basic-Solution
+
+Q189. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is a 'Basic Feasible Solution' (BFS)?
+     (A) A basic solution that additionally satisfies the non-negativity restrictions (all basic variables >= 0) [CORRECT]
+     (B) A solution with negative slack
+     (C) Any point outside the feasible polygon
+     (D) A solution where the objective function is zero
+     Explanation: A basic solution where every variable is greater than or equal to zero (x_i >= 0) is called a basic feasible solution (BFS), which corresponds geometrically to an extreme point.
+     Tags: BCA-203N, Unit-4, Simplex-Method, BFS
+
+Q190. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     What is 'degeneracy' in a linear programming problem?
+     (A) When one or more basic variables equal zero in a basic feasible solution [CORRECT]
+     (B) When the objective function cannot be evaluated
+     (C) When the matrix has complex eigenvalues
+     (D) When all constraints are redundancies
+     Explanation: A BFS is degenerate if at least one basic variable has a value of zero, which occurs geometrically when more than two constraint lines intersect at the same vertex.
+     Tags: BCA-203N, Unit-4, Degeneracy, Simplex-Theory
+
+Q191. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     What danger does degeneracy introduce into the simplex algorithm?
+     (A) Cycling (the algorithm loops indefinitely through the same bases without improving Z) [CORRECT]
+     (B) The computer memory overflows
+     (C) The objective function becomes non-linear
+     (D) The constraints become negative
+     Explanation: Degeneracy can lead to cycling, where the simplex pivot produces zero improvement in Z and revisits previous bases in an infinite loop (preventable by Bland's rule).
+     Tags: BCA-203N, Unit-4, Degeneracy, Cycling
+
+Q192. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     What is Bland's Rule in the simplex algorithm?
+     (A) An anti-cycling rule: in case of ties for entering or leaving variables, always pick the variable with the smallest index [CORRECT]
+     (B) A rule to double the step size
+     (C) A method for inverting sparse matrices
+     (D) A formula for Spearman's rank correlation
+     Explanation: Bland's smallest-subscript rule guarantees that cycling cannot occur in simplex iterations.
+     Tags: BCA-203N, Unit-4, Blands-Rule, Simplex-Optimization
+
+Q193. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What is the 'dual' of a linear programming problem?
+     (A) A companion linear program mathematically derived from the primal, where primal constraints become dual variables and vice-versa [CORRECT]
+     (B) The inverse of the objective function
+     (C) The graphical representation in 3D
+     (D) The quadratic relaxation of the LPP
+     Explanation: Every linear program (Primal) has an associated symmetric Dual problem. The primal objective coefficients become the dual right-hand side constants, and vice versa.
+     Tags: BCA-203N, Unit-4, Duality, Concept
+
+Q194. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     What does the Strong Duality Theorem state?
+     (A) If either the primal or dual problem has a finite optimal solution, both have optimal solutions and their optimal objective values are equal (Z* = W*) [CORRECT]
+     (B) The primal is always twice as large as the dual
+     (C) The dual never has an optimal solution
+     (D) Primal and dual are mutually exclusive
+     Explanation: The Strong Duality Theorem guarantees that Maximize Z_primal = Minimize W_dual at optimality.
+     Tags: BCA-203N, Unit-4, Strong-Duality, Theorem
+
+Q195. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     If the primal problem has an unbounded optimal solution, what can be concluded about the dual problem?
+     (A) The dual problem must be infeasible [CORRECT]
+     (B) The dual problem must also be unbounded
+     (C) The dual problem has infinitely many solutions
+     (D) The dual problem is trivial
+     Explanation: By Weak Duality, if the primal is unbounded (Z -> inf), no feasible dual solution can exist; therefore the dual is infeasible.
+     Tags: BCA-203N, Unit-4, Duality, Infeasibility-Theorem
+
+Q196. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (HARD)
+     What are 'Complementary Slackness Conditions' in duality theory?
+     (A) The product of each primal decision variable and its dual slack variable equals zero at optimality [CORRECT]
+     (B) The sum of all slack variables equals 1
+     (C) The condition that slack variables are always negative
+     (D) A method for graphing unbounded solutions
+     Explanation: Complementary slackness states that at optimality: x_j * (dual_slack_j) = 0 and y_i * (primal_slack_i) = 0. A strictly positive variable implies its dual constraint is binding (zero slack).
+     Tags: BCA-203N, Unit-4, Complementary-Slackness, Optimality
+
+Q197. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     What is the effect of changing the units of measurement (e.g., cm to meters) on Karl Pearson's correlation coefficient r?
+     (A) r remains completely unchanged (invariant under changes of origin and scale) [CORRECT]
+     (B) r increases by a factor of 100
+     (C) r decreases by a factor of 100
+     (D) r changes sign
+     Explanation: Correlation coefficient r is a pure dimensionless number, invariant to linear shifts of origin and changes of scale (u = (x - a)/h, v = (y - b)/k).
+     Tags: BCA-203N, Unit-4, Correlation, Invariance
+
+Q198. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     If u = (x - 20) / 5 and v = (y - 50) / 10, and the correlation between u and v is 0.75, what is the correlation between x and y?
+     (A) 0.75 [CORRECT]
+     (B) 1.50
+     (C) 0.375
+     (D) 0.075
+     Explanation: Since both scale factors h = 5 and k = 10 are positive, r_xy = r_uv = 0.75.
+     Tags: BCA-203N, Unit-4, Correlation, Scale-Invariance
+
+Q199. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (MEDIUM)
+     In a linear programming problem, what does the 'shadow price' (dual variable value) of a constraint represent?
+     (A) The rate of improvement in the objective function per unit increase in the right-hand side of that constraint [CORRECT]
+     (B) The market price of the manufactured goods
+     (C) The cost of running the computer program
+     (D) The penalty for violating non-negativity
+     Explanation: The shadow price (dual price) measures the marginal value of relaxing a resource constraint by one unit: ∂Z*/∂b_i = y_i*.
+     Tags: BCA-203N, Unit-4, Shadow-Price, Dual-Interpretation
+
+Q200. [Unit 4: Least-Squares Curve Fitting & Linear Programming] (EASY)
+     Which method is used to fit a non-linear curve y = a * b^x to experimental data?
+     (A) Linearization via log: log y = log a + x * log b, followed by linear least-squares regression [CORRECT]
+     (B) Taylor series approximation to second order
+     (C) Gauss-Jordan elimination on raw coordinates
+     (D) Graphical extreme point method
+     Explanation: Taking log of y = a*b^x yields log y = log a + x*log b, which is a linear equation Y = A + B*x where Y = log y, A = log a, B = log b.
+     Tags: BCA-203N, Unit-4, Curve-Fitting, Log-Linearization
+
+Q201. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is a 'random variable' mathematically?
+     (A) A real-valued function defined over the sample space of a random experiment, mapping outcomes to real numbers [CORRECT]
+     (B) A variable whose value never changes
+     (C) An integer selected from a random table
+     (D) The ratio of sample size to population
+     Explanation: A random variable X is a function X: S -> R that maps each elementary outcome in sample space S to a real numerical value.
+     Tags: BCA-203N, Unit-5, Random-Variables, Definition
+
+Q202. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What characterizes a 'discrete random variable'?
+     (A) It assumes a countable number of distinct values (finite or countably infinite) [CORRECT]
+     (B) It assumes any real value within a continuous interval
+     (C) It can only take complex values
+     (D) Its variance is always zero
+     Explanation: A discrete random variable takes values in a countable set (e.g., number of defective items, coin tosses).
+     Tags: BCA-203N, Unit-5, Discrete-RV, Characteristics
+
+Q203. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What two mathematical conditions must a valid Probability Mass Function (PMF) p(x) satisfy?
+     (A) p(x_i) >= 0 for all i, AND sum_i p(x_i) = 1 [CORRECT]
+     (B) p(x_i) <= 0 AND sum_i p(x_i) = 0
+     (C) p(x_i) = 1 for all i
+     (D) integral p(x)dx = infinity
+     Explanation: A discrete PMF must be non-negative everywhere (p(x_i) >= 0) and the sum of probabilities over all possible values must equal unity (sum p(x_i) = 1).
+     Tags: BCA-203N, Unit-5, PMF, Properties
+
+Q204. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What two mathematical conditions must a valid Probability Density Function (PDF) f(x) satisfy for a continuous random variable?
+     (A) f(x) >= 0 for all x, AND integral_{-inf}^{+inf} f(x) dx = 1 [CORRECT]
+     (B) f(x) <= 1 AND sum f(x) = 1
+     (C) f(x) must be a constant integer
+     (D) integral f(x) dx = 0
+     Explanation: A continuous PDF must satisfy f(x) >= 0 everywhere and the total area under the density curve from -inf to +inf must equal 1.
+     Tags: BCA-203N, Unit-5, PDF, Properties
+
+Q205. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What is the probability of a continuous random variable X taking an exact single point value P(X = c)?
+     (A) 0 [CORRECT]
+     (B) 1
+     (C) f(c)
+     (D) 0.5
+     Explanation: For any continuous random variable, the probability at any single exact point is zero: P(X = c) = integral_c^c f(x) dx = 0. Probabilities are defined over non-zero intervals.
+     Tags: BCA-203N, Unit-5, Continuous-RV, Point-Probability
+
+Q206. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the Cumulative Distribution Function (CDF) F(x) defined as?
+     (A) F(x) = P(X <= x) [CORRECT]
+     (B) F(x) = P(X >= x)
+     (C) F(x) = P(X = x)
+     (D) F(x) = 1 / f(x)
+     Explanation: The CDF F(x) of a random variable X gives the probability that X takes a value less than or equal to x: F(x) = P(X <= x).
+     Tags: BCA-203N, Unit-5, CDF, Definition
+
+Q207. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the relationship between the PDF f(x) and CDF F(x) of a continuous random variable?
+     (A) f(x) = d/dx [F(x)] [CORRECT]
+     (B) f(x) = integral F(x) dx
+     (C) f(x) = F(x)^2
+     (D) f(x) = 1 - F(x)
+     Explanation: By the Fundamental Theorem of Calculus, the PDF is the derivative of the CDF: f(x) = F'(x) = dF(x)/dx.
+     Tags: BCA-203N, Unit-5, PDF-CDF-Relation, Calculus
+
+Q208. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the mathematical expectation E(X) of a discrete random variable X with PMF p(x)?
+     (A) E(X) = sum_i [x_i * p(x_i)] [CORRECT]
+     (B) E(X) = sum_i [p(x_i) / x_i]
+     (C) E(X) = sum_i [x_i^2 * p(x_i)]
+     (D) E(X) = [sum x_i] / n
+     Explanation: The expected value (mean) of a discrete random variable is the probability-weighted sum of its values: E(X) = sum x_i * p(x_i).
+     Tags: BCA-203N, Unit-5, Mathematical-Expectation, Discrete
+
+Q209. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the mathematical expectation E(X) of a continuous random variable X with PDF f(x)?
+     (A) E(X) = integral_{-inf}^{+inf} x * f(x) dx [CORRECT]
+     (B) E(X) = integral f(x) dx
+     (C) E(X) = integral x^2 * f(x) dx
+     (D) E(X) = d/dx [f(x)]
+     Explanation: The expected value of a continuous random variable is defined as E(X) = integral_{-inf}^{+inf} x * f(x) dx.
+     Tags: BCA-203N, Unit-5, Mathematical-Expectation, Continuous
+
+Q210. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the formula for the variance Var(X) of a random variable in terms of expectations?
+     (A) Var(X) = E(X^2) - [E(X)]^2 [CORRECT]
+     (B) Var(X) = E(X^2) + [E(X)]^2
+     (C) Var(X) = [E(X)]^2 - E(X^2)
+     (D) Var(X) = sqrt(E(X))
+     Explanation: Variance is the second central moment: Var(X) = E[(X - mu)^2] = E(X^2) - [E(X)]^2.
+     Tags: BCA-203N, Unit-5, Variance, Formula
+
+Q211. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If a and b are constants, what is E(a*X + b)?
+     (A) a * E(X) + b [CORRECT]
+     (B) a * E(X)
+     (C) E(X) + a*b
+     (D) a^2 * E(X) + b
+     Explanation: Expectation is a linear operator: E(aX + b) = a*E(X) + b.
+     Tags: BCA-203N, Unit-5, Expectation-Properties, Linearity
+
+Q212. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     If a and b are constants, what is Var(a*X + b)?
+     (A) a^2 * Var(X) [CORRECT]
+     (B) a * Var(X) + b
+     (C) a^2 * Var(X) + b^2
+     (D) a * Var(X)
+     Explanation: Variance is scale-dependent but shift-invariant: Var(aX + b) = a^2 * Var(X). Adding a constant shifts the distribution without altering dispersion.
+     Tags: BCA-203N, Unit-5, Variance-Properties, Scaling
+
+Q213. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the variance of a constant c, Var(c)?
+     (A) 0 [CORRECT]
+     (B) c
+     (C) c^2
+     (D) 1
+     Explanation: A constant never varies; hence its variance is identically zero: Var(c) = 0.
+     Tags: BCA-203N, Unit-5, Variance, Constant
+
+Q214. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If X and Y are independent random variables, what is E(X * Y)?
+     (A) E(X) * E(Y) [CORRECT]
+     (B) E(X) + E(Y)
+     (C) E(X) / E(Y)
+     (D) 0
+     Explanation: For independent random variables, the expectation of their product equals the product of their individual expectations: E(XY) = E(X)*E(Y).
+     Tags: BCA-203N, Unit-5, Expectation, Independence
+
+Q215. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If X and Y are independent random variables, what is Var(X + Y)?
+     (A) Var(X) + Var(Y) [CORRECT]
+     (B) Var(X) - Var(Y)
+     (C) Var(X) + Var(Y) + 2*Cov(X,Y)
+     (D) Var(X) * Var(Y)
+     Explanation: When X and Y are independent, Cov(X,Y) = 0, so Var(X + Y) = Var(X) + Var(Y).
+     Tags: BCA-203N, Unit-5, Variance, Sum-of-Independent
+
+Q216. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What are the parameters of the Binomial Distribution B(n, p)?
+     (A) n (number of independent trials) and p (probability of success in each trial) [CORRECT]
+     (B) mu (mean) and sigma (standard deviation)
+     (C) lambda (average arrival rate)
+     (D) a and b (endpoints)
+     Explanation: A binomial distribution is fully characterized by n (fixed number of identical, independent Bernoulli trials) and p (constant probability of success per trial).
+     Tags: BCA-203N, Unit-5, Binomial-Distribution, Parameters
+
+Q217. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the Probability Mass Function (PMF) of the Binomial distribution P(X = r)?
+     (A) nCr * p^r * q^(n - r) where q = 1 - p [CORRECT]
+     (B) nPr * p^r * q^(n - r)
+     (C) nCr * p^(n - r) * q^r
+     (D) (e^(-lambda) * lambda^r) / r!
+     Explanation: The binomial PMF is P(X = r) = (n! / (r!(n - r)!)) * p^r * (1 - p)^(n - r) for r = 0, 1, ..., n.
+     Tags: BCA-203N, Unit-5, Binomial-Distribution, PMF
+
+Q218. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What are the Mean and Variance of the Binomial distribution B(n, p)?
+     (A) Mean = n*p, Variance = n*p*q [CORRECT]
+     (B) Mean = n*p, Variance = sqrt(n*p*q)
+     (C) Mean = p, Variance = p*q
+     (D) Mean = n*p*q, Variance = n*p
+     Explanation: For Binomial B(n, p): Mean mu = np, Variance sigma^2 = npq = np(1 - p).
+     Tags: BCA-203N, Unit-5, Binomial-Distribution, Mean-and-Variance
+
+Q219. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     In a Binomial distribution, what is the fundamental inequality relationship between its Mean and Variance?
+     (A) Mean > Variance (always, since 0 < q < 1) [CORRECT]
+     (B) Mean = Variance
+     (C) Mean < Variance
+     (D) Variance = Mean^2
+     Explanation: Since q = 1 - p < 1 for non-trivial trials, Variance = npq = Mean * q < Mean. Thus Mean is strictly greater than Variance in a Binomial distribution.
+     Tags: BCA-203N, Unit-5, Binomial-Distribution, Mean-vs-Variance
+
+Q220. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     Under what limiting conditions does the Binomial distribution tend to the Poisson distribution?
+     (A) n -> infinity, p -> 0, such that n*p = lambda (a finite constant) [CORRECT]
+     (B) n -> infinity, p -> 0.5
+     (C) n -> 0, p -> 1
+     (D) Both n and p tend to infinity
+     Explanation: Poisson is the law of rare events: it is the limit of the Binomial distribution as trial count n -> inf and success probability p -> 0, with np = lambda remaining constant.
+     Tags: BCA-203N, Unit-5, Poisson-Distribution, Limiting-Case
+
+Q221. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the Probability Mass Function (PMF) of the Poisson distribution P(X = r)?
+     (A) (e^(-lambda) * lambda^r) / r! for r = 0, 1, 2, ... [CORRECT]
+     (B) (e^(-lambda) * r^lambda) / r!
+     (C) (lambda^r) / r!
+     (D) nCr * lambda^r
+     Explanation: The Poisson PMF is P(X = r) = (e^(-lambda) * lambda^r) / r! for r = 0, 1, 2, ... where lambda > 0.
+     Tags: BCA-203N, Unit-5, Poisson-Distribution, PMF
+
+Q222. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the unique mathematical characteristic of the Poisson distribution regarding its Mean and Variance?
+     (A) Mean = Variance = lambda [CORRECT]
+     (B) Mean > Variance
+     (C) Mean < Variance
+     (D) Mean * Variance = 1
+     Explanation: A distinctive signature of the Poisson distribution is that its theoretical mean and variance are identical: E(X) = Var(X) = lambda.
+     Tags: BCA-203N, Unit-5, Poisson-Distribution, Mean-Variance-Equality
+
+Q223. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If the mean of a Poisson distribution is 4, what is its standard deviation?
+     (A) 2 [CORRECT]
+     (B) 4
+     (C) 16
+     (D) 1
+     Explanation: Variance = lambda = 4. Standard Deviation sigma = sqrt(Variance) = sqrt(4) = 2.
+     Tags: BCA-203N, Unit-5, Poisson-Distribution, Calculation
+
+Q224. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     For a fair coin tossed 4 times, what is the probability of getting exactly 2 heads?
+     (A) 6 / 16 = 3 / 8 = 0.375 [CORRECT]
+     (B) 1 / 4 = 0.25
+     (C) 1 / 2 = 0.50
+     (D) 4 / 16 = 0.25
+     Explanation: n = 4, p = 0.5, r = 2. P(X = 2) = 4C2 * (0.5)^2 * (0.5)^2 = 6 * (1/16) = 6/16 = 3/8 = 0.375.
+     Tags: BCA-203N, Unit-5, Binomial-Distribution, Coin-Toss
+
+Q225. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What type of real-world phenomena are typically modeled by a Poisson distribution?
+     (A) Rare events occurring independently in a continuum of time or space (e.g., website server requests per minute, typos per page) [CORRECT]
+     (B) Heights of adult human populations
+     (C) Outcome of rolling a single fair die
+     (D) Lifetimes of radioactive particles with memory
+     Explanation: Poisson processes model the count of independent, rare events happening at a constant average rate over time or space.
+     Tags: BCA-203N, Unit-5, Poisson-Distribution, Applications
+
+Q226. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the probability density function (PDF) of a continuous Uniform distribution over interval [a, b]?
+     (A) f(x) = 1 / (b - a) for a <= x <= b, and 0 otherwise [CORRECT]
+     (B) f(x) = 1 / (a + b)
+     (C) f(x) = (b - a) / 2
+     (D) f(x) = x / (b - a)
+     Explanation: For Uniform U(a, b), the density is constant over the interval: f(x) = 1 / (b - a) for a <= x <= b.
+     Tags: BCA-203N, Unit-5, Uniform-Distribution, PDF
+
+Q227. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What are the Mean and Variance of a continuous Uniform distribution U(a, b)?
+     (A) Mean = (a + b) / 2, Variance = (b - a)^2 / 12 [CORRECT]
+     (B) Mean = (b - a) / 2, Variance = (b - a) / 12
+     (C) Mean = a + b, Variance = (b - a)^2 / 2
+     (D) Mean = (a + b) / 2, Variance = (b - a) / 6
+     Explanation: For U(a, b): Mean = (a + b)/2, Variance = (b - a)^2 / 12.
+     Tags: BCA-203N, Unit-5, Uniform-Distribution, Mean-and-Variance
+
+Q228. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What is the unique mathematical property of the Exponential distribution known as?
+     (A) Memoryless Property: P(X > s + t | X > s) = P(X > t) [CORRECT]
+     (B) Symmetry about the median
+     (C) Equal mean and variance
+     (D) Bounded support [0, 1]
+     Explanation: The exponential distribution is the only continuous distribution with the memoryless property: past elapsed time has no effect on remaining wait time.
+     Tags: BCA-203N, Unit-5, Exponential-Distribution, Memoryless
+
+Q229. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What are the Mean and Variance of the Exponential distribution with PDF f(x) = lambda * e^(-lambda*x) for x >= 0?
+     (A) Mean = 1 / lambda, Variance = 1 / lambda^2 [CORRECT]
+     (B) Mean = lambda, Variance = lambda
+     (C) Mean = 1 / lambda, Variance = 1 / lambda
+     (D) Mean = lambda, Variance = lambda^2
+     Explanation: For Exponential(lambda): Mean E(X) = 1/lambda, Variance Var(X) = 1/lambda^2, Standard Deviation sigma = 1/lambda.
+     Tags: BCA-203N, Unit-5, Exponential-Distribution, Moments
+
+Q230. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What shape does the Probability Density Function curve of a Normal (Gaussian) distribution exhibit?
+     (A) A symmetric, bell-shaped curve centered at the mean mu [CORRECT]
+     (B) A right-skewed descending exponential curve
+     (C) A rectangular step block
+     (D) A U-shaped curve
+     Explanation: The Normal distribution produces the classic symmetric bell curve, centered at its mean mu.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Shape
+
+Q231. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What are the two governing parameters of a Normal distribution N(mu, sigma^2)?
+     (A) Mean (mu) and Variance (sigma^2) [CORRECT]
+     (B) Trial count (n) and success probability (p)
+     (C) Rate parameter (lambda)
+     (D) Minimum (a) and maximum (b)
+     Explanation: A normal distribution is uniquely specified by its location parameter mu (mean) and scale parameter sigma^2 (variance).
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Parameters
+
+Q232. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the total area under the standard normal curve from -infinity to +infinity?
+     (A) 1.0 [CORRECT]
+     (B) 0.5
+     (C) pi
+     (D) sqrt(2*pi)
+     Explanation: As with all valid continuous probability density functions, the total area under the normal curve is exactly 1.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Total-Area
+
+Q233. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     In a Normal distribution, what is the relationship between the Mean, Median, and Mode?
+     (A) Mean = Median = Mode (they all coincide at the central peak) [CORRECT]
+     (B) Mean > Median > Mode
+     (C) Mode > Median > Mean
+     (D) They are unrelated
+     Explanation: Due to perfect unimodal symmetry, the mean, median, and mode of a normal distribution are identical.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Symmetry
+
+Q234. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What are the coordinates of the two inflection points on a Normal distribution curve N(mu, sigma^2)?
+     (A) x = mu - sigma and x = mu + sigma [CORRECT]
+     (B) x = mu - 2*sigma and x = mu + 2*sigma
+     (C) x = mu - 3*sigma and x = mu + 3*sigma
+     (D) x = 0 and x = mu
+     Explanation: Setting f''(x) = 0 shows that the curvature changes from concave down to concave up at exactly x = mu ± sigma.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Inflection-Points
+
+Q235. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the formula to transform a normal random variable X ~ N(mu, sigma^2) into a Standard Normal variable Z?
+     (A) Z = (X - mu) / sigma [CORRECT]
+     (B) Z = (X - sigma) / mu
+     (C) Z = (X - mu) / sigma^2
+     (D) Z = X * sigma + mu
+     Explanation: The standard score (Z-score) transformation is Z = (X - mu) / sigma, which converts X to Z ~ N(0, 1).
+     Tags: BCA-203N, Unit-5, Standard-Normal, Z-Score
+
+Q236. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What are the Mean and Variance of the Standard Normal distribution Z?
+     (A) Mean = 0, Variance = 1 [CORRECT]
+     (B) Mean = 1, Variance = 0
+     (C) Mean = 1, Variance = 1
+     (D) Mean = 0, Variance = 0
+     Explanation: A standard normal variable Z has a mean of 0 and a variance (and standard deviation) of 1: Z ~ N(0, 1).
+     Tags: BCA-203N, Unit-5, Standard-Normal, Mean-and-Variance
+
+Q237. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     According to the Empirical Rule (68-95-99.7 rule) for a Normal distribution, what percentage of data lies within (mu - sigma, mu + sigma)?
+     (A) Approximately 68.27% [CORRECT]
+     (B) Approximately 95.45%
+     (C) Approximately 99.73%
+     (D) 50.00%
+     Explanation: Roughly 68.27% of values lie within 1 standard deviation of the mean (mu ± 1*sigma).
+     Tags: BCA-203N, Unit-5, Empirical-Rule, 1-Sigma
+
+Q238. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     According to the Empirical Rule, what percentage of normal distribution data lies within (mu - 2*sigma, mu + 2*sigma)?
+     (A) Approximately 95.45% [CORRECT]
+     (B) Approximately 68.27%
+     (C) Approximately 99.73%
+     (D) 90.00%
+     Explanation: Roughly 95.45% of the total distribution lies within 2 standard deviations of the mean (mu ± 2*sigma).
+     Tags: BCA-203N, Unit-5, Empirical-Rule, 2-Sigma
+
+Q239. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     According to the Empirical Rule, what percentage of normal distribution data lies within (mu - 3*sigma, mu + 3*sigma)?
+     (A) Approximately 99.73% [CORRECT]
+     (B) Approximately 95.45%
+     (C) 100.00%
+     (D) 98.50%
+     Explanation: Roughly 99.73% of all observations fall within 3 standard deviations of the mean (mu ± 3*sigma).
+     Tags: BCA-203N, Unit-5, Empirical-Rule, 3-Sigma
+
+Q240. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What does the Central Limit Theorem (CLT) state?
+     (A) The sampling distribution of the sample mean approaches a Normal distribution as sample size n increases, regardless of the underlying population distribution [CORRECT]
+     (B) All random variables are normally distributed
+     (C) Binomial distributions never converge
+     (D) Variance is always equal to sample size
+     Explanation: The CLT establishes that the sum or mean of a large number of independent, identically distributed random variables is approximately normally distributed, even if the parent distribution is non-normal.
+     Tags: BCA-203N, Unit-5, Central-Limit-Theorem, Statement
+
+Q241. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the value of skewness (beta_1 or gamma_1) for any Normal distribution?
+     (A) 0 (perfectly symmetric) [CORRECT]
+     (B) 1
+     (C) -1
+     (D) 3
+     Explanation: Because the normal distribution is perfectly symmetric about its mean, its third central moment mu_3 = 0, and skewness gamma_1 = 0.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Skewness
+
+Q242. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What is the value of Kurtosis (beta_2) for a Normal distribution?
+     (A) 3 (Mesokurtic) [CORRECT]
+     (B) 0
+     (C) 1
+     (D) 6
+     Explanation: The coefficient of kurtosis beta_2 = mu_4 / (mu_2)^2 equals 3 for all normal distributions (excess kurtosis = 0, mesokurtic).
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Kurtosis
+
+Q243. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If X ~ N(50, 16), what is the probability P(X >= 50)?
+     (A) 0.50 (50%) [CORRECT]
+     (B) 1.00
+     (C) 0.25
+     (D) 0.68
+     Explanation: Since the mean mu = 50 and the normal curve is perfectly symmetric, exactly 50% of the area lies to the right of the mean.
+     Tags: BCA-203N, Unit-5, Normal-Distribution, Symmetry-Probability
+
+Q244. [Unit 5: Random Variables & Theoretical Probability Distributions] (MEDIUM)
+     What is the moment generating function (MGF) M_X(t) defined as?
+     (A) M_X(t) = E(e^(t*X)) [CORRECT]
+     (B) M_X(t) = E(t^X)
+     (C) M_X(t) = E(X^t)
+     (D) M_X(t) = integral e^(-t) dt
+     Explanation: The moment generating function of random variable X is defined as M_X(t) = E(e^(tX)). Differentiating M_X(t) k times at t = 0 yields the k-th raw moment E(X^k).
+     Tags: BCA-203N, Unit-5, MGF, Definition
+
+Q245. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     If X is a Bernoulli random variable with success probability p, what is its variance?
+     (A) p * (1 - p) [CORRECT]
+     (B) p^2
+     (C) 1 - p
+     (D) p / (1 - p)
+     Explanation: For a single Bernoulli trial: Mean = p, E(X^2) = p. Var(X) = E(X^2) - [E(X)]^2 = p - p^2 = p(1 - p).
+     Tags: BCA-203N, Unit-5, Bernoulli, Variance
+
+Q246. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     A discrete random variable X takes values 1, 2, 3 with probabilities 0.2, 0.5, 0.3. What is the expected value E(X)?
+     (A) 2.1 [CORRECT]
+     (B) 2.0
+     (C) 1.8
+     (D) 2.5
+     Explanation: E(X) = 1(0.2) + 2(0.5) + 3(0.3) = 0.2 + 1.0 + 0.9 = 2.1.
+     Tags: BCA-203N, Unit-5, Expectation, Calculation
+
+Q247. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     For the same random variable X taking values 1, 2, 3 with probabilities 0.2, 0.5, 0.3, what is E(X^2)?
+     (A) 4.9 [CORRECT]
+     (B) 4.0
+     (C) 5.1
+     (D) 3.6
+     Explanation: E(X^2) = 1^2(0.2) + 2^2(0.5) + 3^2(0.3) = 1(0.2) + 4(0.5) + 9(0.3) = 0.2 + 2.0 + 2.7 = 4.9.
+     Tags: BCA-203N, Unit-5, Expectation, Second-Moment
+
+Q248. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the variance Var(X) for the distribution in the previous questions where E(X) = 2.1 and E(X^2) = 4.9?
+     (A) 0.49 [CORRECT]
+     (B) 0.70
+     (C) 2.80
+     (D) 1.21
+     Explanation: Var(X) = E(X^2) - [E(X)]^2 = 4.9 - (2.1)^2 = 4.9 - 4.41 = 0.49.
+     Tags: BCA-203N, Unit-5, Variance, Calculation
+
+Q249. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     What is the standard deviation for the distribution where Var(X) = 0.49?
+     (A) 0.7 [CORRECT]
+     (B) 0.49
+     (C) 0.24
+     (D) 1.4
+     Explanation: Standard Deviation sigma = sqrt(Var(X)) = sqrt(0.49) = 0.7.
+     Tags: BCA-203N, Unit-5, Standard-Deviation, Calculation
+
+Q250. [Unit 5: Random Variables & Theoretical Probability Distributions] (EASY)
+     Why is probability and statistical distribution theory vital in computer science?
+     (A) It powers machine learning, algorithmic randomized analysis, network traffic queuing, hashing, and reliability engineering [CORRECT]
+     (B) It replaces the need for database indexes
+     (C) It allows programming without variables
+     (D) It eliminates CPU power consumption
+     Explanation: Probability distributions model stochastic network latency, server loads, randomized algorithms, hash collisions, reliability failure rates, and probabilistic AI models.
+     Tags: BCA-203N, Unit-5, Probability, Relevance
+

@@ -1,0 +1,2005 @@
+MJPRU BAREILLY BCA SEMESTER 6 - ACADEMIC EXAM QUESTION BANK
+SUBJECT: BCA-306N Internet of Things
+TOTAL QUESTIONS: 250 (50 MCQs per Unit)
+================================================================================
+
+Q_1 [Unit 1] [EASY]: Who coined the term 'Internet of Things' in 1999 during a presentation at Procter & Gamble?
+  (A) Tim Berners-Lee
+  (B) Kevin Ashton
+  (C) Vint Cerf
+  (D) Mark Weiser
+Correct Answer: (B)
+Explanation: Kevin Ashton coined the term 'Internet of Things' in 1999 while working on RFID supply chain tracking at P&G.
+
+Q_2 [Unit 1] [EASY]: What is the core definition of the Internet of Things (IoT)?
+  (A) A global network of physical devices embedded with sensors, software, and connectivity to exchange data
+  (B) A proprietary operating system for mainframe computers
+  (C) A software program solely for editing photographs
+  (D) A high-speed fiber optic cable standard
+Correct Answer: (A)
+Explanation: IoT is the network of physical objects embedded with sensors, actuators, and communication tech to sense and interact with the physical world.
+
+Q_3 [Unit 1] [MEDIUM]: What was the famous conceptual precursor to IoT that connected a toaster to the internet in 1990?
+  (A) John Romkey's Internet Toaster
+  (B) The Trojan Room Coffee Pot
+  (C) The Carnegie Mellon Coke Machine
+  (D) ARPANET Weather Sensor
+Correct Answer: (A)
+Explanation: John Romkey created the first internet-connected toaster in 1990 at Interop, which could be turned on/off via SNMP over the internet.
+
+Q_4 [Unit 1] [MEDIUM]: What was the Trojan Room Coffee Pot at Cambridge University famous for in IoT history?
+  (A) The first network-connected webcam monitoring coffee levels
+  (B) The first automated espresso machine
+  (C) A military communications satellite
+  (D) The first computerized banking ATM
+Correct Answer: (A)
+Explanation: In 1991, researchers at Cambridge set up a network camera pointed at the Trojan Room coffee pot so employees could monitor coffee levels from their desks.
+
+Q_5 [Unit 1] [MEDIUM]: What is the primary difference between IoT and M2M (Machine-to-Machine)?
+  (A) M2M typically uses point-to-point isolated cellular/wired links; IoT integrates open IP networks, cloud platforms, and big data analytics
+  (B) M2M uses the public internet while IoT does not
+  (C) M2M is solely software while IoT is solely hardware
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: M2M typically refers to point-to-point communication between dedicated machines, whereas IoT leverages open IP standards, cloud computing, and horizontal multi-system integration.
+
+Q_6 [Unit 1] [EASY]: In IoT architectures, what is the primary role of the Perception/Sensing Layer?
+  (A) Collecting physical environmental data via sensors and executing physical commands via actuators
+  (B) Executing deep learning model training
+  (C) Managing user billing subscriptions
+  (D) Displaying GUI dashboards to end users
+Correct Answer: (A)
+Explanation: The Perception layer is the physical interface to the real world, converting physical phenomena (temperature, pressure) into electrical signals.
+
+Q_7 [Unit 1] [EASY]: What are the three layers in the basic foundational IoT architectural model?
+  (A) Perception Layer, Network Layer, Application Layer
+  (B) Presentation Layer, Session Layer, Transport Layer
+  (C) Client Layer, Server Layer, Database Layer
+  (D) Input Layer, Processing Layer, Storage Layer
+Correct Answer: (A)
+Explanation: The fundamental 3-layer IoT architecture consists of the Perception (Sensing) Layer, Network (Transmission) Layer, and Application Layer.
+
+Q_8 [Unit 1] [HARD]: In the ITU-T IoT Reference Model, what are the four distinct planes?
+  (A) Application, Service Support & Application Support, Network, and Device planes
+  (B) Hardware, Software, Firmware, and Cloud planes
+  (C) Kernel, User, Memory, and Disk planes
+  (D) Physical, Logical, Virtual, and Meta planes
+Correct Answer: (A)
+Explanation: ITU-T Y.2060 specifies: Device layer, Network layer, Service Support & Application Support layer, and Application layer, alongside management and security capabilities.
+
+Q_9 [Unit 1] [MEDIUM]: In the Cisco IoT Reference Model, how many logical levels are defined?
+  (A) 3 Levels
+  (B) 5 Levels
+  (C) 7 Levels
+  (D) 10 Levels
+Correct Answer: (C)
+Explanation: The Cisco IoT World Forum Reference Model defines 7 levels: Physical Devices, Connectivity, Edge Computing, Data Accumulation, Data Abstraction, Application, and Collaboration/Processes.
+
+Q_10 [Unit 1] [MEDIUM]: In the Cisco 7-Level IoT Reference Model, what occurs at Level 3 (Edge Computing)?
+  (A) Data formatting and packet evaluation close to the sensors to reduce cloud data volume
+  (B) Physical fabrication of silicon chips
+  (C) Displaying executive reports to the CEO
+  (D) Archiving tape backups for 10 years
+Correct Answer: (A)
+Explanation: Level 3 (Edge Computing) performs initial data filtering, aggregation, and anomaly detection at the edge before WAN transmission.
+
+Q_11 [Unit 1] [EASY]: What is an 'IoT Gateway'?
+  (A) A device that bridges constrained local IoT sensor networks (Zigbee, BLE) with IP-based wide-area networks (WAN, Cloud)
+  (B) A physical security door in a data center
+  (C) A software compiler for C++
+  (D) A billing portal for credit card authorization
+Correct Answer: (A)
+Explanation: An IoT Gateway translates heterogeneous local sensor communication protocols (e.g., Modbus, Zigbee) into standard IP packets (MQTT over TCP) for cloud ingestion.
+
+Q_12 [Unit 1] [EASY]: What does 'Constrained Device' mean in the context of IoT?
+  (A) A device with severely limited processing power, volatile memory (RAM), storage, and battery power
+  (B) A device locked inside a physical cabinet
+  (C) A device running Windows Server 2022
+  (D) A device connected to a 10Gbps fiber connection
+Correct Answer: (A)
+Explanation: Constrained devices (RFC 7228 Class 0/1/2) have 8-bit or 32-bit MCUs, single-digit kilobytes of RAM, and must run on coin-cell batteries for years.
+
+Q_13 [Unit 1] [MEDIUM]: What is the primary challenge posed by the 'Data Deluge' in IoT systems?
+  (A) Massive high-velocity streams of unstructured sensor telemetry overwhelming network bandwidth and centralized cloud ingestion pipelines
+  (B) Lack of sufficient computer monitors
+  (C) Sensors running too cold in data centers
+  (D) Too few cables available in stores
+Correct Answer: (A)
+Explanation: Billions of IoT nodes continuously emitting telemetry at millisecond intervals create staggering data volumes requiring edge filtering and stream processing.
+
+Q_14 [Unit 1] [EASY]: What is a 'Smart Object' in IoT terminology?
+  (A) A physical item equipped with a sensor/actuator, a micro-controller, a power supply, and a communication interface
+  (B) Any smartphone manufactured after 2020
+  (C) A flat-screen television with HDMI
+  (D) A passive RFID tag with no memory
+Correct Answer: (A)
+Explanation: A Smart Object combines sensing/actuation, computational processing, and network communication in an integrated physical package.
+
+Q_15 [Unit 1] [MEDIUM]: What role does 'Digitization' play in the transformation of modern industrial IoT?
+  (A) Converting analog physical processes and mechanical telemetry into digital data streams for automated analysis
+  (B) Scanning paper documents into PDF files
+  (C) Replacing keyboards with computer mice
+  (D) Using digital clocks in offices
+Correct Answer: (A)
+Explanation: Digitization converts physical physical machine vibrations, temperatures, and operations into digital telemetry, enabling real-time algorithmic control.
+
+Q_16 [Unit 1] [MEDIUM]: What is the primary difference between physical design and logical design in IoT?
+  (A) Physical design covers hardware nodes, sensors, and protocols; Logical design covers functional blocks, communication models, and APIs
+  (B) Physical design is software; Logical design is hardware
+  (C) Physical design covers databases; Logical design covers wires
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Physical design deals with the physical things and network protocol stacks; Logical design specifies abstract functional blocks, communication models, and application APIs.
+
+Q_17 [Unit 1] [MEDIUM]: Which IoT functional block handles user identity, device discovery, and network topology tracking?
+  (A) Device Management Block
+  (B) Application Block
+  (C) Power Conditioning Block
+  (D) Actuator Driver Block
+Correct Answer: (A)
+Explanation: The Device Management functional block coordinates device provisioning, OTA firmware updates, health monitoring, and security credentials.
+
+Q_18 [Unit 1] [EASY]: In IoT communication models, what is the Request-Response model?
+  (A) A client sends a request to a server, and the server fetches data and sends back a response synchronously or asynchronously
+  (B) Sensors publish data to a broker without knowing who reads it
+  (C) A server pushes data continuously to a passive device
+  (D) Two devices exchange encrypted keys indefinitely
+Correct Answer: (A)
+Explanation: In Request-Response (e.g., HTTP), the client initiates a request to the server, and the server replies with the requested resource.
+
+Q_19 [Unit 1] [EASY]: In the Publish-Subscribe (Pub/Sub) communication model, what is the role of the 'Broker'?
+  (A) An intermediary server that receives messages from publishers and routes them to subscribed clients based on topics
+  (B) A financial consultant managing cryptocurrency
+  (C) A physical cable connecting two sensors
+  (D) A compiler that translates C into assembly
+Correct Answer: (A)
+Explanation: In Pub/Sub (MQTT), the Broker completely decouples publishers from subscribers, routing payloads based on hierarchical topic strings.
+
+Q_20 [Unit 1] [MEDIUM]: What is the Push-Pull communication model in IoT?
+  (A) Publishers push messages into a shared queue, and consumers pull messages from the queue asynchronously
+  (B) Two sensors physically pushing against each other
+  (C) A server continuously pinging a dead client
+  (D) A database deleting old records
+Correct Answer: (A)
+Explanation: In Push-Pull, data producers push items into queues (e.g., Apache Kafka / RabbitMQ), and consumer workers pull messages at their own processing rate.
+
+Q_21 [Unit 1] [MEDIUM]: What is an Exclusive Pair communication model?
+  (A) A bidirectional, fully duplex communication channel established between a client and a server (e.g., WebSockets)
+  (B) A device that only works with one specific brand of battery
+  (C) Two sensors monitoring the same temperature
+  (D) A redundant backup server
+Correct Answer: (A)
+Explanation: Exclusive Pair (WebSockets) maintains a persistent, open full-duplex TCP connection between client and server for real-time low-latency exchanges.
+
+Q_22 [Unit 1] [EASY]: What is REST (Representational State Transfer) in IoT Communication APIs?
+  (A) A stateless architectural style that uses HTTP methods (GET, POST, PUT, DELETE) to manipulate device resources via URIs
+  (B) A protocol for putting microcontroller chips to sleep
+  (C) A proprietary protocol owned by IBM
+  (D) A real-time binary audio codec
+Correct Answer: (A)
+Explanation: RESTful APIs allow IoT devices and cloud platforms to interact using standard web verbs and URIs, typically serializing state in JSON.
+
+Q_23 [Unit 1] [MEDIUM]: How do WebSocket APIs differ from REST APIs in constrained IoT deployments?
+  (A) WebSockets maintain a single persistent TCP connection with minimal 2-byte framing overhead, whereas REST incurs repeated HTTP header overhead
+  (B) WebSockets are only for audio streaming
+  (C) REST is always faster than WebSockets
+  (D) WebSockets do not support encryption
+Correct Answer: (A)
+Explanation: WebSockets eliminate the recurring overhead of HTTP request-response headers by keeping a bidirectional, persistent socket open.
+
+Q_24 [Unit 1] [MEDIUM]: What is Level 1 IoT Deployment in standard IoT level taxonomies?
+  (A) A single node that senses, analyzes, stores data locally, and provides local monitoring via an attached GUI
+  (B) A global multi-cloud distributed system
+  (C) A cluster of 1,000 edge nodes with Kafka streaming
+  (D) A deep space satellite array
+Correct Answer: (A)
+Explanation: IoT Level 1 consists of a single node/device that performs sensing, local data analysis, local storage, and local control (e.g., smart home thermostat).
+
+Q_25 [Unit 1] [HARD]: What is Level 5 IoT Deployment?
+  (A) Multiple end nodes, an edge coordinator, and cloud-based data storage and machine learning analytics
+  (B) A single microcontroller without internet access
+  (C) Two computers connected via a crossover ethernet cable
+  (D) A quantum computer executing Shor's algorithm
+Correct Answer: (A)
+Explanation: IoT Level 5 involves multiple end-nodes, a centralized cloud storage repository, cloud analytics/ML, and edge coordinators managing local telemetry.
+
+Q_26 [Unit 1] [HARD]: What is the primary constraint of Level 6 IoT Deployment?
+  (A) High-velocity streaming data requiring complex distributed cloud analytics, real-time CEP engines, and automated multi-actuator feedback loops
+  (B) Lack of wireless sensors
+  (C) Only supporting 8-bit microprocessors
+  (D) Inability to use web browsers
+Correct Answer: (A)
+Explanation: IoT Level 6 represents high-throughput industrial and smart city deployments where distributed sensors stream into real-time Complex Event Processing (CEP) and automated actuation.
+
+Q_27 [Unit 1] [EASY]: What is the role of an 'Actuator' in an IoT system?
+  (A) A hardware component that converts electrical control signals into physical mechanical motion, heat, light, or force
+  (B) A software program that compiles Python scripts
+  (C) A sensor that measures humidity
+  (D) An optical fiber cable
+Correct Answer: (A)
+Explanation: While sensors detect physical properties, actuators take action (e.g., opening a valve, starting an electric motor, turning on a relay).
+
+Q_28 [Unit 1] [MEDIUM]: What is the difference between an Active Sensor and a Passive Sensor?
+  (A) Active sensors require an external power source to emit a probe signal (e.g., radar, ultrasonic); Passive sensors detect existing ambient energy (e.g., photodiode, thermocouple)
+  (B) Active sensors run software; passive sensors do not
+  (C) Active sensors are larger than passive sensors
+  (D) Active sensors only work on weekends
+Correct Answer: (A)
+Explanation: Active sensors emit energy into the environment and measure the return reflection; passive sensors directly absorb ambient energy.
+
+Q_29 [Unit 1] [EASY]: What is a Transducer?
+  (A) A physical device that converts one form of energy into another (encompasses both sensors and actuators)
+  (B) A software firewall
+  (C) A cloud load balancer
+  (D) A binary compiler
+Correct Answer: (A)
+Explanation: Transducers convert physical phenomena into electrical signals (sensors) or electrical signals into physical actions (actuators).
+
+Q_30 [Unit 1] [MEDIUM]: What is Signal Conditioning in IoT hardware frontends?
+  (A) Manipulating analog sensor signals (amplification, filtering, ADC conversion) to make them suitable for MCU processing
+  (B) Training a neural network model
+  (C) Encrypting passwords with SHA-256
+  (D) Installing an operating system
+Correct Answer: (A)
+Explanation: Signal conditioning involves operational amplifiers, low-pass filters, and analog-to-digital converters to clean noisy, low-voltage analog inputs.
+
+Q_31 [Unit 1] [MEDIUM]: What is Analog-to-Digital Conversion (ADC) resolution?
+  (A) The number of discrete digital quantization levels (bits) used to represent the continuous analog voltage range
+  (B) The screen resolution of the IoT monitor
+  (C) The clock frequency of the Wi-Fi chip
+  (D) The speed of the network router
+Correct Answer: (A)
+Explanation: A 10-bit ADC provides $2^{10} = 1024$ discrete voltage steps, while a 12-bit ADC provides 4096 steps, determining sensing measurement precision.
+
+Q_32 [Unit 1] [EASY]: Which open-source hardware prototyping platform popularized physical computing using an ATmega328P microcontroller?
+  (A) Arduino Uno
+  (B) Raspberry Pi 4
+  (C) NVIDIA Jetson Nano
+  (D) Apple Mac Mini
+Correct Answer: (A)
+Explanation: The Arduino platform introduced accessible C/C++ physical computing and hardware interfacing using 8-bit AVR microcontrollers.
+
+Q_33 [Unit 1] [EASY]: How does a Single Board Computer (SBC) like Raspberry Pi differ from a Microcontroller Board like Arduino?
+  (A) Raspberry Pi runs a full operating system (Linux) on an ARM microprocessor; Arduino runs bare-metal firmware or RTOS on a microcontroller
+  (B) Arduino has more RAM than Raspberry Pi
+  (C) Raspberry Pi cannot connect to the internet
+  (D) Arduino runs 64-bit Windows
+Correct Answer: (A)
+Explanation: Raspberry Pi is a full computer with an SoC running a multi-tasking OS (Linux); Arduino is a dedicated real-time microcontroller executing a single firmware loop.
+
+Q_34 [Unit 1] [EASY]: What is the ESP8266 / ESP32 famous for in the IoT maker and industrial communities?
+  (A) Providing low-cost, high-performance 32-bit compute with integrated Wi-Fi and Bluetooth on a single SoC
+  (B) The first mechanical relay computer
+  (C) A supercomputer used for nuclear simulations
+  (D) A proprietary Apple chip
+Correct Answer: (A)
+Explanation: Espressif's ESP8266 and ESP32 revolutionised IoT by bundling Wi-Fi, Bluetooth, dual-core processors, and low-power sleep modes onto a sub-$3 module.
+
+Q_35 [Unit 1] [MEDIUM]: What is a Deep Sleep mode in battery-powered IoT microcontrollers?
+  (A) A power-saving state where the CPU core, clocks, and high-frequency peripherals are turned off, consuming microamperes ($\mu\text{A}$)
+  (B) A state where the screen turns black
+  (C) A computer crashing and restarting
+  (D) A software bug in the operating system
+Correct Answer: (A)
+Explanation: Deep sleep reduces current draw to $5 - 15\,\mu\text{A}$, allowing coin-cell powered sensors to run for years by waking up only briefly on timers or interrupts.
+
+Q_36 [Unit 1] [MEDIUM]: What is an 'Edge Compute Stack' in IoT data management?
+  (A) The software layers on edge gateways handling protocol parsing, data normalization, stream analytics, and local storage
+  (B) The physical stacking of server chassis in a rack
+  (C) A database index structure
+  (D) The list of employees managing servers
+Correct Answer: (A)
+Explanation: The Edge Compute Stack includes containerized microservices (Docker/EdgeX Foundry) executing local filtering, inference, and buffering close to the data source.
+
+Q_37 [Unit 1] [HARD]: In IoT data management, what is 'Complex Event Processing' (CEP)?
+  (A) Analyzing continuous streams of multiple sensor events in real-time to detect meaningful patterns, temporal sequences, and anomalies
+  (B) Backing up hard drives to magnetic tape
+  (C) Formatting an SD card
+  (D) Writing a simple SQL SELECT statement
+Correct Answer: (A)
+Explanation: CEP engines (e.g., Apache Flink, Esper) evaluate sliding time windows across heterogeneous streams to trigger instant alert thresholds.
+
+Q_38 [Unit 1] [MEDIUM]: What is the function of a Real-Time Operating System (RTOS) like FreeRTOS or Zephyr in IoT?
+  (A) Providing deterministic task scheduling, minimal interrupt latency, and tiny memory footprint for microcontrollers
+  (B) Running office productivity suites like Word and Excel
+  (C) Displaying 4K video animations
+  (D) Managing web hosting billing systems
+Correct Answer: (A)
+Explanation: An RTOS guarantees predictable execution timing (deterministic deadlines) and lightweight multithreading within kilobytes of RAM.
+
+Q_39 [Unit 1] [MEDIUM]: What is a Watchdog Timer (WDT) in IoT embedded nodes?
+  (A) A hardware timer that automatically resets the microcontroller if the firmware hangs, deadlocks, or crashes
+  (B) A digital clock on the wall of a data center
+  (C) A stopwatch used during athletic training
+  (D) A tool for measuring network latency
+Correct Answer: (A)
+Explanation: If the firmware fails to periodically reset ('kick') the Watchdog Timer due to an infinite loop or deadlock, the WDT triggers a full hardware reboot.
+
+Q_40 [Unit 1] [EASY]: What is Firmware Over-The-Air (FOTA) update in IoT deployments?
+  (A) Wireless transmission and flashing of new firmware binaries to remote IoT devices without requiring physical physical access
+  (B) Upgrading antennas with larger copper wires
+  (C) Broadcasting FM radio signals
+  (D) Replacing batteries manually
+Correct Answer: (A)
+Explanation: FOTA allows fleet operators to remotely patch security vulnerabilities, update algorithms, and fix bugs across millions of deployed devices.
+
+Q_41 [Unit 1] [HARD]: What is an 'A/B Partition' layout in robust IoT FOTA update architectures?
+  (A) Maintaining two independent flash memory partitions so the device can boot into the previous working firmware if the new update fails or gets corrupted
+  (B) Dividing sensor data into alpha and beta testing
+  (C) Formatting a disk with FAT32 and NTFS
+  (D) Splitting code between two developers
+Correct Answer: (A)
+Explanation: Dual-bank A/B partitioning prevents 'bricking' devices by allowing rollback to Partition B if the newly flashed Partition A fails cryptographic or boot checks.
+
+Q_42 [Unit 1] [HARD]: What is 'Sensor Fusion' in advanced IoT perception systems?
+  (A) Combining sensory data derived from disparate sources to produce information with less uncertainty than would be possible individually
+  (B) Physically melting two sensors together with heat
+  (C) Connecting two wires with solder
+  (D) Deleting duplicate sensor readings
+Correct Answer: (A)
+Explanation: Sensor fusion algorithms (e.g., Kalman Filters) integrate accelerometer, gyroscope, and magnetometer readings to compute precise 3D spatial orientation.
+
+Q_43 [Unit 1] [EASY]: What is an Inertial Measurement Unit (IMU)?
+  (A) An electronic device that measures and reports a body's specific force, angular rate, and magnetic field using accelerometers, gyroscopes, and magnetometers
+  (B) A device that measures room temperature
+  (C) A cloud server that stores financial logs
+  (D) A power supply regulator
+Correct Answer: (A)
+Explanation: IMUs are essential for tracking motion, robotics orientation, drone stability, and industrial vibration analytics.
+
+Q_44 [Unit 1] [MEDIUM]: What is a MEMS (Micro-Electro-Mechanical Systems) sensor?
+  (A) Microscopic integrated devices combining mechanical elements, sensors, and electronic circuits on a common silicon substrate
+  (B) A mechanical clock mechanism
+  (C) A large hydraulic industrial pump
+  (D) An optical fiber repeater
+Correct Answer: (A)
+Explanation: MEMS technology enables microscopic silicon gyroscopes, accelerometers, and pressure transducers to be mass-manufactured at pennies per chip.
+
+Q_45 [Unit 1] [MEDIUM]: What is the primary cause of battery degradation in outdoor IoT deployments?
+  (A) Extreme temperature fluctuations affecting battery chemistry and frequent un-throttled wireless radio transmissions
+  (B) Too many files saved on flash storage
+  (C) Dust accumulating on plastic enclosures
+  (D) Reading analog sensors too accurately
+Correct Answer: (A)
+Explanation: Wireless transmissions (radio Tx/Rx) consume $> 80\%$ of battery energy, and freezing/blistering temperatures severely degrade Li-ion/LiSOCl2 cell capacity.
+
+Q_46 [Unit 1] [MEDIUM]: What is Energy Harvesting in zero-power IoT nodes?
+  (A) Capturing ambient energy from the surrounding environment (solar, thermal gradients, vibrations, RF waves) to power the node without batteries
+  (B) Burning coal to generate electricity
+  (C) Plugging sensors into high-voltage wall outlets
+  (D) Charging batteries manually every night
+Correct Answer: (A)
+Explanation: Energy harvesting leverages ambient kinetic vibrations (piezoelectric), light (photovoltaic), or heat differentials (Peltier/Seebeck) for perpetual battery-less operation.
+
+Q_47 [Unit 1] [MEDIUM]: What is the primary advantage of Time-Series Databases (TSDB) like InfluxDB or TimescaleDB for IoT?
+  (A) Optimized for high-throughput write ingestion, compression, and time-bucket aggregations on timestamped sensor records
+  (B) They only store image files
+  (C) They do not require memory
+  (D) They are strictly written in JavaScript
+Correct Answer: (A)
+Explanation: TSDBs leverage specialized indexing and delta-of-delta compression to ingest and query millions of sequential sensor metrics per second efficiently.
+
+Q_48 [Unit 1] [EASY]: What is an Ambient Sensor?
+  (A) A sensor that measures external ambient environmental parameters (temperature, humidity, ambient light, air quality)
+  (B) A sensor that only works in musical theaters
+  (C) A sensor that monitors CPU fan speeds inside servers
+  (D) A microphone recording podcast audio
+Correct Answer: (A)
+Explanation: Ambient sensors track surrounding environmental parameters without directly contacting target physical substances.
+
+Q_49 [Unit 1] [MEDIUM]: What is a Digital Twin in IoT architecture?
+  (A) A dynamic virtual software replica of a physical asset, process, or system that mirrors its real-world telemetry and behavior in real-time
+  (B) Two identical physical sensors mounted on the same wall
+  (C) A backup copy of an operating system ISO
+  (D) A developer who writes code identical to another developer
+Correct Answer: (A)
+Explanation: A Digital Twin uses live sensor telemetry to simulate, analyze, predict, and optimize the operational state of physical machinery (e.g., jet engines, wind turbines).
+
+Q_50 [Unit 1] [HARD]: What constitutes the primary difference between Northbound and Southbound APIs in IoT gateways?
+  (A) Southbound APIs interface downward with physical sensors and field buses (Modbus, CAN, Zigbee); Northbound APIs interface upward with cloud platforms (MQTT, REST)
+  (B) Northbound interfaces with power supplies; Southbound interfaces with cooling
+  (C) Northbound is solely for Windows; Southbound is for Linux
+  (D) There is no distinction
+Correct Answer: (A)
+Explanation: In gateway engineering, Southbound protocols communicate down to constrained field devices, while Northbound protocols bridge aggregated data up to enterprise cloud systems.
+
+Q_51 [Unit 2] [EASY]: What is IEEE 802.15.4 in IoT network engineering?
+  (A) A technical standard defining the Physical layer and MAC sublayer for low-rate wireless personal area networks (LR-WPANs)
+  (B) A high-speed fiber optic networking standard
+  (C) A protocol for satellite television broadcasting
+  (D) A standard for USB-C cables
+Correct Answer: (A)
+Explanation: IEEE 802.15.4 is the fundamental PHY/MAC standard designed for low-power, low-data-rate, short-range wireless communications (basis for Zigbee, 6LoWPAN, Thread).
+
+Q_52 [Unit 2] [MEDIUM]: What is the typical maximum data rate of IEEE 802.15.4 at the 2.4 GHz ISM band?
+  (A) 250 kbps
+  (B) 54 Mbps
+  (C) 1 Gbps
+  (D) 10 kbps
+Correct Answer: (A)
+Explanation: At 2.4 GHz, IEEE 802.15.4 operates at a maximum data throughput of 250 kbps using O-QPSK modulation across 16 channels.
+
+Q_53 [Unit 2] [EASY]: What is 6LoWPAN?
+  (A) IPv6 over Low-Power Wireless Personal Area Networks
+  (B) A 6-node local area network
+  (C) A 64-bit encryption algorithm
+  (D) A low-power Bluetooth headset profile
+Correct Answer: (A)
+Explanation: 6LoWPAN (RFC 4944 / RFC 6282) provides an adaptation layer that enables IPv6 packets to be transmitted over constrained IEEE 802.15.4 frames.
+
+Q_54 [Unit 2] [HARD]: Why is an adaptation layer required by 6LoWPAN between IPv6 and IEEE 802.15.4?
+  (A) IPv6 requires an MTU of at least 1280 bytes, whereas IEEE 802.15.4 has a maximum physical payload size of only 127 bytes
+  (B) IPv6 uses letters while 802.15.4 only uses numbers
+  (C) To convert analog audio into digital packets
+  (D) Because IPv6 is owned by Microsoft
+Correct Answer: (A)
+Explanation: 6LoWPAN performs packet fragmentation, reassembly, and stateful header compression (compressing 40-byte IPv6 headers down to 2–4 bytes) to fit into 127-byte frames.
+
+Q_55 [Unit 2] [EASY]: What is Zigbee?
+  (A) A high-level communication protocol suite based on IEEE 802.15.4 used for low-power, low-bandwidth personal and home mesh networks
+  (B) A brand of cellular smartphone
+  (C) An operating system for supercomputers
+  (D) A programming language developed by Google
+Correct Answer: (A)
+Explanation: Zigbee builds Network and Application layers on top of IEEE 802.15.4, supporting self-healing mesh networking with up to 65,000 nodes.
+
+Q_56 [Unit 2] [MEDIUM]: What are the three device types in a Zigbee mesh network?
+  (A) Coordinator, Router, and End Device
+  (B) Master, Slave, and Repeater
+  (C) Server, Client, and Gateway
+  (D) Transmitter, Receiver, and Amplifier
+Correct Answer: (A)
+Explanation: Zigbee networks consist of exactly one Coordinator (forms network, stores keys), Routers (pass traffic, mains powered), and End Devices (sleep, battery powered).
+
+Q_57 [Unit 2] [MEDIUM]: What is LoRa (Long Range) and LoRaWAN?
+  (A) LoRa is a proprietary physical chirped spread-spectrum (CSS) modulation; LoRaWAN is the open MAC and network protocol standard for LPWANs
+  (B) LoRa is a software company; LoRaWAN is a hardware chip
+  (C) LoRa is a short-range infrared system
+  (D) A protocol used strictly inside computer motherboards
+Correct Answer: (A)
+Explanation: LoRa provides the physical radio modulation (Semtech); LoRaWAN governs the regional networking, star-of-stars topology, and encryption architecture.
+
+Q_58 [Unit 2] [EASY]: What is the typical communication range of LoRaWAN in rural vs urban environments?
+  (A) 10–15 km in rural open terrain; 2–5 km in dense urban environments
+  (B) 100 meters maximum
+  (C) 500 kilometers via satellite only
+  (D) 10 centimeters
+Correct Answer: (A)
+Explanation: LoRaWAN offers extraordinary link budgets ($> 150\,\text{dB}$) capable of spanning up to 15 kilometers in rural environments on low power.
+
+Q_59 [Unit 2] [EASY]: What is Bluetooth Low Energy (BLE / Bluetooth Smart)?
+  (A) A wireless personal area network technology designed for very low power consumption and duty cycles, distinct from classic Bluetooth
+  (B) A Bluetooth version that transmits uncompressed video
+  (C) A wired audio cable specification
+  (D) A protocol for automotive radar
+Correct Answer: (A)
+Explanation: BLE operates in the 2.4 GHz band, optimizing connection establishment ($< 3\,\text{ms}$) and low duty-cycle bursts to run on coin cells for years.
+
+Q_60 [Unit 2] [MEDIUM]: What is the Generic Attribute Profile (GATT) in BLE architecture?
+  (A) A service-and-characteristic hierarchy that defines how two BLE devices transfer data using Services, Characteristics, and Descriptors
+  (B) A graphical user interface layout manager
+  (C) A tool for calibrating antenna power
+  (D) A battery voltage testing algorithm
+Correct Answer: (A)
+Explanation: GATT governs the organization of data in BLE: a Server exposes Services (collections of data), which contain Characteristics (atomic values like Heart Rate).
+
+Q_61 [Unit 2] [EASY]: What is MQTT (Message Queuing Telemetry Transport)?
+  (A) A lightweight, publish-subscribe network protocol designed for constrained devices and low-bandwidth, high-latency, or unreliable networks
+  (B) A database management engine developed by Oracle
+  (C) A video conferencing protocol
+  (D) An encryption algorithm used in military radios
+Correct Answer: (A)
+Explanation: MQTT (invented by Andy Stanford-Clark and Arlen Nipper in 1999) runs over TCP/IP, featuring a tiny 2-byte fixed header ideal for telemetry.
+
+Q_62 [Unit 2] [MEDIUM]: What are the three Quality of Service (QoS) levels in MQTT?
+  (A) QoS 0 (At most once), QoS 1 (At least once), and QoS 2 (Exactly once)
+  (B) QoS Low, QoS Medium, and QoS High
+  (C) QoS 1 (Bronze), QoS 2 (Silver), QoS 3 (Gold)
+  (D) QoS Fast, QoS Normal, QoS Secure
+Correct Answer: (A)
+Explanation: MQTT QoS levels define delivery guarantees: QoS 0 (fire and forget), QoS 1 (acknowledged delivery, possible duplicates), QoS 2 (4-way handshake, no duplicates).
+
+Q_63 [Unit 2] [MEDIUM]: In MQTT, what is a 'Last Will and Testament' (LWT) message?
+  (A) A message registered with the broker during connection that the broker automatically publishes to a topic if the client disconnects ungracefully
+  (B) A legal document signed by the developer
+  (C) A notification sent when a battery reaches 0%
+  (D) A message that deletes all user data
+Correct Answer: (A)
+Explanation: If a client unexpectedly drops connection (TCP keepalive timeout), the Broker immediately broadcasts its pre-registered LWT message to notify subscribers of node failure.
+
+Q_64 [Unit 2] [MEDIUM]: What is the default unencrypted and encrypted port for standard MQTT traffic?
+  (A) Port 1883 (TCP) and Port 8883 (TLS/SSL)
+  (B) Port 80 and Port 443
+  (C) Port 21 and Port 22
+  (D) Port 3306 and Port 5432
+Correct Answer: (A)
+Explanation: MQTT standardizes port 1883 for cleartext TCP traffic and port 8883 for secure TLS/SSL encrypted traffic.
+
+Q_65 [Unit 2] [EASY]: What is CoAP (Constrained Application Protocol)?
+  (A) A specialized web transfer protocol for constrained nodes and constrained networks, designed as a lightweight UDP alternative to HTTP
+  (B) A protocol for streaming high-definition television
+  (C) A compiler optimization tool
+  (D) A proprietary Cisco firewall standard
+Correct Answer: (A)
+Explanation: CoAP (RFC 7252) provides a RESTful request/response model over UDP, using tiny 4-byte binary headers and optional asynchronous transaction tracking.
+
+Q_66 [Unit 2] [MEDIUM]: Why does CoAP use UDP as its default transport layer instead of TCP?
+  (A) To eliminate the three-way handshake overhead, packet size bloat, and connection state maintenance of TCP on constrained microcontrollers
+  (B) Because UDP has better encryption than TCP
+  (C) Because TCP was discontinued in 2020
+  (D) Because UDP guarantees zero packet loss
+Correct Answer: (A)
+Explanation: TCP's connection-oriented handshake, keepalive packets, and heavy sliding window state overhead overwhelm 8-bit/16-bit microcontrollers, making UDP ideal.
+
+Q_67 [Unit 2] [MEDIUM]: What are the four message types supported by CoAP?
+  (A) Confirmable (CON), Non-confirmable (NON), Acknowledgement (ACK), and Reset (RST)
+  (B) Get, Post, Put, and Delete
+  (C) Start, Stop, Pause, and Resume
+  (D) Request, Response, Error, and Terminate
+Correct Answer: (A)
+Explanation: CoAP provides reliability over UDP via message types: CON requires an ACK; NON is unacknowledged; RST indicates error or rejection.
+
+Q_68 [Unit 2] [HARD]: What is the 'Observe' option (RFC 7641) in CoAP?
+  (A) An extension that allows clients to subscribe to a resource, receiving asynchronous state notifications whenever the resource changes
+  (B) A feature that activates video streaming
+  (C) A debugging tool for inspecting memory
+  (D) A function that measures Wi-Fi signal strength
+Correct Answer: (A)
+Explanation: CoAP Observe inverts standard REST polling into a publish-subscribe-like notification stream over a single GET request.
+
+Q_69 [Unit 2] [HARD]: What is RPL (Routing Protocol for Low-Power and Lossy Networks)?
+  (A) A distance-vector routing protocol for LLNs that constructs Destination-Oriented Directed Acyclic Graphs (DODAGs) rooted at border routers
+  (B) A protocol for routing video over 5G networks
+  (C) A database query optimizer
+  (D) A high-speed optical fiber protocol
+Correct Answer: (A)
+Explanation: RPL (RFC 6550) is the IETF standard routing protocol for 6LoWPAN mesh networks, organizing nodes into hierarchical DODAG topologies.
+
+Q_70 [Unit 2] [HARD]: What is an 'Objective Function' (OF) in RPL routing?
+  (A) A mathematical specification that dictates how routing metrics (link quality, hop count, residual node energy) are translated into node rank
+  (B) The business goal of a company
+  (C) A function that cleans noisy sensor data
+  (D) A C++ compiler optimization flag
+Correct Answer: (A)
+Explanation: The Objective Function (e.g., MRHOF based on Expected Transmission Count - ETX) calculates node 'Rank', ensuring packets flow along optimal paths toward the root.
+
+Q_71 [Unit 2] [MEDIUM]: What is NB-IoT (Narrowband IoT)?
+  (A) A 3GPP cellular LPWAN radio standard deployed on licensed cellular spectrum bands (200 kHz bandwidth) for massive machine-type communications
+  (B) A local Wi-Fi protocol for laptops
+  (C) A short-range infrared remote protocol
+  (D) A satellite communications standard
+Correct Answer: (A)
+Explanation: NB-IoT operates on licensed cellular carriers (in-band, guard-band, or standalone 200 kHz channels), delivering deep underground signal penetration and 10-year battery life.
+
+Q_72 [Unit 2] [MEDIUM]: What is LTE-M (Long Term Evolution for Machines / Cat-M1)?
+  (A) A 3GPP cellular standard offering higher bandwidth (up to 1 Mbps), voice support (VoLTE), and seamless mobility compared to NB-IoT
+  (B) A legacy 2G protocol
+  (C) An operating system developed for automobiles
+  (D) A wired fiber standard
+Correct Answer: (A)
+Explanation: LTE-M operates on 1.4 MHz bandwidth, supporting mobile connected assets (fleet tracking, wearable devices) with handover between cell towers.
+
+Q_73 [Unit 2] [MEDIUM]: What is the primary difference between LoRaWAN and NB-IoT regarding spectrum licensing?
+  (A) LoRaWAN operates in unlicensed ISM bands (868 MHz in Europe, 915 MHz in US); NB-IoT operates in licensed cellular operator spectrum
+  (B) LoRaWAN requires buying expensive FCC licenses; NB-IoT is free
+  (C) Both operate on 5 GHz Wi-Fi bands
+  (D) Neither uses radio waves
+Correct Answer: (A)
+Explanation: LoRaWAN uses license-free industrial scientific and medical (ISM) frequencies, while NB-IoT requires commercial telecom cellular SIM cards and subscription plans.
+
+Q_74 [Unit 2] [MEDIUM]: What is AMQP (Advanced Message Queuing Protocol)?
+  (A) An open standard application layer protocol for message-oriented middleware, providing queuing, topic routing, and transactional message delivery
+  (B) A protocol for controlling drone motors
+  (C) A software program for video streaming
+  (D) A legacy dial-up modem standard
+Correct Answer: (A)
+Explanation: AMQP (used in RabbitMQ, Azure Service Bus) provides enterprise-grade message queuing, flexible exchange routing, and robust guaranteed delivery for IoT backends.
+
+Q_75 [Unit 2] [MEDIUM]: What is XMPP (Extensible Messaging and Presence Protocol) in IoT?
+  (A) An open XML-based communication protocol for real-time messaging, presence tracking, and multi-party chat adapted for IoT device communication
+  (B) A programming language used in web browsers
+  (C) A protocol for printing documents over a network
+  (D) A high-speed database protocol
+Correct Answer: (A)
+Explanation: Originally developed for instant messaging (Jabber), XMPP's decentralized architecture and presence management are used for smart home and connected device automation.
+
+Q_76 [Unit 2] [MEDIUM]: What is the Maximum Transmission Unit (MTU) of an IEEE 802.15.4 frame at the PHY layer?
+  (A) 127 octets (bytes)
+  (B) 1500 bytes
+  (C) 64 kilobytes
+  (D) 512 bytes
+Correct Answer: (A)
+Explanation: The physical layer payload (PSDU) of IEEE 802.15.4 is strictly constrained to a maximum of 127 bytes.
+
+Q_77 [Unit 2] [MEDIUM]: What is CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)?
+  (A) A channel access protocol where nodes listen to the shared wireless medium before transmitting, backing off randomly if the channel is busy
+  (B) A routing protocol for finding shortest paths
+  (C) An encryption algorithm used in military radios
+  (D) A method for charging batteries
+Correct Answer: (A)
+Explanation: CSMA/CA avoids destructive simultaneous transmissions on shared RF frequencies by sensing carrier energy and executing exponential random backoff delays.
+
+Q_78 [Unit 2] [MEDIUM]: What is Thread in smart home IoT networking?
+  (A) An IPv6-based, low-power, secure mesh networking technology built on IEEE 802.15.4 and 6LoWPAN (used heavily in the Matter standard)
+  (B) A multithreading feature in the Linux kernel
+  (C) A high-speed fiber optic cable
+  (D) A programming framework developed by Apple
+Correct Answer: (A)
+Explanation: Thread provides self-healing, border-routed IPv6 mesh connectivity for smart home devices without requiring proprietary hubs.
+
+Q_79 [Unit 2] [EASY]: What is Matter in modern IoT home automation?
+  (A) A unified, royalty-free application layer connectivity standard that enables cross-compatibility across Apple Home, Google Home, Amazon Alexa, and Samsung SmartThings
+  (B) A physical material used to fabricate microchips
+  (C) A software tool for compressing video
+  (D) A cloud storage database
+Correct Answer: (A)
+Explanation: Matter (developed by the CSA) runs over Thread, Wi-Fi, and Ethernet, eliminating ecosystem fragmentation across consumer smart home vendors.
+
+Q_80 [Unit 2] [MEDIUM]: What is Modbus in industrial automation?
+  (A) A legacy serial master/slave communication protocol (RS-485 / TCP) widely used for connecting industrial electronic devices to PLCs and SCADA systems
+  (B) A modern JavaScript web framework
+  (C) A relational database management system
+  (D) A deep learning neural network library
+Correct Answer: (A)
+Explanation: Developed by Modicon in 1979, Modbus remains the universal standard for reading registers and coils across industrial factory instrumentation.
+
+Q_81 [Unit 2] [MEDIUM]: What is the CAN bus (Controller Area Network)?
+  (A) A robust vehicle bus standard designed to allow microcontrollers and electronic control units (ECUs) to communicate without a host computer
+  (B) A public Wi-Fi network in bus terminals
+  (C) A protocol for sending text messages between phones
+  (D) An enterprise cloud database service
+Correct Answer: (A)
+Explanation: Invented by Robert Bosch, CAN bus uses differential signaling (CAN High / CAN Low) to provide noise-immune, real-time message priority routing in automobiles.
+
+Q_82 [Unit 2] [MEDIUM]: What is an IP Gateway vs a Protocol Translation Gateway?
+  (A) An IP gateway simply routes IP packets between subnets; a protocol translation gateway converts non-IP application payloads (e.g., Modbus to MQTT)
+  (B) An IP gateway is made of metal; a translation gateway is software
+  (C) They are identical in every way
+  (D) An IP gateway cannot connect to the internet
+Correct Answer: (A)
+Explanation: Simple gateways perform layer 3 packet routing; protocol translation gateways terminate non-IP serial/mesh protocols and construct new IP payloads for cloud ingestion.
+
+Q_83 [Unit 2] [HARD]: In LoRaWAN network architecture, what is the role of a 'Gateway'?
+  (A) A transparent packet forwarder that receives RF packets from end nodes and encapsulates them into IP packets for the central Network Server
+  (B) A device that decrypts all application data
+  (C) A battery charger for sensors
+  (D) A device that stores all user passwords
+Correct Answer: (A)
+Explanation: LoRaWAN gateways are dumb forwarders: they demodulate radio chirps and send raw encrypted frames over cellular/Ethernet to the Network Server.
+
+Q_84 [Unit 2] [HARD]: What are the three device classes in LoRaWAN (Class A, Class B, Class C)?
+  (A) Class A (Lowest power, downlink only after uplink), Class B (Scheduled downlink ping slots), Class C (Continuous listening, highest power)
+  (B) Class A (Fastest), Class B (Medium), Class C (Slowest)
+  (C) Class A (Commercial), Class B (Government), Class C (Military)
+  (D) Class A (Wired), Class B (Wireless), Class C (Optical)
+Correct Answer: (A)
+Explanation: LoRaWAN classes trade off downlink responsiveness against battery life: Class A opens receive windows only after transmitting; Class C listens continuously on mains power.
+
+Q_85 [Unit 2] [HARD]: What is Duty Cycle regulation in European ISM bands (868 MHz)?
+  (A) Legal restriction limiting a device to transmitting on a given frequency for at most 1% of the time (36 seconds per hour)
+  (B) The clock speed of the microcontroller
+  (C) The percentage of time a battery takes to charge
+  (D) The warranty lifespan of a sensor
+Correct Answer: (A)
+Explanation: European ETSI regulations enforce a strict 1% duty cycle limit on 868 MHz channels to prevent rogue transmitters from permanently jamming the shared unlicensed radio spectrum.
+
+Q_86 [Unit 2] [HARD]: What is Spreading Factor (SF) in LoRa modulation?
+  (A) The ratio between the chip rate and symbol rate (SF7 to SF12), trading off data rate for receiver sensitivity and communication range
+  (B) The physical width of the antenna
+  (C) The number of users connected to a gateway
+  (D) The speed of light in optical cables
+Correct Answer: (A)
+Explanation: Higher spreading factors (e.g., SF12) increase range and signal-to-noise tolerance by stretching symbols over time, at the expense of lower bitrates and higher battery consumption.
+
+Q_87 [Unit 2] [MEDIUM]: What is Adaptive Data Rate (ADR) in LoRaWAN?
+  (A) A mechanism where the network server dynamically optimizes each node's Spreading Factor and Tx power based on radio link quality
+  (B) A tool that increases internet download speeds on phones
+  (C) A feature that automatically pays monthly cellular bills
+  (D) An antenna rotation motor
+Correct Answer: (A)
+Explanation: ADR instructs nodes close to a gateway to use lower spreading factors (SF7) and reduced transmit power, maximizing battery lifespan and network capacity.
+
+Q_88 [Unit 2] [MEDIUM]: What is BLE Advertising in Beacon technology (e.g., iBeacon, Eddystone)?
+  (A) Periodic broadcast of short identification packets on dedicated advertising channels (Channels 37, 38, 39) without establishing a paired connection
+  (B) Pop-up advertisements displayed in web browsers
+  (C) Sending spam emails to customers
+  (D) Playing audio commercials over Bluetooth speakers
+Correct Answer: (A)
+Explanation: Beacons broadcast proximity telemetry (UUID, Major, Minor, Tx Power) allowing nearby smartphones to calculate localized indoor positioning.
+
+Q_89 [Unit 2] [MEDIUM]: What is the maximum payload size of a legacy BLE 4.x advertising packet?
+  (A) 31 bytes
+  (B) 1500 bytes
+  (C) 1024 bytes
+  (D) 64 bytes
+Correct Answer: (A)
+Explanation: Legacy BLE advertising packets are strictly constrained to 31 bytes total (including AD structures for flags, device name, and manufacturer data).
+
+Q_90 [Unit 2] [HARD]: What improvement was introduced in Bluetooth 5.0 for IoT long-range deployments?
+  (A) Coded PHY (125 kbps and 500 kbps) utilizing Forward Error Correction (FEC) to achieve ranges up to 1 kilometer
+  (B) Replacing radio waves with infrared light
+  (C) Requiring wired ethernet cables
+  (D) Eliminating encryption entirely
+Correct Answer: (A)
+Explanation: Bluetooth 5 Coded PHY incorporates convolutional forward error correction (S=2 and S=8 coding), multiplying radio range by up to $4\times$ at low bitrates.
+
+Q_91 [Unit 2] [MEDIUM]: What is MQTT-SN (MQTT for Sensor Networks)?
+  (A) An adaptation of MQTT designed specifically for non-TCP, low-bandwidth, high-latency wireless networks (e.g., Zigbee) running over UDP
+  (B) A secure version of MQTT that runs on satellites
+  (C) A protocol used strictly inside social media platforms
+  (D) An operating system for sensors
+Correct Answer: (A)
+Explanation: MQTT-SN replaces variable-length UTF-8 topic strings with 2-byte Topic IDs and runs seamlessly over UDP, avoiding TCP connection state overhead.
+
+Q_92 [Unit 2] [MEDIUM]: What is the primary role of a 'Keep-Alive' timer in MQTT communication?
+  (A) The maximum time interval that can elapse between messages from a client before the broker assumes the connection is lost
+  (B) The lifespan of the physical hardware chip
+  (C) The duration of battery charging cycles
+  (D) The frequency of data backups
+Correct Answer: (A)
+Explanation: If no application data is published within the Keep-Alive interval, the client sends a 2-byte `PINGREQ` packet, and the broker confirms with `PINGRESP` to keep the TCP socket open.
+
+Q_93 [Unit 2] [MEDIUM]: What is JSON-LD and CBOR in IoT data serialization?
+  (A) JSON-LD provides linked data semantics; CBOR (Concise Binary Object Representation) provides ultra-compact binary encoding of JSON data structures
+  (B) They are legacy programming languages
+  (C) They are antenna design tools
+  (D) They are database backup formats
+Correct Answer: (A)
+Explanation: CBOR (RFC 8949) shrinks JSON payloads into compact binary byte streams, drastically slashing packet size and transmission energy on constrained wireless links.
+
+Q_94 [Unit 2] [EASY]: What is a Mesh Network Topology in IoT?
+  (A) A network topology where nodes connect directly, dynamically, and non-hierarchically to as many other nodes as possible, relaying data cooperatively
+  (B) A network where every node connects to one central server
+  (C) A network where nodes form a single linear chain
+  (D) A network with no wireless connections
+Correct Answer: (A)
+Explanation: Mesh topologies eliminate single points of failure by allowing packets to hop across intermediate peer nodes to reach a border router or gateway.
+
+Q_95 [Unit 2] [MEDIUM]: What is a Star-of-Stars Network Topology in LoRaWAN?
+  (A) End devices communicate over single-hop LoRa links to multiple gateways, which in turn connect over standard IP networks to a central Network Server
+  (B) All nodes are connected in a circle
+  (C) Sensors communicate with each other in a peer-to-peer mesh
+  (D) Every device has its own private satellite
+Correct Answer: (A)
+Explanation: In LoRaWAN, end-devices do not mesh; they broadcast packets that are received by all listening gateways in range, which forward them to the central Network Server.
+
+Q_96 [Unit 2] [HARD]: What is the IEEE standard for Wi-Fi HaLow designed for IoT?
+  (A) IEEE 802.11ah
+  (B) IEEE 802.11ax
+  (C) IEEE 802.11b
+  (D) IEEE 802.11ac
+Correct Answer: (A)
+Explanation: Wi-Fi HaLow (802.11ah) operates in sub-1 GHz unlicensed bands, delivering longer range ($> 1\,\text{km}$) and lower power consumption than traditional 2.4/5 GHz Wi-Fi.
+
+Q_97 [Unit 2] [MEDIUM]: In MQTT, what is a 'Topic Filter' containing wildcard characters?
+  (A) Using `+` for single-level wildcard matching and `#` for multi-level wildcard matching across topic hierarchies
+  (B) Using `*` and `?` as in regular operating system shells
+  (C) Using `%` and `_` as in SQL queries
+  (D) MQTT does not support topic wildcards
+Correct Answer: (A)
+Explanation: `sensor/+/temperature` matches `sensor/kitchen/temperature`; `sensor/#` matches all subordinate topics under `sensor/`.
+
+Q_98 [Unit 2] [MEDIUM]: What is 'Retained Message' in MQTT broker functionality?
+  (A) A message flagged by the publisher that the broker permanently stores and immediately delivers to any new client that subscribes to that topic
+  (B) A message that is never deleted under any circumstance
+  (C) A message that is encrypted with a secret password
+  (D) A message that is sent only once a year
+Correct Answer: (A)
+Explanation: Retained messages ensure new subscribers immediately receive the most recent known good status value (e.g., current light state) without waiting for the next publishing event.
+
+Q_99 [Unit 2] [HARD]: What is the function of the CoAP Block-Wise Transfer (RFC 7959) extension?
+  (A) Enables fragmented transmission of payloads larger than the network MTU across multiple atomic CoAP request-response pairs without requiring IP fragmentation
+  (B) A method for blocking malicious IP addresses
+  (C) A tool for deleting corrupt database blocks
+  (D) An encryption algorithm
+Correct Answer: (A)
+Explanation: Block-wise transfer (Block1 for request payloads, Block2 for response payloads) splits large resources into discrete chunks managed at the application layer.
+
+Q_100 [Unit 2] [MEDIUM]: What is an Industrial Fieldbus?
+  (A) A family of industrial computer network protocols used for real-time distributed control in manufacturing plants (e.g., Profibus, Foundation Fieldbus, Modbus)
+  (B) A highway reserved for industrial utility trucks
+  (C) A high-speed public internet provider
+  (D) A server room cooling duct
+Correct Answer: (A)
+Explanation: Fieldbuses replace point-to-point analog 4–20 mA wiring loops with multidrop digital communication networks connecting PLCs, sensors, and actuators.
+
+Q_101 [Unit 3] [EASY]: What is the primary role of Data Analytics in IoT systems?
+  (A) Transforming raw, heterogeneous sensor telemetry streams into actionable operational intelligence and predictive decisions
+  (B) Printing physical paper invoices for customers
+  (C) Manufacturing electronic sensors in cleanrooms
+  (D) Installing copper network cables in buildings
+Correct Answer: (A)
+Explanation: Without analytics, raw sensor readings (millions of integers) are meaningless; analytics uncovers trends, anomalies, and equipment failure precursors.
+
+Q_102 [Unit 3] [MEDIUM]: What are the four recognized stages of IoT Analytics maturity?
+  (A) Descriptive (What happened?), Diagnostic (Why did it happen?), Predictive (What will happen?), and Prescriptive (What should we do?)
+  (B) Input, Output, Processing, and Storage
+  (C) Alpha, Beta, Release, and Deprecation
+  (D) Local, Regional, National, and Global
+Correct Answer: (A)
+Explanation: Gartner's analytics maturity model progresses from descriptive hindsight to predictive foresight and automated prescriptive optimization.
+
+Q_103 [Unit 3] [MEDIUM]: What is Edge Streaming Analytics in IoT architectures?
+  (A) Executing real-time machine learning inference, statistical filtering, and threshold alerting directly on edge gateways without cloud latency
+  (B) Streaming video games to television monitors
+  (C) Downloading music albums over broadband
+  (D) Recording audio podcasts on computers
+Correct Answer: (A)
+Explanation: Edge streaming analytics processes data in motion (in-memory) at the network periphery to provide sub-millisecond reaction times for safety-critical systems.
+
+Q_104 [Unit 3] [MEDIUM]: What is Apache Kafka's role in large-scale IoT data architectures?
+  (A) A distributed event streaming platform functioning as a fault-tolerant, high-throughput pub/sub ingestion buffer between IoT devices and analytics engines
+  (B) A relational database management system like MySQL
+  (C) An operating system for smart sensors
+  (D) A programming language developed by Apache
+Correct Answer: (A)
+Explanation: Kafka ingests millions of concurrent sensor messages per second into partition-ordered, persistent topic logs, decoupling producers from consumer microservices.
+
+Q_105 [Unit 3] [HARD]: What is 'Concept Drift' in IoT machine learning models?
+  (A) The statistical degradation of an ML model's predictive accuracy over time as physical environmental conditions or sensor hardware characteristics change
+  (B) A drone physically drifting off course in the wind
+  (C) A programmer changing their mind about a feature
+  (D) A computer monitor losing color calibration
+Correct Answer: (A)
+Explanation: Sensors physically degrade, seasons change, and industrial machinery wears down, causing input feature distributions ($P(X)$ or $P(Y|X)$) to shift away from training baselines.
+
+Q_106 [Unit 3] [MEDIUM]: What is Apache Spark Streaming (or Structured Streaming) used for in IoT?
+  (A) Scalable, fault-tolerant distributed stream processing that processes live IoT event streams using micro-batching or continuous processing engines
+  (B) Displaying 3D animations in web browsers
+  (C) Compiling C programs into assembly code
+  (D) Formatting hard drives in data centers
+Correct Answer: (A)
+Explanation: Spark Streaming processes live data streams from Kafka or Flume, applying complex window aggregations, joins, and machine learning models at massive scale.
+
+Q_107 [Unit 3] [HARD]: What is the difference between a Tumbling Window and a Sliding Window in stream analytics?
+  (A) Tumbling windows are fixed-size, non-overlapping, contiguous time intervals; Sliding windows advance by an interval smaller than window size and overlap
+  (B) Tumbling windows rotate in circles; sliding windows move straight
+  (C) Tumbling windows are for video; sliding windows are for audio
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: A 5-minute tumbling window evaluates data every 5 minutes with zero overlap; a 5-minute sliding window with a 1-minute slide recalculates metrics every minute.
+
+Q_108 [Unit 3] [EASY]: What is Anomaly Detection in industrial IoT sensor analytics?
+  (A) Identifying unusual patterns, outliers, or deviations in telemetry streams that do not conform to expected operational equipment behavior
+  (B) Deleting corrupted sensor records from databases
+  (C) Resetting microcontrollers when they overheat
+  (D) Calibrating temperature readings to Fahrenheit
+Correct Answer: (A)
+Explanation: Anomaly detection flags abnormal vibration spikes or pressure drops that signal imminent mechanical component failure before catastrophic breakdown occurs.
+
+Q_109 [Unit 3] [MEDIUM]: Which unsupervised machine learning algorithm is widely used for anomaly detection in multi-sensor telemetry?
+  (A) Isolation Forest
+  (B) Linear Search
+  (C) Bubble Sort
+  (D) Round-Robin Scheduling
+Correct Answer: (A)
+Explanation: Isolation Forest isolates anomalies by randomly selecting a feature and split value; anomalous points require far fewer recursive partitions to isolate than normal points.
+
+Q_110 [Unit 3] [HARD]: What is an Autoencoder neural network and how is it used for IoT anomaly detection?
+  (A) A neural network trained to compress and reconstruct normal sensor patterns; high reconstruction error on new inputs flags an operational anomaly
+  (B) A robot that automatically writes code
+  (C) A computer program that repairs broken sensors
+  (D) A network router that forwards packets
+Correct Answer: (A)
+Explanation: Autoencoders learn the latent manifold of normal operational telemetry. When an anomaly occurs, the network fails to reconstruct it accurately, resulting in a spike in reconstruction loss.
+
+Q_111 [Unit 3] [EASY]: What is Predictive Maintenance (PdM) in Industrial IoT (IIoT)?
+  (A) Techniques designed to predict exactly when an in-service physical machine will fail so maintenance can be performed just before failure occurs
+  (B) Fixing machines only after they catastrophically break down
+  (C) Replacing every part on a fixed calendar schedule regardless of wear
+  (D) Cleaning factory floors daily
+Correct Answer: (A)
+Explanation: Predictive maintenance uses vibration, acoustic, and thermal telemetry with machine learning to replace parts based on actual wear, preventing unscheduled downtime.
+
+Q_112 [Unit 3] [MEDIUM]: What is Remaining Useful Life (RUL) in predictive maintenance?
+  (A) The estimated operational time, cycles, or mileage remaining before an industrial physical component ceases to perform its intended function safely
+  (B) The expiration date printed on a battery
+  (C) The warranty period of a computer
+  (D) The lifespan of the software operating system
+Correct Answer: (A)
+Explanation: RUL estimation models (using survival analysis, LSTM networks, or degradation regression) tell engineers how many hours or flight cycles a turbine has before failure.
+
+Q_113 [Unit 3] [HARD]: What is Fast Fourier Transform (FFT) used for in vibration sensor analytics?
+  (A) Transforming time-domain vibration signals into frequency-domain spectra to identify characteristic mechanical fault frequencies (bearings, gears)
+  (B) Compressing video files for streaming
+  (C) Encrypting database passwords
+  (D) Formatting flash memory drives
+Correct Answer: (A)
+Explanation: FFT decomposes complex time-domain accelerometer waveforms into constituent frequencies, exposing bearing ball-pass frequencies (BPFO/BPFI) that indicate micro-cracks.
+
+Q_114 [Unit 3] [MEDIUM]: What is Network Analytics in IoT infrastructure management?
+  (A) Analyzing network telemetry (packet loss, latency, jitter, RSSI, SNR) to diagnose wireless communication degradation and optimize routing
+  (B) Counting the number of websites visited by employees
+  (C) Measuring the physical length of ethernet cables
+  (D) Designing graphic logos for telecom companies
+Correct Answer: (A)
+Explanation: Network analytics monitors the health, coverage quality, and traffic congestion of distributed IoT mesh and LPWAN infrastructure.
+
+Q_115 [Unit 3] [MEDIUM]: What is Received Signal Strength Indicator (RSSI) in wireless IoT diagnostics?
+  (A) A measurement of the estimated power level (in dBm, typically negative) present in a received radio signal
+  (B) The battery voltage of the transmitter
+  (C) The speed of the network router in megabits
+  (D) The price of the wireless antenna
+Correct Answer: (A)
+Explanation: RSSI indicates radio link quality: a value of $-50\,\text{dBm}$ indicates excellent signal, while $-115\,\text{dBm}$ is near the receiver sensitivity threshold.
+
+Q_116 [Unit 3] [MEDIUM]: What is Signal-to-Noise Ratio (SNR) in wireless IoT?
+  (A) The ratio of the power of a wanted signal to the background noise power corrupting the signal (expressed in decibels)
+  (B) The volume level of audio speakers
+  (C) The ratio of working sensors to broken sensors
+  (D) The speed of the processor divided by memory size
+Correct Answer: (A)
+Explanation: Positive SNR indicates the signal is stronger than ambient RF noise; LoRa modulation can demodulate signals down to $-20\,\text{dB}$ SNR below the noise floor.
+
+Q_117 [Unit 3] [MEDIUM]: What is TinyML in edge IoT analytics?
+  (A) A field of machine learning focused on deploying ultra-low-power ML models on resource-constrained microcontrollers consuming milliwatts of power
+  (B) A very small database developed by Microsoft
+  (C) A simplified version of Python for children
+  (D) A tool for compressing text documents
+Correct Answer: (A)
+Explanation: TinyML frameworks (TensorFlow Lite for Microcontrollers, Edge Impulse) quantize neural networks (INT8) to run real-time inference on ARM Cortex-M microcontrollers.
+
+Q_118 [Unit 3] [HARD]: What is Quantization in deep learning edge model optimization?
+  (A) Converting 32-bit floating-point weights (FP32) to 8-bit integers (INT8) to reduce model memory footprint by 75% and accelerate integer arithmetic
+  (B) Deleting half of the layers in a neural network
+  (C) Training a model for twice as many epochs
+  (D) Converting Python code into JavaScript
+Correct Answer: (A)
+Explanation: Post-training quantization dramatically reduces flash memory footprint and execution latency on MCUs without hardware floating-point units (FPUs).
+
+Q_119 [Unit 3] [HARD]: What is Pruning in neural network compression for IoT edge devices?
+  (A) Removing non-essential, redundant weight connections and neurons that contribute minimally to model accuracy to create sparse, compact networks
+  (B) Deleting outdated training data files
+  (C) Turning off the power supply to the computer
+  (D) Disconnecting redundant network cables
+Correct Answer: (A)
+Explanation: Weight pruning eliminates up to 80% of parameters in convolutional and dense layers, slashing storage requirements and multiply-accumulate (MAC) operations.
+
+Q_120 [Unit 3] [MEDIUM]: What is Federated Learning in distributed IoT analytics?
+  (A) A decentralized machine learning framework where edge devices train models locally on private data and share only model weight updates with a central server
+  (B) Storing all data on one central government computer
+  (C) A company purchasing multiple cloud providers
+  (D) A legal agreement between universities
+Correct Answer: (A)
+Explanation: Federated Learning preserves user privacy by training models locally on smartphones or edge gateways, transmitting only mathematical gradients to the cloud aggregator.
+
+Q_121 [Unit 3] [HARD]: What is Apache Flink in IoT real-time stream processing?
+  (A) An open-source distributed processing framework designed for stateful computations over unbounded and bounded data streams with event-time semantics
+  (B) A tool for editing video files
+  (C) A database for storing user passwords
+  (D) A web browser developed by the Apache foundation
+Correct Answer: (A)
+Explanation: Flink provides true event-driven stream processing with sub-second latency, exact-once state consistency, and robust out-of-order event handling via watermarks.
+
+Q_122 [Unit 3] [HARD]: What is a 'Watermark' in stream processing analytics?
+  (A) A temporal mechanism used to track event-time progress and determine when all data up to a certain point in time has arrived for a sliding window
+  (B) A copyright logo stamped on images
+  (C) A sensor that detects water leaks on factory floors
+  (D) A measurement of network cable dampness
+Correct Answer: (A)
+Explanation: Watermarks tell the stream engine (e.g., Flink) that no further events with timestamps older than $t$ will arrive, allowing the engine to close and compute windows.
+
+Q_123 [Unit 3] [EASY]: What is a Confusion Matrix in predictive classification evaluation for IoT?
+  (A) A specific table layout that visualizes the performance of an algorithm (True Positives, False Positives, True Negatives, False Negatives)
+  (B) A mathematical error in an equation
+  (C) A database that has become corrupted
+  (D) A disorganized network diagram
+Correct Answer: (A)
+Explanation: The confusion matrix tabulates predicted classes against ground-truth labels, serving as the basis for calculating precision, recall, and F1-score.
+
+Q_124 [Unit 3] [MEDIUM]: Why is Recall often prioritized over Precision in IoT predictive maintenance?
+  (A) Because failing to predict a catastrophic machine failure (False Negative) is far more costly and hazardous than an unnecessary preventive inspection (False Positive)
+  (B) Because Precision is too difficult to calculate
+  (C) Because Recall uses smaller numbers
+  (D) Because False Positives destroy machinery
+Correct Answer: (A)
+Explanation: In safety and industrial monitoring, missing a true breakdown can cause millions in damage or fatalities, making high recall (minimizing False Negatives) paramount.
+
+Q_125 [Unit 3] [MEDIUM]: What is the F1-Score in machine learning analytics?
+  (A) The harmonic mean of Precision and Recall, providing a balanced metric for evaluating models on imbalanced datasets
+  (B) The highest grade awarded to an algorithm
+  (C) The speed of the computer in gigahertz
+  (D) The percentage of memory used by the program
+Correct Answer: (A)
+Explanation: $$F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$; penalizes models that sacrifice one metric to artificially inflate the other.
+
+Q_126 [Unit 3] [EASY]: What is Time-Series Forecasting in energy grid IoT management?
+  (A) Predicting future electrical demand and renewable energy generation using historical load telemetry and weather features (ARIMA, Prophet, LSTM)
+  (B) Measuring current electricity voltage with a voltmeter
+  (C) Turning off street lights at night
+  (D) Printing electric utility bills
+Correct Answer: (A)
+Explanation: Forecasting algorithms anticipate peak load demand hours in advance, allowing grid operators to balance battery storage and spin up peaker plants efficiently.
+
+Q_127 [Unit 3] [MEDIUM]: What is an LSTM (Long Short-Term Memory) neural network?
+  (A) A recurrent neural network (RNN) architecture equipped with gating mechanisms (input, forget, output gates) capable of learning long-term temporal dependencies in sensor time-series
+  (B) A type of physical RAM memory stick
+  (C) A flash storage drive used in digital cameras
+  (D) A computer processor manufactured by Intel
+Correct Answer: (A)
+Explanation: LSTMs mitigate the vanishing gradient problem of vanilla RNNs, making them the standard deep learning model for sequential telemetry prediction.
+
+Q_128 [Unit 3] [HARD]: What is Mean Absolute Scaled Error (MASE) in time-series forecasting?
+  (A) A scale-independent forecast accuracy metric comparing the forecast error against a naive one-step random-walk persistence baseline
+  (B) A measurement of sensor physical dimensions
+  (C) A database query execution time metric
+  (D) The percentage of dropped network packets
+Correct Answer: (A)
+Explanation: MASE $< 1$ indicates that the predictive model outperforms a naive persistence forecast (predicting that the next value equals the current value).
+
+Q_129 [Unit 3] [MEDIUM]: What is Apache NiFi used for in IoT data ingestion?
+  (A) An easy-to-use, powerful, and reliable system to process, route, and distribute data across enterprise systems using a visual drag-and-drop web UI
+  (B) A tool for drawing computer graphics
+  (C) An operating system for gaming computers
+  (D) An encryption algorithm for Wi-Fi passwords
+Correct Answer: (A)
+Explanation: NiFi automates data movement between heterogeneous edge protocols, cloud stores, and message queues with visual flow management and detailed data provenance.
+
+Q_130 [Unit 3] [MEDIUM]: What is Data Provenance (Data Lineage) in IoT analytics governance?
+  (A) The documented historical record of the origin, transformations, pipeline custody, and delivery of a data point from sensor to cloud dashboard
+  (B) The monetary price paid to purchase a dataset
+  (C) The physical brand name of the sensor hardware
+  (D) The language used by the database developer
+Correct Answer: (A)
+Explanation: Data provenance allows engineers and auditors to trace back any corrupted calculation or erroneous insight to its original raw sensor input.
+
+Q_131 [Unit 3] [EASY]: What is Downsampling (Decimation) in IoT time-series storage?
+  (A) Aggregating raw high-frequency sensor readings (e.g., 1 reading/sec) into broader statistical summaries (e.g., 1-hour average, min, max) for long-term historical storage
+  (B) Deleting half of the physical sensors in a factory
+  (C) Lowering the display brightness of monitors
+  (D) Reducing internet speed to save money
+Correct Answer: (A)
+Explanation: Downsampling drastically slashes storage volume and query latency for multi-year trend analysis without losing macroscopic historical patterns.
+
+Q_132 [Unit 3] [EASY]: What is Data Imputation in sensor telemetry streams?
+  (A) Replacing missing or corrupted sensor readings caused by network dropouts with statistically plausible estimates (linear interpolation, forward-fill, spline)
+  (B) Permanently deleting missing records
+  (C) Stopping the entire factory when a sensor fails
+  (D) Printing an error message on paper
+Correct Answer: (A)
+Explanation: Sensors intermittently disconnect; imputation algorithms fill temporal gaps to maintain continuous contiguous time-series arrays for downstream ML models.
+
+Q_133 [Unit 3] [MEDIUM]: What is a Deadband (Dead Zone) filter in edge IoT data collection?
+  (A) A filtering rule where a sensor node transmits a reading only if the current value differs from the previously transmitted value by more than a specified threshold ($\Delta$)
+  (B) A broken sensor that cannot measure data
+  (C) A geographical area with zero wireless coverage
+  (D) A security firewall blocking all ports
+Correct Answer: (A)
+Explanation: Deadband filtering drastically reduces wireless radio transmissions and battery drain by suppressing redundant, unchanging telemetry (e.g., temperature remaining at $21.0^\circ\text{C}$).
+
+Q_134 [Unit 3] [MEDIUM]: What is Principal Component Analysis (PCA) used for in multi-sensor IoT telemetry?
+  (A) Unsupervised linear dimensionality reduction that compresses dozens of correlated sensor channels into a smaller set of uncorrelated principal components
+  (B) A method for repairing broken hardware circuits
+  (C) An operating system for microcontrollers
+  (D) A tool for formatting flash storage drives
+Correct Answer: (A)
+Explanation: PCA orthogonalizes high-dimensional multi-sensor arrays (e.g., 64 acoustic sensors), extracting the dominant variance dimensions while eliminating collinear noise.
+
+Q_135 [Unit 3] [HARD]: What is Cross-Correlation Analysis in distributed sensor arrays?
+  (A) A mathematical measure of the similarity between two sensor signals as a function of the displacement of one relative to the other, used to calculate time-of-arrival delays
+  (B) Comparing the prices of two different sensor brands
+  (C) Checking whether two wires are touching
+  (D) Running two databases simultaneously
+Correct Answer: (A)
+Explanation: Cross-correlation of acoustic or seismic wave arrivals across spaced sensors allows precise triangulation of physical impact locations and pipeline leaks.
+
+Q_136 [Unit 3] [HARD]: What is a Kalman Filter in sensor estimation?
+  (A) An optimal recursive algorithm that estimates the true state of a dynamic system from a series of noisy measurements observed over time
+  (B) A physical mesh filter that removes dust from electronics
+  (C) A software program that filters spam emails
+  (D) A digital sound equalizer
+Correct Answer: (A)
+Explanation: Kalman filters combine theoretical physics kinematic models with noisy real-world sensor measurements to produce mathematically optimal estimates of velocity and position.
+
+Q_137 [Unit 3] [HARD]: What is an Extended Kalman Filter (EKF)?
+  (A) A non-linear version of the Kalman filter that linearizes around an estimate of the current mean and covariance using Taylor series expansions
+  (B) A Kalman filter with more memory installed
+  (C) A filter used exclusively in water purification plants
+  (D) A filter written in the C++ programming language
+Correct Answer: (A)
+Explanation: Real-world kinematics (robotics, drone navigation) are non-linear; the EKF linearizes system dynamics using Jacobian matrices at each time step.
+
+Q_138 [Unit 3] [MEDIUM]: What is Shanon-Nyquist Sampling Theorem in analog sensor data acquisition?
+  (A) To capture all information from an analog signal without aliasing, the sampling frequency ($f_s$) must be at least twice the maximum frequency component ($f_{\max}$) of the signal
+  (B) A theorem stating that all computers become obsolete in two years
+  (C) A rule defining how many batteries are required for a sensor
+  (D) A law governing the maximum length of copper cables
+Correct Answer: (A)
+Explanation: $$f_s \ge 2 f_{\max}$$; sampling below the Nyquist rate causes high-frequency mechanical vibrations to alias into false low-frequency artifacts.
+
+Q_139 [Unit 3] [MEDIUM]: What is Anti-Aliasing Filtering in IoT hardware frontends?
+  (A) An analog low-pass filter placed before the Analog-to-Digital Converter (ADC) that eliminates signal frequencies higher than half the sampling rate (Nyquist frequency)
+  (B) A software algorithm for smoothing fonts on screens
+  (C) A firewall that blocks malicious packets
+  (D) A cooling fan that prevents chip overheating
+Correct Answer: (A)
+Explanation: Hardware anti-aliasing filters physically attenuate high-frequency noise prior to digitization, preventing irreversible mathematical aliasing distortion.
+
+Q_140 [Unit 3] [EASY]: What is K-Means Clustering used for in IoT customer or device profiling?
+  (A) An unsupervised partitioning algorithm that groups devices or operational behaviors into $K$ distinct clusters based on feature similarity (Euclidean distance)
+  (B) A method for sorting numbers in alphabetical order
+  (C) A compiler that generates machine code
+  (D) A tool for testing network bandwidth
+Correct Answer: (A)
+Explanation: K-Means clusters smart meter consumption profiles into distinct user behavioral classes (e.g., nighttime off-peak users, commercial daytime consumers).
+
+Q_141 [Unit 3] [MEDIUM]: What is the 'Silhouette Score' in clustering validation?
+  (A) A metric measuring how similar an object is to its own cluster compared to other clusters, ranging from $-1$ to $+1$
+  (B) The physical shadow cast by a wireless antenna
+  (C) The percentage of memory consumed by a cluster
+  (D) The speed of the network router
+Correct Answer: (A)
+Explanation: A high silhouette score ($> 0.7$) indicates well-separated, cohesive clusters, helping data scientists select the optimal parameter $K$.
+
+Q_142 [Unit 3] [EASY]: What is a Decision Tree in IoT classification?
+  (A) A supervised learning model that predicts target values by learning simple decision rules inferred from sensor features organized in a tree structure
+  (B) A flowchart drawn by human managers on paper
+  (C) A database query language
+  (D) A physical antenna that branches like a tree
+Correct Answer: (A)
+Explanation: Decision trees offer exceptional human interpretability, making them popular for generating explicit diagnostic rule logic on edge gateways.
+
+Q_143 [Unit 3] [EASY]: What is a Random Forest in IoT predictive modeling?
+  (A) An ensemble learning method that constructs a multitude of decorrelated decision trees during training and outputs the mode or mean prediction across the trees
+  (B) A forest where wireless sensors are installed on trees
+  (C) A disorganized computer file directory
+  (D) A random number generator algorithm
+Correct Answer: (A)
+Explanation: Random Forests drastically reduce variance and overfitting compared to individual decision trees, delivering robust accuracy on noisy sensor data.
+
+Q_144 [Unit 3] [MEDIUM]: What is Gradient Boosting (e.g., XGBoost, LightGBM) in industrial IoT analytics?
+  (A) An ensemble technique that builds trees sequentially, where each new tree is trained to correct the residual errors made by the previous trees
+  (B) A method for increasing the electrical voltage of batteries
+  (C) A tool for making internet connections faster
+  (D) An algorithm for brightening computer screens
+Correct Answer: (A)
+Explanation: XGBoost and LightGBM are dominant algorithms for tabular industrial telemetry, offering state-of-the-art accuracy on component failure classification.
+
+Q_145 [Unit 3] [MEDIUM]: What is Over-the-Wire Data Compression in IoT sensor transmission?
+  (A) Applying algorithms like gzip, zstandard, or Snappy to telemetry payloads before wireless transmission to reduce radio airtime and save energy
+  (B) Physically squeezing copper cables with pliers
+  (C) Deleting half of the numbers in a file
+  (D) Lowering the resolution of photographs
+Correct Answer: (A)
+Explanation: Compressing payloads reduces the number of bytes transmitted over cellular or Wi-Fi radios, directly extending the battery life of remote field gateways.
+
+Q_146 [Unit 3] [EASY]: What is Root Cause Analysis (RCA) in IoT operational incidents?
+  (A) A systematic problem-solving process that drills down into historical telemetry data to identify the fundamental underlying cause of a system failure
+  (B) Analyzing the roots of plants in smart agriculture
+  (C) Scanning a computer for administrative passwords
+  (D) Formatting a hard drive after a crash
+Correct Answer: (A)
+Explanation: RCA correlates alarm sequences, sensor histories, and operator actions to establish why a transformer tripped or why a turbine seized.
+
+Q_147 [Unit 3] [EASY]: What is Heat Mapping in spatial IoT sensor visualization?
+  (A) A graphical representation of data where individual values contained in a geographic or spatial matrix are represented as colors (e.g., warehouse temperatures)
+  (B) Measuring the temperature of computer processors
+  (C) An algorithm that prevents overheating in servers
+  (D) A map of volcanic activity around the world
+Correct Answer: (A)
+Explanation: Heat maps provide operators with instantaneous visual intuition of hot spots, vibration zones, and pedestrian density across facilities.
+
+Q_148 [Unit 3] [EASY]: What is Edge Intelligence (Edge AI)?
+  (A) The deployment of artificial intelligence algorithms directly on local hardware devices where data is generated, rather than relying exclusively on cloud processing
+  (B) A computer that can physically walk and talk
+  (C) A high-speed internet connection to the cloud
+  (D) An operating system developed by Microsoft
+Correct Answer: (A)
+Explanation: Edge AI combines low-latency inference, privacy preservation, offline autonomous operation, and reduced cloud bandwidth consumption.
+
+Q_149 [Unit 3] [HARD]: What is MQTT Sparkplug B in industrial IIoT data architecture?
+  (A) An open-source specification that standardizes MQTT topic namespaces, payload schemas (Protobuf), and session state management for industrial automation
+  (B) A physical component in gasoline automobile engines
+  (C) A battery charging circuit for electric cars
+  (D) A database indexing algorithm
+Correct Answer: (A)
+Explanation: Sparkplug B overlays operational technology (OT) semantics onto MQTT, providing automatic node discovery, metrics schemas, and death certificates for SCADA systems.
+
+Q_150 [Unit 3] [MEDIUM]: What is the primary trade-off between Edge Analytics and Cloud Analytics in IoT?
+  (A) Edge delivers ultra-low latency and offline autonomy with limited compute; Cloud provides massive compute and global historical aggregation with higher latency and bandwidth cost
+  (B) Edge is completely free while cloud is always expensive
+  (C) Edge can only process text while cloud can only process images
+  (D) There is no trade-off
+Correct Answer: (A)
+Explanation: Edge excels at millisecond reflexive closed-loop actuation; Cloud excels at heavy deep learning training, big data warehousing, and macroscopic fleet-wide optimization.
+
+Q_151 [Unit 4] [EASY]: What is the Mirai Botnet famous for in IoT cybersecurity history?
+  (A) In 2016, it infected hundreds of thousands of consumer IoT devices using default factory passwords to launch a record 1.2 Tbps DDoS attack that took down major internet services
+  (B) The first computer virus that displayed a message on screen
+  (C) A banking trojan that stole credit card numbers
+  (D) A software program that made Wi-Fi connections faster
+Correct Answer: (A)
+Explanation: Mirai scanned the internet for IoT devices (cameras, DVRs) protected by hardcoded credentials (`admin:admin`, `root:123456`), weaponizing them into a massive DDoS army.
+
+Q_152 [Unit 4] [MEDIUM]: Why are constrained IoT devices particularly vulnerable to cyber attacks?
+  (A) Limited compute/memory prevents running complex cryptographic suites; lack of automatic patching mechanisms; frequent use of hardcoded factory default credentials
+  (B) Because they are connected to fiber optic cables
+  (C) Because they use 64-bit microprocessors
+  (D) Because they have too much RAM installed
+Correct Answer: (A)
+Explanation: Resource-constrained nodes often lack memory for full TLS handshakes, possess unencrypted flash memory, and are deployed in physically accessible remote locations.
+
+Q_153 [Unit 4] [EASY]: What is the CIA Triad in IoT cybersecurity?
+  (A) Confidentiality, Integrity, and Availability
+  (B) Central Intelligence Agency
+  (C) Control, Ingestion, and Analytics
+  (D) Computers, Internet, and Actuators
+Correct Answer: (A)
+Explanation: The foundational security model: Confidentiality (data secrecy), Integrity (preventing tampering), and Availability (ensuring uptime).
+
+Q_154 [Unit 4] [MEDIUM]: What is the difference between Symmetric and Asymmetric Cryptography in IoT?
+  (A) Symmetric uses the same single shared key for encryption and decryption (fast, AES); Asymmetric uses a mathematically linked public/private key pair (slower, RSA/ECC)
+  (B) Symmetric is only for software; Asymmetric is for hardware
+  (C) Symmetric does not use keys
+  (D) There is no difference
+Correct Answer: (A)
+Explanation: Symmetric encryption (AES-128/256) is fast and computationally lightweight for constrained sensors; Asymmetric (ECC) is used for initial key exchange and digital identity.
+
+Q_155 [Unit 4] [HARD]: Why is Elliptic Curve Cryptography (ECC) preferred over RSA for constrained IoT devices?
+  (A) ECC delivers equivalent cryptographic strength with substantially smaller key sizes (e.g., 256-bit ECC matches 3072-bit RSA), saving CPU cycles, memory, and energy
+  (B) Because ECC was invented by Apple
+  (C) Because RSA cannot encrypt text
+  (D) Because ECC does not require math
+Correct Answer: (A)
+Explanation: Smaller key sizes mean faster mathematical point multiplication, smaller packet headers, and lower battery consumption on constrained microcontrollers.
+
+Q_156 [Unit 4] [MEDIUM]: What is Transport Layer Security (TLS) / Datagram Transport Layer Security (DTLS)?
+  (A) Cryptographic protocols designed to provide communications security over computer networks (TLS over TCP; DTLS over UDP for CoAP)
+  (B) Hardware chips installed inside computer monitors
+  (C) Web browser extensions for blocking advertisements
+  (D) Protocols for compressing images
+Correct Answer: (A)
+Explanation: TLS protects TCP communication (MQTT/HTTPS); DTLS protects datagram-based protocols (CoAP over UDP) against eavesdropping, tampering, and message forgery.
+
+Q_157 [Unit 4] [HARD]: What is a Hardware Security Module (HSM) or Secure Element (SE) in IoT nodes?
+  (A) A dedicated, tamper-resistant physical microcontroller chip designed strictly to securely store cryptographic private keys and execute encryption algorithms in hardware
+  (B) A cooling fan that prevents chip overheating
+  (C) A high-speed external hard drive
+  (D) A software firewall program
+Correct Answer: (A)
+Explanation: Secure Elements (e.g., ATECC608A) resist physical decapping, side-channel power analysis, and voltage glitching attacks, preventing private key theft.
+
+Q_158 [Unit 4] [HARD]: What is a Physical Unclonable Function (PUF) in semiconductor IoT security?
+  (A) A physical entity embodied in a physical structure that provides a unique 'silicon fingerprint' derived from microscopic manufacturing variations during chip fabrication
+  (B) A broken microchip that cannot be repaired
+  (C) A software function that deletes duplicate files
+  (D) A physical lock on a server room door
+Correct Answer: (A)
+Explanation: PUFs exploit microscopic nanoscale differences in silicon transistors to generate cryptographic keys that exist only when the chip is powered on, leaving no stored keys in flash.
+
+Q_159 [Unit 4] [EASY]: What is a Man-in-the-Middle (MitM) attack on an IoT communication link?
+  (A) An attacker secretly relays and potentially alters communication between two nodes who believe they are directly communicating with each other
+  (B) A person standing between two computer monitors
+  (C) A physical wire breaking inside a cable
+  (D) A computer running out of battery power
+Correct Answer: (A)
+Explanation: MitM attacks allow eavesdroppers to intercept telemetry, steal access tokens, or inject forged sensor readings or actuation commands.
+
+Q_160 [Unit 4] [MEDIUM]: What is Mutual Authentication (mTLS) in IoT device-to-cloud security?
+  (A) A security process where both the client (IoT device) and the server verify each other's cryptographic X.509 digital certificates before establishing a connection
+  (B) Two users typing passwords simultaneously
+  (C) A device connecting to two Wi-Fi networks at once
+  (D) A single password shared among all devices
+Correct Answer: (A)
+Explanation: Standard HTTPS authenticates only the server to the browser; mTLS requires the IoT device to present its own private device certificate, guaranteeing only authorized hardware connects.
+
+Q_161 [Unit 4] [MEDIUM]: What is an X.509 Digital Certificate in IoT PKI (Public Key Infrastructure)?
+  (A) A digital document formatted to an ITU-T standard that binds a cryptographic public key with an identity (device serial number/MAC) signed by a trusted Certificate Authority (CA)
+  (B) A certificate of academic graduation
+  (C) A receipt given when purchasing hardware
+  (D) A software license agreement
+Correct Answer: (A)
+Explanation: X.509 certificates form the backbone of device trust, enabling cryptographic proof of identity without hardcoded static passwords.
+
+Q_162 [Unit 4] [EASY]: What is the principle of 'Least Privilege' in IoT Identity and Access Management (IAM)?
+  (A) Granting a device or user strictly the minimum permissions and resource access levels required to perform its specific operational task and nothing more
+  (B) Allowing all employees to have root administrator access
+  (C) Giving all devices access to all databases
+  (D) Creating devices with zero security
+Correct Answer: (A)
+Explanation: If a temperature sensor is compromised, least privilege guarantees it cannot publish commands to industrial shut-off valves or query user identity tables.
+
+Q_163 [Unit 4] [MEDIUM]: What is Role-Based Access Control (RBAC) in IoT cloud platforms?
+  (A) Restricting system access and API operations to authorized users and devices based on predefined roles (e.g., Operator, Auditor, Administrator, Field Device)
+  (B) A protocol for controlling the rolling motion of wheels
+  (C) A method for automatically naming files
+  (D) An operating system for gaming consoles
+Correct Answer: (A)
+Explanation: RBAC assigns fine-grained permissions to roles rather than individual entities, simplifying security governance across millions of deployed nodes.
+
+Q_164 [Unit 4] [EASY]: What is an Access Token (e.g., JWT - JSON Web Token) in IoT REST APIs?
+  (A) A compact, URL-safe, cryptographically signed token used to securely transmit claims and authentication status between client and server
+  (B) A physical plastic coin inserted into a machine
+  (C) A password written on a piece of paper
+  (D) A software file that contains computer graphics
+Correct Answer: (A)
+Explanation: JWTs contain encoded claims (subject, expiry, roles) signed with an HMAC or RSA/ECDSA key, allowing stateless token verification on cloud API gateways.
+
+Q_165 [Unit 4] [MEDIUM]: What is a Replay Attack in wireless sensor networks?
+  (A) An attacker intercepts a valid data transmission or actuation command and maliciously re-transmits it later to duplicate an unauthorized effect (e.g., unlocking a door)
+  (B) Playing an audio recording repeatedly
+  (C) A video game character restarting a level
+  (D) Restarting a computer twice
+Correct Answer: (A)
+Explanation: Mitigated using cryptographic nonces, incremental sequence numbers, and synchronized timestamps in packet headers.
+
+Q_166 [Unit 4] [MEDIUM]: What is a Cryptographic Nonce?
+  (A) An arbitrary number used only once in a cryptographic communication session to prevent replay attacks
+  (B) A secret password that never changes
+  (C) A programming error in C++
+  (D) A unit of computer memory
+Correct Answer: (A)
+Explanation: Nonces ensure that even if an attacker records an exact valid radio packet, re-transmitting it fails because the nonce is rejected as already used.
+
+Q_167 [Unit 4] [HARD]: What is Firmware Tampering and how is Secure Boot used to prevent it?
+  (A) Secure Boot verifies the cryptographic digital signature of the bootloader and firmware binary using hardware-fused public keys before allowing execution
+  (B) Changing the color of a plastic device enclosure
+  (C) A computer taking longer than usual to boot up
+  (D) Installing an application from an app store
+Correct Answer: (A)
+Explanation: Secure Boot establishes an immutable **Hardware Root of Trust**: if an attacker flashes modified malicious firmware, the signature check fails and the CPU refuses to boot.
+
+Q_168 [Unit 4] [MEDIUM]: What is JTAG and UART interface debugging exploitation in hardware hacking?
+  (A) Attackers physically connect to exposed hardware test pads on circuit boards to dump flash memory, extract encryption keys, or gain root shell access
+  (B) A software virus downloaded from websites
+  (C) A problem caused by power outages
+  (D) A method for cleaning dust off electronics
+Correct Answer: (A)
+Explanation: Industrial IoT designers must disable or password-protect physical JTAG/UART debug ports before shipping production hardware to prevent physical extraction attacks.
+
+Q_169 [Unit 4] [HARD]: What is Side-Channel Analysis (e.g., Differential Power Analysis - DPA)?
+  (A) Extracting cryptographic keys by measuring physical side-channel leakages (power consumption fluctuations, electromagnetic emissions, execution timing) during encryption
+  (B) Stealing passwords by looking over someone's shoulder
+  (C) Reading files from an external USB drive
+  (D) Listening to audio conversations in a room
+Correct Answer: (A)
+Explanation: DPA measures the micro-watt power consumption variations of CMOS transistors as they compute 0s and 1s, mathematically reconstructing secret cryptographic keys.
+
+Q_170 [Unit 4] [EASY]: What is a Distributed Denial of Service (DDoS) attack targeting IoT Cloud Ingestion?
+  (A) Overwhelming cloud endpoints with millions of simultaneous forged requests from distributed botnets, exhausting server memory and crashing ingestion pipelines
+  (B) A computer virus that deletes desktop icons
+  (C) An accidental network cable disconnection
+  (D) A database running out of hard drive space
+Correct Answer: (A)
+Explanation: Mitigated using cloud Web Application Firewalls (WAF), Anycast network routing, and automated DDoS mitigation services (AWS Shield, Cloudflare).
+
+Q_171 [Unit 4] [MEDIUM]: What is Zero-Trust Architecture (ZTA) in IoT network design?
+  (A) A security paradigm based on 'never trust, always verify', requiring continuous authentication and micro-segmentation for every device and transaction
+  (B) A company having no trust in its employees
+  (C) A network with zero security firewalls installed
+  (D) A computer system that does not use passwords
+Correct Answer: (A)
+Explanation: ZTA rejects the obsolete perimeter security model ('inside the firewall is safe'); every node, whether on the local LAN or the internet, is treated as potentially compromised.
+
+Q_172 [Unit 4] [MEDIUM]: What is Network Micro-Segmentation in IoT environments?
+  (A) Dividing a network into isolated logical security zones to contain breaches and prevent compromised sensors from moving laterally across corporate IT systems
+  (B) Cutting network cables into very short pieces
+  (C) Installing smaller routers in offices
+  (D) Reducing the number of employees in a department
+Correct Answer: (A)
+Explanation: Micro-segmentation ensures that even if an attacker hacks an office smart thermostat, firewall rules prevent lateral traversal into corporate financial databases.
+
+Q_173 [Unit 4] [EASY]: What is Data at Rest vs Data in Transit vs Data in Use?
+  (A) Data at Rest is stored on disk/flash; Data in Transit is moving across networks; Data in Use is active in RAM/CPU registers being processed
+  (B) They refer to computer hardware that is turned off, moved in trucks, or being used
+  (C) Data at Rest is deleted; Data in Transit is downloading; Data in Use is uploaded
+  (D) There is no distinction in computer science
+Correct Answer: (A)
+Explanation: Comprehensive security requires AES-256 for Data at Rest, TLS 1.3 for Data in Transit, and hardware Confidential Computing (enclaves) for Data in Use.
+
+Q_174 [Unit 4] [MEDIUM]: What is Over-The-Air (OTA) secure image signing?
+  (A) Digitally signing firmware binary updates with a private key; the device's bootloader verifies the signature with an embedded public key before writing to flash
+  (B) Signing a paper receipt when purchasing software
+  (C) Writing the developer's name inside the source code
+  (D) Compressing a firmware file into a zip archive
+Correct Answer: (A)
+Explanation: Prevents attackers from spoofing OTA update servers to push trojan horse firmware onto consumer or industrial device fleets.
+
+Q_175 [Unit 4] [MEDIUM]: What is a Zero-Day Vulnerability in IoT software?
+  (A) A software security flaw that is unknown to the vendor or for which no official security patch yet exists, leaving systems vulnerable to active exploitation
+  (B) A software program that was created in zero days
+  (C) A computer that has never been turned on
+  (D) A defect that costs zero dollars to repair
+Correct Answer: (A)
+Explanation: Zero-day exploits trade for high value on black markets because security defenses and signature-based antivirus tools cannot recognize them.
+
+Q_176 [Unit 4] [EASY]: What is Shodan in IoT cybersecurity research?
+  (A) A specialized search engine that scans the entire internet to index connected IoT devices, open ports, webcams, industrial control systems, and banners
+  (B) A brand of computer antivirus software
+  (C) An operating system developed for supercomputers
+  (D) A programming language used in artificial intelligence
+Correct Answer: (A)
+Explanation: Security researchers and attackers use Shodan to uncover millions of publicly exposed, unprotected IoT webcams, smart meters, and SCADA PLCs worldwide.
+
+Q_177 [Unit 4] [MEDIUM]: What is Privacy-by-Design in IoT engineering?
+  (A) An engineering methodology that embeds privacy and data protection into the architecture and default settings of a product throughout its entire development lifecycle
+  (B) Designing plastic device enclosures with dark colors
+  (C) Hiding the price of a product from customers
+  (D) Refusing to document software source code
+Correct Answer: (A)
+Explanation: Mandated by regulations like GDPR: data minimization, end-to-end encryption, automatic data purging, and privacy-preserving defaults.
+
+Q_178 [Unit 4] [MEDIUM]: What is the role of an Intrusion Detection System (IDS) in IoT networks?
+  (A) Monitoring network traffic and device telemetry for suspicious activity, policy violations, and known attack signatures, alerting administrators to anomalies
+  (B) Physically locking the front door of an office building
+  (C) An antivirus program that deletes spam emails
+  (D) A firewall that turns off computer monitors
+Correct Answer: (A)
+Explanation: Network IDSes (e.g., Snort, Zeek) analyze packet payloads, while Host-based IDSes monitor process execution and system call anomalies on gateways.
+
+Q_179 [Unit 4] [HARD]: What is Lightweight Cryptography (LWC) standardized by NIST?
+  (A) Cryptographic algorithms optimized for ultra-constrained microcontrollers with limited silicon area, power, and memory (e.g., ASCON, PRESENT)
+  (B) Encryption algorithms that use simple passwords
+  (C) A software tool for compressing image files
+  (D) A protocol for sending text messages
+Correct Answer: (A)
+Explanation: In 2023, NIST standardized **ASCON** as the official lightweight cipher family for authenticated encryption and hashing on constrained IoT hardware.
+
+Q_180 [Unit 4] [EASY]: What is a Hardcoded Credential vulnerability (CWE-798)?
+  (A) Embedding administrative passwords or private cryptographic keys directly inside the source code or binary firmware of a commercial IoT product
+  (B) A password that is very difficult to guess
+  (C) A password made of metal hardware keys
+  (D) A password that changes every thirty seconds
+Correct Answer: (A)
+Explanation: Attackers reverse-engineer firmware binaries using tools like Ghidra, extract the hardcoded master credentials, and use them to hijack thousands of devices remotely.
+
+Q_181 [Unit 4] [HARD]: What is Certificate Pinning in IoT mobile and gateway applications?
+  (A) Hardcoding the specific expected server certificate or public key hash inside the client application to reject forged certificates from rogue CAs
+  (B) Physically pinning a paper certificate to an office wall
+  (C) Saving a certificate on a USB flash drive
+  (D) Setting a certificate password
+Correct Answer: (A)
+Explanation: Defeats Man-in-the-Middle attacks where an attacker compromises a commercial Certificate Authority to issue fraudulent certificates.
+
+Q_182 [Unit 4] [EASY]: What is an Air-Gapped Network in critical infrastructure IoT?
+  (A) A physical security isolation measure ensuring a secure computer network is physically disconnected from the public internet and all other unsecured networks
+  (B) A network that operates over air radio waves
+  (C) A network cooling system using compressed air
+  (D) A wireless Wi-Fi router
+Correct Answer: (A)
+Explanation: Nuclear power plants, defense installations, and high-security water treatment SCADA systems are air-gapped to prevent remote internet attacks.
+
+Q_183 [Unit 4] [HARD]: What is the Stuxnet worm and what critical lesson did it teach regarding industrial IoT security?
+  (A) A military-grade cyber weapon discovered in 2010 that bridged an air-gapped network via USB drives to sabotage Iranian uranium enrichment centrifuges by corrupting Siemens PLCs
+  (B) A software bug that crashed Windows XP computers
+  (C) A virus that displayed pop-up ads in web browsers
+  (D) A program that copied files between computers
+Correct Answer: (A)
+Explanation: Stuxnet proved that even physically isolated, air-gapped industrial infrastructure is vulnerable to sophisticated USB-borne supply-chain attacks and PLC logic corruption.
+
+Q_184 [Unit 4] [MEDIUM]: What is Key Rotation in enterprise cloud IoT systems?
+  (A) Regularly replacing cryptographic encryption keys, API tokens, and digital certificates with new ones on a scheduled basis to limit the impact of compromised keys
+  (B) Physically turning an ignition key inside a lock
+  (C) Rotating a wireless antenna in circles
+  (D) Changing the name of a computer file
+Correct Answer: (A)
+Explanation: If a key is silently leaked, automated key rotation ensures the stolen credential becomes completely invalid within days or weeks.
+
+Q_185 [Unit 4] [HARD]: What is a Zero-Knowledge Proof (ZKP) in IoT identity authentication?
+  (A) A cryptographic method by which one party (prover) can prove to another party (verifier) that a statement is true without conveying any information apart from the fact that it is true
+  (B) An authentication system with zero security
+  (C) A user logging into a system with no password
+  (D) A test where all students receive zero marks
+Correct Answer: (A)
+Explanation: ZKP allows an IoT sensor to prove it belongs to an authorized fleet without ever revealing its private cryptographic secret over the network.
+
+Q_186 [Unit 4] [EASY]: What is Cloud Storage Multi-Tenancy security isolation in IoT backends?
+  (A) Ensuring that multiple corporate clients storing telemetry in a shared cloud database cannot view, query, or leak each other's private data
+  (B) Allowing all users to share the same password
+  (C) A database that only works for one single company
+  (D) A data center with multiple physical buildings
+Correct Answer: (A)
+Explanation: Enforced using tenant ID partitioning, dedicated database schemas, or database kernel **Row-Level Security (RLS)**.
+
+Q_187 [Unit 4] [MEDIUM]: What is an Exploit Payload in software attacks?
+  (A) The malicious code or command sequence delivered and executed on a target vulnerable system after an exploit successfully breaches its defenses
+  (B) The shipping box used to deliver computer hardware
+  (C) The physical weight of a computer battery
+  (D) The amount of data uploaded to a cloud server
+Correct Answer: (A)
+Explanation: Once a buffer overflow or injection vulnerability is triggered, the payload executes the attacker's objective (e.g., spawning a root reverse shell or installing ransomware).
+
+Q_188 [Unit 4] [HARD]: What is Fuzz Testing (Fuzzing) in IoT firmware security auditing?
+  (A) An automated software testing technique that inputs massive volumes of malformed, pseudo-random, and unexpected data payloads into protocol parsers to uncover buffer overflows and crashes
+  (B) Cleaning dust off microchips with a soft brush
+  (C) Testing whether a microphone can record audio
+  (D) Writing random comments inside source code
+Correct Answer: (A)
+Explanation: Tools like AFL (American Fuzzy Lop) and libFuzzer continuously mutate network frames to detect unhandled memory corruption vulnerabilities before release.
+
+Q_189 [Unit 4] [MEDIUM]: What is Buffer Overflow in C/C++ IoT firmware?
+  (A) An anomaly where a program writes data beyond the allocated boundary of a fixed-size memory buffer, corrupting adjacent stack memory and overwriting function return addresses
+  (B) A computer monitor running out of display memory
+  (C) A network cable carrying too much electricity
+  (D) A hard drive becoming completely full
+Correct Answer: (A)
+Explanation: Because constrained microcontrollers rely on C without memory safety, buffer overflows remain the number one source of arbitrary remote code execution exploits.
+
+Q_190 [Unit 4] [EASY]: What is a Honeypot in IoT cybersecurity research?
+  (A) A decoy computer system, virtual device, or network service deliberately designed to attract and trap cyber attackers to study their exploitation methodologies
+  (B) A computer covered in sweet food to attract insects
+  (C) A database that stores employee bonuses
+  (D) A very fast internet connection
+Correct Answer: (A)
+Explanation: IoT honeypots (e.g., Cowrie, IoTPOT) mimic vulnerable smart cameras and routers, logging attacker IP addresses, brute-force dictionaries, and malware payloads.
+
+Q_191 [Unit 4] [MEDIUM]: What is the principle of Defense-in-Depth in IoT security architecture?
+  (A) Layering multiple redundant security mechanisms (perimeter firewalls, mTLS encryption, least-privilege IAM, secure boot, tamper-resistant hardware) so if one fails, others prevent breach
+  (B) Digging deep holes in the ground for data centers
+  (C) Using only one exceptionally complex password
+  (D) Installing thicker metal cases on computers
+Correct Answer: (A)
+Explanation: No single security measure is impenetrable; defense-in-depth ensures that an attacker breaching network encryption is still blocked by device hardware security modules.
+
+Q_192 [Unit 4] [HARD]: What is Firmware Reverse Engineering?
+  (A) Decompiling and disassembling compiled binary machine code extracted from an IoT chip to understand its internal logic, algorithms, and vulnerabilities
+  (B) Writing software backwards from end to beginning
+  (C) Deleting a firmware file from a computer
+  (D) Upgrading a firmware version to a newer release
+Correct Answer: (A)
+Explanation: Using tools like Ghidra and IDA Pro, analysts reconstruct C source logic from raw ARM/MIPS machine instructions to find hidden backdoors and zero-days.
+
+Q_193 [Unit 4] [MEDIUM]: What is an Air-Drop or Supply-Chain Attack in IoT manufacturing?
+  (A) A cyber attack that targets vulnerabilities in third-party vendor hardware components, open-source libraries, or manufacturing facilities before delivery to end consumers
+  (B) Dropping sensors from airplanes using parachutes
+  (C) A physical robbery of a delivery truck
+  (D) Sending files via Bluetooth between phones
+Correct Answer: (A)
+Explanation: Attackers inject malicious backdoors into upstream SDKs, bootloader chips, or third-party dependencies, compromising millions of devices before they leave the factory.
+
+Q_194 [Unit 4] [HARD]: What is Overvoltage / Clock Glitching in hardware physical attacks?
+  (A) Deliberately injecting precise, microsecond electrical voltage spikes or clock variations into an MCU to cause the CPU instruction pointer to skip security permission checks
+  (B) A lightning strike destroying a computer
+  (C) An accidental power outage in an office
+  (D) Turning off a computer without clicking shut down
+Correct Answer: (A)
+Explanation: Hardware glitching momentarily destabilizes CPU logic gates, causing instructions like `if (!authenticated) return;` to be skipped completely, granting immediate root access.
+
+Q_195 [Unit 4] [MEDIUM]: What is Static Application Security Testing (SAST) in IoT CI/CD pipelines?
+  (A) Analyzing application source code for security vulnerabilities, memory leaks, and coding standard violations without executing the code
+  (B) Testing a computer while it is turned off
+  (C) Checking whether a computer is sitting on a flat table
+  (D) Testing hardware components with an oscilloscope
+Correct Answer: (A)
+Explanation: SAST tools (SonarQube, Coverity) parse ASTs to flag buffer overflows, SQL injections, and hardcoded secrets directly in pull requests before deployment.
+
+Q_196 [Unit 4] [MEDIUM]: What is Dynamic Application Security Testing (DAST)?
+  (A) Testing a running application or network service from the outside with automated attack vectors to find vulnerabilities in its real-time operating state
+  (B) Testing software while moving in a car
+  (C) Changing the software code while it is running
+  (D) Testing a computer monitor refresh rate
+Correct Answer: (A)
+Explanation: DAST tools (OWASP ZAP) probe live REST endpoints and web portals, assessing real-world vulnerability exposure without requiring access to source code.
+
+Q_197 [Unit 4] [MEDIUM]: What is Cross-Site Request Forgery (CSRF) in IoT web management consoles?
+  (A) An attack that tricks an authenticated user into submitting an unauthorized malicious command to an IoT web server (e.g., changing router DNS settings)
+  (B) A computer virus that spreads through email
+  (C) A hardware defect in a network router
+  (D) A software program for designing websites
+Correct Answer: (A)
+Explanation: Mitigated using unique, cryptographically random Anti-CSRF tokens embedded in HTML forms and enforcing SameSite cookie attributes.
+
+Q_198 [Unit 4] [MEDIUM]: What is an Ephemeral Port in TCP communication?
+  (A) A temporary, short-lived transport port allocated automatically by the client operating system from a predefined range for the duration of a communication session
+  (B) A physical port on a computer that is made of glass
+  (C) A network port that only works on weekends
+  (D) A port used exclusively by satellites
+Correct Answer: (A)
+Explanation: Once a TCP connection closes, the ephemeral port is returned to the operating system pool, preventing port exhaustion under high concurrent loads.
+
+Q_199 [Unit 4] [HARD]: What is Certificate Revocation List (CRL) vs Online Certificate Status Protocol (OCSP)?
+  (A) CRL is a downloaded list of revoked digital certificates; OCSP is a real-time query protocol to check whether a specific certificate is still valid
+  (B) CRL is for software; OCSP is for hardware
+  (C) They are identical in every way
+  (D) CRL is an operating system; OCSP is a programming language
+Correct Answer: (A)
+Explanation: When an IoT device private key is stolen, the Certificate Authority revokes the certificate, and gateways reject it via OCSP stapling or CRL updates.
+
+Q_200 [Unit 4] [EASY]: What is Data Encryption Standard (DES) and why is it forbidden in modern IoT systems?
+  (A) A legacy 56-bit symmetric cipher that is considered completely insecure because modern computers can brute-force the entire 56-bit key space in hours
+  (B) Because DES was invented by a foreign government
+  (C) Because DES uses too much electricity
+  (D) Because DES is only for Apple computers
+Correct Answer: (A)
+Explanation: NIST deprecated DES in 2005. Modern systems mandate **AES-128 / AES-256** or lightweight ciphers like **ASCON**.
+
+Q_201 [Unit 5] [EASY]: What is Industry 4.0 (The Fourth Industrial Revolution)?
+  (A) The ongoing automation and digitization of traditional manufacturing and industrial practices using smart technology, IoT, cyber-physical systems, and cloud analytics
+  (B) The invention of the steam engine in the 18th century
+  (C) The introduction of electricity in factories
+  (D) The invention of personal computers in the 1980s
+Correct Answer: (A)
+Explanation: Industry 4.0 integrates smart manufacturing, Cyber-Physical Systems (CPS), Big Data, autonomous robotics, and IoT sensor connectivity.
+
+Q_202 [Unit 5] [MEDIUM]: What are Cyber-Physical Systems (CPS)?
+  (A) Engineered systems that orchestrate seamless integration between computational algorithms and physical mechanical components via feedback loops
+  (B) Virtual reality video games
+  (C) Computers that only run physical simulations
+  (D) Mechanical machines without electronic components
+Correct Answer: (A)
+Explanation: CPS tightly couples computation, networking, and physical dynamics, where physical processes affect computations and computations control physical processes.
+
+Q_203 [Unit 5] [MEDIUM]: In Smart Manufacturing, what is an 'Overall Equipment Effectiveness' (OEE) metric?
+  (A) A gold-standard metric measuring manufacturing productivity by multiplying Availability, Performance, and Quality: $\text{OEE} = A \times P \times Q$
+  (B) The total electricity consumed by a factory in a year
+  (C) The number of employees working on an assembly line
+  (D) The square footage of a factory floor
+Correct Answer: (A)
+Explanation: An OEE score of 100% means manufacturing only good parts, as fast as possible, with zero unscheduled downtime.
+
+Q_204 [Unit 5] [EASY]: What is a Smart Grid in modern electric utility management?
+  (A) An electricity network that uses digital communications, IoT sensors, and automated controls to detect and react to local changes in usage and electrical issues
+  (B) A high-voltage power cable with no electronic sensors
+  (C) A solar panel installed on a private home
+  (D) An electric utility company billing software
+Correct Answer: (A)
+Explanation: Smart Grids provide bidirectional flows of electricity and real-time telemetry, balancing supply from distributed renewables with dynamic consumer demand.
+
+Q_205 [Unit 5] [MEDIUM]: What is Advanced Metering Infrastructure (AMI)?
+  (A) An integrated system of smart electric meters, communication networks, and data management systems enabling bidirectional communication between utilities and customers
+  (B) A water pipe with a mechanical meter
+  (C) A tool for measuring electrical resistance with a dial
+  (D) An invoice printed by a utility company
+Correct Answer: (A)
+Explanation: AMI smart meters eliminate manual meter reading, support dynamic Time-of-Use (ToU) electricity pricing, and automatically detect localized power outages.
+
+Q_206 [Unit 5] [EASY]: How is IoT applied in the Oil & Gas industry?
+  (A) Real-time pipeline leak detection using acoustic/pressure sensors, offshore rig preventative maintenance, and automated flare stack monitoring
+  (B) Manually inspecting thousands of miles of desert pipelines on foot
+  (C) Using paper logbooks to record oil flow
+  (D) Drilling oil wells without using computers
+Correct Answer: (A)
+Explanation: Upstream, midstream, and downstream operations use IoT telemetry to prevent environmental catastrophes, pipeline ruptures, and hazardous refinery leaks.
+
+Q_207 [Unit 5] [MEDIUM]: What is SCADA (Supervisory Control and Data Acquisition)?
+  (A) An industrial automation control system architecture comprising computers, networked data communications, and graphical user interfaces for high-level process supervisory management
+  (B) A computer programming language like Python
+  (C) A database management engine developed by IBM
+  (D) A type of fiber optic networking cable
+Correct Answer: (A)
+Explanation: SCADA interfaces with Programmable Logic Controllers (PLCs) and remote terminal units (RTUs) to monitor and control industrial infrastructure.
+
+Q_208 [Unit 5] [EASY]: What is a Programmable Logic Controller (PLC)?
+  (A) An industrial digital computer ruggedized for the control of manufacturing processes, assembly lines, and robotic devices
+  (B) A home gaming console like PlayStation
+  (C) A laptop computer used in offices
+  (D) A microchip found inside smartphones
+Correct Answer: (A)
+Explanation: PLCs are built to withstand extreme temperatures, electrical noise, moisture, and vibration while executing deterministic real-time control loops.
+
+Q_209 [Unit 5] [EASY]: What is a Smart City in modern urban IoT engineering?
+  (A) A municipality that uses information and communication technologies (ICT) and IoT to increase operational efficiency, share information with the public, and improve citizen welfare
+  (B) A city that has universities and libraries
+  (C) A city where all buildings are painted white
+  (D) A city with free public bus transportation
+Correct Answer: (A)
+Explanation: Smart Cities deploy integrated sensors across traffic management, water distribution, waste collection, air quality monitoring, and public safety.
+
+Q_210 [Unit 5] [EASY]: How does IoT optimize Municipal Waste Management in Smart Cities?
+  (A) Smart trash dumpsters equipped with ultrasonic level sensors report when they are 80% full, allowing trash collection trucks to dynamically optimize driving routes
+  (B) Instructing citizens to burn trash at home
+  (C) Collecting trash from every street twice an hour regardless of fullness
+  (D) Manufacturing plastic trash cans that never get dirty
+Correct Answer: (A)
+Explanation: Dynamic route planning based on real-time bin fullness telemetry reduces city fuel consumption, truck emissions, and prevents overflowing urban trash cans.
+
+Q_211 [Unit 5] [EASY]: What is Smart Street Lighting in municipal IoT?
+  (A) LED streetlights equipped with light sensors and motion detectors that automatically dim when streets are empty and brighten when pedestrians or cars approach
+  (B) Turning on all street lights 24 hours a day
+  (C) Replacing street lights with candles
+  (D) Street lights that change colors randomly for parties
+Correct Answer: (A)
+Explanation: Saves cities up to 70% in municipal electricity consumption while providing real-time alerts when a fixture burns out.
+
+Q_212 [Unit 5] [EASY]: How is IoT utilized in Smart Parking systems?
+  (A) Magnetometer or ultrasonic sensors embedded in parking spaces detect vehicle presence and broadcast parking availability to driver navigation smartphone apps
+  (B) Hiring thousands of parking attendants to wave flags
+  (C) Banning cars from parking in cities entirely
+  (D) Drawing parking lines on streets with paint
+Correct Answer: (A)
+Explanation: Eliminates up to 30% of downtown urban traffic congestion caused by drivers aimlessly circling city blocks searching for vacant parking stalls.
+
+Q_213 [Unit 5] [MEDIUM]: What is V2X (Vehicle-to-Everything) communication in Connected and Autonomous Vehicles?
+  (A) A vehicular communication system that incorporates V2V (Vehicle-to-Vehicle), V2I (Vehicle-to-Infrastructure), V2P (Vehicle-to-Pedestrian), and V2N (Vehicle-to-Network)
+  (B) A car engine that runs on electricity
+  (C) A smartphone app that plays music in a car
+  (D) A camera mounted on a car dashboard
+Correct Answer: (A)
+Explanation: V2X enables vehicles to broadcast velocity, trajectory, and braking status, warning nearby cars of impending collisions and synchronizing with smart traffic signals.
+
+Q_214 [Unit 5] [HARD]: What is DSRC (Dedicated Short-Range Communications) in intelligent transportation?
+  (A) A 5.9 GHz two-way short-to-medium-range wireless communication capability specifically designed for automotive use based on IEEE 802.11p
+  (B) A satellite navigation system like GPS
+  (C) A cable connecting a car battery to the engine
+  (D) An FM radio broadcast station
+Correct Answer: (A)
+Explanation: DSRC delivers ultra-low-latency ($< 2\,\text{ms}$) vehicle safety communications without requiring cellular network subscription infrastructure.
+
+Q_215 [Unit 5] [MEDIUM]: What is Cellular V2X (C-V2X) based on 3GPP standards?
+  (A) A vehicular communication standard utilizing cellular networks (4G LTE and 5G NR) supporting both direct sidelink (PC5) and network communications
+  (B) A car that has a cellular smartphone mounted on the dashboard
+  (C) A cellular network that only works on trains
+  (D) A satellite telephone used in airplanes
+Correct Answer: (A)
+Explanation: C-V2X provides both direct device-to-device sidelink for immediate collision avoidance and network-to-cloud communications for macroscopic traffic optimization.
+
+Q_216 [Unit 5] [MEDIUM]: What is Platooning in connected commercial freight transportation?
+  (A) Linking two or more trucks in a convoy using V2V automated driving systems to travel closely together at high speeds, reducing aerodynamic drag and fuel use
+  (B) Parking trucks in a straight line overnight
+  (C) Loading cargo onto trucks with forklifts
+  (D) Driving trucks on railroad tracks
+Correct Answer: (A)
+Explanation: V2V inter-vehicle communication synchronizes braking within milliseconds, allowing trucks to follow within meters safely, cutting diesel consumption by 15%.
+
+Q_217 [Unit 5] [EASY]: What is Precision Agriculture (Smart Farming)?
+  (A) A farming management concept based on observing, measuring, and responding to inter and intra-field variability in crops using IoT sensors, GPS, and drones
+  (B) Farming done exclusively inside greenhouses
+  (C) Using only organic fertilizers without computers
+  (D) Watering entire fields uniformly regardless of soil dampness
+Correct Answer: (A)
+Explanation: Precision agriculture applies water, fertilizer, and pesticides only where and when needed, maximizing crop yield while minimizing chemical runoff.
+
+Q_218 [Unit 5] [EASY]: Which IoT sensor is used to monitor soil moisture for automated precision drip irrigation?
+  (A) Capacitive or Tensiometric Soil Moisture Sensor
+  (B) Microphone
+  (C) Gyroscope
+  (D) Ultrasonic sensor
+Correct Answer: (A)
+Explanation: Capacitive soil sensors measure dielectric permittivity of the soil, triggering automated solenoid irrigation valves only when root-zone moisture drops below thresholds.
+
+Q_219 [Unit 5] [HARD]: What is the Normalized Difference Vegetation Index (NDVI) used in drone agricultural imaging?
+  (A) A numerical indicator that uses visible red and near-infrared spectral bands to analyze whether a crop contains live green vegetation: $\text{NDVI} = \frac{\text{NIR} - \text{Red}}{\text{NIR} + \text{Red}}$
+  (B) The height of corn plants measured in centimeters
+  (C) The amount of rainfall recorded in millimeters
+  (D) The price of wheat on international commodities markets
+Correct Answer: (A)
+Explanation: Healthy chlorophyll absorbs red light and strongly reflects near-infrared; damaged or drought-stressed plants reflect less NIR, revealing crop stress before visual wilting.
+
+Q_220 [Unit 5] [EASY]: How does IoT improve Safety in Underground Mining operations?
+  (A) Monitoring toxic gas levels (methane, carbon monoxide), structural rock vibration, and tracking worker personnel locations using wearable tags and wireless mesh
+  (B) Requiring miners to carry flashlights
+  (C) Building wider mine shafts with concrete
+  (D) Banning heavy machinery in underground tunnels
+Correct Answer: (A)
+Explanation: Automated environmental sensing warns miners of explosive gas buildups and seismic roof instability minutes before catastrophic cave-ins or explosions occur.
+
+Q_221 [Unit 5] [EASY]: What is Internet of Medical Things (IoMT)?
+  (A) A collection of medical devices and applications connected to healthcare IT systems using networking technologies (smart insulin pumps, wearable ECG monitors)
+  (B) A website where medical students read textbooks
+  (C) A software program for billing hospital patients
+  (D) A hospital pharmacy inventory spreadsheet
+Correct Answer: (A)
+Explanation: IoMT enables continuous remote patient monitoring, automatic drug dosing delivery, and early warning alerting for cardiac anomalies in real time.
+
+Q_222 [Unit 5] [MEDIUM]: What is an Electronic Health Record (EHR) integration challenge with IoMT devices?
+  (A) Ensuring streaming medical sensor data complies with strict interoperability standards (HL7 / FHIR) and legal privacy mandates (HIPAA) without latency bottlenecks
+  (B) Writing patient medical histories on paper charts
+  (C) Connecting computers to electric wall sockets
+  (D) Finding doctors who know how to use computers
+Correct Answer: (A)
+Explanation: Medical telemetry must adhere to Fast Healthcare Interoperability Resources (FHIR) protocols to integrate securely with hospital records without exposing patient PII.
+
+Q_223 [Unit 5] [EASY]: How does IoT optimize Cold Chain Logistics (e.g., vaccine and food transportation)?
+  (A) Sensors continuously log temperature, humidity, and GPS coordinates inside refrigerated shipping containers, triggering instant alerts if cooling breaches acceptable limits
+  (B) Packing boxes with extra cardboard paper
+  (C) Shipping vaccines only in winter months
+  (D) Driving delivery trucks faster
+Correct Answer: (A)
+Explanation: Guarantees that sensitive biological pharmaceuticals (vaccines) and perishable foodstuffs remain within precise thermal windows (e.g., $-20^\circ\text{C}$ to $-80^\circ\text{C}$) across global sea and air transit.
+
+Q_224 [Unit 5] [MEDIUM]: What is a Condition-Based Monitoring (CBM) system in heavy industry?
+  (A) A maintenance strategy that monitors the actual real-time condition of an asset (vibration, lubricant oil quality, temperature) to determine what maintenance needs to be done
+  (B) Inspecting machinery only after a serious workplace injury occurs
+  (C) Replacing machine parts every Monday morning
+  (D) Painting factory equipment with protective paint
+Correct Answer: (A)
+Explanation: Unlike reactive breakdown maintenance or rigid calendar maintenance, CBM performs interventions based on measured physical deterioration trends.
+
+Q_225 [Unit 5] [EASY]: What is an Intelligent Transport System (ITS)?
+  (A) An advanced application which aims to provide innovative services relating to different modes of transport and traffic management, enabling users to be better informed and make safer use of transport networks
+  (B) A subway train that travels very fast
+  (C) A smartphone with a digital map app
+  (D) A highway with no speed limits
+Correct Answer: (A)
+Explanation: ITS combines electronic toll collection (RFID/FasTag), variable message highway signs, automated speed enforcement, and coordinated emergency dispatch.
+
+Q_226 [Unit 5] [EASY]: What is RFID (Radio Frequency Identification) and its two primary categories?
+  (A) A wireless technology using radio frequency electromagnetic fields to identify tagged objects; categorized as Passive (no battery, powered by reader RF field) and Active (battery powered)
+  (B) A barcode scanner using optical lasers
+  (C) An infrared remote control system
+  (D) A magnetic stripe card reader on ATMs
+Correct Answer: (A)
+Explanation: Passive RFID tags cost pennies and have unlimited lifespans for supply chain tracking; active RFID tags broadcast telemetry over hundreds of meters for high-value asset tracking.
+
+Q_227 [Unit 5] [EASY]: What is Near Field Communication (NFC)?
+  (A) A short-range ($< 4\,\text{cm}$) high-frequency wireless communication technology derived from RFID standards, enabling contactless payments and simple pairing
+  (B) A wireless protocol that connects buildings 10 kilometers apart
+  (C) A cable used inside television sets
+  (D) A satellite communications standard
+Correct Answer: (A)
+Explanation: Operating at 13.56 MHz, NFC supports contactless mobile credit card payments (Google Pay, Apple Pay) and peer-to-peer data exchange at intimate physical proximities.
+
+Q_228 [Unit 5] [MEDIUM]: What is Ambient Assisted Living (AAL) in healthcare IoT?
+  (A) Concepts, products, and services utilizing smart sensors, wearable fall detectors, and ambient intelligence to support independent living for elderly and disabled individuals
+  (B) A nursing home with many nurses on duty
+  (C) A hospital emergency room
+  (D) A physical exercise program for seniors
+Correct Answer: (A)
+Explanation: AAL non-invasively monitors daily living activities (bed occupancy, gait stability, medication adherence), alerting family or emergency responders to sudden falls.
+
+Q_229 [Unit 5] [MEDIUM]: How is IoT utilized in Structural Health Monitoring (SHM) of bridges and dams?
+  (A) Piezoelectric accelerometers, strain gauges, and tiltmeters embedded in concrete structures detect micro-cracks, mechanical stress, and seismic settlement over decades
+  (B) Painting bridges with waterproof paint
+  (C) Driving heavy trucks across bridges to test if they collapse
+  (D) Looking at bridges with binoculars
+Correct Answer: (A)
+Explanation: Continuous strain and displacement measurements prevent catastrophic structural collapses by identifying concrete fatigue and structural movement years in advance.
+
+Q_230 [Unit 5] [MEDIUM]: What is a Smart Water Metering and Distribution System in smart cities?
+  (A) A network of smart water flow meters and acoustic leak detectors that measures water consumption in real time and detects underground pipe bursts before sinkholes form
+  (B) A water filter attached to a kitchen sink
+  (C) Digging up streets to inspect pipes manually every month
+  (D) A water dam with a hydro-electric turbine
+Correct Answer: (A)
+Explanation: Reduces municipal Non-Revenue Water (NRW) loss by identifying underground distribution leaks through hydraulic pressure anomaly modeling.
+
+Q_231 [Unit 5] [MEDIUM]: What is an Automated Guided Vehicle (AGV) in smart warehouse logistics?
+  (A) A mobile autonomous robot that follows marked lines or wires on the floor, or uses LiDAR vision and SLAM to navigate warehouse floors transporting pallet inventory
+  (B) A forklift driven by a human operator
+  (C) A conveyor belt carrying packages in a factory
+  (D) A delivery truck on a public highway
+Correct Answer: (A)
+Explanation: AGVs communicate over low-latency Wi-Fi / Private 5G to coordinate collision-free fleet inventory routing inside fulfillment centers (e.g., Amazon Kiva robots).
+
+Q_232 [Unit 5] [HARD]: What is SLAM (Simultaneous Localization and Mapping) in mobile IoT robotics?
+  (A) The computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an autonomous robot's location within it
+  (B) A protocol for shutting down computers during storms
+  (C) A tool for measuring the battery life of robots
+  (D) A collision between two warehouse robots
+Correct Answer: (A)
+Explanation: Using LiDAR and depth cameras, autonomous mobile robots navigate dynamic warehouse environments without pre-laid magnetic floor tracks.
+
+Q_233 [Unit 5] [EASY]: What is Optical Character Recognition (OCR) used for in automated logistics IoT?
+  (A) Scanning and extracting text from shipping container serial numbers, vehicle license plates (ANPR), and package tracking waybills using computer vision
+  (B) Printing shipping labels on paper
+  (C) Measuring the weight of packages on scales
+  (D) Taking photos of warehouse employees
+Correct Answer: (A)
+Explanation: Automatic Number Plate Recognition (ANPR) and container code recognition automate gate entry and cargo sorting without manual typing.
+
+Q_234 [Unit 5] [EASY]: How is IoT applied in Smart Airport Passenger Management?
+  (A) BLE beacons and Wi-Fi tracking analyze passenger queue dwell times at security checkpoints, and RFID baggage tags track luggage from check-in to aircraft cargo holds
+  (B) Announcing flight delays over loudspeakers
+  (C) Printing paper boarding passes at ticket counters
+  (D) Selling duty-free goods to travelers
+Correct Answer: (A)
+Explanation: Eliminates lost luggage claims and dynamically deploys airport security staffing to choke points based on real-time pedestrian queue density.
+
+Q_235 [Unit 5] [HARD]: What is Acoustic Emission Testing in industrial pressure vessel monitoring?
+  (A) Listening to microscopic ultrasonic sound waves emitted by materials when undergoing crack propagation, deformation, or high-pressure gas leaks
+  (B) Measuring the noise level of factory music speakers
+  (C) Testing whether microphones work properly
+  (D) Listening to radio broadcasts in factories
+Correct Answer: (A)
+Explanation: Non-destructive testing (NDT) acoustic sensors detect the microscopic ultrasonic 'clicks' of expanding metal fractures long before structural rupture occurs.
+
+Q_236 [Unit 5] [MEDIUM]: What is a Thermal Imaging Sensor (Thermography) used for in electrical substations?
+  (A) Detecting abnormal heat signatures and hot spots on high-voltage transformers and circuit breakers that indicate loose connections or internal arcing
+  (B) Measuring the outside air temperature
+  (C) Keeping electrical equipment warm during winter
+  (D) Taking colorful photographs of power plants
+Correct Answer: (A)
+Explanation: Overheating is the universal precursor to electrical fire; radiometric infrared cameras trigger automated shut-offs before electrical switchgear explodes.
+
+Q_237 [Unit 5] [EASY]: What is Geofencing in fleet management IoT?
+  (A) A virtual perimeter defined around a real-world geographic area using GPS, triggering automated alerts when a tracked vehicle enters or exits the boundary
+  (B) Building physical wooden fences around parking lots
+  (C) A tool for measuring land acreage with survey tools
+  (D) A satellite navigation antenna
+Correct Answer: (A)
+Explanation: Logistics companies track asset movement, ensuring refrigerated trucks stick to authorized routes and sending customer notifications when a delivery van is 1 km away.
+
+Q_238 [Unit 5] [EASY]: What is an On-Board Diagnostics (OBD-II) port in connected automotive IoT?
+  (A) A standardized vehicle hardware port that provides real-time engine telemetry (RPM, fuel consumption, diagnostic trouble codes - DTCs) to plugged-in IoT dongles
+  (B) A cigarette lighter socket used to charge phones
+  (C) A socket where mechanics plug in battery chargers
+  (D) An audio jack for connecting headphones
+Correct Answer: (A)
+Explanation: OBD-II dongles with cellular connectivity stream real-time automotive diagnostics to telematics and pay-how-you-drive insurance platforms.
+
+Q_239 [Unit 5] [MEDIUM]: What is Pay-How-You-Drive (PHYD) Telematics Insurance?
+  (A) Usage-based automotive insurance where premium costs are calculated dynamically based on real-time driving behavior (speed, harsh braking, cornering forces, mileage)
+  (B) Paying for insurance with a credit card online
+  (C) An insurance policy that covers repairs after an accident
+  (D) A discount given to drivers who wash their cars
+Correct Answer: (A)
+Explanation: Insurance companies incentivize safe driving habits by lowering policy premiums for drivers who avoid speeding and midnight driving based on IoT sensor records.
+
+Q_240 [Unit 5] [MEDIUM]: What is a Battery Management System (BMS) in Electric Vehicles (EVs) and Grid Storage?
+  (A) An electronic control system that monitors and manages individual rechargeable battery cells, regulating voltage, thermal temperature, and state of charge (SoC)
+  (B) A battery charger plugged into a wall outlet
+  (C) An alternator that charges a car battery while driving
+  (D) A physical metal case holding batteries
+Correct Answer: (A)
+Explanation: The BMS balances cell charge, prevents thermal runaway (battery fires), and computes real-time State-of-Health (SoH) and available driving range.
+
+Q_241 [Unit 5] [MEDIUM]: What is State of Charge (SoC) vs State of Health (SoH) in battery analytics?
+  (A) SoC is the current battery fuel level percentage (like a fuel gauge); SoH is the long-term degradation percentage comparing maximum present capacity to original factory capacity
+  (B) SoC is for new batteries; SoH is for old batteries
+  (C) They are identical measurements
+  (D) SoC measures voltage; SoH measures current
+Correct Answer: (A)
+Explanation: SoC fluctuates between 0% and 100% on a single drive; SoH permanently declines from 100% to 70% over thousands of charge cycles as lithium dendrites form.
+
+Q_242 [Unit 5] [EASY]: How does IoT improve Fire and Smoke Emergency Response in Smart Buildings?
+  (A) Interconnected smart smoke detectors and thermal sensors transmit live indoor heat maps and trapped occupancy locations to firefighters' tablets before they enter the building
+  (B) Playing a siren sound over speakers
+  (C) Sprinkling water on every floor of the building
+  (D) Instructing people to use stairs instead of elevators
+Correct Answer: (A)
+Explanation: Provides incident commanders with dynamic situational awareness of flame propagation, structural collapse risk, and victim GPS coordinates in thick smoke.
+
+Q_243 [Unit 5] [MEDIUM]: What is Smart Meter Tampering Detection in electric utilities?
+  (A) Sensors inside the smart meter that detect magnetic field manipulation, meter cover removal, or current bypass wires, alerting utility security instantly
+  (B) Locking electric meters inside metal boxes
+  (C) Cutting electricity to all houses once a week
+  (D) Hiring inspectors to read meters manually
+Correct Answer: (A)
+Explanation: Drastically reduces electrical utility theft (non-technical losses) by timestamping and geo-locating illegal physical meter interference.
+
+Q_244 [Unit 5] [EASY]: What is an Automatic Number Plate Recognition (ANPR) system in smart highway tolling?
+  (A) High-speed optical cameras combined with machine learning OCR algorithms that automatically identify vehicle registration plates at full highway driving speeds
+  (B) A toll booth where a human collector takes cash
+  (C) A machine that dispenses paper tickets
+  (D) A police officer stopping cars on the side of the road
+Correct Answer: (A)
+Explanation: Enables barrier-free, free-flow highway tolling (open road tolling) without requiring vehicles to slow down or stop at toll plazas.
+
+Q_245 [Unit 5] [EASY]: What is Ambient Noise Monitoring in urban environmental quality control?
+  (A) A network of calibrated acoustic sound-level meters measuring decibels (dB) across urban zones to map noise pollution and enforce industrial sound regulations
+  (B) Measuring how loudly people speak on telephones
+  (C) Playing music in public parks
+  (D) Testing hearing aids in hospitals
+Correct Answer: (A)
+Explanation: Cities deploy noise sensors to identify illegal nighttime construction, traffic roar, and nightclub zoning violations.
+
+Q_246 [Unit 5] [MEDIUM]: What is a Drone Fleet Management System in agricultural and delivery IoT?
+  (A) A centralized cloud platform that coordinates autonomous flight paths, geofencing safety boundaries, battery swap automation, and payload delivery logistics for fleets of UAVs
+  (B) A remote control held by a human pilot
+  (C) A hangar where drones are stored overnight
+  (D) A video camera mounted on a drone
+Correct Answer: (A)
+Explanation: Coordinates autonomous drone swarms for agricultural crop spraying and medical package delivery without mid-air collisions.
+
+Q_247 [Unit 5] [HARD]: What is Ambient Backscatter Communication in zero-power IoT research?
+  (A) A wireless technique where battery-less devices communicate by selectively reflecting or absorbing existing ambient RF signals (e.g., commercial Wi-Fi or TV broadcasts)
+  (B) Broadcasting radio commercials on FM channels
+  (C) Shining laser pointers between buildings
+  (D) Using mirrors to reflect sunlight
+Correct Answer: (A)
+Explanation: Enables completely battery-free sensors to transmit data by toggling their antenna impedance, modulating their reflection of ambient electromagnetic waves.
+
+Q_248 [Unit 5] [EASY]: What is Green IoT in sustainable technological development?
+  (A) Designing energy-efficient hardware, biodegradable sensor materials, low-power protocols, and energy-harvesting technologies to minimize the carbon footprint and e-waste of IoT
+  (B) Painting all sensors with green colored paint
+  (C) Installing sensors exclusively in botanical gardens
+  (D) Manufacturing sensors using green plastic
+Correct Answer: (A)
+Explanation: Focuses on lifecycle sustainability: reducing toxic electronic waste (e-waste) via transient dissolvable silicon and slashing data center power consumption.
+
+Q_249 [Unit 5] [EASY]: What is the Matter and Thread smart home alliance's primary impact on consumers?
+  (A) Eliminating vendor lock-in by allowing smart devices from different brands to interoperate natively across a unified, local, secure IPv6 mesh network
+  (B) Making smart light bulbs brighter
+  (C) Requiring consumers to purchase expensive new hubs
+  (D) Limiting smart home devices to only work with one company
+Correct Answer: (A)
+Explanation: Ensures that an Apple iPhone, a Google Nest speaker, and an Amazon Alexa can all control the exact same smart lock or light bulb simultaneously.
+
+Q_250 [Unit 5] [MEDIUM]: What is the primary factor driving the integration of 5G New Radio (NR) in Industrial IoT?
+  (A) Ultra-Reliable Low-Latency Communication (URLLC: $< 1\,\text{ms}$ latency) and Massive Machine-Type Communication (mMTC: up to 1 million devices per square kilometer)
+  (B) Higher subscription costs for telecom carriers
+  (C) Faster download of movies on smartphones
+  (D) Requiring new cellular antennas on every street corner
+Correct Answer: (A)
+Explanation: 5G URLLC provides the deterministic wire-like reliability and microsecond latency required to replace physical industrial Ethernet cables in robotics.
+

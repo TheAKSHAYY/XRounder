@@ -1,0 +1,2753 @@
+// BCA-101N: Computer Fundamentals and PC Software (Semester 1 - MJPRU Bareilly)
+// Complete Official Question Bank (250 MCQs - 50 MCQs per Unit)
+
+Q: Which component in the Von Neumann architecture coordinates and sequences operations across all components?
+A) Arithmetic Logic Unit (ALU)
+B) Control Unit (CU) *
+C) Memory Unit
+D) I/O Interface
+E: The Control Unit (CU) decodes program instructions and generates control timing signals that synchronize CPU and system operations.
+D: easy
+T: BCA-101N, Unit-1, Von-Neumann, CU
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which computer generation introduced Integrated Circuits (ICs) replacing discrete transistors?
+A) First Generation
+B) Second Generation
+C) Third Generation *
+D) Fourth Generation
+E: Third generation computers (1964-1971) incorporated ICs developed by Jack Kilby and Robert Noyce, drastically improving speed and shrinking machine size.
+D: easy
+T: BCA-101N, Unit-1, Generations, ICs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The key electronic component of First Generation computers was:
+A) Transistors
+B) Vacuum Tubes *
+C) Integrated Circuits
+D) Microprocessors
+E: First-generation computers (1940-1956) like ENIAC and UNIVAC utilized vacuum tubes (thermionic valves) as primary switching and memory elements.
+D: easy
+T: BCA-101N, Unit-1, Generations, Vacuum-Tubes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: VLSI (Very Large Scale Integration) and ULSI technologies were primarily introduced in which generation?
+A) Third Generation
+B) Fourth Generation *
+C) Second Generation
+D) First Generation
+E: Fourth generation computers utilized VLSI (thousands of transistors on a chip) and later ULSI, leading to modern single-chip microprocessors.
+D: easy
+T: BCA-101N, Unit-1, Generations, VLSI
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which register holds the memory address of the next instruction to be fetched and executed?
+A) Instruction Register (IR)
+B) Memory Data Register (MDR)
+C) Program Counter (PC) *
+D) Accumulator (ACC)
+E: The Program Counter (PC) automatically holds and increments the memory address of the next sequential machine instruction to execute.
+D: medium
+T: BCA-101N, Unit-1, CPU-Registers, Program-Counter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the instruction execution cycle, the correct sequential order of phases is:
+A) Execute -> Fetch -> Decode -> Store
+B) Fetch -> Decode -> Execute -> Store *
+C) Decode -> Fetch -> Execute -> Store
+D) Fetch -> Execute -> Decode -> Store
+E: The instruction machine cycle strictly follows: Fetch from memory -> Decode opcode -> Execute ALU/Control operation -> Store result back to register/memory.
+D: easy
+T: BCA-101N, Unit-1, Instruction-Cycle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What architecture features physically separate memory and buses for program instructions and data storage?
+A) Von Neumann Architecture
+B) Harvard Architecture *
+C) Turing Machine
+D) SIMD Architecture
+E: Harvard architecture provides dedicated, separate address and data paths for instructions and data, allowing simultaneous memory access.
+D: medium
+T: BCA-101N, Unit-1, Architecture, Harvard
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Von Neumann Bottleneck' refers to throughput limitations caused by:
+A) Slow clock speeds in the ALU
+B) Sharing a single bus between CPU and memory for both data and code *
+C) Inefficient cooling fans
+D) Lack of registers in the Control Unit
+E: The Von Neumann bottleneck occurs because program memory and data memory share the same physical bus, constraining CPU execution to bus transfer rates.
+D: medium
+T: BCA-101N, Unit-1, Architecture, Von-Neumann
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which classification of computers is designed specifically to process intensive mathematical calculations like weather modeling and nuclear simulations?
+A) Microcomputer
+B) Minicomputer
+C) Mainframe Computer
+D) Supercomputer *
+E: Supercomputers (e.g., PARAM Siddhi, Fugaku) are engineered with thousands of parallel processing units specifically for ultra-high compute workloads.
+D: easy
+T: BCA-101N, Unit-1, Classification, Supercomputer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Computers that handle large-scale enterprise transaction processing and serve thousands of simultaneous online users are known as:
+A) Workstations
+B) Mainframe Computers *
+C) Personal Computers
+D) Embedded Computers
+E: Mainframe computers (e.g., IBM zSeries) excel in massive I/O throughput, continuous uptime, and enterprise batch and transaction processing.
+D: easy
+T: BCA-101N, Unit-1, Classification, Mainframe
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type of computer memory is fastest and placed closest to the CPU execution core?
+A) L1 Cache
+B) CPU Registers *
+C) DRAM Main Memory
+D) Solid State Drive
+E: Internal CPU registers operate directly at the processor's core clock speed (picoseconds access time), making them the fastest storage element in the hierarchy.
+D: easy
+T: BCA-101N, Unit-1, Memory-Hierarchy, Registers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: SRAM (Static RAM) differs fundamentally from DRAM (Dynamic RAM) because SRAM:
+A) Requires periodic electrical refreshing
+B) Is made of flip-flops and does not require periodic capacitor refreshing *
+C) Is cheaper per megabyte than DRAM
+D) Is non-volatile like ROM
+E: SRAM uses 4 to 6 transistors configured as a bistable latch (flip-flop) to store bits without capacitor refresh cycles, making it significantly faster and ideal for CPU caches.
+D: medium
+T: BCA-101N, Unit-1, SRAM-vs-DRAM, Memory
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why does DRAM require continuous memory refresh cycles?
+A) Because its transistors overheat rapidly
+B) Because its memory cells store charge on microscopic capacitors that leak voltage over time *
+C) To clean up invalid memory addresses
+D) To synchronize with hard disk spin rates
+E: Each DRAM memory cell consists of a single transistor and capacitor; the capacitor leaks electrical charge and must be rewritten thousands of times per second.
+D: medium
+T: BCA-101N, Unit-1, DRAM, Capacitor-Refresh
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type of Read-Only Memory can be erased electrically in-circuit without removing the chip or using ultraviolet light?
+A) Mask ROM
+B) PROM
+C) EPROM
+D) EEPROM *
+E: EEPROM (Electrically Erasable Programmable ROM) and Flash memory can be wiped and reprogrammed byte-by-byte using electrical voltage signals directly in circuit.
+D: medium
+T: BCA-101N, Unit-1, ROM-Types, EEPROM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What type of ROM requires exposure to intense Ultraviolet (UV) light through a quartz window for erasure?
+A) PROM
+B) EPROM *
+C) EEPROM
+D) Flash ROM
+E: EPROM (Erasable PROM) chips feature a distinctive transparent quartz window on top through which UV light is beamed for 15-20 minutes to erase bit patterns.
+D: easy
+T: BCA-101N, Unit-1, ROM-Types, EPROM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Cache memory is introduced in computer systems primarily to:
+A) Expand the physical storage capacity of secondary hard drives
+B) Bridge the significant operating speed disparity between the fast CPU and slower DRAM main memory *
+C) Store permanent boot firmware (BIOS)
+D) Protect the operating system from virus infection
+E: Cache memory stores recently and frequently accessed instructions and data to minimize CPU wait states caused by the relatively slow access times of DRAM.
+D: medium
+T: BCA-101N, Unit-1, Cache-Memory, Performance
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The principle underlying effective cache memory operation, where recently accessed data items are likely to be accessed again soon, is known as:
+A) Spatial Locality
+B) Temporal Locality *
+C) Direct Mapping
+D) Virtual Addressing
+E: Temporal locality states that an instruction or memory location referenced at time t will very likely be re-referenced in the near future (e.g. inside loop bodies).
+D: medium
+T: BCA-101N, Unit-1, Cache, Locality-of-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Spatial locality of reference describes the phenomenon where:
+A) Data stored at distant server nodes is accessed fastest
+B) Accessing a memory address increases the probability that adjacent memory addresses will be accessed soon *
+C) Only read operations are performed in memory
+D) Code is kept in optical media for longevity
+E: Spatial locality exploits the contiguous storage of program code and array elements: loading an entire cache line brings neighboring bytes that the CPU will execute next.
+D: medium
+T: BCA-101N, Unit-1, Cache, Spatial-Locality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Non-volatile storage media refers to storage that:
+A) Loses its data immediately when electrical power is switched off
+B) Retains its stored information even when the computer system is completely powered down *
+C) Cannot be written to more than once
+D) Operates exclusively in magnetic tape formats
+E: Non-volatile memory (such as ROM, HDD, SSD, USB flash drives) retains stored binary data indefinitely without requiring continuous power supply.
+D: easy
+T: BCA-101N, Unit-1, Storage, Non-Volatile
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Solid State Drives (SSDs) outperform traditional Hard Disk Drives (HDDs) because SSDs:
+A) Use spinning magnetic platters with faster read/write heads
+B) Have no moving mechanical parts and utilize high-speed NAND flash memory *
+C) Store data in analog signals rather than digital bits
+D) Rely entirely on static RAM chips with battery backup
+E: SSDs contain zero spinning disks or mechanical actuator arms, eliminating seek latency and rotational delay through parallel non-volatile NAND flash channels.
+D: easy
+T: BCA-101N, Unit-1, Storage, SSD-vs-HDD
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Software etched permanently into hardware ROM/flash chips during manufacture to control low-level device initialization is:
+A) Firmware *
+B) Shareware
+C) Freeware
+D) Adware
+E: Firmware (such as the motherboard UEFI/BIOS) provides essential machine-level control programs burned into non-volatile memory.
+D: easy
+T: BCA-101N, Unit-1, Software-Types, Firmware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Software distributed freely on a trial basis for evaluation, requiring payment or license purchase after a grace period, is called:
+A) Freeware
+B) Public Domain Software
+C) Shareware *
+D) Open Source Software
+E: Shareware is commercial software distributed at no cost for a trial period (e.g., 30 days) to allow evaluation before purchasing a full license.
+D: easy
+T: BCA-101N, Unit-1, Licensing, Shareware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Demoware is best described as:
+A) Software that works only when connected to a demonstration server
+B) Commercial software distributed with disabled key features (e.g., cannot save or export) to showcase capabilities *
+C) Software made specifically for classroom teaching
+D) Free software with unlimited commercial distribution rights
+E: Demoware is a restricted software build where vital features (like file saving, export, or advanced filters) are locked until the full commercial product is bought.
+D: medium
+T: BCA-101N, Unit-1, Licensing, Demoware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which category of software is responsible for controlling computer hardware resources and providing a platform for application software to run?
+A) Application Software
+B) System Software *
+C) Embedded Application
+D) Spreadsheet Software
+E: System software comprises the Operating System, device drivers, and core utilities that manage CPU scheduling, memory, file systems, and hardware peripherals.
+D: easy
+T: BCA-101N, Unit-1, Software-Types, System-Software
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Disk Cleanup, Disk Defragmenter, and Antivirus scanners are classified as:
+A) System Development Software
+B) Application Software
+C) Utility Software *
+D) Firmware
+E: Utility software consists of system maintenance and optimization programs that analyze, configure, optimize, or protect computer hardware and files.
+D: easy
+T: BCA-101N, Unit-1, Software-Types, Utility-Software
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Free Software, as championed by Richard Stallman and the Free Software Foundation (FSF), emphasizes:
+A) Zero cost of purchase above all else
+B) The user's liberty to run, study, modify, and redistribute the program source code *
+C) Mandatory inclusion of third-party advertisements
+D) Distribution exclusively through government repositories
+E: Free software ('free as in speech, not free beer') guarantees the four essential freedoms: to run, study source code, redistribute copies, and distribute modified versions.
+D: medium
+T: BCA-101N, Unit-1, Free-Software, Open-Source
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Open-source software licenses typically mandate that:
+A) The source code must be made accessible to users alongside the binary executable *
+B) Users cannot modify the program under any circumstance
+C) The software can never be run on commercial operating systems
+D) Only university researchers are allowed to download the program
+E: Open-source software (OSS) licenses ensure that human-readable source code is distributed openly, permitting collective inspection, peer review, and community enhancement.
+D: easy
+T: BCA-101N, Unit-1, Licensing, Open-Source
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is considered System Software?
+A) Adobe Photoshop
+B) Microsoft Windows 11 *
+C) Google Chrome
+D) Tally Prime
+E: Microsoft Windows 11 is an Operating System, which is the foundational system software managing all computing hardware and user applications.
+D: easy
+T: BCA-101N, Unit-1, System-Software, Examples
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Proprietary software is software that:
+A) Is placed into the public domain with no copyright restrictions
+B) Has its source code kept secret and legally protected by copyright and end-user license agreements (EULA) *
+C) Can be freely decompiled and resold by any purchaser
+D) Is funded exclusively by educational grants
+E: Proprietary (closed-source) software remains the intellectual property of its creator; users obtain only an executable license without source code access.
+D: easy
+T: BCA-101N, Unit-1, Licensing, Proprietary
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Software distributed at zero financial cost but where the author retains all copyright and does NOT provide access to source code is:
+A) Shareware
+B) Freeware *
+C) Public Domain Software
+D) Open Source Software
+E: Freeware is available free of charge for use, but its proprietary source code is closed and users may not alter, decompile, or sell it.
+D: easy
+T: BCA-101N, Unit-1, Licensing, Freeware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Machine language is composed exclusively of:
+A) English-like keywords and operators
+B) Mnemonic operation codes like ADD and MOV
+C) Binary patterns of 0s and 1s understood directly by the CPU *
+D) Mathematical equations and Greek symbols
+E: Machine code is the native first-generation programming language comprised directly of binary bits that electronic CPU logic gates decode and execute.
+D: easy
+T: BCA-101N, Unit-1, Languages, Machine-Code
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Assembly language introduced human-readable abbreviations for machine instructions known as:
+A) Pseudocodes
+B) Mnemonics *
+C) Tokens
+D) Literals
+E: Assembly language replaces cryptic binary opcodes with symbolic mnemonics (such as MOV, ADD, SUB, JMP) to make low-level programming manageable.
+D: easy
+T: BCA-101N, Unit-1, Languages, Assembly-Language
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A language translator that converts entire high-level language source code into machine/object code in a single comprehensive pass is a(n):
+A) Interpreter
+B) Assembler
+C) Compiler *
+D) Loader
+E: A compiler analyzes and translates the entire source code file as a whole into an executable object module, producing error lists for the complete file.
+D: easy
+T: BCA-101N, Unit-1, Translators, Compiler
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An interpreter differs from a compiler because an interpreter:
+A) Produces an independent .exe file that runs without the translator
+B) Translates and executes source code line-by-line, halting immediately when an error is encountered *
+C) Only works with assembly language programs
+D) Translates machine code back into high-level source code
+E: An interpreter executes high-level statements sequentially in real time without creating an intermediate standalone binary file.
+D: easy
+T: BCA-101N, Unit-1, Translators, Interpreter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The translator tool specifically designed to convert Assembly Language programs into machine language is called a(n):
+A) Interpreter
+B) Compiler
+C) Assembler *
+D) Linker
+E: An assembler translates assembly language symbolic mnemonics and memory labels into equivalent binary machine opcodes and addresses.
+D: easy
+T: BCA-101N, Unit-1, Translators, Assembler
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What system utility takes one or more compiled object modules and resolves external library references into a single executable file?
+A) Compiler
+B) Linker *
+C) Loader
+D) Debugger
+E: The Linker connects compiled object files with required standard library routines (e.g. C standard library) and resolves cross-module memory references.
+D: medium
+T: BCA-101N, Unit-1, Software-Tools, Linker
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The software component that places an executable program from secondary storage into main memory (RAM) ready for CPU execution is the:
+A) Linker
+B) Loader *
+C) Compiler
+D) Interpreter
+E: The Loader allocates memory space, reads executable machine code from disk into RAM, adjusts base addresses if necessary, and branches CPU control to main().
+D: medium
+T: BCA-101N, Unit-1, Software-Tools, Loader
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is considered a Low-Level Language?
+A) Python
+B) Assembly Language *
+C) Java
+D) C++
+E: Assembly Language is a low-level language because it possesses a 1-to-1 correspondence with CPU hardware architecture and memory addressing.
+D: easy
+T: BCA-101N, Unit-1, Languages, Low-Level
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: High-level programming languages (like C, Java, Python) are advantageous primarily because they:
+A) Execute faster than raw machine code without translation
+B) Are machine-independent, portable across different hardware platforms, and human-readable *
+C) Directly manipulate microprocessor registers without abstraction
+D) Do not require memory allocation
+E: High-level languages provide abstraction over CPU instruction sets, enabling software developers to write readable, portable code across varied CPU types.
+D: easy
+T: BCA-101N, Unit-1, Languages, High-Level
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Characteristics of a good programming language include all of the following EXCEPT:
+A) Clarity, simplicity, and readability
+B) High portability and robust error-handling mechanisms
+C) Complete hardware-dependence requiring total rewrite for each new computer model *
+D) Rich library support and expressive data structures
+E: A good language prioritizes machine independence and portability so that algorithms run across diverse hardware without complete codebase rewrites.
+D: easy
+T: BCA-101N, Unit-1, Programming-Concepts, Language-Design
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An algorithm is formally defined as:
+A) A syntax error in computer code
+B) A finite, unambiguous, step-by-step sequence of instructions designed to solve a specific computational problem *
+C) A hardware circuit for performing floating-point division
+D) A graphical diagram representing data cables
+E: An algorithm is an unambiguous, finite procedure that takes inputs, processes them through well-defined steps, and terminates with correct outputs.
+D: easy
+T: BCA-101N, Unit-1, Algorithms, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which algorithmic property mandates that an algorithm must always terminate after a countable, finite number of operational steps?
+A) Definiteness
+B) Finiteness *
+C) Input/Output Completeness
+D) Effectiveness
+E: Finiteness requires that for all valid input cases, the algorithm's execution terminates and does not run into an infinite loop.
+D: easy
+T: BCA-101N, Unit-1, Algorithms, Properties
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The algorithmic property 'Definiteness' means that:
+A) Every operation must be clear, precise, and completely unambiguous with exactly one interpretation *
+B) The algorithm must use floating-point numbers
+C) The code must run in under one second
+D) The algorithm must produce multiple diverse answers
+E: Definiteness requires that every instruction must be stated so clearly that human or machine can carry it out without ambiguity.
+D: medium
+T: BCA-101N, Unit-1, Algorithms, Properties
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In standard flowchart design, an Oval / Rounded Rectangle symbol represents:
+A) Processing or computational step
+B) Start or End (Terminal) *
+C) Decision or conditional branching
+D) Input or Output operation
+E: The oval/pill symbol is the terminal symbol marking the starting entry point and termination end points of a flowchart.
+D: easy
+T: BCA-101N, Unit-1, Flowcharts, Symbols
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which geometric shape is utilized in flowcharts to denote an Input or Output operation (e.g. Read X, Print Sum)?
+A) Rectangle
+B) Parallelogram *
+C) Diamond / Rhombus
+D) Circle
+E: A parallelogram represents input and output operations, such as receiving user data from keyboard or displaying results on a monitor.
+D: easy
+T: BCA-101N, Unit-1, Flowcharts, Symbols
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a flowchart, a Diamond (Rhombus) symbol denotes a:
+A) Sequential assignment statement
+B) Decision / Conditional Branching point with two or more outgoing paths *
+C) Data storage file
+D) Page connector
+E: A diamond shape evaluates a logical or relational condition (e.g., Is X > Y?) with exiting True/False or Yes/No branching paths.
+D: easy
+T: BCA-101N, Unit-1, Flowcharts, Symbols
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A small Circle symbol in a flowchart is used as a:
+A) Terminal start symbol
+B) On-page connector linking interrupted flow lines *
+C) Magnetic tape unit
+D) Looping accumulator
+E: A small circle connector merges flow lines or continues a complex diagram to another section of the same page without crisscrossing lines.
+D: medium
+T: BCA-101N, Unit-1, Flowcharts, Symbols
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Pseudocode is best defined as:
+A) Compiled binary code ready for CPU execution
+B) An informal, human-readable high-level description of an algorithm that blends English with structured programming syntax *
+C) A computer virus disguised as a valid program
+D) A special encrypted file format
+E: Pseudocode outlines algorithmic logic using human language and programming keywords (IF, WHILE, REPEAT) without strict syntax constraints.
+D: easy
+T: BCA-101N, Unit-1, Algorithms, Pseudocode
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which flowchart symbol represents processing or data calculation (such as Sum = A + B)?
+A) Parallelogram
+B) Rectangle *
+C) Diamond
+D) Ellipse
+E: A standard rectangle represents internal computational processing, variable manipulation, or assignment operations.
+D: easy
+T: BCA-101N, Unit-1, Flowcharts, Symbols
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Top-down structured programming strategy involves:
+A) Writing machine code first and high-level code later
+B) Decomposing a complex system into progressively smaller, self-contained modular sub-problems and functions *
+C) Running software without testing individual modules
+D) Storing all program variables in a single global file
+E: Top-down design starts with the high-level objective and hierarchically breaks it down into manageable functional subroutines and modules.
+D: medium
+T: BCA-101N, Unit-1, Programming-Concepts, Top-Down-Design
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary objective of an Operating System?
+A) To compile high-level source code into assembly
+B) To manage computer hardware and provide a convenient platform for user programs *
+C) To manufacture microprocessors
+D) To design web pages
+E: An Operating System acts as an intermediary between the computer user and computer hardware, managing hardware resources efficiently and comfortably.
+D: easy
+T: BCA-101N, Unit-2, OS-Basics, Objectives
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The core program of an Operating System that remains continuously resident in main memory is known as the:
+A) Shell
+B) Kernel *
+C) Compiler
+D) Device Driver
+E: The Kernel is the central, foundational module of an OS that manages system resources (CPU scheduling, memory management, I/O) directly at the hardware layer.
+D: easy
+T: BCA-101N, Unit-2, Kernel, Architecture
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which software component interprets user commands entered via keyboard and conveys them to the OS kernel?
+A) Command Interpreter / Shell *
+B) BIOS
+C) RAM
+D) Linker
+E: The Shell is the user interface program (CLI or GUI) that reads user commands, interprets them, and calls underlying kernel system routines.
+D: easy
+T: BCA-101N, Unit-2, Shell, Architecture
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An operating system architecture that allows two or more user processes to reside simultaneously in memory and share the CPU is called:
+A) Uniprogramming
+B) Multiprogramming *
+C) Monoprocessing
+D) Batch Processing without buffering
+E: Multiprogramming keeps multiple jobs resident in memory simultaneously; when one job waits for I/O, the CPU executes another job, maximizing CPU utilization.
+D: medium
+T: BCA-101N, Unit-2, Multiprogramming, OS-Types
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Time-sharing operating systems are fundamentally based on which scheduling concept?
+A) First Come First Served without preemption
+B) Multitasking with small CPU time slices (quanta) allocated cyclically to each active process *
+C) Executing only one job until completion
+D) Random scheduling without timer interrupts
+E: Time-sharing allocates a small slice of CPU execution time (quantum) to each active user/task rapidly, creating the illusion of simultaneous interactive execution.
+D: medium
+T: BCA-101N, Unit-2, Time-Sharing, Scheduling
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a Real-Time Operating System (RTOS), the defining performance parameter is:
+A) High graphical resolution
+B) Strict predictability and meeting hard deterministic execution deadlines *
+C) Lowest hardware memory cost
+D) Number of games supported
+E: An RTOS guarantees completion of critical computational tasks within predetermined, rigid time constraints (deadlines).
+D: medium
+T: BCA-101N, Unit-2, RTOS, Deadlines
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type of real-time system considers a deadline miss as a catastrophic total system failure?
+A) Soft Real-Time System
+B) Hard Real-Time System *
+C) Batch System
+D) Time-Sharing System
+E: In Hard Real-Time systems (e.g., flight control, pacemaker implants, missile guidance), missing a deadline results in complete operational catastrophe.
+D: easy
+T: BCA-101N, Unit-2, RTOS, Hard-vs-Soft
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Multithreading within an operating system allows:
+A) Multiple CPUs to share a single keyboard
+B) A single process to divide execution into multiple concurrent lightweight threads of control sharing memory *
+C) Connecting multiple printers to one computer
+D) Simultaneous installation of two operating systems
+E: A thread is a lightweight unit of CPU utilization; multithreading enables concurrent paths of execution within the same process address space.
+D: medium
+T: BCA-101N, Unit-2, Multithreading, Process
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What differentiates Multiprocessing from Multiprogramming?
+A) Multiprocessing uses two or more physical CPUs or execution cores executing instructions simultaneously *
+B) Multiprogramming requires multiple physical microprocessors
+C) Multiprocessing cannot execute in parallel
+D) There is no difference
+E: Multiprocessing involves true parallel execution across multiple physical microprocessors/cores, whereas multiprogramming interweaves jobs on a single CPU.
+D: medium
+T: BCA-101N, Unit-2, Multiprocessing, Parallelism
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a modern OS, Spooling (Simultaneous Peripheral Operations On-Line) is most frequently used for:
+A) Formatting hard drives
+B) Buffering print jobs on disk so the CPU can resume other tasks while the slow printer outputs data *
+C) Cooling processor heat sinks
+D) Increasing monitor refresh rates
+E: SPOOLing intercepts print jobs sent by high-speed CPUs and stages them in temporary disk queues, freeing applications immediately.
+D: easy
+T: BCA-101N, Unit-2, SPOOLing, I/O
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A computer virus is formally classified as:
+A) A hardware glitch caused by power surges
+B) A malicious program designed to copy itself, attach to other programs, and alter or damage system operation without consent *
+C) An optical lens cleaning liquid
+D) A harmless file compression utility
+E: A computer virus is human-written malicious code that infects host files, propagates self-replicating copies, and executes unauthorized destructive payloads.
+D: easy
+T: BCA-101N, Unit-2, Malware, Virus-Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type of computer virus infects the Master Boot Record (MBR) or partition table of storage disks?
+A) Macro Virus
+B) Boot Sector Virus *
+C) File Infector Virus
+D) Script Virus
+E: Boot Sector viruses (e.g. Brain, Michelangelo) overwrite the MBR or partition boot record, executing malicious code every time the computer boots before the OS loads.
+D: easy
+T: BCA-101N, Unit-2, Virus-Types, Boot-Sector
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Viruses embedded within automated document scripts in applications like Microsoft Word or Excel are called:
+A) Polymorphic Viruses
+B) Macro Viruses *
+C) Stealth Viruses
+D) Cavity Viruses
+E: Macro viruses are written in application macro languages (like VBA) and infect templates and spreadsheets, executing automatically when documents open.
+D: easy
+T: BCA-101N, Unit-2, Virus-Types, Macro-Virus
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A virus that changes its internal binary signature and decryption algorithm each time it replicates to evade detection is a:
+A) Polymorphic Virus *
+B) Direct Action Virus
+C) Multipartite Virus
+D) Trojan Horse
+E: Polymorphic viruses use a variable mutation engine and randomized encryption keys so that traditional signature-based antivirus scanners fail to recognize them.
+D: medium
+T: BCA-101N, Unit-2, Virus-Types, Polymorphic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What key characteristic distinguishes a Computer Worm from a Computer Virus?
+A) A worm requires a human host file to attach to, whereas a virus spreads alone
+B) A worm is completely self-contained and replicates autonomously across networks without needing a host program file *
+C) A worm cannot harm files
+D) A worm only attacks Linux systems
+E: Unlike a virus which requires a carrier host file (like an .exe), a worm operates independently, actively scanning network ports to propagate autonomously.
+D: medium
+T: BCA-101N, Unit-2, Malware, Worm-vs-Virus
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A malicious program disguised as legitimate, harmless software (such as a free game or utility) to trick users into installing it is a:
+A) Trojan Horse *
+B) Logic Bomb
+C) Worm
+D) Macro
+E: A Trojan Horse conceals a covert malicious payload inside an apparently useful application; it does not replicate like a virus, but grants backdoor access.
+D: easy
+T: BCA-101N, Unit-2, Malware, Trojan-Horse
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Malware that encrypts user data files and demands financial payment for the decryption key is termed:
+A) Spyware
+B) Adware
+C) Ransomware *
+D) Rootkit
+E: Ransomware (e.g. WannaCry) maliciously encrypts user files using strong cryptography and demands ransom payment (typically in cryptocurrency).
+D: easy
+T: BCA-101N, Unit-2, Malware, Ransomware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Antivirus heuristic analysis refers to:
+A) Comparing file hashes against a fixed database of known virus strings
+B) Analyzing code structure and suspicious runtime behavioral patterns to detect novel, previously unknown malware *
+C) Cleaning physical dust from motherboard fans
+D) Scanning optical DVDs with laser light
+E: Heuristic analysis detects zero-day threats by identifying suspicious behavior (like modifying boot records or injecting code) rather than waiting for exact signature matches.
+D: medium
+T: BCA-101N, Unit-2, Antivirus, Heuristics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The process of isolating an infected or suspicious file into a secure directory where it cannot execute or spread is called:
+A) Defragmentation
+B) Quarantine *
+C) Spooling
+D) Paging
+E: Antivirus quarantine isolates suspicious binaries in an encrypted, permission-restricted directory preventing execution while preserving files for analysis.
+D: easy
+T: BCA-101N, Unit-2, Antivirus, Quarantine
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which historic program is widely recognized as the first PC computer virus (created in 1986)?
+A) ILOVEYOU
+B) Brain *
+C) Creeper
+D) Stuxnet
+E: The 'Brain' virus, created in 1986 by Basit and Amjad Farooq Alvi in Pakistan, was the first boot sector virus for IBM PC-compatible DOS systems.
+D: medium
+T: BCA-101N, Unit-2, Virus-History, Brain
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: MS-DOS is functionally characterized as a:
+A) Single-user, single-tasking 16-bit command-line operating system *
+B) Multi-user, multitasking 64-bit GUI operating system
+C) Real-time distributed operating system
+D) Network server operating system
+E: MS-DOS is a 16-bit, single-user, single-tasking OS with a text-based Command Line Interface (CLI) that executes one foreground task at a time.
+D: easy
+T: BCA-101N, Unit-2, DOS, Characteristics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which MS-DOS system file contains hardware-dependent device drivers and BIOS interface routines?
+A) COMMAND.COM
+B) MSDOS.SYS
+C) IO.SYS *
+D) CONFIG.SYS
+E: IO.SYS contains low-level hardware interface routines and device drivers that communicate directly with motherboard ROM-BIOS routines.
+D: medium
+T: BCA-101N, Unit-2, DOS-Internals, IO.SYS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which MS-DOS file serves as the core operating system kernel managing file access, memory allocation, and system services?
+A) MSDOS.SYS *
+B) COMMAND.COM
+C) AUTOEXEC.BAT
+D) FORMAT.COM
+E: MSDOS.SYS is the DOS kernel, providing the DOS Application Programming Interface (API) via interrupt INT 21h for file manipulation and process execution.
+D: medium
+T: BCA-101N, Unit-2, DOS-Internals, MSDOS.SYS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: COMMAND.COM in MS-DOS is responsible for:
+A) Hardware initialization during power-on
+B) Interpreting user commands, displaying the command prompt, and executing internal commands *
+C) Testing RAM integrity
+D) Allocating virtual memory swap files
+E: COMMAND.COM is the default DOS command interpreter containing built-in internal routines (DIR, COPY, CLS) and launching external executables.
+D: easy
+T: BCA-101N, Unit-2, DOS-Internals, COMMAND.COM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the traditional file naming convention enforced by MS-DOS (FAT16/FAT12)?
+A) Unlimited character length with spaces
+B) 8.3 rule (maximum 8-character filename followed by an optional 3-character extension) *
+C) Case-sensitive 64-character names
+D) Only numeric characters allowed
+E: MS-DOS strictly enforces the 8.3 filename structure: up to 8 alphanumeric characters, a period separator, and an optional 3-character extension (e.g. FILENAME.TXT).
+D: easy
+T: BCA-101N, Unit-2, DOS-Files, 8.3-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In MS-DOS, the root directory of a drive is represented by which symbol?
+A) Forward Slash (/)
+B) Backslash (\) *
+C) Colon (:)
+D) Ampersand (&)
+E: The backslash character (\) designates the root directory of the active drive (e.g., C:\) in DOS and Windows paths.
+D: easy
+T: BCA-101N, Unit-2, DOS-Syntax, Backslash
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The File Allocation Table (FAT) in DOS file systems functions as a:
+A) Database of user login passwords
+B) Map of disk clusters recording which clusters hold parts of which files and identifying bad/free blocks *
+C) List of installed printers
+D) Table of CPU clock frequencies
+E: The FAT is a linked-allocation table mapping data clusters on disk, recording sequential cluster chains for files and tracking free or bad sectors.
+D: medium
+T: BCA-101N, Unit-2, FAT, File-System
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Cold Booting a computer system refers to:
+A) Restarting the computer using the Ctrl + Alt + Delete key combination
+B) Starting the computer from a completely powered-off state by turning on the electrical power switch *
+C) Cooling the computer with ice packs
+D) Running an antivirus in safe mode
+E: A cold boot (hard boot) begins from zero electrical power, triggering full power supply stabilization, hardware reset lines, and comprehensive POST testing.
+D: easy
+T: BCA-101N, Unit-2, Booting, Cold-Boot
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Warm Booting (Soft Boot) in MS-DOS is initiated by pressing:
+A) Alt + F4
+B) Ctrl + Alt + Delete *
+C) Shift + F10
+D) Ctrl + Shift + Esc
+E: Pressing Ctrl + Alt + Delete triggers a warm restart without cutting electrical power, bypassing prolonged hardware cold-start power cycles.
+D: easy
+T: BCA-101N, Unit-2, Booting, Warm-Boot
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which file is executed automatically by MS-DOS at the conclusion of the boot process to configure system startup settings and paths?
+A) CONFIG.SYS
+B) AUTOEXEC.BAT *
+C) SYSTEM.INI
+D) WIN.COM
+E: AUTOEXEC.BAT (Automatic Execute Batch file) runs automatically after COMMAND.COM loads, setting environment variables (PATH, PROMPT) and auto-starting utilities.
+D: medium
+T: BCA-101N, Unit-2, DOS-Boot, AUTOEXEC.BAT
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What distinguishes an Internal DOS command from an External DOS command?
+A) Internal commands run on floppy disks; external run on hard disks
+B) Internal commands are built directly into COMMAND.COM in memory; external commands exist as separate executable files (.COM, .EXE, .BAT) on disk *
+C) Internal commands are written in C; external are in Pascal
+D) Internal commands cannot be run from prompt
+E: Internal commands (like DIR, CLS, COPY) reside permanently in RAM within COMMAND.COM; external commands (like FORMAT.COM, CHKDSK.EXE) must be loaded from disk storage.
+D: medium
+T: BCA-101N, Unit-2, DOS-Commands, Internal-vs-External
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is an INTERNAL DOS command?
+A) FORMAT
+B) CHKDSK
+C) DIR *
+D) XCOPY
+E: DIR is an internal command built directly into COMMAND.COM and executes instantly without requiring secondary disk file lookup.
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, DIR
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is an EXTERNAL DOS command?
+A) COPY
+B) DEL
+C) REN
+D) CHKDSK *
+E: CHKDSK (Check Disk) is an external utility stored on disk as CHKDSK.EXE, used to inspect file system integrity and cluster allocation.
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, CHKDSK
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In MS-DOS, which command is used to remove an empty subdirectory?
+A) DEL
+B) ERASE
+C) RD (or RMDIR) *
+D) KILL
+E: The RD (Remove Directory) or RMDIR command deletes specified subdirectories, provided the directory is completely empty of files.
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, RD
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To view the text content of a file directly on screen in MS-DOS, the appropriate command is:
+A) SHOW
+B) TYPE *
+C) PRINT
+D) VIEW
+E: The TYPE command displays the unformatted text contents of a file on the standard console display (e.g. TYPE NOTES.TXT).
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, TYPE
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which DOS command displays or modifies the read-only, archive, hidden, and system file attributes?
+A) ATTRIB *
+B) CHMOD
+C) SET
+D) PROPS
+E: The external command ATTRIB sets (+R, +A, +S, +H) or clears (-R, -A, -S, -H) file flags for Read-only, Archive, System, and Hidden files.
+D: medium
+T: BCA-101N, Unit-2, DOS-Commands, ATTRIB
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To copy an entire directory tree including all nested subdirectories and files, the recommended DOS command is:
+A) COPY
+B) XCOPY *
+C) TREE
+D) MOVE
+E: XCOPY (Extended Copy) can recursively traverse and copy directory hierarchies, subdirectories, and multiple files in a single invocation.
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, XCOPY
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which command in MS-DOS is used to clear the console monitor screen and return the prompt to the top-left corner?
+A) CLEAR
+B) CLS *
+C) RESET
+D) BLANK
+E: CLS (Clear Screen) is an internal command that erases all console text lines and repositions the cursor at line 1, column 1.
+D: easy
+T: BCA-101N, Unit-2, DOS-Commands, CLS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In DOS command syntax, wildcards '*' and '?' represent:
+A) '*' matches any sequence of characters; '?' matches exactly one single character *
+B) '*' matches one character; '?' matches any sequence
+C) Both match only numbers
+D) Both are used exclusively for mathematical calculations
+E: In DOS file pattern matching, '?' matches any single character (e.g. T?ST.TXT matches TEST.TXT, TOST.TXT) while '*' matches any string of characters (e.g. *.DOC).
+D: easy
+T: BCA-101N, Unit-2, DOS-Syntax, Wildcards
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which DOS command checks disk structure, repairs directory errors, and reports total and free disk memory?
+A) SCANDISK
+B) CHKDSK *
+C) DISKCOPY
+D) FDISK
+E: CHKDSK examines the disk surface and FAT tables, displaying reports on total disk capacity, hidden files, allocation unit sizes, and remaining free bytes.
+D: medium
+T: BCA-101N, Unit-2, DOS-Commands, CHKDSK
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary role of the Windows Graphical User Interface (GUI)?
+A) To force users to memorize terminal commands
+B) To enable visual interaction using graphical icons, windows, menus, and a mouse pointer (WIMP interface) *
+C) To eliminate the need for computer RAM
+D) To prevent connecting to the Internet
+E: A GUI replaces cryptic typed commands with intuitive visual metaphors: Windows, Icons, Menus, and Pointer (WIMP).
+D: easy
+T: BCA-101N, Unit-2, Windows-GUI, WIMP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Windows, the horizontal bar typically positioned at the bottom of the screen displaying the Start button and active application tabs is the:
+A) Title Bar
+B) Menu Bar
+C) Taskbar *
+D) Formula Bar
+E: The Taskbar provides quick access to the Start menu, running application windows, pinned shortcuts, and the system notification area (system tray).
+D: easy
+T: BCA-101N, Unit-2, Windows-GUI, Taskbar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which key combination in Windows allows users to instantly switch between active open application windows?
+A) Ctrl + C
+B) Alt + Tab *
+C) Ctrl + Shift + Esc
+D) Alt + F4
+E: Pressing Alt + Tab displays the task-switching overlay, allowing rapid cyclical navigation among all open application windows.
+D: easy
+T: BCA-101N, Unit-2, Windows-Shortcuts, Alt-Tab
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What Windows utility is primarily designed for navigating, organizing, copying, and managing files and folders across drives?
+A) Internet Explorer
+B) Windows Explorer (File Explorer) *
+C) Device Manager
+D) Notepad
+E: Windows Explorer (File Explorer) is the core file manager providing hierarchical navigation of drives, folders, libraries, and files.
+D: easy
+T: BCA-101N, Unit-2, Windows-Tools, File-Explorer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When a file is deleted in Windows using the Delete key, where is it temporarily stored for potential recovery?
+A) Clipboard
+B) Recycle Bin *
+C) Temp folder
+D) Task Manager
+E: The Recycle Bin acts as a safety holding area on disk, allowing deleted files to be restored to their original location before permanent purging.
+D: easy
+T: BCA-101N, Unit-2, Windows-Features, Recycle-Bin
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To permanently delete a file in Windows without moving it to the Recycle Bin, which keyboard combination is used?
+A) Ctrl + Delete
+B) Shift + Delete *
+C) Alt + Delete
+D) Tab + Delete
+E: Shift + Delete completely bypasses the Recycle Bin, permanently deallocating the file clusters immediately.
+D: easy
+T: BCA-101N, Unit-2, Windows-Shortcuts, Shift-Delete
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Windows administrative tool allows users to configure hardware devices, adjust display settings, manage user accounts, and install network printers?
+A) Command Prompt
+B) Control Panel *
+C) Paint
+D) Calculator
+E: Control Panel (and Settings) centralizes configuration applets for hardware, network adapters, sound profiles, security, and peripheral drivers.
+D: easy
+T: BCA-101N, Unit-2, Windows-Tools, Control-Panel
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What utility in Windows displays active running processes, CPU utilization, memory allocation, and allows closing unresponsive frozen applications?
+A) Event Viewer
+B) Task Manager *
+C) Registry Editor
+D) Disk Cleanup
+E: Task Manager (Ctrl + Shift + Esc) provides real-time telemetry on CPU, memory, disk, and network performance and allows terminating hanging processes.
+D: easy
+T: BCA-101N, Unit-2, Windows-Tools, Task-Manager
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A shortcut icon on the Windows desktop is characterized by:
+A) A gold padlock symbol
+B) A small curved arrow in the lower-left corner of the icon *
+C) A red exclamation mark
+D) A flashing border
+E: Shortcut icons display a small curved arrow overlay, indicating that the icon is merely a pointer (.lnk file) to an executable file located elsewhere.
+D: easy
+T: BCA-101N, Unit-2, Windows-GUI, Shortcuts
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Windows accessory program is a lightweight, plain-text editor without rich formatting features, commonly used for editing code and batch scripts?
+A) WordPad
+B) Notepad *
+C) Paint
+D) Snipping Tool
+E: Notepad is the default ASCII/UTF-8 plain text editor in Windows that saves unformatted text files without font or paragraph markup.
+D: easy
+T: BCA-101N, Unit-2, Windows-Accessories, Notepad
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Before opening a PC cabinet to perform maintenance or upgrades, what vital safety precaution must be taken?
+A) Pour water on the cables
+B) Unplug the AC power cord and ground yourself using an Anti-Static Electrostatic Discharge (ESD) wrist strap *
+C) Turn on the computer
+D) Disconnect the monitor only
+E: Unplugging the power and using an ESD wrist strap discharges static electricity from the technician's body, preventing permanent microscopic damage to sensitive CMOS chips.
+D: easy
+T: BCA-101N, Unit-3, Maintenance, ESD-Safety
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What component inside the PC chassis converts high-voltage alternating current (AC) from the wall outlet into low-voltage direct current (DC) for internal components?
+A) CPU
+B) RAM
+C) Switched-Mode Power Supply (SMPS) *
+D) Northbridge
+E: The SMPS converts 220V/110V AC mains voltage into regulated +12V, +5V, +3.3V, and -12V DC power lines required by motherboards, drives, and chips.
+D: easy
+T: BCA-101N, Unit-3, Hardware, SMPS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: On an ATX power supply connector, which color wire typically carries the +12V DC rail used for CPU and motor power?
+A) Red
+B) Yellow *
+C) Orange
+D) Black
+E: Standard PC power wiring conventions use Yellow for +12V, Red for +5V, Orange for +3.3V, and Black for ground.
+D: medium
+T: BCA-101N, Unit-3, Hardware, Wiring-Standards
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: During PC bootup, what firmware routine performs a hardware diagnostic self-test before attempting to boot the operating system?
+A) POST (Power-On Self-Test) *
+B) BIOS Setup
+C) ScanDisk
+D) Task Manager
+E: POST checks the CPU registers, initializes the memory controller, validates RAM integrity, checks for video output, and verifies keyboard connection.
+D: easy
+T: BCA-101N, Unit-3, Firmware, POST
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a desktop PC emits a continuous, repetitive beeping sequence upon powering on with no display output, the most probable hardware failure is:
+A) Hard drive full
+B) RAM module unseated, faulty, or poorly contacted in its DIMM slot *
+C) Mouse disconnected
+D) CD-ROM tray open
+E: Motherboard BIOS beep codes indicate hardware errors before video initialization; continuous beeping typically signals missing or unseated RAM modules.
+D: medium
+T: BCA-101N, Unit-3, Troubleshooting, Beep-Codes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Thermal paste (thermal compound) is applied between the CPU integrated heat spreader (IHS) and the heatsink base primarily to:
+A) Glue the CPU permanently to the socket
+B) Eliminate microscopic air gaps and facilitate maximum thermal conduction between processor and cooler *
+C) Provide electrical insulation
+D) Make the fan spin faster
+E: Air is a terrible heat conductor; thermal paste fills microscopic surface imperfections, ensuring efficient heat transfer from the processor die to the heatsink.
+D: medium
+T: BCA-101N, Unit-3, Hardware, Thermal-Management
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which expansion slot standard provides point-to-point serial data transfer lanes (x1, x4, x8, x16) and is used for modern high-performance graphics cards?
+A) PCI
+B) AGP
+C) PCI Express (PCIe) *
+D) ISA
+E: PCIe replaced parallel PCI and AGP buses, using scalable serial lanes (e.g. PCIe x16) delivering tens of gigabytes per second bandwidth.
+D: easy
+T: BCA-101N, Unit-3, Motherboard, PCIe
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Northbridge chip on traditional motherboards historically managed communication between the CPU and:
+A) High-speed devices: System RAM and the AGP/PCIe graphics card *
+B) Slow I/O ports: USB, SATA, and audio
+C) Keyboard and mouse only
+D) Optical disc drives
+E: The Northbridge was responsible for high-bandwidth tasks (memory controller, front-side bus, high-speed graphics), while the Southbridge handled slower peripheral I/O.
+D: medium
+T: BCA-101N, Unit-3, Motherboard, Chipset
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What motherboard component contains CMOS setup configuration settings (date, time, boot priority) preserved by a coin-cell battery when the computer is unplugged?
+A) CMOS Memory / RTC (Real-Time Clock) *
+B) L2 Cache
+C) Sound Card
+D) SATA controller
+E: A small 3V CR2032 lithium coin cell powers the CMOS RAM and Real-Time Clock chip so BIOS configuration parameters are not lost during power disconnection.
+D: easy
+T: BCA-101N, Unit-3, Motherboard, CMOS-Battery
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which standard form factor is the most widely adopted for modern consumer desktop motherboards and computer cases?
+A) NLX
+B) Baby AT
+C) ATX (Advanced Technology eXtended) *
+D) BTX
+E: ATX (introduced by Intel in 1995) standardized motherboard dimensions (12 x 9.6 inches), port clusters, and integrated power control.
+D: easy
+T: BCA-101N, Unit-3, Motherboard, Form-Factors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which display interface transmits uncompressed digital high-definition video AND multi-channel audio over a single cable?
+A) VGA
+B) DVI-D
+C) HDMI (High-Definition Multimedia Interface) *
+D) RS-232 Serial Port
+E: HDMI carries both digital high-definition video and multi-channel surround sound on a single cable between computers, monitors, and televisions.
+D: easy
+T: BCA-101N, Unit-3, Hardware, Display-Ports
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The legacy blue 15-pin D-sub connector traditionally used to transmit analog video signals to CRT and early LCD monitors is:
+A) DisplayPort
+B) HDMI
+C) VGA (Video Graphics Array) *
+D) S-Video
+E: VGA is an analog video standard using a 15-pin DE-15 connector, susceptible to signal degradation at long cable lengths compared to digital interfaces.
+D: easy
+T: BCA-101N, Unit-3, Hardware, VGA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The internal storage interface protocol designed from the ground up to unlock the high-speed potential of solid-state drives using PCIe lanes is:
+A) PATA (IDE)
+B) SATA III
+C) NVMe (Non-Volatile Memory Express) *
+D) SCSI
+E: NVMe bypasses legacy SATA controller bottlenecks by communicating directly with the CPU over high-speed PCIe lanes, achieving transfer rates exceeding 7,000 MB/s.
+D: medium
+T: BCA-101N, Unit-3, Storage, NVMe-vs-SATA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: On a mechanical hard disk drive, the time required for the read/write head assembly to physically reposition to the correct track is called:
+A) Rotational Latency
+B) Seek Time *
+C) Transfer Rate
+D) Cache Buffer Time
+E: Seek time is the physical mechanical duration needed to move the disk head actuator arm to the target concentric track on the spinning magnetic platter.
+D: medium
+T: BCA-101N, Unit-3, Storage, Hard-Disk-Metrics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Rotational latency of a hard disk refers to:
+A) The time taken for the actuator arm to return to park position
+B) The time taken for the target sector on the platter to rotate directly beneath the read/write head *
+C) The time taken to copy a file to USB
+D) The spin-down time when shutting down
+E: Rotational latency is the rotational delay while waiting for the requested disk sector to spin under the read head, averaging half the duration of one complete rotation.
+D: medium
+T: BCA-101N, Unit-3, Storage, Hard-Disk-Metrics
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Standard single-layer DVD media offers a storage capacity of approximately:
+A) 700 MB
+B) 4.7 GB *
+C) 25 GB
+D) 100 GB
+E: A standard single-sided, single-layer DVD-ROM disc holds 4.7 GB of data, compared to 700 MB for a standard CD and 25 GB for a single-layer Blu-ray disc.
+D: easy
+T: BCA-101N, Unit-3, Storage, Optical-Media
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which standard Ethernet cable connector is used to connect network interface cards (NICs) to local area network switches and routers?
+A) RJ-11
+B) RJ-45 *
+C) BNC
+D) USB Type-C
+E: RJ-45 (Registered Jack 45) is an 8-pin modular connector standard utilized worldwide for twisted-pair Ethernet networking (Cat5e, Cat6, Cat6a).
+D: easy
+T: BCA-101N, Unit-3, Networking, Connectors
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What audio jack color on a standard PC motherboard audio backpanel is designated for stereo audio line-out (headphones or front speakers)?
+A) Pink
+B) Light Green *
+C) Light Blue
+D) Orange
+E: PC 99 audio color-coding standards mandate Lime Green for stereo audio output, Pink for microphone input, and Light Blue for line-in audio.
+D: easy
+T: BCA-101N, Unit-3, Hardware, Audio-Ports
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: USB 3.0 ports are visually identified by which internal plastic tab color inside the connector?
+A) White
+B) Black
+C) Blue *
+D) Yellow
+E: USB 3.0 (SuperSpeed 5 Gbps) ports feature distinct bright Blue plastic insulator inserts to distinguish them from black USB 2.0 (480 Mbps) ports.
+D: easy
+T: BCA-101N, Unit-3, Hardware, USB-Standards
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The memory slot design utilized for installing RAM modules on desktop motherboards is known as:
+A) SO-DIMM
+B) DIMM (Dual In-line Memory Module) *
+C) SIMM
+D) PCIe Slot
+E: Desktop systems utilize full-sized DIMM slots, whereas compact laptops and small form factor PCs utilize smaller SO-DIMMs (Small Outline DIMMs).
+D: easy
+T: BCA-101N, Unit-3, Hardware, RAM-Slots
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Internet is fundamentally described as a:
+A) Single centralized computer owned by the United Nations
+B) Global decentralized network of interconnected computer networks communicating via TCP/IP protocols *
+C) Proprietary software program created by Microsoft
+D) Collection of offline CD-ROM databases
+E: The Internet is a worldwide system of interconnected computer networks utilizing standardized Internet Protocol suite (TCP/IP) communication protocols.
+D: easy
+T: BCA-101N, Unit-3, Internet, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Who invented the World Wide Web (WWW) at CERN in 1989?
+A) Bill Gates
+B) Tim Berners-Lee *
+C) Steve Jobs
+D) Alan Turing
+E: Sir Tim Berners-Lee invented the World Wide Web in 1989 by combining hypertext, uniform resource locators (URLs), and HTTP communication protocol.
+D: easy
+T: BCA-101N, Unit-3, Web-History, Tim-Berners-Lee
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the crucial conceptual difference between the Internet and the World Wide Web?
+A) The Internet and WWW are completely identical terms
+B) The Internet is the underlying physical networking infrastructure; the Web is an information service operating on top of the Internet using HTTP *
+C) The Web is older than the Internet
+D) The Internet only transmits email
+E: The Internet is the global network hardware infrastructure; the World Wide Web is one of many application-layer services (alongside email, FTP, VoIP) running across it.
+D: medium
+T: BCA-101N, Unit-3, Internet-vs-Web, Architecture
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the URL 'https://www.example.com:8080/notes/bca.html', what does 'https' represent?
+A) The domain name
+B) The transfer protocol (HyperText Transfer Protocol Secure) *
+C) The file directory path
+D) The port number
+E: The initial component before the '://' specifies the communication protocol scheme used to access the network resource.
+D: easy
+T: BCA-101N, Unit-3, Web, URL-Structure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The primary function of the Domain Name System (DNS) is to:
+A) Assign computer passwords
+B) Translate human-readable domain names (e.g. www.mjpru.ac.in) into machine-routable numerical IP addresses *
+C) Filter spam emails
+D) Accelerate hard drive spin speed
+E: DNS serves as the phonebook of the Internet, resolving alphanumeric domain names into numerical binary IP addresses so routers can route data packets.
+D: easy
+T: BCA-101N, Unit-3, DNS, Networking
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An IPv4 address consists of how many total bits?
+A) 16 bits
+B) 32 bits (4 octets) *
+C) 64 bits
+D) 128 bits
+E: IPv4 addresses are 32-bit binary numbers divided into four 8-bit octets separated by periods in dotted-decimal format (e.g., 192.168.1.1).
+D: easy
+T: BCA-101N, Unit-3, Networking, IPv4
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many bits are used in an IPv6 address to overcome the exhaustion of IPv4 addresses?
+A) 32 bits
+B) 64 bits
+C) 128 bits (represented as 8 groups of hexadecimal digits) *
+D) 256 bits
+E: IPv6 utilizes 128-bit addresses (allowing 3.4 x 10^38 unique addresses), written as eight 16-bit blocks in hexadecimal format separated by colons.
+D: easy
+T: BCA-101N, Unit-3, Networking, IPv6
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which IPv4 address class is specifically reserved for Multicast groups?
+A) Class A
+B) Class B
+C) Class C
+D) Class D *
+E: IPv4 Class D addresses (range 224.0.0.0 to 239.255.255.255) are designated exclusively for multicasting data streams to multiple subscribed hosts.
+D: medium
+T: BCA-101N, Unit-3, Networking, IP-Classes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An organization that provides internet connectivity, routing, and access packages to individuals and companies is an:
+A) ASP
+B) ISP (Internet Service Provider) *
+C) IEEE
+D) DNS Registrar
+E: Internet Service Providers (ISPs like Airtel, Jio, BSNL) provide telecom infrastructure, routing connections, and transit points to the global Internet backbone.
+D: easy
+T: BCA-101N, Unit-3, Networking, ISP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which software application reads, interprets, and renders HTML documents into interactive visual web pages on a user screen?
+A) Web Server
+B) Web Browser *
+C) Compiler
+D) Text Editor
+E: A Web Browser (Google Chrome, Firefox, Safari, Edge) parses HTML, CSS, and JavaScript to visually render multimedia web pages for users.
+D: easy
+T: BCA-101N, Unit-3, Web, Browsers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A private internal corporate network that uses Internet protocols (TCP/IP, HTTP) accessible only by authorized internal employees is an:
+A) Internet
+B) Intranet *
+C) Extranet
+D) Wide Area Network
+E: An Intranet is a restricted internal enterprise network that leverages standard web technologies securely behind corporate firewalls for staff use.
+D: easy
+T: BCA-101N, Unit-3, Networking, Intranet
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An Extranet differs from an Intranet because an Extranet:
+A) Is open completely to the public worldwide
+B) Extends controlled access of certain internal network resources to trusted external partners, suppliers, and vendors *
+C) Does not use passwords
+D) Operates without Internet cables
+E: An Extranet provides controlled, authenticated access to selected parts of an organization's intranet for external business partners and clients.
+D: medium
+T: BCA-101N, Unit-3, Networking, Extranet
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Search engine web crawlers (also called Spiders or Bots) operate by:
+A) Selling hardware to computer users
+B) Systematically browsing the World Wide Web, traversing hyperlinks, and indexing web page text and metadata into databases *
+C) Infecting web servers with viruses
+D) Banning search requests
+E: Web crawlers autonomously fetch pages across hyperlinks, downloading contents to search engine indexing servers to update searchable search indices.
+D: easy
+T: BCA-101N, Unit-3, Search-Engines, Crawlers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an email address format 'student@college.edu', what does 'college.edu' identify?
+A) The personal username of the student
+B) The domain name of the mail server hosting the mailbox *
+C) The password hash
+D) The physical computer MAC address
+E: An email address separates the mailbox username from the destination mail server domain name using the '@' (at) symbol.
+D: easy
+T: BCA-101N, Unit-3, Email, Address-Format
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which network protocol is primarily responsible for transmitting outgoing electronic mail messages from a client to a mail server?
+A) POP3
+B) IMAP
+C) SMTP (Simple Mail Transfer Protocol) *
+D) FTP
+E: SMTP is the standard Internet push protocol for transferring outgoing mail from a client MUA to an MTA server and between relay mail servers.
+D: easy
+T: BCA-101N, Unit-3, Email-Protocols, SMTP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The POP3 (Post Office Protocol version 3) email retrieval protocol operates primarily by:
+A) Keeping all emails permanently synced across multiple mobile devices
+B) Downloading mail messages from the server to the local computer client and typically deleting them from the server *
+C) Sending emails to newsgroups
+D) Filtering spam on routers
+E: POP3 downloads email messages from the remote mail server to the user's local hard drive and removes them from the server mailbox by default.
+D: medium
+T: BCA-101N, Unit-3, Email-Protocols, POP3
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is IMAP (Internet Message Access Protocol) preferred over POP3 for modern mobile users?
+A) IMAP is completely free while POP3 requires monthly fees
+B) IMAP leaves email messages on the server, synchronizing mail folders and read/unread status across multiple devices simultaneously *
+C) IMAP does not use the Internet
+D) IMAP only works with text messages
+E: IMAP provides two-way folder synchronization, allowing users to view identical inbox states, sent items, and read statuses across phones, tablets, and laptops.
+D: easy
+T: BCA-101N, Unit-3, Email-Protocols, IMAP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In email headers, what is the key distinction between CC and BCC fields?
+A) CC sends text only; BCC sends attachments
+B) Recipients in CC are visible to all other recipients; email addresses in BCC (Blind Carbon Copy) remain invisible to all other recipients *
+C) BCC sends emails faster
+D) CC deletes the message automatically
+E: BCC (Blind Carbon Copy) conceals recipient email addresses from everyone else on the recipient list, preserving recipient privacy.
+D: easy
+T: BCA-101N, Unit-3, Email, CC-vs-BCC
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Unsolicited, mass-distributed bulk commercial advertising emails sent to thousands of recipients without consent are known as:
+A) Spam / Junk Mail *
+B) Spoofing
+C) Phishing
+D) Thread
+E: Spam refers to unwanted, unrequested bulk emails sent across mail relays, consuming server bandwidth and filling mailboxes.
+D: easy
+T: BCA-101N, Unit-3, Email, Spam
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Netiquette refers to:
+A) The mathematical protocol governing fiber optic pulses
+B) The accepted code of polite, ethical, and professional behavior and etiquette observed when communicating online *
+C) The speed limit of broadband Internet
+D) A software program for catching computer viruses
+E: Netiquette (Network Etiquette) comprises common courtesy rules: avoiding ALL CAPS shouting, respecting privacy, avoiding flaming, and quoting context.
+D: easy
+T: BCA-101N, Unit-3, Internet, Netiquette
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The fraudulent attempt to obtain sensitive credentials (usernames, passwords, credit card numbers) by disguising as a trustworthy entity in an email is:
+A) Phishing *
+B) Spooling
+C) Paging
+D) Defragmentation
+E: Phishing tricks victims into submitting confidential financial or login credentials on counterfeit web pages mimicking genuine institutions.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, Phishing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary operational distinction between a 'Hacker' (White-Hat) and a 'Cracker' (Black-Hat)?
+A) Hackers use Windows; Crackers use Linux
+B) A White-Hat Hacker legally identifies vulnerabilities to help organizations patch defenses, whereas a Cracker maliciously exploits vulnerabilities for unauthorized personal gain or destruction *
+C) There is no difference
+D) Crackers only build hardware
+E: Ethical hackers (white-hat) operate with legal consent to enhance security, while crackers (black-hat) break into computer networks maliciously for theft or damage.
+D: medium
+T: BCA-101N, Unit-3, Cybersecurity, Hacker-vs-Cracker
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A network security device that monitors and filters incoming and outgoing network traffic based on established security rule sets is a:
+A) Firewall *
+B) Repeater
+C) Hub
+D) Modem
+E: A Firewall acts as a protective barrier between a trusted internal network and untrusted external networks (like the Internet), inspecting packets.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, Firewall
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Denial of Service (DoS) attack aims to:
+A) Steal computer keyboards
+B) Overwhelm a target server or network with excessive flood traffic, rendering it unavailable to legitimate users *
+C) Upgrade server RAM remotely
+D) Clean corrupted hard drive clusters
+E: DoS and DDoS attacks saturate network bandwidth or server compute resources with dummy request floods, causing services to crash or freeze for real users.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, DoS-Attack
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which security protocol secures HTTP traffic across the World Wide Web using Transport Layer Security (TLS/SSL) encryption?
+A) FTP
+B) HTTPS *
+C) Telnet
+D) SNMP
+E: HTTPS (HTTP over TLS/SSL) encrypts data transmitted between browser and web server, preventing eavesdropping and man-in-the-middle tampering.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, HTTPS
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Strong password creation policies generally recommend all of the following EXCEPT:
+A) Using at least 12 to 16 characters
+B) Combining uppercase letters, lowercase letters, numbers, and special symbols
+C) Using common personal information like your birthdate or pet's name *
+D) Avoiding dictionary words and predictable patterns
+E: Using names, birthdates, or predictable dictionary words leaves accounts vulnerable to simple dictionary and social engineering attacks.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, Password-Security
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The criminal act of forging an email sender address so the message appears to originate from someone other than the actual source is called:
+A) Email Spoofing *
+B) Email Snoozing
+C) Email Archiving
+D) Email Spooling
+E: Email spoofing falsifies email header sender addresses (From:) because foundational SMTP protocols lacked built-in sender verification.
+D: medium
+T: BCA-101N, Unit-3, Cybersecurity, Spoofing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Two-Factor Authentication (2FA) enhances account security by requiring:
+A) Two different password characters
+B) Two distinct authentication factors: something you know (password) and something you have (SMS code or hardware authenticator) *
+C) Entering your password twice
+D) Logging in using two different web browsers
+E: 2FA ensures that even if an attacker compromises a password, access remains blocked without the physical secondary token or biometric verification.
+D: easy
+T: BCA-101N, Unit-3, Cybersecurity, 2FA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Spyware is malware engineered specifically to:
+A) Boost graphics card rendering
+B) Secretly monitor user activity, record keystrokes (keylogger), harvest browsing habits, and transmit data to third parties without consent *
+C) Format hard drives during boot
+D) Speed up download speeds
+E: Spyware operates covertly in the background, intercepting passwords, financial transactions, and private messages without user awareness.
+D: easy
+T: BCA-101N, Unit-3, Malware, Spyware
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Under Indian law, cyber crimes and electronic commerce regulations are governed under which landmark legislation?
+A) Indian Penal Code of 1860 only
+B) The Information Technology (IT) Act, 2000 (and subsequent amendments) *
+C) The Companies Act, 2013
+D) The Consumer Protection Act
+E: The Information Technology Act 2000 provides legal recognition for electronic transactions, digital signatures, and defines penal codes for cyber offenses.
+D: easy
+T: BCA-101N, Unit-3, Cyber-Law, IT-Act-2000
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the default file extension for documents saved in modern versions of Microsoft Word (Word 2007 and newer)?
+A) .doc
+B) .docx *
+C) .dot
+D) .txt
+E: Modern Word documents use the open XML-based .docx format, which reduces file size and improves data recovery compared to legacy binary .doc.
+D: easy
+T: BCA-101N, Unit-4, Word-Basics, File-Extensions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Microsoft Word, standard default page margins on a blank document are:
+A) 0.5 inches on all sides
+B) 1.0 inch (2.54 cm) on top, bottom, left, and right *
+C) 1.5 inches left and right, 1.0 inch top and bottom
+D) 2.0 inches all sides
+E: The default 'Normal' margin setting in MS Word applies 1.0 inch (72 points or 2.54 cm) to Top, Bottom, Left, and Right margins.
+D: easy
+T: BCA-101N, Unit-4, Word-Page-Setup, Margins
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the two standard page orientation modes available in word processing software?
+A) Landscape and Horizontal
+B) Portrait and Landscape *
+C) Vertical and Tall
+D) Wide and Narrow
+E: Portrait orientates the page vertically (height greater than width); Landscape orientates the page horizontally (width greater than height).
+D: easy
+T: BCA-101N, Unit-4, Word-Page-Setup, Orientation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The standard paper dimensions of an A4 sheet widely used in academic and technical document printing are:
+A) 8.5 x 11.0 inches
+B) 210 mm x 297 mm (8.27 x 11.69 inches) *
+C) 8.5 x 14.0 inches
+D) 297 mm x 420 mm
+E: A4 paper (ISO 216 standard) measures exactly 210 x 297 millimeters, whereas US Letter measures 8.5 x 11 inches (216 x 279 mm).
+D: medium
+T: BCA-101N, Unit-4, Word-Page-Setup, Paper-Sizes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which bar located at the very top of the Microsoft Word application window displays the active document name and window control buttons?
+A) Status Bar
+B) Title Bar *
+C) Ruler
+D) Scroll Bar
+E: The Title Bar displays the current document filename (e.g. 'Document1 - Word') alongside Minimize, Maximize/Restore, and Close buttons.
+D: easy
+T: BCA-101N, Unit-4, Word-UI, Title-Bar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The small toolbar located typically above the Ribbon that houses one-click shortcuts for Save, Undo, and Redo is the:
+A) Status Bar
+B) Quick Access Toolbar (QAT) *
+C) Taskbar
+D) Formula Bar
+E: The Quick Access Toolbar is a customizable strip providing immediate access to frequently used commands regardless of which Ribbon tab is active.
+D: easy
+T: BCA-101N, Unit-4, Word-UI, Quick-Access-Toolbar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which keyboard shortcut combination is used in MS Word to instantly create a new blank document?
+A) Ctrl + O
+B) Ctrl + N *
+C) Ctrl + S
+D) Ctrl + B
+E: Pressing Ctrl + N spawns a new empty document window based on the Normal template.
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Ctrl-N
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To open an existing document in Microsoft Word, the standard shortcut key is:
+A) Ctrl + P
+B) Ctrl + O *
+C) Ctrl + E
+D) Ctrl + F
+E: Ctrl + O triggers the Open dialog or backstage view to browse and open saved document files.
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Ctrl-O
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Status Bar located at the very bottom of the MS Word window displays:
+A) Only the computer clock
+B) Page numbers, word count, proofing language, view modes, and the zoom slider *
+C) Printer ink levels
+D) Motherboard temperature
+E: The Status Bar provides real-time document metrics: Current Page, Total Pages, Word Count, Language, Read/Print/Web views, and Zoom percentage.
+D: easy
+T: BCA-101N, Unit-4, Word-UI, Status-Bar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which viewing mode in MS Word optimizes document display for reading on-screen by removing editing toolbars and showing pages as a book?
+A) Print Layout View
+B) Read Mode (Full Screen Reading) *
+C) Web Layout View
+D) Draft View
+E: Read Mode maximizes screen area for reading, organizing text into horizontal reading columns and hiding Ribbon toolbars.
+D: easy
+T: BCA-101N, Unit-4, Word-Views, Read-Mode
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In MS Word, clicking three times rapidly inside a paragraph will select:
+A) A single word
+B) A single line
+C) The entire paragraph *
+D) The entire document
+E: In Word: single click positions the cursor; double click selects a word; triple click selects the complete paragraph.
+D: easy
+T: BCA-101N, Unit-4, Word-Editing, Selection
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To select an entire document from start to finish using a keyboard shortcut, press:
+A) Ctrl + S
+B) Ctrl + A *
+C) Ctrl + D
+D) Shift + End
+E: Ctrl + A (Select All) highlights every element in the active document buffer, including text, graphics, and tables.
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Ctrl-A
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the keyboard shortcut to apply or remove Bold formatting on selected text?
+A) Ctrl + U
+B) Ctrl + I
+C) Ctrl + B *
+D) Ctrl + K
+E: Ctrl + B toggles bold font weighting on the active text selection.
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Bold
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which formatting feature positions small text slightly below the normal baseline of text (as seen in chemical formulas like H2O)?
+A) Superscript
+B) Subscript *
+C) Strikethrough
+D) Small Caps
+E: Subscript (Ctrl + =) lowers characters below the baseline; Superscript (Ctrl + Shift + Plus) raises them above the baseline (as in x^2).
+D: easy
+T: BCA-101N, Unit-4, Word-Formatting, Subscript
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To format mathematical exponents (e.g., x^2 or 1st), which feature raises text above the regular text baseline?
+A) Subscript
+B) Superscript *
+C) Drop Cap
+D) Outline
+E: Superscript shifts selected characters above the normal baseline at a reduced font size.
+D: easy
+T: BCA-101N, Unit-4, Word-Formatting, Superscript
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Format Painter' tool in Microsoft Word is used to:
+A) Draw colorful shapes and clip art
+B) Copy formatting attributes (font, size, color, paragraph styling) from selected text and paint them onto other text *
+C) Paint background pictures
+D) Export documents to PDF
+E: Format Painter captures all styling properties of source text and applies them to destination text when brushed over.
+D: easy
+T: BCA-101N, Unit-4, Word-Tools, Format-Painter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Change Case option capitalizes the very first letter of every sentence while keeping all other letters lowercase?
+A) UPPERCASE
+B) Sentence case *
+C) Capitalize Each Word
+D) tOGGLE cASE
+E: Sentence case capitalizes the initial letter following sentence-ending punctuation (period, question mark), conforming to standard prose rules.
+D: easy
+T: BCA-101N, Unit-4, Word-Formatting, Change-Case
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A decorative capital letter placed at the beginning of a paragraph that drops down across two or more lines of text is called a:
+A) Drop Cap *
+B) WordArt
+C) Watermark
+D) Header
+E: A Drop Cap creates an enlarged decorative initial letter that drops down into adjacent paragraph text lines, a classic typography styling.
+D: easy
+T: BCA-101N, Unit-4, Word-Typography, Drop-Cap
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the keyboard shortcut to center-align selected paragraph text in Microsoft Word?
+A) Ctrl + L
+B) Ctrl + R
+C) Ctrl + E *
+D) Ctrl + J
+E: Ctrl + E applies center alignment to the active paragraph (Ctrl + L is Left, Ctrl + R is Right, Ctrl + J is Justified).
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Alignment
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Justified paragraph alignment in MS Word ensures that:
+A) All text is aligned strictly against the left margin only
+B) Text is adjusted by micro-spacing words so that both left and right edges align flush with margins *
+C) Text is centered on the page
+D) Lines end in jagged right edges
+E: Justify (Ctrl + J) adds subtle spacing between words so every full line touches both the left and right margins evenly.
+D: easy
+T: BCA-101N, Unit-4, Word-Formatting, Justify
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Word typography, a 'Hanging Indent' is defined as an indentation where:
+A) All lines in the paragraph are indented equally
+B) The first line begins at the left margin, and all subsequent lines in the paragraph are indented inward *
+C) Only the last line is indented
+D) The paragraph is shifted to the right margin
+E: A hanging indent (Ctrl + T) leaves the first line flush at the left margin while indenting subsequent lines (standard in bibliographies).
+D: medium
+T: BCA-101N, Unit-4, Word-Indents, Hanging-Indent
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To insert a hard manual Page Break forcing following text onto a brand new page, press:
+A) Shift + Enter
+B) Ctrl + Enter *
+C) Alt + Enter
+D) Tab + Enter
+E: Ctrl + Enter inserts a hard Page Break character, whereas Shift + Enter inserts a Soft Line Break within the same paragraph.
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Page-Break
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What structural division in MS Word allows different sections of a single document to have different page orientations, headers, footers, or margins?
+A) Page Break
+B) Section Break *
+C) Line Break
+D) Paragraph Break
+E: Section Breaks (e.g. Next Page, Continuous) partition a document into independent layouts with unique headers, numbering styles, or orientations.
+D: medium
+T: BCA-101N, Unit-4, Word-Layout, Section-Break
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Text or graphics (such as 'CONFIDENTIAL' or a company logo) appearing faintly behind document text on every page is called a:
+A) Footer
+B) Watermark *
+C) Drop Cap
+D) Sidebar
+E: A Watermark displays semi-transparent background text or imagery behind the foreground text for branding or classification.
+D: easy
+T: BCA-101N, Unit-4, Word-Design, Watermark
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Headers and Footers in Microsoft Word are used to:
+A) Store formulas exclusively
+B) Display recurring text, chapter titles, dates, or page numbers at the very top and bottom of pages throughout a document *
+C) Draw mathematical graphs
+D) Compile source code
+E: Headers (top margin) and Footers (bottom margin) automatically repeat essential reference information and page numbers across all pages.
+D: easy
+T: BCA-101N, Unit-4, Word-Layout, Header-Footer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature allows wrapping continuous text into multi-column formats (such as newspaper or research paper columns)?
+A) Tables
+B) Columns feature (Page Setup) *
+C) Text Boxes
+D) Section Splitter
+E: The Columns tool under Page Setup splits text flow into two, three, or custom asymmetric vertical columns on the page.
+D: easy
+T: BCA-101N, Unit-4, Word-Layout, Columns
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the function of the 'Gutter Margin' in page layout?
+A) Adding extra space to the top margin for titles
+B) Adding additional margin space to the binding side of pages (inside or top) to accommodate bookbinding *
+C) Eliminating margins completely
+D) Coloring the page edges
+E: Gutter margin adds extra clearance on the binding edge so text is not obscured when documents are stapled, bound, or hole-punched.
+D: medium
+T: BCA-101N, Unit-4, Word-Page-Setup, Gutter-Margin
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To display non-printing formatting characters (such as paragraph marks ¶, spaces ·, and tabs →), click the:
+A) Show/Hide (¶) button *
+B) Ruler button
+C) Spell Check icon
+D) Find tool
+E: The Show/Hide (¶) toggle reveals hidden formatting characters, helping diagnose spacing irregularities and stray page breaks.
+D: easy
+T: BCA-101N, Unit-4, Word-Tools, Show-Hide
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which keyboard shortcut invokes the Find and Replace dialog directly focused on the 'Replace' tab?
+A) Ctrl + F
+B) Ctrl + H *
+C) Ctrl + G
+D) Ctrl + R
+E: Ctrl + H opens Find and Replace directly on the Replace tab (Ctrl + F opens Navigation Find; Ctrl + G opens Go To).
+D: easy
+T: BCA-101N, Unit-4, Word-Shortcuts, Replace
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What built-in reference tool in MS Word provides lists of synonyms and antonyms for a selected word?
+A) Spell Checker
+B) Thesaurus (Shift + F7) *
+C) Word Count
+D) Translate
+E: The Thesaurus tool suggests vocabulary alternatives, synonyms, and related linguistic terms for selected words.
+D: easy
+T: BCA-101N, Unit-4, Word-Proofing, Thesaurus
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an MS Word table, pressing the 'Tab' key while positioned inside the very last cell of the table will:
+A) Exit the table
+B) Automatically insert a new empty row at the bottom of the table *
+C) Delete the table
+D) Indent the text
+E: Pressing Tab inside the final bottom-right table cell automatically appends a new empty row matching the column structure.
+D: easy
+T: BCA-101N, Unit-4, Word-Tables, Tab-Navigation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Combining two or more adjacent table cells into a single unified cell is known as:
+A) Splitting Cells
+B) Merging Cells *
+C) Banding Cells
+D) Wrapping Cells
+E: Merge Cells consolidates multiple selected adjacent cells into one large cell, often used for table headings.
+D: easy
+T: BCA-101N, Unit-4, Word-Tables, Merge-Cells
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The keyboard shortcut to launch the full Spelling and Grammar check dialog across a Word document is:
+A) F5
+B) F7 *
+C) F12
+D) Shift + F3
+E: Pressing F7 invokes the proofing engine to scan the document for misspelled words (red underline) and grammatical issues (blue underline).
+D: easy
+T: BCA-101N, Unit-4, Word-Proofing, Spelling-F7
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature in MS Word automatically corrects common typographical errors and misspellings as you type (e.g. changing 'teh' to 'the')?
+A) AutoText
+B) AutoCorrect *
+C) AutoFormat
+D) SmartArt
+E: AutoCorrect automatically replaces predefined misspelled strings or symbols with correct words immediately upon typing the spacebar.
+D: easy
+T: BCA-101N, Unit-4, Word-Proofing, AutoCorrect
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary purpose of the 'Mail Merge' feature in Microsoft Word?
+A) To convert Word documents into audio podcasts
+B) To generate large batches of personalized letters, envelopes, or certificates by combining a template document with a data source *
+C) To scan documents for email viruses
+D) To format computer hard drives
+E: Mail Merge marries a static master document template with dynamic database records (data source) to produce customized mass communications.
+D: easy
+T: BCA-101N, Unit-4, Mail-Merge, Concept
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a Mail Merge operation, the document containing the static letter body, logos, and merge field placeholders is called the:
+A) Data Source
+B) Main Document *
+C) Merged Document
+D) Master Workbook
+E: The Main Document contains the common boilerplate text, layout, and placeholders («Name», «Address») that repeat for every record.
+D: easy
+T: BCA-101N, Unit-4, Mail-Merge, Main-Document
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The file containing names, addresses, and variable student data in a Mail Merge operation (such as an Excel sheet or Access table) is the:
+A) Main Document
+B) Data Source *
+C) Template
+D) Header File
+E: The Data Source is the structured database, spreadsheet, or contact table that feeds individual record values into the merge fields.
+D: easy
+T: BCA-101N, Unit-4, Mail-Merge, Data-Source
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Placeholders inserted into a Mail Merge main document (such as «First_Name») where dynamic data will appear are called:
+A) Hyperlinks
+B) Merge Fields *
+C) Bookmarks
+D) Captions
+E: Merge Fields specify exact database column mapping points within the text where personalized data will be injected during output generation.
+D: easy
+T: BCA-101N, Unit-4, Mail-Merge, Merge-Fields
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Macro in Microsoft Word is:
+A) A dangerous hardware failure
+B) A recorded series of commands, keystrokes, and instructions saved as a VBA script to automate repetitive tasks *
+C) A large font size
+D) A giant printable poster
+E: A Macro records sequences of formatting or editing actions into Visual Basic for Applications (VBA) code, executable via shortcut or button.
+D: medium
+T: BCA-101N, Unit-4, Word-Automation, Macros
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function key combination is used to view, run, or edit recorded Macros in Microsoft Word?
+A) Alt + F8 *
+B) Ctrl + F8
+C) Shift + F12
+D) Alt + F4
+E: Alt + F8 opens the Macros dialog box displaying all available macros across active templates and documents.
+D: medium
+T: BCA-101N, Unit-4, Word-Shortcuts, Macros-Alt-F8
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the default presentation file extension used by Microsoft PowerPoint 2007 and newer?
+A) .ppt
+B) .pptx *
+C) .pot
+D) .pps
+E: Modern PowerPoint presentations save in the zipped XML-based .pptx file format.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Basics, File-Extensions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To start a PowerPoint slide show from the very first slide, which function key is pressed?
+A) F1
+B) F5 *
+C) F7
+D) F11
+E: Pressing F5 starts the presentation from Slide 1; pressing Shift + F5 starts the show from the currently active slide.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Shortcuts, F5
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To launch a slide show starting directly from the CURRENT slide, the keyboard shortcut is:
+A) F5
+B) Shift + F5 *
+C) Ctrl + F5
+D) Alt + F5
+E: Shift + F5 initiates the full-screen slide presentation starting immediately on the slide currently open in the editor.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Shortcuts, Shift-F5
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which PowerPoint view displays thumbnail images of all slides arranged in horizontal rows, ideal for reordering or deleting slides?
+A) Normal View
+B) Slide Sorter View *
+C) Notes Page View
+D) Outline View
+E: Slide Sorter view displays miniature thumbnails of all presentation slides, making drag-and-drop reorganization and transition setup effortless.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Views, Slide-Sorter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The top slide in a presentation hierarchy that stores overarching design templates, font themes, and logo placements for all child slides is the:
+A) Title Slide
+B) Slide Master *
+C) Handout Master
+D) Slide Sorter
+E: Slide Master dictates universal layout rules, backgrounds, footer placements, and typography globally across the entire presentation deck.
+D: medium
+T: BCA-101N, Unit-4, PowerPoint-Design, Slide-Master
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In PowerPoint, what is the crucial operational difference between an 'Animation' and a 'Transition'?
+A) Animations only play on sound cards; transitions only play on monitors
+B) A Transition is the visual entry effect between slides; an Animation is the movement applied to individual elements (text, pictures) within a slide *
+C) Transitions are for text; animations are for slides
+D) There is no difference
+E: Transitions control how an entire slide enters or exits the screen; Animations control the motion, entrance, or exit of specific objects on a slide.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Animation, Transition-vs-Animation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is NOT a standard category of object animation effects in Microsoft PowerPoint?
+A) Entrance Effects
+B) Emphasis Effects
+C) Exit Effects
+D) Subliminal Effects *
+E: PowerPoint animation effects strictly comprise four classes: Entrance (green), Emphasis (yellow), Exit (red), and Motion Paths.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Animation, Categories
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature in PowerPoint allows a speaker to see the current slide, upcoming slide, elapsed timer, and private speaker notes on one monitor while the audience only sees full-screen slides on a projector?
+A) Slide Sorter View
+B) Presenter View *
+C) Reading View
+D) Kiosk Mode
+E: Presenter View utilizes dual-monitor configurations to display private cues, notes, timers, and previews to the speaker while shielding them from audience view.
+D: medium
+T: BCA-101N, Unit-4, PowerPoint-Delivery, Presenter-View
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: During a live PowerPoint presentation, pressing which key instantly turns the screen completely Black to pause and refocus audience attention?
+A) B (or Period) *
+B) W (or Comma)
+C) Esc
+D) Spacebar
+E: Pressing the 'B' key toggles a black blank screen; pressing 'W' toggles a pure white blank screen during an active slide show.
+D: medium
+T: BCA-101N, Unit-4, PowerPoint-Shortcuts, Blank-Screen
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The feature used to record spoken audio narration, laser pointer gestures, and exact slide transition timings for self-running presentations is:
+A) Rehearse Timings / Record Slide Show *
+B) AutoContent Wizard
+C) SmartArt Converter
+D) WordArt Gallery
+E: Record Slide Show / Rehearse Timings captures precise narration, on-screen ink pen annotations, and slide pacing for automated replay.
+D: easy
+T: BCA-101N, Unit-4, PowerPoint-Delivery, Rehearse-Timings
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An electronic spreadsheet file in Microsoft Excel containing one or more worksheets is called a:
+A) Document
+B) Workbook *
+C) Database
+D) Presentation
+E: In Excel, the entire file (.xlsx) is called a Workbook, which acts as a binder containing one or multiple individual Worksheets.
+D: easy
+T: BCA-101N, Unit-5, Excel-Basics, Workbook-vs-Worksheet
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Microsoft Excel 2016 / 2019 / 365, what is the maximum number of rows available in a single worksheet?
+A) 65,536
+B) 1,048,576 *
+C) 256
+D) 16,384
+E: Modern Excel worksheets offer exactly 1,048,576 rows (numbered 1 to 1,048,576) and 16,384 columns (labeled A to XFD).
+D: easy
+T: BCA-101N, Unit-5, Excel-Limits, Rows-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the column heading label of the very last column in a modern Excel worksheet?
+A) ZZ
+B) AAA
+C) XFD *
+D) ZZZ
+E: The 16,384th and final column in modern Excel worksheets is designated with the letter header XFD.
+D: medium
+T: BCA-101N, Unit-5, Excel-Limits, Columns-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The intersection of a row and a column in an Excel worksheet is called a:
+A) Block
+B) Cell *
+C) Cube
+D) Cluster
+E: A Cell is the fundamental unit of storage in a spreadsheet, identified by its column letter and row number (e.g., C5).
+D: easy
+T: BCA-101N, Unit-5, Excel-Basics, Cell-Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which small box located to the left of the Formula Bar displays the address of the currently active cell (e.g. A1)?
+A) Address Box
+B) Name Box *
+C) Status Bar
+D) Cell Identifier
+E: The Name Box displays the active cell reference or the name of a selected range and allows jumping directly to any typed coordinate.
+D: easy
+T: BCA-101N, Unit-5, Excel-UI, Name-Box
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Every formula and function in Microsoft Excel must strictly begin with which mathematical symbol?
+A) Plus sign (+)
+B) Equals sign (=) *
+C) Asterisk (*)
+D) At symbol (@)
+E: Excel requires the equals sign (=) at the start of a cell entry to instruct the calculation engine to parse and evaluate the following string as a formula.
+D: easy
+T: BCA-101N, Unit-5, Excel-Formulas, Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Formula Bar in Microsoft Excel is used to:
+A) Display the file size of the workbook
+B) View, enter, or edit the underlying formula or actual data content stored in the active cell *
+C) Design shapes
+D) Print worksheets
+E: The Formula Bar displays the actual formula or text of the selected cell, while the cell on the sheet displays the computed result.
+D: easy
+T: BCA-101N, Unit-5, Excel-UI, Formula-Bar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What small black square handle in the lower-right corner of an active cell boundary is dragged to copy formulas or extend data series?
+A) Selector Pin
+B) Fill Handle *
+C) Pivot Node
+D) Splitter Box
+E: The Fill Handle (AutoFill) detects patterns (numbers, weekdays, dates) and copies formulas or extrapolates series when dragged across rows/columns.
+D: easy
+T: BCA-101N, Unit-5, Excel-Tools, AutoFill
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To instantly sum an adjacent continuous column or row of numbers in Excel, which shortcut key combination invokes AutoSum?
+A) Ctrl + S
+B) Alt + = *
+C) Shift + S
+D) Ctrl + Shift + S
+E: Pressing Alt + = automatically generates the =SUM() formula selecting the adjacent numerical range above or to the left.
+D: easy
+T: BCA-101N, Unit-5, Excel-Shortcuts, AutoSum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If an Excel cell displays a string of hash symbols '######', what does this indicate?
+A) A catastrophic formula error has corrupted the sheet
+B) The column is too narrow to display the numerical or date value in the current format *
+C) The cell has been locked with a password
+D) Division by zero occurred
+E: A '######' display simply means the cell column width is insufficient to render the full formatted number or date; expanding column width resolves it.
+D: easy
+T: BCA-101N, Unit-5, Excel-Errors, Hash-Display
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type of cell reference automatically adjusts its row and column coordinates when copied from one cell to another?
+A) Absolute Reference
+B) Relative Reference *
+C) Mixed Reference
+D) 3D Reference
+E: Relative references (e.g. A1) store offsets relative to the formula's position; copying the formula down shifts row numbers accordingly.
+D: easy
+T: BCA-101N, Unit-5, Excel-References, Relative-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which symbol is used in Excel to lock a column or row coordinate into an Absolute Cell Reference (e.g. $A$1)?
+A) Hash (#)
+B) Dollar sign ($) *
+C) Percent (%)
+D) Ampersand (&)
+E: The dollar sign ($) locks coordinates so that row numbers or column letters remain fixed regardless of where the formula is copied.
+D: easy
+T: BCA-101N, Unit-5, Excel-References, Absolute-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the formula '=$B$4 * C2', what will happen to the reference '$B$4' when the formula is copied down three rows?
+A) It changes to $B$7
+B) It remains strictly $B$4 *
+C) It changes to $E$4
+D) It produces an error
+E: Because both column B and row 4 are anchored with dollar signs ($), the reference $B$4 remains completely unchanged when copied.
+D: easy
+T: BCA-101N, Unit-5, Excel-References, Absolute-Behavior
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A cell reference where either the row is locked or the column is locked, but not both (such as '$A1' or 'A$1'), is a:
+A) Relative Reference
+B) Mixed Reference *
+C) Absolute Reference
+D) Dynamic Reference
+E: Mixed references lock only one dimension: $A1 locks the column while row varies; A$1 locks the row while column varies.
+D: medium
+T: BCA-101N, Unit-5, Excel-References, Mixed-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function key on the keyboard is used while editing a formula in Excel to cycle through relative, absolute, and mixed reference formats ($A$1 -> A$1 -> $A1 -> A1)?
+A) F2
+B) F4 *
+C) F8
+D) F9
+E: Pressing F4 while a cell reference is selected in the formula bar cycles cyclically through all four absolute and mixed reference combinations.
+D: easy
+T: BCA-101N, Unit-5, Excel-Shortcuts, F4-Toggle
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 3D reference in Microsoft Excel refers to:
+A) A reference rendered in 3D glasses
+B) A formula reference that spans across multiple worksheets in a workbook (e.g. =SUM(Sheet1:Sheet3!B5)) *
+C) A reference to a 3D bar chart
+D) A formula using three variables
+E: A 3D reference calculates data across an identical cell or range across multiple contiguous worksheets.
+D: medium
+T: BCA-101N, Unit-5, Excel-References, 3D-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If cell A1 contains 10 and cell A2 contains 20, what will the formula '=A1 + A2 * 2' evaluate to according to standard arithmetic precedence?
+A) 60
+B) 50 *
+C) 40
+D) 30
+E: Multiplication takes precedence over addition: (20 * 2) = 40; then 10 + 40 = 50.
+D: easy
+T: BCA-101N, Unit-5, Excel-Formulas, Precedence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which mathematical operator in Excel is used to calculate powers or exponentiation (e.g. 2 cubed)?
+A) Caret (^) *
+B) Asterisk (*)
+C) Ampersand (&)
+D) Hash (#)
+E: The caret symbol (^) computes exponentiation (e.g., =2^3 evaluates to 8).
+D: easy
+T: BCA-101N, Unit-5, Excel-Operators, Exponentiation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The string concatenation operator used in Excel to join two text strings together (e.g. =A1 & " " & B1) is the:
+A) Plus sign (+)
+B) Ampersand (&) *
+C) Colon (:)
+D) Semicolon (;)
+E: The ampersand (&) operator concatenates text values together, serving as a formula alternative to the CONCATENATE() function.
+D: easy
+T: BCA-101N, Unit-5, Excel-Operators, Concatenation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an Excel formula, a colon (:) placed between two cell references (such as 'A1:C10') denotes:
+A) Division of cells
+B) A contiguous rectangular range of cells from the top-left cell to the bottom-right cell *
+C) An intersection of cells
+D) A logical comparison
+E: The colon range operator specifies all cells enclosed within the rectangular boundary defined by the two corner coordinates.
+D: easy
+T: BCA-101N, Unit-5, Excel-Syntax, Range-Colon
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Excel function returns the mathematical remainder after dividing a number by a divisor?
+A) REMAINDER()
+B) MOD() *
+C) DIV()
+D) INT()
+E: The MOD(number, divisor) function returns the remainder resulting from integer division (e.g. =MOD(10, 3) returns 1).
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, MOD
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To round a numerical value to a specified number of decimal places in Excel, use the function:
+A) TRUNC()
+B) ROUND() *
+C) FIX()
+D) DECIMAL()
+E: The ROUND(number, num_digits) function rounds a value mathematically to the specified number of decimal places.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, ROUND
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the crucial difference between the 'COUNT()' function and the 'COUNTA()' function in Excel?
+A) COUNT counts all cells; COUNTA counts only negative numbers
+B) COUNT counts only cells containing numbers; COUNTA counts all non-empty cells (numbers, text, logical values) *
+C) COUNT counts formulas; COUNTA counts text only
+D) There is no difference
+E: COUNT() strictly tallies cells containing numerical data; COUNTA() (Count All) tallies any cell that is not blank.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, COUNT-vs-COUNTA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Excel function counts the number of cells within a specified range that satisfy a given criteria or condition?
+A) SUMIF()
+B) COUNTIF() *
+C) CHECKCOUNT()
+D) IFCOUNT()
+E: COUNTIF(range, criteria) evaluates cells against a test condition (e.g. =COUNTIF(B2:B50, ">75")) and tallies matching instances.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, COUNTIF
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The function that calculates the arithmetic mean of a range of values in Excel is:
+A) MEAN()
+B) AVERAGE() *
+C) MEDIAN()
+D) SUMMEAN()
+E: The AVERAGE() function calculates the sum of all numerical arguments divided by the count of numbers in the range.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, AVERAGE
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which statistical function identifies and returns the single middle value in an ordered set of numbers?
+A) AVERAGE()
+B) MEDIAN() *
+C) MODE()
+D) MID()
+E: MEDIAN() returns the statistical midpoint of a numeric dataset where half the values are above and half are below.
+D: medium
+T: BCA-101N, Unit-5, Excel-Functions, MEDIAN
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To return the most frequently occurring value in a data range in Excel, the appropriate function is:
+A) FREQUENCY()
+B) MODE() (or MODE.SNGL) *
+C) MAX()
+D) REPEAT()
+E: The MODE() function identifies the most frequently recurring numerical value in a sample dataset.
+D: medium
+T: BCA-101N, Unit-5, Excel-Functions, MODE
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function returns the current system date and current time, updating dynamically whenever the worksheet recalculates?
+A) DATE()
+B) NOW() *
+C) TODAY()
+D) TIME()
+E: The NOW() function takes no arguments and returns the dynamic current system date and timestamp; TODAY() returns only the date without time.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, NOW-vs-TODAY
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the formula '=TODAY()' output in an Excel cell?
+A) The time of day in milliseconds
+B) The current calendar date according to the computer system clock *
+C) The day of the week as text
+D) The date the workbook was originally created
+E: The volatile function TODAY() outputs the current date formatted as DD/MM/YYYY or MM/DD/YYYY without a time component.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, TODAY
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To calculate the square root of a positive number in cell B4, the formula is:
+A) =ROOT(B4)
+B) =SQRT(B4) *
+C) =SQR(B4)
+D) =POWER(B4, 1/3)
+E: The SQRT(number) function computes the positive square root of a numerical argument.
+D: easy
+T: BCA-101N, Unit-5, Excel-Functions, SQRT
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an Excel '=IF(C2 >= 40, "Pass", "Fail")' formula, what will be returned if cell C2 contains the value 38?
+A) Pass
+B) Fail *
+C) #VALUE!
+D) TRUE
+E: Because the condition 38 >= 40 evaluates to FALSE, the IF function returns its third argument, which is "Fail".
+D: easy
+T: BCA-101N, Unit-5, Excel-Logic, IF-Function
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which logical function in Excel returns TRUE only if ALL of its individual argument conditions evaluate to TRUE?
+A) OR()
+B) AND() *
+C) NOT()
+D) XOR()
+E: The AND(cond1, cond2, ...) function evaluates multiple logical tests and returns TRUE only when every single condition is satisfied.
+D: easy
+T: BCA-101N, Unit-5, Excel-Logic, AND-Function
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The logical function that returns TRUE if AT LEAST ONE of its argument conditions evaluates to TRUE is:
+A) AND()
+B) OR() *
+C) NOT()
+D) IF()
+E: The OR() function returns TRUE if any one of its supplied logical tests evaluates to TRUE, returning FALSE only if all are false.
+D: easy
+T: BCA-101N, Unit-5, Excel-Logic, OR-Function
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which text function removes all irregular leading, trailing, and duplicate spaces from a text string, leaving only single spaces between words?
+A) CLEAN()
+B) TRIM() *
+C) STRIP()
+D) COMPACT()
+E: TRIM() cleans text imported from other applications by eliminating extraneous spaces while preserving standard single word spacing.
+D: easy
+T: BCA-101N, Unit-5, Excel-Text, TRIM
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To convert a text string in cell A1 into proper title casing (where the first letter of each word is capitalized), use:
+A) UPPER(A1)
+B) PROPER(A1) *
+C) TITLE(A1)
+D) CAPITAL(A1)
+E: PROPER() capitalizes the first character of each word and converts all subsequent characters to lowercase.
+D: easy
+T: BCA-101N, Unit-5, Excel-Text, PROPER
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the VLOOKUP function in Excel perform?
+A) Validates mathematical equations vertically
+B) Searches for a lookup value in the first column of a table array and returns a value in the same row from a specified column index *
+C) Verifies network connections
+D) Converts vertical text into horizontal rows
+E: VLOOKUP (Vertical Lookup) searches down the leftmost column of a table to find a matching key and retrieves data from an adjacent column.
+D: medium
+T: BCA-101N, Unit-5, Excel-Lookup, VLOOKUP
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the formula '=VLOOKUP(101, A2:D50, 3, FALSE)', the final argument 'FALSE' specifies:
+A) An approximate range match
+B) An exact match lookup requirement *
+C) That negative numbers should be ignored
+D) That the table is unsorted
+E: The range_lookup parameter FALSE (or 0) instructs VLOOKUP to seek an exact match, returning #N/A if the exact lookup value is absent.
+D: medium
+T: BCA-101N, Unit-5, Excel-Lookup, VLOOKUP-Exact-Match
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which Excel error code is displayed when a formula attempts to divide a number by zero or by an empty blank cell?
+A) #REF!
+B) #VALUE!
+C) #DIV/0! *
+D) #NAME?
+E: #DIV/0! explicitly signals an illegal division by zero or a reference to an empty cell treated as zero in a denominator.
+D: easy
+T: BCA-101N, Unit-5, Excel-Errors, DIV0-Error
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The '#NAME?' error in an Excel formula indicates:
+A) A cell reference is invalid because a row/column was deleted
+B) Excel does not recognize text in the formula, typically caused by a misspelled function name (e.g. =SMM() instead of =SUM()) *
+C) A number is divided by zero
+D) A value is missing from a VLOOKUP table
+E: #NAME? occurs when Excel cannot resolve a named token, almost always caused by a typographical error in a function name or missing quotes around a text string.
+D: easy
+T: BCA-101N, Unit-5, Excel-Errors, NAME-Error
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The '#REF!' error code in an Excel formula signifies that:
+A) A mathematical function was misspelled
+B) The formula contains an invalid cell reference, typically caused when referenced cells or columns were deleted *
+C) A number is too large to display
+D) A macro failed to execute
+E: #REF! (Reference Error) occurs when a formula references a cell coordinate that has been permanently deleted from the worksheet grid.
+D: easy
+T: BCA-101N, Unit-5, Excel-Errors, REF-Error
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature in Excel keeps top header rows or leftmost columns visible on screen while scrolling through long worksheets?
+A) Split Screen
+B) Freeze Panes *
+C) Lock Cells
+D) Wrap Text
+E: Freeze Panes (View tab) locks selected rows or columns in place so table column headers remain visible as users scroll down thousands of records.
+D: easy
+T: BCA-101N, Unit-5, Excel-Tools, Freeze-Panes
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What Excel tool restricts the type of data or values that users can enter into a specific cell (e.g., allowing only whole numbers between 1 and 100, or a dropdown list)?
+A) Conditional Formatting
+B) Data Validation *
+C) Protect Sheet
+D) Goal Seek
+E: Data Validation sets input constraints (number ranges, dates, custom lists, text lengths) and displays customizable error alerts upon invalid entry.
+D: easy
+T: BCA-101N, Unit-5, Excel-Data, Data-Validation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which feature automatically applies background colors, font colors, or icon sets to cells when their values meet specific rules or thresholds?
+A) AutoFormat
+B) Conditional Formatting *
+C) Cell Styles
+D) Theme Colors
+E: Conditional Formatting dynamically highlights trends (e.g. red for failing scores, green for high performers) based on cell values.
+D: easy
+T: BCA-101N, Unit-5, Excel-Tools, Conditional-Formatting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To display data sorted in alphabetical order (A to Z) or numeric order (Smallest to Largest), which tool on the Data tab is used?
+A) Filter
+B) Sort *
+C) Data Validation
+D) Text to Columns
+E: The Sort tool arranges selected records ascending (A-Z, 0-9) or descending (Z-A, 9-0) across single or multiple sorting hierarchy levels.
+D: easy
+T: BCA-101N, Unit-5, Excel-Data, Sorting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: AutoFilter in Excel is identified by:
+A) Red warning borders around the worksheet
+B) Small dropdown arrows appearing in the header row of each data column allowing instant filtering and sorting *
+C) A pop-up calculator
+D) Grid lines turning dotted
+E: Activating Filter (Ctrl + Shift + L) places clickable dropdown arrows in table headers to filter by value, color, or condition.
+D: easy
+T: BCA-101N, Unit-5, Excel-Data, AutoFilter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which chart type in Microsoft Excel is best suited for showing the proportional contribution of individual parts to an entire whole (percentages of 100%)?
+A) Line Chart
+B) Pie Chart *
+C) Scatter XY Chart
+D) Bar Chart
+E: Pie charts display proportional shares of a categorical total, representing slices of a circular disk summing to 100%.
+D: easy
+T: BCA-101N, Unit-5, Excel-Charts, Pie-Chart
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To visualize continuous trends, fluctuations, and changes in data over a continuous time series, the most appropriate chart type is a:
+A) Pie Chart
+B) Line Chart *
+C) Doughnut Chart
+D) Radar Chart
+E: Line charts connect sequential data points along a continuous scale, ideally illustrating performance, sales, or temperature changes over time.
+D: easy
+T: BCA-101N, Unit-5, Excel-Charts, Line-Chart
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an Excel chart, what component explains the meaning of various data series, colors, or patterns used in the visualization?
+A) Data Labels
+B) Legend *
+C) Axis Title
+D) Gridlines
+E: The Legend provides an explanatory key identifying the categories, colors, or markers assigned to different data series in the plot area.
+D: easy
+T: BCA-101N, Unit-5, Excel-Charts, Legend
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Macro in Microsoft Excel is written in which underlying programming language?
+A) Python
+B) Visual Basic for Applications (VBA) *
+C) Java
+D) C++
+E: Excel macros are recorded and executed using Microsoft's Visual Basic for Applications (VBA) macro programming environment.
+D: easy
+T: BCA-101N, Unit-5, Excel-Macros, VBA
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What file extension must an Excel workbook be saved with to preserve and permit execution of embedded VBA Macros?
+A) .xlsx
+B) .xlsm *
+C) .csv
+D) .txt
+E: Excel Macro-Enabled Workbooks must be saved with the .xlsm extension; standard .xlsx workbooks automatically strip all macro code for security.
+D: easy
+T: BCA-101N, Unit-5, Excel-Macros, File-Extensions
+Y: 2024
+X: MJPRU BCA Sem 1
+

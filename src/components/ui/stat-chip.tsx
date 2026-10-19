@@ -65,7 +65,7 @@ export function StatChip({
         className={cn("min-w-0 rounded-lg border border-border/70 bg-surface px-4 py-3", className)}
       >
         <div className="text-eyebrow text-muted-foreground">{label}</div>
-        <div className="mt-1 font-serif text-lg font-semibold tabular-nums text-foreground">
+        <div className="mt-1 font-sans text-lg font-bold tabular-nums text-foreground">
           {loading ? <Skeleton className="h-6 w-14" /> : (value ?? 0)}
         </div>
         {hint && <div className="mt-0.5 truncate text-xs text-muted-foreground">{hint}</div>}
@@ -79,7 +79,7 @@ export function StatChip({
       >
         <div className="min-w-0">
           <div className="text-eyebrow text-muted-foreground">{label}</div>
-          <div className="mt-1.5 font-serif text-2xl font-semibold tabular-nums text-foreground">
+          <div className="mt-1.5 font-sans text-2xl font-bold tabular-nums text-foreground">
             {loading ? <Skeleton className="h-7 w-16" /> : (value ?? 0)}
           </div>
           {hint && <div className="mt-0.5 text-xs text-muted-foreground">{hint}</div>}

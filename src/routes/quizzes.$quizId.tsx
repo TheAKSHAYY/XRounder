@@ -106,8 +106,7 @@ function QuizPage() {
       subjectTitle: contextQ.data?.subject ?? null,
       unitTitle: contextQ.data?.unitTitle ?? null,
     });
-  }, [quizQ.data?.id]);
-
+  }, [quizQ.data?.id, quizQ.data?.title, contextQ.data?.subject, contextQ.data?.unitTitle]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -145,21 +144,19 @@ function QuizPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
           >
-            <header className="hud-card relative overflow-hidden mt-6 rounded-3xl border border-border/80 p-6 shadow-soft sm:p-8">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-primary/10 blur-2xl"
-              />
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
-                <FlaskConical className="h-4 w-4 text-primary" />
+            <header className="relative overflow-hidden mt-6 rounded-xl border border-border bg-card p-6 shadow-2xs sm:p-8">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent">
+                <FlaskConical className="h-4 w-4 text-accent" />
                 {[contextQ.data?.subject, contextQ.data?.unitLabel].filter(Boolean).join(" · ") ||
                   "Practice quiz"}
               </div>
-              <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-foreground">
+              <h1 className="mt-3 font-display text-3xl font-normal tracking-tight text-foreground">
                 {quizQ.data.title}
               </h1>
               {quizQ.data.description && (
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{quizQ.data.description}</p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {quizQ.data.description}
+                </p>
               )}
               <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
                 <Badge variant="outline" className="rounded-full font-mono">
@@ -177,20 +174,23 @@ function QuizPage() {
               </div>
 
               {!user ? (
-                <div className="mt-6 rounded-2xl border border-border bg-card/70 p-5 text-center">
+                <div className="mt-6 rounded-xl border border-border bg-surface p-5 text-center">
                   <p className="text-muted-foreground text-sm">
                     {isGuest
                       ? `You can preview ${GUEST_LIMITS.mcqPerQuiz} questions as a guest. Sign in to take the full quiz and track results.`
                       : "Sign in to take this quiz and track your results."}
                   </p>
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
-                    <Button asChild className="btn-squishy btn-cta rounded-full px-6 font-bold shadow-xs">
+                    <Button
+                      asChild
+                      className="btn-cta rounded-full px-6 font-medium shadow-soft-xs"
+                    >
                       <Link to="/auth">Sign in</Link>
                     </Button>
                     {!isGuest && (
                       <Button
                         variant="outline"
-                        className="btn-squishy rounded-full px-5 font-semibold"
+                        className="rounded-full px-5 font-medium"
                         onClick={() => startGuestMode()}
                       >
                         Preview as guest
@@ -201,13 +201,13 @@ function QuizPage() {
               ) : (
                 <>
                   {quizQ.data.instructions && (
-                    <div className="mt-6 whitespace-pre-wrap rounded-2xl border border-border bg-card/70 p-5 text-sm text-muted-foreground">
+                    <div className="mt-6 whitespace-pre-wrap rounded-xl border border-border bg-surface p-5 text-sm text-muted-foreground">
                       {quizQ.data.instructions}
                     </div>
                   )}
                   <Button
                     size="lg"
-                    className="btn-squishy btn-cta mt-6 rounded-full px-8 font-bold shadow-sm"
+                    className="btn-cta mt-6 rounded-full px-8 font-medium shadow-soft-xs"
                     onClick={() => startMutation.mutate()}
                     disabled={startMutation.isPending || total === 0}
                   >
@@ -225,7 +225,7 @@ function QuizPage() {
 
             {(myAttemptsQ.data ?? []).filter((a) => a.submitted_at).length > 0 && (
               <section className="mt-8">
-                <h2 className="font-display text-lg font-semibold text-foreground">
+                <h2 className="font-display text-lg font-normal text-foreground">
                   Your previous attempts
                 </h2>
                 <ul className="mt-3 space-y-2">
@@ -234,7 +234,7 @@ function QuizPage() {
                     .map((a, i, arr) => (
                       <li
                         key={a.id}
-                        className="flex items-center justify-between rounded-2xl border border-border bg-surface px-4 py-3 text-sm"
+                        className="flex items-center justify-between rounded-xl border border-border bg-surface px-4 py-3 text-sm"
                       >
                         <span className="text-muted-foreground">Attempt {arr.length - i}</span>
                         <span className="flex items-center gap-3">
@@ -332,7 +332,7 @@ function QuizPage() {
                   onClick={() => finish(answers)}
                   disabled={submitMutation.isPending}
                 >
-                  {submitMutation.isPending ? "Finishing…" : "Finish"}
+                  {submitMutation.isPending ? "Submitting…" : "Submit Answers"}
                 </Button>
               </div>
             )}

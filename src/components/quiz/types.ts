@@ -4,6 +4,7 @@ export type Question = {
   quiz_id: string;
   type: "single" | "multiple" | "true_false";
   prompt: string;
+  passage?: string;
   explanation: string | null;
   points: number;
   order_index: number;

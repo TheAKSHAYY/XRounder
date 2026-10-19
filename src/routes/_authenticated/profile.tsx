@@ -381,7 +381,7 @@ function ProfilePage() {
                 className="object-cover"
                 onError={() => setAvatarUrl("")}
               />
-              <AvatarFallback className="bg-primary/10 text-primary font-display text-xl font-bold">
+              <AvatarFallback className="bg-primary/10 text-primary font-sans text-xl font-bold">
                 {initials}
               </AvatarFallback>
             </Avatar>
@@ -404,7 +404,7 @@ function ProfilePage() {
           <div className="min-w-0 flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
-                <h1 className="font-display text-2xl font-bold tracking-tight text-foreground">
+                <h1 className="font-display text-2xl font-normal tracking-tight text-foreground">
                   {fullName}
                 </h1>
                 <p className="mt-0.5 text-sm text-muted-foreground">{email}</p>

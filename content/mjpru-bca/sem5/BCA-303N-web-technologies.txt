@@ -1,0 +1,1754 @@
+MJPRU BAREILLY BCA SEMESTER 5
+BCA-303N: WEB TECHNOLOGIES - OFFICIAL 250 QUESTION BANK
+===========================================================================
+
+[bca-303n-u1-q01] (Unit 1) Who invented the World Wide Web (WWW) in 1989 at CERN?
+  A.     Marc Andreessen
+  B. (*) Tim Berners-Lee
+  C.     Vint Cerf
+  D.     Brendan Eich
+Explanation: Sir Tim Berners-Lee invented the World Wide Web, HTML, HTTP, and URLs while working at CERN in 1989.
+
+[bca-303n-u1-q02] (Unit 1) Which application-layer protocol forms the communication backbone of the World Wide Web?
+  A.     FTP (File Transfer Protocol)
+  B. (*) HTTP (Hypertext Transfer Protocol)
+  C.     SMTP (Simple Mail Transfer Protocol)
+  D.     SNMP (Simple Network Management Protocol)
+Explanation: HTTP is the stateless client-server protocol used to exchange hypertext documents across the web.
+
+[bca-303n-u1-q03] (Unit 1) What does URL stand for in web architecture?
+  A. (*) Uniform Resource Locator
+  B.     Universal Reference Link
+  C.     Unified Resource Label
+  D.     User Routing Link
+Explanation: URL stands for Uniform Resource Locator, specifying the address and access mechanism of web resources.
+
+[bca-303n-u1-q04] (Unit 1) What is the primary role of MIME (Multipurpose Internet Mail Extensions) in HTTP communication?
+  A.     To encrypt internet data packets
+  B. (*) To indicate the media type and format of document payloads transmitted in HTTP headers
+  C.     To manage physical fiber optic cables
+  D.     To generate random session passwords
+Explanation: MIME headers (e.g., Content-Type: text/html, application/json) inform client browsers how to render transmitted payloads.
+
+[bca-303n-u1-q05] (Unit 1) Which HTTP request method is idempotent and intended strictly for retrieving representation of resources without side effects?
+  A.     POST
+  B. (*) GET
+  C.     PATCH
+  D.     CONNECT
+Explanation: GET is a safe and idempotent method intended solely for data retrieval without altering server state.
+
+[bca-303n-u1-q06] (Unit 1) What is the fundamental difference between HTTP GET and POST methods when submitting form data?
+  A. (*) GET submits data appended to the URL query string; POST submits data within the HTTP request body
+  B.     GET is encrypted while POST is plain text
+  C.     GET has no character limits; POST is limited to 256 bytes
+  D.     GET is handled by database servers; POST is handled by DNS servers
+Explanation: GET exposes form inputs in the URL query string and has length limits; POST transmits data inside the request body invisibly.
+
+[bca-303n-u1-q07] (Unit 1) Which HTTP response status code indicates successful completion of a client request?
+  A. (*) 200 OK
+  B.     301 Moved Permanently
+  C.     404 Not Found
+  D.     500 Internal Server Error
+Explanation: The 200 OK status code signifies that the client's request has succeeded.
+
+[bca-303n-u1-q08] (Unit 1) What does an HTTP 404 status code signify to the client?
+  A.     The client is unauthorized to view the page
+  B. (*) The requested resource could not be found on the server
+  C.     The web server crashed due to an unhandled exception
+  D.     The request was successfully cached
+Explanation: 404 Not Found indicates that the server cannot locate the requested URI target.
+
+[bca-303n-u1-q09] (Unit 1) What does an HTTP 500 status code represent?
+  A.     Bad Request syntax
+  B.     Payment Required
+  C. (*) Internal Server Error (unexpected condition encountered on the server)
+  D.     Gateway Timeout
+Explanation: 500 Internal Server Error is a generic server-side error indicating an unhandled exception or crash during request execution.
+
+[bca-303n-u1-q10] (Unit 1) What is the purpose of the <!DOCTYPE html> declaration at the beginning of an HTML document?
+  A.     To link the CSS styling sheet
+  B. (*) To inform the web browser of the HTML version (HTML5) to ensure standard rendering mode
+  C.     To import the JavaScript engine
+  D.     To define the page title
+Explanation: <!DOCTYPE html> is the preamble that triggers standards mode in modern browsers for HTML5.
+
+[bca-303n-u1-q11] (Unit 1) Which HTML5 semantic element is intended to encapsulate independent, self-contained syndicatable content (such as a blog post)?
+  A.     <section>
+  B. (*) <article>
+  C.     <aside>
+  D.     <div>
+Explanation: The <article> tag represents an independent, reusable composition (blog post, forum entry, news story).
+
+[bca-303n-u1-q12] (Unit 1) Which HTML element is used to group navigation links?
+  A.     <navigate>
+  B. (*) <nav>
+  C.     <links>
+  D.     <menu>
+Explanation: <nav> is the HTML5 semantic element designated for major navigation blocks.
+
+[bca-303n-u1-q13] (Unit 1) In HTML tables, which attribute merges a cell across multiple columns?
+  A.     rowspan
+  B. (*) colspan
+  C.     cellpadding
+  D.     span
+Explanation: colspan merges multiple horizontal columns into one cell; rowspan merges vertical rows.
+
+[bca-303n-u1-q14] (Unit 1) In an HTML form, which attribute specifies the destination URL where submitted data should be sent?
+  A.     method
+  B. (*) action
+  C.     target
+  D.     enctype
+Explanation: The action attribute contains the URL endpoint (e.g., action='process.php') that handles submitted form data.
+
+[bca-303n-u1-q15] (Unit 1) What enctype attribute value must be specified on an HTML form to allow file uploads (<input type='file'>)?
+  A.     application/x-www-form-urlencoded
+  B. (*) multipart/form-data
+  C.     text/plain
+  D.     application/json
+Explanation: File uploads require multipart/form-data so binary file streams can be partitioned from text inputs.
+
+[bca-303n-u1-q16] (Unit 1) What is CSS Specificity hierarchy from lowest to highest priority among selectors?
+  A.     Inline style < ID < Class < Element
+  B. (*) Element selector < Class/Attribute selector < ID selector < Inline style
+  C.     ID < Element < Class < Inline style
+  D.     Class < Element < Inline < ID
+Explanation: Specificity ascending order: Element (0,0,0,1) -> Class/Attribute (0,0,1,0) -> ID (0,1,0,0) -> Inline style (1,0,0,0).
+
+[bca-303n-u1-q17] (Unit 1) Which CSS property value changes the default box model calculation so that padding and border are included in width and height?
+  A.     box-sizing: content-box
+  B. (*) box-sizing: border-box
+  C.     box-sizing: padding-box
+  D.     box-sizing: margin-box
+Explanation: box-sizing: border-box ensures width includes padding and border, simplifying responsive layouts.
+
+[bca-303n-u1-q18] (Unit 1) What does the CSS 'float' property do, and which property is standardly applied to contain or clear floated child elements?
+  A. (*) float moves elements; clear: both prevents adjacent wrapping
+  B.     float hides elements; display: block reveals them
+  C.     float rotates text; transform: none straightens it
+  D.     float centers text; text-align: left clears it
+Explanation: float removes elements from normal flow; clear: both prevents wrapping past floated siblings.
+
+[bca-303n-u1-q19] (Unit 1) In CSS Flexbox, which property aligns items along the primary main axis?
+  A.     align-items
+  B. (*) justify-content
+  C.     align-content
+  D.     flex-direction
+Explanation: justify-content controls alignment along the main axis; align-items controls cross-axis alignment.
+
+[bca-303n-u1-q20] (Unit 1) Who invented the JavaScript programming language in 1995 at Netscape Communications?
+  A.     James Gosling
+  B. (*) Brendan Eich
+  C.     Guido van Rossum
+  D.     Anders Hejlsberg
+Explanation: Brendan Eich created JavaScript (originally named Mocha, then LiveScript) in 10 days in 1995.
+
+[bca-303n-u1-q21] (Unit 1) What is the scope distinction between 'var' and 'let' in modern JavaScript (ES6+)?
+  A.     var has block scope; let has global scope
+  B. (*) var is function-scoped and hoisted; let is block-scoped (constrained by curly braces)
+  C.     var is strictly typed; let is dynamic
+  D.     var is deprecated in browsers; let only runs on Node.js
+Explanation: var variables are scoped to the nearest function and hoisted; let provides block scoping within { } blocks.
+
+[bca-303n-u1-q22] (Unit 1) What does the '===' operator in JavaScript evaluate compared to '=='?
+  A.     It checks memory addresses only
+  B. (*) It evaluates strict equality without type coercion (both value and type must match)
+  C.     It checks if two strings have the same length
+  D.     It assigns a value to a variable
+Explanation: === is strict equality; == performs implicit type coercion before comparison (e.g., '5' == 5 is true, but '5' === 5 is false).
+
+[bca-303n-u1-q23] (Unit 1) What is the output of `typeof null` in JavaScript?
+  A.     'null'
+  B.     'undefined'
+  C. (*) 'object'
+  D.     'boolean'
+Explanation: Due to a legacy implementation quirk in original JavaScript, `typeof null` returns 'object'.
+
+[bca-303n-u1-q24] (Unit 1) In JavaScript, what is a 'Closure'?
+  A.     A syntax error when a bracket is missing
+  B. (*) A function bundled together with references to its surrounding lexical environment (retaining access to outer scope variables)
+  C.     A function that automatically terminates after 10 milliseconds
+  D.     A method that closes browser windows
+Explanation: A closure gives an inner function access to an outer function's scope even after the outer function has finished executing.
+
+[bca-303n-u1-q25] (Unit 1) What is the Document Object Model (DOM) in web browsers?
+  A.     A database stored on Apache servers
+  B. (*) A tree-structured in-memory API representing HTML/XML documents where nodes represent elements and attributes
+  C.     A CSS styling library
+  D.     A cryptographic certificate format
+Explanation: The DOM represents the page document as a hierarchical tree of nodes that JavaScript can dynamically manipulate.
+
+[bca-303n-u1-q26] (Unit 1) Which DOM API method selects the first element matching a specified CSS selector string?
+  A.     document.getElement()
+  B. (*) document.querySelector()
+  C.     document.findSelector()
+  D.     document.selectFirst()
+Explanation: querySelector() returns the first Element matching the specified selector; querySelectorAll() returns a NodeList.
+
+[bca-303n-u1-q27] (Unit 1) What is the difference between 'Event Bubbling' and 'Event Capturing' in DOM event dispatch?
+  A. (*) Bubbling traverses from target up to the document root; Capturing trickles down from the window to the target node
+  B.     Bubbling only works on links; Capturing works on buttons
+  C.     Bubbling cancels events; Capturing duplicates them
+  D.     They are identical processes
+Explanation: Event capturing trickles down from root to target; event bubbling propagates upwards from target back to root.
+
+[bca-303n-u1-q28] (Unit 1) In a JavaScript event handler, which method prevents the browser's default action (such as preventing form submission or link following)?
+  A.     event.stopPropagation()
+  B. (*) event.preventDefault()
+  C.     event.halt()
+  D.     event.returnFalse()
+Explanation: event.preventDefault() suppresses the default browser behavior associated with the event.
+
+[bca-303n-u1-q29] (Unit 1) In a JavaScript event handler, which method prevents an event from propagating (bubbling) further up the DOM tree?
+  A.     event.preventDefault()
+  B. (*) event.stopPropagation()
+  C.     event.clear()
+  D.     event.exit()
+Explanation: event.stopPropagation() halts further bubbling up the DOM parent hierarchy.
+
+[bca-303n-u1-q30] (Unit 1) Which HTML form validation event fires immediately when a form input element loses keyboard focus?
+  A.     onchange
+  B. (*) onblur
+  C.     onfocus
+  D.     onkeydown
+Explanation: onblur fires when an element loses focus; onfocus fires when it receives focus.
+
+[bca-303n-u1-q31] (Unit 1) Which event fires when an input value changes AND the input element loses focus?
+  A.     oninput
+  B. (*) onchange
+  C.     onhover
+  D.     onselect
+Explanation: onchange fires when a committed change occurs and focus is lost (unlike oninput which fires on every keystroke).
+
+[bca-303n-u1-q32] (Unit 1) In JavaScript client-side validation, what does the RegExp test() method return?
+  A.     The index of the match
+  B. (*) A Boolean (true if a match is found, false otherwise)
+  C.     A new string with replacements
+  D.     An array of all matched characters
+Explanation: regex.test(str) returns true if the regular expression matches any part of str.
+
+[bca-303n-u1-q33] (Unit 1) What is the regular expression pattern to test for a standard non-empty alphanumeric username?
+  A. (*) ^[a-zA-Z0-9]+$
+  B.     ^\d+$
+  C.     ^[a-z]$
+  D.     ^\w@\w$
+Explanation: ^[a-zA-Z0-9]+$ matches strings consisting solely of one or more letters and numbers from start to end.
+
+[bca-303n-u1-q34] (Unit 1) Which JavaScript global function parses an integer from a string value?
+  A.     Integer.parseInt()
+  B. (*) parseInt()
+  C.     strToInt()
+  D.     val()
+Explanation: parseInt(string, radix) parses a string argument and returns an integer of the specified radix.
+
+[bca-303n-u1-q35] (Unit 1) What does `isNaN('hello')` return in JavaScript?
+  A.     false
+  B. (*) true
+  C.     null
+  D.     NaN
+Explanation: Since 'hello' cannot be converted to a valid number, isNaN('hello') evaluates to true.
+
+[bca-303n-u1-q36] (Unit 1) Which HTML tag embeds client-side JavaScript code directly into an HTML page?
+  A.     <javascript>
+  B. (*) <script>
+  C.     <code>
+  D.     <js>
+Explanation: The <script> tag embeds or references executable JavaScript code.
+
+[bca-303n-u1-q37] (Unit 1) Which attribute on a <script> tag allows the browser to download the script in parallel and execute it as soon as it is downloaded without blocking HTML parsing?
+  A.     defer
+  B. (*) async
+  C.     type='text/css'
+  D.     preload
+Explanation: async downloads asynchronously and executes immediately when ready; defer downloads asynchronously but defers execution until HTML parsing completes.
+
+[bca-303n-u1-q38] (Unit 1) Which attribute on a <script> tag defers execution until the HTML document has been fully parsed?
+  A.     async
+  B. (*) defer
+  C.     wait
+  D.     lazy
+Explanation: defer preserves script order and guarantees execution after the DOM is fully constructed (before DOMContentLoaded).
+
+[bca-303n-u1-q39] (Unit 1) What is the DOM property used to set or get the raw HTML markup content inside an element?
+  A.     element.textContent
+  B. (*) element.innerHTML
+  C.     element.innerText
+  D.     element.value
+Explanation: innerHTML parses and assigns HTML tags; textContent treats input strictly as plain unparsed text.
+
+[bca-303n-u1-q40] (Unit 1) What security vulnerability arises when untrusted user input is directly assigned to `element.innerHTML`?
+  A.     SQL Injection
+  B. (*) Cross-Site Scripting (XSS)
+  C.     Buffer Overflow
+  D.     Denial of Service
+Explanation: Assigning unescaped user input to innerHTML permits injection of malicious <script> tags or onerror handlers (XSS).
+
+[bca-303n-u1-q41] (Unit 1) Which DOM method attaches an event handler function to an element without overwriting existing handlers?
+  A.     element.attachHandler()
+  B. (*) element.addEventListener()
+  C.     element.setEvent()
+  D.     element.bindEvent()
+Explanation: addEventListener(event, callback, useCapture) registers event listeners modularly.
+
+[bca-303n-u1-q42] (Unit 1) What is the first argument passed to an event listener callback function in standard DOM event handling?
+  A.     The window object
+  B. (*) The Event object containing event metadata (target, type, key, clientX)
+  C.     The HTML document
+  D.     The CSS stylesheet
+Explanation: Browsers pass the Event object automatically as the first parameter to event callback functions.
+
+[bca-303n-u1-q43] (Unit 1) In CSS, what pseudo-class applies styles when a user moves their mouse cursor over an interactive element?
+  A.     :focus
+  B. (*) :hover
+  C.     :active
+  D.     :visited
+Explanation: :hover applies when the pointing device hovers over an element.
+
+[bca-303n-u1-q44] (Unit 1) In CSS, what pseudo-class applies styling when an element currently has focus (e.g., cursor inside a text box)?
+  A.     :hover
+  B. (*) :focus
+  C.     :checked
+  D.     :first-child
+Explanation: :focus applies when an element receives focus via mouse click or tab navigation.
+
+[bca-303n-u1-q45] (Unit 1) What does CSS property `display: none` do compared to `visibility: hidden`?
+  A. (*) display: none removes the element entirely from document flow; visibility: hidden hides it while preserving its occupied space
+  B.     display: none changes text color; visibility: hidden hides borders
+  C.     They are completely identical
+  D.     display: none only works on mobile devices
+Explanation: display: none removes the box from rendering flow; visibility: hidden leaves an invisible empty space.
+
+[bca-303n-u1-q46] (Unit 1) Which JavaScript built-in method displays a modal dialog box with an OK button and a message string?
+  A.     prompt()
+  B. (*) alert()
+  C.     confirm()
+  D.     print()
+Explanation: alert(message) displays a simple modal alert box with an OK button.
+
+[bca-303n-u1-q47] (Unit 1) Which JavaScript method displays a modal dialog with OK and Cancel buttons and returns a Boolean?
+  A.     alert()
+  B. (*) confirm()
+  C.     prompt()
+  D.     open()
+Explanation: confirm(message) returns true if the user clicks OK, and false if Cancel is clicked.
+
+[bca-303n-u1-q48] (Unit 1) Which JavaScript method prompts the user to enter text input via a modal dialog?
+  A.     confirm()
+  B. (*) prompt()
+  C.     input()
+  D.     read()
+Explanation: prompt(text, defaultText) returns the user's entered text string or null if cancelled.
+
+[bca-303n-u1-q49] (Unit 1) What is the purpose of the 'name' attribute on HTML form input elements?
+  A.     To style the input using CSS
+  B. (*) To define the key parameter name submitted with the input's value in HTTP request payloads
+  C.     To position the input on the screen
+  D.     To encrypt user input
+Explanation: The name attribute establishes the key in the key=value payload submitted to the web server.
+
+[bca-303n-u1-q50] (Unit 1) What HTML5 input type provides automatic client-side email format validation?
+  A.     <input type='text'>
+  B. (*) <input type='email'>
+  C.     <input type='mail'>
+  D.     <input type='address'>
+Explanation: <input type='email'> enforces email pattern syntax natively in HTML5 browsers.
+
+[bca-303n-u2-q51] (Unit 2) What does XML stand for?
+  A. (*) Extensible Markup Language
+  B.     Extended Modern Language
+  C.     Executable Machine Language
+  D.     External Metadata Link
+Explanation: XML stands for Extensible Markup Language, designed for storing and transporting structured data.
+
+[bca-303n-u2-q52] (Unit 2) What is the fundamental design difference between HTML and XML?
+  A. (*) HTML was designed to display data with predefined tags; XML was designed to store and transport data with user-defined tags
+  B.     HTML is case-sensitive; XML is not
+  C.     HTML requires XML schemas to run
+  D.     HTML can only run on Windows
+Explanation: HTML focuses on presentation; XML focuses on data description and structure without predefined tag sets.
+
+[bca-303n-u2-q53] (Unit 2) An XML document is considered 'Well-Formed' if:
+  A. (*) It adheres to strict XML syntactic rules (single root element, matching closing tags, properly nested, case-sensitive)
+  B.     It has been compiled to binary format
+  C.     It contains CSS stylesheets
+  D.     It includes at least 100 attributes
+Explanation: Well-formed XML obeys XML grammar: one root element, closed tags, valid nesting, and quoted attribute values.
+
+[bca-303n-u2-q54] (Unit 2) An XML document is defined as 'Valid' if:
+  A. (*) It is well-formed AND conforms to the structural rules declared in an associated DTD or XML Schema
+  B.     It has no comments
+  C.     It is written in Python
+  D.     It contains a valid HTML DOCTYPE
+Explanation: Validity in XML requires well-formedness plus compliance with a DTD or XSD grammar schema.
+
+[bca-303n-u2-q55] (Unit 2) What is a Document Type Definition (DTD) used for in XML?
+  A.     To style XML for print display
+  B. (*) To define the legal building blocks, elements, attributes, and nesting rules of an XML document
+  C.     To compile XML into C code
+  D.     To encrypt XML databases
+Explanation: A DTD specifies valid element names, allowed child hierarchies, and attribute types.
+
+[bca-303n-u2-q56] (Unit 2) In an XML DTD, which keyword specifies that an element can contain character data parsed by the XML parser?
+  A.     #CDATA
+  B. (*) #PCDATA
+  C.     #RAW
+  D.     #STRING
+Explanation: #PCDATA stands for Parsed Character Data, which is scanned for markup tags and entity references.
+
+[bca-303n-u2-q57] (Unit 2) In an XML DTD, what does the CDATA attribute type designate?
+  A.     Compiled Data
+  B. (*) Character Data that is NOT parsed by the XML parser (treated as pure text literal)
+  C.     Cascading Data
+  D.     Compressed Data
+Explanation: CDATA is character data that the parser outputs directly without entity resolution or tag parsing.
+
+[bca-303n-u2-q58] (Unit 2) What is the primary advantage of XML Schema (XSD) over traditional DTDs?
+  A. (*) XSD is written in XML syntax itself and supports rich data types (integer, date, boolean, float)
+  B.     XSD is shorter to write than DTD
+  C.     XSD runs on older mainframes
+  D.     XSD eliminates root elements
+Explanation: XSD documents are themselves valid XML and support comprehensive type checking, unlike text-based DTDs.
+
+[bca-303n-u2-q59] (Unit 2) What XML specification resolves tag naming collisions when combining XML vocabularies from distinct domains?
+  A. (*) XML Namespaces (xmlns)
+  B.     XML Entities
+  C.     XML Macros
+  D.     XML Inlines
+Explanation: Namespaces (xmlns:prefix='URI') prevent collisions by qualifying element and attribute names uniquely.
+
+[bca-303n-u2-q60] (Unit 2) What technology is used to transform XML documents into HTML, plain text, or alternative XML structures?
+  A. (*) XSLT (Extensible Stylesheet Language Transformations)
+  B.     DOM Builder
+  C.     SAX Transformer
+  D.     CGI Script
+Explanation: XSLT uses pattern-matching rules and XPath expressions to transform XML source trees into output documents.
+
+[bca-303n-u2-q61] (Unit 2) What is XPath in the XML technology stack?
+  A.     A file system path in Linux
+  B. (*) A query language for navigating and selecting nodes and node-sets in an XML document tree
+  C.     A protocol for XML file transfers
+  D.     A database indexing algorithm
+Explanation: XPath expressions (e.g., /bookstore/book[price > 35]) navigate XML tree nodes.
+
+[bca-303n-u2-q62] (Unit 2) What is XHTML?
+  A. (*) A hybrid of HTML 4.01 reformulated as a strictly well-formed XML application
+  B.     An obsolete version of HTML
+  C.     A proprietary Microsoft web format
+  D.     A client-side styling tool
+Explanation: XHTML enforces strict XML syntax rules (lowercase tags, quoted attributes, self-closing tags) onto HTML.
+
+[bca-303n-u2-q63] (Unit 2) What is the primary operational difference between the DOM parser and the SAX parser for XML?
+  A. (*) DOM loads the entire XML document into a tree in memory; SAX is a stream-based, event-driven parser that consumes minimal memory
+  B.     DOM only works in C++; SAX only works in Java
+  C.     DOM cannot read attributes; SAX can
+  D.     They have identical memory usage
+Explanation: DOM is tree-based (in-memory, random access); SAX is event-driven (streaming, fast, lightweight memory footprint).
+
+[bca-303n-u2-q64] (Unit 2) When processing an extremely large multi-gigabyte XML document, which parser is standardly preferred to prevent out-of-memory errors?
+  A.     DOM Parser
+  B. (*) SAX Parser (or StAX Pull Parser)
+  C.     HTML Parser
+  D.     CSS Parser
+Explanation: SAX streams events (startElement, endElement) as it scans, requiring minimal RAM regardless of file size.
+
+[bca-303n-u2-q65] (Unit 2) PHP originally stood for Personal Home Page Tools, but in modern computing, it is a recursive acronym for:
+  A.     Private Host Processor
+  B. (*) PHP: Hypertext Preprocessor
+  C.     Public Hypertext Protocol
+  D.     Powerful HTML Parser
+Explanation: PHP recursively stands for 'PHP: Hypertext Preprocessor'.
+
+[bca-303n-u2-q66] (Unit 2) All variables in PHP source code MUST begin with which prefix symbol?
+  A.     @
+  B. (*) $
+  C.     #
+  D.     &
+Explanation: Variables in PHP always begin with the dollar sign $ (e.g., $username, $count).
+
+[bca-303n-u2-q67] (Unit 2) Are PHP variable names case-sensitive?
+  A.     No, variables are completely case-insensitive
+  B. (*) Yes, variable names are case-sensitive ($var != $Var)
+  C.     Only variables longer than 8 characters
+  D.     Only global variables
+Explanation: In PHP, variable names are case-sensitive; however, built-in functions, keywords, and class names are case-insensitive.
+
+[bca-303n-u2-q68] (Unit 2) Which of the following is NOT a scalar data type in PHP?
+  A.     Boolean
+  B.     Integer
+  C. (*) Array
+  D.     String
+Explanation: PHP scalar types are boolean, integer, float, and string. Arrays and Objects are compound data types.
+
+[bca-303n-u2-q69] (Unit 2) What is the string concatenation operator in PHP?
+  A.     +
+  B. (*) .
+  C.     &
+  D.     ~
+Explanation: PHP uses the dot (.) operator for string concatenation (e.g., $fullName = $firstName . ' ' . $lastName;).
+
+[bca-303n-u2-q70] (Unit 2) What is the output of the PHP expression: `echo 5 + '10 apples';` in classic PHP?
+  A. (*) 15
+  B.     510 apples
+  C.     Type error
+  D.     10
+Explanation: Classic PHP coerces the string '10 apples' into the leading integer 10, resulting in 5 + 10 = 15.
+
+[bca-303n-u2-q71] (Unit 2) In PHP, what is an 'Associative Array'?
+  A.     An array indexed strictly by consecutive integers 0, 1, 2...
+  B. (*) An array where named string keys are mapped to corresponding values using the `=>` operator
+  C.     An array that contains only function pointers
+  D.     A linked list data structure
+Explanation: Associative arrays use named string keys: $ages = ['John' => 25, 'Sara' => 30];
+
+[bca-303n-u2-q72] (Unit 2) Which PHP loop is specifically engineered to iterate over elements of an Array without maintaining manual counter variables?
+  A.     for loop
+  B.     while loop
+  C. (*) foreach loop
+  D.     do-while loop
+Explanation: The foreach ($array as $key => $value) loop is designed for array traversal.
+
+[bca-303n-u2-q73] (Unit 2) In PHP function declarations, how is a parameter passed by reference rather than by value?
+  A. (*) By prefixing the parameter name with an ampersand (&)
+  B.     By prefixing with an asterisk (*)
+  C.     By prefixing with a percent sign (%)
+  D.     By using the ref keyword
+Explanation: Ampersand (&) denotes pass-by-reference (e.g., function modifyValue(&$val) { ... }).
+
+[bca-303n-u2-q74] (Unit 2) What is a 'Superglobal' in PHP?
+  A.     A variable that can store multiple gigabytes
+  B. (*) A predefined built-in array that is accessible in all scopes throughout a script without declaring 'global'
+  C.     A global CSS variable
+  D.     A secure operating system variable
+Explanation: Superglobals ($_GET, $_POST, $_SERVER, $_SESSION, $_COOKIE) are automatically available in all execution scopes.
+
+[bca-303n-u2-q75] (Unit 2) Which PHP superglobal holds form data submitted with the HTTP POST method?
+  A.     $_GET
+  B. (*) $_POST
+  C.     $_REQUEST_POST
+  D.     $_FORM
+Explanation: $_POST contains key-value pairs submitted via HTTP POST requests.
+
+[bca-303n-u2-q76] (Unit 2) Which PHP superglobal contains header information, server environment paths, and script locations?
+  A.     $_ENV
+  B. (*) $_SERVER
+  C.     $_GLOBALS
+  D.     $_SYSTEM
+Explanation: $_SERVER stores server and execution environment parameters (e.g., $_SERVER['REQUEST_METHOD']).
+
+[bca-303n-u2-q77] (Unit 2) What does the PHP built-in function `htmlspecialchars()` do?
+  A.     Converts all letters to uppercase
+  B. (*) Converts special characters (like <, >, &, ") into their corresponding HTML entities to prevent XSS attacks
+  C.     Removes all whitespace from strings
+  D.     Encrypts strings using SHA-256
+Explanation: htmlspecialchars() sanitizes user input, preventing cross-site scripting (XSS) by encoding markup characters.
+
+[bca-303n-u2-q78] (Unit 2) What does the PHP function `strip_tags()` do?
+  A.     Strips all vowels from text
+  B. (*) Strips all HTML and PHP tags from a string
+  C.     Clears browser cookies
+  D.     Removes array keys
+Explanation: strip_tags($str) removes all HTML and PHP tags from a string.
+
+[bca-303n-u2-q79] (Unit 2) What is the difference between `include` and `require` statements in PHP when the target file does not exist?
+  A.     include produces a fatal E_COMPILE_ERROR and halts script execution; require only produces a warning
+  B. (*) include produces an E_WARNING and continues execution; require produces a fatal E_COMPILE_ERROR and immediately halts script execution
+  C.     They behave identically
+  D.     require only works on Linux
+Explanation: require halts script execution if the file is missing; include issues a warning and proceeds.
+
+[bca-303n-u2-q80] (Unit 2) What is the difference between `require` and `require_once` in PHP?
+  A. (*) require_once ensures that the specified file is included only once during script execution, preventing duplicate function definitions
+  B.     require_once deletes the file after reading
+  C.     require_once runs only on web servers
+  D.     require_once ignores syntax errors
+Explanation: require_once tracks previously included files, preventing redeclaration collisions.
+
+[bca-303n-u2-q81] (Unit 2) What PHP function defines a constant identifier that cannot be reassigned during execution?
+  A.     const_define()
+  B. (*) define('CONSTANT_NAME', value)
+  C.     var_constant()
+  D.     final()
+Explanation: define('SITE_URL', 'https://example.com') defines global runtime constants.
+
+[bca-303n-u2-q82] (Unit 2) What function checks if a variable is set and is not NULL in PHP?
+  A.     is_null()
+  B. (*) isset()
+  C.     empty()
+  D.     check()
+Explanation: isset($var) returns true if the variable exists and its value is not null.
+
+[bca-303n-u2-q83] (Unit 2) What does the PHP function `empty()` evaluate to true for?
+  A. (*) 0, '0', empty string '', false, null, and empty array []
+  B.     Only strictly null values
+  C.     Only variables containing the word 'empty'
+  D.     Only floating point numbers
+Explanation: empty($var) returns true if a variable does not exist or has a falsy value (0, '0', '', null, false, []).
+
+[bca-303n-u2-q84] (Unit 2) In PHP, what is the output of `explode(',', 'apple,banana,cherry')`?
+  A.     A single concatenated string 'applebananacherry'
+  B. (*) An indexed array containing ['apple', 'banana', 'cherry']
+  C.     A syntax error
+  D.     A dictionary with integer values
+Explanation: explode(delimiter, string) splits a string by a delimiter into an array of strings.
+
+[bca-303n-u2-q85] (Unit 2) In PHP, what function joins array elements into a single delimited string?
+  A. (*) implode() (or join())
+  B.     combine()
+  C.     concat_array()
+  D.     flatten()
+Explanation: implode(glue, array) joins array elements into a string using the specified glue string.
+
+[bca-303n-u2-q86] (Unit 2) What function is used in PHP to redirect the client browser to a different URL via an HTTP header?
+  A.     redirect('URL');
+  B. (*) header('Location: URL');
+  C.     http_redirect('URL');
+  D.     window.location = 'URL';
+Explanation: header('Location: destination.php') sends an HTTP redirect header before any output is sent.
+
+[bca-303n-u2-q87] (Unit 2) Why must the `header()` function in PHP be called before any HTML output or whitespace is printed?
+  A. (*) Because headers must be sent in the first HTTP response bytes before the message body begins
+  B.     Because PHP crashes on whitespace
+  C.     Because browsers ignore headers if they are placed second
+  D.     It is only a convention, not a requirement
+Explanation: HTTP protocol requires headers to precede the body; sending body output triggers header transmission automatically.
+
+[bca-303n-u2-q88] (Unit 2) What function outputs detailed information about a PHP variable, including its type, length, and internal structure, typically used for debugging?
+  A.     echo()
+  B.     print()
+  C. (*) var_dump()
+  D.     write()
+Explanation: var_dump($var) outputs structured type and value metadata for debugging.
+
+[bca-303n-u2-q89] (Unit 2) How are comments written in PHP?
+  A. (*) // single-line, # single-line, and /* multi-line */
+  B.     -- single-line only
+  C.     <!-- comment --> only
+  D.     % single-line only
+Explanation: PHP supports C-style (// and /* */) and shell-style (#) comments.
+
+[bca-303n-u2-q90] (Unit 2) What is the PHP spaceship operator (`<=>`) introduced in PHP 7?
+  A.     A bitwise operator
+  B. (*) A three-way comparison operator returning -1 (if left < right), 0 (if left == right), or 1 (if left > right)
+  C.     A logical implication operator
+  D.     A string replication operator
+Explanation: The spaceship operator ($a <=> $b) simplifies custom sorting callback comparisons.
+
+[bca-303n-u2-q91] (Unit 2) What function in PHP is used to start or resume a user session across page visits?
+  A.     session_init()
+  B. (*) session_start()
+  C.     start_session()
+  D.     session_begin()
+Explanation: session_start() initializes session tracking, generating or reading the PHPSESSID cookie.
+
+[bca-303n-u2-q92] (Unit 2) In PHP, how do you destroy all data registered to a session?
+  A. (*) session_destroy()
+  B.     session_exit()
+  C.     session_kill()
+  D.     delete_session()
+Explanation: session_destroy() destroys all registered session data associated with the current session identifier.
+
+[bca-303n-u2-q93] (Unit 2) What is the default file extension for PHP scripts?
+  A.     .html
+  B. (*) .php
+  C.     .phtml
+  D.     .jsp
+Explanation: The standard file extension parsed by web servers via the PHP handler is .php.
+
+[bca-303n-u2-q94] (Unit 2) In XML, what is an 'Entity Reference'?
+  A.     A pointer in C++
+  B. (*) A placeholder representing a character or string (e.g., &lt; for <, &amp; for &) to avoid parser misinterpretation
+  C.     A database foreign key
+  D.     A CSS style selector
+Explanation: Predefined XML entity references (&lt;, &gt;, &amp;, &apos;, &quot;) represent reserved markup characters.
+
+[bca-303n-u2-q95] (Unit 2) What declaration begins an XML document?
+  A.     <!DOCTYPE html>
+  B. (*) <?xml version='1.0' encoding='UTF-8'?>
+  C.     <xml version='1.0'>
+  D.     #!/usr/bin/xml
+Explanation: The XML prolog <?xml version='1.0' encoding='UTF-8'?> defines XML version and character encoding.
+
+[bca-303n-u2-q96] (Unit 2) Are XML tags case-sensitive?
+  A.     No, case does not matter in XML
+  B. (*) Yes, <Address> and <address> are treated as completely different tags in XML
+  C.     Only tags longer than 5 letters
+  D.     Only closing tags
+Explanation: XML is strictly case-sensitive; opening and closing tags must match casing exactly.
+
+[bca-303n-u2-q97] (Unit 2) Can an XML document have multiple root elements?
+  A.     Yes, up to 10 root elements
+  B. (*) No, an XML document must contain exactly ONE single top-level root element that encloses all other elements
+  C.     Only if declared in the DTD
+  D.     Root elements are optional
+Explanation: Every well-formed XML document has strictly one root element containing all other child nodes.
+
+[bca-303n-u2-q98] (Unit 2) In PHP, what keyword is used to access a global variable from within a local function scope?
+  A.     super
+  B. (*) global
+  C.     extern
+  D.     static
+Explanation: The global keyword (e.g., global $dbConn;) brings variables from the global scope into local function scope.
+
+[bca-303n-u2-q99] (Unit 2) What function terminates execution of a PHP script immediately with an optional status message?
+  A.     halt()
+  B. (*) exit() (or die())
+  C.     abort()
+  D.     stop()
+Explanation: die($msg) or exit($msg) prints an optional message and terminates the running script.
+
+[bca-303n-u2-q100] (Unit 2) Which PHP configuration file controls server-wide PHP behavior, memory limits, and extension modules?
+  A.     httpd.conf
+  B. (*) php.ini
+  C.     web.config
+  D.     my.cnf
+Explanation: php.ini is the central configuration file for PHP runtime settings.
+
+[bca-303n-u3-q101] (Unit 3) What is a Java Servlet?
+  A.     A client-side applet running in a web browser
+  B. (*) A server-side Java program that extends the capabilities of a web server to handle requests and generate dynamic responses
+  C.     A JavaScript library for animation
+  D.     A database management system
+Explanation: Servlets are Java classes executed by a web server's servlet container to process client HTTP requests dynamically.
+
+[bca-303n-u3-q102] (Unit 3) What is the primary operational advantage of Java Servlets over traditional CGI (Common Gateway Interface) scripts?
+  A.     Servlets are written in assembly language
+  B. (*) Servlets use multithreading where requests are handled by lightweight threads within a single persistent JVM process, rather than spawning heavy OS processes per request
+  C.     Servlets do not require web servers
+  D.     Servlets consume no memory
+Explanation: CGI creates a separate operating system process for every HTTP request; Servlets instantiate lightweight threads within one persistent process.
+
+[bca-303n-u3-q103] (Unit 3) What open-source servlet container, developed by the Apache Software Foundation, serves as the official reference implementation of Java Servlets and JSP?
+  A.     Apache HTTP Server
+  B. (*) Apache Tomcat
+  C.     Nginx
+  D.     Node.js
+Explanation: Apache Tomcat provides a Java HTTP web server environment in which Java code can run.
+
+[bca-303n-u3-q104] (Unit 3) Which interface defines the lifecycle methods that every Java Servlet must implement?
+  A. (*) javax.servlet.Servlet
+  B.     java.lang.Runnable
+  C.     javax.servlet.http.HttpServletRequest
+  D.     java.io.Serializable
+Explanation: The javax.servlet.Servlet interface is the root contract defining init, service, and destroy methods.
+
+[bca-303n-u3-q105] (Unit 3) What are the three core lifecycle methods of a Java Servlet in chronological execution order?
+  A.     start(), run(), stop()
+  B. (*) init(), service(), destroy()
+  C.     open(), execute(), close()
+  D.     load(), process(), exit()
+Explanation: The servlet container invokes: init() once on loading, service() for each incoming request, and destroy() once upon unloading.
+
+[bca-303n-u3-q106] (Unit 3) How many times is the `init()` method of a servlet invoked during its lifetime in the container?
+  A.     Once per HTTP request
+  B. (*) Exactly once when the servlet is first instantiated and loaded into memory
+  C.     Continuously in a background thread
+  D.     Five times
+Explanation: init() executes exactly once during servlet initialization, before any request can be serviced.
+
+[bca-303n-u3-q107] (Unit 3) Which method in a Servlet is invoked by the container for every incoming client HTTP request?
+  A.     init()
+  B. (*) service()
+  C.     destroy()
+  D.     finalize()
+Explanation: The servlet container routes incoming requests to service(ServletRequest, ServletResponse).
+
+[bca-303n-u3-q108] (Unit 3) In the HttpServlet class, what does the default implementation of the `service()` method do?
+  A.     It returns a 404 error
+  B. (*) It inspects the HTTP request method (GET, POST, PUT, DELETE) and dispatches the call to the corresponding handler (doGet, doPost, etc.)
+  C.     It shuts down the web server
+  D.     It formats HTML with CSS
+Explanation: HttpServlet.service() inspects request.getMethod() and delegates to doGet, doPost, doPut, etc.
+
+[bca-303n-u3-q109] (Unit 3) What is the XML deployment descriptor file standardly used to configure and map servlets in a Java web application?
+  A.     server.xml
+  B. (*) web.xml
+  C.     context.xml
+  D.     pom.xml
+Explanation: web.xml (located in the WEB-INF/ directory) is the standard deployment descriptor defining servlet mappings and configurations.
+
+[bca-303n-u3-q110] (Unit 3) In web.xml, which tags map a logical servlet name to a specific URL pattern?
+  A. (*) <servlet> and <servlet-mapping>
+  B.     <class> and <url>
+  C.     <handler> and <route>
+  D.     <path> and <target>
+Explanation: <servlet> binds a name to a class; <servlet-mapping> binds that name to a url-pattern.
+
+[bca-303n-u3-q111] (Unit 3) What directory inside a Java web application (WAR) is strictly protected from direct URL access by remote client browsers?
+  A.     /css
+  B.     /images
+  C. (*) /WEB-INF
+  D.     /js
+Explanation: The WEB-INF directory and its contents (classes, lib, web.xml) are private to the server and cannot be requested directly by browser URLs.
+
+[bca-303n-u3-q112] (Unit 3) Which base abstract class provides an HTTP-specific implementation of the Servlet interface for building web applications?
+  A.     GenericServlet
+  B. (*) HttpServlet
+  C.     HttpSession
+  D.     ServletContext
+Explanation: HttpServlet extends GenericServlet, adding HTTP protocol-specific methods (doGet, doPost).
+
+[bca-303n-u3-q113] (Unit 3) What are the two parameters passed into the `doGet(HttpServletRequest request, HttpServletResponse response)` method?
+  A.     An input stream and output stream
+  B. (*) HttpServletRequest object and HttpServletResponse object
+  C.     Two string arrays
+  D.     A socket descriptor and a port number
+Explanation: The container supplies the request (client data) and response (output channel) objects to doGet and doPost.
+
+[bca-303n-u3-q114] (Unit 3) Which method on the `HttpServletRequest` object retrieves the value of a single form input field submitted by a client?
+  A.     request.getFormValue()
+  B. (*) request.getParameter(String name)
+  C.     request.getAttribute(String name)
+  D.     request.getInput(String name)
+Explanation: request.getParameter('fieldName') retrieves single query string or form parameter values as a String.
+
+[bca-303n-u3-q115] (Unit 3) Which method on `HttpServletRequest` is used to retrieve multiple values from an input (such as multiple checked checkboxes)?
+  A.     request.getParameter()
+  B. (*) request.getParameterValues(String name)
+  C.     request.getAttributes()
+  D.     request.getParameterMap()
+Explanation: getParameterValues('hobbies') returns a String[] containing all selected checkbox values.
+
+[bca-303n-u3-q116] (Unit 3) Which method on `HttpServletResponse` is invoked to obtain a character stream for writing HTML response markup back to the client?
+  A.     response.getOutputStream()
+  B. (*) response.getWriter()
+  C.     response.getPrintStream()
+  D.     response.write()
+Explanation: response.getWriter() returns a java.io.PrintWriter for outputting character text and HTML.
+
+[bca-303n-u3-q117] (Unit 3) Why does attempting to call both `response.getWriter()` and `response.getOutputStream()` on the same response object throw an IllegalStateException?
+  A.     Because Java forbids binary data
+  B. (*) A response can send either character text (getWriter) or raw binary streams (getOutputStream), but never both simultaneously
+  C.     Because the web server crashes
+  D.     Because Tomcat does not support streams
+Explanation: The Servlet specification strictly enforces that either the character writer or binary output stream may be used, not both.
+
+[bca-303n-u3-q118] (Unit 3) Which method sets the MIME content type of the HTTP response before sending output in a servlet?
+  A. (*) response.setContentType('text/html');
+  B.     response.setMime('html');
+  C.     response.setFormat('text/html');
+  D.     response.setHeader('html');
+Explanation: response.setContentType('text/html;charset=UTF-8') sets the Content-Type header informing browsers how to parse the payload.
+
+[bca-303n-u3-q119] (Unit 3) What is the scope of initialization parameters defined inside a `<servlet>` tag in web.xml and read via `ServletConfig.getInitParameter()`?
+  A.     Application-wide across all servlets
+  B. (*) Local strictly to that specific individual servlet
+  C.     Global across all computers on the network
+  D.     Session-scoped to a single user
+Explanation: ServletConfig init-parameters are private to the declared servlet instance.
+
+[bca-303n-u3-q120] (Unit 3) What interface provides access to web application-wide context parameters declared inside `<context-param>` in web.xml?
+  A.     ServletConfig
+  B. (*) ServletContext
+  C.     HttpSession
+  D.     ServletRequest
+Explanation: ServletContext represents the entire web application, holding global attributes and context parameters shared across all servlets.
+
+[bca-303n-u3-q121] (Unit 3) Why is Session Management necessary in web application development?
+  A.     Because internet cables drop data
+  B. (*) Because HTTP is a stateless protocol: each request is treated independently with no native memory of prior interactions
+  C.     Because servers do not have hard drives
+  D.     To encrypt passwords automatically
+Explanation: HTTP is stateless; session management mechanisms track state across multi-step transactions (e.g., shopping carts).
+
+[bca-303n-u3-q122] (Unit 3) What is an HTTP Cookie?
+  A. (*) A small piece of text data sent by a web server and stored locally on the client's machine by the browser
+  B.     A piece of hardware in an optical drive
+  C.     A virus program running in memory
+  D.     An encrypted database table
+Explanation: Cookies are client-side key-value pairs transmitted in HTTP headers on each subsequent request to the originating domain.
+
+[bca-303n-u3-q123] (Unit 3) In Java Servlets, how is a new Cookie created and sent to the client browser?
+  A. (*) Cookie c = new Cookie('user', 'John'); response.addCookie(c);
+  B.     response.createCookie('user', 'John');
+  C.     request.setCookie('user', 'John');
+  D.     Cookie.send('user', 'John');
+Explanation: Cookies are instantiated as Cookie objects and added to the response via response.addCookie(c).
+
+[bca-303n-u3-q124] (Unit 3) How do you delete an existing Cookie in a Java Servlet?
+  A.     cookie.delete();
+  B. (*) cookie.setMaxAge(0); response.addCookie(cookie);
+  C.     cookie.setValue(null);
+  D.     request.removeCookie(cookie);
+Explanation: Setting max-age to 0 (cookie.setMaxAge(0)) instructs the browser to immediately expire and purge the cookie.
+
+[bca-303n-u3-q125] (Unit 3) What security flag on a Cookie prevents client-side JavaScript (e.g., document.cookie) from accessing the cookie, mitigating XSS attacks?
+  A.     Secure
+  B. (*) HttpOnly
+  C.     SameSite
+  D.     NoScript
+Explanation: The HttpOnly flag blocks scripts from reading the cookie, protecting sensitive session tokens from XSS theft.
+
+[bca-303n-u3-q126] (Unit 3) What security flag instructs the browser to only transmit the cookie over encrypted HTTPS connections?
+  A.     HttpOnly
+  B. (*) Secure
+  C.     Strict
+  D.     Encrypted
+Explanation: The Secure attribute ensures cookies are only transmitted over TLS/SSL (HTTPS).
+
+[bca-303n-u3-q127] (Unit 3) Which interface in Java Servlets represents an interactive user session maintained on the server?
+  A. (*) javax.servlet.http.HttpSession
+  B.     javax.servlet.SessionContext
+  C.     java.net.Socket
+  D.     javax.servlet.UserTracker
+Explanation: HttpSession provides server-side storage for session-scoped attributes across multiple requests.
+
+[bca-303n-u3-q128] (Unit 3) In a Servlet, how do you obtain the client's current `HttpSession` (or create one if it does not yet exist)?
+  A. (*) request.getSession() (or request.getSession(true))
+  B.     new HttpSession()
+  C.     response.createSession()
+  D.     SessionManager.get()
+Explanation: request.getSession() returns the current active session or creates a new one if none exists.
+
+[bca-303n-u3-q129] (Unit 3) What does `request.getSession(false)` do if no session currently exists for the requesting client?
+  A.     Throws a NullPointerException
+  B. (*) Returns null without creating a new session
+  C.     Creates a temporary session
+  D.     Redirects to login.html
+Explanation: request.getSession(false) retrieves the existing session if present, but returns null instead of creating a new one.
+
+[bca-303n-u3-q130] (Unit 3) How is an object stored into an `HttpSession` in a Servlet?
+  A.     session.setParameter('cart', cartObject);
+  B. (*) session.setAttribute('cart', cartObject);
+  C.     session.put('cart', cartObject);
+  D.     session.save('cart', cartObject);
+Explanation: session.setAttribute('key', object) stores arbitrary Java objects in session memory.
+
+[bca-303n-u3-q131] (Unit 3) How is a stored object retrieved from an `HttpSession` in Java?
+  A.     session.getParameter('cart');
+  B. (*) session.getAttribute('cart'); (cast to the appropriate object type)
+  C.     session.read('cart');
+  D.     session.find('cart');
+Explanation: session.getAttribute('key') returns java.lang.Object, which must be cast to the expected type.
+
+[bca-303n-u3-q132] (Unit 3) How do you immediately terminate an active user session and unbind all its session attributes?
+  A.     session.destroy();
+  B. (*) session.invalidate();
+  C.     session.close();
+  D.     session.stop();
+Explanation: session.invalidate() invalidates the session and unbinds all associated objects (standard for logout).
+
+[bca-303n-u3-q133] (Unit 3) When browser cookies are disabled by a user, which alternative technique can Java Servlets use to maintain session tracking?
+  A. (*) URL Rewriting (appending ;jsessionid=... to URLs)
+  B.     Hidden forms on every page only
+  C.     IP address hashing only
+  D.     SSL certificates only
+Explanation: URL Rewriting encodes the session identifier directly into URLs (response.encodeURL(url)) when cookies are disabled.
+
+[bca-303n-u3-q134] (Unit 3) Which method on `HttpServletResponse` rewrites a URL to include the session ID if cookies are disabled?
+  A. (*) response.encodeURL(String url)
+  B.     response.formatURL(String url)
+  C.     response.rewrite(String url)
+  D.     response.appendSession(String url)
+Explanation: encodeURL(url) checks if cookies are active; if disabled, it appends ;jsessionid=XYZ to the link.
+
+[bca-303n-u3-q135] (Unit 3) What is the default tracking cookie name utilized by Java Servlet containers (like Tomcat) to identify user sessions?
+  A.     PHPSESSID
+  B. (*) JSESSIONID
+  C.     ASP.NET_SessionId
+  D.     SESSION_KEY
+Explanation: JSESSIONID is the standard cookie name defined in the Java Servlet specification.
+
+[bca-303n-u3-q136] (Unit 3) What technique uses non-visible form inputs (`<input type='hidden' name='session' value='...'>`) to pass state between consecutive pages?
+  A.     URL Rewriting
+  B. (*) Hidden Form Fields
+  C.     Cookies
+  D.     Session Beans
+Explanation: Hidden form fields embed state invisibly inside forms, submitted automatically upon button click.
+
+[bca-303n-u3-q137] (Unit 3) What is the default timeout period for an idle `HttpSession` in Apache Tomcat if not configured otherwise?
+  A.     5 minutes
+  B.     15 minutes
+  C. (*) 30 minutes
+  D.     24 hours
+Explanation: Tomcat standardly defaults session timeout to 30 minutes in conf/web.xml (<session-timeout>30</session-timeout>).
+
+[bca-303n-u3-q138] (Unit 3) Which method programmatically sets the maximum inactive interval (in seconds) for a specific `HttpSession` instance?
+  A.     session.setTimeout(int minutes);
+  B. (*) session.setMaxInactiveInterval(int intervalInSeconds);
+  C.     session.setLife(int sec);
+  D.     session.setExpiry(long ms);
+Explanation: session.setMaxInactiveInterval(1800) sets idle timeout in seconds (passing negative values means session never expires).
+
+[bca-303n-u3-q139] (Unit 3) In a Servlet, what is the role of the `RequestDispatcher` interface?
+  A.     To dispatch network packets across routers
+  B. (*) To forward a request to another resource (servlet, JSP, HTML) on the server, or include content from another resource
+  C.     To terminate user sessions
+  D.     To connect to database drivers
+Explanation: RequestDispatcher forwards requests internally or includes another resource's output in the current response.
+
+[bca-303n-u3-q140] (Unit 3) What is the difference between `RequestDispatcher.forward()` and `HttpServletResponse.sendRedirect()`?
+  A. (*) forward() occurs entirely on the server within one request; sendRedirect() instructs the client browser to make a new round-trip GET request to a new URL
+  B.     forward() changes the browser address bar URL; sendRedirect() does not
+  C.     forward() only works on images; sendRedirect() works on text
+  D.     They are identical in performance
+Explanation: forward() executes on the server (browser URL unchanged); sendRedirect() sends an HTTP 302 instructing the browser to issue a new GET request.
+
+[bca-303n-u3-q141] (Unit 3) Which scope represents attributes that exist ONLY for the duration of a single HTTP request-response cycle?
+  A. (*) Request Scope (request.setAttribute)
+  B.     Session Scope (session.setAttribute)
+  C.     Application Scope (application.setAttribute)
+  D.     Page Scope
+Explanation: Request scope attributes survive only while the request is being processed (ideal for forwarding data to JSPs).
+
+[bca-303n-u3-q142] (Unit 3) Which scope represents data accessible by all users across all sessions in the entire web application?
+  A.     Request Scope
+  B.     Session Scope
+  C. (*) Application Scope (ServletContext)
+  D.     Thread Scope
+Explanation: Application scope (via ServletContext) stores globally shared objects across all active sessions.
+
+[bca-303n-u3-q143] (Unit 3) What listener interface in the Servlet API is notified when an `HttpSession` is created or destroyed?
+  A.     ServletRequestListener
+  B. (*) HttpSessionListener
+  C.     ServletContextListener
+  D.     HttpSessionAttributeListener
+Explanation: HttpSessionListener receives notifications when sessions are created or invalidated (useful for active user counts).
+
+[bca-303n-u3-q144] (Unit 3) What listener interface is notified when the entire web application is initialized or shut down?
+  A. (*) ServletContextListener
+  B.     ServletConfigListener
+  C.     AppLifecycleListener
+  D.     ApplicationStateListener
+Explanation: ServletContextListener methods (contextInitialized, contextDestroyed) handle startup tasks like initializing connection pools.
+
+[bca-303n-u3-q145] (Unit 3) In Java Servlets, what is a 'Filter' (javax.servlet.Filter)?
+  A.     A hardware firewall
+  B. (*) A pluggable component that intercepts requests and responses to perform pre-processing (authentication, logging) or post-processing (compression)
+  C.     A database query optimizer
+  D.     An error page generator
+Explanation: Filters intercept requests before they hit servlets and responses before they reach clients.
+
+[bca-303n-u3-q146] (Unit 3) Which method in the `Filter` interface passes the request and response along to the next element in the filter chain?
+  A. (*) chain.doFilter(request, response)
+  B.     chain.next()
+  C.     chain.pass()
+  D.     chain.continue()
+Explanation: filterChain.doFilter(request, response) invokes the next filter or target servlet.
+
+[bca-303n-u3-q147] (Unit 3) Can a single Servlet be mapped to multiple distinct URL patterns in web.xml?
+  A.     No, each servlet can only have one URL pattern
+  B. (*) Yes, multiple <servlet-mapping> blocks can bind multiple URL patterns to the same servlet name
+  C.     Only on Linux servers
+  D.     Only if written in Java 8
+Explanation: A single servlet can be mapped to multiple paths (e.g., /app, /app/*, *.do).
+
+[bca-303n-u3-q148] (Unit 3) What does the `load-on-startup` tag in web.xml do for a declared servlet?
+  A.     It launches the web server on computer boot
+  B. (*) It forces the servlet container to instantiate the servlet and execute init() upon server startup, rather than waiting for the first request
+  C.     It restarts the computer if errors occur
+  D.     It loads files from disk cache
+Explanation: <load-on-startup>1</load-on-startup> pre-loads servlets at startup to eliminate the first-request latency penalty.
+
+[bca-303n-u3-q149] (Unit 3) Is a Java Servlet thread-safe by default?
+  A.     Yes, the JVM automatically synchronizes all method calls
+  B. (*) No; because a single servlet instance handles multiple concurrent requests in separate threads, modifying instance variables without synchronization causes race conditions
+  C.     Servlets do not support multithreading
+  D.     Thread safety only applies to C++
+Explanation: Servlets share instance variables across threads; developers must avoid mutable instance state or synchronize access.
+
+[bca-303n-u3-q150] (Unit 3) To write thread-safe servlets, developers should store request-specific state in:
+  A.     Servlet instance variables (fields)
+  B. (*) Local method variables and request attributes
+  C.     Static class fields
+  D.     Operating system environment variables
+Explanation: Local variables reside on the thread's private stack and are inherently thread-safe.
+
+[bca-303n-u4-q151] (Unit 4) What does JDBC stand for in Java enterprise computing?
+  A.     Java Data Binary Connector
+  B. (*) Java Database Connectivity
+  C.     Java Direct Byte Compiler
+  D.     Joint Database Communication
+Explanation: JDBC stands for Java Database Connectivity, an API for executing SQL statements across relational databases.
+
+[bca-303n-u4-q152] (Unit 4) In JDBC architecture, which component manages a list of database drivers and establishes database connections?
+  A.     Statement
+  B. (*) DriverManager
+  C.     ResultSet
+  D.     ConnectionPool
+Explanation: DriverManager connects Java applications to the appropriate database driver based on the JDBC URL.
+
+[bca-303n-u4-q153] (Unit 4) What are the four recognized architectural types of JDBC Drivers?
+  A. (*) Type 1 (JDBC-ODBC Bridge), Type 2 (Native-API), Type 3 (Network-Protocol), Type 4 (Thin / Native-Protocol)
+  B.     Type A, Type B, Type C, Type D
+  C.     Internal, External, Hybrid, Virtual
+  D.     Client, Server, Web, Cloud
+Explanation: The standard JDBC driver taxonomy defines Types 1 through 4, progressing from native bridges to pure Java thin drivers.
+
+[bca-303n-u4-q154] (Unit 4) Which JDBC driver type is a pure 100% Java driver that converts JDBC calls directly into vendor-specific database network protocols?
+  A.     Type 1 Driver
+  B.     Type 2 Driver
+  C.     Type 3 Driver
+  D. (*) Type 4 Driver (Thin Driver)
+Explanation: Type 4 (Thin Driver) is pure Java, requiring no client-side native libraries and communicating directly via socket protocols.
+
+[bca-303n-u4-q155] (Unit 4) Which JDBC driver type relied on the Microsoft ODBC driver and was completely removed starting in Java 8?
+  A. (*) Type 1 (JDBC-ODBC Bridge)
+  B.     Type 2 Driver
+  C.     Type 3 Driver
+  D.     Type 4 Driver
+Explanation: The JDBC-ODBC Bridge (Type 1) was slow, platform-dependent, and deprecated/removed in Java 8.
+
+[bca-303n-u4-q156] (Unit 4) What is the standard JDBC URL format for connecting to a MySQL database running on localhost at port 3306?
+  A. (*) jdbc:mysql://localhost:3306/dbname
+  B.     mysql://localhost/dbname
+  C.     jdbc://mysql:localhost:dbname
+  D.     connect:jdbc:mysql:3306
+Explanation: Standard syntax: jdbc:subprotocol://host:port/databaseName.
+
+[bca-303n-u4-q157] (Unit 4) Which method of the `DriverManager` class is invoked to open a database connection?
+  A.     DriverManager.connect(url, user, pass)
+  B. (*) DriverManager.getConnection(url, user, pass)
+  C.     DriverManager.open(url, user, pass)
+  D.     DriverManager.create(url)
+Explanation: DriverManager.getConnection(url, user, password) returns a java.sql.Connection object.
+
+[bca-303n-u4-q158] (Unit 4) What is the primary operational difference between `Statement` and `PreparedStatement` in JDBC?
+  A.     Statement is faster for all queries; PreparedStatement is obsolete
+  B. (*) PreparedStatement pre-compiles SQL statements, supports input parameters (?), and prevents SQL Injection vulnerabilities
+  C.     Statement requires stored procedures; PreparedStatement does not
+  D.     There is no difference
+Explanation: PreparedStatement pre-compiles queries on the database server, executes parameterized inputs safely, and blocks SQL injection.
+
+[bca-303n-u4-q159] (Unit 4) In a PreparedStatement, what character serves as the placeholder for dynamic parameter values?
+  A. (*) ?
+  B.     :param
+  C.     $
+  D.     @
+Explanation: Question marks (?) act as positional placeholders (e.g., SELECT * FROM users WHERE id = ?).
+
+[bca-303n-u4-q160] (Unit 4) Which JDBC method is executed for SQL statements that modify database records (such as INSERT, UPDATE, DELETE, or DDL)?
+  A.     executeQuery()
+  B. (*) executeUpdate()
+  C.     executeSelect()
+  D.     executeModify()
+Explanation: executeUpdate() executes INSERT/UPDATE/DELETE and returns an int representing the count of affected rows.
+
+[bca-303n-u4-q161] (Unit 4) Which JDBC method is executed for SQL query statements (such as SELECT) that return data records?
+  A.     executeUpdate()
+  B. (*) executeQuery()
+  C.     executeFetch()
+  D.     executeRead()
+Explanation: executeQuery() executes SELECT statements and returns a java.sql.ResultSet.
+
+[bca-303n-u4-q162] (Unit 4) In JDBC, what object represents a tabular cursor pointing to rows returned by a database query?
+  A. (*) ResultSet
+  B.     RowSet
+  C.     DataTable
+  D.     RecordMatrix
+Explanation: ResultSet represents the tabular query result, maintaining a cursor pointing just before the first row initially.
+
+[bca-303n-u4-q163] (Unit 4) Which method advances the `ResultSet` cursor to the next row and returns `false` when no further rows exist?
+  A. (*) resultSet.next()
+  B.     resultSet.forward()
+  C.     resultSet.step()
+  D.     resultSet.advance()
+Explanation: resultSet.next() advances the cursor to the next row and returns true if a valid row exists.
+
+[bca-303n-u4-q164] (Unit 4) How do you disable automatic transaction commits in JDBC to manually manage transactions?
+  A. (*) connection.setAutoCommit(false);
+  B.     connection.disableCommit();
+  C.     connection.begin();
+  D.     connection.setManual();
+Explanation: connection.setAutoCommit(false) begins a manual transaction block requiring explicit commit() or rollback().
+
+[bca-303n-u4-q165] (Unit 4) Which method permanently saves all changes made since the last commit in a JDBC transaction?
+  A.     connection.save();
+  B. (*) connection.commit();
+  C.     connection.apply();
+  D.     connection.persist();
+Explanation: connection.commit() makes all pending updates in the current transaction permanent.
+
+[bca-303n-u4-q166] (Unit 4) Which method aborts the current transaction and reverts all modifications made back to the previous savepoint or commit?
+  A.     connection.revert();
+  B. (*) connection.rollback();
+  C.     connection.undo();
+  D.     connection.cancel();
+Explanation: connection.rollback() rolls back all transactional modifications.
+
+[bca-303n-u4-q167] (Unit 4) What package in enterprise Java provides advanced database capabilities like Connection Pooling and Distributed Transactions?
+  A.     java.sql
+  B. (*) javax.sql
+  C.     java.database
+  D.     javax.persistence
+Explanation: javax.sql (JDBC 2.0+ Optional Package) provides DataSource, connection pooling, and XA distributed transactions.
+
+[bca-303n-u4-q168] (Unit 4) What is 'Connection Pooling' in enterprise web applications?
+  A.     Deleting slow network connections
+  B. (*) Maintaining a cache of physical database connections that are reused across incoming client requests, eliminating the high overhead of establishing new connections
+  C.     Running database queries in parallel on GPUs
+  D.     A type of database backup
+Explanation: Connection pooling dramatically improves throughput by keeping pre-opened physical connections ready in a pool.
+
+[bca-303n-u4-q169] (Unit 4) In PHP, which modern extensions are standardly used to connect to MySQL databases?
+  A.     mysql (deprecated/removed) and BDE
+  B. (*) mysqli (MySQL Improved) and PDO (PHP Data Objects)
+  C.     ODBC only
+  D.     SQLite only
+Explanation: mysqli and PDO are the active extensions for MySQL in modern PHP (old mysql_* was removed in PHP 7).
+
+[bca-303n-u4-q170] (Unit 4) What is the primary advantage of PHP Data Objects (PDO) over the mysqli extension?
+  A.     PDO is written in JavaScript
+  B. (*) PDO provides a database-abstraction layer that supports 12+ different database drivers with a uniform API, whereas mysqli works only with MySQL
+  C.     PDO does not require passwords
+  D.     PDO is only available on Linux
+Explanation: PDO is database-agnostic; changing databases requires only altering the connection DSN string.
+
+[bca-303n-u4-q171] (Unit 4) In PHP mysqli, how do you open a database connection?
+  A. (*) $conn = new mysqli('localhost', 'user', 'password', 'dbname');
+  B.     $conn = open_mysql('localhost', 'user');
+  C.     $conn = mysqli_start('dbname');
+  D.     $conn = Database.connect();
+Explanation: new mysqli(host, username, password, dbname) instantiates a database connection object.
+
+[bca-303n-u4-q172] (Unit 4) In PHP PDO, how is a connection established?
+  A. (*) $pdo = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+  B.     $pdo = PDO::connect('mysql', $user);
+  C.     $pdo = open_pdo('test');
+  D.     $pdo = new DatabaseConnection();
+Explanation: PDO uses a Data Source Name (DSN) string specifying driver, host, and database.
+
+[bca-303n-u4-q173] (Unit 4) How are SQL Injection attacks prevented in PHP database scripts?
+  A.     By using string concatenation to embed user variables directly into SQL queries
+  B. (*) By using Prepared Statements with Parameter Binding (e.g., $stmt->bind_param() or PDO prepare/execute)
+  C.     By encrypting the database password
+  D.     By disabling the MySQL server on weekends
+Explanation: Prepared statements separate SQL syntax from untrusted data parameters, completely preventing injection.
+
+[bca-303n-u4-q174] (Unit 4) What does MVC stand for in software architecture?
+  A.     Machine Variable Controller
+  B. (*) Model-View-Controller
+  C.     Modular Virtual Container
+  D.     Memory View Cache
+Explanation: MVC separates business data (Model), presentation UI (View), and input flow control (Controller).
+
+[bca-303n-u4-q175] (Unit 4) In a web application following MVC architecture, what component represents the business logic and database access layer?
+  A.     View
+  B.     Controller
+  C. (*) Model
+  D.     Router
+Explanation: The Model encapsulates business entities, rules, data persistence, and database interactions.
+
+[bca-303n-u4-q176] (Unit 4) In an MVC web application, what component represents the presentation layer that renders data to the user?
+  A.     Model
+  B. (*) View
+  C.     Controller
+  D.     Dispatcher
+Explanation: The View (e.g., JSP, HTML) renders data from the model to the client browser.
+
+[bca-303n-u4-q177] (Unit 4) In an MVC web application implemented with Java Servlets and JSP, which component standardly acts as the 'Controller'?
+  A. (*) The Java Servlet
+  B.     The HTML stylesheet
+  C.     The MySQL database table
+  D.     The browser window
+Explanation: Java Servlets serve as Controllers: receiving requests, calling Models, and forwarding to Views.
+
+[bca-303n-u4-q178] (Unit 4) In Java Web MVC, what role do JSP pages standardly fulfill?
+  A.     The Controller layer
+  B. (*) The View layer
+  C.     The Database driver
+  D.     The Web server daemon
+Explanation: JSPs act as Views, presenting data populated into request/session attributes by the Servlet controller.
+
+[bca-303n-u4-q179] (Unit 4) What open-source enterprise framework created by Craig McClanahan in 2000 popularized MVC in Java web applications?
+  A.     Spring Boot
+  B. (*) Apache Struts
+  C.     Hibernate
+  D.     Node.js
+Explanation: Apache Struts was the foundational framework standardizing MVC architecture for Java enterprise applications.
+
+[bca-303n-u4-q180] (Unit 4) In the Apache Struts architecture, what component acts as the centralized Front Controller servlet?
+  A. (*) ActionServlet
+  B.     ActionForm
+  C.     ActionMapping
+  D.     struts-config.xml
+Explanation: ActionServlet acts as the Front Controller, intercepting all *.do requests and dispatching them.
+
+[bca-303n-u4-q181] (Unit 4) In Apache Struts, what is an 'ActionForm' bean?
+  A.     A database table definition
+  B. (*) A JavaBean that automatically captures and validates HTML form input fields submitted by users
+  C.     A CSS form styling sheet
+  D.     A security firewall
+Explanation: ActionForm captures user inputs from HTML forms, performing automatic type population and validation.
+
+[bca-303n-u4-q182] (Unit 4) In Apache Struts, what class contains the business logic executed when a specific action request is dispatched?
+  A.     ActionForm
+  B. (*) Action class (extending org.apache.struts.action.Action)
+  C.     ActionServlet
+  D.     JSP page
+Explanation: The developer's Action subclass implements execute(mapping, form, request, response) to process requests.
+
+[bca-303n-u4-q183] (Unit 4) Which central XML configuration file in Apache Struts maps URLs to Action classes and defines Forward outcomes?
+  A.     web.xml
+  B. (*) struts-config.xml
+  C.     context.xml
+  D.     applicationContext.xml
+Explanation: struts-config.xml defines form-bean declarations, action-mappings, and forward targets.
+
+[bca-303n-u4-q184] (Unit 4) In Struts, what object represents the result target where the user is navigated following action execution (e.g., 'success', 'failure')?
+  A. (*) ActionForward
+  B.     ActionMapping
+  C.     ActionError
+  D.     ActionMessage
+Explanation: ActionForward specifies the target view URL where ActionServlet forwards the client.
+
+[bca-303n-u4-q185] (Unit 4) In JDBC, how do you specify that a ResultSet should allow scrolling both forward and backward?
+  A.     ResultSet.TYPE_FORWARD_ONLY
+  B. (*) ResultSet.TYPE_SCROLL_INSENSITIVE (or TYPE_SCROLL_SENSITIVE)
+  C.     ResultSet.CONCUR_READ_ONLY
+  D.     ResultSet.SCROLL_FREE
+Explanation: Scrollable ResultSets require specifying TYPE_SCROLL_INSENSITIVE or TYPE_SCROLL_SENSITIVE during Statement creation.
+
+[bca-303n-u4-q186] (Unit 4) What does `ResultSetMetaData` provide in JDBC?
+  A.     The number of rows currently in the database
+  B. (*) Information about the types and properties of the columns in a ResultSet (column count, column names, data types)
+  C.     The server CPU clock speed
+  D.     The database password hash
+Explanation: ResultSetMetaData inspects schema information of query results dynamically.
+
+[bca-303n-u4-q187] (Unit 4) What does `DatabaseMetaData` provide in JDBC?
+  A. (*) Information about the database as a whole (product name, version, supported SQL features, driver version)
+  B.     The content of the first row
+  C.     A list of active user passwords
+  D.     Operating system memory
+Explanation: DatabaseMetaData provides metadata describing database capabilities, table lists, and vendor specs.
+
+[bca-303n-u4-q188] (Unit 4) In JDBC, what happens when a database query is executed inside a try-with-resources statement (`try (Connection c = ...; Statement s = ...)`)?
+  A.     The resources are left open indefinitely
+  B. (*) The Connection and Statement objects are guaranteed to be closed automatically upon block exit, preventing resource leaks
+  C.     The code fails to compile in Java 7+
+  D.     Transactions are automatically rolled back
+Explanation: try-with-resources automatically invokes close() on all AutoCloseable resources, preventing connection leaks.
+
+[bca-303n-u4-q189] (Unit 4) What exception class is thrown by JDBC methods when a database access error or constraint violation occurs?
+  A.     java.io.IOException
+  B. (*) java.sql.SQLException
+  C.     java.lang.DatabaseException
+  D.     javax.servlet.ServletException
+Explanation: SQLException is the standard checked exception thrown by all failing JDBC operations.
+
+[bca-303n-u4-q190] (Unit 4) In JDBC batch processing, which method adds an individual SQL command to a batch list for bulk execution?
+  A. (*) statement.addBatch(String sql)
+  B.     statement.enqueue(String sql)
+  C.     statement.push(String sql)
+  D.     statement.batch(String sql)
+Explanation: statement.addBatch(sql) queues commands, and statement.executeBatch() sends them in a single round-trip.
+
+[bca-303n-u4-q191] (Unit 4) In PHP MySQL programming, which function returns the number of rows affected by the last INSERT, UPDATE, or DELETE query?
+  A.     mysqli_num_rows()
+  B. (*) mysqli_affected_rows()
+  C.     mysqli_count()
+  D.     mysqli_rows()
+Explanation: mysqli_affected_rows() returns rows altered by DML queries; mysqli_num_rows() returns rows in a SELECT result.
+
+[bca-303n-u4-q192] (Unit 4) What PHP function fetches a result row as an associative array where column names are keys?
+  A. (*) mysqli_fetch_assoc()
+  B.     mysqli_fetch_row()
+  C.     mysqli_fetch_field()
+  D.     mysqli_get_row()
+Explanation: mysqli_fetch_assoc($result) returns associative array mappings (e.g., $row['email']).
+
+[bca-303n-u4-q193] (Unit 4) In PHP, how do you free the memory associated with a database query result?
+  A. (*) mysqli_free_result($result);
+  B.     mysqli_delete($result);
+  C.     mysqli_clear($result);
+  D.     unset($result);
+Explanation: mysqli_free_result() frees result memory on large queries.
+
+[bca-303n-u4-q194] (Unit 4) What does SQL Injection exploit in vulnerable database code?
+  A.     Memory buffer overflows in the operating system
+  B. (*) Unsanitized user inputs concatenated directly into dynamic SQL queries, altering query logic and syntax
+  C.     Weak passwords on SSH ports
+  D.     Outdated network switch firmware
+Explanation: SQL injection occurs when untrusted user input is concatenated into query strings, allowing attackers to execute arbitrary SQL.
+
+[bca-303n-u4-q195] (Unit 4) In the classic Struts 1.x framework, how did action forms handle input validation?
+  A. (*) Through the `validate()` method on the ActionForm class
+  B.     By editing the database schema directly
+  C.     Through CSS pseudo-classes
+  D.     Struts 1.x did not support validation
+Explanation: ActionForm.validate(mapping, request) returns ActionErrors containing validation failure messages.
+
+[bca-303n-u4-q196] (Unit 4) What is the primary architectural benefit of using an Object-Relational Mapping (ORM) framework like Hibernate over raw JDBC?
+  A.     ORM avoids SQL entirely and runs in browser memory
+  B. (*) ORM maps Java domain entity objects directly to relational database tables, automating boilerplate SQL CRUD operations and caching
+  C.     ORM makes databases run 100 times faster
+  D.     ORM eliminates the need for database servers
+Explanation: ORM bridges the object-oriented paradigm with relational databases, eliminating tedious SQL translation boilerplate.
+
+[bca-303n-u4-q197] (Unit 4) In JDBC, what is a 'Savepoint' within a transaction?
+  A.     A backup file saved on a USB drive
+  B. (*) A point to which a transaction can be rolled back without rolling back the entire transaction
+  C.     A database table lock
+  D.     A user password checkpoint
+Explanation: Savepoints allow fine-grained partial rollbacks within complex multi-step transactions.
+
+[bca-303n-u4-q198] (Unit 4) What is the JDBC default transaction isolation level in most relational database systems?
+  A.     TRANSACTION_NONE
+  B. (*) TRANSACTION_READ_COMMITTED
+  C.     TRANSACTION_SERIALIZABLE
+  D.     TRANSACTION_READ_UNCOMMITTED
+Explanation: Most major relational engines (PostgreSQL, Oracle, SQL Server) default to READ COMMITTED.
+
+[bca-303n-u4-q199] (Unit 4) What phenomenon occurs when a transaction reads data that has been modified by another concurrent transaction but NOT yet committed?
+  A. (*) Dirty Read
+  B.     Non-Repeatable Read
+  C.     Phantom Read
+  D.     Deadlock
+Explanation: A dirty read occurs when a transaction reads uncommitted changes that might subsequently be rolled back.
+
+[bca-303n-u4-q200] (Unit 4) What phenomenon occurs when a transaction reads the same row twice and obtains different values because another transaction modified and committed the row in between?
+  A.     Dirty Read
+  B. (*) Non-Repeatable Read
+  C.     Phantom Read
+  D.     Write Skew
+Explanation: Non-repeatable reads occur when committed updates change row values mid-transaction under READ COMMITTED isolation.
+
+[bca-303n-u5-q201] (Unit 5) What is JavaServer Pages (JSP)?
+  A.     A client-side scripting language like JavaScript
+  B. (*) A server-side technology that enables mixing static HTML template content with dynamic Java code to generate web pages
+  C.     A database storage engine
+  D.     A CSS styling preprocessor
+Explanation: JSP is an extension of Java Servlet technology allowing developers to embed Java code in HTML pages using special tags.
+
+[bca-303n-u5-q202] (Unit 5) What actually happens to a JSP page when it is first requested by a client browser?
+  A.     It is downloaded and interpreted by the browser's JavaScript engine
+  B. (*) The JSP container translates the JSP into a Java Servlet source file (.java), compiles it into bytecode (.class), and executes it
+  C.     It is converted to a PDF document
+  D.     It is executed on the client's operating system
+Explanation: JSP execution involves two initial phases: Translation (JSP -> Servlet source) and Compilation (Servlet source -> .class bytecode).
+
+[bca-303n-u5-q203] (Unit 5) What are the two lifecycle phases that occur ONLY on the very first request to a JSP page (or pre-compilation)?
+  A. (*) Translation Phase and Compilation Phase
+  B.     Init Phase and Service Phase
+  C.     Download Phase and Render Phase
+  D.     Linking Phase and Deletion Phase
+Explanation: Translation and Compilation occur once on first access; subsequent requests directly invoke the compiled servlet's _jspService method.
+
+[bca-303n-u5-q204] (Unit 5) Which method in the generated JSP servlet corresponds to the `service()` method and handles every incoming request?
+  A.     jspInit()
+  B. (*) _jspService(HttpServletRequest, HttpServletResponse)
+  C.     jspDestroy()
+  D.     _jspRun()
+Explanation: _jspService() is generated by the container and handles each client request; developers cannot override it directly.
+
+[bca-303n-u5-q205] (Unit 5) Which JSP lifecycle methods can be overridden by developers using JSP declarations?
+  A.     _jspService() only
+  B. (*) jspInit() and jspDestroy()
+  C.     All lifecycle methods
+  D.     None; JSPs cannot have methods
+Explanation: Developers can override jspInit() and jspDestroy() inside declaration tags (<%! ... %>), but never _jspService().
+
+[bca-303n-u5-q206] (Unit 5) What are the three major categories of JSP elements?
+  A.     Variables, Functions, Classes
+  B. (*) Directives, Scripting Elements, and Standard Actions
+  C.     Tags, Attributes, Styles
+  D.     Inputs, Outputs, Loops
+Explanation: JSP syntax consists of: Directives (<%@ ... %>), Scripting Elements (<% ... %>), and Actions (<jsp:...>).
+
+[bca-303n-u5-q207] (Unit 5) Which JSP syntax denotes a 'Directive'?
+  A.     <% ... %>
+  B. (*) <%@ directive attribute='value' %>
+  C.     <%= ... %>
+  D.     <%! ... %>
+Explanation: Directives provide global page-level instructions to the JSP engine: <%@ directive ... %>.
+
+[bca-303n-u5-q208] (Unit 5) Which JSP directive defines page-wide properties such as imported Java packages, error pages, and content type?
+  A.     <%@ include %>
+  B. (*) <%@ page %>
+  C.     <%@ taglib %>
+  D.     <%@ import %>
+Explanation: The page directive (<%@ page import='java.util.*' contentType='text/html' %>) configures page metadata.
+
+[bca-303n-u5-q209] (Unit 5) How do you import a Java package (e.g., java.util.ArrayList) into a JSP page?
+  A. (*) <%@ page import='java.util.ArrayList' %>
+  B.     <% import java.util.ArrayList; %>
+  C.     <jsp:import class='java.util.ArrayList'/>
+  D.     <%@ include package='java.util.ArrayList' %>
+Explanation: Package imports use the import attribute of the page directive: <%@ page import='java.util.*' %>.
+
+[bca-303n-u5-q210] (Unit 5) Which JSP directive includes the content of another static file during the JSP TRANSLATION phase (static inclusion)?
+  A. (*) <%@ include file='header.jsp' %>
+  B.     <jsp:include page='header.jsp'/>
+  C.     <% include('header.jsp'); %>
+  D.     <%@ page include='header.jsp' %>
+Explanation: <%@ include file='...' %> is a translation-time static include; the included file's text is merged before compilation.
+
+[bca-303n-u5-q211] (Unit 5) What is the difference between `<%@ include file='...' %>` and `<jsp:include page='...' />`?
+  A. (*) Static directive inclusion happens at translation time (one servlet); dynamic action inclusion happens at request runtime (two servlets merging responses)
+  B.     Static include only works on images; dynamic include works on text
+  C.     They are identical in performance and behavior
+  D.     Dynamic inclusion only works in Tomcat 5
+Explanation: Directive include merges code at translation time; <jsp:include> dispatches at runtime via RequestDispatcher.include().
+
+[bca-303n-u5-q212] (Unit 5) Which JSP directive declares that the page uses a Custom Tag Library (such as JSTL)?
+  A.     <%@ page %>
+  B. (*) <%@ taglib uri='...' prefix='...' %>
+  C.     <%@ library %>
+  D.     <jsp:useLibrary>
+Explanation: The taglib directive associates a URI with a tag prefix (e.g., <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>).
+
+[bca-303n-u5-q213] (Unit 5) What is the syntax for a JSP Scriptlet, which allows arbitrary Java statements to be executed?
+  A. (*) <% Java code %>
+  B.     <%= Java code %>
+  C.     <%! Java code %>
+  D.     <%# Java code %>
+Explanation: Scriptlets (<% ... %>) contain arbitrary Java code that is placed directly inside the _jspService method.
+
+[bca-303n-u5-q214] (Unit 5) What is the syntax for a JSP Expression, which evaluates a Java expression and prints the result into the output stream?
+  A.     <% expr %>
+  B. (*) <%= expr %>
+  C.     <%! expr %>
+  D.     <%? expr %>
+Explanation: Expressions (<%= expr %>) evaluate an expression and convert it to text via out.print(expr); without a terminating semicolon.
+
+[bca-303n-u5-q215] (Unit 5) Why is a terminating semicolon (;) strictly FORBIDDEN inside a JSP expression `<%= expr %>`?
+  A.     Because semicolons crash Tomcat
+  B. (*) Because the JSP translator wraps expressions directly inside `out.print(expr);`, so adding a semicolon produces a compilation syntax error `out.print(expr;);`
+  C.     Because Java 8 eliminated semicolons
+  D.     It is permitted in expressions
+Explanation: <%= x %> translates to out.print(x);, so writing <%= x; %> results in the illegal syntax out.print(x;);.
+
+[bca-303n-u5-q216] (Unit 5) What is the syntax for a JSP Declaration, used to declare class-level variables and methods?
+  A. (*) <%! declaration %>
+  B.     <%= declaration %>
+  C.     <% declaration %>
+  D.     <%@ declaration %>
+Explanation: Declarations (<%! ... %>) define fields and methods at the servlet class level outside _jspService().
+
+[bca-303n-u5-q217] (Unit 5) Where are variables declared inside a JSP Declaration `<%! int counter = 0; %>` placed in the generated Servlet?
+  A.     Inside the _jspService() method as local variables
+  B. (*) As instance variables (fields) of the generated Servlet class, shared across all client threads
+  C.     Inside browser memory
+  D.     Inside the web.xml file
+Explanation: Declarations become class instance fields and methods, shared across all requests (not thread-safe).
+
+[bca-303n-u5-q218] (Unit 5) Where are variables declared inside a JSP Scriptlet `<% int count = 0; %>` placed in the generated Servlet?
+  A.     As class instance fields
+  B. (*) Inside the _jspService() method as local stack variables, unique to each individual request thread
+  C.     In the application context
+  D.     In the database
+Explanation: Scriptlet variables are local variables within _jspService(), making them thread-safe.
+
+[bca-303n-u5-q219] (Unit 5) What are 'JSP Implicit Objects'?
+  A.     Hidden HTML form elements
+  B. (*) Nine pre-defined Java objects created automatically by the JSP engine and directly accessible inside scriptlets and expressions without explicit declaration
+  C.     Objects stored in the database
+  D.     Java compiler flags
+Explanation: The JSP container automatically instantiates 9 implicit objects (request, response, out, session, application, etc.).
+
+[bca-303n-u5-q220] (Unit 5) How many standard implicit objects are defined in the JSP specification?
+  A.     5
+  B.     7
+  C. (*) 9
+  D.     12
+Explanation: There are exactly 9 standard implicit objects available in JSP pages.
+
+[bca-303n-u5-q221] (Unit 5) Which JSP implicit object is an instance of `javax.servlet.jsp.JspWriter` used to write character content to the response body?
+  A.     response
+  B. (*) out
+  C.     writer
+  D.     print
+Explanation: out is the implicit JspWriter object used to stream HTML markup to the response.
+
+[bca-303n-u5-q222] (Unit 5) Which JSP implicit object represents the `HttpServletRequest` received from the client?
+  A.     client
+  B. (*) request
+  C.     in
+  D.     req
+Explanation: request is the implicit HttpServletRequest object.
+
+[bca-303n-u5-q223] (Unit 5) Which JSP implicit object represents the client's `HttpSession`?
+  A. (*) session
+  B.     user
+  C.     httpSession
+  D.     state
+Explanation: session is the implicit HttpSession object (available unless page directive sets session='false').
+
+[bca-303n-u5-q224] (Unit 5) Which JSP implicit object represents the `ServletContext` of the web application?
+  A.     config
+  B. (*) application
+  C.     context
+  D.     server
+Explanation: application is the implicit ServletContext object representing application-wide state.
+
+[bca-303n-u5-q225] (Unit 5) Which JSP implicit object represents the `ServletConfig` containing initialization parameters for the JSP?
+  A. (*) config
+  B.     init
+  C.     params
+  D.     settings
+Explanation: config is the implicit ServletConfig object.
+
+[bca-303n-u5-q226] (Unit 5) Which JSP implicit object represents the `javax.servlet.jsp.PageContext` that provides access to all page namespaces and attributes?
+  A.     page
+  B. (*) pageContext
+  C.     context
+  D.     environment
+Explanation: pageContext provides unified access to all scopes and implicit objects.
+
+[bca-303n-u5-q227] (Unit 5) Which JSP implicit object represents the generated servlet instance itself (`this`)?
+  A. (*) page
+  B.     pageContext
+  C.     self
+  D.     servlet
+Explanation: page is a synonym for 'this', representing the current servlet instance.
+
+[bca-303n-u5-q228] (Unit 5) Under what specific condition is the `exception` implicit object accessible in a JSP page?
+  A.     In all JSP pages by default
+  B. (*) Only in pages where the page directive explicitly declares `<%@ page isErrorPage='true' %>`
+  C.     Only when an error occurs in the database
+  D.     Only on Linux servers
+Explanation: The exception object is only instantiated if <%@ page isErrorPage='true' %> is declared.
+
+[bca-303n-u5-q229] (Unit 5) How does a standard JSP page declare which error page should handle any uncaught runtime exceptions?
+  A. (*) <%@ page errorPage='errorHandler.jsp' %>
+  B.     <% catch(Exception e) %>
+  C.     <jsp:error page='errorHandler.jsp'/>
+  D.     In the web.xml only
+Explanation: <%@ page errorPage='error.jsp' %> forwards uncaught exceptions to the designated error-handling JSP.
+
+[bca-303n-u5-q230] (Unit 5) What is a JavaBean in the context of Java enterprise programming?
+  A.     A coffee recipe in Java
+  B. (*) A reusable software component that adheres to conventions: public class, no-argument constructor, private properties, and public getter/setter methods
+  C.     A binary database driver
+  D.     A JavaScript library
+Explanation: JavaBeans are serializable classes with a public no-arg constructor and getX/setX accessor methods.
+
+[bca-303n-u5-q231] (Unit 5) Which JSP Standard Action tag instantiates or locates a JavaBean within a specified scope?
+  A.     <jsp:bean>
+  B. (*) <jsp:useBean>
+  C.     <jsp:createBean>
+  D.     <jsp:findBean>
+Explanation: <jsp:useBean id='user' class='com.example.User' scope='session'/> locates or creates a bean.
+
+[bca-303n-u5-q232] (Unit 5) What are the four valid values for the `scope` attribute in a `<jsp:useBean>` tag?
+  A.     local, global, server, client
+  B. (*) page, request, session, application
+  C.     function, block, module, package
+  D.     first, second, third, fourth
+Explanation: The four scopes are page (default), request, session, and application.
+
+[bca-303n-u5-q233] (Unit 5) Which JSP Standard Action tag sets the property value of a JavaBean instance?
+  A. (*) <jsp:setProperty>
+  B.     <jsp:set>
+  C.     <jsp:property>
+  D.     <jsp:assign>
+Explanation: <jsp:setProperty name='beanId' property='propName' value='...'/> invokes the bean's setter method.
+
+[bca-303n-u5-q234] (Unit 5) What does the tag `<jsp:setProperty name='user' property='*'/>` do?
+  A.     Deletes all properties of the user bean
+  B. (*) Automatically inspects all request parameters and maps matching parameter names to corresponding bean setter methods
+  C.     Prints all properties to the screen
+  D.     Generates a syntax error
+Explanation: property='*' is a powerful feature that automatically populates bean fields from matching form parameters.
+
+[bca-303n-u5-q235] (Unit 5) Which JSP Standard Action tag reads a bean property and inserts its value into the output stream?
+  A.     <jsp:readProperty>
+  B. (*) <jsp:getProperty>
+  C.     <jsp:printProperty>
+  D.     <jsp:display>
+Explanation: <jsp:getProperty name='beanId' property='propName'/> invokes the getter and writes the output.
+
+[bca-303n-u5-q236] (Unit 5) Which JSP Standard Action forwards the client request to another JSP, Servlet, or static resource on the server?
+  A.     <jsp:redirect>
+  B. (*) <jsp:forward page='target.jsp'/>
+  C.     <jsp:navigate>
+  D.     <jsp:transfer>
+Explanation: <jsp:forward page='...'/> transfers request processing to another server-side resource.
+
+[bca-303n-u5-q237] (Unit 5) Which JSP action tag passes additional query parameters inside `<jsp:forward>` or `<jsp:include>`?
+  A.     <jsp:attribute>
+  B. (*) <jsp:param name='key' value='val'/>
+  C.     <jsp:arg>
+  D.     <jsp:input>
+Explanation: <jsp:param name='category' value='books'/> appends parameters to forwarded/included requests.
+
+[bca-303n-u5-q238] (Unit 5) What is the primary motivation for introducing the JSP Expression Language (EL) in JSP 2.0?
+  A.     To replace HTML syntax
+  B. (*) To simplify accessing data stored in JavaBeans, implicit objects, and collections without using messy Java scriptlets (<% ... %>)
+  C.     To speed up database transactions
+  D.     To compile JSPs to native assembly code
+Explanation: JSP EL simplifies accessing bean properties and collections using clean syntax, eliminating scriptlets.
+
+[bca-303n-u5-q239] (Unit 5) What is the syntax for a JSP Expression Language (EL) expression?
+  A. (*) ${expression}
+  B.     #{expression}
+  C.     %{expression}
+  D.     *{expression}
+Explanation: ${expr} is the standard evaluation syntax for JSP Expression Language.
+
+[bca-303n-u5-q240] (Unit 5) How does JSP Expression Language resolve `${user.name}`?
+  A. (*) It calls user.getName() on the 'user' JavaBean found in page, request, session, or application scope
+  B.     It accesses the private field user.name directly
+  C.     It queries the database table 'user'
+  D.     It throws an error if user is null
+Explanation: EL searches scopes hierarchically and invokes the standard getter method user.getName().
+
+[bca-303n-u5-q241] (Unit 5) What does the EL expression `${empty list}` evaluate to?
+  A. (*) True if list is null, has 0 elements, or is an empty string; false otherwise
+  B.     Throws a NullPointerException if list is null
+  C.     The length of the list
+  D.     False in all cases
+Explanation: The empty operator gracefully handles null, empty collections, and zero-length strings without exceptions.
+
+[bca-303n-u5-q242] (Unit 5) What does JSTL stand for in Java web development?
+  A.     Java Standard Tools Language
+  B. (*) JSP Standard Tag Library
+  C.     Java Server Transport Layer
+  D.     Java System Testing Library
+Explanation: JSTL stands for JSP Standard Tag Library, providing common tags for iteration, conditionals, and formatting.
+
+[bca-303n-u5-q243] (Unit 5) What are the five functional sub-libraries included in JSTL?
+  A. (*) Core, Formatting (fmt), SQL, XML, and Functions (fn)
+  B.     HTML, CSS, JS, SQL, PHP
+  C.     Input, Output, Network, Audio, Video
+  D.     Client, Server, Database, Cache, Log
+Explanation: JSTL is divided into Core (c:), Formatting (fmt:), SQL (sql:), XML (x:), and Functions (fn:).
+
+[bca-303n-u5-q244] (Unit 5) Which JSTL Core tag is used to safely output expressions with automatic XML/HTML escaping to prevent XSS attacks?
+  A.     <c:print>
+  B. (*) <c:out value='${user.input}'/>
+  C.     <c:write>
+  D.     <c:display>
+Explanation: <c:out value='...' escapeXml='true'/> safely renders content by escaping markup characters by default.
+
+[bca-303n-u5-q245] (Unit 5) Which JSTL Core tag evaluates a boolean condition and renders its body only if the condition is true?
+  A.     <c:when>
+  B. (*) <c:if test='${condition}'> ... </c:if>
+  C.     <c:condition>
+  D.     <c:case>
+Explanation: <c:if test='${user.loggedIn}'> renders its body when the test expression is true.
+
+[bca-303n-u5-q246] (Unit 5) Which JSTL Core tag structure handles mutually exclusive multi-branch conditional logic (equivalent to if-else-if or switch)?
+  A.     <c:switch> <c:case> <c:default>
+  B. (*) <c:choose> with nested <c:when> and <c:otherwise>
+  C.     <c:if> <c:else>
+  D.     <c:branch>
+Explanation: <c:choose> encloses one or more <c:when test='...'> conditions and an optional fallback <c:otherwise>.
+
+[bca-303n-u5-q247] (Unit 5) Which JSTL Core tag iterates over collections (lists, sets, arrays, maps) or executes loops across a numeric range?
+  A.     <c:loop>
+  B. (*) <c:forEach items='${list}' var='item'> ... </c:forEach>
+  C.     <c:while>
+  D.     <c:iterate>
+Explanation: <c:forEach> is the standard JSTL tag for iterating through arrays and collections.
+
+[bca-303n-u5-q248] (Unit 5) Why is modern Java web engineering best practice to avoid scriptlets (`<% ... %>`) in JSP pages?
+  A.     Scriptlets cause web servers to crash
+  B. (*) Scriptlets violate the separation of concerns by mixing business logic into presentation views, complicating testing and maintenance
+  C.     Scriptlets cannot execute loops
+  D.     Scriptlets are forbidden by the Java compiler
+Explanation: Scriptlets blur the line between presentation and logic; using JSTL, EL, and MVC keeps views clean and maintainable.
+
+[bca-303n-u5-q249] (Unit 5) What is the primary role of the Deployment Descriptor `web.xml` in a Java enterprise application?
+  A.     To store database passwords in plain text
+  B. (*) To configure servlet mappings, session timeouts, welcome file lists, security constraints, and error page handlers declaratively
+  C.     To compile Java source code
+  D.     To design web page layout styles
+Explanation: web.xml provides declarative configuration for servlet containers without modifying compiled Java classes.
+
+[bca-303n-u5-q250] (Unit 5) What file format packages an entire Java web application (servlets, JSPs, classes, JARs, web.xml, static assets) into a single deployable archive?
+  A.     .JAR (Java Archive)
+  B. (*) .WAR (Web Application Archive)
+  C.     .EAR (Enterprise Archive)
+  D.     .ZIP (Zip Archive)
+Explanation: WAR (Web Application Archive) is the standard packaging format for deploying web applications to servlet containers like Tomcat.
+

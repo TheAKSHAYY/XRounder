@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 3
+COURSE CODE: BCA-201N - OBJECT ORIENTED PROGRAMMING USING JAVA
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which company originally initiated the Green Project in 1991 that led to the creation of Java?
+     (A) Microsoft Corporation
+     (B) Sun Microsystems [CORRECT]
+     (C) Bell Laboratories
+     (D) IBM Corporation
+     Explanation: Java was developed by James Gosling and the Green Team at Sun Microsystems starting in 1991.
+     Tags: BCA-201N, Unit-1, History, Sun-Microsystems
+
+Q2. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the primary role of the Java Virtual Machine (JVM) in achieving platform independence?
+     (A) It compiles Java source code directly into native machine code
+     (B) It executes platform-neutral intermediate bytecode (.class) by abstracting the host CPU and OS [CORRECT]
+     (C) It converts C++ code into Java syntax
+     (D) It manages network routing directly
+     Explanation: The JVM interprets or JIT-compiles Java bytecode into native machine instructions specific to the host OS, enabling WORA.
+     Tags: BCA-201N, Unit-1, JVM, Platform-Independence
+
+Q3. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Which JVM component compiles frequently executed bytecode hot spots into native machine instructions at runtime?
+     (A) ClassLoader
+     (B) Bytecode Verifier
+     (C) Just-In-Time (JIT) Compiler [CORRECT]
+     (D) Garbage Collector
+     Explanation: The JIT compiler compiles hot spots directly into native hardware instructions to significantly boost execution performance.
+     Tags: BCA-201N, Unit-1, JVM-Architecture, JIT-Compiler
+
+Q4. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the size and default uninitialized value of the 'char' primitive data type in Java?
+     (A) 8-bit ASCII with default value 0
+     (B) 16-bit Unicode with default value '\u0000' [CORRECT]
+     (C) 32-bit UTF-32 with default value ' '
+     (D) 8-bit Unicode with default value null
+     Explanation: Java uses 16-bit Unicode (UTF-16) for char variables, with the default uninitialized value being '\u0000'.
+     Tags: BCA-201N, Unit-1, Data-Types, Unicode-Char
+
+Q5. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which of the following is NOT a primitive data type in Java?
+     (A) boolean
+     (B) byte
+     (C) String [CORRECT]
+     (D) float
+     Explanation: String is a class in java.lang (a reference type), whereas boolean, byte, short, int, long, float, double, and char are primitive types.
+     Tags: BCA-201N, Unit-1, Primitive-Types, String
+
+Q6. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the result of evaluating `byte b = 50; b = (byte)(b * 2); System.out.println(b);`?
+     (A) 100 [CORRECT]
+     (B) Compile-time error: possible loss of precision
+     (C) Runtime Overflow Exception
+     (D) 0
+     Explanation: Arithmetic expressions automatically promote operands to int. Explicit casting `(byte)` safely stores 100 in the byte variable.
+     Tags: BCA-201N, Unit-1, Type-Casting, Numeric-Promotion
+
+Q7. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     In Java, what happens when evaluating `true || (5 / 0 == 0)`?
+     (A) ArithmeticException is thrown at runtime
+     (B) Compile-time error
+     (C) Evaluates to true without exception due to short-circuit OR [CORRECT]
+     (D) Evaluates to false
+     Explanation: The || operator is short-circuiting: since the left side is true, the right side is never evaluated.
+     Tags: BCA-201N, Unit-1, Operators, Short-Circuit-Logic
+
+Q8. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (HARD)
+     Which bitwise operator shifts bits to the right and fills the leftmost vacant positions with zeros regardless of sign?
+     (A) >> (Signed right shift)
+     (B) >>> (Unsigned right shift) [CORRECT]
+     (C) << (Signed left shift)
+     (D) ^ (Bitwise XOR)
+     Explanation: The >>> operator always inserts 0 into the high-order bits, ignoring the original sign bit.
+     Tags: BCA-201N, Unit-1, Bitwise-Operators, Unsigned-Shift
+
+Q9. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the size and range of the signed 'long' data type in Java?
+     (A) 32 bits, -2^31 to 2^31-1
+     (B) 64 bits, -2^63 to 2^63-1 [CORRECT]
+     (C) 128 bits, -2^127 to 2^127-1
+     (D) 64 bits, 0 to 2^64-1
+     Explanation: Java's long data type is 64-bit signed two's complement integer ranging from -2^63 to 2^63-1.
+     Tags: BCA-201N, Unit-1, Data-Types, Long-Range
+
+Q10. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Which data type CANNOT be used in a Java switch statement (prior to Java 7)?
+     (A) byte
+     (B) char
+     (C) float [CORRECT]
+     (D) short
+     Explanation: Floating-point numbers (float and double) cannot be used in switch statements due to non-exact representation.
+     Tags: BCA-201N, Unit-1, Control-Flow, Switch-Case
+
+Q11. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What happens if a break statement is omitted from a matching case block in a switch statement?
+     (A) Compilation error
+     (B) Program terminates
+     (C) Execution falls through into subsequent case blocks sequentially [CORRECT]
+     (D) NullPointerException
+     Explanation: Without break, Java executes subsequent case statements until a break or the end of switch is reached.
+     Tags: BCA-201N, Unit-1, Control-Flow, Fall-Through
+
+Q12. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     How does the 'do-while' loop fundamentally differ from the 'while' loop in Java?
+     (A) do-while is pre-tested
+     (B) do-while guarantees at least one execution of the body because condition is checked at bottom [CORRECT]
+     (C) do-while cannot use break
+     (D) do-while does not support counters
+     Explanation: do-while is an exit-controlled loop that tests condition after executing the body, guaranteeing at least one run.
+     Tags: BCA-201N, Unit-1, Loops, Do-While
+
+Q13. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the primary function of a labeled break statement in Java?
+     (A) To break out of nested loops up to the labeled enclosing block [CORRECT]
+     (B) To jump backwards like goto
+     (C) To restart the current loop
+     (D) To exit the JVM
+     Explanation: A labeled break terminates the specific enclosing outer loop marked with that label.
+     Tags: BCA-201N, Unit-1, Branching, Labeled-Break
+
+Q14. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which command line argument array index corresponds to the first parameter passed to a Java program?
+     (A) args[-1]
+     (B) args[0] [CORRECT]
+     (C) args[1]
+     (D) args[2]
+     Explanation: In Java, args[0] holds the first user argument, unlike C where argv[0] is the program name.
+     Tags: BCA-201N, Unit-1, Command-Line, Arrays
+
+Q15. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Why is main declared as `public static void main(String[] args)`?
+     (A) public for external JVM access, static so it can be called without an instance, void because it returns no exit code to OS [CORRECT]
+     (B) public to prevent inheritance, static for heap allocation
+     (C) static for global access, void to allow multithreading
+     (D) public for security
+     Explanation: The JVM calls main from outside without creating an object instance, and does not require a return code.
+     Tags: BCA-201N, Unit-1, Main-Method, Language-Design
+
+Q16. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which of the following is a valid identifier in Java?
+     (A) 1stVariable
+     (B) default
+     (C) $my_var_9 [CORRECT]
+     (D) my-var
+     Explanation: Identifiers can start with letters, $, or _, but cannot be keywords (default) or start with numbers or contain hyphens.
+     Tags: BCA-201N, Unit-1, Syntax, Identifiers
+
+Q17. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the purpose of the Bytecode Verifier in the JVM?
+     (A) Checks HTTPS certificates
+     (B) Verifies bytecode adheres to JVM security rules and does not cause stack under/overflows [CORRECT]
+     (C) Encrypts class files
+     (D) Optimizes SQL queries
+     Explanation: The Bytecode Verifier ensures downloaded class files are valid and do not compromise memory or type safety.
+     Tags: BCA-201N, Unit-1, JVM, Bytecode-Verifier
+
+Q18. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What will be printed by `System.out.println(10 + 20 + "Java");` and `System.out.println("Java" + 10 + 20);`?
+     (A) 30Java and Java30
+     (B) 30Java and Java1020 [CORRECT]
+     (C) 1020Java and Java1020
+     (D) Compile-time error
+     Explanation: Left-to-right evaluation: 10+20 gives numeric 30 then concatenated to 'Java'. In second case, 'Java'+10 becomes 'Java10' then 'Java1020'.
+     Tags: BCA-201N, Unit-1, Concatenation, Operators
+
+Q19. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (HARD)
+     Which memory area in the JVM stores local primitive variables and method activation frames?
+     (A) JVM Stack [CORRECT]
+     (B) Heap Memory
+     (C) Method Area
+     (D) Native Stack
+     Explanation: The JVM Stack stores call frames, local variables, and partial results for each executing thread.
+     Tags: BCA-201N, Unit-1, JVM-Memory, Stack-Memory
+
+Q20. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What will `System.out.println(10 / 3);` and `System.out.println(10 % 3);` output?
+     (A) 3.333 and 1
+     (B) 3 and 1 [CORRECT]
+     (C) 3.0 and 1.0
+     (D) 3 and 0
+     Explanation: Integer division truncates decimals yielding 3, while modulus operator returns remainder 1.
+     Tags: BCA-201N, Unit-1, Operators, Arithmetic
+
+Q21. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which keyword in Java is used to allocate new memory for objects on the heap?
+     (A) malloc
+     (B) alloc
+     (C) new [CORRECT]
+     (D) create
+     Explanation: The 'new' keyword dynamically creates objects and allocates memory in the heap at runtime.
+     Tags: BCA-201N, Unit-1, Keywords, New
+
+Q22. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the size of a 'float' and 'double' in Java according to IEEE 754 standard?
+     (A) 16-bit and 32-bit
+     (B) 32-bit (single precision) and 64-bit (double precision) [CORRECT]
+     (C) 64-bit and 128-bit
+     (D) Depends on OS architecture
+     Explanation: Java specifies strictly that float is 32-bit single precision and double is 64-bit double precision across all platforms.
+     Tags: BCA-201N, Unit-1, Data-Types, Float-Double
+
+Q23. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the default value of an uninitialized instance variable of type 'boolean'?
+     (A) true
+     (B) false [CORRECT]
+     (C) null
+     (D) 0
+     Explanation: Java initializes boolean instance fields to 'false' by default.
+     Tags: BCA-201N, Unit-1, Default-Values, Boolean
+
+Q24. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which Java tool is used to compile Java source code files into bytecode files?
+     (A) java
+     (B) javac [CORRECT]
+     (C) javadoc
+     (D) javap
+     Explanation: The javac compiler takes .java source files and produces .class bytecode files.
+     Tags: BCA-201N, Unit-1, JDK-Tools, Javac
+
+Q25. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Which tool is the Java disassembler that displays bytecode instructions of a class file?
+     (A) javap [CORRECT]
+     (B) javadoc
+     (C) jdb
+     (D) jar
+     Explanation: javap disassembles compiled class files to reveal bytecode, method signatures, and constants.
+     Tags: BCA-201N, Unit-1, JDK-Tools, Javap
+
+Q26. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which operator is used in Java to test whether an object is an instance of a specific class or interface?
+     (A) typeof
+     (B) instanceof [CORRECT]
+     (C) is_a
+     (D) type
+     Explanation: The 'instanceof' operator returns true if the referenced object is an instance of the specified class or interface.
+     Tags: BCA-201N, Unit-1, Operators, Instanceof
+
+Q27. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the result of evaluating `(5 > 3) ? 100 : 200` in Java?
+     (A) 5
+     (B) 3
+     (C) 100 [CORRECT]
+     (D) 200
+     Explanation: Ternary operator: condition (5 > 3) is true, so the first expression 100 is returned.
+     Tags: BCA-201N, Unit-1, Operators, Ternary
+
+Q28. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which loop structure is also known as the 'enhanced for loop' in Java 5+?
+     (A) for-each loop [CORRECT]
+     (B) while-each loop
+     (C) repeat-until loop
+     (D) infinite loop
+     Explanation: The enhanced for loop (for-each) simplifies sequential traversal through arrays and iterable collections.
+     Tags: BCA-201N, Unit-1, Loops, Enhanced-For
+
+Q29. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the effect of the 'continue' statement in a loop?
+     (A) Terminates the loop immediately
+     (B) Skips the remaining statements in the current iteration and jumps to the next iteration test [CORRECT]
+     (C) Restarts the program from beginning
+     (D) Throws an exception
+     Explanation: The continue statement skips the rest of the current iteration body and evaluates the loop condition for the next cycle.
+     Tags: BCA-201N, Unit-1, Branching, Continue
+
+Q30. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which package is automatically imported into every Java program without an explicit import statement?
+     (A) java.io
+     (B) java.util
+     (C) java.lang [CORRECT]
+     (D) java.net
+     Explanation: The java.lang package contains core classes (Object, String, System, Math) and is implicitly imported everywhere.
+     Tags: BCA-201N, Unit-1, Packages, Java-Lang
+
+Q31. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the return type of the hashCode() method defined in java.lang.Object?
+     (A) long
+     (B) int [CORRECT]
+     (C) String
+     (D) double
+     Explanation: hashCode() returns a 32-bit signed integer representation of an object's memory identity or value.
+     Tags: BCA-201N, Unit-1, Object-Class, HashCode
+
+Q32. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which of the following is true regarding Java's portability?
+     (A) Java source files can run on any OS without compilation
+     (B) Bytecode generated on one platform can execute on any machine equipped with an appropriate JVM [CORRECT]
+     (C) Java requires recompiling for each processor architecture
+     (D) Java runs only in web browsers
+     Explanation: Portability in Java stems from bytecode executing on any operating system that has an implementation of the JVM.
+     Tags: BCA-201N, Unit-1, Features, Portability
+
+Q33. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the maximum positive value that an 8-bit signed byte in Java can store?
+     (A) 127 [CORRECT]
+     (B) 128
+     (C) 255
+     (D) 256
+     Explanation: A signed 8-bit two's complement integer has a range of -128 to +127.
+     Tags: BCA-201N, Unit-1, Data-Types, Byte-Range
+
+Q34. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (HARD)
+     What will be printed by `System.out.println(1.0 / 0.0);` in Java?
+     (A) ArithmeticException: / by zero
+     (B) Infinity [CORRECT]
+     (C) NaN
+     (D) 0.0
+     Explanation: Floating-point division by zero produces positive 'Infinity' (Double.POSITIVE_INFINITY) per IEEE 754, not an exception.
+     Tags: BCA-201N, Unit-1, Floating-Point, Infinity
+
+Q35. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (HARD)
+     What is the result of `0.0 / 0.0` in Java floating-point arithmetic?
+     (A) 0
+     (B) Infinity
+     (C) NaN (Not-a-Number) [CORRECT]
+     (D) ArithmeticException
+     Explanation: In floating-point math, zero divided by zero results in NaN (Not a Number).
+     Tags: BCA-201N, Unit-1, Floating-Point, NaN
+
+Q36. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Can a Java program have multiple class definitions within a single .java source file?
+     (A) No, exactly one class per file
+     (B) Yes, but at most one class can be declared as 'public', and its name must match the file name [CORRECT]
+     (C) Yes, all classes can be declared public
+     (D) Yes, but only if they are all interfaces
+     Explanation: Only one class can be declared public per compilation unit, and the source file must be named `<PublicClassName>.java`.
+     Tags: BCA-201N, Unit-1, Compilation, Class-Structure
+
+Q37. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which Java class from java.util is commonly used to parse user console input from System.in?
+     (A) ConsoleReader
+     (B) InputParser
+     (C) Scanner [CORRECT]
+     (D) SystemReader
+     Explanation: Scanner (java.util.Scanner) breaks console and stream inputs into tokens and parses primitive types using regular expressions.
+     Tags: BCA-201N, Unit-1, Console-IO, Scanner
+
+Q38. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Which operator is evaluated with the highest precedence in Java expressions?
+     (A) Multiplication (*)
+     (B) Postfix increment/decrement (++, --) [CORRECT]
+     (C) Assignment (=)
+     (D) Logical AND (&&)
+     Explanation: Postfix operators like expr++ and expr-- have the highest precedence among common expression operators.
+     Tags: BCA-201N, Unit-1, Precedence, Operators
+
+Q39. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the effect of prefix increment `++x` compared to postfix increment `x++`?
+     (A) Prefix increments x before using its value in the expression; postfix uses current value then increments x [CORRECT]
+     (B) Postfix increments first; prefix increments last
+     (C) Both are completely identical in all expressions
+     (D) Prefix works only on floating-point variables
+     Explanation: Prefix (++x) increments the operand and returns the new value; postfix (x++) returns original value and then increments.
+     Tags: BCA-201N, Unit-1, Operators, Increment
+
+Q40. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is an applet in the context of Java's history?
+     (A) A standalone command-line application
+     (B) A small Java program embedded in an HTML webpage and executed inside a browser's JVM [CORRECT]
+     (C) A server-side database driver
+     (D) A device microcode
+     Explanation: Applets were client-side programs embedded in web browsers that popularized Java in the early web era (now deprecated).
+     Tags: BCA-201N, Unit-1, Applets, History
+
+Q41. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which statement correctly describes Java comments?
+     (A) Only single-line // comments are allowed
+     (B) Supports single-line (//), multi-line (/* ... */), and documentation comments (/** ... */ for javadoc) [CORRECT]
+     (C) Java does not support comments inside classes
+     (D) Uses # for comments like Python
+     Explanation: Java supports //, /* ... */, and javadoc comments /** ... */ used by javadoc to generate HTML documentation.
+     Tags: BCA-201N, Unit-1, Comments, Syntax
+
+Q42. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What does the JVM ClassLoader do?
+     (A) Deletes unused classes
+     (B) Loads .class binary files into JVM memory areas dynamically when requested [CORRECT]
+     (C) Translates Java to C++
+     (D) Compresses jar files
+     Explanation: ClassLoader dynamically loads binary bytecode representations of classes into memory during program execution.
+     Tags: BCA-201N, Unit-1, JVM, ClassLoader
+
+Q43. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the scope of a local variable declared inside a block surrounded by curly braces `{}`?
+     (A) Accessible throughout the entire class
+     (B) Accessible only within that specific block from its point of declaration [CORRECT]
+     (C) Accessible globally across all packages
+     (D) Accessible across all child threads
+     Explanation: Local block variables have block scope and cease to exist once control exits the enclosing curly braces.
+     Tags: BCA-201N, Unit-1, Scope, Local-Variables
+
+Q44. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which keyword is used to declare a constant variable in Java whose value cannot be reassigned?
+     (A) const
+     (B) final [CORRECT]
+     (C) constant
+     (D) static
+     Explanation: The 'final' keyword declares a variable as constant, preventing reassignment once initialized.
+     Tags: BCA-201N, Unit-1, Keywords, Final
+
+Q45. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What is the difference between Widening and Narrowing type casting in Java?
+     (A) Widening is automatic (smaller type to larger type); narrowing requires explicit casting and may lose precision [CORRECT]
+     (B) Widening requires explicit casting; narrowing is automatic
+     (C) Both are always automatic
+     (D) Widening only applies to booleans
+     Explanation: Widening conversion (e.g. int to double) is safe and automatic; narrowing (double to int) loses precision and requires explicit cast `(int)`.
+     Tags: BCA-201N, Unit-1, Type-Casting, Conversions
+
+Q46. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     What will `System.out.println(5 == 5.0);` output in Java?
+     (A) false due to different data types
+     (B) true because numeric promotion converts integer 5 to 5.0 before comparison [CORRECT]
+     (C) Compile-time error
+     (D) ClassCastException
+     Explanation: Numeric promotion converts 5 to double 5.0; comparing 5.0 == 5.0 evaluates to true.
+     Tags: BCA-201N, Unit-1, Comparison, Type-Promotion
+
+Q47. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (MEDIUM)
+     Which statement is true about the boolean type in Java?
+     (A) Can be converted to integer 0 or 1 implicitly like C
+     (B) Can only hold literal values 'true' or 'false', with no conversion to or from integer types [CORRECT]
+     (C) Can hold null
+     (D) Can be cast to char
+     Explanation: In Java, boolean is distinct and cannot be converted to or from numbers (neither implicitly nor explicitly).
+     Tags: BCA-201N, Unit-1, Boolean, Type-Safety
+
+Q48. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the purpose of the 'default' clause in a switch statement?
+     (A) It is mandatory as the first clause
+     (B) Executes when none of the specified case values match the switch expression [CORRECT]
+     (C) Resets the switch counter to zero
+     (D) Terminates the program immediately
+     Explanation: The optional default clause provides fallback logic when no explicit case constant matches the selector.
+     Tags: BCA-201N, Unit-1, Switch-Case, Default
+
+Q49. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     Which loop is optimal when the exact number of iterations is known before entering the loop?
+     (A) while loop
+     (B) do-while loop
+     (C) for loop [CORRECT]
+     (D) infinite loop
+     Explanation: The traditional for loop combines initialization, condition testing, and iteration step in a single concise line.
+     Tags: BCA-201N, Unit-1, Loops, For-Loop
+
+Q50. [Unit 1: Java Fundamentals, JVM Architecture & Language Syntax] (EASY)
+     What is the output of `int x = 5; System.out.println(x > 2 && x < 10);`?
+     (A) true [CORRECT]
+     (B) false
+     (C) 5
+     (D) Compile-time error
+     Explanation: Both subconditions (5 > 2 is true) and (5 < 10 is true) are satisfied, so logical AND evaluates to true.
+     Tags: BCA-201N, Unit-1, Logical-Operators, Boolean
+
+Q51. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Which object-oriented principle wraps data (attributes) and methods together while restricting direct access from outside?
+     (A) Polymorphism
+     (B) Encapsulation [CORRECT]
+     (C) Inheritance
+     (D) Dynamic Binding
+     Explanation: Encapsulation bundles state and behavior into a class, hiding internal details using private access modifiers.
+     Tags: BCA-201N, Unit-2, OOP-Concepts, Encapsulation
+
+Q52. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Where are all Java objects and their instance variables allocated in memory?
+     (A) JVM Method Area
+     (B) JVM Stack
+     (C) Heap Memory [CORRECT]
+     (D) CPU Registers
+     Explanation: All objects in Java are dynamically created in the shared Heap memory at runtime via the 'new' operator.
+     Tags: BCA-201N, Unit-2, Memory-Allocation, Heap
+
+Q53. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     What is the parameter passing mechanism in Java for primitive data types and object references?
+     (A) Pass-by-reference for objects and pass-by-value for primitives
+     (B) Strictly Pass-by-Value for both (references themselves are passed by value) [CORRECT]
+     (C) Pass-by-name
+     (D) Pass-by-result
+     Explanation: Java is strictly pass-by-value. For objects, a copy of the reference address is passed by value.
+     Tags: BCA-201N, Unit-2, Methods, Pass-by-Value
+
+Q54. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the return type of a constructor in Java?
+     (A) void
+     (B) Object
+     (C) int
+     (D) Constructors have no return type, not even void [CORRECT]
+     Explanation: Constructors do not declare a return type. If a return type is declared, the compiler treats it as a regular method.
+     Tags: BCA-201N, Unit-2, Constructors, Syntax
+
+Q55. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     If no constructor is explicitly defined in a Java class, what does the compiler provide?
+     (A) Nothing; the class cannot be instantiated
+     (B) A default no-argument constructor with an empty body that calls super() [CORRECT]
+     (C) A constructor accepting null
+     (D) A private constructor
+     Explanation: The Java compiler automatically synthesizes an implicit public default no-argument constructor that calls super().
+     Tags: BCA-201N, Unit-2, Constructors, Default-Constructor
+
+Q56. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the purpose of the 'this' keyword in Java?
+     (A) Refers to the parent class object
+     (B) Refers to the current class instance executing the method or constructor [CORRECT]
+     (C) Refers to the static global state
+     (D) Refers to the JVM runtime
+     Explanation: 'this' is a reference variable pointing to the current object whose method or constructor is being invoked.
+     Tags: BCA-201N, Unit-2, This-Keyword, Instance-Reference
+
+Q57. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     How can one constructor invoke another overloaded constructor in the same class?
+     (A) Using the method call this() as the first statement in the constructor [CORRECT]
+     (B) Using super()
+     (C) Calling ConstructorName() directly
+     (D) Using new this()
+     Explanation: `this(arguments)` invokes an overloaded constructor in the same class and must be the very first statement.
+     Tags: BCA-201N, Unit-2, Constructors, Constructor-Chaining
+
+Q58. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Which keyword declares a class member that belongs to the class itself rather than individual instances?
+     (A) final
+     (B) static [CORRECT]
+     (C) abstract
+     (D) transient
+     Explanation: Static fields and methods belong to the class as a whole and are shared across all instances without requiring an object.
+     Tags: BCA-201N, Unit-2, Static-Keyword, Class-Members
+
+Q59. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Can a static method in Java access non-static (instance) variables or methods directly?
+     (A) Yes, without any restriction
+     (B) No, because a static method does not have a 'this' context and can execute without an object [CORRECT]
+     (C) Yes, if they are public
+     (D) Only inside main()
+     Explanation: Static methods cannot directly reference non-static members because there is no implicit 'this' reference.
+     Tags: BCA-201N, Unit-2, Static-Methods, Context
+
+Q60. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What executes automatically when a class is loaded into JVM memory, even before any constructor runs?
+     (A) The main() method
+     (B) Static initialization block `static { ... }` [CORRECT]
+     (C) The finalize() method
+     (D) The toString() method
+     Explanation: A static initialization block executes exactly once when the class is first loaded by the ClassLoader.
+     Tags: BCA-201N, Unit-2, Static-Blocks, Class-Loading
+
+Q61. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Which keyword establishes an inheritance relationship between a subclass and a superclass in Java?
+     (A) implements
+     (B) inherits
+     (C) extends [CORRECT]
+     (D) super
+     Explanation: The 'extends' keyword is used to create a subclass that inherits non-private members of a superclass.
+     Tags: BCA-201N, Unit-2, Inheritance, Extends
+
+Q62. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Why does Java NOT support multiple inheritance of classes (e.g. `class C extends A, B`)?
+     (A) To avoid memory leaks
+     (B) To prevent ambiguity caused by the Diamond Problem where two parent classes have identical method signatures [CORRECT]
+     (C) Because compilers cannot parse commas
+     (D) To conserve stack memory
+     Explanation: Multiple class inheritance causes the Diamond Problem. Java avoids this ambiguity by disallowing multiple class inheritance.
+     Tags: BCA-201N, Unit-2, Inheritance, Diamond-Problem
+
+Q63. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the purpose of the 'super' keyword in Java?
+     (A) Calls the OS supervisor
+     (B) Refers directly to the immediate superclass members and invokes superclass constructors via super() [CORRECT]
+     (C) Allocates extra heap space
+     (D) Forces garbage collection
+     Explanation: `super` references superclass instance variables and methods, and `super()` invokes the superclass constructor.
+     Tags: BCA-201N, Unit-2, Super-Keyword, Inheritance
+
+Q64. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What happens if a subclass constructor does NOT explicitly call `super()` or `this()`?
+     (A) Compilation fails
+     (B) The compiler automatically inserts a call to `super()` with no arguments as the first statement [CORRECT]
+     (C) Superclass is never initialized
+     (D) Runtime NullPointerException
+     Explanation: The compiler automatically generates `super();` as the first statement to ensure the parent object state is initialized.
+     Tags: BCA-201N, Unit-2, Constructors, Super-Call
+
+Q65. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is Method Overriding in Java?
+     (A) Declaring multiple methods in the same class with same name but different parameters
+     (B) A subclass providing a specific implementation of a method already defined in its superclass with the exact same signature and return type [CORRECT]
+     (C) Changing method visibility to private
+     (D) Calling a method recursively
+     Explanation: Overriding redefines an inherited superclass method in the subclass with identical name, parameters, and return type.
+     Tags: BCA-201N, Unit-2, Polymorphism, Method-Overriding
+
+Q66. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     What is Dynamic Method Dispatch in Java?
+     (A) Resolving method calls at compile time
+     (B) A mechanism by which a call to an overridden method is resolved at runtime based on the actual object type [CORRECT]
+     (C) Dispatching methods across network nodes
+     (D) Executing methods without JVM
+     Explanation: Dynamic Method Dispatch enables runtime polymorphism: superclass reference calling an overridden method invokes subclass version.
+     Tags: BCA-201N, Unit-2, Polymorphism, Dynamic-Method-Dispatch
+
+Q67. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the effect of declaring a class as 'final' (`final class MyClass`)?
+     (A) The class cannot be instantiated
+     (B) The class cannot be extended / subclassed [CORRECT]
+     (C) All methods inside it become static
+     (D) The class is stored in ROM
+     Explanation: A final class cannot be extended by any other class (e.g. java.lang.String is final for security and immutability).
+     Tags: BCA-201N, Unit-2, Final-Keyword, Final-Classes
+
+Q68. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the effect of declaring a method as 'final' in a superclass?
+     (A) It cannot be called by subclasses
+     (B) It cannot be overridden by any subclass [CORRECT]
+     (C) It cannot accept arguments
+     (D) It must be executed on a separate thread
+     Explanation: Declaring a method final prevents any subclass from overriding it, ensuring consistent behavior.
+     Tags: BCA-201N, Unit-2, Final-Keyword, Final-Methods
+
+Q69. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is an abstract class in Java?
+     (A) A class that contains only static methods
+     (B) A class declared with the 'abstract' keyword that cannot be directly instantiated and may contain abstract methods [CORRECT]
+     (C) A class that has no constructors
+     (D) A class without any methods
+     Explanation: An abstract class cannot be instantiated with 'new' and serves as a base blueprint for concrete subclasses.
+     Tags: BCA-201N, Unit-2, Abstract-Classes, OOP
+
+Q70. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Can an abstract class declare concrete (fully implemented) methods and instance fields?
+     (A) No, it can only contain abstract methods
+     (B) Yes, abstract classes can contain both fully implemented methods, constructors, and instance fields [CORRECT]
+     (C) Only if methods are static
+     (D) Only if methods are private
+     Explanation: Unlike interfaces (traditionally), abstract classes can have state (instance fields), constructors, and concrete methods.
+     Tags: BCA-201N, Unit-2, Abstract-Classes, Concrete-Methods
+
+Q71. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the purpose of the finalize() method defined in java.lang.Object?
+     (A) Called immediately when new operator finishes
+     (B) Invoked by the Garbage Collector before an unreachable object's memory is reclaimed [CORRECT]
+     (C) Closes database connections automatically
+     (D) Shuts down the JVM
+     Explanation: finalize() provides cleanup routines before an object is garbage collected (deprecated in modern Java in favor of Cleaners).
+     Tags: BCA-201N, Unit-2, Garbage-Collection, Finalize
+
+Q72. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     How can a program explicitly suggest that the JVM run the Garbage Collector?
+     (A) Runtime.getRuntime().gc() or System.gc() [CORRECT]
+     (B) delete object;
+     (C) free(object);
+     (D) JVM.cleanMemory()
+     Explanation: System.gc() or Runtime.getRuntime().gc() requests the JVM to perform garbage collection, though execution is not guaranteed.
+     Tags: BCA-201N, Unit-2, Garbage-Collection, System-GC
+
+Q73. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     Can a subclass broaden (make less restrictive) the access modifier of an overridden method?
+     (A) No, access must be made more restrictive
+     (B) Yes, an overridden method can have equal or broader visibility (e.g. protected to public) [CORRECT]
+     (C) Visibility must never be altered under any circumstance
+     (D) Only if it throws an exception
+     Explanation: A subclass can maintain or broaden visibility (protected to public) but cannot narrow it (cannot make public into private).
+     Tags: BCA-201N, Unit-2, Method-Overriding, Access-Modifiers
+
+Q74. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is Method Overloading (Compile-Time Polymorphism)?
+     (A) Creating methods with same name in same class with different argument counts or types [CORRECT]
+     (B) Re-implementing a parent method in child class
+     (C) Calling private methods externally
+     (D) Renaming methods at runtime
+     Explanation: Overloading allows multiple methods in the same class to share a name as long as their parameter lists differ.
+     Tags: BCA-201N, Unit-2, Polymorphism, Method-Overloading
+
+Q75. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Can two overloaded methods in the same class differ ONLY by their return types?
+     (A) Yes, compiler distinguishes them by return type
+     (B) No, method overloading requires different parameter count or types; return type alone is insufficient [CORRECT]
+     (C) Yes, if one returns void
+     (D) Yes, if one is static
+     Explanation: Return type is not part of the method signature used for overload resolution; parameter lists must differ.
+     Tags: BCA-201N, Unit-2, Overloading, Signatures
+
+Q76. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is an Anonymous Object in Java?
+     (A) An object without a class definition
+     (B) An object created without storing its reference in a named variable (e.g. `new Box().display();`) [CORRECT]
+     (C) A null pointer
+     (D) A hidden static class
+     Explanation: Anonymous objects are instantiated solely for immediate one-time method calls without retaining a reference handle.
+     Tags: BCA-201N, Unit-2, Objects, Anonymous-Objects
+
+Q77. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     Which statement is true regarding Java constructors?
+     (A) Constructors can be inherited by subclasses
+     (B) Constructors are not inherited by subclasses, but can be invoked via super() [CORRECT]
+     (C) Constructors can be declared final or abstract
+     (D) Constructors must be private
+     Explanation: Constructors are not members of a class and therefore cannot be inherited, overridden, or declared final/abstract.
+     Tags: BCA-201N, Unit-2, Constructors, Inheritance
+
+Q78. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the output when a superclass reference points to a subclass object and invokes an overridden method?
+     (A) Superclass version executes
+     (B) Subclass version executes (Dynamic Method Dispatch) [CORRECT]
+     (C) Compile-time error
+     (D) Runtime ClassCastException
+     Explanation: Due to dynamic method dispatch, the actual runtime object type determines which overridden method version executes.
+     Tags: BCA-201N, Unit-2, Polymorphism, Virtual-Methods
+
+Q79. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What happens when you declare a variable as `private` in a Java class?
+     (A) Accessible only within the same class declaration [CORRECT]
+     (B) Accessible across the entire package
+     (C) Accessible by subclasses in other packages
+     (D) Accessible everywhere
+     Explanation: Private members are accessible exclusively within the body of the defining class.
+     Tags: BCA-201N, Unit-2, Access-Specifiers, Private
+
+Q80. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the visibility of a member with 'protected' access in Java?
+     (A) Accessible within the same package and by subclasses even in different packages [CORRECT]
+     (B) Accessible only in subclasses
+     (C) Accessible everywhere
+     (D) Accessible only in same class
+     Explanation: Protected members can be accessed within the defining package and by derived classes in any package via inheritance.
+     Tags: BCA-201N, Unit-2, Access-Specifiers, Protected
+
+Q81. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is default (package-private) access level in Java?
+     (A) Declared with keyword 'default'
+     (B) When no access modifier is specified; accessible by any class within the same package [CORRECT]
+     (C) Accessible only by subclasses
+     (D) Accessible by all classes in JVM
+     Explanation: Omitting an access specifier assigns package-private access: accessible to all classes within the same package.
+     Tags: BCA-201N, Unit-2, Access-Specifiers, Package-Private
+
+Q82. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is Constructor Overloading?
+     (A) Defining multiple constructors in a class with different parameter lists [CORRECT]
+     (B) Defining constructors with different return types
+     (C) Inheriting constructors from parent class
+     (D) Creating private constructors only
+     Explanation: Constructor overloading enables initializing objects in different ways with varying parameter sets.
+     Tags: BCA-201N, Unit-2, Constructors, Overloading
+
+Q83. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Can an abstract class have a constructor?
+     (A) No, because it cannot be instantiated
+     (B) Yes, called by subclass constructors via super() to initialize abstract class state [CORRECT]
+     (C) Only if all methods are static
+     (D) Only private constructors
+     Explanation: Abstract classes have constructors to initialize inherited fields when a concrete subclass instance is created.
+     Tags: BCA-201N, Unit-2, Abstract-Classes, Constructors
+
+Q84. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the base class of every class in the Java language hierarchy?
+     (A) java.lang.Class
+     (B) java.lang.System
+     (C) java.lang.Object [CORRECT]
+     (D) java.lang.Root
+     Explanation: java.lang.Object sits at the absolute root of the Java class hierarchy; every class implicitly extends Object.
+     Tags: BCA-201N, Unit-2, Object-Class, Hierarchy
+
+Q85. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Which method in java.lang.Object returns a string representation of an object?
+     (A) display()
+     (B) toString() [CORRECT]
+     (C) print()
+     (D) format()
+     Explanation: toString() returns text representation of an object (default is `ClassName@HexHashCode`).
+     Tags: BCA-201N, Unit-2, Object-Class, ToString
+
+Q86. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     Which method in java.lang.Object is designed to be overridden to compare logical equality of two objects?
+     (A) compare()
+     (B) equals(Object obj) [CORRECT]
+     (C) hash()
+     (D) matches()
+     Explanation: equals(Object obj) tests value/state equality rather than reference identity (==).
+     Tags: BCA-201N, Unit-2, Object-Class, Equals
+
+Q87. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What does the `==` operator compare when applied to two object references in Java?
+     (A) The contents/fields of the objects
+     (B) The memory addresses of the references (whether both point to exact same object) [CORRECT]
+     (C) The hash codes of the objects
+     (D) The class names
+     Explanation: For reference types, `==` tests reference identity (memory address), not field-level content equality.
+     Tags: BCA-201N, Unit-2, Operators, Identity-vs-Equality
+
+Q88. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Can a class be declared both `abstract` and `final` at the same time?
+     (A) Yes, for security
+     (B) No, abstract requires subclassing while final prohibits subclassing, making them mutually contradictory [CORRECT]
+     (C) Yes, if all methods are static
+     (D) Yes, for singleton pattern
+     Explanation: Abstract and final are opposite: an abstract class must be extended, while a final class cannot be extended.
+     Tags: BCA-201N, Unit-2, Modifiers, Abstract-Final
+
+Q89. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is an inner class in Java?
+     (A) A class defined inside another enclosing class [CORRECT]
+     (B) A class stored inside a JAR archive
+     (C) A private JVM class
+     (D) A class without methods
+     Explanation: An inner class is a non-static class nested inside an outer class, having direct access to outer instance members.
+     Tags: BCA-201N, Unit-2, Classes, Inner-Classes
+
+Q90. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the advantage of composition over inheritance (HAS-A vs IS-A)?
+     (A) Composition allows dynamic changes to behavior at runtime by holding references, avoiding rigid class hierarchies [CORRECT]
+     (B) Composition allows multiple class inheritance
+     (C) Composition eliminates memory usage
+     (D) Composition requires fewer classes
+     Explanation: Composition ('has-a') provides looser coupling and greater design flexibility than tight compile-time inheritance ('is-a').
+     Tags: BCA-201N, Unit-2, Design-Patterns, Composition
+
+Q91. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     Can a static method be overridden in a subclass?
+     (A) Yes, with dynamic method dispatch
+     (B) No, static methods are bonded at compile time; a subclass can only hide the superclass static method [CORRECT]
+     (C) Yes, if declared public
+     (D) Only in abstract classes
+     Explanation: Static methods cannot be overridden dynamically (method hiding occurs instead, resolved by reference type at compile time).
+     Tags: BCA-201N, Unit-2, Static-Methods, Method-Hiding
+
+Q92. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (HARD)
+     What is the Covariant Return Type introduced in Java 5?
+     (A) An overriding method can return a subtype of the return type declared in the superclass method [CORRECT]
+     (B) Overridden methods can return primitive types only
+     (C) Methods can return multiple values
+     (D) Return type can be changed to void
+     Explanation: Covariant returns allow an overriding subclass method to narrow the return type to a more specific subtype.
+     Tags: BCA-201N, Unit-2, Method-Overriding, Covariant-Return
+
+Q93. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What will happen if an uninitialized local reference variable is used in a method?
+     (A) It defaults to null
+     (B) Compilation error: variable might not have been initialized [CORRECT]
+     (C) Runtime NullPointerException
+     (D) It allocates a blank object
+     Explanation: Local variables are not assigned default values; the Java compiler enforces assignment before any read access.
+     Tags: BCA-201N, Unit-2, Local-Variables, Compiler-Rules
+
+Q94. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     Which keyword prevents an object reference field from being modified after constructor initialization?
+     (A) static
+     (B) final [CORRECT]
+     (C) abstract
+     (D) synchronized
+     Explanation: A final field can only be assigned once (at declaration or inside constructor) and cannot be modified thereafter.
+     Tags: BCA-201N, Unit-2, Final-Keyword, Immutability
+
+Q95. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the relationship modeled by class `Car extends Vehicle`?
+     (A) HAS-A relationship
+     (B) IS-A relationship [CORRECT]
+     (C) PART-OF relationship
+     (D) USES-A relationship
+     Explanation: Inheritance represents an IS-A relationship: a Car is a Vehicle.
+     Tags: BCA-201N, Unit-2, Inheritance, IS-A
+
+Q96. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     What is the relationship modeled by class `Car` having an instance variable `Engine engine`?
+     (A) IS-A relationship
+     (B) HAS-A relationship (Composition/Aggregation) [CORRECT]
+     (C) EXTENDS relationship
+     (D) POLYMORPHIC relationship
+     Explanation: Containing an instance of another class represents a HAS-A relationship (Car has an Engine).
+     Tags: BCA-201N, Unit-2, OOP-Concepts, HAS-A
+
+Q97. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (EASY)
+     How many superclasses can a direct subclass have in Java?
+     (A) Unlimited
+     (B) Exactly one direct superclass (Single Class Inheritance) [CORRECT]
+     (C) Up to two
+     (D) Any number if they are abstract
+     Explanation: Java enforces single class inheritance: every class has exactly one direct parent class (except Object).
+     Tags: BCA-201N, Unit-2, Inheritance, Single-Inheritance
+
+Q98. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is the clone() method in java.lang.Object used for?
+     (A) To create an exact bitwise/field-by-field copy of an object implementing Cloneable interface [CORRECT]
+     (B) To delete duplicates in memory
+     (C) To create a subclass
+     (D) To backup class files to disk
+     Explanation: clone() creates a copy of the object if the class implements the java.lang.Cloneable marker interface.
+     Tags: BCA-201N, Unit-2, Object-Class, Clone
+
+Q99. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What exception is thrown if `clone()` is called on an object that does NOT implement Cloneable?
+     (A) ClassCastException
+     (B) CloneNotSupportedException [CORRECT]
+     (C) NullPointerException
+     (D) IllegalAccessException
+     Explanation: The Object.clone() method checks for the Cloneable interface and throws CloneNotSupportedException if absent.
+     Tags: BCA-201N, Unit-2, Cloneable, Exceptions
+
+Q100. [Unit 2: Classes, Objects, Methods, Constructors & Inheritance] (MEDIUM)
+     What is method signature composed of in Java?
+     (A) Method name and parameter type list [CORRECT]
+     (B) Method name, return type, and access modifier
+     (C) Method name and return type only
+     (D) Return type and parameter names
+     Explanation: In Java, a method signature consists exclusively of the method name and the types of its parameters in order.
+     Tags: BCA-201N, Unit-2, Method-Signatures, Overloading
+
+Q101. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is an interface in Java?
+     (A) A concrete class that can be instantiated
+     (B) A reference type consisting of abstract method declarations and constant fields [CORRECT]
+     (C) A method with no arguments
+     (D) A private memory area
+     Explanation: An interface is a contract containing abstract method declarations and constant fields (public static final).
+     Tags: BCA-201N, Unit-3, Interfaces, Definition
+
+Q102. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What are the default modifiers for variables declared inside an interface?
+     (A) private final
+     (B) public static final [CORRECT]
+     (C) protected static
+     (D) transient volatile
+     Explanation: All fields declared in an interface are implicitly public, static, and final (constants).
+     Tags: BCA-201N, Unit-3, Interfaces, Fields
+
+Q103. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which keyword does a class use to implement one or more interfaces?
+     (A) extends
+     (B) implements [CORRECT]
+     (C) inherits
+     (D) uses
+     Explanation: The 'implements' keyword specifies that a class provides concrete definitions for methods declared in an interface.
+     Tags: BCA-201N, Unit-3, Interfaces, Implements
+
+Q104. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Can a single Java class implement multiple interfaces?
+     (A) No, only one interface is allowed
+     (B) Yes, separated by commas (e.g. `implements A, B, C`) [CORRECT]
+     (C) Only if interfaces have identical methods
+     (D) Only abstract classes can
+     Explanation: Java supports multiple interface implementation, overcoming the restriction on multiple class inheritance.
+     Tags: BCA-201N, Unit-3, Interfaces, Multiple-Implementation
+
+Q105. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What keyword is used for an interface to inherit another interface?
+     (A) implements
+     (B) extends [CORRECT]
+     (C) inherits
+     (D) subclasses
+     Explanation: An interface extends another interface using the 'extends' keyword (an interface can extend multiple interfaces).
+     Tags: BCA-201N, Unit-3, Interfaces, Interface-Inheritance
+
+Q106. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is a Marker (Tagging) Interface in Java?
+     (A) An interface with hundreds of methods
+     (B) An interface with zero methods and zero fields used to indicate metadata (e.g. Serializable, Cloneable) [CORRECT]
+     (C) An interface that marks errors
+     (D) An interface for GUI graphics
+     Explanation: A marker interface has an empty body; implementing it signals capability to the JVM or compiler (e.g. java.io.Serializable).
+     Tags: BCA-201N, Unit-3, Interfaces, Marker-Interface
+
+Q107. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     Starting from Java 8, what types of methods can have full concrete implementations inside an interface?
+     (A) Only private methods
+     (B) Default methods (using 'default' keyword) and static methods [CORRECT]
+     (C) All methods by default
+     (D) Protected methods
+     Explanation: Java 8 introduced default methods (allowing API evolution with default behavior) and static utility methods in interfaces.
+     Tags: BCA-201N, Unit-3, Interfaces, Default-Methods
+
+Q108. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is a Package in Java?
+     (A) A zip file containing images
+     (B) A mechanism for grouping related classes, interfaces, and sub-packages into namespaces [CORRECT]
+     (C) A compiler optimization tool
+     (D) A database table
+     Explanation: A package organizes related classes and interfaces into a namespace, preventing naming conflicts and controlling access.
+     Tags: BCA-201N, Unit-3, Packages, Namespace
+
+Q109. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which statement is used to define the package to which a source file belongs?
+     (A) package mypack; [CORRECT]
+     (B) import mypack;
+     (C) namespace mypack;
+     (D) using mypack;
+     Explanation: The 'package' statement must be the very first non-comment statement in a Java source file.
+     Tags: BCA-201N, Unit-3, Packages, Syntax
+
+Q110. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What javac compiler flag automatically generates matching directory structures corresponding to package names?
+     (A) -o
+     (B) -d [CORRECT]
+     (C) -p
+     (D) -dir
+     Explanation: The `-d <destination>` option directs javac to create the directory hierarchy corresponding to package declarations.
+     Tags: BCA-201N, Unit-3, JDK-Tools, Javac-Flag
+
+Q111. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the CLASSPATH environment variable used for?
+     (A) It stores the root user password
+     (B) It informs the JVM and javac where to find user-defined and third-party compiled .class files and packages [CORRECT]
+     (C) It sets the screen resolution
+     (D) It allocates swap memory
+     Explanation: CLASSPATH tells the ClassLoader where to look on the filesystem for .class files and libraries.
+     Tags: BCA-201N, Unit-3, Classpath, JVM
+
+Q112. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What does `import java.util.*;` do?
+     (A) Imports all classes and interfaces in the java.util package [CORRECT]
+     (B) Imports java.util and all its sub-packages recursively
+     (C) Compiles the java.util directory
+     (D) Imports only the Scanner class
+     Explanation: Asterisk wildcard imports all classes in the immediate package, but does NOT import nested sub-packages.
+     Tags: BCA-201N, Unit-3, Import, Wildcard
+
+Q113. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is static import introduced in Java 5?
+     (A) Imports classes dynamically at runtime
+     (B) Allows static members (fields and methods) of a class to be used without qualifying with the class name (e.g. `import static java.lang.Math.*;`) [CORRECT]
+     (C) Imports C++ static libraries
+     (D) Forces compile-time memory binding
+     Explanation: Static import enables referencing static fields and methods (like PI or sqrt()) directly without class name prefixing.
+     Tags: BCA-201N, Unit-3, Packages, Static-Import
+
+Q114. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     How are arrays declared and initialized in Java?
+     (A) `int arr = new int(10);`
+     (B) `int[] arr = new int[10];` [CORRECT]
+     (C) `int arr[10];` (like C)
+     (D) `array<int> arr;`
+     Explanation: In Java, `int[] arr = new int[10];` dynamically allocates an integer array of 10 elements on the heap.
+     Tags: BCA-201N, Unit-3, Arrays, Declaration
+
+Q115. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What property is used to determine the number of elements in an array in Java?
+     (A) arr.length()
+     (B) arr.size
+     (C) arr.length [CORRECT]
+     (D) arr.count()
+     Explanation: `length` is an immutable public field (not a method) representing the fixed capacity of an array.
+     Tags: BCA-201N, Unit-3, Arrays, Length
+
+Q116. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What exception is thrown when an invalid array index is accessed (e.g. `arr[-1]` or `arr[10]` for size 10)?
+     (A) ArrayOutOfBoundsException
+     (B) ArrayIndexOutOfBoundsException [CORRECT]
+     (C) IndexException
+     (D) NullPointerException
+     Explanation: Java strictly enforces array bounds checking at runtime and throws java.lang.ArrayIndexOutOfBoundsException.
+     Tags: BCA-201N, Unit-3, Arrays, Exceptions
+
+Q117. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is a Jagged (or Ragged) Array in Java?
+     (A) An array stored in flash memory
+     (B) A two-dimensional array where each row can have a different number of columns [CORRECT]
+     (C) An array with negative indices
+     (D) A single-element array
+     Explanation: Because 2D arrays in Java are arrays of array references, each row can be instantiated with independent lengths.
+     Tags: BCA-201N, Unit-3, Arrays, Jagged-Arrays
+
+Q118. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     Why are objects of class `java.lang.String` immutable in Java?
+     (A) To prevent multithreading
+     (B) Once created, the internal character sequence cannot be altered, ensuring security, thread-safety, and String Constant Pool caching [CORRECT]
+     (C) Because Java has no pointers
+     (D) To limit file sizes
+     Explanation: Immutability guarantees that shared string literals in the String Constant Pool cannot be corrupted by other references.
+     Tags: BCA-201N, Unit-3, Strings, Immutability
+
+Q119. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     Where does the JVM store string literals created with quotes (e.g. `String s = "hello";`)?
+     (A) Method Stack
+     (B) String Constant Pool (located within the Heap) [CORRECT]
+     (C) Directly on CPU registers
+     (D) In secondary disk cache
+     Explanation: String literals are managed in the String Constant Pool inside the Heap to avoid duplicate allocations.
+     Tags: BCA-201N, Unit-3, Strings, Constant-Pool
+
+Q120. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What will `String s1 = "hello"; String s2 = new String("hello"); System.out.println(s1 == s2);` print?
+     (A) true
+     (B) false [CORRECT]
+     (C) Compile-time error
+     (D) NullPointerException
+     Explanation: `==` compares reference addresses. s1 points to the String Pool, while `new String()` allocates a new object in general Heap.
+     Tags: BCA-201N, Unit-3, Strings, Comparison
+
+Q121. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (HARD)
+     What method from java.lang.String returns a canonical representation from the String Constant Pool?
+     (A) canonical()
+     (B) intern() [CORRECT]
+     (C) pool()
+     (D) cache()
+     Explanation: `s2.intern()` returns the pooled reference from the String Constant Pool, making `s1 == s2.intern()` evaluate to true.
+     Tags: BCA-201N, Unit-3, Strings, Intern
+
+Q122. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the key difference between String, StringBuffer, and StringBuilder?
+     (A) String is immutable; StringBuffer is mutable and thread-safe (synchronized); StringBuilder is mutable and non-synchronized (faster) [CORRECT]
+     (B) String is mutable; StringBuffer is immutable
+     (C) StringBuilder is synchronized; StringBuffer is not
+     (D) All three are completely identical
+     Explanation: String is immutable; StringBuffer synchronizes methods for thread safety; StringBuilder drops synchronization for peak single-thread performance.
+     Tags: BCA-201N, Unit-3, Strings, StringBuffer-StringBuilder
+
+Q123. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is the initial default capacity of an empty StringBuffer or StringBuilder?
+     (A) 0 characters
+     (B) 16 characters [CORRECT]
+     (C) 32 characters
+     (D) 64 characters
+     Explanation: An empty StringBuffer or StringBuilder pre-allocates an internal buffer of 16 characters by default.
+     Tags: BCA-201N, Unit-3, StringBuffer, Capacity
+
+Q124. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which method appends characters or primitives to the end of a StringBuffer/StringBuilder?
+     (A) concat()
+     (B) append() [CORRECT]
+     (C) push()
+     (D) insertEnd()
+     Explanation: The `append()` method appends string or primitive representations to the end of the buffer and returns `this`.
+     Tags: BCA-201N, Unit-3, StringBuffer, Append
+
+Q125. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the Vector class in Java (`java.util.Vector`)?
+     (A) A fixed-size array
+     (B) A growable array of objects that is synchronized (thread-safe) [CORRECT]
+     (C) A linked list for queues
+     (D) A graphics vector drawing tool
+     Explanation: Vector implements a dynamically resizable array of objects whose methods are synchronized for multi-threaded safety.
+     Tags: BCA-201N, Unit-3, Collections, Vector
+
+Q126. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the primary difference between `java.util.Vector` and `java.util.ArrayList`?
+     (A) Vector is synchronized (thread-safe) with higher overhead; ArrayList is not synchronized (faster for single threads) [CORRECT]
+     (B) ArrayList is synchronized; Vector is not
+     (C) Vector cannot store objects
+     (D) ArrayList has fixed size
+     Explanation: Vector is legacy and thread-safe; ArrayList is part of modern Collections Framework and non-synchronized.
+     Tags: BCA-201N, Unit-3, Collections, Vector-vs-ArrayList
+
+Q127. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is a Wrapper Class in Java?
+     (A) A class that hides data
+     (B) A class in java.lang that wraps a primitive data type into an object (e.g. Integer for int) [CORRECT]
+     (C) A class that encrypts files
+     (D) A GUI window wrapper
+     Explanation: Wrapper classes (Byte, Short, Integer, Long, Float, Double, Character, Boolean) allow primitives to be used in object collections.
+     Tags: BCA-201N, Unit-3, Wrapper-Classes, Definition
+
+Q128. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is Autoboxing in Java 5+?
+     (A) Automatic translation of Java code to C++
+     (B) The automatic conversion that the Java compiler makes between primitive types and their corresponding object wrapper classes (e.g. int to Integer) [CORRECT]
+     (C) Automatic packing of JAR files
+     (D) Automatic garbage collection
+     Explanation: Autoboxing converts primitives to wrapper objects automatically (e.g. `Integer k = 100;`).
+     Tags: BCA-201N, Unit-3, Autoboxing, Java5
+
+Q129. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is Unboxing in Java?
+     (A) Converting a wrapper object back into its corresponding primitive type automatically (e.g. Integer to int) [CORRECT]
+     (B) Extracting a zip archive
+     (C) Deleting an object from memory
+     (D) Decompiling a class file
+     Explanation: Unboxing is the reverse of autoboxing: extracting the primitive value from a wrapper object.
+     Tags: BCA-201N, Unit-3, Unboxing, Wrapper-Classes
+
+Q130. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What method converts a numeric string to an integer primitive in Java?
+     (A) Integer.toInteger("123")
+     (B) Integer.parseInt("123") [CORRECT]
+     (C) int.convert("123")
+     (D) Integer.value("123")
+     Explanation: Integer.parseInt(String s) parses the string argument as a signed decimal integer primitive.
+     Tags: BCA-201N, Unit-3, Wrapper-Classes, ParseInt
+
+Q131. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What exception is thrown by `Integer.parseInt("abc")`?
+     (A) ClassCastException
+     (B) NumberFormatException [CORRECT]
+     (C) ArithmeticException
+     (D) NullPointerException
+     Explanation: If the string does not contain parsable digits, a java.lang.NumberFormatException is thrown.
+     Tags: BCA-201N, Unit-3, Exceptions, NumberFormatException
+
+Q132. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What does `str.charAt(0)` return for `String str = "Java";`?
+     (A) "J" as a String
+     (B) 'J' as a primitive char [CORRECT]
+     (C) 74 as an ASCII integer
+     (D) null
+     Explanation: charAt(int index) returns the char value at the specified zero-based index.
+     Tags: BCA-201N, Unit-3, Strings, CharAt
+
+Q133. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What does `str.substring(1, 3)` return for `String str = "Hello";`?
+     (A) "Hel"
+     (B) "el" [CORRECT]
+     (C) "ell"
+     (D) "lo"
+     Explanation: substring(beginIndex, endIndex) is inclusive of beginIndex (1 -> 'e') and exclusive of endIndex (3 -> before 'l' at index 3), giving 'el'.
+     Tags: BCA-201N, Unit-3, Strings, Substring
+
+Q134. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is the result of `"apple".compareTo("banana")`?
+     (A) A positive integer
+     (B) A negative integer [CORRECT]
+     (C) 0
+     (D) false
+     Explanation: Lexicographical comparison: 'a' comes before 'b', so compareTo returns a negative difference ('a' - 'b' = -1).
+     Tags: BCA-201N, Unit-3, Strings, CompareTo
+
+Q135. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     How can you reverse a string in Java conveniently?
+     (A) String has a built-in reverse() method
+     (B) Using `new StringBuilder(str).reverse().toString()` [CORRECT]
+     (C) Strings cannot be reversed in Java
+     (D) Using Math.reverse(str)
+     Explanation: String lacks reverse(), so StringBuilder.reverse() or StringBuffer.reverse() is standard.
+     Tags: BCA-201N, Unit-3, StringBuilder, Reverse
+
+Q136. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the capacity of an array created as `int[] a = new int[5];`?
+     (A) 0
+     (B) 5 [CORRECT]
+     (C) 10
+     (D) Unlimited
+     Explanation: Arrays in Java have a fixed, immutable capacity defined at the time of creation (here 5).
+     Tags: BCA-201N, Unit-3, Arrays, Size
+
+Q137. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What are the default values populated into `int[] a = new int[3];`?
+     (A) null, null, null
+     (B) 0, 0, 0 [CORRECT]
+     (C) Garbage values
+     (D) -1, -1, -1
+     Explanation: Numeric array elements are automatically zero-initialized when allocated on the heap.
+     Tags: BCA-201N, Unit-3, Arrays, Initialization
+
+Q138. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the default value of elements in `boolean[] flags = new boolean[2];`?
+     (A) true, true
+     (B) false, false [CORRECT]
+     (C) 0, 0
+     (D) null, null
+     Explanation: Boolean array elements default to false upon allocation.
+     Tags: BCA-201N, Unit-3, Arrays, Boolean-Array
+
+Q139. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What is the default value of elements in `String[] names = new String[2];`?
+     (A) "", ""
+     (B) null, null [CORRECT]
+     (C) undefined, undefined
+     (D) 0, 0
+     Explanation: Reference type array elements are initialized to null until assigned valid object references.
+     Tags: BCA-201N, Unit-3, Arrays, Reference-Array
+
+Q140. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which method in java.util.Arrays is used to sort an array in ascending order?
+     (A) Arrays.order(arr)
+     (B) Arrays.sort(arr) [CORRECT]
+     (C) arr.sort()
+     (D) Collections.sort(arr)
+     Explanation: java.util.Arrays.sort() uses Dual-Pivot Quicksort for primitives and TimSort for objects.
+     Tags: BCA-201N, Unit-3, Arrays, Sorting
+
+Q141. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which method in java.util.Arrays performs binary search on a sorted array?
+     (A) Arrays.find(arr, key)
+     (B) Arrays.binarySearch(arr, key) [CORRECT]
+     (C) Arrays.search(arr, key)
+     (D) Arrays.lookup(arr, key)
+     Explanation: Arrays.binarySearch() returns the index of the search key if found, or negative insertion point if absent.
+     Tags: BCA-201N, Unit-3, Arrays, BinarySearch
+
+Q142. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What will `System.out.println("Java".equalsIgnoreCase("JAVA"));` output?
+     (A) false
+     (B) true [CORRECT]
+     (C) 0
+     (D) 1
+     Explanation: equalsIgnoreCase() compares two strings character by character ignoring case considerations.
+     Tags: BCA-201N, Unit-3, Strings, EqualsIgnoreCase
+
+Q143. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What does `trim()` method of java.lang.String do?
+     (A) Deletes all spaces in the entire string
+     (B) Removes leading and trailing whitespace from the string [CORRECT]
+     (C) Shortens the string to 10 characters
+     (D) Splits the string into words
+     Explanation: `trim()` returns a copy with all leading and trailing whitespace omitted.
+     Tags: BCA-201N, Unit-3, Strings, Trim
+
+Q144. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What does `str.split(",")` return for `"apple,banana,orange"`?
+     (A) A Vector of strings
+     (B) An array of String: `["apple", "banana", "orange"]` [CORRECT]
+     (C) A single concatenated string
+     (D) A character array
+     Explanation: `split(regex)` splits the string around matches of the delimiter regex, returning a String array.
+     Tags: BCA-201N, Unit-3, Strings, Split
+
+Q145. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     What method converts any primitive type to its string representation?
+     (A) String.valueOf() [CORRECT]
+     (B) String.toString()
+     (C) String.parse()
+     (D) String.convert()
+     Explanation: String.valueOf() is overloaded for all primitives, converting them to String objects.
+     Tags: BCA-201N, Unit-3, Strings, ValueOf
+
+Q146. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (HARD)
+     Can an interface declare private methods in modern Java (Java 9+)?
+     (A) No, never
+     (B) Yes, private helper methods can be defined to share code between default methods [CORRECT]
+     (C) Only private static fields are allowed
+     (D) Only in abstract classes
+     Explanation: Java 9 introduced private interface methods to enable code reuse among default methods without exposing API.
+     Tags: BCA-201N, Unit-3, Interfaces, Private-Methods
+
+Q147. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (HARD)
+     What happens if a class implements two interfaces that declare the EXACT same default method signature?
+     (A) Compiler automatically picks the first one
+     (B) The class fails compilation due to diamond conflict unless it explicitly overrides the duplicate method [CORRECT]
+     (C) Runtime Exception
+     (D) JVM crashes
+     Explanation: Java forces the implementing class to explicitly override the conflicting default method to resolve ambiguity.
+     Tags: BCA-201N, Unit-3, Interfaces, Default-Method-Conflict
+
+Q148. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is a Functional Interface in Java (Java 8+)?
+     (A) An interface with multiple abstract methods
+     (B) An interface that has exactly one abstract method (SAM - Single Abstract Method) [CORRECT]
+     (C) An interface without any methods
+     (D) An interface that returns integers only
+     Explanation: A Functional Interface contains exactly one abstract method, enabling use with Lambda Expressions (annotated with @FunctionalInterface).
+     Tags: BCA-201N, Unit-3, Functional-Interfaces, Java8
+
+Q149. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (MEDIUM)
+     What is the capacity increment in a Vector when its capacity is exhausted and no increment was specified?
+     (A) It grows by 1 element
+     (B) It doubles its current capacity (2x) [CORRECT]
+     (C) It increases by 10 elements
+     (D) It throws OutOfMemoryError immediately
+     Explanation: By default, Vector doubles its capacity when capacity expansion is triggered.
+     Tags: BCA-201N, Unit-3, Vector, Capacity-Growth
+
+Q150. [Unit 3: Interfaces, Packages, Arrays, Strings & Wrapper Classes] (EASY)
+     Which method in java.lang.Character checks if a character is a decimal digit?
+     (A) Character.isNumber(ch)
+     (B) Character.isDigit(ch) [CORRECT]
+     (C) Character.isNumeric(ch)
+     (D) Character.digit(ch)
+     Explanation: Character.isDigit(char ch) returns true if the specified character is a digit (0-9).
+     Tags: BCA-201N, Unit-3, Wrapper-Classes, Character
+
+Q151. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is the root class of the entire Java exception and error hierarchy?
+     (A) java.lang.Exception
+     (B) java.lang.Error
+     (C) java.lang.Throwable [CORRECT]
+     (D) java.lang.Object
+     Explanation: java.lang.Throwable is the ultimate superclass of all errors and exceptions in the Java language.
+     Tags: BCA-201N, Unit-4, Exceptions, Throwable
+
+Q152. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is the fundamental difference between Error and Exception in Java?
+     (A) Errors are checked; Exceptions are unchecked
+     (B) Errors represent catastrophic hardware/system conditions (e.g. OutOfMemoryError) not meant to be caught; Exceptions represent conditions a program should catch [CORRECT]
+     (C) Exceptions are fatal; Errors are minor
+     (D) There is no difference
+     Explanation: Errors (subclasses of Error) indicate serious problems that reasonable applications should not try to catch.
+     Tags: BCA-201N, Unit-4, Exceptions, Error-vs-Exception
+
+Q153. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     Which of the following is a Checked Exception in Java?
+     (A) NullPointerException
+     (B) ArithmeticException
+     (C) IOException [CORRECT]
+     (D) ArrayIndexOutOfBoundsException
+     Explanation: IOException (and its subclasses) are checked exceptions verified at compile time, whereas RuntimeException subclasses are unchecked.
+     Tags: BCA-201N, Unit-4, Exceptions, Checked-Exceptions
+
+Q154. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which of the following is an Unchecked Exception in Java?
+     (A) SQLException
+     (B) ClassNotFoundException
+     (C) NullPointerException [CORRECT]
+     (D) InterruptedException
+     Explanation: NullPointerException is an unchecked RuntimeException; the compiler does not force try-catch or throws clauses.
+     Tags: BCA-201N, Unit-4, Exceptions, Unchecked-Exceptions
+
+Q155. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which keyword is used to explicitly throw an exception object in Java code?
+     (A) throws
+     (B) throw [CORRECT]
+     (C) raise
+     (D) catch
+     Explanation: The 'throw' keyword is used to explicitly instantiate and throw an exception (e.g. `throw new Exception();`).
+     Tags: BCA-201N, Unit-4, Keywords, Throw
+
+Q156. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which keyword is used in a method declaration to list exceptions that the method might propagate?
+     (A) throw
+     (B) throws [CORRECT]
+     (C) throwing
+     (D) try
+     Explanation: The 'throws' keyword appears in method signatures to declare checked exceptions propagated to callers.
+     Tags: BCA-201N, Unit-4, Keywords, Throws
+
+Q157. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What happens if an exception is thrown inside a `try` block that has no matching `catch` handler?
+     (A) The exception is quietly ignored
+     (B) The finally block (if present) executes, and the exception propagates up the call stack to the caller [CORRECT]
+     (C) The program restarts
+     (D) JVM crashes instantly without cleanup
+     Explanation: The finally block executes first, then the uncaught exception travels up the call stack seeking an enclosing handler.
+     Tags: BCA-201N, Unit-4, Exceptions, Propagation
+
+Q158. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     In what scenario will a `finally` block NOT execute?
+     (A) When an uncaught exception is thrown
+     (B) When a return statement is encountered in the try block
+     (C) If `System.exit(0)` is executed or a fatal JVM crash occurs [CORRECT]
+     (D) When a break statement is hit
+     Explanation: `System.exit()` terminates the JVM process immediately, preventing the finally block from executing.
+     Tags: BCA-201N, Unit-4, Exceptions, Finally-Execution
+
+Q159. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is the correct ordering when catching multiple exception types?
+     (A) Generic (superclasses) first, then specific (subclasses)
+     (B) Subclasses (most specific) first, followed by superclasses (more generic) [CORRECT]
+     (C) Alphabetical order
+     (D) Order does not matter
+     Explanation: Subclasses must precede superclasses; placing a superclass catch first causes a compile-time unreachable code error.
+     Tags: BCA-201N, Unit-4, Exceptions, Catch-Order
+
+Q160. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What will be printed by the following code: `try { int a = 5/0; } catch(Exception e) { System.out.print("A"); } finally { System.out.print("B"); }`?
+     (A) A
+     (B) B
+     (C) AB [CORRECT]
+     (D) ArithmeticException
+     Explanation: The exception is caught printing 'A', then the finally block executes unconditionally printing 'B', yielding 'AB'.
+     Tags: BCA-201N, Unit-4, Exceptions, Try-Catch-Finally
+
+Q161. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     How do you create a Custom (User-Defined) Exception in Java?
+     (A) By implementing java.lang.Runnable
+     (B) By creating a class that extends java.lang.Exception (for checked) or RuntimeException (for unchecked) [CORRECT]
+     (C) By defining an interface named Exception
+     (D) By using the #exception directive
+     Explanation: Custom exceptions subclass Exception (for checked exceptions) or RuntimeException (for unchecked exceptions).
+     Tags: BCA-201N, Unit-4, Exceptions, Custom-Exceptions
+
+Q162. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is the Try-with-Resources statement introduced in Java 7?
+     (A) A try block with multiple catch clauses
+     (B) A try statement that automatically closes resources implementing java.lang.AutoCloseable at the end of the statement [CORRECT]
+     (C) A try block that allocates extra heap memory
+     (D) A try block for network sockets only
+     Explanation: Try-with-resources automatically closes declared resources (streams, connections) without needing an explicit finally block.
+     Tags: BCA-201N, Unit-4, Exceptions, Try-With-Resources
+
+Q163. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What are the two ways to create a thread in Java?
+     (A) Extending java.lang.Thread class OR implementing java.lang.Runnable interface [CORRECT]
+     (B) Extending Process OR implementing Task
+     (C) Using fork() system call directly
+     (D) Using System.thread()
+     Explanation: Threads are created by either subclassing Thread and overriding `run()`, or implementing Runnable and passing to a Thread.
+     Tags: BCA-201N, Unit-4, Multithreading, Thread-Creation
+
+Q164. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     Why is implementing `Runnable` generally preferred over extending `Thread`?
+     (A) Runnable runs faster
+     (B) Java allows multiple interface implementation, so a class implementing Runnable can still extend another parent class [CORRECT]
+     (C) Thread class is deprecated
+     (D) Runnable does not use memory
+     Explanation: Extending Thread consumes a class's single inheritance slot; implementing Runnable preserves inheritance flexibility.
+     Tags: BCA-201N, Unit-4, Multithreading, Runnable-vs-Thread
+
+Q165. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which method must be called to actually initiate execution of a new thread in the JVM?
+     (A) run()
+     (B) start() [CORRECT]
+     (C) execute()
+     (D) init()
+     Explanation: Calling `start()` allocates OS thread resources and registers the thread with the scheduler, which then invokes `run()` asynchronously.
+     Tags: BCA-201N, Unit-4, Multithreading, Start-Method
+
+Q166. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What happens if you invoke `t.run()` directly instead of `t.start()`?
+     (A) A new thread is created
+     (B) The run() method executes synchronously within the CURRENT thread just like a normal method call, with no new thread spawned [CORRECT]
+     (C) Compilation error
+     (D) ThreadDeath exception
+     Explanation: Calling `run()` directly does not spawn a new thread; code runs sequentially on the calling thread.
+     Tags: BCA-201N, Unit-4, Multithreading, Run-vs-Start
+
+Q167. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What are the core states in a Java thread's life cycle?
+     (A) Start, Stop, Pause
+     (B) New, Runnable, Blocked, Waiting, Timed Waiting, Terminated [CORRECT]
+     (C) Created, Active, Idle, Dead
+     (D) Init, Running, Suspended, Destroyed
+     Explanation: Thread.State enum defines: NEW, RUNNABLE, BLOCKED, WAITING, TIMED_WAITING, and TERMINATED.
+     Tags: BCA-201N, Unit-4, Multithreading, Thread-Lifecycle
+
+Q168. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What does the `Thread.sleep(long millis)` method do?
+     (A) Terminates the thread
+     (B) Causes current executing thread to suspend execution for the specified milliseconds without releasing object locks [CORRECT]
+     (C) Releases all synchronization locks immediately
+     (D) Resets the CPU cache
+     Explanation: `sleep()` pauses execution for the given duration while retaining held synchronization monitors.
+     Tags: BCA-201N, Unit-4, Multithreading, Sleep-Method
+
+Q169. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What checked exception must be handled when calling `Thread.sleep()` or `Thread.join()`?
+     (A) ThreadException
+     (B) InterruptedException [CORRECT]
+     (C) ExecutionException
+     (D) TimeoutException
+     Explanation: Methods that block waiting for events throw InterruptedException if interrupted by another thread via interrupt().
+     Tags: BCA-201N, Unit-4, Multithreading, InterruptedException
+
+Q170. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What does the `t.join()` method do?
+     (A) Merges two threads into one
+     (B) Waits for thread 't' to terminate before the calling thread resumes execution [CORRECT]
+     (C) Suspends thread 't' indefinitely
+     (D) Kills the thread
+     Explanation: `join()` allows one thread to wait until another thread finishes its execution cycle.
+     Tags: BCA-201N, Unit-4, Multithreading, Join-Method
+
+Q171. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What are the minimum, normal (default), and maximum thread priorities in Java?
+     (A) 1, 5, 10 (defined by Thread.MIN_PRIORITY, NORM_PRIORITY, MAX_PRIORITY) [CORRECT]
+     (B) 0, 50, 100
+     (C) 1, 2, 3
+     (D) 0, 1, 2
+     Explanation: Thread priorities range from 1 (MIN_PRIORITY) to 10 (MAX_PRIORITY), with default 5 (NORM_PRIORITY).
+     Tags: BCA-201N, Unit-4, Multithreading, Thread-Priority
+
+Q172. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is Synchronization in Java multithreading?
+     (A) Making threads run at exact same speed
+     (B) The capability to control the access of multiple threads to shared resources, preventing race conditions and data corruption [CORRECT]
+     (C) Writing thread code to disk
+     (D) Running threads on multiple CPUs
+     Explanation: Synchronization enforces mutual exclusion, ensuring only one thread accesses a synchronized block or method at a time.
+     Tags: BCA-201N, Unit-4, Multithreading, Synchronization
+
+Q173. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What lock does a `synchronized` instance method acquire when entered by a thread?
+     (A) Class-level static lock
+     (B) The intrinsic monitor lock of the specific object instance (`this`) [CORRECT]
+     (C) Operating system file lock
+     (D) JVM global lock
+     Explanation: A synchronized instance method acquires the monitor lock associated with the target object instance (`this`).
+     Tags: BCA-201N, Unit-4, Synchronization, Object-Lock
+
+Q174. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What lock does a `public static synchronized void myMethod()` acquire?
+     (A) The lock of the current instance
+     (B) The Class object lock (`Class.forName()`) for that entire class [CORRECT]
+     (C) A temporary thread lock
+     (D) No lock is acquired
+     Explanation: Static synchronized methods lock on the java.lang.Class object associated with that class.
+     Tags: BCA-201N, Unit-4, Synchronization, Class-Lock
+
+Q175. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which methods are used for Inter-Thread Communication in Java?
+     (A) sleep(), yield(), join()
+     (B) wait(), notify(), notifyAll() [CORRECT]
+     (C) pause(), resume(), stop()
+     (D) send(), receive()
+     Explanation: `wait()`, `notify()`, and `notifyAll()` defined in java.lang.Object allow coordinating threads through monitor locks.
+     Tags: BCA-201N, Unit-4, Multithreading, Inter-Thread-Communication
+
+Q176. [Unit 4: Exception Handling & Multithreaded Programming] (HARD)
+     Why are `wait()`, `notify()`, and `notifyAll()` defined in class `Object` rather than in class `Thread`?
+     (A) Because Java threads are objects
+     (B) Because locks/monitors belong to individual shared objects, not to threads themselves [CORRECT]
+     (C) Due to historic mistake
+     (D) To save memory in Thread class
+     Explanation: Monitors are attached to objects; any thread can wait on an object's monitor and be notified by another thread.
+     Tags: BCA-201N, Unit-4, Multithreading, Object-Methods
+
+Q177. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What happens if a thread calls `wait()` or `notify()` outside of a synchronized block/method?
+     (A) It compiles and executes normally
+     (B) It throws an `IllegalMonitorStateException` at runtime [CORRECT]
+     (C) It causes deadlock
+     (D) It causes thread starvation
+     Explanation: A thread must own the object's monitor before calling wait/notify, otherwise IllegalMonitorStateException is thrown.
+     Tags: BCA-201N, Unit-4, Multithreading, IllegalMonitorStateException
+
+Q178. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What does `wait()` do to the lock currently held by the calling thread?
+     (A) Retains the lock indefinitely
+     (B) Releases the object monitor lock and puts the thread in the waiting pool until notified [CORRECT]
+     (C) Transfers lock to OS kernel
+     (D) Duplicates the lock
+     Explanation: Unlike sleep(), `wait()` releases the monitor lock so another thread can enter synchronized blocks and signal notify().
+     Tags: BCA-201N, Unit-4, Multithreading, Wait-Lock-Release
+
+Q179. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is a Deadlock in multithreading?
+     (A) When a thread executes infinitely in a loop
+     (B) A condition where two or more threads are permanently blocked, each waiting for a lock held by the other [CORRECT]
+     (C) When thread memory is deleted
+     (D) When a thread is interrupted
+     Explanation: Deadlock occurs when thread A holds Lock 1 waiting for Lock 2, while thread B holds Lock 2 waiting for Lock 1.
+     Tags: BCA-201N, Unit-4, Multithreading, Deadlock
+
+Q180. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is a Daemon Thread in Java?
+     (A) A malicious background thread
+     (B) A low-priority service provider thread (e.g. Garbage Collector) whose termination does not prevent JVM shutdown [CORRECT]
+     (C) A thread with maximum priority
+     (D) A thread that never sleeps
+     Explanation: Daemon threads provide background services; the JVM exits automatically when all user threads finish, killing daemons.
+     Tags: BCA-201N, Unit-4, Multithreading, Daemon-Thread
+
+Q181. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     How can a thread be designated as a daemon thread in Java?
+     (A) thread.setDaemon(true) called BEFORE start() [CORRECT]
+     (B) thread.setDaemon(true) called AFTER start()
+     (C) thread.makeDaemon()
+     (D) Threads cannot be made daemons
+     Explanation: `t.setDaemon(true)` must be called before `t.start()`; calling it after throws IllegalThreadStateException.
+     Tags: BCA-201N, Unit-4, Daemon-Thread, SetDaemon
+
+Q182. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is the purpose of the `yield()` method in class Thread?
+     (A) Kills the current thread
+     (B) Provides a hint to the thread scheduler that the current thread is willing to yield its current use of processor [CORRECT]
+     (C) Suspends thread for 10 seconds
+     (D) Forces priority boost
+     Explanation: `Thread.yield()` signals willingness to relinquish CPU slice to other threads of equal priority.
+     Tags: BCA-201N, Unit-4, Multithreading, Yield-Method
+
+Q183. [Unit 4: Exception Handling & Multithreaded Programming] (HARD)
+     What is the purpose of the `volatile` keyword in Java variable declarations?
+     (A) Ensures variable is stored in ROM
+     (B) Guarantees that reads and writes to the variable are directly synchronized with main memory, preventing thread caching [CORRECT]
+     (C) Makes variable constant
+     (D) Prevents serialization
+     Explanation: `volatile` ensures visibility of shared variable changes across threads by reading/writing directly to main memory.
+     Tags: BCA-201N, Unit-4, Multithreading, Volatile
+
+Q184. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is the difference between `notify()` and `notifyAll()`?
+     (A) notify() wakes up all threads; notifyAll() wakes up one
+     (B) notify() wakes up a single arbitrary thread waiting on the object monitor; notifyAll() wakes up all waiting threads [CORRECT]
+     (C) notify() kills threads
+     (D) notifyAll() pauses all threads
+     Explanation: notify() chooses one arbitrary waiting thread; notifyAll() awakens all threads, allowing them to compete for the lock.
+     Tags: BCA-201N, Unit-4, Multithreading, Notify-vs-NotifyAll
+
+Q185. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is a Race Condition?
+     (A) A condition where execution output depends on the non-deterministic relative timing or interleaving of multiple threads [CORRECT]
+     (B) A competition to allocate heap
+     (C) Running threads on high clock speed CPUs
+     (D) A loop condition
+     Explanation: Race conditions happen when concurrent threads read and write shared data without synchronization, causing unpredictable bugs.
+     Tags: BCA-201N, Unit-4, Concurrency, Race-Condition
+
+Q186. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is the result of catching `Exception` before catching `ArithmeticException`?
+     (A) Compile-time error: unreachable code [CORRECT]
+     (B) Compiles normally and both execute
+     (C) Runtime exception
+     (D) Silent compiler warning
+     Explanation: A more generic exception handler before a specific subclass catch block causes a compile error (unreachable code).
+     Tags: BCA-201N, Unit-4, Exceptions, Unreachable-Code
+
+Q187. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Can a `try` block exist without a `catch` block?
+     (A) No, catch is always mandatory
+     (B) Yes, provided a `finally` block is attached (try-finally) [CORRECT]
+     (C) Only in abstract methods
+     (D) Only inside main()
+     Explanation: A try block requires at least one catch clause OR a finally block (`try { ... } finally { ... }` is completely valid).
+     Tags: BCA-201N, Unit-4, Exceptions, Try-Finally
+
+Q188. [Unit 4: Exception Handling & Multithreaded Programming] (HARD)
+     What happens if a thread attempts to acquire a synchronized lock that it ALREADY owns?
+     (A) Deadlock occurs
+     (B) It succeeds immediately because Java monitor locks are Reentrant [CORRECT]
+     (C) An IllegalMonitorStateException is thrown
+     (D) Thread is blocked
+     Explanation: Java monitors are reentrant: a thread holding a lock can enter other synchronized blocks requiring the same lock without blocking.
+     Tags: BCA-201N, Unit-4, Synchronization, Reentrant-Locks
+
+Q189. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is Thread Starvation?
+     (A) A thread running out of stack space
+     (B) A situation where a ready-to-run thread is perpetually denied CPU time because higher priority threads constantly dominate [CORRECT]
+     (C) A thread waiting for I/O
+     (D) Deleting thread memory
+     Explanation: Starvation occurs when a thread cannot gain regular access to shared resources or CPU time due to greedy scheduling.
+     Tags: BCA-201N, Unit-4, Multithreading, Starvation
+
+Q190. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which method can be used to check whether a thread is still running and has not yet completed?
+     (A) thread.isRunning()
+     (B) thread.isAlive() [CORRECT]
+     (C) thread.isActive()
+     (D) thread.status()
+     Explanation: `isAlive()` returns true if the thread has been started and has not yet died (not in NEW or TERMINATED state).
+     Tags: BCA-201N, Unit-4, Multithreading, IsAlive
+
+Q191. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is the return type of the `getMessage()` method in class Throwable?
+     (A) char[]
+     (B) String [CORRECT]
+     (C) void
+     (D) int
+     Explanation: getMessage() returns the detailed description string associated with the exception object.
+     Tags: BCA-201N, Unit-4, Exceptions, GetMessage
+
+Q192. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What method prints the stack trace of an exception to standard error stream System.err?
+     (A) e.printDetails()
+     (B) e.printStackTrace() [CORRECT]
+     (C) e.dumpStack()
+     (D) e.showError()
+     Explanation: `e.printStackTrace()` writes the exception class name, error message, and method call hierarchy to stderr.
+     Tags: BCA-201N, Unit-4, Exceptions, PrintStackTrace
+
+Q193. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What is an unchecked exception commonly thrown when attempting to cast an object to an incompatible type?
+     (A) ClassCastException [CORRECT]
+     (B) TypeMismatchException
+     (C) IncompatibleClassException
+     (D) ArrayStoreException
+     Explanation: ClassCastException occurs at runtime when code attempts to cast an object to a subclass that it is not an instance of.
+     Tags: BCA-201N, Unit-4, Exceptions, ClassCastException
+
+Q194. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     Which statement is true regarding method `interrupt()` on a thread?
+     (A) It instantly terminates the target thread like kill -9
+     (B) It sets the thread's interrupt status flag; if thread is blocked in sleep/wait/join, it awakens with InterruptedException [CORRECT]
+     (C) It locks the thread monitor
+     (D) It resets thread priority to 1
+     Explanation: `interrupt()` politely signals a thread by setting its interrupt flag or interrupting its blocking wait/sleep call.
+     Tags: BCA-201N, Unit-4, Multithreading, Interrupt
+
+Q195. [Unit 4: Exception Handling & Multithreaded Programming] (HARD)
+     Which method in Thread class clears and returns the interrupt status of the current thread?
+     (A) Thread.interrupted() [CORRECT]
+     (B) t.isInterrupted()
+     (C) Thread.clearInterrupt()
+     (D) Thread.reset()
+     Explanation: The static `Thread.interrupted()` checks the current thread's interrupt status and resets it to false.
+     Tags: BCA-201N, Unit-4, Multithreading, Interrupted-Static
+
+Q196. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What exception is thrown when dividing an integer by zero in Java (`int x = 10 / 0;`)?
+     (A) NullPointerException
+     (B) ArithmeticException [CORRECT]
+     (C) DivisionByZeroException
+     (D) NumberFormatException
+     Explanation: Integer division by zero throws java.lang.ArithmeticException: / by zero.
+     Tags: BCA-201N, Unit-4, Exceptions, ArithmeticException
+
+Q197. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     What exception is thrown when accessing a member method on an object reference holding `null`?
+     (A) IllegalArgumentException
+     (B) NullPointerException [CORRECT]
+     (C) IllegalStateException
+     (D) ClassNotFoundException
+     Explanation: Attempting to invoke methods or access fields on a null reference triggers java.lang.NullPointerException.
+     Tags: BCA-201N, Unit-4, Exceptions, NullPointerException
+
+Q198. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     Can an exception thrown in a constructor prevent object instantiation?
+     (A) No, object is already created
+     (B) Yes, throwing an exception halts constructor execution, leaving no valid reference returned to caller [CORRECT]
+     (C) Only if it is unchecked
+     (D) Constructors cannot throw exceptions
+     Explanation: If a constructor throws an exception, the construction process fails and no valid object reference is returned.
+     Tags: BCA-201N, Unit-4, Constructors, Exceptions
+
+Q199. [Unit 4: Exception Handling & Multithreaded Programming] (MEDIUM)
+     What is a Synchronized Block compared to a Synchronized Method?
+     (A) Synchronized block allows locking on any specific arbitrary object and protects only a critical subset of statements rather than the entire method [CORRECT]
+     (B) Synchronized blocks are slower
+     (C) Synchronized blocks can only run on main thread
+     (D) They are identical
+     Explanation: Synchronized blocks `synchronized(lockObj) { ... }` offer finer granularity, reducing lock contention.
+     Tags: BCA-201N, Unit-4, Synchronization, Synchronized-Block
+
+Q200. [Unit 4: Exception Handling & Multithreaded Programming] (EASY)
+     Which package provides modern high-level concurrency utilities (ThreadPoolExecutor, Locks, Semaphores) in Java?
+     (A) java.lang.thread
+     (B) java.util.concurrent [CORRECT]
+     (C) java.io.async
+     (D) java.sys.concurrency
+     Explanation: java.util.concurrent (developed by Doug Lea in Java 5) contains production-grade concurrency utilities.
+     Tags: BCA-201N, Unit-4, Concurrency, Java-Util-Concurrent
+
+Q201. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What is an I/O Stream in Java?
+     (A) A live video stream
+     (B) A logical abstraction representing a sequential flow of data from a source (input stream) to a destination sink (output stream) [CORRECT]
+     (C) A networking protocol
+     (D) A database connection pool
+     Explanation: An I/O stream is a conduit through which data is transferred sequentially byte-by-byte or character-by-character.
+     Tags: BCA-201N, Unit-5, IO-Streams, Stream-Concept
+
+Q202. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What are the two major categories of I/O stream hierarchies in Java?
+     (A) Byte Streams (8-bit bytes) and Character Streams (16-bit Unicode characters) [CORRECT]
+     (B) Text Streams and Image Streams
+     (C) Local Streams and Network Streams
+     (D) Synchronous and Asynchronous Streams
+     Explanation: Java separates I/O into Byte Streams (handling raw binary/bytes) and Character Streams (handling 16-bit Unicode text).
+     Tags: BCA-201N, Unit-5, IO-Streams, Byte-vs-Character
+
+Q203. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What are the abstract superclasses for all Byte Streams in Java?
+     (A) Reader and Writer
+     (B) InputStream and OutputStream [CORRECT]
+     (C) FileInput and FileOutput
+     (D) ByteReader and ByteWriter
+     Explanation: java.io.InputStream and java.io.OutputStream are the root abstract classes for all byte-oriented streams.
+     Tags: BCA-201N, Unit-5, Byte-Streams, InputStream-OutputStream
+
+Q204. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What are the abstract superclasses for all Character Streams in Java?
+     (A) InputStream and OutputStream
+     (B) Reader and Writer [CORRECT]
+     (C) TextReader and TextWriter
+     (D) CharStreamIn and CharStreamOut
+     Explanation: java.io.Reader and java.io.Writer are the root abstract classes for all 16-bit character-oriented streams.
+     Tags: BCA-201N, Unit-5, Character-Streams, Reader-Writer
+
+Q205. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which class is used to read raw bytes from a file on disk?
+     (A) FileReader
+     (B) FileInputStream [CORRECT]
+     (C) FileByteReader
+     (D) DiskInputStream
+     Explanation: FileInputStream reads raw bytes such as image data, audio, or binary files from a file.
+     Tags: BCA-201N, Unit-5, File-IO, FileInputStream
+
+Q206. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which class is used to write raw bytes to a file on disk?
+     (A) FileWriter
+     (B) FileOutputStream [CORRECT]
+     (C) ByteDiskWriter
+     (D) FilePrinter
+     Explanation: FileOutputStream writes raw streams of bytes into a file on disk.
+     Tags: BCA-201N, Unit-5, File-IO, FileOutputStream
+
+Q207. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     How can you open a file for APPENDING data using FileOutputStream rather than overwriting?
+     (A) `new FileOutputStream(filename, true);` [CORRECT]
+     (B) `new FileOutputStream(filename, "append");`
+     (C) `new FileOutputStream(filename).setAppend(true);`
+     (D) Appending is not supported
+     Explanation: Passing `true` as the second boolean parameter to FileOutputStream constructor opens the file in append mode.
+     Tags: BCA-201N, Unit-5, File-IO, Append-Mode
+
+Q208. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What value does the `read()` method of InputStream return when the End of File (EOF) is reached?
+     (A) 0
+     (B) -1 [CORRECT]
+     (C) null
+     (D) Throws EOFException
+     Explanation: InputStream.read() returns an integer (0-255) for valid bytes, and returns -1 to indicate end-of-stream.
+     Tags: BCA-201N, Unit-5, Streams, EOF-Marker
+
+Q209. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Why are BufferedInputStream and BufferedOutputStream used when working with files?
+     (A) They compress files on the fly
+     (B) They minimize expensive disk I/O operations by reading and writing data in large internal memory buffer chunks [CORRECT]
+     (C) They encrypt data automatically
+     (D) They prevent file deletion
+     Explanation: Buffering reduces system calls and disk head movement by performing block transfers via an in-memory buffer.
+     Tags: BCA-201N, Unit-5, Buffered-Streams, Performance
+
+Q210. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which class is best suited for reading text lines from a file using `readLine()`?
+     (A) FileReader
+     (B) BufferedReader [CORRECT]
+     (C) FileInputStream
+     (D) Scanner
+     Explanation: BufferedReader provides the `readLine()` method, reading text line-by-line until carriage return or newline.
+     Tags: BCA-201N, Unit-5, Character-Streams, BufferedReader
+
+Q211. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Which bridge class converts a byte-oriented InputStream (like System.in) into a character-oriented Reader?
+     (A) ByteToCharReader
+     (B) InputStreamReader [CORRECT]
+     (C) StreamConverter
+     (D) DataInputStream
+     Explanation: InputStreamReader acts as a bridge, decoding raw bytes into 16-bit characters using a specified charset.
+     Tags: BCA-201N, Unit-5, Bridge-Streams, InputStreamReader
+
+Q212. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     How is console input typically read using BufferedReader?
+     (A) `new BufferedReader(new InputStreamReader(System.in));` [CORRECT]
+     (B) `new BufferedReader(System.in);`
+     (C) `new BufferedReader(new FileReader("console"));`
+     (D) `System.in.readText();`
+     Explanation: BufferedReader wraps an InputStreamReader that in turn wraps System.in: `BufferedReader br = new BufferedReader(new InputStreamReader(System.in));`.
+     Tags: BCA-201N, Unit-5, Console-IO, BufferedReader
+
+Q213. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `flush()` method do on an output stream in Java?
+     (A) Closes the stream permanently
+     (B) Forces any buffered output bytes to be immediately written to the underlying physical destination [CORRECT]
+     (C) Deletes stream contents
+     (D) Rewinds stream to beginning
+     Explanation: `flush()` flushes the internal write buffer, ensuring pending data is committed to disk or socket immediately.
+     Tags: BCA-201N, Unit-5, Streams, Flush
+
+Q214. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What is Object Serialization in Java?
+     (A) Compressing objects into zip format
+     (B) The process of converting an object's state into a byte stream for storage to disk or transmission across a network [CORRECT]
+     (C) Encrypting object source code
+     (D) Translating Java to JSON
+     Explanation: Serialization flattens an object's graph into a sequence of bytes via ObjectOutputStream.
+     Tags: BCA-201N, Unit-5, Serialization, Definition
+
+Q215. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which marker interface must a class implement to be serializable by ObjectOutputStream?
+     (A) java.lang.Cloneable
+     (B) java.io.Serializable [CORRECT]
+     (C) java.io.Streamable
+     (D) java.lang.Packable
+     Explanation: java.io.Serializable is the marker interface required for automatic serialization.
+     Tags: BCA-201N, Unit-5, Serialization, Serializable
+
+Q216. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What is Deserialization in Java?
+     (A) Deleting serialized files
+     (B) The reverse process of reconstructing an in-memory live Java object from a serialized byte stream via ObjectInputStream [CORRECT]
+     (C) Compiling class files
+     (D) Validating XML
+     Explanation: Deserialization rebuilds the object graph from byte streams using `ObjectInputStream.readObject()`.
+     Tags: BCA-201N, Unit-5, Deserialization, ObjectInputStream
+
+Q217. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which keyword prevents a sensitive member field from being serialized?
+     (A) volatile
+     (B) transient [CORRECT]
+     (C) static
+     (D) private
+     Explanation: The 'transient' keyword marks fields (like passwords or credit card numbers) that should be excluded from serialization.
+     Tags: BCA-201N, Unit-5, Keywords, Transient
+
+Q218. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Are `static` fields serialized during Object Serialization?
+     (A) Yes, always
+     (B) No, static fields belong to the class, not to any individual object instance, and are not serialized [CORRECT]
+     (C) Only if marked public
+     (D) Only if marked final
+     Explanation: Static variables hold class-level state and are not saved in instance serialization streams.
+     Tags: BCA-201N, Unit-5, Serialization, Static-Fields
+
+Q219. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (HARD)
+     What is the purpose of `serialVersionUID` in a Serializable class?
+     (A) A password for encryption
+     (B) A version identifier used during deserialization to verify that the sender and receiver of an object have compatible loaded classes [CORRECT]
+     (C) A thread priority value
+     (D) A memory address
+     Explanation: If the loaded class's serialVersionUID does not match the stream's UID, an InvalidClassException is thrown.
+     Tags: BCA-201N, Unit-5, Serialization, SerialVersionUID
+
+Q220. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which class represents file and directory pathnames in the local filesystem?
+     (A) java.io.File [CORRECT]
+     (B) java.io.Pathname
+     (C) java.io.Directory
+     (D) java.io.FileSystem
+     Explanation: java.io.File represents an abstract pathname for files and directories on disk.
+     Tags: BCA-201N, Unit-5, File-Class, File
+
+Q221. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `file.exists()` return?
+     (A) The size of the file
+     (B) true if the file or directory denoted by the pathname physically exists on disk [CORRECT]
+     (C) A File reference
+     (D) The file creation date
+     Explanation: `exists()` tests whether the file or directory physically exists on the filesystem.
+     Tags: BCA-201N, Unit-5, File-Class, Exists
+
+Q222. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which method creates a new directory on disk if it does not already exist?
+     (A) file.createDir()
+     (B) file.mkdir() or file.mkdirs() [CORRECT]
+     (C) file.newFolder()
+     (D) file.allocate()
+     Explanation: `mkdir()` creates a directory; `mkdirs()` creates the directory along with any missing parent path directories.
+     Tags: BCA-201N, Unit-5, File-Class, Mkdir
+
+Q223. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which method permanently deletes a file or empty directory from the disk?
+     (A) file.remove()
+     (B) file.delete() [CORRECT]
+     (C) file.erase()
+     (D) file.destroy()
+     Explanation: `file.delete()` removes the file or directory denoted by this abstract pathname.
+     Tags: BCA-201N, Unit-5, File-Class, Delete
+
+Q224. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which method returns an array of filenames contained within a directory?
+     (A) file.getFiles()
+     (B) file.list() [CORRECT]
+     (C) file.scan()
+     (D) file.readDir()
+     Explanation: `file.list()` returns an array of strings naming files and directories in the directory.
+     Tags: BCA-201N, Unit-5, File-Class, List
+
+Q225. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `file.length()` return for a file?
+     (A) The number of lines of text
+     (B) The length of the file measured in bytes [CORRECT]
+     (C) The number of characters in the filename
+     (D) The memory size of File object
+     Explanation: `file.length()` returns the file size in raw bytes.
+     Tags: BCA-201N, Unit-5, File-Class, Length
+
+Q226. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Which classes allow reading and writing binary primitive data types in a machine-independent way?
+     (A) DataInputStream and DataOutputStream [CORRECT]
+     (B) PrimitiveReader and PrimitiveWriter
+     (C) BinaryInputStream and BinaryOutputStream
+     (D) ByteIO
+     Explanation: DataInputStream/DataOutputStream provide typed methods like `writeInt()`, `readDouble()`, `writeBoolean()`.
+     Tags: BCA-201N, Unit-5, Data-Streams, DataInputStream
+
+Q227. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What method from PrintStream does `System.out.println()` invoke?
+     (A) println() [CORRECT]
+     (B) writeLine()
+     (C) output()
+     (D) display()
+     Explanation: `System.out` is an instance of java.io.PrintStream, exposing `print()` and `println()`.
+     Tags: BCA-201N, Unit-5, PrintStream, System-Out
+
+Q228. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Which class provides Random Access (both reading and writing at arbitrary file offsets)?
+     (A) FileReader
+     (B) RandomAccessFile [CORRECT]
+     (C) DirectStream
+     (D) ArbitraryFileReader
+     Explanation: java.io.RandomAccessFile behaves like a large array of bytes, allowing seeking (`seek(pos)`) and reading/writing.
+     Tags: BCA-201N, Unit-5, File-IO, RandomAccessFile
+
+Q229. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What mode string opens a RandomAccessFile for both reading and writing?
+     (A) "r"
+     (B) "rw" [CORRECT]
+     (C) "w+"
+     (D) "readwrite"
+     Explanation: `new RandomAccessFile("data.dat", "rw");` opens the file in read-write mode.
+     Tags: BCA-201N, Unit-5, RandomAccessFile, Mode
+
+Q230. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What exception is thrown when attempting to open a non-existent file for reading?
+     (A) IOException
+     (B) FileNotFoundException [CORRECT]
+     (C) NoSuchFileException
+     (D) FileMissingException
+     Explanation: java.io.FileNotFoundException (a subclass of IOException) is thrown when opening a missing file.
+     Tags: BCA-201N, Unit-5, Exceptions, FileNotFoundException
+
+Q231. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Why is it critical to close an open stream in a `finally` block or try-with-resources?
+     (A) To avoid leaking system resources, file descriptors, and OS memory locks [CORRECT]
+     (B) To compile the file
+     (C) To clear JVM heap memory
+     (D) To prevent class reloads
+     Explanation: Failing to close streams leaks underlying OS file handles and causes file locking and memory issues.
+     Tags: BCA-201N, Unit-5, Resource-Management, Close
+
+Q232. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What interface must be implemented for a resource to be used in a try-with-resources statement?
+     (A) java.io.Closeable or java.lang.AutoCloseable [CORRECT]
+     (B) java.lang.Runnable
+     (C) java.io.Flushable
+     (D) java.lang.Resource
+     Explanation: Try-with-resources requires the resource class to implement `java.lang.AutoCloseable` (or its child `Closeable`).
+     Tags: BCA-201N, Unit-5, AutoCloseable, Try-With-Resources
+
+Q233. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `System.in` represent in Java?
+     (A) Standard error stream
+     (B) Standard input stream (typically bound to keyboard input) [CORRECT]
+     (C) Standard disk drive
+     (D) Standard network socket
+     Explanation: System.in is an InputStream connected to the standard console keyboard input.
+     Tags: BCA-201N, Unit-5, Standard-IO, System-In
+
+Q234. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `System.err` represent in Java?
+     (A) Standard error output stream (PrintStream) for diagnostics and error reporting [CORRECT]
+     (B) Standard input
+     (C) Memory crash log
+     (D) Disk error daemon
+     Explanation: System.err is a standard PrintStream intended for uncaught exceptions and error messages.
+     Tags: BCA-201N, Unit-5, Standard-IO, System-Err
+
+Q235. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What is the difference between `print()` and `println()`?
+     (A) print() converts to integer; println() does not
+     (B) println() appends a platform-dependent newline character after printing, advancing the cursor to the next line [CORRECT]
+     (C) print() outputs to disk; println() outputs to screen
+     (D) There is no difference
+     Explanation: println() writes the string and immediately terminates the line with a newline separator.
+     Tags: BCA-201N, Unit-5, Console-IO, Println
+
+Q236. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     Which method in java.io.File returns the absolute canonical path string?
+     (A) file.getPath()
+     (B) file.getAbsolutePath() [CORRECT]
+     (C) file.getSystemPath()
+     (D) file.toURI()
+     Explanation: `getAbsolutePath()` returns the full pathname from the drive root.
+     Tags: BCA-201N, Unit-5, File-Class, AbsolutePath
+
+Q237. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What class allows reading from and writing to byte arrays in memory without touching disk files?
+     (A) ByteArrayInputStream and ByteArrayOutputStream [CORRECT]
+     (B) MemoryStreamReader
+     (C) HeapIO
+     (D) BufferStream
+     Explanation: ByteArrayInputStream/ByteArrayOutputStream maintain an internal byte array buffer in memory.
+     Tags: BCA-201N, Unit-5, Byte-Streams, ByteArrayStream
+
+Q238. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What class allows reading from and writing to string buffers in memory using Reader/Writer interfaces?
+     (A) StringReader and StringWriter [CORRECT]
+     (B) TextMemoryIO
+     (C) StringBufferReader
+     (D) CharacterArrayIO
+     Explanation: StringReader and StringWriter adapt in-memory String/StringBuffer sources to the Reader/Writer APIs.
+     Tags: BCA-201N, Unit-5, Character-Streams, StringReader
+
+Q239. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What does `BufferedWriter.newLine()` do?
+     (A) Writes the literal characters '\n'
+     (B) Writes a platform-specific line separator determined by system property `line.separator` [CORRECT]
+     (C) Clears the screen
+     (D) Flushes the buffer
+     Explanation: `newLine()` writes the correct system newline sequence (CRLF on Windows, LF on Linux).
+     Tags: BCA-201N, Unit-5, Character-Streams, NewLine
+
+Q240. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What method from java.io.File changes the name of an existing file?
+     (A) file.changeName(dest)
+     (B) file.renameTo(dest) [CORRECT]
+     (C) file.move(dest)
+     (D) file.updateName(dest)
+     Explanation: `file.renameTo(File dest)` renames or moves the file to the destination pathname.
+     Tags: BCA-201N, Unit-5, File-Class, RenameTo
+
+Q241. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `file.isFile()` return?
+     (A) true if the target exists and is a normal file (not a directory) [CORRECT]
+     (B) The file name
+     (C) The extension
+     (D) The file type
+     Explanation: `isFile()` tests whether the abstract pathname denotes a normal file.
+     Tags: BCA-201N, Unit-5, File-Class, IsFile
+
+Q242. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What does `file.isDirectory()` return?
+     (A) true if the pathname denotes an existing directory / folder [CORRECT]
+     (B) The parent path
+     (C) The subfolder count
+     (D) The folder size
+     Explanation: `isDirectory()` tests whether the target is a directory.
+     Tags: BCA-201N, Unit-5, File-Class, IsDirectory
+
+Q243. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Which package introduced in Java 1.4 provides high-performance New I/O (NIO) with Channels and Buffers?
+     (A) java.net
+     (B) java.nio [CORRECT]
+     (C) java.io2
+     (D) java.fastio
+     Explanation: java.nio provides non-blocking, channel-based high throughput I/O abstractions.
+     Tags: BCA-201N, Unit-5, NIO, Java-NIO
+
+Q244. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (HARD)
+     What is a Channel in Java NIO (`java.nio.channels.Channel`)?
+     (A) A network socket only
+     (B) An open connection to an I/O device capable of performing read and write operations via Buffers [CORRECT]
+     (C) A thread pipeline
+     (D) A database queue
+     Explanation: Channels represent open connections to hardware/files, transferring data via ByteBuffers.
+     Tags: BCA-201N, Unit-5, NIO, Channel
+
+Q245. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     Which class in java.nio.file introduced in Java 7 provides convenient static utility methods for file operations (readAllBytes, copy, delete)?
+     (A) java.nio.file.Files [CORRECT]
+     (B) java.nio.file.FileManager
+     (C) java.io.FileHelper
+     (D) java.nio.file.IOUtil
+     Explanation: The `java.nio.file.Files` class contains static helper methods to manipulate files and paths effortlessly.
+     Tags: BCA-201N, Unit-5, NIO2, Files-Class
+
+Q246. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What exception is thrown when attempting to deserialize an object whose class definition cannot be found by ClassLoader?
+     (A) ClassCastException
+     (B) ClassNotFoundException [CORRECT]
+     (C) FileNotFoundException
+     (D) StreamCorruptedException
+     Explanation: readObject() throws ClassNotFoundException if the class bytecode of a serialized object cannot be loaded.
+     Tags: BCA-201N, Unit-5, Serialization, ClassNotFoundException
+
+Q247. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What method from java.io.InputStream reads an array of bytes?
+     (A) read(byte[] b) [CORRECT]
+     (B) readBytes(byte[] b)
+     (C) readBuffer(byte[] b)
+     (D) getBytes(byte[] b)
+     Explanation: `read(byte[] b)` reads up to b.length bytes of data into the destination array and returns actual count read.
+     Tags: BCA-201N, Unit-5, Byte-Streams, Read-Array
+
+Q248. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (EASY)
+     What method from java.io.OutputStream writes an entire byte array?
+     (A) write(byte[] b) [CORRECT]
+     (B) writeBytes(byte[] b)
+     (C) dump(byte[] b)
+     (D) send(byte[] b)
+     Explanation: `write(byte[] b)` writes b.length bytes from the specified byte array to this output stream.
+     Tags: BCA-201N, Unit-5, Byte-Streams, Write-Array
+
+Q249. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What does `System.setOut(PrintStream out)` allow developers to do?
+     (A) Reassign the standard output stream to a file or custom stream [CORRECT]
+     (B) Change CPU speed
+     (C) Set monitor brightness
+     (D) Reboot the JVM
+     Explanation: `System.setOut()` reassigns System.out, allowing console output to be redirected to a log file.
+     Tags: BCA-201N, Unit-5, Standard-IO, Redirection
+
+Q250. [Unit 5: Managing Input/Output Files, Streams & Java Utilities] (MEDIUM)
+     What is the primary benefit of the character stream `PrintWriter` over `PrintStream`?
+     (A) PrintWriter is faster for binary files
+     (B) PrintWriter handles international Unicode character encodings properly using underlying Writer classes [CORRECT]
+     (C) PrintWriter does not require memory
+     (D) PrintWriter supports only integers
+     Explanation: PrintWriter uses character streams and proper platform encoding, unlike older byte-based PrintStream.
+     Tags: BCA-201N, Unit-5, Character-Streams, PrintWriter
+

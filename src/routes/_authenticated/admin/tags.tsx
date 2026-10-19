@@ -7,6 +7,8 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { ArrowLeft, Plus, Tag as TagIcon, Trash2, Pencil } from "lucide-react";
 import { PageContainer } from "@/components/admin/ui/page-container";
+import { PageHeader } from "@/components/admin/ui/page-header";
+import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -52,6 +54,7 @@ function TagsAdmin() {
   const qc = useQueryClient();
   const [editing, setEditing] = useState<TagRow | null>(null);
   const [open, setOpen] = useState(false);
+  const [tagToDelete, setTagToDelete] = useState<TagRow | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "tags"],
@@ -78,87 +81,71 @@ function TagsAdmin() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border/60">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-          <Link
-            to="/admin"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to admin
-          </Link>
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={[{ label: "Tags" }]}
+        title="Tags"
+        description="Reusable labels for notes, papers, videos, quizzes and assignments. Helps students search and filter."
+        actions={
           <Button
             onClick={() => {
               setEditing(null);
               setOpen(true);
             }}
           >
-            <Plus className="mr-2 h-4 w-4" /> New tag
+            <Plus className="mr-1.5 h-4 w-4" /> New tag
           </Button>
-        </div>
-      </header>
+        }
+      />
 
-      <PageContainer>
-        <div className="flex items-center gap-3">
-          <TagIcon className="h-6 w-6 text-primary" />
-          <h1 className="font-display text-3xl font-semibold text-foreground">Tags</h1>
-        </div>
-        <p className="mt-2 max-w-2xl text-muted-foreground">
-          Reusable labels for notes, papers, videos, quizzes and assignments. Helps students search
-          and filter.
-        </p>
-
-        <section className="mt-8 rounded-2xl border border-border bg-surface">
-          {isLoading && <p className="p-6 text-sm text-muted-foreground">Loading…</p>}
-          {!isLoading && data && data.length === 0 && (
-            <div className="p-10 text-center">
-              <p className="font-display text-lg text-foreground">No tags yet</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Create your first tag to start labelling content.
-              </p>
-            </div>
-          )}
-          {data && data.length > 0 && (
-            <ul className="divide-y divide-border">
-              {data.map((t) => (
-                <li key={t.id} className="flex items-center justify-between gap-4 px-5 py-4">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="inline-block h-3 w-3 rounded-full border border-border"
-                      style={{ background: t.color || "transparent" }}
-                    />
-                    <div>
-                      <div className="font-medium text-foreground">{t.name}</div>
-                      <div className="font-mono text-xs text-muted-foreground">{t.slug}</div>
-                    </div>
+      <section className="mt-8 rounded-2xl border border-border bg-surface">
+        {isLoading && <p className="p-6 text-sm text-muted-foreground">Loading…</p>}
+        {!isLoading && data && data.length === 0 && (
+          <div className="p-10 text-center">
+            <p className="font-display text-lg text-foreground">No tags yet</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Create your first tag to start labelling content.
+            </p>
+          </div>
+        )}
+        {data && data.length > 0 && (
+          <ul className="divide-y divide-border">
+            {data.map((t) => (
+              <li key={t.id} className="flex items-center justify-between gap-4 px-5 py-4">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="inline-block h-3.5 w-3.5 rounded-full border border-border"
+                    style={{ background: t.color || "transparent" }}
+                  />
+                  <div>
+                    <div className="font-medium text-foreground">{t.name}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{t.slug}</div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => {
-                        setEditing(t);
-                        setOpen(true);
-                      }}
-                    >
-                      <Pencil className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => {
-                        if (confirm(`Delete tag "${t.name}"?`)) removeMutation.mutate(t.id);
-                      }}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-      </PageContainer>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => {
+                      setEditing(t);
+                      setOpen(true);
+                    }}
+                  >
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => setTagToDelete(t)}
+                  >
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  </Button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <TagDialog
         open={open}
@@ -166,7 +153,22 @@ function TagsAdmin() {
         editing={editing}
         onSaved={() => qc.invalidateQueries({ queryKey: ["admin", "tags"] })}
       />
-    </div>
+
+      <ConfirmDialog
+        open={!!tagToDelete}
+        onOpenChange={(open) => !open && setTagToDelete(null)}
+        title={`Delete tag "${tagToDelete?.name}"?`}
+        description="This will remove the tag from the taxonomy. Existing content tagged with this label will no longer display it."
+        destructive
+        confirmLabel="Delete tag"
+        onConfirm={() => {
+          if (tagToDelete) {
+            removeMutation.mutate(tagToDelete.id);
+            setTagToDelete(null);
+          }
+        }}
+      />
+    </PageContainer>
   );
 }
 

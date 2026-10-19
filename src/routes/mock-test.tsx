@@ -1,13 +1,11 @@
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { motion, AnimatePresence } from "motion/react";
 import confetti from "canvas-confetti";
 import {
   FlaskConical,
   Timer,
   CheckCircle2,
-  XCircle,
   AlertCircle,
   Sparkles,
   ArrowRight,
@@ -16,13 +14,10 @@ import {
   BookOpen,
   Award,
   Layers,
-  ChevronRight,
   HelpCircle,
   GraduationCap,
   Flag,
-  Share2,
   Check,
-  Flame,
 } from "lucide-react";
 import { toast } from "sonner";
 import { playCelebrationSound, playComboSound, playWrongSound } from "@/lib/sound-fx";
@@ -96,7 +91,14 @@ export const Route = createFileRoute("/mock-test")({
 
 type CourseLite = { id: string; title: string; code: string; slug: string };
 type SemesterLite = { id: string; number: number; title: string; course_id: string };
-type SubjectLite = { id: string; title: string; code: string; slug: string; semester_id: string };
+type SubjectLite = {
+  id: string;
+  title: string;
+  code: string;
+  slug: string;
+  semester_id: string;
+  hasQuizzes?: boolean;
+};
 type UnitLite = { id: string; number: number; title: string; subject_id: string };
 
 type QuestionOption = {
@@ -122,7 +124,7 @@ type MockQuestion = {
   options: QuestionOption[];
 };
 
-type ExamConfig = {
+type _ExamConfig = {
   courseId: string;
   semesterId: string;
   subjectId: string;
@@ -159,6 +161,17 @@ function MockTestPage() {
   const [timeSpentSeconds, setTimeSpentSeconds] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const selectedAnswersRef = useRef<Record<string, string>>({});
+  const questionsRef = useRef<MockQuestion[]>([]);
+  const submitExamRef = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    selectedAnswersRef.current = selectedAnswers;
+  }, [selectedAnswers]);
+
+  useEffect(() => {
+    questionsRef.current = questions;
+  }, [questions]);
 
   // 1. Fetch User Profile for auto-selecting course & semester
   const profileQuery = useQuery({
@@ -233,26 +246,56 @@ function MockTestPage() {
     queryKey: ["mock-test-subjects", selectedSemesterId],
     enabled: !!selectedSemesterId,
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("subjects")
-        .select("id, title, code, slug, semester_id")
-        .eq("semester_id", selectedSemesterId)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("title");
-      if (error) throw error;
-      return (data ?? []) as SubjectLite[];
+      const [{ data: subjects, error: subjErr }, { data: quizzes, error: quizErr }] =
+        await Promise.all([
+          supabase
+            .from("subjects")
+            .select("id, title, code, slug, semester_id")
+            .eq("semester_id", selectedSemesterId)
+            .eq("status", "published")
+            .is("deleted_at", null)
+            .order("code"),
+          supabase
+            .from("quizzes")
+            .select("unit_id, units!inner(subject_id)")
+            .eq("status", "published")
+            .is("deleted_at", null),
+        ]);
+      if (subjErr) throw subjErr;
+      if (quizErr) {
+        console.warn("Could not query quizzes for default subject selection:", quizErr);
+      }
+
+      const subjectsWithQuizzes = new Set<string>();
+      if (quizzes) {
+        for (const q of quizzes) {
+          const u = q.units as { subject_id?: string } | null;
+          if (u?.subject_id) {
+            subjectsWithQuizzes.add(u.subject_id);
+          }
+        }
+      }
+
+      return ((subjects ?? []) as SubjectLite[]).map((s) => ({
+        ...s,
+        hasQuizzes: subjectsWithQuizzes.has(s.id),
+      }));
     },
   });
 
-  // Set default subject
+  // Set default subject (prefer a subject with published quizzes when available)
   useEffect(() => {
     if (subjectsQuery.data && subjectsQuery.data.length > 0) {
       if (!selectedSubjectId || !subjectsQuery.data.some((s) => s.id === selectedSubjectId)) {
-        setSelectedSubjectId(subjectsQuery.data[0].id);
+        if (preselectedSubjectId && subjectsQuery.data.some((s) => s.id === preselectedSubjectId)) {
+          setSelectedSubjectId(preselectedSubjectId);
+        } else {
+          const preferred = subjectsQuery.data.find((s) => s.hasQuizzes) ?? subjectsQuery.data[0];
+          setSelectedSubjectId(preferred.id);
+        }
       }
     }
-  }, [subjectsQuery.data, selectedSubjectId]);
+  }, [subjectsQuery.data, selectedSubjectId, preselectedSubjectId]);
 
   // 5. Fetch Units for selected subject
   const unitsQuery = useQuery({
@@ -374,7 +417,7 @@ function MockTestPage() {
       }
 
       // Map quiz metadata to questions
-      const quizMap = new Map<string, any>();
+      const quizMap = new Map<string, (typeof quizzes)[number]>();
       for (const q of quizzes) {
         quizMap.set(q.id, q);
       }
@@ -383,7 +426,24 @@ function MockTestPage() {
         .filter((q) => q.quiz_options && q.quiz_options.length >= 2)
         .map((q) => {
           const quizMeta = quizMap.get(q.quiz_id);
-          const unitData = quizMeta?.units;
+          const unitData = quizMeta?.units as
+            | {
+                id: string;
+                number: number;
+                title: string;
+                subjects: {
+                  id: string;
+                  title: string;
+                  slug: string;
+                  semesters: {
+                    number: number;
+                    courses: {
+                      slug: string;
+                    } | null;
+                  } | null;
+                } | null;
+              }
+            | undefined;
           const subjectData = unitData?.subjects;
           const semesterData = subjectData?.semesters;
           const courseData = semesterData?.courses;
@@ -418,18 +478,59 @@ function MockTestPage() {
       }
 
       setQuestions(selectedQuestions);
+      questionsRef.current = selectedQuestions;
       setCurrentIndex(0);
       setSelectedAnswers({});
+      selectedAnswersRef.current = {};
       setFlaggedQuestions({});
       setTimeRemaining(timeLimitMinutes * 60);
       setTimeSpentSeconds(0);
       setExamState("TESTING");
-    } catch (err: any) {
-      toast.error(err.message || "Failed to generate mock exam");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Failed to generate mock exam";
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // Submit Exam
+  const handleSubmitExam = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    setExamState("RESULTS");
+
+    // Use latest answers from ref to avoid stale closure
+    const currentAnswers = selectedAnswersRef.current;
+    const currentQuestions = questionsRef.current;
+
+    // Calculate score
+    let correct = 0;
+    for (const q of currentQuestions) {
+      const chosenOptionId = currentAnswers[q.id];
+      const correctOption = q.options.find((o) => o.is_correct);
+      if (chosenOptionId && correctOption && chosenOptionId === correctOption.id) {
+        correct++;
+      }
+    }
+
+    const total = currentQuestions.length;
+    const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+    if (pct >= 80) {
+      playCelebrationSound();
+      confetti({ particleCount: 85, spread: 70, origin: { y: 0.6 } });
+    } else if (pct >= 50) {
+      playComboSound(3);
+    } else {
+      playWrongSound();
+    }
+  }, []);
+
+  useEffect(() => {
+    submitExamRef.current = handleSubmitExam;
+  }, [handleSubmitExam]);
 
   // Timer Tick
   useEffect(() => {
@@ -439,8 +540,11 @@ function MockTestPage() {
         if (timeLimitMinutes > 0) {
           setTimeRemaining((prev) => {
             if (prev <= 1) {
-              clearInterval(timerRef.current!);
-              handleSubmitExam();
+              if (timerRef.current) {
+                clearInterval(timerRef.current);
+                timerRef.current = null;
+              }
+              submitExamRef.current();
               return 0;
             }
             return prev - 1;
@@ -448,39 +552,19 @@ function MockTestPage() {
         }
       }, 1000);
     } else {
-      if (timerRef.current) clearInterval(timerRef.current);
-    }
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [examState, timeLimitMinutes]);
-
-  // Submit Exam
-  const handleSubmitExam = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    setExamState("RESULTS");
-
-    // Calculate score
-    let correct = 0;
-    for (const q of questions) {
-      const chosenOptionId = selectedAnswers[q.id];
-      const correctOption = q.options.find((o) => o.is_correct);
-      if (chosenOptionId && correctOption && chosenOptionId === correctOption.id) {
-        correct++;
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
       }
     }
 
-    const pct = Math.round((correct / questions.length) * 100);
-    if (pct >= 80) {
-      playCelebrationSound();
-      confetti({ particleCount: 85, spread: 70, origin: { y: 0.6 } });
-    } else if (pct >= 50) {
-      playComboSound(3);
-    } else {
-      playWrongSound();
-    }
-  };
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [examState, timeLimitMinutes]);
 
   // Diagnostics Calculation for Results
   const diagnostics = useMemo(() => {
@@ -554,11 +638,11 @@ function MockTestPage() {
         {examState === "CONFIG" && (
           <div className="container max-w-4xl mx-auto px-4 py-8 md:py-12">
             {/* Header Banner */}
-            <div className="mb-8 text-center sm:text-left rounded-3xl border border-border/80 bg-surface p-6 sm:p-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary mb-3">
+            <div className="mb-8 text-center sm:text-left rounded-xl border border-border bg-surface p-6 sm:p-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-accent mb-3">
                 <Sparkles className="h-3.5 w-3.5" /> Exam Simulation Mode
               </div>
-              <h1 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+              <h1 className="font-display text-2xl sm:text-4xl font-normal tracking-tight text-foreground">
                 Custom Multi-Unit Mock Exam
               </h1>
               <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-2xl">
@@ -568,10 +652,10 @@ function MockTestPage() {
             </div>
 
             {/* Config Form Card */}
-            <div className="space-y-6 rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft">
+            <div className="space-y-6 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-2xs">
               {/* Step 1: Course, Semester & Subject Selectors */}
               <div>
-                <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3 flex items-center gap-2">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-accent mb-3 flex items-center gap-2">
                   <GraduationCap className="h-4 w-4" /> 1. Select Subject
                 </h2>
 
@@ -624,7 +708,7 @@ function MockTestPage() {
                     >
                       {(subjectsQuery.data ?? []).map((sb) => (
                         <option key={sb.id} value={sb.id} className="bg-card text-foreground">
-                          {sb.code} · {sb.title}
+                          {sb.code} · {sb.title} {sb.hasQuizzes ? "✓ (Quizzes ready)" : ""}
                         </option>
                       ))}
                     </select>
@@ -635,7 +719,7 @@ function MockTestPage() {
               {/* Step 2: Unit Selection */}
               <div className="pt-4 border-t border-border/60">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                  <h2 className="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+                  <h2 className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-2">
                     <Layers className="h-4 w-4" /> 2. Choose Units to Test
                   </h2>
                   <div className="flex items-center gap-1.5">
@@ -644,18 +728,18 @@ function MockTestPage() {
                       variant="outline"
                       size="sm"
                       onClick={() => handlePresetSelect("MID_SEM")}
-                      className="h-7 text-xs rounded-xl px-2.5"
+                      className="h-7 text-xs rounded-lg px-2.5"
                     >
-                      🎯 Mid-Sem (Units 1–2)
+                      Mid-Sem (Units 1–2)
                     </Button>
                     <Button
                       type="button"
                       variant="outline"
                       size="sm"
                       onClick={() => handlePresetSelect("ALL")}
-                      className="h-7 text-xs rounded-xl px-2.5"
+                      className="h-7 text-xs rounded-lg px-2.5"
                     >
-                      🔥 All Units (Finals)
+                      All Units (Finals)
                     </Button>
                   </div>
                 </div>
@@ -679,17 +763,17 @@ function MockTestPage() {
                           type="button"
                           onClick={() => toggleUnitSelection(u.id)}
                           className={cn(
-                            "flex items-center gap-3 p-3.5 rounded-2xl border text-left transition-all",
+                            "flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all",
                             isChecked
-                              ? "border-primary bg-primary/10 text-foreground font-semibold shadow-xs"
+                              ? "border-accent bg-accent/10 text-foreground font-medium shadow-2xs"
                               : "border-border/70 bg-card hover:bg-muted/40 text-muted-foreground",
                           )}
                         >
                           <div
                             className={cn(
-                              "h-5 w-5 rounded-lg border flex items-center justify-center transition-colors shrink-0",
+                              "h-5 w-5 rounded-md border flex items-center justify-center transition-colors shrink-0",
                               isChecked
-                                ? "bg-primary border-primary text-primary-foreground"
+                                ? "bg-accent border-accent text-accent-foreground"
                                 : "border-muted-foreground/40",
                             )}
                           >
@@ -712,7 +796,7 @@ function MockTestPage() {
 
               {/* Step 3: Exam Parameters */}
               <div className="pt-4 border-t border-border/60">
-                <h2 className="text-xs font-bold uppercase tracking-wider text-primary mb-3 flex items-center gap-2">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-accent mb-3 flex items-center gap-2">
                   <Timer className="h-4 w-4" /> 3. Exam Timing &amp; Length
                 </h2>
 
@@ -730,7 +814,7 @@ function MockTestPage() {
                           variant={questionCount === count ? "default" : "outline"}
                           size="sm"
                           onClick={() => setQuestionCount(count)}
-                          className="flex-1 rounded-xl h-10 font-bold"
+                          className="flex-1 rounded-lg h-10 font-medium"
                         >
                           {count}
                         </Button>
@@ -756,7 +840,7 @@ function MockTestPage() {
                           variant={timeLimitMinutes === t.val ? "default" : "outline"}
                           size="sm"
                           onClick={() => setTimeLimitMinutes(t.val)}
-                          className="flex-1 rounded-xl h-10 font-bold"
+                          className="flex-1 rounded-lg h-10 font-medium"
                         >
                           {t.label}
                         </Button>
@@ -772,7 +856,7 @@ function MockTestPage() {
                   size="lg"
                   disabled={isSubmitting || selectedUnitIds.length === 0}
                   onClick={handleStartExam}
-                  className="btn-squishy btn-cta w-full h-14 rounded-2xl text-base font-bold gap-2 shadow-lg shadow-primary/20 cursor-pointer"
+                  className="btn-cta w-full h-12 rounded-full text-sm font-medium gap-2 cursor-pointer shadow-soft-xs"
                 >
                   <FlaskConical className="h-5 w-5" />
                   {isSubmitting ? "Generating Mock Exam…" : "Start Mock Exam Now"}
@@ -823,7 +907,7 @@ function MockTestPage() {
               {/* Progress bar */}
               <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-full bg-primary transition-all duration-300"
+                  className="h-full bg-accent transition-all duration-300"
                   style={{
                     width: `${(Object.keys(selectedAnswers).length / questions.length) * 100}%`,
                   }}
@@ -832,9 +916,9 @@ function MockTestPage() {
             </div>
 
             {/* Question Card */}
-            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft mb-6">
+            <div className="rounded-xl border border-border bg-card p-6 sm:p-8 shadow-2xs mb-6">
               <div className="flex items-start justify-between gap-4 mb-4">
-                <Badge variant="outline" className="text-xs font-semibold rounded-lg bg-muted/40">
+                <Badge variant="outline" className="text-xs font-medium rounded-md bg-muted/40">
                   Unit {activeQuestion.unit_number}
                 </Badge>
 
@@ -848,7 +932,7 @@ function MockTestPage() {
                     }))
                   }
                   className={cn(
-                    "h-8 px-2.5 rounded-xl text-xs font-medium gap-1.5",
+                    "h-8 px-2.5 rounded-lg text-xs font-medium gap-1.5",
                     flaggedQuestions[activeQuestion.id]
                       ? "bg-warning/15 text-warning-foreground dark:text-warning border border-warning/30"
                       : "text-muted-foreground hover:text-foreground",
@@ -860,7 +944,7 @@ function MockTestPage() {
               </div>
 
               {/* Prompt */}
-              <h2 className="font-display text-lg sm:text-xl font-bold text-foreground leading-relaxed mb-6">
+              <h2 className="font-sans text-lg sm:text-xl font-semibold text-foreground leading-snug mb-6">
                 {activeQuestion.prompt}
               </h2>
 
@@ -875,24 +959,28 @@ function MockTestPage() {
                       key={option.id}
                       type="button"
                       onClick={() => {
-                        setSelectedAnswers((prev) => ({
-                          ...prev,
-                          [activeQuestion.id]: option.id,
-                        }));
+                        setSelectedAnswers((prev) => {
+                          const next = {
+                            ...prev,
+                            [activeQuestion.id]: option.id,
+                          };
+                          selectedAnswersRef.current = next;
+                          return next;
+                        });
                         playComboSound(currentIndex + 1);
                       }}
                       className={cn(
-                        "w-full flex items-center gap-3.5 p-4 rounded-2xl border text-left transition-all",
+                        "w-full flex items-center gap-3.5 p-4 rounded-xl border text-left transition-all",
                         isSelected
-                          ? "border-primary bg-primary/10 text-foreground font-semibold shadow-xs ring-1 ring-primary/40"
+                          ? "border-accent bg-accent/10 text-foreground font-medium shadow-2xs ring-1 ring-accent/40"
                           : "border-border/70 bg-card hover:bg-muted/40 text-foreground",
                       )}
                     >
                       <div
                         className={cn(
-                          "h-7 w-7 rounded-xl border flex items-center justify-center text-xs font-bold shrink-0 transition-colors",
+                          "h-7 w-7 rounded-lg border flex items-center justify-center text-xs font-semibold shrink-0 transition-colors",
                           isSelected
-                            ? "bg-primary border-primary text-primary-foreground"
+                            ? "bg-accent border-accent text-accent-foreground"
                             : "border-border bg-muted/40 text-muted-foreground",
                         )}
                       >
@@ -971,12 +1059,12 @@ function MockTestPage() {
         {examState === "RESULTS" && diagnostics && (
           <div className="container max-w-4xl mx-auto px-4 py-8 md:py-12">
             {/* Scorecard Hero */}
-            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-10 shadow-soft text-center mb-8">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-primary/10 text-primary">
-                <Award className="h-8 w-8" />
+            <div className="rounded-xl border border-border bg-card p-6 sm:p-10 shadow-2xs text-center mb-8">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <Award className="h-7 w-7" />
               </div>
 
-              <h1 className="font-display text-2xl sm:text-4xl font-extrabold text-foreground">
+              <h1 className="font-display text-2xl sm:text-4xl font-normal text-foreground">
                 {diagnostics.passed
                   ? "Great Job! Exam Completed"
                   : "Exam Complete — Needs Revision"}
@@ -991,27 +1079,27 @@ function MockTestPage() {
 
               {/* Stats Strip */}
               <div className="grid grid-cols-3 gap-3 max-w-md mx-auto mt-6">
-                <div className="rounded-2xl border border-border/60 bg-muted/20 p-3">
+                <div className="rounded-xl border border-border bg-surface p-3">
                   <span className="block text-[10px] uppercase font-bold text-muted-foreground">
                     Score
                   </span>
-                  <span className="text-xl font-extrabold text-foreground">
+                  <span className="text-xl font-bold text-foreground">
                     {diagnostics.scorePct}%
                   </span>
                 </div>
-                <div className="rounded-2xl border border-success/20 bg-success/10 p-3">
+                <div className="rounded-xl border border-success/20 bg-success/10 p-3">
                   <span className="block text-[10px] uppercase font-bold text-success">
                     Correct
                   </span>
-                  <span className="text-xl font-extrabold text-success">
+                  <span className="text-xl font-bold text-success">
                     {diagnostics.totalCorrect}
                   </span>
                 </div>
-                <div className="rounded-2xl border border-destructive/20 bg-destructive/10 p-3">
+                <div className="rounded-xl border border-destructive/20 bg-destructive/10 p-3">
                   <span className="block text-[10px] uppercase font-bold text-destructive">
                     Wrong
                   </span>
-                  <span className="text-xl font-extrabold text-destructive">
+                  <span className="text-xl font-bold text-destructive">
                     {diagnostics.totalWrong}
                   </span>
                 </div>
@@ -1022,14 +1110,14 @@ function MockTestPage() {
                 <Button
                   onClick={() => setExamState("CONFIG")}
                   variant="cta"
-                  className="rounded-2xl h-11 px-6 font-bold text-sm gap-2"
+                  className="rounded-full h-11 px-6 font-medium text-sm gap-2"
                 >
                   <RotateCcw className="h-4 w-4" /> Create New Mock Test
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="rounded-2xl h-11 px-6 font-bold text-sm"
+                  className="rounded-full h-11 px-6 font-medium text-sm"
                 >
                   <Link to="/dashboard">Go to Dashboard</Link>
                 </Button>
@@ -1037,9 +1125,9 @@ function MockTestPage() {
             </div>
 
             {/* Unit-by-Unit Performance Breakdown */}
-            <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft mb-8">
-              <h2 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 flex items-center gap-2">
-                <Layers className="h-5 w-5 text-primary" /> Unit-by-Unit Performance Analytics
+            <div className="rounded-xl border border-border bg-card p-6 sm:p-8 shadow-2xs mb-8">
+              <h2 className="font-display text-lg sm:text-xl font-normal text-foreground mb-2 flex items-center gap-2">
+                <Layers className="h-5 w-5 text-accent" /> Unit-by-Unit Performance Analytics
               </h2>
               <p className="text-xs text-muted-foreground mb-6">
                 Pinpoint exactly which units need more study before university exams.

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { upsertAnnouncement } from "@/lib/announcements.functions";
 import {
   BookOpen,
   GraduationCap,
@@ -79,9 +81,9 @@ const TYPES: {
     desc: "Quiz attached to a unit",
     ready: true,
   },
-  { id: "video", label: "Video", icon: Video, desc: "Coming soon", ready: false },
-  { id: "assignment", label: "Assignment", icon: ClipboardList, desc: "Coming soon", ready: false },
-  { id: "announcement", label: "Announcement", icon: Megaphone, desc: "Coming soon", ready: false },
+  { id: "video", label: "Video", icon: Video, desc: "Lecture or video resource", ready: true },
+  { id: "assignment", label: "Assignment", icon: ClipboardList, desc: "Practice problem or task", ready: true },
+  { id: "announcement", label: "Announcement", icon: Megaphone, desc: "Campus/dashboard banner", ready: true },
 ];
 
 export function CreateWizard({
@@ -230,8 +232,38 @@ function WizardForm({
           }}
         />
       );
+    case "announcement":
+      return (
+        <AnnouncementForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin", "announcements"] });
+            onDone();
+          }}
+        />
+      );
+    case "video":
+      return (
+        <VideoForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin", "content"] });
+            onDone();
+          }}
+        />
+      );
+    case "assignment":
+      return (
+        <AssignmentForm
+          onBack={onBack}
+          onDone={() => {
+            qc.invalidateQueries({ queryKey: ["admin", "content"] });
+            onDone();
+          }}
+        />
+      );
     default:
-      return <div className="py-6 text-sm text-muted-foreground">Coming soon.</div>;
+      return <div className="py-6 text-sm text-muted-foreground">Select an item above.</div>;
   }
 }
 
@@ -822,3 +854,270 @@ function FooterRowDraft({
     </div>
   );
 }
+
+function AnnouncementForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }) {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [severity, setSeverity] = useState<"info" | "warning" | "critical" | "success">("info");
+  const [audience, setAudience] = useState<"all" | "students" | "admins">("all");
+  const [busy, setBusy] = useState(false);
+  const upsert = useServerFn(upsertAnnouncement);
+
+  async function submit(published: boolean) {
+    if (!title.trim() || !body.trim()) return toast.error("Title and message body are required");
+    setBusy(true);
+    try {
+      await upsert({
+        data: {
+          title,
+          body,
+          severity,
+          audience,
+          published,
+        },
+      });
+      toast.success(published ? "Announcement published" : "Draft saved");
+      onDone();
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Failed to create announcement");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit(true);
+      }}
+      className="space-y-3 pt-2"
+    >
+      <Field label="Announcement Title">
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="e.g. Mid-term exam schedule announced"
+        />
+      </Field>
+      <div className="grid grid-cols-2 gap-3">
+        <Field label="Severity">
+          <Select value={severity} onValueChange={(v) => setSeverity(v as typeof severity)}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="info">Info</SelectItem>
+              <SelectItem value="success">Success</SelectItem>
+              <SelectItem value="warning">Warning</SelectItem>
+              <SelectItem value="critical">Critical</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field label="Target Audience">
+          <Select value={audience} onValueChange={(v) => setAudience(v as typeof audience)}>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Everyone</SelectItem>
+              <SelectItem value="students">Students Only</SelectItem>
+              <SelectItem value="admins">Admins Only</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+      <Field label="Message Content">
+        <Textarea
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder="Write the full announcement message here..."
+          rows={3}
+        />
+      </Field>
+      <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit(false)} />
+    </form>
+  );
+}
+
+function VideoForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }) {
+  const [unitId, setUnitId] = useState("");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const { data: units } = useQuery({
+    queryKey: ["admin", "units-list"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("units")
+        .select("id,title,subject_id,subjects(title,semesters(number))")
+        .is("deleted_at", null)
+        .order("title");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  async function submit(status: "draft" | "published") {
+    if (!unitId || !title.trim() || !url.trim()) {
+      return toast.error("Unit, title, and video URL are required");
+    }
+    setBusy(true);
+    const unit = (units as Array<{ id: string; subject_id: string }> | undefined)?.find(
+      (u) => u.id === unitId,
+    );
+    const subject_id = unit?.subject_id ?? null;
+    const { error } = await supabase.from("content_items").insert({
+      type: "video",
+      title,
+      description: description || null,
+      file_url: url,
+      subject_id,
+      unit_id: unitId,
+      status,
+      visibility: "public",
+      tags: ["video"],
+    });
+    setBusy(false);
+    if (error) return toast.error(error.message);
+    toast.success("Video lecture saved");
+    onDone();
+  }
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
+      <Field label="Unit">
+        <Select value={unitId} onValueChange={setUnitId}>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose unit" />
+          </SelectTrigger>
+          <SelectContent>
+            {units?.map((u) => (
+              <SelectItem key={u.id} value={u.id}>
+                {u.subjects?.title ?? ""} · Sem {u.subjects?.semesters?.number ?? ""} · {u.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Field>
+      <Field label="Video Title">
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="e.g. Unit 1 Lecture — Memory Hierarchy Overview"
+        />
+      </Field>
+      <Field label="Video URL">
+        <Input
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="https://youtube.com/watch?v=... or direct MP4 link"
+        />
+      </Field>
+      <Field label="Description (Optional)">
+        <Textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Summary of topics covered in this video..."
+          rows={2}
+        />
+      </Field>
+      <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
+    </form>
+  );
+}
+
+function AssignmentForm({ onBack, onDone }: { onBack: () => void; onDone: () => void }) {
+  const [unitId, setUnitId] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const { data: units } = useQuery({
+    queryKey: ["admin", "units-list"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("units")
+        .select("id,title,subject_id,subjects(title,semesters(number))")
+        .is("deleted_at", null)
+        .order("title");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  async function submit(status: "draft" | "published") {
+    if (!unitId || !title.trim() || !description.trim()) {
+      return toast.error("Unit, title, and assignment instructions are required");
+    }
+    setBusy(true);
+    const unit = (units as Array<{ id: string; subject_id: string }> | undefined)?.find(
+      (u) => u.id === unitId,
+    );
+    const subject_id = unit?.subject_id ?? null;
+    const { error } = await supabase.from("content_items").insert({
+      type: "assignment",
+      title,
+      description,
+      subject_id,
+      unit_id: unitId,
+      status,
+      visibility: "public",
+      tags: ["assignment"],
+    });
+    setBusy(false);
+    if (error) return toast.error(error.message);
+    toast.success("Assignment saved");
+    onDone();
+  }
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit("published");
+      }}
+      className="space-y-3 pt-2"
+    >
+      <Field label="Unit">
+        <Select value={unitId} onValueChange={setUnitId}>
+          <SelectTrigger>
+            <SelectValue placeholder="Choose unit" />
+          </SelectTrigger>
+          <SelectContent>
+            {units?.map((u) => (
+              <SelectItem key={u.id} value={u.id}>
+                {u.subjects?.title ?? ""} · Sem {u.subjects?.semesters?.number ?? ""} · {u.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Field>
+      <Field label="Assignment Title">
+        <Input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="e.g. Assignment 1 — Truth Tables & Boolean Simplification"
+        />
+      </Field>
+      <Field label="Instructions & Problems">
+        <Textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Write the questions, problems, and submission criteria..."
+          rows={3}
+        />
+      </Field>
+      <FooterRowDraft onBack={onBack} busy={busy} onDraft={() => submit("draft")} />
+    </form>
+  );
+}
+

@@ -29,7 +29,41 @@ export type ParsedQuestion = {
   year?: number;
   exam_name?: string;
   errors: string[];
+  warnings: string[];
 };
+
+function validateQuestionRules(q: ParsedQuestion) {
+  if (!q.prompt) q.errors.push("Missing question text");
+  if (q.options.length < 2) q.errors.push("Need at least 2 options");
+  if (q.options.length && !q.options.some((o) => o.is_correct))
+    q.errors.push("Mark at least one correct option (* or is_correct: true)");
+  if (q.options.some((o) => !o.text.trim()))
+    q.errors.push("One or more options have empty text");
+
+  const seenOpts = new Set<string>();
+  for (const o of q.options) {
+    const norm = o.text.trim().toLowerCase();
+    if (norm && seenOpts.has(norm)) {
+      q.errors.push(`Duplicate option choice: "${o.text}"`);
+    }
+    seenOpts.add(norm);
+  }
+}
+
+function checkBatchDuplicates(questions: ParsedQuestion[]) {
+  const seen = new Map<string, number>();
+  questions.forEach((q, idx) => {
+    const norm = q.prompt.trim().toLowerCase().replace(/\s+/g, " ");
+    if (norm) {
+      if (seen.has(norm)) {
+        const prevIdx = seen.get(norm)!;
+        q.errors.push(`Duplicate question prompt (matches question #${prevIdx + 1})`);
+      } else {
+        seen.set(norm, idx);
+      }
+    }
+  });
+}
 
 const OPTION_RE = /^\s*([A-Ha-h])\s*[).\-]\s*(.+?)\s*$/;
 const Q_RE = /^\s*(?:Q\s*[:.)-]|(\d+)\s*[.)])\s*(.+)$/i;
@@ -41,7 +75,11 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
     try {
       const raw = JSON.parse(trimmed);
       const list = Array.isArray(raw) ? raw : Array.isArray(raw?.questions) ? raw.questions : null;
-      if (list) return list.map(normalizeJsonQuestion);
+      if (list) {
+        const parsedList = list.map(normalizeJsonQuestion);
+        checkBatchDuplicates(parsedList);
+        return parsedList;
+      }
     } catch {
       // fall through to text parser so users see per-block errors
     }
@@ -57,7 +95,7 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
 
   for (const block of blocks) {
     const lines = block.split("\n").map((l) => l.trimEnd());
-    const q: ParsedQuestion = { prompt: "", options: [], errors: [] };
+    const q: ParsedQuestion = { prompt: "", options: [], errors: [], warnings: [] };
     let inPrompt = false;
 
     for (const raw of lines) {
@@ -119,14 +157,11 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
       }
     }
 
-    if (!q.prompt) q.errors.push("Missing question text");
-    if (q.options.length < 2) q.errors.push("Need at least 2 options");
-    if (q.options.length && !q.options.some((o) => o.is_correct))
-      q.errors.push("Mark at least one correct option with * at the end");
-
+    validateQuestionRules(q);
     out.push(q);
   }
 
+  checkBatchDuplicates(out);
   return out;
 }
 
@@ -137,7 +172,7 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
 //   { q, a, b, c, d, ans: "B" }                           // legacy MCQ dump
 function normalizeJsonQuestion(raw: unknown): ParsedQuestion {
   const r = (raw ?? {}) as Record<string, unknown>;
-  const q: ParsedQuestion = { prompt: "", options: [], errors: [] };
+  const q: ParsedQuestion = { prompt: "", options: [], errors: [], warnings: [] };
 
   const prompt = (r.prompt ?? r.question ?? r.q ?? r.text ?? "") as string;
   q.prompt = String(prompt || "").trim();
@@ -212,9 +247,6 @@ function normalizeJsonQuestion(raw: unknown): ParsedQuestion {
   if (typeof r.exam_name === "string") q.exam_name = r.exam_name;
   else if (typeof r.exam === "string") q.exam_name = r.exam;
 
-  if (!q.prompt) q.errors.push("Missing question text");
-  if (q.options.length < 2) q.errors.push("Need at least 2 options");
-  if (q.options.length && !q.options.some((o) => o.is_correct))
-    q.errors.push("No correct option marked (set is_correct: true or answer index)");
+  validateQuestionRules(q);
   return q;
 }

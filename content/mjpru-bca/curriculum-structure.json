@@ -1,0 +1,161 @@
+{
+  "university": "Mahatma Jyotiba Phule Rohilkhand University (MJPRU), Bareilly",
+  "program": "Bachelor of Computer Application (BCA)",
+  "effective_session": "2024-25 onwards",
+  "examination_scheme": {
+    "theory_max_marks": 100,
+    "internal_assessment": 30,
+    "external_examination": 70,
+    "min_passing_percentage": 40,
+    "practical_min_passing_percentage": 50
+  },
+  "semesters": [
+    {
+      "semester": 1,
+      "year": 1,
+      "subjects": [
+        {
+          "code": "BCA-101N",
+          "title": "Computer Fundamentals and PC Software",
+          "type": "Theory (Core Compulsory)",
+          "credits": 4,
+          "units": [
+            { "unit": 1, "title": "Computers Evolution, Architecture, Memory & Software Types" },
+            { "unit": 2, "title": "Overview of Operating Systems, DOS & Windows Management" },
+            { "unit": 3, "title": "PC Maintenance, Hardware, Motherboard & Internet Fundamentals" },
+            { "unit": 4, "title": "Word Processing (MS Word) & Presentation (MS PowerPoint)" },
+            { "unit": 5, "title": "Spreadsheet (MS Excel) - Formulas, Functions & Macros" }
+          ]
+        },
+        {
+          "code": "BCA-103N",
+          "title": "Programming with C",
+          "type": "Theory (Core Compulsory)",
+          "credits": 4,
+          "units": [
+            { "unit": 1, "title": "C Fundamentals, Structure, Data Types & Operators" },
+            { "unit": 2, "title": "Control Statements, Branching & Looping Constructs" },
+            { "unit": 3, "title": "Arrays, 2D Arrays, Strings & String Handling Functions" },
+            { "unit": 4, "title": "Functions, Parameter Passing, Recursion & Scope" },
+            { "unit": 5, "title": "Pointers, Structures, Unions & Dynamic Memory Allocation" }
+          ]
+        },
+        {
+          "code": "BCA-105N",
+          "title": "Basic Mathematics",
+          "type": "Theory (Core Compulsory)",
+          "credits": 4,
+          "units": [
+            { "unit": 1, "title": "Divisibility, Prime Factorization, Fractions & Binomial Theorem" },
+            { "unit": 2, "title": "Sequences, Series & Progressions (AP, GP, HP, AM, GM, HM)" },
+            { "unit": 3, "title": "Matrices and Determinants - Operations & Inverse" },
+            { "unit": 4, "title": "Differential Calculus - Chain Rule, Logs, Trigonometric Differentiation" },
+            { "unit": 5, "title": "Integral Calculus - Substitution, Trigonometric Identities & Parts" }
+          ]
+        },
+        {
+          "code": "BCA-107N",
+          "title": "Communicative English",
+          "type": "Theory (Core Compulsory)",
+          "credits": 4,
+          "units": [
+            { "unit": 1, "title": "Language Communication, Process, Components & Barriers" },
+            { "unit": 2, "title": "English Skills - Reading, Listening, Verbal & Non-Verbal Techniques" },
+            { "unit": 3, "title": "Effective Writing - Abstracts, Summaries, Notes & Technical Reports" },
+            { "unit": 4, "title": "Grammar I - Parts of Speech, Subject-Predicate, Phrases, Clauses & Tenses" },
+            { "unit": 5, "title": "Grammar II - Active/Passive Voice, Concord & Reported Speech" }
+          ]
+        },
+        {
+          "code": "BCA-109N",
+          "title": "Principle of Management",
+          "type": "Theory (Core Compulsory)",
+          "credits": 4,
+          "units": [
+            { "unit": 1, "title": "Management Fundamentals, Fayol & Taylor Principles, Theories" },
+            { "unit": 2, "title": "Planning, Decision Making, Organizing & Departmentation" },
+            { "unit": 3, "title": "Staffing, Directing, Motivation (Maslow, Herzberg) & Controlling" },
+            { "unit": 4, "title": "Organizational Behavior - Personality, Learning, Perception & Attitudes" },
+            { "unit": 5, "title": "Computer Applications in Functional Management (Finance, HR, Mktg)" }
+          ]
+        },
+        {
+          "code": "BCA-101P",
+          "title": "LAB: (PC Software Lab)",
+          "type": "Practical",
+          "credits": 2
+        },
+        {
+          "code": "BCA-103P",
+          "title": "LAB: (C Programming)",
+          "type": "Practical",
+          "credits": 2
+        }
+      ]
+    },
+    {
+      "semester": 2,
+      "year": 1,
+      "subjects": [
+        { "code": "BCA-102N", "title": "Data Structures using C", "credits": 4 },
+        { "code": "BCA-104N", "title": "Introduction to Database System", "credits": 4 },
+        { "code": "BCA-106N", "title": "Business Organization & Management", "credits": 4 },
+        { "code": "BCA-108N", "title": "Digital Electronics", "credits": 4 },
+        { "code": "Elective E1", "title": "BCA-401E Mathematics / BCA-402E Environment / BCA-403E E-Governance", "credits": 4 },
+        { "code": "BCA-102P", "title": "LAB: (Data Structure)", "credits": 2 },
+        { "code": "BCA-104P", "title": "LAB: (RDBMS)", "credits": 2 }
+      ]
+    },
+    {
+      "semester": 3,
+      "year": 2,
+      "subjects": [
+        { "code": "BCA-201N", "title": "Object oriented programming using JAVA", "credits": 4 },
+        { "code": "BCA-203N", "title": "Numerical Analysis and Statistical Techniques (NAST)", "credits": 4 },
+        { "code": "BCA-205N", "title": "Operating System", "credits": 4 },
+        { "code": "BCA-207N", "title": "Computer Organization and Architecture", "credits": 4 },
+        { "code": "Elective E2", "title": "BCA-411E Discrete Maths / BCA-412E Personality / BCA-413E Info Systems", "credits": 4 },
+        { "code": "BCA-201P", "title": "LAB: (JAVA Programming)", "credits": 2 },
+        { "code": "BCA-203P", "title": "LAB: (NAST)", "credits": 2 }
+      ]
+    },
+    {
+      "semester": 4,
+      "year": 2,
+      "subjects": [
+        { "code": "BCA-202N", "title": "Programming in Python", "credits": 4 },
+        { "code": "BCA-204N", "title": "Unix and Shell Programming", "credits": 4 },
+        { "code": "BCA-206N", "title": "Accounting and Financial Management", "credits": 4 },
+        { "code": "BCA-208N", "title": "Computer Networks", "credits": 4 },
+        { "code": "Elective E3", "title": "BCA-421E E-Commerce / BCA-422E IT Acts & Cyber Laws / BCA-423E Software Engg", "credits": 4 },
+        { "code": "BCA-202P", "title": "LAB: (Python Programming)", "credits": 2 },
+        { "code": "BCA-204P", "title": "LAB: (Unix and Shell Programming)", "credits": 2 }
+      ]
+    },
+    {
+      "semester": 5,
+      "year": 3,
+      "subjects": [
+        { "code": "BCA-301N", "title": "Artificial Intelligence", "credits": 4 },
+        { "code": "BCA-303N", "title": "Web Technologies", "credits": 4 },
+        { "code": "BCA-305N", "title": "Computer Graphics and Animation", "credits": 4 },
+        { "code": "Elective E4", "title": "BCA-431E Cyber Security / BCA-432E GUI Programming / BCA-433E Operations Research", "credits": 4 },
+        { "code": "BCA-303P", "title": "LAB: (Web Technologies)", "credits": 2 },
+        { "code": "BCA-305P", "title": "LAB: (Computer Graphics)", "credits": 2 },
+        { "code": "BCA-307P", "title": "Industrial Training (6 to 8 weeks internship report)", "credits": 4 }
+      ]
+    },
+    {
+      "semester": 6,
+      "year": 3,
+      "subjects": [
+        { "code": "BCA-302N", "title": "Introduction to Data Science", "credits": 4 },
+        { "code": "BCA-304N", "title": "Cloud Computing", "credits": 4 },
+        { "code": "BCA-306N", "title": "Internet of Things", "credits": 4 },
+        { "code": "Elective E5", "title": "BCA-441E Software Testing / BCA-442E Advanced Web Dev / BCA-443E Blockchain", "credits": 4 },
+        { "code": "BCA-302P", "title": "LAB: (Data Science)", "credits": 2 },
+        { "code": "BCA-308P", "title": "Major Project", "credits": 6 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2255 @@
+MJPRU BAREILLY - BCA SEMESTER 3
+COURSE CODE: BCA-207N - COMPUTER ORGANIZATION AND ARCHITECTURE
+HIGH-YIELD EXAM QUESTION BANK (250 MCQS WITH DETAILED EXPLANATIONS)
+================================================================================
+
+Q1. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the fundamental difference between Computer Architecture and Computer Organization?
+     (A) Architecture refers to programmer-visible attributes (instruction set, data types, addressing modes); Organization refers to operational units and interconnections realizing the architecture (signals, interfaces, memory tech) [CORRECT]
+     (B) Architecture deals with software; Organization deals with hardware casing
+     (C) Organization is designed by programmers; Architecture by hardware builders
+     (D) There is no difference between the two terms
+     Explanation: Computer Architecture defines the logical abstraction seen by the machine-language programmer (ISA). Computer Organization describes the low-level microarchitectural implementation that realizes those architectural specifications.
+     Tags: BCA-207N, Unit-1, Architecture-vs-Organization, Definitions
+
+Q2. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the defining concept of the Von Neumann Computer Architecture?
+     (A) Stored-Program Concept: programs (instructions) and data are stored together in the same unified read-write memory address space [CORRECT]
+     (B) Separate physical memories for code and data
+     (C) Elimination of the Program Counter register
+     (D) Execution of instructions in reverse order
+     Explanation: The Von Neumann architecture features a single shared memory containing both program instructions and data, executed sequentially via a Program Counter.
+     Tags: BCA-207N, Unit-1, Von-Neumann, Stored-Program
+
+Q3. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     How does the Harvard Architecture differ from the Von Neumann Architecture?
+     (A) Harvard uses physically separate storage and signal pathways (buses) for instructions and data [CORRECT]
+     (B) Harvard has no CPU registers
+     (C) Harvard does not support arithmetic calculations
+     (D) Harvard is an analog computer system
+     Explanation: Harvard architecture physically separates instruction memory from data memory, allowing simultaneous instruction fetch and operand read/write.
+     Tags: BCA-207N, Unit-1, Harvard-vs-VonNeumann, Architecture
+
+Q4. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What are the four primary functional components of a classic digital computer?
+     (A) Central Processing Unit (CPU), Main Memory Unit, Input/Output Subsystem, and System Bus [CORRECT]
+     (B) Monitor, Keyboard, Mouse, and Printer
+     (C) Compiler, Assembler, Linker, and Loader
+     (D) Hard Drive, Flash Drive, CD-ROM, and Magnetic Tape
+     Explanation: The digital computer consists of: CPU (Datapath + Control Unit), Memory Unit, I/O devices, and System Interconnect Bus.
+     Tags: BCA-207N, Unit-1, Computer-Components, Structure
+
+Q5. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What are the three distinct functional buses that compose the System Bus?
+     (A) Data Bus, Address Bus, and Control Bus [CORRECT]
+     (B) Serial Bus, Parallel Bus, and USB
+     (C) Internal Bus, External Bus, and Local Bus
+     (D) Read Bus, Write Bus, and Execute Bus
+     Explanation: The system bus comprises: Data Bus (bidirectional, carries data words), Address Bus (unidirectional from CPU, specifies memory addresses), and Control Bus (transmits timing and command signals).
+     Tags: BCA-207N, Unit-1, System-Bus, Bus-Types
+
+Q6. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     If an address bus has 16 lines (16-bit address bus), what is the maximum directly addressable memory capacity (assuming byte-addressable memory)?
+     (A) 64 KB (2^16 bytes = 65,536 bytes) [CORRECT]
+     (B) 1 MB
+     (C) 16 KB
+     (D) 4 GB
+     Explanation: With k address lines, the CPU can directly address 2^k distinct memory locations: 2^16 = 65,536 bytes = 64 KB.
+     Tags: BCA-207N, Unit-1, Address-Bus, Capacity-Calculation
+
+Q7. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the function of the Program Counter (PC) register in the CPU?
+     (A) Holds the memory address of the next instruction to be fetched and executed [CORRECT]
+     (B) Counts the total number of errors in the program
+     (C) Stores the result of the last ALU operation
+     (D) Holds the instruction currently being decoded
+     Explanation: The Program Counter points to the next instruction in sequence; it is automatically incremented after each instruction fetch unless a branch occurs.
+     Tags: BCA-207N, Unit-1, CPU-Registers, Program-Counter
+
+Q8. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the function of the Memory Address Register (MAR)?
+     (A) Holds the physical address in memory currently being read from or written to [CORRECT]
+     (B) Stores the data word read from RAM
+     (C) Stores the processor status word flags
+     (D) Contains the opcode being decoded
+     Explanation: MAR is connected directly to the address bus lines; it holds the address operand during memory read and write operations.
+     Tags: BCA-207N, Unit-1, CPU-Registers, MAR
+
+Q9. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the function of the Memory Data Register (MDR) / Memory Buffer Register (MBR)?
+     (A) Holds the data word read from memory or waiting to be written to memory [CORRECT]
+     (B) Holds the address of the next subroutine
+     (C) Counts clock cycles
+     (D) Stores keyboard input bytes
+     Explanation: MDR/MBR connects directly to the bidirectional data bus, acting as a holding buffer between high-speed CPU registers and slower main memory.
+     Tags: BCA-207N, Unit-1, CPU-Registers, MDR-MBR
+
+Q10. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the function of the Instruction Register (IR)?
+     (A) Holds the machine instruction word fetched from memory while it is being decoded by the control unit [CORRECT]
+     (B) Holds the loop counter
+     (C) Stores interrupt vectors
+     (D) Performs integer addition
+     Explanation: Once fetched from memory into MDR, the instruction is loaded into the IR, where its opcode and operand fields are decoded.
+     Tags: BCA-207N, Unit-1, CPU-Registers, Instruction-Register
+
+Q11. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the Accumulator (AC) register?
+     (A) A general-purpose register associated with the ALU that implicitly stores one of the operands and receives the result of arithmetic/logic operations [CORRECT]
+     (B) A register that accumulates dust inside the CPU
+     (C) A register that counts clock seconds
+     (D) A register that stores the BIOS code
+     Explanation: In accumulator-based processor architectures, AC holds intermediate computational results and serves as default operand source/destination.
+     Tags: BCA-207N, Unit-1, CPU-Registers, Accumulator
+
+Q12. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the purpose of Temporary Register (TR) in basic computer organization (Mano Machine)?
+     (A) Holds temporary data during microoperations to avoid overwriting user registers [CORRECT]
+     (B) Stores the system time
+     (C) Buffers network packets
+     (D) Stores the bootloader password
+     Explanation: TR is an internal CPU register used by the control unit to hold intermediate scratchpad values during multi-step instruction execution cycles.
+     Tags: BCA-207N, Unit-1, CPU-Registers, Temporary-Register
+
+Q13. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What are the sequential phases of the classic Instruction Execution Cycle?
+     (A) Fetch instruction -> Decode opcode -> Read effective address (if indirect) -> Execute instruction -> Check for interrupts [CORRECT]
+     (B) Write to disk -> Compile code -> Power off
+     (C) Decode -> Execute -> Fetch -> Store
+     (D) Input -> Print -> Restart -> Halt
+     Explanation: The instruction cycle continuously loops through: Fetch (PC to MAR, read memory to IR, increment PC), Decode, Effective Address calculation, Execution, and Interrupt handling.
+     Tags: BCA-207N, Unit-1, Instruction-Cycle, Phases
+
+Q14. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is a 'Microoperation' in computer organization?
+     (A) An elementary operation performed on data stored in one or more registers during a single clock cycle [CORRECT]
+     (B) A tiny computer chip
+     (C) An instruction written in Python
+     (D) A mechanical switch movement
+     Explanation: Microoperations are the lowest-level atomic hardware operations (e.g., register transfer, shift, increment, clear) that compose an ISA machine instruction.
+     Tags: BCA-207N, Unit-1, Microoperations, Definition
+
+Q15. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is Register Transfer Language (RTL)?
+     (A) A symbolic notation used to describe the microoperations and internal data transfers among computer registers (e.g., R2 <- R1 + R3) [CORRECT]
+     (B) A high-level programming language like C
+     (C) A language spoken by computer repair technicians
+     (D) A database query syntax
+     Explanation: RTL provides a standardized mathematical notation to specify register transfers, ALU operations, and control conditions concisely.
+     Tags: BCA-207N, Unit-1, RTL, Notation
+
+Q16. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What does the RTL statement: 'T2: MAR <- PC, PC <- PC + 1' mean?
+     (A) At clock timing state T2, transfer contents of PC to MAR, and simultaneously increment PC by 1 [CORRECT]
+     (B) Add MAR and PC together
+     (C) Clear both MAR and PC to zero
+     (D) Jump to subroutine at address T2
+     Explanation: The statement describes concurrent microoperations occurring at clock pulse T2: transferring the fetch address to MAR and incrementing PC.
+     Tags: BCA-207N, Unit-1, RTL, Microoperation-Semantics
+
+Q17. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is a 'Common Bus System' in CPU internal architecture?
+     (A) A shared set of parallel conductive lines that interconnects multiple registers, ALU, and memory, using multiplexers or tri-state buffers to prevent bus contention [CORRECT]
+     (B) A USB cable shared by computers
+     (C) A city transit network
+     (D) A serial RS-232 cable
+     Explanation: A common bus multiplexes internal transfers: at any single clock pulse, only one register places its contents onto the bus, while one or more destination registers load from it.
+     Tags: BCA-207N, Unit-1, Common-Bus, Multiplexers
+
+Q18. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is a 'Tri-State Buffer' and why is it used in bus design?
+     (A) A digital logic gate with three output states: Logic 0, Logic 1, and High-Impedance (Hi-Z / disconnected) [CORRECT]
+     (B) A buffer that stores three bytes of data
+     (C) A buffer with three power supplies
+     (D) A circuit that multiplies voltages by 3
+     Explanation: Tri-state buffers allow multiple register outputs to connect physically to the same bus line; disabling the buffer disconnects the output (Hi-Z), preventing short circuits.
+     Tags: BCA-207N, Unit-1, Tri-State-Buffer, Hardware
+
+Q19. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What are the two fundamental design methodologies for the CPU Control Unit?
+     (A) Hardwired Control Unit and Microprogrammed Control Unit [CORRECT]
+     (B) Analog Control Unit and Digital Control Unit
+     (C) Static Control Unit and Dynamic Control Unit
+     (D) Synchronous Control Unit and Asynchronous Control Unit
+     Explanation: Control Units are either Hardwired (fixed combinational logic circuits, decoders, state machines) or Microprogrammed (control software/firmware stored in ROM).
+     Tags: BCA-207N, Unit-1, Control-Unit, Classification
+
+Q20. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is the primary operational advantage of a 'Hardwired Control Unit'?
+     (A) Ultra-fast execution speed because control signals are generated directly by physical combinational logic gates [CORRECT]
+     (B) Ease of modifying or adding new instructions after manufacturing
+     (C) Very low chip silicon area for complex instruction sets
+     (D) It requires no clock oscillator
+     Explanation: Hardwired control produces control signals with minimal gate propagation delay, delivering maximum clock speeds (standard in RISC processors).
+     Tags: BCA-207N, Unit-1, Hardwired-Control, Speed-Advantage
+
+Q21. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the primary operational advantage of a 'Microprogrammed Control Unit'?
+     (A) High flexibility and ease of maintenance: instruction sets can be updated, extended, or emulated simply by updating the microcode in ROM [CORRECT]
+     (B) It runs 10 times faster than hardwired logic
+     (C) It requires zero transistors
+     (D) It eliminates the need for main memory
+     Explanation: Microprogramming structures the control unit like a tiny CPU inside the CPU: changing or fixing instruction semantics requires only changing the microprogram in control ROM.
+     Tags: BCA-207N, Unit-1, Microprogrammed-Control, Flexibility
+
+Q22. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     In a microprogrammed control unit, where is the microcode firmware stored?
+     (A) Control Memory (Control ROM / PROM) [CORRECT]
+     (B) L1 Data Cache
+     (C) Hard Drive MBR
+     (D) Virtual Memory Swap space
+     Explanation: Microcode routines reside in a dedicated high-speed internal read-only memory known as Control Memory.
+     Tags: BCA-207N, Unit-1, Control-Memory, Microprogramming
+
+Q23. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is the function of the Control Address Register (CAR)?
+     (A) Holds the address of the next microinstruction to be read from Control Memory [CORRECT]
+     (B) Holds user array addresses
+     (C) Counts CPU clock cycles
+     (D) Stores disk track sectors
+     Explanation: CAR functions as the 'program counter' of the control unit, pointing to the active microinstruction in control store.
+     Tags: BCA-207N, Unit-1, CAR, Microprogrammed-Control
+
+Q24. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is the function of the Control Data Register (CDR) / Control Buffer Register (CBR)?
+     (A) Holds the microinstruction read out from control memory while its control word fields are active [CORRECT]
+     (B) Buffers network packets
+     (C) Stores floating-point numbers
+     (D) Holds the keyboard buffer
+     Explanation: CDR holds the current microinstruction, whose control fields directly drive the enable lines, ALU function select, and next-address logic.
+     Tags: BCA-207N, Unit-1, CDR, Microprogrammed-Control
+
+Q25. [Unit 1: Basic Organization, CPU Registers & Control Unit] (HARD)
+     What is the difference between 'Horizontal Microcode' and 'Vertical Microcode'?
+     (A) Horizontal microcode uses wide, unencoded control words where each bit controls a specific hardware signal directly; Vertical microcode uses compact, encoded fields requiring decoders [CORRECT]
+     (B) Horizontal runs on PCs; Vertical on mainframes
+     (C) Horizontal is written in binary; Vertical in hex
+     (D) There is no difference
+     Explanation: Horizontal microcode offers high parallelism (many functional units active simultaneously) at the cost of wide microinstructions. Vertical microcode saves ROM width by encoding actions into fields.
+     Tags: BCA-207N, Unit-1, Horizontal-vs-Vertical, Microcode
+
+Q26. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is an 'Opcode' (Operation Code)?
+     (A) The binary portion of a machine instruction that specifies the mathematical or logical operation to be performed (e.g., ADD, SUB, LOAD) [CORRECT]
+     (B) The memory address of the operand
+     (C) The serial number of the CPU
+     (D) A comment in assembly language
+     Explanation: The opcode specifies *what* operation the processor must execute on the operands.
+     Tags: BCA-207N, Unit-1, Instruction-Format, Opcode
+
+Q27. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     If an instruction word is 16 bits wide, with 4 bits allocated for Opcode and 12 bits for Memory Address, how many distinct operations can the CPU support?
+     (A) 16 distinct operations (2^4 = 16) [CORRECT]
+     (B) 4 operations
+     (C) 4096 operations
+     (D) 64 operations
+     Explanation: With n bits for opcode, the CPU supports 2^n distinct operation codes: 2^4 = 16 operations.
+     Tags: BCA-207N, Unit-1, Opcode, Instruction-Capacity
+
+Q28. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     For the same 16-bit instruction with 12 bits of address, what is the maximum addressable memory in words?
+     (A) 4,096 words (2^12 = 4,096) [CORRECT]
+     (B) 16 words
+     (C) 65,536 words
+     (D) 1,024 words
+     Explanation: A 12-bit address field directly addresses 2^12 = 4096 memory words.
+     Tags: BCA-207N, Unit-1, Address-Field, Capacity
+
+Q29. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the role of the 'Addressing Mode' bit (I) in basic computer instruction formats?
+     (A) Specifies whether the operand address in the instruction is Direct (I = 0) or Indirect (I = 1) [CORRECT]
+     (B) Marks the instruction as illegal
+     (C) Inverts the result of the ALU
+     (D) Indicates whether the CPU is in user mode
+     Explanation: In basic computer design (Mano), the most significant bit (bit 15) indicates direct addressing (0) or indirect memory addressing (1).
+     Tags: BCA-207N, Unit-1, Addressing-Modes, Mode-Bit
+
+Q30. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is 'Effective Address' (EA)?
+     (A) The actual physical memory address where the operand is located, or where program control is transferred to [CORRECT]
+     (B) The address of the compiler
+     (C) The address of the CPU on the motherboard
+     (D) The size of the cache in bytes
+     Explanation: Effective address is the resolved physical memory address computed by applying the instruction's addressing mode rules.
+     Tags: BCA-207N, Unit-1, Effective-Address, Concept
+
+Q31. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     In Indirect Addressing, how many memory accesses are required during the instruction cycle to fetch a single operand?
+     (A) 2 memory accesses (first to read the effective address pointer from memory, and second to read the actual operand) [CORRECT]
+     (B) 1 memory access
+     (C) 3 memory accesses
+     (D) Zero memory accesses
+     Explanation: First access reads the address pointer stored in memory; the second access fetches the actual data operand from that effective address.
+     Tags: BCA-207N, Unit-1, Indirect-Addressing, Memory-Cycles
+
+Q32. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is a 'General Purpose Register' (GPR) Organization?
+     (A) A CPU datapath architecture where multiple general-purpose registers (R0, R1, ..., Rn) can serve as sources and destinations for any ALU operation [CORRECT]
+     (B) A computer with no RAM
+     (C) A system where all registers are read-only
+     (D) An architecture with only an Accumulator
+     Explanation: GPR architectures (standard in modern x86, ARM, RISC-V) replace single accumulator bottlenecks with flexible multi-register register files.
+     Tags: BCA-207N, Unit-1, GPR-Architecture, Datapath
+
+Q33. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     In a GPR bus organization with 7 general-purpose registers, an ALU, and an external bus, what selects the source registers A and B and destination register C?
+     (A) A Control Word comprising multiplexer selection fields (SELA, SELB, SELD, and ALU Operation OPR) [CORRECT]
+     (B) A hardware key
+     (C) The power supply voltage
+     (D) The screen resolution
+     Explanation: The Control Word fields drive multiplexer select inputs to route chosen source registers to the ALU inputs and latch the result into the destination register.
+     Tags: BCA-207N, Unit-1, Control-Word, GPR-Datapath
+
+Q34. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is an 'Arithmetic Microoperation'?
+     (A) Microoperations that perform basic arithmetic calculations on numeric values (e.g., Add, Subtract, Increment, Decrement) [CORRECT]
+     (B) Operations that compare text strings
+     (C) Operations that invert bits
+     (D) Operations that reboot the PC
+     Explanation: Arithmetic microoperations execute numeric operations: R3 <- R1 + R2, R1 <- R1 + 1, R1 <- R1 - 1, etc.
+     Tags: BCA-207N, Unit-1, Microoperations, Arithmetic
+
+Q35. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the 2's complement representation of subtraction R1 - R2 in terms of basic microoperations?
+     (A) R1 + R2' + 1 (where R2' is 1's complement of R2) [CORRECT]
+     (B) R1 - R2 - 1
+     (C) R1' + R2
+     (D) (R1 * R2) / 2
+     Explanation: In digital logic, binary subtraction is performed by adding the 2's complement of the subtrahend: R1 - R2 = R1 + (~R2) + 1.
+     Tags: BCA-207N, Unit-1, 2s-Complement, Subtraction
+
+Q36. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is a 'Logic Microoperation'?
+     (A) Bitwise operations performed on strings of bits stored in registers (e.g., AND, OR, XOR, NOT) [CORRECT]
+     (B) Evaluating algebraic polynomials
+     (C) Solving differential equations
+     (D) Calculating square roots
+     Explanation: Logic microoperations manipulate individual bit positions independently, treating registers as arrays of binary flags.
+     Tags: BCA-207N, Unit-1, Microoperations, Logic
+
+Q37. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     Which logic microoperation is used to SELECTIVELY CLEAR (reset to 0) specific bits in register A using a mask in register B?
+     (A) A <- A AND B' (or A AND NOT B) [CORRECT]
+     (B) A <- A OR B
+     (C) A <- A XOR B
+     (D) A <- A + B
+     Explanation: ANDing register A with the complement of mask B clears those bits in A where B has 1s, leaving other bits unchanged (Selective Clear).
+     Tags: BCA-207N, Unit-1, Logic-Microoperations, Selective-Clear
+
+Q38. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     Which logic microoperation is used to SELECTIVELY SET (set to 1) specific bits in register A using a mask in register B?
+     (A) A <- A OR B [CORRECT]
+     (B) A <- A AND B
+     (C) A <- A XOR B
+     (D) A <- NOT A
+     Explanation: ORing register A with mask B sets to 1 all bit positions where B has 1s, preserving all other bits (Selective Set).
+     Tags: BCA-207N, Unit-1, Logic-Microoperations, Selective-Set
+
+Q39. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     Which logic microoperation is used to SELECTIVELY INVERT (toggle / complement) specific bits in register A?
+     (A) A <- A XOR B [CORRECT]
+     (B) A <- A AND B
+     (C) A <- A OR B
+     (D) A <- NOT B
+     Explanation: XORing with 1 flips the bit (0^1=1, 1^1=0); XORing with 0 preserves the bit (Selective Complement).
+     Tags: BCA-207N, Unit-1, Logic-Microoperations, Selective-Complement
+
+Q40. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What are the three types of Shift Microoperations?
+     (A) Logical Shift, Arithmetic Shift, and Circular (Rotate) Shift [CORRECT]
+     (B) Fast Shift, Slow Shift, Medium Shift
+     (C) Integer Shift, Float Shift, Double Shift
+     (D) Read Shift, Write Shift, Clear Shift
+     Explanation: Shift microoperations are: Logical (shifts in 0), Arithmetic (preserves sign bit), and Circular / Rotate (recirculates shifted-out bits back into opposite end).
+     Tags: BCA-207N, Unit-1, Shift-Microoperations, Classification
+
+Q41. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     In a Logical Shift Right (SHR), what binary value is always inserted into the most significant bit (MSB) position?
+     (A) 0 [CORRECT]
+     (B) 1
+     (C) The previous sign bit
+     (D) The bit shifted out of the LSB
+     Explanation: Logical shift always injects zero into the vacant extreme bit position (0 into MSB for SHR; 0 into LSB for SHL).
+     Tags: BCA-207N, Unit-1, Logical-Shift, SHR
+
+Q42. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     In an Arithmetic Shift Right (ASHR), what binary value is copied into the most significant bit (MSB)?
+     (A) The sign bit is retained (MSB remains unchanged and is duplicated) [CORRECT]
+     (B) Always 0
+     (C) Always 1
+     (D) The LSB value
+     Explanation: Arithmetic shift right divides a signed 2's complement number by 2: to preserve the algebraic sign, the sign bit (MSB) is copied into itself and the adjacent position.
+     Tags: BCA-207N, Unit-1, Arithmetic-Shift, Sign-Extension
+
+Q43. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     In an Arithmetic Shift Left (ASHL), what potential condition must be detected?
+     (A) Arithmetic Overflow (if the sign bit changes after shifting left) [CORRECT]
+     (B) Divide by zero
+     (C) Underflow
+     (D) Parity loss
+     Explanation: Multiplying a signed number by 2 via ASHL causes overflow if the bit shifted out of bit n-1 differs from the new sign bit, altering the sign.
+     Tags: BCA-207N, Unit-1, Arithmetic-Shift, Overflow-Detection
+
+Q44. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What does Circular Shift (Rotate) Right (ROR) do with the bit shifted out of the least significant bit (LSB)?
+     (A) Inserts it into the most significant bit (MSB) position [CORRECT]
+     (B) Discards it permanently
+     (C) Stores it in the Accumulator
+     (D) Sets the zero flag to 1
+     Explanation: Rotate operations wrap bits circularly: the bit leaving the LSB re-enters at the MSB.
+     Tags: BCA-207N, Unit-1, Circular-Shift, ROR
+
+Q45. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is a 'Bus Arbitration' protocol?
+     (A) A mechanism that decides which bus master device (CPU, DMA controller) gets control of the shared system bus when multiple devices request it simultaneously [CORRECT]
+     (B) A protocol that speeds up memory chips
+     (C) An encryption system for bus data
+     (D) A tool for counting data bytes
+     Explanation: Bus arbitration arbitrates competing master requests using daisy-chaining, centralized priority arbiters, or distributed arbitration.
+     Tags: BCA-207N, Unit-1, Bus-Arbitration, System-Bus
+
+Q46. [Unit 1: Basic Organization, CPU Registers & Control Unit] (MEDIUM)
+     What is 'Daisy Chaining' in bus arbitration?
+     (A) A serial hardware connection where a bus grant signal propagates sequentially from the highest priority device to lower priority devices [CORRECT]
+     (B) Connecting multiple hard drives in parallel
+     (C) Wiring memory chips in a circular ring
+     (D) A software loop in the BIOS
+     Explanation: In daisy-chaining, the device closest to the central arbiter intercepts the grant line if it requested the bus; otherwise it passes the grant downstream to lower-priority devices.
+     Tags: BCA-207N, Unit-1, Daisy-Chaining, Arbitration
+
+Q47. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is the function of the Status / Flags Register in the CPU?
+     (A) Holds individual 1-bit condition flags (Zero flag Z, Sign flag S, Carry flag C, Overflow flag V) set by ALU operations [CORRECT]
+     (B) Stores the computer brand name
+     (C) Holds the monitor resolution
+     (D) Tracks total hours powered on
+     Explanation: The Flags register records status conditions resulting from the most recent ALU instruction, used by conditional jump/branch instructions.
+     Tags: BCA-207N, Unit-1, Flags-Register, CPU
+
+Q48. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     When is the Zero Flag (Z) set to 1?
+     (A) When the result of the last arithmetic or logical operation equals exactly zero [CORRECT]
+     (B) When the CPU clock is halted
+     (C) When memory is empty
+     (D) When an interrupt occurs
+     Explanation: If all bits of the ALU output are 0, the Zero Flag Z is asserted (Z = 1); otherwise Z = 0.
+     Tags: BCA-207N, Unit-1, Flags, Zero-Flag
+
+Q49. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     What is an 'Instruction Decoder' circuit in the control unit?
+     (A) A combinational logic decoder (e.g., 3-to-8 or 4-to-16 decoder) that activates a unique output control line corresponding to the binary opcode [CORRECT]
+     (B) A program that translates French to English
+     (C) A software compiler
+     (D) A memory RAM tester
+     Explanation: The instruction decoder converts the binary n-bit opcode into one of 2^n active control pathways to initiate the required sequence of microoperations.
+     Tags: BCA-207N, Unit-1, Instruction-Decoder, Hardware
+
+Q50. [Unit 1: Basic Organization, CPU Registers & Control Unit] (EASY)
+     Why is the Control Unit often described as the 'Brain' of the Central Processing Unit?
+     (A) It fetches, decodes, and orchestrates the timing and sequence of all data transfers, register updates, and ALU operations across the computer [CORRECT]
+     (B) It performs all multiplication and division
+     (C) It contains the permanent storage media
+     (D) It provides the power supply
+     Explanation: While the ALU executes operations, the Control Unit directs and coordinates every subsystem, generating the precise control pulses that drive the machine.
+     Tags: BCA-207N, Unit-1, Control-Unit, Role
+
+Q51. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What are the four common instruction format architectures classified by the number of memory addresses they specify?
+     (A) Three-Address, Two-Address, One-Address (Accumulator), and Zero-Address (Stack) Instructions [CORRECT]
+     (B) 16-bit, 32-bit, 64-bit, and 128-bit instructions
+     (C) Serial, Parallel, Synchronous, and Asynchronous instructions
+     (D) Integer, Float, Double, and String instructions
+     Explanation: ISAs are classified by explicit address operand fields: 3-address (X = A + B), 2-address (X = X + B), 1-address (AC = AC + M), and 0-address (TOS = TOS + SOS via Stack).
+     Tags: BCA-207N, Unit-2, Instruction-Formats, Classification
+
+Q52. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In a 'Three-Address Instruction' format, what do the three address fields represent in an operation like: ADD R1, A, B?
+     (A) Destination register (R1), First source operand (A), and Second source operand (B) [CORRECT]
+     (B) Three different memory addresses added together
+     (C) Three opcodes executed in parallel
+     (D) Three clock cycles
+     Explanation: Format: [Opcode, Dest, Source1, Source2]. R1 <- M[A] + M[B]. It provides expressive concise code at the expense of wide instruction words.
+     Tags: BCA-207N, Unit-2, Three-Address, Format
+
+Q53. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In a 'Two-Address Instruction' format, what occurs in the operation: ADD R1, R2?
+     (A) R1 <- R1 + R2 (Destination register R1 also serves as one of the source operands) [CORRECT]
+     (B) R1 and R2 are both cleared
+     (C) Result is placed in R0
+     (D) R2 <- R1 + R2
+     Explanation: In two-address format [Opcode, Dest/Src1, Src2], the destination register is implicitly overwritten with the result.
+     Tags: BCA-207N, Unit-2, Two-Address, Format
+
+Q54. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In a 'One-Address Instruction' format (Accumulator machine), how is the instruction ADD X executed?
+     (A) AC <- AC + M[X] (The Accumulator register is an implicit operand and destination) [CORRECT]
+     (B) X <- X + 1
+     (C) Memory location X is added to itself
+     (D) AC is cleared to zero
+     Explanation: One-address instructions specify only one explicit memory operand; the second operand and destination are implicitly the Accumulator register.
+     Tags: BCA-207N, Unit-2, One-Address, Accumulator
+
+Q55. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     How does a 'Zero-Address Instruction' format (Stack machine) perform an ADD operation?
+     (A) Pops the top two elements from the Stack, adds them in the ALU, and pushes the result back onto the Top of Stack [CORRECT]
+     (B) Adds zero to the program counter
+     (C) Adds zero to all registers
+     (D) Executes an instruction with no clock cycles
+     Explanation: In a stack architecture (Zero-Address), instructions like ADD, SUB require no explicit operand addresses because operands are implicitly at Top of Stack (TOS).
+     Tags: BCA-207N, Unit-2, Zero-Address, Stack-Machine
+
+Q56. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What are 'Reverse Polish Notation' (RPN) or Postfix Expressions, and why are they used in Zero-Address stack computers?
+     (A) Operators follow their operands (e.g., A B +), eliminating the need for parentheses and operator precedence rules during stack evaluation [CORRECT]
+     (B) Expressions written in Polish characters
+     (C) Expressions read backwards from right to left
+     (D) Mathematical expressions that use no numbers
+     Explanation: Postfix RPN allows simple left-to-right linear stack evaluation: push operands until an operator arrives, then pop operands, evaluate, and push result.
+     Tags: BCA-207N, Unit-2, RPN-Postfix, Stack-Evaluation
+
+Q57. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     Convert the infix expression (A + B) * (C - D) into Postfix (RPN) form:
+     (A) A B + C D - * [CORRECT]
+     (B) A B C D + - *
+     (C) * + A B - C D
+     (D) + A B * - C D
+     Explanation: (A + B) becomes 'A B +'; (C - D) becomes 'C D -'. Multiplying the two terms places the '*' operator at the end: 'A B + C D - *'.
+     Tags: BCA-207N, Unit-2, RPN-Conversion, Infix-to-Postfix
+
+Q58. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What are the three general categories of computer instructions based on function?
+     (A) Data Transfer Instructions, Data Manipulation Instructions, and Program Control Instructions [CORRECT]
+     (B) Fast, Medium, and Slow Instructions
+     (C) User, System, and Kernel Instructions
+     (D) Source, Binary, and Executable Instructions
+     Explanation: Instructions divide into: 1. Data Transfer (MOV, LOAD, STORE, PUSH, POP), 2. Data Manipulation (Arithmetic, Logic, Shift), and 3. Program Control (JMP, CALL, RET, Branches).
+     Tags: BCA-207N, Unit-2, Instruction-Types, Categories
+
+Q59. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     Which of the following is a 'Program Control Instruction'?
+     (A) JUMP / BRANCH / CALL / RETURN [CORRECT]
+     (B) ADD / SUB
+     (C) AND / OR
+     (D) LOAD / STORE
+     Explanation: Program control instructions alter the sequential flow of program execution by loading new target addresses into the Program Counter (PC).
+     Tags: BCA-207N, Unit-2, Program-Control, Instruction-Types
+
+Q60. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is the primary purpose of 'Addressing Modes' in computer architecture?
+     (A) To provide flexibility for pointer manipulation, array indexing, and dynamic program relocatability while reducing the number of address bits in instruction words [CORRECT]
+     (B) To determine the speed of the CPU clock
+     (C) To format hard drive partitions
+     (D) To connect to internet IP addresses
+     Explanation: Addressing modes allow programmers to reference large memory spaces, traverse arrays, access pointer data structures, and write position-independent code efficiently.
+     Tags: BCA-207N, Unit-2, Addressing-Modes, Purpose
+
+Q61. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Immediate Addressing Mode', where is the operand located?
+     (A) Directly inside the instruction word itself (as an operand field constant) [CORRECT]
+     (B) In main memory at address 0
+     (C) In a general purpose register
+     (D) On the hard disk drive
+     Explanation: In immediate addressing, the operand value is part of the instruction (e.g., MOV R1, #25), requiring zero memory access cycles to fetch data.
+     Tags: BCA-207N, Unit-2, Immediate-Addressing, Definition
+
+Q62. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Direct Addressing Mode' (Absolute Addressing), what does the instruction address field contain?
+     (A) The exact effective physical memory address of the operand (EA = Address field) [CORRECT]
+     (B) The operand value itself
+     (C) The address of a pointer
+     (D) The register number only
+     Explanation: Direct addressing provides the actual memory address directly: Effective Address EA = A (e.g., LOAD AC, 5000 loads contents of memory address 5000).
+     Tags: BCA-207N, Unit-2, Direct-Addressing, Definition
+
+Q63. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Indirect Addressing Mode', what does the instruction address field contain?
+     (A) The memory address where the effective address of the operand is stored (EA = M[A]) [CORRECT]
+     (B) The operand data
+     (C) A relative branch offset
+     (D) The register opcode
+     Explanation: Indirect addressing implements pointers: the address field points to a memory location that contains the actual address of the operand.
+     Tags: BCA-207N, Unit-2, Indirect-Addressing, Pointers
+
+Q64. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Register Addressing Mode', where is the operand located?
+     (A) Inside a designated CPU register (EA = R) [CORRECT]
+     (B) In main memory RAM
+     (C) In the instruction cache
+     (D) On the stack
+     Explanation: In register mode, the operand resides in a CPU register specified by a small k-bit register select field, executing at register speeds.
+     Tags: BCA-207N, Unit-2, Register-Addressing, Definition
+
+Q65. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Register Indirect Addressing Mode', what does the designated register contain?
+     (A) The memory address of the operand (EA = [R]) [CORRECT]
+     (B) The operand data value
+     (C) An instruction opcode
+     (D) A interrupt vector
+     Explanation: The register holds a memory pointer: EA = (R). Data is fetched from memory at the address stored in register R (e.g., MOV A, @R0).
+     Tags: BCA-207N, Unit-2, Register-Indirect, Pointers
+
+Q66. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     In 'Relative Addressing Mode' (PC-Relative), how is the Effective Address computed?
+     (A) EA = PC + Address Offset (Displacement) [CORRECT]
+     (B) EA = Base Register + Index Register
+     (C) EA = M[PC]
+     (D) EA = Address field - PC
+     Explanation: PC-relative addressing adds a signed offset to the current Program Counter: EA = PC + offset. It is widely used for short relative branch and jump instructions.
+     Tags: BCA-207N, Unit-2, Relative-Addressing, PC-Offset
+
+Q67. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is the primary advantage of Relative (PC-Relative) Addressing?
+     (A) Enables Position-Independent Code (PIC): the entire program code can be loaded anywhere in physical memory without recalculating branch targets [CORRECT]
+     (B) It requires zero bits in the instruction
+     (C) It allows infinite RAM size
+     (D) It eliminates the ALU
+     Explanation: Because jumps are relative offsets (+12, -8) from the current PC rather than hardcoded absolute addresses, the program executes identically regardless of where in memory it is loaded.
+     Tags: BCA-207N, Unit-2, Relative-Addressing, Position-Independent-Code
+
+Q68. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     In 'Indexed Addressing Mode', how is the Effective Address computed?
+     (A) EA = Base Address + Contents of Index Register (XR) [CORRECT]
+     (B) EA = XR - Base
+     (C) EA = M[Base] * XR
+     (D) EA = XR / 2
+     Explanation: Indexed mode computes EA = A + XR. Incrementing the index register XR sequentially traverses elements of an array starting at base address A.
+     Tags: BCA-207N, Unit-2, Indexed-Addressing, Array-Traversal
+
+Q69. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     In 'Base Register Addressing Mode', how is the Effective Address computed?
+     (A) EA = Contents of Base Register (BR) + Displacement / Offset [CORRECT]
+     (B) EA = BR * Offset
+     (C) EA = BR - PC
+     (D) EA = M[BR]
+     Explanation: Base-register addressing adds an instruction displacement to a designated Base Register, enabling dynamic segment relocation by the operating system.
+     Tags: BCA-207N, Unit-2, Base-Register-Addressing, Relocation
+
+Q70. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What occurs in 'Auto-Increment Addressing Mode'?
+     (A) The effective address is the register contents; after accessing the operand, the register is automatically incremented by the data size [CORRECT]
+     (B) The register is incremented before accessing memory
+     (C) The program counter is doubled
+     (D) All registers are incremented simultaneously
+     Explanation: In auto-increment (e.g., (R1)+), operand address is R1; subsequently, R1 is automatically incremented to point to the next array item or stack element.
+     Tags: BCA-207N, Unit-2, Auto-Increment, Definition
+
+Q71. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What occurs in 'Auto-Decrement Addressing Mode'?
+     (A) The register is decremented by the data size FIRST, and the new decremented value is then used as the effective address [CORRECT]
+     (B) The register is decremented after reading data
+     (C) The register is multiplied by -1
+     (D) Data in memory is decremented
+     Explanation: In auto-decrement (e.g., -(R1)), R1 is decremented prior to memory access, mirroring stack push operations.
+     Tags: BCA-207N, Unit-2, Auto-Decrement, Stack-Push
+
+Q72. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     Which pair of addressing modes naturally implements Push and Pop operations on a downward-growing Stack?
+     (A) Auto-Decrement for PUSH and Auto-Increment for POP [CORRECT]
+     (B) Immediate for PUSH and Direct for POP
+     (C) Relative for PUSH and Indexed for POP
+     (D) Indirect for both
+     Explanation: PUSH predecrements stack pointer SP and stores data (-SP). POP reads data and postincrements SP (SP+).
+     Tags: BCA-207N, Unit-2, Stack-Operations, Auto-Increment-Decrement
+
+Q73. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What does 'RISC' stand for in computer architecture?
+     (A) Reduced Instruction Set Computer [CORRECT]
+     (B) Random Instruction Storage Controller
+     (C) Reliable Integrated System Core
+     (D) Redundant Interface System Computer
+     Explanation: RISC is a microprocessor design philosophy favoring a small set of simple, uniform, highly optimized instructions.
+     Tags: BCA-207N, Unit-2, RISC, Acronym
+
+Q74. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What does 'CISC' stand for in computer architecture?
+     (A) Complex Instruction Set Computer [CORRECT]
+     (B) Central Integrated System Controller
+     (C) Compact Instruction Sequential Core
+     (D) Cascaded Instruction Storage Circuit
+     Explanation: CISC provides a rich, varied set of complex instructions (variable length, multi-cycle, memory-to-memory operations).
+     Tags: BCA-207N, Unit-2, CISC, Acronym
+
+Q75. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     Which of the following is a fundamental design characteristic of RISC architectures?
+     (A) Load/Store Architecture: only dedicated LOAD and STORE instructions access main memory; all ALU operations occur strictly between registers [CORRECT]
+     (B) Complex variable-length instructions with multiple memory operands
+     (C) Microprogrammed control units with massive control ROMs
+     (D) Small register sets (fewer than 8 registers)
+     Explanation: RISC mandates that ALU instructions operate exclusively on registers (Load/Store architecture), decoupling memory access from arithmetic processing.
+     Tags: BCA-207N, Unit-2, RISC-Characteristics, Load-Store
+
+Q76. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     Which of the following is a hallmark characteristic of CISC architectures (e.g., Intel x86)?
+     (A) Variable-length instruction formats, many addressing modes, and instructions capable of performing memory-to-memory operations directly [CORRECT]
+     (B) All instructions execute in a single uniform clock cycle
+     (C) Purely hardwired control unit
+     (D) Absence of stack operations
+     Explanation: CISC architectures support rich instruction sets with variable byte lengths (1 to 15 bytes in x86) and complex memory operands.
+     Tags: BCA-207N, Unit-2, CISC-Characteristics, Complex-Instructions
+
+Q77. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     Why do RISC processors typically feature large Register Files (e.g., 32 to 128 general-purpose registers)?
+     (A) To keep frequently used variables in fast CPU registers, minimizing slow main memory access latency [CORRECT]
+     (B) Because RISC chips have no RAM
+     (C) To store the microcode ROM
+     (D) To store the operating system kernel on chip
+     Explanation: Because RISC relies on register-to-register operations, large register files reduce memory bus traffic and instruction cycle delays.
+     Tags: BCA-207N, Unit-2, RISC, Register-File
+
+Q78. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (HARD)
+     In Berkeley RISC, what hardware mechanism is used to pass function parameters between subroutines with zero memory overhead?
+     (A) Overlapping Register Windows [CORRECT]
+     (B) Hardware Stack Pointer
+     (C) DMA transfer
+     (D) Shared L3 cache
+     Explanation: Register Windows partition the register file into overlapping sets (Input, Local, Output), allowing the caller's output registers to become the callee's input registers seamlessly.
+     Tags: BCA-207N, Unit-2, Register-Windows, Berkeley-RISC
+
+Q79. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is 'Instruction Pipelining' in modern CPU architecture?
+     (A) A hardware technique where multiple instructions are overlapped in execution, like an assembly line, across distinct hardware stages [CORRECT]
+     (B) Storing instructions in oil-filled pipes
+     (C) Sending instructions over fiber optic cables
+     (D) Executing one instruction after another strictly sequentially
+     Explanation: Pipelining divides instruction execution into discrete stages (Fetch, Decode, Execute, Writeback), overlapping successive instructions to increase instruction throughput.
+     Tags: BCA-207N, Unit-2, Pipelining, Concept
+
+Q80. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is 'Superscalar Architecture'?
+     (A) A processor capable of fetching, decoding, and executing MULTIPLE independent instructions simultaneously per clock cycle using multiple parallel execution pipelines [CORRECT]
+     (B) A processor that runs faster than light
+     (C) A CPU with more than 1000 cores
+     (D) A computer with multiple monitors
+     Explanation: Superscalar CPUs contain redundant execution units (multiple ALUs, FPUs), executing Instructions-Per-Cycle (IPC) > 1.
+     Tags: BCA-207N, Unit-2, Superscalar, Definition
+
+Q81. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is 'Simultaneous Multithreading' (SMT), known commercially as Intel Hyper-Threading?
+     (A) A hardware technique that allows a single physical processor core to appear as two or more logical cores by duplicating register state while sharing execution units [CORRECT]
+     (B) Running two programs on two different computers
+     (C) Splitting an executable file into two halves
+     (D) Running code without an operating system
+     Explanation: SMT duplicates architectural register sets and program counters per thread on a single physical core, hiding memory stalls by interleaving instructions from multiple threads into idle pipeline slots.
+     Tags: BCA-207N, Unit-2, Hyper-Threading, SMT
+
+Q82. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is a 'Multi-Core Microprocessor'?
+     (A) A single integrated circuit die containing two or more independent, complete physical CPU execution cores [CORRECT]
+     (B) A computer with multiple motherboards
+     (C) A CPU that has multiple power cables
+     (D) A processor that only runs multi-threaded code
+     Explanation: Multi-core processors integrate multiple discrete processing cores onto a single silicon chip, sharing lower-level cache (L3) and memory controllers.
+     Tags: BCA-207N, Unit-2, Multi-Core, Architecture
+
+Q83. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is the function of the L3 (Level 3) Cache in modern multi-core processors?
+     (A) A large, on-chip cache shared equally by all CPU cores to facilitate fast inter-core communication and cache sharing [CORRECT]
+     (B) A cache stored on the hard drive
+     (C) A backup cache stored in the BIOS ROM
+     (D) A cache for web pages
+     Explanation: Modern CPUs dedicate private L1 and L2 caches to individual cores, while providing a massive shared on-die L3 cache across all cores.
+     Tags: BCA-207N, Unit-2, Cache-Hierarchy, L3-Cache
+
+Q84. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (HARD)
+     What is 'Intel QuickPath Interconnect' (QPI) or AMD Infinity Fabric?
+     (A) High-speed, point-to-point coherent packet-based bus links connecting processors, memory controllers, and I/O hubs, replacing the legacy Front Side Bus (FSB) [CORRECT]
+     (B) A software utility for overclocking
+     (C) A wireless Wi-Fi antenna inside the CPU
+     (D) A SATA hard drive connector
+     Explanation: Modern multi-socket servers use point-to-point interconnects (QPI, UPI, Infinity Fabric) for high-bandwidth, low-latency inter-socket cache-coherent communication.
+     Tags: BCA-207N, Unit-2, Interconnects, QPI-InfinityFabric
+
+Q85. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is 'Endianness' in computer data representation?
+     (A) The byte ordering convention used to store multi-byte data words in computer memory [CORRECT]
+     (B) The size of the hard drive at the end of the partition
+     (C) Whether the CPU is installed on the left or right side of the board
+     (D) A type of network termination
+     Explanation: Endianness defines whether the most significant byte (Big-Endian) or least significant byte (Little-Endian) is stored at the lowest memory address.
+     Tags: BCA-207N, Unit-2, Endianness, Byte-Order
+
+Q86. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     In 'Little-Endian' byte ordering (standard in x86/ARM processors), how is the 32-bit hex value 0x12345678 stored starting at memory address 1000?
+     (A) Address 1000: 0x78; 1001: 0x56; 1002: 0x34; 1003: 0x12 (Least significant byte at lowest address) [CORRECT]
+     (B) Address 1000: 0x12; 1001: 0x34; 1002: 0x56; 1003: 0x78
+     (C) Address 1000: 0x34; 1001: 0x12; 1002: 0x78; 1003: 0x56
+     (D) In random byte order
+     Explanation: Little-Endian stores the Little End (least significant byte 0x78) at the lowest memory address.
+     Tags: BCA-207N, Unit-2, Endianness, Little-Endian-Calculation
+
+Q87. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     In 'Big-Endian' byte ordering (used in internet network protocols), how is 0x12345678 stored starting at address 1000?
+     (A) Address 1000: 0x12; 1001: 0x34; 1002: 0x56; 1003: 0x78 (Most significant byte at lowest address) [CORRECT]
+     (B) Address 1000: 0x78; 1001: 0x56; 1002: 0x34; 1003: 0x12
+     (C) Address 1000: 0x56; 1001: 0x78; 1002: 0x12; 1003: 0x34
+     (D) Address 1000: 0x00
+     Explanation: Big-Endian stores the Big End (most significant byte 0x12) at the lowest memory address (network byte order).
+     Tags: BCA-207N, Unit-2, Endianness, Big-Endian-Calculation
+
+Q88. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What does 'Subroutine Call' (CALL) instruction do in terms of CPU register operations?
+     (A) Pushes the return address (contents of Program Counter PC) onto the Stack, and loads the target subroutine address into PC [CORRECT]
+     (B) Clears all general registers
+     (C) Halts the processor
+     (D) Copies the stack to disk
+     Explanation: CALL saves the return address to the stack (or link register) so execution can resume seamlessly upon encountering a RETURN instruction.
+     Tags: BCA-207N, Unit-2, Subroutine-Call, Stack
+
+Q89. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What does the 'RETURN' (RET) instruction do?
+     (A) Pops the return address from the top of the stack and restores it into the Program Counter (PC) [CORRECT]
+     (B) Resets the CPU to factory settings
+     (C) Returns zero to the compiler
+     (D) Deletes the subroutine from memory
+     Explanation: RET pops the saved return address from TOS into PC, redirecting CPU execution back to the caller instruction immediately following CALL.
+     Tags: BCA-207N, Unit-2, Return-Instruction, Stack
+
+Q90. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is a 'Recursive Subroutine' in assembly and stack architecture?
+     (A) A subroutine that calls itself directly or indirectly, requiring dynamic stack frames for each activation to maintain local variables and return pointers [CORRECT]
+     (B) A subroutine with an infinite loop
+     (C) A subroutine that never uses the stack
+     (D) A subroutine that deletes its own code
+     Explanation: Recursion relies on the hardware stack to allocate private activation frames (call frames) for each invocation depth.
+     Tags: BCA-207N, Unit-2, Recursion, Stack-Frames
+
+Q91. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is the 'Condition Code' (CC) generation in the ALU?
+     (A) Hardware comparator logic that evaluates arithmetic results and updates flags: Negative (N), Zero (Z), Overflow (V), Carry (C) [CORRECT]
+     (B) Generating passwords for BIOS
+     (C) Testing hardware voltage levels
+     (D) Writing compiler diagnostic codes
+     Explanation: ALU operations inherently produce condition flags indicating whether the result was zero, negative, produced an unsigned carry, or signed 2's complement overflow.
+     Tags: BCA-207N, Unit-2, ALU, Condition-Codes
+
+Q92. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     Under what condition does Signed Overflow (V = 1) occur during the addition of two numbers?
+     (A) When two positive numbers are added and produce a negative result, or two negative numbers are added and produce a positive result [CORRECT]
+     (B) Whenever there is a carry out of the MSB
+     (C) When the result equals zero
+     (D) When one number is positive and the other is negative
+     Explanation: Overflow occurs if and only if the carry into the sign bit differs from the carry out of the sign bit: V = C_in XOR C_out.
+     Tags: BCA-207N, Unit-2, ALU, Overflow-Rule
+
+Q93. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is an 'Unconditional Branch' instruction?
+     (A) A jump instruction that ALWAYS alters the Program Counter (PC <- Target Address) regardless of any condition flags [CORRECT]
+     (B) A jump that only occurs on zero
+     (C) A branch that occurs randomly
+     (D) A branch that halts the CPU
+     Explanation: Unconditional jumps (e.g., JMP 2000) execute without evaluating status flags, transferring control unconditionally.
+     Tags: BCA-207N, Unit-2, Branching, Unconditional
+
+Q94. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is a 'Conditional Branch' instruction?
+     (A) A jump instruction that inspects specific status flags (e.g., JZ - Jump if Zero, JC - Jump if Carry) and branches only if the test is satisfied [CORRECT]
+     (B) A branch that requires user permission
+     (C) A jump that occurs only on Tuesdays
+     (D) A jump executed by hardware reset
+     Explanation: Conditional jumps evaluate status flags (e.g., if Z == 1, then PC <- target; else PC advances normally).
+     Tags: BCA-207N, Unit-2, Branching, Conditional
+
+Q95. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is 'Memory-Mapped I/O'?
+     (A) I/O device registers are mapped into the same address space as main memory RAM, accessed using standard memory instructions (LOAD, STORE) [CORRECT]
+     (B) I/O devices connected with HDMI cables
+     (C) Displaying hard drive sectors on the monitor
+     (D) Mapping RAM addresses to web URLs
+     Explanation: In memory-mapped I/O, peripheral registers appear as regular memory addresses; no specialized I/O instructions are needed.
+     Tags: BCA-207N, Unit-2, Memory-Mapped-I-O, Architecture
+
+Q96. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What is 'Isolated (Port-Mapped) I/O'?
+     (A) I/O devices have a separate address space from memory, requiring specialized CPU instructions like IN and OUT to communicate with device ports [CORRECT]
+     (B) I/O devices isolated in physical Faraday cages
+     (C) Devices connected only via Bluetooth
+     (D) I/O without power supply
+     Explanation: Isolated I/O (e.g., Intel x86 IN/OUT instructions) uses dedicated hardware control lines (IOR/IOW vs MEMR/MEMW) to separate I/O port addresses from memory addresses.
+     Tags: BCA-207N, Unit-2, Isolated-I-O, Architecture
+
+Q97. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is an 'Interrupt' in CPU operation?
+     (A) A hardware signal or software event that temporarily suspends the currently executing program and transfers control to an Interrupt Service Routine (ISR) [CORRECT]
+     (B) A broken wire on the motherboard
+     (C) A computer monitor turning off
+     (D) A typing error on the keyboard
+     Explanation: Interrupts enable asynchronous events (keystrokes, disk transfers, timer alarms) to receive prompt CPU attention without wasteful polling.
+     Tags: BCA-207N, Unit-2, Interrupts, Concept
+
+Q98. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (EASY)
+     What is an 'Interrupt Service Routine' (ISR)?
+     (A) A specialized kernel software routine executed in response to a specific hardware or software interrupt request [CORRECT]
+     (B) A hardware maintenance manual
+     (C) A background thread that cleans RAM
+     (D) A compiler diagnostic tool
+     Explanation: The ISR services the interrupting device, reads/writes device buffers, resets interrupt flags, and restores saved CPU state before returning.
+     Tags: BCA-207N, Unit-2, ISR, Definition
+
+Q99. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     What CPU register saves the state of condition flags and execution mode during an interrupt?
+     (A) Processor Status Word (PSW) / Flags Register [CORRECT]
+     (B) Accumulator
+     (C) Memory Address Register
+     (D) Program Counter only
+     Explanation: The PSW stores condition flags, CPU privilege mode bit, and interrupt mask bits; it is pushed to the stack upon interrupt entry and restored via IRET.
+     Tags: BCA-207N, Unit-2, PSW, Interrupt-Handling
+
+Q100. [Unit 2: CPU Functioning, Instruction Formats & Addressing Modes] (MEDIUM)
+     Why is the instruction fetch-decode-execute cycle called the 'Von Neumann Bottleneck'?
+     (A) Throughput is fundamentally constrained by the speed and bandwidth of the shared bus connecting the high-speed CPU to slower main memory [CORRECT]
+     (B) The CPU fan causes air turbulence
+     (C) Cables are too long
+     (D) Hard drives are louder than CPUs
+     Explanation: Because CPU clock speeds evolved far faster than memory bus bandwidth, transferring instructions and data across the single Von Neumann bus creates a major performance bottleneck.
+     Tags: BCA-207N, Unit-2, Von-Neumann-Bottleneck, Performance
+
+Q101. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What are the fundamental economic and physical trade-offs represented in the Memory Hierarchy pyramid?
+     (A) As we move up the hierarchy (closer to CPU): Speed increases, Cost per bit increases, and Storage capacity decreases [CORRECT]
+     (B) As we move up: Speed decreases and capacity increases
+     (C) Cost per bit is constant across all tiers
+     (D) All memory levels have identical access latency
+     Explanation: The memory pyramid trades off capacity against access latency: internal CPU registers and caches are ultra-fast but expensive and small; secondary storage is massive and cheap but orders of magnitude slower.
+     Tags: BCA-207N, Unit-3, Memory-Hierarchy, Trade-Offs
+
+Q102. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What are the standard tiers of the computer Memory Hierarchy ordered from fastest to slowest?
+     (A) CPU Registers -> L1 Cache -> L2 Cache -> L3 Cache -> Main Memory (RAM) -> Solid State Drive (SSD) -> Magnetic Hard Disk (HDD) -> Magnetic Tape [CORRECT]
+     (B) Magnetic Tape -> RAM -> Cache -> Registers
+     (C) Main Memory -> Cache -> Registers -> Disk
+     (D) HDD -> SSD -> RAM -> Registers
+     Explanation: Hierarchy levels transition from sub-nanosecond register files and on-die SRAM caches to nanosecond DRAM, microsecond flash, and millisecond mechanical disks.
+     Tags: BCA-207N, Unit-3, Memory-Hierarchy, Order
+
+Q103. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the primary physical difference between Static RAM (SRAM) and Dynamic RAM (DRAM)?
+     (A) SRAM uses flip-flops (typically 6 transistors per cell) and needs no refreshing; DRAM uses a single transistor and capacitor per cell and requires periodic refreshing [CORRECT]
+     (B) SRAM loses data when power is turned off; DRAM never loses data
+     (C) DRAM is 100 times faster than SRAM
+     (D) SRAM is used for hard drives; DRAM for caches
+     Explanation: SRAM cells store charge in bistable latches (faster, lower density, higher cost, used for caches). DRAM stores charge in capacitors that leak over time, requiring refresh cycles every few milliseconds (used for main RAM).
+     Tags: BCA-207N, Unit-3, SRAM-vs-DRAM, Memory-Cells
+
+Q104. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the primary difference between ROM and RAM?
+     (A) ROM is non-volatile (retains data when power is off); RAM is volatile (loses data when power is lost) [CORRECT]
+     (B) ROM can be rewritten millions of times per second; RAM cannot
+     (C) RAM is read-only; ROM is random-access
+     (D) There is no difference in volatility
+     Explanation: ROM (Read-Only Memory) stores permanent startup firmware (BIOS/UEFI); RAM (Random Access Memory) provides volatile workspace for active programs.
+     Tags: BCA-207N, Unit-3, ROM-vs-RAM, Volatility
+
+Q105. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What distinguishes EEPROM and Flash Memory from older EPROM chips?
+     (A) EEPROM and Flash can be erased and reprogrammed electrically in-circuit without requiring ultraviolet (UV) light exposure [CORRECT]
+     (B) EEPROM requires UV light for 30 minutes
+     (C) EPROM can only be written once at the factory
+     (D) Flash memory is volatile
+     Explanation: EPROM requires removal and intense UV light to erase floating gate charges. EEPROM and NAND/NOR Flash use Fowler-Nordheim electrical tunneling for fast in-place rewrites.
+     Tags: BCA-207N, Unit-3, ROM-Types, EEPROM-Flash
+
+Q106. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is 'Coincident Decoding' (2D Memory Decoding) in memory chip architecture?
+     (A) Using two decoders (Row decoder and Column decoder) to select a memory cell at the intersection (X, Y), reducing the total number of decoder gate pins [CORRECT]
+     (B) Decoding two instructions at the same time
+     (C) Using two address buses in parallel
+     (D) Reading from two hard drives simultaneously
+     Explanation: Coincident decoding arranges memory cells in a 2D matrix: an n-bit address is split into row and column addresses, requiring 2 * 2^(n/2) gate inputs instead of 2^n, dramatically simplifying chip pinout.
+     Tags: BCA-207N, Unit-3, Memory-Decoding, Coincident-Decoding
+
+Q107. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Associative Memory' (Content Addressable Memory - CAM)?
+     (A) Memory accessed simultaneously by data content rather than by explicit physical numerical address [CORRECT]
+     (B) Memory that associates user accounts with passwords
+     (C) Memory connected to hard drives via USB
+     (D) A relational database in RAM
+     Explanation: CAM hardware compares an input search word against all stored words in parallel within a single clock cycle, returning the matching address or status flag (ideal for TLB and routing tables).
+     Tags: BCA-207N, Unit-3, Associative-Memory, CAM
+
+Q108. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What fundamental computational principle enables small cache memories to provide high hit ratios (>95%)?
+     (A) Principle of Locality of Reference (Temporal Locality and Spatial Locality) [CORRECT]
+     (B) Amdahl's Law
+     (C) Moore's Law
+     (D) Nyquist Theorem
+     Explanation: Programs access a relatively small localized portion of address space at any given time (temporal: recently referenced data reused soon; spatial: nearby addresses accessed sequentially).
+     Tags: BCA-207N, Unit-3, Locality-of-Reference, Principle
+
+Q109. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is a 'Cache Hit' vs a 'Cache Miss'?
+     (A) A Cache Hit occurs when requested data is found in the cache; a Cache Miss occurs when data is absent and must be fetched from lower-level memory [CORRECT]
+     (B) A Cache Hit occurs when RAM is full
+     (C) A Cache Miss is a hardware error in the memory bus
+     (D) Cache Hit means the CPU is overheating
+     Explanation: If data is in cache (Hit), it is delivered in 1-4 clock cycles. If missing (Miss), execution stalls while the line is fetched from main memory (Miss Penalty, 50-200 cycles).
+     Tags: BCA-207N, Unit-3, Cache, Hit-vs-Miss
+
+Q110. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the 'Hit Ratio' (h) of a cache memory system?
+     (A) The ratio of total cache hits to total memory access requests: h = Hits / (Hits + Misses) [CORRECT]
+     (B) The ratio of cache size to RAM size
+     (C) The number of clock cycles per hit
+     (D) The percentage of dirty blocks in cache
+     Explanation: Hit ratio h (expressed as decimal or percentage) measures cache efficiency. Miss ratio m = 1 - h.
+     Tags: BCA-207N, Unit-3, Cache-Metrics, Hit-Ratio
+
+Q111. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What are the three standard cache mapping techniques?
+     (A) Direct Mapping, Fully Associative Mapping, and Set-Associative Mapping [CORRECT]
+     (B) Linear Mapping, Binary Mapping, and Tree Mapping
+     (C) Serial Mapping, Parallel Mapping, and Bus Mapping
+     (D) Static Mapping, Dynamic Mapping, and Swapped Mapping
+     Explanation: The 3 mapping techniques dictate where a main memory block can reside in cache: Direct (exactly 1 line), Fully Associative (any line), or Set-Associative (any line within a specific set).
+     Tags: BCA-207N, Unit-3, Cache-Mapping, Classification
+
+Q112. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     In 'Direct Mapping', how is the cache line index determined for a memory block with address j?
+     (A) Line Index = j mod (Total Number of Cache Lines) [CORRECT]
+     (B) Line Index = j * Total Cache Lines
+     (C) Line Index = j + Total Cache Lines
+     (D) Line Index is selected randomly
+     Explanation: Direct mapping maps block j to line (j mod N). Each memory block can go to only one specific cache line, making hardware fast and simple but vulnerable to conflict misses.
+     Tags: BCA-207N, Unit-3, Direct-Mapping, Formula
+
+Q113. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What are the three address fields in Direct Mapped Cache addressing?
+     (A) Tag, Line (Index), and Word (Block Offset) [CORRECT]
+     (B) Base, Limit, and Offset
+     (C) Segment, Page, and Frame
+     (D) Row, Column, and Channel
+     Explanation: A physical address splits into: Tag (identifies specific memory block), Line/Index (selects which cache line to check), and Word/Offset (selects the byte within the block).
+     Tags: BCA-207N, Unit-3, Direct-Mapping, Address-Fields
+
+Q114. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is a 'Conflict Miss' (Collision Miss) in direct-mapped caches?
+     (A) Two or more frequently accessed memory blocks map to the exact same cache line, repeatedly evicting each other even though other cache lines are empty [CORRECT]
+     (B) Two CPU cores trying to write to the same register
+     (C) A memory bus short circuit
+     (D) A page fault on disk
+     Explanation: Conflict misses occur when multiple active blocks contend for the same line index, causing thrashing (e.g., alternating between block 0 and block N).
+     Tags: BCA-207N, Unit-3, Conflict-Miss, Direct-Mapping
+
+Q115. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     In 'Fully Associative Mapping', where can a memory block be placed in the cache?
+     (A) In ANY available cache line anywhere in the cache [CORRECT]
+     (B) Only in line 0
+     (C) Only in lines that match its address mod 4
+     (D) Only in the L3 cache
+     Explanation: Fully associative cache allows any memory block to reside in any line, eliminating conflict misses entirely at the cost of requiring parallel tag comparators for every line.
+     Tags: BCA-207N, Unit-3, Fully-Associative, Definition
+
+Q116. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What are the two address fields in Fully Associative Cache addressing?
+     (A) Tag and Word (Block Offset) [CORRECT]
+     (B) Index, Tag, and Offset
+     (C) Base and Limit
+     (D) Page and Frame
+     Explanation: Because a block can be anywhere, there is no line index field; the address consists only of a wide Tag and Word offset.
+     Tags: BCA-207N, Unit-3, Fully-Associative, Address-Fields
+
+Q117. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is 'K-Way Set-Associative Mapping'?
+     (A) Cache is divided into Sets, each containing K cache lines; a memory block maps to a specific set (block mod Sets) and can reside in ANY of the K lines in that set [CORRECT]
+     (B) A cache with K processors
+     (C) A cache that runs K times faster
+     (D) A cache that stores K-bit numbers
+     Explanation: Set-associative combines direct mapping speed with associative flexibility: block maps to set (j mod S) and can occupy any line in that set (e.g., 2-way, 4-way, 8-way).
+     Tags: BCA-207N, Unit-3, Set-Associative, Definition
+
+Q118. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the 'Write-Through' cache update policy?
+     (A) Every write to the cache is simultaneously written to main memory, keeping main memory constantly consistent with cache [CORRECT]
+     (B) Writes are delayed until the computer reboots
+     (C) Writes are stored only in CPU registers
+     (D) Writes are written only to disk
+     Explanation: Write-through ensures memory consistency by updating RAM on every write, but consumes substantial memory bus bandwidth.
+     Tags: BCA-207N, Unit-3, Write-Policies, Write-Through
+
+Q119. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the 'Write-Back' (Copy-Back) cache update policy?
+     (A) Writes update ONLY the cache line initially; main memory is updated only when the dirty cache line is evicted during block replacement [CORRECT]
+     (B) Writes bypass the cache completely
+     (C) Writes are sent over the network
+     (D) Writes are written backwards from end of block
+     Explanation: Write-back minimizes bus traffic by writing to cache at full CPU speed, using a 'Dirty Bit' to track whether the block must be written back to RAM upon eviction.
+     Tags: BCA-207N, Unit-3, Write-Policies, Write-Back
+
+Q120. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What does the 'Dirty Bit' in a Write-Back cache line indicate?
+     (A) Indicates whether the data in the cache line has been modified by the CPU and differs from the corresponding copy in main memory [CORRECT]
+     (B) Marks corrupted hardware memory cells
+     (C) Indicates that the line is empty
+     (D) Marks a line that cannot be read
+     Explanation: If Dirty Bit = 1, the cache block has been modified and must be written back to RAM before replacement; if 0, it can be discarded with zero write overhead.
+     Tags: BCA-207N, Unit-3, Dirty-Bit, Write-Back
+
+Q121. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the Least Recently Used (LRU) cache replacement policy?
+     (A) Evicts the cache line within the set that has not been accessed for the longest period of time [CORRECT]
+     (B) Evicts the first block that was loaded into the set
+     (C) Evicts a block chosen at random
+     (D) Evicts the smallest block
+     Explanation: LRU tracks access recency, replacing the block that has been idle longest, exploiting temporal locality.
+     Tags: BCA-207N, Unit-3, Cache-Replacement, LRU
+
+Q122. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is the First-In, First-Out (FIFO) cache replacement policy?
+     (A) Evicts the block that has resided in the cache set for the longest time, regardless of how recently it was accessed [CORRECT]
+     (B) Evicts the newest block
+     (C) Evicts blocks with even addresses
+     (D) Evicts blocks with errors
+     Explanation: FIFO uses a simple circular queue to evict the oldest resident block, requiring less hardware than LRU but potentially evicting heavily used data.
+     Tags: BCA-207N, Unit-3, Cache-Replacement, FIFO
+
+Q123. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is a 'Cold Miss' (Compulsory Miss) in cache operation?
+     (A) The very first time a memory block is referenced and must be fetched into cache from memory [CORRECT]
+     (B) A miss caused by low CPU temperatures
+     (C) A miss caused by power loss
+     (D) A miss due to full cache capacity
+     Explanation: Compulsory (cold) misses are unavoidable initial misses occurring because blocks have never been brought into cache before.
+     Tags: BCA-207N, Unit-3, Cache-Miss-Types, Compulsory-Miss
+
+Q124. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is a 'Capacity Miss' in cache systems?
+     (A) A miss that occurs because the cache cannot contain all the blocks needed during execution of a program (working set exceeds total cache size) [CORRECT]
+     (B) A miss due to conflict on the same line index
+     (C) A miss caused by small address buses
+     (D) A miss on an empty hard drive
+     Explanation: Capacity misses occur in fully associative caches of finite size when active working set data exceeds total cache capacity.
+     Tags: BCA-207N, Unit-3, Cache-Miss-Types, Capacity-Miss
+
+Q125. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What are the '3 Cs' of cache misses?
+     (A) Compulsory (Cold), Capacity, and Conflict misses [CORRECT]
+     (B) Compute, Cache, and Control misses
+     (C) Cost, Current, and Clock misses
+     (D) Core, Chip, and Circuit misses
+     Explanation: Mark Hill classified cache misses into: Compulsory (first reference), Capacity (cache size limit), and Conflict (mapping collisions in direct/set-associative).
+     Tags: BCA-207N, Unit-3, Cache-Miss-Types, 3-Cs
+
+Q126. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     If cache access time is 2 ns, main memory access time is 50 ns, and hit ratio is 0.95, what is the Average Memory Access Time (AMAT)?
+     (A) 4.5 ns [CORRECT]
+     (B) 2.5 ns
+     (C) 10.0 ns
+     (D) 52.0 ns
+     Explanation: AMAT = Hit Time + (Miss Rate * Miss Penalty) = 2 ns + (1 - 0.95) * 50 ns = 2 + 0.05 * 50 = 2 + 2.5 = 4.5 ns.
+     Tags: BCA-207N, Unit-3, AMAT, Calculation
+
+Q127. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Cache Invalidation'?
+     (A) Marking a cache line as invalid (Valid Bit = 0) so that future references treat it as a miss and fetch fresh data from memory [CORRECT]
+     (B) Formatting the CPU cache
+     (C) Erasing the BIOS firmware
+     (D) Deleting files on disk
+     Explanation: Cache lines are invalidated during DMA transfers or multi-core writes to prevent the processor from using stale data.
+     Tags: BCA-207N, Unit-3, Cache-Coherence, Invalidation
+
+Q128. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is the 'Cache Coherence Problem' in multi-core symmetric multiprocessors (SMP)?
+     (A) Multiple processor cores have private caches holding conflicting, inconsistent copies of the exact same memory variable [CORRECT]
+     (B) Cores running at different clock frequencies
+     (C) Caches running out of power
+     (D) Hard drives failing to read sectors
+     Explanation: When Core A writes to variable X in its private L1 cache, Core B's private L1 cache contains an obsolete, stale copy of X unless a cache coherence protocol intervenes.
+     Tags: BCA-207N, Unit-3, Cache-Coherence, Multi-Core
+
+Q129. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (HARD)
+     What are the two major classes of Cache Coherence Protocols in multiprocessors?
+     (A) Snooping Protocols (Bus-Snarfing over shared broadcast bus) and Directory-Based Protocols (Centralized/Distributed state directory) [CORRECT]
+     (B) SRAM and DRAM protocols
+     (C) RAID 0 and RAID 1 protocols
+     (D) TCP and UDP protocols
+     Explanation: Snooping broadcasts changes on a shared bus (ideal for small SMPs). Directory protocols maintain sharing lists in memory directories (scalable to hundreds of nodes).
+     Tags: BCA-207N, Unit-3, Cache-Coherence, Protocols
+
+Q130. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     In the classic MESI cache coherence protocol, what do the four letters stand for?
+     (A) Modified, Exclusive, Shared, Invalid [CORRECT]
+     (B) Memory, Execute, Store, Instruction
+     (C) Microprocessor, Enable, Synchronize, Interrupt
+     (D) Master, Endpoint, Slave, Interface
+     Explanation: MESI defines 4 line states: Modified (dirty, only in this cache), Exclusive (clean, only in this cache), Shared (clean, in multiple caches), and Invalid (stale/empty).
+     Tags: BCA-207N, Unit-3, MESI-Protocol, States
+
+Q131. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Direct Memory Access' (DMA) and why is it essential for high-throughput secondary storage?
+     (A) Allows peripheral controllers to transfer data blocks directly to/from main memory without constant CPU involvement, interrupting the CPU only upon completion [CORRECT]
+     (B) Accelerates CPU clock speed
+     (C) Enables wireless data transfer
+     (D) Protects memory against viruses
+     Explanation: DMA avoids wasting millions of CPU cycles on byte-by-byte polling transfers during high-speed disk or network streaming.
+     Tags: BCA-207N, Unit-3, DMA, Role
+
+Q132. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What are the two common modes of DMA data transfer?
+     (A) Burst Mode (Block Transfer) and Cycle Stealing Mode [CORRECT]
+     (B) Fast Mode and Slow Mode
+     (C) Serial Mode and Parallel Mode
+     (D) Read-Only Mode and Write-Only Mode
+     Explanation: Burst mode transfers an entire block continuously while holding the bus; Cycle Stealing transfers one word per CPU memory cycle, interleaving with CPU execution.
+     Tags: BCA-207N, Unit-3, DMA, Transfer-Modes
+
+Q133. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is 'Cycle Stealing' in DMA operation?
+     (A) The DMA controller takes control of the system bus for a single memory cycle to transfer one word, briefly pausing the CPU if it needs the bus [CORRECT]
+     (B) Stealing electricity from the motherboard
+     (C) Clock cycles stolen by background viruses
+     (D) Overclocking the memory bus
+     Explanation: In cycle stealing, the DMAC steals occasional bus cycles during instruction fetch or internal ALU phases without freezing the CPU for extended periods.
+     Tags: BCA-207N, Unit-3, DMA, Cycle-Stealing
+
+Q134. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What internal registers are maintained inside a standard DMA Controller (DMAC)?
+     (A) Address Register, Word Count Register, and Control/Status Register [CORRECT]
+     (B) Accumulator, Program Counter, Instruction Register
+     (C) Base, Limit, Segment registers
+     (D) Row, Column, Bank registers
+     Explanation: Address register holds memory target; Word Count decrements after each transfer until zero; Control register sets transfer direction (read/write).
+     Tags: BCA-207N, Unit-3, DMAC, Registers
+
+Q135. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What are the physical dimensions or coordinates of a magnetic hard drive platter?
+     (A) Cylinders, Tracks, and Sectors (CHS addressing) [CORRECT]
+     (B) Pixels, Vectors, and Lines
+     (C) Rows, Columns, and Tables
+     (D) Pages, Frames, and Blocks
+     Explanation: HDD geometry is structured into concentric circular Tracks on Platters, matching vertically aligned tracks across platters as Cylinders, subdivided into angular Sectors.
+     Tags: BCA-207N, Unit-3, Disk-Geometry, CHS
+
+Q136. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is a 'Track' on a magnetic disk platter?
+     (A) A concentric circular magnetic ring on the surface of a spinning platter where data bits are recorded [CORRECT]
+     (B) The physical edge of the metal casing
+     (C) The motor spindle
+     (D) A cable on the motherboard
+     Explanation: Platters are magnetically formatted into thousands of microscopic concentric rings called tracks.
+     Tags: BCA-207N, Unit-3, Disk-Geometry, Track
+
+Q137. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is a 'Cylinder' in magnetic hard drive geometry?
+     (A) The set of all circular tracks across all platter surfaces that are located at the exact same radial distance from the spindle center [CORRECT]
+     (B) A round battery on the board
+     (C) The motor that spins the disk
+     (D) A protective metal cover
+     Explanation: All read/write heads move together on a shared arm assembly: all tracks under all heads at any given position form a single cylinder.
+     Tags: BCA-207N, Unit-3, Disk-Geometry, Cylinder
+
+Q138. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is a 'Sector' in disk geometry, and what is its typical standard capacity?
+     (A) The smallest physical addressable unit of storage on a track, traditionally 512 bytes (or 4096 bytes / 4Kn in Advanced Format) [CORRECT]
+     (B) A partition containing the operating system
+     (C) A track containing bad blocks
+     (D) An optical lens
+     Explanation: Sectors are pie-slice subdivisions along tracks, traditionally formatted to store 512 bytes plus ECC error check codes.
+     Tags: BCA-207N, Unit-3, Disk-Geometry, Sector
+
+Q139. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Rotational Latency' in disk performance?
+     (A) The time required for the desired disk sector on the spinning platter to rotate under the read/write head [CORRECT]
+     (B) The time to spin the motor from standstill to 7200 RPM
+     (C) The time to eject a CD tray
+     (D) The time to format the drive
+     Explanation: Average rotational delay is half the time of one complete platter revolution (e.g., 4.17 ms at 7200 RPM).
+     Tags: BCA-207N, Unit-3, Disk-Performance, Rotational-Latency
+
+Q140. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Seek Time' in disk performance?
+     (A) The mechanical time taken by the actuator arm to position the read/write head over the target cylinder [CORRECT]
+     (B) The time to search for a word in a file
+     (C) The time to download a file from Google Drive
+     (D) The time to boot the computer
+     Explanation: Seek time is the slowest physical mechanical step in disk I/O, typically ranging between 3 ms and 10 ms.
+     Tags: BCA-207N, Unit-3, Disk-Performance, Seek-Time
+
+Q141. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'NAND Flash Memory' used in Solid State Drives (SSDs)?
+     (A) Non-volatile semiconductor storage where floating-gate or charge-trap transistors store bits in organized Pages and Erasure Blocks [CORRECT]
+     (B) Volatile SRAM chips with battery backup
+     (C) A magnetic disk platter spinning at high speed
+     (D) An optical laser storage technology
+     Explanation: NAND flash provides fast solid-state electronic storage organized into pages (e.g., 4-16 KB for read/write) and blocks (e.g., 2-8 MB for erase).
+     Tags: BCA-207N, Unit-3, NAND-Flash, SSDs
+
+Q142. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     Why can NAND flash NOT perform in-place overwriting of data?
+     (A) Flash cells can be programmed (written) at the page level, but can only be erased at the larger Block level (Erase-Before-Write constraint) [CORRECT]
+     (B) Flash memory is read-only
+     (C) Flash drives are magnetic
+     (D) Flash cannot store zeros
+     Explanation: NAND flash requires an entire block of hundreds of pages to be erased (reset to 1s) before any page in that block can be rewritten (Programmed to 0s).
+     Tags: BCA-207N, Unit-3, NAND-Flash, Erase-Block-Constraint
+
+Q143. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is the 'Flash Translation Layer' (FTL) in an SSD controller?
+     (A) Firmware that maps logical block addresses (LBA) to physical flash pages, handles wear leveling, garbage collection, and bad block management [CORRECT]
+     (B) A driver for SATA cables
+     (C) A graphics rendering layer
+     (D) A program to format flash drives
+     Explanation: The FTL emulates a standard block hard drive interface while managing out-of-place writes, block erasures, and wear leveling transparently.
+     Tags: BCA-207N, Unit-3, FTL, SSD-Architecture
+
+Q144. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is 'Garbage Collection' in SSD operation?
+     (A) Consolidating valid pages from fragmented blocks into a fresh block and erasing the old blocks to reclaim free write capacity [CORRECT]
+     (B) Deleting old user files automatically
+     (C) Removing temporary internet files
+     (D) Cleaning dust from cooling fans
+     Explanation: Because overwrites happen out-of-place, garbage collection reclaims blocks full of invalid pages by copying surviving valid pages and issuing block erase.
+     Tags: BCA-207N, Unit-3, Garbage-Collection, SSDs
+
+Q145. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (HARD)
+     What is 'Write Amplification Factor' (WAF) in SSD performance?
+     (A) The ratio of physical bytes written to the flash memory to the logical bytes requested to be written by the host OS (WAF >= 1) [CORRECT]
+     (B) The sound volume produced by writing data
+     (C) The speedup factor of write caches
+     (D) The number of files saved per second
+     Explanation: Because garbage collection rewrites valid pages during block compaction, actual flash writes exceed host writes: WAF = (Bytes written to Flash) / (Bytes written by Host).
+     Tags: BCA-207N, Unit-3, WAF, SSD-Metrics
+
+Q146. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is the difference between SLC, MLC, TLC, and QLC flash memory?
+     (A) The number of bits stored per individual flash cell: SLC (1 bit), MLC (2 bits), TLC (3 bits), QLC (4 bits) [CORRECT]
+     (B) The physical size of the flash chip
+     (C) The color of the printed circuit board
+     (D) The manufacturer brand name
+     Explanation: Higher bit density per cell (TLC/QLC) increases storage capacity and lowers cost, but reduces write endurance (P/E cycles) and write speed.
+     Tags: BCA-207N, Unit-3, Flash-Cell-Types, Density
+
+Q147. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'Optical Memory' (CD, DVD, Blu-ray)?
+     (A) Storage media where digital data is read and written using focused laser beams reflecting off microscopic pits and lands on a polycarbonate disc [CORRECT]
+     (B) Memory that uses human eyes to read data
+     (C) Storage made of glass lenses
+     (D) A computer monitor screen
+     Explanation: Optical discs use laser reflection changes across microscopic surface indentations (pits and lands) to represent binary 0s and 1s.
+     Tags: BCA-207N, Unit-3, Optical-Storage, Principles
+
+Q148. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (MEDIUM)
+     What is 'Dual-Channel Memory Architecture' on motherboards?
+     (A) Using two independent memory bus channels simultaneously to double the theoretical data transfer bandwidth between RAM and the memory controller [CORRECT]
+     (B) Using two RAM sticks of different sizes
+     (C) Running RAM in two directions
+     (D) Using RAM as a hard drive
+     Explanation: Dual-channel doubles the bus width from 64 bits to 128 bits, allowing simultaneous memory read/write across matched pairs of RAM modules.
+     Tags: BCA-207N, Unit-3, Memory-Architecture, Dual-Channel
+
+Q149. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     What is 'DDR SDRAM' (Double Data Rate Synchronous DRAM)?
+     (A) Memory that transfers data on BOTH the rising edge and falling edge of the clock signal, doubling data rate at the same bus clock frequency [CORRECT]
+     (B) Memory that has two power cords
+     (C) RAM that duplicates every stored file
+     (D) Memory that runs at 2 Hz
+     Explanation: DDR transfers data twice per clock cycle (on both clock transitions), delivering double the bandwidth of legacy single-data-rate SDR SDRAM.
+     Tags: BCA-207N, Unit-3, DDR-SDRAM, Double-Data-Rate
+
+Q150. [Unit 3: Memory Organization, Hierarchy & Cache Architecture] (EASY)
+     Why is Memory Organization considered a critical pillar of Computer Architecture?
+     (A) Because system performance, power consumption, and responsiveness are fundamentally limited by the speed and bandwidth of memory access [CORRECT]
+     (B) Because memory is the most expensive part of a computer
+     (C) Because without memory, the monitor cannot turn on
+     (D) Because operating systems cannot be written in C without memory
+     Explanation: The 'Memory Wall' dictates modern system efficiency: CPU pipelines stall if memory subsystems cannot supply instructions and operands at the rate execution units consume them.
+     Tags: BCA-207N, Unit-3, Memory-Organization, Conclusion
+
+Q151. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     Why can Peripheral I/O devices NOT be connected directly to the CPU system bus without an I/O Interface?
+     (A) Due to vast disparities in operating speed, data transfer rates, signal formats, word lengths, and operating modes between CPU and peripherals [CORRECT]
+     (B) Because peripheral devices have no electric power
+     (C) Because the CPU bus is made of copper
+     (D) Because peripheral cables are too long
+     Explanation: An I/O interface bridges electrical, timing, and protocol discrepancies: CPUs operate at gigahertz electronic speeds, while peripherals are often electromechanical or operate at kilohertz speeds.
+     Tags: BCA-207N, Unit-4, I-O-Interface, Need-for-Interface
+
+Q152. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What are the primary functional responsibilities of an I/O Interface Unit?
+     (A) Data buffering, control and status reporting, address decoding, and electrical signal/format conversion [CORRECT]
+     (B) Compiling high-level programs
+     (C) Executing machine language instructions
+     (D) Cooling the CPU socket
+     Explanation: The I/O interface synchronizes data flow between high-speed CPU buses and slower peripherals, converts serial/parallel data, and monitors device status flags.
+     Tags: BCA-207N, Unit-4, I-O-Interface, Functions
+
+Q153. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'Programmed I/O' (Polling)?
+     (A) The CPU periodically and repeatedly checks the device status register in a busy-wait loop until the device is ready for data transfer [CORRECT]
+     (B) The CPU delegates all work to a dedicated coprocessor
+     (C) The device interrupts the CPU when ready
+     (D) Data is transferred wirelessly
+     Explanation: In programmed I/O, the CPU remains trapped in a polling loop waiting for device readiness, wasting massive CPU cycles that could execute user threads.
+     Tags: BCA-207N, Unit-4, Programmed-I-O, Polling
+
+Q154. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the primary operational disadvantage of Programmed I/O?
+     (A) Severe CPU underutilization: the high-speed CPU wastes valuable processing cycles constantly polling slow peripheral status flags [CORRECT]
+     (B) It requires expensive hardware controllers
+     (C) It can only handle text data
+     (D) It causes hard drive crashes
+     Explanation: Polling ties up the processor in busy-waiting loops, making it unacceptable for multitasking operating systems.
+     Tags: BCA-207N, Unit-4, Programmed-I-O, Disadvantage
+
+Q155. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     How does 'Interrupt-Initiated I/O' overcome the inefficiency of Programmed I/O?
+     (A) The CPU issues an I/O command and continues executing other tasks; the interface hardware raises an interrupt signal ONLY when the device is ready [CORRECT]
+     (B) It speeds up the peripheral motor
+     (C) It replaces the device with software
+     (D) It stores all data in ROM
+     Explanation: Interrupt-driven I/O allows the CPU to perform useful work asynchronously, servicing the peripheral only when interrupted by a hardware ready signal.
+     Tags: BCA-207N, Unit-4, Interrupt-Initiated-I-O, Advantage
+
+Q156. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a 'Vectored Interrupt'?
+     (A) The interrupting device directly supplies an interrupt vector address (or index) to the CPU over the data bus to locate its specific ISR [CORRECT]
+     (B) An interrupt that has magnitude and direction in 3D space
+     (C) An interrupt generated only by vector supercomputers
+     (D) An interrupt that cannot be masked
+     Explanation: In vectored interrupts, the peripheral identifies its service routine by placing its vector address on the bus; in non-vectored interrupts, the CPU jumps to a fixed hardwired address.
+     Tags: BCA-207N, Unit-4, Vectored-Interrupt, Definition
+
+Q157. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a 'Non-Vectored Interrupt'?
+     (A) The interrupt branch address is fixed and hardwired in the CPU architecture; the ISR must poll devices to determine who requested service [CORRECT]
+     (B) An interrupt that cannot be turned off
+     (C) An interrupt caused by software bugs
+     (D) An interrupt with zero priority
+     Explanation: In non-vectored interrupts, all interrupt requests branch to a single predefined memory address where a polling routine identifies the interrupting device.
+     Tags: BCA-207N, Unit-4, Non-Vectored-Interrupt, Definition
+
+Q158. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Daisy-Chaining' in priority interrupt systems?
+     (A) A serial hardware connection where an Interrupt Acknowledge (INTA) signal propagates sequentially through devices in descending priority order [CORRECT]
+     (B) Connecting peripherals in a circle
+     (C) A software linked list of interrupt handlers
+     (D) Connecting power cables in series
+     Explanation: Daisy-chaining connects devices in series: the device electrically closest to the CPU has the highest priority. If it requested an interrupt, it intercepts INTA and places its vector on the bus; otherwise it passes INTA downstream.
+     Tags: BCA-207N, Unit-4, Priority-Interrupt, Daisy-Chaining
+
+Q159. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is the main drawback of Daisy-Chaining priority resolution?
+     (A) Propagation delay: in systems with many devices, the signal takes significant time to traverse the chain, limiting scalability [CORRECT]
+     (B) It requires 64 wires per device
+     (C) It cannot assign priorities
+     (D) It only works with printers
+     Explanation: Hardware propagation delay accumulates through each gate in the daisy-chain; if the chain is long, interrupt response time degrades.
+     Tags: BCA-207N, Unit-4, Daisy-Chaining, Drawback
+
+Q160. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Parallel Priority Interrupt' resolution?
+     (A) Using a Priority Encoder circuit to evaluate multiple interrupt request lines simultaneously in parallel [CORRECT]
+     (B) Using two CPUs to handle interrupts
+     (C) Running two ISRs at the exact same instant
+     (D) Connecting all interrupt wires to ground
+     Explanation: A parallel priority system feeds interrupt request lines into an n-bit priority encoder chip, instantly outputting the binary code of the highest-priority active request.
+     Tags: BCA-207N, Unit-4, Parallel-Priority, Priority-Encoder
+
+Q161. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the function of the 'Interrupt Mask Register' in priority interrupt hardware?
+     (A) Allows the CPU to selectively enable (unmask) or disable (mask/block) specific interrupt levels under program control [CORRECT]
+     (B) Hides the interrupt from the user screen
+     (C) Encrypts interrupt vector addresses
+     (D) Stores the CPU serial number
+     Explanation: By setting or clearing bits in the mask register, the operating system can prevent low-priority interrupts from interrupting critical kernel sections.
+     Tags: BCA-207N, Unit-4, Interrupt-Mask, Hardware
+
+Q162. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is an 'I/O Channel' or 'Input-Output Processor' (IOP)?
+     (A) A specialized autonomous processor with its own instruction set (Channel Programs) dedicated entirely to managing I/O operations independently of the main CPU [CORRECT]
+     (B) A physical wire inside a USB cable
+     (C) A channel on a television
+     (D) A software chat room between processes
+     Explanation: Pioneered in IBM mainframes, IOPs execute channel command words (CCWs) in memory, orchestrating complex multi-device I/O transfers with zero CPU intervention.
+     Tags: BCA-207N, Unit-4, IOP, Channel-Architecture
+
+Q163. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'Asynchronous Data Transfer'?
+     (A) Data transfer between two independent units that do NOT share a common global clock signal [CORRECT]
+     (B) Data transfer that only occurs at night
+     (C) Data transfer that has no errors
+     (D) Transferring data over the internet
+     Explanation: Because transmitter and receiver use separate internal clocks, asynchronous communication requires handshaking or strobe control signals to coordinate data validity.
+     Tags: BCA-207N, Unit-4, Asynchronous-Transfer, Concept
+
+Q164. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Strobe Control' in asynchronous data transfer?
+     (A) A single control signal line (Strobe) asserted by either source or destination to indicate that data is available on the bus or has been accepted [CORRECT]
+     (B) A flashing light on the front panel
+     (C) A timer that clicks every microsecond
+     (D) A software command in C
+     Explanation: In source-initiated strobe, the sender places data on the bus and pulses the strobe line. A fundamental flaw is the sender has no confirmation that the receiver actually received the data.
+     Tags: BCA-207N, Unit-4, Strobe-Control, Asynchronous
+
+Q165. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     How does the 'Two-Way Handshaking' protocol improve upon Strobe Control?
+     (A) It uses two control lines: a Request signal from the sender and an Acknowledge signal from the receiver, guaranteeing mutual synchronization with zero data loss [CORRECT]
+     (B) It transfers data using two wires
+     (C) It doubles the bus voltage
+     (D) It requires user confirmation on screen
+     Explanation: Handshaking provides full two-way interlocked feedback: Source asserts 'Data Ready', Destination reads data and asserts 'Data Accepted', Source drops 'Data Ready', and Destination drops 'Data Accepted'.
+     Tags: BCA-207N, Unit-4, Handshaking, Two-Way-Interlock
+
+Q166. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Synchronous Serial Transmission'?
+     (A) Data bits are transmitted continuously at a fixed rate synchronized to a common shared clock signal, often framed with special sync characters (SYN) [CORRECT]
+     (B) Data sent with start and stop bits for each character
+     (C) Data sent over parallel ribbon cables
+     (D) Data stored on optical discs
+     Explanation: Synchronous transmission sends continuous bit streams preceded by synchronization bit patterns, offering high line efficiency for bulk data transfers.
+     Tags: BCA-207N, Unit-4, Serial-Transmission, Synchronous
+
+Q167. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'Asynchronous Serial Transmission' (e.g., UART / RS-232)?
+     (A) Each character is framed individually with a Start Bit (logic 0), 7-8 Data Bits, an optional Parity Bit, and 1-2 Stop Bits (logic 1) [CORRECT]
+     (B) Data bits sent without any clock synchronization
+     (C) Sending 1000 bytes in a single packet
+     (D) Data sent using radio waves
+     Explanation: In UART communication, lines idle at mark (logic 1); a falling edge start bit (0) alerts the receiver's local clock to sample subsequent bits, concluding with stop bits.
+     Tags: BCA-207N, Unit-4, UART, Asynchronous-Serial
+
+Q168. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'Baud Rate' in serial data communications?
+     (A) The rate at which the signal line changes state (signal units / modulation symbols per second) [CORRECT]
+     (B) The number of files downloaded per second
+     (C) The storage capacity of the hard drive
+     (D) The voltage of the serial port
+     Explanation: Baud measures signaling modulation events per second. If each signal event carries 1 bit, Baud rate equals Bits-Per-Second (bps).
+     Tags: BCA-207N, Unit-4, Baud-Rate, Serial-Communications
+
+Q169. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'Parity Bit' in serial data transmission?
+     (A) An additional check bit appended to a binary data word to make the total number of 1-bits either even (Even Parity) or odd (Odd Parity), enabling single-bit error detection [CORRECT]
+     (B) A bit that speeds up transmission
+     (C) The most significant bit of an integer
+     (D) A bit used to power the serial cable
+     Explanation: Parity provides simple error detection: if an odd parity scheme receives a byte with an even number of 1-bits, a transmission error is flagged.
+     Tags: BCA-207N, Unit-4, Parity-Bit, Error-Detection
+
+Q170. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     In an asynchronous serial transmission at 9600 baud using 1 start bit, 8 data bits, no parity, and 1 stop bit (10 bits total per character), how many characters are transmitted per second?
+     (A) 960 characters per second (9600 / 10 = 960) [CORRECT]
+     (B) 9600 characters per second
+     (C) 1200 characters per second
+     (D) 800 characters per second
+     Explanation: Each character consumes 10 frame bits. At 9600 bits per second: 9600 / 10 = 960 characters/second.
+     Tags: BCA-207N, Unit-4, Serial-Communications, Baud-Calculation
+
+Q171. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is a 'UART' (Universal Asynchronous Receiver-Transmitter)?
+     (A) An integrated circuit microchip that converts parallel data from the CPU bus into serial bit streams for transmission, and converts incoming serial streams back into parallel data [CORRECT]
+     (B) A universal power adapter
+     (C) A software program that plays videos
+     (D) A network router
+     Explanation: UART handles parallel-to-serial serialization and serial-to-parallel deserialization, framing characters with start/stop bits and parity automatically.
+     Tags: BCA-207N, Unit-4, UART, Definition
+
+Q172. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a 'FIFO Buffer' inside a modern UART (e.g., 16550 UART)?
+     (A) A first-in, first-out hardware queue (e.g., 16 or 64 bytes) that buffers incoming and outgoing bytes, preventing buffer overrun errors during high CPU load [CORRECT]
+     (B) A cache for CPU instructions
+     (C) A memory stick for laptops
+     (D) A circular magnetic disk
+     Explanation: UART FIFOs buffer characters so the CPU does not need to service an interrupt for every single individual byte, reducing context switch load.
+     Tags: BCA-207N, Unit-4, UART, FIFO-Buffer
+
+Q173. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Direct Memory Access' (DMA) Bus Mastership?
+     (A) The DMA controller takes over the system address, data, and control lines, acting as the bus master to drive memory cycles directly [CORRECT]
+     (B) The CPU controls the DMA controller
+     (C) The hard drive operates without electricity
+     (D) The monitor controls the bus
+     Explanation: When the CPU grants bus access (Bus Grant BG asserted), the DMA controller acts as master, generating physical address and read/write pulses directly.
+     Tags: BCA-207N, Unit-4, DMA, Bus-Mastership
+
+Q174. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What handshaking signals are exchanged between the CPU and a DMA controller to transfer bus mastership?
+     (A) Bus Request (BR) and Bus Grant (BG) [CORRECT]
+     (B) Start and Stop
+     (C) Read and Write
+     (D) Clock and Data
+     Explanation: The DMAC asserts Bus Request (BR); upon reaching the end of the current machine cycle, the CPU asserts Bus Grant (BG) and floats its bus lines to high-impedance.
+     Tags: BCA-207N, Unit-4, DMA, Handshake-Signals
+
+Q175. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is an 'I/O Port'?
+     (A) A specific register (Data, Control, or Status) inside an I/O device controller that can be read or written by the CPU via bus instructions [CORRECT]
+     (B) A physical hole on the back of the PC
+     (C) A shipping dock for computers
+     (D) A software program
+     Explanation: At the architectural level, an I/O port is a hardware address assigned to a peripheral controller register.
+     Tags: BCA-207N, Unit-4, I-O-Port, Architecture
+
+Q176. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     In an 8086 processor, how many 8-bit I/O ports can be directly addressed using the 16-bit port addressing capability?
+     (A) 65,536 I/O ports (ports 0x0000 to 0xFFFF) [CORRECT]
+     (B) 256 ports
+     (C) 1,024 ports
+     (D) 1,048,576 ports
+     Explanation: A 16-bit I/O port address space can address 2^16 = 65,536 distinct 8-bit I/O ports.
+     Tags: BCA-207N, Unit-4, x86, Port-Addressing
+
+Q177. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the primary difference between Memory-Mapped I/O and Isolated (Port-Mapped) I/O regarding CPU instruction sets?
+     (A) Memory-Mapped I/O uses standard memory instructions (MOV, LOAD, STORE); Isolated I/O requires dedicated instructions (IN, OUT) [CORRECT]
+     (B) Memory-Mapped I/O can only write, never read
+     (C) Isolated I/O cannot use registers
+     (D) There is no difference in instructions
+     Explanation: Memory-mapped I/O treats device registers as memory locations, using the full rich memory instruction set. Isolated I/O uses dedicated IN/OUT port instructions.
+     Tags: BCA-207N, Unit-4, I-O-Mapping, Comparison
+
+Q178. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a major advantage of Memory-Mapped I/O?
+     (A) Any instruction that can manipulate memory (arithmetic, logical, bit test) can operate directly on peripheral device registers without loading into AC first [CORRECT]
+     (B) It requires no address decoding
+     (C) It makes RAM infinite
+     (D) It eliminates all bus wires
+     Explanation: Instructions like ADD M[Port], TEST M[Port] can directly process I/O registers without intermediate accumulator transfers.
+     Tags: BCA-207N, Unit-4, Memory-Mapped-I-O, Advantage
+
+Q179. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a disadvantage of Memory-Mapped I/O?
+     (A) Part of the physical memory address space is consumed by peripheral hardware registers, reducing total addressable RAM [CORRECT]
+     (B) It runs 10 times slower than port I/O
+     (C) It causes memory bus short circuits
+     (D) It can only be used on laptops
+     Explanation: Allocating address ranges to I/O devices reduces the memory address space available for system RAM.
+     Tags: BCA-207N, Unit-4, Memory-Mapped-I-O, Disadvantage
+
+Q180. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the difference between Simplex, Half-Duplex, and Full-Duplex communication channels?
+     (A) Simplex: unidirectional only; Half-Duplex: bidirectional but only one direction at a time; Full-Duplex: simultaneous bidirectional transmission [CORRECT]
+     (B) Simplex has one wire; Full-Duplex has 100 wires
+     (C) Half-Duplex is half speed; Full-Duplex is full speed
+     (D) There is no distinction
+     Explanation: Simplex is one-way (radio broadcast); Half-Duplex is two-way alternate (walkie-talkie); Full-Duplex is simultaneous two-way (telephone).
+     Tags: BCA-207N, Unit-4, Communication-Modes, Duplex
+
+Q181. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is an 'Edge-Triggered Interrupt' vs a 'Level-Triggered Interrupt'?
+     (A) Edge-triggered detects a voltage transition (low-to-high or high-to-low); Level-triggered detects a sustained logic voltage level (logic 0 or logic 1) [CORRECT]
+     (B) Edge-triggered only works on monitors
+     (C) Level-triggered is an analog signal
+     (D) There is no functional difference
+     Explanation: Edge-triggered latches on the pulse edge (avoids repeated interrupts if line stays high); level-triggered requires the device to clear the line before ISR completes.
+     Tags: BCA-207N, Unit-4, Interrupts, Edge-vs-Level
+
+Q182. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a 'Spurious Interrupt'?
+     (A) A glitch or transient electrical noise on an interrupt line that triggers an interrupt cycle even though no hardware device requested service [CORRECT]
+     (B) An interrupt caused by a hacker
+     (C) A planned diagnostic interrupt
+     (D) An interrupt that formats the hard drive
+     Explanation: If electrical noise pulses an interrupt line, the CPU enters the interrupt cycle but finds no device asserting a request (e.g., IRQ7 on legacy x86 PIC).
+     Tags: BCA-207N, Unit-4, Interrupts, Spurious
+
+Q183. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the 'PIC' (Programmable Interrupt Controller, e.g., Intel 8259A)?
+     (A) A dedicated chip that manages, prioritizes, and cascades multiple hardware interrupt lines, presenting a single INT request to the CPU [CORRECT]
+     (B) A microcontroller for cameras
+     (C) A chip that controls the power supply
+     (D) A network router
+     Explanation: The 8259A PIC aggregates 8 interrupt lines (expandable to 64 via cascading master-slave configuration), resolving priorities and asserting the CPU INT pin.
+     Tags: BCA-207N, Unit-4, 8259A-PIC, Hardware
+
+Q184. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is the function of the APIC (Advanced Programmable Interrupt Controller) in modern multi-core x86 systems?
+     (A) Distributes hardware interrupts dynamically across multiple CPU cores and supports Inter-Processor Interrupts (IPIs) for inter-core communication [CORRECT]
+     (B) Controls the monitor backlight
+     (C) Formats SSD drives
+     (D) Runs the BIOS setup utility
+     Explanation: APIC (Local APIC per core + I/O APIC) routes peripheral interrupts to specific cores and enables cores to interrupt each other via IPIs.
+     Tags: BCA-207N, Unit-4, APIC, Multi-Core
+
+Q185. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Inter-Processor Interrupt' (IPI)?
+     (A) A special hardware interrupt sent by one CPU core to another CPU core to coordinate scheduling, cache flushing, or task migration [CORRECT]
+     (B) An interrupt from a USB mouse
+     (C) A power saving sleep signal
+     (D) A software bug
+     Explanation: IPIs are essential in multi-core operating systems for TLB shootdowns, cross-core scheduling, and thread preemption.
+     Tags: BCA-207N, Unit-4, IPI, Multi-Core
+
+Q186. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     In an RS-232 serial interface, what do the signals RTS and CTS stand for?
+     (A) Request To Send (RTS) and Clear To Send (CTS) - hardware flow control signals [CORRECT]
+     (B) Ready To Start and Close The Socket
+     (C) Run Time System and Compile Time System
+     (D) Reset The System and Clear The Screen
+     Explanation: RTS and CTS provide out-of-band hardware flow control: sender asserts RTS, receiver responds with CTS when ready to buffer bytes.
+     Tags: BCA-207N, Unit-4, RS-232, Flow-Control
+
+Q187. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is 'Software Flow Control' in serial communications using XON and XOFF characters?
+     (A) The receiver sends ASCII XOFF (Ctrl-S, 0x13) to pause the sender when its buffer is full, and sends XON (Ctrl-Q, 0x11) to resume transmission [CORRECT]
+     (B) Using passwords to control file transfers
+     (C) Controlling CPU clock speed via software
+     (D) A firewall utility
+     Explanation: In-band software flow control embeds special control characters (XON/XOFF) within the data stream, eliminating dedicated control wires.
+     Tags: BCA-207N, Unit-4, Flow-Control, XON-XOFF
+
+Q188. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'USB' (Universal Serial Bus) architecture?
+     (A) A tiered-star topology serial bus providing plug-and-play peripheral connectivity, packetized communication, and power delivery over 4+ wires [CORRECT]
+     (B) A parallel bus inside hard drives
+     (C) A wireless protocol for keyboards
+     (D) A storage disk format
+     Explanation: USB connects peripherals to a host controller via hubs, offering hot-swapping, tiered-star topology, and standardized device classes.
+     Tags: BCA-207N, Unit-4, USB, Architecture
+
+Q189. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is the maximum number of devices that can be attached to a single USB host controller tier?
+     (A) Up to 127 devices (using 7-bit device address field) [CORRECT]
+     (B) Up to 16 devices
+     (C) Up to 256 devices
+     (D) Up to 64 devices
+     Explanation: The USB specification reserves a 7-bit device address, allowing up to 127 unique peripheral endpoints per host controller.
+     Tags: BCA-207N, Unit-4, USB, Capacity
+
+Q190. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is 'PCIe' (Peripheral Component Interconnect Express)?
+     (A) A high-speed serial point-to-point interconnect standard using dedicated differential signaling Lanes (x1, x4, x8, x16) for graphics and NVMe devices [CORRECT]
+     (B) An old parallel printer bus
+     (C) A software protocol for web pages
+     (D) A power cable specification
+     Explanation: PCIe replaced legacy shared parallel PCI with scalable point-to-point serial lanes, delivering tens of gigabytes per second of bandwidth.
+     Tags: BCA-207N, Unit-4, PCIe, Architecture
+
+Q191. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is an 'I/O Bus Cycle'?
+     (A) The time interval required to transfer one word between the CPU/DMA and an I/O device controller register [CORRECT]
+     (B) The time to boot the computer
+     (C) The refresh rate of the monitor
+     (D) The clock cycle of the CPU ALU
+     Explanation: An I/O cycle executes on the system bus when addressing I/O ports or device controller registers, typically taking longer than memory bus cycles.
+     Tags: BCA-207N, Unit-4, I-O-Bus-Cycle, Timing
+
+Q192. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is the fundamental trade-off between 'Burst Mode' and 'Cycle Stealing' in DMA data transfer?
+     (A) Burst mode provides maximum data transfer speed by holding the bus continuously, but blocks the CPU; Cycle Stealing interleaves words, allowing the CPU to execute concurrently [CORRECT]
+     (B) Burst mode is slower than polling
+     (C) Cycle stealing destroys memory data
+     (D) There is no trade-off
+     Explanation: Burst mode minimizes total block transfer time at the expense of locking out the CPU. Cycle stealing leaves the CPU responsive with minimal interference.
+     Tags: BCA-207N, Unit-4, DMA, Burst-vs-CycleSteal
+
+Q193. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     In Daisy Chaining priority interrupt resolution, which device possesses the highest priority?
+     (A) The device physically connected closest to the CPU (first in the serial INTA chain) [CORRECT]
+     (B) The device with the highest model number
+     (C) The device that consumes the most power
+     (D) The device farthest from the CPU
+     Explanation: In daisy-chaining, priority is hardwired by physical proximity to the interrupt acknowledge pin: the first device intercepts the grant signal first.
+     Tags: BCA-207N, Unit-4, Daisy-Chaining, Priority-Ordering
+
+Q194. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     In Parallel Priority Interrupt systems, what digital logic circuit identifies the highest priority requesting device?
+     (A) Priority Encoder circuit [CORRECT]
+     (B) Half Adder circuit
+     (C) Multiplexer
+     (D) Shift register
+     Explanation: A Priority Encoder accepts multiple active request inputs and outputs the binary address of the highest-order active bit.
+     Tags: BCA-207N, Unit-4, Priority-Encoder, Hardware
+
+Q195. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is a 'Non-Maskable Interrupt' (NMI)?
+     (A) A critical hardware interrupt that CANNOT be disabled or ignored by CPU software instructions, reserved for catastrophic hardware emergencies (e.g., bus parity error, imminent power failure) [CORRECT]
+     (B) An interrupt caused by a user mouse click
+     (C) An interrupt from a USB printer
+     (D) An interrupt with zero priority
+     Explanation: NMI lines bypass software interrupt mask flags, guaranteeing immediate CPU response during catastrophic hardware faults.
+     Tags: BCA-207N, Unit-4, NMI, Interrupts
+
+Q196. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (HARD)
+     Why is an oversampling clock (e.g., 16x baud rate clock) used in UART serial receivers?
+     (A) To detect the falling edge of the Start Bit reliably and sample subsequent data bits precisely at their middle to maximize noise margin [CORRECT]
+     (B) To speed up the internet
+     (C) To save electrical energy
+     (D) To double the baud rate
+     Explanation: A 16x clock samples the start bit at ticks 7-8 to verify it is not noise, then samples each data bit at its exact midpoint (tick 16) for reliable decoding.
+     Tags: BCA-207N, Unit-4, UART, 16x-Oversampling
+
+Q197. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is a 'Direct Memory Access' (DMA) channel multiplexer?
+     (A) A hardware circuit allowing a single DMA controller chip to service multiple independent peripheral devices (e.g., Channels 0 through 3) [CORRECT]
+     (B) A tool for merging two files on disk
+     (C) A video splitter
+     (D) A cable with multiple heads
+     Explanation: DMAC chips (like the classic Intel 8237) feature multiple independent DMA channels, each maintaining its own address and word count registers.
+     Tags: BCA-207N, Unit-4, DMA, Channels
+
+Q198. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (MEDIUM)
+     What is the communication protocol between the host CPU and an Input-Output Processor (IOP)?
+     (A) The CPU places an I/O program in memory and issues a Start I/O signal; the IOP executes the channel program autonomously and interrupts the CPU upon completion [CORRECT]
+     (B) The CPU executes every instruction for the IOP
+     (C) The IOP cannot read memory
+     (D) Communication occurs via Bluetooth
+     Explanation: The host CPU delegates entire complex transfer jobs by issuing START I/O; the IOP independently executes Channel Command Words (CCWs) and posts an interrupt upon completion.
+     Tags: BCA-207N, Unit-4, IOP, Protocol
+
+Q199. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     What is the primary role of the 'Interrupt Vector Table' (IVT)?
+     (A) An array stored in low memory containing the memory entry point addresses of Interrupt Service Routines indexed by interrupt type [CORRECT]
+     (B) A table of user passwords
+     (C) A list of CPU instructions
+     (D) A directory of hard drive files
+     Explanation: The IVT stores starting addresses of ISRs: the interrupt number multiplies by the vector size to look up the target address.
+     Tags: BCA-207N, Unit-4, IVT, Interrupts
+
+Q200. [Unit 4: Input/Output Organization, Interfaces & Data Transfer Modes] (EASY)
+     Why is I/O Organization crucial in modern system architecture?
+     (A) Without efficient I/O subsystems and DMA, high-speed multi-gigahertz processors would remain idle waiting for human inputs and storage disks [CORRECT]
+     (B) Because I/O devices use more electricity than CPUs
+     (C) Because computers only do input and output
+     (D) Because monitors cannot work without I/O
+     Explanation: Balanced I/O architecture ensures that immense CPU computing power translates to high overall application throughput.
+     Tags: BCA-207N, Unit-4, I-O-Overview, Importance
+
+Q201. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is 'Parallel Processing' in computer architecture?
+     (A) Performing multiple computational tasks concurrently, using multiple functional units or processors, to increase overall system throughput [CORRECT]
+     (B) Running a single program very slowly
+     (C) Using two monitors on one desk
+     (D) Writing code in two languages simultaneously
+     Explanation: Parallel processing exploits spatial parallelism (multiple hardware units) or temporal parallelism (overlapping pipeline stages) to accelerate computation.
+     Tags: BCA-207N, Unit-5, Parallel-Processing, Concept
+
+Q202. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is 'Flynn's Taxonomy' of computer architectures?
+     (A) A classification of computer systems into four categories based on the number of concurrent Instruction Streams and Data Streams [CORRECT]
+     (B) A classification of computer monitors
+     (C) A system for rating CPU clock speeds
+     (D) A hierarchy of memory chips
+     Explanation: Michael J. Flynn proposed classifying architectures by Instruction and Data streams: SISD, SIMD, MISD, and MIMD.
+     Tags: BCA-207N, Unit-5, Flynns-Taxonomy, Classification
+
+Q203. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What does 'SISD' stand for in Flynn's taxonomy?
+     (A) Single Instruction Single Data stream (classic Von Neumann uniprocessor) [CORRECT]
+     (B) Serial Instruction Serial Data
+     (C) Synchronous Interface Serial Driver
+     (D) Standard Instruction Set Device
+     Explanation: SISD is the conventional single-core processor executing one instruction at a time on a single data operand stream.
+     Tags: BCA-207N, Unit-5, SISD, Flynns-Taxonomy
+
+Q204. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What does 'SIMD' stand for, and what type of computing architectures exemplify it?
+     (A) Single Instruction Multiple Data stream: a single instruction controls multiple processing elements operating on different data vectors simultaneously (e.g., Vector processors, GPUs) [CORRECT]
+     (B) Serial Interface Multi-Device
+     (C) Synchronous Instruction Memory Driver
+     (D) Single Integrated Motherboard Design
+     Explanation: SIMD processors broadcast a single instruction across an array of ALUs, executing the same operation (e.g., vector addition) on parallel data streams simultaneously.
+     Tags: BCA-207N, Unit-5, SIMD, Vector-Processors
+
+Q205. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What does 'MISD' stand for in Flynn's taxonomy?
+     (A) Multiple Instruction Single Data stream (rarely implemented, used in specialized fault-tolerant aerospace voting systems) [CORRECT]
+     (B) Microprocessor Instruction Storage Device
+     (C) Mainframe Integrated Serial Drive
+     (D) Multi-core Interface Synchronous Driver
+     Explanation: MISD feeds a single data stream through multiple independent processors executing different instruction streams (e.g., triple-modular redundancy in flight computers).
+     Tags: BCA-207N, Unit-5, MISD, Flynns-Taxonomy
+
+Q206. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What does 'MIMD' stand for, and what type of computers represent it?
+     (A) Multiple Instruction Multiple Data stream: multiple independent processors executing different instructions on different datasets concurrently (e.g., Multi-core CPUs, Clusters) [CORRECT]
+     (B) Master Instruction Multi-Device
+     (C) Mega Instruction Memory Design
+     (D) Mainframe Interconnect Modular Design
+     Explanation: MIMD encompasses all modern multi-core microprocessors, distributed clusters, and supercomputers where cores operate autonomously.
+     Tags: BCA-207N, Unit-5, MIMD, Multiprocessors
+
+Q207. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is 'Pipelining' in CPU execution, and what classic manufacturing analogy explains it?
+     (A) Overlapping the execution of successive instructions across segmented hardware stages, analogous to an industrial automobile assembly line [CORRECT]
+     (B) Pumping cooling liquid through copper pipes
+     (C) Sending instructions through pneumatic tubes
+     (D) A method for sorting numbers on paper
+     Explanation: Like an assembly line where each station performs one task on a car as it moves along, pipelining executes different sub-operations on successive instructions concurrently.
+     Tags: BCA-207N, Unit-5, Pipelining, Assembly-Line-Analogy
+
+Q208. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     If a non-pipelined processor executes an instruction in time t_n = 50 ns, what is the total time to execute 1,000 instructions?
+     (A) 50,000 ns (50 microseconds) [CORRECT]
+     (B) 5,000 ns
+     (C) 500 ns
+     (D) 1,000 ns
+     Explanation: Total non-pipelined time T_1 = n * t_n = 1000 * 50 ns = 50,000 ns.
+     Tags: BCA-207N, Unit-5, Pipelining, Non-Pipelined-Time
+
+Q209. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     In a k-segment pipeline with clock cycle time t_k, what is the total time T_k required to execute n independent instructions?
+     (A) T_k = (k + n - 1) * t_k [CORRECT]
+     (B) T_k = k * n * t_k
+     (C) T_k = (n / k) * t_k
+     (D) T_k = (k - n) * t_k
+     Explanation: The first instruction takes k clock cycles to fill the pipeline; each subsequent (n - 1) instruction completes in 1 cycle: Total Cycles = k + n - 1.
+     Tags: BCA-207N, Unit-5, Pipelining, Formula
+
+Q210. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is the formula for the 'Speedup Ratio' (S_k) of a k-segment pipeline over a non-pipelined processor?
+     (A) S_k = (n * t_n) / ((k + n - 1) * t_k) [CORRECT]
+     (B) S_k = k * n
+     (C) S_k = t_n / t_k
+     (D) S_k = (k + n) / 2
+     Explanation: Speedup S_k is the ratio of non-pipelined time to pipelined time: S_k = (n * t_n) / [(k + n - 1) * t_k].
+     Tags: BCA-207N, Unit-5, Speedup, Pipelining
+
+Q211. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     As the number of instructions n approaches infinity (n -> infinity), what is the maximum theoretical speedup of a k-stage pipeline (assuming t_n = k * t_k)?
+     (A) k (equal to the number of pipeline stages) [CORRECT]
+     (B) 1
+     (C) Infinity
+     (D) k^2
+     Explanation: As n -> inf, (n / (k + n - 1)) -> 1. If t_n = k * t_k, maximum theoretical speedup S_max = k.
+     Tags: BCA-207N, Unit-5, Pipelining, Theoretical-Speedup
+
+Q212. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Pipeline Efficiency' (E)?
+     (A) The ratio of actual speedup achieved to the maximum theoretical speedup: E = S_k / k [CORRECT]
+     (B) The clock speed of the pipeline in GHz
+     (C) The temperature of the pipeline
+     (D) The power consumed per instruction
+     Explanation: Efficiency E = S_k / k measures how fully utilized all pipeline stages are across execution (E approaches 1 as n grows large).
+     Tags: BCA-207N, Unit-5, Pipeline-Efficiency, Formula
+
+Q213. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is an 'Arithmetic Pipeline'?
+     (A) A segmented pipeline designed to execute multi-step arithmetic calculations (e.g., floating-point addition or multiplication) across cascaded stages [CORRECT]
+     (B) A pipeline that executes jumps and branches
+     (C) A pipe that carries numbers
+     (D) An algorithm written in assembly
+     Explanation: Arithmetic pipelines partition complex numeric operations (e.g., floating-point add: compare exponents, align mantissa, add mantissas, normalize) into high-speed stages.
+     Tags: BCA-207N, Unit-5, Arithmetic-Pipeline, Definition
+
+Q214. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What are the four standard sequential stages of a Floating-Point Addition pipeline?
+     (A) 1. Compare exponents -> 2. Align mantissas -> 3. Add/subtract mantissas -> 4. Normalize the result [CORRECT]
+     (B) 1. Multiply -> 2. Divide -> 3. Add -> 4. Subtract
+     (C) 1. Round -> 2. Truncate -> 3. Shift -> 4. Clear
+     (D) 1. Load -> 2. Decode -> 3. Execute -> 4. Store
+     Explanation: Floating-point addition requires aligning radix points before addition and renormalizing the significand and adjusting exponents afterward.
+     Tags: BCA-207N, Unit-5, Floating-Point-Pipeline, Stages
+
+Q215. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What are the four typical stages of a classic RISC Instruction Pipeline?
+     (A) Fetch Instruction (FI) -> Decode Instruction (DA) -> Fetch Operand (FO) -> Execute Instruction (EX) [CORRECT]
+     (B) Power on -> Read disk -> Print -> Power off
+     (C) Compile -> Link -> Assemble -> Run
+     (D) Read -> Write -> Verify -> Clear
+     Explanation: Classic 4-stage pipelines partition execution into: Fetch instruction, Decode/register read, Operand fetch/ALU, and Writeback/store.
+     Tags: BCA-207N, Unit-5, Instruction-Pipeline, Four-Stage
+
+Q216. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'Pipeline Hazard'?
+     (A) Any condition that prevents the next instruction in the instruction stream from executing in its designated clock cycle, causing pipeline stalls (bubbles) [CORRECT]
+     (B) A physical fire on the motherboard
+     (C) A short circuit in the power supply
+     (D) A virus in the instruction cache
+     Explanation: Pipeline hazards disrupt smooth overlapped execution, forcing the insertion of idle clock cycles (bubbles / stalls) and degrading throughput.
+     Tags: BCA-207N, Unit-5, Pipeline-Hazards, Definition
+
+Q217. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What are the THREE major categories of Pipeline Hazards?
+     (A) Structural Hazards, Data Hazards, and Control (Branch) Hazards [CORRECT]
+     (B) Voltage Hazards, Heat Hazards, and Noise Hazards
+     (C) Input Hazards, Output Hazards, and Storage Hazards
+     (D) Compile Hazards, Link Hazards, and Load Hazards
+     Explanation: 1. Structural (resource conflict), 2. Data (operand dependency), and 3. Control (branching/program flow change).
+     Tags: BCA-207N, Unit-5, Hazard-Classification, Pipelining
+
+Q218. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What causes a 'Structural Hazard' (Resource Hazard)?
+     (A) Two or more pipeline stages attempt to access the exact same physical hardware resource simultaneously (e.g., single memory port for instruction fetch and data read) [CORRECT]
+     (B) A compiler error
+     (C) An invalid opcode
+     (D) A low battery voltage
+     Explanation: Structural hazards occur when hardware lacks sufficient duplication (e.g., Von Neumann unified memory accessed by FI and FO simultaneously, resolvable by Harvard dual caches).
+     Tags: BCA-207N, Unit-5, Structural-Hazards, Resource-Conflict
+
+Q219. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What causes a 'Data Hazard' (Data Dependency)?
+     (A) An instruction depends on the result of a previous instruction that is still in flight in the pipeline and has not yet written its result to the register file [CORRECT]
+     (B) Corrupted data on the hard drive
+     (C) An integer overflow
+     (D) A parity error on the bus
+     Explanation: Data hazards arise when instructions exhibit read/write dependencies on registers being modified by preceding instructions.
+     Tags: BCA-207N, Unit-5, Data-Hazards, Dependencies
+
+Q220. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is a 'Read-After-Write' (RAW) Data Hazard (True Data Dependency)?
+     (A) Instruction j attempts to read a register before instruction i writes to it (j tries to read old/stale data) [CORRECT]
+     (B) Instruction j writes before i reads
+     (C) Instruction j writes before i writes
+     (D) Instruction j reads before i reads
+     Explanation: RAW is a true dependency: i: R1 <- R2 + R3; j: R4 <- R1 + R5. Instruction j needs R1 produced by i. If j reads R1 before i completes writeback, j gets corrupt data.
+     Tags: BCA-207N, Unit-5, RAW-Hazard, True-Dependency
+
+Q221. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Operand Forwarding' (Bypassing) to resolve RAW data hazards?
+     (A) Routing the calculated ALU result directly from the output of the execution stage back to the input of the next stage without waiting for register writeback [CORRECT]
+     (B) Writing operands to disk
+     (C) Skipping the dependent instruction
+     (D) Pausing the CPU for 10 cycles
+     Explanation: Operand forwarding intercepts newly computed results at the ALU output register and forwards them directly to the next stage's ALU input multiplexer, eliminating pipeline stalls.
+     Tags: BCA-207N, Unit-5, Operand-Forwarding, Hazard-Resolution
+
+Q222. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'Control Hazard' (Branch Hazard)?
+     (A) A hazard caused by conditional or unconditional branch instructions that alter the Program Counter, rendering already fetched instructions in the pipeline invalid [CORRECT]
+     (B) A hardware switch failure
+     (C) A power outage
+     (D) A failure in the clock circuit
+     Explanation: When a branch is taken, instructions fetched sequentially behind the branch must be discarded (flushed), resulting in branch penalty delay cycles.
+     Tags: BCA-207N, Unit-5, Control-Hazards, Branching
+
+Q223. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'Pipeline Stall' (Bubble)?
+     (A) An idle clock cycle inserted into a pipeline stage where no productive instruction advances, allowing a dependency or conflict to resolve [CORRECT]
+     (B) A bubble in the liquid cooling system
+     (C) A circular graphic on screen
+     (D) A paused background thread
+     Explanation: A stall (bubble) holds upstream pipeline stages motionless while downstream stages advance, draining dependencies.
+     Tags: BCA-207N, Unit-5, Pipeline-Stall, Bubble
+
+Q224. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Delayed Branching' used in RISC architectures to mitigate control hazards?
+     (A) The compiler places a useful, independent instruction in the 'Branch Delay Slot' immediately following the branch, which is ALWAYS executed regardless of branch outcome [CORRECT]
+     (B) Delaying the computer reboot
+     (C) Waiting 5 seconds before jumping
+     (D) Executing branches only at the end of the program
+     Explanation: The branch delay slot is always executed while the branch target address is being computed, converting would-be wasted stall cycles into useful work.
+     Tags: BCA-207N, Unit-5, Delayed-Branch, Branch-Delay-Slot
+
+Q225. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Branch Prediction' in modern high-performance microprocessors?
+     (A) Hardware logic that guesses whether a conditional branch will be Taken or Not-Taken before the condition is evaluated, allowing speculative instruction fetching [CORRECT]
+     (B) Asking the user which way to branch
+     (C) A random coin toss in silicon
+     (D) A compiler diagnostic report
+     Explanation: Branch predictors (static or dynamic via Branch Target Buffers and 2-bit saturating counters) predict branch outcomes with >95% accuracy to prevent pipeline flushes.
+     Tags: BCA-207N, Unit-5, Branch-Prediction, Pipelining
+
+Q226. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Speculative Execution'?
+     (A) The CPU fetches, decodes, and executes instructions along a predicted branch path before knowing for certain whether the branch will actually be taken [CORRECT]
+     (B) Buying computer hardware on credit
+     (C) Running code without compiling it
+     (D) Executing code with unknown results
+     Explanation: Speculative execution keeps execution units busy: if the branch prediction is correct, results commit immediately; if mispredicted, speculative results are squashed.
+     Tags: BCA-207N, Unit-5, Speculative-Execution, Microarchitecture
+
+Q227. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What does Amdahl's Law state regarding the speedup achievable by parallel processing?
+     (A) The overall speedup of a system is strictly limited by the fraction of the program that must be executed serially (the sequential bottleneck) [CORRECT]
+     (B) Adding more CPUs always doubles system speed
+     (C) Hardware never fails
+     (D) Parallel computing uses zero power
+     Explanation: Amdahl's Law states: Speedup = 1 / ((1 - P) + P / N), where P is the parallelizable fraction and N is processor count. If 10% is strictly serial, maximum possible speedup cannot exceed 10x, even with infinite CPUs.
+     Tags: BCA-207N, Unit-5, Amdahls-Law, Formula
+
+Q228. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     According to Amdahl's Law, if 80% of a program can be parallelized (P = 0.8) and 20% is strictly sequential, what is the MAXIMUM theoretical speedup with an INFINITE number of processors?
+     (A) 5x (Speedup = 1 / 0.20 = 5) [CORRECT]
+     (B) 80x
+     (C) Infinite speedup
+     (D) 10x
+     Explanation: As N -> inf, P/N -> 0. Max Speedup = 1 / (1 - P) = 1 / (1 - 0.80) = 1 / 0.20 = 5x. The 20% serial fraction caps speedup at 5x.
+     Tags: BCA-207N, Unit-5, Amdahls-Law, Calculation
+
+Q229. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What is 'Gustafson's Law' (Scaled Speedup) in parallel computing?
+     (A) As more processors become available, the problem size scales up proportionally, allowing parallel work to dominate and overcoming Amdahl's pessimistic limit [CORRECT]
+     (B) Computers get smaller every two years
+     (C) Network speed increases linearly
+     (D) Storage capacity doubles annually
+     Explanation: Gustafson observed that scientists don't run small problems on supercomputers; they solve massively larger problems where the serial fraction shrinks towards zero: Scaled Speedup = s + p*N.
+     Tags: BCA-207N, Unit-5, Gustafsons-Law, Scaled-Speedup
+
+Q230. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'Tightly Coupled Multiprocessor' (Shared-Memory Multiprocessor / UMA)?
+     (A) Multiple processors sharing a common physical memory and single operating system over a high-speed bus, with uniform memory access latency (UMA) [CORRECT]
+     (B) Computers tied together with metal wire
+     (C) Independent computers communicating via internet
+     (D) A single core with two ALUs
+     Explanation: In tightly coupled systems, all CPUs share a unified physical address space and main memory with identical access times (Uniform Memory Access).
+     Tags: BCA-207N, Unit-5, Tightly-Coupled, UMA
+
+Q231. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is a 'NUMA' (Non-Uniform Memory Access) architecture?
+     (A) A shared-memory multiprocessor system where access time to memory varies depending on whether the memory is local to the accessing processor or remote on another socket [CORRECT]
+     (B) A system with no memory
+     (C) A system where all memory access takes equal time
+     (D) A hard drive RAID array
+     Explanation: In NUMA servers, each CPU socket has dedicated local memory; accessing local memory is fast, while accessing remote memory across QPI/interconnect incurs higher latency.
+     Tags: BCA-207N, Unit-5, NUMA, Architecture
+
+Q232. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'Loosely Coupled Multiprocessor' (Distributed-Memory System / Cluster)?
+     (A) Multiple autonomous computer nodes, each with its own private local memory and OS, communicating exclusively via message passing across a network [CORRECT]
+     (B) A computer with loose cables
+     (C) A laptop with multiple flash drives
+     (D) A CPU with disconnected cores
+     Explanation: Loosely coupled systems (clusters, MPPs) share no common physical memory, coordinating work through message passing libraries like MPI.
+     Tags: BCA-207N, Unit-5, Loosely-Coupled, Clusters
+
+Q233. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Vector Processing' in supercomputing?
+     (A) Hardware capable of performing arithmetic operations on entire 1D arrays (vectors) of numbers in a single machine instruction (e.g., C = A + B for 64-element vectors) [CORRECT]
+     (B) Processing graphics vectors on screen
+     (C) A method for drawing lines in CAD
+     (D) A network routing algorithm
+     Explanation: Vector processors feature vector registers and pipelined vector ALUs that process entire arrays in a single pipelined instruction stream without loop branch overhead.
+     Tags: BCA-207N, Unit-5, Vector-Processing, Supercomputing
+
+Q234. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Strip-Mining' in vector compiler optimization?
+     (A) Dividing a large vector loop of arbitrary length N into chunks that match the hardware vector register length (e.g., chunks of 64) [CORRECT]
+     (B) Mining cryptocurrency on GPUs
+     (C) Stripping comments from assembly code
+     (D) Erasing disk tracks
+     Explanation: Strip-mining breaks loops with length N > Vector_Register_Length into manageable batches fitting physical hardware vector registers.
+     Tags: BCA-207N, Unit-5, Strip-Mining, Vector-Compilers
+
+Q235. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is a 'GPU' (Graphics Processing Unit) compared to a CPU?
+     (A) A massively parallel processor consisting of thousands of small, efficient cores optimized for high-throughput arithmetic on massive data parallel arrays (SIMD/SIMT) [CORRECT]
+     (B) A chip that only displays desktop icons
+     (C) A faster version of a single-core CPU
+     (D) A power supply regulator
+     Explanation: While CPUs optimize low-latency sequential thread execution with massive caches, GPUs dedicate silicon to thousands of ALUs delivering teraflops of parallel throughput.
+     Tags: BCA-207N, Unit-5, GPU, Architecture
+
+Q236. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is the 'Crossbar Switch' interconnection network in multiprocessors?
+     (A) A dynamic network connecting n processors to m memory modules using n x m cross-point switches, allowing non-blocking concurrent access as long as no two CPUs access the same module [CORRECT]
+     (B) A network crossing international borders
+     (C) A serial RS-232 cable
+     (D) A network with only one wire
+     Explanation: Crossbar switches provide complete point-to-point non-blocking connectivity, but hardware complexity grows as O(n * m), becoming expensive for large node counts.
+     Tags: BCA-207N, Unit-5, Crossbar-Switch, Interconnection-Networks
+
+Q237. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What is an 'Omega Network' (Multistage Interconnection Network - MIN)?
+     (A) A network of 2x2 switching elements arranged in log_2(N) stages using perfect-shuffle permutations to route N inputs to N outputs [CORRECT]
+     (B) A Greek computer network
+     (C) The final computer on a LAN
+     (D) A network with infinite bandwidth
+     Explanation: Omega networks achieve scalable cost O(N * log N) using cascaded shuffle-exchange stages between processors and memory banks.
+     Tags: BCA-207N, Unit-5, Omega-Network, MIN
+
+Q238. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What is a 'Hypercube' (Binary n-cube) interconnection topology for 2^n nodes?
+     (A) A network where each node is connected to n neighbors, corresponding to the corners of an n-dimensional cube, with maximum communication distance of n hops [CORRECT]
+     (B) A 3D cardboard box
+     (C) A circular token ring
+     (D) A star network around a central server
+     Explanation: In a hypercube of dimension n, 2^n nodes have diameter n (e.g., 8-cube has 256 nodes, any two nodes within 8 hops), providing high bisection bandwidth.
+     Tags: BCA-207N, Unit-5, Hypercube, Topology
+
+Q239. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Cache Invalidation Traffic' in bus-snooping multiprocessor systems?
+     (A) Broadcast signals sent across the shared bus whenever a processor modifies a shared variable, alerting other cores to invalidate their local copies [CORRECT]
+     (B) Downloading files from the web
+     (C) Clearing web browser cookies
+     (D) Power consumption spikes
+     Explanation: In write-invalidate protocols, every write to a shared line requires broadcasting an invalidation address, which can saturate the shared bus on high core counts.
+     Tags: BCA-207N, Unit-5, Cache-Invalidation, Bus-Traffic
+
+Q240. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     What is 'Instruction-Level Parallelism' (ILP)?
+     (A) The potential overlap and simultaneous execution of multiple independent instructions within a single program instruction stream [CORRECT]
+     (B) Connecting multiple instruction registers in parallel
+     (C) Running multiple operating systems at once
+     (D) Printing assembly code side-by-side
+     Explanation: Pipelining, superscalar execution, out-of-order execution, and VLIW architectures exploit ILP to execute multiple instructions per cycle.
+     Tags: BCA-207N, Unit-5, ILP, Concept
+
+Q241. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What is 'Very Long Instruction Word' (VLIW) processor architecture?
+     (A) The compiler statically groups multiple independent operations into a single massive instruction word executed concurrently by execution units without hardware dependency checking [CORRECT]
+     (B) Instructions with 1000 characters of text
+     (C) A processor that executes one instruction per hour
+     (D) A computer with a giant screen
+     Explanation: VLIW shifts dependency analysis entirely from hardware to the optimizing compiler, packing multiple operations into a wide instruction word.
+     Tags: BCA-207N, Unit-5, VLIW, Architecture
+
+Q242. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     What is 'Out-of-Order Execution' (OoO) in modern superscalar processors?
+     (A) Instructions execute as soon as their operand data is available in reservation stations, rather than strictly in original program sequence [CORRECT]
+     (B) Executing instructions backwards
+     (C) Random instruction execution
+     (D) Executing code after shutdown
+     Explanation: OoO dynamically reorders instructions using scoreboarding or Tomasulo's algorithm to prevent pipeline stalls while instructions wait for slow cache misses.
+     Tags: BCA-207N, Unit-5, Out-of-Order, Tomasulo
+
+Q243. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is a 'Branch Target Buffer' (BTB)?
+     (A) A high-speed cache that stores the target addresses of previously executed branch instructions, enabling zero-cycle target address fetch before instruction decode [CORRECT]
+     (B) A buffer that stores tree branches
+     (C) A temporary stack pointer
+     (D) A USB buffer
+     Explanation: The BTB caches branch instructions alongside their predicted targets, allowing the fetch unit to immediately redirect the instruction stream without decode delay.
+     Tags: BCA-207N, Unit-5, BTB, Branch-Prediction
+
+Q244. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is a 'Write-After-Write' (WAW) Output Dependency?
+     (A) Instruction j writes to register R after instruction i writes to register R; out-of-order execution must ensure the final value in R matches the latter write [CORRECT]
+     (B) Two instructions reading the same register
+     (C) A write to two different files
+     (D) An instruction that never finishes
+     Explanation: WAW is an output dependency where instruction order must be preserved to guarantee the register holds the correct terminal value.
+     Tags: BCA-207N, Unit-5, Data-Hazards, WAW
+
+Q245. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is a 'Write-After-Read' (WAR) Anti-Dependency?
+     (A) Instruction j writes to register R before instruction i has read its previous value from R [CORRECT]
+     (B) Instruction j reads before i writes
+     (C) An infinite loop
+     (D) A memory bus error
+     Explanation: WAR occurs when an instruction overwrites an operand needed by an earlier in-flight instruction.
+     Tags: BCA-207N, Unit-5, Data-Hazards, WAR
+
+Q246. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (HARD)
+     How does 'Register Renaming' eliminate false WAR and WAW dependencies in superscalar processors?
+     (A) It maps architectural register names dynamically to a much larger pool of physical rename registers, breaking name conflicts [CORRECT]
+     (B) It renames variables in source code
+     (C) It changes file extensions
+     (D) It assigns random numbers to registers
+     Explanation: Register renaming breaks false name dependencies (WAR, WAW) by assigning fresh physical registers to every new write, allowing instructions to execute in parallel.
+     Tags: BCA-207N, Unit-5, Register-Renaming, OoO
+
+Q247. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'SIMT' (Single Instruction, Multiple Threads) used in GPU compute architectures?
+     (A) An execution model where groups of threads (Warps / Wavefronts) execute the same instruction in lockstep across SIMD execution lanes [CORRECT]
+     (B) Running multiple operating systems on one core
+     (C) Single thread running multiple programs
+     (D) Serial execution on single ALU
+     Explanation: SIMT combines thread-level programming with SIMD hardware execution: instructions are broadcast across a warp (32 threads in NVIDIA CUDA).
+     Tags: BCA-207N, Unit-5, SIMT, GPU-Architecture
+
+Q248. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     What is 'Massively Parallel Processing' (MPP)?
+     (A) A supercomputing architecture consisting of hundreds or thousands of independent processing nodes with separate memory, interconnected by high-speed proprietary fabrics [CORRECT]
+     (B) A PC with two graphics cards
+     (C) A dual-core laptop
+     (D) A web browser with 50 tabs
+     Explanation: MPP systems are large-scale distributed-memory supercomputers executing parallel programs via message passing without shared memory contention.
+     Tags: BCA-207N, Unit-5, MPP, Supercomputing
+
+Q249. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (MEDIUM)
+     In a 4-stage arithmetic pipeline with clock cycle time t_k = 10 ns, what is the time taken to process 100 inputs?
+     (A) 1,030 ns ((4 + 100 - 1) * 10 ns = 103 * 10) [CORRECT]
+     (B) 4,000 ns
+     (C) 1,000 ns
+     (D) 400 ns
+     Explanation: Time T_k = (k + n - 1) * t_k = (4 + 100 - 1) * 10 ns = 103 * 10 ns = 1,030 ns. (Compare with non-pipelined time 40 ns * 100 = 4,000 ns).
+     Tags: BCA-207N, Unit-5, Pipelining, Calculation
+
+Q250. [Unit 5: Parallel Processing, Pipelining & Multiprocessor Systems] (EASY)
+     Why did the computer industry shift from increasing single-core clock frequency to multi-core parallel architecture?
+     (A) Due to the 'Power Wall' (thermal dissipation limits) and the breakdown of Dennard Scaling, making further single-core clock scaling power-inefficient [CORRECT]
+     (B) Because multi-core CPUs are cheaper to manufacture
+     (C) Because single-core CPUs ran out of numbers
+     (D) Because software became too simple
+     Explanation: Power dissipation increases cubically with clock frequency (P ≈ C * V^2 * f). Hitting thermal limits forced the paradigm shift to multi-core parallelism.
+     Tags: BCA-207N, Unit-5, Power-Wall, Multi-Core-Shift
+

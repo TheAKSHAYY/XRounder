@@ -1,0 +1,2832 @@
+// BCA-103N: Programming with C (Semester 1 - MJPRU Bareilly)
+// Complete Official Question Bank (250 MCQs - 50 MCQs per Unit)
+
+Q: Who originally designed and implemented the C programming language at AT&T Bell Laboratories in 1972?
+A) Bjarne Stroustrup
+B) Dennis Ritchie *
+C) Ken Thompson
+D) James Gosling
+E: Dennis Ritchie created C in 1972 at Bell Labs to implement the Unix operating system, evolving it from Ken Thompson's B language.
+D: easy
+T: BCA-103N, Unit-1, C-History, Dennis-Ritchie
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which stage of the C compilation pipeline handles directives beginning with the hash symbol (#)?
+A) Compiler
+B) Preprocessor *
+C) Assembler
+D) Linker
+E: The C preprocessor runs before semantic compilation, expanding header includes (#include), macro substitutions (#define), and conditional compilation (#ifdef).
+D: easy
+T: BCA-103N, Unit-1, C-Compilation, Preprocessor
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What file extension is typically given to an intermediate object file produced after compiling C source code on Windows / DOS?
+A) .c
+B) .obj *
+C) .exe
+D) .bak
+E: The compiler converts source code (.c) into machine code object files (.obj on Windows/DOS, .o on Linux) prior to linking.
+D: easy
+T: BCA-103N, Unit-1, C-Compilation, Object-File
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The Linker in a C programming toolchain is responsible for:
+A) Checking syntax errors in loops
+B) Combining compiled object modules with runtime C standard library routines into an executable file (.exe) *
+C) Allocating stack memory during execution
+D) Editing C source text
+E: The Linker resolves cross-file function calls and links library functions (e.g., printf, scanf from libc) to create a standalone executable binary.
+D: medium
+T: BCA-103N, Unit-1, C-Compilation, Linker
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Every standard C program execution must begin with which function?
+A) start()
+B) main() *
+C) init()
+D) run()
+E: The runtime environment invokes main() as the predefined program entry point where CPU instruction execution begins.
+D: easy
+T: BCA-103N, Unit-1, C-Structure, main
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is an invalid identifier name in C?
+A) _total_marks
+B) count_2
+C) 2nd_student *
+D) recordTotal
+E: In C, identifier names must begin with an alphabetic letter (a-z, A-Z) or an underscore (_); starting with a digit (e.g. 2nd_student) is a syntax error.
+D: easy
+T: BCA-103N, Unit-1, C-Syntax, Identifiers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many reserved keywords exist in the standard ANSI C (C89/C90) specification?
+A) 32 *
+B) 48
+C) 64
+D) 256
+E: ANSI C89 defines exactly 32 reserved keywords (auto, break, case, char, const, continue, default, do, double, else, enum, extern, float, for, goto, if, int, long, register, return, short, signed, sizeof, static, struct, switch, typedef, union, unsigned, void, volatile, while).
+D: easy
+T: BCA-103N, Unit-1, C-Syntax, Keywords
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which escape sequence character in C represents a newline?
+A) \t
+B) \n *
+C) \r
+D) \b
+E: \n inserts a line feed / newline character, moving the output cursor to the start of the next line.
+D: easy
+T: BCA-103N, Unit-1, C-Syntax, Escape-Sequences
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the escape sequence '\0' signify in C programming?
+A) The number zero as a character
+B) The Null Character used to mark the termination of strings *
+C) An empty space
+D) Backspace
+E: \0 represents the ASCII NUL character (byte value 0x00) used universally in C as the sentinel delimiter terminating character strings.
+D: easy
+T: BCA-103N, Unit-1, C-Syntax, Null-Character
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, comments that span multiple lines are enclosed between:
+A) // and //
+B) /* and */ *
+C) <!-- and -->
+D) (* and *)
+E: C multi-line block comments start with /* and end with */, whereas // begins a single-line comment introduced in C99.
+D: easy
+T: BCA-103N, Unit-1, C-Syntax, Comments
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the typical memory size occupied by a standard 'char' data type in C?
+A) 1 byte (8 bits) *
+B) 2 bytes (16 bits)
+C) 4 bytes (32 bits)
+D) 8 bytes (64 bits)
+E: In C, sizeof(char) is defined by the standard to be guaranteed exactly 1 byte (8 bits), capable of representing 256 ASCII character values.
+D: easy
+T: BCA-103N, Unit-1, Data-Types, char
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the numerical range of a signed 8-bit 'char' in two's complement representation?
+A) 0 to 255
+B) -128 to +127 *
+C) -256 to +255
+D) -32768 to +32767
+E: An 8-bit signed integer has 2^8 = 256 states, spanning from -2^7 (-128) to +(2^7 - 1) (+127).
+D: medium
+T: BCA-103N, Unit-1, Data-Types, Signed-Range
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An 'unsigned char' data type in C has a value range of:
+A) -128 to 127
+B) 0 to 255 *
+C) 0 to 65535
+D) -255 to 0
+E: Because unsigned types carry no sign bit, all 8 bits represent magnitude, spanning from 0 to 2^8 - 1 (255).
+D: easy
+T: BCA-103N, Unit-1, Data-Types, Unsigned-Range
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which type qualifier tells the C compiler that a variable's value must not be modified by the program after initialization?
+A) static
+B) register
+C) const *
+D) volatile
+E: The const qualifier declares a variable read-only; attempts to assign a new value to it trigger a compiler error.
+D: easy
+T: BCA-103N, Unit-1, Type-Qualifiers, const
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'volatile' type qualifier in C indicates to the compiler optimization engine that:
+A) The variable's memory should be cached in CPU registers permanently
+B) The variable's value may be changed unexpectedly by hardware or external threads, preventing aggressive compiler register caching *
+C) The variable is constant
+D) The variable is deleted after each loop
+E: volatile instructs the compiler to reload the variable from memory on every access because hardware memory-mapped registers or ISRs may alter it at any instant.
+D: medium
+T: BCA-103N, Unit-1, Type-Qualifiers, volatile
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the standard precision and size difference between 'float' and 'double' in standard C?
+A) float is 8 bytes (double precision); double is 4 bytes (single precision)
+B) float is single precision (typically 4 bytes, ~6-7 decimal digits); double is double precision (typically 8 bytes, ~15-17 decimal digits) *
+C) Both have identical size and precision
+D) double only works with integers
+E: float conforms to IEEE 754 32-bit single precision (~7 significant digits); double conforms to 64-bit double precision (~15-17 significant digits).
+D: easy
+T: BCA-103N, Unit-1, Data-Types, float-vs-double
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which format specifier is used in printf() to print a signed decimal integer?
+A) %c
+B) %d (or %i) *
+C) %f
+D) %s
+E: %d or %i outputs signed decimal integers; %u outputs unsigned integers.
+D: easy
+T: BCA-103N, Unit-1, Format-Specifiers, printf
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which format specifier is used in scanf() to read a double-precision floating-point number into a variable declared as 'double'?
+A) %f
+B) %lf *
+C) %d
+D) %c
+E: In scanf(), %f reads into float (4 bytes) while %lf (long float) is strictly required to read into double (8 bytes) to avoid memory corruption.
+D: medium
+T: BCA-103N, Unit-1, Format-Specifiers, scanf-double
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the format specifier '%p' display in printf()?
+A) A floating-point percentage
+B) A pointer address in hexadecimal notation *
+C) A precision string
+D) A prime number
+E: %p is the defined conversion specifier for formatting and displaying memory address pointers (typically formatted as 0x007FFE...).
+D: easy
+T: BCA-103N, Unit-1, Format-Specifiers, Pointers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, what is the output of the expression 'sizeof(3.14)' on a standard 32/64-bit compiler?
+A) 4 bytes
+B) 8 bytes *
+C) 2 bytes
+D) 10 bytes
+E: In C, floating-point numeric literals containing a decimal point without an 'f' suffix are treated by default as 'double' literals (sizeof(double) = 8 bytes).
+D: medium
+T: BCA-103N, Unit-1, Data-Types, Literals
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the result of integer division '7 / 2' in C?
+A) 3.5
+B) 3 *
+C) 4
+D) 3.0
+E: When both operands of the division operator (/) are integers, C performs integer truncation, discarding any fractional remainder to yield 3.
+D: easy
+T: BCA-103N, Unit-1, Operators, Integer-Division
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the modulus operator '%' calculate in C?
+A) The percentage of a number
+B) The integer remainder of division between two integers *
+C) Square root
+D) Exponentiation
+E: The modulus operator (%) yields the remainder of integer division (e.g. 7 % 2 yields 1). Both operands must be integers.
+D: easy
+T: BCA-103N, Unit-1, Operators, Modulus
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following operations is ILLEGAL with the modulus operator (%) in C?
+A) 15 % 4
+B) 10.5 % 3 *
+C) -7 % 3
+D) 20 % 5
+E: The modulus operator (%) in C is strictly defined for integer operands; using floating-point operands (like 10.5 % 3) generates a compilation error (use fmod() instead).
+D: medium
+T: BCA-103N, Unit-1, Operators, Modulus-Constraint
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the difference between prefix increment '++x' and postfix increment 'x++'?
+A) Prefix increments after the value is used; postfix increments before
+B) Prefix increments the variable first and returns the updated value; postfix evaluates the current value first and then increments the variable *
+C) Prefix only works with floats
+D) There is no difference in C
+E: ++x increments x immediately before expression evaluation; x++ yields the current value of x in the expression, delaying the increment until the sequence point.
+D: medium
+T: BCA-103N, Unit-1, Operators, Increment
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If int x = 5; what are the values of y and x after executing: int y = ++x * 2;?
+A) y = 10, x = 6
+B) y = 12, x = 6 *
+C) y = 10, x = 5
+D) y = 12, x = 5
+E: Prefix ++x increments x from 5 to 6 first; then 6 * 2 = 12 is assigned to y, leaving x = 6.
+D: medium
+T: BCA-103N, Unit-1, Operators, Prefix-Eval
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If int a = 5; what are the values of b and a after executing: int b = a++ * 2;?
+A) b = 10, a = 6 *
+B) b = 12, a = 6
+C) b = 10, a = 5
+D) b = 12, a = 5
+E: Postfix a++ supplies its current value (5) for multiplication: 5 * 2 = 10 assigned to b; afterwards a is incremented to 6.
+D: medium
+T: BCA-103N, Unit-1, Operators, Postfix-Eval
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is the Bitwise Exclusive-OR (XOR) operator in C?
+A) &
+B) |
+C) ^ *
+D) ~
+E: In C, ^ is bitwise XOR, & is bitwise AND, | is bitwise OR, ~ is bitwise NOT (one's complement).
+D: easy
+T: BCA-103N, Unit-1, Bitwise-Operators, XOR
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of the bitwise shift expression '1 << 3' in C?
+A) 3
+B) 8 *
+C) 24
+D) 1
+E: Left-shifting binary 0001 by 3 positions produces binary 1000 (decimal 8), effectively calculating 1 * 2^3.
+D: medium
+T: BCA-103N, Unit-1, Bitwise-Operators, Left-Shift
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Right-shifting a positive integer by 1 position (x >> 1) is mathematically equivalent to:
+A) Multiplying x by 2
+B) Dividing x by 2 (integer division) *
+C) Adding 1 to x
+D) Squaring x
+E: Bitwise right shift by 1 drops the least significant bit, dividing an integer by 2.
+D: easy
+T: BCA-103N, Unit-1, Bitwise-Operators, Right-Shift
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which operator in C returns the memory footprint (in bytes) of a data type or variable at compile-time?
+A) size()
+B) sizeof *
+C) length()
+D) bytes()
+E: sizeof is a compile-time unary operator that evaluates to the number of bytes allocated for the specified type or variable.
+D: easy
+T: BCA-103N, Unit-1, Operators, sizeof
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: According to C operator precedence rules, which operator has the highest priority?
+A) Addition (+)
+B) Multiplication (*)
+C) Parentheses () *
+D) Assignment (=)
+E: Parentheses () have the highest precedence (level 1), forcing evaluation of enclosed expressions first.
+D: easy
+T: BCA-103N, Unit-1, Precedence, Parentheses
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of the C expression '5 + 3 * 2'?
+A) 16
+B) 11 *
+C) 13
+D) 10
+E: Multiplication has higher precedence than addition: 3 * 2 = 6, then 5 + 6 = 11.
+D: easy
+T: BCA-103N, Unit-1, Precedence, Math
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of the expression '10 - 4 + 2' based on associativity?
+A) 4
+B) 8 *
+C) 12
+D) -2
+E: Addition and subtraction share equal precedence and associate left-to-right: (10 - 4) = 6; then 6 + 2 = 8.
+D: easy
+T: BCA-103N, Unit-1, Associativity, Left-to-Right
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which class of operators in C associates RIGHT-TO-LEFT?
+A) Arithmetic operators (+, -, *, /)
+B) Relational operators (<, >, <=, >=)
+C) Unary operators (++, --, !, sizeof) and Assignment operators (=, +=, -=) *
+D) Bitwise shift operators (<<, >>)
+E: Unary operators (++, --, !, ~) and assignment operators (=, +=) evaluate right-to-left.
+D: medium
+T: BCA-103N, Unit-1, Associativity, Right-to-Left
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the result of the relational expression '(5 > 3 && 2 > 8)' in C?
+A) 1 (True)
+B) 0 (False) *
+C) -1
+D) Syntax Error
+E: 5 > 3 is TRUE (1); 2 > 8 is FALSE (0); 1 && 0 evaluates to FALSE (0).
+D: easy
+T: BCA-103N, Unit-1, Logical-Operators, AND
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Short-circuit evaluation in C logical AND (&&) expressions means:
+A) Both sides are always evaluated
+B) If the left-hand operand evaluates to FALSE (0), the right-hand operand is completely skipped and not evaluated *
+C) Execution jumps to the end of main
+D) An error is thrown
+E: In &&, if the first condition is false, the compound expression can never be true, so C aborts evaluating subsequent operands (short-circuit).
+D: medium
+T: BCA-103N, Unit-1, Short-Circuit, Logic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C logical OR (||), short-circuit evaluation occurs when:
+A) The left-hand operand evaluates to FALSE (0)
+B) The left-hand operand evaluates to TRUE (non-zero) *
+C) Both operands are negative
+D) Variables are integers
+E: In ||, if the left operand is TRUE, the entire statement is guaranteed to be true, so the right-hand side is bypassed.
+D: medium
+T: BCA-103N, Unit-1, Short-Circuit, OR
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Implicit type conversion (automatic type promotion) in C dictates that when adding an int and a float:
+A) The float is truncated into an int
+B) The int is promoted to a float, and floating-point addition is performed *
+C) The compiler throws a type mismatch error
+D) The result becomes a string
+E: C's usual arithmetic conversions promote lower-ranked types to higher-ranked types (int -> float) to avoid precision loss.
+D: easy
+T: BCA-103N, Unit-1, Type-Conversion, Implicit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Explicit type casting from float to int in C is written as:
+A) int(x)
+B) (int)x *
+C) convert<int>(x)
+D) x->int
+E: C uses cast notation: (type_name)expression, such as (int)3.85, which truncates the fractional part to yield 3.
+D: easy
+T: BCA-103N, Unit-1, Type-Conversion, Casting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the result of '(int)5.99 + (int)2.01' in C?
+A) 8
+B) 7 *
+C) 7.99
+D) 8.0
+E: (int)5.99 truncates to 5; (int)2.01 truncates to 2; 5 + 2 = 7.
+D: medium
+T: BCA-103N, Unit-1, Type-Conversion, Truncation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, which standard header file must be included to utilize printf() and scanf()?
+A) <stdlib.h>
+B) <conio.h>
+C) <stdio.h> *
+D) <math.h>
+E: <stdio.h> (Standard Input Output header) contains function prototypes and definitions for streams, printf, scanf, fopen, etc.
+D: easy
+T: BCA-103N, Unit-1, Header-Files, stdio.h
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is the address-of operator '&' required in 'scanf("%d", &num);'?
+A) Because scanf requires the memory address of the variable to store the parsed input value directly into it *
+B) To calculate the percentage of num
+C) To convert num into binary
+D) It is optional
+E: C passes arguments by value; scanf needs the memory pointer to write the received keyboard input directly into the variable's storage cell.
+D: easy
+T: BCA-103N, Unit-1, scanf, Address-Operator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which unformatted I/O function reads a single character from standard input (stdin)?
+A) putchar()
+B) getchar() *
+C) puts()
+D) gets()
+E: getchar() reads and returns the next character from standard input as an unsigned char cast to an int.
+D: easy
+T: BCA-103N, Unit-1, I/O-Functions, getchar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which unformatted output function displays a single character to standard output (stdout)?
+A) putchar() *
+B) getchar()
+C) getch()
+D) putc()
+E: putchar(char) writes a single character to the standard console display screen.
+D: easy
+T: BCA-103N, Unit-1, I/O-Functions, putchar
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is the legacy function 'gets()' considered highly dangerous and deprecated in modern C standards?
+A) It runs too slowly
+B) It does not perform buffer bounds checking, leading to buffer overflow vulnerabilities when input exceeds array size *
+C) It only accepts capital letters
+D) It deletes hard drive files
+E: gets() reads until a newline without verifying array boundary capacity, allowing malicious buffer overflows (CVE security vulnerabilities).
+D: medium
+T: BCA-103N, Unit-1, I/O-Functions, gets-Deprecation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which safe string input function should replace 'gets()' to prevent buffer overflow?
+A) scanf("%s", str)
+B) fgets(str, sizeof(str), stdin) *
+C) cin >> str
+D) readstr(str)
+E: fgets() mandates a maximum buffer length parameter, ensuring the input reading halts before exceeding the allocated array boundary.
+D: medium
+T: BCA-103N, Unit-1, I/O-Functions, fgets
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'puts()' function do in addition to printing a string to the console?
+A) Converts all text to uppercase
+B) Automatically appends a newline character (\n) at the end of the printed string *
+C) Clears the monitor
+D) Counts the words
+E: Unlike printf("%s", str), puts(str) automatically prints a newline character at the end of output.
+D: easy
+T: BCA-103N, Unit-1, I/O-Functions, puts
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In the format specifier '%6.2f', what does the '6' and '2' specify?
+A) 6 numbers before the decimal and 2 after
+B) A minimum total field width of 6 characters with exactly 2 digits after the decimal point *
+C) 6 decimal places and 2 digits total
+D) A 6-byte double
+E: %w.pf specifies total field width w (including sign and dot) and decimal precision p.
+D: medium
+T: BCA-103N, Unit-1, Format-Specifiers, Width-Precision
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the return value of printf() upon successful execution?
+A) 0
+B) 1
+C) The total number of characters successfully printed to output *
+D) The address of the screen
+E: printf() returns the total count of characters output; or a negative value if an output error occurred.
+D: medium
+T: BCA-103N, Unit-1, printf, Return-Value
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does scanf() return when successfully parsing input?
+A) The value of the variable
+B) The total number of input items successfully matched and assigned *
+C) 0 always
+D) A pointer to stdin
+E: scanf() returns the count of input arguments successfully scanned and assigned (e.g. scanf("%d %d", &a, &b) returns 2 on valid input).
+D: medium
+T: BCA-103N, Unit-1, scanf, Return-Value
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which conditional statement in C evaluates a condition and executes a block if the condition is non-zero (true)?
+A) for
+B) if *
+C) goto
+D) return
+E: The 'if' statement tests a relational/logical expression; if it evaluates to any non-zero value, the nested statement block executes.
+D: easy
+T: BCA-103N, Unit-2, Control-Statements, if
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, which value represents logical FALSE?
+A) -1
+B) 0 *
+C) 1
+D) Any negative number
+E: In C, 0 evaluates to FALSE, while any non-zero value (positive or negative) evaluates to TRUE.
+D: easy
+T: BCA-103N, Unit-2, Logic, Boolean-Evaluation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the 'Dangling Else' problem in programming languages like C?
+A) An else statement that has no code inside it
+B) Ambiguity in nested if-else structures where it is unclear which 'if' an 'else' belongs to without braces *
+C) An else statement placed inside a while loop
+D) A compiler error that deletes files
+E: In nested if statements without explicit curly braces {}, the dangling else rule resolves ambiguity by binding the 'else' to the nearest preceding unmatched 'if'.
+D: medium
+T: BCA-103N, Unit-2, Control-Statements, Dangling-Else
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Consider the code snippet:
+int x = 10;
+if (x = 0)
+  printf("A");
+else
+  printf("B");
+What will be printed?
+A) A
+B) B *
+C) Compilation Error
+D) AB
+E: The condition uses assignment '=' rather than equality '=='. The expression (x = 0) assigns 0 to x and evaluates to 0 (FALSE), executing the else block to print 'B'.
+D: medium
+T: BCA-103N, Unit-2, Syntax-Pitfalls, Assignment-vs-Equality
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which statement provides a multi-way branch based on comparing an integer or character expression against constant values?
+A) if-else
+B) switch *
+C) while
+D) for
+E: The 'switch' statement evaluates an integral expression and transfers control to matching constant 'case' labels.
+D: easy
+T: BCA-103N, Unit-2, Control-Statements, switch
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What data types are strictly PERMITTED for the switch expression in standard C?
+A) float and double only
+B) Integral types (int, char, enum) only *
+C) Strings and pointers only
+D) Any data type including arrays
+E: ANSI C mandates that the control expression of a switch statement and the case labels must evaluate to an integer-compatible type (int, char, enum).
+D: easy
+T: BCA-103N, Unit-2, switch, Permitted-Types
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens in a switch statement if a matching case is executed but does NOT end with a 'break' statement?
+A) The program crashes immediately
+B) Execution continues sequentially into the subsequent case statements (Fall-Through) *
+C) The switch statement restarts from the beginning
+D) The compiler throws a syntax error
+E: Without a 'break', execution 'falls through' to execute the subsequent case and default blocks regardless of whether their labels match.
+D: easy
+T: BCA-103N, Unit-2, switch, Fall-Through
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the role of the 'default' label in a switch statement?
+A) It is executed before any other case
+B) It executes if none of the explicit case label constants match the evaluated switch expression *
+C) It terminates the program
+D) It is mandatory and must appear first
+E: The optional 'default' case serves as a catch-all block executing whenever no other case constant matches the evaluated expression.
+D: easy
+T: BCA-103N, Unit-2, switch, default-label
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a switch statement in C have two identical 'case' constant values (e.g., case 5: ... case 5:)?
+A) Yes, C executes both simultaneously
+B) No, duplicate case values cause a compilation error *
+C) Yes, but only in GCC
+D) Yes, if separated by default
+E: The C compiler requires every case label value in a single switch block to be distinct; duplicates result in a 'duplicate case value' compile-time error.
+D: medium
+T: BCA-103N, Unit-2, switch, Duplicate-Cases
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The conditional ternary operator in C is expressed as:
+A) condition ? expr1 : expr2 *
+B) condition : expr1 ? expr2
+C) condition -> expr1 / expr2
+D) if (condition) then expr1 else expr2
+E: The ternary operator ? : evaluates condition; if true it yields expr1, otherwise it yields expr2.
+D: easy
+T: BCA-103N, Unit-2, Ternary-Operator, Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following is classified as an Entry-Controlled (Pre-test) loop?
+A) do-while loop
+B) while loop *
+C) goto loop
+D) switch statement
+E: A 'while' loop tests its condition before executing the loop body; if the condition is initially false, the loop body never executes (0 times).
+D: easy
+T: BCA-103N, Unit-2, Loops, Entry-Controlled
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which loop guarantees that its body will execute at least ONCE regardless of the initial condition?
+A) for loop
+B) while loop
+C) do-while loop *
+D) nested loop
+E: A 'do-while' loop is an exit-controlled (post-test) loop: the body executes first, and the test condition is evaluated at the bottom.
+D: easy
+T: BCA-103N, Unit-2, Loops, do-while
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a do-while loop in C, what punctuation mark is strictly required after the while condition?
+A) Colon (:)
+B) Semicolon (;) *
+C) Period (.)
+D) No punctuation
+E: The syntax of do-while mandates a terminating semicolon after the test expression: do { ... } while (condition);
+D: easy
+T: BCA-103N, Unit-2, do-while, Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many times will the following loop execute?
+int i = 0;
+while (i < 5) {
+  i += 2;
+}
+A) 2 times
+B) 3 times *
+C) 5 times
+D) Infinite
+E: Initial: i=0 (<5, runs -> i=2); i=2 (<5, runs -> i=4); i=4 (<5, runs -> i=6); i=6 (not <5, terminates). Total = 3 executions.
+D: medium
+T: BCA-103N, Unit-2, Loops, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What are the three core expressions in a standard 'for' loop header in C?
+A) for (condition; initialization; update)
+B) for (initialization; condition; update) *
+C) for (update; condition; initialization)
+D) for (input; process; output)
+E: The for loop header syntax is: for (init_expression; test_condition; update_expression).
+D: easy
+T: BCA-103N, Unit-2, for-loop, Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the effect of writing 'for ( ; ; )' in C?
+A) It causes a compilation syntax error
+B) It creates an intentional infinite loop *
+C) It executes exactly once
+D) It skips the loop entirely
+E: Omitting all three expressions in a for loop header creates an endless loop because an omitted condition defaults to non-zero (TRUE).
+D: easy
+T: BCA-103N, Unit-2, for-loop, Infinite-Loop
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a for loop initialize or update multiple variables using the comma operator?
+A) No, only one variable is allowed in a for loop header
+B) Yes, expressions can be separated by commas, such as for (i = 0, j = 10; i < j; i++, j--) *
+C) Only in C++
+D) Only with floating-point variables
+E: The comma operator allows multiple initialization and update statements within the for loop header.
+D: medium
+T: BCA-103N, Unit-2, for-loop, Comma-Operator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many times does the loop 'for (int i = 1; i <= 10; i += 3)' execute?
+A) 3 times
+B) 4 times *
+C) 5 times
+D) 10 times
+E: The loop executes for i = 1, 4, 7, 10 (4 iterations). At i = 13, 13 <= 10 is false and it exits.
+D: medium
+T: BCA-103N, Unit-2, for-loop, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by the following code?
+int x = 1;
+do {
+  printf("%d ", x);
+  x++;
+} while (x < 1);
+A) Nothing
+B) 1 *
+C) 1 2
+D) Infinite loop
+E: The do-while loop executes the body first, printing 1 and setting x = 2. Then the condition (2 < 1) evaluates to false, terminating the loop.
+D: medium
+T: BCA-103N, Unit-2, do-while, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An infinite loop caused by a missing loop variable increment is an example of a:
+A) Syntax Error
+B) Linker Error
+C) Logical Error (Semantic Error) *
+D) Preprocessor Error
+E: The code compiles without syntax faults, but the program's algorithmic logic is flawed, leading to non-termination.
+D: easy
+T: BCA-103N, Unit-2, Debugging, Logical-Error
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'break' statement do when encountered inside a loop in C?
+A) Skips the current iteration and jumps to the next iteration
+B) Immediately terminates the innermost enclosing loop or switch statement and transfers control to the statement following the loop *
+C) Restarts the computer
+D) Exits the entire program
+E: 'break' forces immediate exit from the current innermost loop or switch-case construct.
+D: easy
+T: BCA-103N, Unit-2, Jump-Statements, break
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does the 'continue' statement behave inside a loop?
+A) It terminates the loop completely
+B) It skips the remaining statements in the current iteration and jumps directly to the loop update/condition for the next cycle *
+C) It rewinds the loop to the beginning
+D) It pauses execution for 5 seconds
+E: 'continue' halts the active iteration, immediately bypassing subsequent statements in the loop body to start the next iteration.
+D: easy
+T: BCA-103N, Unit-2, Jump-Statements, continue
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a 'for' loop, when 'continue' is executed, control jumps directly to:
+A) The initialization statement
+B) The update expression (increment/decrement), then evaluates the condition *
+C) The first statement after the loop
+D) The return statement
+E: In a for loop, 'continue' branches directly to the update clause (e.g. i++), followed by test condition evaluation.
+D: medium
+T: BCA-103N, Unit-2, for-loop, continue
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a 'while' loop, when 'continue' is executed, control jumps directly to:
+A) The loop update statement
+B) The condition test expression at the top of the loop *
+C) The next function
+D) The main function
+E: In while and do-while loops, 'continue' jumps directly to re-evaluate the loop's test condition.
+D: medium
+T: BCA-103N, Unit-2, while-loop, continue
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'goto' statement in C performs:
+A) A structured loop exit
+B) An unconditional jump to a named label within the same function *
+C) A jump to an external web page
+D) An operating system reboot
+E: 'goto label;' unconditionally transfers program execution to 'label:', provided the target label resides in the same function scope.
+D: easy
+T: BCA-103N, Unit-2, Jump-Statements, goto
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is the widespread use of 'goto' strongly discouraged in modern software engineering?
+A) It makes programs compile slower
+B) It creates tangled, unmaintainable 'spaghetti code' that is difficult to trace, verify, and debug *
+C) It uses too much RAM
+D) It was removed from C in 1989
+E: Unrestricted jumps break structured single-entry single-exit flow, obscuring control flow logic.
+D: easy
+T: BCA-103N, Unit-2, Structured-Programming, goto
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A label for a 'goto' statement in C is written as:
+A) label;
+B) label: *
+C) #label
+D) goto(label)
+E: A goto label consists of a valid C identifier followed by a colon (e.g., error_cleanup:).
+D: easy
+T: BCA-103N, Unit-2, goto, Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'return' statement in a C function accomplish?
+A) It prints text on the screen
+B) It terminates execution of the current function and optionally passes a result value back to the caller *
+C) It resets the function variables to zero
+D) It invokes a recursive call
+E: 'return' immediately exits the current function activation frame, returning execution control and any return value to the caller.
+D: easy
+T: BCA-103N, Unit-2, Functions, return
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If 'break' is used inside an inner loop of two nested loops, which loop is terminated?
+A) Both loops are terminated
+B) Only the innermost loop containing the break statement is terminated *
+C) Only the outer loop is terminated
+D) The entire program is terminated
+E: 'break' strictly terminates the single innermost loop level in which it resides.
+D: medium
+T: BCA-103N, Unit-2, Nested-Loops, break
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by this loop?
+for (int i = 1; i <= 5; i++) {
+  if (i == 3) continue;
+  printf("%d ", i);
+}
+A) 1 2
+B) 1 2 4 5 *
+C) 1 2 3 4 5
+D) 3 4 5
+E: When i = 3, 'continue' skips printf("%d ", i). Thus, 1, 2, 4, 5 are output.
+D: easy
+T: BCA-103N, Unit-2, Loops, Tracing-continue
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A nested loop is defined as:
+A) A loop that contains an if statement
+B) A loop placed completely inside the body of another loop *
+C) A loop that never terminates
+D) Two loops running on separate computers
+E: Nested loops occur when an outer loop contains one or more inner loops, commonly used for processing multi-dimensional arrays and grids.
+D: easy
+T: BCA-103N, Unit-2, Nested-Loops, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If an outer loop runs 4 times and an inner loop runs 5 times for each iteration of the outer loop, how many total times does the inner loop body execute?
+A) 9 times
+B) 20 times *
+C) 16 times
+D) 25 times
+E: Total inner iterations = (outer iterations) * (inner iterations) = 4 * 5 = 20 times.
+D: easy
+T: BCA-103N, Unit-2, Nested-Loops, Iteration-Count
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the time complexity of two nested loops each iterating from 0 to N?
+A) O(N)
+B) O(N log N)
+C) O(N^2) *
+D) O(2^N)
+E: Each step of N outer iterations executes N inner iterations, resulting in quadratic N * N = O(N^2) computational complexity.
+D: medium
+T: BCA-103N, Unit-2, Algorithm-Complexity, Big-O
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Consider the code:
+int count = 0;
+for (int i = 0; i < 3; i++)
+  for (int j = 0; j < i; j++)
+    count++;
+What is the final value of count?
+A) 0
+B) 3 *
+C) 6
+D) 9
+E: When i=0: j<0 is false (0 runs); when i=1: j=0 (1 run); when i=2: j=0,1 (2 runs). Total count = 0 + 1 + 2 = 3.
+D: medium
+T: BCA-103N, Unit-2, Nested-Loops, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a nested loop structure, which loop completes all its iterations first?
+A) The outer loop
+B) The innermost loop *
+C) Both finish simultaneously
+D) Neither loop terminates
+E: The inner loop runs through its entire cycle from start to finish for every single incremental step of the outer loop.
+D: easy
+T: BCA-103N, Unit-2, Nested-Loops, Execution-Flow
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the following statement do?
+while (1) { /* code */ }
+A) Runs exactly 1 time
+B) Never executes because 1 is not a boolean
+C) Executes as an intentional infinite loop until interrupted by break or return *
+D) Causes a syntax error
+E: In C, 1 represents non-zero (always TRUE), forming a standard idiom for infinite processing loops.
+D: easy
+T: BCA-103N, Unit-2, Loops, Infinite-while
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of the following code?
+int a = 0;
+while (a < 3)
+  printf("%d ", ++a);
+A) 0 1 2
+B) 1 2 3 *
+C) 1 2
+D) 0 1 2 3
+E: Iteration 1: a becomes 1, prints 1; Iteration 2: a becomes 2, prints 2; Iteration 3: a becomes 3, prints 3. Then 3 < 3 is false.
+D: medium
+T: BCA-103N, Unit-2, Loops, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens if a semicolon is placed immediately after a while condition:
+int x = 0;
+while (x < 5); {
+  x++;
+}
+A) The code throws a syntax error
+B) It creates an infinite loop because the while statement has an empty null body and x is never incremented *
+C) It runs normally and increments x to 5
+D) It skips the block
+E: The semicolon creates an empty statement body: while (x < 5); continually tests x < 5 (0 < 5 is true) endlessly without ever executing x++.
+D: medium
+T: BCA-103N, Unit-2, Syntax-Pitfalls, Semicolon-Loop
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which control construct is most natural for iterating through an array of known length N?
+A) goto
+B) for loop *
+C) do-while loop
+D) switch statement
+E: A 'for' loop cleanly integrates counter initialization (i=0), boundary check (i<N), and step increment (i++) in a single line.
+D: easy
+T: BCA-103N, Unit-2, Programming-Patterns, for-vs-while
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of:
+int x = 5;
+if (x > 3)
+  if (x > 10)
+    printf("A");
+  else
+    printf("B");
+A) A
+B) B *
+C) Nothing
+D) AB
+E: x = 5 is > 3, entering the outer if. In the inner if, 5 > 10 is false, executing its else branch to output 'B'.
+D: easy
+T: BCA-103N, Unit-2, Nested-if, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a floating-point number be used as a case label in a switch statement (e.g. case 3.14:)?
+A) Yes, any float literal is valid
+B) No, case labels must be integral compile-time constant expressions *
+C) Yes, in modern C standards
+D) Only if cast to double
+E: Floating-point literals are strictly forbidden in case labels due to binary representation inexactness.
+D: medium
+T: BCA-103N, Unit-2, switch, Float-Labels
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the result of evaluating: int res = (5 > 2) ? 100 : 200;
+A) 200
+B) 100 *
+C) 0
+D) 1
+E: Because (5 > 2) evaluates to TRUE, the ternary operator selects and returns the first expression, 100.
+D: easy
+T: BCA-103N, Unit-2, Ternary-Operator, Evaluation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In an else-if ladder, when one condition evaluates to TRUE, what happens to subsequent else-if conditions?
+A) They are all evaluated sequentially
+B) All subsequent else-if and else branches are completely bypassed and skipped *
+C) The program crashes
+D) The compiler executes them in parallel
+E: An else-if chain is mutually exclusive; the first branch whose condition evaluates to TRUE executes, and control jumps to the end of the ladder.
+D: easy
+T: BCA-103N, Unit-2, Control-Statements, else-if-ladder
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a break statement be used to exit from an 'if' statement that is NOT inside a loop or switch?
+A) Yes, anytime
+B) No, break is syntactically legal only within loop bodies (for, while, do) or switch blocks *
+C) Yes, if followed by a semicolon
+D) Only inside main()
+E: Using 'break' outside of a loop or switch structure triggers a compile error ('break statement not within loop or switch').
+D: medium
+T: BCA-103N, Unit-2, Syntax-Rules, break-Scope
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What will the following code print?
+int k = 1;
+switch (k) {
+  case 1: printf("One ");
+  case 2: printf("Two ");
+  default: printf("Default");
+}
+A) One 
+B) One Two 
+C) One Two Default *
+D) Default
+E: Because case 1 matches but contains no 'break' statements, execution falls through case 2 and default, printing 'One Two Default'.
+D: medium
+T: BCA-103N, Unit-2, switch, Fall-Through-Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the value of x after:
+int x = 10, y = 20;
+x = (x > y) ? x : y;
+A) 10
+B) 20 *
+C) 30
+D) 0
+E: 10 > 20 is false, so y (20) is selected and assigned to x.
+D: easy
+T: BCA-103N, Unit-2, Ternary-Operator, Max-Function
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following creates a clean menu-driven console program loop?
+A) A simple if statement
+B) A do-while loop containing a switch statement *
+C) An assembly jump
+D) A single printf call
+E: A do-while loop displays menu options, receives user input, and routes choices via a switch statement until an exit sentinel is selected.
+D: easy
+T: BCA-103N, Unit-2, Design-Patterns, Menu-Driven
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can variables be declared inside the initialization clause of a for loop (e.g., for (int i = 0; ...)) in standard ANSI C89?
+A) Yes, always
+B) No, C89 requires all variable declarations to appear at the beginning of a block; declaring inside for() was introduced in C99 *
+C) Yes, but only for char
+D) It depends on RAM
+E: In ANSI C89, loop variables had to be declared at block entry; inline loop declarations like `for (int i=0; ...)` were standardized in C99.
+D: medium
+T: BCA-103N, Unit-2, C-Standards, C89-vs-C99
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of:
+int i = 0;
+for (i = 0; i < 5; i++);
+printf("%d", i);
+A) 0
+B) 4
+C) 5 *
+D) 0 1 2 3 4
+E: The trailing semicolon after the for loop header turns the loop body into a null statement. The loop increments i up to 5, then terminates and prints 5.
+D: medium
+T: BCA-103N, Unit-2, Syntax-Pitfalls, Trailing-Semicolon
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which looping construct is most appropriate when the termination condition depends on real-time user interaction rather than a fixed count?
+A) for loop
+B) while (or do-while) loop *
+C) goto loop
+D) switch block
+E: While/do-while loops are ideal for event-driven or sentinel-controlled conditions where the number of iterations is unknown in advance.
+D: easy
+T: BCA-103N, Unit-2, Programming-Patterns, Loop-Selection
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: An array in C is formally defined as a:
+A) Collection of different data types stored randomly
+B) Collection of homogeneous elements of identical data type stored in contiguous memory locations *
+C) Dynamic list of pointers
+D) Database table
+E: An array stores a fixed number of elements of the same type sequentially in adjacent, contiguous memory bytes.
+D: easy
+T: BCA-103N, Unit-3, Arrays, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, what is the index of the very first element of any array?
+A) 1
+B) 0 *
+C) -1
+D) Depends on declaration
+E: C enforces zero-based array indexing: for an array of size N, valid indices range from 0 to N-1.
+D: easy
+T: BCA-103N, Unit-3, Arrays, Zero-Indexing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If an array is declared as 'int marks[5];', what is the index of the last valid element?
+A) 5
+B) 4 *
+C) 6
+D) 0
+E: For size 5, valid indices are marks[0], marks[1], marks[2], marks[3], and marks[4].
+D: easy
+T: BCA-103N, Unit-3, Arrays, Bounds
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens if a program attempts to read or write to 'arr[10]' on an array declared as 'int arr[5]' in C?
+A) The compiler automatically resizes the array to 10
+B) C does not perform runtime array bound checking; this accesses out-of-bounds memory causing undefined behavior or segmentation fault *
+C) The program displays a warning and pauses
+D) The index wraps around to 0
+E: C sacrifices runtime boundary checks for execution speed; out-of-bounds access corrupts adjacent memory or triggers OS segmentation faults.
+D: medium
+T: BCA-103N, Unit-3, Arrays, Bound-Checking
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, what does the bare array name without subscripts (e.g. 'arr') evaluate to in most expressions?
+A) The total sum of elements in the array
+B) A constant pointer to the base address of the first element (&arr[0]) *
+C) The number of elements in the array
+D) NULL
+E: An array name 'decays' into a pointer to its first element (&arr[0]) in expressions.
+D: easy
+T: BCA-103N, Unit-3, Arrays, Base-Address
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Given an array 'int a[5] = {1, 2, 3};', what value is stored in 'a[3]'?
+A) Garbage value
+B) 0 *
+C) 3
+D) Compilation Error
+E: When an array initializer list provides fewer elements than declared capacity, C automatically initializes all remaining elements to zero (0).
+D: medium
+T: BCA-103N, Unit-3, Arrays, Partial-Initialization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is stored in elements of a local (automatic) array if NO initialization list is provided?
+A) All zeros
+B) Indeterminate garbage values *
+C) NULL
+D) Compilation error
+E: Local automatic variables and arrays allocated on the stack are not automatically cleared; their contents remain random garbage bytes.
+D: easy
+T: BCA-103N, Unit-3, Arrays, Garbage-Values
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How do you calculate the number of elements in an array 'int arr[] = {10, 20, 30, 40, 50};' using sizeof?
+A) sizeof(arr)
+B) sizeof(arr) / sizeof(arr[0]) *
+C) sizeof(arr) * sizeof(int)
+D) length(arr)
+E: Total array size in bytes divided by the size of one element yields the exact element count (e.g. 20 bytes / 4 bytes = 5 elements).
+D: medium
+T: BCA-103N, Unit-3, Arrays, Size-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Given base address 1000 and 4-byte integers, what is the memory address of element arr[3]?
+A) 1003
+B) 1006
+C) 1012 *
+D) 1016
+E: Address formula: Base + (index * sizeof(type)) = 1000 + (3 * 4) = 1000 + 12 = 1012.
+D: medium
+T: BCA-103N, Unit-3, Arrays, Address-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can an array in standard C be resized dynamically after its fixed declaration without using DMA?
+A) Yes, using the resize() keyword
+B) No, standard C arrays have fixed, immutable memory bounds allocated at declaration *
+C) Yes, by assigning a new size to the array name
+D) Only on 64-bit systems
+E: Fixed array sizes are determined at compile/allocation time; resizing requires dynamic memory functions like realloc().
+D: easy
+T: BCA-103N, Unit-3, Arrays, Fixed-Size
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A two-dimensional array 'int matrix[3][4];' contains how many total integer elements?
+A) 7
+B) 12 *
+C) 14
+D) 34
+E: Total elements = rows * columns = 3 * 4 = 12 elements.
+D: easy
+T: BCA-103N, Unit-3, 2D-Arrays, Dimensions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C memory architecture, multi-dimensional arrays are stored in which order?
+A) Column-Major Order
+B) Row-Major Order *
+C) Diagonal Order
+D) Random Order
+E: C stores 2D arrays in Row-Major order: all elements of row 0 are placed sequentially, followed immediately by row 1, row 2, etc.
+D: medium
+T: BCA-103N, Unit-3, 2D-Arrays, Row-Major
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: For an array 'int A[R][C]' with base address B and element size S, the address of element A[i][j] in Row-Major order is:
+A) B + (j * R + i) * S
+B) B + (i * C + j) * S *
+C) B + (i + j) * S
+D) B + (i * j) * S
+E: Row-major address formula: Base + ((row_index * TOTAL_COLUMNS) + col_index) * element_size.
+D: medium
+T: BCA-103N, Unit-3, 2D-Arrays, Address-Formula
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How do you declare and initialize a 2x2 identity matrix in C?
+A) int I[2][2] = {1, 0, 0, 1};
+B) int I[2][2] = {{1, 0}, {0, 1}};
+C) Both A and B are valid initializations *
+D) int I = [1, 0; 0, 1];
+E: Both flat initialization {1, 0, 0, 1} and nested row initialization {{1, 0}, {0, 1}} are valid C syntax.
+D: easy
+T: BCA-103N, Unit-3, 2D-Arrays, Initialization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What condition must be satisfied to perform Matrix Multiplication between matrix A of size (M x N) and matrix B of size (P x Q)?
+A) M must equal P
+B) N must equal P (columns of A must equal rows of B) *
+C) M must equal Q
+D) N must equal Q
+E: Matrix multiplication A x B is valid only when the number of columns in matrix A matches the number of rows in matrix B.
+D: medium
+T: BCA-103N, Unit-3, Matrix-Operations, Multiplication-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The transpose of a matrix is obtained by:
+A) Inverting every sign of the numbers
+B) Interchanging rows into columns and columns into rows *
+C) Multiplying the matrix by itself
+D) Squaring all diagonal elements
+E: Transpose swaps indices: element A[i][j] moves to position A_transposed[j][i].
+D: easy
+T: BCA-103N, Unit-3, Matrix-Operations, Transpose
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In a square matrix of size N x N, an element A[i][j] lies on the Main Diagonal when:
+A) i > j
+B) i == j *
+C) i < j
+D) i + j == N
+E: The main diagonal contains elements where row index equals column index (A[0][0], A[1][1], ..., A[N-1][N-1]).
+D: easy
+T: BCA-103N, Unit-3, Matrix-Operations, Main-Diagonal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A matrix that has non-zero elements only on its main diagonal, with all other elements equal to zero, is a:
+A) Scalar Matrix
+B) Diagonal Matrix *
+C) Sparse Matrix
+D) Symmetric Matrix
+E: A diagonal matrix has non-zero values strictly where i == j, and zero everywhere else.
+D: easy
+T: BCA-103N, Unit-3, Matrix-Types, Diagonal-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A matrix where the vast majority of its elements are zero is termed a:
+A) Dense Matrix
+B) Sparse Matrix *
+C) Null Matrix
+D) Triangular Matrix
+E: A sparse matrix contains relatively few non-zero entries, often represented efficiently using coordinate triples to save RAM.
+D: easy
+T: BCA-103N, Unit-3, Matrix-Types, Sparse-Matrix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When passing a 2D array to a C function, which dimension is MANDATORY in the function parameter declaration?
+A) The first dimension (row count) must be specified
+B) The second dimension (column count) must be specified (e.g. void f(int arr[][4])) *
+C) Both dimensions can be omitted
+D) Neither dimension is allowed
+E: The C compiler needs the column width to calculate row address offsets (i * COLS); hence the column size cannot be omitted.
+D: medium
+T: BCA-103N, Unit-3, 2D-Arrays, Function-Parameter
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, a string is conventionally represented as a:
+A) Special primitive data type called 'string'
+B) One-dimensional array of characters terminated by a null character ('\0') *
+C) Linked list of characters
+D) Class object with length variable
+E: C has no native 'string' primitive type; strings are arrays of char ending with the sentinel null byte '\0'.
+D: easy
+T: BCA-103N, Unit-3, Strings, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many bytes of memory are allocated for the string literal "Rohilkhand"?
+A) 10 bytes
+B) 11 bytes *
+C) 9 bytes
+D) 12 bytes
+E: "Rohilkhand" contains 10 alphabetical characters plus 1 mandatory terminating '\0' byte = 11 bytes total.
+D: easy
+T: BCA-103N, Unit-3, Strings, Memory-Size
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the difference between single quotes 'A' and double quotes "A" in C?
+A) They are identical
+B) 'A' is a single character constant (ASCII 65); "A" is a string literal array containing 'A' and '\0' *
+C) 'A' is a string; "A" is a char
+D) 'A' causes a syntax error
+E: 'A' evaluates to an integer ASCII value (65); "A" represents a 2-byte null-terminated string array in memory.
+D: easy
+T: BCA-103N, Unit-3, Strings, Character-vs-String
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens when reading a string using 'scanf("%s", str);' if the user enters 'MJP Rohilkhand'?
+A) It reads the entire line 'MJP Rohilkhand'
+B) It reads only 'MJP' because %s stops reading at the first whitespace character *
+C) It throws an input error
+D) It crashes the program
+E: %s in scanf() treats space, tab, and newline as delimiters, halting input capture at the first whitespace.
+D: medium
+T: BCA-103N, Unit-3, Strings, scanf-Whitespace
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which standard input function correctly reads an entire line of text including spaces until a newline is pressed?
+A) scanf("%s")
+B) fgets(str, sizeof(str), stdin) *
+C) getchar()
+D) strcat()
+E: fgets() reads characters including spaces until a newline is encountered or the specified buffer limit is reached.
+D: easy
+T: BCA-103N, Unit-3, Strings, Line-Input
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'strlen()' function in <string.h> return?
+A) The total memory allocated for the character array
+B) The number of characters in the string, excluding the terminating null character ('\0') *
+C) The number of characters including '\0'
+D) The string's hash code
+E: strlen() counts characters sequentially starting from the base address until it encounters '\0', excluding '\0' from the tally.
+D: easy
+T: BCA-103N, Unit-3, string.h, strlen
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function from <string.h> is used to copy the contents of source string 'src' into destination buffer 'dest'?
+A) strcmp(dest, src)
+B) strcpy(dest, src) *
+C) strcat(dest, src)
+D) strrev(dest, src)
+E: strcpy(dest, src) copies characters from src into dest including the terminating '\0'.
+D: easy
+T: BCA-103N, Unit-3, string.h, strcpy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'strcat(str1, str2)' function performs:
+A) String comparison
+B) String concatenation (appends a copy of str2 to the end of str1) *
+C) String reverse
+D) String lowercase
+E: strcat() appends the second string to the first string, overwriting the original '\0' of str1 and appending a new '\0' at the end.
+D: easy
+T: BCA-103N, Unit-3, string.h, strcat
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'strcmp(str1, str2)' return when both strings are identical?
+A) 1
+B) -1
+C) 0 *
+D) NULL
+E: strcmp() performs lexicographical comparison: it returns 0 if strings match identically, negative if str1 < str2, positive if str1 > str2.
+D: easy
+T: BCA-103N, Unit-3, string.h, strcmp
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the result of 'strcmp("apple", "banana")'?
+A) 0
+B) A negative integer because 'a' < 'b' *
+C) A positive integer
+D) Syntax error
+E: At the first character, 'a' (ASCII 97) minus 'b' (ASCII 98) = -1 (negative), indicating 'apple' precedes 'banana'.
+D: medium
+T: BCA-103N, Unit-3, string.h, strcmp-Evaluation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function searches for the first occurrence of a specific character in a string?
+A) strstr()
+B) strchr() *
+C) strrchr()
+D) strcmp()
+E: strchr(str, ch) locates the first instance of character ch in str and returns a pointer to it (or NULL if not found).
+D: medium
+T: BCA-103N, Unit-3, string.h, strchr
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function searches for the first occurrence of a substring within another string?
+A) strchr()
+B) strstr() *
+C) strtok()
+D) strspn()
+E: strstr(haystack, needle) searches for the first occurrence of substring 'needle' within 'haystack'.
+D: medium
+T: BCA-103N, Unit-3, string.h, strstr
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the safe alternative to strcpy() that limits the number of copied characters to prevent buffer overflow?
+A) strcat()
+B) strncpy(dest, src, n) *
+C) strcpysafe()
+D) memcpy()
+E: strncpy() copies at most n characters, shielding the destination array from unbounded overflow.
+D: easy
+T: BCA-103N, Unit-3, string.h, strncpy
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How would you write a custom function to calculate string length without using strlen()?
+A) Count elements until reaching -1
+B) Iterate a pointer or index while (str[i] != '\0') incrementing a counter *
+C) Use sizeof(str)
+D) Divide array by 2
+E: A simple while (str[len] != '\0') len++; loop counts characters up to the null byte.
+D: easy
+T: BCA-103N, Unit-3, Custom-String-Logic, Length-Algorithm
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When comparing two strings for case-insensitive equality in POSIX / non-standard C libraries, which function is used?
+A) strcmp()
+B) strcasecmp() (or stricmp()) *
+C) strncmp()
+D) strrev()
+E: strcasecmp() (or strcmpi/stricmp) compares strings ignoring uppercase/lowercase distinctions.
+D: medium
+T: BCA-103N, Unit-3, string.h, Case-Insensitive
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the non-standard function 'strrev(str)' do?
+A) Reverses the order of characters in the string in-place *
+B) Returns the length of the string
+C) Converts string to uppercase
+D) Deletes the string
+E: strrev() reverses characters within the string buffer (e.g. "cat" becomes "tac").
+D: easy
+T: BCA-103N, Unit-3, string.h, strrev
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function converts all uppercase letters in a string to lowercase?
+A) strupr()
+B) strlwr() *
+C) tolower()
+D) casefold()
+E: strlwr() converts ASCII uppercase letters in a string to lowercase.
+D: easy
+T: BCA-103N, Unit-3, string.h, strlwr
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If char s[] = "Hello"; what is sizeof(s) and strlen(s)?
+A) sizeof(s) = 5, strlen(s) = 5
+B) sizeof(s) = 6, strlen(s) = 5 *
+C) sizeof(s) = 5, strlen(s) = 6
+D) sizeof(s) = 6, strlen(s) = 6
+E: sizeof(s) includes the trailing '\0' byte (6 bytes total); strlen(s) counts only the 5 visible letters.
+D: medium
+T: BCA-103N, Unit-3, Strings, sizeof-vs-strlen
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by:
+char s[] = "BCA\0Rohilkhand";
+printf("%s", s);
+A) BCA\0Rohilkhand
+B) BCA *
+C) Rohilkhand
+D) BCARohilkhand
+E: printf with %s stops output immediately upon reading the first null character '\0', displaying only 'BCA'.
+D: medium
+T: BCA-103N, Unit-3, Strings, Null-Termination
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can you assign a new string to an already declared array using the assignment operator (e.g., char s[20]; s = "Hello";)?
+A) Yes, that is standard C syntax
+B) No, array names are constant pointers and cannot be l-values on the left of assignment; use strcpy() instead *
+C) Yes, if the string is under 20 chars
+D) Only inside a loop
+E: Arrays cannot be assigned to directly after definition because array identifiers are non-modifiable lvalues; strcpy() must be used.
+D: medium
+T: BCA-103N, Unit-3, Strings, Assignment-Restriction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, an array declared as 'static int numbers[5];' initializes its elements to:
+A) Garbage values
+B) 0 *
+C) -1
+D) NULL
+E: Static and global storage class variables and arrays are automatically zero-initialized by the compiler/runtime.
+D: easy
+T: BCA-103N, Unit-3, Arrays, Static-Initialization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the expression '*(arr + i)' represent?
+A) The memory address of element i
+B) The value of array element arr[i] *
+C) The multiplication of arr and i
+D) The size of array
+E: In C, array subscript notation arr[i] is defined as syntactical sugar for pointer dereference *(arr + i).
+D: easy
+T: BCA-103N, Unit-3, Pointers-Arrays, Equivalence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Is the expression 'i[arr]' valid syntax in C programming?
+A) No, it causes a severe syntax error
+B) Yes, because *(arr + i) and *(i + arr) are mathematically identical in pointer addition *
+C) Only for 2D arrays
+D) Only in C++
+E: Because addition is commutative, *(arr + i) == *(i + arr), which allows the unconventional but valid syntax i[arr].
+D: hard
+T: BCA-103N, Unit-3, C-Quirks, Commutative-Subscript
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To store a list of 10 student names where each name can be up to 50 characters long, you declare a:
+A) char names[10];
+B) char names[10][50]; *
+C) int names[10][50];
+D) char names[50];
+E: A 2D character array char names[10][50] provides 10 rows (strings), each holding up to 50 characters (including '\0').
+D: easy
+T: BCA-103N, Unit-3, Strings, Array-of-Strings
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is an array of pointers in C?
+A) A pointer pointing to an array
+B) An array whose elements are memory address pointers pointing to other data items *
+C) A multidimensional array
+D) A DMA heap structure
+E: An array of pointers (e.g. int *ptrs[5]) contains multiple pointer variables as its elements.
+D: medium
+T: BCA-103N, Unit-3, Pointers, Array-of-Pointers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, what is the effect of passing an array to a function?
+void modify(int a[]) { a[0] = 99; }
+A) The function receives a copy; the caller's array remains unchanged
+B) The array decays into a pointer; changes made to elements inside the function directly modify the caller's original array *
+C) The program crashes
+D) The compiler throws a type error
+E: Arrays are passed by reference (as pointers to their base address); modifications within the function alter the original caller elements.
+D: medium
+T: BCA-103N, Unit-3, Arrays, Pass-by-Reference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which searching algorithm checks each array element sequentially from the first to the last until the target key is found?
+A) Binary Search
+B) Linear Search *
+C) Hashing
+D) Interpolation Search
+E: Linear Search scans elements sequentially one by one in O(N) time without requiring sorted data.
+D: easy
+T: BCA-103N, Unit-3, Algorithms, Linear-Search
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Binary Search requires that the input array must strictly be:
+A) Unsorted
+B) Sorted in ascending or descending order *
+C) Composed of unique prime numbers
+D) A 2D matrix
+E: Binary Search requires a sorted array to divide the search space in half each step in O(log N) time.
+D: easy
+T: BCA-103N, Unit-3, Algorithms, Binary-Search
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the worst-case time complexity of Bubble Sort on an array of size N?
+A) O(N)
+B) O(N log N)
+C) O(N^2) *
+D) O(1)
+E: Bubble Sort compares adjacent pairs in nested passes, requiring approximately N*(N-1)/2 comparisons = O(N^2) worst-case time.
+D: easy
+T: BCA-103N, Unit-3, Algorithms, Bubble-Sort
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The process of combining two previously sorted arrays into a single sorted array is called:
+A) Partitioning
+B) Merging *
+C) Insertion
+D) Selection
+E: Merging takes two sorted lists and combines them in linear O(N + M) time into a unified sorted sequence (foundation of Merge Sort).
+D: easy
+T: BCA-103N, Unit-3, Algorithms, Merging
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the primary motivation for using functions in C programming?
+A) To make the program file larger
+B) Modular programming, code reusability, easier debugging, and reduction of redundant code *
+C) To slow down execution
+D) To bypass compiler optimization
+E: Functions decompose complex software into self-contained logical modules, promoting clean architecture and reusable subroutines.
+D: easy
+T: BCA-103N, Unit-4, Functions, Modularity
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Function Declaration (Function Prototype) tells the C compiler:
+A) The exact assembly instructions of the function
+B) The function name, return type, and the number and types of its parameters before its definition *
+C) The variable values inside the function
+D) The hard disk sector where code lives
+E: Prototypes inform the compiler of a function's signature so calls can be type-checked before the full definition is parsed.
+D: easy
+T: BCA-103N, Unit-4, Functions, Prototype
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which of the following represents a valid function prototype in C?
+A) int sum(int a, int b)
+B) int sum(int, int); *
+C) function sum(a, b);
+D) sum(int a, int b) -> int;
+E: A function prototype specifies the return type, identifier, parameter types in parentheses, and ends with a semicolon: int sum(int, int);
+D: easy
+T: BCA-103N, Unit-4, Functions, Prototype-Syntax
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If a function does NOT return any value to the caller, its return type must be declared as:
+A) null
+B) empty
+C) void *
+D) int
+E: The 'void' keyword indicates the absence of a return value.
+D: easy
+T: BCA-103N, Unit-4, Functions, void-Return
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, arguments passed into a function call are called:
+A) Formal parameters
+B) Actual arguments (or actual parameters) *
+C) Dummy variables
+D) Global variables
+E: Actual arguments are the real values or variables supplied during a function call: e.g. in add(x, y), x and y are actual arguments.
+D: easy
+T: BCA-103N, Unit-4, Functions, Actual-vs-Formal
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The parameter variables declared in the function header definition that receive incoming values are called:
+A) Actual parameters
+B) Formal parameters *
+C) External constants
+D) Reference holders
+E: Formal parameters are placeholders defined in the function signature that receive copied values when called.
+D: easy
+T: BCA-103N, Unit-4, Functions, Formal-Parameters
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the default return type of a C function if no return type is explicitly specified (in traditional C89)?
+A) void
+B) float
+C) int *
+D) char
+E: Classic C assumed 'implicit int' return type if omitted, though modern C99/C11 standards deprecate this practice.
+D: medium
+T: BCA-103N, Unit-4, Functions, Default-Return
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a C function return multiple values directly through a standard return statement?
+A) Yes, using return (a, b, c);
+B) No, a C function can return at most one single value via return; returning multiple values requires pointers or structures *
+C) Yes, using arrays directly
+D) Yes, by calling return twice
+E: The return statement transfers exactly one value; returning multiple results requires passing pointers (simulating reference) or returning a struct.
+D: easy
+T: BCA-103N, Unit-4, Functions, Return-Constraint
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens when execution encounters a 'return;' statement inside a void function?
+A) A compiler error occurs
+B) Execution terminates immediately and control returns to the caller *
+C) The computer restarts
+D) The return statement is ignored
+E: In void functions, a bare 'return;' immediately exits the function frame and returns control to the caller.
+D: easy
+T: BCA-103N, Unit-4, Functions, void-return
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can one function definition be nested directly inside the body of another function definition in standard ANSI C?
+A) Yes, nested functions are standard in C
+B) No, standard C does not support nested function definitions; all functions must be defined at file scope *
+C) Only if the inner function is void
+D) Only inside main()
+E: ANSI C requires all function definitions to reside at the global/file scope level; nesting function bodies inside other functions is illegal in standard C.
+D: medium
+T: BCA-103N, Unit-4, Functions, Nested-Definitions
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: By default, all primitive scalar arguments in C are passed to functions by:
+A) Call by Reference
+B) Call by Value *
+C) Call by Name
+D) Call by Result
+E: C evaluates all scalar parameters using Call by Value: the function receives independent copies of the caller's values.
+D: easy
+T: BCA-103N, Unit-4, Parameter-Passing, Call-by-Value
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In Call by Value, modifications made to formal parameters inside the called function:
+A) Permanently alter the caller's original actual variables
+B) Have absolutely no effect on the caller's original actual variables *
+C) Crash the call stack
+D) Cause a compiler warning
+E: Because formal parameters are distinct local copies stored in a separate stack frame, modifying them does not alter the caller's data.
+D: easy
+T: BCA-103N, Unit-4, Call-by-Value, Isolation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does a C programmer achieve 'Call by Reference' behavior to allow a function to modify caller variables?
+A) By using the reference keyword
+B) By passing the memory addresses of variables (&var) and receiving them as pointers (*ptr) *
+C) By declaring all variables global
+D) By using recursive calls
+E: C simulates pass-by-reference by passing pointers (addresses) to variables, allowing the function to dereference and modify caller memory directly.
+D: medium
+T: BCA-103N, Unit-4, Call-by-Reference, Pointers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which function signature correctly swaps two integer variables using simulated call by reference in C?
+A) void swap(int a, int b);
+B) void swap(int *a, int *b); *
+C) int swap(int &a, int &b);
+D) void swap(int a[], int b[]);
+E: void swap(int *a, int *b) receives pointers to the caller's variables and swaps their contents via dereferencing (*a and *b).
+D: easy
+T: BCA-103N, Unit-4, Pointers, Swap-Function
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Inside the function 'void swap(int *a, int *b)', the swapping logic is written as:
+A) temp = a; a = b; b = temp;
+B) temp = *a; *a = *b; *b = temp; *
+C) *temp = a; a = b; b = *temp;
+D) &temp = *a; *a = *b; *b = &temp;
+E: Dereferencing (*a, *b) accesses and updates the actual integer values stored at the caller's memory locations.
+D: easy
+T: BCA-103N, Unit-4, Pointers, Swap-Implementation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When an array is passed to a function (e.g. printArray(arr, 5);), how is it passed?
+A) A complete deep copy of all array elements is pushed to stack
+B) The array decays into a pointer to its first element (simulated call by reference) *
+C) Only the first element is passed by value
+D) Arrays cannot be passed to functions
+E: Passing an array passes its base memory address; changes to array elements within the function directly alter the original array.
+D: easy
+T: BCA-103N, Unit-4, Arrays, Passing-Arrays
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Why is passing large data structures via pointers more efficient than passing them by value?
+A) Pointers make calculations faster
+B) Passing a pointer copies only a tiny address (4 or 8 bytes) rather than copying the entire large memory block onto the call stack *
+C) Pointers use cache memory exclusively
+D) Pointers prevent compiler warnings
+E: Passing by address avoids high stack overhead and CPU copy cycles associated with duplicating large structures in memory.
+D: medium
+T: BCA-103N, Unit-4, Performance, Pointers-Efficiency
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'const' qualifier indicate when applied to a pointer parameter: 'void print(const int *p)'?
+A) The pointer itself cannot point anywhere else
+B) The function promises NOT to modify the integer value pointed to by p *
+C) The parameter must be zero
+D) The function executes faster
+E: const int *p enforces read-only access to the caller's data, triggering a compiler error if the function attempts to modify *p.
+D: medium
+T: BCA-103N, Unit-4, const, Pointer-Safety
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by:
+void test(int x) { x = x + 10; }
+int main() { int a = 5; test(a); printf("%d", a); return 0; }
+A) 15
+B) 5 *
+C) 10
+D) Garbage value
+E: Because C uses Call by Value, test() modifies its local copy x; the caller's variable 'a' remains 5.
+D: easy
+T: BCA-103N, Unit-4, Call-by-Value, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by:
+void test(int *x) { *x = *x + 10; }
+int main() { int a = 5; test(&a); printf("%d", a); return 0; }
+A) 5
+B) 15 *
+C) 10
+D) 0
+E: Passing &a allows test() to dereference the pointer and modify 'a' directly in memory from 5 to 15.
+D: easy
+T: BCA-103N, Unit-4, Call-by-Reference, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Recursion in computer science is defined as a programming technique where:
+A) A loop runs forever
+B) A function calls itself directly or indirectly to solve smaller instances of the same problem *
+C) Two different programs share memory
+D) A function is written in assembly
+E: Recursion solves problems by decomposing them into smaller subproblems through self-referential function calls.
+D: easy
+T: BCA-103N, Unit-4, Recursion, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The essential condition in any recursive function that halts further recursive calls is called the:
+A) Recursive Step
+B) Base Condition (or Base Case / Anchor) *
+C) Pivot Step
+D) Return Frame
+E: The base case handles the simplest trivial input directly without making further recursive calls, terminating recursion.
+D: easy
+T: BCA-103N, Unit-4, Recursion, Base-Case
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens if a recursive function lacks a valid base case or never reaches it?
+A) The program runs instantly
+B) Infinite recursion occurs, leading to Call Stack Overflow and program crash *
+C) The compiler converts it to a while loop
+D) It returns zero
+E: Every recursive invocation pushes an activation record onto the stack; without a terminating base case, stack memory exhausts, crashing the program.
+D: easy
+T: BCA-103N, Unit-4, Recursion, Stack-Overflow
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, each recursive function call creates a new:
+A) File on hard disk
+B) Activation Record (Stack Frame) on the call stack containing local variables and return address *
+C) Global variable
+D) Thread of execution
+E: The runtime stack allocates a dedicated stack frame for each call, storing parameters, local variables, and the return instruction address.
+D: medium
+T: BCA-103N, Unit-4, Recursion, Stack-Frames
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the mathematical base case for computing Factorial recursively (fact(n))?
+A) fact(n) = n * fact(n-1)
+B) fact(0) = 1 (or fact(1) = 1) *
+C) fact(n) = 0
+D) fact(n) = fact(n+1)
+E: The base case is fact(0) = 1; the recursive step is fact(n) = n * fact(n-1).
+D: easy
+T: BCA-103N, Unit-4, Recursion, Factorial
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many moves are required to solve the classic Tower of Hanoi problem for N disks?
+A) 2*N
+B) N^2
+C) 2^N - 1 *
+D) N!
+E: Tower of Hanoi recurrence relation T(N) = 2*T(N-1) + 1 resolves to exactly 2^N - 1 moves.
+D: medium
+T: BCA-103N, Unit-4, Recursion, Tower-of-Hanoi
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'Tail Recursion'?
+A) Recursion where the recursive call is the very last operation executed before the function returns *
+B) Recursion that has no base case
+C) Recursion that uses an array
+D) Recursion with two return statements
+E: In tail recursion, the function performs no work after the recursive call returns, allowing compilers to optimize it into an iterative loop.
+D: medium
+T: BCA-103N, Unit-4, Recursion, Tail-Recursion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Direct recursion differs from Indirect recursion because in Indirect recursion:
+A) Function A calls Function B, which in turn calls Function A *
+B) A function calls itself directly
+C) No return value is provided
+D) Loops are used instead
+E: Indirect recursion involves a cyclical chain of calls between two or more functions (A -> B -> A).
+D: easy
+T: BCA-103N, Unit-4, Recursion, Indirect-Recursion
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of the recursive function:
+int f(int n) { if (n <= 1) return 1; return n + f(n - 1); }
+called with f(4)?
+A) 4
+B) 10 *
+C) 24
+D) 15
+E: f(4) = 4 + f(3) = 4 + 3 + f(2) = 4 + 3 + 2 + f(1) = 4 + 3 + 2 + 1 = 10.
+D: medium
+T: BCA-103N, Unit-4, Recursion, Tracing-Sum
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Compared to iterative loops, recursive functions generally have:
+A) Lower memory usage
+B) Higher memory and call-overhead cost due to repeated stack frame allocations *
+C) Zero risk of infinite execution
+D) Fewer instructions
+E: Recursive calls push activation frames to the stack, consuming memory and execution time for context switching compared to simple iterative registers.
+D: medium
+T: BCA-103N, Unit-4, Recursion, Trade-offs
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many standard storage classes exist in the C programming language?
+A) 2
+B) 3
+C) 4 (auto, register, static, extern) *
+D) 5
+E: C defines four fundamental storage classes that govern variable scope, lifetime, storage location, and initial default value.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, Overview
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the default storage class for local variables declared inside a C function or block?
+A) static
+B) extern
+C) auto (automatic) *
+D) register
+E: Variables declared inside a function default to 'auto': allocated on the stack at block entry and deallocated at block exit.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, auto
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Where are 'auto' storage class variables stored, and what is their default initial value?
+A) Heap, zero
+B) Stack, unpredictable garbage value *
+C) CPU registers, zero
+D) Data segment, NULL
+E: Automatic variables reside in the runtime stack frame and contain indeterminate garbage values until explicitly initialized.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, auto-Properties
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'register' storage class suggests to the C compiler that:
+A) The variable should be stored in a high-speed CPU register instead of RAM to optimize access speed *
+B) The variable should be written to hard disk
+C) The variable cannot be changed
+D) The variable is shared across files
+E: register hints to the compiler to keep frequently used variables in CPU registers for rapid access.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, register
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which operation is strictly FORBIDDEN on a variable declared with the 'register' storage class in C?
+A) Adding numbers to it
+B) Using the address-of operator '&' to obtain its memory address (e.g. &reg_var) *
+C) Multiplying it by 2
+D) Printing its value
+E: CPU registers do not have memory addresses in RAM; taking the address (&reg) of a register variable triggers a compilation error.
+D: medium
+T: BCA-103N, Unit-4, Storage-Classes, register-Restriction
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A local variable declared as 'static' inside a function differs from an 'auto' variable because:
+A) It is stored on the stack and deleted upon return
+B) It retains its value between successive function calls and persists for the entire lifetime of the program *
+C) It can only be used once
+D) It cannot be an integer
+E: A local static variable is allocated in the data segment once and preserves its state across repeated function invocations.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, static-Local
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the default initial value of a static variable in C if not explicitly initialized by the programmer?
+A) Garbage value
+B) Zero (0) *
+C) -1
+D) NULL
+E: Static and global variables are automatically initialized to zero (or NULL for pointers) by the runtime environment.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, static-Initialization
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How many times is the initialization statement of a local static variable executed during repeated function calls?
+A) Every time the function is called
+B) Exactly once, when the program initializes *
+C) Twice
+D) Never
+E: Initialization of a static variable occurs only once during program startup; subsequent calls bypass the initialization.
+D: medium
+T: BCA-103N, Unit-4, Storage-Classes, static-Lifetime
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'extern' storage class is used to:
+A) Delete a global variable
+B) Declare a global variable or function that is defined in another source file or external scope *
+C) Allocate dynamic heap memory
+D) Hide variables from other functions
+E: extern informs the compiler that the storage for a variable or function is defined in another compilation unit or elsewhere in the file.
+D: medium
+T: BCA-103N, Unit-4, Storage-Classes, extern
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by calling counter() three times?
+void counter() { static int c = 0; c++; printf("%d ", c); }
+A) 1 1 1
+B) 1 2 3 *
+C) 0 1 2
+D) 0 0 0
+E: Because c is static, it retains its incremented value across calls: Call 1 prints 1; Call 2 prints 2; Call 3 prints 3.
+D: easy
+T: BCA-103N, Unit-4, Storage-Classes, static-Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Scope' of a variable in C refers to:
+A) The number of bytes it occupies in memory
+B) The region of program source code over which the variable is accessible and can be referenced by name *
+C) The duration of time it remains in RAM
+D) Its data type
+E: Scope defines the lexical region of code where an identifier is visible and binding.
+D: easy
+T: BCA-103N, Unit-4, Scope, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'Lifetime' (duration) of a variable refers to:
+A) Its line count in the file
+B) The period of time during program execution that the variable exists and retains allocated memory *
+C) The number of times it is read
+D) Its scope boundary
+E: Lifetime represents the execution span between variable memory allocation and deallocation.
+D: easy
+T: BCA-103N, Unit-4, Lifetime, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A variable declared inside a block enclosed by curly braces '{ ... }' has:
+A) File Scope (Global)
+B) Block Scope (Local to that enclosing block) *
+C) Function Scope everywhere
+D) Universal Scope
+E: Block scope restricts variable visibility strictly within the enclosing pair of braces {}.
+D: easy
+T: BCA-103N, Unit-4, Scope, Block-Scope
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens when a local variable in an inner block has the same name as a global variable?
+A) The compiler generates a duplicate identifier error
+B) The local variable shadows (hides) the global variable within that inner block *
+C) The global variable is permanently overwritten
+D) The program crashes
+E: Inner local variables take precedence within their scope, temporarily shadowing outer/global variables of the same identifier.
+D: medium
+T: BCA-103N, Unit-4, Scope, Variable-Shadowing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Global variables in C have:
+A) Block scope and temporary lifetime
+B) File scope (accessible by all functions defined below their declaration) and program-wide lifetime *
+C) No memory allocated
+D) Stack lifetime only
+E: Global variables declared outside all functions persist in the data segment for the entire program execution and can be referenced across functions.
+D: easy
+T: BCA-103N, Unit-4, Scope, Global-Variables
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: To limit the visibility of a global variable or function strictly to the single source file in which it is declared, prefix it with:
+A) extern
+B) static *
+C) auto
+D) private
+E: A global variable or function declared with 'static' has internal linkage, hiding it from other translation units during linking.
+D: medium
+T: BCA-103N, Unit-4, Linkage, static-Internal-Linkage
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is printed by:
+int x = 10;
+int main() {
+  int x = 20;
+  printf("%d", x);
+  return 0;
+}
+A) 10
+B) 20 *
+C) Compilation Error
+D) 0
+E: The local variable x (20) shadows the global variable x (10), printing 20.
+D: easy
+T: BCA-103N, Unit-4, Scope, Shadowing-Example
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Labels used as targets for 'goto' statements possess which type of scope?
+A) Block Scope
+B) Function Scope (visible anywhere within the same function) *
+C) File Scope
+D) Global Scope
+E: Labels are the only identifiers in C possessing function scope; they can be jumped to from anywhere within the same enclosing function.
+D: medium
+T: BCA-103N, Unit-4, Scope, Function-Scope-Labels
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a C function return a pointer to its own local automatic variable (e.g. return &local_var;)?
+A) Yes, that is standard practice
+B) No, local automatic variables are destroyed when the function exits; returning their address results in a dangerous dangling pointer *
+C) Yes, if cast to void*
+D) Only in debug mode
+E: When a function returns, its stack frame is reclaimed; pointing to reclaimed stack memory is an undefined-behavior bug (dangling pointer).
+D: medium
+T: BCA-103N, Unit-4, Pointers, Dangling-Stack-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The C standard library function 'exit(0)' terminates:
+A) Only the current loop
+B) Only the current function
+C) The entire program execution immediately, flushing I/O buffers and returning control to the OS *
+D) The compiler
+E: exit() immediately terminates the entire process, calling registered atexit handlers and closing file streams.
+D: easy
+T: BCA-103N, Unit-4, Library-Functions, exit
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A pointer in C is defined as:
+A) A variable that stores numerical decimal values only
+B) A variable that holds the memory address of another variable *
+C) A keyword used to exit loops
+D) A type of floating-point number
+E: A pointer is a dedicated variable whose value is the physical or virtual memory address of another object in RAM.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which operator is used to obtain the memory address of a variable in C?
+A) Indirection operator (*)
+B) Address-of operator (&) *
+C) Arrow operator (->)
+D) Dot operator (.)
+E: The unary ampersand (&) operator yields the memory address of its operand (e.g. &x).
+D: easy
+T: BCA-103N, Unit-5, Pointers, Address-Of
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The asterisk (*) operator when used with a pointer variable in an expression (e.g. *ptr) is called the:
+A) Multiplication operator only
+B) Dereference (or Indirection) operator *
+C) Address operator
+D) Typecast operator
+E: When applied to a pointer, unary * dereferences the pointer, accessing the value stored at the target memory address.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Dereferencing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How do you declare a pointer variable 'p' capable of pointing to an integer in C?
+A) int p*;
+B) int *p; *
+C) pointer int p;
+D) int &p;
+E: The syntax 'int *p;' declares p as a pointer to an integer data type.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Declaration
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a NULL pointer in C?
+A) A pointer that points to the beginning of the program code
+B) A pointer that is explicitly assigned a constant zero address ((void*)0) to indicate it points to no valid memory *
+C) A pointer containing garbage values
+D) A pointer pointing to the keyboard
+E: A NULL pointer points to memory address 0, universally recognized in C as an invalid address indicating unassigned status.
+D: easy
+T: BCA-103N, Unit-5, Pointers, NULL-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A 'void*' pointer in C is known as a:
+A) Dead pointer
+B) Generic (typeless) pointer that can hold the address of any data type *
+C) Pointer that returns void
+D) Pointer that cannot be compiled
+E: void* is a generic pointer that can store addresses of any object type without explicit casting; it must be cast before dereferencing.
+D: medium
+T: BCA-103N, Unit-5, Pointers, Void-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a 'void*' generic pointer be directly dereferenced using '*ptr' without typecasting?
+A) Yes, C automatically figures out the type
+B) No, because the compiler does not know the data type or byte size of the target memory *
+C) Yes, it defaults to int
+D) Only if it points to float
+E: Because void has no size, the compiler cannot know how many bytes to read or how to interpret bits without an explicit cast (e.g. *(int*)ptr).
+D: medium
+T: BCA-103N, Unit-5, Pointers, Void-Dereference-Rule
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens when you increment a pointer 'int *p' by 1 (p++) assuming 4-byte integers?
+A) The memory address in p increases by 1 byte
+B) The memory address in p increases by 4 bytes (1 * sizeof(int)) *
+C) The integer value pointed to is incremented by 1
+D) The pointer becomes NULL
+E: Pointer arithmetic is automatically scaled by the size of the underlying data type: p + 1 advances by sizeof(*p) bytes.
+D: easy
+T: BCA-103N, Unit-5, Pointer-Arithmetic, Scaling
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which pointer arithmetic operation is STRICTLY ILLEGAL in C?
+A) Adding an integer to a pointer (ptr + 2)
+B) Subtracting an integer from a pointer (ptr - 1)
+C) Subtracting two pointers of the same type (ptr1 - ptr2)
+D) Adding two pointers together (ptr1 + ptr2) *
+E: Adding two memory addresses yields a meaningless physical location and is forbidden by C syntax; subtracting pointers is legal and yields element distance.
+D: medium
+T: BCA-103N, Unit-5, Pointer-Arithmetic, Illegal-Operations
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When two pointers pointing to elements of the same array are subtracted (ptr2 - ptr1), the result represents:
+A) The sum of their byte addresses
+B) The number of array elements between the two pointers *
+C) The multiplication of addresses
+D) A void pointer
+E: Pointer subtraction yields the signed distance in number of elements (ptrdiff_t) between the two array memory locations.
+D: medium
+T: BCA-103N, Unit-5, Pointer-Arithmetic, Pointer-Difference
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the declaration 'int *arr[5];' represent?
+A) A pointer to an array of 5 integers
+B) An array of 5 pointers to integers *
+C) A 2D array of size 5x5
+D) A function returning an array
+E: Square brackets [] have higher precedence than *; hence arr is an array of 5 elements, each being an int*.
+D: medium
+T: BCA-103N, Unit-5, Pointers, Array-of-Pointers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the declaration 'int (*ptr)[5];' represent?
+A) An array of 5 pointers
+B) A single pointer pointing to an array of 5 integers *
+C) A function taking 5 pointers
+D) A 5-byte integer
+E: Parentheses (*ptr) bind first, declaring ptr as a single pointer variable that points to an entire 5-element integer array.
+D: medium
+T: BCA-103N, Unit-5, Pointers, Pointer-to-Array
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a 'Pointer to Pointer' (Double Pointer) in C?
+A) A pointer with two arrows
+B) A pointer variable that stores the memory address of another pointer variable (declared as int **pptr;) *
+C) Two pointers pointing to the same variable
+D) A circular pointer
+E: A double pointer stores the address of a primary pointer; dereferencing **pptr twice retrieves the base data value.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Double-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does a function pointer 'int (*operation)(int, int);' store?
+A) The result of an integer addition
+B) The memory address of the entry point of a function that accepts two ints and returns an int *
+C) A pointer to an array of functions
+D) The execution time of a function
+E: Function pointers store the starting memory address of executable machine instructions for a function, enabling callback architectures.
+D: medium
+T: BCA-103N, Unit-5, Pointers, Function-Pointers
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Consider: int x = 10; int *p = &x; *p = 25; What is the value of x?
+A) 10
+B) 25 *
+C) Address of x
+D) Garbage
+E: Dereferencing *p accesses x's memory cell directly, updating x's value to 25.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a 'Wild Pointer' in C?
+A) A pointer declared in an operating system kernel
+B) An uninitialized pointer that contains an arbitrary random memory address *
+C) A pointer pointing to NULL
+D) A pointer that changes types
+E: A wild pointer is declared without initialization (e.g. int *p;); writing to *p corrupts random memory locations.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Wild-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a 'Dangling Pointer' in C?
+A) A pointer pointing to NULL
+B) A pointer pointing to a memory location that has already been deallocated or freed *
+C) A pointer stored inside an array
+D) A pointer pointing to a hardware register
+E: A dangling pointer continues referencing memory after that memory has been deallocated via free() or stack frame pop.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Dangling-Pointer
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How do you safeguard against dangling pointer errors after calling free(ptr)?
+A) Call free(ptr) a second time
+B) Immediately assign ptr = NULL; after freeing *
+C) Restart the computer
+D) Declare ptr as static
+E: Setting ptr = NULL immediately after free(ptr) ensures any accidental subsequent dereference fails predictably rather than silently corrupting memory.
+D: medium
+T: BCA-103N, Unit-5, Best-Practices, Dangling-Pointer-Fix
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the output of:
+int a = 5;
+int *p = &a;
+printf("%d", *p + 2);
+A) 7 *
+B) Address + 2
+C) 5
+D) Compilation Error
+E: *p evaluates to 5; then 5 + 2 = 7.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Tracing-Arithmetic
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: In C, can a pointer point to another pointer of a completely different data type without casting?
+A) Yes, any pointer can point to any type freely
+B) No, pointer assignments between different types without explicit casts generate compiler warnings/errors *
+C) Only on 32-bit systems
+D) Only for char pointers
+E: C enforces type safety on pointers; assigning a float* to an int* without explicit casting triggers a type mismatch diagnostic.
+D: easy
+T: BCA-103N, Unit-5, Pointers, Type-Safety
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Structure in C (defined with the 'struct' keyword) is a user-defined data type that allows:
+A) Storing only identical data types like an array
+B) Grouping variables of DIFFERENT data types together under a single meaningful name *
+C) Executing assembly routines
+D) Creating graphics windows
+E: Unlike arrays (homogeneous), structures are heterogeneous composite types grouping varied attributes (int, float, char[]) into a single entity.
+D: easy
+T: BCA-103N, Unit-5, Structures, Definition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which keyword is used in C to define a structure?
+A) record
+B) struct *
+C) class
+D) type
+E: The 'struct' keyword declares structure templates and variables in C.
+D: easy
+T: BCA-103N, Unit-5, Structures, struct-Keyword
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which operator is used to access members of a structure variable directly?
+A) Arrow operator (->)
+B) Dot operator (Period .) *
+C) Colon (:)
+D) Ampersand (&)
+E: The dot member access operator (.) accesses fields on a direct structure instance (e.g. s1.marks).
+D: easy
+T: BCA-103N, Unit-5, Structures, Dot-Operator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: When accessing structure members through a POINTER to a structure, which operator is used?
+A) Dot operator (.)
+B) Arrow operator (->) *
+C) Asterisk (*)
+D) Tilde (~)
+E: The arrow operator (->) dereferences the structure pointer and accesses the member field (ptr->marks is equivalent to (*ptr).marks).
+D: easy
+T: BCA-103N, Unit-5, Structures, Arrow-Operator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: If 'struct Student *ptr;' points to a structure variable, 'ptr->name' is syntactically equivalent to:
+A) *ptr.name
+B) (*ptr).name *
+C) &ptr.name
+D) ptr.(name)
+E: Because dot (.) has higher precedence than dereference (*), parentheses are required: (*ptr).name is equivalent to ptr->name.
+D: medium
+T: BCA-103N, Unit-5, Structures, Arrow-Equivalence
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is 'Structure Padding' (Data Alignment) performed by C compilers?
+A) Adding comments to structure definitions
+B) Inserting unused filler bytes between structure members to align data types to native CPU word boundaries for faster access *
+C) Compressing structures to 0 bytes
+D) Encrypting structure data
+E: CPUs access memory faster when 4-byte ints or 8-byte doubles reside on 4- or 8-byte aligned addresses; compilers insert alignment padding bytes.
+D: medium
+T: BCA-103N, Unit-5, Structures, Padding
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Given:
+struct Demo {
+  char c;
+  int i;
+};
+On a 32-bit architecture with 4-byte integer alignment, what is sizeof(struct Demo)?
+A) 5 bytes
+B) 8 bytes (1 byte char + 3 padding bytes + 4 bytes int) *
+C) 4 bytes
+D) 6 bytes
+E: The 1-byte char is followed by 3 bytes of compiler padding so that the 4-byte int aligns on a 4-byte memory boundary (total = 8 bytes).
+D: medium
+T: BCA-103N, Unit-5, Structures, Size-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a structure contain another structure as one of its members (Nested Structure)?
+A) No, structures cannot be nested in C
+B) Yes, C fully supports nested structures (e.g. Date struct inside a Student struct) *
+C) Only if the inner structure is empty
+D) Only with unions
+E: Nested structures allow hierarchical modeling, such as embedding a 'struct Date dob;' inside a 'struct Student'.
+D: easy
+T: BCA-103N, Unit-5, Structures, Nested-Structures
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a structure in C contain an instance of ITSELF as a direct member (e.g. struct Node { struct Node next; };)?
+A) Yes, infinitely
+B) No, because its size would be infinite; but it CAN contain a POINTER to itself (Self-Referential Structure) *
+C) Yes, if it has no ints
+D) Only in main()
+E: A structure cannot contain an instance of itself because its memory size would be undefined; self-referential structures store pointers (*next) of fixed address size.
+D: medium
+T: BCA-103N, Unit-5, Structures, Self-Referential
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'typedef' keyword in C is used to:
+A) Create a brand new primitive hardware type
+B) Define an alias or alternative user-friendly synonym for an existing data type *
+C) Allocate heap RAM
+D) Declare a constant variable
+E: typedef creates shorthand synonyms (e.g. typedef struct Student Student;), eliminating the need to repeatedly type 'struct Student'.
+D: easy
+T: BCA-103N, Unit-5, typedef, Usage
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: A Union in C is declared using which keyword?
+A) struct
+B) union *
+C) join
+D) combine
+E: The 'union' keyword declares a union type in C.
+D: easy
+T: BCA-103N, Unit-5, Unions, union-Keyword
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is the fundamental architectural difference between a 'struct' and a 'union' in C?
+A) A struct holds numbers; a union holds text
+B) In a struct, each member has its own separate memory; in a union, all members SHARE the exact same memory location *
+C) Unions are larger than structs
+D) Structs cannot use pointers
+E: A struct allocates separate memory for all members; a union overlays all members on the same base address, storing one member at a time.
+D: easy
+T: BCA-103N, Unit-5, Unions-vs-Structs, Memory-Sharing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The total memory size allocated for a 'union' is determined by:
+A) The sum of sizes of all its members
+B) The size of its single LARGEST member (plus any necessary alignment padding) *
+C) Always 4 bytes
+D) The size of its first member only
+E: A union allocates memory sufficient to accommodate its largest field, since all members share the same space.
+D: medium
+T: BCA-103N, Unit-5, Unions, Size-Calculation
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Given:
+union Data {
+  int i;     // 4 bytes
+  float f;   // 4 bytes
+  char str[20]; // 20 bytes
+};
+What is sizeof(union Data)?
+A) 28 bytes
+B) 20 bytes (size of largest member str[20]) *
+C) 4 bytes
+D) 8 bytes
+E: The largest member is the 20-byte char array; hence the union occupies 20 bytes (compared to 28 bytes for an equivalent struct).
+D: medium
+T: BCA-103N, Unit-5, Unions, Size-Tracing
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens in a union when you assign a value to member 'f' after previously storing a value in member 'i'?
+A) Both values are stored side by side
+B) The new assignment overwrites the shared memory, corrupting or replacing the previous value of 'i' *
+C) The compiler throws an error
+D) A new union is created
+E: Because all union members share the identical memory bytes, writing to one field overwrites existing bits.
+D: easy
+T: BCA-103N, Unit-5, Unions, Overwriting
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Unions are most effectively utilized in systems programming for:
+A) Storing student databases with 100 attributes
+B) Variant record types, hardware register bit-packing, and mutually exclusive data states to conserve memory *
+C) Sorting algorithms
+D) Writing HTML pages
+E: Unions conserve memory in embedded devices and packet protocols where an entity can represent one of several alternative formats at any instant.
+D: medium
+T: BCA-103N, Unit-5, Unions, Use-Cases
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can a union contain a structure as a member, or a structure contain a union?
+A) No, mixing structs and unions is forbidden
+B) Yes, nested combinations of structs and unions are fully supported in C *
+C) Only in C99
+D) Only if sizes match
+E: Tagged unions (a struct containing an enum tag and a union payload) are standard C design patterns.
+D: easy
+T: BCA-103N, Unit-5, Unions, Composition
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Can you initialize more than the first member of a union in standard C89?
+A) Yes, you can initialize all members with commas
+B) No, in C89 a union initializer can only initialize its very first declared member *
+C) You cannot initialize unions
+D) Only with floats
+E: ANSI C89 permits initializing only the first member; C99 introduced designated initializers (e.g. union Data d = {.f = 3.14};).
+D: medium
+T: BCA-103N, Unit-5, Unions, Initialization-Rules
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which operator is used to access union members via a union pointer?
+A) Dot (.)
+B) Arrow (->) *
+C) Colon (:)
+D) Hash (#)
+E: Just like structures, accessing members through a pointer to a union utilizes the arrow operator (->).
+D: easy
+T: BCA-103N, Unit-5, Unions, Arrow-Operator
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Between a struct and a union with identical member declarations, which always occupies LESS or EQUAL memory?
+A) The struct
+B) The union *
+C) Both always occupy equal memory
+D) Neither occupies memory
+E: A union never exceeds the sum of member sizes; its size is determined solely by the largest member.
+D: easy
+T: BCA-103N, Unit-5, Unions-vs-Structs, Memory-Footprint
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Dynamic Memory Allocation (DMA) allocates memory from which memory segment during program execution?
+A) Code Segment (Text)
+B) Stack Segment
+C) Heap Segment *
+D) CPU Registers
+E: DMA allocates variable-sized memory blocks at runtime from the system Heap, managed explicitly by the programmer.
+D: easy
+T: BCA-103N, Unit-5, DMA, Heap
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: Which standard C library header file must be included to use malloc(), calloc(), realloc(), and free()?
+A) <stdio.h>
+B) <stdlib.h> *
+C) <string.h>
+D) <memory.h>
+E: <stdlib.h> (Standard Library) provides prototypes and memory management primitives for dynamic heap allocation.
+D: easy
+T: BCA-103N, Unit-5, DMA, stdlib.h
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does the 'malloc(size_t size)' function return upon successful allocation?
+A) An integer 1
+B) A void pointer (void*) pointing to the base address of the allocated heap memory *
+C) A NULL pointer
+D) The size of RAM
+E: malloc() returns a generic void* pointer pointing to the first byte of allocated heap memory.
+D: easy
+T: BCA-103N, Unit-5, DMA, malloc
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'malloc()' return if system memory is exhausted and the allocation request fails?
+A) 0xFFFFFFFF
+B) NULL *
+C) Throws an exception
+D) Exits the program automatically
+E: When heap memory is exhausted, malloc/calloc return NULL; robust code must always verify if (ptr == NULL).
+D: easy
+T: BCA-103N, Unit-5, DMA, malloc-Failure
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What initial value is stored in heap memory blocks allocated by 'malloc()'?
+A) All bytes are set to zero (0)
+B) Uninitialized garbage values *
+C) NULL bytes
+D) Ascii spaces
+E: malloc() does not clear memory; it leaves existing garbage values in the allocated block.
+D: easy
+T: BCA-103N, Unit-5, DMA, malloc-Garbage
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: How does 'calloc(size_t num, size_t size)' differ from 'malloc()'?
+A) calloc takes one argument; malloc takes two
+B) calloc allocates memory for an array of elements AND initializes all allocated bytes to zero (0) *
+C) calloc allocates memory from the stack
+D) calloc cannot be freed
+E: calloc(n, size) clears allocated bytes to 0 and takes two parameters: element count and element size.
+D: easy
+T: BCA-103N, Unit-5, DMA, calloc-vs-malloc
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: The 'free(void *ptr)' function is used to:
+A) Erase the code from disk
+B) Deallocate previously allocated heap memory and return it to the system memory pool *
+C) Reset pointer to NULL automatically
+D) Close open files
+E: free() releases heap blocks allocated by malloc/calloc/realloc back to the OS memory manager.
+D: easy
+T: BCA-103N, Unit-5, DMA, free
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What is a 'Memory Leak' in C?
+A) Physical water leaking onto RAM chips
+B) Failure to deallocate dynamically allocated heap memory using free(), causing program memory consumption to grow uncontrollably *
+C) An error when reading CD-ROMs
+D) A missing semicolon
+E: A memory leak occurs when dynamically allocated heap pointers are lost without being freed, wasting memory until process termination.
+D: easy
+T: BCA-103N, Unit-5, DMA, Memory-Leak
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What does 'realloc(void *ptr, size_t new_size)' do?
+A) Deletes the pointer completely
+B) Resizes an existing dynamically allocated heap memory block, preserving existing data contents up to the minimum of old and new sizes *
+C) Allocates stack memory
+D) Restarts the function
+E: realloc() expands or contracts existing heap allocations, relocating data to a larger continuous block if necessary.
+D: medium
+T: BCA-103N, Unit-5, DMA, realloc
+Y: 2024
+X: MJPRU BCA Sem 1
+
+Q: What happens if you attempt to call 'free(ptr)' on a pointer that has ALREADY been freed (Double Free)?
+A) C ignores it safely
+B) It causes heap metadata corruption and undefined behavior, often crashing the program with a memory management fault *
+C) It allocates double the memory
+D) It creates a new pointer
+E: Double freeing a pointer corrupts the internal heap free-list data structures, causing crashes and severe security vulnerabilities.
+D: medium
+T: BCA-103N, Unit-5, DMA, Double-Free
+Y: 2024
+X: MJPRU BCA Sem 1
+

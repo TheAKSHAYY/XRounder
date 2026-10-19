@@ -48,8 +48,8 @@ export function BrandLockup({
     tone === "light"
       ? "text-white dark:text-white"
       : tone === "dark"
-        ? "text-slate-950 dark:text-slate-900"
-        : "text-slate-900 dark:text-slate-50";
+        ? "text-[#201F1B]"
+        : "text-[#201F1B] dark:text-foreground";
 
   return (
     <span

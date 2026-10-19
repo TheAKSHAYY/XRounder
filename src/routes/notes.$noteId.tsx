@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Download,
   FileText,
   FlaskConical,
   Lock,
+  RefreshCw,
   Sparkles,
 } from "lucide-react";
 
@@ -277,65 +279,107 @@ function NoteViewer() {
   });
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [pdfLoading, setPdfLoading] = useState<boolean>(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState<number>(0);
+
+  const loadedNoteId = noteQuery.data?.id;
+  const noteTitle = noteQuery.data?.title;
+  const noteFilePath = noteQuery.data?.file_path;
+  const noteFileBucket = noteQuery.data?.file_bucket;
+  const noteFileUrl = noteQuery.data?.file_url;
+  const noteSubjectTitle = noteQuery.data?.hierarchy?.subjectTitle ?? null;
+  const noteUnitTitle = noteQuery.data?.hierarchy?.unitTitle ?? null;
 
   useEffect(() => {
-    if (noteQuery.data?.file_url) {
-      setPdfUrl(noteQuery.data.file_url);
+    if (noteFileUrl) {
+      setPdfUrl(noteFileUrl);
+      setPdfError(null);
+      setPdfLoading(false);
       return;
     }
-    if (!noteQuery.data?.file_path) {
+    if (!noteFilePath) {
       setPdfUrl(null);
+      setPdfError(null);
+      setPdfLoading(false);
       return;
     }
     let active = true;
+    setPdfLoading(true);
+    setPdfError(null);
+
     (async () => {
       try {
+        const bucket = noteFileBucket ?? "notes";
+        const filePath = noteFilePath;
         const { data, error } = await supabase.storage
-          .from(noteQuery.data!.file_bucket ?? "notes")
-          .createSignedUrl(noteQuery.data!.file_path!, 60 * 60);
-        if (!error && active && data?.signedUrl) {
+          .from(bucket)
+          .createSignedUrl(filePath, 60 * 60);
+
+        if (!active) return;
+
+        if (error) {
+          // If signed URL failed, check if bucket is explicitly public (e.g. avatars)
+          if (bucket === "avatars") {
+            const { data: pubData } = supabase.storage.from(bucket).getPublicUrl(filePath);
+            if (pubData?.publicUrl) {
+              setPdfUrl(pubData.publicUrl);
+              setPdfError(null);
+              setPdfLoading(false);
+              return;
+            }
+          }
+          setPdfError(error.message || "Failed to generate document access link.");
+          setPdfUrl(null);
+        } else if (data?.signedUrl) {
           setPdfUrl(data.signedUrl);
+          setPdfError(null);
+        } else {
+          setPdfError("Document link was not returned by storage service.");
+          setPdfUrl(null);
         }
-      } catch {
+      } catch (err: unknown) {
         if (active) {
-          const { data: pubData } = supabase.storage
-            .from(noteQuery.data!.file_bucket ?? "notes")
-            .getPublicUrl(noteQuery.data!.file_path!);
-          if (pubData?.publicUrl) setPdfUrl(pubData.publicUrl);
+          const message =
+            err instanceof Error ? err.message : "Unexpected network error loading document.";
+          setPdfError(message);
+          setPdfUrl(null);
         }
+      } finally {
+        if (active) setPdfLoading(false);
       }
     })();
+
     return () => {
       active = false;
     };
-  }, [noteQuery.data?.file_path, noteQuery.data?.file_bucket, noteQuery.data?.file_url]);
+  }, [noteFilePath, noteFileBucket, noteFileUrl, retryCount]);
 
   // record view (best-effort, signed-in users only)
   useEffect(() => {
-    if (!noteQuery.data?.id) return;
+    if (!loadedNoteId) return;
     (async () => {
       const { data: u } = await supabase.auth.getUser();
       if (!u.user) return;
       await supabase.from("note_views").insert({
-        note_id: noteQuery.data!.id,
+        note_id: loadedNoteId,
         user_id: u.user.id,
         kind: "view",
       });
     })();
-  }, [noteQuery.data?.id]);
+  }, [loadedNoteId]);
 
   // Count one *opening* of this note — a second visit is an honest "revising" signal.
   useEffect(() => {
-    const note = noteQuery.data;
-    if (!note?.id) return;
+    if (!loadedNoteId || !noteTitle) return;
     recordGuestNoteVisit({
-      noteId: note.id,
-      title: note.title,
-      href: `/notes/${note.id}`,
-      subjectTitle: note.hierarchy?.subjectTitle ?? null,
-      unitTitle: note.hierarchy?.unitTitle ?? null,
+      noteId: loadedNoteId,
+      title: noteTitle,
+      href: `/notes/${loadedNoteId}`,
+      subjectTitle: noteSubjectTitle,
+      unitTitle: noteUnitTitle,
     });
-  }, [noteQuery.data?.id]);
+  }, [loadedNoteId, noteTitle, noteSubjectTitle, noteUnitTitle]);
 
   const recordDownload = async () => {
     if (!noteQuery.data?.id) return;
@@ -473,21 +517,36 @@ function NoteViewer() {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
-                {noteQuery.data.title}
-              </h1>
-              {noteQuery.data.summary && (
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-2xl">
-                  {noteQuery.data.summary}
-                </p>
-              )}
+              {(() => {
+                const cleanTitle = (noteQuery.data.title || "")
+                  .replace(/^[A-Z0-9-]{3,10}:\s*/i, "")
+                  .replace(/^Unit \d+ Master Exam Revision Notes:\s*/i, "")
+                  .replace(/^#+\s*/, "")
+                  .trim() || noteQuery.data.title;
+                return (
+                  <>
+                    <h1 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+                      {cleanTitle}
+                    </h1>
+                    {noteQuery.data.summary && (
+                      <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-2xl">
+                        {noteQuery.data.summary}
+                      </p>
+                    )}
+                  </>
+                );
+              })()}
             </div>
 
             {/* Educational content renderer */}
             {noteQuery.data.body && (
               <div className="mt-8">
                 <EducationalContentRenderer
-                  title={noteQuery.data.title}
+                  title={(noteQuery.data.title || "")
+                    .replace(/^[A-Z0-9-]{3,10}:\s*/i, "")
+                    .replace(/^Unit \d+ Master Exam Revision Notes:\s*/i, "")
+                    .replace(/^#+\s*/, "")
+                    .trim() || noteQuery.data.title}
                   content={noteQuery.data.body}
                 />
               </div>
@@ -502,8 +561,8 @@ function NoteViewer() {
               quizId={hierarchy?.quizId ?? null}
             />
 
-            {/* Embedded PDF Viewer */}
-            {pdfUrl && (
+            {/* Embedded PDF Viewer / Loading / Error State */}
+            {noteQuery.data.file_path || noteQuery.data.file_url ? (
               <section className="mt-10 pt-8 border-t border-border/70">
                 <div className="mb-4 flex items-center justify-between">
                   <div>
@@ -512,17 +571,58 @@ function NoteViewer() {
                     </h2>
                     <p className="text-xs text-muted-foreground">Original PDF document</p>
                   </div>
-                  <a href={pdfUrl} target="_blank" rel="noreferrer" onClick={recordDownload}>
-                    <Button variant="outline" size="sm" className="rounded-lg">
-                      <Download className="mr-2 h-4 w-4" /> Download PDF
-                    </Button>
-                  </a>
+                  {pdfUrl && (
+                    <a href={pdfUrl} target="_blank" rel="noreferrer" onClick={recordDownload}>
+                      <Button variant="outline" size="sm" className="rounded-lg">
+                        <Download className="mr-2 h-4 w-4" /> Download PDF
+                      </Button>
+                    </a>
+                  )}
                 </div>
-                <PdfViewer url={pdfUrl} title={noteQuery.data.title} />
-              </section>
-            )}
 
-            {!noteQuery.data.body && !pdfUrl && (
+                {pdfLoading && (
+                  <div className="rounded-2xl border border-border/70 bg-surface/50 p-8 text-center">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary animate-pulse mb-3">
+                      <FileText className="h-6 w-6" />
+                    </div>
+                    <p className="text-sm font-semibold text-foreground">
+                      Loading document preview…
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Generating secure document link
+                    </p>
+                  </div>
+                )}
+
+                {pdfError && (
+                  <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-6 text-center">
+                    <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-destructive/10 text-destructive mb-3">
+                      <AlertTriangle className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm font-semibold text-foreground">
+                      Unable to load document preview
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1 max-w-md mx-auto">
+                      {pdfError}
+                    </p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setRetryCount((c) => c + 1)}
+                      className="mt-4 rounded-xl gap-1.5 text-xs font-semibold"
+                    >
+                      <RefreshCw className="h-3.5 w-3.5" /> Retry
+                    </Button>
+                  </div>
+                )}
+
+                {pdfUrl && !pdfLoading && !pdfError && (
+                  <PdfViewer url={pdfUrl} title={noteQuery.data.title} />
+                )}
+              </section>
+            ) : null}
+
+            {!noteQuery.data.body && !noteQuery.data.file_path && !noteQuery.data.file_url && (
               <p className="mt-8 rounded-xl border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
                 This note has no written text or PDF attachments yet.
               </p>

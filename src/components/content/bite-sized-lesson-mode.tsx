@@ -213,16 +213,16 @@ export function BiteSizedLessonMode({
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Use curated articles if available; otherwise use default snappy syllabus cards
+  // Use curated articles if available; otherwise dynamically generate from syllabus topics
   const cards = useMemo(() => {
     if (articles.length > 0) {
       return articles.map((a, i) => ({
         id: a.id,
         title: a.title,
-        emoji: ["💡", "⚡", "⏳", "🖥️", "🌐", "🎯"][i % 6],
-        tagline: "Core Curriculum Topic",
+        emoji: ["💡", "⚡", "⏳", "🖥️", "🌐", "🎯", "🔧", "📊"][i % 8],
+        tagline: `${subject.code} · Unit ${unit.number} Topic ${i + 1}`,
         concept:
-          a.description || "Master the key definitions, diagrams, and principles for this topic.",
+          a.description || `Master the key definitions, diagrams, and principles for ${a.title}.`,
         analogy: null,
         keyPoints: [
           "Understand the core definition and university marking criteria.",
@@ -240,9 +240,54 @@ export function BiteSizedLessonMode({
       }));
     }
 
-    // Default bite-sized cards matching unit topics
-    return DEFAULT_UNIT_TOPIC_CARDS;
-  }, [articles]);
+    // Dynamic bite-sized cards matching actual unit topics
+    if (topics && topics.length > 0) {
+      return topics.map((t, i) => ({
+        id: `topic-${t.id || i}`,
+        title: t.title,
+        emoji: ["💡", "⚡", "⏳", "🖥️", "🌐", "🎯", "🔧", "📊"][i % 8],
+        tagline: `${subject.code} · Unit ${unit.number} Topic ${t.sort_order || i + 1}`,
+        concept: `Official syllabus topic for ${subject.title}: ${t.title}.`,
+        analogy: null,
+        keyPoints: [
+          `Covers official MJPRU BCA syllabus objectives for ${t.title}.`,
+          "Review the core theoretical definitions and university exam patterns.",
+          "Prepare for Section A (2-mark) and Section B (5-mark) questions.",
+        ],
+        bodyMarkdown: null,
+        check: {
+          question: `Checkpoint: Ready to master "${t.title}" for Unit ${unit.number}?`,
+          options: ["Ready to study! (+20 XP)", "Reviewing syllabus scope"],
+          correctIndex: 0,
+          explanation: `Excellent! Consistent topic-by-topic study of ${t.title} builds your mastery for the semester examination.`,
+        },
+      }));
+    }
+
+    // Safe fallback if neither articles nor topics are loaded
+    return [
+      {
+        id: `unit-${unit.number}-overview`,
+        title: `Unit ${unit.number}: ${unit.title}`,
+        emoji: "📖",
+        tagline: `${subject.code} · Learning Hub`,
+        concept: unit.summary || `Study material and practice questions for Unit ${unit.number}.`,
+        analogy: null,
+        keyPoints: [
+          `Target Subject: ${subject.title} (${subject.code})`,
+          `Unit ${unit.number}: ${unit.title}`,
+          "Includes Master Revision Notes, Question Bank, and Exam Strategy.",
+        ],
+        bodyMarkdown: null,
+        check: {
+          question: `Ready to explore Unit ${unit.number}?`,
+          options: ["Start Learning (+20 XP)", "Browse Units"],
+          correctIndex: 0,
+          explanation: "Let's dive into the curriculum!",
+        },
+      },
+    ];
+  }, [articles, topics, subject, unit]);
 
   const total = cards.length;
   const currentCard = cards[currentIndex] || cards[0];

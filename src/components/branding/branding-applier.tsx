@@ -73,24 +73,28 @@ export function BrandingApplier() {
       root.style.setProperty("--radius", `${radius}rem`);
     }
 
-    const heading = sanitizeFont(data.font_heading as string, "Plus Jakarta Sans");
-    const body = sanitizeFont(data.font_body as string, "Plus Jakarta Sans");
+    const heading = sanitizeFont(data.font_heading as string, "DM Serif Display");
+    const body = sanitizeFont(data.font_body as string, "Inter");
     root.style.setProperty(
       "--font-sans",
-      `"${body}", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`,
+      `"${body}", "Noto Sans Devanagari", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`,
+    );
+    root.style.setProperty(
+      "--font-editorial",
+      `"Source Sans 3", "Noto Sans Devanagari", "${body}", sans-serif`,
     );
     root.style.setProperty(
       "--font-display",
-      `"${heading}", "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif`,
+      `"${heading}", "DM Serif Display", Georgia, serif`,
     );
     root.style.setProperty(
       "--font-serif",
-      `"Fraunces", ui-serif, Georgia, "Times New Roman", serif`,
+      `"DM Serif Display", Georgia, serif`,
     );
 
     // Swap the Google Fonts stylesheet when fonts diverge from defaults.
     const linkId = "bca-branded-fonts";
-    if (heading !== "Plus Jakarta Sans" || body !== "Plus Jakarta Sans") {
+    if (heading !== "DM Serif Display" || body !== "Inter") {
       const href = buildFontHref(heading, body);
       let link = document.getElementById(linkId) as HTMLLinkElement | null;
       if (!link) {

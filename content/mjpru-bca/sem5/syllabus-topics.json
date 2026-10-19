@@ -1,0 +1,538 @@
+{
+  "semester": 5,
+  "degree": "Bachelor of Computer Application (BCA)",
+  "university": "MJP Rohilkhand University (MJPRU), Bareilly",
+  "academic_year": "w.e.f. 2024-25",
+  "total_subjects": 5,
+  "subjects": [
+    {
+      "code": "BCA-301N",
+      "title": "Artificial Intelligence",
+      "slug": "bca-301n-artificial-intelligence",
+      "db_subject_id": "62e939cd-ec83-549a-a29b-59b885c538d9",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "cb6eba4f-49d5-5c37-af9c-1d1b2d2b634f",
+          "title": "Introduction & Foundations of Artificial Intelligence",
+          "topics": [
+            "Definitions and Core Philosophies of Artificial Intelligence: Thinking Humanly vs Rationally",
+            "Historical Evolution of AI: Dartmouth Workshop (1956), AI Winters, Expert Systems Boom & Modern Deep Learning",
+            "Philosophical Foundations of AI: Mind-Body Dualism, Materialism & Physical Symbol System Hypothesis (PSSH)",
+            "Alan Turing's Imitation Game: The Turing Test, Loopholes, Total Turing Test & Loebner Prize",
+            "John Searle's Chinese Room Thought Experiment: Syntax vs Semantics, Strong AI vs Weak AI Critique",
+            "Symbolic AI (GOFAI) vs Connectionist AI: Logic-Based Manipulation vs Neural Networks & Distributed Representations",
+            "Concept of Intelligent Agents: Definition, Agent Function, Agent Program, Sensors, Actuators & Environment Interaction",
+            "PEAS Framework: Performance Measure, Environment, Actuators, Sensors Characterization for Autonomous Agents",
+            "Environment Categorization: Fully vs Partially Observable, Deterministic vs Stochastic, Episodic vs Sequential",
+            "Agent Architecture Taxonomies: Simple Reflex Agents, Model-Based Reflex Agents, Goal-Based Agents & Utility-Based Agents",
+            "Learning Agents Framework: Critic, Learning Element, Learning Goals & Performance Element",
+            "Ethical Considerations and Future of AI: Algorithmic Bias, Autonomous Decision Making & Safety Alignment"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "f67a4b00-a5ff-5356-8a99-6ff53d3363a6",
+          "title": "AI Problem Solving & State Space Search Techniques",
+          "topics": [
+            "Problem Solving as State Space Search: Initial State, State Space Graph, Transition Model, Goal State & Path Cost",
+            "Production Systems Architecture: Working Memory, Production Rules (Condition-Action), Inference Engine & Conflict Resolution",
+            "Control Strategies & Problem Characteristics: Modularity, Recoverability, Predictability & Knowledge Necessity",
+            "Uninformed Search Strategies: Breadth-First Search (BFS) Algorithm, Completeness, Time & Space Complexity (O(b^d))",
+            "Depth-First Search (DFS) & Depth-Limited Search (DLS): Algorithm, Backtracking Mechanism & Memory Efficiency (O(bm))",
+            "Iterative Deepening Search (IDS) & Uniform Cost Search (Dijkstra-Variant): Optimality and Trade-offs",
+            "Informed (Heuristic) Search: Heuristic Functions h(n), Admissibility Condition (h(n) <= h*(n)) & Consistency/Monotonicity",
+            "Greedy Best-First Search: Evaluation Function f(n) = h(n), Greedy Traversal & Susceptibility to Local Extrema",
+            "A* Search Algorithm: f(n) = g(n) + h(n), Mathematical Proof of Optimality on Tree and Graph Searches",
+            "Local Search & Optimization: Pure Hill Climbing, Steepest-Ascent, Stochastic Hill Climbing, Foothills, Plateaus & Ridges",
+            "Problem Reduction & AND/OR Graphs: AO* Search Algorithm, Branching, Futility & Hyper-Arcs",
+            "Constraint Satisfaction Problems (CSP): Backtracking Search, Constraint Propagation & Forward Checking",
+            "Adversarial Search & Game Playing: Two-Player Zero-Sum Games, Minimax Decision Rule, Backup Values",
+            "Alpha-Beta Pruning: Alpha Cutoffs, Beta Cutoffs, Optimal Move Ordering & Effective Branching Factor Reduction"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "764eacbb-fee3-569f-b664-c298ddc775a9",
+          "title": "Knowledge Representation & Classical Logic",
+          "topics": [
+            "Knowledge Representation Requirements: Representational Adequacy, Inferential Adequacy, Inferential Efficiency & Acquisitional Efficiency",
+            "Propositional Logic: Syntax, Semantics, Truth Tables, Logical Connectives, Validity, Satisfiability & Tautologies",
+            "First-Order Predicate Logic (FOPL): Universal (∀) and Existential (∃) Quantifiers, Predicates, Terms, Functions & Arity",
+            "Conversion to Conjunctive Normal Form (CNF): 9-Step Standard Procedure (Eliminating Implications, De Morgan's, Skolemization)",
+            "Skolemization Paradigm: Skolem Constants vs Skolem Functions for Existential Quantifiers",
+            "Clause Form Transformation: Prenex Normal Form, Eliminating Universal Quantifiers & Dropping Conjunctions",
+            "Unification Algorithm in FOPL: Most General Unifier (MGU), Substitution Sets & Occur Check Implementation",
+            "Resolution Refutation Principle: J. Alan Robinson's Rule of Inference, Proof by Contradiction in Clause Logic",
+            "Resolution Refutation Trees: Linear Resolution, Binary Resolution & Resolvent Construction",
+            "Deduction, Induction, and Abduction: Formal Distinctions, Defeasible Reasoning & Soundness",
+            "Automated Theorem Proving: Robinson's Algorithm Application to Mathematical & Logical Proofs",
+            "Question Answering Systems: Green's Method, Answer Literals, Binding Accumulation & Extracting Variable Substitutions"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "f5531dfe-5fc0-5526-9ec5-8233b742bb68",
+          "title": "Reasoning Techniques & Structured Knowledge Representation",
+          "topics": [
+            "Forward Chaining (Data-Driven Reasoning): Modus Ponens Execution, Cycle of Matching, Activation & Firing",
+            "Backward Chaining (Goal-Driven Reasoning): Hypothesis Testing, Sub-Goal Decomposition & Stack-Based Processing",
+            "Conflict Resolution Strategies: Specificity Rule, Recency Principle, Priority Order & Refractoriness",
+            "Pattern Matching Paradigms: Rete Matching Algorithm, Alpha Networks, Beta Memory & Discrimination Trees",
+            "Indexing Schemes for Large Knowledge Bases: Content-Addressable Indexing, Hash-Indexed Rules & Discrimination Trees",
+            "Semantic Networks: Quillian's Model, Nodes, Labeled Directed Edges, ISA and AKO Hierarchies, Property Inheritance",
+            "Exception Handling in Semantic Nets: Overriding Defaults, Multiple Inheritance Conflicts & Diamond Problem",
+            "Frames Representation (Marvin Minsky): Frame Structure, Slots, Fillers, Facets, Default Values, Demonic Triggers (if-needed, if-added)",
+            "Conceptual Dependency (CD) Theory (Roger Schank): Primitive Acts (ATRANS, PTRANS, MTRANS, MBUILD, INGEST, EXPEL, MOVE, GRASP)",
+            "CD Conceptual Roles: Actor, Objective, Recipient, Directive & Conceptual Tenses",
+            "Scripts Knowledge Representation: Schank's Scripts, Causal Chains, Restaurant Script Standard Paradigm",
+            "Components of Scripts: Entry Conditions, Props, Roles, Tracks & Scenes Progression"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "ba6f1839-340f-5efc-b7cd-74cb5c9a25de",
+          "title": "AI Applications, Expert Systems & Natural Language Processing",
+          "topics": [
+            "Introduction to Expert Systems: Definition, Domain Specificity, Human Expert vs AI Expert Comparison",
+            "Architecture of Expert Systems: Knowledge Base, Inference Engine, Working Memory, User Interface & Explanation Facility",
+            "Knowledge Acquisition Process: Knowledge Engineers, Domain Experts, Protocol Analysis & Elicitation Bottleneck",
+            "Explanation Subsystem: 'How' Explanations (Sub-goal Trees) and 'Why' Explanations (Rule Tracing)",
+            "Rule-Based Expert Systems: MYCIN (Infectious Diseases Diagnosis, Certainty Factors CF), DENDRAL & PROSPECTOR Case Studies",
+            "Certainty Factor Theory: Measures of Belief (MB), Measures of Disbelief (MD), Combining Evidence in MYCIN",
+            "Expert System Shells: Architecture, CLIPS, JESS, Separation of Domain Knowledge from Inference Mechanisms",
+            "Natural Language Processing (NLP) Overview: Communication Pipeline, Ambiguity Challenges (Lexical, Syntactic, Semantic, Pragmatic)",
+            "Morphological Analysis & Tokenization: Stems, Roots, Affixes, Lemmatization vs Porter Stemmer Algorithm",
+            "Syntactic Analysis: Context-Free Grammars (CFG), Parse Trees, Top-Down vs Bottom-Up Parsing, Cocke-Younger-Kasami (CYK)",
+            "Semantic Analysis & Pragmatics: Compositional Semantics, Word Sense Disambiguation (WSD), Discourse Analysis & Reference Resolution",
+            "Contemporary AI Paradigms: Introduction to Machine Learning (Supervised, Unsupervised, RL), Artificial Neural Networks (ANN), SVM & Fuzzy Logic Basics"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-303N",
+      "title": "Web Technologies",
+      "slug": "bca-303n-web-technologies",
+      "db_subject_id": "308bcc38-ea72-598c-811e-653b3fdcdcba",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "9d5fd180-b3de-52c6-81d2-40981c0f757b",
+          "title": "Web Basics, HTML5, CSS3 & Client-Side JavaScript",
+          "topics": [
+            "Internet and World Wide Web Architecture: Client-Server Model, Web Browsers, Web Servers & URL Anatomy",
+            "HTTP/HTTPS Protocol: Request-Response Lifecycle, Methods (GET, POST, PUT, DELETE, HEAD), Status Codes (200, 301, 404, 500)",
+            "MIME Types & Content Negotiation: Media Types (text/html, application/json, multipart/form-data), Web Programmers Toolbox",
+            "HTML Document Structure & Semantic Tags: <!DOCTYPE html>, <html>, <head>, <meta>, <header>, <nav>, <section>, <article>, <footer>",
+            "HTML Form Elements & Layout Controls: Lists (<ol>, <ul>, <dl>), Tables (<thead>, <tbody>, rowspan, colspan), Forms (<input>, <select>, <textarea>)",
+            "Cascading Style Sheets (CSS): Syntax, Selectors (Element, Class, ID, Pseudo-classes), Specificity Hierarchy",
+            "CSS Integration Paradigms: Inline Styles, Internal Stylesheets (<style>), External Stylesheets (<link rel='stylesheet'>)",
+            "CSS Box Model: Content, Padding, Border, Margin, box-sizing Property, Flexbox & CSS Grid Basics",
+            "JavaScript Fundamentals: Variables (var, let, const), Data Types, Operators, Type Coercion, Control Flow Constructs",
+            "JavaScript Functions & Scope: Function Declarations, Function Expressions, Arrow Functions, Lexical Scope, Closures",
+            "DOM Manipulation & Event Handling: Document Object Model, getElementById, querySelector, Event Listeners (onclick, onsubmit, onchange)",
+            "Client-Side Form Validation: Regular Expressions (Regex), Real-Time Field Feedback, preventDefault() & Sanitization"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "b38e3aa6-b72d-5b22-b98d-ad3c748d4a50",
+          "title": "XML Technologies & Server-Side PHP Programming",
+          "topics": [
+            "Introduction to XML: Extensible Markup Language, Syntax Rules, Well-Formed vs Valid XML Documents",
+            "Document Type Definition (DTD): Internal vs External DTD, Elements, Attributes (CDATA, ID, IDREF), Entities",
+            "XML Schemas (XSD): Data Typing, Schema Definition, Complex Types vs Simple Types, Namespaces",
+            "Presenting XML: Extensible Stylesheet Language (XSL), XSL Transformations (XSLT), XPath Expressions",
+            "XHTML: Strict, Transitional & Frameset Specifications, Differences Between HTML and XHTML Syntax",
+            "XML Parsing APIs: Document Object Model (DOM) Tree-Based Parser vs Simple API for XML (SAX) Event-Driven Parser",
+            "PHP Server-Side Architecture: PHP Engine, Server Interaction (Apache/Nginx mod_php), <?php ... ?> Tagging",
+            "PHP Language Primitives: Variables ($ prefix), Dynamic Typing, Constants, Arithmetic, Logical and Bitwise Operators",
+            "PHP Control Structures: Conditional Statements (if-else, switch-case), Iterative Loops (for, while, do-while, foreach)",
+            "PHP Arrays: Indexed Arrays, Associative Arrays, Multidimensional Arrays, Array Manipulation Functions",
+            "PHP Functions & Parameter Mechanisms: User-Defined Functions, Default Arguments, Pass by Value vs Pass by Reference (&)",
+            "PHP Superglobals & Form Handling: $_GET, $_POST, $_REQUEST, $_SERVER, Form Data Sanitization (htmlspecialchars, strip_tags)"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "90113b29-25c8-5d2e-bdc2-fe3da8bc3ac9",
+          "title": "Web Servers, Java Servlet Architecture & Session Management",
+          "topics": [
+            "Web Servers Overview: Apache Tomcat, Web Server vs Application Server, Java Servlet Development Kit (JSDK)",
+            "Servlet Architecture: Java Servlet Specification, Advantages over CGI (Multithreading, Platform Independence, Persistence)",
+            "Servlet Lifecycle: Class Loading, Instantiation, init() Initialization, service() Dispatch, destroy() Cleanup",
+            "Deployment and Configuration: Web Application Directory Structure, web.xml Deployment Descriptor, <servlet> and <servlet-mapping>",
+            "Servlet API Core Packages: javax.servlet and javax.servlet.http Hierarchy, Servlet Interface, GenericServlet Class",
+            "HttpServlet Class: Handling HTTP Requests, doGet(), doPost(), doPut(), doDelete() Method Implementations",
+            "HttpServletRequest Interface: Retrieving Form Parameters (getParameter, getParameterValues), Headers, Cookies & InputStreams",
+            "HttpServletResponse Interface: Setting MIME Content-Type, Character Encoding, Headers, Status Codes & PrintWriter Output",
+            "Servlet Initialization & Context: Reading ServletConfig init-parameters, ServletContext Application-Wide Parameters",
+            "State Management in Web Applications: Stateless Nature of HTTP Protocol, Challenges in Multi-Step Workflows",
+            "Cookies API: Creating Cookies, Setting Max-Age, Path, Domain, Secure and HttpOnly Flags, Client-Side Storage",
+            "HttpSession Interface: Session Tracking, Session ID (JSESSIONID), URL Rewriting, getSession(boolean), Session Invalidation & Timeouts"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "a87cc4e0-6705-5a63-bd49-71c515cd279a",
+          "title": "Database Access with JDBC, PHP-MySQL & MVC Frameworks",
+          "topics": [
+            "Database Access in Web Applications: Two-Tier vs Three-Tier Architecture, Persistence Layer Principles",
+            "Java Database Connectivity (JDBC) Architecture: Driver Manager, Connection, Statement, PreparedStatement & ResultSet",
+            "JDBC Driver Types: Type 1 (JDBC-ODBC Bridge), Type 2 (Native-API Driver), Type 3 (Network-Protocol Driver), Type 4 (Thin Driver)",
+            "Executing SQL Statements via JDBC: executeQuery(), executeUpdate(), execute(), Scrollable & Updatable ResultSets",
+            "Parameterized Queries with PreparedStatement: Preventing SQL Injection Vulnerabilities, In-Memory Compilation",
+            "Advanced JDBC Features: Database Transactions (commit, rollback, setAutoCommit(false)), Savepoints, Batch Updates",
+            "javax.sql Package: DataSource Interface, Connection Pooling Mechanisms, High-Performance Database Pooling",
+            "Accessing Database from Servlets: Connecting Servlet Controller to Backend RDBMS, Forwarding Results to View",
+            "PHP-MySQL Connectivity: mysqli Extension (Procedural vs Object-Oriented API), PDO (PHP Data Objects) Extension",
+            "Executing Database Queries in PHP: Establishing Connection, Prepared Statements (bind_param, execute), Fetching Associative Rows",
+            "Model-View-Controller (MVC) Pattern: Separation of Concerns, Model (Business Logic), View (Presentation), Controller (Flow)",
+            "Apache Struts Framework: Architecture, ActionServlet (Front Controller), ActionForm, Action Class, struts-config.xml Workflow"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "2c937fe4-96fb-5a2b-9256-48fef51f613f",
+          "title": "JavaServer Pages (JSP) & JavaBean Architecture",
+          "topics": [
+            "Introduction to JavaServer Pages (JSP): JSP Motivation, Comparison of Servlets vs JSP Pages, Separation of Roles",
+            "JSP Page Anatomy & Lifecycle: Translation Phase (JSP to Servlet Source), Compilation Phase (.class), Instantiation, _jspInit, _jspService, _jspDestroy",
+            "JSP Directive Elements: <%@ page ... %>, <%@ include ... %>, <%@ taglib ... %>, Attributes (import, contentType, session, errorPage)",
+            "JSP Scripting Elements: Scriptlets (<% ... %>), Expressions (<%= ... %>), Declarations (<%! ... %>), Syntax & Best Practices",
+            "JSP Implicit Objects: request, response, out (JspWriter), session, application, config, pageContext, page, exception",
+            "JSP Standard Action Elements: <jsp:include> (Dynamic Inclusion vs Directive Static Inclusion), <jsp:forward>, <jsp:param>",
+            "JavaBeans Architecture: JavaBean Specification, Zero-Argument Constructor, Private Properties, Getters and Setters, Serializable",
+            "Deploying JavaBeans in JSP: <jsp:useBean> Tag, Scope Attributes (page, request, session, application)",
+            "Setting and Getting Bean Properties: <jsp:setProperty name='...' property='*'/> Automapping, <jsp:getProperty>",
+            "JSP Expression Language (EL): Syntax (${expression}), Implicit Objects (param, header, cookie), Operators, Simplifying Data Access",
+            "JSTL (JSP Standard Tag Library): Core Tags (<c:out>, <c:set>, <c:if>, <c:forEach>, <c:choose>), Formatting & SQL Tags",
+            "Security & Performance Optimization in JSP: Preventing XSS Attacks, Disabling Scriptlets, Custom Error Pages & Caching Strategies"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-305N",
+      "title": "Computer Graphics and Animation",
+      "slug": "bca-305n-computer-graphics-and-animation",
+      "db_subject_id": "c77f2700-69fe-5fac-b9ef-6ac573d958e4",
+      "credits": 4,
+      "type": "core",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "1c65979d-2be0-55e5-80f5-ce91af8c4225",
+          "title": "Introduction to Computer Graphics, Hardware & Display Devices",
+          "topics": [
+            "History and Evolution of Computer Graphics: Whirlwind Computer, Sketchpad (Ivan Sutherland), Evolution to GPU-Driven Real-Time Rendering",
+            "Definition and Broad Classifications: Interactive vs Passive Graphics, Vector Graphics vs Bitmap/Raster Graphics",
+            "Major Applications of Computer Graphics: CAD/CAM, Scientific Visualization, Entertainment & Animation, Medical Imaging, Graphic User Interfaces",
+            "Cathode Ray Tube (CRT) Physics: Electron Gun, Accelerating Anode, Deflection Yoke, Phosphor Screen, Persistence, Aspect Ratio",
+            "Refresh CRT Display Systems: Frame Buffer, Refresh Rate (Hz), Interlacing vs Non-Interlaced Scanning",
+            "Raster Scan Display Architecture: Electron Beam Traversal, Horizontal Retrace, Vertical Retrace, Raster Scan Controller",
+            "Random Scan (Vector / Calligraphic) Display Systems: Electron Beam Directed Deflection, High-Resolution Line Rendering, Comparison with Raster Displays",
+            "Color CRT Systems: Beam Penetration Method (Two Layers) vs Shadow Mask CRT Method (Delta/In-Line Triads, Color Purity)",
+            "Flat Panel Display Technologies: Plasma Display Panels (Gas Discharge, UV Light, Phosphors), Liquid Crystal Display (LCD - Twisted Nematic, TFT-LCD)",
+            "Light Emitting Diode (LED) & Organic LED (OLED) Displays: Working Principles, Advantages over Traditional Backlit Panels",
+            "Interactive Input Devices: Digitizing Graphics Tablets, Light Pens, Optical Mice, Joysticks, Trackballs, Data Gloves",
+            "Graphics Software Architectures & Standards: GKS (Graphical Kernel System), PHIGS, OpenGL & DirectX Hardware Abstraction"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "430e8853-ce2d-5441-8c38-e276958b1442",
+          "title": "2D Transformations, Window-to-Viewport Mapping & 3D Projections",
+          "topics": [
+            "2D Geometric Transformations: Translation (P' = P + T), Scaling (x' = x*Sx, y' = y*Sy), Rotation about the Origin (θ)",
+            "Matrix Representations of 2D Transformations: Coordinate Vectors, Transformation Matrices, Linearity and Limitations",
+            "Homogeneous Coordinate Systems: Need for Homogeneous Representation, Projective Geometry, Matrix Representation (3x3)",
+            "Composite 2D Transformations: Matrix Multiplication Order, Non-Commutative Nature, Successive Translations, Scalings, Rotations",
+            "General 2D Rotation about an Arbitrary Point (xr, yr): Translation to Origin, Rotation, Inverse Translation Sequence",
+            "Other 2D Transformations: Reflection (About X-Axis, Y-Axis, Origin, Line y = x), Shear Transformations (X-Shear, Y-Shear)",
+            "Window-to-Viewport Coordinate Transformation: World Coordinate System (WCS), Viewing Coordinates, Normalized Device Coordinates (NDC)",
+            "Viewing Pipeline & Clipping Operations: Interior vs Exterior Clipping, Point Clipping Algorithm against Rectangular Window",
+            "Cohen-Sutherland Line Clipping Algorithm: 4-Bit Outcodes (Top, Bottom, Right, Left), Trivial Accept, Trivial Reject, Intersection Calculations",
+            "Midpoint Subdivision Line Clipping Algorithm: Binary Search Approach, Hardware Implementations for Line Clipping",
+            "Polygon Clipping: Sutherland-Hodgeman Polygon Clipping Algorithm, Edge-by-Edge Processing (Left, Right, Bottom, Top), Vertex Output Rules",
+            "Text Clipping Techniques: All-or-None String Clipping, All-or-None Character Clipping, Component Character/Stroke Clipping",
+            "3D Geometric Transformations: 3D Homogeneous Coordinates (4x4 Matrices), 3D Translation, 3D Scaling, 3D Rotation (X, Y, Z axes)",
+            "3D Projections: Taxonomy, Parallel Projection (Orthographic, Oblique - Cavalier, Cabinet), Perspective Projection (Vanishing Points, Center of Projection)"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "f8b15c04-3d58-59e4-8ec3-68f83b0918fe",
+          "title": "Scan Conversion Algorithms for Primitives & Curves",
+          "topics": [
+            "Scan Conversion Fundamentals: Frame Buffer, Video Memory, Bit Planes, Pixel Grid Mapping, Anti-Aliasing Challenges",
+            "Point and Line Primitive Plotting: Line Equation y = mx + c, Incremental Methods, Floating-Point Calculations",
+            "Digital Differential Analyzer (DDA) Line Drawing Algorithm: Slope Cases (|m| < 1 vs |m| > 1), Incremental Form, Derivation and Step-by-Step Execution",
+            "Bresenham's Line Drawing Algorithm: Integer Arithmetic Only, Decision Parameter dk Derivation, Mathematical Proof of Incremental Updates",
+            "Comparison of Line Algorithms: Computational Efficiency, Speed, Visual Smoothness of DDA vs Bresenham's Algorithm",
+            "Circle Geometric Characteristics: Implicit Equation (x^2 + y^2 = R^2), Eight-Way Symmetry Property of Circles",
+            "Midpoint Circle Drawing Algorithm: Implicit Function f(x,y), Decision Parameter pk Derivation, Midpoint Evaluation, Step-by-Step Plotting",
+            "Bresenham's Circle Drawing Algorithm: Error Term Formulation, Selection Between Diagonal and Horizontal Pixels",
+            "Ellipse Geometric Properties: Implicit Equation (b^2*x^2 + a^2*y^2 - a^2*b^2 = 0), Four-Way Symmetry Property",
+            "Midpoint Ellipse Algorithm: Division into Region 1 (Slope dy/dx > -1) and Region 2 (Slope dy/dx < -1), Decision Parameters p1k and p2k Derivations",
+            "Polygon Fill Area Primitives: Inside-Outside Tests (Odd-Even Rule, Winding Number Method)",
+            "Polygon Filling Algorithms: Boundary-Fill Algorithm (4-Connected vs 8-Connected), Flood-Fill Algorithm, Scan-Line Polygon Fill Algorithm & Edge Table"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "bb57b883-05ba-5a6f-9a89-ef1f1e5edb1f",
+          "title": "Curves, Surfaces & Spline Representations",
+          "topics": [
+            "Curved Lines and Surfaces: Analytic Equations vs Parametric Representations, Limitations of Non-Parametric Equations",
+            "Quadric Surfaces: Mathematical Formulations and Geometric Properties of Spheres, Ellipsoids & Torus",
+            "Superquadrics: Superellipse and Superellipsoid Geometric Formulations, Exponent Variations for Industrial Shape Modeling",
+            "Spline Representations: Definition, Control Points, Interpolating Curves vs Approximating Curves, Convex Hull Property",
+            "Parametric Continuity (C0, C1, C2) vs Geometric Continuity (G0, G1, G2): Tangent Vectors, Curvature Alignment at Segment Boundaries",
+            "Cubic Spline Curves: Need for Cubic Representation, Natural Cubic Splines, Boundary Conditions (Clamped, Free)",
+            "Bezier Curves: Pierre Bezier Formulation, Bernstein Polynomials Basis Functions, Mathematical Formula P(t) = Σ B_i,n(t) * P_i",
+            "Properties of Bezier Curves: Affine Invariance, Convex Hull Property, Endpoint Interpolation, Tangency Condition, Variation Diminishing Property",
+            "Algorithms for Drawing Bezier Curves: De Casteljau's Algorithm, Recursive Midpoint Subdivision, Direct Polynomial Evaluation",
+            "Bezier Surfaces: Tensor Product Bezier Patches, Control Net, Evaluation and Surface Rendering",
+            "B-Spline Curves: Limitations of Bezier Curves (Global Control, Degree Tied to Number of Control Points), Cox-de Boor Recursive Definition",
+            "Properties of B-Splines: Local Control, Knot Vectors (Uniform, Open Uniform, Non-Uniform), Non-Uniform Rational B-Splines (NURBS) Overview"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "59188dd6-6b5c-5b1d-9c19-b0b8924ead2d",
+          "title": "Computer Animation Principles & Advanced Techniques",
+          "topics": [
+            "Foundations of Animation: Persistence of Vision, Stroboscopic Effect, Frame Rates (24 fps Cinema, 30/60 fps Video)",
+            "History and Taxonomy of Animation: Traditional Cel Animation, Stop-Motion Animation, Computer-Generated Imagery (CGI 2D vs 3D)",
+            "12 Basic Principles of Animation (Disney): Squash and Stretch, Anticipation, Staging, Straight Ahead vs Pose to Pose",
+            "Principles of Animation Continued: Follow Through & Overlapping Action, Slow In and Slow Out, Arcs, Secondary Action, Timing, Exaggeration, Solid Drawing, Appeal",
+            "Keyframing Paradigm: Keyframes, In-Betweens (Tweening), Automated Interpolation (Linear, Ease-In, Ease-Out, Spline Interpolation)",
+            "Morphing Techniques: Image Morphing, Feature-Based Morphing (Beier-Neely Field Morphing), Mesh Warping, Cross-Dissolving Transitions",
+            "Tweaking and Warping: Deformation Grids, Free-Form Deformation (FFD), Coordinate Distortions",
+            "Kinematics in Animation: Forward Kinematics (FK - Joint Angles Hierarchies) vs Inverse Kinematics (IK - End-Effector Goal Solvers)",
+            "Motion Capture (Mocap): Sensor Modalities (Optical, Inertial, Magnetic), Marker Tracking, Retargeting to 3D Skeletal Rigs",
+            "Physical Simulation in Animation: Particle Systems (Smoke, Fire, Explosions), Cloth Dynamics, Rigid Body Collisions",
+            "Rendering and Shading in 3D: Wireframe, Hidden Surface Removal (Z-Buffer, Back-Face Culling), Shading Models (Flat, Gouraud, Phong)",
+            "Animation Software Tools & Workflows: Blender, Maya, Unity, Production Pipeline (Pre-production, Production, Post-production Compositing)"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-431E",
+      "title": "Introduction to Cyber Security",
+      "slug": "bca-431e-introduction-to-cyber-security",
+      "db_subject_id": "2b80aa54-152e-5b8c-849c-0fbe0b523f59",
+      "credits": 4,
+      "type": "elective",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "9a72b703-7561-57b7-81fb-929bdf3f20fd",
+          "title": "Introduction to Cyber Security, Cyberspace & Threats",
+          "topics": [
+            "Introduction to Cyber Security: Definition, Scope, Need for Security in Digitized Society & Economic Impacts",
+            "Concept of Cyberspace: Architecture, Virtual Interconnected Environments, Cyber Ecosystem Components & Infrastructure",
+            "Evolution of Cyber Crimes and Cyber Attacks: Historical Trajectory, Hobbyist Hackers to State-Sponsored Advanced Persistent Threats (APTs)",
+            "Fundamental Security Concepts: Assets, Threats, Vulnerabilities, Exploits, Risks & Attack Surfaces",
+            "Threat Modeling: STRIDE Model (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)",
+            "The Fundamental Security Triad: Confidentiality (Privacy, Secrecy), Integrity (Data Authenticity, Non-Alteration) & Availability (Reliable Access)",
+            "Authentication and Non-Repudiation: Identity Verification Factors (Something You Know, Have, Are) & Digital Evidence Integrity",
+            "Access Control Principles: Subject, Object, Principle of Least Privilege, Separation of Duties & Defense in Depth",
+            "Categories of Cyber Criminals: Script Kiddies, Cyber Insiders, Hacktivists, Organized Cyber syndicates & Nation-State Actors",
+            "Classification of Vulnerabilities: Common Vulnerabilities and Exposures (CVE), CVSS Scoring System, Zero-Day Exploits",
+            "Overview of Malicious Software (Malware): Viruses, Worms, Trojan Horses, Spyware, Adware, Ransomware & Rootkits",
+            "Social Engineering Attacks: Phishing (Spear, Whaling), Pretexting, Baiting, Vishing, Smishing & Human Exploitation Vectors"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "0d25abda-3786-520e-bfaf-c25fdb49d3bc",
+          "title": "Classes of Security Attacks & Security Models",
+          "topics": [
+            "Taxonomy of Security Attacks: Passive Attacks (Eavesdropping, Traffic Analysis) vs Active Attacks (Masquerade, Replay, Modification, Denial of Service)",
+            "Network-Level Attacks: Man-in-the-Middle (MitM), ARP Spoofing, DNS Cache Poisoning, IP Spoofing & Session Hijacking",
+            "Denial of Service (DoS) and Distributed Denial of Service (DDoS): Smurf Attack, SYN Flood, UDP Flood, NTP Amplification, Botnets",
+            "Application-Level Attacks: SQL Injection (SQLi), Cross-Site Scripting (XSS - Stored, Reflected, DOM-Based), Cross-Site Request Forgery (CSRF)",
+            "Buffer Overflow Attacks: Stack-Based Buffer Overflows, Return-Oriented Programming (ROP), Pointer Corruption & Defense (ASLR, DEP)",
+            "Impact of Cyber Attacks: Financial Losses, Reputational Damage, Operational Disruptions, Legal Penalties & Critical Infrastructure Failures",
+            "Principles of Cyber Security Architecture: Simplicity, Fail-Safe Defaults, Complete Mediation, Open Design, Separation of Privilege",
+            "Classic Security Models: Bell-LaPadula Model (Confidentiality: No Read Up, No Write Down), Biba Model (Integrity: No Read Down, No Write Up)",
+            "Commercial Security Models: Clark-Wilson Model (Well-Formed Transactions, Separation of Duties), Chinese Wall Model (Conflict of Interest)",
+            "The CIA Triad: Core Tenets, Mutual Trade-offs, Availability vs Confidentiality Tensions in High-Speed Computing",
+            "The Star Model: Comprehensive Interlocking Framework for Cyber Security Strategy and Risk Governance",
+            "The Parkerian Hexad (Donn Parker): Confidentiality, Integrity, Availability, Authenticity, Possession/Control, and Utility Extensions"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "7ea00fff-11c2-52dd-8185-03c3d21940c4",
+          "title": "Cyber Security Policy, Governance & Stakeholders",
+          "topics": [
+            "Defining a Cyber Security Policy: Concept, Objectives, Hierarchy (Policies, Standards, Guidelines, Procedures)",
+            "Types of Security Policies: Program Policy, Issue-Specific Policy (ISSP), System-Specific Policy (SSSP)",
+            "Acceptable Use Policy (AUP): Permitted Organizational Resource Usage, Internet, Email, Personal Device Guidelines (BYOD)",
+            "General Security Expectations: Confidentiality Agreements, Password Hygiene, Clean Desk Policy & Clear Screen Policy",
+            "Roles and Responsibilities: Board of Directors, Chief Information Security Officer (CISO), Security Operations Center (SOC), System Administrators",
+            "Organizational Stakeholders: Internal Users, Third-Party Vendors, Customers, External Regulators & Supply Chain Partners",
+            "Incident Response Policy & Management: CIRT/CSIRT Formation, Preparation, Detection & Analysis, Containment, Eradication, Recovery & Post-Incident Review",
+            "Business Continuity Planning (BCP) & Disaster Recovery (DR): Recovery Time Objective (RTO), Recovery Point Objective (RPO), Backup Strategies",
+            "Risk Management Framework (NIST RMF): Categorize, Select, Implement, Assess, Authorize & Monitor Information Systems",
+            "Regulatory and Compliance Standards: ISO/IEC 27001 (ISMS), PCI-DSS (Payment Cards), HIPAA (Healthcare), GDPR (Data Privacy)",
+            "Indian Cyber Regulatory Context: IT Act 2000 (Section 43, 66, 72A), CERT-In Mandatory Incident Reporting Guidelines",
+            "Cyber Security Auditing & Compliance Monitoring: Continuous Monitoring, Log Retention Policies, Third-Party Vendor Risk Audits"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "2c6daea1-ce26-5b85-a594-f87b5bf054ba",
+          "title": "Security Countermeasures, Firewalls & Cryptography",
+          "topics": [
+            "Security Countermeasure Architecture: Preventative, Detective, Corrective, Compensating & Deterrent Controls",
+            "Firewall Technologies: Definition, Packet Filtering Firewalls (Stateless vs Stateful Inspection), Circuit-Level Gateways",
+            "Application-Level Gateways (Proxy Firewalls) & Next-Generation Firewalls (NGFW): Deep Packet Inspection (DPI), Intrusion Prevention, SSL Decryption",
+            "Firewall Architectures: Dual-Homed Host, Screened Host, Screened Subnet (Demilitarized Zone - DMZ) Topologies",
+            "Antivirus and Anti-Malware Systems: Signature-Based Scanning, Heuristic Analysis, Behavior Monitoring, Sandboxing Execution",
+            "System Hardening Techniques: Disabling Default Accounts, Closing Unused Ports/Services, Patch Management, OS Configuration Baselines",
+            "Fundamentals of Cryptography: Plaintext, Ciphertext, Ciphers, Keys, Cryptanalysis, Kerckhoffs's Principle",
+            "Symmetric (Secret Key) Cryptography: Stream Ciphers vs Block Ciphers, Substitution-Permutation Networks, Feistel Cipher Structure",
+            "Symmetric Encryption Standards: Data Encryption Standard (DES), Triple-DES (3DES), Advanced Encryption Standard (AES - 128, 192, 256 bits)",
+            "Asymmetric (Public Key) Cryptography: Trapdoor One-Way Functions, Key Pairs (Public/Private), RSA Algorithm & Elliptic Curve Cryptography (ECC)",
+            "Cryptographic Hash Functions: Properties (Pre-image Resistance, Collision Resistance), MD5, SHA-1, SHA-256, Message Authentication Codes (MAC, HMAC)",
+            "Digital Signatures & Public Key Infrastructure (PKI): Digital Signatures (Non-Repudiation), X.509 Digital Certificates, Certificate Authorities (CA), SSL/TLS Handshake"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "8237013e-e858-5df9-92cb-10b7404fb1a1",
+          "title": "Security Testing, Ethical Hacking & Fraud Prevention",
+          "topics": [
+            "Cyber Security Testing Methodologies: Vulnerability Assessment (VA) vs Penetration Testing (PT), VAPT Workflows",
+            "Penetration Testing Phases: Reconnaissance (OSINT), Scanning & Enumeration, Vulnerability Exploitation, Post-Exploitation, Reporting",
+            "Penetration Testing Types: Black Box (Zero Knowledge), White Box (Full Knowledge), Gray Box (Partial Knowledge) Testing",
+            "Intrusion Detection Systems (IDS): Network-Based (NIDS) vs Host-Based (HIDS), Signature-Based vs Anomaly-Based Detection, False Positives/Negatives",
+            "Intrusion Prevention Systems (IPS): In-Line Traffic Filtering, Automated Rule Enforcement, Honeypots & Decoy Systems",
+            "Security Information and Event Management (SIEM): Log Aggregation, Normalization, Real-Time Correlation, Security Orchestration (SOAR)",
+            "Basic Concepts of Ethical Hacking: Hacker Types (White Hat, Black Hat, Gray Hat), Ethical Hacking Code of Conduct, Legal Authorization (Rules of Engagement)",
+            "Ethical Hacking Toolkits: Nmap (Port Scanning), Wireshark (Packet Sniffing), Metasploit (Exploit Framework), Burp Suite (Web Testing)",
+            "Identity Theft: Types (Financial, Medical, Criminal), Modus Operandi, Credential Harvesting, Defense and Identity Protection Mechanisms",
+            "Cyber Stalking and Cyber Harassment: Definition, Tracking Technologies (Spyware, Geolocation Exploits), Legal Remedies & Personal Defense Strategies",
+            "Online Investment Fraud & Financial Scams: Ponzi Schemes, Cryptocurrency Rug Pulls, Advance Fee Fraud (419), Fake Banking Portals",
+            "Cyber Hygiene Best Practices: Multi-Factor Authentication (MFA), Password Managers, Secure Backup 3-2-1 Rule, Safe Browsing Habits"
+          ]
+        }
+      ]
+    },
+    {
+      "code": "BCA-432E",
+      "title": "GUI Programming",
+      "slug": "bca-432e-gui-programming",
+      "db_subject_id": "6a958708-bec6-5df2-b290-9b0ed41d6cc6",
+      "credits": 4,
+      "type": "elective",
+      "units": [
+        {
+          "unit_number": 1,
+          "unit_id": "1154c5fc-1194-5bee-9ee2-f1513ee63e99",
+          "title": ".NET Framework Architecture & Visual Basic Language Primitives",
+          "topics": [
+            "Overview of Microsoft .NET Framework: Motivation, Evolution from COM/Win32, Multi-Language Integration Paradigm",
+            ".NET Architecture: Common Language Runtime (CLR), Just-In-Time (JIT) Compilers (Pre-JIT, Normal JIT, Econo-JIT)",
+            "Code Loading and Execution Process: Source Code Compilation to Microsoft Intermediate Language (MSIL), Metadata, Assembly (.dll / .exe)",
+            "Common Type System (CTS): Value Types (Primitive, Enum, Struct) vs Reference Types (Class, Interface, Array, Delegate)",
+            "Common Language Specification (CLS): Rules for Cross-Language Interoperability, Cross-Language Inheritance",
+            "Event-Driven Programming Paradigm: Event Queue, Event Handlers, Delegates as Type-Safe Function Pointers",
+            "Visual Studio 2010 IDE Architecture: Solution Explorer, Toolbox, Properties Window, Code Editor, Output & Error List Windows",
+            "Introduction to Visual Basic (.NET): Syntax Structure, Statements, Comments, Case-Insensitivity",
+            "VB Data Types, Variables & Constants: Primitive Data Types (Integer, Double, String, Boolean, Date), Dim, Static, Const",
+            "Type Conversion Mechanisms: Implicit vs Explicit Conversion, CType, DirectCast, CBool, CInt, CStr Functions, Parse and TryParse",
+            "Operators & Control Statements: Arithmetic, Relational, Logical Operators, If...Then...ElseIf...End If, Select Case Selection",
+            "Looping Structures, Arrays & Procedures: For...Next, For Each...Next, Do While/Until, Single/Multidimensional Arrays, Sub vs Function, ByVal vs ByRef"
+          ]
+        },
+        {
+          "unit_number": 2,
+          "unit_id": "94da78bd-fa1b-5c07-bb40-47999b1454dc",
+          "title": "Windows Forms, Controls, Menus & Exception Handling",
+          "topics": [
+            "Windows Forms Architecture: System.Windows.Forms Namespace, Form Lifecycle (Load, Activated, Shown, Closing, Closed)",
+            "Basic Form Controls: Label, TextBox, Button, CheckBox, RadioButton, GroupBox, Panel - Properties, Methods and Events",
+            "List and Selection Controls: ListBox, ComboBox, CheckedListBox (Items Collection, SelectedIndex, SelectedItem)",
+            "Advanced Visual Controls: PictureBox, Timer Control (Tick Event, Interval), ProgressBar, TrackBar, ScrollBars (HScrollBar, VScrollBar)",
+            "Hierarchical & Tabular Data Controls: ListView (LargeIcon, SmallIcon, Details, Columns), TreeView (TreeNode, AfterSelect Event)",
+            "Navigation & Layout Controls: ToolStrip, StatusStrip, MenuStrip, ContextMenuStrip, FlowLayoutPanel, TableLayoutPanel",
+            "Standard Common Dialog Boxes: OpenFileDialog, SaveFileDialog, FontDialog, ColorDialog, PrintDialog (ShowDialog, Filter Property)",
+            "Designing Professional Menus: Menu Strip, Access Keys (& prefix), Shortcut Keys, Checked Items, Context Menus",
+            "Major Error Categories: Compile-Time (Syntax) Errors, Runtime (Execution) Errors, Logical (Semantic) Errors",
+            "Structured Exception Handling in .NET: Try...Catch...Finally Blocks, Filtering Exceptions (Catch ex As FormatException)",
+            "User-Defined Custom Exceptions: Inheriting from System.Exception Class, Throwing Custom Exceptions with Meaningful Messages",
+            "Visual Studio Debugging Techniques: Setting Breakpoints, Step Into (F11), Step Over (F10), Watch Window, Immediate Window, Call Stack"
+          ]
+        },
+        {
+          "unit_number": 3,
+          "unit_id": "5f2bfd88-2103-5fb2-9abd-622fef5cc070",
+          "title": "Object-Oriented Programming & Class Libraries in .NET",
+          "topics": [
+            "Object-Oriented Programming Principles in .NET: Abstraction, Encapsulation, Inheritance, Polymorphism",
+            "Class and Object Definition: Class Declaration, Object Instantiation (New Keyword), Class Members (Fields, Properties, Methods, Events)",
+            "Constructors and Destructors: Sub New Constructor, Parameterized Constructors, Constructor Overloading, Finalize and Dispose Pattern",
+            "Property Procedures in VB: Private Backing Fields, Property...Get...Set...End Property, Auto-Implemented Properties",
+            "Inheritance Mechanisms: Single Inheritance, Inherits Keyword, MustInherit (Abstract Classes), NotInheritable (Sealed Classes)",
+            "Method Overloading vs Method Overriding: Overloads Keyword (Compile-Time Polymorphism), Overrides and Overridable Keywords (Runtime Polymorphism)",
+            "MyBase and MyClass Keywords: Invoking Base Class Constructors and Methods, Resolving Member Shadowing",
+            "Interfaces in .NET: Interface Declaration, Implements Keyword, Multiple Interface Implementation, Standard Interfaces (IComparable, IDisposable)",
+            "Access Modifiers in .NET: Public, Private, Protected, Friend (Internal), Protected Friend Scope Semantics",
+            "Namespaces in .NET: Organizing Types, Namespace...End Namespace, Imports Statement, Preventing Class Naming Collisions",
+            "Delegates and Events: Declaring Delegates, Delegate Sub/Function, Event Keyword, RaiseEvent, AddHandler and RemoveHandler",
+            "Creating and Consuming Class Libraries: Class Library Project (.dll), Compiling Reusable Assemblies, Adding Project References"
+          ]
+        },
+        {
+          "unit_number": 4,
+          "unit_id": "f09c2fd0-ca9a-50f2-ae5d-e2b5d3f1a546",
+          "title": "ADO.NET Architecture & Database Connectivity",
+          "topics": [
+            "Introduction to ADO.NET: Motivation, Evolution from Classic ADO, XML Integration, Disconnected Architecture Paradigm",
+            "ADO.NET Architecture: Two Core Components - .NET Data Providers (Connected) and DataSet (Disconnected)",
+            ".NET Data Provider Core Objects: Connection (SqlConnection, OleDbConnection), Command (SqlCommand), DataReader, DataAdapter",
+            "Managing Database Connections: Connection Strings (Data Source, Initial Catalog, Integrated Security), Open(), Close(), Using Statement",
+            "Executing Database Commands: SqlCommand Object, CommandType (Text, StoredProcedure), ExecuteNonQuery(), ExecuteScalar(), ExecuteReader()",
+            "Fast Forward-Only Data Access: SqlDataReader, Read() Method, Type-Safe Column Access, Minimal Memory Footprint",
+            "Disconnected Data Architecture: SqlDataAdapter, Fill() Method, Update() Method, SqlCommandBuilder for Automated SQL Generation",
+            "In-Memory Database Hierarchy: DataSet, DataTableCollection, DataTable, DataColumn, DataRow, DataRelation",
+            "Data Table Operations: Adding Rows (NewRow(), Rows.Add()), Modifying Rows, Row States (Added, Modified, Deleted, Unchanged)",
+            "Filtering and Sorting with DataView: DataView Object, RowFilter Expression, Sort Property, Binding to Controls",
+            "DataGridView Control: Architecture, Column Types (TextBox, ComboBox, Button, CheckBox), AutoGenerateColumns, Cell Formatting",
+            "Data Binding Paradigms: Simple Data Binding (Single Property), Complex Data Binding (DataSource, DataMember), BindingSource Component"
+          ]
+        },
+        {
+          "unit_number": 5,
+          "unit_id": "aafff8d5-7b26-510f-9689-ffcfa22dddbf",
+          "title": "ASP.NET 4.0 Web Forms & Application Deployment",
+          "topics": [
+            "Introduction to ASP.NET 4.0: Web Architecture, Comparison of ASP.NET Web Forms vs Windows Forms (Stateless vs Stateful)",
+            "ASP.NET Web Applications Structure: Web Pages (.aspx), Code-Behind Files (.aspx.vb), App_Data, App_Code, Bin Folders",
+            "Benefits of ASP.NET Web Pages: Server Controls, Automatic ViewState Management, Event Model, Rapid Development",
+            "Configuration and Application Files: web.config Architecture (System.web, ConnectionStrings, AppSettings), global.asax Application Lifecycle",
+            "Thin-Client Architecture: Client-Side Browser Rendering vs Server-Side Processing Pipeline, Postback Mechanism (IsPostBack Property)",
+            "ASP.NET Standard Server Controls: Label, TextBox, Button, LinkButton, ImageButton, DropDownList, CheckBoxList, RadioButtonList",
+            "ASP.NET Validation Controls: RequiredFieldValidator, RangeValidator, CompareValidator, RegularExpressionValidator, CustomValidator, ValidationSummary",
+            "Site Layout and Navigation: Master Pages (.master), ContentPlaceHolder, Content Pages, SiteMapPath, Menu Control, TreeView Navigation",
+            "Themes and Skins: Theme Folders, Skin Files (.skin), Cascading Style Sheets, Applying Themes Programmatically and Statically",
+            "Data-Driven Web Pages with GridView: GridView Web Server Control, SqlDataSource Configuration, Paging, Sorting, In-Line Editing and Deleting",
+            "State Management in ASP.NET: Client-Side (ViewState, HiddenField, Cookies, QueryString) vs Server-Side (Session, Application, Cache)",
+            "Application Deployment Wizards: Publish Web Site Wizard, Creating Windows Installer (.msi) Setup Projects, Prerequisites, GAC Deployment"
+          ]
+        }
+      ]
+    }
+  ]
+}
