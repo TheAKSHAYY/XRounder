@@ -36,38 +36,47 @@ async function fetchCourseDetails(
   queryClient: QueryClient,
   courseSlug: string,
 ): Promise<CourseDetailData> {
-  const course = await queryClient.ensureQueryData({
-    queryKey: ["public", "course", courseSlug],
+  const queryKey = ["public", "course-detail", courseSlug];
+  return await queryClient.ensureQueryData({
+    queryKey,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("courses")
-        .select("id, code, title, description, duration_years, total_semesters")
+        .select(
+          "id, code, title, description, duration_years, total_semesters, semesters(id, number, title, description, status, deleted_at)",
+        )
         .eq("slug", courseSlug)
         .eq("status", "published")
         .maybeSingle();
+
       if (error) throw error;
       if (!data) throw notFound();
-      return data as CourseItem;
+
+      const course: CourseItem = {
+        id: data.id,
+        code: data.code,
+        title: data.title,
+        description: data.description,
+        duration_years: data.duration_years,
+        total_semesters: data.total_semesters,
+      };
+
+      const rawSemesters = (data.semesters ?? []) as Array<
+        SemesterItem & { status?: string; deleted_at?: string | null }
+      >;
+      const semesters: SemesterItem[] = rawSemesters
+        .filter((s) => s.status === "published" && !s.deleted_at)
+        .sort((a, b) => a.number - b.number)
+        .map((s) => ({
+          id: s.id,
+          number: s.number,
+          title: s.title,
+          description: s.description,
+        }));
+
+      return { course, semesters };
     },
   });
-
-  if (!course) throw notFound();
-
-  const semesters = await queryClient.ensureQueryData({
-    queryKey: ["public", "semesters", course.id],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("semesters")
-        .select("id, number, title, description")
-        .eq("course_id", course.id)
-        .eq("status", "published")
-        .order("number");
-      if (error) throw error;
-      return (data ?? []) as SemesterItem[];
-    },
-  });
-
-  return { course, semesters };
 }
 
 export const Route = createFileRoute("/courses/$courseSlug/")({

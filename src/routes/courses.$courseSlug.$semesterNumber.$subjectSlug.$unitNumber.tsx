@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import {
@@ -101,44 +101,44 @@ async function fetchUnitDetails(
   return await queryClient.ensureQueryData({
     queryKey,
     queryFn: async () => {
-      const { data: course } = await supabase
+      const { data, error } = await supabase
         .from("courses")
-        .select("id, title")
+        .select(
+          "id, title, semesters!inner(id, number, title, subjects!inner(id, code, title, units!inner(id, number, title, summary)))",
+        )
         .eq("slug", courseSlug)
         .eq("status", "published")
         .is("deleted_at", null)
+        .eq("semesters.number", Number(semesterNumber))
+        .eq("semesters.status", "published")
+        .is("semesters.deleted_at", null)
+        .eq("semesters.subjects.slug", subjectSlug)
+        .eq("semesters.subjects.status", "published")
+        .is("semesters.subjects.deleted_at", null)
+        .eq("semesters.subjects.units.number", Number(unitNumber))
+        .eq("semesters.subjects.units.status", "published")
+        .is("semesters.subjects.units.deleted_at", null)
         .maybeSingle();
-      if (!course) throw notFound();
 
-      const { data: sem } = await supabase
-        .from("semesters")
-        .select("id, number, title")
-        .eq("course_id", course.id)
-        .eq("number", Number(semesterNumber))
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .maybeSingle();
-      if (!sem) throw notFound();
+      if (error || !data) throw notFound();
 
-      const { data: subject } = await supabase
-        .from("subjects")
-        .select("id, code, title")
-        .eq("semester_id", sem.id)
-        .eq("slug", subjectSlug)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .maybeSingle();
-      if (!subject) throw notFound();
+      const course = { id: data.id, title: data.title };
+      const semRaw = (data.semesters as any[])?.[0];
+      if (!semRaw) throw notFound();
+      const sem = { id: semRaw.id, number: semRaw.number, title: semRaw.title };
 
-      const { data: unit } = await supabase
-        .from("units")
-        .select("id, number, title, summary")
-        .eq("subject_id", subject.id)
-        .eq("number", Number(unitNumber))
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .maybeSingle();
-      if (!unit) throw notFound();
+      const subRaw = (semRaw.subjects as any[])?.[0];
+      if (!subRaw) throw notFound();
+      const subject = { id: subRaw.id, code: subRaw.code, title: subRaw.title };
+
+      const unitRaw = (subRaw.units as any[])?.[0];
+      if (!unitRaw) throw notFound();
+      const unit = {
+        id: unitRaw.id,
+        number: unitRaw.number,
+        title: unitRaw.title,
+        summary: unitRaw.summary ?? null,
+      };
 
       const contentFilter =
         Number(unitNumber) === 1
@@ -545,6 +545,181 @@ function _getVideoEmbedUrl(
   }
 }
 
+/* ─────────── Isolated Table of Contents Components (Zero parent re-renders on scroll) ─────────── */
+
+const DesktopStickyToc = memo(function DesktopStickyToc({
+  toc,
+}: {
+  toc: Array<{ id: string; title: string; isSub: boolean }>;
+}) {
+  const [activeSection, setActiveSection] = useState<string | null>(toc[0]?.id ?? null);
+
+  useEffect(() => {
+    if (!toc.length || typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      {
+        rootMargin: "-80px 0px -65% 0px",
+        threshold: 0,
+      },
+    );
+
+    for (const item of toc) {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [toc]);
+
+  if (toc.length <= 1) return null;
+
+  return (
+    <aside className="hidden lg:block self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
+      <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
+        <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+          <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
+        </div>
+        <nav>
+          <ol className="space-y-1 text-xs">
+            {toc.map((item, i) => {
+              const active = activeSection === item.id;
+              return (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.getElementById(item.id);
+                      if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                        setActiveSection(item.id);
+                      }
+                    }}
+                    className={cn(
+                      "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
+                      item.isSub && "pl-5 text-muted-foreground/80",
+                      active
+                        ? "bg-primary/10 font-bold text-primary"
+                        : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                    )}
+                  >
+                    {!item.isSub && (
+                      <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                    )}
+                    <span className="truncate">{item.title}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+      </div>
+    </aside>
+  );
+});
+
+const MobileCollapsibleToc = memo(function MobileCollapsibleToc({
+  toc,
+}: {
+  toc: Array<{ id: string; title: string; isSub: boolean }>;
+}) {
+  const [mobileTocOpen, setMobileTocOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(toc[0]?.id ?? null);
+
+  useEffect(() => {
+    if (!toc.length || typeof window === "undefined" || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      {
+        rootMargin: "-80px 0px -65% 0px",
+        threshold: 0,
+      },
+    );
+
+    for (const item of toc) {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [toc]);
+
+  if (toc.length <= 1) return null;
+
+  return (
+    <div className="mb-6 rounded-2xl border border-border/80 bg-card p-3.5 shadow-soft lg:hidden">
+      <button
+        type="button"
+        onClick={() => setMobileTocOpen(!mobileTocOpen)}
+        className="flex w-full items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground"
+      >
+        <span className="flex items-center gap-2 text-foreground">
+          <ListOrdered className="h-4 w-4 text-primary" /> On this page
+        </span>
+        <ChevronDown
+          className={cn(
+            "h-4 w-4 transition-transform duration-200",
+            mobileTocOpen && "rotate-180",
+          )}
+        />
+      </button>
+      {mobileTocOpen && (
+        <nav className="mt-3 border-t border-border/60 pt-3">
+          <ol className="space-y-1.5 text-xs">
+            {toc.map((item, i) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMobileTocOpen(false);
+                    const target = document.getElementById(item.id);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth", block: "start" });
+                      setActiveSection(item.id);
+                    }
+                  }}
+                  className={cn(
+                    "flex gap-2 rounded-xl py-2 px-2.5 transition-colors",
+                    item.isSub && "pl-5 text-muted-foreground/80",
+                    activeSection === item.id
+                      ? "bg-primary/10 font-bold text-primary"
+                      : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                  )}
+                >
+                  {!item.isSub && (
+                    <span className="font-mono text-muted-foreground/60">{i + 1}.</span>
+                  )}
+                  <span className="truncate">{item.title}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </div>
+  );
+});
+
 function UnitDetail() {
   const { courseSlug, semesterNumber, subjectSlug, unitNumber } = Route.useParams();
   const loaderData = Route.useLoaderData();
@@ -584,6 +759,8 @@ function UnitDetail() {
   const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
   const [aiAssistantTopic, setAiAssistantTopic] = useState<string>("");
   const [aiAssistantContext, setAiAssistantContext] = useState<string>("");
+  const [aiAssistantAction, setAiAssistantAction] = useState<"ask" | "explain" | "revision" | "quiz">("ask");
+  const [aiAssistantLang, setAiAssistantLang] = useState<"en" | "hinglish" | "hi">("hinglish");
   const [customAiQuizQuestions, setCustomAiQuizQuestions] = useState<PracticeQuestion[] | null>(null);
 
   const handleLoadCustomQuiz = (questions: GeneratedQuizQuestion[]) => {
@@ -1049,26 +1226,36 @@ function UnitDetail() {
 
   const isCompleted = progressQuery.data?.status === "completed";
 
-  /* ─────────── Scroll Progress & Active Section ─────────── */
+  /* ─────────── Scroll Progress (Direct DOM, zero layout reflow, zero re-renders) ─────────── */
 
   const articleRef = useRef<HTMLElement | null>(null);
-  const [readPct, setReadPct] = useState(0);
-  const [activeSection, setActiveSection] = useState<string | null>(toc[0]?.id ?? null);
-  const [mobileTocOpen, setMobileTocOpen] = useState(false);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const progressBadgeRef = useRef<HTMLSpanElement>(null);
   const [showCelebrationModal, setShowCelebrationModal] = useState(false);
   const readingMilestones = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     let raf = 0;
+
     const compute = () => {
       const el = articleRef.current;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
+      // High-performance geometry using cached offsets and compositor scroll position
+      // Zero forced synchronous layout reflows (getBoundingClientRect eliminated)
+      const elTop = el.offsetTop;
+      const elHeight = el.offsetHeight;
       const viewport = window.innerHeight;
-      const total = Math.max(1, rect.height - viewport);
-      const scrolled = Math.min(total, Math.max(0, -rect.top));
+      const total = Math.max(1, elHeight - viewport);
+      const scrolled = Math.min(total, Math.max(0, window.scrollY - elTop));
       const pct = Math.round((scrolled / total) * 100);
-      setReadPct(pct);
+
+      // Fast direct DOM updates — zero React re-renders during high-frequency scroll
+      if (progressBarRef.current) {
+        progressBarRef.current.style.width = `${pct}%`;
+      }
+      if (progressBadgeRef.current) {
+        progressBadgeRef.current.textContent = `${pct}% read`;
+      }
 
       // Micro-dopamine milestones during focused reading
       if (pct >= 25 && !readingMilestones.current.has(25)) {
@@ -1093,19 +1280,13 @@ function UnitDetail() {
           duration: 4500,
         });
       }
-
-      let current: string | null = toc[0]?.id ?? null;
-      for (const item of toc) {
-        const node = document.getElementById(item.id);
-        if (!node) continue;
-        if (node.getBoundingClientRect().top - 120 <= 0) current = item.id;
-      }
-      setActiveSection(current);
     };
+
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(compute);
     };
+
     compute();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -1114,7 +1295,34 @@ function UnitDetail() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [toc]);
+  }, []);
+
+  // Sparky interactive AI study buddy event bridge
+  useEffect(() => {
+    const handleSparkyEvent = (e: Event) => {
+      const custom = e as CustomEvent<{ action?: "ask" | "explain" | "revision" | "quiz"; lang?: "en" | "hinglish" | "hi"; topicTitle?: string }>;
+      const detail = custom.detail || {};
+      const unitObj = dataQuery.data?.unit;
+      const currTitle =
+        detail.topicTitle ||
+        (selectedTopicId !== "ALL"
+          ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.title || unitObj?.title || ""
+          : unitObj?.title || "");
+      const currContext =
+        selectedTopicId !== "ALL"
+          ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.body || ""
+          : readArticles.map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`).join("\n\n");
+
+      setAiAssistantTopic(currTitle);
+      setAiAssistantContext(currContext);
+      if (detail.action) setAiAssistantAction(detail.action);
+      if (detail.lang) setAiAssistantLang(detail.lang);
+      setAiAssistantOpen(true);
+    };
+
+    window.addEventListener("open-sparky-ai", handleSparkyEvent);
+    return () => window.removeEventListener("open-sparky-ai", handleSparkyEvent);
+  }, [selectedTopicId, readArticles, dataQuery.data?.unit]);
 
   if (dataQuery.isLoading) {
     return (
@@ -1157,91 +1365,168 @@ function UnitDetail() {
       <SiteHeader />
 
       {/* ─── Compact Reading Header ─── */}
-      <div className="animate-fade-in-up sticky top-0 z-30 border-b border-border bg-background/90 shadow-sm backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300">
-        <div className="mx-auto max-w-6xl px-5 py-3 sm:px-8">
-          <div className="flex items-center justify-between gap-3 sm:gap-4">
-            <div className="min-w-0 flex-1 pr-2 sm:pr-4">
+      <div className="sticky top-0 z-30 border-b border-border bg-background/95 shadow-xs backdrop-blur-sm">
+        <div className="mx-auto max-w-6xl px-3 py-2 sm:px-6 md:px-8 sm:py-2.5">
+          <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:gap-4">
+            {/* Top row on mobile / Left breadcrumb on desktop */}
+            <div className="flex items-center justify-between gap-2 min-w-0">
               <Link
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
                 params={{ courseSlug, semesterNumber, subjectSlug }}
-                className="inline-flex items-center gap-1.5 rounded-md text-[11px] font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-1.5 rounded-md text-[11px] font-semibold uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground shrink-0 max-w-[200px] sm:max-w-xs truncate"
               >
-                <ChevronLeft className="h-3.5 w-3.5" />
-                <span className="truncate">
-                  {subject.code} · {subject.title}
-                </span>
+                <ChevronLeft className="h-4 w-4 shrink-0 text-primary" />
+                <span className="truncate">{subject.code}</span>
+                <span className="hidden md:inline text-muted-foreground/60">·</span>
+                <span className="hidden md:inline truncate">{subject.title}</span>
               </Link>
-              <div className="mt-0.5 flex items-center gap-3 truncate">
-                <span className="font-mono text-[10px] uppercase font-semibold text-accent">
-                  Unit {unit.number}
-                </span>
-                <h1 className="truncate font-display text-sm font-normal text-foreground sm:text-base">
-                  {formatTitleCase(unit.title)}
-                </h1>
+
+              {/* Mobile Action Controls placed on the top-right row */}
+              <div className="flex md:hidden items-center gap-1.5 shrink-0">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => {
+                    playPopSound();
+                    const currTitle =
+                      selectedTopicId !== "ALL"
+                        ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.title || unit.title
+                        : unit.title;
+                    const currContext =
+                      selectedTopicId !== "ALL"
+                        ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.body || ""
+                        : readArticles.map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`).join("\n\n");
+                    setAiAssistantTopic(currTitle);
+                    setAiAssistantContext(currContext);
+                    setAiAssistantOpen(true);
+                  }}
+                  className="rounded-full h-7 px-2.5 text-[11px] font-bold border-primary/40 text-primary hover:bg-primary/10 cursor-pointer shadow-xs gap-1"
+                  title="Ask Sparky AI Coach"
+                >
+                  <Sparkles className="h-3 w-3 text-primary animate-pulse" />
+                  <span>AI Coach</span>
+                </Button>
+                <SoundToggle />
+                {isCompleted ? (
+                  <span
+                    className="inline-flex items-center justify-center rounded-full bg-success/15 text-success border border-success/30 h-7 w-7 text-[10px] font-semibold"
+                    title="Unit Completed"
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                ) : !user ? (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="rounded-full h-7 px-2 text-[10px] font-semibold"
+                    title="Sign in to save progress"
+                  >
+                    <Link to="/auth" search={{ mode: "signin" }}>
+                      <Check className="h-3 w-3 mr-0.5" />
+                      <span>Sign In</span>
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => completeMutation.mutate()}
+                    disabled={completeMutation.isPending}
+                    className="rounded-full h-7 w-7 p-0 text-[10px] font-semibold cursor-pointer"
+                    title="Mark Unit Complete"
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                  </Button>
+                )}
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => {
-                  playPopSound();
-                  const currTitle =
-                    selectedTopicId !== "ALL"
-                      ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.title || unit.title
-                      : unit.title;
-                  const currContext =
-                    selectedTopicId !== "ALL"
-                      ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.body || ""
-                      : readArticles.map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`).join("\n\n");
-                  setAiAssistantTopic(currTitle);
-                  setAiAssistantContext(currContext);
-                  setAiAssistantOpen(true);
-                }}
-                className="rounded-full h-8 px-3 text-xs font-bold border-primary/40 text-primary hover:bg-primary/10 cursor-pointer shadow-xs transition-transform active:scale-95"
-                title="Open AI Study Assistant"
-              >
-                <Sparkles className="h-3.5 w-3.5 mr-1 text-primary animate-pulse" />
-                <span className="hidden sm:inline">Ask AI Coach</span>
-                <span className="sm:hidden">AI</span>
-              </Button>
-              <SoundToggle />
-              {readMinutes > 0 && (
-                <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
-                  <Timer className="h-3 w-3" aria-hidden />
-                  {readMinutes} min read
+            {/* Title row on mobile / Desktop Title & Controls inline */}
+            <div className="flex items-center justify-between gap-3 min-w-0">
+              <div className="flex items-center gap-2 min-w-0 flex-1">
+                <span className="font-mono text-[10px] uppercase font-bold text-accent shrink-0">
+                  Unit {unit.number}
                 </span>
-              )}
-              <span className="hidden md:inline-flex items-center gap-1 rounded-full border border-border/80 bg-surface px-2.5 py-1 text-[11px] font-mono font-semibold text-accent">
-                {readPct}% read
-              </span>
-              {isCompleted ? (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 text-success border border-success/20 px-3 py-1 text-[11px] font-semibold">
-                  <Check className="h-3 w-3" /> Completed
-                </span>
-              ) : !user ? (
-                <Button
-                  asChild
-                  size="sm"
-                  variant="outline"
-                  className="rounded-full h-8 text-xs font-semibold"
-                >
-                  <Link to="/auth" search={{ mode: "signin" }}>
-                    <Check className="h-3 w-3 mr-1" /> Sign in to save
-                  </Link>
-                </Button>
-              ) : (
+                <span className="text-muted-foreground/40 hidden md:inline">/</span>
+                <h1 className="truncate font-display text-xs sm:text-sm md:text-base font-semibold text-foreground">
+                  {formatTitleCase(unit.title)}
+                </h1>
+              </div>
+
+              {/* Desktop Only Actions */}
+              <div className="hidden md:flex shrink-0 items-center gap-2">
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => completeMutation.mutate()}
-                  disabled={completeMutation.isPending}
-                  className="rounded-full h-8 text-xs font-semibold cursor-pointer transition-transform active:scale-95"
+                  onClick={() => {
+                    playPopSound();
+                    const currTitle =
+                      selectedTopicId !== "ALL"
+                        ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.title || unit.title
+                        : unit.title;
+                    const currContext =
+                      selectedTopicId !== "ALL"
+                        ? readArticles.find((a: UnitContentItem) => a.id === selectedTopicId)?.body || ""
+                        : readArticles.map((a: UnitContentItem) => `${a.title}\n${a.body || ""}`).join("\n\n");
+                    setAiAssistantTopic(currTitle);
+                    setAiAssistantContext(currContext);
+                    setAiAssistantOpen(true);
+                  }}
+                  className="rounded-full h-8 px-3 text-xs font-bold border-primary/40 text-primary hover:bg-primary/10 cursor-pointer shadow-xs gap-1.5"
+                  title="Open Sparky AI Study Coach"
                 >
-                  <Check className="h-3 w-3 mr-1" /> Mark Complete
+                  <Sparkles className="h-3.5 w-3.5 text-primary animate-pulse" />
+                  <span>Ask AI Coach</span>
                 </Button>
-              )}
+                <SoundToggle />
+                {readMinutes > 0 && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                    <Timer className="h-3 w-3" aria-hidden />
+                    {readMinutes} min read
+                  </span>
+                )}
+                <span
+                  ref={progressBadgeRef}
+                  className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-surface px-2.5 py-1 text-[11px] font-mono font-semibold text-accent"
+                >
+                  0% read
+                </span>
+                {isCompleted ? (
+                  <span
+                    className="inline-flex items-center justify-center rounded-full bg-success/15 text-success border border-success/30 px-3 py-1 text-[11px] font-semibold"
+                    title="Unit Completed"
+                  >
+                    <Check className="h-3.5 w-3.5 mr-1" />
+                    <span>Completed</span>
+                  </span>
+                ) : !user ? (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className="rounded-full h-8 px-3 text-xs font-semibold"
+                    title="Sign in to save progress"
+                  >
+                    <Link to="/auth" search={{ mode: "signin" }}>
+                      <Check className="h-3.5 w-3.5 mr-1" />
+                      <span>Sign in to save</span>
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => completeMutation.mutate()}
+                    disabled={completeMutation.isPending}
+                    className="rounded-full h-8 px-3 text-xs font-semibold cursor-pointer"
+                    title="Mark Unit Complete"
+                  >
+                    <Check className="h-3.5 w-3.5 mr-1" />
+                    <span>Mark Complete</span>
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -1249,8 +1534,9 @@ function UnitDetail() {
         {/* Reading progress bar */}
         <div className="h-1 w-full bg-muted/40 overflow-hidden">
           <div
+            ref={progressBarRef}
             className="h-full bg-accent transition-all duration-150 ease-out"
-            style={{ width: `${readPct}%` }}
+            style={{ width: "0%" }}
           />
         </div>
       </div>
@@ -1495,27 +1781,16 @@ function UnitDetail() {
 
                 return (
                   <div className="space-y-6">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl border border-border/80 bg-card shadow-soft">
-                      <ArticleAudioPlayer
-                        text={`${focusedArticle.title}. ${focusedArticle.body || focusedArticle.description || ""}`}
-                        title={focusedArticle.title}
-                        className="flex-1"
-                      />
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          playPopSound();
-                          setAiAssistantTopic(focusedArticle.title);
-                          setAiAssistantContext(focusedArticle.body || focusedArticle.description || "");
-                          setAiAssistantOpen(true);
-                        }}
-                        className="rounded-xl border-primary/30 text-primary hover:bg-primary/10 h-10 px-3.5 text-xs font-semibold cursor-pointer shrink-0"
-                      >
-                        <Sparkles className="h-3.5 w-3.5 mr-1.5 text-primary" />
-                        Ask AI About Topic
-                      </Button>
-                    </div>
+                    <ArticleAudioPlayer
+                      text={`${focusedArticle.title}. ${focusedArticle.body || focusedArticle.description || ""}`}
+                      title={focusedArticle.title}
+                      onAskAi={() => {
+                        playPopSound();
+                        setAiAssistantTopic(focusedArticle.title);
+                        setAiAssistantContext(focusedArticle.body || focusedArticle.description || "");
+                        setAiAssistantOpen(true);
+                      }}
+                    />
 
                     <EducationalContentRenderer
                       title={focusedArticle.title}
@@ -1590,53 +1865,7 @@ function UnitDetail() {
               <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem] min-w-0">
                 <article ref={articleRef} className="min-w-0 max-w-full overflow-hidden">
                   {/* Mobile Collapsible "On this page" TOC */}
-                  {toc.length > 1 && (
-                    <div className="mb-6 rounded-2xl border border-border/80 bg-card p-3.5 shadow-soft lg:hidden">
-                      <button
-                        type="button"
-                        onClick={() => setMobileTocOpen(!mobileTocOpen)}
-                        className="flex w-full items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground"
-                      >
-                        <span className="flex items-center gap-2 text-foreground">
-                          <ListOrdered className="h-4 w-4 text-primary" /> On this page
-                        </span>
-                        <ChevronDown
-                          className={cn(
-                            "h-4 w-4 transition-transform duration-200",
-                            mobileTocOpen && "rotate-180",
-                          )}
-                        />
-                      </button>
-                      {mobileTocOpen && (
-                        <nav className="mt-3 border-t border-border/60 pt-3">
-                          <ol className="space-y-1.5 text-xs">
-                            {toc.map((item, i) => (
-                              <li key={item.id}>
-                                <a
-                                  href={`#${item.id}`}
-                                  onClick={() => setMobileTocOpen(false)}
-                                  className={cn(
-                                    "flex gap-2 rounded-xl py-2 px-2.5 transition-colors",
-                                    item.isSub && "pl-5 text-muted-foreground/80",
-                                    activeSection === item.id
-                                      ? "bg-primary/10 font-bold text-primary"
-                                      : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                                  )}
-                                >
-                                  {!item.isSub && (
-                                    <span className="font-mono text-muted-foreground/60">
-                                      {i + 1}.
-                                    </span>
-                                  )}
-                                  <span className="truncate">{item.title}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ol>
-                        </nav>
-                      )}
-                    </div>
-                  )}
+                  <MobileCollapsibleToc toc={toc} />
 
                   {readArticles.length === 0 ? (
                     <div className="rounded-3xl border border-border/80 bg-card p-6 sm:p-8 shadow-soft text-center space-y-4">
@@ -1679,27 +1908,16 @@ function UnitDetail() {
                     <div className="space-y-12 min-w-0 max-w-full">
                       {readArticles.map((item: UnitContentItem, i: number) => (
                         <div key={item.id} className="space-y-4">
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl border border-border/80 bg-card shadow-soft">
-                            <ArticleAudioPlayer
-                              text={`${item.title}. ${item.body || item.description || ""}`}
-                              title={item.title}
-                              className="flex-1"
-                            />
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => {
-                                playPopSound();
-                                setAiAssistantTopic(item.title);
-                                setAiAssistantContext(item.body || item.description || "");
-                                setAiAssistantOpen(true);
-                              }}
-                              className="rounded-xl border-primary/30 text-primary hover:bg-primary/10 h-10 px-3.5 text-xs font-semibold cursor-pointer shrink-0"
-                            >
-                              <Sparkles className="h-3.5 w-3.5 mr-1.5 text-primary" />
-                              Ask AI
-                            </Button>
-                          </div>
+                          <ArticleAudioPlayer
+                            text={`${item.title}. ${item.body || item.description || ""}`}
+                            title={item.title}
+                            onAskAi={() => {
+                              playPopSound();
+                              setAiAssistantTopic(item.title);
+                              setAiAssistantContext(item.body || item.description || "");
+                              setAiAssistantOpen(true);
+                            }}
+                          />
 
                           <EducationalContentRenderer
                             title={item.title}
@@ -1852,43 +2070,7 @@ function UnitDetail() {
                 </article>
 
                 {/* Desktop Sticky TOC */}
-                {toc.length > 1 && (
-                  <aside className="hidden lg:block self-start sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto">
-                    <div className="rounded-2xl border border-border/70 bg-card p-4 shadow-soft">
-                      <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
-                        <ListOrdered className="h-3.5 w-3.5 text-primary" /> Table of Contents
-                      </div>
-                      <nav>
-                        <ol className="space-y-1 text-xs">
-                          {toc.map((item, i) => {
-                            const active = activeSection === item.id;
-                            return (
-                              <li key={item.id}>
-                                <a
-                                  href={`#${item.id}`}
-                                  className={cn(
-                                    "flex gap-2 rounded-xl py-1.5 px-2.5 transition-colors",
-                                    item.isSub && "pl-5 text-muted-foreground/80",
-                                    active
-                                      ? "bg-primary/10 font-bold text-primary"
-                                      : "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
-                                  )}
-                                >
-                                  {!item.isSub && (
-                                    <span className="font-mono text-muted-foreground/60">
-                                      {i + 1}.
-                                    </span>
-                                  )}
-                                  <span className="truncate">{item.title}</span>
-                                </a>
-                              </li>
-                            );
-                          })}
-                        </ol>
-                      </nav>
-                    </div>
-                  </aside>
-                )}
+                <DesktopStickyToc toc={toc} />
               </div>
             )}
           </div>
@@ -2582,6 +2764,8 @@ function UnitDetail() {
           subjectTitle={subject.title}
           courseTitle={course?.title}
           contextText={aiAssistantContext}
+          initialAction={aiAssistantAction}
+          initialLang={aiAssistantLang}
           onLoadCustomQuiz={handleLoadCustomQuiz}
         />
       </main>

@@ -39,36 +39,56 @@ async function fetchSemesterDetails(
   return await queryClient.ensureQueryData({
     queryKey,
     queryFn: async () => {
-      const { data: course, error: ce } = await supabase
+      const { data, error } = await supabase
         .from("courses")
-        .select("id, code, title, slug")
+        .select(
+          "id, code, title, slug, semesters!inner(id, number, title, description, subjects(id, code, slug, title, credits, sort_order, status, deleted_at))",
+        )
         .eq("slug", courseSlug)
         .eq("status", "published")
+        .eq("semesters.number", Number(semesterNumber))
+        .eq("semesters.status", "published")
         .maybeSingle();
-      if (ce) throw ce;
-      if (!course) throw notFound();
 
-      const { data: sem, error: se } = await supabase
-        .from("semesters")
-        .select("id, number, title, description")
-        .eq("course_id", course.id)
-        .eq("number", Number(semesterNumber))
-        .eq("status", "published")
-        .maybeSingle();
-      if (se) throw se;
-      if (!sem) throw notFound();
+      if (error) throw error;
+      if (!data) throw notFound();
 
-      const { data: subjects, error: sue } = await supabase
-        .from("subjects")
-        .select("id, code, slug, title, credits")
-        .eq("semester_id", sem.id)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("sort_order")
-        .order("code");
-      if (sue) throw sue;
+      const semRaw = (data.semesters as any[])?.[0];
+      if (!semRaw) throw notFound();
 
-      return { course, sem, subjects: (subjects ?? []) as SubjectItem[] };
+      const course = {
+        id: data.id,
+        code: data.code,
+        title: data.title,
+        slug: data.slug,
+      };
+
+      const sem = {
+        id: semRaw.id,
+        number: semRaw.number,
+        title: semRaw.title,
+        description: semRaw.description,
+      };
+
+      const rawSubjects = (semRaw.subjects ?? []) as Array<
+        SubjectItem & { sort_order?: number; deleted_at?: string | null; status?: string }
+      >;
+      const subjects: SubjectItem[] = rawSubjects
+        .filter((s) => s.status === "published" && !s.deleted_at)
+        .sort(
+          (a, b) =>
+            (a.sort_order ?? 0) - (b.sort_order ?? 0) ||
+            (a.code || "").localeCompare(b.code || ""),
+        )
+        .map((s) => ({
+          id: s.id,
+          code: s.code,
+          slug: s.slug,
+          title: s.title,
+          credits: s.credits,
+        }));
+
+      return { course, sem, subjects };
     },
   });
 }

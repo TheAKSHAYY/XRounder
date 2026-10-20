@@ -33,9 +33,16 @@ export function SiteHeader({
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let current = window.scrollY > 20;
+    setScrolled(current);
+    const onScroll = () => {
+      const isOver = window.scrollY > 20;
+      if (isOver !== current) {
+        current = isOver;
+        setScrolled(isOver);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -122,6 +129,13 @@ export function SiteHeader({
                 activeProps={{ className: "text-foreground font-semibold" }}
               >
                 Study plan
+              </Link>
+              <Link
+                to="/papers"
+                className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                activeProps={{ className: "text-foreground font-semibold" }}
+              >
+                PYQs
               </Link>
             </>
           )}
@@ -243,6 +257,12 @@ export function SiteHeader({
                   className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
                 >
                   Study plan
+                </Link>
+                <Link
+                  to="/papers"
+                  className="flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
+                  Previous Year Papers (PYQs)
                 </Link>
                 <Link
                   to="/developer"

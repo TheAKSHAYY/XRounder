@@ -295,12 +295,8 @@ export function StudyMascot({
 
   // State
   const [isOpen, setIsOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("sparky_mascot_hidden") === "true";
-    }
-    return false;
-  });
+  // Default isHidden: keep Sparky friendly and visible by default on study pages
+  const [isHidden, setIsHidden] = useState(false);
   const [activeTab, setActiveTab] = useState<"next" | "explain" | "exam" | "tip">("next");
   const [currentMood, setCurrentMood] = useState<MascotMood>(initialMood);
   const [speechBubble, setSpeechBubble] = useState<string | null>(null);
@@ -522,26 +518,21 @@ export function StudyMascot({
     playPopSound();
   };
 
-  // Safe collision-avoidance positioning styles
+  // Mascot position classes:
   // On quiz pages: moved safely above the fixed bottom submission bar.
-  // On unit reader pages: kept to the right flank, away from central reading notes.
+  // On unit reader pages: kept to the bottom right flank.
   const positionClasses = useMemo(() => {
     if (context.isQuiz) {
       return "bottom-24 right-4 sm:bottom-24 sm:right-6 md:bottom-24 md:right-8";
     }
     if (context.isUnitReader) {
-      return "bottom-8 right-4 sm:bottom-8 sm:right-6 md:bottom-8 md:right-8";
+      return "bottom-6 right-3 sm:bottom-8 sm:right-6 md:bottom-8 md:right-8";
     }
     if (context.isHome) {
       return "bottom-8 right-4 sm:bottom-10 sm:right-8";
     }
     return "bottom-8 right-4 sm:bottom-8 sm:right-6";
   }, [context.isQuiz, context.isUnitReader, context.isHome]);
-
-  // User requested: hide floating mascot on all subjects ("sub") and unit pages ("units")
-  if (context.isSubject || context.isUnitReader) {
-    return null;
-  }
 
   if (hideDock) {
     return (
@@ -567,17 +558,25 @@ export function StudyMascot({
 
   if (isHidden) {
     return (
-      <div className="fixed bottom-4 right-4 z-40 select-none animate-fade-in-up">
+      <div className="fixed bottom-5 right-4 z-40 select-none animate-fade-in-up">
         <button
           type="button"
           id="sparky-restore-btn"
           onClick={handleRestore}
-          className="group inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-[#F5F3EB]/95 dark:bg-[#201F1B]/95 px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-[0_2px_12px_rgba(32,31,27,0.1)] backdrop-blur-md transition-all hover:scale-105 hover:border-accent hover:bg-muted cursor-pointer"
-          title="Show Sparky — Your Study Pal"
+          className="group relative flex items-center gap-2 rounded-full border-2 border-primary/30 bg-[#F5F3EB]/95 dark:bg-[#201F1B]/95 p-1.5 pr-3.5 shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:border-accent cursor-pointer ring-4 ring-primary/10"
+          title="Sparky — Tap to study with AI"
           aria-label="Restore Sparky study companion"
         >
-          <Sparkles className="h-3.5 w-3.5 text-accent" />
-          <span>Show Sparky</span>
+          <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <MascotSvg size={28} mood="happy" isBlinking={isBlinking} />
+          </div>
+          <div className="text-left">
+            <div className="text-xs font-bold text-foreground flex items-center gap-1">
+              <span>Sparky</span>
+              <Sparkles className="h-3 w-3 text-accent animate-pulse" />
+            </div>
+            <div className="text-[10px] text-muted-foreground font-medium">Study Pal</div>
+          </div>
         </button>
       </div>
     );
@@ -863,19 +862,77 @@ export function StudyMascot({
                       {context.knownUnit ? context.knownUnit.title : "Topic Breakdown"}
                     </div>
 
-                    {context.knownUnit ? (
-                      <div className="space-y-2 text-[11px] leading-relaxed">
-                        <div>
-                          <span className="font-semibold text-foreground">💡 Core Concept: </span>
-                          <span className="text-muted-foreground">{context.knownUnit.concept}</span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-foreground">🎯 Analogy: </span>
-                          <span className="text-muted-foreground">{context.knownUnit.analogy}</span>
-                        </div>
-                        <div>
-                          <span className="font-semibold text-foreground">📋 Exam Focus: </span>
-                          <span className="text-muted-foreground">{context.knownUnit.examFocus}</span>
+                    {context.isUnitReader ? (
+                      <div className="space-y-2.5">
+                        {context.knownUnit ? (
+                          <div className="space-y-2 text-[11px] leading-relaxed">
+                            <div>
+                              <span className="font-semibold text-foreground">💡 Core Concept: </span>
+                              <span className="text-muted-foreground">{context.knownUnit.concept}</span>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">🎯 Analogy: </span>
+                              <span className="text-muted-foreground">{context.knownUnit.analogy}</span>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-foreground">📋 Exam Focus: </span>
+                              <span className="text-muted-foreground">{context.knownUnit.examFocus}</span>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-[11px] text-muted-foreground leading-relaxed">
+                            You are studying Unit {context.unitNumber}. Tap below to have Sparky explain this unit in simple Hinglish!
+                          </p>
+                        )}
+
+                        <div className="pt-2 border-t border-border/60 flex flex-col gap-1.5">
+                          <Button
+                            size="sm"
+                            type="button"
+                            onClick={() => {
+                              setIsOpen(false);
+                              window.dispatchEvent(
+                                new CustomEvent("open-sparky-ai", {
+                                  detail: { action: "explain", lang: "hinglish" },
+                                }),
+                              );
+                            }}
+                            className="btn-squishy w-full h-8 rounded-xl text-xs font-bold gap-1.5 cursor-pointer"
+                          >
+                            <Sparkles className="h-3.5 w-3.5" /> Explain in Hinglish (AI)
+                          </Button>
+                          <Button
+                            size="sm"
+                            type="button"
+                            variant="outline"
+                            onClick={() => {
+                              setIsOpen(false);
+                              window.dispatchEvent(
+                                new CustomEvent("open-sparky-ai", {
+                                  detail: { action: "explain", lang: "hi" },
+                                }),
+                              );
+                            }}
+                            className="w-full h-8 rounded-xl text-xs font-bold border-primary/30 text-primary hover:bg-primary/10 gap-1.5 cursor-pointer"
+                          >
+                            <span>📖 सरल हिंदी में समझें (AI)</span>
+                          </Button>
+                          <Button
+                            size="sm"
+                            type="button"
+                            variant="ghost"
+                            onClick={() => {
+                              setIsOpen(false);
+                              window.dispatchEvent(
+                                new CustomEvent("open-sparky-ai", {
+                                  detail: { action: "ask" },
+                                }),
+                              );
+                            }}
+                            className="w-full h-8 rounded-xl text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+                          >
+                            Ask Doubts to AI Coach
+                          </Button>
                         </div>
                       </div>
                     ) : context.isSubject ? (

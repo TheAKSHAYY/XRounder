@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
   ArrowLeft,
@@ -22,8 +22,48 @@ import { GuestQuizPreview } from "@/components/quiz/guest-preview";
 import { useGuest } from "@/hooks/use-guest";
 import { GUEST_LIMITS } from "@/lib/guest";
 import { recordGuestTopicSession } from "@/lib/guest-activity";
+import { supabase } from "@/integrations/supabase/client";
+import type { Option, Question } from "@/components/quiz/types";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
+  loader: async ({ params, context: { queryClient } }) => {
+    // Concurrently prefetch quiz, questions, and options on link hover/intent for instant transitions
+    await Promise.all([
+      queryClient.prefetchQuery({
+        queryKey: ["public-quiz", params.quizId],
+        queryFn: async () => {
+          const { data, error } = await supabase
+            .from("quizzes")
+            .select("*")
+            .eq("id", params.quizId)
+            .maybeSingle();
+          if (error) throw error;
+          if (!data || data.status !== "published") throw notFound();
+          return data;
+        },
+      }),
+      queryClient.prefetchQuery({
+        queryKey: ["public-quiz-questions", params.quizId],
+        queryFn: async () => {
+          const { data, error } = await supabase
+            .from("quiz_questions")
+            .select("*")
+            .eq("quiz_id", params.quizId)
+            .order("order_index");
+          if (error) throw error;
+          return (data ?? []) as Question[];
+        },
+      }),
+      queryClient.prefetchQuery({
+        queryKey: ["public-quiz-options", params.quizId],
+        queryFn: async () => {
+          const { data, error } = await supabase.rpc("get_quiz_options", { _quiz_id: params.quizId });
+          if (error) throw error;
+          return (data ?? []) as Option[];
+        },
+      }),
+    ]);
+  },
   head: ({ params }) => {
     const url = `https://www.xrounder.in/quizzes/${params.quizId}`;
     return {
@@ -299,7 +339,7 @@ function QuizPage() {
       <SiteFooter />
 
       {activeAttempt && current && (
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/90 backdrop-blur-xl">
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-background/95 backdrop-blur-md">
           <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
             <Button
               variant="outline"

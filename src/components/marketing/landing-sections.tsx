@@ -561,11 +561,15 @@ export function Hero({
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200/90 dark:border-border/60 pb-5">
             <div className="flex items-center gap-3">
               <div className="relative group">
-                <img
-                  src="/images/landing/sparky-hero.jpg"
-                  alt="Sparky Study Pal"
-                  className="h-13 w-13 rounded-2xl object-cover ring-2 ring-amber-500/40 shadow-lg group-hover:scale-105 transition-transform"
-                />
+                <picture>
+                  <source srcSet="/images/landing/sparky-hero.webp" type="image/webp" />
+                  <img
+                    src="/images/landing/sparky-hero.jpg"
+                    alt="Sparky Study Pal"
+                    decoding="async"
+                    className="h-13 w-13 rounded-2xl object-cover ring-2 ring-amber-500/40 shadow-lg group-hover:scale-105 transition-transform"
+                  />
+                </picture>
                 <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[9px] font-bold text-white shadow-xs">
                   ✓
                 </span>
@@ -1644,11 +1648,16 @@ export function TheProblem() {
 
               <div className="lg:col-span-6 relative">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-border/80 shadow-2xl group">
-                  <img
-                    src="/images/landing/exam-notebook.jpg"
-                    alt="University Examination Notebook with 100/100 Grade"
-                    className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
+                  <picture>
+                    <source srcSet="/images/landing/exam-notebook.webp" type="image/webp" />
+                    <img
+                      src="/images/landing/exam-notebook.jpg"
+                      alt="University Examination Notebook with 100/100 Grade"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </picture>
                 </div>
                 <div className="absolute -bottom-4 -left-4 rounded-2xl bg-white dark:bg-card border border-slate-200 dark:border-border/80 p-3.5 shadow-xl flex items-center gap-3">
                   <div className="h-10 w-10 rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-500 flex items-center justify-center font-bold text-lg">
@@ -1791,11 +1800,16 @@ export function TheProblem() {
 
               <div className="lg:col-span-6 relative">
                 <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-border/80 shadow-2xl group">
-                  <img
-                    src="/images/landing/trophy-gamification.jpg"
-                    alt="Gamification Trophy with XP Stars and Level Up Flame"
-                    className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
+                  <picture>
+                    <source srcSet="/images/landing/trophy-gamification.webp" type="image/webp" />
+                    <img
+                      src="/images/landing/trophy-gamification.jpg"
+                      alt="Gamification Trophy with XP Stars and Level Up Flame"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </picture>
                 </div>
               </div>
             </div>

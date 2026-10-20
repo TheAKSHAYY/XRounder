@@ -246,6 +246,76 @@ Guidelines:
   });
 
 function getDeterministicFallbackAnswer(data: GeminiAssistantInputType): string {
+  if (data.language === "hinglish") {
+    if (data.action === "explain") {
+      return `### 📘 ${data.topicTitle} — Hinglish Concept Breakdown
+
+**1. Asan Bhasha Me Samajhte Hain (Concept Clarity):**
+${data.topicTitle} hamare **${data.subjectTitle} (Unit ${data.unitNumber})** ka foundational topic hai. Iska basic matlab ye hai ki computer systems input data ko systematically process karke required output aur reliable storage provide karein.
+
+**2. Asli Zindagi Ka Example (Real-World Analogy):**
+Isko aap ek fast-food kitchen ki tarah samajh sakte hain:
+- **Chef (CPU):** Jo saare orders execute karta hai.
+- **Counter Shelf (RAM/Cache):** Fast access ke liye jahan current orders rakhe hain.
+- **Store Room (Secondary Disk):** Jahan saara raw material aur bulk inventory safe rehti hai.
+
+**3. University Exam Me Likhte Waqt Ye 3 Baatein Yaad Rakhein:**
+1. **Clear Definition:** Sabse pehle 2 lines me technical definition likhein (Hardware vs Software boundary clear karein).
+2. **Block Diagram:** 5-marks ya 10-marks ke questions me labeled block diagram banane se guaranteed 70%+ score milta hai.
+3. **Differences Table:** Jab bhi comparison pucha ho (jaise RAM vs ROM, System vs Application Software), bullet points ki jagah 4-column comparison table banayein.
+
+*(💡 Real-time dynamic AI chat ke liye environment (.env) me \`GEMINI_API_KEY\` configure kar sakte hain.)*`;
+    }
+
+    if (data.action === "revision") {
+      return `### ⚡ High-Yield Revision Summary (Hinglish): ${data.topicTitle}
+
+- **2-Marks Definition Rule:** Technical keywords exact likhein — e.g. volatile vs non-volatile, cycle time, execution sequence.
+- **5-Marks Answer Blueprint:** Definition $\\rightarrow$ Neat block diagram $\\rightarrow$ 4 working points $\\rightarrow$ Practical real-world example.
+- **Exam Warning (Common Mistake):** Kabhi bhi raw data aur processed information ko mix mat karein; Primary Memory (RAM) aur Secondary Storage (SSD/HDD) ka difference crystal clear rakhein.
+
+*(💡 Real-time dynamic AI chat ke liye environment (.env) me \`GEMINI_API_KEY\` configure kar sakte hain.)*`;
+    }
+
+    return `### 💡 Sparky AI Study Coach Answer: "${data.query || data.topicTitle}"
+
+Ye topic **Unit ${data.unitNumber} (${data.subjectTitle})** ka hissa hai.
+
+Is topic ko exam point of view se master karne ke liye:
+1. **Study Material:** Tab me detailed article padhein jahan diagrams aur differences explain kiye gaye hain.
+2. **Practice Quizzes:** 10-Question MCQ set solve karke easy, medium aur hard concepts test karein.
+3. **Written Practice:** University exam model answers review karein jisse likhne ka format clear ho sake.
+
+*(💡 Live AI conversational streaming enable karne ke liye .env me \`GEMINI_API_KEY\` add karein.)*`;
+  }
+
+  if (data.language === "hi") {
+    if (data.action === "explain") {
+      return `### 📘 ${data.topicTitle} — सरल हिंदी व्याख्या
+
+**१. मूलभूत परिभाषा (Core Definition):**
+${data.topicTitle} कंप्यूटर विज्ञान और **${data.subjectTitle} (Unit ${data.unitNumber})** का एक अनिवार्य सिद्धांत है। यह कंप्यूटर सिस्टम के कुशल संचालन, डेटा प्रोसेसिंग और मेमोरी प्रबंधन को नियंत्रित करता है।
+
+**२. व्यावहारिक उदाहरण (Real-World Analogy):**
+इसे एक आधुनिक पुस्तकालय (Library) के रूप में समझें:
+- **लाइब्रेरियन (CPU):** जो सभी अनुरोधों को प्रोसेस और प्रबंधित करता है।
+- **स्टडी टेबल (RAM):** जहां वर्तमान में पढ़ी जा रही पुस्तकें तुरंत उपलब्ध रहती हैं।
+- **मुख्य बुकशेल्फ (Secondary Storage):** जहां सभी पुस्तकें स्थायी रूप से सुरक्षित रहती हैं।
+
+**३. विश्वविद्यालय परीक्षा के लिए 3 प्रमुख रणनीतियाँ:**
+1. **तकनीकी शब्दावली:** परिभाषा में मानक कंप्यूटर विज्ञान शब्दावली (जैसे Volatile, Processing Cycle, Throughput) का प्रयोग करें।
+2. **नामांकित आरेख (Labeled Diagram):** 5 एवं 10 अंक वाले प्रश्नों में पेंसिल से स्पष्ट ब्लॉक डायग्राम अवश्य बनाएं।
+3. **अंतर तालिका (Comparison Table):** तुलनात्मक प्रश्नों में हमेशा व्यवस्थित तालिका का प्रयोग करें।`;
+    }
+
+    return `### ⚡ मुख्य परीक्षा बिंदु (Hindi): ${data.topicTitle}
+
+- **2-अंक प्रश्न:** संक्षिप्त एवं सटीक तकनीकी परिभाषा लिखें।
+- **5-अंक प्रश्न:** परिभाषा $\\rightarrow$ ब्लॉक आरेख $\\rightarrow$ कार्यप्रणाली के 4 मुख्य बिंदु।
+- **सामान्य त्रुटि:** प्राथमिक मेमोरी (RAM) और द्वितीयक स्टोरेज (Hard Disk/SSD) में कभी भ्रमित न हों।`;
+  }
+
+  // Default English
   if (data.action === "explain") {
     return `### 📘 Concept Breakdown: ${data.topicTitle}
 

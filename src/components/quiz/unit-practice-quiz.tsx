@@ -681,23 +681,6 @@ export function UnitPracticeQuiz({
               >
                 <span>🇮🇳 Hinglish</span>
               </button>
-              <button
-                type="button"
-                onClick={() => {
-                  playPopSound();
-                  setLanguageMode("hi");
-                  if (isPlaying) stop();
-                }}
-                className={cn(
-                  "rounded-lg px-2 py-0.5 transition-all cursor-pointer",
-                  languageMode === "hi"
-                    ? "bg-primary text-primary-foreground shadow-2xs"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-                title="Hindi pronunciation voice"
-              >
-                Hindi
-              </button>
             </div>
           </div>
 

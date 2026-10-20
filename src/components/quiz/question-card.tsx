@@ -278,7 +278,7 @@ export function QuestionCard({
 
                 {/* Language Switcher */}
                 <div className="flex items-center gap-0.5 border-l border-border/60 pl-1.5 ml-1">
-                  {(["en", "hinglish", "hi"] as SpeechLanguageMode[]).map((m) => (
+                  {(["en", "hinglish"] as SpeechLanguageMode[]).map((m) => (
                     <button
                       key={m}
                       type="button"
@@ -293,9 +293,9 @@ export function QuestionCard({
                           ? "bg-primary text-primary-foreground shadow-2xs"
                           : "text-muted-foreground hover:text-foreground",
                       )}
-                      title={`Listen in ${m === "en" ? "English" : m === "hinglish" ? "Hinglish" : "Hindi"}`}
+                      title={`Listen in ${m === "en" ? "English" : "Hinglish"}`}
                     >
-                      {m === "en" ? "EN" : m === "hinglish" ? "🇮🇳 Hinglish" : "HI"}
+                      {m === "en" ? "EN" : "🇮🇳 Hinglish"}
                     </button>
                   ))}
                 </div>

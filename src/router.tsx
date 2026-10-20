@@ -129,13 +129,13 @@ export const getRouter = (): Router<any> => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
-    // Prefetch route code + data as soon as the user hovers/touches a link.
+    // Prefetch route code + data when the user deliberately hovers/touches a link.
     defaultPreload: "intent",
-    defaultPreloadDelay: 30,
-    defaultPreloadStaleTime: 30_000,
-    // Keep the current screen visible briefly instead of flashing a spinner.
-    defaultPendingMs: 400,
-    defaultPendingMinMs: 300,
+    defaultPreloadDelay: 120,
+    defaultPreloadStaleTime: 60_000,
+    // Avoid artificial delays on navigation
+    defaultPendingMs: 300,
+    defaultPendingMinMs: 0,
   });
 
   return router;

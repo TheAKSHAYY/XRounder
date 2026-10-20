@@ -3,15 +3,29 @@
 
 const SOUND_KEY = "xrounder_sound_enabled";
 
+let cachedSoundEnabled: boolean | null = null;
+
 export function isSoundEnabled(): boolean {
   if (typeof window === "undefined") return true;
-  const val = localStorage.getItem(SOUND_KEY);
-  return val === null ? true : val === "true";
+  if (cachedSoundEnabled === null) {
+    try {
+      const val = localStorage.getItem(SOUND_KEY);
+      cachedSoundEnabled = val === null ? true : val === "true";
+    } catch {
+      cachedSoundEnabled = true;
+    }
+  }
+  return cachedSoundEnabled;
 }
 
 export function setSoundEnabled(enabled: boolean): void {
+  cachedSoundEnabled = enabled;
   if (typeof window === "undefined") return;
-  localStorage.setItem(SOUND_KEY, String(enabled));
+  try {
+    localStorage.setItem(SOUND_KEY, String(enabled));
+  } catch {
+    // Storage quota or disabled storage
+  }
 }
 
 let audioCtx: AudioContext | null = null;

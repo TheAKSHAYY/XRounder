@@ -46,8 +46,20 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
     // Strip code blocks and inline code
     .replace(/```[\s\S]*?```/g, "Code block.")
     .replace(/`([^`]+)`/g, "$1")
+    // Markdown headings: append sentence break and a distinct natural pause so listeners know a heading was spoken
+    .replace(/^#{1,6}\s+([^\n]+)$/gm, (_m, heading) => {
+      const clean = heading.trim();
+      if (!clean) return "";
+      const punct = /[.?!:]$/.test(clean) ? "" : ".";
+      return `\n\n[HEADING] ${clean}${punct}\n\n`;
+    })
+    // Bold definition terms at start of bullet/line: e.g. "**Cache Memory:** Fast SRAM..."
+    .replace(/^\s*[-*+]?\s*\*\*([^*]+)\*\*[:\s-]*/gm, (_m, term) => {
+      const clean = term.trim();
+      const punct = /[.?!:]$/.test(clean) ? "" : ":";
+      return `\n\n[HEADING] ${clean}${punct}\n\n`;
+    })
     // Strip markdown formatting
-    .replace(/^#+\s+/gm, "")
     .replace(/\|.*?\|/g, " ")
     .replace(/-{3,}/g, "")
     .replace(/\*{1,3}(.*?)\*{1,3}/g, "$1")
@@ -146,23 +158,27 @@ export function buildQuestionSpeechText(options: QuestionSpeechOptions): string 
 
   if (options.passage) {
     const cleanPassage = cleanTextForSpeech(options.passage, options.languageMode);
-    if (cleanPassage) parts.push(`Passage: ${cleanPassage}`);
+    if (cleanPassage) parts.push(`[HEADING] Reading Passage:\n\n${cleanPassage}`);
   }
 
   const cleanPrompt = cleanTextForSpeech(options.prompt, options.languageMode);
-  if (cleanPrompt) parts.push(cleanPrompt);
+  if (cleanPrompt) {
+    const punct = /[.?!]$/.test(cleanPrompt) ? "" : ".";
+    parts.push(`[HEADING] Question:\n\n${cleanPrompt}${punct}`);
+  }
 
   if (options.includeOptions && options.options && options.options.length > 0) {
     options.options.forEach((opt, idx) => {
       const letter = opt.letter || ["A", "B", "C", "D"][idx] || `Option ${idx + 1}`;
       const cleanOpt = cleanTextForSpeech(opt.text, options.languageMode);
       if (cleanOpt) {
-        parts.push(`Option ${letter}: ${cleanOpt}`);
+        const punct = /[.?!]$/.test(cleanOpt) ? "" : ".";
+        parts.push(`Option ${letter}: ${cleanOpt}${punct}`);
       }
     });
   }
 
-  return parts.join(". ");
+  return parts.join("\n\n");
 }
 
 /**
@@ -222,7 +238,24 @@ export function useSpeech() {
   const [voices, setVoices] = useState<SpeechVoiceOption[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [rate, setRate] = useState<number>(1.0);
+
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const queueRef = useRef<Array<{ text: string; isHeading: boolean }>>([]);
+  const currentIndexRef = useRef<number>(0);
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const waitingForNextChunkRef = useRef<boolean>(false);
+  const callbacksRef = useRef<{ onStart?: () => void; onEnd?: () => void } | null>(null);
+  const activeRateRef = useRef<number>(1.0);
+  const activeVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
+
+  // Sync refs with state
+  useEffect(() => {
+    activeRateRef.current = rate;
+  }, [rate]);
+
+  useEffect(() => {
+    activeVoiceRef.current = selectedVoice;
+  }, [selectedVoice]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
@@ -270,7 +303,14 @@ export function useSpeech() {
 
   const stop = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+        pauseTimeoutRef.current = null;
+      }
       window.speechSynthesis.cancel();
+      queueRef.current = [];
+      currentIndexRef.current = 0;
+      waitingForNextChunkRef.current = false;
       setIsPlaying(false);
       setIsPaused(false);
       utteranceRef.current = null;
@@ -279,6 +319,10 @@ export function useSpeech() {
 
   const pause = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window && isPlaying) {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+        pauseTimeoutRef.current = null;
+      }
       window.speechSynthesis.pause();
       setIsPaused(true);
     }
@@ -286,10 +330,84 @@ export function useSpeech() {
 
   const resume = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window && isPaused) {
-      window.speechSynthesis.resume();
       setIsPaused(false);
+      if (waitingForNextChunkRef.current) {
+        // Was paused during inter-chunk pause; proceed to next block
+        waitingForNextChunkRef.current = false;
+        speakBlock(currentIndexRef.current);
+      } else {
+        window.speechSynthesis.resume();
+      }
     }
   }, [isPaused]);
+
+  const speakBlock = useCallback(
+    (index: number) => {
+      if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+      const queue = queueRef.current;
+      if (index >= queue.length) {
+        setIsPlaying(false);
+        setIsPaused(false);
+        queueRef.current = [];
+        currentIndexRef.current = 0;
+        waitingForNextChunkRef.current = false;
+        callbacksRef.current?.onEnd?.();
+        return;
+      }
+
+      const item = queue[index];
+      const utterance = new SpeechSynthesisUtterance(item.text);
+      const voice = activeVoiceRef.current;
+      if (voice) {
+        utterance.voice = voice;
+        utterance.lang = voice.lang;
+      }
+      utterance.rate = activeRateRef.current;
+      utterance.pitch = item.isHeading ? 1.05 : 1.0;
+
+      utterance.onstart = () => {
+        setIsPlaying(true);
+        setIsPaused(false);
+        if (index === 0) {
+          callbacksRef.current?.onStart?.();
+        }
+      };
+
+      utterance.onend = () => {
+        currentIndexRef.current = index + 1;
+        if (currentIndexRef.current < queue.length) {
+          // If a heading was just spoken, pause 500ms so listeners clearly distinguish the heading from the paragraph.
+          // For regular paragraphs, pause 180ms.
+          const pauseDuration = item.isHeading ? 500 : 180;
+          waitingForNextChunkRef.current = true;
+          pauseTimeoutRef.current = setTimeout(() => {
+            waitingForNextChunkRef.current = false;
+            speakBlock(currentIndexRef.current);
+          }, pauseDuration);
+        } else {
+          setIsPlaying(false);
+          setIsPaused(false);
+          queueRef.current = [];
+          currentIndexRef.current = 0;
+          waitingForNextChunkRef.current = false;
+          callbacksRef.current?.onEnd?.();
+        }
+      };
+
+      utterance.onerror = (e) => {
+        if (e.error !== "interrupted" && e.error !== "canceled") {
+          console.warn("SpeechSynthesis error:", e.error);
+        }
+        setIsPlaying(false);
+        setIsPaused(false);
+        utteranceRef.current = null;
+      };
+
+      utteranceRef.current = utterance;
+      window.speechSynthesis.speak(utterance);
+    },
+    [],
+  );
 
   const speak = useCallback(
     (
@@ -308,44 +426,46 @@ export function useSpeech() {
       const cleaned = cleanTextForSpeech(text, activeMode);
       if (!cleaned) return;
 
+      // Cancel previous playback
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+        pauseTimeoutRef.current = null;
+      }
       window.speechSynthesis.cancel();
 
-      const utterance = new SpeechSynthesisUtterance(cleaned);
-      const activeVoice = options?.customVoice || selectedVoice;
-      if (activeVoice) {
-        utterance.voice = activeVoice;
-        utterance.lang = activeVoice.lang;
+      // Split into logical blocks by double newlines or heading tags
+      const rawBlocks = cleaned
+        .split(/\n\n+/)
+        .map((b) => b.trim())
+        .filter(Boolean);
+
+      const parsedQueue: Array<{ text: string; isHeading: boolean }> = [];
+      for (const block of rawBlocks) {
+        const isHeading = block.startsWith("[HEADING]");
+        const textContent = isHeading
+          ? block.replace(/^\[HEADING\]\s*/, "").trim()
+          : block;
+        if (textContent) {
+          parsedQueue.push({ text: textContent, isHeading });
+        }
       }
 
-      utterance.rate = options?.customRate ?? rate;
-      utterance.pitch = 1.0;
+      if (parsedQueue.length === 0) return;
 
-      utterance.onstart = () => {
-        setIsPlaying(true);
-        setIsPaused(false);
-        options?.onStart?.();
-      };
+      if (options?.customRate) {
+        activeRateRef.current = options.customRate;
+      }
+      if (options?.customVoice) {
+        activeVoiceRef.current = options.customVoice;
+      }
 
-      utterance.onend = () => {
-        setIsPlaying(false);
-        setIsPaused(false);
-        utteranceRef.current = null;
-        options?.onEnd?.();
-      };
+      queueRef.current = parsedQueue;
+      currentIndexRef.current = 0;
+      callbacksRef.current = { onStart: options?.onStart, onEnd: options?.onEnd };
 
-      utterance.onerror = (e) => {
-        if (e.error !== "interrupted" && e.error !== "canceled") {
-          console.warn("SpeechSynthesis error:", e.error);
-        }
-        setIsPlaying(false);
-        setIsPaused(false);
-        utteranceRef.current = null;
-      };
-
-      utteranceRef.current = utterance;
-      window.speechSynthesis.speak(utterance);
+      speakBlock(0);
     },
-    [rate, selectedVoice, languageMode],
+    [languageMode, speakBlock],
   );
 
   /**

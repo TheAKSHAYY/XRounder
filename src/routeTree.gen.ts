@@ -36,6 +36,7 @@ import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticat
 import { Route as AuthCallbackRouteImport } from './routes/auth_.callback'
 import { Route as CoursesIndexRouteImport } from './routes/courses.index'
 import { Route as NotesNoteIdRouteImport } from './routes/notes.$noteId'
+import { Route as PapersIndexRouteImport } from './routes/papers.index'
 import { Route as PapersPaperIdRouteImport } from './routes/papers.$paperId'
 import { Route as QuizzesQuizIdRouteImport } from './routes/quizzes.$quizId'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
@@ -206,6 +207,11 @@ const CoursesIndexRoute = CoursesIndexRouteImport.update({
 const NotesNoteIdRoute = NotesNoteIdRouteImport.update({
   id: '/notes/$noteId',
   path: '/notes/$noteId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PapersIndexRoute = PapersIndexRouteImport.update({
+  id: '/papers/',
+  path: '/papers/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PapersPaperIdRoute = PapersPaperIdRouteImport.update({
@@ -440,6 +446,7 @@ export interface FileRoutesByFullPath {
   '/papers/$paperId': typeof PapersPaperIdRoute
   '/quizzes/$quizId': typeof QuizzesQuizIdRoute
   '/courses/': typeof CoursesIndexRoute
+  '/papers/': typeof PapersIndexRoute
   '/admin/superadmin': typeof AuthenticatedAdminSuperadminRouteRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
@@ -502,6 +509,7 @@ export interface FileRoutesByTo {
   '/papers/$paperId': typeof PapersPaperIdRoute
   '/quizzes/$quizId': typeof QuizzesQuizIdRoute
   '/courses': typeof CoursesIndexRoute
+  '/papers': typeof PapersIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
   '/admin/developer': typeof AuthenticatedAdminDeveloperRoute
@@ -565,6 +573,7 @@ export interface FileRoutesById {
   '/papers/$paperId': typeof PapersPaperIdRoute
   '/quizzes/$quizId': typeof QuizzesQuizIdRoute
   '/courses/': typeof CoursesIndexRoute
+  '/papers/': typeof PapersIndexRoute
   '/_authenticated/admin/superadmin': typeof AuthenticatedAdminSuperadminRouteRouteWithChildren
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/_authenticated/admin/announcements': typeof AuthenticatedAdminAnnouncementsRoute
@@ -630,6 +639,7 @@ export interface FileRouteTypes {
     | '/papers/$paperId'
     | '/quizzes/$quizId'
     | '/courses/'
+    | '/papers/'
     | '/admin/superadmin'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/announcements'
@@ -692,6 +702,7 @@ export interface FileRouteTypes {
     | '/papers/$paperId'
     | '/quizzes/$quizId'
     | '/courses'
+    | '/papers'
     | '/.mcp/invoke-tool/$tool'
     | '/admin/announcements'
     | '/admin/developer'
@@ -754,6 +765,7 @@ export interface FileRouteTypes {
     | '/papers/$paperId'
     | '/quizzes/$quizId'
     | '/courses/'
+    | '/papers/'
     | '/_authenticated/admin/superadmin'
     | '/.mcp/invoke-tool/$tool'
     | '/_authenticated/admin/announcements'
@@ -810,6 +822,7 @@ export interface RootRouteChildren {
   PapersPaperIdRoute: typeof PapersPaperIdRoute
   QuizzesQuizIdRoute: typeof QuizzesQuizIdRoute
   CoursesIndexRoute: typeof CoursesIndexRoute
+  PapersIndexRoute: typeof PapersIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   CoursesCourseSlugIndexRoute: typeof CoursesCourseSlugIndexRoute
   CoursesCourseSlugSemesterNumberSubjectSlugRoute: typeof CoursesCourseSlugSemesterNumberSubjectSlugRouteWithChildren
@@ -1005,6 +1018,13 @@ declare module '@tanstack/react-router' {
       path: '/notes/$noteId'
       fullPath: '/notes/$noteId'
       preLoaderRoute: typeof NotesNoteIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/papers/': {
+      id: '/papers/'
+      path: '/papers'
+      fullPath: '/papers/'
+      preLoaderRoute: typeof PapersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/papers/$paperId': {
@@ -1407,6 +1427,7 @@ const rootRouteChildren: RootRouteChildren = {
   PapersPaperIdRoute: PapersPaperIdRoute,
   QuizzesQuizIdRoute: QuizzesQuizIdRoute,
   CoursesIndexRoute: CoursesIndexRoute,
+  PapersIndexRoute: PapersIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   CoursesCourseSlugIndexRoute: CoursesCourseSlugIndexRoute,
   CoursesCourseSlugSemesterNumberSubjectSlugRoute:

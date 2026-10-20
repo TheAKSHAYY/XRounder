@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Sparkles,
   Bot,
@@ -13,6 +13,7 @@ import {
   RefreshCw,
   X,
   Volume2,
+  Languages,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,6 +34,11 @@ import { EducationalContentRenderer } from "@/components/content/educational-con
 import { useSpeech } from "@/hooks/use-speech";
 import { toast } from "sonner";
 
+import { MascotSvg } from "@/components/gamification/study-mascot";
+
+export type AssistantMode = "ask" | "explain" | "revision" | "quiz";
+export type AssistantLang = "en" | "hinglish" | "hi";
+
 interface AiStudyAssistantProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -41,17 +47,37 @@ interface AiStudyAssistantProps {
   subjectTitle: string;
   courseTitle?: string;
   contextText?: string;
+  initialAction?: AssistantMode;
+  initialLang?: AssistantLang;
   onLoadCustomQuiz?: (questions: GeneratedQuizQuestion[]) => void;
 }
 
-type AssistantMode = "ask" | "explain" | "revision" | "quiz";
-type AssistantLang = "en" | "hinglish" | "hi";
-
-const QUICK_PROMPTS = [
-  "Explain in simple terms with an example",
-  "What are the most frequent university exam questions?",
-  "Differences table between core terms",
-  "Key 2-mark definitions for exam revision",
+export const SMART_STUDENT_PROMPTS = [
+  {
+    label: "🚀 Hinglish me samjhao",
+    text: "Is concept ko bilkul simple Hinglish me samjhao real-life college student example ke sath",
+    targetLang: "hinglish" as const,
+  },
+  {
+    label: "💡 हिंदी में व्याख्या",
+    text: "इस विषय को मुख्य बिंदुओं और सरल हिंदी में समझाएं",
+    targetLang: "hi" as const,
+  },
+  {
+    label: "🎯 3 University Exam Questions",
+    text: "What are the 3 most frequent university exam questions from this topic with model answers?",
+    targetLang: null,
+  },
+  {
+    label: "⚡ 2-Min Revision Notes",
+    text: "Give 2-minute exam revision bullet points with keywords to score full marks",
+    targetLang: null,
+  },
+  {
+    label: "📋 Comparison Table",
+    text: "Provide a detailed comparison table of the key terms in this topic",
+    targetLang: null,
+  },
 ];
 
 export function AiStudyAssistant({
@@ -62,10 +88,13 @@ export function AiStudyAssistant({
   subjectTitle,
   courseTitle = "Bachelor of Computer Applications (BCA)",
   contextText = "",
+  initialAction,
+  initialLang,
   onLoadCustomQuiz,
 }: AiStudyAssistantProps) {
-  const [mode, setMode] = useState<AssistantMode>("ask");
-  const [lang, setLang] = useState<AssistantLang>("en");
+  const [mode, setMode] = useState<AssistantMode>(initialAction || "ask");
+  // Default to Hinglish for accessible Indian university learning
+  const [lang, setLang] = useState<AssistantLang>(initialLang || "hinglish");
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState<GeminiAssistantResponse | null>(null);
@@ -73,11 +102,31 @@ export function AiStudyAssistant({
 
   const { speak, isPlaying, stop } = useSpeech();
 
-  const handleRunAction = async (targetMode: AssistantMode, customQuery?: string) => {
+  // Reset or initialize when opened with specific action/lang
+  useEffect(() => {
+    if (open) {
+      if (initialLang) setLang(initialLang);
+      if (initialAction && initialAction !== "ask") {
+        setMode(initialAction);
+        handleRunAction(initialAction, undefined, initialLang || lang);
+      }
+    }
+  }, [open, initialAction, initialLang]);
+
+  const handleRunAction = async (
+    targetMode: AssistantMode,
+    customQuery?: string,
+    overrideLang?: AssistantLang,
+  ) => {
     playPopSound();
     setIsLoading(true);
     setResponse(null);
     stop();
+
+    const activeLang = overrideLang || lang;
+    if (overrideLang && overrideLang !== lang) {
+      setLang(overrideLang);
+    }
 
     try {
       const res = await askGeminiStudyAssistant({
@@ -89,7 +138,7 @@ export function AiStudyAssistant({
           subjectTitle,
           courseTitle,
           context: contextText,
-          language: lang,
+          language: activeLang,
         },
       });
 
@@ -115,29 +164,32 @@ export function AiStudyAssistant({
     if (isPlaying) {
       stop();
     } else if (response?.content) {
-      speak(response.content);
+      speak(response.content, { mode: lang === "hi" ? "hinglish" : lang });
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-3xl max-h-[90vh] flex flex-col p-0 gap-0 border-primary/20 bg-card overflow-hidden shadow-2xl">
-        {/* Header */}
-        <div className="bg-linear-to-r from-primary/10 via-card to-card p-4 sm:p-5 border-b border-border/80 flex items-center justify-between gap-3">
+        {/* Header featuring Sparky mascot */}
+        <div className="bg-linear-to-r from-primary/10 via-card to-card p-4 sm:p-5 border-b border-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-xs">
-              <Bot className="h-5 w-5" />
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 border border-primary/20 shadow-xs overflow-hidden">
+              <MascotSvg
+                size={36}
+                mood={isLoading ? "thinking" : response ? "celebrating" : isPlaying ? "reading" : "happy"}
+              />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <DialogTitle className="font-display text-base sm:text-lg font-bold text-foreground truncate">
-                  AI Study Coach · Gemini Flash
+                  Sparky AI Study Coach
                 </DialogTitle>
                 <Badge
                   variant="outline"
                   className="font-mono text-[9px] font-bold text-primary border-primary/30 uppercase px-1.5 py-0 shrink-0"
                 >
-                  Free Tier
+                  Gemini Flash
                 </Badge>
               </div>
               <p className="text-xs text-muted-foreground truncate max-w-sm sm:max-w-md">
@@ -146,13 +198,13 @@ export function AiStudyAssistant({
             </div>
           </div>
 
-          {/* Language Selector */}
-          <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-xl shrink-0">
+          {/* Prominent Language Selector */}
+          <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-xl shrink-0 border border-border/60 self-start sm:self-auto">
             {(
               [
-                { id: "en", label: "EN" },
-                { id: "hinglish", label: "Hinglish" },
-                { id: "hi", label: "हिंदी" },
+                { id: "hinglish", label: "🇮🇳 Hinglish", title: "Hinglish (सरल भाषा)" },
+                { id: "hi", label: "हिंदी", title: "सरल हिंदी (Devanagari)" },
+                { id: "en", label: "English", title: "Academic English" },
               ] as const
             ).map((l) => (
               <button
@@ -161,11 +213,15 @@ export function AiStudyAssistant({
                 onClick={() => {
                   playPopSound();
                   setLang(l.id);
+                  if (response && mode !== "ask") {
+                    handleRunAction(mode, undefined, l.id);
+                  }
                 }}
+                title={l.title}
                 className={cn(
-                  "px-2 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer",
+                  "px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer",
                   lang === l.id
-                    ? "bg-card text-primary shadow-xs"
+                    ? "bg-primary text-primary-foreground shadow-2xs"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
@@ -226,7 +282,7 @@ export function AiStudyAssistant({
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder={`Ask anything about "${topicTitle}"...`}
+                  placeholder={`Ask anything about "${topicTitle}" (Hinglish, Hindi, or English)...`}
                   className="flex-1 rounded-2xl border border-border/80 bg-background px-4 py-2.5 text-xs sm:text-sm text-foreground focus:outline-hidden focus:ring-2 focus:ring-primary/40"
                   disabled={isLoading}
                 />
@@ -245,40 +301,42 @@ export function AiStudyAssistant({
                 </Button>
               </form>
 
-              {/* Quick Prompt Pills */}
+              {/* Quick Student Prompt Pills */}
               <div className="flex flex-wrap items-center gap-1.5 pt-1">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground font-mono mr-1">
-                  Quick:
+                  1-Tap:
                 </span>
-                {QUICK_PROMPTS.map((p, idx) => (
+                {SMART_STUDENT_PROMPTS.map((p, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => {
-                      setQuery(p);
-                      handleRunAction("ask", p);
+                      setQuery(p.text);
+                      handleRunAction("ask", p.text, p.targetLang || undefined);
                     }}
-                    className="rounded-full border border-border/70 bg-surface px-2.5 py-1 text-[11px] text-muted-foreground hover:border-primary/40 hover:text-foreground transition-colors cursor-pointer"
+                    className="rounded-full border border-border/80 bg-surface px-3 py-1 text-[11px] font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer shadow-2xs"
                   >
-                    {p}
+                    {p.label}
                   </button>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Loading Indicator */}
+          {/* Loading Indicator with Animated Sparky */}
           {isLoading && (
             <div className="flex flex-col items-center justify-center py-12 text-center space-y-3">
               <div className="relative">
-                <div className="h-12 w-12 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
-                <Sparkles className="absolute inset-0 m-auto h-5 w-5 text-primary animate-pulse" />
+                <div className="h-14 w-14 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
+                <div className="absolute inset-0 m-auto h-9 w-9 flex items-center justify-center">
+                  <MascotSvg size={30} mood="thinking" />
+                </div>
               </div>
               <div className="text-xs font-semibold text-foreground">
-                Grounding answer in {topicTitle} curriculum…
+                Sparky is preparing your {lang === "hinglish" ? "Hinglish" : lang === "hi" ? "Hindi" : "English"} explanation…
               </div>
               <p className="text-[11px] text-muted-foreground">
-                Running Gemini model on official syllabus context
+                Grounded in official {subjectTitle} Unit {unitNumber} university curriculum
               </p>
             </div>
           )}
@@ -290,13 +348,11 @@ export function AiStudyAssistant({
               <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="text-[10px] font-mono text-primary border-primary/30">
+                    {lang === "hinglish" ? "🇮🇳 Hinglish" : lang === "hi" ? "हिन्दी" : "English"}
+                  </Badge>
+                  <Badge variant="outline" className="text-[10px] font-mono text-muted-foreground">
                     {response.modelUsed}
                   </Badge>
-                  {response.isDemoFallback && (
-                    <Badge variant="outline" className="text-[10px] text-muted-foreground">
-                      Syllabus Direct
-                    </Badge>
-                  )}
                 </div>
 
                 <div className="flex items-center gap-1.5">
@@ -322,6 +378,52 @@ export function AiStudyAssistant({
                     {copied ? <Check className="h-3.5 w-3.5 text-emerald-500 mr-1" /> : <Copy className="h-3.5 w-3.5 mr-1" />}
                     {copied ? "Copied" : "Copy"}
                   </Button>
+                </div>
+              </div>
+
+              {/* Quick Language Switch / Re-generate Toolbar */}
+              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-card border border-border/80 p-2.5 shadow-2xs">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                  <Languages className="h-3.5 w-3.5 text-primary shrink-0" />
+                  <span>Explain this in:</span>
+                </div>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => handleRunAction(mode, query || undefined, "hinglish")}
+                    className={cn(
+                      "px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                      lang === "hinglish"
+                        ? "bg-primary text-primary-foreground shadow-2xs ring-1 ring-primary/40"
+                        : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    <span>🇮🇳 Hinglish</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRunAction(mode, query || undefined, "hi")}
+                    className={cn(
+                      "px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                      lang === "hi"
+                        ? "bg-primary text-primary-foreground shadow-2xs ring-1 ring-primary/40"
+                        : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    <span>📖 हिंदी (Hindi)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleRunAction(mode, query || undefined, "en")}
+                    className={cn(
+                      "px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1",
+                      lang === "en"
+                        ? "bg-primary text-primary-foreground shadow-2xs ring-1 ring-primary/40"
+                        : "bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    <span>English</span>
+                  </button>
                 </div>
               </div>
 
@@ -361,17 +463,120 @@ export function AiStudyAssistant({
 
           {/* Initial State / Prompt helper */}
           {!response && !isLoading && (
-            <div className="flex flex-col items-center justify-center py-10 text-center space-y-3">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
-                <Sparkles className="h-6 w-6" />
+            <div className="flex flex-col items-center justify-center py-6 text-center space-y-4">
+              <div className="h-16 w-16 rounded-3xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-xs">
+                <MascotSvg size={46} mood="happy" />
               </div>
-              <div className="max-w-md">
-                <h4 className="font-display text-sm font-bold text-foreground">
-                  Your Personal University Exam Coach
+              <div className="max-w-md space-y-1.5">
+                <h4 className="font-display text-base sm:text-lg font-bold text-foreground">
+                  Namaste! Main hoon Sparky — Your AI Study Coach
                 </h4>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Ask any doubt about <strong>{topicTitle}</strong>, request step-by-step explanations, or generate exam practice sets in English, Hindi, or Hinglish.
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Aap <strong>{topicTitle}</strong> ko Hinglish, Hindi ya English me samajh sakte hain. Instant generate karne ke liye tap karein:
                 </p>
+              </div>
+
+              {/* Quick Starter Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 w-full max-w-xl text-left pt-1">
+                {/* 1. Hinglish Hero Card */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("explain");
+                    handleRunAction("explain", undefined, "hinglish");
+                  }}
+                  className="rounded-2xl border-2 border-primary/40 bg-primary/10 hover:bg-primary/15 p-3.5 transition-all cursor-pointer group shadow-xs active:scale-[0.98]"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 font-bold text-xs text-primary">
+                      <BookOpen className="h-4 w-4" />
+                      <span>🇮🇳 Hinglish Me Samjhao</span>
+                    </div>
+                    <Badge variant="outline" className="text-[9px] font-bold text-primary border-primary/40 uppercase">
+                      Senior Style
+                    </Badge>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                    Conversational Hindi-English breakdown with real-life college student analogies.
+                  </p>
+                </button>
+
+                {/* 2. Hindi Hero Card */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("explain");
+                    handleRunAction("explain", undefined, "hi");
+                  }}
+                  className="rounded-2xl border-2 border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/15 p-3.5 transition-all cursor-pointer group shadow-xs active:scale-[0.98]"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 font-bold text-xs text-amber-700 dark:text-amber-400">
+                      <Sparkles className="h-4 w-4" />
+                      <span>📖 सरल हिंदी में व्याख्या</span>
+                    </div>
+                    <Badge variant="outline" className="text-[9px] font-bold text-amber-600 dark:text-amber-400 border-amber-500/40 uppercase">
+                      Devanagari
+                    </Badge>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                    शुद्ध एवं सरल हिंदी में मुख्य बिंदु, परिभाषाएं और उदाहरण (तकनीकी शब्दों सहित).
+                  </p>
+                </button>
+
+                {/* 3. Exam Revision Card */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("revision");
+                    handleRunAction("revision", undefined, lang);
+                  }}
+                  className="rounded-2xl border border-border/80 bg-card hover:border-primary/40 p-3 transition-all cursor-pointer group active:scale-[0.98]"
+                >
+                  <div className="flex items-center gap-2 font-bold text-xs text-foreground">
+                    <Zap className="h-4 w-4 text-amber-500" />
+                    <span>⚡ 2-Min Exam Revision</span>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    High-yield bullet points & scoring keywords for university exams.
+                  </p>
+                </button>
+
+                {/* 4. Top 3 Exam Questions */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery("What are the 3 most frequent university exam questions from this topic with model answers?");
+                    handleRunAction("ask", "What are the 3 most frequent university exam questions from this topic with model answers?", lang);
+                  }}
+                  className="rounded-2xl border border-border/80 bg-card hover:border-primary/40 p-3 transition-all cursor-pointer group active:scale-[0.98]"
+                >
+                  <div className="flex items-center gap-2 font-bold text-xs text-foreground">
+                    <Target className="h-4 w-4 text-emerald-500" />
+                    <span>🎯 Top 3 Exam Questions</span>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    Frequently asked semester exam questions with scoring blueprint.
+                  </p>
+                </button>
+
+                {/* 5. Custom 10-MCQ Quiz */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMode("quiz");
+                    handleRunAction("quiz", undefined, lang);
+                  }}
+                  className="sm:col-span-2 rounded-2xl border border-border/80 bg-card hover:border-primary/40 p-3 transition-all cursor-pointer group active:scale-[0.98]"
+                >
+                  <div className="flex items-center gap-2 font-bold text-xs text-foreground">
+                    <Sparkles className="h-4 w-4 text-primary" />
+                    <span>📝 Generate 10-Question MCQ Practice Test</span>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    Interactive university-pattern test (5 Easy, 3 Medium, 2 Hard) with explanations.
+                  </p>
+                </button>
               </div>
             </div>
           )}

@@ -10,11 +10,17 @@ interface ArticleAudioPlayerProps {
   text: string;
   title?: string;
   className?: string;
+  onAskAi?: () => void;
 }
 
 const SPEED_OPTIONS = [0.8, 1.0, 1.25, 1.5];
 
-export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlayerProps) {
+export function ArticleAudioPlayer({
+  text,
+  title,
+  className,
+  onAskAi,
+}: ArticleAudioPlayerProps) {
   const {
     isSupported,
     isPlaying,
@@ -68,7 +74,6 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
     playPopSound();
     setLanguageMode(newMode);
     if (isPlaying) {
-      // Re-trigger with new language mode
       speak(text, { mode: newMode });
     }
   };
@@ -82,7 +87,8 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
         className,
       )}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        {/* Left: Status & Title */}
         <div className="flex items-center gap-2.5 min-w-0">
           <div
             className={cn(
@@ -95,7 +101,7 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
             <Volume2 className="h-4 w-4" />
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5 flex-wrap">
               <span className="font-display text-xs font-bold text-foreground">
                 Listen to Article
@@ -104,11 +110,7 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
                 variant="outline"
                 className="font-mono text-[9px] font-bold text-primary border-primary/30 uppercase px-1.5 py-0"
               >
-                {languageMode === "hinglish"
-                  ? "🇮🇳 Hinglish Mode"
-                  : languageMode === "hi"
-                    ? "Hindi Voice"
-                    : "Natural Audio"}
+                {languageMode === "hinglish" ? "🇮🇳 Hinglish Mode" : "Natural Audio"}
               </Badge>
               {selectedVoice && (
                 <span className="text-[10px] text-muted-foreground/80 hidden md:inline truncate max-w-[160px]">
@@ -116,7 +118,7 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-muted-foreground truncate max-w-[240px] sm:max-w-md mt-0.5">
+            <p className="text-[11px] text-muted-foreground truncate max-w-full sm:max-w-md mt-0.5">
               {isPlaying
                 ? isPaused
                   ? "Audio paused — tap resume to continue"
@@ -128,15 +130,15 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
           </div>
         </div>
 
-        {/* Player Controls */}
-        <div className="flex items-center gap-2 shrink-0">
-          {/* Language Mode Selector */}
-          <div className="flex items-center rounded-xl border border-border/80 bg-background/80 p-0.5 text-[11px] font-semibold">
+        {/* Right / Bottom: Player Controls */}
+        <div className="flex items-center justify-between sm:justify-end gap-2 flex-wrap pt-2 sm:pt-0 border-t border-border/40 sm:border-0">
+          {/* Language Mode Selector (English / Hinglish only) */}
+          <div className="flex items-center rounded-xl border border-border/80 bg-background/80 p-0.5 text-[11px] font-semibold shrink-0">
             <button
               type="button"
               onClick={() => handleLanguageChange("en")}
               className={cn(
-                "rounded-lg px-2 py-1 transition-all cursor-pointer",
+                "rounded-lg px-2.5 py-1 transition-all cursor-pointer",
                 languageMode === "en"
                   ? "bg-primary text-primary-foreground shadow-2xs"
                   : "text-muted-foreground hover:text-foreground",
@@ -149,105 +151,115 @@ export function ArticleAudioPlayer({ text, title, className }: ArticleAudioPlaye
               type="button"
               onClick={() => handleLanguageChange("hinglish")}
               className={cn(
-                "rounded-lg px-2 py-1 transition-all cursor-pointer flex items-center gap-1",
+                "rounded-lg px-2.5 py-1 transition-all cursor-pointer flex items-center gap-1",
                 languageMode === "hinglish"
                   ? "bg-primary text-primary-foreground shadow-2xs"
                   : "text-muted-foreground hover:text-foreground",
               )}
-              title="Indian English / Hinglish voice for natural technical pronunciation"
+              title="Indian English voice for natural pronunciation"
             >
               <span>🇮🇳 Hinglish</span>
             </button>
-            <button
-              type="button"
-              onClick={() => handleLanguageChange("hi")}
-              className={cn(
-                "rounded-lg px-2 py-1 transition-all cursor-pointer",
-                languageMode === "hi"
-                  ? "bg-primary text-primary-foreground shadow-2xs"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-              title="Hindi pronunciation voice"
-            >
-              Hindi
-            </button>
           </div>
 
-          {/* Speed Toggle */}
-          <Button
-            type="button"
-            size="sm"
-            variant="ghost"
-            onClick={cycleSpeed}
-            className="h-8 px-2 text-[11px] font-mono font-bold text-muted-foreground hover:text-foreground cursor-pointer"
-            title="Adjust speaking rate"
-          >
-            <Gauge className="h-3 w-3 mr-1" />
-            {rate}x
-          </Button>
-
-          {/* Voice Settings Toggle */}
-          {voices.length > 1 && (
+          <div className="flex items-center gap-1.5 shrink-0">
+            {/* Speed Toggle */}
             <Button
               type="button"
               size="sm"
               variant="ghost"
-              onClick={() => {
-                playPopSound();
-                setShowSettings(!showSettings);
-              }}
-              className={cn(
-                "h-8 w-8 p-0 text-muted-foreground hover:text-foreground cursor-pointer",
-                showSettings && "bg-muted text-foreground",
-              )}
-              title="Voice selection"
+              onClick={cycleSpeed}
+              className="h-8 px-2 text-[11px] font-mono font-bold text-muted-foreground hover:text-foreground cursor-pointer shrink-0"
+              title="Adjust speaking rate"
             >
-              <Settings2 className="h-3.5 w-3.5" />
+              <Gauge className="h-3 w-3 mr-1" />
+              {rate}x
             </Button>
-          )}
 
-          {/* Stop Button (only when active) */}
-          {isPlaying && (
+            {/* Voice Settings Toggle */}
+            {voices.length > 1 && (
+              <Button
+                type="button"
+                size="sm"
+                variant="ghost"
+                onClick={() => {
+                  playPopSound();
+                  setShowSettings(!showSettings);
+                }}
+                className={cn(
+                  "h-8 w-8 p-0 text-muted-foreground hover:text-foreground cursor-pointer shrink-0",
+                  showSettings && "bg-muted text-foreground",
+                )}
+                title="Voice selection"
+              >
+                <Settings2 className="h-3.5 w-3.5" />
+              </Button>
+            )}
+
+            {/* Stop Button (only when active) */}
+            {isPlaying && (
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={handleStop}
+                className="h-8 w-8 p-0 rounded-xl text-destructive hover:bg-destructive/10 cursor-pointer shrink-0"
+                title="Stop speech"
+              >
+                <Square className="h-3.5 w-3.5 fill-current" />
+              </Button>
+            )}
+
+            {/* Play / Pause / Resume Button */}
             <Button
               type="button"
               size="sm"
-              variant="outline"
-              onClick={handleStop}
-              className="h-8 w-8 p-0 rounded-xl text-destructive hover:bg-destructive/10 cursor-pointer"
-              title="Stop speech"
+              onClick={handleTogglePlay}
+              className={cn(
+                "btn-squishy rounded-xl text-xs font-bold h-8 px-3.5 shadow-2xs cursor-pointer gap-1.5 shrink-0 transition-transform active:scale-95",
+                isPlaying && !isPaused
+                  ? "bg-muted text-foreground hover:bg-muted/80"
+                  : "bg-primary text-primary-foreground",
+              )}
             >
-              <Square className="h-3.5 w-3.5 fill-current" />
+              {isPlaying && !isPaused ? (
+                <>
+                  <Pause className="h-3.5 w-3.5 fill-current" /> Pause
+                </>
+              ) : isPaused ? (
+                <>
+                  <Play className="h-3.5 w-3.5 fill-current" /> Resume
+                </>
+              ) : (
+                <>
+                  <Play className="h-3.5 w-3.5 fill-current" /> Play Audio
+                </>
+              )}
             </Button>
-          )}
-
-          {/* Play / Pause / Resume Button */}
-          <Button
-            type="button"
-            size="sm"
-            onClick={handleTogglePlay}
-            className={cn(
-              "btn-squishy rounded-xl text-xs font-bold h-8 px-3.5 shadow-2xs cursor-pointer gap-1.5",
-              isPlaying && !isPaused
-                ? "bg-muted text-foreground hover:bg-muted/80"
-                : "bg-primary text-primary-foreground",
-            )}
-          >
-            {isPlaying && !isPaused ? (
-              <>
-                <Pause className="h-3.5 w-3.5 fill-current" /> Pause
-              </>
-            ) : isPaused ? (
-              <>
-                <Play className="h-3.5 w-3.5 fill-current" /> Resume
-              </>
-            ) : (
-              <>
-                <Play className="h-3.5 w-3.5 fill-current" /> Play Audio
-              </>
-            )}
-          </Button>
+          </div>
         </div>
       </div>
+
+      {/* Ask AI Coach Shortcut Bar (if provided) */}
+      {onAskAi && (
+        <div className="mt-3 pt-2.5 border-t border-border/50 flex flex-col xs:flex-row xs:items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground truncate">
+            <Sparkles className="h-3.5 w-3.5 text-primary shrink-0 animate-pulse" />
+            <span className="truncate">Need this explained in Hinglish or Hindi?</span>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={onAskAi}
+            className="rounded-xl border-primary/30 text-primary hover:bg-primary/10 h-7 px-3 text-xs font-bold cursor-pointer shrink-0 shadow-2xs gap-1.5 transition-transform active:scale-95 w-full xs:w-auto"
+            title="Ask Sparky AI Coach about this topic"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            <span>Ask Sparky AI</span>
+          </Button>
+        </div>
+      )}
 
       {/* Voice Selection Panel */}
       {showSettings && voices.length > 1 && (

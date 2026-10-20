@@ -11,18 +11,24 @@ export function useReadingProgress() {
   const [pct, setPct] = useState(0);
 
   useEffect(() => {
+    let raf = 0;
     const compute = () => {
       const doc = document.documentElement;
       const scrollable = doc.scrollHeight - window.innerHeight;
       const next = scrollable <= 0 ? 100 : (window.scrollY / scrollable) * 100;
       setPct((prev) => Math.max(prev, Math.max(0, Math.min(100, Math.round(next)))));
     };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(compute);
+    };
     compute();
-    window.addEventListener("scroll", compute, { passive: true });
-    window.addEventListener("resize", compute);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", compute);
-      window.removeEventListener("resize", compute);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 

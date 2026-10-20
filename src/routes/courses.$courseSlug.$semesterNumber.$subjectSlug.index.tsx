@@ -17,6 +17,7 @@ import {
   Map as MapIcon,
   PlayCircle,
   Presentation,
+  Search,
   Sparkles,
   Star,
   Trophy,
@@ -43,7 +44,8 @@ type PaperRow = {
   title: string;
   year: number;
   exam_type: string;
-  paper_number: number | null;
+  paper_number: string | null;
+  description?: string | null;
 };
 
 type SubjectDetailData = {
@@ -72,52 +74,58 @@ async function fetchSubjectDetails(
   return await queryClient.ensureQueryData({
     queryKey,
     queryFn: async () => {
-      const { data: course, error: ce } = await supabase
+      const { data, error } = await supabase
         .from("courses")
-        .select("id, title")
+        .select(
+          "id, title, semesters!inner(id, number, title, subjects!inner(id, code, title, description, credits, units(id, number, title, summary, status, deleted_at)))",
+        )
         .eq("slug", courseSlug)
         .eq("status", "published")
         .is("deleted_at", null)
+        .eq("semesters.number", Number(semesterNumber))
+        .eq("semesters.status", "published")
+        .is("semesters.deleted_at", null)
+        .eq("semesters.subjects.slug", subjectSlug)
+        .eq("semesters.subjects.status", "published")
+        .is("semesters.subjects.deleted_at", null)
         .maybeSingle();
-      if (ce) throw ce;
-      if (!course) throw notFound();
 
-      const { data: sem, error: se } = await supabase
-        .from("semesters")
-        .select("id, number, title")
-        .eq("course_id", course.id)
-        .eq("number", Number(semesterNumber))
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .maybeSingle();
-      if (se) throw se;
-      if (!sem) throw notFound();
+      if (error) throw error;
+      if (!data) throw notFound();
 
-      const { data: subject, error: sue } = await supabase
-        .from("subjects")
-        .select("id, code, title, description, credits")
-        .eq("semester_id", sem.id)
-        .eq("slug", subjectSlug)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .maybeSingle();
-      if (sue) throw sue;
-      if (!subject) throw notFound();
+      const course = { id: data.id, title: data.title };
+      const semRaw = (data.semesters as any[])?.[0];
+      if (!semRaw) throw notFound();
+      const sem = { id: semRaw.id, number: semRaw.number, title: semRaw.title };
 
-      const { data: units, error: ue } = await supabase
-        .from("units")
-        .select("id, number, title, summary")
-        .eq("subject_id", subject.id)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("number");
-      if (ue) throw ue;
+      const subRaw = (semRaw.subjects as any[])?.[0];
+      if (!subRaw) throw notFound();
+      const subject = {
+        id: subRaw.id,
+        code: subRaw.code,
+        title: subRaw.title,
+        description: subRaw.description,
+        credits: subRaw.credits,
+      };
+
+      const rawUnits = (subRaw.units ?? []) as Array<
+        UnitRow & { status?: string; deleted_at?: string | null }
+      >;
+      const units: UnitRow[] = rawUnits
+        .filter((u) => u.status === "published" && !u.deleted_at)
+        .sort((a, b) => (a.number ?? 0) - (b.number ?? 0))
+        .map((u) => ({
+          id: u.id,
+          number: u.number,
+          title: u.title,
+          summary: u.summary,
+        }));
 
       const unitIds = (units ?? []).map((u) => u.id);
       const [papersRes, contentRes, legacyNotesRes] = await Promise.all([
         supabase
           .from("papers")
-          .select("id, title, year, exam_type, paper_number")
+          .select("id, title, year, exam_type, paper_number, description")
           .eq("subject_id", subject.id)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -447,7 +455,7 @@ function SubjectDetail() {
       const [papersRes, contentRes, legacyNotesRes] = await Promise.all([
         supabase
           .from("papers")
-          .select("id, title, year, exam_type, paper_number")
+          .select("id, title, year, exam_type, paper_number, description")
           .eq("subject_id", subject.id)
           .eq("status", "published")
           .is("deleted_at", null)
@@ -790,7 +798,13 @@ function SubjectDetail() {
               label="Study materials"
               value={subjectQuery.data.subjectContent.total}
             />
-            <StatChip variant="tile" label="Past papers" value={subjectQuery.data.papers.length} />
+            <a href="#past-papers" className="block focus:outline-hidden hover:opacity-90 transition-opacity">
+              <StatChip
+                variant="tile"
+                label="Past papers"
+                value={`${subjectQuery.data.papers.length} PYQs`}
+              />
+            </a>
             <StatChip
               variant="tile"
               label="Last studied"
@@ -1255,52 +1269,13 @@ function SubjectDetail() {
           )}
         </section>
 
-        {/* ─── Resources ─── */}
+        {/* ─── Previous Year Question Papers (PYQs) ─── */}
         {subjectQuery.data && (
-          <section className="mt-14">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-h2 text-foreground">Resources</h2>
-              {subjectQuery.data.papers.length > 0 && (
-                <span className="text-xs font-medium text-muted-foreground">
-                  Previous-year papers
-                </span>
-              )}
-            </div>
-
-            <div className="mt-6 space-y-3">
-              {subjectQuery.data.papers.length === 0 ? (
-                <p className="rounded-lg border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
-                  No past papers archived yet for this subject.
-                </p>
-              ) : (
-                subjectQuery.data.papers.map((p: PaperRow) => (
-                  <Link
-                    key={p.id}
-                    to="/papers/$paperId"
-                    params={{ paperId: p.id }}
-                    className="group flex items-center justify-between gap-4 rounded-lg border border-border bg-surface p-5 interactive-card shadow-soft-xs hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  >
-                    <div className="flex min-w-0 items-start gap-4">
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                        <FileStack className="h-4 w-4" aria-hidden />
-                      </span>
-                      <div className="min-w-0">
-                        <div className="truncate font-display text-base font-semibold text-foreground">
-                          {p.title}
-                        </div>
-                        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium text-muted-foreground">
-                          <span className="tabular-nums text-foreground">{p.year}</span>
-                          <span className="capitalize">{p.exam_type.replace("_", " ")}</span>
-                          {p.paper_number && <span>Paper #{p.paper_number}</span>}
-                        </div>
-                      </div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
-                  </Link>
-                ))
-              )}
-            </div>
-          </section>
+          <SubjectPastPapersSection
+            papers={subjectQuery.data.papers}
+            subjectTitle={subjectQuery.data.subject.title}
+            subjectCode={subjectQuery.data.subject.code}
+          />
         )}
       </main>
       <SiteFooter />
@@ -1564,3 +1539,227 @@ function EmptyUnits({
     />
   );
 }
+
+function SubjectPastPapersSection({
+  papers,
+  subjectTitle,
+  subjectCode,
+}: {
+  papers: PaperRow[];
+  subjectTitle: string;
+  subjectCode: string;
+}) {
+  const [selectedFilter, setSelectedFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const availableYears = useMemo(() => {
+    const years = Array.from(new Set(papers.map((p) => p.year))).sort((a, b) => b - a);
+    return years;
+  }, [papers]);
+
+  const compilationsCount = useMemo(() => {
+    return papers.filter(
+      (p) =>
+        p.exam_type === "other" ||
+        p.title.toLowerCase().includes("compilation") ||
+        p.title.toLowerCase().includes("all-in-one") ||
+        p.title.toLowerCase().includes("merged"),
+    ).length;
+  }, [papers]);
+
+  const filteredPapers = useMemo(() => {
+    return papers.filter((p) => {
+      const isComp =
+        p.exam_type === "other" ||
+        p.title.toLowerCase().includes("compilation") ||
+        p.title.toLowerCase().includes("all-in-one") ||
+        p.title.toLowerCase().includes("merged");
+
+      if (selectedFilter === "compilations") {
+        if (!isComp) return false;
+      } else if (selectedFilter !== "all") {
+        if (String(p.year) !== selectedFilter) return false;
+      }
+
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        const matchTitle = p.title.toLowerCase().includes(q);
+        const matchCode = (p.paper_number || "").toLowerCase().includes(q);
+        const matchDesc = (p.description || "").toLowerCase().includes(q);
+        const matchYear = String(p.year).includes(q);
+        if (!matchTitle && !matchCode && !matchDesc && !matchYear) return false;
+      }
+      return true;
+    });
+  }, [papers, selectedFilter, searchQuery]);
+
+  return (
+    <section id="past-papers" className="mt-14 scroll-mt-20">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-border/60 pb-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-1.5">
+              <FileStack className="h-3.5 w-3.5" /> University Archive
+            </span>
+            <Badge variant="secondary" className="font-mono text-[11px] font-bold">
+              {papers.length} {papers.length === 1 ? "Paper" : "Papers"}
+            </Badge>
+          </div>
+          <h2 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            Previous Year Question Papers
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Official university exam question papers &amp; consolidated multi-year compilations for {subjectCode}.
+          </p>
+        </div>
+
+        <Link
+          to="/papers"
+          className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 shrink-0"
+        >
+          <span>All Subjects Archive</span>
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </div>
+
+      {papers.length === 0 ? (
+        <div className="mt-6 rounded-3xl border border-dashed border-border bg-surface p-8 text-center text-sm text-muted-foreground">
+          No previous year question papers archived yet for this subject.
+        </div>
+      ) : (
+        <div className="mt-6 space-y-5">
+          {/* Filter Pills & Search */}
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+            {/* Year / Compilation pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <Button
+                type="button"
+                size="sm"
+                variant={selectedFilter === "all" ? "default" : "outline"}
+                onClick={() => setSelectedFilter("all")}
+                className="h-8 rounded-full text-xs shrink-0 cursor-pointer"
+              >
+                All ({papers.length})
+              </Button>
+
+              {compilationsCount > 0 && (
+                <Button
+                  type="button"
+                  size="sm"
+                  variant={selectedFilter === "compilations" ? "default" : "outline"}
+                  onClick={() => setSelectedFilter("compilations")}
+                  className={cn(
+                    "h-8 rounded-full text-xs shrink-0 cursor-pointer",
+                    selectedFilter === "compilations"
+                      ? "bg-amber-500 text-white hover:bg-amber-600"
+                      : "border-amber-500/40 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10",
+                  )}
+                >
+                  <Sparkles className="h-3 w-3 mr-1" />
+                  Merged Compilations ({compilationsCount})
+                </Button>
+              )}
+
+              {availableYears.map((yr) => (
+                <Button
+                  key={yr}
+                  type="button"
+                  size="sm"
+                  variant={selectedFilter === String(yr) ? "default" : "ghost"}
+                  onClick={() => setSelectedFilter(String(yr))}
+                  className="h-8 rounded-xl text-xs shrink-0 tabular-nums cursor-pointer"
+                >
+                  {yr}
+                </Button>
+              ))}
+            </div>
+
+            {/* Search filter input */}
+            <div className="relative min-w-[200px]">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search year, paper code..."
+                className="h-8 w-full rounded-xl border border-border bg-surface pl-8 pr-3 text-xs text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-hidden"
+              />
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          {filteredPapers.length === 0 ? (
+            <p className="rounded-2xl border border-dashed border-border bg-surface p-6 text-center text-xs text-muted-foreground">
+              No papers found matching the selected filter.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              {filteredPapers.map((p) => {
+                const isMerged =
+                  p.exam_type === "other" ||
+                  p.title.toLowerCase().includes("compilation") ||
+                  p.title.toLowerCase().includes("all-in-one") ||
+                  p.title.toLowerCase().includes("merged");
+
+                return (
+                  <Link
+                    key={p.id}
+                    to="/papers/$paperId"
+                    params={{ paperId: p.id }}
+                    className={cn(
+                      "group flex flex-col justify-between gap-3 rounded-2xl border p-4 sm:p-5 interactive-card shadow-soft-xs transition-all duration-200",
+                      isMerged
+                        ? "border-amber-500/35 bg-amber-500/5 hover:border-amber-500/60"
+                        : "border-border/80 bg-surface hover:border-primary/40",
+                    )}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <Badge
+                            variant={isMerged ? "warning" : "default"}
+                            className="text-[10px] font-bold px-2 py-0"
+                          >
+                            {isMerged ? "All-In-One Compilation" : `${p.year} University Exam`}
+                          </Badge>
+                          {p.paper_number && (
+                            <Badge
+                              variant="outline"
+                              className="font-mono text-[10px] px-1.5 py-0 bg-muted/30"
+                            >
+                              Code: {p.paper_number}
+                            </Badge>
+                          )}
+                        </div>
+
+                        <span className="text-[11px] font-mono font-bold text-muted-foreground shrink-0">
+                          {p.year}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-2 font-display text-sm sm:text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
+                        {p.title}
+                      </h3>
+
+                      {p.description && (
+                        <p className="mt-1 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                          {p.description}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between border-t border-border/50 pt-3 text-xs font-semibold text-primary">
+                      <span>View &amp; Download Paper</span>
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+

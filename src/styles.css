@@ -254,22 +254,43 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :root:has(:target) {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    /* Subtle editorial depth: soft tonal variation, faint radial light, and fine low-contrast paper grain */
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /*
+   * GPU-composited fixed background layer.
+   * Eliminates continuous CPU/GPU raster tile invalidation on scroll
+   * caused by background-attachment: fixed with SVG fractal noise filters.
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-color: var(--color-background);
     background-image:
       radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255, 255, 255, 0.65), transparent 75%),
       radial-gradient(ellipse 65% 45% at 88% 25%, rgba(116, 122, 82, 0.028), transparent 60%),
       radial-gradient(ellipse 60% 40% at 12% 65%, rgba(213, 209, 197, 0.14), transparent 50%),
       url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.02'/%3E%3C/svg%3E");
-    background-attachment: fixed;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
-  .dark body {
+  .dark body::before {
     background-color: var(--color-background);
     background-image:
       radial-gradient(ellipse 90% 55% at 50% -5%, rgba(32, 31, 27, 0.6), transparent 75%),
@@ -734,29 +755,26 @@ button,
   transform: translateY(0) scale(0.98);
 }
 
-/* Atmospheric technical study grid background (graph paper + warm amber glow) */
-.gaming-grid-bg,
-.app-grid-bg,
-body[data-app-page="true"] {
+/* Atmospheric technical study grid background (graph paper + warm amber glow) on GPU-composited layer */
+body[data-app-page="true"]::before {
   background-color: var(--color-background);
   background-image:
     radial-gradient(circle at 50% -10%, rgba(245, 158, 11, 0.12) 0%, transparent 65%),
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 100% 100%, 32px 32px, 32px 32px;
-  background-attachment: fixed;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-:root:not(.dark) .gaming-grid-bg,
-:root:not(.dark) .app-grid-bg,
-:root:not(.dark) body[data-app-page="true"] {
+:root:not(.dark) body[data-app-page="true"]::before {
   background-color: #fafaf9;
   background-image:
     radial-gradient(circle at 50% -10%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
     linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 100% 100%, 32px 32px, 32px 32px;
-  background-attachment: fixed;
+  transform: translateZ(0);
 }
 
 /* Allow fixed viewport grid on body to flow through top-level page containers seamlessly */
