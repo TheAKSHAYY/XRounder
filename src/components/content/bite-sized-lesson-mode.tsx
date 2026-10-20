@@ -216,6 +216,122 @@ export function BiteSizedLessonMode({
   // Use curated articles if available; otherwise dynamically generate from syllabus topics
   const cards = useMemo(() => {
     if (articles.length > 0) {
+      // If single monolithic unit note (typical in our database), split into digestible section cards
+      if (articles.length === 1 && articles[0].body) {
+        const rawBody = articles[0].body;
+        const h2Parts = rawBody.split(/(?=^##\s+)/m);
+        const validParts = h2Parts.filter((part) => {
+          const trimmed = part.trim();
+          if (!trimmed) return false;
+          const firstLine = trimmed.split("\n")[0].replace(/^##\s*/, "").trim();
+          if (trimmed.startsWith("# ") && !trimmed.startsWith("## ")) return false;
+          if (firstLine.toLowerCase().includes("master exam revision notes")) return false;
+          return true;
+        });
+
+        if (validParts.length >= 2) {
+          const sectionEmojis = ["🎯", "📐", "📝", "💡", "⚡", "🌟"];
+
+          return validParts.map((part, idx) => {
+            const trimmed = part.trim();
+            const firstLine = trimmed
+              .split("\n")[0]
+              .replace(/^##\s*/, "")
+              .replace(/^[📌💡📋]\s*/, "")
+              .trim();
+
+            const lines = trimmed.split("\n");
+            const extractedBullets: string[] = [];
+            let firstQuestionText = "";
+            let firstAnswerText = "";
+            let inFirstAnswer = false;
+
+            for (const l of lines) {
+              const line = l.trim();
+              if (!firstQuestionText && line.match(/^###\s*Q\d+\./i)) {
+                firstQuestionText = line
+                  .replace(/^###\s*Q\d+\.\s*(\[\d+(?:\/\d+)?\s*Marks\]\s*)?/i, "")
+                  .trim();
+                inFirstAnswer = true;
+              } else if (inFirstAnswer) {
+                if (line.startsWith("### ") || line.startsWith("## ") || line.startsWith("---")) {
+                  inFirstAnswer = false;
+                } else if (
+                  line.startsWith("**Model Answer:**") ||
+                  line.startsWith("Model Answer:") ||
+                  line.startsWith("**Comprehensive University Solution:**")
+                ) {
+                  const inline = line
+                    .replace(/^\*\*?(?:Model Answer|Comprehensive University Solution):\*\*?\s*/i, "")
+                    .trim();
+                  if (inline) firstAnswerText += " " + inline;
+                } else if (line) {
+                  firstAnswerText += " " + line;
+                  if (firstAnswerText.length > 120) inFirstAnswer = false;
+                }
+              }
+
+              if (
+                (line.startsWith("- **") || line.startsWith("1. **") || line.startsWith("• **")) &&
+                extractedBullets.length < 4
+              ) {
+                extractedBullets.push(
+                  line.replace(/^[-*•]\s*/, "").replace(/^\d+\.\s*/, "").replace(/\*\*/g, "")
+                );
+              }
+            }
+
+            const cleanAnswer = firstAnswerText.replace(/\*\*([^*]+)\*\*/g, "$1").trim();
+            let shortAnswer = cleanAnswer;
+            if (shortAnswer.length > 95) {
+              const sent = shortAnswer.split(/[.?!]/)[0];
+              shortAnswer = sent && sent.length > 15 ? sent + "." : shortAnswer.slice(0, 85) + "...";
+            }
+
+            const checkQuestion = firstQuestionText
+              ? `Exam Check: ${firstQuestionText.endsWith("?") ? firstQuestionText : firstQuestionText + "?"}`
+              : `Concept Check: Have you grasped the primary topics in ${firstLine}?`;
+
+            const checkOptions =
+              shortAnswer && shortAnswer.length > 10
+                ? [
+                    shortAnswer,
+                    "Not related to the prescribed university syllabus",
+                    "Requires legacy analog hardware without computers",
+                  ].sort(() => 0.5 - Math.random())
+                : ["Understood completely! (+20 XP)", "Reviewing key points"];
+
+            const correctIdx = checkOptions.indexOf(shortAnswer);
+
+            return {
+              id: `section-part-${idx + 1}`,
+              title: firstLine || `Part ${idx + 1}`,
+              emoji: sectionEmojis[idx % sectionEmojis.length],
+              tagline: `${subject.code} · Unit ${unit.number} Part ${idx + 1}`,
+              concept: `Exam syllabus review for ${firstLine}. Focus on exact definitions, diagrams, and marking scheme.`,
+              analogy: null,
+              keyPoints:
+                extractedBullets.length >= 2
+                  ? extractedBullets
+                  : [
+                      "Master the high-yield definitions and core terminology.",
+                      "Study block diagrams and comparison tables for 5-mark questions.",
+                      "Follow structured bullet points for maximum scoring.",
+                    ],
+              bodyMarkdown: trimmed,
+              check: {
+                question: checkQuestion,
+                options: checkOptions,
+                correctIndex: correctIdx >= 0 ? correctIdx : 0,
+                explanation: shortAnswer
+                  ? `Correct Answer: ${shortAnswer}`
+                  : "Great job! Locking in this section builds your foundation for the semester exam.",
+              },
+            };
+          });
+        }
+      }
+
       return articles.map((a, i) => ({
         id: a.id,
         title: a.title,
