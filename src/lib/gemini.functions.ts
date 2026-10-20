@@ -46,26 +46,28 @@ export const askGeminiStudyAssistant = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => GeminiAssistantInput.parse(input))
   .handler(async ({ data }): Promise<GeminiAssistantResponse> => {
     const apiKey = process.env.GEMINI_API_KEY;
-    const configuredModel = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+    const configuredModel = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
     // 1. Language instruction
     const langInstruction =
       data.language === "hi"
-        ? "Respond in clear, accessible Hindi (Devanagari script) with English technical terms in parentheses."
+        ? "Respond in clear, accessible Hindi (Devanagari script) with English technical terms in parentheses. Keep it simple and direct."
         : data.language === "hinglish"
-          ? "Respond in friendly Hinglish (conversational Hindi in Latin script blended with English technical keywords), commonly used by Indian college students."
+          ? "Respond in natural conversational Hinglish — exactly the way Indian college students actually talk to each other. Use relaxed Roman-script Hindi words like 'yaar', 'bhai', 'dekho', 'basically', 'samajh lo', 'easy hai', 'exam me aata hai', 'ek baar padh lo' freely mixed with English technical terms. Do NOT write formal Hindi or translate word-by-word. Sound like a helpful senior student explaining, not a textbook."
           : "Respond in clear, academic, easy-to-understand English suitable for university BCA examinations.";
 
     // 2. Action-specific prompts
     let taskPrompt = "";
     if (data.action === "explain") {
       taskPrompt = `Explain the syllabus topic "${data.topicTitle}" from Unit ${data.unitNumber} of ${data.subjectTitle}.
+Use the study material below as ground truth.
 Provide:
-1. Clear 2-sentence definition.
-2. Step-by-step working / core mechanism.
-3. Real-world relatable analogy.
-4. 3 Most common university exam questions from this topic.
-Keep formatting clean using Markdown with bold keywords.`;
+1. Clear 2-sentence definition (with exact technical terms).
+2. Step-by-step working / core mechanism in simple words.
+3. One real-world relatable analogy a student can remember.
+4. 3 most common 2-mark and 5-mark exam questions from this topic.
+Keep formatting clean using Markdown with bold keywords. Keep language natural and easy to understand.
+${data.context ? `\nReference Study Material:\n${data.context.slice(0, 4000)}` : ""}`;
     } else if (data.action === "revision") {
       taskPrompt = `Create an exam-ready Quick Revision Brief for "${data.topicTitle}" (Unit ${data.unitNumber}, ${data.subjectTitle}):
 1. Key Definitions (2-Marks format).
@@ -73,11 +75,17 @@ Keep formatting clean using Markdown with bold keywords.`;
 3. 3 High-Yield Formulae / Rules / Concepts examiners check.
 4. What NOT to do in exam answers.`;
     } else if (data.action === "quiz") {
-      taskPrompt = `Generate a balanced 10-Question Multiple Choice Question (MCQ) Practice Set for "${data.topicTitle}" from Unit ${data.unitNumber} of ${data.subjectTitle}.
-CRITICAL DISTRIBUTION REQUIREMENT:
-- Exactly 5 Easy questions (definitions, basic facts)
-- Exactly 3 Medium questions (working mechanism, comparison, application)
-- Exactly 2 Hard questions (analytical reasoning, multi-step output, architecture edge-cases)
+      taskPrompt = `Generate a 10-Question MCQ practice set for "${data.topicTitle}" from Unit ${data.unitNumber} of ${data.subjectTitle}.
+
+IMPORTANT RULES:
+- Questions must be based on the actual study material provided below. Do NOT invent topics not present in the material.
+- Distribution: 5 Easy (direct definition/fact), 3 Medium (working/comparison), 2 Hard (application/analysis).
+- All 4 options must be plausible, short (under 12 words each), and clearly related to the topic — NO nonsensical or corporate-jargon filler options.
+- Correct answer must be directly supported by the study material.
+- Explanation must be 1–2 sentences explaining why the answer is correct.
+
+Study Material:
+${data.context ? data.context.slice(0, 5000) : `${data.topicTitle} from ${data.subjectTitle}`}
 
 Output MUST be a single raw JSON array without markdown formatting or code fences:
 [
@@ -85,19 +93,15 @@ Output MUST be a single raw JSON array without markdown formatting or code fence
     "prompt": "Question text here?",
     "difficulty": "easy" | "medium" | "hard",
     "topic_title": "${data.topicTitle}",
-    "explanation": "Clear educational explanation of why the correct option is right.",
+    "explanation": "1-2 sentence explanation of correct answer.",
     "options": [
-      { "text": "Option 1", "is_correct": true },
-      { "text": "Option 2", "is_correct": false },
-      { "text": "Option 3", "is_correct": false },
-      { "text": "Option 4", "is_correct": false }
+      { "text": "Option A", "is_correct": true },
+      { "text": "Option B", "is_correct": false },
+      { "text": "Option C", "is_correct": false },
+      { "text": "Option D", "is_correct": false }
     ]
   }
-]
-Rules:
-- Each question must have exactly 4 non-empty options.
-- Exactly one option must have "is_correct": true.
-- Difficulty values must strictly match the 5/3/2 balance.`;
+]`;
     } else {
       // Default: "ask"
       taskPrompt = `Student Question: "${data.query || "Please explain this topic."}"
@@ -122,8 +126,8 @@ Guidelines:
           modelUsed: "local-curated-generator",
           action: data.action,
           isDemoFallback: true,
-          content: "Generated using verified syllabus question bank (configure GEMINI_API_KEY for dynamic AI generation).",
-          quiz: getDeterministicFallbackQuiz(data.topicTitle),
+          content: `Generated 10 syllabus-calibrated practice questions for Unit ${data.unitNumber}: ${data.topicTitle}.`,
+          quiz: getDeterministicFallbackQuiz(data),
         };
       }
 
@@ -136,11 +140,14 @@ Guidelines:
       };
     }
 
-    // 4. Live Gemini API Call (Free Tier REST endpoint)
-    // 4. Live Gemini API Call (Free Tier REST endpoint with auto-fallback)
-    const candidateModels = [configuredModel, "gemini-3.5-flash-lite", "gemini-3.5-flash"].filter(
-      (v, i, a) => a.indexOf(v) === i,
-    );
+    // 4. Live Gemini API Call with verified model list and auto-fallback
+    const candidateModels = [
+      configuredModel,
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-1.5-flash",
+      "gemini-2.5-flash-lite",
+    ].filter((v, i, a) => a.indexOf(v) === i);
 
     for (const model of candidateModels) {
       try {
@@ -173,7 +180,7 @@ Guidelines:
           const errorText = await res.text();
           console.warn(`Gemini API model ${model} returned error:`, res.status, errorText);
 
-          // If 404 (model deprecated or not available), try next candidate model
+          // If 404 (model not found), try next candidate model
           if (res.status === 404) {
             continue;
           }
@@ -185,6 +192,7 @@ Guidelines:
               action: data.action,
               content:
                 "⚠️ Gemini API free-tier quota momentarily reached. Please wait 30 seconds and try again, or refer to the Study Material tab.",
+              quiz: data.action === "quiz" ? getDeterministicFallbackQuiz(data) : undefined,
             };
           }
 
@@ -192,8 +200,9 @@ Guidelines:
             success: false,
             modelUsed: model,
             action: data.action,
-            content: `AI Assistant unavailable (${res.status}). Falling back to local syllabus guidance.\n\n${getDeterministicFallbackAnswer(data)}`,
+            content: `AI Assistant unavailable (${res.status}). Falling back to verified syllabus guidance for Unit ${data.unitNumber}.\n\n${getDeterministicFallbackAnswer(data)}`,
             isDemoFallback: true,
+            quiz: data.action === "quiz" ? getDeterministicFallbackQuiz(data) : undefined,
           };
         }
 
@@ -216,7 +225,7 @@ Guidelines:
                 success: true,
                 modelUsed: model,
                 action: data.action,
-                content: `Successfully generated ${parsed.length} syllabus-aligned practice questions.`,
+                content: `Successfully generated ${parsed.length} syllabus-aligned practice questions for Unit ${data.unitNumber}.`,
                 quiz: parsed as GeneratedQuizQuestion[],
               };
             }
@@ -241,238 +250,301 @@ Guidelines:
       modelUsed: configuredModel,
       action: data.action,
       isDemoFallback: true,
-      content: `Connection to Gemini timed out. Here is local curriculum guidance for this topic:\n\n${getDeterministicFallbackAnswer(data)}`,
+      content: `Here is verified syllabus guidance for Unit ${data.unitNumber} (${data.topicTitle}):\n\n${getDeterministicFallbackAnswer(data)}`,
+      quiz: data.action === "quiz" ? getDeterministicFallbackQuiz(data) : undefined,
     };
   });
 
+function extractKeyPointsFromContext(context?: string | null): {
+  definitions: string[];
+  points: string[];
+} {
+  const definitions: string[] = [];
+  const points: string[] = [];
+  if (!context) return { definitions, points };
+
+  const lines = context.split("\n");
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) continue;
+
+    if (line.startsWith("### Q") || line.startsWith("**Model Answer:**")) {
+      definitions.push(line.replace(/^###\s*Q\d+\.\s*(\[\d+(?:\/\d+)?\s*Marks\]\s*)?/i, "").replace(/^\*\*Model Answer:\*\*\s*/i, ""));
+    } else if (line.startsWith("- **") || line.startsWith("1. **") || line.startsWith("2. **") || line.startsWith("3. **")) {
+      points.push(line.replace(/^[-*+]\s*/, ""));
+    }
+  }
+
+  return { definitions, points };
+}
+
 function getDeterministicFallbackAnswer(data: GeminiAssistantInputType): string {
+  const { definitions, points } = extractKeyPointsFromContext(data.context);
+  const relevantDef = definitions[0] || points[0] || `${data.topicTitle} is an essential curriculum topic under Unit ${data.unitNumber} of ${data.subjectTitle}.`;
+  const relevantKeyPoints = points.slice(0, 4);
+
   if (data.language === "hinglish") {
     if (data.action === "explain") {
-      return `### 📘 ${data.topicTitle} — Hinglish Concept Breakdown
+      return `### 📘 ${data.topicTitle} — Simple Hinglish Breakdown
 
-**1. Asan Bhasha Me Samajhte Hain (Concept Clarity):**
-${data.topicTitle} hamare **${data.subjectTitle} (Unit ${data.unitNumber})** ka foundational topic hai. Iska basic matlab ye hai ki computer systems input data ko systematically process karke required output aur reliable storage provide karein.
+Yaar, ek baar isko ache se samajh lo — exam me aata hai ye definitely!
 
-**2. Asli Zindagi Ka Example (Real-World Analogy):**
-Isko aap ek fast-food kitchen ki tarah samajh sakte hain:
-- **Chef (CPU):** Jo saare orders execute karta hai.
-- **Counter Shelf (RAM/Cache):** Fast access ke liye jahan current orders rakhe hain.
-- **Store Room (Secondary Disk):** Jahan saara raw material aur bulk inventory safe rehti hai.
+**Basically kya hai ye? (Core Idea):**
+${data.topicTitle} — yeh topic **${data.subjectTitle}** ke Unit ${data.unitNumber} me hai.
+${relevantDef ? `> **Simple definition:** ${relevantDef.replace(/\*\*/g, "")}` : `Iska matlab hai: ${data.topicTitle} ek system/concept hai jo ${data.subjectTitle} me use hota hai.`}
 
-**3. University Exam Me Likhte Waqt Ye 3 Baatein Yaad Rakhein:**
-1. **Clear Definition:** Sabse pehle 2 lines me technical definition likhein (Hardware vs Software boundary clear karein).
-2. **Block Diagram:** 5-marks ya 10-marks ke questions me labeled block diagram banane se guaranteed 70%+ score milta hai.
-3. **Differences Table:** Jab bhi comparison pucha ho (jaise RAM vs ROM, System vs Application Software), bullet points ki jagah 4-column comparison table banayein.
+**Exam ke liye important points (pad lo bhai):**
+${relevantKeyPoints.length > 0
+  ? relevantKeyPoints.map((p) => `- ${p}`).join("\n")
+  : `- Pehle exact definition yaad kar lo — 2 marks pakke milenge.\n- Diagram ya table bana ke answer likho — 5/10 marks me maximum score aata hai.\n- Real-life example do — examiner khush hota hai isse.`}
 
-*(💡 Real-time dynamic AI chat ke liye environment (.env) me \`GEMINI_API_KEY\` configure kar sakte hain.)*`;
+**Exam me answer kaise likhein:**
+1. **2 Marks wala:** Direct definition + ek key point — 2-3 lines kafi hain.
+2. **5 Marks wala:** Definition → Diagram/Points → Real example — structured rakho.
+3. **10 Marks wala:** Full explanation + comparison table + diagram — yeh sab daalo.
+
+*(Hinglish me live AI chat ke liye valid Gemini API key chahiye — tab ye aur better explain karega!)*`;
     }
 
     if (data.action === "revision") {
-      return `### ⚡ High-Yield Revision Summary (Hinglish): ${data.topicTitle}
+      return `### ⚡ Last-Minute Revision: ${data.topicTitle}
+**${data.subjectTitle} · Unit ${data.unitNumber}**
 
-- **2-Marks Definition Rule:** Technical keywords exact likhein — e.g. volatile vs non-volatile, cycle time, execution sequence.
-- **5-Marks Answer Blueprint:** Definition $\\rightarrow$ Neat block diagram $\\rightarrow$ 4 working points $\\rightarrow$ Practical real-world example.
-- **Exam Warning (Common Mistake):** Kabhi bhi raw data aur processed information ko mix mat karein; Primary Memory (RAM) aur Secondary Storage (SSD/HDD) ka difference crystal clear rakhein.
+Bhai last minute me bhi ye padh ke exam me likho — kaam aayega! 💪
 
-*(💡 Real-time dynamic AI chat ke liye environment (.env) me \`GEMINI_API_KEY\` configure kar sakte hain.)*`;
+- **2-Marks me kya likhein:** ${relevantDef.slice(0, 180).replace(/\*\*/g, "")}
+- **5-Marks ka format:**
+${relevantKeyPoints.length > 0 ? relevantKeyPoints.map((p) => `  * ${p}`).join("\n") : "  * Definition ➔ Diagram ya numbered points ➔ Real-world example."}
+- **Dhyan rakho (common mistake):** Vague ya general likha toh marks cut hote hain — syllabus ke exact technical words use karo.
+
+*(Live AI revision ke liye valid API key chahiye!)*`;
     }
 
-    return `### 💡 Sparky AI Study Coach Answer: "${data.query || data.topicTitle}"
+    return `### 💡 Sparky ka jawab: "${data.query || data.topicTitle}"
+**Unit ${data.unitNumber} — ${data.subjectTitle}**
 
-Ye topic **Unit ${data.unitNumber} (${data.subjectTitle})** ka hissa hai.
+${relevantDef ? relevantDef : `${data.topicTitle} ek important topic hai Unit ${data.unitNumber} me — notes me iske baare me pura cover hai.`}
 
-Is topic ko exam point of view se master karne ke liye:
-1. **Study Material:** Tab me detailed article padhein jahan diagrams aur differences explain kiye gaye hain.
-2. **Practice Quizzes:** 10-Question MCQ set solve karke easy, medium aur hard concepts test karein.
-3. **Written Practice:** University exam model answers review karein jisse likhne ka format clear ho sake.
-
-*(💡 Live AI conversational streaming enable karne ke liye .env me \`GEMINI_API_KEY\` add karein.)*`;
+**Aage kya karo:**
+1. 📖 Study Material tab me iska full article padho.
+2. ✅ Practice Quiz me 10 MCQs solve karo — accuracy check hoga.
+3. 🎯 AI se phir se poocho kuch specific doubt ho toh!`;
   }
 
   if (data.language === "hi") {
-    if (data.action === "explain") {
-      return `### 📘 ${data.topicTitle} — सरल हिंदी व्याख्या
+    return `### 📘 ${data.topicTitle} — सरल हिंदी गाइड
+**विषय:** ${data.subjectTitle} (Unit ${data.unitNumber})
 
-**१. मूलभूत परिभाषा (Core Definition):**
-${data.topicTitle} कंप्यूटर विज्ञान और **${data.subjectTitle} (Unit ${data.unitNumber})** का एक अनिवार्य सिद्धांत है। यह कंप्यूटर सिस्टम के कुशल संचालन, डेटा प्रोसेसिंग और मेमोरी प्रबंधन को नियंत्रित करता है।
+**मुख्य बात (Core Concept):**
+${data.topicTitle}, ${data.subjectTitle} के Unit ${data.unitNumber} का एक जरूरी topic है।
+${relevantDef ? `> ${relevantDef.replace(/\*\*/g, "")}` : ""}
 
-**२. व्यावहारिक उदाहरण (Real-World Analogy):**
-इसे एक आधुनिक पुस्तकालय (Library) के रूप में समझें:
-- **लाइब्रेरियन (CPU):** जो सभी अनुरोधों को प्रोसेस और प्रबंधित करता है।
-- **स्टडी टेबल (RAM):** जहां वर्तमान में पढ़ी जा रही पुस्तकें तुरंत उपलब्ध रहती हैं।
-- **मुख्य बुकशेल्फ (Secondary Storage):** जहां सभी पुस्तकें स्थायी रूप से सुरक्षित रहती हैं।
+**परीक्षा के लिए जरूरी points:**
+${relevantKeyPoints.length > 0
+  ? relevantKeyPoints.map((p) => `• ${p}`).join("\n")
+  : `• इस topic की सही definition याद रखें।\n• परीक्षा में diagram और table जरूर बनाएं — ज्यादा marks मिलते हैं।\n• Real-life example देने से answer strong बनता है।`}
 
-**३. विश्वविद्यालय परीक्षा के लिए 3 प्रमुख रणनीतियाँ:**
-1. **तकनीकी शब्दावली:** परिभाषा में मानक कंप्यूटर विज्ञान शब्दावली (जैसे Volatile, Processing Cycle, Throughput) का प्रयोग करें।
-2. **नामांकित आरेख (Labeled Diagram):** 5 एवं 10 अंक वाले प्रश्नों में पेंसिल से स्पष्ट ब्लॉक डायग्राम अवश्य बनाएं।
-3. **अंतर तालिका (Comparison Table):** तुलनात्मक प्रश्नों में हमेशा व्यवस्थित तालिका का प्रयोग करें।`;
-    }
-
-    return `### ⚡ मुख्य परीक्षा बिंदु (Hindi): ${data.topicTitle}
-
-- **2-अंक प्रश्न:** संक्षिप्त एवं सटीक तकनीकी परिभाषा लिखें।
-- **5-अंक प्रश्न:** परिभाषा $\\rightarrow$ ब्लॉक आरेख $\\rightarrow$ कार्यप्रणाली के 4 मुख्य बिंदु।
-- **सामान्य त्रुटि:** प्राथमिक मेमोरी (RAM) और द्वितीयक स्टोरेज (Hard Disk/SSD) में कभी भ्रमित न हों।`;
+**Answer kaise likhein:**
+1. **2 अंक:** सीधी definition + एक key point — 2-3 lines में।
+2. **5 अंक:** Definition → Diagram/Points → Example → Conclusion।
+3. **10 अंक:** पूरी explanation + comparison table + labeled diagram।`;
   }
 
   // Default English
-  if (data.action === "explain") {
-    return `### 📘 Concept Breakdown: ${data.topicTitle}
+  return `### 📘 Concept Breakdown: ${data.topicTitle}
+**Course Hierarchy:** ${data.courseTitle} > ${data.subjectTitle} > Unit ${data.unitNumber}
 
-**Definition:**
-${data.topicTitle} is a foundational pillar in Unit ${data.unitNumber} of **${data.subjectTitle}**. In computer science examinations, questions on this topic test both technical definition and architectural clarity.
+**1. Core Definition:**
+${data.topicTitle} is a key topic in Unit ${data.unitNumber} of **${data.subjectTitle}**.
+${relevantDef ? `> ${relevantDef.replace(/\*\*/g, "")}` : ""}
 
-**Key Principles to Remember:**
-1. **Input-Processing-Output Integrity**: All computing processes operate on raw data, apply mathematical/logical operations, and deliver contextual information.
-2. **Standard Terminology**: Always define exact hardware/software boundaries (e.g. registers vs cache, system vs application software).
-3. **Diagrammatic Representation**: In 5-mark and 15-mark university answers, always include a block diagram and a 4-column comparison table.
+**2. Key Architectural & Examination Principles:**
+${relevantKeyPoints.length > 0
+  ? relevantKeyPoints.map((p) => `- ${p}`).join("\n")
+  : `- Master the foundational definitions and boundary conditions for ${data.topicTitle}.\n- Structure 5-mark and 10-mark university answers with neat architectural diagrams and comparison tables.`}
 
-*(💡 To enable dynamic generative AI answers, configure \`GEMINI_API_KEY\` in your environment variables.)*`;
-  }
-
-  if (data.action === "revision") {
-    return `### ⚡ High-Yield Revision Summary: ${data.topicTitle}
-
-- **2-Marks Definition:** Ensure exact technical keywords (e.g., electronic programmable device, volatile vs non-volatile, cycle time in nanoseconds).
-- **5-Marks Structure:** Write definition $\\rightarrow$ draw labeled block diagram $\\rightarrow$ state 4 bulleted characteristics $\\rightarrow$ cite practical computer system examples.
-- **Exam Warning:** Never confuse raw data with processed information; never mix primary memory (RAM/ROM) with secondary mass storage (HDD/SSD).
-
-*(💡 To enable dynamic generative AI answers, configure \`GEMINI_API_KEY\` in your environment variables.)*`;
-  }
-
-  return `### 💡 Study Coach Answer for: "${data.query || data.topicTitle}"
-
-This topic is part of **Unit ${data.unitNumber} (${data.subjectTitle})**.
-
-When studying this concept:
-1. Review the primary article under the **Study Material** tab for detailed architectures and comparison matrices.
-2. Practice the 10-Question set in **Practice Quizzes** to test your recall on easy, medium, and hard difficulty questions.
-3. Check the **Written Practice** tab for university examination model answers.
-
-*(💡 Note: Add \`GEMINI_API_KEY\` to your server environment (.env) to enable live AI conversational chat with Gemini Flash.)*`;
+**3. University Exam Strategy:**
+1. **2-Marks:** Lead with exact academic definition without conversational fluff.
+2. **5-Marks:** Provide definition, block diagram, 4 detailed characteristics, and practical real-world example.
+3. **10/15-Marks:** Exhaustive architectural breakdown, equations/diagrams, and comparison matrix.`;
 }
 
-function getDeterministicFallbackQuiz(topicTitle: string): GeneratedQuizQuestion[] {
-  return [
+function extractQuestionsFromNotes(
+  notesText: string,
+  topicTitle: string,
+): Array<{ prompt: string; answer: string }> {
+  const questions: Array<{ prompt: string; answer: string }> = [];
+  if (!notesText) return questions;
+  const lines = notesText.split("\n");
+  let currentQ: string | null = null;
+  let currentAnswer = "";
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.match(/^###\s*Q\d+\./i)) {
+      if (currentQ && currentAnswer) {
+        questions.push({
+          prompt: currentQ.replace(/^###\s*Q\d+\.\s*(\[\d+(?:\/\d+)?\s*Marks\]\s*)?/i, "").trim(),
+          answer: currentAnswer.trim(),
+        });
+      }
+      currentQ = line;
+      currentAnswer = "";
+    } else if (currentQ) {
+      if (line.startsWith("**Model Answer:**") || line.startsWith("###")) {
+        currentAnswer += " " + line.replace("**Model Answer:**", "").trim();
+      } else if (line.startsWith("## ") || line.startsWith("---")) {
+        if (currentQ && currentAnswer) {
+          questions.push({
+            prompt: currentQ.replace(/^###\s*Q\d+\.\s*(\[\d+(?:\/\d+)?\s*Marks\]\s*)?/i, "").trim(),
+            answer: currentAnswer.trim(),
+          });
+          currentQ = null;
+          currentAnswer = "";
+        }
+      } else if (line) {
+        currentAnswer += " " + line;
+      }
+    }
+  }
+
+  if (currentQ && currentAnswer) {
+    questions.push({
+      prompt: currentQ.replace(/^###\s*Q\d+\.\s*(\[\d+(?:\/\d+)?\s*Marks\]\s*)?/i, "").trim(),
+      answer: currentAnswer.trim(),
+    });
+  }
+
+  return questions;
+}
+
+export function getDeterministicFallbackQuiz(
+  data: Pick<GeminiAssistantInputType, "topicTitle" | "unitNumber" | "subjectTitle"> & Partial<GeminiAssistantInputType>
+): GeneratedQuizQuestion[] {
+  const extracted = extractQuestionsFromNotes(data.context || "", data.topicTitle);
+  const quiz: GeneratedQuizQuestion[] = [];
+
+  // Collect keyword phrases from the context for natural distractors
+  const contextKeywords: string[] = [];
+  if (data.context) {
+    const matches = data.context.match(/\*\*([^*]{5,60})\*\*/g) || [];
+    for (const m of matches) {
+      const cleaned = m.replace(/\*\*/g, "").trim();
+      if (cleaned && cleaned.length > 4 && !contextKeywords.includes(cleaned)) {
+        contextKeywords.push(cleaned);
+      }
+    }
+  }
+  // Simple topic-related filler distractors (generic but relevant sounding)
+  const topicWord = data.topicTitle.split(" ")[0] || "System";
+  const genericDistractors = [
+    `A manual paper-based method unrelated to ${topicWord}`,
+    `A hardware component used only for data storage`,
+    `An external audit tool that bypasses ${topicWord}`,
+    `A legacy technique used before computers were introduced`,
+    `None of the above`,
+  ];
+
+  /** Pull a short, readable answer snippet from a raw answer string */
+  function cleanAnswer(raw: string, maxLen = 90): string {
+    let t = raw.replace(/^[-*+]\s*/, "").replace(/\*\*([^*]+)\*\*/g, "$1").trim();
+    if (t.length > maxLen) {
+      const firstSent = t.split(/[.?!]/)[0].trim();
+      t = firstSent && firstSent.length > 15 ? firstSent : t.slice(0, maxLen - 3) + "...";
+    }
+    return t;
+  }
+
+  if (extracted.length >= 3) {
+    // Build a pool of short answer texts to use as distractors
+    const answerPool = extracted.map((e) => cleanAnswer(e.answer));
+
+    for (let i = 0; i < Math.min(10, extracted.length); i++) {
+      const item = extracted[i];
+      const correctText = cleanAnswer(item.answer);
+
+      // Pick 3 distractors: prefer other answers from notes, then keywords, then generic
+      const otherFromNotes = answerPool
+        .filter((_, idx) => idx !== i && answerPool[idx] !== correctText)
+        .slice(0, 2);
+      const keywordDistractors = contextKeywords
+        .filter((k) => k !== correctText && !otherFromNotes.includes(k))
+        .slice(0, 2);
+      const allDistractors = [...otherFromNotes, ...keywordDistractors, ...genericDistractors]
+        .filter((d) => d !== correctText)
+        .slice(0, 3);
+
+      const options = [
+        { text: correctText, is_correct: true },
+        { text: allDistractors[0] || genericDistractors[0], is_correct: false },
+        { text: allDistractors[1] || genericDistractors[1], is_correct: false },
+        { text: allDistractors[2] || genericDistractors[2], is_correct: false },
+      ].sort(() => 0.5 - Math.random());
+
+      // Make the question prompt simpler and more readable
+      const prompt = item.prompt.endsWith("?")
+        ? item.prompt
+        : `${item.prompt}?`;
+
+      quiz.push({
+        prompt,
+        difficulty: i < 5 ? "easy" : i < 8 ? "medium" : "hard",
+        topic_title: data.topicTitle,
+        explanation: cleanAnswer(item.answer, 220),
+        options,
+      });
+    }
+  }
+
+  // If fewer than 10 questions were generated from notes, fill with simple topic-based questions
+  const simpleFillers: Array<{ q: string; correct: string; wrong: string[] }> = [
     {
-      prompt: `Which of the following best defines the primary role of ${topicTitle}?`,
-      difficulty: "easy",
-      topic_title: topicTitle,
-      explanation: "Foundational definition adhering to university syllabus terminology.",
-      options: [
-        { text: "Accepting input, executing instructions, and producing output", is_correct: true },
-        { text: "Generating hardware interrupts randomly", is_correct: false },
-        { text: "Only storing secondary non-volatile records", is_correct: false },
-        { text: "Connecting to analog telephone exchanges directly", is_correct: false },
+      q: `What is the main purpose of ${data.topicTitle}?`,
+      correct: `It helps manage and organize ${data.topicTitle.toLowerCase()} activities efficiently`,
+      wrong: [
+        `It is used only for hardware maintenance`,
+        `It replaces the entire ${data.subjectTitle} curriculum`,
+        `It is not related to ${data.subjectTitle}`,
       ],
     },
     {
-      prompt: "What is the speed of modern CPU clock cycles typically measured in?",
-      difficulty: "easy",
-      topic_title: topicTitle,
-      explanation: "Modern processor clock speeds are quantified in Gigahertz (GHz) or $10^9$ cycles per second.",
-      options: [
-        { text: "Gigahertz (GHz)", is_correct: true },
-        { text: "Kilobytes per hour (KB/h)", is_correct: false },
-        { text: "Milliseconds (ms)", is_correct: false },
-        { text: "Pixels per inch (PPI)", is_correct: false },
+      q: `${data.topicTitle} is a topic studied in which subject?`,
+      correct: data.subjectTitle,
+      wrong: [
+        `Computer Hardware Repair`,
+        `Digital Electronics`,
+        `Advanced Database Systems`,
       ],
     },
     {
-      prompt: "Which component coordinates and controls all hardware operations within the CPU?",
-      difficulty: "easy",
-      topic_title: topicTitle,
-      explanation: "The Control Unit (CU) sequences the fetch, decode, and execute cycles for every instruction.",
-      options: [
-        { text: "Control Unit (CU)", is_correct: true },
-        { text: "Secondary Storage Unit", is_correct: false },
-        { text: "Arithmetic Logic Unit only", is_correct: false },
-        { text: "Input Buffer Interface", is_correct: false },
-      ],
-    },
-    {
-      prompt: "Which principle states that inaccurate input data always leads to inaccurate output information?",
-      difficulty: "easy",
-      topic_title: topicTitle,
-      explanation: "GIGO (Garbage In, Garbage Out) states that computer logic accuracy is bound to input data integrity.",
-      options: [
-        { text: "Garbage In, Garbage Out (GIGO)", is_correct: true },
-        { text: "First In, First Out (FIFO)", is_correct: false },
-        { text: "Moore's Empirical Law", is_correct: false },
-        { text: "Amdahl's Parallel Limit", is_correct: false },
-      ],
-    },
-    {
-      prompt: "Which of the following is volatile primary semiconductor memory?",
-      difficulty: "easy",
-      topic_title: topicTitle,
-      explanation: "Random Access Memory (RAM) loses all stored data when electrical power is switched off.",
-      options: [
-        { text: "Random Access Memory (RAM)", is_correct: true },
-        { text: "Read Only Memory (ROM)", is_correct: false },
-        { text: "Hard Disk Drive (HDD)", is_correct: false },
-        { text: "NAND Flash Solid State Drive", is_correct: false },
-      ],
-    },
-    {
-      prompt: "How does Static RAM (SRAM) differ fundamentally from Dynamic RAM (DRAM)?",
-      difficulty: "medium",
-      topic_title: topicTitle,
-      explanation: "SRAM utilizes flip-flops (transistors) and does not need periodic capacitive refresh cycles, making it faster than DRAM.",
-      options: [
-        { text: "SRAM uses flip-flops and does not require periodic refreshing", is_correct: true },
-        { text: "SRAM is slower and cheaper than DRAM", is_correct: false },
-        { text: "SRAM stores data magnetically on rotating platters", is_correct: false },
-        { text: "DRAM cannot be used as primary system memory", is_correct: false },
-      ],
-    },
-    {
-      prompt: "In the memory hierarchy, what is the primary architectural trade-off as you move closer to the CPU?",
-      difficulty: "medium",
-      topic_title: topicTitle,
-      explanation: "Moving closer to the CPU (Registers, Cache) yields nanosecond access times but significantly higher cost per bit and lower capacity.",
-      options: [
-        { text: "Access speed increases, but cost per bit rises and capacity decreases", is_correct: true },
-        { text: "Capacity increases while cost per bit decreases", is_correct: false },
-        { text: "Latency increases while bandwidth drops", is_correct: false },
-        { text: "Physical size increases while clock frequency remains zero", is_correct: false },
-      ],
-    },
-    {
-      prompt: "What is the primary role of the Address Bus in a computer system?",
-      difficulty: "medium",
-      topic_title: topicTitle,
-      explanation: "The Address Bus is unidirectional and carries the physical memory address from the CPU to RAM/peripherals.",
-      options: [
-        { text: "Carrying memory location addresses from the CPU to memory units", is_correct: true },
-        { text: "Transmitting actual binary data bi-directionally", is_correct: false },
-        { text: "Supplying DC electric power to motherboards", is_correct: false },
-        { text: "Synchronizing system speaker volume", is_correct: false },
-      ],
-    },
-    {
-      prompt: "If a system has a 32-bit address bus, what is the maximum theoretical physical memory it can address directly?",
-      difficulty: "hard",
-      topic_title: topicTitle,
-      explanation: "$2^{32}\\text{ bytes} = 4,294,967,296\\text{ bytes} = 4\\text{ Gigabytes (GB)}$.",
-      options: [
-        { text: "4 Gigabytes (4 GB)", is_correct: true },
-        { text: "64 Kilobytes (64 KB)", is_correct: false },
-        { text: "16 Terabytes (16 TB)", is_correct: false },
-        { text: "1024 Megabytes (1 GB)", is_correct: false },
-      ],
-    },
-    {
-      prompt: "Which sequence correctly reflects the memory access latency from fastest to slowest?",
-      difficulty: "hard",
-      topic_title: topicTitle,
-      explanation: "CPU Registers (~0.5 ns) < L1/L2 Cache (~1-5 ns) < Main RAM (~50-80 ns) < NVMe SSD (~20-100 µs) < Mechanical HDD (~5-15 ms).",
-      options: [
-        { text: "CPU Registers < L1 Cache < Main RAM < NVMe SSD < HDD", is_correct: true },
-        { text: "Main RAM < CPU Registers < L1 Cache < HDD < NVMe SSD", is_correct: false },
-        { text: "L1 Cache < CPU Registers < HDD < Main RAM < NVMe SSD", is_correct: false },
-        { text: "NVMe SSD < Main RAM < L1 Cache < CPU Registers < HDD", is_correct: false },
+      q: `Which unit covers ${data.topicTitle}?`,
+      correct: `Unit ${data.unitNumber}`,
+      wrong: [
+        `Unit ${data.unitNumber === 1 ? 2 : 1}`,
+        `Unit ${data.unitNumber >= 4 ? 1 : 5}`,
+        `This topic is not in the syllabus`,
       ],
     },
   ];
+
+  let fillerIdx = 0;
+  while (quiz.length < 10) {
+    const filler = simpleFillers[fillerIdx % simpleFillers.length];
+    fillerIdx++;
+    const idx = quiz.length + 1;
+    quiz.push({
+      prompt: filler.q,
+      difficulty: idx <= 5 ? "easy" : idx <= 8 ? "medium" : "hard",
+      topic_title: data.topicTitle,
+      explanation: `${filler.correct} — this is a basic fact about ${data.topicTitle} in Unit ${data.unitNumber}.`,
+      options: [
+        { text: filler.correct, is_correct: true },
+        { text: filler.wrong[0], is_correct: false },
+        { text: filler.wrong[1], is_correct: false },
+        { text: filler.wrong[2], is_correct: false },
+      ].sort(() => 0.5 - Math.random()),
+    });
+  }
+
+  return quiz;
 }

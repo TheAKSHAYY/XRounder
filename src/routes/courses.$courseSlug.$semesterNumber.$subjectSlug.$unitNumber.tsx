@@ -63,7 +63,7 @@ import { sanitizeEducationalMarkdown, splitUnitContentIntoTopics } from "@/lib/c
 import { UnitPracticeQuiz, type PracticeQuestion } from "@/components/quiz/unit-practice-quiz";
 import { ArticleAudioPlayer } from "@/components/tts/article-audio-player";
 import { AiStudyAssistant } from "@/components/ai/ai-study-assistant";
-import type { GeneratedQuizQuestion } from "@/lib/gemini.functions";
+import { getDeterministicFallbackQuiz, type GeneratedQuizQuestion } from "@/lib/gemini.functions";
 
 export type PaperRow = {
   id: string;
@@ -752,6 +752,18 @@ function UnitDetail() {
     }
   };
 
+  // Remember this active unit so subject index and Sparky recommend the exact chosen unit
+  useEffect(() => {
+    if (typeof window !== "undefined" && subjectSlug && unitNumber) {
+      try {
+        localStorage.setItem(`last_visited_unit_${subjectSlug}`, String(unitNumber));
+        localStorage.setItem("last_visited_course_path", window.location.pathname);
+      } catch {
+        // ignore quota errors
+      }
+    }
+  }, [subjectSlug, unitNumber]);
+
   const [revealedPyqs, setRevealedPyqs] = useState<Record<string, boolean>>({});
   const [masteredPyqs, setMasteredPyqs] = useState<Record<string, boolean>>({});
 
@@ -1186,6 +1198,36 @@ function UnitDetail() {
     if (!dataQuery.data?.subject?.code || !dataQuery.data?.unit?.number) return [];
     return getCuratedUnitMcqs(dataQuery.data.subject.code, dataQuery.data.unit.number);
   }, [dataQuery.data?.subject?.code, dataQuery.data?.unit?.number]);
+
+  const unitPracticeQuestions = useMemo<PracticeQuestion[]>(() => {
+    if (customAiQuizQuestions && customAiQuizQuestions.length > 0) {
+      return customAiQuizQuestions;
+    }
+    if (calibratedUnitMcqs && calibratedUnitMcqs.length > 0) {
+      return calibratedUnitMcqs;
+    }
+    // Extract dynamic 10-question practice set from unit notes / content items
+    const notesText = readArticles
+      .map((a: UnitContentItem) => `${a.title}\n${a.body || a.description || ""}`)
+      .join("\n\n");
+    return getDeterministicFallbackQuiz({
+      subjectTitle: dataQuery.data?.subject?.title ?? "Subject",
+      unitNumber: dataQuery.data?.unit?.number ?? Number(unitNumber) ?? 1,
+      topicTitle: dataQuery.data?.unit?.title ?? "Unit Topics",
+      courseTitle: "Bachelor of Computer Applications (BCA)",
+      language: "en",
+      action: "quiz",
+      context: notesText,
+    });
+  }, [
+    customAiQuizQuestions,
+    calibratedUnitMcqs,
+    readArticles,
+    dataQuery.data?.subject?.title,
+    dataQuery.data?.unit?.number,
+    dataQuery.data?.unit?.title,
+    unitNumber,
+  ]);
 
   const pyqQuestions = useMemo(
     () =>
@@ -2365,17 +2407,15 @@ function UnitDetail() {
             )}
 
             {/* Dedicated 10-Question Balanced MCQ Practice Engine */}
-            <UnitPracticeQuiz
-              questions={
-                customAiQuizQuestions && customAiQuizQuestions.length > 0
-                  ? customAiQuizQuestions
-                  : calibratedUnitMcqs
-              }
-              unitNumber={unit.number}
-              unitTitle={unit.title}
-              subjectTitle={subject.title}
-              quizId={primaryQuiz?.id}
-            />
+            <div id="practice-quiz">
+              <UnitPracticeQuiz
+                questions={unitPracticeQuestions}
+                unitNumber={unit.number}
+                unitTitle={unit.title}
+                subjectTitle={subject.title}
+                quizId={primaryQuiz?.id}
+              />
+            </div>
 
             {/* Complete 50-Question Bank Banner */}
             {primaryQuiz && (

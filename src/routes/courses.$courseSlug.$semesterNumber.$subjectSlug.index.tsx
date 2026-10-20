@@ -668,6 +668,16 @@ function SubjectDetail() {
     });
   }, [units, progress, contentByUnit, unitQuizzesData]);
 
+  const savedUnitNum = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    try {
+      const val = localStorage.getItem(`last_visited_unit_${subjectSlug}`);
+      return val ? Number(val) : null;
+    } catch {
+      return null;
+    }
+  }, [subjectSlug]);
+
   const overall = useMemo(() => {
     const total = unitStats.length;
     const completed = unitStats.filter((u) => u.status === "completed").length;
@@ -675,14 +685,16 @@ function SubjectDetail() {
 
     const needsRevUnit = unitStats.find((u) => u.quiz?.needsRevision);
 
-    // Resume unit: first unit needing revision, else most-recent activity that isn't complete, else first non-complete, else first
+    // Resume unit: first unit needing revision, else most-recent activity that isn't complete, else user's last visited unit, else first non-complete, else first
     const withActivity = unitStats
       .filter((u) => u.lastActivity)
       .sort((a, b) => (b.lastActivity! > a.lastActivity! ? 1 : -1));
     const activeResume = withActivity.find((u) => u.status !== "completed");
+    const savedUnit = savedUnitNum ? unitStats.find((u) => u.unit.number === savedUnitNum) : null;
     const resume =
       needsRevUnit ??
       activeResume ??
+      savedUnit ??
       unitStats.find((u) => u.status !== "completed") ??
       unitStats[0] ??
       null;
@@ -690,15 +702,17 @@ function SubjectDetail() {
     const lastActivity = withActivity[0]?.lastActivity ?? null;
 
     return { total, completed, pct, resume, lastActivity, needsRevUnit };
-  }, [unitStats]);
+  }, [unitStats, savedUnitNum]);
 
-  const started = overall.completed > 0 || unitStats.some((u) => u.status !== "not_started");
+  const started = overall.completed > 0 || unitStats.some((u) => u.status !== "not_started") || !!savedUnitNum;
 
   const loadingCore = subjectQuery.isLoading;
   const loadingProgress = !!user && progressQuery.isLoading;
 
   const heroCtaLabel = !user
-    ? "Start Learning"
+    ? savedUnitNum
+      ? `Continue Unit ${savedUnitNum}`
+      : "Start Learning"
     : overall.total === 0
       ? "Coming soon"
       : overall.needsRevUnit
@@ -706,8 +720,8 @@ function SubjectDetail() {
         : overall.completed === overall.total
           ? "Review Learning"
           : started
-            ? `Continue Unit ${overall.resume?.unit.number ?? 1}`
-            : "Start Unit 1";
+            ? `Continue Unit ${overall.resume?.unit.number ?? savedUnitNum ?? 1}`
+            : "Start Learning";
 
   return (
     <div className="min-h-screen bg-background">

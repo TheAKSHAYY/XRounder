@@ -421,6 +421,15 @@ export function StudyMascot({
     const knownSubject = SYLLABUS_KNOWLEDGE[subjectSlug];
     const knownUnit = knownSubject?.unitTopics[unitNumber];
 
+    // Read last visited unit for the current subject from localStorage
+    let savedUnitNum: number | null = null;
+    if (typeof window !== "undefined" && subjectSlug) {
+      try {
+        const v = localStorage.getItem(`last_visited_unit_${subjectSlug}`);
+        if (v) savedUnitNum = Number(v);
+      } catch { /* ignore */ }
+    }
+
     return {
       isHome,
       isCourses,
@@ -435,6 +444,7 @@ export function StudyMascot({
       unitNumber,
       knownSubject,
       knownUnit,
+      savedUnitNum,
     };
   }, [pathname]);
 
@@ -797,9 +807,15 @@ export function StudyMascot({
 
                     {context.isSubject && (
                       <>
-                        <p className="text-muted-foreground leading-relaxed">
-                          Begin with Unit 1 notes. Review the core definitions, study the block diagrams, then take the practice quiz.
-                        </p>
+                        {context.savedUnitNum ? (
+                          <p className="text-muted-foreground leading-relaxed">
+                            Tum last time <strong className="text-foreground">Unit {context.savedUnitNum}</strong> padh rahe the. Wahi se continue karo — definitions review karo, phir practice quiz solve karo!
+                          </p>
+                        ) : (
+                          <p className="text-muted-foreground leading-relaxed">
+                            Start with Unit 1 notes. Review the core definitions, study the block diagrams, then take the practice quiz.
+                          </p>
+                        )}
                         <Button
                           asChild
                           size="sm"
@@ -812,10 +828,12 @@ export function StudyMascot({
                               courseSlug: context.courseSlug,
                               semesterNumber: String(context.semesterNumber),
                               subjectSlug: context.subjectSlug,
-                              unitNumber: "1",
+                              unitNumber: String(context.savedUnitNum ?? 1),
                             }}
                           >
-                            Read Unit 1 Notes <ArrowRight className="h-3 w-3 ml-auto" />
+                            {context.savedUnitNum
+                              ? `Continue Unit ${context.savedUnitNum} Notes`
+                              : "Read Unit 1 Notes"} <ArrowRight className="h-3 w-3 ml-auto" />
                           </Link>
                         </Button>
                       </>
@@ -824,19 +842,54 @@ export function StudyMascot({
                     {context.isUnitReader && (
                       <>
                         <p className="text-muted-foreground leading-relaxed">
-                          You are reading Unit {context.unitNumber}! After reviewing the lesson definitions, test your understanding with timed MCQs or proceed to Unit {context.unitNumber + 1}.
+                          Unit {context.unitNumber} padh rahe ho — badhiya! Notes review karo, phir MCQs solve karo ya AI se explain karwao.
                         </p>
-                        <div className="flex gap-2 mt-1">
+                        <div className="flex flex-col gap-1.5 mt-1">
                           <Button
-                            asChild
                             size="sm"
-                            className="btn-cta flex-1 h-8 rounded-full text-xs font-medium cursor-pointer"
-                            onClick={() => setIsOpen(false)}
+                            className="btn-cta w-full h-8 rounded-full text-xs font-medium gap-1 cursor-pointer"
+                            onClick={() => {
+                              setIsOpen(false);
+                              // Scroll to the practice quiz anchor on the same page
+                              setTimeout(() => {
+                                document.getElementById("practice-quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                              }, 100);
+                            }}
                           >
-                            <Link to="/mock-test">
-                              Take Mock Exam <ArrowRight className="h-3 w-3 ml-1" />
-                            </Link>
+                            Practice Unit {context.unitNumber} Quiz <ArrowRight className="h-3 w-3 ml-auto" />
                           </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="w-full h-8 rounded-full text-xs font-medium gap-1 cursor-pointer border-primary/30"
+                            onClick={() => {
+                              setIsOpen(false);
+                              window.dispatchEvent(new CustomEvent("open-sparky-ai", { detail: { action: "explain", lang: "hinglish" } }));
+                            }}
+                          >
+                            <Sparkles className="h-3 w-3" /> AI se Unit {context.unitNumber} explain karwao
+                          </Button>
+                          {context.unitNumber < 5 && (
+                            <Button
+                              asChild
+                              size="sm"
+                              variant="ghost"
+                              className="w-full h-8 rounded-full text-xs text-muted-foreground cursor-pointer"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <Link
+                                to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                                params={{
+                                  courseSlug: context.courseSlug,
+                                  semesterNumber: String(context.semesterNumber),
+                                  subjectSlug: context.subjectSlug,
+                                  unitNumber: String(context.unitNumber + 1),
+                                }}
+                              >
+                                Next: Unit {context.unitNumber + 1} <ArrowRight className="h-3 w-3 ml-auto" />
+                              </Link>
+                            </Button>
+                          )}
                         </div>
                       </>
                     )}

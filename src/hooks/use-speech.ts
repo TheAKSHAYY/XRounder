@@ -31,6 +31,9 @@ export const APPROVED_TTS_SELECTORS = [
   '[data-tts="explanation"]',
 ].join(", ");
 
+// Retain active utterances to prevent V8 garbage-collection from cutting speech mid-sentence
+const activeUtterances = new Set<SpeechSynthesisUtterance>();
+
 /**
  * Strips HTML tags, accessibility hidden content, UI boilerplate, and formats text for natural speech.
  */
@@ -43,6 +46,8 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
     // Strip markdown images and links
     .replace(/!\[.*?\]\(.*?\)/g, "")
     .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+    // Strip markdown task lists
+    .replace(/^\s*[-*+]?\s*\[[ xX]\]\s*/gm, "")
     // Strip code blocks and inline code
     .replace(/```[\s\S]*?```/g, "Code block.")
     .replace(/`([^`]+)`/g, "$1")
@@ -59,19 +64,20 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
       const punct = /[.?!:]$/.test(clean) ? "" : ":";
       return `\n\n[HEADING] ${clean}${punct}\n\n`;
     })
-    // Strip markdown formatting
+    // Strip markdown formatting & tables
     .replace(/\|.*?\|/g, " ")
     .replace(/-{3,}/g, "")
     .replace(/\*{1,3}(.*?)\*{1,3}/g, "$1")
     .replace(/_{1,3}(.*?)_{1,3}/g, "$1")
     .replace(/^\s*[-*+]\s+/gm, "")
-    // Strip raw question numbering prefixes like "Q1.", "Q. 1:", "Question 1 of 10:", etc.
-    .replace(/^(?:Q(?:uestion)?\.?\s*\d+(?:\s*(?:of|\/)\s*\d+)?[:.-]?\s*)/i, "")
+    // Strip raw question numbering prefixes like "Q1. [2 Marks]", "Q. 1:", "Question 1 of 10:", etc.
+    .replace(/^(?:Q(?:uestion)?\.?\s*\d+(?:\s*(?:of|\/)\s*\d+)?(?:\s*\[[^\]]+\])?[:.-]?\s*)/gim, "")
     // Strip callout tags
     .replace(/>\s*\[!.*?\]/g, "")
     .replace(/>/g, "")
     // Strip math delimiters and clean math symbols
     .replace(/\$+(.*?)\$+/g, "$1")
+    .replace(/\\text\{([^}]+)\}/g, "$1")
     .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "$1 divided by $2")
     .replace(/\\cdot/g, " multiplied by ")
     .replace(/\\times/g, " times ")
@@ -101,6 +107,17 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
     "\\bENIAC\\b": "Eniac",
     "\\bEDVAC\\b": "Edvac",
     "\\bUNIVAC\\b": "Univac",
+    "\\bTPS\\b": "T P S",
+    "\\bMIS\\b": "M I S",
+    "\\bDSS\\b": "D S S",
+    "\\bEIS\\b": "E I S",
+    "\\bERP\\b": "E R P",
+    "\\bCRM\\b": "C R M",
+    "\\bHRIS\\b": "H R I S",
+    "\\bEOQ\\b": "E O Q",
+    "\\bJIT\\b": "Just In Time",
+    "\\bRFID\\b": "R F I D",
+    "\\bMRP\\b": "M R P",
   };
 
   for (const [pattern, replacement] of Object.entries(techReplacements)) {
@@ -117,11 +134,62 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
       .replace(/\bya\b/gi, "ya");
   }
 
-  // Strip emojis, symbols, and duplicate spaces
+  // Strip emojis, symbols, normalize horizontal spaces while preserving newlines
   return text
     .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, "")
-    .replace(/\s+/g, " ")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n\s*\n/g, "\n\n")
     .trim();
+}
+
+/**
+ * Splits text into safe, bite-sized speakable chunks (under 180 chars).
+ * Prevents browser speech synthesis engine buffer overflow and timeouts.
+ */
+export function splitIntoSpeakableChunks(
+  cleanedText: string,
+): Array<{ text: string; isHeading: boolean }> {
+  if (!cleanedText) return [];
+
+  const rawBlocks = cleanedText
+    .split(/\n\n+/)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const parsedQueue: Array<{ text: string; isHeading: boolean }> = [];
+
+  for (const block of rawBlocks) {
+    const isHeading = block.startsWith("[HEADING]");
+    const textContent = isHeading
+      ? block.replace(/^\[HEADING\]\s*/, "").trim()
+      : block;
+
+    if (!textContent) continue;
+
+    // Split text into natural sentence fragments <= 160 characters
+    const sentences = textContent.match(/[^.!?\n]+[.!?\n]+|[^.!?\n]+$/g) || [textContent];
+    let currentChunk = "";
+
+    for (const s of sentences) {
+      const trimmed = s.trim();
+      if (!trimmed) continue;
+
+      if (!currentChunk) {
+        currentChunk = trimmed;
+      } else if (currentChunk.length + trimmed.length + 1 <= 160) {
+        currentChunk += " " + trimmed;
+      } else {
+        parsedQueue.push({ text: currentChunk, isHeading });
+        currentChunk = trimmed;
+      }
+    }
+
+    if (currentChunk) {
+      parsedQueue.push({ text: currentChunk, isHeading });
+    }
+  }
+
+  return parsedQueue;
 }
 
 /** Backward-compatible export alias */
@@ -257,38 +325,38 @@ export function useSpeech() {
     activeVoiceRef.current = selectedVoice;
   }, [selectedVoice]);
 
+  // Initialize voices once and keep listeners alive
   useEffect(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      setIsSupported(true);
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    setIsSupported(true);
 
-      const updateVoices = () => {
-        const available = window.speechSynthesis.getVoices();
-        if (!available || available.length === 0) return;
+    const updateVoices = () => {
+      const available = window.speechSynthesis.getVoices();
+      if (!available || available.length === 0) return;
 
-        const options: SpeechVoiceOption[] = available.map((v) => ({
-          voice: v,
-          name: v.name,
-          lang: v.lang,
-          isNatural: /natural|online|neural|google|premium|enhanced/i.test(v.name),
-        }));
-        setVoices(options);
+      const options: SpeechVoiceOption[] = available.map((v) => ({
+        voice: v,
+        name: v.name,
+        lang: v.lang,
+        isNatural: /natural|online|neural|google|premium|enhanced/i.test(v.name),
+      }));
+      setVoices(options);
 
-        // Pick the best voice for the active language mode
-        const best = findBestVoiceForMode(available, languageMode);
-        if (best) setSelectedVoice(best);
-      };
+      // Pick the best voice for the active language mode
+      const best = findBestVoiceForMode(available, languageMode);
+      if (best) setSelectedVoice(best);
+    };
 
-      updateVoices();
-      window.speechSynthesis.onvoiceschanged = updateVoices;
+    updateVoices();
+    window.speechSynthesis.onvoiceschanged = updateVoices;
 
-      return () => {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          window.speechSynthesis.onvoiceschanged = null;
-        }
-      };
-    }
-  }, [languageMode]);
+    return () => {
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        activeUtterances.clear();
+      }
+    };
+  }, []);
 
   // Synchronize voice when languageMode changes
   useEffect(() => {
@@ -308,6 +376,7 @@ export function useSpeech() {
         pauseTimeoutRef.current = null;
       }
       window.speechSynthesis.cancel();
+      activeUtterances.clear();
       queueRef.current = [];
       currentIndexRef.current = 0;
       waitingForNextChunkRef.current = false;
@@ -355,8 +424,15 @@ export function useSpeech() {
         return;
       }
 
+      // Unstick engine if stalled in paused state
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+
       const item = queue[index];
       const utterance = new SpeechSynthesisUtterance(item.text);
+      activeUtterances.add(utterance);
+
       const voice = activeVoiceRef.current;
       if (voice) {
         utterance.voice = voice;
@@ -374,11 +450,12 @@ export function useSpeech() {
       };
 
       utterance.onend = () => {
+        activeUtterances.delete(utterance);
         currentIndexRef.current = index + 1;
         if (currentIndexRef.current < queue.length) {
-          // If a heading was just spoken, pause 500ms so listeners clearly distinguish the heading from the paragraph.
-          // For regular paragraphs, pause 180ms.
-          const pauseDuration = item.isHeading ? 500 : 180;
+          // If a heading was just spoken, pause 400ms for clear distinction.
+          // For regular sentences, pause 150ms.
+          const pauseDuration = item.isHeading ? 400 : 150;
           waitingForNextChunkRef.current = true;
           pauseTimeoutRef.current = setTimeout(() => {
             waitingForNextChunkRef.current = false;
@@ -395,6 +472,7 @@ export function useSpeech() {
       };
 
       utterance.onerror = (e) => {
+        activeUtterances.delete(utterance);
         if (e.error !== "interrupted" && e.error !== "canceled") {
           console.warn("SpeechSynthesis error:", e.error);
         }
@@ -432,24 +510,10 @@ export function useSpeech() {
         pauseTimeoutRef.current = null;
       }
       window.speechSynthesis.cancel();
+      activeUtterances.clear();
 
-      // Split into logical blocks by double newlines or heading tags
-      const rawBlocks = cleaned
-        .split(/\n\n+/)
-        .map((b) => b.trim())
-        .filter(Boolean);
-
-      const parsedQueue: Array<{ text: string; isHeading: boolean }> = [];
-      for (const block of rawBlocks) {
-        const isHeading = block.startsWith("[HEADING]");
-        const textContent = isHeading
-          ? block.replace(/^\[HEADING\]\s*/, "").trim()
-          : block;
-        if (textContent) {
-          parsedQueue.push({ text: textContent, isHeading });
-        }
-      }
-
+      // Split into safe bite-sized speakable chunks (< 180 chars per utterance)
+      const parsedQueue = splitIntoSpeakableChunks(cleaned);
       if (parsedQueue.length === 0) return;
 
       if (options?.customRate) {
@@ -463,7 +527,14 @@ export function useSpeech() {
       currentIndexRef.current = 0;
       callbacksRef.current = { onStart: options?.onStart, onEnd: options?.onEnd };
 
-      speakBlock(0);
+      // Micro-buffer so async cancel() settles before speaking first block
+      pauseTimeoutRef.current = setTimeout(() => {
+        pauseTimeoutRef.current = null;
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        speakBlock(0);
+      }, 50);
     },
     [languageMode, speakBlock],
   );

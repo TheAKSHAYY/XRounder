@@ -186,8 +186,6 @@ export function UnitPracticeQuiz({
         clearTimeout(timer);
         stop();
       };
-    } else {
-      stop();
     }
   }, [currentIndex, autoReadEnabled, isSubmitted, currentQ, selectedAnswers, playCurrentQuestion, stop]);
 
