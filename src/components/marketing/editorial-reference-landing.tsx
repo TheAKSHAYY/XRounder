@@ -316,15 +316,8 @@ export function EditorialReferenceLanding() {
             >
               Resources
             </Link>
-            <a
-              href="#about"
-              onClick={(e) => scrollToSection(e, "about")}
-              className="hover:text-[#201F1B] transition-colors"
-            >
-              About
-            </a>
             <Link to="/developer" className="hover:text-[#201F1B] transition-colors">
-              Developer
+              About
             </Link>
           </div>
 
@@ -430,19 +423,12 @@ export function EditorialReferenceLanding() {
                     >
                       Resources
                     </Link>
-                    <a
-                      href="#about"
-                      onClick={(e) => scrollToSection(e, "about")}
-                      className="py-1.5 hover:text-[#747A52] transition-colors"
-                    >
-                      About
-                    </a>
                     <Link
                       to="/developer"
                       onClick={() => setMobileMenuOpen(false)}
                       className="py-1.5 hover:text-[#747A52] transition-colors"
                     >
-                      Developer
+                      About
                     </Link>
                     <a
                       href="#faq"
