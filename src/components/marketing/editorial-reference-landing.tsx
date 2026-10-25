@@ -12,7 +12,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface SubjectItem {
@@ -390,20 +389,17 @@ export function EditorialReferenceLanding() {
             )}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button
+                <button
                   type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="h-11 w-11 shrink-0 rounded-full text-foreground hover:bg-muted touch-manipulation [&_svg]:size-5"
+                  className="p-1.5 sm:p-2 rounded-full text-[#201F1B] hover:bg-[#EFECE1] transition-colors focus:outline-none"
                   aria-label="Open Navigation Menu"
                 >
                   <Menu className="h-5 w-5" />
-                </Button>
+                </button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[85vw] max-w-xs bg-[#F5F3EB] border-l border-[#D5D1C5] p-6 flex flex-col justify-between overflow-y-auto gap-6"
-                aria-describedby={undefined}
+                className="w-[85vw] max-w-xs bg-[#F5F3EB] border-l border-[#D5D1C5] p-6 flex flex-col justify-between"
               >
                 <div>
                   <SheetHeader className="text-left pb-4 border-b border-[#D5D1C5]">
