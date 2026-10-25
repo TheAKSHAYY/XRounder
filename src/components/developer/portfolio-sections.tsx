@@ -371,7 +371,7 @@ export function HeroSection({
                   <img
                     src={profile.photo_url}
                     alt={`Portrait of ${name.trim()}`}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                     width={512}
                     height={512}
                   />

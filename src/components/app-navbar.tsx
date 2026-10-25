@@ -58,6 +58,7 @@ const PRIMARY_LINKS = [
   { to: "/courses", label: "Courses" },
   { to: "/progress", label: "Progress" },
   { to: "/bookmarks", label: "Saved" },
+  { to: "/developer", label: "Developer" },
 ] as const;
 
 export function AppNavbar() {

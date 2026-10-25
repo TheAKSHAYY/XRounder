@@ -52,6 +52,7 @@ export function SiteHeader({
         { label: "How It Works", href: "#how-it-works" },
         { label: "FAQ", href: "#faq" },
         { label: "Courses", to: "/courses" },
+        { label: "Developer", to: "/developer" },
       ]
     : [];
 
@@ -136,6 +137,13 @@ export function SiteHeader({
                 activeProps={{ className: "text-foreground font-semibold" }}
               >
                 PYQs
+              </Link>
+              <Link
+                to="/developer"
+                className="inline-flex min-h-11 items-center rounded-lg px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                activeProps={{ className: "text-foreground font-semibold" }}
+              >
+                Developer
               </Link>
             </>
           )}
