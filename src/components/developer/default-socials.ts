@@ -18,20 +18,36 @@ export const FALLBACK_SOCIALS: Social[] = [
 ];
 
 /**
+ * Corrected links that must win over stale database rows. The CMS cannot be
+ * written from here, so until the row is fixed in the admin panel these
+ * override the stored URL for the same platform.
+ */
+export const SOCIAL_OVERRIDES: Social[] = [
+  {
+    id: "override-instagram",
+    platform: "instagram",
+    url: "https://www.instagram.com/aree.akshay",
+    label: "Instagram",
+  },
+  {
+    id: "override-linkedin",
+    platform: "linkedin",
+    url: "https://www.linkedin.com/in/akkshay-sharma/",
+    label: "LinkedIn",
+  },
+];
+
+const norm = (platform: string) => platform.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+/**
  * Append fallback socials whose platform is not already present in the
  * database rows. Matching is case-insensitive on the platform name, so
  * "Snapchat", "snapchat" and "Snap Chat" all count as taken.
  */
 export function mergeSocials(rows: Social[], fallbacks: Social[] = FALLBACK_SOCIALS): Social[] {
-  const seen = new Set(
-    rows.map((s) =>
-      s.platform
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, ""),
-    ),
-  );
-  const extra = fallbacks.filter(
-    (s) => !seen.has(s.platform.toLowerCase().replace(/[^a-z0-9]/g, "")),
-  );
-  return extra.length ? [...rows, ...extra] : rows;
+  const overrideMap = new Map(SOCIAL_OVERRIDES.map((s) => [norm(s.platform), s]));
+  const corrected = rows.map((s) => overrideMap.get(norm(s.platform)) ?? s);
+  const seen = new Set(corrected.map((s) => norm(s.platform)));
+  const extra = fallbacks.filter((s) => !seen.has(norm(s.platform)));
+  return extra.length ? [...corrected, ...extra] : corrected;
 }
