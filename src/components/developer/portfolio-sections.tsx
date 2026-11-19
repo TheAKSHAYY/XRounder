@@ -365,6 +365,30 @@ export function HeroSection({
 
           {/* Portrait */}
           <div className="order-first mx-auto w-full max-w-[16rem] sm:max-w-xs lg:order-none lg:max-w-sm">
+            {socials.length > 0 && (
+              <ul
+                aria-label="Social links"
+                className="mb-3 flex flex-wrap items-center justify-end gap-2"
+              >
+                {socials.map((s) => {
+                  const Icon = platformIcon(s.platform);
+                  return (
+                    <li key={s.id}>
+                      <a
+                        href={s.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={s.label || s.platform}
+                        title={s.label || s.platform}
+                        className="grid h-9 w-9 place-items-center rounded-lg border border-border bg-surface text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                      >
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
             <div className="overflow-hidden rounded-2xl border border-border/70 bg-surface">
               <div className="aspect-square w-full bg-muted">
                 {profile.photo_url ? (

@@ -38,6 +38,7 @@ const PLATFORMS = [
   "github",
   "linkedin",
   "instagram",
+  "snapchat",
   "twitter",
   "youtube",
   "portfolio",

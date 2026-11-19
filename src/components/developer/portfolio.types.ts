@@ -1,5 +1,7 @@
 import { Github, Globe, Instagram, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 
+import { SnapchatIcon } from "./snapchat-icon";
+
 export type Profile = {
   full_name: string | null;
   professional_title: string | null;
@@ -47,6 +49,7 @@ export function platformIcon(p: string) {
   if (k.includes("github")) return Github;
   if (k.includes("linkedin")) return Linkedin;
   if (k.includes("instagram")) return Instagram;
+  if (k.includes("snapchat") || k === "snap") return SnapchatIcon;
   if (k.includes("youtube")) return Youtube;
   if (k.includes("twitter") || k === "x") return Twitter;
   if (k.includes("mail") || k.includes("email")) return Mail;
