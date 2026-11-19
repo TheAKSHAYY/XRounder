@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ErrorPanel } from "@/components/ui/error-panel";
 
 import { usePortfolioData } from "@/components/developer/use-portfolio-data";
+import { FALLBACK_SOCIALS, mergeSocials } from "@/components/developer/default-socials";
 import type { Skill } from "@/components/developer/portfolio.types";
 import {
   AboutSection,
@@ -114,7 +115,7 @@ function DeveloperPage() {
     .join("")
     .toUpperCase();
 
-  const socials = socialQ.data ?? [];
+  const socials = mergeSocials(socialQ.data ?? [], FALLBACK_SOCIALS);
   const projects = projectsQ.data ?? [];
   const skills = skillsQ.data ?? [];
   const achievements = achievementsQ.data ?? [];
