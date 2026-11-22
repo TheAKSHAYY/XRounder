@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Sparkles,
-  Bot,
   MessageSquare,
   BookOpen,
   Zap,
@@ -10,19 +9,12 @@ import {
   Loader2,
   Copy,
   Check,
-  RefreshCw,
-  X,
   Volume2,
   Languages,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { playPopSound, playCorrectSound } from "@/lib/sound-fx";
 import {
@@ -32,12 +24,36 @@ import {
 } from "@/lib/gemini.functions";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 import { useSpeech } from "@/hooks/use-speech";
+import { useAuth } from "@/hooks/use-auth";
+import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 import { MascotSvg } from "@/components/gamification/study-mascot";
 
 export type AssistantMode = "ask" | "explain" | "revision" | "quiz";
 export type AssistantLang = "en" | "hinglish" | "hi";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export function getPrioritizedContext(
+  rawContext?: string | null,
+  currentTopicTitle?: string,
+): string | undefined {
+  if (!rawContext) return undefined;
+  const trimmed = rawContext.trim();
+  if (!trimmed) return undefined;
+  if (trimmed.length <= 4000) return trimmed;
+
+  // If a multi-topic unit context was provided, attempt to anchor to the specific topic
+  if (currentTopicTitle) {
+    const topicIdx = trimmed.toLowerCase().indexOf(currentTopicTitle.toLowerCase());
+    if (topicIdx !== -1) {
+      return trimmed.slice(topicIdx, topicIdx + 4000);
+    }
+  }
+
+  // Fallback to the leading 4,000 characters of the study material
+  return trimmed.slice(0, 4000);
+}
 
 interface AiStudyAssistantProps {
   open: boolean;
@@ -52,30 +68,36 @@ interface AiStudyAssistantProps {
   onLoadCustomQuiz?: (questions: GeneratedQuizQuestion[]) => void;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const SMART_STUDENT_PROMPTS = [
   {
-    label: "🚀 Hinglish me samjhao",
-    text: "Is concept ko bilkul simple Hinglish me samjhao real-life college student example ke sath",
+    label: "⚙️ First Principles",
+    text: "Explain the underlying logic, core problem it solves, and step-by-step mechanism from first principles",
+    targetLang: null,
+  },
+  {
+    label: "🚀 Hinglish Deep-Dive",
+    text: "Is concept ko first principles se Hinglish me samjhao: problem kya thi, mechanism kaise kaam karta hai, aur concrete dry run dikhao",
     targetLang: "hinglish" as const,
   },
   {
-    label: "💡 हिंदी में व्याख्या",
-    text: "इस विषय को मुख्य बिंदुओं और सरल हिंदी में समझाएं",
-    targetLang: "hi" as const,
-  },
-  {
-    label: "🎯 3 University Exam Questions",
-    text: "What are the 3 most frequent university exam questions from this topic with model answers?",
+    label: "🔍 Trace / Dry-Run Table",
+    text: "Show a step-by-step dry run and trace table with sample input values demonstrating how this executes",
     targetLang: null,
   },
   {
-    label: "⚡ 2-Min Revision Notes",
-    text: "Give 2-minute exam revision bullet points with keywords to score full marks",
+    label: "⚖️ Comparison Matrix",
+    text: "Provide a detailed comparison table against alternatives covering Time/Space Complexity, Invariants, and Trade-offs",
     targetLang: null,
   },
   {
-    label: "📋 Comparison Table",
-    text: "Provide a detailed comparison table of the key terms in this topic",
+    label: "🎯 University Exam Blueprint",
+    text: "What are the standard 2-mark and 5/10-mark university exam questions for this topic with exact model answers and scoring blueprints?",
+    targetLang: null,
+  },
+  {
+    label: "⚡ High-Yield Revision",
+    text: "Give high-density revision notes with core invariants, critical execution rules, and examiner red flags to avoid",
     targetLang: null,
   },
 ];
@@ -92,6 +114,7 @@ export function AiStudyAssistant({
   initialLang,
   onLoadCustomQuiz,
 }: AiStudyAssistantProps) {
+  const { user } = useAuth();
   const [mode, setMode] = useState<AssistantMode>(initialAction || "ask");
   // Default to Hinglish for accessible Indian university learning
   const [lang, setLang] = useState<AssistantLang>(initialLang || "hinglish");
@@ -99,17 +122,39 @@ export function AiStudyAssistant({
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState<GeminiAssistantResponse | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showQuestionsList, setShowQuestionsList] = useState(false);
 
   const { speak, isPlaying, stop } = useSpeech();
+
+  const isGeneratingRef = useRef(false);
+  const isMountedRef = useRef(true);
+  const hasAutoRunRef = useRef(false);
+  const langRef = useRef(lang);
+  langRef.current = lang;
+
+  const handleRunActionRef = useRef<
+    (targetMode: AssistantMode, customQuery?: string, overrideLang?: AssistantLang) => Promise<void>
+  >(() => Promise.resolve());
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   // Reset or initialize when opened with specific action/lang
   useEffect(() => {
     if (open) {
       if (initialLang) setLang(initialLang);
-      if (initialAction && initialAction !== "ask") {
+      if (initialAction && initialAction !== "ask" && !hasAutoRunRef.current) {
+        hasAutoRunRef.current = true;
         setMode(initialAction);
-        handleRunAction(initialAction, undefined, initialLang || lang);
+        const activeLang = initialLang || langRef.current;
+        handleRunActionRef.current(initialAction, undefined, activeLang);
       }
+    } else {
+      hasAutoRunRef.current = false;
     }
   }, [open, initialAction, initialLang]);
 
@@ -118,6 +163,17 @@ export function AiStudyAssistant({
     customQuery?: string,
     overrideLang?: AssistantLang,
   ) => {
+    if (isGeneratingRef.current) {
+      return;
+    }
+    isGeneratingRef.current = true;
+
+    if (!user) {
+      toast.info("Using Sparky AI in Guest Student mode. Sign in to save your history!", {
+        duration: 3000,
+      });
+    }
+
     playPopSound();
     setIsLoading(true);
     setResponse(null);
@@ -128,6 +184,9 @@ export function AiStudyAssistant({
       setLang(overrideLang);
     }
 
+    // Client-side payload reduction: prioritize topic-specific context and cap at 4,000 characters
+    const activeContext = getPrioritizedContext(contextText, topicTitle);
+
     try {
       const res = await askGeminiStudyAssistant({
         data: {
@@ -137,20 +196,39 @@ export function AiStudyAssistant({
           unitNumber,
           subjectTitle,
           courseTitle,
-          context: contextText,
+          context: activeContext,
           language: activeLang,
         },
       });
 
+      if (!isMountedRef.current) return;
       setResponse(res);
-      playCorrectSound();
+      if (res.success) {
+        playCorrectSound();
+      } else if (res.content) {
+        toast.warning(res.content);
+      }
     } catch (err: unknown) {
+      if (!isMountedRef.current) return;
       console.error("AI Assistant error:", err);
-      toast.error("Failed to fetch response. Please try again.");
+      const msg = err instanceof Error ? err.message : String(err);
+      if (
+        msg.toLowerCase().includes("unauthorized") ||
+        msg.toLowerCase().includes("token") ||
+        msg.toLowerCase().includes("forbidden")
+      ) {
+        toast.error("Please sign in with your student account to use Sparky AI Coach.");
+      } else {
+        toast.error("Failed to fetch response. Please try again.");
+      }
     } finally {
-      setIsLoading(false);
+      isGeneratingRef.current = false;
+      if (isMountedRef.current) {
+        setIsLoading(false);
+      }
     }
   };
+  handleRunActionRef.current = handleRunAction;
 
   const handleCopy = () => {
     if (!response?.content) return;
@@ -177,7 +255,15 @@ export function AiStudyAssistant({
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 border border-primary/20 shadow-xs overflow-hidden">
               <MascotSvg
                 size={36}
-                mood={isLoading ? "thinking" : response ? "celebrating" : isPlaying ? "reading" : "happy"}
+                mood={
+                  isLoading
+                    ? "thinking"
+                    : response
+                      ? "celebrating"
+                      : isPlaying
+                        ? "reading"
+                        : "happy"
+                }
               />
             </div>
             <div className="min-w-0">
@@ -268,6 +354,35 @@ export function AiStudyAssistant({
 
         {/* Body Area */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 min-h-[300px]">
+          {!user && (
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+              <div className="space-y-0.5">
+                <p className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+                  <Sparkles className="h-3.5 w-3.5 text-primary" />
+                  Free Student Account Required
+                </p>
+                <p className="text-[11px] text-muted-foreground">
+                  Sign in to ask syllabus questions, generate custom MCQ tests, and get instant
+                  explanations.
+                </p>
+              </div>
+              <Button
+                asChild
+                size="sm"
+                className="btn-squishy rounded-xl text-xs font-bold shrink-0"
+              >
+                <Link
+                  to="/auth"
+                  search={{
+                    redirect: typeof window !== "undefined" ? window.location.pathname : "/courses",
+                  }}
+                >
+                  Sign In Free
+                </Link>
+              </Button>
+            </div>
+          )}
+
           {/* Ask Question Input Box */}
           {mode === "ask" && (
             <div className="space-y-3">
@@ -333,7 +448,9 @@ export function AiStudyAssistant({
                 </div>
               </div>
               <div className="text-xs font-semibold text-foreground">
-                Sparky is preparing your {lang === "hinglish" ? "Hinglish" : lang === "hi" ? "Hindi" : "English"} explanation…
+                Sparky is preparing your{" "}
+                {lang === "hinglish" ? "Hinglish" : lang === "hi" ? "Hindi" : "English"}{" "}
+                explanation…
               </div>
               <p className="text-[11px] text-muted-foreground">
                 Grounded in official {subjectTitle} Unit {unitNumber} university curriculum
@@ -347,7 +464,10 @@ export function AiStudyAssistant({
               {/* Top Response Metadata Bar */}
               <div className="flex items-center justify-between gap-3 border-b border-border/60 pb-3">
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-[10px] font-mono text-primary border-primary/30">
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] font-mono text-primary border-primary/30"
+                  >
                     {lang === "hinglish" ? "🇮🇳 Hinglish" : lang === "hi" ? "हिन्दी" : "English"}
                   </Badge>
                   <Badge variant="outline" className="text-[10px] font-mono text-muted-foreground">
@@ -364,7 +484,9 @@ export function AiStudyAssistant({
                     className="h-8 px-2 text-xs font-medium cursor-pointer"
                     title={isPlaying ? "Stop speech" : "Listen aloud"}
                   >
-                    <Volume2 className={cn("h-3.5 w-3.5 mr-1", isPlaying && "text-primary animate-pulse")} />
+                    <Volume2
+                      className={cn("h-3.5 w-3.5 mr-1", isPlaying && "text-primary animate-pulse")}
+                    />
                     {isPlaying ? "Stop" : "Listen"}
                   </Button>
 
@@ -375,7 +497,11 @@ export function AiStudyAssistant({
                     onClick={handleCopy}
                     className="h-8 px-2 text-xs font-medium cursor-pointer"
                   >
-                    {copied ? <Check className="h-3.5 w-3.5 text-emerald-500 mr-1" /> : <Copy className="h-3.5 w-3.5 mr-1" />}
+                    {copied ? (
+                      <Check className="h-3.5 w-3.5 text-emerald-500 mr-1" />
+                    ) : (
+                      <Copy className="h-3.5 w-3.5 mr-1" />
+                    )}
                     {copied ? "Copied" : "Copy"}
                   </Button>
                 </div>
@@ -432,29 +558,99 @@ export function AiStudyAssistant({
                 <EducationalContentRenderer content={response.content} />
               </div>
 
-              {/* Generated Quiz Action Button (if quiz generated) */}
+              {/* Generated Quiz Action Button & Preview (if quiz generated) */}
               {response.quiz && response.quiz.length > 0 && (
-                <div className="mt-4 rounded-xl border border-primary/30 bg-primary/10 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <div className="font-bold text-xs text-foreground">
-                      🎯 {response.quiz.length} Practice Questions Generated
+                <div className="mt-4 space-y-3">
+                  <div className="rounded-xl border border-primary/30 bg-primary/10 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="font-bold text-xs text-foreground">
+                        🎯 {response.quiz.length} Practice Questions Generated
+                      </div>
+                      <p className="text-[11px] text-muted-foreground mt-0.5">
+                        Balanced 5 Easy, 3 Medium, and 2 Hard questions from {topicTitle}.
+                      </p>
                     </div>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">
-                      Balanced 5 Easy, 3 Medium, and 2 Hard questions from {topicTitle}.
-                    </p>
+
+                    <div className="flex items-center gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        type="button"
+                        onClick={() => setShowQuestionsList(!showQuestionsList)}
+                        className="rounded-xl text-xs font-medium cursor-pointer"
+                      >
+                        {showQuestionsList ? "Hide Questions" : "Preview Questions"}
+                      </Button>
+
+                      {onLoadCustomQuiz && (
+                        <Button
+                          size="sm"
+                          type="button"
+                          onClick={() => {
+                            onLoadCustomQuiz(response.quiz!);
+                            onOpenChange(false);
+                          }}
+                          className="btn-squishy rounded-xl text-xs font-bold shadow-xs cursor-pointer"
+                        >
+                          Launch in MCQ Engine
+                        </Button>
+                      )}
+                    </div>
                   </div>
 
-                  {onLoadCustomQuiz && (
-                    <Button
-                      size="sm"
-                      onClick={() => {
-                        onLoadCustomQuiz(response.quiz!);
-                        onOpenChange(false);
-                      }}
-                      className="btn-squishy rounded-xl text-xs font-bold shadow-xs cursor-pointer"
-                    >
-                      Launch in MCQ Engine
-                    </Button>
+                  {showQuestionsList && (
+                    <div className="space-y-3 pt-1">
+                      {response.quiz.map((q, qIdx) => (
+                        <div
+                          key={qIdx}
+                          className="rounded-xl border border-border/80 bg-card p-3.5 space-y-2 text-xs"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <span className="font-semibold text-foreground">
+                              {qIdx + 1}. {q.prompt}
+                            </span>
+                            <Badge
+                              variant="outline"
+                              className={cn(
+                                "text-[9px] uppercase px-1.5 py-0 shrink-0 font-bold",
+                                q.difficulty === "easy"
+                                  ? "text-emerald-500 border-emerald-500/30"
+                                  : q.difficulty === "medium"
+                                    ? "text-amber-500 border-amber-500/30"
+                                    : "text-rose-500 border-rose-500/30",
+                              )}
+                            >
+                              {q.difficulty}
+                            </Badge>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1">
+                            {q.options.map((opt, optIdx) => (
+                              <div
+                                key={optIdx}
+                                className={cn(
+                                  "p-2 rounded-lg border text-[11px] flex items-center justify-between",
+                                  opt.is_correct
+                                    ? "bg-emerald-500/10 border-emerald-500/40 text-emerald-700 dark:text-emerald-300 font-semibold"
+                                    : "bg-muted/40 border-border/60 text-muted-foreground",
+                                )}
+                              >
+                                <span>{opt.text}</span>
+                                {opt.is_correct && (
+                                  <Check className="h-3 w-3 text-emerald-500 shrink-0 ml-1" />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+
+                          {q.explanation && (
+                            <p className="text-[11px] text-muted-foreground bg-muted/30 p-2 rounded-lg italic">
+                              💡 <strong>Explanation:</strong> {q.explanation}
+                            </p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}
@@ -472,7 +668,8 @@ export function AiStudyAssistant({
                   Namaste! Main hoon Sparky — Your AI Study Coach
                 </h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Aap <strong>{topicTitle}</strong> ko Hinglish, Hindi ya English me samajh sakte hain. Instant generate karne ke liye tap karein:
+                  Aap <strong>{topicTitle}</strong> ko Hinglish, Hindi ya English me samajh sakte
+                  hain. Instant generate karne ke liye tap karein:
                 </p>
               </div>
 
@@ -492,7 +689,10 @@ export function AiStudyAssistant({
                       <BookOpen className="h-4 w-4" />
                       <span>🇮🇳 Hinglish Me Samjhao</span>
                     </div>
-                    <Badge variant="outline" className="text-[9px] font-bold text-primary border-primary/40 uppercase">
+                    <Badge
+                      variant="outline"
+                      className="text-[9px] font-bold text-primary border-primary/40 uppercase"
+                    >
                       Senior Style
                     </Badge>
                   </div>
@@ -515,7 +715,10 @@ export function AiStudyAssistant({
                       <Sparkles className="h-4 w-4" />
                       <span>📖 सरल हिंदी में व्याख्या</span>
                     </div>
-                    <Badge variant="outline" className="text-[9px] font-bold text-amber-600 dark:text-amber-400 border-amber-500/40 uppercase">
+                    <Badge
+                      variant="outline"
+                      className="text-[9px] font-bold text-amber-600 dark:text-amber-400 border-amber-500/40 uppercase"
+                    >
                       Devanagari
                     </Badge>
                   </div>
@@ -546,8 +749,14 @@ export function AiStudyAssistant({
                 <button
                   type="button"
                   onClick={() => {
-                    setQuery("What are the 3 most frequent university exam questions from this topic with model answers?");
-                    handleRunAction("ask", "What are the 3 most frequent university exam questions from this topic with model answers?", lang);
+                    setQuery(
+                      "What are the 3 most frequent university exam questions from this topic with model answers?",
+                    );
+                    handleRunAction(
+                      "ask",
+                      "What are the 3 most frequent university exam questions from this topic with model answers?",
+                      lang,
+                    );
                   }}
                   className="rounded-2xl border border-border/80 bg-card hover:border-primary/40 p-3 transition-all cursor-pointer group active:scale-[0.98]"
                 >
@@ -574,7 +783,8 @@ export function AiStudyAssistant({
                     <span>📝 Generate 10-Question MCQ Practice Test</span>
                   </div>
                   <p className="text-[11px] text-muted-foreground mt-1">
-                    Interactive university-pattern test (5 Easy, 3 Medium, 2 Hard) with explanations.
+                    Interactive university-pattern test (5 Easy, 3 Medium, 2 Hard) with
+                    explanations.
                   </p>
                 </button>
               </div>

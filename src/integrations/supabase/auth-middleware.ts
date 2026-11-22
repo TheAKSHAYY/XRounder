@@ -31,8 +31,25 @@ function createSupabaseFetch(supabaseKey: string): typeof fetch {
   };
 }
 
-export const requireSupabaseAuth = createMiddleware({ type: "function" }).server(
-  async ({ next }) => {
+async function getClientAuthToken(): Promise<string | undefined> {
+  if (typeof window === "undefined") return undefined;
+  try {
+    const { supabase } = await import("@/integrations/supabase/client");
+    const { data } = await supabase.auth.getSession();
+    return data.session?.access_token;
+  } catch {
+    return undefined;
+  }
+}
+
+export const requireSupabaseAuth = createMiddleware({ type: "function" })
+  .client(async ({ next }) => {
+    const token = await getClientAuthToken();
+    return next({
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    });
+  })
+  .server(async ({ next }) => {
     const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
     const SUPABASE_PUBLISHABLE_KEY =
       process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -103,3 +120,59 @@ export const requireSupabaseAuth = createMiddleware({ type: "function" }).server
     });
   },
 );
+
+export const optionalSupabaseAuth = createMiddleware({ type: "function" })
+  .client(async ({ next }) => {
+    const token = await getClientAuthToken();
+    return next({
+      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    });
+  })
+  .server(async ({ next }) => {
+    const SUPABASE_URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+    const SUPABASE_PUBLISHABLE_KEY =
+      process.env.SUPABASE_PUBLISHABLE_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+    let userId = "guest-student";
+    let user = null;
+    let claims: Record<string, unknown> = {};
+
+    try {
+      const request = getRequest();
+      const authHeader = request?.headers?.get("authorization");
+      if (
+        authHeader &&
+        authHeader.startsWith("Bearer ") &&
+        SUPABASE_URL &&
+        SUPABASE_PUBLISHABLE_KEY
+      ) {
+        const token = authHeader.replace("Bearer ", "");
+        if (token && token.split(".").length === 3) {
+          const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+            global: {
+              fetch: createSupabaseFetch(SUPABASE_PUBLISHABLE_KEY),
+              headers: { Authorization: `Bearer ${token}` },
+            },
+            auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+          });
+          const { data } = await supabase.auth.getUser(token);
+          if (data?.user) {
+            user = data.user;
+            userId = data.user.id;
+            claims = (data.user.app_metadata ?? {}) as Record<string, unknown>;
+          }
+        }
+      }
+    } catch {
+      // Graceful fallback to guest
+    }
+
+    return next({
+      context: {
+        userId,
+        user,
+        claims,
+      },
+    });
+  });
+
