@@ -11,6 +11,10 @@
 
 <!-- LOVABLE:END -->
 
+## Social sharing
+
+- Keep share images in leaf-route metadata, never the root layout, to prevent inherited images overriding individual page previews; use a 1200×630 compressed image with matching Open Graph and Twitter URLs.
+
 ## Routing conventions
 
 ### Admin list+detail routes

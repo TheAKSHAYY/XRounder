@@ -19,7 +19,9 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://www.xrounder.in/" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://www.xrounder.in/images/landing/sparky-hero.jpg" },
+      { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:alt", content: "XRounder — Learn smarter with notes, past papers, video lectures and MCQ quizzes" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,7 +31,8 @@ export const Route = createFileRoute("/")({
         content:
           "Learn with AI. Practice with MCQs. Prepare with confidence. Syllabus-aligned notes, past papers, and diagnostic quizzes.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/images/landing/sparky-hero.jpg" },
+      { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+      { name: "twitter:image:alt", content: "XRounder — Learn smarter with notes, past papers, video lectures and MCQ quizzes" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/" }],
     scripts: [
