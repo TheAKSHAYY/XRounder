@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ErrorPanel } from "@/components/ui/error-panel";
 
-import { usePortfolioData } from "@/components/developer/use-portfolio-data";
+import { usePortfolioData, prefetchPortfolioData } from "@/components/developer/use-portfolio-data";
 import { FALLBACK_SOCIALS, mergeSocials } from "@/components/developer/default-socials";
 import type { Skill } from "@/components/developer/portfolio.types";
 import {
@@ -21,6 +21,9 @@ import {
 } from "@/components/developer/portfolio-sections";
 
 export const Route = createFileRoute("/developer")({
+  loader: async ({ context: { queryClient } }) => {
+    await prefetchPortfolioData(queryClient);
+  },
   head: () => ({
     meta: [
       { title: "Developer Portfolio · Engineering — XRounder" },
@@ -37,6 +40,9 @@ export const Route = createFileRoute("/developer")({
       },
       { property: "og:url", content: "https://www.xrounder.in/developer" },
       { property: "og:type", content: "profile" },
+      { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Developer Portfolio · Engineering — XRounder" },
       {
@@ -44,6 +50,7 @@ export const Route = createFileRoute("/developer")({
         content:
           "Portfolio of the developer behind XRounder — featured projects, tech stack, achievements, and contact details.",
       },
+      { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/developer" }],
   }),

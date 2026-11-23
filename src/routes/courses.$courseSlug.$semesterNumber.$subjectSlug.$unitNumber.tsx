@@ -1426,7 +1426,7 @@ function UnitDetail() {
     );
   }
 
-  const { course, subject, unit } = dataQuery.data;
+  const { course, subject, unit, siblings = [] } = dataQuery.data;
 
   return (
     <div className="min-h-dvh bg-background flex flex-col">
@@ -1728,6 +1728,40 @@ function UnitDetail() {
               <GraduationCap className="h-3.5 w-3.5 shrink-0" /> Previous Year Papers ({papers.length})
             </button>
           </div>
+
+          {/* Sibling Unit Navigation for Crawlers and Student Fast-Switching */}
+          {siblings.length > 1 && (
+            <nav
+              aria-label="Sibling units in this subject"
+              className="mt-3.5 flex flex-wrap items-center gap-1.5 border-t border-border/60 pt-2.5"
+            >
+              <span className="text-[11px] font-semibold text-muted-foreground mr-1">All Units:</span>
+              {siblings.map((sib: SiblingUnit) => {
+                const isCurrent = sib.number === unit.number;
+                return (
+                  <Link
+                    key={sib.id}
+                    to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                    params={{
+                      courseSlug,
+                      semesterNumber,
+                      subjectSlug,
+                      unitNumber: String(sib.number),
+                    }}
+                    aria-current={isCurrent ? "page" : undefined}
+                    className={cn(
+                      "rounded-lg px-2.5 py-1 text-xs font-semibold transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring touch-manipulation",
+                      isCurrent
+                        ? "bg-primary text-primary-foreground shadow-xs pointer-events-none"
+                        : "bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground border border-border/40",
+                    )}
+                  >
+                    Unit {sib.number}
+                  </Link>
+                );
+              })}
+            </nav>
+          )}
         </div>
 
         {/* ─── TAB 1: STUDY MATERIAL ─── */}
