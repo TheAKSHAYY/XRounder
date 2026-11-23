@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
-import { Link } from "@tanstack/react-router";
 import confetti from "canvas-confetti";
 import {
   CheckCircle2,
@@ -13,7 +12,6 @@ import {
   Target,
   RefreshCw,
   Volume2,
-  VolumeX,
   Headphones,
   Play,
   Pause,
@@ -30,7 +28,7 @@ import {
 } from "@/lib/sound-fx";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
-import { useSpeech, type SpeechLanguageMode } from "@/hooks/use-speech";
+import { useSpeech } from "@/hooks/use-speech";
 
 export interface QuestionOption {
   text: string;
@@ -61,7 +59,7 @@ export function UnitPracticeQuiz({
   questions = [],
   unitNumber,
   unitTitle,
-  subjectTitle,
+  subjectTitle: _subjectTitle,
   quizId,
   onAttemptSaved,
 }: UnitPracticeQuizProps) {

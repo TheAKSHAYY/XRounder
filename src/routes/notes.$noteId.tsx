@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -24,43 +24,6 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 import { NoteReadingProgress } from "@/components/notes/note-reading-progress";
 import { recordGuestNoteVisit } from "@/lib/guest-activity";
-
-export const Route = createFileRoute("/notes/$noteId")({
-  head: ({ params }) => {
-    const url = `https://www.xrounder.in/notes/${params.noteId}`;
-    return {
-      meta: [
-        { title: "Study Note & Reading Material · XRounder" },
-        {
-          name: "description",
-          content:
-            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
-        },
-        { property: "og:title", content: "Study Note & Reading Material · XRounder" },
-        {
-          property: "og:description",
-          content:
-            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
-        },
-        { property: "og:url", content: url },
-        { property: "og:type", content: "article" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
-        { property: "og:image:width", content: "1200" },
-        { property: "og:image:height", content: "630" },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Study Note & Reading Material · XRounder" },
-        {
-          name: "twitter:description",
-          content:
-            "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.",
-        },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
-      ],
-      links: [{ rel: "canonical", href: url }],
-    };
-  },
-  component: NoteViewer,
-});
 
 type NoteHierarchy = {
   unitId: string | null;
@@ -217,11 +180,8 @@ async function resolveHierarchy(
   }
 }
 
-function NoteViewer() {
-  const { noteId } = Route.useParams();
-  const { user, loading: authLoading } = useAuth();
-
-  const noteQuery = useQuery({
+async function fetchNote(queryClient: QueryClient, noteId: string): Promise<NoteData | null> {
+  return await queryClient.ensureQueryData({
     queryKey: ["public", "note", noteId],
     queryFn: async (): Promise<NoteData | null> => {
       // 1. Try content_items table
@@ -276,6 +236,147 @@ function NoteViewer() {
         hierarchy,
       };
     },
+  });
+}
+
+export const Route = createFileRoute("/notes/$noteId")({
+  loader: async ({ params, context: { queryClient } }) => {
+    const data = await fetchNote(queryClient, params.noteId);
+    if (!data) throw notFound();
+    return data;
+  },
+  head: ({ loaderData, params }) => {
+    const note = loaderData;
+    const hier = note?.hierarchy;
+    const url = `https://www.xrounder.in/notes/${params.noteId}`;
+
+    const rawNoteTitle = note?.title?.trim() || "";
+    const rawSubjTitle = hier?.subjectTitle?.trim() || "";
+    const hasSubjInTitle = rawSubjTitle && rawNoteTitle.toLowerCase().includes(rawSubjTitle.toLowerCase());
+    const subjectPart = rawSubjTitle && !hasSubjInTitle ? ` — ${rawSubjTitle}` : "";
+    const unitPart = hier?.unitNumber && !rawNoteTitle.toLowerCase().includes(`unit ${hier.unitNumber}`) ? ` (Unit ${hier.unitNumber})` : "";
+
+    const title = note
+      ? `${rawNoteTitle}${subjectPart}${unitPart} · XRounder`
+      : "Study Notes & Reading Material · XRounder";
+
+    const description = note?.summary
+      ? note.summary
+      : note
+        ? `Read syllabus-aligned study notes for ${rawNoteTitle}${subjectPart} on XRounder. Verified university curriculum reading material with diagrams and practice questions.`
+        : "Read curriculum study notes, lecture summaries, and unit reference materials on XRounder.";
+
+    const schemas: Array<Record<string, unknown>> = [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://www.xrounder.in/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Courses",
+            item: "https://www.xrounder.in/courses",
+          },
+          ...(hier?.courseSlug && hier?.courseTitle
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: hier.courseTitle,
+                  item: `https://www.xrounder.in/courses/${hier.courseSlug}`,
+                },
+              ]
+            : []),
+          ...(hier?.courseSlug && hier?.semesterNumber
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 4,
+                  name: `Semester ${hier.semesterNumber}`,
+                  item: `https://www.xrounder.in/courses/${hier.courseSlug}/${hier.semesterNumber}`,
+                },
+              ]
+            : []),
+          ...(hier?.courseSlug && hier?.semesterNumber && hier?.subjectSlug && hier?.subjectTitle
+            ? [
+                {
+                  "@type": "ListItem",
+                  position: 5,
+                  name: hier.subjectTitle,
+                  item: `https://www.xrounder.in/courses/${hier.courseSlug}/${hier.semesterNumber}/${hier.subjectSlug}`,
+                },
+              ]
+            : []),
+          {
+            "@type": "ListItem",
+            position: 6,
+            name: note?.title ?? "Study Note",
+            item: url,
+          },
+        ],
+      },
+    ];
+
+    if (note) {
+      schemas.push({
+        "@type": "LearningResource",
+        name: note.title,
+        description: description,
+        url: url,
+        learningResourceType: "Study Guide",
+        educationalLevel: "Higher Education",
+        provider: {
+          "@type": "EducationalOrganization",
+          name: "XRounder",
+          url: "https://www.xrounder.in/",
+        },
+      });
+    }
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": schemas,
+          }),
+        },
+      ],
+    };
+  },
+  component: NoteViewer,
+});
+
+function NoteViewer() {
+  const { noteId } = Route.useParams();
+  const { user, loading: authLoading } = useAuth();
+  const queryClient = useQueryClient();
+
+  const noteQuery = useQuery({
+    queryKey: ["public", "note", noteId],
+    queryFn: () => fetchNote(queryClient, noteId),
   });
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);

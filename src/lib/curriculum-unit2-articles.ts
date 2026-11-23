@@ -342,8 +342,8 @@ Every file listed in DOS has an exact 32-byte directory metadata entry:
 
 | Byte Offset | Field Length | Description | Example Value |
 | :--- | :--- | :--- | :--- |
-| **0x00 – 0x07** | 8 Bytes | Filename (Padded with spaces) | \`\"NOTES   \"\` |
-| **0x08 – 0x0A** | 3 Bytes | File Extension (Padded with spaces) | \`\"TXT\"\` (The famous 8.3 convention) |
+| **0x00 – 0x07** | 8 Bytes | Filename (Padded with spaces) | \`"NOTES   "\` |
+| **0x08 – 0x0A** | 3 Bytes | File Extension (Padded with spaces) | \`"TXT"\` (The famous 8.3 convention) |
 | **0x0B** | 1 Byte | File Attribute Byte (R, H, S, V, D, A) | \`0x20\` (Archive set) |
 | **0x0C – 0x15** | 10 Bytes | Reserved for system use | Zeroes |
 | **0x16 – 0x17** | 2 Bytes | File Creation / Modification Time | Encoded binary time |
@@ -780,7 +780,7 @@ The umbrella term for all intrusive, hostile software is **Malware** (Malicious 
 ## 2. Exam-Ready Definition
 
 > [!IMPORTANT]
-> **Definition:** A **Computer Virus** is a malicious, self-replicating program designed to alter the normal operation of a computer, attach its payload to host executable files or boot sectors, corrupt or delete data, and spread across systems without the user\'s informed consent.
+> **Definition:** A **Computer Virus** is a malicious, self-replicating program designed to alter the normal operation of a computer, attach its payload to host executable files or boot sectors, corrupt or delete data, and spread across systems without the user's informed consent.
 
 ---
 

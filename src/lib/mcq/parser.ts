@@ -65,7 +65,7 @@ function checkBatchDuplicates(questions: ParsedQuestion[]) {
   });
 }
 
-const OPTION_RE = /^\s*([A-Ha-h])\s*[).\-]\s*(.+?)\s*$/;
+const OPTION_RE = /^\s*([A-Ha-h])\s*[).-]\s*(.+?)\s*$/;
 const Q_RE = /^\s*(?:Q\s*[:.)-]|(\d+)\s*[.)])\s*(.+)$/i;
 
 export function parseMcqBulk(input: string): ParsedQuestion[] {
@@ -103,7 +103,7 @@ export function parseMcqBulk(input: string): ParsedQuestion[] {
       if (!line) continue;
 
       // Meta prefixes
-      const meta = /^([EDTYX])\s*[:.\-]\s*(.+)$/i.exec(line);
+      const meta = /^([EDTYX])\s*[:.-]\s*(.+)$/i.exec(line);
       if (meta) {
         const key = meta[1].toUpperCase();
         const val = meta[2].trim();

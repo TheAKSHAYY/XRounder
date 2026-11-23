@@ -3,13 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ArrowLeft,
   ArrowRight,
-  BookOpen,
-  Calendar,
   Check,
   ChevronRight,
   Flame,
   GraduationCap,
-  Layers,
   Loader2,
   Sparkles,
   Trophy,
@@ -20,7 +17,6 @@ import { playCelebrationSound } from "@/lib/sound-fx";
 
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import type { LearningPrefs } from "@/lib/learning-prefs";
@@ -52,6 +48,9 @@ type SemesterItem = {
   title: string;
   description: string | null;
 };
+
+const EMPTY_COURSES: CourseItem[] = [];
+const EMPTY_SEMESTERS: SemesterItem[] = [];
 
 export function OnboardingWizard({
   initialCourseId,
@@ -85,7 +84,7 @@ export function OnboardingWizard({
     },
   });
 
-  const courses = coursesQuery.data ?? [];
+  const courses = coursesQuery.data ?? EMPTY_COURSES;
   const selectedCourse = useMemo(
     () => courses.find((c) => c.id === selectedCourseId) ?? null,
     [courses, selectedCourseId],
@@ -118,7 +117,7 @@ export function OnboardingWizard({
     },
   });
 
-  const allSemesters = semestersQuery.data ?? [];
+  const allSemesters = semestersQuery.data ?? EMPTY_SEMESTERS;
 
   // Filter semesters matching the selected academic year (e.g. Year 1 = Sem 1 & 2)
   const availableSemesters = useMemo(() => {

@@ -36,6 +36,8 @@ type Bookmark = {
   unit_number?: number | null;
 };
 
+const EMPTY_BOOKMARKS: Bookmark[] = [];
+
 export const Route = createFileRoute("/_authenticated/bookmarks")({
   head: () => ({
     meta: [
@@ -136,7 +138,7 @@ function BookmarksPage() {
     },
   });
 
-  const allItems = bookmarksQuery.data ?? [];
+  const allItems = bookmarksQuery.data ?? EMPTY_BOOKMARKS;
 
   const counts = useMemo(
     () => ({

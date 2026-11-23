@@ -74,6 +74,9 @@ type PaperRow = {
 
 type SubjectLite = { id: string; code: string; title: string };
 
+const EMPTY_PAPERS: PaperRow[] = [];
+const EMPTY_SUBJECTS: SubjectLite[] = [];
+
 const EXAM_TYPES = [
   { value: "all", label: "All exams" },
   { value: "end_sem", label: "End sem" },
@@ -131,9 +134,9 @@ function AdminPapersPage() {
     },
   });
 
-  const items = papersQuery.data?.items ?? [];
+  const items = papersQuery.data?.items ?? EMPTY_PAPERS;
   const total = papersQuery.data?.total ?? 0;
-  const subjects = subjectsQuery.data ?? [];
+  const subjects = subjectsQuery.data ?? EMPTY_SUBJECTS;
   const subjectMap = useMemo(() => new Map(subjects.map((s) => [s.id, s])), [subjects]);
   const years = useMemo(() => {
     const set = new Set<number>();

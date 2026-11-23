@@ -35,6 +35,8 @@ async function fetchPublicCourses(): Promise<CourseItem[]> {
   return (data ?? []) as CourseItem[];
 }
 
+const EMPTY_COURSES: CourseItem[] = [];
+
 export const Route = createFileRoute("/courses/")({
   validateSearch: (search: Record<string, unknown>) => ({
     q: typeof search.q === "string" ? search.q : "",
@@ -62,7 +64,7 @@ export const Route = createFileRoute("/courses/")({
       },
       { property: "og:url", content: "https://www.xrounder.in/courses" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -72,7 +74,7 @@ export const Route = createFileRoute("/courses/")({
         content:
           "Browse syllabus-aligned degree courses, notes, previous year papers, and practice questions on XRounder.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+      { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/courses" }],
     scripts: [
@@ -150,7 +152,7 @@ function CoursesIndex() {
     initialData: initialCourses,
   });
 
-  const courses: CourseItem[] = (data ?? []) as CourseItem[];
+  const courses: CourseItem[] = (data ?? EMPTY_COURSES) as CourseItem[];
 
   // Real published-semester counts, so a card never advertises content that
   // isn't live yet.

@@ -8,22 +8,14 @@ import {
   CheckCircle2,
   AlertCircle,
   Sparkles,
-  FileText,
   FileType,
   FlaskConical,
   GraduationCap,
   Plus,
   Trash2,
   Upload,
-  Download,
   ExternalLink,
   Save,
-  Eye,
-  Check,
-  XCircle,
-  HelpCircle,
-  FileImage,
-  Layers,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -85,6 +77,21 @@ type UnitContext = {
     };
   };
 };
+
+type ArticleEntry = {
+  id: string;
+  unit_id: string | null;
+  subject_id?: string | null;
+  title: string;
+  description: string;
+  status: string;
+  type: string;
+  is_legacy?: boolean;
+  source: "content_items" | "notes";
+  created_at?: string;
+};
+
+const EMPTY_ARTICLES: ArticleEntry[] = [];
 
 function AdminUnitWorkspace() {
   const { unitId } = Route.useParams();
@@ -161,7 +168,7 @@ function AdminUnitWorkspace() {
         .order("created_at", { ascending: true });
 
       // 3. Fallback unlinked content_items for subject if unit 1
-      let unlinkedItems: any[] = [];
+      let unlinkedItems: NonNullable<typeof ciItems> = [];
       if (subjectId && unitNumber === 1) {
         const { data: unlinked } = await supabase
           .from("content_items")
@@ -320,7 +327,7 @@ function AdminUnitWorkspace() {
   );
   const [isSavingArticle, setIsSavingArticle] = useState(false);
 
-  const articles = articlesQuery.data ?? [];
+  const articles = articlesQuery.data ?? EMPTY_ARTICLES;
 
   useEffect(() => {
     if (articles.length > 0) {
@@ -334,7 +341,7 @@ function AdminUnitWorkspace() {
         setSelectedArticleId(best.id);
         setArticleTitle(best.title || "");
         setArticleBody(best.description || "");
-        setArticleStatus((best.status as any) || "published");
+        setArticleStatus((best.status as "draft" | "published" | "archived") || "published");
       }
     } else if (unitQuery.data && !selectedArticleId) {
       setSelectedArticleId("new");
@@ -360,7 +367,7 @@ function AdminUnitWorkspace() {
       if (art) {
         setArticleTitle(art.title || "");
         setArticleBody(art.description || "");
-        setArticleStatus((art.status as any) || "published");
+        setArticleStatus((art.status as "draft" | "published" | "archived") || "published");
       }
     }
   };
@@ -438,6 +445,18 @@ function AdminUnitWorkspace() {
           .select("id")
           .maybeSingle();
 
+        if (ciErr && nErr) {
+          throw new Error(
+            `Failed to create article: ${ciErr.message || nErr.message || "Unknown database error"}`
+          );
+        }
+        if (ciErr) {
+          console.warn("content_items insert failed during dual-write:", ciErr);
+        }
+        if (nErr) {
+          console.warn("notes insert failed during dual-write:", nErr);
+        }
+
         const targetId = createdId || newNote?.id;
         if (targetId) setSelectedArticleId(targetId);
       }
@@ -450,7 +469,7 @@ function AdminUnitWorkspace() {
       qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
       setIsSavingArticle(false);
     },
-    onError: (err: any) => {
+    onError: (err: Error) => {
       toast.error(err.message || "Failed to save article");
       setIsSavingArticle(false);
     },
@@ -502,7 +521,7 @@ function AdminUnitWorkspace() {
       qc.invalidateQueries({ queryKey: ["admin", "content"] });
       qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
     },
-    onError: (err: any) => toast.error(err.message || "Failed to delete article"),
+    onError: (err: Error) => toast.error(err.message || "Failed to delete article"),
   });
 
   // Clear all articles in this unit
@@ -542,7 +561,7 @@ function AdminUnitWorkspace() {
       qc.invalidateQueries({ queryKey: ["admin", "content"] });
       qc.invalidateQueries({ queryKey: ["admin", "unit-notes", unitId] });
     },
-    onError: (err: any) => toast.error(err.message || "Failed to clear unit articles"),
+    onError: (err: Error) => toast.error(err.message || "Failed to clear unit articles"),
   });
 
   // Reference Document Upload State
@@ -576,15 +595,15 @@ function AdminUnitWorkspace() {
 
       toast.success(`Uploaded ${file.name}`);
       qc.invalidateQueries({ queryKey: ["admin", "unit-reference-files", unitId] });
-    } catch (err: any) {
-      toast.error(err.message || "File upload failed");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "File upload failed");
     } finally {
       setIsUploadingDoc(false);
     }
   };
 
   const deleteDocMutation = useMutation({
-    mutationFn: async (doc: any) => {
+    mutationFn: async (doc: { file_path?: string | null; file_bucket?: string | null; id: string }) => {
       if (doc.file_path && doc.file_bucket) {
         try {
           await supabase.storage.from(doc.file_bucket).remove([doc.file_path]);
@@ -612,7 +631,7 @@ function AdminUnitWorkspace() {
   const [newMcqOpen, setNewMcqOpen] = useState(false);
   const [mcqPrompt, setMcqPrompt] = useState("");
   const [mcqExplanation, setMcqExplanation] = useState("");
-  const [mcqDifficulty, setMcqDifficulty] = useState("medium");
+  const mcqDifficulty = "medium";
   const [optA, setOptA] = useState("");
   const [optB, setOptB] = useState("");
   const [optC, setOptC] = useState("");
@@ -980,7 +999,7 @@ function AdminUnitWorkspace() {
             </div>
 
             <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-              <Select value={articleStatus} onValueChange={(v: any) => setArticleStatus(v)}>
+              <Select value={articleStatus} onValueChange={(v: "draft" | "published" | "archived") => setArticleStatus(v)}>
                 <SelectTrigger className="h-9 w-32 rounded-xl text-xs font-bold bg-muted/30">
                   <SelectValue />
                 </SelectTrigger>
@@ -1286,7 +1305,7 @@ function AdminUnitWorkspace() {
 
                     {q.quiz_options && (
                       <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
-                        {(q.quiz_options as any[]).map((opt) => (
+                        {(q.quiz_options as Array<{ id: string; is_correct?: boolean; text?: string }>).map((opt) => (
                           <div
                             key={opt.id}
                             className={cn(

@@ -1,28 +1,17 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
-  Heading1,
   Heading2,
   Heading3,
   AlignLeft,
   Code2,
-  AlertTriangle,
-  Sparkles,
   List,
-  ListOrdered,
   Table as TableIcon,
   Plus,
   Trash2,
   ArrowUp,
   ArrowDown,
-  Copy,
-  Check,
   Eye,
   Edit3,
-  FileType,
-  Layers,
-  HelpCircle,
-  BookOpen,
-  Info,
   Flame,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -339,7 +328,7 @@ export function serializeBlocksToMarkdown(blocks: ContentBlockItem[]): string {
 export function VisualArticleEditor({
   value,
   onChange,
-  unitTitle,
+  unitTitle: _unitTitle,
 }: {
   value: string;
   onChange: (markdown: string) => void;
@@ -347,18 +336,21 @@ export function VisualArticleEditor({
 }) {
   const [blocks, setBlocks] = useState<ContentBlockItem[]>(() => parseMarkdownToBlocks(value));
   const [editorMode, setEditorMode] = useState<"VISUAL" | "SPLIT" | "RAW">("VISUAL");
+  const lastPropagatedValueRef = useRef(value);
 
   // Keep synced with external value changes
   useEffect(() => {
-    const serialized = serializeBlocksToMarkdown(blocks);
-    if (serialized !== value) {
+    if (value !== lastPropagatedValueRef.current) {
+      lastPropagatedValueRef.current = value;
       setBlocks(parseMarkdownToBlocks(value));
     }
   }, [value]);
 
   const updateBlocks = (next: ContentBlockItem[]) => {
+    const serialized = serializeBlocksToMarkdown(next);
+    lastPropagatedValueRef.current = serialized;
     setBlocks(next);
-    onChange(serializeBlocksToMarkdown(next));
+    onChange(serialized);
   };
 
   const addBlock = (type: BlockType, afterIndex?: number) => {
@@ -679,7 +671,7 @@ export function VisualArticleEditor({
                   <div className="flex items-center gap-2">
                     <Select
                       value={block.calloutType || "exam_tip"}
-                      onValueChange={(val: any) => updateBlockField(idx, { calloutType: val })}
+                      onValueChange={(val: string) => updateBlockField(idx, { calloutType: val as "exam_tip" | "important" | "formula" | "warning" })}
                     >
                       <SelectTrigger className="h-8 w-40 rounded-lg text-xs font-bold bg-card">
                         <SelectValue />

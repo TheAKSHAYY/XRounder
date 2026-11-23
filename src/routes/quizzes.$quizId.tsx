@@ -27,9 +27,9 @@ import type { Option, Question } from "@/components/quiz/types";
 
 export const Route = createFileRoute("/quizzes/$quizId")({
   loader: async ({ params, context: { queryClient } }) => {
-    // Concurrently prefetch quiz, questions, and options on link hover/intent for instant transitions
-    await Promise.all([
-      queryClient.prefetchQuery({
+    // Concurrently fetch quiz, questions, and options on link hover/intent for instant transitions
+    const [quiz] = await Promise.all([
+      queryClient.ensureQueryData({
         queryKey: ["public-quiz", params.quizId],
         queryFn: async () => {
           const { data, error } = await supabase
@@ -63,38 +63,89 @@ export const Route = createFileRoute("/quizzes/$quizId")({
         },
       }),
     ]);
+    return { quiz };
   },
-  head: ({ params }) => {
+  head: ({ loaderData, params }) => {
+    const quiz = loaderData?.quiz;
     const url = `https://www.xrounder.in/quizzes/${params.quizId}`;
+    const rawQuizTitle = quiz?.title?.trim() || "";
+    const hasQuizWord = /quiz|mcq|practice\s+test|mock/i.test(rawQuizTitle);
+    const quizSuffix = hasQuizWord ? "" : " — Online MCQ Practice Quiz";
+    const title = quiz
+      ? `${rawQuizTitle}${quizSuffix} · XRounder`
+      : "MCQ Practice Quiz · XRounder";
+    const description = quiz?.description
+      ? quiz.description
+      : quiz
+        ? `Practice ${rawQuizTitle} online on XRounder. Timed multiple-choice questions with instant evaluation, score breakdowns, and topic explanations.`
+        : "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.";
+
     return {
       meta: [
-        { title: "MCQ Practice Quiz · XRounder" },
-        {
-          name: "description",
-          content:
-            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
-        },
-        { property: "og:title", content: "MCQ Practice Quiz · XRounder" },
-        {
-          property: "og:description",
-          content:
-            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
-        },
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "MCQ Practice Quiz · XRounder" },
-        {
-          name: "twitter:description",
-          content:
-            "Take an interactive semester MCQ practice quiz with instant feedback, explanations, and performance analytics.",
-        },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://www.xrounder.in/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Mock Tests & Quizzes",
+                    item: "https://www.xrounder.in/mock-test",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: quiz?.title ?? "Practice Quiz",
+                    item: url,
+                  },
+                ],
+              },
+              ...(quiz
+                ? [
+                    {
+                      "@type": "Quiz",
+                      name: quiz.title,
+                      description: description,
+                      url: url,
+                      educationalLevel: "Higher Education",
+                      provider: {
+                        "@type": "EducationalOrganization",
+                        name: "XRounder",
+                        url: "https://www.xrounder.in/",
+                      },
+                    },
+                  ]
+                : []),
+            ],
+          }),
+        },
+      ],
     };
   },
   component: QuizPage,

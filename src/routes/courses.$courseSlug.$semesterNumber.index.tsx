@@ -53,7 +53,16 @@ async function fetchSemesterDetails(
       if (error) throw error;
       if (!data) throw notFound();
 
-      const semRaw = (data.semesters as any[])?.[0];
+      type RawSem = {
+        id: string;
+        number: number;
+        title: string;
+        description?: string | null;
+        subjects?: Array<
+          SubjectItem & { sort_order?: number; deleted_at?: string | null; status?: string }
+        >;
+      };
+      const semRaw = (data.semesters as unknown as RawSem[])?.[0];
       if (!semRaw) throw notFound();
 
       const course = {
@@ -102,14 +111,20 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   head: ({ loaderData, params }) => {
     const course = loaderData?.course;
     const sem = loaderData?.sem;
-    const title =
-      course && sem
-        ? `${course.title} Semester ${params.semesterNumber} (${sem.title}) Subjects & Notes · XRounder`
-        : `Semester ${params.semesterNumber} · XRounder`;
+    const semNum = params.semesterNumber;
+    const semTitle = sem?.title?.trim() || "";
+    const hasDuplicateSem =
+      semTitle.toLowerCase().replace(/\s+/g, "").includes(`semester${semNum}`) ||
+      semTitle.toLowerCase().replace(/\s+/g, "").includes(`sem${semNum}`);
+    const semLabel = semTitle && !hasDuplicateSem ? ` — ${semTitle}` : "";
+
+    const title = course
+      ? `${course.title} Semester ${semNum}${semLabel} Subjects & Notes · XRounder`
+      : `Semester ${semNum} · XRounder`;
     const description = sem?.description
       ? sem.description
       : course
-        ? `Browse all subjects, notes, past papers, and practice MCQs for ${course.title} Semester ${params.semesterNumber}.`
+        ? `Syllabus, subjects, unit notes, previous year question papers, and practice MCQs for ${course.title} Semester ${semNum} on XRounder.`
         : "Semester-wise university curriculum subjects and notes on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}`;
 
@@ -121,13 +136,13 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
         { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -507,8 +522,10 @@ function SemesterDetail() {
               <>
                 Welcome back, <span className="text-primary">{firstName}</span>.
               </>
+            ) : semQuery.data ? (
+              <>{semQuery.data.course.title} — {semQuery.data.sem.title || `Semester ${semesterNumber}`}</>
             ) : (
-              <>Your learning workspace.</>
+              <>Semester {semesterNumber} Curriculum</>
             )
           }
           description={heroSubtitle}

@@ -52,6 +52,8 @@ type ProgressRow = {
   last_activity_at: string;
 };
 
+const EMPTY_PROGRESS_UNITS: ProgressRow[] = [];
+
 type AttemptRow = {
   id: string;
   pct: number | null;
@@ -134,7 +136,7 @@ function ProgressPage() {
   });
 
   const stats = statsQuery.data;
-  const units = unitsQuery.data ?? [];
+  const units = unitsQuery.data ?? EMPTY_PROGRESS_UNITS;
   const attempts = attemptsQuery.data ?? [];
 
   const bySubject = useMemo(() => {

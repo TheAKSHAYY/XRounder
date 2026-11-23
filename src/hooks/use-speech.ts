@@ -83,13 +83,13 @@ export function cleanTextForSpeech(raw: string, mode: SpeechLanguageMode = "en")
     .replace(/\\times/g, " times ")
     .replace(/!=/g, " is not equal to ")
     .replace(/>=/g, " is greater than or equal to ")
-    .replace(/<=/g, " is less than or equal to ");
+    .replace(/<=/g, " is less than or equal to ")
+    .replace(/\be\.g\.(?=\s|,|$)/gi, "for example")
+    .replace(/\bi\.e\.(?=\s|,|$)/gi, "that is")
+    .replace(/\betc\.(?=\s|,|$)/gi, "etcetera");
 
   // Normalizations for natural technical & educational pronunciation
   const techReplacements: Record<string, string> = {
-    "\\be\\.g\\.\\b": "for example",
-    "\\bi\\.e\\.\\b": "that is",
-    "\\betc\\.\\b": "etcetera",
     "\\bvs\\.?\\b": "versus",
     "\\bCPU\\b": "C P U",
     "\\bALU\\b": "A L U",
@@ -250,6 +250,127 @@ export function buildQuestionSpeechText(options: QuestionSpeechOptions): string 
 }
 
 /**
+ * Builds structured article speech text from article title and markdown content.
+ * Strictly includes:
+ * - Clean article title with heading pause
+ * - Section headings (H1-H4) as distinct conceptual pauses
+ * - Paragraphs and bullet points in sequential reading order
+ * - High-yield callout / takeaways
+ * Strictly excludes:
+ * - Interactive Cards, instant checks, and check options
+ * - Code blocks and ASCII line diagrams
+ * - Navigation links, buttons, copy triggers, badges, and tooltips
+ * - University marks boilerplate (e.g., "[2 Marks]", "[15 Marks]")
+ */
+export function buildArticleSpeechText(
+  title: string,
+  rawContent: string,
+  mode: SpeechLanguageMode = "en",
+): string {
+  const parts: string[] = [];
+  const cleanTitle = cleanTextForSpeech(
+    title
+      .replace(/^[A-Z0-9-]{3,10}:\s*/i, "")
+      .replace(/^Unit \d+ Master Exam Revision Notes:\s*/i, "")
+      .replace(/^Topic \d+[:\s-]*/i, "")
+      .replace(/^#+\s*/, ""),
+    mode,
+  );
+  if (cleanTitle) {
+    parts.push(`[HEADING] ${cleanTitle}.`);
+  }
+
+  if (!rawContent) return parts.join("\n\n");
+
+  const lines = rawContent.split("\n");
+  const filteredLines: string[] = [];
+  let inCodeBlock = false;
+  let inInteractiveCardOrCheck = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Skip code blocks and raw ASCII diagrams
+    if (trimmed.startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      continue;
+    }
+    if (inCodeBlock) continue;
+
+    // Detect and skip interactive checks, quiz questions, and options
+    if (
+      trimmed.match(
+        /^(?:###?\s*)?(?:Instant Knowledge Check|Concept Check|Exam Check|Key Concept Check)/i,
+      )
+    ) {
+      inInteractiveCardOrCheck = true;
+      continue;
+    }
+
+    if (inInteractiveCardOrCheck) {
+      // Resume only when encountering a major new topic heading or divider
+      if (
+        trimmed.startsWith("## ") ||
+        trimmed.startsWith("---") ||
+        trimmed.match(/^###\s+(?!Instant|Concept|Exam|Key|Check|Knowledge|Quiz)/i)
+      ) {
+        inInteractiveCardOrCheck = false;
+      } else {
+        continue;
+      }
+    }
+
+    // Skip ASCII box diagrams
+    if (/^[+┌|─└\-\s]{5,}$/.test(trimmed) && trimmed.includes("+")) {
+      continue;
+    }
+
+    // Convert callouts into clean spoken takeaways (supporting single or multi-line)
+    if (trimmed.match(/^>\s*\[!(?:TIP|IMPORTANT|WARNING|NOTE)\]/i)) {
+      const calloutText = trimmed.replace(/^>\s*\[!.*?\]\s*/, "").trim();
+      if (calloutText) {
+        filteredLines.push(`Key Takeaway: ${calloutText}`);
+      } else {
+        // Look ahead to next lines starting with ">" to gather the callout content into one sentence
+        let nextIdx = i + 1;
+        const calloutLines: string[] = [];
+        while (nextIdx < lines.length && lines[nextIdx].trim().startsWith(">")) {
+          calloutLines.push(lines[nextIdx].trim().replace(/^>\s*/, ""));
+          nextIdx++;
+        }
+        if (calloutLines.length > 0) {
+          filteredLines.push(`Key Takeaway: ${calloutLines.join(" ")}`);
+          i = nextIdx - 1;
+        } else {
+          filteredLines.push("Key Takeaway:");
+        }
+      }
+      continue;
+    }
+
+    if (trimmed.startsWith("> ")) {
+      filteredLines.push(trimmed.replace(/^>\s*/, ""));
+      continue;
+    }
+
+    // Strip university marks boilerplate and question numbers (e.g., "[15 Marks]", "### Q1. ")
+    const sanitizedLine = line
+      .replace(/\[\d+(?:\/\d+)?\s*Marks\]/gi, "")
+      .replace(/^(?:###?\s*)?Q\d+\.\s*/gi, "");
+
+    filteredLines.push(sanitizedLine);
+  }
+
+  const cleanedBody = cleanTextForSpeech(filteredLines.join("\n"), mode);
+  if (cleanedBody) {
+    parts.push(cleanedBody);
+  }
+
+  return parts.join("\n\n");
+}
+
+/**
  * Finds the highest quality, most natural sounding voice for the requested mode.
  */
 export function findBestVoiceForMode(
@@ -306,6 +427,8 @@ export function useSpeech() {
   const [voices, setVoices] = useState<SpeechVoiceOption[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
   const [rate, setRate] = useState<number>(1.0);
+  const [currentChunk, setCurrentChunk] = useState<number>(0);
+  const [totalChunks, setTotalChunks] = useState<number>(0);
 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const queueRef = useRef<Array<{ text: string; isHeading: boolean }>>([]);
@@ -325,6 +448,9 @@ export function useSpeech() {
     activeVoiceRef.current = selectedVoice;
   }, [selectedVoice]);
 
+  const languageModeRef = useRef(languageMode);
+  languageModeRef.current = languageMode;
+
   // Initialize voices once and keep listeners alive
   useEffect(() => {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -343,7 +469,7 @@ export function useSpeech() {
       setVoices(options);
 
       // Pick the best voice for the active language mode
-      const best = findBestVoiceForMode(available, languageMode);
+      const best = findBestVoiceForMode(available, languageModeRef.current);
       if (best) setSelectedVoice(best);
     };
 
@@ -382,6 +508,8 @@ export function useSpeech() {
       waitingForNextChunkRef.current = false;
       setIsPlaying(false);
       setIsPaused(false);
+      setCurrentChunk(0);
+      setTotalChunks(0);
       utteranceRef.current = null;
     }
   }, []);
@@ -397,19 +525,6 @@ export function useSpeech() {
     }
   }, [isPlaying]);
 
-  const resume = useCallback(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window && isPaused) {
-      setIsPaused(false);
-      if (waitingForNextChunkRef.current) {
-        // Was paused during inter-chunk pause; proceed to next block
-        waitingForNextChunkRef.current = false;
-        speakBlock(currentIndexRef.current);
-      } else {
-        window.speechSynthesis.resume();
-      }
-    }
-  }, [isPaused]);
-
   const speakBlock = useCallback(
     (index: number) => {
       if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
@@ -417,6 +532,8 @@ export function useSpeech() {
       if (index >= queue.length) {
         setIsPlaying(false);
         setIsPaused(false);
+        setCurrentChunk(0);
+        setTotalChunks(0);
         queueRef.current = [];
         currentIndexRef.current = 0;
         waitingForNextChunkRef.current = false;
@@ -430,6 +547,7 @@ export function useSpeech() {
       }
 
       const item = queue[index];
+      setCurrentChunk(index + 1);
       const utterance = new SpeechSynthesisUtterance(item.text);
       activeUtterances.add(utterance);
 
@@ -464,6 +582,8 @@ export function useSpeech() {
         } else {
           setIsPlaying(false);
           setIsPaused(false);
+          setCurrentChunk(0);
+          setTotalChunks(0);
           queueRef.current = [];
           currentIndexRef.current = 0;
           waitingForNextChunkRef.current = false;
@@ -486,6 +606,19 @@ export function useSpeech() {
     },
     [],
   );
+
+  const resume = useCallback(() => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window && isPaused) {
+      setIsPaused(false);
+      if (waitingForNextChunkRef.current) {
+        // Was paused during inter-chunk pause; proceed to next block
+        waitingForNextChunkRef.current = false;
+        speakBlock(currentIndexRef.current);
+      } else {
+        window.speechSynthesis.resume();
+      }
+    }
+  }, [isPaused, speakBlock]);
 
   const speak = useCallback(
     (
@@ -525,6 +658,8 @@ export function useSpeech() {
 
       queueRef.current = parsedQueue;
       currentIndexRef.current = 0;
+      setCurrentChunk(0);
+      setTotalChunks(parsedQueue.length);
       callbacksRef.current = { onStart: options?.onStart, onEnd: options?.onEnd };
 
       // Micro-buffer so async cancel() settles before speaking first block
@@ -564,6 +699,8 @@ export function useSpeech() {
     [speak, languageMode],
   );
 
+  const progress = totalChunks > 0 ? Math.min(1, currentChunk / totalChunks) : 0;
+
   return {
     isSupported,
     isPlaying,
@@ -575,6 +712,9 @@ export function useSpeech() {
     setLanguageMode,
     rate,
     setRate,
+    currentChunk,
+    totalChunks,
+    progress,
     speak,
     playQuestion,
     stop,

@@ -26,8 +26,9 @@ import { GoogleSignInButton } from "@/components/auth/google-signin-button";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { BrandLockup } from "@/components/brand-mark";
 import { useGuest } from "@/hooks/use-guest";
-import { useAuth, waitForAuth } from "@/hooks/use-auth";
+import { waitForAuth } from "@/hooks/use-auth";
 import { recordLoginHistory } from "@/lib/auth-history";
+import { sanitizeRedirectUrl } from "@/lib/safe-redirect";
 
 const searchSchema = z.object({
   redirect: z.string().optional(),
@@ -39,7 +40,8 @@ export const Route = createFileRoute("/auth")({
   beforeLoad: async ({ search }) => {
     const auth = await waitForAuth();
     if (auth.isAuthenticated && auth.user) {
-      const dest = search.redirect || (await resolvePostAuthRoute(auth.user.id));
+      const fallback = await resolvePostAuthRoute(auth.user.id);
+      const dest = sanitizeRedirectUrl(search.redirect, fallback);
       throw redirect({ to: dest });
     }
   },
@@ -51,6 +53,7 @@ export const Route = createFileRoute("/auth")({
         content:
           "Sign in or create your XRounder account to access notes, papers, videos, and MCQ practice.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/auth" }],
   }),
@@ -203,6 +206,7 @@ function AuthPage() {
 
 function SignInForm() {
   const { redirect } = Route.useSearch();
+  const safeGoogleRedirect = sanitizeRedirectUrl(redirect, "/dashboard");
 
   return (
     <div className="space-y-5">
@@ -210,7 +214,7 @@ function SignInForm() {
         <h1 className="font-display text-3xl font-normal text-foreground">Welcome back</h1>
         <p className="mt-1.5 text-sm text-muted-foreground">Sign in with Google or your email.</p>
       </div>
-      <GoogleSignInButton redirect={redirect} />
+      <GoogleSignInButton redirect={safeGoogleRedirect} />
       <OrDivider />
       <EmailSignInForm />
     </div>
@@ -249,7 +253,8 @@ function EmailSignInForm() {
     }
     toast.success("Welcome back");
     await router.invalidate();
-    const dest = redirect ?? (data.user ? await resolvePostAuthRoute(data.user.id) : "/dashboard");
+    const fallbackDest = data.user ? await resolvePostAuthRoute(data.user.id) : "/dashboard";
+    const dest = sanitizeRedirectUrl(redirect, fallbackDest);
     navigate({ to: dest, replace: true });
   }
 
@@ -297,7 +302,12 @@ function EmailSignInForm() {
         />
         Remember me on this device
       </label>
-      <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full rounded-full font-medium"
+        disabled={loading}
+      >
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Sign in
       </Button>
@@ -364,9 +374,12 @@ function SignUpForm() {
     await recordLoginHistory(data.user.id);
     toast.success("Account created — welcome!");
     await router.invalidate();
-    const dest = redirect ?? (await resolvePostAuthRoute(data.user.id));
+    const fallbackDest = await resolvePostAuthRoute(data.user.id);
+    const dest = sanitizeRedirectUrl(redirect, fallbackDest);
     navigate({ to: dest, replace: true });
   }
+
+  const safeGoogleRedirect = sanitizeRedirectUrl(redirect, "/dashboard");
 
   return (
     <div className="space-y-5">
@@ -376,7 +389,7 @@ function SignUpForm() {
           Free for students. Takes less than a minute.
         </p>
       </div>
-      <GoogleSignInButton redirect={redirect} />
+      <GoogleSignInButton redirect={safeGoogleRedirect} />
       <OrDivider />
       <form onSubmit={onSubmit} className="space-y-5">
         <div className="space-y-2">
@@ -416,7 +429,12 @@ function SignUpForm() {
           {capsOn && <p className="text-xs font-medium text-accent-foreground">Caps Lock is on</p>}
           <PasswordStrengthMeter password={password} />
         </div>
-        <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full rounded-full font-medium"
+          disabled={loading}
+        >
           {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Create account
         </Button>
@@ -495,7 +513,12 @@ function ForgotForm() {
           required
         />
       </div>
-      <Button type="submit" size="lg" className="w-full rounded-full font-medium" disabled={loading}>
+      <Button
+        type="submit"
+        size="lg"
+        className="w-full rounded-full font-medium"
+        disabled={loading}
+      >
         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
         Send reset link
       </Button>

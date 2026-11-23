@@ -12,7 +12,6 @@ import {
   ArrowRight,
   RotateCcw,
   EyeOff,
-  Move,
   Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";

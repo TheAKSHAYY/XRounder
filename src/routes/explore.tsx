@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowRight,
   BookOpen,
   Bookmark,
   FlaskConical,
-  GraduationCap,
   Layers,
   Sparkles,
   TrendingUp,
@@ -46,7 +45,7 @@ export const Route = createFileRoute("/explore")({
       },
       { property: "og:url", content: "https://www.xrounder.in/explore" },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+      { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -55,7 +54,7 @@ export const Route = createFileRoute("/explore")({
         name: "twitter:description",
         content: "Browse courses, notes, papers and sample quiz questions with no account needed.",
       },
-      { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+      { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/explore" }],
     scripts: [
@@ -90,7 +89,6 @@ function ExplorePage() {
   const { prefs: guestPrefs, setPrefs: saveGuestPrefs } = useGuestLearningPrefs();
   const [prompt, setPrompt] = useState(false);
   const [wizardOpen, setWizardOpen] = useState(false);
-  const navigate = useNavigate();
 
   // Entering /explore opts into guest mode if not logged in.
   useEffect(() => {

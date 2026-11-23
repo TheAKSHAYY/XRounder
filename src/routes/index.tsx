@@ -5,17 +5,17 @@ import { EditorialReferenceLanding } from "@/components/marketing/editorial-refe
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "XRounder — Learn smarter, one step at a time." },
+      { title: "XRounder — MJPRU BCA Notes, Past Papers & MCQ Practice" },
       {
         name: "description",
         content:
-          "Learn with AI. Practice with MCQs. Prepare with confidence. Syllabus-aligned notes, past papers, and diagnostic quizzes.",
+          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
-      { property: "og:title", content: "XRounder — Learn smarter, one step at a time." },
+      { property: "og:title", content: "XRounder — MJPRU BCA Notes, Past Papers & MCQ Practice" },
       {
         property: "og:description",
         content:
-          "Learn with AI. Practice with MCQs. Prepare with confidence. Syllabus-aligned notes, past papers, and diagnostic quizzes.",
+          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
       { property: "og:url", content: "https://www.xrounder.in/" },
       { property: "og:type", content: "website" },
@@ -25,11 +25,11 @@ export const Route = createFileRoute("/")({
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "XRounder — Learn smarter, one step at a time." },
+      { name: "twitter:title", content: "XRounder — MJPRU BCA Notes, Past Papers & MCQ Practice" },
       {
         name: "twitter:description",
         content:
-          "Learn with AI. Practice with MCQs. Prepare with confidence. Syllabus-aligned notes, past papers, and diagnostic quizzes.",
+          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
       { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       { name: "twitter:image:alt", content: "XRounder — Learn smarter with notes, past papers, video lectures and MCQ quizzes" },

@@ -1,21 +1,16 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Bell,
   Camera,
-  Check,
   Edit3,
   GraduationCap,
   KeyRound,
   Loader2,
   LogOut,
-  Moon,
   Palette,
   Shield,
-  Sun,
-  Trash2,
-  User as UserIcon,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -46,13 +41,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useTheme } from "@/components/theme/theme-provider";
-import { ConfirmDialog } from "@/components/admin/ui/confirm-dialog";
 import {
   DEFAULT_NOTIFICATION_PREFS,
   NOTIFICATION_PREF_KEYS,
   fetchProfile,
   type NotificationPrefs,
-  type ProfileRow,
 } from "@/lib/profile";
 
 export const Route = createFileRoute("/_authenticated/profile")({
@@ -207,7 +200,7 @@ function ProfilePage() {
       setIsEditOpen(false);
       invalidateProfile();
     },
-    onError: (err: any) => {
+    onError: (err: Error) => {
       toast.error(err.message || "Failed to save profile");
     },
   });
@@ -226,7 +219,7 @@ function ProfilePage() {
       toast.success("Notification preferences saved");
       invalidateProfile();
     },
-    onError: (err: any) => {
+    onError: (err: Error) => {
       toast.error(err.message || "Failed to update preferences");
     },
   });
@@ -264,29 +257,11 @@ function ProfilePage() {
       setAvatarUrl(publicUrl);
       toast.success("Profile photo updated");
       invalidateProfile();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setAvatarUrl(profile?.avatar_url ?? "");
-      toast.error(err.message || "Failed to upload avatar photo");
+      toast.error(err instanceof Error ? err.message : "Failed to upload avatar photo");
     } finally {
       URL.revokeObjectURL(preview);
-      setUploading(false);
-    }
-  };
-
-  const onRemovePhoto = async () => {
-    if (!user) return;
-    setUploading(true);
-    try {
-      await supabase
-        .from("profiles")
-        .update({ avatar_url: null } as never)
-        .eq("user_id", user.id);
-      setAvatarUrl("");
-      toast.success("Profile photo removed");
-      invalidateProfile();
-    } catch (err: any) {
-      toast.error(err.message || "Failed to remove photo");
-    } finally {
       setUploading(false);
     }
   };
@@ -523,7 +498,7 @@ function ProfilePage() {
               </p>
             </div>
             <div className="w-36">
-              <Select value={theme} onValueChange={(v) => setTheme(v as any)}>
+              <Select value={theme} onValueChange={(v: "light" | "dark" | "system") => setTheme(v)}>
                 <SelectTrigger className="h-8 text-xs rounded-xl">
                   <SelectValue />
                 </SelectTrigger>

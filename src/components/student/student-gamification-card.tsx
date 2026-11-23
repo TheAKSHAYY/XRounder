@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import confetti from "canvas-confetti";
 import {
@@ -12,10 +11,8 @@ import {
   Crown,
   BookOpenCheck,
   Lock,
-  ArrowRight,
   Award,
   X,
-  HelpCircle,
 } from "lucide-react";
 import { computeStudentXP, evaluateBadges, type StudentBadge } from "@/lib/gamification";
 import { playCelebrationSound, playPopSound, playCuteGiggleSound } from "@/lib/sound-fx";

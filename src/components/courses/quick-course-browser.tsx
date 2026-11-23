@@ -6,22 +6,17 @@ import {
   ArrowRight,
   ArrowLeft,
   ChevronRight,
-  Sparkles,
-  Layers,
   GraduationCap,
-  X,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SparkyAvatar } from "@/components/gamification/study-mascot";
 import { playPopSound } from "@/lib/sound-fx";

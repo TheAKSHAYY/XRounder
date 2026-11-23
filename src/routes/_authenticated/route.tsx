@@ -5,6 +5,7 @@ import { AppNavbar } from "@/components/app-navbar";
 import { MobileTabBar } from "@/components/student/mobile-tab-bar";
 
 import { supabase } from "@/integrations/supabase/client";
+import { sanitizeRedirectUrl } from "@/lib/safe-redirect";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -14,7 +15,11 @@ export const Route = createFileRoute("/_authenticated")({
   beforeLoad: async ({ location }) => {
     const auth = await waitForAuth();
     if (!auth.isAuthenticated || !auth.user) {
-      throw redirect({ to: "/auth", search: { redirect: location.href } });
+      const safeRedirect = sanitizeRedirectUrl(
+        `${location.pathname}${location.searchStr || ""}`,
+        "/dashboard",
+      );
+      throw redirect({ to: "/auth", search: { redirect: safeRedirect } });
     }
 
     // 1. Never trap admin or super-admin routes in student onboarding

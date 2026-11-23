@@ -513,11 +513,11 @@ async function run() {
   for (const item of topicData) {
     const topic = existingTopics.find(t => t.title === item.title);
     if (!topic) {
-      console.warn(\`Topic \${item.title} not found in DB. Skipping...\`);
+      console.warn(`Topic ${item.title} not found in DB. Skipping...`);
       continue;
     }
     
-    console.log(\`\\n--- Processing Topic: \${topic.title} ---\`);
+    console.log(`\n--- Processing Topic: ${topic.title} ---`);
 
     // --- Content Items ---
     const { data: existingContent } = await sb.from("content_items").select("id").eq("topic_id", topic.id).eq("type", "note").maybeSingle();
@@ -528,8 +528,8 @@ async function run() {
         unit_id: unit.id,
         subject_id: subject.id,
         topic_id: topic.id,
-        title: \`\${topic.title} - Notes\`,
-        description: \`Comprehensive study material for \${topic.title}\`,
+        title: `${topic.title} - Notes`,
+        description: `Comprehensive study material for ${topic.title}`,
         type: "note",
         status: "published", // Moving through workflow generated -> needs-review -> reviewed -> published
         visibility: "public",
@@ -552,12 +552,12 @@ async function run() {
       const { data: newNote, error } = await sb.from("notes").insert({
         unit_id: unit.id,
         topic_id: topic.id,
-        title: \`\${topic.title} - Full Notes\`,
-        slug: \`\${topic.title.toLowerCase().replace(/ /g, '-')}-full-notes\`,
+        title: `${topic.title} - Full Notes`,
+        slug: `${topic.title.toLowerCase().replace(/ /g, '-')}-full-notes`,
         body: item.noteMarkdown,
         status: "published",
         visibility: "public",
-        summary: \`Study notes covering \${topic.title}\`,
+        summary: `Study notes covering ${topic.title}`,
         sort_order: 1
       }).select("id").single();
       if (error) console.error("Error inserting note:", error);
@@ -578,7 +578,7 @@ async function run() {
         unit_id: unit.id,
         topic_id: topic.id,
         title: item.quiz.title,
-        slug: \`\${item.quiz.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}\`,
+        slug: `${item.quiz.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
         description: item.quiz.description,
         status: "published",
         is_public: true,
@@ -631,7 +631,7 @@ async function run() {
           const { error: optErr } = await sb.from("quiz_options").insert(optionsToInsert);
           if (optErr) console.error("Error inserting options:", optErr);
         }
-        console.log(\`Inserted \${item.quiz.questions.length} questions and options.\`);
+        console.log(`Inserted ${item.quiz.questions.length} questions and options.`);
       }
     }
   }

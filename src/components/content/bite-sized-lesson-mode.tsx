@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import confetti from "canvas-confetti";
@@ -9,25 +9,16 @@ import {
   Check,
   CheckCircle2,
   ChevronRight,
-  Clock,
-  ExternalLink,
   Flame,
-  FlaskConical,
   GraduationCap,
-  HelpCircle,
-  Lightbulb,
-  RotateCcw,
   Sparkles,
   Trophy,
   Zap,
-  Heart,
-  Smile,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { formatTitleCase } from "@/lib/format";
 import {
   playCelebrationSound,
   playComboSound,
@@ -37,7 +28,6 @@ import {
   playCuteGiggleSound,
 } from "@/lib/sound-fx";
 import { SoundToggle } from "@/components/ui/sound-toggle";
-import { StudyMascot } from "@/components/gamification/study-mascot";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
 import type {
   UnitContentItem,
@@ -62,152 +52,24 @@ interface BiteSizedLessonModeProps {
   onSwitchToReader: () => void;
 }
 
-// Default interactive bite-sized syllabus cards when no dense text notes are loaded
-const DEFAULT_UNIT_TOPIC_CARDS = [
-  {
-    id: "topic-1-intro",
-    title: "Introduction to Computers & The IPO Cycle",
-    emoji: "💻",
-    tagline: "The foundation of modern computing",
-    concept:
-      "A computer is an electronic system that takes raw data as Input, processes it under programmed logic, and produces meaningful Information as Output.",
-    analogy:
-      "Think of baking cookies: Flour & Sugar (Input) ➔ The Oven (Processing) ➔ Warm Delicious Cookie (Output)! 🍪",
-    keyPoints: [
-      "Data = Raw, unprocessed facts without context (e.g. 42, 'apple').",
-      "Information = Structured data with meaning (e.g. 'Temperature: 42°C').",
-      "Hardware is what you can touch; Software is the instructions running inside.",
-    ],
-    check: {
-      question: "Which of the following represents unprocessed raw facts?",
-      options: ["Raw Data", "Processed Information", "Software Output"],
-      correctIndex: 0,
-      explanation:
-        "Data represents raw, unorganized facts. Once processed and given context, it becomes Information!",
-    },
-  },
-  {
-    id: "topic-2-characteristics",
-    title: "Characteristics of Computers",
-    emoji: "⚡",
-    tagline: "Why computers revolutionized the planet",
-    concept:
-      "Computers excel at extreme speed, pinpoint accuracy, tireless diligence, and vast storage capacity without ever getting tired or bored.",
-    analogy:
-      "A human counting to 1 billion takes ~31 years. A modern CPU counts to 1 billion in under 0.3 seconds! 🚀",
-    keyPoints: [
-      "Speed: Performs billions of calculations per second (measured in GHz).",
-      "Accuracy & GIGO: High precision governed by 'Garbage In, Garbage Out'.",
-      "Diligence: Zero fatigue, boredom, or distraction during repetitive tasks.",
-      "Versatility: Can play 3D games, diagnose diseases, and fly spacecraft.",
-    ],
-    check: {
-      question: "What does the computer science principle 'GIGO' stand for?",
-      options: [
-        "Garbage In, Garbage Out",
-        "Gigabytes In, Gigabytes Out",
-        "Global Input, Global Output",
-      ],
-      correctIndex: 0,
-      explanation:
-        "GIGO (Garbage In, Garbage Out) means that erroneous or poor-quality input data will inevitably produce faulty output!",
-    },
-  },
-  {
-    id: "topic-3-generations",
-    title: "Generations of Computers",
-    emoji: "⏳",
-    tagline: "From giant room-sized tubes to pocket AI",
-    concept:
-      "Computer evolution is categorized across 5 distinct generations, each powered by a major breakthrough in electronic circuitry.",
-    analogy:
-      "In 1946, ENIAC weighed 30 tons and filled a whole room. Today, your smartphone is 10,000x faster and fits in your pocket! 📱",
-    keyPoints: [
-      "1st Gen (1940s-50s): Vacuum Tubes · Giant, hot, magnetic drum memory.",
-      "2nd Gen (1950s-60s): Transistors · Smaller, faster, magnetic core memory.",
-      "3rd Gen (1960s-70s): Integrated Circuits (ICs) · Multiple components on one chip.",
-      "4th Gen (1970s-Present): Microprocessors (VLSI/ULSI) · The personal computer era.",
-      "5th Gen (Present & Future): AI, Neural Networks, & Quantum Computing.",
-    ],
-    check: {
-      question: "Which electronic component powered the 1st Generation of computers?",
-      options: ["Vacuum Tubes", "Transistors", "Integrated Circuits (ICs)"],
-      correctIndex: 0,
-      explanation:
-        "First generation computers relied on fragile, power-hungry Vacuum Tubes before transistors were invented!",
-    },
-  },
-  {
-    id: "topic-4-types",
-    title: "Types & Classification of Computers",
-    emoji: "🏢",
-    tagline: "From supercomputers to pocket microcomputers",
-    concept:
-      "Computers are classified by size, computing power, and purpose: Supercomputers, Mainframes, Minicomputers, and Microcomputers.",
-    analogy:
-      "Supercomputers are like rocket ships (space & weather); Microcomputers are like bicycles (personal everyday transport)! 🚲",
-    keyPoints: [
-      "Supercomputers: Highest processing power (weather forecasting, molecular modeling).",
-      "Mainframes: Massive multi-user systems handling bank transactions and airline bookings.",
-      "Minicomputers: Mid-range multi-user servers for research labs and mid-sized businesses.",
-      "Microcomputers: Personal computers, laptops, smartphones, and tablets.",
-    ],
-    check: {
-      question: "Which type of computer processes massive concurrent transactions for major banks?",
-      options: ["Mainframe Computer", "Microcomputer", "Single-purpose calculator"],
-      correctIndex: 0,
-      explanation:
-        "Mainframes are engineered for massive reliability, high I/O throughput, and thousands of concurrent enterprise transactions!",
-    },
-  },
-  {
-    id: "topic-5-applications",
-    title: "Real-World Applications of Computers",
-    emoji: "🌐",
-    tagline: "How computing shapes human society",
-    concept:
-      "Computing technology touches every pillar of human civilization: healthcare, banking, education, scientific research, and global entertainment.",
-    analogy:
-      "From ATM cash withdrawals to robot-assisted surgery, computers turn complex human needs into reliable automation! 🏥",
-    keyPoints: [
-      "Healthcare: Diagnostic imaging (CT/MRI), robotic surgery, electronic health records.",
-      "Banking & Finance: ATMs, electronic fund transfers (UPI/NEFT), algorithmic trading.",
-      "Education: Interactive online learning, simulation laboratories, digital libraries.",
-      "Science & Engineering: Computer-Aided Design (CAD), climate simulation, aerospace.",
-    ],
-    check: {
-      question: "In engineering and architecture, what does CAD stand for?",
-      options: [
-        "Computer-Aided Design",
-        "Calculated Automated Diagram",
-        "Central Application Database",
-      ],
-      correctIndex: 0,
-      explanation:
-        "CAD (Computer-Aided Design) is the industry standard software used by engineers and architects to create 2D and 3D precision models!",
-    },
-  },
-];
-
 export function BiteSizedLessonMode({
   articles = [],
   topics = [],
   unit,
   subject,
-  courseSlug,
-  semesterNumber,
-  subjectSlug,
-  unitNumber,
+  courseSlug: _courseSlug,
+  semesterNumber: _semesterNumber,
+  subjectSlug: _subjectSlug,
+  unitNumber: _unitNumber,
   pyqQuestions = [],
   primaryQuizId,
-  isCompleted,
+  isCompleted: _isCompleted,
   onCompleteUnit,
   onSwitchToReader,
 }: BiteSizedLessonModeProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completedCardIds, setCompletedCardIds] = useState<Set<string>>(new Set());
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
-  const [revealedSolutions, setRevealedSolutions] = useState<Record<string, boolean>>({});
   const [sessionXp, setSessionXp] = useState(0);
   const [mascotCheer, setMascotCheer] = useState<string | null>(null);
 
@@ -237,7 +99,7 @@ export function BiteSizedLessonMode({
             const firstLine = trimmed
               .split("\n")[0]
               .replace(/^##\s*/, "")
-              .replace(/^[📌💡📋]\s*/, "")
+              .replace(/^[📌💡📋]\s*/u, "")
               .trim();
 
             const lines = trimmed.split("\n");
@@ -624,11 +486,11 @@ export function BiteSizedLessonMode({
             )}
 
             {/* If there is legacy Markdown body, render it compactly */}
-            {(currentCard as any).bodyMarkdown && (
+            {"bodyMarkdown" in currentCard && typeof currentCard.bodyMarkdown === "string" && (
               <div className="pt-2">
                 <EducationalContentRenderer
                   title={currentCard.title}
-                  content={(currentCard as any).bodyMarkdown}
+                  content={currentCard.bodyMarkdown}
                   anchorId={`card-${currentCard.id}`}
                 />
               </div>

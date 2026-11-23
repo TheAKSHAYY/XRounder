@@ -85,13 +85,19 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
   },
   head: ({ loaderData, params }) => {
     const course = loaderData?.course;
-    const title = course
-      ? `${course.title} (${course.code}) Syllabus & Semester Notes · XRounder`
+    const cleanCourseTitle = course?.title?.trim() ?? "";
+    const cleanCode = course?.code?.trim() ?? "";
+    const codeSuffix =
+      cleanCode && !cleanCourseTitle.toLowerCase().includes(cleanCode.toLowerCase())
+        ? ` (${cleanCode})`
+        : "";
+    const title = cleanCourseTitle
+      ? `${cleanCourseTitle}${codeSuffix} Syllabus & Semester Notes · XRounder`
       : "Course · XRounder";
-    const description = course?.description
-      ? course.description
-      : course
-        ? `Explore semester-wise syllabus, notes, past papers, and practice MCQs for ${course.title}.`
+    const description = course?.description?.trim()
+      ? course.description.trim()
+      : cleanCourseTitle
+        ? `Explore semester-wise syllabus, notes, past papers, and practice MCQs for ${cleanCourseTitle}.`
         : "Browse syllabus-aligned degree courses on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}`;
 
@@ -144,13 +150,13 @@ export const Route = createFileRoute("/courses/$courseSlug/")({
         { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [

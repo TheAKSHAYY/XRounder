@@ -8,11 +8,6 @@ import {
   GraduationCap,
   Ban,
   Undo2,
-  BookOpen,
-  Calendar,
-  Building,
-  CheckCircle2,
-  XCircle,
   Eye,
   ShieldAlert,
 } from "lucide-react";
@@ -198,7 +193,7 @@ function AdminStudentsPage() {
             </SelectContent>
           </Select>
 
-          <Select value={statusFilter} onValueChange={(val: any) => setStatusFilter(val)}>
+          <Select value={statusFilter} onValueChange={(val: "all" | "active" | "suspended") => setStatusFilter(val)}>
             <SelectTrigger className="h-10 text-xs rounded-xl w-36 bg-card">
               <SelectValue placeholder="All Status" />
             </SelectTrigger>

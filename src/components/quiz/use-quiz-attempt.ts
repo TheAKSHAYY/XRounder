@@ -11,6 +11,7 @@ import type { AnswerState, Attempt, Feedback, Option, Question } from "@/compone
 
 const CORRECT_DELAY = 1000;
 const WRONG_DELAY = 1800;
+const EMPTY_QUESTIONS: Question[] = [];
 
 export function useQuizAttempt(quizId: string) {
   const { user } = useAuth();
@@ -60,7 +61,23 @@ export function useQuizAttempt(quizId: string) {
         )
         .eq("id", quizQ.data!.unit_id)
         .maybeSingle();
-      const row = data as any;
+      type HierarchyRow = {
+        id: string;
+        number: number;
+        title: string;
+        subjects?: {
+          title?: string | null;
+          slug?: string | null;
+          semesters?: {
+            number?: number | null;
+            courses?: {
+              slug?: string | null;
+              title?: string | null;
+            } | null;
+          } | null;
+        } | null;
+      };
+      const row = data as unknown as HierarchyRow | null;
       if (!row) return null;
       return {
         unitId: row.id,
@@ -126,7 +143,7 @@ export function useQuizAttempt(quizId: string) {
   const startedAtRef = useRef<number | null>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const questions = questionsQ.data ?? [];
+  const questions = questionsQ.data ?? EMPTY_QUESTIONS;
   const total = questions.length;
   const current = activeAttempt ? questions[currentIdx] : null;
 

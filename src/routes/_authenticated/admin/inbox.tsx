@@ -50,7 +50,7 @@ function InboxPage() {
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-contact-messages"] }),
-    onError: (e: any) => toast.error(e?.message || "Update failed"),
+    onError: (e: Error) => toast.error(e?.message || "Update failed"),
   });
 
   const deleteMut = useMutation({
@@ -63,7 +63,7 @@ function InboxPage() {
       setSelectedId(null);
       qc.invalidateQueries({ queryKey: ["admin-contact-messages"] });
     },
-    onError: (e: any) => toast.error(e?.message || "Delete failed"),
+    onError: (e: Error) => toast.error(e?.message || "Delete failed"),
   });
 
   const msgs = listQ.data ?? [];

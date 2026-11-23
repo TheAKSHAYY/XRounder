@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import {
@@ -77,6 +77,8 @@ type Subject = {
   };
 };
 
+const EMPTY_SUBJECTS: Subject[] = [];
+
 const STAT_META: Array<{ key: keyof Subject["stats"]; label: string; icon: LucideIcon }> = [
   { key: "notes", label: "Notes", icon: FileText },
   { key: "pdfs", label: "PDFs", icon: FileType },
@@ -98,7 +100,7 @@ function SubjectsPage() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [createOpen, setCreateOpen] = useState(false);
 
-  const subjects = (data ?? []) as Subject[];
+  const subjects = (data ?? EMPTY_SUBJECTS) as Subject[];
 
   const courses = useMemo(() => {
     const map = new Map<string, { id: string; title: string }>();

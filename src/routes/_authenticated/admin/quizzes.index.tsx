@@ -97,6 +97,8 @@ type UnitLite = {
   } | null;
 };
 
+const EMPTY_UNITS: UnitLite[] = [];
+
 const STATUSES = [
   { value: "all", label: "All statuses" },
   { value: "draft", label: "Draft" },
@@ -166,7 +168,7 @@ function AdminQuizzesList() {
 
   const items = quizzesQuery.data?.items ?? [];
   const total = quizzesQuery.data?.total ?? 0;
-  const units = unitsQuery.data ?? [];
+  const units = unitsQuery.data ?? EMPTY_UNITS;
   const unitMap = useMemo(() => new Map(units.map((u) => [u.id, u])), [units]);
   const subjects = subjectsQuery.data ?? [];
 

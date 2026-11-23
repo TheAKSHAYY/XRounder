@@ -1,5 +1,5 @@
 import { useRef, useState, useMemo } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
@@ -11,7 +11,6 @@ import {
   Upload,
   Video,
   Search,
-  AlertTriangle,
 } from "lucide-react";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { PageHeader } from "@/components/admin/ui/page-header";

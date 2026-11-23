@@ -352,7 +352,7 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
         .is("deleted_at", null)
         .order(orderField, { ascending: false })
         .limit(1);
-      const nxt = next?.[0] as any;
+      const nxt = next?.[0] as Record<string, unknown> | undefined;
       copy[orderField] = ((nxt?.[orderField] as number | undefined) ?? 0) + 1;
     }
 

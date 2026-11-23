@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { BookOpen, GraduationCap, Library, Layers, Save, ExternalLink } from "lucide-react";
+import { BookOpen, GraduationCap, Library, Layers, Save } from "lucide-react";
 
 import { updateExplorerNode, type ExplorerNode, type NodeType } from "@/lib/explorer.functions";
 import { Input } from "@/components/ui/input";
@@ -65,7 +65,7 @@ export function ExplorerDetail({ node }: { node: ExplorerNode | null }) {
 
   useEffect(() => {
     setForm(node ? nodeToForm(node) : null);
-  }, [node?.id]);
+  }, [node]);
 
   const save = useMutation({
     mutationFn: async () => {

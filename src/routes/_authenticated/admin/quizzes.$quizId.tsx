@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { ArrowLeft, Plus, Trash2, Save, CheckCircle2, Sparkles } from "lucide-react";
+import { Plus, Trash2, Save, CheckCircle2, Sparkles } from "lucide-react";
 import { BulkImportDialog } from "@/components/mcq/bulk-import-dialog";
 import { PageContainer } from "@/components/admin/ui/page-container";
 import { PageHeader } from "@/components/admin/ui/page-header";

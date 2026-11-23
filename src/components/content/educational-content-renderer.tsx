@@ -7,16 +7,13 @@ import {
   Target,
   Zap,
   AlertTriangle,
-  Info,
   CheckCircle2,
   ExternalLink,
-  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { slugify } from "@/lib/slug";
-import { parseMarkdownToBlocks, ContentBlockItem } from "@/components/admin/visual-article-editor";
+import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 import { playCorrectSound } from "@/lib/sound-fx";
 import { sanitizeEducationalMarkdown } from "@/lib/content-sanitizer";
 
@@ -162,7 +159,7 @@ export function HighlightedCode({ code, language = "text" }: { code: string; lan
     return lines.map((line, lineIdx) => {
       // Token pattern for C, Java, C++, JS, Python, SQL
       const tokenRegex =
-        /(\/\/[^\n]*|\/\*[\s\S]*?\*\/|#[^\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\[\s\S]|[^`\\])*`|\b(?:int|char|float|double|void|long|short|unsigned|signed|bool|boolean|byte|String|Integer|Float|Double|Boolean|Array|List|Map|Set|size_t|uint8_t|uint16_t|uint32_t|int32_t|FILE)\b|\b(?:if|else|for|while|do|switch|case|default|break|continue|return|goto|sizeof|typedef|struct|union|enum|public|private|protected|static|final|class|interface|extends|implements|new|this|super|import|package|try|catch|throw|throws|finally|const|let|var|function|async|await|export|from|def|elif|lambda|pass|raise|with|yield|as|assert|SELECT|FROM|WHERE|INSERT|INTO|UPDATE|DELETE|CREATE|TABLE|DROP|ALTER|JOIN|INNER|LEFT|RIGHT|ON|GROUP|BY|ORDER|HAVING|LIMIT|NULL|TRUE|FALSE|null|true|false)\b|\b(?:printf|scanf|malloc|calloc|free|main|strlen|strcpy|strcmp|strcat|fopen|fclose|fprintf|fscanf|puts|gets|getchar|putchar|System\.out\.println|System\.out\.print|print|input|len|range|console\.log)\b|\b(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\b|[+\-*/%=&|<>!^~?:;]+|[(){}\[\],.]|[^\s\w"'`(){}\[\],.+\-*/%=&|<>!^~?:;]+|\s+)/g;
+        /(\/\/[^\n]*|\/\*[\s\S]*?\*\/|#[^\n]*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\[\s\S]|[^`\\])*`|\b(?:int|char|float|double|void|long|short|unsigned|signed|bool|boolean|byte|String|Integer|Float|Double|Boolean|Array|List|Map|Set|size_t|uint8_t|uint16_t|uint32_t|int32_t|FILE)\b|\b(?:if|else|for|while|do|switch|case|default|break|continue|return|goto|sizeof|typedef|struct|union|enum|public|private|protected|static|final|class|interface|extends|implements|new|this|super|import|package|try|catch|throw|throws|finally|const|let|var|function|async|await|export|from|def|elif|lambda|pass|raise|with|yield|as|assert|SELECT|FROM|WHERE|INSERT|INTO|UPDATE|DELETE|CREATE|TABLE|DROP|ALTER|JOIN|INNER|LEFT|RIGHT|ON|GROUP|BY|ORDER|HAVING|LIMIT|NULL|TRUE|FALSE|null|true|false)\b|\b(?:printf|scanf|malloc|calloc|free|main|strlen|strcpy|strcmp|strcat|fopen|fclose|fprintf|fscanf|puts|gets|getchar|putchar|System\.out\.println|System\.out\.print|print|input|len|range|console\.log)\b|\b(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\b|[+\-*/%=&|<>!^~?:;]+|[(){}[\],.]|[^\s\w"'`(){}[\],.+\-*/%=&|<>!^~?:;]+|\s+)/g;
 
       const lineTokens: React.ReactNode[] = [];
       let match: RegExpExecArray | null;

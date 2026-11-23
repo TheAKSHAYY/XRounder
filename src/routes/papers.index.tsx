@@ -3,15 +3,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
   ArrowRight,
-  BookOpen,
   Calendar,
   CheckCircle2,
   FileStack,
   Filter,
-  GraduationCap,
   Layers,
   Search,
-  Sparkles,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -40,6 +37,8 @@ type PaperItem = {
   course_slug: string;
 };
 
+const EMPTY_PAPERS: PaperItem[] = [];
+
 export const Route = createFileRoute("/papers/")({
   head: () => ({
     meta: [
@@ -58,12 +57,66 @@ export const Route = createFileRoute("/papers/")({
       {
         property: "og:description",
         content:
-          "Official semester examination papers, paper codes, and multi-year compilations for BCA subjects.",
+          "Official semester examination papers, paper codes, and multi-year compilations for BCA subjects on XRounder.",
       },
       { property: "og:url", content: "https://www.xrounder.in/papers" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "XRounder Previous Year Question Papers Archive for BCA" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Previous Year Question Papers (PYQs) · BCA University Archive · XRounder",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Official semester examination papers, paper codes, and multi-year compilations for BCA subjects on XRounder.",
+      },
+      { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/papers" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.xrounder.in/",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Previous Papers",
+                  item: "https://www.xrounder.in/papers",
+                },
+              ],
+            },
+            {
+              "@type": "CollectionPage",
+              name: "Previous Year Question Papers Archive",
+              description:
+                "Browse, read, and download official university previous year question papers for BCA across all semesters.",
+              url: "https://www.xrounder.in/papers",
+              provider: {
+                "@type": "EducationalOrganization",
+                name: "XRounder",
+                url: "https://www.xrounder.in/",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: PapersIndexPage,
 });
@@ -106,7 +159,30 @@ function PapersIndexPage() {
 
       if (error) throw error;
 
-      const flat: PaperItem[] = (data ?? []).map((row: any) => {
+      type RawPaperRow = {
+        id: string;
+        title: string;
+        year: number;
+        exam_type: string;
+        paper_number: string | null;
+        description: string | null;
+        file_size_bytes: number | null;
+        subject_id: string;
+        subjects?: {
+          id: string;
+          title: string;
+          code: string;
+          slug: string;
+          semesters?: {
+            number: number;
+            courses?: {
+              slug: string;
+            } | null;
+          } | null;
+        } | null;
+      };
+
+      const flat: PaperItem[] = (data as unknown as RawPaperRow[] ?? []).map((row) => {
         const sub = row.subjects;
         const sem = sub?.semesters;
         const course = sem?.courses;
@@ -133,7 +209,7 @@ function PapersIndexPage() {
     staleTime: 5 * 60 * 1000,
   });
 
-  const allPapers = papersQuery.data ?? [];
+  const allPapers = papersQuery.data ?? EMPTY_PAPERS;
 
   // Derived available years
   const availableYears = useMemo(() => {

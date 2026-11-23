@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { AlertTriangle, ArrowLeft, Download, FileStack, FileText, RefreshCw } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -10,38 +10,134 @@ import { PdfViewer } from "@/components/pdf-viewer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 
+type PaperDetail = {
+  id: string;
+  title: string;
+  year: number;
+  exam_type: string;
+  paper_number: string | null;
+  description: string | null;
+  file_path: string | null;
+  file_bucket: string | null;
+  subject_id?: string;
+  subjects?: {
+    title: string;
+    code: string;
+    slug: string;
+  } | null;
+};
+
+async function fetchPaperDetails(
+  queryClient: QueryClient,
+  paperId: string,
+): Promise<PaperDetail> {
+  return await queryClient.ensureQueryData({
+    queryKey: ["public", "paper", paperId],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("papers")
+        .select(
+          "id, title, year, exam_type, paper_number, description, file_path, file_bucket, subject_id, subjects(title, code, slug)",
+        )
+        .eq("id", paperId)
+        .maybeSingle();
+      if (error) throw error;
+      if (!data) throw notFound();
+      return data as unknown as PaperDetail;
+    },
+  });
+}
+
 export const Route = createFileRoute("/papers/$paperId")({
-  head: ({ params }) => {
+  loader: async ({ params, context: { queryClient } }) => {
+    return await fetchPaperDetails(queryClient, params.paperId);
+  },
+  head: ({ loaderData, params }) => {
+    const paper = loaderData;
     const url = `https://www.xrounder.in/papers/${params.paperId}`;
+    const rawPaperTitle = paper?.title?.trim() || "";
+    const hasYearInTitle = paper?.year && rawPaperTitle.includes(String(paper.year));
+    const yearText = paper?.year && !hasYearInTitle ? ` (${paper.year})` : "";
+    const hasPaperTextInTitle = /question\s+paper|pyq|exam\s+paper/i.test(rawPaperTitle);
+    const paperSuffix = hasPaperTextInTitle ? "" : " — University Question Paper";
+    const title = paper
+      ? `${rawPaperTitle}${yearText}${paperSuffix} · XRounder`
+      : "University Question Paper · XRounder";
+
+    const subjectName = paper?.subjects?.title?.trim();
+    const description = paper?.description
+      ? paper.description
+      : paper
+        ? `View and practice ${rawPaperTitle}${yearText} university examination question paper${subjectName ? ` for ${subjectName}` : ""} on XRounder. Real past paper archive with solutions.`
+        : "View and download semester examination question papers, previous year papers, and solutions on XRounder.";
+
     return {
       meta: [
-        { title: "University Question Paper · XRounder" },
-        {
-          name: "description",
-          content:
-            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
-        },
-        { property: "og:title", content: "University Question Paper · XRounder" },
-        {
-          property: "og:description",
-          content:
-            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
-        },
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "University Question Paper · XRounder" },
-        {
-          name: "twitter:description",
-          content:
-            "View and download semester examination question papers, previous year papers, and solutions on XRounder.",
-        },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://www.xrounder.in/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Previous Papers",
+                    item: "https://www.xrounder.in/papers",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: paper?.title ?? "Question Paper",
+                    item: url,
+                  },
+                ],
+              },
+              ...(paper
+                ? [
+                    {
+                      "@type": "LearningResource",
+                      name: paper.title,
+                      description: description,
+                      url: url,
+                      learningResourceType: "Past Examination Paper",
+                      educationalLevel: "Higher Education",
+                      provider: {
+                        "@type": "EducationalOrganization",
+                        name: "XRounder",
+                        url: "https://www.xrounder.in/",
+                      },
+                    },
+                  ]
+                : []),
+            ],
+          }),
+        },
+      ],
     };
   },
   component: PaperViewer,
@@ -49,19 +145,11 @@ export const Route = createFileRoute("/papers/$paperId")({
 
 function PaperViewer() {
   const { paperId } = Route.useParams();
+  const queryClient = useQueryClient();
 
   const paperQuery = useQuery({
     queryKey: ["public", "paper", paperId],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("papers")
-        .select("id, title, year, exam_type, paper_number, description, file_path, file_bucket")
-        .eq("id", paperId)
-        .maybeSingle();
-      if (error) throw error;
-      if (!data) throw notFound();
-      return data;
-    },
+    queryFn: () => fetchPaperDetails(queryClient, paperId),
   });
 
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
@@ -143,12 +231,21 @@ function PaperViewer() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-10">
-        <Link
-          to="/courses"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to catalog
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/papers"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" /> Back to Previous Papers
+          </Link>
+          <span className="text-muted-foreground/40">·</span>
+          <Link
+            to="/courses"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            Course Catalog
+          </Link>
+        </div>
 
         {paperQuery.data && (
           <article className="mt-6">

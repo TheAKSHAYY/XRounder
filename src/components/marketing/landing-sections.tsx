@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import {
   ArrowRight,
   BookOpen,
-  CheckCircle2,
   ChevronRight,
   Sparkles,
   Zap,
@@ -21,11 +20,8 @@ import {
   ChevronDown,
   Star,
   Compass,
-  MousePointerClick,
-  Layers,
   GraduationCap,
   Play,
-  Lightbulb,
 } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";

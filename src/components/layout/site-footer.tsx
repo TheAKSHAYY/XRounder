@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils";
 type FooterLink =
   | {
       label: string;
-      to: "/courses" | "/privacy" | "/terms" | "/developer" | "/mock-test";
+      to: "/courses" | "/papers" | "/privacy" | "/terms" | "/developer" | "/mock-test";
       href?: never;
     }
   | { label: string; href: string; to?: never };
 
 const FOOTER_LINKS: FooterLink[] = [
   { label: "Courses", to: "/courses" },
+  { label: "Previous Papers", to: "/papers" },
   { label: "Roadmap", href: "/#curriculum-roadmap" },
   { label: "Mock Test", to: "/mock-test" },
   { label: "Developer", to: "/developer" },

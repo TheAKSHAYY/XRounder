@@ -94,11 +94,14 @@ async function fetchSubjectDetails(
       if (!data) throw notFound();
 
       const course = { id: data.id, title: data.title };
-      const semRaw = (data.semesters as any[])?.[0];
+      type RawSem = { id: string; number: number; title: string; subjects?: RawSub[] };
+      type RawSub = { id: string; code: string; title: string; description?: string | null; credits?: number | null; units?: unknown[] };
+
+      const semRaw = (data.semesters as unknown as RawSem[])?.[0];
       if (!semRaw) throw notFound();
       const sem = { id: semRaw.id, number: semRaw.number, title: semRaw.title };
 
-      const subRaw = (semRaw.subjects as any[])?.[0];
+      const subRaw = (semRaw.subjects as unknown as RawSub[])?.[0];
       if (!subRaw) throw notFound();
       const subject = {
         id: subRaw.id,
@@ -235,11 +238,17 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
   head: ({ loaderData, params }) => {
     const subject = loaderData?.subject;
     const course = loaderData?.course;
-    const title = subject
-      ? `${subject.title} (${subject.code}) Notes & Past Papers · XRounder`
+    const cleanSubjTitle = subject?.title?.trim() ?? "";
+    const cleanCode = subject?.code?.trim() ?? "";
+    const codeSuffix =
+      cleanCode && !cleanSubjTitle.toLowerCase().includes(cleanCode.toLowerCase())
+        ? ` (${cleanCode})`
+        : "";
+    const title = cleanSubjTitle
+      ? `${cleanSubjTitle}${codeSuffix} Notes & Past Papers · XRounder`
       : "Subject · XRounder";
-    const description = subject
-      ? `Study ${subject.title} (${subject.code}) for ${course?.title ?? "Degree"} Semester ${params.semesterNumber}. Exam-ready unit notes, past papers, and MCQs.`
+    const description = cleanSubjTitle
+      ? `Study ${cleanSubjTitle}${codeSuffix} for ${course?.title?.trim() ?? "Degree"} Semester ${params.semesterNumber}. Exam-ready unit notes, past papers, and MCQs.`
       : "Syllabus-aligned subject notes and learning resources on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}`;
 
@@ -304,13 +313,13 @@ export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subj
         { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "website" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -372,6 +381,10 @@ type ContentBucket = {
 function emptyContentBucket(): ContentBucket {
   return { note: 0, pdf: 0, ppt: 0, video: 0, assignment: 0, link: 0, total: 0 };
 }
+
+const EMPTY_UNITS: UnitRow[] = [];
+const EMPTY_PROGRESS: ProgressRow[] = [];
+const EMPTY_CONTENT_BY_UNIT = new Map<string, ContentBucket>();
 
 type UnitStats = {
   unit: UnitRow;
@@ -552,7 +565,7 @@ function SubjectDetail() {
   });
 
   const subjectId = subjectQuery.data?.subject.id;
-  const units = subjectQuery.data?.units ?? [];
+  const units = subjectQuery.data?.units ?? EMPTY_UNITS;
 
   const progressQuery = useQuery({
     queryKey: ["student", "subject-progress", user?.id, subjectId],
@@ -569,7 +582,7 @@ function SubjectDetail() {
     },
   });
 
-  const progress = progressQuery.data ?? [];
+  const progress = progressQuery.data ?? EMPTY_PROGRESS;
 
   const unitIds = units.map((u: UnitRow) => u.id);
 
@@ -613,7 +626,7 @@ function SubjectDetail() {
     },
   });
 
-  const contentByUnit = subjectQuery.data?.contentByUnit ?? new Map<string, ContentBucket>();
+  const contentByUnit = subjectQuery.data?.contentByUnit ?? EMPTY_CONTENT_BY_UNIT;
   const unitQuizzesData = unitQuizzesQuery.data;
 
   const unitStats: UnitStats[] = useMemo(() => {
@@ -1556,7 +1569,7 @@ function EmptyUnits({
 
 function SubjectPastPapersSection({
   papers,
-  subjectTitle,
+  subjectTitle: _subjectTitle,
   subjectCode,
 }: {
   papers: PaperRow[];

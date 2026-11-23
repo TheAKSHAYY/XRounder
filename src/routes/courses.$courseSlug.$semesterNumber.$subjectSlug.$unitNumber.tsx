@@ -34,7 +34,6 @@ import {
 } from "@/lib/sound-fx";
 import { SoundToggle } from "@/components/ui/sound-toggle";
 import { BiteSizedLessonMode } from "@/components/content/bite-sized-lesson-mode";
-import { MascotSvg } from "@/components/gamification/study-mascot";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -123,15 +122,19 @@ async function fetchUnitDetails(
       if (error || !data) throw notFound();
 
       const course = { id: data.id, title: data.title };
-      const semRaw = (data.semesters as any[])?.[0];
+      type RawSem = { id: string; number: number; title: string; subjects?: RawSub[] };
+      type RawSub = { id: string; code: string; title: string; units?: RawUnitItem[] };
+      type RawUnitItem = { id: string; number: number; title: string; summary?: string | null };
+
+      const semRaw = (data.semesters as unknown as RawSem[])?.[0];
       if (!semRaw) throw notFound();
       const sem = { id: semRaw.id, number: semRaw.number, title: semRaw.title };
 
-      const subRaw = (semRaw.subjects as any[])?.[0];
+      const subRaw = (semRaw.subjects as unknown as RawSub[])?.[0];
       if (!subRaw) throw notFound();
       const subject = { id: subRaw.id, code: subRaw.code, title: subRaw.title };
 
-      const unitRaw = (subRaw.units as any[])?.[0];
+      const unitRaw = (subRaw.units as unknown as RawUnitItem[])?.[0];
       if (!unitRaw) throw notFound();
       const unit = {
         id: unitRaw.id,
@@ -354,14 +357,16 @@ export const Route = createFileRoute(
     const course = loaderData?.course;
     const unit = loaderData?.unit;
     const subject = loaderData?.subject;
+    const cleanSubjTitle = subject?.title?.trim() ?? "";
+    const cleanUnitTitle = unit?.title?.trim().replace(/^Unit\s+\d+[:\s-]*/i, "").trim() ?? "";
     const title =
-      unit && subject
-        ? `Unit ${unit.number}: ${unit.title} — ${subject.title} · XRounder`
+      unit && cleanSubjTitle
+        ? `Unit ${unit.number}: ${cleanUnitTitle} — ${cleanSubjTitle} · XRounder`
         : `Unit ${params.unitNumber} Learning Hub · XRounder`;
-    const description = unit?.summary
-      ? unit.summary
-      : subject
-        ? `Study Unit ${params.unitNumber} of ${subject.title} on XRounder. Exam notes, attachments, and practice MCQs.`
+    const description = unit?.summary?.trim()
+      ? unit.summary.trim()
+      : cleanSubjTitle
+        ? `Study Unit ${params.unitNumber} (${cleanUnitTitle}) of ${cleanSubjTitle} on XRounder. Exam notes, attachments, and practice MCQs.`
         : "Unit notes, syllabus-aligned learning materials, and practice MCQs on XRounder.";
     const url = `https://www.xrounder.in/courses/${params.courseSlug}/${params.semesterNumber}/${params.subjectSlug}/${params.unitNumber}`;
 
@@ -438,13 +443,13 @@ export const Route = createFileRoute(
         { property: "og:description", content: description },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
-        { property: "og:image", content: "https://www.xrounder.in/og-image.png" },
+        { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: "https://www.xrounder.in/og-image.png" },
+        { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -746,11 +751,32 @@ function UnitDetail() {
   });
 
   const toggleStudyMode = (mode: "interactive" | "reader") => {
+    // Stop any ongoing narration immediately when switching study modes
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
     setStudyMode(mode);
     if (typeof window !== "undefined") {
       localStorage.setItem("xrounder_study_mode", mode);
     }
   };
+
+  // Cancel any ongoing narration if user switches to another tab or unmounts
+  useEffect(() => {
+    if (activeTab !== "STUDY_MATERIAL") {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   // Remember this active unit so subject index and Sparky recommend the exact chosen unit
   useEffect(() => {
@@ -1212,7 +1238,7 @@ function UnitDetail() {
       .join("\n\n");
     return getDeterministicFallbackQuiz({
       subjectTitle: dataQuery.data?.subject?.title ?? "Subject",
-      unitNumber: dataQuery.data?.unit?.number ?? Number(unitNumber) ?? 1,
+      unitNumber: dataQuery.data?.unit?.number ?? (Number(unitNumber) || 1),
       topicTitle: dataQuery.data?.unit?.title ?? "Unit Topics",
       courseTitle: "Bachelor of Computer Applications (BCA)",
       language: "en",
@@ -1584,9 +1610,9 @@ function UnitDetail() {
       </div>
 
       {/* ─── Main Content Hub ─── */}
-      <main className="flex-1 mx-auto w-full sm:max-w-6xl px-4 sm:px-8 pb-24 pt-4 sm:pt-8 min-w-0">
+      <main className="flex-1 mx-auto w-full sm:max-w-6xl px-3 sm:px-6 pb-20 pt-3 sm:pt-6 min-w-0">
         <Breadcrumbs
-          className="mb-4 sm:mb-6"
+          className="mb-3 sm:mb-4"
           items={[
             { label: "Courses", to: "/courses" },
             {
@@ -1609,19 +1635,19 @@ function UnitDetail() {
         />
 
         {/* Unit Header Block */}
-        <div className="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-4 sm:p-8 shadow-soft">
+        <div className="mb-4 sm:mb-6 rounded-2xl border border-border/80 bg-linear-to-br from-primary/8 via-surface to-card p-3.5 sm:p-5 shadow-soft">
           <Badge
             variant="outline"
-            className="mb-2 text-xs font-mono font-bold rounded-lg text-primary border-primary/30"
+            className="mb-1.5 text-[11px] font-mono font-bold rounded-lg text-primary border-primary/30"
           >
             Unit {unit.number} Learning Hub
           </Badge>
-          <h2 className="font-display text-2xl sm:text-4xl font-normal text-foreground tracking-tight">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground tracking-tight">
             {formatTitleCase(unit.title)}
           </h2>
 
           {/* Five Distinct Study Resource Pillars */}
-          <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
+          <div className="mt-3.5 flex flex-wrap items-center gap-1.5 sm:gap-2 border-t border-border/60 pt-3">
             <button
               type="button"
               onClick={() => {
@@ -1629,13 +1655,13 @@ function UnitDetail() {
                 setActiveTab("STUDY_MATERIAL");
               }}
               className={cn(
-                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold sm:font-bold transition-all text-center cursor-pointer",
                 activeTab === "STUDY_MATERIAL"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <BookOpen className="h-4 w-4 shrink-0" /> Study Material ({readArticles.length})
+              <BookOpen className="h-3.5 w-3.5 shrink-0" /> Study Material ({readArticles.length})
             </button>
 
             <button
@@ -1645,13 +1671,13 @@ function UnitDetail() {
                 setActiveTab("WRITTEN_PRACTICE");
               }}
               className={cn(
-                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold sm:font-bold transition-all text-center cursor-pointer",
                 activeTab === "WRITTEN_PRACTICE"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FileText className="h-4 w-4 shrink-0" /> Written Practice ({pyqQuestions.length > 0 ? pyqQuestions.length : "Exam Focus"})
+              <FileText className="h-3.5 w-3.5 shrink-0" /> Written Practice ({pyqQuestions.length > 0 ? pyqQuestions.length : "Exam Focus"})
             </button>
 
             <button
@@ -1661,13 +1687,13 @@ function UnitDetail() {
                 setActiveTab("PRACTICE_QUIZZES");
               }}
               className={cn(
-                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold sm:font-bold transition-all text-center cursor-pointer",
                 activeTab === "PRACTICE_QUIZZES"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FlaskConical className="h-4 w-4 shrink-0" /> Practice Quizzes ({calibratedUnitMcqs.length > 0 ? `${calibratedUnitMcqs.length} MCQs` : (quizDetailsQuery.data?.length ?? 0)})
+              <FlaskConical className="h-3.5 w-3.5 shrink-0" /> Practice Quizzes ({calibratedUnitMcqs.length > 0 ? `${calibratedUnitMcqs.length} MCQs` : (quizDetailsQuery.data?.length ?? 0)})
             </button>
 
             <button
@@ -1677,13 +1703,13 @@ function UnitDetail() {
                 setActiveTab("PHYSICAL_NOTES");
               }}
               className={cn(
-                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold sm:font-bold transition-all text-center cursor-pointer",
                 activeTab === "PHYSICAL_NOTES"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <FileType className="h-4 w-4 shrink-0" /> Physical Notes ({referenceMaterials.length})
+              <FileType className="h-3.5 w-3.5 shrink-0" /> Physical Notes ({referenceMaterials.length})
             </button>
 
             <button
@@ -1693,20 +1719,20 @@ function UnitDetail() {
                 setActiveTab("PAPERS");
               }}
               className={cn(
-                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl sm:rounded-2xl text-xs font-bold transition-all text-center cursor-pointer",
+                "btn-squishy flex flex-1 sm:flex-initial items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold sm:font-bold transition-all text-center cursor-pointer",
                 activeTab === "PAPERS"
                   ? "bg-primary text-primary-foreground shadow-xs"
                   : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground",
               )}
             >
-              <GraduationCap className="h-4 w-4 shrink-0" /> Previous Year Papers ({papers.length})
+              <GraduationCap className="h-3.5 w-3.5 shrink-0" /> Previous Year Papers ({papers.length})
             </button>
           </div>
         </div>
 
         {/* ─── TAB 1: STUDY MATERIAL ─── */}
         {activeTab === "STUDY_MATERIAL" && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             {readArticles.length > 0 && (
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/80 bg-muted/40 p-2 sm:px-3">
@@ -1822,10 +1848,15 @@ function UnitDetail() {
                     : null;
 
                 return (
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     <ArticleAudioPlayer
-                      text={`${focusedArticle.title}. ${focusedArticle.body || focusedArticle.description || ""}`}
+                      articleId={focusedArticle.id}
                       title={focusedArticle.title}
+                      content={focusedArticle.body || focusedArticle.description || ""}
+                      courseId={course?.id}
+                      unitId={unit.id}
+                      topicId={focusedArticle.id}
+                      studyMode={studyMode}
                       onAskAi={() => {
                         playPopSound();
                         setAiAssistantTopic(focusedArticle.title);
@@ -1947,20 +1978,33 @@ function UnitDetail() {
                       </div>
                     </div>
                   ) : (
-                    <div className="space-y-12 min-w-0 max-w-full">
+                    <div className="space-y-8 min-w-0 max-w-full">
+                      {/* Unified Article Audio Player for All Topics View */}
+                      <ArticleAudioPlayer
+                        articleId="ALL"
+                        title={`Unit ${unit.number}: ${unit.title}`}
+                        content={readArticles
+                          .map((a: UnitContentItem) => `${a.title}\n\n${a.body || a.description || ""}`)
+                          .join("\n\n")}
+                        courseId={course?.id}
+                        unitId={unit.id}
+                        topicId="ALL"
+                        studyMode={studyMode}
+                        onAskAi={() => {
+                          playPopSound();
+                          setAiAssistantTopic(`Unit ${unit.number}: ${unit.title}`);
+                          setAiAssistantContext(
+                            readArticles
+                              .slice(0, 3)
+                              .map((a: UnitContentItem) => `${a.title}\n\n${a.body || a.description || ""}`)
+                              .join("\n\n"),
+                          );
+                          setAiAssistantOpen(true);
+                        }}
+                      />
+
                       {readArticles.map((item: UnitContentItem, i: number) => (
                         <div key={item.id} className="space-y-4">
-                          <ArticleAudioPlayer
-                            text={`${item.title}. ${item.body || item.description || ""}`}
-                            title={item.title}
-                            onAskAi={() => {
-                              playPopSound();
-                              setAiAssistantTopic(item.title);
-                              setAiAssistantContext(item.body || item.description || "");
-                              setAiAssistantOpen(true);
-                            }}
-                          />
-
                           <EducationalContentRenderer
                             title={item.title}
                             content={item.body || item.description || ""}

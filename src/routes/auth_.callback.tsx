@@ -7,6 +7,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { resolvePostAuthRoute } from "@/lib/post-auth";
 import { recordLoginHistory } from "@/lib/auth-history";
+import { sanitizeRedirectUrl } from "@/lib/safe-redirect";
 
 export const Route = createFileRoute("/auth_/callback")({
   ssr: false,
@@ -33,7 +34,8 @@ function AuthCallbackPage() {
         if (data.user) {
           if (cancelled) return;
           await recordLoginHistory(data.user.id);
-          const dest = redirect ?? (await resolvePostAuthRoute(data.user.id));
+          const fallbackDest = await resolvePostAuthRoute(data.user.id);
+          const dest = sanitizeRedirectUrl(redirect, fallbackDest);
           navigate({ to: dest, replace: true });
           return;
         }
