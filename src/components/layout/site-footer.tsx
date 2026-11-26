@@ -14,7 +14,7 @@ type FooterLink =
 const FOOTER_LINKS: FooterLink[] = [
   { label: "Courses", to: "/courses" },
   { label: "Previous Papers", to: "/papers" },
-  { label: "Roadmap", href: "/#curriculum-roadmap" },
+  { label: "Roadmap", href: "/#courses" },
   { label: "Mock Test", to: "/mock-test" },
   { label: "Developer", to: "/developer" },
   { label: "Privacy", to: "/privacy" },

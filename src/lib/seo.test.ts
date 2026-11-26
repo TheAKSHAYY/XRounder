@@ -3,13 +3,14 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   escapeXml,
+  fetchAllSitemapEntries,
   formatSitemapXml,
   generateSitemapResponse,
   _resetSitemapCache,
   _setCachedSitemap,
   type SitemapEntry,
 } from "./sitemap";
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
 describe("SEO & Indexing Architecture Tests", () => {
@@ -104,6 +105,28 @@ describe("SEO & Indexing Architecture Tests", () => {
 describe("Sitemap Reliability & Outage Fallback Logic", () => {
   beforeEach(() => {
     _resetSitemapCache();
+  });
+
+  it("requires a related question before including a public quiz", async () => {
+    const client = createClient<Database>("https://example.test", "test-key", {
+      global: {
+        fetch: async (input) => {
+          const url = new URL(input instanceof Request ? input.url : input);
+          if (!url.pathname.endsWith("/quizzes")) return Response.json([]);
+          expect(url.searchParams.get("select")).toContain("quiz_questions!inner(id)");
+          expect(url.searchParams.get("quiz_questions.limit")).toBe("1");
+          expect(url.searchParams.get("is_public")).toBe("eq.true");
+          return Response.json([
+            { id: "published-quiz", quiz_questions: [{ id: "question-1" }] },
+          ]);
+        },
+      },
+    });
+
+    const entries = await fetchAllSitemapEntries(client);
+    expect(entries.filter(({ path }) => path.startsWith("/quizzes/"))).toMatchObject([
+      { path: "/quizzes/published-quiz" },
+    ]);
   });
 
   it("returns 503 with Retry-After on cold boot when database is unreachable", async () => {

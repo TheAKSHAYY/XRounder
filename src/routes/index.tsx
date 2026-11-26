@@ -1,27 +1,49 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { EditorialReferenceLanding } from "@/components/marketing/editorial-reference-landing";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const { data } = await supabase
+      .from("semesters")
+      .select(
+        "number, courses!inner(slug), subjects(id, code, slug, title, credits, status, deleted_at, sort_order)",
+      )
+      .eq("courses.slug", "bca")
+      .eq("courses.status", "published")
+      .is("courses.deleted_at", null)
+      .eq("status", "published")
+      .is("deleted_at", null)
+      .order("number");
+
+    return (data ?? []).map(({ number, subjects }) => ({
+      number,
+      subjects: subjects
+        .filter((subject) => subject.status === "published" && !subject.deleted_at)
+        .sort((a, b) => a.sort_order - b.sort_order || a.code.localeCompare(b.code))
+        .map(({ id, code, slug, title, credits }) => ({ id, code, slug, title, credits })),
+    }));
+  },
   head: () => ({
     meta: [
       { title: "XRounder — MJPRU BCA Notes, Past Papers & MCQ Practice" },
       {
         name: "description",
         content:
-          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
+          "Free MJPRU BCA study notes, previous year question papers and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
       { property: "og:title", content: "XRounder — MJPRU BCA Notes, Past Papers & MCQ Practice" },
       {
         property: "og:description",
         content:
-          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
+          "Free MJPRU BCA study notes, previous year question papers and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
       { property: "og:url", content: "https://www.xrounder.in/" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
       { property: "og:image:type", content: "image/jpeg" },
-      { property: "og:image:alt", content: "XRounder — Learn smarter with notes, past papers, video lectures and MCQ quizzes" },
+      { property: "og:image:alt", content: "XRounder — Learn smarter with notes, past papers and MCQ quizzes" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,10 +51,10 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Free MJPRU BCA study notes, previous year question papers, video lectures, and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
+          "Free MJPRU BCA study notes, previous year question papers and syllabus-aligned MCQ practice tests organized by semester on XRounder.",
       },
       { name: "twitter:image", content: "https://www.xrounder.in/xrounder-share.jpg" },
-      { name: "twitter:image:alt", content: "XRounder — Learn smarter with notes, past papers, video lectures and MCQ quizzes" },
+      { name: "twitter:image:alt", content: "XRounder — Learn smarter with notes, past papers and MCQ quizzes" },
     ],
     links: [{ rel: "canonical", href: "https://www.xrounder.in/" }],
     scripts: [
@@ -47,7 +69,7 @@ export const Route = createFileRoute("/")({
               url: "https://www.xrounder.in/",
               name: "XRounder",
               description:
-                "The structured learning platform for BCA students. Notes, past papers, video lectures, and MCQ practice — organized by semester and subject.",
+                "The structured learning platform for BCA students. Notes, past papers and MCQ practice — organized by semester and subject.",
               publisher: {
                 "@id": "https://www.xrounder.in/#organization",
               },
@@ -76,5 +98,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <EditorialReferenceLanding />;
+  return <EditorialReferenceLanding semesters={Route.useLoaderData()} />;
 }

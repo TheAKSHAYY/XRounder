@@ -14,248 +14,24 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-interface SubjectItem {
-  code: string;
-  title: string;
-  slug: string;
-  credits: number;
-  type: "Theory" | "Practical";
-}
-
 interface SemesterData {
   number: number;
-  title: string;
-  subjects: SubjectItem[];
+  subjects: {
+    id: string;
+    code: string;
+    title: string;
+    slug: string;
+    credits: number | null;
+  }[];
 }
 
-const SEMESTERS_DATA: SemesterData[] = [
-  {
-    number: 1,
-    title: "Semester 1",
-    subjects: [
-      {
-        code: "BCA-101N",
-        title: "Computer Fundamentals & PC Software",
-        slug: "computer-fundamentals-and-pc-software-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-103N",
-        title: "Programming with C",
-        slug: "programming-with-c-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-105N",
-        title: "Basic Mathematics",
-        slug: "basic-mathematics-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-107N",
-        title: "Communicative English",
-        slug: "communicative-english",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-109N",
-        title: "Principles of Management",
-        slug: "principle-of-management-wc5k",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-  {
-    number: 2,
-    title: "Semester 2",
-    subjects: [
-      {
-        code: "BCA-102N",
-        title: "Data Structures using C",
-        slug: "data-structures-using-c-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-104N",
-        title: "Digital Electronics",
-        slug: "digital-electronics-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-106N",
-        title: "Discrete Mathematics",
-        slug: "discrete-mathematics-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-108N",
-        title: "Financial Accounting & Management",
-        slug: "financial-accounting-and-management-theory",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-110N",
-        title: "Environmental Studies",
-        slug: "environmental-studies",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-  {
-    number: 3,
-    title: "Semester 3",
-    subjects: [
-      {
-        code: "BCA-201N",
-        title: "Object Oriented Programming Using Java",
-        slug: "object-oriented-programming-using-java",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-203N",
-        title: "Computer Oriented Numerical Analysis",
-        slug: "computer-oriented-numerical-analysis",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-205N",
-        title: "Computer Organization & Architecture",
-        slug: "computer-organization-and-architecture",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-413E",
-        title: "Information System for Business",
-        slug: "information-system-for-business",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-  {
-    number: 4,
-    title: "Semester 4",
-    subjects: [
-      {
-        code: "BCA-202N",
-        title: "Operating Systems",
-        slug: "operating-systems",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-204N",
-        title: "Optimization Techniques",
-        slug: "optimization-techniques",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-206N",
-        title: "Software Engineering",
-        slug: "software-engineering",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-421E",
-        title: "Web Technology",
-        slug: "web-technology",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-  {
-    number: 5,
-    title: "Semester 5",
-    subjects: [
-      {
-        code: "BCA-301N",
-        title: "Database Management System",
-        slug: "database-management-system",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-303N",
-        title: "Python Programming",
-        slug: "python-programming",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-305N",
-        title: "Computer Graphics",
-        slug: "computer-graphics",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-511E",
-        title: "Cloud Computing",
-        slug: "cloud-computing",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-  {
-    number: 6,
-    title: "Semester 6",
-    subjects: [
-      {
-        code: "BCA-302N",
-        title: "Computer Networks & Cyber Security",
-        slug: "computer-networks-and-cyber-security",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-304N",
-        title: "Artificial Intelligence",
-        slug: "artificial-intelligence",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-306N",
-        title: "Dot Net Framework and C#",
-        slug: "dot-net-framework-and-c-sharp",
-        credits: 4,
-        type: "Theory",
-      },
-      {
-        code: "BCA-611E",
-        title: "Mobile Computing",
-        slug: "mobile-computing",
-        credits: 4,
-        type: "Theory",
-      },
-    ],
-  },
-];
-
-export function EditorialReferenceLanding() {
+export function EditorialReferenceLanding({ semesters }: { semesters: SemesterData[] }) {
   const { user, loading } = useAuth();
-  const [selectedSemester, setSelectedSemester] = useState<number>(1);
+  const [selectedSemester, setSelectedSemester] = useState(semesters[0]?.number);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const currentSemester =
-    SEMESTERS_DATA.find((s) => s.number === selectedSemester) ?? SEMESTERS_DATA[0];
+    semesters.find((semester) => semester.number === selectedSemester) ?? semesters[0];
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -644,7 +420,7 @@ export function EditorialReferenceLanding() {
 
           {/* Minimal Pill Semester Switcher (Rule 4: Muted Olive for Selected Elements) */}
           <div className="mt-6 flex flex-wrap gap-2">
-            {[1, 2, 3, 4, 5, 6].map((num) => (
+            {semesters.map(({ number: num }) => (
               <button
                 type="button"
                 key={num}
@@ -663,9 +439,9 @@ export function EditorialReferenceLanding() {
 
           {/* Subject Grid for Chosen Semester */}
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {currentSemester.subjects.map((subj) => (
+            {currentSemester?.subjects.map((subj) => (
               <Link
-                key={subj.code}
+                key={subj.id}
                 to="/courses/$courseSlug/$semesterNumber/$subjectSlug"
                 params={{
                   courseSlug: "bca",
@@ -679,9 +455,11 @@ export function EditorialReferenceLanding() {
                     <span className="font-mono text-xs font-semibold text-[#747A52]">
                       {subj.code}
                     </span>
-                    <span className="text-[11px] font-medium text-[#625F56] font-sans">
-                      {subj.credits} Credits · {subj.type}
-                    </span>
+                    {subj.credits != null && (
+                      <span className="text-[11px] font-medium text-[#625F56] font-sans">
+                        {subj.credits} Credits
+                      </span>
+                    )}
                   </div>
                   <h4 className="mt-2 font-sans text-[15px] font-semibold text-[#201F1B] group-hover:text-[#747A52] transition-colors tracking-tight">
                     {subj.title}
@@ -699,19 +477,21 @@ export function EditorialReferenceLanding() {
           </div>
 
           {/* Launch Entire Selected Semester */}
+          {currentSemester && (
           <div className="mt-8 flex justify-center">
             <Link
               to="/courses/$courseSlug/$semesterNumber"
               params={{
                 courseSlug: "bca",
-                semesterNumber: String(selectedSemester),
+                semesterNumber: String(currentSemester.number),
               }}
               className="inline-flex items-center justify-center rounded-full bg-[#201F1B] text-white px-6 py-2.5 text-[14px] font-medium hover:bg-[#33312B] transition-colors shadow-2xs font-sans"
             >
-              Open All Semester {selectedSemester} Subjects
+              Open All Semester {currentSemester.number} Subjects
               <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </Link>
           </div>
+          )}
         </div>
       </section>
 
@@ -817,7 +597,7 @@ export function EditorialReferenceLanding() {
             >
               BCA Syllabus
             </Link>
-            <Link to="/roadmap" className="hover:text-[#201F1B] transition-colors">
+            <Link to="/" hash="courses" className="hover:text-[#201F1B] transition-colors">
               Roadmap
             </Link>
             <Link to="/developer" className="hover:text-[#201F1B] transition-colors">

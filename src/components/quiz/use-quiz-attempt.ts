@@ -24,6 +24,7 @@ export function useQuizAttempt(quizId: string) {
         .from("quizzes")
         .select("*")
         .eq("id", quizId)
+        .is("deleted_at", null)
         .maybeSingle();
       if (error) throw error;
       if (!data || data.status !== "published") throw notFound();
