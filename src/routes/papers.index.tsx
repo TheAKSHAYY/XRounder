@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import {
   ArrowRight,
   Calendar,
@@ -39,7 +39,91 @@ type PaperItem = {
 
 const EMPTY_PAPERS: PaperItem[] = [];
 
+const papersCatalogOptions = queryOptions({
+  queryKey: ["public", "all-papers-catalog"],
+  queryFn: async () => {
+    const { data, error } = await supabase
+      .from("papers")
+      .select(`
+        id,
+        title,
+        year,
+        exam_type,
+        paper_number,
+        description,
+        file_size_bytes,
+        subject_id,
+        subjects (
+          id,
+          title,
+          code,
+          slug,
+          semesters (
+            number,
+            courses (
+              slug
+            )
+          )
+        )
+      `)
+      .eq("status", "published")
+      .is("deleted_at", null)
+      .order("year", { ascending: false });
+
+    if (error) throw error;
+
+    type RawPaperRow = {
+      id: string;
+      title: string;
+      year: number;
+      exam_type: string;
+      paper_number: string | null;
+      description: string | null;
+      file_size_bytes: number | null;
+      subject_id: string;
+      subjects?: {
+        id: string;
+        title: string;
+        code: string;
+        slug: string;
+        semesters?: {
+          number: number;
+          courses?: {
+            slug: string;
+          } | null;
+        } | null;
+      } | null;
+    };
+
+    const flat: PaperItem[] = (data as unknown as RawPaperRow[] ?? []).map((row) => {
+      const sub = row.subjects;
+      const sem = sub?.semesters;
+      const course = sem?.courses;
+
+      return {
+        id: row.id,
+        title: row.title,
+        year: row.year,
+        exam_type: row.exam_type,
+        paper_number: row.paper_number,
+        description: row.description,
+        file_size_bytes: row.file_size_bytes,
+        subject_id: row.subject_id,
+        subject_title: sub?.title || "Unknown Subject",
+        subject_code: sub?.code || "",
+        subject_slug: sub?.slug || "",
+        semester_number: sem?.number ?? 1,
+        course_slug: course?.slug || "bca",
+      };
+    });
+
+    return flat;
+  },
+  staleTime: 5 * 60 * 1000,
+});
+
 export const Route = createFileRoute("/papers/")({
+  loader: ({ context: { queryClient } }) => queryClient.ensureQueryData(papersCatalogOptions),
   head: () => ({
     meta: [
       {
@@ -126,88 +210,7 @@ function PapersIndexPage() {
   const [selectedYear, setSelectedYear] = useState<number | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const papersQuery = useQuery({
-    queryKey: ["public", "all-papers-catalog"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("papers")
-        .select(`
-          id,
-          title,
-          year,
-          exam_type,
-          paper_number,
-          description,
-          file_size_bytes,
-          subject_id,
-          subjects (
-            id,
-            title,
-            code,
-            slug,
-            semesters (
-              number,
-              courses (
-                slug
-              )
-            )
-          )
-        `)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("year", { ascending: false });
-
-      if (error) throw error;
-
-      type RawPaperRow = {
-        id: string;
-        title: string;
-        year: number;
-        exam_type: string;
-        paper_number: string | null;
-        description: string | null;
-        file_size_bytes: number | null;
-        subject_id: string;
-        subjects?: {
-          id: string;
-          title: string;
-          code: string;
-          slug: string;
-          semesters?: {
-            number: number;
-            courses?: {
-              slug: string;
-            } | null;
-          } | null;
-        } | null;
-      };
-
-      const flat: PaperItem[] = (data as unknown as RawPaperRow[] ?? []).map((row) => {
-        const sub = row.subjects;
-        const sem = sub?.semesters;
-        const course = sem?.courses;
-
-        return {
-          id: row.id,
-          title: row.title,
-          year: row.year,
-          exam_type: row.exam_type,
-          paper_number: row.paper_number,
-          description: row.description,
-          file_size_bytes: row.file_size_bytes,
-          subject_id: row.subject_id,
-          subject_title: sub?.title || "Unknown Subject",
-          subject_code: sub?.code || "",
-          subject_slug: sub?.slug || "",
-          semester_number: sem?.number ?? 1,
-          course_slug: course?.slug || "bca",
-        };
-      });
-
-      return flat;
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  const papersQuery = useQuery({ ...papersCatalogOptions, initialData: Route.useLoaderData() });
 
   const allPapers = papersQuery.data ?? EMPTY_PAPERS;
 

@@ -28,7 +28,7 @@ import type { Option, Question } from "@/components/quiz/types";
 export const Route = createFileRoute("/quizzes/$quizId")({
   loader: async ({ params, context: { queryClient } }) => {
     // Concurrently fetch quiz, questions, and options on link hover/intent for instant transitions
-    const [quiz] = await Promise.all([
+    const [quiz, questions] = await Promise.all([
       queryClient.ensureQueryData({
         queryKey: ["public-quiz", params.quizId],
         queryFn: async () => {
@@ -36,13 +36,14 @@ export const Route = createFileRoute("/quizzes/$quizId")({
             .from("quizzes")
             .select("*")
             .eq("id", params.quizId)
+            .is("deleted_at", null)
             .maybeSingle();
           if (error) throw error;
           if (!data || data.status !== "published") throw notFound();
           return data;
         },
       }),
-      queryClient.prefetchQuery({
+      queryClient.ensureQueryData({
         queryKey: ["public-quiz-questions", params.quizId],
         queryFn: async () => {
           const { data, error } = await supabase
@@ -63,10 +64,11 @@ export const Route = createFileRoute("/quizzes/$quizId")({
         },
       }),
     ]);
-    return { quiz };
+    return { quiz, hasQuestions: questions.length > 0 };
   },
   head: ({ loaderData, params }) => {
     const quiz = loaderData?.quiz;
+    const isIndexable = quiz?.is_public === true && loaderData?.hasQuestions === true;
     const url = `https://www.xrounder.in/quizzes/${params.quizId}`;
     const rawQuizTitle = quiz?.title?.trim() || "";
     const hasQuizWord = /quiz|mcq|practice\s+test|mock/i.test(rawQuizTitle);
@@ -83,6 +85,7 @@ export const Route = createFileRoute("/quizzes/$quizId")({
     return {
       meta: [
         { title },
+        ...(!isIndexable ? [{ name: "robots", content: "noindex, follow" }] : []),
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
@@ -126,7 +129,7 @@ export const Route = createFileRoute("/quizzes/$quizId")({
                   },
                 ],
               },
-              ...(quiz
+              ...(quiz && isIndexable
                 ? [
                     {
                       "@type": "Quiz",

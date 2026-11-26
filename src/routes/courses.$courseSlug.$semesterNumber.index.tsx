@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { queryOptions, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { ArrowRight, ArrowLeft, BookOpen, Check, Compass } from "lucide-react";
 
 import { supabase } from "@/integrations/supabase/client";
@@ -29,6 +29,25 @@ type SemesterData = {
   sem: { id: string; number: number; title: string; description: string | null };
   subjects: SubjectItem[];
 };
+
+function semesterUnitsOptions(semesterId: string | undefined, subjects: SubjectItem[]) {
+  return queryOptions({
+    queryKey: ["public", "sem-units", semesterId],
+    enabled: !!semesterId && subjects.length > 0,
+    queryFn: async () => {
+      if (!subjects.length) return [];
+      const { data, error } = await supabase
+        .from("units")
+        .select("id, subject_id, number")
+        .in("subject_id", subjects.map((subject) => subject.id))
+        .eq("status", "published")
+        .is("deleted_at", null)
+        .order("number");
+      if (error) throw error;
+      return data ?? [];
+    },
+  });
+}
 
 async function fetchSemesterDetails(
   queryClient: QueryClient,
@@ -105,8 +124,8 @@ async function fetchSemesterDetails(
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/")({
   loader: async ({ params, context: { queryClient } }) => {
     const data = await fetchSemesterDetails(queryClient, params.courseSlug, params.semesterNumber);
-    if (!data) throw notFound();
-    return data;
+    const units = await queryClient.ensureQueryData(semesterUnitsOptions(data.sem.id, data.subjects));
+    return { ...data, units };
   },
   head: ({ loaderData, params }) => {
     const course = loaderData?.course;
@@ -301,20 +320,8 @@ function SemesterDetail() {
   });
 
   const unitsQuery = useQuery({
-    queryKey: ["public", "sem-units", semesterId],
-    enabled: !!semesterId && subjects.length > 0,
-    queryFn: async () => {
-      const subjectIds = subjects.map((s: SubjectItem) => s.id);
-      const { data, error } = await supabase
-        .from("units")
-        .select("id, subject_id, number")
-        .in("subject_id", subjectIds)
-        .eq("status", "published")
-        .is("deleted_at", null)
-        .order("number");
-      if (error) throw error;
-      return (data ?? []) as UnitRow[];
-    },
+    ...semesterUnitsOptions(semesterId, subjects),
+    initialData: loaderData.units,
   });
 
   const units = useMemo(() => unitsQuery.data ?? [], [unitsQuery.data]);

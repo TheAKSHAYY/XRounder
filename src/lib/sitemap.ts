@@ -247,13 +247,14 @@ export async function fetchAllSitemapEntries(supabase: SupabaseClient<Database>)
     }
   }
 
-  // 7. Published public quizzes → /quizzes/:quizId
+  // 7. Published public quizzes with questions → /quizzes/:quizId
   const { data: quizzes, error: quizzesError } = await supabase
     .from("quizzes")
-    .select("id, updated_at")
+    .select("id, updated_at, quiz_questions!inner(id)")
     .eq("status", "published")
     .eq("is_public", true)
-    .is("deleted_at", null);
+    .is("deleted_at", null)
+    .limit(1, { referencedTable: "quiz_questions" });
 
   if (quizzesError) throw quizzesError;
 

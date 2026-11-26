@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 
 import { useQuery } from "@tanstack/react-query";
 import { BookOpen, ArrowRight, ArrowLeft, Layers, Search, Sparkles, X } from "lucide-react";
@@ -39,7 +39,7 @@ const EMPTY_COURSES: CourseItem[] = [];
 
 export const Route = createFileRoute("/courses/")({
   validateSearch: (search: Record<string, unknown>) => ({
-    q: typeof search.q === "string" ? search.q : "",
+    q: typeof search.q === "string" && search.q.trim() ? search.q : undefined,
   }),
   loader: async ({ context: { queryClient } }) => {
     return await queryClient.ensureQueryData({
@@ -119,13 +119,13 @@ function CoursesRouteError({ error }: { error: unknown }) {
 function CoursesIndex() {
   const initialCourses = Route.useLoaderData();
   const { q } = Route.useSearch();
-  const navigate = useNavigate({ from: "/courses" });
-  const search = q;
+  const navigate = Route.useNavigate();
+  const search = q ?? "";
   const inputRef = useRef<HTMLInputElement>(null);
   const { prefs: guestPrefs } = useGuestLearningPrefs();
 
   const setSearch = (value: string) =>
-    navigate({ search: { q: value }, replace: true, resetScroll: false });
+    navigate({ search: { q: value || undefined }, replace: true, resetScroll: false });
 
   // "/" jumps straight into search, Escape clears it — keyboard-first browsing.
   useEffect(() => {
@@ -219,7 +219,7 @@ function CoursesIndex() {
                 Degree Programs
               </h1>
               <p className="mt-2.5 max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Explore syllabus-aligned notes, past university papers, video lectures, and MCQ
+                Explore syllabus-aligned notes, past university papers, and MCQ
                 practice for each semester — with zero exam panic.
               </p>
             </div>
