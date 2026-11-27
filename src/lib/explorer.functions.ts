@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { assertAdmin } from "@/lib/role-guards.server";
-import { slugifyOrGenerated } from "@/lib/slug";
+import { buildReadableNodeCode, buildUniqueSlug } from "@/lib/slug";
 import { loose } from "@/lib/supabase-loose";
 import {
   NODE_TYPE,
@@ -120,6 +120,23 @@ export const getExplorerTree = createServerFn({ method: "GET" })
     return tree;
   });
 
+async function fetchExistingSlugsAndCodes(
+  sb: ReturnType<typeof loose>,
+  table: "courses" | "subjects",
+  semesterId?: string | null,
+): Promise<{ slugs: string[]; codes: string[] }> {
+  let query = sb.from(table).select("slug, code");
+  if (table === "subjects" && semesterId) {
+    query = query.eq("semester_id", semesterId);
+  }
+  const { data } = await query;
+  const rows = (data ?? []) as Array<{ slug?: string | null; code?: string | null }>;
+  return {
+    slugs: rows.map((r) => String(r.slug ?? "")).filter(Boolean),
+    codes: rows.map((r) => String(r.code ?? "")).filter(Boolean),
+  };
+}
+
 // ---------------- CREATE ----------------
 export const createExplorerNode = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -129,25 +146,25 @@ export const createExplorerNode = createServerFn({ method: "POST" })
         type: NODE_TYPE,
         parentId: z.string().uuid().nullable().optional(),
         name: z.string().min(1).max(160),
+        code: z.string().max(32).optional(),
       })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
     const sb = loose(context.supabase);
-    const { type, parentId, name } = data;
+    const { type, parentId } = data;
+    const cleanTitle = data.name.trim() || data.name;
+    const explicitCode = data.code?.trim().toUpperCase();
 
     if (type === "course") {
+      const existing = await fetchExistingSlugsAndCodes(sb, "courses");
       const { data: row, error } = await sb
         .from("courses")
         .insert({
-          title: name,
-          slug: slugifyOrGenerated(name) + "-" + Math.random().toString(36).slice(2, 6),
-          code:
-            name
-              .replace(/[^A-Za-z0-9]/g, "")
-              .slice(0, 12)
-              .toUpperCase() || "COURSE",
+          title: cleanTitle,
+          slug: buildUniqueSlug(cleanTitle, existing.slugs),
+          code: explicitCode || buildReadableNodeCode(cleanTitle, "COURSE", existing.codes),
           total_semesters: 6,
           status: "draft",
           created_by: context.userId,
@@ -172,7 +189,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
         .from("semesters")
         .insert({
           course_id: parentId,
-          title: name,
+          title: cleanTitle,
           number: next,
           status: "draft",
         })
@@ -182,25 +199,24 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       return { id: row.id as string };
     }
     if (type === "subject") {
-      const { data: existing } = await sb
-        .from("subjects")
-        .select("sort_order")
-        .eq("semester_id", parentId)
-        .is("deleted_at", null)
-        .order("sort_order", { ascending: false })
-        .limit(1);
-      const next = ((existing?.[0]?.sort_order as number | undefined) ?? 0) + 1;
+      const [{ data: existingOrder }, existingMeta] = await Promise.all([
+        sb
+          .from("subjects")
+          .select("sort_order")
+          .eq("semester_id", parentId)
+          .is("deleted_at", null)
+          .order("sort_order", { ascending: false })
+          .limit(1),
+        fetchExistingSlugsAndCodes(sb, "subjects", parentId),
+      ]);
+      const next = ((existingOrder?.[0]?.sort_order as number | undefined) ?? 0) + 1;
       const { data: row, error } = await sb
         .from("subjects")
         .insert({
           semester_id: parentId,
-          title: name,
-          slug: slugifyOrGenerated(name) + "-" + Math.random().toString(36).slice(2, 6),
-          code:
-            name
-              .replace(/[^A-Za-z0-9]/g, "")
-              .slice(0, 12)
-              .toUpperCase() || "SUBJ",
+          title: cleanTitle,
+          slug: buildUniqueSlug(cleanTitle, existingMeta.slugs),
+          code: explicitCode || buildReadableNodeCode(cleanTitle, "SUBJ", existingMeta.codes),
           sort_order: next,
           status: "draft",
         })
@@ -222,7 +238,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
         .from("units")
         .insert({
           subject_id: parentId,
-          title: name,
+          title: cleanTitle,
           number: next,
           status: "draft",
         })
@@ -244,7 +260,7 @@ export const createExplorerNode = createServerFn({ method: "POST" })
       .from("syllabus_topics")
       .insert({
         unit_id: parentId,
-        title: name,
+        title: cleanTitle,
         sort_order: next,
         status: "draft",
       })
@@ -333,10 +349,19 @@ export const duplicateExplorerNode = createServerFn({ method: "POST" })
     copy.status = "draft";
 
     if (data.type === "course" || data.type === "subject") {
-      copy.slug =
-        slugifyOrGenerated(String(copy.title)) + "-" + Math.random().toString(36).slice(2, 6);
-      copy.code = String(src.code ?? "COPY") + "C";
       const parentField = data.type === "subject" ? "semester_id" : null;
+      const semesterScope = data.type === "subject" ? (src.semester_id as string | null) : null;
+      const existingMeta = await fetchExistingSlugsAndCodes(
+        sb,
+        data.type === "course" ? "courses" : "subjects",
+        semesterScope,
+      );
+      copy.slug = buildUniqueSlug(String(copy.title), existingMeta.slugs);
+      copy.code = buildReadableNodeCode(
+        `${String(src.code ?? "COPY")}`,
+        "COPY",
+        existingMeta.codes,
+      );
       let q = sb.from(table).select("sort_order").is("deleted_at", null);
       if (parentField) q = q.eq(parentField, src[parentField]);
       const { data: next } = await q.order("sort_order", { ascending: false }).limit(1);

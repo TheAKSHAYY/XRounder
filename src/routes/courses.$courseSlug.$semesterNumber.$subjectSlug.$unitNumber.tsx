@@ -1,5 +1,5 @@
 import { memo, useEffect, useMemo, useRef, useState } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, isNotFound, Link, notFound, redirect } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import {
   AlertCircle,
@@ -54,6 +54,7 @@ import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { slugify } from "@/lib/slug";
+import { resolveCanonicalSubjectSlugRedirect } from "@/lib/legacy-redirects";
 import { formatTitleCase } from "@/lib/format";
 import { parseMarkdownToBlocks } from "@/components/admin/visual-article-editor";
 import { EducationalContentRenderer } from "@/components/content/educational-content-renderer";
@@ -343,15 +344,39 @@ export const Route = createFileRoute(
   "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
 )({
   loader: async ({ params, context: { queryClient } }) => {
-    const data = await fetchUnitDetails(
-      queryClient,
-      params.courseSlug,
-      params.semesterNumber,
-      params.subjectSlug,
-      params.unitNumber,
-    );
-    if (!data) throw notFound();
-    return data;
+    try {
+      const data = await fetchUnitDetails(
+        queryClient,
+        params.courseSlug,
+        params.semesterNumber,
+        params.subjectSlug,
+        params.unitNumber,
+      );
+      if (!data) throw notFound();
+      return data;
+    } catch (err) {
+      if (isNotFound(err)) {
+        const targetSlug = await resolveCanonicalSubjectSlugRedirect(
+          supabase,
+          params.courseSlug,
+          params.semesterNumber,
+          params.subjectSlug,
+        );
+        if (targetSlug && targetSlug !== params.subjectSlug) {
+          throw redirect({
+            to: "/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber",
+            params: {
+              courseSlug: params.courseSlug,
+              semesterNumber: params.semesterNumber,
+              subjectSlug: targetSlug,
+              unitNumber: params.unitNumber,
+            },
+            statusCode: 301,
+          });
+        }
+      }
+      throw err;
+    }
   },
   head: ({ loaderData, params }) => {
     const course = loaderData?.course;
@@ -2131,62 +2156,6 @@ function UnitDetail() {
                       </div>
                     </div>
                   )}
-
-                  {/* Next / Previous Unit Navigation */}
-                  <nav
-                    aria-label="Unit navigation"
-                    className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    {prevUnit ? (
-                      <Link
-                        to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                        params={{
-                          courseSlug,
-                          semesterNumber,
-                          subjectSlug,
-                          unitNumber: String(prevUnit.number),
-                        }}
-                        className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
-                      >
-                        <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
-                        <div className="min-w-0">
-                          <div className="text-[10px] font-bold uppercase text-muted-foreground">
-                            Previous Unit
-                          </div>
-                          <div className="font-bold text-sm text-foreground truncate">
-                            Unit {prevUnit.number}
-                          </div>
-                        </div>
-                      </Link>
-                    ) : (
-                      <div className="hidden sm:block flex-1" />
-                    )}
-
-                    {nextUnit ? (
-                      <Link
-                        to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
-                        params={{
-                          courseSlug,
-                          semesterNumber,
-                          subjectSlug,
-                          unitNumber: String(nextUnit.number),
-                        }}
-                        className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
-                      >
-                        <div className="min-w-0">
-                          <div className="text-[10px] font-bold uppercase text-muted-foreground">
-                            Next Unit
-                          </div>
-                          <div className="font-bold text-sm text-foreground truncate">
-                            Unit {nextUnit.number}
-                          </div>
-                        </div>
-                        <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
-                      </Link>
-                    ) : (
-                      <div className="hidden sm:block flex-1" />
-                    )}
-                  </nav>
                 </article>
 
                 {/* Desktop Sticky TOC */}
@@ -2758,6 +2727,64 @@ function UnitDetail() {
               )}
             </div>
           </div>
+        )}
+
+        {/* Next / Previous Unit Navigation — always rendered across all tabs & units */}
+        {(prevUnit || nextUnit) && (
+          <nav
+            aria-label="Unit navigation"
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+          >
+            {prevUnit ? (
+              <Link
+                to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                params={{
+                  courseSlug,
+                  semesterNumber,
+                  subjectSlug,
+                  unitNumber: String(prevUnit.number),
+                }}
+                className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
+              >
+                <ArrowLeft className="h-4 w-4 text-muted-foreground shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                    Previous Unit
+                  </div>
+                  <div className="font-bold text-sm text-foreground truncate">
+                    Unit {prevUnit.number}
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <div className="hidden sm:block flex-1" />
+            )}
+
+            {nextUnit ? (
+              <Link
+                to="/courses/$courseSlug/$semesterNumber/$subjectSlug/$unitNumber"
+                params={{
+                  courseSlug,
+                  semesterNumber,
+                  subjectSlug,
+                  unitNumber: String(nextUnit.number),
+                }}
+                className="flex items-center justify-end text-right gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 flex-1"
+              >
+                <div className="min-w-0">
+                  <div className="text-[10px] font-bold uppercase text-muted-foreground">
+                    Next Unit
+                  </div>
+                  <div className="font-bold text-sm text-foreground truncate">
+                    Unit {nextUnit.number}
+                  </div>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+              </Link>
+            ) : (
+              <div className="hidden sm:block flex-1" />
+            )}
+          </nav>
         )}
 
         {/* ─── Unit Completion Celebration Modal (Dopamine Reward) ─── */}

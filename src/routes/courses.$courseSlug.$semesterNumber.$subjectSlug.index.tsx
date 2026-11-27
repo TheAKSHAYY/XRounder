@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, isNotFound, Link, notFound, redirect } from "@tanstack/react-router";
 import { useQuery, type QueryClient } from "@tanstack/react-query";
 import {
   AlertTriangle,
@@ -26,6 +26,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 
 import { supabase } from "@/integrations/supabase/client";
+import { resolveCanonicalSubjectSlugRedirect } from "@/lib/legacy-redirects";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -226,14 +227,37 @@ async function fetchSubjectDetails(
 
 export const Route = createFileRoute("/courses/$courseSlug/$semesterNumber/$subjectSlug/")({
   loader: async ({ params, context: { queryClient } }) => {
-    const data = await fetchSubjectDetails(
-      queryClient,
-      params.courseSlug,
-      params.semesterNumber,
-      params.subjectSlug,
-    );
-    if (!data) throw notFound();
-    return data;
+    try {
+      const data = await fetchSubjectDetails(
+        queryClient,
+        params.courseSlug,
+        params.semesterNumber,
+        params.subjectSlug,
+      );
+      if (!data) throw notFound();
+      return data;
+    } catch (err) {
+      if (isNotFound(err)) {
+        const targetSlug = await resolveCanonicalSubjectSlugRedirect(
+          supabase,
+          params.courseSlug,
+          params.semesterNumber,
+          params.subjectSlug,
+        );
+        if (targetSlug && targetSlug !== params.subjectSlug) {
+          throw redirect({
+            to: "/courses/$courseSlug/$semesterNumber/$subjectSlug",
+            params: {
+              courseSlug: params.courseSlug,
+              semesterNumber: params.semesterNumber,
+              subjectSlug: targetSlug,
+            },
+            statusCode: 301,
+          });
+        }
+      }
+      throw err;
+    }
   },
   head: ({ loaderData, params }) => {
     const subject = loaderData?.subject;

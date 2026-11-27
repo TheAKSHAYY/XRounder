@@ -10,6 +10,12 @@ import {
   _setCachedSitemap,
   type SitemapEntry,
 } from "./sitemap";
+import {
+  matchCanonicalSubjectSlug,
+  maybeResolveLegacyCourseRedirectResponse,
+  resolveStaticLegacyCoursePath,
+} from "./legacy-redirects";
+import { buildReadableNodeCode, buildUniqueSlug } from "./slug";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
@@ -31,13 +37,13 @@ describe("SEO & Indexing Architecture Tests", () => {
     expect(robotsContent).toContain("Sitemap: https://www.xrounder.in/sitemap.xml");
   });
 
-  it("verifies auth route enforces noindex, follow in metadata", () => {
+  it("verifies auth route enforces noindex, nofollow in metadata", () => {
     const authRoutePath = path.resolve(process.cwd(), "src/routes/auth.tsx");
     expect(fs.existsSync(authRoutePath)).toBe(true);
 
     const authContent = fs.readFileSync(authRoutePath, "utf-8");
     expect(authContent).toContain('name: "robots"');
-    expect(authContent).toContain('content: "noindex, follow"');
+    expect(authContent).toContain('content: "noindex, nofollow"');
   });
 
   it("verifies no leaf route references uncompressed og-image.png", () => {
@@ -116,9 +122,7 @@ describe("Sitemap Reliability & Outage Fallback Logic", () => {
           expect(url.searchParams.get("select")).toContain("quiz_questions!inner(id)");
           expect(url.searchParams.get("quiz_questions.limit")).toBe("1");
           expect(url.searchParams.get("is_public")).toBe("eq.true");
-          return Response.json([
-            { id: "published-quiz", quiz_questions: [{ id: "question-1" }] },
-          ]);
+          return Response.json([{ id: "published-quiz", quiz_questions: [{ id: "question-1" }] }]);
         },
       },
     });
@@ -186,7 +190,10 @@ describe("Search Snippet Deduplication Logic", () => {
   });
 
   it("prevents duplicate subject codes in subject titles", () => {
-    const subjectWithCode = { title: "Computer Fundamentals and PC Software (BCA-101N)", code: "BCA-101N" };
+    const subjectWithCode = {
+      title: "Computer Fundamentals and PC Software (BCA-101N)",
+      code: "BCA-101N",
+    };
     const cleanSubjTitle = subjectWithCode.title.trim();
     const cleanCode = subjectWithCode.code.trim();
     const codeSuffix =
@@ -195,7 +202,9 @@ describe("Search Snippet Deduplication Logic", () => {
         : "";
     const title = `${cleanSubjTitle}${codeSuffix} Notes & Past Papers · XRounder`;
 
-    expect(title).toBe("Computer Fundamentals and PC Software (BCA-101N) Notes & Past Papers · XRounder");
+    expect(title).toBe(
+      "Computer Fundamentals and PC Software (BCA-101N) Notes & Past Papers · XRounder",
+    );
     expect(title).not.toContain("(BCA-101N) (BCA-101N)");
   });
 
@@ -203,11 +212,16 @@ describe("Search Snippet Deduplication Logic", () => {
     const unit = { number: 1, title: "Unit 1: Introduction to Data Structures" };
     const subject = { title: "Data Structures using C" };
     const cleanSubjTitle = subject.title.trim();
-    const cleanUnitTitle = unit.title.trim().replace(/^Unit\s+\d+[:\s-]*/i, "").trim();
+    const cleanUnitTitle = unit.title
+      .trim()
+      .replace(/^Unit\s+\d+[:\s-]*/i, "")
+      .trim();
 
     const title = `Unit ${unit.number}: ${cleanUnitTitle} — ${cleanSubjTitle} · XRounder`;
 
-    expect(title).toBe("Unit 1: Introduction to Data Structures — Data Structures using C · XRounder");
+    expect(title).toBe(
+      "Unit 1: Introduction to Data Structures — Data Structures using C · XRounder",
+    );
     expect(title).not.toContain("Unit 1: Unit 1");
   });
 
@@ -247,5 +261,131 @@ describe("Search Snippet Deduplication Logic", () => {
     expect(title).toBe("Basic Mathematics — 2026 University Question Paper (44903) · XRounder");
     expect(title).not.toContain("(2026) (2026)");
     expect(title).not.toContain("University Question Paper — University Question Paper");
+  });
+});
+
+describe("Legacy Slug 301 Redirects & Clean Slug Helpers", () => {
+  it("resolves known suffixed subject and unit paths statically", () => {
+    expect(resolveStaticLegacyCoursePath("/courses/bca/1/principle-of-management-wc5k")).toBe(
+      "/courses/bca/1/bca-109n-principle-of-management",
+    );
+    expect(resolveStaticLegacyCoursePath("/courses/bca/1/principle-of-management-wc5k/3")).toBe(
+      "/courses/bca/1/bca-109n-principle-of-management/3",
+    );
+    expect(resolveStaticLegacyCoursePath("/courses/bca/2/data-structures-using-c-9mnb")).toBe(
+      "/courses/bca/2/bca-102n-data-structures-using-c",
+    );
+    expect(resolveStaticLegacyCoursePath("/courses/bca/2/data-structures-using-c-9mnb/2/")).toBe(
+      "/courses/bca/2/bca-102n-data-structures-using-c/2",
+    );
+  });
+
+  it("matches -vm81 and -sf3n suffixed slugs to canonical DB subjects without overriding valid -java slugs", () => {
+    const candidates = [
+      {
+        slug: "bca-104n-introduction-to-database-system",
+        title: "Introduction to Database System",
+      },
+      {
+        slug: "bca-106n-business-organization-and-management",
+        title: "Business Organization & Management",
+      },
+      {
+        slug: "bca-201n-object-oriented-programming-using-java",
+        title: "Object Oriented Programming using JAVA",
+      },
+    ];
+
+    expect(matchCanonicalSubjectSlug("business-organization-management-vm81", candidates)).toBe(
+      "bca-106n-business-organization-and-management",
+    );
+    expect(matchCanonicalSubjectSlug("introduction-to-database-system-sf3n", candidates)).toBe(
+      "bca-104n-introduction-to-database-system",
+    );
+    // Valid 4-char ending like "-java" must never trigger a redirect when already published
+    expect(
+      matchCanonicalSubjectSlug("bca-201n-object-oriented-programming-using-java", candidates),
+    ).toBeNull();
+  });
+
+  it("returns 301 Permanent Redirect responses for legacy suffixed HTTP requests", async () => {
+    const req1 = new Request(
+      "https://www.xrounder.in/courses/bca/1/principle-of-management-wc5k/2?utm_source=test",
+    );
+    const res1 = await maybeResolveLegacyCourseRedirectResponse(req1);
+    expect(res1?.status).toBe(301);
+    expect(res1?.headers.get("Location")).toBe(
+      "https://www.xrounder.in/courses/bca/1/bca-109n-principle-of-management/2?utm_source=test",
+    );
+
+    const mockSupabase = {
+      from: (table: string) => ({
+        select: () => ({
+          eq: () => ({
+            eq: () => ({
+              is: () => ({
+                maybeSingle: async () =>
+                  table === "courses" ? { data: { id: "c1" } } : { data: null },
+              }),
+              eq: () => ({
+                is: () => ({
+                  maybeSingle: async () => ({ data: { id: "s2" } }),
+                }),
+              }),
+            }),
+            is: async () => ({
+              data: [
+                {
+                  slug: "bca-106n-business-organization-and-management",
+                  title: "Business Organization & Management",
+                },
+              ],
+            }),
+          }),
+        }),
+      }),
+    } as unknown as SupabaseClient<Database>;
+
+    const req2 = new Request(
+      "https://www.xrounder.in/courses/bca/2/business-organization-management-vm81/4",
+    );
+    // Static map hits immediately cleanly
+    const res2 = await maybeResolveLegacyCourseRedirectResponse(req2, mockSupabase);
+    expect(res2?.status).toBe(301);
+    expect(res2?.headers.get("Location")).toBe(
+      "https://www.xrounder.in/courses/bca/2/bca-106n-business-organization-and-management/4",
+    );
+  });
+
+  it("builds deterministic unique slugs without random hashes or awkward truncated codes", () => {
+    expect(buildUniqueSlug("Principle of Management", [])).toBe("principle-of-management");
+    expect(buildUniqueSlug("Principle of Management", ["principle-of-management"])).toBe(
+      "principle-of-management-2",
+    );
+    expect(
+      buildUniqueSlug("Principle of Management", [
+        "principle-of-management",
+        "principle-of-management-2",
+      ]),
+    ).toBe("principle-of-management-3");
+
+    expect(buildReadableNodeCode("Business Organization & Management", "SUBJ")).toBe("BOM");
+    expect(buildReadableNodeCode("Introduction to Database System", "SUBJ")).toBe("IDS");
+    expect(buildReadableNodeCode("Business Organization & Management", "SUBJ", ["BOM"])).toBe(
+      "BOM2",
+    );
+  });
+
+  it("verifies active landing components do not contain legacy suffixed slugs", () => {
+    const landingPath = path.resolve(
+      process.cwd(),
+      "src/components/marketing/landing-sections.tsx",
+    );
+    const content = fs.readFileSync(landingPath, "utf-8");
+    expect(content).not.toContain("-wc5k");
+    expect(content).not.toContain("-9mnb");
+    expect(content).not.toContain("-vm81");
+    expect(content).not.toContain("-sf3n");
+    expect(content).not.toContain('"basic-mathematics"');
   });
 });
